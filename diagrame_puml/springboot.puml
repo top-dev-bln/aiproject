@@ -1,0 +1,1205 @@
+@startuml
+
+  class ErrorAttributesCustom {
+  }
+  class WebCoreConfig {
+    +myServlet() : ServletRegistrationBean
+    +myFitler() : FilterRegistrationBean
+    +myListener() : ServletListenerRegistrationBean
+  }
+  class MybatisGenerator {
+    +generator() : void
+    +main() : void
+  }
+  class SecuritySecureConfig {
+    +configure() : void
+  }
+
+package com.wdbyte {
+  class Application {
+    +main() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+}
+
+package com.wdbyte.config {
+  class PrimaryDataSourceConfig {
+    +dataSource() : DataSource
+    +sqlSessionFactory() : SqlSessionFactory
+    +transactionManager() : DataSourceTransactionManager
+    +sqlSessionTemplate() : SqlSessionTemplate
+  }
+  class SecondDataSourceConfig {
+    +dataSource() : DataSource
+    +sqlSessionFactory() : SqlSessionFactory
+    +transactionManager() : DataSourceTransactionManager
+    +sqlSessionTemplate() : SqlSessionTemplate
+  }
+}
+
+package com.wdbyte.controller {
+  class ProductController <<Controller>> {
+    +list() : Map
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+    +error() : Response
+  }
+  class BookController <<Controller>> {
+    -bookService : BookService
+    +selectAll() : Response
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +selectAll() : Response
+  }
+}
+
+package com.wdbyte.domain {
+  class Response {
+    -code : String
+    -message : String
+    -data : Collection<T>
+  }
+  class User {
+    -id : Integer
+    -name : String
+    -birthday : Date
+    +getId() : Integer
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getBirthday() : Date
+    +setBirthday() : void
+  }
+  class Book {
+    -id : Integer
+    -author : String
+    -name : String
+    -price : Long
+    -createtime : Date
+    -description : String
+    +getId() : Integer
+    +setId() : void
+    +getAuthor() : String
+    +setAuthor() : void
+    +getName() : String
+    +setName() : void
+    +getPrice() : Long
+    +setPrice() : void
+  }
+}
+
+package com.wdbyte.entity {
+  class Product {
+    -productName : String
+    -productPrice : BigDecimal
+    -productStock : int
+  }
+}
+
+package com.wdbyte.enums {
+  enum ResponseEnum {
+    -code : String
+    -message : String
+  }
+}
+
+package com.wdbyte.mapper.datasource2 {
+  interface UserMapper <<Repository>> {
+  }
+}
+
+package com.wdbyte.mapper.primary {
+  interface BookMapper <<Repository>> {
+  }
+}
+
+package com.wdbyte.service {
+  interface UserService {
+  }
+  interface BookService {
+  }
+}
+
+package com.wdbyte.service.impl {
+  class BookServiceImpl <<Service>> {
+    -bookMapper : BookMapper
+    +selectAll() : List<Book>
+  }
+  class UserServiceImpl <<Service>> {
+    -userMapper : UserMapper
+    +selectAll() : List<User>
+  }
+}
+
+package com.wdbyte.utils {
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+    +error() : Response
+  }
+}
+
+package net.coding.boot {
+  class HelloApplicationTestBySpringBoot {
+    -port : int
+    -base : URL
+    -template : TestRestTemplate
+    +setup() : void
+    +getHello() : void
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    +testGetHello() : void
+  }
+  class HelloApplication {
+    +main() : void
+    +commandLineRunner() : CommandLineRunner
+  }
+}
+
+package net.coding.boot.controller {
+  class HelloController <<Controller>> {
+    +index() : String
+  }
+}
+
+package net.codingme.admin.server.config {
+  class CustomNotifier {
+    -LOGGER : Logger
+    +doNotify() : Mono<Void>
+  }
+}
+
+package net.codingme.banner {
+  class BannerApplicationTests {
+    +contextLoads() : void
+  }
+  class BannerApplication {
+    +main() : void
+  }
+}
+
+package net.codingme.banner.util {
+  class GeneratorTextImage {
+    -PIXEL : char[]
+    +main() : void
+    +printImage() : void
+    +makeSmallImage() : BufferedImage
+  }
+}
+
+package net.codingme.boot {
+  class SpringbootDataMybatisPageApplicationTests {
+    +contextLoads() : void
+  }
+  class MybatisPageApplication {
+    +main() : void
+  }
+  class SpringbootDataJpaApplicationTests {
+    -dataSource : DataSource
+    -userRepository : UserRepository
+    +testUser() : void
+    +contextLoads() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class SpringbootDataJdbcApplicationTests {
+    +contextLoads() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class SpringbootWebServletFilterListenerApplicationTests {
+    +contextLoads() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class SpringbootMailApplicationTests {
+    +contextLoads() : void
+  }
+  class MailApplication {
+    +main() : void
+  }
+  class SpringbootDataMybatisApplicationTests {
+    -dataSource : DataSource
+    -bookService : BookService
+    +contextLoads() : void
+    +testBook() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -person : Person
+    -personValue : PersonValue
+    -personSource : PersonSource
+    +testGetHello() : void
+    +testPersion() : void
+    +testPersionValue() : void
+    +testPersionSource() : void
+  }
+  class BootApplication {
+    +main() : void
+    +commandLineRunner() : CommandLineRunner
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -person : Person
+    -personValue : PersonValue
+    -personSource : PersonSource
+    -context : ApplicationContext
+    +testSpringIOC() : void
+    +testGetHello() : void
+    +testPersion() : void
+    +testPersionValue() : void
+    +testPersionSource() : void
+  }
+  class LogbackTest {
+    +testLog() : void
+  }
+  class BootApplication {
+    +main() : void
+    +commandLineRunner() : CommandLineRunner
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -context : ApplicationContext
+    +testSpringIOC() : void
+    +testGetHello() : void
+  }
+  class LogbackTest {
+    +testLog() : void
+  }
+  class BootApplication {
+    +main() : void
+    +commandLineRunner() : CommandLineRunner
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -person : Person
+    -personValue : PersonValue
+    -personSource : PersonSource
+    -context : ApplicationContext
+    +testSpringIOC() : void
+    +testGetHello() : void
+    +testPersion() : void
+    +testPersionValue() : void
+    +testPersionSource() : void
+  }
+  class BootApplication {
+    +main() : void
+    +commandLineRunner() : CommandLineRunner
+  }
+  class SpringbootWebTemplateApplicationTests {
+    +contextLoads() : void
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -context : ApplicationContext
+    +testSpringIOC() : void
+    +testGetHello() : void
+  }
+  class LogbackTest {
+    +testLog() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class SpringbootWebTemplateApplicationTests {
+    +contextLoads() : void
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -context : ApplicationContext
+    +testSpringIOC() : void
+    +testGetHello() : void
+  }
+  class LogbackTest {
+    +testLog() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+  class SpringbootWebTemplateApplicationTests {
+    +contextLoads() : void
+  }
+  class HelloApplicationTests {
+    -mvc : MockMvc
+    -context : ApplicationContext
+    +testSpringIOC() : void
+    +testGetHello() : void
+  }
+  class LogbackTest {
+    +testLog() : void
+  }
+  class BootApplication {
+    +main() : void
+  }
+}
+
+package net.codingme.boot.config {
+  class DruidConfig {
+    +dataSource() : DataSource
+    +statViewServlet() : ServletRegistrationBean
+    +webStatFilter() : FilterRegistrationBean
+  }
+  class DruidConfig {
+    +dataSource() : DataSource
+    +statViewServlet() : ServletRegistrationBean
+    +webStatFilter() : FilterRegistrationBean
+  }
+  class ConverterDate {
+    -simpleDateFormat : SimpleDateFormat
+    +convert() : Date
+  }
+  class WebMvcConfig {
+    +configureMessageConverters() : void
+    +addInterceptors() : void
+    +addFormatters() : void
+  }
+  class LogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfter() : void
+    +doAfterReturning() : void
+  }
+  class LogHandlerInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+  class DruidConfig {
+    +druid() : DruidDataSource
+    +statViewServlet() : ServletRegistrationBean
+    +webStatFilter() : FilterRegistrationBean
+  }
+  class DruidConfig {
+    +dataSource() : DataSource
+    +statViewServlet() : ServletRegistrationBean
+    +webStatFilter() : FilterRegistrationBean
+  }
+  class ConverterDate {
+    -simpleDateFormat : SimpleDateFormat
+    +convert() : Date
+  }
+  class WebMvcConfig {
+    +configureMessageConverters() : void
+    +addInterceptors() : void
+    +addResourceHandlers() : void
+    +addFormatters() : void
+  }
+  class LogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfter() : void
+    +doAfterReturning() : void
+  }
+  class LogHandlerInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+  class SwaggerConfig {
+    +createRestApi() : Docket
+  }
+  class ServiceConfig {
+    +helloService() : HelloService
+  }
+  class WebMvcConfig {
+    +configureMessageConverters() : void
+  }
+  class ServiceConfig {
+    +helloService() : HelloService
+  }
+  class WebMvcConfig {
+    +configureMessageConverters() : void
+    +addInterceptors() : void
+  }
+  class LogHandlerInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+  class ConverterDate {
+    -simpleDateFormat : SimpleDateFormat
+    +convert() : Date
+  }
+  class WebMvcConfig {
+    +addResourceHandlers() : void
+    +addFormatters() : void
+  }
+  class SwaggerConfig {
+    +createRestApi() : Docket
+  }
+  class WebMvcConfig {
+    +configureMessageConverters() : void
+    +addInterceptors() : void
+  }
+  class LogHandlerInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+  class WebMvcConfig {
+    +configureMessageConverters() : void
+    +addInterceptors() : void
+  }
+  class LogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfter() : void
+    +doAfterReturning() : void
+  }
+  class LogHandlerInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+}
+
+package net.codingme.boot.controller {
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+    +error() : Response
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +create() : Response
+    +findAll() : Response
+    +login() : Response
+  }
+  class JdbcController <<Controller>> {
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+    +error() : Response
+  }
+  class BookController <<Controller>> {
+    -bookService : BookService
+    +selectAll() : Response
+    +selectByAuthor() : Response
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +create() : Response
+    +findAll() : Response
+    +login() : Response
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+  }
+  class PersonController <<Controller>> {
+    +getPerson() : Response
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+  }
+  class UserController <<Controller>> {
+    +getUser() : Response
+    +login() : String
+    +getUserById() : String
+  }
+  class UserController <<Controller>> {
+    +create() : Response
+    +delete() : Response
+    +update() : Response
+    +selectAll() : Response
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+    +error() : Response
+  }
+  class UserController <<Controller>> {
+    +getUser() : Response
+    +login() : String
+    +getUserById() : String
+  }
+  class HelloController <<Controller>> {
+    -description : String
+    +index() : String
+    +error() : Response
+  }
+  class UserController <<Controller>> {
+    +getUser() : Response
+    +login() : String
+    +getUserById() : String
+  }
+}
+
+package net.codingme.boot.domain {
+  class Book {
+    -id : Integer
+    -author : String
+    -name : String
+    -price : Float
+    -createTime : Date
+    -description : String
+    +getId() : Integer
+    +setId() : void
+    +getAuthor() : String
+    +setAuthor() : void
+    +getName() : String
+    +setName() : void
+    +getPrice() : Float
+    +setPrice() : void
+  }
+  class Response {
+    -code : String
+    -message : String
+    -data : Collection<T>
+  }
+  class User <<Entity>> {
+    -id : Integer
+    -username : String
+    -password : String
+    -age : Integer
+    -birthday : Date
+    -skills : String
+  }
+  class Response {
+    -code : String
+    -message : String
+    -data : Collection<T>
+  }
+  class User <<Entity>> {
+    -id : Integer
+    -username : String
+    -password : String
+    -age : Integer
+    -birthday : Date
+    -skills : String
+  }
+  class Book {
+    -id : Integer
+    -author : String
+    -name : String
+    -price : Float
+    -createTime : Date
+    -description : String
+    +getId() : Integer
+    +setId() : void
+    +getAuthor() : String
+    +setAuthor() : void
+    +getName() : String
+    +setName() : void
+    +getPrice() : Float
+    +setPrice() : void
+  }
+  class Person {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class PersonSource {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class Dog {
+    -name : String
+    -age : Integer
+  }
+  class PersonValue {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class Response {
+    -code : String
+    -message : String
+    -data : T
+  }
+  class Person {
+    -username : String
+    -age : Integer
+    -birthday : Date
+    -skills : List<String>
+  }
+  class Person {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class PersonSource {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class Dog {
+    -name : String
+    -age : Integer
+  }
+  class PersonValue {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class Response {
+    -code : String
+    -message : String
+    -data : T
+  }
+  class User {
+    -username : String
+    -password : String
+    -age : Integer
+    -birthday : Date
+    -skills : List<String>
+  }
+  class Response {
+    -code : String
+    -message : String
+    -content : Collection
+  }
+  class User {
+    -id : Integer
+    -username : String
+    -password : String
+    -age : Integer
+    -birthday : Date
+    -skills : String
+  }
+  class Response {
+    -code : String
+    -message : String
+    -data : Collection<T>
+  }
+  class User {
+    -username : String
+    -password : String
+    -age : Integer
+    -birthday : Date
+    -skills : List<String>
+  }
+  class Response {
+    -code : String
+    -message : String
+    -data : Collection<T>
+  }
+  class User {
+    -username : String
+    -password : String
+    -age : Integer
+    -birthday : Date
+    -skills : List<String>
+  }
+}
+
+package net.codingme.boot.domain.mapper {
+  class BookMapperTest {
+    -bookMapper : BookMapper
+    +testSelectOne() : void
+    +testSelectByPrimaryKey() : void
+    +testSelectPageInfo() : void
+    +testSelectPage() : void
+  }
+  interface BookMapper <<Repository>> {
+  }
+  class BookMapperTest {
+    -bookMapper : BookMapper
+    +testSelectAll() : void
+    +testSelectByAuthro() : void
+    +testSelectByPrimaryKey() : void
+    +testDeleteByPrimaryKey() : void
+  }
+  interface BookMapper <<Repository>> {
+  }
+}
+
+package net.codingme.boot.domain.proper {
+  class Person {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class PersonSource {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+  class Dog {
+    -name : String
+    -age : Integer
+  }
+  class PersonValue {
+    -lastName : String
+    -age : Integer
+    -birth : Date
+    -lists : List<String>
+    -dog : Dog
+    -email : String
+  }
+}
+
+package net.codingme.boot.domain.repository {
+  interface UserRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package net.codingme.boot.enums {
+  enum ResponseEnum {
+    -code : String
+    -message : String
+  }
+  enum ResponseEnum {
+    -code : String
+    -message : String
+  }
+  enum ResponseEnum {
+    -code : String
+    -message : String
+  }
+  enum ResponseEnum {
+    -code : String
+    -message : String
+  }
+  enum ResponseEnum {
+    -code : String
+    -message : String
+  }
+}
+
+package net.codingme.boot.exception {
+  class ExceptionHandle {
+    +handleException() : Response
+    +isAjax() : boolean
+  }
+  class BaseException {
+    -code : String
+  }
+  class ExceptionHandle {
+    +handleException() : Response
+    +isAjax() : boolean
+  }
+  class ErrorAttributesCustom {
+  }
+  class BaseException {
+    -code : String
+  }
+  class ExceptionHandle {
+    +handleException() : Response
+    +isAjax() : boolean
+  }
+  class ErrorAttributesCustom {
+  }
+  class BaseException {
+    -code : String
+  }
+  class ExceptionHandle {
+    +handleException() : Response
+    +isAjax() : boolean
+  }
+  class ErrorAttributesCustom {
+  }
+  class BaseException {
+    -code : String
+  }
+}
+
+package net.codingme.boot.filter {
+  class MyFilter {
+    +doFilter() : void
+  }
+}
+
+package net.codingme.boot.listener {
+  class MyListener {
+    +contextInitialized() : void
+    +contextDestroyed() : void
+  }
+}
+
+package net.codingme.boot.service {
+  interface UserService {
+  }
+  class MailServiceTest {
+    -mailService : MailService
+    -templateEngine : TemplateEngine
+    +sendSimpleTextMailTest() : void
+    +sendHtmlMailTest() : void
+    +sendAttachmentTest() : void
+    +sendImgTest() : void
+    +sendTemplateMailTest() : void
+    +templateTest() : void
+  }
+  class MailService <<Service>> {
+    -from : String
+    -mailSender : JavaMailSender
+    -templateEngine : TemplateEngine
+    +sayHello() : void
+    +sendSimpleTextMail() : void
+    +sendHtmlMail() : void
+    +sendAttachmentMail() : void
+    +sendImgMail() : void
+    +sendTemplateMail() : void
+  }
+  interface UserService {
+  }
+  interface BookService {
+  }
+  class HelloService <<Service>> {
+  }
+  class PersonService <<Service>> {
+  }
+  class HelloService <<Service>> {
+  }
+  interface UserService {
+  }
+  interface UserService {
+  }
+  interface UserService {
+  }
+  interface UserService {
+  }
+}
+
+package net.codingme.boot.service.impl {
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    +create() : void
+    +findAll() : List<User>
+    +login() : User
+  }
+  class BookServiceImpl <<Service>> {
+    -bookMapper : BookMapper
+    +selectAll() : List<Book>
+    +selectByPrimaryKey() : Book
+    +selectByAuthor() : List<Book>
+  }
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    +create() : void
+    +findAll() : List<User>
+    +login() : User
+  }
+  class UserServiceImpl <<Service>> {
+  }
+  class UserServiceImpl <<Service>> {
+  }
+  class UserServiceImpl <<Service>> {
+  }
+  class UserServiceImpl <<Service>> {
+  }
+}
+
+package net.codingme.boot.servlet {
+  class MyServlet {
+    +init() : void
+    +doGet() : void
+    +doPut() : void
+    +destroy() : void
+  }
+}
+
+package net.codingme.boot.util {
+  interface MybatisMapper {
+  }
+  class MybatisGenerator {
+    +generator() : void
+    +main() : void
+  }
+}
+
+package net.codingme.boot.utils {
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+    +error() : Response
+  }
+  class MybatisGenerator {
+    +generator() : void
+    +main() : void
+  }
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+    +error() : Response
+  }
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+  }
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+  }
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+    +error() : Response
+  }
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+  }
+  class ResponseUtill {
+    +success() : Response
+    +success() : Response
+    +error() : Response
+    +error() : Response
+  }
+}
+
+package net.codingme.https {
+  class SpringbootHttpsApplication {
+    +main() : void
+  }
+}
+
+package net.codingme.https.config {
+  class Http2Https {
+    -sslPort : int
+    -httpPort : int
+    +servletContainerFactory() : TomcatServletWebServerFactory
+    +postProcessContext() : void
+  }
+}
+
+package net.codingme.https.controller {
+  class HttpsController <<Controller>> {
+    +hello() : String
+  }
+}
+
+package net.codingme.starter {
+  class HelloProperties {
+    -suffix : String
+    +getSuffix() : String
+    +setSuffix() : void
+  }
+  class HelloServiceAutoConfiguration {
+    -helloProperties : HelloProperties
+    +helloService() : HelloService
+  }
+  class HelloService {
+    +sayHello() : String
+    +getHelloProperties() : HelloProperties
+    +setHelloProperties() : void
+  }
+  class MyappSpringBootStarterTestApplicationTests {
+  }
+  class MyappSpringBootStarterTestApplication {
+    +main() : void
+  }
+}
+
+package net.codingme.starter.controller {
+  class HelloController <<Controller>> {
+    +sayHello() : String
+  }
+}
+
+' --- Relatii ---
+BookMapperTest --> Book
+BookMapper --> Book
+SpringbootDataJpaApplicationTests --> User
+SpringbootDataJpaApplicationTests --> UserRepository
+ConverterDate --> ResponseEnum
+ConverterDate --> BaseException
+ResponseUtill --> Response
+ResponseUtill --> ResponseEnum
+HelloController --> Response
+HelloController --> ResponseUtill
+UserController --> Response
+UserController --> User
+UserController --> UserRepository
+UserController --> ResponseEnum
+UserController --> UserService
+UserController --> ResponseUtill
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> ResponseEnum
+UserServiceImpl --> BaseException
+UserServiceImpl --> UserService
+UserRepository --> User
+ExceptionHandle --> Response
+ExceptionHandle --> ResponseEnum
+ExceptionHandle --> ResponseUtill
+BaseException --> ResponseEnum
+SpringbootDataMybatisApplicationTests --> Book
+SpringbootDataMybatisApplicationTests --> BookService
+BookMapperTest --> Book
+ResponseUtill --> Response
+ResponseUtill --> ResponseEnum
+HelloController --> Response
+HelloController --> ResponseUtill
+BookController --> Book
+BookController --> Response
+BookController --> BookService
+BookController --> ResponseUtill
+UserController --> Response
+UserController --> User
+UserController --> ResponseEnum
+UserController --> UserService
+UserController --> ResponseUtill
+UserService --> User
+BookService --> Book
+BookServiceImpl ..|> BookService
+BookServiceImpl --> Book
+BookServiceImpl --> BookMapper
+BookServiceImpl --> BookService
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> ResponseEnum
+UserServiceImpl --> BaseException
+UserServiceImpl --> UserService
+UserRepository --> User
+BookMapper --> Book
+ExceptionHandle --> Response
+ExceptionHandle --> ResponseEnum
+ExceptionHandle --> ResponseUtill
+BaseException --> ResponseEnum
+HelloApplicationTests --> Person
+HelloApplicationTests --> PersonSource
+HelloApplicationTests --> PersonValue
+HelloApplicationTests --> Person
+HelloApplicationTests --> PersonSource
+HelloApplicationTests --> PersonValue
+ServiceConfig --> HelloService
+ProductController --> Product
+ResponseUtill --> Response
+PersonController --> Person
+PersonController --> Response
+PersonController --> ResponseUtill
+HelloController --> HelloService
+HelloApplicationTests --> Person
+HelloApplicationTests --> PersonSource
+HelloApplicationTests --> PersonValue
+ServiceConfig --> HelloService
+ResponseUtill --> Response
+UserController --> Response
+UserController --> User
+UserController --> ResponseUtill
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserService
+UserMapper --> User
+BookMapper --> Book
+ResponseUtill --> Response
+ResponseUtill --> ResponseEnum
+HelloController --> Response
+HelloController --> ResponseUtill
+BookController --> Book
+BookController --> BookService
+BookController --> Response
+BookController --> ResponseUtill
+UserController --> Response
+UserController --> User
+UserController --> UserService
+UserController --> ResponseUtill
+UserService --> User
+BookService --> Book
+BookServiceImpl ..|> BookService
+BookServiceImpl --> Book
+BookServiceImpl --> BookMapper
+BookServiceImpl --> BookService
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserMapper
+UserServiceImpl --> UserService
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserService
+ResponseUtill --> Response
+ResponseUtill --> ResponseEnum
+UserController --> Response
+UserController --> User
+UserController --> ResponseEnum
+UserController --> ResponseUtill
+ResponseUtill --> Response
+ResponseUtill --> ResponseEnum
+HelloController --> Response
+HelloController --> ResponseUtill
+UserController --> Response
+UserController --> User
+UserController --> ResponseUtill
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserService
+ExceptionHandle --> Response
+ExceptionHandle --> ResponseEnum
+ExceptionHandle --> ResponseUtill
+BaseException --> ResponseEnum
+ResponseUtill --> Response
+ResponseUtill --> ResponseEnum
+HelloController --> Response
+HelloController --> ResponseUtill
+UserController --> Response
+UserController --> User
+UserController --> ResponseUtill
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserService
+ExceptionHandle --> Response
+ExceptionHandle --> ResponseEnum
+ExceptionHandle --> ResponseUtill
+BaseException --> ResponseEnum
+
+@enduml

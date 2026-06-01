@@ -1,0 +1,156 @@
+@startuml
+
+package murraco {
+  class JwtAuthServiceApp {
+    -userService : UserService
+    -userRepository : UserRepository
+    +main() : void
+    +modelMapper() : ModelMapper
+    +run() : void
+  }
+}
+
+package murraco.configuration {
+  class OpenApiConfig {
+    +api() : OpenAPI
+  }
+}
+
+package murraco.controller {
+  class UserControllerTest {
+    -ADMIN_USER : String
+    -ADMIN_PASSWORD : String
+    -mockMvc : MockMvc
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    -modelMapper : ModelMapper
+    +login() : String
+    +signup() : String
+    +delete() : String
+    +search() : UserResponseDTO
+    +whoami() : UserResponseDTO
+    +refresh() : String
+  }
+}
+
+package murraco.dto {
+  class UserResponseDTO {
+    -id : Integer
+    -username : String
+    -email : String
+  }
+  class UserDataDTO {
+    -username : String
+    -email : String
+    -password : String
+    -appUserRoles : List<AppUserRole>
+  }
+}
+
+package murraco.exception {
+  class CustomException {
+    -serialVersionUID : long
+    -message : String
+    -httpStatus : HttpStatus
+    +getMessage() : String
+    +getHttpStatus() : HttpStatus
+  }
+  class GlobalExceptionHandlerController {
+    -log : Logger
+    +errorAttributes() : ErrorAttributes
+    +handleCustomException() : void
+    +handleValidationException() : void
+    +handleAccessDeniedException() : void
+    +handleException() : void
+  }
+}
+
+package murraco.model {
+  class AppUser <<Entity>> {
+    -id : Integer
+    -username : String
+    -email : String
+    -password : String
+  }
+  enum AppUserRole {
+    +getAuthority() : String
+  }
+}
+
+package murraco.repository {
+  interface UserRepository {
+  }
+}
+
+package murraco.security {
+  class WebSecurityConfig {
+    -jwtTokenProvider : JwtTokenProvider
+    +filterChain() : SecurityFilterChain
+    +passwordEncoder() : PasswordEncoder
+    +authenticationManager() : AuthenticationManager
+  }
+  class JwtTokenFilter {
+    -log : Logger
+    -jwtTokenProvider : JwtTokenProvider
+    +doFilterInternal() : void
+  }
+  class MyUserDetails <<Service>> {
+    -userRepository : UserRepository
+    -appUser : AppUser
+    +loadUserByUsername() : UserDetails
+  }
+  class JwtTokenProvider {
+    -secretKey : String
+    -validityInMilliseconds : long
+    -myUserDetails : MyUserDetails
+    -log : Logger
+    -signingKey : SecretKey
+    +init() : void
+    +createToken() : String
+    +getAuthentication() : Authentication
+    +getUsername() : String
+    +resolveToken() : String
+    +validateToken() : boolean
+  }
+}
+
+package murraco.service {
+  class UserService <<Service>> {
+    -log : Logger
+    -userRepository : UserRepository
+    -passwordEncoder : PasswordEncoder
+    -jwtTokenProvider : JwtTokenProvider
+    -authenticationManager : AuthenticationManager
+    +signin() : String
+    +signup() : String
+    +delete() : void
+    +search() : AppUser
+    +whoami() : AppUser
+    +refresh() : String
+  }
+}
+
+' --- Relatii ---
+JwtAuthServiceApp --> AppUser
+JwtAuthServiceApp --> AppUserRole
+JwtAuthServiceApp --> UserRepository
+JwtAuthServiceApp --> UserService
+UserResponseDTO --> AppUserRole
+UserDataDTO --> AppUserRole
+UserRepository --> AppUser
+JwtTokenFilter --> CustomException
+MyUserDetails --> AppUser
+MyUserDetails --> UserRepository
+JwtTokenProvider --> AppUserRole
+JwtTokenProvider --> CustomException
+UserController --> AppUser
+UserController --> UserDataDTO
+UserController --> UserResponseDTO
+UserController --> UserService
+UserService --> CustomException
+UserService --> AppUser
+UserService --> UserRepository
+UserService --> JwtTokenProvider
+
+@enduml

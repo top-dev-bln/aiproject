@@ -1,0 +1,554 @@
+@startuml
+package com.sushi.api; {
+class Application {
+}
+
+}
+
+package com.sushi.api.config; {
+class WebConfig {
+}
+
+}
+
+package com.sushi.api.controllers; {
+class AuthController {
+}
+
+class CategoryController {
+}
+
+class CustomerController {
+}
+
+class EmployeeController {
+}
+
+class OrderController {
+}
+
+class ProductController {
+}
+
+class AuthControllerTest {
+}
+
+class CategoryControllerTest {
+}
+
+class CustomerControllerTest {
+}
+
+class EmployeeControllerTest {
+}
+
+class OrderControllerTest {
+}
+
+class ProductControllerTest {
+}
+
+}
+
+package com.sushi.api.exceptions; {
+class BadRequestException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.sushi.api.exceptions.handler; {
+class ExceptionResponse {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ValidationExceptionDetails {
+}
+
+}
+
+package com.sushi.api.model; {
+class Address {
+}
+
+class Category {
+}
+
+class Customer {
+}
+
+class Employee {
+}
+
+class Order {
+}
+
+class OrderItem {
+}
+
+class Phone {
+}
+
+class Product {
+}
+
+}
+
+package com.sushi.api.model.dto.address; {
+class AddressDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.category; {
+class CategoryRequestDTO {
+}
+
+class CategoryUpdateDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.customer; {
+class CustomerRequestDTO {
+}
+
+class CustomerUpdateDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.employee; {
+class EmployeeRequestDTO {
+}
+
+class EmployeeUpdateDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.login; {
+class LoginRequestDTO {
+}
+
+class LoginResponseDTO {
+}
+
+class RegisterRequestDTO {
+}
+
+class RegisterResponseDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.order; {
+class OrderRequestDTO {
+}
+
+class OrderUpdateDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.order_item; {
+class OrderItemRequestDTO {
+}
+
+class OrderItemUpdateDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.phone; {
+class PhoneDTO {
+}
+
+}
+
+package com.sushi.api.model.dto.product; {
+class ProductRequestDTO {
+}
+
+class ProductUpdateDTO {
+}
+
+}
+
+package com.sushi.api.repositories; {
+class AddressRepository {
+}
+
+class CategoryRepository {
+}
+
+class CustomerRepository {
+}
+
+class EmployeeRepository {
+}
+
+class OrderItemRepository {
+}
+
+class OrderRepository {
+}
+
+class ProductRepository {
+}
+
+}
+
+package com.sushi.api.security; {
+class SecurityConfig {
+}
+
+class SecurityFilter {
+}
+
+class TokenService {
+}
+
+}
+
+package com.sushi.api.services; {
+class AuthService {
+}
+
+class CategoryService {
+}
+
+class CustomerService {
+}
+
+class EmployeeService {
+}
+
+class OrderService {
+}
+
+class ProductService {
+}
+
+class AuthServiceTest {
+}
+
+class CategoryServiceTest {
+}
+
+class CustomerServiceTest {
+}
+
+class EmployeeServiceTest {
+}
+
+class OrderServiceTest {
+}
+
+class ProductServiceTest {
+}
+
+}
+
+package com.sushi.api.common; {
+class AuthConstants {
+}
+
+class CategoryConstants {
+}
+
+class CustomerConstants {
+}
+
+class CustomerControllerConstants {
+}
+
+class EmployeeConstants {
+}
+
+class OrderConstants {
+}
+
+class ProductConstants {
+}
+
+}
+
+Application -- Order
+AuthController -- Customer
+AuthController -- LoginRequestDTO
+AuthController -- LoginResponseDTO
+AuthController -- RegisterRequestDTO
+AuthController -- RegisterResponseDTO
+AuthController -- Employee
+AuthController -- AuthService
+CategoryController -- Category
+CategoryController -- CategoryRequestDTO
+CategoryController -- CategoryUpdateDTO
+CategoryController -- CategoryService
+CustomerController -- Customer
+CustomerController -- CustomerRequestDTO
+CustomerController -- CustomerUpdateDTO
+CustomerController -- CustomerService
+EmployeeController -- EmployeeRequestDTO
+EmployeeController -- EmployeeUpdateDTO
+EmployeeController -- Employee
+EmployeeController -- EmployeeService
+OrderController -- OrderRequestDTO
+OrderController -- OrderUpdateDTO
+OrderController -- Order
+OrderController -- OrderService
+ProductController -- Customer
+ProductController -- ProductRequestDTO
+ProductController -- ProductUpdateDTO
+ProductController -- Product
+ProductController -- ProductService
+GlobalExceptionHandler -- BadRequestException
+GlobalExceptionHandler -- ExceptionResponse
+GlobalExceptionHandler -- ValidationExceptionDetails
+GlobalExceptionHandler -- ResourceNotFoundException
+ValidationExceptionDetails -- ExceptionResponse
+Address -- Customer
+Address -- Order
+Category -- Product
+Customer -- Order
+Customer -- Phone
+AddressDTO -- Address
+CategoryRequestDTO -- Category
+CategoryUpdateDTO -- Category
+CustomerRequestDTO -- Address
+CustomerRequestDTO -- Customer
+CustomerRequestDTO -- AddressDTO
+CustomerRequestDTO -- PhoneDTO
+CustomerRequestDTO -- Phone
+CustomerUpdateDTO -- Address
+CustomerUpdateDTO -- Customer
+CustomerUpdateDTO -- AddressDTO
+CustomerUpdateDTO -- PhoneDTO
+CustomerUpdateDTO -- Phone
+EmployeeRequestDTO -- Employee
+EmployeeUpdateDTO -- Employee
+OrderRequestDTO -- Address
+OrderRequestDTO -- Customer
+OrderRequestDTO -- OrderItemRequestDTO
+OrderRequestDTO -- Order
+OrderRequestDTO -- OrderItem
+OrderUpdateDTO -- Address
+OrderUpdateDTO -- OrderItemUpdateDTO
+OrderUpdateDTO -- Order
+OrderUpdateDTO -- OrderItem
+OrderItemRequestDTO -- Order
+OrderItemRequestDTO -- OrderItem
+OrderItemRequestDTO -- Product
+OrderItemUpdateDTO -- Order
+OrderItemUpdateDTO -- OrderItem
+OrderItemUpdateDTO -- Product
+PhoneDTO -- Phone
+ProductRequestDTO -- Product
+ProductUpdateDTO -- Product
+Order -- OrderItem
+OrderItem -- Product
+Product -- Order
+AddressRepository -- Address
+CategoryRepository -- Category
+CustomerRepository -- Customer
+CustomerRepository -- PhoneDTO
+CustomerRepository -- Phone
+EmployeeRepository -- Employee
+OrderItemRepository -- Order
+OrderItemRepository -- OrderItem
+OrderRepository -- Order
+ProductRepository -- Product
+SecurityConfig -- SecurityFilter
+SecurityFilter -- TokenService
+TokenService -- Customer
+TokenService -- Employee
+AuthService -- ResourceNotFoundException
+AuthService -- Customer
+AuthService -- LoginRequestDTO
+AuthService -- LoginResponseDTO
+AuthService -- RegisterRequestDTO
+AuthService -- RegisterResponseDTO
+AuthService -- Employee
+AuthService -- CustomerRepository
+AuthService -- EmployeeRepository
+AuthService -- TokenService
+CategoryService -- ResourceNotFoundException
+CategoryService -- Category
+CategoryService -- CategoryRequestDTO
+CategoryService -- CategoryUpdateDTO
+CategoryService -- Product
+CategoryService -- CategoryRepository
+CategoryService -- ProductRepository
+CustomerService -- ResourceNotFoundException
+CustomerService -- Address
+CustomerService -- Customer
+CustomerService -- CustomerRequestDTO
+CustomerService -- CustomerUpdateDTO
+CustomerService -- Phone
+CustomerService -- CustomerRepository
+EmployeeService -- ResourceNotFoundException
+EmployeeService -- EmployeeRequestDTO
+EmployeeService -- EmployeeUpdateDTO
+EmployeeService -- Employee
+EmployeeService -- EmployeeRepository
+OrderService -- ResourceNotFoundException
+OrderService -- Address
+OrderService -- Customer
+OrderService -- OrderRequestDTO
+OrderService -- OrderUpdateDTO
+OrderService -- Order
+OrderService -- OrderItem
+OrderService -- Product
+OrderService -- AddressRepository
+OrderService -- CustomerRepository
+OrderService -- OrderItemRepository
+OrderService -- OrderRepository
+OrderService -- ProductRepository
+ProductService -- ResourceNotFoundException
+ProductService -- Category
+ProductService -- ProductRequestDTO
+ProductService -- ProductUpdateDTO
+ProductService -- Product
+ProductService -- CategoryRepository
+ProductService -- ProductRepository
+AuthConstants -- Customer
+AuthConstants -- LoginRequestDTO
+AuthConstants -- RegisterRequestDTO
+AuthConstants -- CustomerConstants
+CategoryConstants -- Category
+CustomerConstants -- Address
+CustomerConstants -- Customer
+CustomerConstants -- AddressDTO
+CustomerConstants -- PhoneDTO
+CustomerConstants -- Phone
+CustomerControllerConstants -- CustomerController
+CustomerControllerConstants -- Address
+CustomerControllerConstants -- Customer
+CustomerControllerConstants -- CustomerRequestDTO
+CustomerControllerConstants -- CustomerUpdateDTO
+CustomerControllerConstants -- CustomerConstants
+EmployeeConstants -- Customer
+EmployeeConstants -- EmployeeRequestDTO
+EmployeeConstants -- EmployeeUpdateDTO
+EmployeeConstants -- Employee
+EmployeeConstants -- CustomerConstants
+OrderConstants -- Customer
+OrderConstants -- OrderRequestDTO
+OrderConstants -- OrderUpdateDTO
+OrderConstants -- OrderItemRequestDTO
+OrderConstants -- OrderItemUpdateDTO
+OrderConstants -- Order
+OrderConstants -- OrderItem
+OrderConstants -- Product
+OrderConstants -- CustomerConstants
+OrderConstants -- ProductConstants
+ProductConstants -- Category
+ProductConstants -- Product
+ProductConstants -- CategoryConstants
+AuthControllerTest -- AuthController
+AuthControllerTest -- Customer
+AuthControllerTest -- Employee
+AuthControllerTest -- TokenService
+AuthControllerTest -- AuthService
+AuthControllerTest -- AuthConstants
+CategoryControllerTest -- CategoryController
+CategoryControllerTest -- ResourceNotFoundException
+CategoryControllerTest -- Category
+CategoryControllerTest -- Customer
+CategoryControllerTest -- TokenService
+CategoryControllerTest -- CategoryService
+CategoryControllerTest -- CategoryConstants
+CustomerControllerTest -- CustomerController
+CustomerControllerTest -- ResourceNotFoundException
+CustomerControllerTest -- Customer
+CustomerControllerTest -- TokenService
+CustomerControllerTest -- CustomerService
+CustomerControllerTest -- CustomerConstants
+CustomerControllerTest -- CustomerControllerConstants
+EmployeeControllerTest -- EmployeeController
+EmployeeControllerTest -- ResourceNotFoundException
+EmployeeControllerTest -- Employee
+EmployeeControllerTest -- TokenService
+EmployeeControllerTest -- EmployeeService
+EmployeeControllerTest -- EmployeeConstants
+OrderControllerTest -- OrderController
+OrderControllerTest -- ResourceNotFoundException
+OrderControllerTest -- Order
+OrderControllerTest -- TokenService
+OrderControllerTest -- OrderService
+OrderControllerTest -- OrderConstants
+ProductControllerTest -- ProductController
+ProductControllerTest -- ResourceNotFoundException
+ProductControllerTest -- Product
+ProductControllerTest -- TokenService
+ProductControllerTest -- ProductService
+ProductControllerTest -- ProductConstants
+AuthServiceTest -- ResourceNotFoundException
+AuthServiceTest -- Customer
+AuthServiceTest -- LoginRequestDTO
+AuthServiceTest -- LoginResponseDTO
+AuthServiceTest -- RegisterRequestDTO
+AuthServiceTest -- RegisterResponseDTO
+AuthServiceTest -- Employee
+AuthServiceTest -- CustomerRepository
+AuthServiceTest -- EmployeeRepository
+AuthServiceTest -- TokenService
+AuthServiceTest -- AuthService
+AuthServiceTest -- CustomerConstants
+AuthServiceTest -- EmployeeConstants
+CategoryServiceTest -- ResourceNotFoundException
+CategoryServiceTest -- Category
+CategoryServiceTest -- CategoryRequestDTO
+CategoryServiceTest -- CategoryUpdateDTO
+CategoryServiceTest -- CategoryRepository
+CategoryServiceTest -- CategoryService
+CategoryServiceTest -- CategoryConstants
+CustomerServiceTest -- ResourceNotFoundException
+CustomerServiceTest -- Address
+CustomerServiceTest -- Customer
+CustomerServiceTest -- CustomerRequestDTO
+CustomerServiceTest -- CustomerUpdateDTO
+CustomerServiceTest -- Phone
+CustomerServiceTest -- CustomerRepository
+CustomerServiceTest -- CustomerService
+CustomerServiceTest -- CustomerConstants
+EmployeeServiceTest -- ResourceNotFoundException
+EmployeeServiceTest -- EmployeeRequestDTO
+EmployeeServiceTest -- EmployeeUpdateDTO
+EmployeeServiceTest -- Employee
+EmployeeServiceTest -- EmployeeRepository
+EmployeeServiceTest -- EmployeeService
+EmployeeServiceTest -- EmployeeConstants
+OrderServiceTest -- ResourceNotFoundException
+OrderServiceTest -- Address
+OrderServiceTest -- Customer
+OrderServiceTest -- OrderRequestDTO
+OrderServiceTest -- OrderUpdateDTO
+OrderServiceTest -- Order
+OrderServiceTest -- OrderItem
+OrderServiceTest -- Product
+OrderServiceTest -- AddressRepository
+OrderServiceTest -- CustomerRepository
+OrderServiceTest -- OrderItemRepository
+OrderServiceTest -- OrderRepository
+OrderServiceTest -- ProductRepository
+OrderServiceTest -- OrderService
+OrderServiceTest -- CustomerConstants
+OrderServiceTest -- OrderConstants
+OrderServiceTest -- ProductConstants
+ProductServiceTest -- ResourceNotFoundException
+ProductServiceTest -- Category
+ProductServiceTest -- ProductRequestDTO
+ProductServiceTest -- ProductUpdateDTO
+ProductServiceTest -- Product
+ProductServiceTest -- CategoryRepository
+ProductServiceTest -- ProductRepository
+ProductServiceTest -- ProductService
+ProductServiceTest -- CategoryConstants
+ProductServiceTest -- ProductConstants
+@enduml

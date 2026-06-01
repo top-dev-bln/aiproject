@@ -1,0 +1,344 @@
+@startuml
+package com.transferwise.idempotence4j.benchmarks.postgres; {
+class PostgresIdempotenceServiceBenchmarkTest {
+}
+
+class PsqlDataGenerator {
+}
+
+}
+
+package com.transferwise.idempotence4j.benchmarks.application; {
+class CreateIdempotentOperation {
+}
+
+class CreateOperation {
+}
+
+}
+
+package com.transferwise.idempotence4j.benchmarks; {
+class Application {
+}
+
+}
+
+package com.transferwise.idempotence4j.benchmarks.configuration; {
+class RepositoryConfiguration {
+}
+
+class ServiceConfiguration {
+}
+
+}
+
+package com.transferwise.idempotence4j.benchmarks.domain.model; {
+class Operation {
+}
+
+class OperationId {
+}
+
+class OperationRepository {
+}
+
+}
+
+package com.transferwise.idempotence4j.benchmarks.infrastructure; {
+class JdbcOperationRepository {
+}
+
+}
+
+package com.transferwise.idempotence4j.benchmarks.presentation; {
+class OperationController {
+}
+
+}
+
+package com.transferwise.idempotence4j.core; {
+class Action {
+}
+
+class ActionId {
+}
+
+class ActionRepository {
+}
+
+class ClockKeeper {
+}
+
+class DefaultIdempotenceService {
+}
+
+class IdempotenceService {
+}
+
+class Lock {
+}
+
+class LockProvider {
+}
+
+class Result {
+}
+
+class ResultSerializer {
+}
+
+class NoOpLock {
+}
+
+}
+
+package com.transferwise.idempotence4j.core.exception; {
+class ConflictingActionException {
+}
+
+class ResultSerializationException {
+}
+
+}
+
+package com.transferwise.idempotence4j.core.executor; {
+class MeasuredExecutor {
+}
+
+}
+
+package com.transferwise.idempotence4j.core.metrics; {
+class Metrics {
+}
+
+class MetricsPublisher {
+}
+
+}
+
+package com.transferwise.idempotence4j.core.retention; {
+class PurgeJob {
+}
+
+class RetentionPolicy {
+}
+
+class RetentionService {
+}
+
+}
+
+package com.transferwise.idempotence4j.core.serializers.json; {
+class JsonResultSerializer {
+}
+
+}
+
+package com.transferwise.idempotence4j.jdbc.mapper; {
+class ActionSqlMapper {
+}
+
+}
+
+package com.transferwise.idempotence4j.jdbc.utils; {
+class Hydrator {
+}
+
+}
+
+package com.transferwise.idempotence4j.mariadb; {
+class JdbcMariaDbActionRepository {
+}
+
+class JdbcMariaDbLockProvider {
+}
+
+class MaridDbRowLock {
+}
+
+class SqlAction {
+}
+
+class SqlActionMapper {
+}
+
+}
+
+package com.transferwise.idempotence4j.metrics.micrometer; {
+class MicrometerMetricsPublisher {
+}
+
+}
+
+package com.transferwise.idempotence4j.postgres; {
+class JdbcPostgresActionRepository {
+}
+
+class JdbcPostgresLockProvider {
+}
+
+class PostgresRowLock {
+}
+
+}
+
+package com.transferwise.idempotence4j.autoconfigure; {
+class Idempotence4jAutoConfiguration {
+}
+
+class RetentionProperties {
+}
+
+}
+
+PostgresIdempotenceServiceBenchmarkTest -- PsqlDataGenerator
+PostgresIdempotenceServiceBenchmarkTest -- Operation
+PostgresIdempotenceServiceBenchmarkTest -- OperationId
+PostgresIdempotenceServiceBenchmarkTest -- OperationRepository
+PostgresIdempotenceServiceBenchmarkTest -- JdbcOperationRepository
+PostgresIdempotenceServiceBenchmarkTest -- Action
+PostgresIdempotenceServiceBenchmarkTest -- ActionId
+PostgresIdempotenceServiceBenchmarkTest -- ActionRepository
+PostgresIdempotenceServiceBenchmarkTest -- DefaultIdempotenceService
+PostgresIdempotenceServiceBenchmarkTest -- IdempotenceService
+PostgresIdempotenceServiceBenchmarkTest -- Lock
+PostgresIdempotenceServiceBenchmarkTest -- LockProvider
+PostgresIdempotenceServiceBenchmarkTest -- Metrics
+PostgresIdempotenceServiceBenchmarkTest -- MetricsPublisher
+PostgresIdempotenceServiceBenchmarkTest -- Result
+PostgresIdempotenceServiceBenchmarkTest -- ResultSerializer
+PostgresIdempotenceServiceBenchmarkTest -- JsonResultSerializer
+PostgresIdempotenceServiceBenchmarkTest -- JdbcPostgresActionRepository
+PostgresIdempotenceServiceBenchmarkTest -- JdbcPostgresLockProvider
+PsqlDataGenerator -- Action
+CreateIdempotentOperation -- Operation
+CreateIdempotentOperation -- OperationId
+CreateIdempotentOperation -- OperationRepository
+CreateIdempotentOperation -- Action
+CreateIdempotentOperation -- ActionId
+CreateIdempotentOperation -- IdempotenceService
+CreateOperation -- Operation
+CreateOperation -- OperationId
+CreateOperation -- OperationRepository
+RepositoryConfiguration -- Operation
+RepositoryConfiguration -- OperationRepository
+RepositoryConfiguration -- JdbcOperationRepository
+ServiceConfiguration -- CreateIdempotentOperation
+ServiceConfiguration -- CreateOperation
+ServiceConfiguration -- Operation
+ServiceConfiguration -- OperationRepository
+ServiceConfiguration -- IdempotenceService
+Operation -- OperationId
+OperationRepository -- Operation
+JdbcOperationRepository -- Operation
+JdbcOperationRepository -- OperationId
+JdbcOperationRepository -- OperationRepository
+OperationController -- CreateIdempotentOperation
+OperationController -- CreateOperation
+OperationController -- Operation
+Action -- ActionId
+Action -- ClockKeeper
+Action -- Result
+ActionRepository -- Action
+ActionRepository -- ActionId
+DefaultIdempotenceService -- Action
+DefaultIdempotenceService -- ActionId
+DefaultIdempotenceService -- ActionRepository
+DefaultIdempotenceService -- ConflictingActionException
+DefaultIdempotenceService -- ResultSerializationException
+DefaultIdempotenceService -- MeasuredExecutor
+DefaultIdempotenceService -- IdempotenceService
+DefaultIdempotenceService -- Lock
+DefaultIdempotenceService -- LockProvider
+DefaultIdempotenceService -- Metrics
+DefaultIdempotenceService -- MetricsPublisher
+DefaultIdempotenceService -- Result
+DefaultIdempotenceService -- ResultSerializer
+ConflictingActionException -- Action
+ResultSerializationException -- Result
+IdempotenceService -- Action
+IdempotenceService -- ActionId
+Lock -- Action
+LockProvider -- Action
+LockProvider -- ActionId
+LockProvider -- Lock
+Metrics -- Action
+Metrics -- ActionId
+MetricsPublisher -- Metrics
+ResultSerializer -- Result
+PurgeJob -- Action
+PurgeJob -- ActionRepository
+PurgeJob -- ClockKeeper
+PurgeJob -- RetentionPolicy
+RetentionService -- Action
+RetentionService -- ActionRepository
+RetentionService -- PurgeJob
+RetentionService -- RetentionPolicy
+JsonResultSerializer -- Result
+JsonResultSerializer -- ResultSerializer
+ActionSqlMapper -- Action
+ActionSqlMapper -- ActionId
+ActionSqlMapper -- Result
+ActionSqlMapper -- Hydrator
+JdbcMariaDbActionRepository -- Action
+JdbcMariaDbActionRepository -- ActionId
+JdbcMariaDbActionRepository -- ActionRepository
+JdbcMariaDbActionRepository -- SqlAction
+JdbcMariaDbActionRepository -- SqlActionMapper
+JdbcMariaDbLockProvider -- Action
+JdbcMariaDbLockProvider -- ActionId
+JdbcMariaDbLockProvider -- Lock
+JdbcMariaDbLockProvider -- LockProvider
+JdbcMariaDbLockProvider -- Result
+JdbcMariaDbLockProvider -- MaridDbRowLock
+JdbcMariaDbLockProvider -- SqlAction
+JdbcMariaDbLockProvider -- SqlActionMapper
+MaridDbRowLock -- Action
+MaridDbRowLock -- Lock
+SqlAction -- Action
+SqlAction -- ActionId
+SqlAction -- Result
+SqlActionMapper -- Action
+SqlActionMapper -- ActionId
+SqlActionMapper -- Result
+SqlActionMapper -- Hydrator
+SqlActionMapper -- SqlAction
+MicrometerMetricsPublisher -- Action
+MicrometerMetricsPublisher -- ActionId
+MicrometerMetricsPublisher -- Metrics
+MicrometerMetricsPublisher -- MetricsPublisher
+JdbcPostgresActionRepository -- Action
+JdbcPostgresActionRepository -- ActionId
+JdbcPostgresActionRepository -- ActionRepository
+JdbcPostgresActionRepository -- ActionSqlMapper
+JdbcPostgresLockProvider -- Action
+JdbcPostgresLockProvider -- ActionId
+JdbcPostgresLockProvider -- Lock
+JdbcPostgresLockProvider -- LockProvider
+JdbcPostgresLockProvider -- ActionSqlMapper
+JdbcPostgresLockProvider -- PostgresRowLock
+PostgresRowLock -- Action
+PostgresRowLock -- Lock
+Idempotence4jAutoConfiguration -- Action
+Idempotence4jAutoConfiguration -- ActionRepository
+Idempotence4jAutoConfiguration -- DefaultIdempotenceService
+Idempotence4jAutoConfiguration -- IdempotenceService
+Idempotence4jAutoConfiguration -- Lock
+Idempotence4jAutoConfiguration -- LockProvider
+Idempotence4jAutoConfiguration -- Metrics
+Idempotence4jAutoConfiguration -- MetricsPublisher
+Idempotence4jAutoConfiguration -- Result
+Idempotence4jAutoConfiguration -- ResultSerializer
+Idempotence4jAutoConfiguration -- PurgeJob
+Idempotence4jAutoConfiguration -- RetentionPolicy
+Idempotence4jAutoConfiguration -- RetentionService
+Idempotence4jAutoConfiguration -- JsonResultSerializer
+Idempotence4jAutoConfiguration -- JdbcMariaDbActionRepository
+Idempotence4jAutoConfiguration -- JdbcMariaDbLockProvider
+Idempotence4jAutoConfiguration -- MicrometerMetricsPublisher
+Idempotence4jAutoConfiguration -- JdbcPostgresActionRepository
+Idempotence4jAutoConfiguration -- JdbcPostgresLockProvider
+Idempotence4jAutoConfiguration -- RetentionProperties
+NoOpLock -- Action
+NoOpLock -- Lock
+@enduml

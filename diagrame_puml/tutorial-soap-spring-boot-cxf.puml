@@ -1,0 +1,797 @@
+@startuml
+
+package de.jonashackt.tutorial {
+  class SimpleBootCxfApplicationTests {
+    +contextLoads() : void
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfApplicationTests {
+    +contextLoads() : void
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfSystemTestApplication {
+  }
+  class SimpleBootCxfSystemTestConfiguration {
+    -cxfAutoConfiguration : CxfAutoConfiguration
+    +weatherServiceSystemTestClient() : WeatherService
+    +soapRawClient() : SoapRawClient
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfApplicationTests {
+    +contextLoads() : void
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+  }
+  class SimpleBootCxfApplicationTests {
+    +contextLoads() : void
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+  }
+  class SimpleBootCxfSystemTestApplication {
+    +main() : void
+  }
+  class ApplicationTestConfiguration {
+    +weatherService() : WeatherService
+  }
+  class WebServiceIntegrationTestConfiguration {
+    +weatherServiceIntegrationTestClient() : WeatherService
+  }
+  class WebServiceSystemTestConfiguration {
+    +weatherServiceSystemTestClient() : WeatherService
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfSystemTestApplication {
+    +main() : void
+  }
+  class ApplicationTestConfiguration {
+    +weatherService() : WeatherService
+  }
+  class WebServiceIntegrationTestConfiguration {
+    +weatherServiceIntegrationTestClient() : WeatherService
+  }
+  class WebServiceSystemTestConfiguration {
+    +weatherServiceSystemTestClient() : WeatherService
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfSystemTestApplication {
+    +main() : void
+  }
+  class ApplicationTestConfiguration {
+    +weatherService() : WeatherService
+  }
+  class WebServiceIntegrationTestConfiguration {
+    +weatherServiceIntegrationTestClient() : WeatherService
+  }
+  class WebServiceSystemTestConfiguration {
+    +weatherServiceSystemTestClient() : WeatherService
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfSystemTestApplication {
+    +main() : void
+  }
+  class ApplicationTestConfiguration {
+    +weatherService() : WeatherService
+  }
+  class WebServiceIntegrationTestConfiguration {
+    +weatherServiceIntegrationTestClient() : WeatherService
+  }
+  class WebServiceSystemTestConfiguration {
+    +weatherServiceSystemTestClient() : WeatherService
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfSystemTestApplication {
+    +main() : void
+  }
+  class ApplicationTestConfiguration {
+    +weatherService() : WeatherService
+  }
+  class WebServiceIntegrationTestConfiguration {
+    +weatherServiceIntegrationTestClient() : WeatherService
+  }
+  class WebServiceSystemTestConfiguration {
+    -webServiceUrl : String
+    +weatherServiceSystemTestClient() : WeatherService
+    +soapRawClient() : SoapRawClient
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+  class SimpleBootCxfSystemTestApplication {
+    +main() : void
+  }
+  class ApplicationTestConfiguration {
+    +weatherService() : WeatherService
+  }
+  class WebServiceIntegrationTestConfiguration {
+    +weatherServiceIntegrationTestClient() : WeatherService
+  }
+  class WebServiceSystemTestConfiguration {
+    +weatherServiceSystemTestClient() : WeatherService
+  }
+  class SimpleBootCxfApplication {
+    +main() : void
+  }
+}
+
+package de.jonashackt.tutorial.common {
+  enum CustomIds {
+    -id : String
+    -message : String
+    +getMessage() : String
+    +getId() : String
+  }
+  class InternalBusinessException {
+    -serialVersionUID : long
+  }
+  class XmlUtils {
+    +parseFileStream2Document() : Document
+    +marhallJaxbElementIntoDocument() : Document
+    +appendAsChildElement2NewElement() : Element
+  }
+  enum FaultConst {
+    -id : String
+    -message : String
+    +getMessage() : String
+    +getId() : String
+  }
+}
+
+package de.jonashackt.tutorial.configuration {
+  class WebServiceConfiguration {
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+  }
+  class WebServiceConfiguration {
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+  }
+  class SimpleBootCxfConfiguration {
+    -SERVICE_URL : String
+    -springBus : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weatherClient() : Weather
+    +weatherFaultBuilder() : CustomFaultBuilder
+  }
+  class WebServiceConfiguration {
+    -BASE_URL : String
+    -SERVICE_URL : String
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+    +logInInterceptor() : AbstractLoggingInterceptor
+    +logOutInterceptor() : AbstractLoggingInterceptor
+  }
+  class ApplicationConfiguration {
+    +weatherServiceController() : WeatherServiceController
+  }
+  class WebServiceConfiguration {
+    -BASE_URL : String
+    -SERVICE_URL : String
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+  }
+  class ApplicationConfiguration {
+    +weatherServiceController() : WeatherServiceController
+  }
+  class WebServiceConfiguration {
+    -BASE_URL : String
+    -SERVICE_URL : String
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+    +logInInterceptor() : AbstractLoggingInterceptor
+    +logOutInterceptor() : AbstractLoggingInterceptor
+  }
+  class ApplicationConfiguration {
+    +weatherServiceController() : WeatherServiceController
+  }
+  class WebServiceConfiguration {
+    -BASE_URL : String
+    -SERVICE_URL : String
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+    +logInInterceptor() : AbstractLoggingInterceptor
+    +logOutInterceptor() : AbstractLoggingInterceptor
+  }
+  class ApplicationConfiguration {
+    +weatherServiceController() : WeatherServiceController
+  }
+  class WebServiceConfiguration {
+    -BASE_URL : String
+    -SERVICE_URL : String
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+    +soapInterceptor() : AbstractSoapInterceptor
+  }
+  class ApplicationConfiguration {
+    +weatherServiceController() : WeatherServiceController
+  }
+  class WebServiceConfiguration {
+    -BASE_URL : String
+    -SERVICE_URL : String
+    +cxfServlet() : ServletRegistrationBean
+    +springBus() : SpringBus
+    +weatherService() : WeatherService
+    +endpoint() : Endpoint
+    +weather() : Weather
+  }
+  class ApplicationConfiguration {
+    +weatherServiceController() : WeatherServiceController
+  }
+}
+
+package de.jonashackt.tutorial.configuration.customsoapfaults {
+  class WeatherSoapFaultHelper {
+    -LOG : SoapFrameworkLogger
+    +buildWeatherFaultAndSet2SoapMessage() : void
+  }
+  class CustomSoapFaultInterceptor {
+    -LOG : SoapFrameworkLogger
+    +handleMessage() : void
+  }
+}
+
+package de.jonashackt.tutorial.controller {
+  class WeatherServiceController <<Controller>> {
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+  class WeatherServiceController {
+    -LOG : Logger
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+  class WeatherServiceController {
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+  class WeatherServiceController {
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+  class WeatherServiceController {
+    -LOG : Logger
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+  class WeatherServiceController {
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+  class WeatherServiceController {
+    +getCityForecastByZIP() : ForecastReturn
+    +getCityWeatherByZIP() : WeatherReturn
+    +getWeatherInformation() : WeatherInformationReturn
+  }
+}
+
+package de.jonashackt.tutorial.endpoint {
+  class WeatherServiceEndpoint {
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceEndpoint {
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceIntegrationTest {
+    -weatherServiceIntegrationTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceTest {
+    -weatherServiceEndpoint : WeatherServiceEndpoint
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -LOG : Logger
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceIntegrationTest {
+    -weatherServiceIntegrationTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceTest {
+    -weatherServiceEndpoint : WeatherServiceEndpoint
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceIntegrationTest {
+    -weatherServiceIntegrationTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceTest {
+    -weatherServiceEndpoint : WeatherServiceEndpoint
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceIntegrationTest {
+    -weatherServiceIntegrationTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceTest {
+    -weatherServiceEndpoint : WeatherServiceEndpoint
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -LOG : Logger
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceIntegrationTest {
+    -weatherServiceIntegrationTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceXmlErrorSystemTest {
+    -soapRawClient : SoapRawClient
+    -xmlErrorNotXmlSchemeCompliantUnderRootElementTestXml : Resource
+    -xmlErrorNotXmlSchemeCompliantRootElementTestXml : Resource
+    -xmlErrorSoapHeaderMissingSlashXml : Resource
+    -xmlErrorSoapBodyTagMissingBracketTestXml : Resource
+    -xmlErrorSoapHeaderTagMissingBracketTestXml : Resource
+    -xmlErrorSoapEnvelopeTagMissingBracketTestXml : Resource
+    -xmlErrorXMLHeaderDefinitionMissingBracketXml : Resource
+    -xmlErrorXMLTagNotClosedInsideBodyTestXml : Resource
+    +xmlErrorNotXmlSchemeCompliantUnderRootElementTest() : void
+    +xmlErrorNotXmlSchemeCompliantRootElementTest() : void
+    +xmlErrorSoapHeaderMissingSlash() : void
+    +xmlErrorSoapBodyTagMissingBracketTest() : void
+    +xmlErrorSoapHeaderTagMissingBracketTest() : void
+    +xmlErrorSoapEnvelopeTagMissingBracketTest() : void
+    +xmlErrorXMLHeaderDefinitionMissingBracket() : void
+    +xmlErrorXMLTagNotClosedInsideBodyTest() : void
+  }
+  class WeatherServiceTest {
+    -weatherServiceEndpoint : WeatherServiceEndpoint
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+  class WeatherServiceXmlFileSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    -getCityForecastByZIPTestXml : Resource
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceIntegrationTest {
+    -weatherServiceIntegrationTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceSystemTest {
+    -weatherServiceSystemTestClient : WeatherService
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceTest {
+    -weatherServiceEndpoint : WeatherServiceEndpoint
+    +getCityForecastByZIP() : void
+  }
+  class WeatherServiceEndpoint {
+    -weatherServiceController : WeatherServiceController
+    +getCityForecastByZIP() : ForecastReturn
+    +getWeatherInformation() : WeatherInformationReturn
+    +getCityWeatherByZIP() : WeatherReturn
+  }
+}
+
+package de.jonashackt.tutorial.logging {
+  class SoapFrameworkLogger {
+    -delegateLogger : Logger
+    +errorAccuredInBackendProcessing() : void
+    +failedToBuildWeatherServiceCompliantSoapFaultDetails() : void
+    +schemaValidationError() : void
+  }
+}
+
+package de.jonashackt.tutorial.soapmsglogging {
+  class LoggingOutInterceptorXmlOnly {
+    +formatLoggingMessage() : String
+  }
+  class LoggingInInterceptorXmlOnly {
+    +formatLoggingMessage() : String
+  }
+  class LoggingOutInterceptorXmlOnly {
+    +formatLoggingMessage() : String
+  }
+  class LoggingInInterceptorXmlOnly {
+    +formatLoggingMessage() : String
+  }
+  class LogCorrelationFilter {
+    -SERVICE_CALL_ID_KEY : String
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+  }
+  class SoapMsgToMdcExtractionLoggingInInterceptor {
+    -LOG : Logger
+    -SOAP_MESSAGE_INBOUND : String
+    +log() : void
+    +formatLoggingMessage() : String
+  }
+  class SoapMsgToMdcExtractionLoggingOutInterceptor {
+    -LOG : Logger
+    -SOAP_MESSAGE_OUTBOUND : String
+    +log() : void
+    +formatLoggingMessage() : String
+  }
+}
+
+package de.jonashackt.tutorial.transformation {
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+  class WeatherOutError {
+    +createWeatherException() : WeatherException
+  }
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+  class GetCityForecastByZIPOutMapper {
+    +mapGeneralOutlook2Forecast() : ForecastReturn
+  }
+}
+
+package de.jonashackt.tutorial.utils {
+  class TestHelper {
+    +generateDummyRequest() : ForecastRequest
+  }
+  class XmlUtils {
+    +parseFileStream2Document() : Document
+    +marhallJaxbElementIntoDocument() : Document
+    +appendAsChildElement2NewElement() : Element
+  }
+  class XmlUtilsException {
+    -serialVersionUID : long
+  }
+  class TestHelper {
+    +generateDummyRequest() : ForecastRequest
+  }
+  class XmlUtils {
+    +parseFileStream2Document() : Document
+    +marhallJaxbElementIntoDocument() : Document
+    +appendAsChildElement2NewElement() : Element
+  }
+  class XmlUtilsException {
+    -serialVersionUID : long
+  }
+  class TestHelper {
+    +generateDummyRequest() : ForecastRequest
+  }
+  class XmlUtils {
+    +parseFileStream2Document() : Document
+    +marhallJaxbElementIntoDocument() : Document
+    +appendAsChildElement2NewElement() : Element
+  }
+  class XmlUtilsException {
+    -serialVersionUID : long
+  }
+  class TestHelper {
+    +generateDummyRequest() : ForecastRequest
+  }
+  class XmlUtils {
+    +parseFileStream2Document() : Document
+    +marhallJaxbElementIntoDocument() : Document
+    +appendAsChildElement2NewElement() : Element
+  }
+  class XmlUtilsException {
+    -serialVersionUID : long
+  }
+  class TestHelper {
+    +generateDummyRequest() : ForecastRequest
+  }
+  class SoapRawClientResponse {
+    -httpStatusCode : int
+    -httpResponseBody : Document
+    +getHttpStatusCode() : int
+    +setHttpStatusCode() : void
+    +getHttpResponseBody() : Document
+    +setHttpResponseBody() : void
+    +getElementByNameWithNamespace() : Node
+    +getElementValueByName() : String
+    +getFaultstringValue() : String
+  }
+  class SoapRawClient {
+    -LOGGER : Logger
+    -soapAction : String
+    -soapServiceUrl : String
+    +SoapRawClient() : <T>
+    +callSoapService() : SoapRawClientResponse
+  }
+  class TestHelper {
+    +generateDummyRequest() : ForecastRequest
+  }
+  class XmlUtils {
+    +parseFileStream2Document() : Document
+    +marhallJaxbElementIntoDocument() : Document
+    +appendAsChildElement2NewElement() : Element
+  }
+  class XmlUtilsException {
+    -serialVersionUID : long
+  }
+}
+
+package de.jonashackt.tutorial.xmlvalidation {
+  class WeatherServiceXmlErrorSystemTest {
+    -soapRawClient : SoapRawClient
+    -xmlErrorNotXmlSchemeCompliantUnderRootElementTestXml : Resource
+    -xmlErrorNotXmlSchemeCompliantRootElementTestXml : Resource
+    -xmlErrorSoapHeaderMissingSlashXml : Resource
+    -xmlErrorSoapBodyTagMissingBracketTestXml : Resource
+    -xmlErrorSoapHeaderTagMissingBracketTestXml : Resource
+    -xmlErrorSoapEnvelopeTagMissingBracketTestXml : Resource
+    -xmlErrorXMLHeaderDefinitionMissingBracketXml : Resource
+    -xmlErrorXMLTagNotClosedInsideBodyTestXml : Resource
+    +xmlErrorNotXmlSchemeCompliantUnderRootElementTest() : void
+    +xmlErrorNotXmlSchemeCompliantRootElementTest() : void
+    +xmlErrorSoapHeaderMissingSlash() : void
+    +xmlErrorSoapBodyTagMissingBracketTest() : void
+    +xmlErrorSoapHeaderTagMissingBracketTest() : void
+    +xmlErrorSoapEnvelopeTagMissingBracketTest() : void
+    +xmlErrorXMLHeaderDefinitionMissingBracket() : void
+    +xmlErrorXMLTagNotClosedInsideBodyTest() : void
+  }
+  class WeatherFaultBuilder {
+    +createCustomFaultMessage() : String
+    +createCustomFaultDetail() : WeatherException
+  }
+}
+
+' --- Relatii ---
+WebServiceConfiguration --> WeatherServiceEndpoint
+WebServiceConfiguration --> WeatherServiceEndpoint
+SimpleBootCxfSystemTestConfiguration --> SoapRawClient
+SimpleBootCxfSystemTestConfiguration --> SimpleBootCxfConfiguration
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlErrorSystemTest --> SoapRawClient
+WeatherServiceXmlErrorSystemTest --> SoapRawClientResponse
+WeatherServiceXmlErrorSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlErrorSystemTest --> CustomIds
+SimpleBootCxfConfiguration --> WeatherServiceEndpoint
+SimpleBootCxfConfiguration --> WeatherFaultBuilder
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+WeatherFaultBuilder --> CustomIds
+ApplicationTestConfiguration --> ApplicationConfiguration
+ApplicationTestConfiguration --> WeatherServiceEndpoint
+WebServiceIntegrationTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> WebServiceConfiguration
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlFileSystemTest --> XmlUtilsException
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceIntegrationTest --> WebServiceIntegrationTestConfiguration
+WeatherServiceSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceTest --> ApplicationTestConfiguration
+WebServiceConfiguration --> WeatherServiceEndpoint
+WebServiceConfiguration --> LoggingInInterceptorXmlOnly
+WebServiceConfiguration --> LoggingOutInterceptorXmlOnly
+ApplicationConfiguration --> WeatherServiceController
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+ApplicationTestConfiguration --> ApplicationConfiguration
+ApplicationTestConfiguration --> WeatherServiceEndpoint
+WebServiceIntegrationTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> WebServiceConfiguration
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlFileSystemTest --> XmlUtilsException
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceIntegrationTest --> WebServiceIntegrationTestConfiguration
+WeatherServiceSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceTest --> ApplicationTestConfiguration
+WebServiceConfiguration --> WeatherServiceEndpoint
+ApplicationConfiguration --> WeatherServiceController
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+ApplicationTestConfiguration --> ApplicationConfiguration
+ApplicationTestConfiguration --> WeatherServiceEndpoint
+WebServiceIntegrationTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> WebServiceConfiguration
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlFileSystemTest --> XmlUtilsException
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceIntegrationTest --> WebServiceIntegrationTestConfiguration
+WeatherServiceSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceTest --> ApplicationTestConfiguration
+WebServiceConfiguration --> WeatherServiceEndpoint
+WebServiceConfiguration --> LoggingInInterceptorXmlOnly
+WebServiceConfiguration --> LoggingOutInterceptorXmlOnly
+ApplicationConfiguration --> WeatherServiceController
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+ApplicationTestConfiguration --> ApplicationConfiguration
+ApplicationTestConfiguration --> WeatherServiceEndpoint
+WebServiceIntegrationTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> WebServiceConfiguration
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlFileSystemTest --> XmlUtilsException
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceIntegrationTest --> WebServiceIntegrationTestConfiguration
+WeatherServiceSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceTest --> ApplicationTestConfiguration
+WebServiceConfiguration --> WeatherServiceEndpoint
+WebServiceConfiguration --> SoapMsgToMdcExtractionLoggingInInterceptor
+WebServiceConfiguration --> SoapMsgToMdcExtractionLoggingOutInterceptor
+ApplicationConfiguration --> WeatherServiceController
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+ApplicationTestConfiguration --> ApplicationConfiguration
+ApplicationTestConfiguration --> WeatherServiceEndpoint
+WebServiceIntegrationTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> InternalBusinessException
+WebServiceSystemTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> SoapRawClient
+SoapRawClientResponse --> InternalBusinessException
+SoapRawClientResponse --> XmlUtils
+SoapRawClient --> InternalBusinessException
+SoapRawClient --> XmlUtils
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceXmlFileSystemTest --> InternalBusinessException
+WeatherServiceIntegrationTest --> WebServiceIntegrationTestConfiguration
+WeatherServiceSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlErrorSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlErrorSystemTest --> FaultConst
+WeatherServiceXmlErrorSystemTest --> InternalBusinessException
+WeatherServiceXmlErrorSystemTest --> SoapRawClient
+WeatherServiceXmlErrorSystemTest --> SoapRawClientResponse
+WeatherServiceTest --> ApplicationTestConfiguration
+WebServiceConfiguration --> CustomSoapFaultInterceptor
+WebServiceConfiguration --> WeatherServiceEndpoint
+ApplicationConfiguration --> WeatherServiceController
+WeatherSoapFaultHelper --> FaultConst
+WeatherSoapFaultHelper --> XmlUtils
+WeatherSoapFaultHelper --> SoapFrameworkLogger
+WeatherSoapFaultHelper --> WeatherOutError
+CustomSoapFaultInterceptor --> FaultConst
+CustomSoapFaultInterceptor --> SoapFrameworkLogger
+WeatherOutError --> FaultConst
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+SoapFrameworkLogger --> FaultConst
+ApplicationTestConfiguration --> ApplicationConfiguration
+ApplicationTestConfiguration --> WeatherServiceEndpoint
+WebServiceIntegrationTestConfiguration --> WebServiceConfiguration
+WebServiceSystemTestConfiguration --> WebServiceConfiguration
+WeatherServiceXmlFileSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceXmlFileSystemTest --> XmlUtilsException
+WeatherServiceXmlFileSystemTest --> XmlUtils
+WeatherServiceIntegrationTest --> WebServiceIntegrationTestConfiguration
+WeatherServiceSystemTest --> SimpleBootCxfSystemTestApplication
+WeatherServiceTest --> ApplicationTestConfiguration
+WebServiceConfiguration --> WeatherServiceEndpoint
+ApplicationConfiguration --> WeatherServiceController
+WeatherServiceController --> GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint --> WeatherServiceController
+
+@enduml

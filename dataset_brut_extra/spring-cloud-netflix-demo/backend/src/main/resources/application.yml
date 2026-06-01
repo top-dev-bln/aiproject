@@ -1,0 +1,24 @@
+server:
+  port: 8090
+
+management:
+  security:
+    enabled: false
+
+backend:
+  processing:
+    time:
+      max: 1100
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+    healthcheck:
+          enabled: true
+
+spring:
+  zipkin:
+    base-url: http://${zipkin.host:localhost}:${zipkin.port:9411}/

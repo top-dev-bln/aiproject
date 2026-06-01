@@ -1,0 +1,1458 @@
+@startuml
+package com.honvay.cola.auth.ac; {
+class AcAuthenticationConfiguration {
+}
+
+class AcAuthenticationFilter {
+}
+
+class AcAuthenticationToken {
+}
+
+class AcProperties {
+}
+
+}
+
+package com.honvay.cola.auth.ac.configrer; {
+class AcChannelSecurityConfigurer {
+}
+
+class AcLoginConfigurer {
+}
+
+}
+
+package com.honvay.cola.auth.ac.provider; {
+class AcAuthenticationProvider {
+}
+
+}
+
+package com.honvay.cola.auth.base.component; {
+class UserDetailsServiceImpl {
+}
+
+}
+
+package com.honvay.cola.auth.base.configuration; {
+class BaseSecurityConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.base.controller; {
+class AuthController {
+}
+
+}
+
+package com.honvay.cola.auth.base.listener; {
+class AuthenticationFailureEventListener {
+}
+
+class AuthenticationSuccessEventListener {
+}
+
+}
+
+package com.honvay.cola.auth.base.utils; {
+class Utils {
+}
+
+}
+
+package com.honvay.cola.auth.captcha.controller; {
+class CaptchaController {
+}
+
+}
+
+package com.honvay.cola.auth.captcha.filter; {
+class CaptchaAuthenticationFilter {
+}
+
+}
+
+package com.honvay.cola.auth.channel.config; {
+class AbstractChannelSecurityConfigurer {
+}
+
+class ChannelSecurityConfigurer {
+}
+
+}
+
+package com.honvay.cola.auth.common.client.app; {
+class SsoAuthClient {
+}
+
+class SsoClientAutoConfiguration {
+}
+
+class SsoClientProperties {
+}
+
+}
+
+package com.honvay.cola.auth.client.common.oauth2.ac; {
+class AcAccessTokenProvider {
+}
+
+class AcResourceDetails {
+}
+
+}
+
+package com.honvay.cola.auth.client.common.oauth2.openid; {
+class OpenIdAccessTokenProvider {
+}
+
+class OpenIdResourceDetails {
+}
+
+}
+
+package com.honvay.cola.auth.client.common.oauth2.sms; {
+class SmsAccessTokenProvider {
+}
+
+class SmsResourceDetails {
+}
+
+}
+
+package com.honvay.cola.auth.client.common; {
+class SsoUserExtractor {
+}
+
+}
+
+package com.honvay.cola.auth.core.model; {
+class AuthenticatedUser {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.ac; {
+class AuthorizationCodeJwtConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.config; {
+class JwtSecurityConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.jwt; {
+class DefaultJwtTokenStore {
+}
+
+class JwtProperties {
+}
+
+class JwtTokenProvider {
+}
+
+class JwtTokenStore {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.filter; {
+class JwtAuthenticationFilter {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.handler; {
+class JwtAuthenticationEntryPoint {
+}
+
+class JwtAuthenticationFailureHandler {
+}
+
+class JwtAuthenticationSuccessHandler {
+}
+
+class JwtLogoutSuccessHandler {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.listener; {
+class JwtAuthenticationSuccessEventListener {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.openid; {
+class OpenIdJwtConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.jwt.sms; {
+class SmsJwtConfiguration {
+}
+
+}
+
+package com.honvay.cola.auto.oauth2.ac.config; {
+class AcOAuth2Configuration {
+}
+
+}
+
+package com.honvay.cola.auto.oauth2.ac.granter; {
+class AcTokenGranter {
+}
+
+}
+
+package com.honvay.cola.auth.oauth2.configuration; {
+class AuthorizationServerConfiguration {
+}
+
+class ResourceServerConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.oauth2.controller; {
+class OAuth2Controller {
+}
+
+}
+
+package com.honvay.cola.auth.oauth2.openid.config; {
+class OpenIdOAuth2Configuration {
+}
+
+}
+
+package com.honvay.cola.auth.oauth2.openid.granter; {
+class OpenIdTokenGranter {
+}
+
+}
+
+package com.honvay.cola.auth.oauth2.sms.config; {
+class SmsOAuth2Configuration {
+}
+
+}
+
+package com.honvay.cola.auth.oauth2.sms.granter; {
+class SmsTokenGranter {
+}
+
+}
+
+package com.honvay.cola.auth.openid.configrer; {
+class OpenIdChannelSecurityConfigurer {
+}
+
+class OpenIdLoginConfigurer {
+}
+
+}
+
+package com.honvay.cola.auth.openid; {
+class OpenIdAuthenticationConfiguration {
+}
+
+class OpenIdAuthenticationFilter {
+}
+
+class OpenIdAuthenticationToken {
+}
+
+class OpenIdProperties {
+}
+
+}
+
+package com.honvay.cola.auth.openid.provider; {
+class OpenIdAuthenticationProvider {
+}
+
+}
+
+package com.honvay.cola.auth.web.sms.authentication; {
+class SmsAuthenticationFilter {
+}
+
+class SmsAuthenticationProvider {
+}
+
+class SmsAuthenticationToken {
+}
+
+}
+
+package com.honvay.cola.auth.web.sms.configurer; {
+class SmsChannelSecurityConfigurer {
+}
+
+class SmsLoginConfigurer {
+}
+
+}
+
+package com.honvay.cola.auth.web.sms; {
+class SmsAuthenticationConfiguration {
+}
+
+class SmsCredentialController {
+}
+
+class SmsCredentialProperties {
+}
+
+class SmsUserDetailsService {
+}
+
+}
+
+package com.honvay.cola.auth.web.sms.userdetails; {
+class SmsUserDetailsServiceImpl {
+}
+
+}
+
+package com.honvay.cola.auth.social.alipay; {
+class AlipayProperties {
+}
+
+}
+
+package com.honvay.cola.auth.social.alipay.api; {
+class Alipay {
+}
+
+class AlipayUserInfo {
+}
+
+}
+
+package com.honvay.cola.auth.social.alipay.api.impl; {
+class AlipayImpl {
+}
+
+}
+
+package com.honvay.cola.auth.social.alipay.config; {
+class AlipayConnectConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.social.alipay.connect; {
+class AlipayAdapater {
+}
+
+class AlipayConnectionFactory {
+}
+
+class AlipayOAuth2AuthenticationService {
+}
+
+class AlipayOAuth2Template {
+}
+
+class AlipayServiceProvider {
+}
+
+}
+
+package com.honvay.cola.auth.social.core.connection; {
+class JpaConnectionRepository {
+}
+
+class JpaUsersConnectRepository {
+}
+
+}
+
+package com.honvay.cola.auth.social.core.domain; {
+class UserConnection {
+}
+
+}
+
+package com.honvay.cola.auth.social.core.repository; {
+class UserConnectionRepository {
+}
+
+}
+
+package com.honvay.cola.auth.social.core; {
+class SocialAuthenticatedUser {
+}
+
+class SocialAutoConfiguration {
+}
+
+class SocialProperties {
+}
+
+}
+
+package com.honvay.cola.auth.social.core.userdetails; {
+class SocialUserDetailsServiceImpl {
+}
+
+}
+
+package com.honvay.cola.auth.social.qq.api.impl; {
+class QQImpl {
+}
+
+}
+
+package com.honvay.cola.auth.social.qq.api; {
+class QQ {
+}
+
+class QQUserInfo {
+}
+
+}
+
+package com.honvay.cola.auth.social.qq.config; {
+class QQConnectConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.social.qq.connect; {
+class QQAdapter {
+}
+
+class QQConnectionFactory {
+}
+
+class QQOAuth2Template {
+}
+
+class QQServiceProvider {
+}
+
+}
+
+package com.honvay.cola.auth.social.qq; {
+class QQProperties {
+}
+
+}
+
+package com.honvay.cola.auth.social; {
+class SocialChannelSecurityConfigurer {
+}
+
+class SocialConnectController {
+}
+
+class SocialConnectionSignUp {
+}
+
+class SocialSecurityConfigurer {
+}
+
+class SocialSignUpController {
+}
+
+class SocialUserInfo {
+}
+
+class SocialWebAutoConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.social.view; {
+class SocialConnectStatusController {
+}
+
+class SocialConnectStatusView {
+}
+
+class SocialConnectView {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechat.api.impl; {
+class WechatImpl {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechat.api; {
+class Wechat {
+}
+
+class WechatUserInfo {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechat.config; {
+class WechatConnectionConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechat.connect; {
+class WechatAccessGrant {
+}
+
+class WechatAdapter {
+}
+
+class WechatConnectionFactory {
+}
+
+class WechatOAuth2Template {
+}
+
+class WechatServiceProvider {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechat; {
+class WechatProperties {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechatmp.api.impl; {
+class WechatMpImpl {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechatmp.api; {
+class WechatMp {
+}
+
+class WechatMpUserInfo {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechatmp.config; {
+class WechatMpConnectionConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechatmp.connect; {
+class WechatMpAccessGrant {
+}
+
+class WechatMpAdapter {
+}
+
+class WechatMpConnectionFactory {
+}
+
+class WechatMpOAuth2Template {
+}
+
+class WechatMpServiceProvider {
+}
+
+}
+
+package com.honvay.cola.auth.social.wechatmp; {
+class WechatMpProperties {
+}
+
+}
+
+package com.honvay.cola.auth.web.configuration; {
+class WebSecurityConfiguration {
+}
+
+class WebSessionConfiguration {
+}
+
+}
+
+package com.honvay.cola.auth.web.controller; {
+class LoginController {
+}
+
+class SessionController {
+}
+
+class SessionInvalidController {
+}
+
+}
+
+package com.honvay.cola.auth.web.handler; {
+class WebAuthenticationFailureHandler {
+}
+
+class WebAuthenticationSuccessHandler {
+}
+
+}
+
+package com.honvay.cola.auth.web; {
+class WebAuthenticationConstant {
+}
+
+}
+
+package com.honvay.cola.framework.core; {
+class ErrorConstants {
+}
+
+class ErrorMessage {
+}
+
+class ServiceAssert {
+}
+
+}
+
+package com.honvay.cola.framework.core.exception; {
+class ServiceException {
+}
+
+}
+
+package com.honvay.cola.framework.core.protocol; {
+class Result {
+}
+
+}
+
+package com.honvay.cola.framework.util; {
+class ImageUtils {
+}
+
+class PatternUtils {
+}
+
+class RandomUtils {
+}
+
+}
+
+package com.honvay.cola.framework.web; {
+class GlobalControllerAdvise {
+}
+
+}
+
+package com.honvay.cola.nc.api.exchanger; {
+class NotificationExchanger {
+}
+
+}
+
+package com.honvay.cola.nc.api.model; {
+class EmailNotification {
+}
+
+class Notification {
+}
+
+}
+
+package com.honvay.cola.nc.api; {
+class NotificationService {
+}
+
+}
+
+package com.honvay.cola.nc.provider; {
+class NotificationController {
+}
+
+class NotificationDispatcher {
+}
+
+class NotificationTask {
+}
+
+class NotificationThreadFactory {
+}
+
+}
+
+package com.honvay.cola.notify.sms.aliyun; {
+class AliyunSmsSender {
+}
+
+}
+
+package com.honvay.cola.notify.sms.aliyun.config; {
+class AliyunSmsProperties {
+}
+
+class AliyunSmsSenderConfiguration {
+}
+
+}
+
+package com.honvay.cola.notify.sms.api.sender; {
+class SmsParameter {
+}
+
+class SmsSender {
+}
+
+class SmsSendResult {
+}
+
+}
+
+package com.honvay.cola.notify.sms.api; {
+class SmsNotification {
+}
+
+}
+
+package com.honvay.cola.nc.sms.exchanger; {
+class SmsNotificationExchanger {
+}
+
+}
+
+package com.honvay.cola.nc.sms; {
+class SmsNotificationAutoConfiguration {
+}
+
+}
+
+package com.honvay.cola.sample.jwt; {
+class JwtAuthController {
+}
+
+class JwtSampleApplication {
+}
+
+}
+
+package com.honvay.cola.sso.smaple.app; {
+class AuthController {
+}
+
+class ResourceServerConfiguration {
+}
+
+class SimpleAppApplication {
+}
+
+}
+
+package com.honvay.cola.sample.sso; {
+class IndexController {
+}
+
+class SecurityConfiguration {
+}
+
+class SsoServerSampleApplication {
+}
+
+}
+
+package com.honvay.cola.sso.sample.web; {
+class SsoWebSampleApplication {
+}
+
+class WebSecurityConfiguration {
+}
+
+}
+
+package com.honvay.cola.sample.web; {
+class SecurityConfiguration {
+}
+
+class WebSampleApplication {
+}
+
+}
+
+package com.honvay.cola.sample.social; {
+class IndexController {
+}
+
+class SecurityConfiguration {
+}
+
+class SocialSampleApplication {
+}
+
+}
+
+package com.honvay.cola.sc.api; {
+class CredentialService {
+}
+
+class PasswordStrategy {
+}
+
+}
+
+package com.honvay.cola.sc.api.enums; {
+class SecurityErrorEnum {
+}
+
+}
+
+package com.honvay.cola.sc.api.exception; {
+class PasswordInvalidException {
+}
+
+}
+
+package com.honvay.cola.sc.api.model; {
+class CredentialConfig {
+}
+
+class CredentialNotify {
+}
+
+class CredentialType {
+}
+
+class CredentialValidation {
+}
+
+}
+
+package com.honvay.cola.sc.provider.credential; {
+class CredentialProperties {
+}
+
+class CredentialServiceImpl {
+}
+
+}
+
+package com.honvay.cola.sc.provider.password; {
+class DefaultPasswordStrategy {
+}
+
+class InvalidPasswordException {
+}
+
+class PasswordProperties {
+}
+
+class PasswordStrength {
+}
+
+}
+
+package com.honvay.cola.sc.provider; {
+class SecurityCenterAutoConfiguration {
+}
+
+class CredentialServiceImplTest {
+}
+
+class TestContext {
+}
+
+}
+
+package com.honvay.cola.uc.admin; {
+class UserController {
+}
+
+}
+
+package com.honvay.cola.uc.api.enums; {
+class UserErrorMessage {
+}
+
+class UserStatus {
+}
+
+}
+
+package com.honvay.cola.uc.api.model; {
+class UpdatePasswordDto {
+}
+
+class UserAddDto {
+}
+
+class UserDto {
+}
+
+class UserUpdateDto {
+}
+
+}
+
+package com.honvay.cola.uc.api; {
+class UserService {
+}
+
+}
+
+package com.honvay.cola.uc.provider.domain; {
+class User {
+}
+
+}
+
+package com.honvay.cola.uc.provider.event; {
+class PasswordChangedEvent {
+}
+
+}
+
+package com.honvay.cola.uc.provider.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.honvay.cola.uc.provider.repository; {
+class UserRepository {
+}
+
+}
+
+package com.honvay.cola.uc.web.controller; {
+class SignUpController {
+}
+
+class UserController {
+}
+
+class UsernamePasswordSignUpDtoControllerTest {
+}
+
+class WebConfiguration {
+}
+
+}
+
+package com.honvay.cola.uc.web.model; {
+class PhoneNumberBindDto {
+}
+
+class SmsSignUpDto {
+}
+
+class UsernamePasswordSignUpDto {
+}
+
+}
+
+AcAuthenticationConfiguration -- AcProperties
+AcAuthenticationConfiguration -- AcChannelSecurityConfigurer
+AcAuthenticationConfiguration -- AcLoginConfigurer
+AcAuthenticationConfiguration -- AcAuthenticationProvider
+AcAuthenticationConfiguration -- ChannelSecurityConfigurer
+AcAuthenticationConfiguration -- User
+AcAuthenticationFilter -- AcAuthenticationToken
+AcAuthenticationFilter -- ServiceException
+AcAuthenticationFilter -- User
+AcChannelSecurityConfigurer -- AcProperties
+AcChannelSecurityConfigurer -- AcLoginConfigurer
+AcChannelSecurityConfigurer -- AcAuthenticationProvider
+AcChannelSecurityConfigurer -- AbstractChannelSecurityConfigurer
+AcChannelSecurityConfigurer -- ChannelSecurityConfigurer
+AcLoginConfigurer -- AcAuthenticationFilter
+AcLoginConfigurer -- User
+AcAuthenticationProvider -- AcAuthenticationToken
+AcAuthenticationProvider -- User
+UserDetailsServiceImpl -- AuthenticatedUser
+UserDetailsServiceImpl -- UserStatus
+UserDetailsServiceImpl -- UserDto
+UserDetailsServiceImpl -- UserService
+UserDetailsServiceImpl -- User
+BaseSecurityConfiguration -- ChannelSecurityConfigurer
+BaseSecurityConfiguration -- SecurityConfiguration
+BaseSecurityConfiguration -- User
+AuthController -- SsoAuthClient
+AuthController -- QQ
+AuthController -- Result
+AuthenticationFailureEventListener -- UserService
+AuthenticationFailureEventListener -- User
+AuthenticationSuccessEventListener -- UserService
+AuthenticationSuccessEventListener -- User
+Utils -- QQ
+CaptchaController -- Utils
+CaptchaController -- CaptchaAuthenticationFilter
+CaptchaController -- ImageUtils
+CaptchaController -- RandomUtils
+AbstractChannelSecurityConfigurer -- ChannelSecurityConfigurer
+SsoAuthClient -- SsoClientProperties
+SsoAuthClient -- AcAccessTokenProvider
+SsoAuthClient -- AcResourceDetails
+SsoAuthClient -- OpenIdAccessTokenProvider
+SsoAuthClient -- OpenIdResourceDetails
+SsoAuthClient -- SmsAccessTokenProvider
+SsoAuthClient -- SmsResourceDetails
+SsoAuthClient -- Result
+SsoAuthClient -- User
+SsoClientAutoConfiguration -- SsoAuthClient
+SsoClientAutoConfiguration -- SsoClientProperties
+AcAccessTokenProvider -- AcResourceDetails
+AcAccessTokenProvider -- OpenIdResourceDetails
+AcAccessTokenProvider -- User
+OpenIdAccessTokenProvider -- OpenIdResourceDetails
+OpenIdAccessTokenProvider -- User
+SmsAccessTokenProvider -- SmsResourceDetails
+SmsAccessTokenProvider -- User
+SsoUserExtractor -- Utils
+SsoUserExtractor -- AuthenticatedUser
+SsoUserExtractor -- User
+AuthenticatedUser -- User
+AuthorizationCodeJwtConfiguration -- AcLoginConfigurer
+JwtSecurityConfiguration -- ChannelSecurityConfigurer
+JwtSecurityConfiguration -- DefaultJwtTokenStore
+JwtSecurityConfiguration -- JwtAuthenticationFilter
+JwtSecurityConfiguration -- JwtAuthenticationEntryPoint
+JwtSecurityConfiguration -- JwtAuthenticationFailureHandler
+JwtSecurityConfiguration -- JwtAuthenticationSuccessHandler
+JwtSecurityConfiguration -- JwtLogoutSuccessHandler
+JwtSecurityConfiguration -- JwtProperties
+JwtSecurityConfiguration -- JwtTokenProvider
+JwtSecurityConfiguration -- JwtTokenStore
+JwtSecurityConfiguration -- SecurityConfiguration
+DefaultJwtTokenStore -- JwtTokenStore
+JwtAuthenticationFilter -- Utils
+JwtAuthenticationFilter -- JwtProperties
+JwtAuthenticationFilter -- JwtTokenProvider
+JwtAuthenticationFilter -- JwtTokenStore
+JwtAuthenticationEntryPoint -- Result
+JwtAuthenticationFailureHandler -- Result
+JwtAuthenticationSuccessHandler -- JwtTokenProvider
+JwtAuthenticationSuccessHandler -- Result
+JwtTokenProvider -- JwtProperties
+JwtTokenProvider -- User
+JwtAuthenticationSuccessEventListener -- AuthenticationSuccessEventListener
+JwtAuthenticationSuccessEventListener -- JwtTokenStore
+OpenIdJwtConfiguration -- OpenIdLoginConfigurer
+SmsJwtConfiguration -- SmsLoginConfigurer
+AcOAuth2Configuration -- AcTokenGranter
+AcTokenGranter -- AcAuthenticationToken
+AuthorizationServerConfiguration -- WebSecurityConfiguration
+AuthorizationServerConfiguration -- SecurityConfiguration
+OAuth2Controller -- Result
+OAuth2Controller -- User
+OpenIdOAuth2Configuration -- OpenIdTokenGranter
+OpenIdTokenGranter -- OpenIdAuthenticationToken
+SmsOAuth2Configuration -- SmsTokenGranter
+SmsTokenGranter -- SmsAuthenticationToken
+OpenIdChannelSecurityConfigurer -- AbstractChannelSecurityConfigurer
+OpenIdChannelSecurityConfigurer -- ChannelSecurityConfigurer
+OpenIdChannelSecurityConfigurer -- OpenIdLoginConfigurer
+OpenIdChannelSecurityConfigurer -- OpenIdProperties
+OpenIdChannelSecurityConfigurer -- OpenIdAuthenticationProvider
+OpenIdLoginConfigurer -- OpenIdAuthenticationFilter
+OpenIdLoginConfigurer -- User
+OpenIdAuthenticationConfiguration -- ChannelSecurityConfigurer
+OpenIdAuthenticationConfiguration -- OpenIdChannelSecurityConfigurer
+OpenIdAuthenticationConfiguration -- OpenIdLoginConfigurer
+OpenIdAuthenticationConfiguration -- OpenIdProperties
+OpenIdAuthenticationConfiguration -- OpenIdAuthenticationProvider
+OpenIdAuthenticationConfiguration -- User
+OpenIdAuthenticationFilter -- OpenIdAuthenticationToken
+OpenIdAuthenticationFilter -- ServiceException
+OpenIdAuthenticationFilter -- User
+OpenIdAuthenticationProvider -- OpenIdAuthenticationToken
+OpenIdAuthenticationProvider -- User
+SmsAuthenticationFilter -- SmsAuthenticationToken
+SmsAuthenticationFilter -- ServiceException
+SmsAuthenticationFilter -- User
+SmsAuthenticationProvider -- SmsAuthenticationToken
+SmsAuthenticationProvider -- SmsUserDetailsService
+SmsAuthenticationProvider -- CredentialService
+SmsAuthenticationProvider -- CredentialValidation
+SmsAuthenticationProvider -- User
+SmsChannelSecurityConfigurer -- AbstractChannelSecurityConfigurer
+SmsChannelSecurityConfigurer -- ChannelSecurityConfigurer
+SmsChannelSecurityConfigurer -- SmsAuthenticationProvider
+SmsChannelSecurityConfigurer -- SmsLoginConfigurer
+SmsChannelSecurityConfigurer -- SmsCredentialProperties
+SmsChannelSecurityConfigurer -- CredentialProperties
+SmsLoginConfigurer -- SmsAuthenticationFilter
+SmsLoginConfigurer -- User
+SmsAuthenticationConfiguration -- UserDetailsServiceImpl
+SmsAuthenticationConfiguration -- ChannelSecurityConfigurer
+SmsAuthenticationConfiguration -- SmsAuthenticationProvider
+SmsAuthenticationConfiguration -- SmsChannelSecurityConfigurer
+SmsAuthenticationConfiguration -- SmsLoginConfigurer
+SmsAuthenticationConfiguration -- SmsCredentialProperties
+SmsAuthenticationConfiguration -- SmsUserDetailsService
+SmsAuthenticationConfiguration -- SmsUserDetailsServiceImpl
+SmsAuthenticationConfiguration -- CredentialService
+SmsAuthenticationConfiguration -- CredentialProperties
+SmsAuthenticationConfiguration -- UserService
+SmsAuthenticationConfiguration -- User
+SmsCredentialController -- SmsAuthenticationFilter
+SmsCredentialController -- SmsCredentialProperties
+SmsCredentialController -- Notification
+SmsCredentialController -- SmsNotification
+SmsCredentialController -- CredentialService
+SmsCredentialController -- CredentialConfig
+SmsCredentialController -- CredentialType
+SmsCredentialController -- CredentialProperties
+SmsCredentialProperties -- CredentialProperties
+SmsUserDetailsService -- User
+SmsUserDetailsServiceImpl -- UserDetailsServiceImpl
+SmsUserDetailsServiceImpl -- AuthenticatedUser
+SmsUserDetailsServiceImpl -- SmsUserDetailsService
+SmsUserDetailsServiceImpl -- UserStatus
+SmsUserDetailsServiceImpl -- UserDto
+SmsUserDetailsServiceImpl -- UserService
+SmsUserDetailsServiceImpl -- User
+AlipayProperties -- Alipay
+Alipay -- AlipayUserInfo
+Alipay -- User
+AlipayUserInfo -- User
+AlipayImpl -- AlipayProperties
+AlipayImpl -- Alipay
+AlipayImpl -- AlipayUserInfo
+AlipayImpl -- QQ
+AlipayImpl -- User
+AlipayConnectConfiguration -- AlipayProperties
+AlipayConnectConfiguration -- Alipay
+AlipayConnectConfiguration -- AlipayConnectionFactory
+AlipayConnectConfiguration -- AlipayOAuth2AuthenticationService
+AlipayAdapater -- Alipay
+AlipayAdapater -- AlipayUserInfo
+AlipayAdapater -- User
+AlipayConnectionFactory -- AlipayProperties
+AlipayConnectionFactory -- Alipay
+AlipayConnectionFactory -- AlipayAdapater
+AlipayConnectionFactory -- AlipayServiceProvider
+AlipayOAuth2AuthenticationService -- Utils
+AlipayOAuth2AuthenticationService -- Alipay
+AlipayOAuth2Template -- AlipayProperties
+AlipayOAuth2Template -- Alipay
+AlipayServiceProvider -- AlipayProperties
+AlipayServiceProvider -- Alipay
+AlipayServiceProvider -- AlipayImpl
+AlipayServiceProvider -- AlipayOAuth2Template
+JpaConnectionRepository -- UserConnection
+JpaConnectionRepository -- UserConnectionRepository
+JpaConnectionRepository -- User
+JpaUsersConnectRepository -- JpaConnectionRepository
+JpaUsersConnectRepository -- UserConnection
+JpaUsersConnectRepository -- UserConnectionRepository
+JpaUsersConnectRepository -- User
+UserConnection -- User
+UserConnectionRepository -- UserConnection
+UserConnectionRepository -- User
+SocialAuthenticatedUser -- AuthenticatedUser
+SocialAuthenticatedUser -- User
+SocialAutoConfiguration -- UserDetailsServiceImpl
+SocialAutoConfiguration -- JpaUsersConnectRepository
+SocialAutoConfiguration -- UserConnection
+SocialAutoConfiguration -- UserConnectionRepository
+SocialAutoConfiguration -- SocialProperties
+SocialAutoConfiguration -- SocialUserDetailsServiceImpl
+SocialAutoConfiguration -- UserService
+SocialAutoConfiguration -- User
+SocialUserDetailsServiceImpl -- UserDetailsServiceImpl
+SocialUserDetailsServiceImpl -- AuthenticatedUser
+SocialUserDetailsServiceImpl -- SocialAuthenticatedUser
+SocialUserDetailsServiceImpl -- UserDto
+SocialUserDetailsServiceImpl -- UserService
+SocialUserDetailsServiceImpl -- User
+QQImpl -- Utils
+QQImpl -- QQ
+QQImpl -- QQUserInfo
+QQImpl -- User
+QQ -- QQUserInfo
+QQ -- User
+QQUserInfo -- User
+QQConnectConfiguration -- QQ
+QQConnectConfiguration -- QQConnectionFactory
+QQConnectConfiguration -- QQProperties
+QQConnectConfiguration -- User
+QQAdapter -- QQ
+QQAdapter -- QQUserInfo
+QQAdapter -- User
+QQConnectionFactory -- QQ
+QQConnectionFactory -- QQAdapter
+QQConnectionFactory -- QQServiceProvider
+QQOAuth2Template -- Utils
+QQOAuth2Template -- QQ
+QQServiceProvider -- QQImpl
+QQServiceProvider -- QQ
+QQServiceProvider -- QQOAuth2Template
+QQProperties -- QQ
+SocialChannelSecurityConfigurer -- AbstractChannelSecurityConfigurer
+SocialChannelSecurityConfigurer -- ChannelSecurityConfigurer
+SocialChannelSecurityConfigurer -- SocialProperties
+SocialConnectController -- Alipay
+SocialConnectionSignUp -- UserStatus
+SocialConnectionSignUp -- UserAddDto
+SocialConnectionSignUp -- UserDto
+SocialConnectionSignUp -- UserService
+SocialConnectionSignUp -- User
+SocialSignUpController -- Utils
+SocialSignUpController -- SocialUserInfo
+SocialSignUpController -- Result
+SocialSignUpController -- UserStatus
+SocialSignUpController -- UserAddDto
+SocialSignUpController -- UserDto
+SocialSignUpController -- UserService
+SocialSignUpController -- User
+SocialSignUpController -- SignUpController
+SocialUserInfo -- User
+SocialWebAutoConfiguration -- Utils
+SocialWebAutoConfiguration -- ChannelSecurityConfigurer
+SocialWebAutoConfiguration -- SocialProperties
+SocialWebAutoConfiguration -- SocialChannelSecurityConfigurer
+SocialWebAutoConfiguration -- SocialSecurityConfigurer
+SocialWebAutoConfiguration -- User
+SocialConnectStatusController -- Result
+SocialConnectStatusView -- Utils
+WechatImpl -- Utils
+WechatImpl -- Wechat
+WechatImpl -- WechatUserInfo
+WechatImpl -- User
+Wechat -- WechatUserInfo
+Wechat -- User
+WechatUserInfo -- User
+WechatConnectionConfiguration -- Wechat
+WechatConnectionConfiguration -- WechatConnectionFactory
+WechatConnectionConfiguration -- WechatProperties
+WechatConnectionConfiguration -- User
+WechatAccessGrant -- Wechat
+WechatAdapter -- Wechat
+WechatAdapter -- WechatUserInfo
+WechatAdapter -- User
+WechatConnectionFactory -- QQ
+WechatConnectionFactory -- QQAdapter
+WechatConnectionFactory -- Wechat
+WechatConnectionFactory -- WechatAccessGrant
+WechatConnectionFactory -- WechatAdapter
+WechatConnectionFactory -- WechatServiceProvider
+WechatConnectionFactory -- User
+WechatOAuth2Template -- Utils
+WechatOAuth2Template -- Wechat
+WechatOAuth2Template -- WechatAccessGrant
+WechatServiceProvider -- WechatImpl
+WechatServiceProvider -- Wechat
+WechatServiceProvider -- WechatOAuth2Template
+WechatProperties -- Wechat
+WechatMpImpl -- Utils
+WechatMpImpl -- Wechat
+WechatMpImpl -- WechatMp
+WechatMpImpl -- WechatMpUserInfo
+WechatMpImpl -- User
+WechatMp -- Wechat
+WechatMp -- WechatMpUserInfo
+WechatMp -- User
+WechatMpUserInfo -- Wechat
+WechatMpUserInfo -- User
+WechatMpConnectionConfiguration -- Wechat
+WechatMpConnectionConfiguration -- WechatMp
+WechatMpConnectionConfiguration -- WechatMpConnectionFactory
+WechatMpConnectionConfiguration -- WechatMpProperties
+WechatMpConnectionConfiguration -- User
+WechatMpAccessGrant -- Wechat
+WechatMpAccessGrant -- WechatMp
+WechatMpAdapter -- Wechat
+WechatMpAdapter -- WechatMp
+WechatMpAdapter -- WechatMpUserInfo
+WechatMpAdapter -- User
+WechatMpConnectionFactory -- QQ
+WechatMpConnectionFactory -- QQAdapter
+WechatMpConnectionFactory -- Wechat
+WechatMpConnectionFactory -- WechatMp
+WechatMpConnectionFactory -- WechatMpAccessGrant
+WechatMpConnectionFactory -- WechatMpAdapter
+WechatMpConnectionFactory -- WechatMpServiceProvider
+WechatMpConnectionFactory -- User
+WechatMpOAuth2Template -- Utils
+WechatMpOAuth2Template -- Wechat
+WechatMpOAuth2Template -- WechatMp
+WechatMpOAuth2Template -- WechatMpAccessGrant
+WechatMpServiceProvider -- Wechat
+WechatMpServiceProvider -- WechatMpImpl
+WechatMpServiceProvider -- WechatMp
+WechatMpServiceProvider -- WechatMpOAuth2Template
+WechatMpProperties -- Wechat
+WechatMpProperties -- WechatMp
+WebSecurityConfiguration -- SecurityConfiguration
+WebSessionConfiguration -- WebSecurityConfiguration
+WebSessionConfiguration -- SecurityConfiguration
+SessionInvalidController -- Result
+WebAuthenticationFailureHandler -- WebAuthenticationConstant
+WebAuthenticationSuccessHandler -- WebAuthenticationConstant
+ErrorConstants -- ErrorMessage
+ServiceException -- ErrorMessage
+Result -- ErrorMessage
+ServiceAssert -- Utils
+ServiceAssert -- ErrorConstants
+ServiceAssert -- ErrorMessage
+ServiceAssert -- ServiceException
+ImageUtils -- Utils
+PatternUtils -- Utils
+RandomUtils -- Utils
+NotificationExchanger -- Notification
+EmailNotification -- Notification
+NotificationService -- Notification
+NotificationController -- Result
+NotificationController -- Notification
+NotificationController -- NotificationDispatcher
+NotificationDispatcher -- NotificationExchanger
+NotificationDispatcher -- Notification
+NotificationDispatcher -- NotificationTask
+NotificationDispatcher -- NotificationThreadFactory
+NotificationTask -- NotificationExchanger
+NotificationTask -- Notification
+NotificationThreadFactory -- Notification
+AliyunSmsSender -- Utils
+AliyunSmsSender -- Result
+AliyunSmsSender -- SmsParameter
+AliyunSmsSender -- SmsSender
+AliyunSmsSender -- SmsSendResult
+AliyunSmsSenderConfiguration -- Utils
+AliyunSmsSenderConfiguration -- AliyunSmsSender
+AliyunSmsSenderConfiguration -- AliyunSmsProperties
+AliyunSmsSenderConfiguration -- SmsSender
+SmsSender -- Result
+SmsSender -- SmsParameter
+SmsSender -- SmsSendResult
+SmsSendResult -- Result
+SmsNotification -- Notification
+SmsNotificationExchanger -- Utils
+SmsNotificationExchanger -- Result
+SmsNotificationExchanger -- NotificationExchanger
+SmsNotificationExchanger -- Notification
+SmsNotificationExchanger -- SmsParameter
+SmsNotificationExchanger -- SmsSender
+SmsNotificationExchanger -- SmsSendResult
+SmsNotificationExchanger -- SmsNotification
+SmsNotificationAutoConfiguration -- NotificationExchanger
+SmsNotificationAutoConfiguration -- Notification
+SmsNotificationAutoConfiguration -- SmsSender
+SmsNotificationAutoConfiguration -- SmsNotification
+SmsNotificationAutoConfiguration -- SmsNotificationExchanger
+JwtAuthController -- AuthController
+JwtAuthController -- AuthenticatedUser
+JwtAuthController -- Result
+JwtAuthController -- User
+SimpleAppApplication -- AuthenticatedUser
+SimpleAppApplication -- User
+SecurityConfiguration -- ChannelSecurityConfigurer
+SsoWebSampleApplication -- AuthenticatedUser
+SsoWebSampleApplication -- WebSampleApplication
+SsoWebSampleApplication -- User
+CredentialService -- CredentialConfig
+CredentialService -- CredentialNotify
+CredentialService -- CredentialValidation
+SecurityErrorEnum -- ErrorMessage
+CredentialConfig -- Notification
+CredentialConfig -- CredentialType
+CredentialNotify -- Notification
+CredentialServiceImpl -- Utils
+CredentialServiceImpl -- RandomUtils
+CredentialServiceImpl -- Notification
+CredentialServiceImpl -- NotificationService
+CredentialServiceImpl -- CredentialService
+CredentialServiceImpl -- CredentialConfig
+CredentialServiceImpl -- CredentialNotify
+CredentialServiceImpl -- CredentialType
+CredentialServiceImpl -- CredentialValidation
+CredentialServiceImpl -- CredentialProperties
+DefaultPasswordStrategy -- Utils
+DefaultPasswordStrategy -- PasswordStrategy
+DefaultPasswordStrategy -- InvalidPasswordException
+DefaultPasswordStrategy -- PasswordProperties
+PasswordProperties -- PasswordStrength
+SecurityCenterAutoConfiguration -- PasswordStrategy
+SecurityCenterAutoConfiguration -- CredentialProperties
+SecurityCenterAutoConfiguration -- DefaultPasswordStrategy
+SecurityCenterAutoConfiguration -- PasswordProperties
+CredentialServiceImplTest -- CredentialService
+CredentialServiceImplTest -- CredentialConfig
+CredentialServiceImplTest -- CredentialType
+CredentialServiceImplTest -- CredentialServiceImpl
+CredentialServiceImplTest -- TestContext
+UserController -- Utils
+UserController -- AuthenticatedUser
+UserController -- ErrorMessage
+UserController -- ServiceException
+UserController -- Result
+UserController -- ServiceAssert
+UserController -- PatternUtils
+UserController -- Notification
+UserController -- SmsNotification
+UserController -- CredentialService
+UserController -- CredentialConfig
+UserController -- CredentialType
+UserController -- CredentialValidation
+UserController -- UserErrorMessage
+UserController -- UpdatePasswordDto
+UserController -- UserDto
+UserController -- UserService
+UserController -- User
+UserController -- PhoneNumberBindDto
+UserErrorMessage -- ErrorMessage
+UserErrorMessage -- User
+UserStatus -- User
+UserAddDto -- User
+UserDto -- User
+UserUpdateDto -- User
+UserService -- UpdatePasswordDto
+UserService -- UserAddDto
+UserService -- UserDto
+UserService -- User
+UserServiceImpl -- Utils
+UserServiceImpl -- ErrorMessage
+UserServiceImpl -- ServiceException
+UserServiceImpl -- ServiceAssert
+UserServiceImpl -- PasswordInvalidException
+UserServiceImpl -- PasswordStrategy
+UserServiceImpl -- UserErrorMessage
+UserServiceImpl -- UserStatus
+UserServiceImpl -- UpdatePasswordDto
+UserServiceImpl -- UserAddDto
+UserServiceImpl -- UserDto
+UserServiceImpl -- UserService
+UserServiceImpl -- User
+UserServiceImpl -- PasswordChangedEvent
+UserServiceImpl -- UserRepository
+UserRepository -- User
+SignUpController -- Utils
+SignUpController -- ErrorMessage
+SignUpController -- ServiceException
+SignUpController -- Result
+SignUpController -- ServiceAssert
+SignUpController -- PatternUtils
+SignUpController -- RandomUtils
+SignUpController -- Notification
+SignUpController -- SmsNotification
+SignUpController -- CredentialService
+SignUpController -- CredentialConfig
+SignUpController -- CredentialType
+SignUpController -- CredentialValidation
+SignUpController -- UserErrorMessage
+SignUpController -- UserAddDto
+SignUpController -- UserService
+SignUpController -- User
+SignUpController -- SmsSignUpDto
+SignUpController -- UsernamePasswordSignUpDto
+UsernamePasswordSignUpDto -- User
+UsernamePasswordSignUpDtoControllerTest -- Result
+UsernamePasswordSignUpDtoControllerTest -- User
+UsernamePasswordSignUpDtoControllerTest -- UsernamePasswordSignUpDto
+UsernamePasswordSignUpDtoControllerTest -- WebConfiguration
+@enduml

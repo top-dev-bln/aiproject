@@ -1,0 +1,243 @@
+@startuml
+package pl.piomin.services.account; {
+class AccountApplication {
+}
+
+class AccountControllerTests {
+}
+
+}
+
+package pl.piomin.services.account.controller; {
+class AccountController {
+}
+
+}
+
+package pl.piomin.services.account.exception; {
+class BalanceNotEnoughException {
+}
+
+}
+
+package pl.piomin.services.account.model; {
+class Account {
+}
+
+}
+
+package pl.piomin.services.account.repository; {
+class AccountRepository {
+}
+
+}
+
+package pl.piomin.services.customer.client; {
+class AccountClient {
+}
+
+}
+
+package pl.piomin.services.customer.controller; {
+class CustomerController {
+}
+
+}
+
+package pl.piomin.services.customer; {
+class CustomerApplication {
+}
+
+class CustomerControllerTests {
+}
+
+}
+
+package pl.piomin.services.customer.model; {
+class Account {
+}
+
+class Customer {
+}
+
+class CustomerType {
+}
+
+}
+
+package pl.piomin.services.customer.repository; {
+class CustomerRepository {
+}
+
+}
+
+package pl.piomin.services.gateway; {
+class GatewayApplication {
+}
+
+class GatewayControllerTest {
+}
+
+}
+
+package pl.piomin.services.gateway.model; {
+class Account {
+}
+
+class Customer {
+}
+
+class CustomerType {
+}
+
+class Order {
+}
+
+class OrderStatus {
+}
+
+class Product {
+}
+
+}
+
+package pl.piomin.services.order.client; {
+class AccountClient {
+}
+
+class CustomerClient {
+}
+
+class ProductClient {
+}
+
+}
+
+package pl.piomin.services.order.controller; {
+class OrderController {
+}
+
+}
+
+package pl.piomin.services.order.model; {
+class Account {
+}
+
+class Customer {
+}
+
+class CustomerType {
+}
+
+class Order {
+}
+
+class OrderStatus {
+}
+
+class Product {
+}
+
+}
+
+package pl.piomin.services.order; {
+class OrderApplication {
+}
+
+class OrderControllerTest {
+}
+
+}
+
+package pl.piomin.services.order.repository; {
+class OrderRepository {
+}
+
+}
+
+package pl.piomin.services.product.controller; {
+class ProductController {
+}
+
+}
+
+package pl.piomin.services.product.model; {
+class Product {
+}
+
+}
+
+package pl.piomin.services.product; {
+class ProductApplication {
+}
+
+}
+
+package pl.piomin.services.product.repository; {
+class ProductRepository {
+}
+
+}
+
+AccountApplication -- Account
+AccountApplication -- AccountRepository
+AccountController -- BalanceNotEnoughException
+AccountController -- Account
+AccountController -- AccountRepository
+AccountController -- Customer
+AccountRepository -- Account
+AccountRepository -- Customer
+AccountControllerTests -- AccountController
+AccountControllerTests -- Account
+AccountControllerTests -- Customer
+AccountClient -- Account
+CustomerController -- Account
+CustomerController -- AccountClient
+CustomerController -- Customer
+CustomerController -- CustomerRepository
+CustomerApplication -- Customer
+CustomerApplication -- CustomerType
+CustomerApplication -- CustomerRepository
+Customer -- Account
+Customer -- CustomerType
+CustomerRepository -- Customer
+CustomerControllerTests -- Account
+CustomerControllerTests -- CustomerController
+CustomerControllerTests -- Customer
+CustomerControllerTests -- CustomerType
+GatewayControllerTest -- Customer
+GatewayControllerTest -- Order
+GatewayControllerTest -- OrderStatus
+GatewayControllerTest -- Product
+Order -- Account
+Order -- Customer
+Order -- OrderStatus
+Order -- Product
+CustomerClient -- Account
+CustomerClient -- Customer
+ProductClient -- Product
+OrderController -- Account
+OrderController -- AccountClient
+OrderController -- Customer
+OrderController -- Order
+OrderController -- OrderStatus
+OrderController -- Product
+OrderController -- CustomerClient
+OrderController -- ProductClient
+OrderController -- OrderRepository
+OrderApplication -- Order
+OrderApplication -- OrderRepository
+OrderRepository -- Customer
+OrderRepository -- Order
+OrderControllerTest -- Account
+OrderControllerTest -- Customer
+OrderControllerTest -- Order
+OrderControllerTest -- OrderStatus
+OrderControllerTest -- Product
+OrderControllerTest -- OrderController
+ProductController -- Product
+ProductController -- ProductRepository
+ProductApplication -- Product
+ProductApplication -- ProductRepository
+ProductRepository -- Product
+@enduml

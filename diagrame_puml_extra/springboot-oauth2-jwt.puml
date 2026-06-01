@@ -1,0 +1,286 @@
+@startuml
+package com.odenktools.authserver; {
+class AuthserverApplication {
+}
+
+class AuthserverApplicationTests {
+}
+
+}
+
+package com.odenktools.authserver.controller; {
+class AdminAuth {
+}
+
+}
+
+package com.odenktools.authserver.dto.customer; {
+class CustomerDto {
+}
+
+}
+
+package com.odenktools.authserver.dto.group; {
+class GroupDto {
+}
+
+}
+
+package com.odenktools.authserver.entity; {
+class Customer {
+}
+
+class Group {
+}
+
+class OauthClientDetails {
+}
+
+class Permission {
+}
+
+}
+
+package com.odenktools.authserver.filter; {
+class QueryFilter {
+}
+
+}
+
+package com.odenktools.authserver.repository; {
+class ICustomer {
+}
+
+class IGroup {
+}
+
+class IOauthClientDetails {
+}
+
+}
+
+package com.odenktools.authserver.security; {
+class AuthorizationServerConfig {
+}
+
+class CustomAccessTokenConverter {
+}
+
+class CustomJdbcAuthorizationCodeServices {
+}
+
+class CustomPasswordEncoder {
+}
+
+class CustomTokenRequest {
+}
+
+class CustomUserAuthenticationProvider {
+}
+
+class Encryption {
+}
+
+class EndPointList {
+}
+
+class FixSerialVersionUUID {
+}
+
+class ResourceServerConfig {
+}
+
+class ScopeMappingOAuth2RequestFactory {
+}
+
+class SecurityWebApplicationInitializer {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.odenktools.authserver.security.components; {
+class ResourceUnauthorizedException {
+}
+
+class RoleChecker {
+}
+
+}
+
+package com.odenktools.authserver.security.user; {
+class CustomClientDetailsService {
+}
+
+class CustomUserDetailsService {
+}
+
+class PrincipalAdminDetail {
+}
+
+}
+
+package com.odenktools.authserver.service; {
+class GroupService {
+}
+
+class RestResponsePage {
+}
+
+}
+
+package com.odenktools.authserver.service.impl; {
+class GroupServiceImpl {
+}
+
+}
+
+package com.odenktools.resourceserver; {
+class AppConfig {
+}
+
+class ResourceserverApplication {
+}
+
+class ResourceserverApplicationTests {
+}
+
+}
+
+package com.odenktools.resourceserver.controllers; {
+class CustomerController {
+}
+
+class FileController {
+}
+
+class HelloController {
+}
+
+}
+
+package com.odenktools.resourceserver.model; {
+class FileResponse {
+}
+
+class IdSeq {
+}
+
+class ImageFile {
+}
+
+}
+
+package com.odenktools.resourceserver.repository; {
+class IdSeqRepository {
+}
+
+class ImageFileRepository {
+}
+
+}
+
+package com.odenktools.resourceserver.security; {
+class CustomAccessTokenConverter {
+}
+
+class ResourceServerConfig {
+}
+
+}
+
+package com.odenktools.resourceserver.service; {
+class AbstractStorageService {
+}
+
+class StorageService {
+}
+
+}
+
+package com.odenktools.resourceserver.service.impl; {
+class FileSystemStorageService {
+}
+
+}
+
+package com.odenktools.resourceserver.util; {
+class FileBean {
+}
+
+class FileUtil {
+}
+
+class SuffixBean {
+}
+
+}
+
+AuthserverApplication -- CustomPasswordEncoder
+AdminAuth -- GroupDto
+AdminAuth -- Group
+AdminAuth -- GroupService
+CustomerDto -- Customer
+CustomerDto -- Permission
+GroupDto -- Customer
+GroupDto -- Group
+GroupDto -- Permission
+Customer -- Group
+Customer -- Permission
+Group -- Permission
+ICustomer -- Customer
+IGroup -- Group
+IOauthClientDetails -- OauthClientDetails
+AuthorizationServerConfig -- Customer
+AuthorizationServerConfig -- CustomJdbcAuthorizationCodeServices
+AuthorizationServerConfig -- CustomPasswordEncoder
+AuthorizationServerConfig -- ScopeMappingOAuth2RequestFactory
+AuthorizationServerConfig -- CustomClientDetailsService
+RoleChecker -- ResourceUnauthorizedException
+CustomPasswordEncoder -- Encryption
+ResourceServerConfig -- CustomAccessTokenConverter
+ResourceServerConfig -- AppConfig
+ScopeMappingOAuth2RequestFactory -- CustomTokenRequest
+SecurityWebApplicationInitializer -- WebSecurityConfig
+CustomClientDetailsService -- OauthClientDetails
+CustomClientDetailsService -- IOauthClientDetails
+CustomClientDetailsService -- CustomPasswordEncoder
+CustomUserDetailsService -- Customer
+CustomUserDetailsService -- ICustomer
+CustomUserDetailsService -- PrincipalAdminDetail
+PrincipalAdminDetail -- Customer
+PrincipalAdminDetail -- Group
+PrincipalAdminDetail -- Permission
+WebSecurityConfig -- CustomPasswordEncoder
+WebSecurityConfig -- CustomUserDetailsService
+GroupService -- GroupDto
+GroupService -- Group
+GroupServiceImpl -- GroupDto
+GroupServiceImpl -- Group
+GroupServiceImpl -- QueryFilter
+GroupServiceImpl -- IGroup
+GroupServiceImpl -- GroupService
+GroupServiceImpl -- RestResponsePage
+AuthserverApplicationTests -- AuthserverApplication
+CustomerController -- Customer
+FileController -- FileResponse
+FileController -- IdSeq
+FileController -- ImageFile
+FileController -- IdSeqRepository
+FileController -- ImageFileRepository
+FileController -- StorageService
+FileController -- FileUtil
+IdSeqRepository -- IdSeq
+ImageFileRepository -- ImageFile
+AbstractStorageService -- ImageFile
+AbstractStorageService -- ImageFileRepository
+AbstractStorageService -- StorageService
+FileSystemStorageService -- ImageFile
+FileSystemStorageService -- AbstractStorageService
+FileSystemStorageService -- StorageService
+FileUtil -- FileBean
+FileUtil -- SuffixBean
+ResourceserverApplicationTests -- ResourceserverApplication
+@enduml

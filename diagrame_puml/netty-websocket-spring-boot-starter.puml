@@ -1,0 +1,254 @@
+@startuml
+
+package org.yeauty.annotation {
+  interface OnError {
+  }
+  interface OnClose {
+  }
+  interface PathVariable {
+  }
+  interface OnMessage {
+  }
+  interface EnableWebSocket {
+  }
+  interface ServerEndpoint {
+  }
+  interface RequestParam {
+  }
+  interface OnEvent {
+  }
+  interface BeforeHandshake {
+  }
+  interface OnOpen {
+  }
+  interface OnBinary {
+  }
+  class NettyWebSocketSelector {
+    +serverEndpointExporter() : ServerEndpointExporter
+  }
+}
+
+package org.yeauty.autoconfigure {
+  class NettyWebSocketAutoConfigure {
+  }
+}
+
+package org.yeauty.exception {
+  class DeploymentException {
+    -serialVersionUID : long
+  }
+}
+
+package org.yeauty.pojo {
+  class PojoEndpointServer {
+    -POJO_KEY : AttributeKey<Object>
+    -SESSION_KEY : AttributeKey<Session>
+    -PATH_KEY : AttributeKey<String>
+    -config : ServerEndpointConfig
+    -pathMatchers : Set<WsPathMatcher>
+    -logger : InternalLogger
+    +hasBeforeHandshake() : boolean
+    +doBeforeHandshake() : void
+    +doOnOpen() : void
+    +doOnClose() : void
+    +doOnError() : void
+    +doOnMessage() : void
+    +doOnBinary() : void
+    +doOnEvent() : void
+  }
+  class PojoMethodMapping {
+    -parameterNameDiscoverer : ParameterNameDiscoverer
+    -beforeHandshake : Method
+    -onOpen : Method
+    -onClose : Method
+    -onError : Method
+    -onMessage : Method
+    -onBinary : Method
+    -onEvent : Method
+    -beforeHandshakeParameters : MethodParameter[]
+    -onOpenParameters : MethodParameter[]
+  }
+  class Session {
+    -channel : Channel
+    +setSubprotocols() : void
+    +sendText() : ChannelFuture
+    +sendText() : ChannelFuture
+    +sendText() : ChannelFuture
+    +sendText() : ChannelFuture
+    +sendBinary() : ChannelFuture
+    +sendBinary() : ChannelFuture
+    +sendBinary() : ChannelFuture
+  }
+}
+
+package org.yeauty.standard {
+  class HttpServerHandler {
+    -pojoEndpointServer : PojoEndpointServer
+    -config : ServerEndpointConfig
+    -eventExecutorGroup : EventExecutorGroup
+    -isCors : boolean
+    -faviconByteBuf : ByteBuf
+    -notFoundByteBuf : ByteBuf
+    -badRequestByteBuf : ByteBuf
+    -forbiddenByteBuf : ByteBuf
+    -internalServerErrorByteBuf : ByteBuf
+    -handshakeFuture : ChannelFuture
+    +channelRead0() : void
+    +exceptionCaught() : void
+    +channelInactive() : void
+  }
+  class EndpointClassPathScanner {
+    +doScan() : Set<BeanDefinitionHolder>
+  }
+  class WebSocketServerHandler {
+    -pojoEndpointServer : PojoEndpointServer
+    +channelRead0() : void
+    +exceptionCaught() : void
+    +channelInactive() : void
+    +userEventTriggered() : void
+  }
+  class ServerEndpointExporter {
+    -beanFactory : AbstractBeanFactory
+    -resourceLoader : ResourceLoader
+    +afterSingletonsInstantiated() : void
+    +setBeanFactory() : void
+    +registerEndpoints() : void
+    +setResourceLoader() : void
+  }
+  class WebsocketServer {
+    -pojoEndpointServer : PojoEndpointServer
+    -config : ServerEndpointConfig
+    -logger : InternalLogger
+    -sslCtx : SslContext
+    -corsConfig : CorsConfig
+    +init() : void
+    +initChannel() : void
+    +getPojoEndpointServer() : PojoEndpointServer
+  }
+  class ServerEndpointConfig {
+    -HOST : String
+    -PORT : int
+    -BOSS_LOOP_GROUP_THREADS : int
+    -WORKER_LOOP_GROUP_THREADS : int
+    -USE_COMPRESSION_HANDLER : boolean
+    -CONNECT_TIMEOUT_MILLIS : int
+    -SO_BACKLOG : int
+    -WRITE_SPIN_COUNT : int
+    -WRITE_BUFFER_HIGH_WATER_MARK : int
+    -WRITE_BUFFER_LOW_WATER_MARK : int
+    +getHost() : String
+    +getPort() : int
+    +getPathSet() : Set<String>
+    +getBossLoopGroupThreads() : int
+    +getWorkerLoopGroupThreads() : int
+    +isUseCompressionHandler() : boolean
+    +getConnectTimeoutMillis() : int
+    +getSoBacklog() : int
+  }
+}
+
+package org.yeauty.support {
+  interface WsPathMatcher {
+  }
+  class HttpHeadersMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class SessionMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class PathVariableMapMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class RequestParamMethodArgumentResolver {
+    -beanFactory : AbstractBeanFactory
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class EventMethodArgumentResolver {
+    -beanFactory : AbstractBeanFactory
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class PathVariableMethodArgumentResolver {
+    -beanFactory : AbstractBeanFactory
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class AntPathMatcherWrapper {
+    -pattern : String
+    +getPattern() : String
+    +matchAndExtract() : boolean
+  }
+  class ByteMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class DefaultPathMatcher {
+    -pattern : String
+    +getPattern() : String
+    +matchAndExtract() : boolean
+  }
+  interface MethodArgumentResolver {
+  }
+  class RequestParamMapMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class ThrowableMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  class TextMethodArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+}
+
+package org.yeauty.util {
+  class SslUtils {
+    +createSslContext() : SslContext
+  }
+}
+
+' --- Relatii ---
+NettyWebSocketSelector --> ServerEndpointExporter
+HttpServerHandler --> PojoEndpointServer
+HttpServerHandler --> WsPathMatcher
+EndpointClassPathScanner --> ServerEndpoint
+WebSocketServerHandler --> PojoEndpointServer
+ServerEndpointExporter --> EnableWebSocket
+ServerEndpointExporter --> ServerEndpoint
+ServerEndpointExporter --> DeploymentException
+ServerEndpointExporter --> PojoEndpointServer
+ServerEndpointExporter --> PojoMethodMapping
+WebsocketServer --> PojoEndpointServer
+WebsocketServer --> SslUtils
+HttpHeadersMethodArgumentResolver ..|> MethodArgumentResolver
+SessionMethodArgumentResolver ..|> MethodArgumentResolver
+SessionMethodArgumentResolver --> Session
+PathVariableMapMethodArgumentResolver ..|> MethodArgumentResolver
+PathVariableMapMethodArgumentResolver --> PathVariable
+RequestParamMethodArgumentResolver ..|> MethodArgumentResolver
+RequestParamMethodArgumentResolver --> RequestParam
+EventMethodArgumentResolver ..|> MethodArgumentResolver
+EventMethodArgumentResolver --> OnEvent
+PathVariableMethodArgumentResolver ..|> MethodArgumentResolver
+PathVariableMethodArgumentResolver --> PathVariable
+AntPathMatcherWrapper ..|> WsPathMatcher
+ByteMethodArgumentResolver ..|> MethodArgumentResolver
+ByteMethodArgumentResolver --> OnBinary
+DefaultPathMatcher ..|> WsPathMatcher
+RequestParamMapMethodArgumentResolver ..|> MethodArgumentResolver
+RequestParamMapMethodArgumentResolver --> RequestParam
+ThrowableMethodArgumentResolver ..|> MethodArgumentResolver
+ThrowableMethodArgumentResolver --> OnError
+TextMethodArgumentResolver ..|> MethodArgumentResolver
+TextMethodArgumentResolver --> OnMessage
+NettyWebSocketAutoConfigure --> EnableWebSocket
+PojoEndpointServer --> ServerEndpointConfig
+PojoMethodMapping --> DeploymentException
+
+@enduml

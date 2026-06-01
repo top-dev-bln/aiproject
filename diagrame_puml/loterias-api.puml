@@ -1,0 +1,259 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+
+package com.gutotech.loteriasapi {
+  class LoteriasApiApplicationTests {
+  }
+  class LoteriasApiApplication {
+    +main() : void
+  }
+}
+
+package com.gutotech.loteriasapi.config {
+  class SwaggerConfig {
+    +api() : Docket
+  }
+  class ApplicationRunner {
+    -loteriasUpdate : LoteriasUpdate
+    +run() : void
+  }
+  class WebConfiguration {
+    +addCorsMappings() : void
+  }
+}
+
+package com.gutotech.loteriasapi.consumer {
+  class ConsumerTest {
+    -httpConnectionService : HttpConnectionService
+    -consumer : Consumer
+  }
+  interface HttpConnectionService {
+  }
+  class ScheduledConsumer {
+    -logger : Logger
+    -zone : String
+    -loteriasUpdate : LoteriasUpdate
+    +checkForUpdates() : void
+  }
+  class Consumer {
+    -httpConnectionService : HttpConnectionService
+    +getResultado() : Resultado
+    +getResultado() : Resultado
+  }
+  class SSLHttpConnectionService <<Service>> {
+  }
+  class LoteriasUpdate {
+    -logger : Logger
+    -loteriaUpdateTask : LoteriaUpdateTask
+    -cacheManager : CacheManager
+    -consumer : Consumer
+    -resultadoService : ResultadoService
+    +checkForUpdates() : void
+    +checkForUpdates() : void
+  }
+}
+
+package com.gutotech.loteriasapi.model {
+  class ResultadoTest {
+    -objectMapper : ObjectMapper
+  }
+  class ResultadoId {
+    -loteria : String
+    -concurso : int
+    +getLoteria() : String
+    +setLoteria() : void
+    +getConcurso() : int
+    +setConcurso() : void
+  }
+  class Resultado {
+    -id : ResultadoId
+    -data : String
+    -local : String
+    -concursoEspecial : boolean
+    -dezenasOrdemSorteio : List<String>
+    -dezenas : List<String>
+    -trevos : List<String>
+    -timeCoracao : String
+    -mesSorte : String
+    -premiacoes : List<Premiacao>
+    +getLoteria() : String
+    +getConcurso() : int
+    +getData() : String
+    +setData() : void
+    +getLocal() : String
+    +setLocal() : void
+    +isConcursoEspecial() : boolean
+    +setConcursoEspecial() : void
+  }
+  class Estado {
+    -nome : String
+    -uf : String
+    -vencedores : String
+    -latitude : String
+    -longitude : String
+    -cidades : List<Cidade>
+    -cidade : String
+    -vencedores : String
+    -latitude : String
+    -longitude : String
+    +getNome() : String
+    +setNome() : void
+    +getUf() : String
+    +setUf() : void
+    +getVencedores() : String
+    +setVencedores() : void
+    +getLatitude() : String
+    +setLatitude() : void
+  }
+  enum Loteria {
+    -nome : String
+    +getNome() : String
+    +asList() : List<String>
+  }
+  class MunicipioUFGanhadores {
+    -ganhadores : int
+    -municipio : String
+    -nomeFatansiaUL : String
+    -serie : String
+    -posicao : int
+    -uf : String
+    +getGanhadores() : int
+    +setGanhadores() : void
+    +getMunicipio() : String
+    +setMunicipio() : void
+    +getNomeFatansiaUL() : String
+    +setNomeFatansiaUL() : void
+    +getSerie() : String
+    +setSerie() : void
+  }
+  class Premiacao {
+    -descricao : String
+    -faixa : int
+    -ganhadores : int
+    -valorPremio : double
+    +getDescricao() : String
+    +setDescricao() : void
+    +getFaixa() : int
+    +setFaixa() : void
+    +getGanhadores() : int
+    +setGanhadores() : void
+    +getValorPremio() : double
+    +setValorPremio() : void
+  }
+}
+
+package com.gutotech.loteriasapi.model.exception {
+  class ResourceNotFoundException {
+    -serialVersionUID : long
+  }
+  class LoteriaInvalidException {
+    -serialVersionUID : long
+  }
+}
+
+package com.gutotech.loteriasapi.repository {
+  interface ResultadoRepository <<Repository>> {
+  }
+}
+
+package com.gutotech.loteriasapi.rest {
+  class ApiRestControllerTests {
+    -resultadoService : ResultadoService
+    -apiRestController : ApiRestController
+    -mockMvc : MockMvc
+    -megasenaResults : List<Resultado>
+    -megasenaResult1 : Resultado
+    -megasenaResult2 : Resultado
+    -lotofacilResult1 : Resultado
+  }
+  class RootRestController <<Controller>> {
+    +redirectToSwagger() : void
+  }
+  class ApiRestController <<Controller>> {
+    -INVALID_LOTTERY_MESSAGE : String
+    -RESULT_NOT_FOUND_MESSAGE : String
+    -NO_RESULTS_FOUND_MESSAGE : String
+    -lotteries : List<String>
+    -ALLOWABLE_VALUES : String
+    -resultadoService : ResultadoService
+    +getLotteries() : ResponseEntity<List<String>>
+    +getResultsByLottery() : ResponseEntity<List<Resultado>>
+    +getResultById() : ResponseEntity<Resultado>
+    +getLatestResult() : ResponseEntity<Resultado>
+  }
+}
+
+package com.gutotech.loteriasapi.rest.exception {
+  class ExceptionsHandler {
+    +handleLoteriaNotFound() : ResponseEntity<ErrorResponse>
+    +handleExceptions() : ResponseEntity<ErrorResponse>
+  }
+  class ErrorResponse {
+    -status : int
+    -error : String
+    -message : String
+    -timestamp : long
+    -path : String
+    +getStatus() : int
+    +setStatus() : void
+    +getError() : String
+    +setError() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getTimestamp() : long
+    +setTimestamp() : void
+  }
+}
+
+package com.gutotech.loteriasapi.service {
+  class ResultadoService <<Service>> {
+    -repository : ResultadoRepository
+    +findByLoteria() : List<Resultado>
+    +findByLoteriaAndConcurso() : Resultado
+    +findLatest() : Resultado
+    +save() : void
+    +saveAll() : void
+  }
+}
+
+package com.gutotech.loteriasapi.util {
+  class SSLHelper {
+    +getConnection() : Connection
+    +checkClientTrusted() : void
+    +checkServerTrusted() : void
+  }
+}
+
+' --- Relatii ---
+ConsumerTest --> Resultado
+ApiRestControllerTests --> Resultado
+ApiRestControllerTests --> ResultadoId
+ApiRestControllerTests --> ExceptionsHandler
+ApiRestControllerTests --> ResultadoService
+ResultadoRepository --> Resultado
+ResultadoRepository --> ResultadoId
+ApplicationRunner --> LoteriasUpdate
+SSLHttpConnectionService ..|> HttpConnectionService
+SSLHttpConnectionService --> SSLHelper
+LoteriasUpdate --> Loteria
+LoteriasUpdate --> Resultado
+LoteriasUpdate --> ResultadoService
+ResultadoService --> Resultado
+ResultadoService --> ResultadoId
+ResultadoService --> ResultadoRepository
+ApiRestController --> Loteria
+ApiRestController --> Resultado
+ApiRestController --> ResourceNotFoundException
+ApiRestController --> ResultadoService
+ExceptionsHandler --> ResourceNotFoundException
+
+@enduml

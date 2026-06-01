@@ -1,0 +1,151 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.example.ageconsumer; {
+class AgeApplication {
+}
+
+class AgeController {
+}
+
+class AgeResponse {
+}
+
+class AgeService {
+}
+
+class DateResponse {
+}
+
+}
+
+package com.example.ageconsumer.integration; {
+class AgeConsumerTest {
+}
+
+}
+
+package com.example.ageconsumer.pact; {
+class PactAgeConsumerTest {
+}
+
+}
+
+package com.example.ageconsumer.springcloudcontract; {
+class AgeControllerIntegrationTest {
+}
+
+}
+
+package com.example.consumer; {
+class Consumer {
+}
+
+class ConsumerConfiguration {
+}
+
+class ConsumerDateInfo {
+}
+
+class DateConsumerApplication {
+}
+
+}
+
+package com.example.consumer.pact; {
+class DateConsumerTest {
+}
+
+}
+
+package com.example.producer; {
+class DateProducerApplication {
+}
+
+class DateProducerController {
+}
+
+class Producer {
+}
+
+class ProducerConfiguration {
+}
+
+class ProducerDateInfo {
+}
+
+}
+
+package com.example.producer.pact; {
+class DateProducerTest {
+}
+
+}
+
+package com.example.dateprovider; {
+class DateController {
+}
+
+class DateProviderApplication {
+}
+
+class DateResponse {
+}
+
+class DateService {
+}
+
+}
+
+package com.example.dateprovider.pact; {
+class PactAgeProviderTest {
+}
+
+}
+
+package com.example.dateprovider.springcloudcontract; {
+class BaseTestClass {
+}
+
+}
+
+package com.example.dateprovider.swaggervalidator; {
+class AgeProviderSwaggerValidatorTest {
+}
+
+}
+
+AgeController -- AgeResponse
+AgeController -- AgeService
+AgeService -- AgeResponse
+AgeService -- DateResponse
+AgeConsumerTest -- AgeApplication
+AgeConsumerTest -- DateResponse
+AgeConsumerTest -- Consumer
+PactAgeConsumerTest -- AgeConsumerTest
+PactAgeConsumerTest -- Consumer
+AgeControllerIntegrationTest -- AgeController
+Consumer -- ConsumerDateInfo
+ConsumerConfiguration -- Consumer
+ConsumerConfiguration -- ConsumerDateInfo
+DateConsumerApplication -- Consumer
+DateConsumerTest -- Consumer
+DateConsumerTest -- ConsumerDateInfo
+DateProducerApplication -- Producer
+DateProducerController -- Producer
+Producer -- ProducerDateInfo
+ProducerConfiguration -- Producer
+ProducerConfiguration -- ProducerDateInfo
+DateProducerTest -- Consumer
+DateProducerTest -- Producer
+DateController -- DateResponse
+DateController -- DateService
+DateService -- DateResponse
+PactAgeProviderTest -- Consumer
+BaseTestClass -- DateController
+AgeProviderSwaggerValidatorTest -- Consumer
+@enduml

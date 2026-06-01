@@ -1,0 +1,245 @@
+@startuml
+
+package com.github.jaguililla.appointments {
+  class TestTemplate {
+    -LOGGER : Logger
+    -ERROR_HANDLER : ResponseErrorHandler
+    -mapper : ObjectMapper
+    -client : RestTemplate
+    -rootUri : String
+    -tokenManager : JwtTokenManager
+    -lastResponse : ResponseEntity<String>
+    -rootUri : String
+    -restTemplateBuilder : var
+    -path : String
+    +delete() : ResponseEntity<String>
+    +post() : ResponseEntity<String>
+    +getResponseStatus() : HttpStatusCode
+    +getResponseBody() : String
+  }
+  class ApplicationIT {
+    -OPENID_MOCK : OpenIdMock
+    -postgres : PostgreSQLContainer
+    -kafka : KafkaContainer
+    -client : TestTemplate
+    -portTest : int
+    -registry : DynamicPropertyRegistry
+  }
+  class GatlingSimulation {
+    -SCENARIO_SECONDS : long
+    -MAX_USERS : int
+    -USERS_RAMP_SECONDS : int
+    -BASE_URL : String
+    -appointmentsList : ChainBuilder
+    -appointmentsCrud : ChainBuilder
+  }
+  interface Asserts {
+  }
+  class ArchTest {
+    -APPLICATION_PACKAGE : String
+    -DOMAIN_PACKAGE : String
+    -DOMAIN_MODEL_PACKAGE : String
+    -STORES_PACKAGE : String
+    -NOTIFIERS_PACKAGE : String
+    -CONTROLLERS_PACKAGE : String
+    -GENERATED_PACKAGES : String
+    -JAVA_PACKAGES : String
+    -JAVAX_PACKAGES : String
+    -classes : JavaClasses
+  }
+  class Application {
+  }
+  class ApplicationConfiguration {
+    -LOGGER : Logger
+    -notifierTopic : String
+    -createMessage : String
+    -deleteMessage : String
+    -type : var
+    -appointmentsRepository : AppointmentsRepository
+    -usersRepository : UsersRepository
+    -appointmentsNotifier : AppointmentsNotifier
+  }
+}
+
+package com.github.jaguililla.appointments.controllers {
+  interface AppointmentsMapper {
+    -id : var
+    -startTimestamp : var
+    -endTimestamp : var
+  }
+  interface UsersMapper {
+    -id : var
+    -name : var
+  }
+  class AppointmentsController <<Controller>> {
+    -LOGGER : Logger
+    -appointmentsService : AppointmentsService
+    -appointmentsService : AppointmentsService
+    -appointmentRequest : AppointmentRequest
+    -appointment : var
+    -users : var
+    -createdAppointment : var
+    -responseAppointment : var
+    -id : String
+    -uuid : var
+    +createAppointment() : ResponseEntity<AppointmentResponse>
+    +deleteAppointment() : ResponseEntity<IdResponse>
+    +readAppointment() : ResponseEntity<AppointmentResponse>
+    +readAppointments() : ResponseEntity<List<AppointmentResponse>>
+  }
+  class UsersController <<Controller>> {
+    -LOGGER : Logger
+    -appointmentsService : AppointmentsService
+    -appointmentsService : AppointmentsService
+    -userRequest : UserRequest
+    -user : var
+    -createdUser : var
+    -responseUser : var
+    +createUser() : ResponseEntity<UserResponse>
+  }
+  class BaseController <<Controller>> {
+    -LOGGER : Logger
+    -request : HttpServletRequest
+    -exception : Exception
+    -url : var
+    -message : var
+    -resultMessage : var
+  }
+  class SecurityConfiguration {
+    -PERMITTED_ENDPOINTS : String[]
+    +securityFilterChain() : SecurityFilterChain
+  }
+}
+
+package com.github.jaguililla.appointments.domain {
+  interface AppointmentsNotifier {
+    -event : Event
+    -appointment : Appointment
+  }
+  interface Checks {
+  }
+  interface UsersRepository {
+    -id : Set<UUID>
+    -user : User
+  }
+  enum Event {
+  }
+  class AppointmentsService {
+    -appointmentsRepository : AppointmentsRepository
+    -usersRepository : UsersRepository
+    -appointmentsNotifier : AppointmentsNotifier
+    -appointmentsRepository : AppointmentsRepository
+    -usersRepository : UsersRepository
+    -appointmentsNotifier : AppointmentsNotifier
+    -appointment : Appointment
+    -userIds : Set<UUID>
+    -users : var
+    -fullAppointment : var
+    +create() : Appointment
+    +create() : User
+    +delete() : boolean
+    +getAll() : List<Appointment>
+  }
+  interface AppointmentsRepository {
+    -appointment : Appointment
+    -id : UUID
+    -id : UUID
+  }
+}
+
+package com.github.jaguililla.appointments.domain.model {
+  class UserTest {
+  }
+  class AppointmentTest {
+  }
+}
+
+package com.github.jaguililla.appointments.it {
+  class OpenIdMock {
+    -LOGGER : Logger
+    -JSON : String
+    -CONTEXT : String
+    -PORT : int
+    -httpServer : HttpServer
+    -jwtTokenManager : JwtTokenManager
+    +start() : void
+    +stop() : void
+  }
+  class JwtTokenManager {
+    -LOGGER : Logger
+    -ALGORITHM : Algorithm
+    -objectMapper : ObjectMapper
+    -objectWriter : ObjectWriter
+    +createToken() : String
+    +main() : void
+  }
+}
+
+package com.github.jaguililla.appointments.notifiers {
+  class KafkaTemplateAppointmentsNotifier {
+    -LOGGER : Logger
+    -notifierTopic : String
+    -createMessage : String
+    -deleteMessage : String
+    -notifierTopic : String
+    -createMessage : String
+    -deleteMessage : String
+    -event : Event
+    -appointment : Appointment
+    -message : var
+    +notify() : void
+  }
+}
+
+package com.github.jaguililla.appointments.repositories {
+  class JdbcTemplateAppointmentsRepository <<Repository>> {
+    -LOGGER : Logger
+    -row : ResultSet
+    -index : int
+    -id : var
+    -startTimestamp : var
+    -endTimestamp : var
+    -userId : var
+    -name : var
+    -user : var
+    -users : var
+    +insert() : boolean
+    +delete() : boolean
+    +getAll() : List<Appointment>
+  }
+  class JdbcTemplateUsersRepository <<Repository>> {
+    -LOGGER : Logger
+    -row : ResultSet
+    -index : int
+    -id : var
+    -name : var
+    -template : NamedParameterJdbcTemplate
+    -dataSource : DataSource
+    -ids : Set<UUID>
+    -users : var
+    -user : User
+    +insert() : boolean
+  }
+}
+
+' --- Relatii ---
+TestTemplate --> JwtTokenManager
+ApplicationIT --> OpenIdMock
+ApplicationConfiguration --> AppointmentsNotifier
+ApplicationConfiguration --> AppointmentsRepository
+ApplicationConfiguration --> AppointmentsService
+ApplicationConfiguration --> UsersRepository
+ApplicationConfiguration --> KafkaTemplateAppointmentsNotifier
+JdbcTemplateAppointmentsRepository ..|> AppointmentsRepository
+JdbcTemplateAppointmentsRepository --> AppointmentsRepository
+JdbcTemplateUsersRepository ..|> UsersRepository
+JdbcTemplateUsersRepository --> UsersRepository
+KafkaTemplateAppointmentsNotifier ..|> AppointmentsNotifier
+KafkaTemplateAppointmentsNotifier --> AppointmentsNotifier
+KafkaTemplateAppointmentsNotifier --> Event
+AppointmentsController --|> BaseController
+AppointmentsController --> AppointmentsService
+UsersController --|> BaseController
+UsersController --> AppointmentsService
+
+@enduml

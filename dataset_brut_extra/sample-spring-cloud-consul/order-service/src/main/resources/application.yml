@@ -1,0 +1,37 @@
+spring:  
+  application:
+    name: order-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+  config:
+    import: optional:consul:localhost:8500
+
+logging:
+  file: logs/order.log
+  level:
+#    com.netflix: DEBUG
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  pattern:
+#    console: "%d{HH:mm:ss.SSS} %-5level %msg%n"
+    file: "%d{HH:mm:ss.SSS} %-5level %msg%n"
+    
+---
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceZone: zone1
+  config:
+    activate:
+      on-profile: zone1
+---
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceZone: zone2
+  config:
+    activate:
+      on-profile: zone2

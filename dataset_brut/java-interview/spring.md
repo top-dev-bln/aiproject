@@ -1,0 +1,308 @@
+# Spring
+- [How make spring service thread-safe?](#how-make-spring-service-thread-safe)
+- [What is bean?](#what-is-bean)
+- [How bean gets into the container?](#how-bean-gets-into-the-container)
+- [What are the possible bean scopes?](#what-are-the-possible-bean-scopes)
+- [How to inject a prototype bean into a singleton?](#how-to-inject-a-prototype-bean-into-a-singleton)
+- [What is the difference between @Component, @Service, @Repository, and @Controller?](#what-is-the-difference-between-component-service-repository-and-controller)
+- [What is the difference between @Service and @Bean](#what-is-the-difference-between-service-and-bean)
+- [How to call a method after bean initialization?](#how-to-call-a-method-after-bean-initialization)
+- [What is the default scope?](#what-is-the-default-scope)
+- [What are the possible ways of Dependency Injection?](#what-are-the-possible-ways-of-dependency-injection)
+- [Where better to use dependency injection via constructor? Where via setter?](#where-better-to-use-dependency-injection-via-constructor-where-via-setter)
+- [How does Spring detect circular dependencies?](#how-does-spring-detect-circular-dependencies)
+- [How to catch the exceptions for controllers?](#how-to-catch-the-exceptions-for-controllers)
+- [What is the difference between BeanFactory and FactoryBean?](#what-is-the-difference-between-beanfactory-and-factorybean)
+- [What is the difference Spring and Spring Boot?](#what-is-the-difference-spring-and-spring-boot)
+- [How to add own auto-configurations?](#how-to-add-own-auto-configurations)
+- [Where can be stored the list of auto-configurations in META-INF?](#where-can-be-stored-the-list-of-auto-configurations-in-meta-inf)
+- [What are the possible ways of configurations in Spring?](#what-are-the-possible-ways-of-configurations-in-spring)
+- [What is the lookup method?](#what-is-the-lookup-method)
+- [What is declarative transaction in Spring?](#what-is-declarative-transaction-in-spring)
+- [Are there any potential differences between the declarative way (using @Transactional annotation) and the programmatic way (using TransactionTemplate) of using transactions in Spring? Which is preferable?](#are-there-any-potential-differences-between-the-declarative-way-using-transactional-annotation-and-the-programmatic-way-using-transactiontemplate-of-using-transactions-in-spring-which-is-preferable)
+- [What are the types of proxy in Spring? Where does each type used?](#what-are-the-types-of-proxy-in-spring-where-does-each-type-used)
+- [What creates a proxy?](#what-creates-a-proxy)
+- [What is the self-invocation problem with Spring AOP proxies, and how does it affect features like @Transactional?](#what-is-the-self-invocation-problem-with-spring-aop-proxies-and-how-does-it-affect-features-like-transactional)
+- [What is environment?](#what-is-environment)
+- [How does auto-configuration work?](#how-does-auto-configuration-work)
+- [What is the difference between @Resource and @Autowired annotations?](#what-is-the-difference-between-resource-and-autowired-annotations)
+- [What is the feature in Spring Boot for setting up the dependencies?](#what-is-the-feature-in-spring-boot-for-setting-up-the-dependencies)
+- [Where does Spring Boot application begin?](#where-does-spring-boot-application-begin)
+- [What is the difference between @Controller and @RestController annotations?](#what-is-the-difference-between-controller-and-restcontroller-annotations)
+- [Does @Qualifier annotation can work only with bean name from @Component annotation?](#does-qualifier-annotation-can-work-only-with-bean-name-from-component-annotation)
+- [Is it required to put @Repository annotation in the case of extending JpaRepository?](#is-it-required-to-put-repository-annotation-in-the-case-of-extending-jparepository)
+- [How ResponseEntity can be used?](#how-responseentity-can-be-used)
+- [Does entity from @Transactional method can be updated without executing save method?](#does-entity-from-transactional-method-can-be-updated-without-executing-save-method)
+- [What is the difference between physical and logical transactions?](#what-is-the-difference-between-physical-and-logical-transactions)
+- [Is it possible to have only one transaction in the case of executing several @Transactional methods?](#is-it-possible-to-have-only-one-transaction-in-the-case-of-executing-several-transactional-methods)
+- [Anti-patterns of bean validation?](#anti-patterns-of-bean-validation)
+- [Is it good practice to define interface for Spring bean?](#is-it-good-practice-to-define-interface-for-spring-bean)
+- [How does @Transactional annotation work?](#how-does-transactional-annotation-work)
+- [How to use @NamedEntityGraph with Spring Data JPA?](#how-to-use-namedentitygraph-with-spring-data-jpa)
+
+## How make spring service thread-safe?
+There are several ways, probably too long to list here but here are a few examples:
++ Design your beans immutable: for example have no setters and only use constructor arguments to create a bean. There are other ways, such as Builder pattern, etc..
++ Design your beans stateless: for example a bean that does something can be just a function (or several). This bean in most cases can and should be stateless, which means it does not have any state, it only does things with function arguments you provide each time (on each invocation)
++ Design your beans persistent: which is a special case of "immutable", but has some very nice properties. Usually is used in functional programming, where Spring (at least yet) not as useful as in imperative world, but I have used them with Scala/Spring projects.
++ Design your beans with locks [last resort]: I would recommend against this unless you are working on a lower level library. The reason is we (humans) are not good thinking in terms of locks. Just the way we are raised and nurtured. Everything happens in parallel without us needing to "put that rain on pause, let me get an umbrella". Computers however are all about locks when you are talking "multiple things at the same time", hence there are some of us (exceptional people) who are doing their fair share and implementing libraries based on these locks. Most of other humans can just use these libraries and worry not about concurrency.
+###### Relative links:
++ http://dolszewski.com/spring/spring-bean-thread-safety-guide/
++ https://stackoverflow.com/questions/15745140/are-spring-objects-thread-safe
+
+## What is bean?
+The objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container. These beans are created with the configuration metadata that you supply to the container.
+###### Relative links:
++ https://www.tutorialspoint.com/spring/spring_bean_definition.htm
+
+## How bean gets into the container?
+The IoC container receives metadata from either an XML file, Java annotations, or Java code. The container gets its instructions on what objects to instantiate, configure, and assemble from simple Plain Old Java Objects (POJO) by reading the configuration metadata provided. These created objects through this process called Spring Beans.
+
+The responsibilities of IoC container are:
++ Instantiating the bean
++ Wiring the beans together
++ Configuring the beans
++ Managing the bean’s entire life-cycle
+###### Relative links:
++ https://www.zoltanraffai.com/blog/how-does-spring-work-internally/
+
+## What are the possible bean scopes?
++ ***singleton.*** Scopes a single bean definition to a single object instance per Spring IoC container.
++ ***prototype.*** Scopes a single bean definition to any number of object instances.
++ ***request.***  Scopes a single bean definition to the lifecycle of a single HTTP request; that is each and every HTTP request will have its own instance of a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring ApplicationContext.
++ ***session.*** Scopes a single bean definition to the lifecycle of a HTTP Session. Only valid in the context of a web-aware Spring `ApplicationContext`.
++ ***application.*** Scopes a single bean definition to the lifecycle of a `ServletContext`. Only valid in the context of a web-aware Spring `ApplicationContext`.
++ ***websocket.*** Scopes a single bean definition to the lifecycle of a `WebSocket`. Only valid in the context of a web-aware Spring `ApplicationContext`.
+###### Relative links:
++ https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html
+
+## How to inject a prototype bean into a singleton?
+Direct injection makes the singleton bean keep a single prototype instance, so it's not recreated each time. To get a new prototype bean on every access, use one of these methods:
++ ObjectFactory / Provider – Inject ObjectFactory<T> or Provider<T> and call getObject()/get() to fetch a new instance each time.
++ @Lookup – Annotate a method with @Lookup; Spring will override it to return a new prototype bean every time.
++ Use @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS).
+###### Relative links:
++ https://dev.to/anh_trntun_4732cf3d299/injecting-a-prototype-bean-into-a-singleton-in-spring-328g
++ https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-method-injection.html
+
+## What is the difference between @Component, @Service, @Repository, and @Controller?
+The main difference is their specialized roles in a layered architecture:
++ `@Component` — A generic stereotype for any Spring-managed bean.
++ `@Service` — A specialization of `@Component` for the business logic layer. Using it over `@Component` is better practice for service classes as it clarifies intent and makes them ideal targets for aspects.
++ `@Repository` — A specialization of `@Component` for the data access layer that also provides automatic exception translation.
++ `@Controller` — A specialization of `@Component` for the presentation layer, used alongside `@RequestMapping` to handle HTTP requests
+###### Relative links:
++ https://docs.spring.io/spring/reference/core/beans/classpath-scanning.html#beans-stereotype-annotations
+
+## What-is-the-difference-between-service-and-bean
+@Bean annotation is method-level and is used in configuration classes to fine tune special bean and add it to IoC container. @Service annotation is class-level and is used to show Spring that this class has to be managed by IoC container. 
+
+## How to call a method after bean initialization?
++ afterPropertiesSet method;
++ annotation @PostConstruct;
++ init-method attribute;
++ BeanPostProcessor;
+###### Relative links:
++ https://codippa.com/callback-methods-in-spring-beans/
++ http://findnerd.com/list/view/How-to-call-a-method-after-bean-initialization-is-complete/7530/
+
+## What is the default scope?
+singleton
+###### Relative links:
++ https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html
+
+## What are the possible ways of Dependency Injection?
++ Constructor-Based Dependency Injection;
++ Setter-Based Dependency Injection;
++ Field-Based Dependency Injection;
+###### Relative links:
++ https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring
++ https://www.javacodegeeks.com/2019/02/field-setter-constructor-injection.html
+
+## Where better to use dependency injection via constructor? Where via setter?
++ required dependencies via constructor;
++ optional dependencies via setter;
+###### Relative links:
++ https://www.dariawan.com/tutorials/spring/constructor-vs-setter-dependency-injection/
+
+## How does Spring detect circular dependencies?
+Spring Boot manages bean creation through the `ApplicationContext`, which acts as a container for all defined beans. When the application starts, Spring Boot scans the classpath for components marked with `@Component`, `@Service`, `@Repository`, or those manually registered using `@Bean` in a `@Configuration` class. As it processes these beans, it builds a dependency graph that determines the relationships between them.
+
+During initialization, Spring Boot follows a structured lifecycle where it resolves dependencies before fully creating a bean. It does this using a singleton factory, which temporarily holds partially created beans to handle dependencies between them. However, if two beans require each other during instantiation, Spring Boot detects a cycle and throws a `BeanCurrentlyInCreationException`.
+###### Relative links:
++ https://medium.com/@AlexanderObregon/the-mechanics-behind-how-spring-boot-handles-dependency-cycles-in-bean-creation-e57c08a5692d
+
+## How to catch the exceptions for controllers?
+***ExceptionHandler*** is a Spring annotation that provides a mechanism to treat exceptions that are thrown during execution of handlers (Controller operations). This annotation, if used on methods of controller classes, will serve as the entry point for handling exceptions thrown within this controller only. Altogether, the most common way is to use @ExceptionHandler on methods of @ControllerAdvice classes so that the exception handling will be applied globally or to a subset of controllers.
+###### Relative links:
++ https://www.toptal.com/java/spring-boot-rest-api-error-handling
+
+## What is the difference between BeanFactory and FactoryBean?
++ The ***BeanFactory*** is an interface in Spring and is a factory class for managing beans. The BeanFactory is the core of the IOC container. The accusations include: instantiating, configuring objects in the application and establishing dependencies between them. The ApplicationContext is an advanced version of the BeanFactory.
++ ***FactoryBean*** is a way to customize the instantiation of the bean, through the implementation of the FactoryBean, complete the custom bean instantiation details. For example, the FactoryBean proxy object can be used to intercept all its methods to form AOP-like functions. Using FactoryBean avoids the need to configure various properties in the XML file, which is more flexible, but you need to encode the instantiation of the class in the implementation class of the FactoryBean.
+###### Relative links:
++ http://www.programmersought.com/article/6987917473/
+
+## What is the difference Spring and Spring Boot?
++ Spring Boot does all of those using AutoConfiguration and will take care of all the internal dependencies that your application needs — all you need to do is run your application. Spring Boot will auto-configure with the Dispatcher Servlet, if Spring jar  is in the class path. It will auto-configue to the datasource, if Hibernate jar  is in the class path. Spring Boot gives us a pre-configured set of Starter Projects to be added as a dependency in our project.
++ During web-application development, we would need the jars that we want to use, which versions of the jars to use, and how to connect them together. All web applications have similar needs, for example, Spring MVC, Jackson Databind, Hibernate core, and Log4j (for logging). So, we had to choose the compatible versions of all these jars. In order to decrease the complexity, Spring Boot has introduced what we call Spring Boot Starters.
+###### Relative links:
++ https://dzone.com/articles/understanding-the-basics-of-spring-vs-spring-boot
++ https://dzone.com/articles/spring-vs-spring-boot
+
+## How to add own auto-configurations?
++ You need to opt-in to auto-configuration by adding the @EnableAutoConfiguration or @SpringBootApplication annotations to one of your @Configuration classes.
++ Spring Boot checks for the presence of a META-INF/spring.factories file within your published jar. The file should list your configuration classes under the EnableAutoConfiguration key, as shown in the following example:
+###### Relative links:
++ https://www.baeldung.com/spring-boot-custom-auto-configuration
++ https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-configuration.html
+
+## Where can be stored the list of auto-configurations in META-INF?
+META-INF/spring.factories
+###### Relative links:
++ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html
+
+## What are the possible ways of configurations in Spring?
++ xml-based configuration, when you describe configuration in xml file;
++ java-based configuration, when configuration is Java class, marked with specific annotations;
++ groovy-based configuration, when configuration is file with Groovy code;
+###### Relative links:
++ https://stackoverflow.com/questions/35807056/how-many-ways-are-there-to-configure-the-spring-framework-what-are-the-differen
+
+## What is the lookup method?
+The getter method will return us the reference that is been set but suppose you want a new instance of the dependent bean each time you invoke the getter method
+###### Relative links:
++ https://www.javacodegeeks.com/2015/05/spring-lookup-method-example.html
+
+## What is declarative transaction in Spring?
+1. Allows us to manage transactions through configuration.
+2. This means separating transaction logic with business logic.
+3. We use annotations (Or XML files) to manage transactions.
+4. Easy to maintain. Boilerplate is kept away from business logic.
+5. Preferred when working with large amount of Transaction logic.
+###### Relative links:
++ https://stackoverflow.com/questions/11222103/declarative-or-programmatic-transaction-in-spring
+
+## Are there any potential differences between the declarative way (using @Transactional annotation) and the programmatic way (using TransactionTemplate) of using transactions in Spring? Which is preferable?
+The declarative way is more recommended because it separates transaction management from business logic. One difference is transaction scope: the programmatic way gives you the ability to define a dedicated part of the code for a transaction. 
+Another difference, as a continuation of the previous point, is exception handling. In the programmatic way, exceptions outside the transaction block do not affect the transaction.
+###### Relative links:
++ https://docs.spring.io/spring-framework/reference/data-access/transaction/tx-decl-vs-prog.html
++ https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/rolling-back.html
++ https://smattme.com/posts/diff-between-transactional-and-transaction-template/
+
+## What are the types of proxy in Spring? Where does each type used?
+Spring uses two main proxy types:
+- **JDK Dynamic Proxies** - Used when beans implement interfaces. JDK Dynamic Proxies use standard Java reflection, making it straightforward, generally more lightweight compared to CGLIB proxies.
+- **CGLIB Proxies** - Used when beans don't implement interfaces or when forced via configuration. CGLIB Proxies can only proxy non-final classes and non-final methods. Due to dynamic subclass creation, this may involve more resource consumption.
+###### Relative links:
++ https://docs.spring.io/spring-framework/reference/core/aop/proxying.html
++ https://freedium-mirror.cfd/https://medium.com/@mahammadkhalilov/understanding-spring-proxies-jdk-dynamic-proxy-vs-cglib-proxy-7d76bf5b85ac
+
+## What creates a proxy?
+After the bean instances are created they are run through a series of BeanPostProcessors - Based on the AOP advice, the proxies are created by a BeanPostProcessor called AnnotationAwareAspectJAutoProxyCreator (or possibly its subclasses)
+###### Relative links:
++ https://stackoverflow.com/questions/12648394/when-does-spring-creates-proxies-in-the-beans-lifecycle
++ https://dzone.com/articles/spring-pitfalls-proxying
++ https://ntsim.uk/posts/a-closer-look-at-spring-proxies
+
+## What is the self-invocation problem with Spring AOP proxies, and how does it affect features like @Transactional?
+Self-invocation occurs when a method in a Spring-managed bean calls another method within the same bean. The problem is that AOP proxies don't intercept these internal calls. To address that, you have the following options:
+- Avoid self invocation - the best approach
+- Inject a self reference
+- Use `AopContext.currentProxy()` - not recommended
+###### Relative links:
+- https://docs.spring.io/spring-framework/reference/core/aop/proxying.html#aop-understanding-aop-proxies
+
+## What is environment?
+Interface representing the environment in which the current application is running. Models two key aspects of the application environment: profiles and properties. Methods related to property access are exposed via the PropertyResolver superinterface.
+
+A profile is a named, logical group of bean definitions to be registered with the container only if the given profile is active. Beans may be assigned to a profile whether defined in XML or via annotations; see the spring-beans 3.1 schema or the @Profile annotation for syntax details. The role of the Environment object with relation to profiles is in determining which profiles (if any) are currently active, and which profiles (if any) should be active by default.
+
+Properties play an important role in almost all applications, and may originate from a variety of sources: properties files, JVM system properties, system environment variables, JNDI, servlet context parameters, ad-hoc Properties objects, Maps, and so on. The role of the environment object with relation to properties is to provide the user with a convenient service interface for configuring property sources and resolving properties from them.
+###### Relative links:
+- https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html
+
+## How does auto-configuration work?
+Under the hood, auto-configuration is implemented with standard @Configuration classes. Additional @Conditional annotations are used to constrain when the auto-configuration should apply. Usually, auto-configuration classes use @ConditionalOnClass and @ConditionalOnMissingBean annotations. This ensures that auto-configuration applies only when relevant classes are found and when you have not declared your own @Configuration.
+###### Relative links:
+- https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html
+
+## What is the difference between @Resource and @Autowired annotations?
+- @Resource means get me a known resource by name. The name is extracted from the name of the annotated setter or field, or it is taken from the name-Parameter.
+- @Inject or @Autowired try to wire in a suitable other component by type.
+###### Relative links:
+- https://stackoverflow.com/questions/4093504/resource-vs-autowired
+
+## What is the feature in Spring Boot for setting up the dependencies?
+Spring Boot Starters is one of the major key features or components of Spring Boot Framework. The main responsibility of Spring Boot Starter is to combine a group of common or related dependencies into single dependencies.
+###### Relative links:
+- https://www.journaldev.com/7989/key-components-and-internals-of-spring-boot-framework
+
+## Where does Spring Boot application begin?
+Spring Boot application begins from dependency to Spring Boot Starter.
+###### Relative links:
+- https://spring.io/guides/gs/spring-boot/
+
+## What is the difference between @Controller and @RestController annotations?
+The job of @Controller is to create a Map of model object and find a view but @RestController simply return the object and object data is directly written into HTTP response as JSON or XML.
+
+This can also be done with traditional @Controller and use @ResponseBody annotation but since this is the default behavior of RESTful Web services, Spring introduced @RestController which combined the behavior of @Controller and @ResponseBody together.
+###### Relative links:
+- https://javarevisited.blogspot.com/2017/08/difference-between-restcontroller-and-controller-annotations-spring-mvc-rest.html#ixzz61TUwViPi
+
+## Does @Qualifier annotation can work only with bean name from @Component annotation?
+@Qualifier annotation can be used on classes instead of specifying bean name in @Component annotation.
+###### Relative links:
+- https://www.baeldung.com/spring-qualifier-annotation
+
+## Is it required to put @Repository annotation in the case of extending JpaRepository?
+It is indeed not necessary to put the @Repository annotation on interfaces that extend JpaRepository; Spring recognises the repositories by the fact that they extend one of the predefined Repository interfaces.
+###### Relative links:
+- https://stackoverflow.com/questions/44069367/repository-not-necessary-when-implementing-jparepository
+
+## How ResponseEntity can be used?
+ResponseEntity is meant to represent the entire HTTP response. You can control anything that goes into it: status code, headers, and body.
+###### Relative links:
+- https://stackoverflow.com/questions/26549379/when-use-responseentityt-and-restcontroller-for-spring-restful-applications
+
+## Does entity from @Transactional method can be updated without executing save method?
+Yes, because hibernate will automatically detect changes made to persistent entities and update the database accordingly.
+###### Relative links:
+- https://stackoverflow.com/questions/8190926/transactional-saves-without-calling-update-method
+
+## What is the difference between physical and logical transactions?
+Physical Transactions are actual JDBC transactions.
+
+Logical Transactions are the (potentially nested) `@Transactional`-annotated (Spring) methods
+###### Relative links:
+- https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth
+
+## Is it possible to have only one transaction in the case of executing several @Transactional methods?
+Yes, it depends on the propagation attribute. ***PROPAGATION_REQUIRED*** - the same transaction for both methods, ***PROPAGATION_REQUIRES_NEW*** starts a new transaction.
+###### Relative links:
+- https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#tx-propagation
+
+## Anti-patterns of bean validation?
+- Anti-Pattern #1: Validating Only in the Persistence Layer;
+- Anti-Pattern #2: Validating with a Shotgun;
+- Anti-Pattern #3: Using Validation Groups for Use Case Validations;
+###### Relative links:
+- https://reflectoring.io/bean-validation-anti-patterns/
+
+## Is it good practice to define interface for Spring bean?
+###### Relative links:
+- http://stackoverflow.com/questions/5288153/using-spring-to-wire-directly-a-concrete-class
+- https://octoperf.com/blog/2016/10/27/impl-classes-are-evil/
+- https://dzone.com/articles/spring-pitfalls-proxying
+
+## How does @Transactional annotation work?
+The `@Transactional` annotation in Spring works by using AOP to wrap the annotated method (or class) in a transactional proxy. When the method is called, Spring either starts a new transaction or joins an existing one (based on propagation settings), executes the method logic, and then commits the transaction if no exception occurs. If a runtime exception (or a specified checked exception) is thrown, Spring rolls back the transaction. The actual transaction management is delegated to a `PlatformTransactionManager`.
+###### Relative links:
+- https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth
+
+## How to use @NamedEntityGraph with Spring Data JPA?
+###### Relative links:
+- https://www.baeldung.com/spring-data-jpa-named-entity-graphs
+
+[Home Page](README.md)

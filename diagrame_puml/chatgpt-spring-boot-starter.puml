@@ -1,0 +1,192 @@
+@startuml
+
+package io.github.flashvayne.chatgpt.autoconfig {
+  class ChatgptAutoConfiguration {
+    -chatgptProperties : ChatgptProperties
+    +chatgptService() : ChatgptService
+  }
+}
+
+package io.github.flashvayne.chatgpt.dto {
+  class ChatRequest {
+    -model : String
+    -prompt : String
+    -maxTokens : Integer
+    -temperature : Double
+    -topP : Double
+    -suffix : String
+    -n : Integer
+    -stream : Boolean
+    -logprobs : Integer
+    -echo : Boolean
+  }
+  class ChatResponse {
+    -id : String
+    -object : String
+    -created : LocalDate
+    -model : String
+    -choices : List<Choice>
+    -usage : Usage
+  }
+  class Choice {
+    -text : String
+    -index : Integer
+    -logprobs : String
+    -finishReason : String
+  }
+  class Usage {
+    -promptTokens : Integer
+    -completionTokens : Integer
+    -totalTokens : Integer
+  }
+}
+
+package io.github.flashvayne.chatgpt.dto.chat {
+  class MultiChatResponse {
+    -id : String
+    -object : String
+    -created : LocalDate
+    -model : String
+    -choices : List<MultiResponseChoice>
+    -usage : Usage
+  }
+  class MultiChatRequest {
+    -model : String
+    -messages : List<MultiChatMessage>
+    -maxTokens : Integer
+    -temperature : Double
+    -topP : Double
+    -n : Integer
+    -stream : Boolean
+    -stop : String
+    -presencePenalty : Double
+    -frequencyPenalty : Double
+  }
+  class MultiResponseChoice {
+    -message : MultiChatMessage
+    -finishReason : String
+    -index : Integer
+  }
+  class MultiChatMessage {
+    -role : String
+    -content : String
+  }
+}
+
+package io.github.flashvayne.chatgpt.dto.image {
+  class ImageResponse {
+    -created : Date
+    -data : List<ImageData>
+  }
+  class ImageRequest {
+    -prompt : String
+    -n : Integer
+    -size : String
+    -responseFormat : String
+    -user : String
+  }
+  class ImageData {
+    -url : String
+    -b64Json : String
+  }
+  enum ImageFormat {
+    -format : String
+    +getFormat() : String
+  }
+  enum ImageSize {
+    -size : String
+    +getSize() : String
+  }
+}
+
+package io.github.flashvayne.chatgpt.exception {
+  class ChatgptException {
+  }
+}
+
+package io.github.flashvayne.chatgpt.property {
+  class MultiChatProperties {
+    -url : String
+    -model : String
+    -maxTokens : Integer
+    -temperature : Double
+    -topP : Double
+    +getUrl() : String
+    +setUrl() : void
+    +getModel() : String
+    +setModel() : void
+    +getMaxTokens() : Integer
+    +setMaxTokens() : void
+    +getTemperature() : Double
+    +setTemperature() : void
+  }
+  class ImageProperties {
+    -url : String
+    +getUrl() : String
+    +setUrl() : void
+  }
+  class ChatgptProperties {
+    -apiKey : String
+    -url : String
+    -model : String
+    -maxTokens : Integer
+    -temperature : Double
+    -topP : Double
+    -multi : MultiChatProperties
+    -image : ImageProperties
+    +getApiKey() : String
+    +setApiKey() : void
+    +getUrl() : String
+    +setUrl() : void
+    +getModel() : String
+    +setModel() : void
+    +getMaxTokens() : Integer
+    +setMaxTokens() : void
+  }
+}
+
+package io.github.flashvayne.chatgpt.service {
+  interface ChatgptService {
+  }
+}
+
+package io.github.flashvayne.chatgpt.service.impl {
+  class DefaultChatgptService <<Service>> {
+    -chatgptProperties : ChatgptProperties
+    -AUTHORIZATION : String
+    -restTemplate : RestTemplate
+    +sendMessage() : String
+    +sendChatRequest() : ChatResponse
+    +multiChat() : String
+    +multiChatRequest() : MultiChatResponse
+    +imageGenerate() : String
+    +imageGenerate() : List<String>
+    +imageGenerateRequest() : ImageResponse
+  }
+}
+
+' --- Relatii ---
+MultiChatResponse --> Usage
+ChatgptAutoConfiguration --> ChatgptProperties
+ChatgptAutoConfiguration --> ChatgptService
+ChatgptAutoConfiguration --> DefaultChatgptService
+ChatgptService --> ChatRequest
+ChatgptService --> ChatResponse
+ChatgptService --> MultiChatMessage
+ChatgptService --> MultiChatRequest
+ChatgptService --> MultiChatResponse
+ChatgptService --> ImageFormat
+ChatgptService --> ImageRequest
+ChatgptService --> ImageResponse
+ChatgptService --> ImageSize
+DefaultChatgptService ..|> ChatgptService
+DefaultChatgptService --> ChatRequest
+DefaultChatgptService --> MultiChatMessage
+DefaultChatgptService --> MultiChatRequest
+DefaultChatgptService --> MultiChatResponse
+DefaultChatgptService --> ChatgptException
+DefaultChatgptService --> ChatgptProperties
+DefaultChatgptService --> ChatResponse
+DefaultChatgptService --> ChatgptService
+
+@enduml

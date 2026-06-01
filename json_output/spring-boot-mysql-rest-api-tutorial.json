@@ -1,0 +1,26 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the search, recruitment domain. It serves User as its primary actors. The main business capabilities include index, note. Core business data revolves around Note.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage index operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage note operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "NoteController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    IndexController[\"IndexController\"]\n    NoteController[\"NoteController\"]\n  end\n  subgraph Data_Access\n    Note[\"Note\"]\n    NoteRepository[\"NoteRepository\"]\n  end"
+  }
+}

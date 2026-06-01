@@ -1,0 +1,415 @@
+@startuml
+package com.example.service.user.adapter.entrypoint.api; {
+class ChangeUserEndpointAdapter {
+}
+
+class FindUserEndpointAdapter {
+}
+
+class UserController {
+}
+
+class UserDtoMapper {
+}
+
+class ChangeUserEndpointAdapterTest {
+}
+
+class FindUserEndpointAdapterTest {
+}
+
+class UserControllerIntegrationTest {
+}
+
+class UserDtoMapperTest {
+}
+
+}
+
+package com.example.service.user.adapter.entrypoint.api.model; {
+class SaveUserBodyDto {
+}
+
+class UserDto {
+}
+
+}
+
+package com.example.service.user.adapter.persistence.model; {
+class UserData {
+}
+
+}
+
+package com.example.service.user.adapter.persistence; {
+class ReadUserAdapter {
+}
+
+class UserJpaMapper {
+}
+
+class UserRepository {
+}
+
+class WriteUserAdapter {
+}
+
+class ReadUserAdapterTest {
+}
+
+class UserJpaMapperTest {
+}
+
+class UserRepositoryTest {
+}
+
+class WriteUserAdapterTest {
+}
+
+}
+
+package com.example.service.user.application.port.entrypoint.api; {
+class ChangeUserEndpointPort {
+}
+
+class FindUserEndpointPort {
+}
+
+}
+
+package com.example.service.user.application.port.persistence; {
+class ReadUserPort {
+}
+
+class WriteUserPort {
+}
+
+}
+
+package com.example.service.user.application.service; {
+class ChangeExistingUserService {
+}
+
+class DeleteUsersByIdService {
+}
+
+class FindUserService {
+}
+
+class SubmitNewUserService {
+}
+
+class ChangeExistingUserServiceTest {
+}
+
+class DeleteUsersByIdServiceTest {
+}
+
+class FindUserServiceTest {
+}
+
+class SubmitNewUserServiceTest {
+}
+
+}
+
+package com.example.service.user.application.usecase; {
+class ChangeExistingUserUseCase {
+}
+
+class DeleteUsersByIdUseCase {
+}
+
+class FindAllUsersUseCase {
+}
+
+class FindUserByIdUseCase {
+}
+
+class SubmitNewUserUseCase {
+}
+
+}
+
+package com.example.service.user.domain; {
+class FullName {
+}
+
+class Phone {
+}
+
+class User {
+}
+
+class UserFunctions {
+}
+
+class UserId {
+}
+
+class PhoneTest {
+}
+
+class UserFunctionsTest {
+}
+
+}
+
+package com.example.service.user.infrastructure.annotations; {
+class Adapter {
+}
+
+class Mapper {
+}
+
+}
+
+package com.example.service.user.infrastructure.validator; {
+class ObjectValidator {
+}
+
+class ObjectValidatorTest {
+}
+
+}
+
+package com.example.service.user; {
+class UserSpringBootApplication {
+}
+
+}
+
+package com.example.service.user.architecture; {
+class DomainArchitectureTest {
+}
+
+class LayersArchitectureTest {
+}
+
+}
+
+package com.example.service.user.utils; {
+class DataFaker {
+}
+
+}
+
+ChangeUserEndpointAdapter -- SaveUserBodyDto
+ChangeUserEndpointAdapter -- UserDto
+ChangeUserEndpointAdapter -- UserDtoMapper
+ChangeUserEndpointAdapter -- ChangeUserEndpointPort
+ChangeUserEndpointAdapter -- ChangeExistingUserUseCase
+ChangeUserEndpointAdapter -- DeleteUsersByIdUseCase
+ChangeUserEndpointAdapter -- SubmitNewUserUseCase
+ChangeUserEndpointAdapter -- User
+ChangeUserEndpointAdapter -- UserId
+ChangeUserEndpointAdapter -- Adapter
+ChangeUserEndpointAdapter -- Mapper
+FindUserEndpointAdapter -- UserDto
+FindUserEndpointAdapter -- UserDtoMapper
+FindUserEndpointAdapter -- FindUserEndpointPort
+FindUserEndpointAdapter -- FindAllUsersUseCase
+FindUserEndpointAdapter -- FindUserByIdUseCase
+FindUserEndpointAdapter -- User
+FindUserEndpointAdapter -- UserId
+FindUserEndpointAdapter -- Adapter
+FindUserEndpointAdapter -- Mapper
+SaveUserBodyDto -- User
+UserDto -- User
+UserController -- ChangeUserEndpointAdapter
+UserController -- FindUserEndpointAdapter
+UserController -- SaveUserBodyDto
+UserController -- UserDto
+UserController -- User
+UserController -- Adapter
+UserDtoMapper -- SaveUserBodyDto
+UserDtoMapper -- UserDto
+UserDtoMapper -- FullName
+UserDtoMapper -- Phone
+UserDtoMapper -- User
+UserDtoMapper -- UserFunctions
+UserDtoMapper -- UserId
+UserDtoMapper -- Mapper
+UserData -- User
+ReadUserAdapter -- UserData
+ReadUserAdapter -- UserJpaMapper
+ReadUserAdapter -- UserRepository
+ReadUserAdapter -- ReadUserPort
+ReadUserAdapter -- User
+ReadUserAdapter -- UserFunctions
+ReadUserAdapter -- UserId
+ReadUserAdapter -- Adapter
+ReadUserAdapter -- Mapper
+UserJpaMapper -- UserData
+UserJpaMapper -- FullName
+UserJpaMapper -- Phone
+UserJpaMapper -- User
+UserJpaMapper -- UserFunctions
+UserJpaMapper -- UserId
+UserJpaMapper -- Mapper
+UserRepository -- UserData
+UserRepository -- User
+WriteUserAdapter -- UserData
+WriteUserAdapter -- UserJpaMapper
+WriteUserAdapter -- UserRepository
+WriteUserAdapter -- WriteUserPort
+WriteUserAdapter -- User
+WriteUserAdapter -- UserFunctions
+WriteUserAdapter -- UserId
+WriteUserAdapter -- Adapter
+WriteUserAdapter -- Mapper
+ChangeUserEndpointPort -- SaveUserBodyDto
+ChangeUserEndpointPort -- UserDto
+ChangeUserEndpointPort -- User
+FindUserEndpointPort -- UserDto
+FindUserEndpointPort -- User
+ReadUserPort -- User
+ReadUserPort -- UserId
+WriteUserPort -- User
+WriteUserPort -- UserId
+ChangeExistingUserService -- WriteUserPort
+ChangeExistingUserService -- ChangeExistingUserUseCase
+ChangeExistingUserService -- User
+ChangeExistingUserService -- ObjectValidator
+DeleteUsersByIdService -- ReadUserPort
+DeleteUsersByIdService -- WriteUserPort
+DeleteUsersByIdService -- DeleteUsersByIdUseCase
+DeleteUsersByIdService -- User
+DeleteUsersByIdService -- UserId
+DeleteUsersByIdService -- ObjectValidator
+FindUserService -- ReadUserPort
+FindUserService -- FindAllUsersUseCase
+FindUserService -- FindUserByIdUseCase
+FindUserService -- User
+FindUserService -- UserId
+FindUserService -- ObjectValidator
+SubmitNewUserService -- ReadUserPort
+SubmitNewUserService -- WriteUserPort
+SubmitNewUserService -- SubmitNewUserUseCase
+SubmitNewUserService -- User
+SubmitNewUserService -- ObjectValidator
+ChangeExistingUserUseCase -- User
+DeleteUsersByIdUseCase -- User
+DeleteUsersByIdUseCase -- UserId
+FindAllUsersUseCase -- User
+FindUserByIdUseCase -- User
+FindUserByIdUseCase -- UserId
+SubmitNewUserUseCase -- User
+User -- FullName
+User -- Phone
+User -- UserId
+UserFunctions -- FullName
+UserFunctions -- Phone
+UserFunctions -- User
+UserSpringBootApplication -- User
+ChangeUserEndpointAdapterTest -- ChangeUserEndpointAdapter
+ChangeUserEndpointAdapterTest -- SaveUserBodyDto
+ChangeUserEndpointAdapterTest -- UserDto
+ChangeUserEndpointAdapterTest -- UserDtoMapper
+ChangeUserEndpointAdapterTest -- UserData
+ChangeUserEndpointAdapterTest -- ChangeExistingUserUseCase
+ChangeUserEndpointAdapterTest -- DeleteUsersByIdUseCase
+ChangeUserEndpointAdapterTest -- SubmitNewUserUseCase
+ChangeUserEndpointAdapterTest -- User
+ChangeUserEndpointAdapterTest -- UserId
+ChangeUserEndpointAdapterTest -- Adapter
+ChangeUserEndpointAdapterTest -- Mapper
+ChangeUserEndpointAdapterTest -- DataFaker
+FindUserEndpointAdapterTest -- FindUserEndpointAdapter
+FindUserEndpointAdapterTest -- UserDto
+FindUserEndpointAdapterTest -- UserDtoMapper
+FindUserEndpointAdapterTest -- FindAllUsersUseCase
+FindUserEndpointAdapterTest -- FindUserByIdUseCase
+FindUserEndpointAdapterTest -- User
+FindUserEndpointAdapterTest -- UserId
+FindUserEndpointAdapterTest -- Adapter
+FindUserEndpointAdapterTest -- Mapper
+FindUserEndpointAdapterTest -- DataFaker
+UserControllerIntegrationTest -- SaveUserBodyDto
+UserControllerIntegrationTest -- UserController
+UserControllerIntegrationTest -- UserData
+UserControllerIntegrationTest -- UserRepository
+UserControllerIntegrationTest -- Phone
+UserControllerIntegrationTest -- User
+UserControllerIntegrationTest -- Mapper
+UserControllerIntegrationTest -- DataFaker
+UserDtoMapperTest -- SaveUserBodyDto
+UserDtoMapperTest -- UserDto
+UserDtoMapperTest -- UserDtoMapper
+UserDtoMapperTest -- Phone
+UserDtoMapperTest -- User
+UserDtoMapperTest -- UserFunctions
+UserDtoMapperTest -- UserId
+UserDtoMapperTest -- Mapper
+UserDtoMapperTest -- DataFaker
+ReadUserAdapterTest -- UserData
+ReadUserAdapterTest -- ReadUserAdapter
+ReadUserAdapterTest -- UserJpaMapper
+ReadUserAdapterTest -- UserRepository
+ReadUserAdapterTest -- User
+ReadUserAdapterTest -- UserFunctions
+ReadUserAdapterTest -- UserId
+ReadUserAdapterTest -- Adapter
+ReadUserAdapterTest -- Mapper
+ReadUserAdapterTest -- DataFaker
+UserJpaMapperTest -- UserData
+UserJpaMapperTest -- UserJpaMapper
+UserJpaMapperTest -- Phone
+UserJpaMapperTest -- User
+UserJpaMapperTest -- UserFunctions
+UserJpaMapperTest -- Mapper
+UserJpaMapperTest -- DataFaker
+UserRepositoryTest -- UserData
+UserRepositoryTest -- UserRepository
+UserRepositoryTest -- User
+UserRepositoryTest -- DataFaker
+WriteUserAdapterTest -- UserData
+WriteUserAdapterTest -- UserJpaMapper
+WriteUserAdapterTest -- UserRepository
+WriteUserAdapterTest -- WriteUserAdapter
+WriteUserAdapterTest -- User
+WriteUserAdapterTest -- UserFunctions
+WriteUserAdapterTest -- UserId
+WriteUserAdapterTest -- Adapter
+WriteUserAdapterTest -- Mapper
+WriteUserAdapterTest -- DataFaker
+ChangeExistingUserServiceTest -- WriteUserPort
+ChangeExistingUserServiceTest -- ChangeExistingUserService
+ChangeExistingUserServiceTest -- User
+ChangeExistingUserServiceTest -- UserId
+ChangeExistingUserServiceTest -- DataFaker
+DeleteUsersByIdServiceTest -- ReadUserPort
+DeleteUsersByIdServiceTest -- WriteUserPort
+DeleteUsersByIdServiceTest -- DeleteUsersByIdService
+DeleteUsersByIdServiceTest -- User
+DeleteUsersByIdServiceTest -- UserId
+DeleteUsersByIdServiceTest -- DataFaker
+FindUserServiceTest -- ReadUserPort
+FindUserServiceTest -- FindUserService
+FindUserServiceTest -- User
+FindUserServiceTest -- UserId
+FindUserServiceTest -- DataFaker
+SubmitNewUserServiceTest -- ReadUserPort
+SubmitNewUserServiceTest -- WriteUserPort
+SubmitNewUserServiceTest -- SubmitNewUserService
+SubmitNewUserServiceTest -- User
+SubmitNewUserServiceTest -- UserId
+SubmitNewUserServiceTest -- DataFaker
+LayersArchitectureTest -- Adapter
+LayersArchitectureTest -- Mapper
+PhoneTest -- Phone
+UserFunctionsTest -- FullName
+UserFunctionsTest -- Phone
+UserFunctionsTest -- User
+UserFunctionsTest -- UserFunctions
+UserFunctionsTest -- UserId
+UserFunctionsTest -- DataFaker
+ObjectValidatorTest -- ObjectValidator
+DataFaker -- SaveUserBodyDto
+DataFaker -- UserDto
+DataFaker -- UserData
+DataFaker -- FullName
+DataFaker -- Phone
+DataFaker -- User
+DataFaker -- UserId
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+
+package pl.piomin.service.blockchain {
+  class BlockchainTest {
+    -LOGGER : Logger
+    -clientEthereum : GenericContainer
+  }
+  class BlockchainApp {
+    -LOGGER : Logger
+    -web3j : Web3j
+    +main() : void
+    +listen() : void
+  }
+}
+
+package pl.piomin.service.blockchain.config {
+  class Web3jAutoConfiguration {
+    -LOG : Logger
+    -properties : Web3jProperties
+    +web3j() : Web3j
+    +admin() : Admin
+  }
+  class Web3jProperties {
+    -WEB3J_PREFIX : String
+    -clientAddress : String
+    -adminClient : Boolean
+    -networkId : String
+    -httpTimeoutSeconds : Long
+    +getClientAddress() : String
+    +setClientAddress() : void
+    +isAdminClient() : Boolean
+    +setAdminClient() : void
+    +getNetworkId() : String
+    +setNetworkId() : void
+    +getHttpTimeoutSeconds() : Long
+    +setHttpTimeoutSeconds() : void
+  }
+}
+
+package pl.piomin.service.blockchain.controller {
+  class BlockchainController <<Controller>> {
+    -service : BlockchainService
+    +execute() : BlockchainTransaction
+  }
+}
+
+package pl.piomin.service.blockchain.model {
+  class BlockchainTransaction {
+    -id : String
+    -fromId : int
+    -toId : int
+    -value : long
+    -accepted : boolean
+    +getId() : String
+    +setId() : void
+    +getFromId() : int
+    +setFromId() : void
+    +getToId() : int
+    +setToId() : void
+    +getValue() : long
+    +setValue() : void
+  }
+}
+
+package pl.piomin.service.blockchain.service {
+  class BlockchainService <<Service>> {
+    -LOGGER : Logger
+    -web3j : Web3j
+    +process() : BlockchainTransaction
+  }
+}
+
+' --- Relatii ---
+BlockchainTest --> BlockchainTransaction
+BlockchainApp --> BlockchainService
+BlockchainController --> BlockchainTransaction
+BlockchainController --> BlockchainService
+BlockchainService --> BlockchainTransaction
+
+@enduml

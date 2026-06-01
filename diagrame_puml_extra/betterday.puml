@@ -1,0 +1,533 @@
+@startuml
+package censed to the Apache Software Foundation (ASF) under one {
+class MavenWrapperDownloader {
+}
+
+}
+
+package me.freelee.betterday.bean; {
+class AccountCredentials {
+}
+
+class GrantedAuthorityImpl {
+}
+
+class QuartzBean {
+}
+
+class QuartzMaintainRemind {
+}
+
+class QuartzResRemindBean {
+}
+
+}
+
+package me.freelee.betterday; {
+class BetterdayApplication {
+}
+
+class BetterdayApplicationTests {
+}
+
+}
+
+package me.freelee.betterday.config; {
+class GlobalCorsConfig {
+}
+
+class QuartzConfig {
+}
+
+class RabbitConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package me.freelee.betterday.controller; {
+class EventController {
+}
+
+class HabitController {
+}
+
+class NoticeController {
+}
+
+class TeamController {
+}
+
+class UserController {
+}
+
+}
+
+package me.freelee.betterday.dao; {
+class AdminMapper {
+}
+
+class EventMapper {
+}
+
+class FeedbackMapper {
+}
+
+class HabitMapper {
+}
+
+class LogMapper {
+}
+
+class NoticeMapper {
+}
+
+class TeamMapper {
+}
+
+class TimeMapper {
+}
+
+class UserHabitCheckLogMapper {
+}
+
+class UserHabitRecordMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package me.freelee.betterday.dto; {
+class HabitCheckParam {
+}
+
+class HabitInsertParam {
+}
+
+class JoinTeamParam {
+}
+
+class LoginParam {
+}
+
+}
+
+package me.freelee.betterday.enums; {
+class PriorityEnums {
+}
+
+}
+
+package me.freelee.betterday.filter; {
+class JWTAuthenticationFilter {
+}
+
+class JWTLoginFilter {
+}
+
+}
+
+package me.freelee.betterday.job; {
+class HabitInitTask {
+}
+
+}
+
+package me.freelee.betterday.model; {
+class Admin {
+}
+
+class Event {
+}
+
+class Feedback {
+}
+
+class Habit {
+}
+
+class Log {
+}
+
+class Notice {
+}
+
+class Team {
+}
+
+class Time {
+}
+
+class User {
+}
+
+class UserHabitCheckLog {
+}
+
+class UserHabitRecord {
+}
+
+}
+
+package me.freelee.betterday.provider; {
+class CustomAuthenticationProvider {
+}
+
+}
+
+package me.freelee.betterday.service; {
+class EventService {
+}
+
+class HabitService {
+}
+
+class NoticeService {
+}
+
+class TeamService {
+}
+
+class TimeService {
+}
+
+class UserHabitCheckLogService {
+}
+
+class UserHabitRecordService {
+}
+
+class UserService {
+}
+
+}
+
+package me.freelee.betterday.service.impl; {
+class EventServiceImpl {
+}
+
+class HabitServiceImpl {
+}
+
+class NoticeServiceImpl {
+}
+
+class TeamServiceImpl {
+}
+
+class TimeServiceImpl {
+}
+
+class UserHabitCheckLogServiceImpl {
+}
+
+class UserHabitRecordServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package me.freelee.betterday.util; {
+class AliyunOSSClientUtil {
+}
+
+class DateUtil {
+}
+
+class IBaseMapper {
+}
+
+class QuartzUtils {
+}
+
+class ResultUtil {
+}
+
+class TokenAuthenticationService {
+}
+
+class TransferUtil {
+}
+
+}
+
+package me.freelee.betterday.vo; {
+class EventTableVO {
+}
+
+class EventVO {
+}
+
+class HabitDataVO {
+}
+
+class HabitVO {
+}
+
+class TeamDataVO {
+}
+
+class TeamListVO {
+}
+
+class TeammateVO {
+}
+
+class TeamVO {
+}
+
+class TodayHabitVO {
+}
+
+class UserLoginVO {
+}
+
+}
+
+QuartzResRemindBean -- Time
+QuartzConfig -- HabitInitTask
+QuartzConfig -- Habit
+QuartzConfig -- Log
+SecurityConfig -- JWTAuthenticationFilter
+SecurityConfig -- JWTLoginFilter
+SecurityConfig -- Log
+SecurityConfig -- User
+SecurityConfig -- CustomAuthenticationProvider
+EventController -- PriorityEnums
+EventController -- Event
+EventController -- Log
+EventController -- Time
+EventController -- User
+EventController -- EventService
+EventController -- DateUtil
+EventController -- ResultUtil
+EventController -- TransferUtil
+EventController -- EventTableVO
+EventController -- EventVO
+HabitController -- HabitCheckParam
+HabitController -- HabitInsertParam
+HabitController -- Habit
+HabitController -- Log
+HabitController -- Time
+HabitController -- User
+HabitController -- UserHabitCheckLog
+HabitController -- UserHabitRecord
+HabitController -- HabitService
+HabitController -- TimeService
+HabitController -- AliyunOSSClientUtil
+HabitController -- DateUtil
+HabitController -- ResultUtil
+HabitController -- HabitDataVO
+HabitController -- HabitVO
+HabitController -- TodayHabitVO
+NoticeController -- Notice
+NoticeController -- User
+NoticeController -- NoticeService
+NoticeController -- ResultUtil
+TeamController -- JoinTeamParam
+TeamController -- Team
+TeamController -- Time
+TeamController -- User
+TeamController -- TeamService
+TeamController -- UserService
+TeamController -- DateUtil
+TeamController -- ResultUtil
+TeamController -- TransferUtil
+TeamController -- TeamDataVO
+TeamController -- TeamListVO
+TeamController -- TeammateVO
+TeamController -- TeamVO
+UserController -- LoginParam
+UserController -- Log
+UserController -- Time
+UserController -- User
+UserController -- UserService
+UserController -- AliyunOSSClientUtil
+UserController -- DateUtil
+UserController -- ResultUtil
+UserController -- TransferUtil
+UserController -- UserLoginVO
+AdminMapper -- Admin
+AdminMapper -- IBaseMapper
+EventMapper -- Event
+EventMapper -- IBaseMapper
+FeedbackMapper -- Feedback
+FeedbackMapper -- IBaseMapper
+HabitMapper -- Habit
+HabitMapper -- IBaseMapper
+LogMapper -- Log
+LogMapper -- IBaseMapper
+NoticeMapper -- Notice
+NoticeMapper -- IBaseMapper
+TeamMapper -- Team
+TeamMapper -- IBaseMapper
+TimeMapper -- Time
+TimeMapper -- IBaseMapper
+UserHabitCheckLogMapper -- LogMapper
+UserHabitCheckLogMapper -- Habit
+UserHabitCheckLogMapper -- Log
+UserHabitCheckLogMapper -- User
+UserHabitCheckLogMapper -- UserHabitCheckLog
+UserHabitCheckLogMapper -- IBaseMapper
+UserHabitRecordMapper -- Habit
+UserHabitRecordMapper -- User
+UserHabitRecordMapper -- UserHabitRecord
+UserHabitRecordMapper -- IBaseMapper
+UserMapper -- User
+UserMapper -- IBaseMapper
+HabitCheckParam -- Habit
+HabitInsertParam -- Habit
+JoinTeamParam -- Team
+LoginParam -- Log
+JWTAuthenticationFilter -- TokenAuthenticationService
+JWTLoginFilter -- AccountCredentials
+JWTLoginFilter -- Log
+JWTLoginFilter -- User
+JWTLoginFilter -- ResultUtil
+JWTLoginFilter -- TokenAuthenticationService
+HabitInitTask -- Habit
+HabitInitTask -- Log
+HabitInitTask -- Time
+HabitInitTask -- User
+HabitInitTask -- UserHabitCheckLog
+HabitInitTask -- UserHabitRecord
+HabitInitTask -- HabitService
+HabitInitTask -- UserHabitCheckLogService
+HabitInitTask -- UserHabitRecordService
+HabitInitTask -- DateUtil
+Admin -- Time
+Event -- Time
+Event -- User
+Feedback -- Time
+Feedback -- User
+Habit -- Time
+Log -- Time
+Notice -- Time
+Team -- Time
+Time -- User
+User -- Log
+UserHabitCheckLog -- Habit
+UserHabitCheckLog -- Log
+UserHabitCheckLog -- Time
+UserHabitCheckLog -- User
+UserHabitRecord -- Habit
+UserHabitRecord -- User
+CustomAuthenticationProvider -- GrantedAuthorityImpl
+CustomAuthenticationProvider -- Log
+CustomAuthenticationProvider -- Time
+CustomAuthenticationProvider -- User
+CustomAuthenticationProvider -- UserService
+CustomAuthenticationProvider -- DateUtil
+EventService -- Event
+EventService -- User
+HabitService -- HabitInsertParam
+HabitService -- Habit
+HabitService -- Time
+HabitService -- User
+HabitService -- UserHabitRecord
+EventServiceImpl -- EventMapper
+EventServiceImpl -- Event
+EventServiceImpl -- User
+EventServiceImpl -- EventService
+EventServiceImpl -- UserService
+HabitServiceImpl -- HabitMapper
+HabitServiceImpl -- LogMapper
+HabitServiceImpl -- UserHabitCheckLogMapper
+HabitServiceImpl -- UserHabitRecordMapper
+HabitServiceImpl -- HabitInsertParam
+HabitServiceImpl -- Habit
+HabitServiceImpl -- Log
+HabitServiceImpl -- Time
+HabitServiceImpl -- User
+HabitServiceImpl -- UserHabitCheckLog
+HabitServiceImpl -- UserHabitRecord
+HabitServiceImpl -- HabitService
+HabitServiceImpl -- UserHabitCheckLogService
+HabitServiceImpl -- DateUtil
+NoticeServiceImpl -- NoticeMapper
+NoticeServiceImpl -- Notice
+NoticeServiceImpl -- User
+NoticeServiceImpl -- NoticeService
+TeamServiceImpl -- TeamMapper
+TeamServiceImpl -- Team
+TeamServiceImpl -- User
+TeamServiceImpl -- TeamService
+TeamServiceImpl -- UserService
+TimeServiceImpl -- TimeMapper
+TimeServiceImpl -- Time
+TimeServiceImpl -- TimeService
+UserHabitCheckLogServiceImpl -- LogMapper
+UserHabitCheckLogServiceImpl -- UserHabitCheckLogMapper
+UserHabitCheckLogServiceImpl -- Habit
+UserHabitCheckLogServiceImpl -- Log
+UserHabitCheckLogServiceImpl -- Time
+UserHabitCheckLogServiceImpl -- User
+UserHabitCheckLogServiceImpl -- UserHabitCheckLog
+UserHabitCheckLogServiceImpl -- UserHabitRecord
+UserHabitCheckLogServiceImpl -- UserHabitCheckLogService
+UserHabitCheckLogServiceImpl -- UserHabitRecordService
+UserHabitCheckLogServiceImpl -- DateUtil
+UserHabitRecordServiceImpl -- UserHabitRecordMapper
+UserHabitRecordServiceImpl -- Habit
+UserHabitRecordServiceImpl -- User
+UserHabitRecordServiceImpl -- UserHabitRecord
+UserHabitRecordServiceImpl -- UserHabitRecordService
+UserServiceImpl -- UserMapper
+UserServiceImpl -- User
+UserServiceImpl -- UserService
+NoticeService -- Notice
+NoticeService -- User
+TeamService -- Team
+TeamService -- User
+TimeService -- Time
+UserHabitCheckLogService -- Habit
+UserHabitCheckLogService -- Log
+UserHabitCheckLogService -- User
+UserHabitCheckLogService -- UserHabitCheckLog
+UserHabitRecordService -- Habit
+UserHabitRecordService -- User
+UserHabitRecordService -- UserHabitRecord
+UserService -- User
+AliyunOSSClientUtil -- Log
+AliyunOSSClientUtil -- Time
+AliyunOSSClientUtil -- DateUtil
+DateUtil -- Time
+QuartzUtils -- QuartzBean
+QuartzUtils -- QuartzMaintainRemind
+QuartzUtils -- QuartzResRemindBean
+QuartzUtils -- Admin
+QuartzUtils -- Time
+QuartzUtils -- User
+ResultUtil -- User
+TokenAuthenticationService -- Log
+TokenAuthenticationService -- Time
+TokenAuthenticationService -- User
+TokenAuthenticationService -- UserService
+TokenAuthenticationService -- ResultUtil
+EventTableVO -- Event
+EventVO -- Event
+HabitDataVO -- Habit
+HabitVO -- Habit
+TeamDataVO -- Team
+TeamDataVO -- User
+TeamDataVO -- TeammateVO
+TeamListVO -- Team
+TeamListVO -- TeamVO
+TeammateVO -- Team
+TeamVO -- Team
+TodayHabitVO -- Habit
+TodayHabitVO -- HabitVO
+UserLoginVO -- Log
+UserLoginVO -- User
+BetterdayApplicationTests -- BetterdayApplication
+BetterdayApplicationTests -- Notice
+BetterdayApplicationTests -- Time
+BetterdayApplicationTests -- NoticeService
+BetterdayApplicationTests -- DateUtil
+@enduml

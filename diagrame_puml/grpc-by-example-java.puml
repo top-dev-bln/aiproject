@@ -1,0 +1,385 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+
+package com.example.chat {
+  class ChatUI {
+    -logger : Logger
+    -channel : ManagedChannel
+    -layout : VerticalLayout
+    -name : TextField
+    -message : TextField
+    -button : Button
+    -currentUI : UI
+    -nameValue : String
+    -messageValue : String
+    +init() : void
+    +onNext() : void
+    +onError() : void
+    +onCompleted() : void
+  }
+}
+
+package com.example.chat.vaadin {
+  class MyServlet {
+  }
+}
+
+package com.example.demo {
+  class DemoApplicationTests {
+    +contextLoads() : void
+  }
+  class MyBusinessService <<Service>> {
+    -myDataRepository : MyDataRepository
+    -myMessageService : MyMessageService
+    +doSomeWork() : void
+    +getNames() : List<String>
+  }
+  class MyDataRepository <<Repository>> {
+    -jdbcTemplate : JdbcTemplate
+    +insert() : void
+    +findAll() : List<String>
+  }
+  class DemoApplication {
+    -myBusinessService : MyBusinessService
+    +main() : void
+    +greeting() : void
+    +who() : void
+  }
+  class MyMessageService <<Service>> {
+    -jmsTemplate : JmsTemplate
+    -payload : String
+    +sendMyMessage() : void
+  }
+}
+
+package com.example.greeting {
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package com.example.grpc {
+  class Constant {
+    -JWT_SECRET : String
+  }
+  class Constant {
+    +brave() : Brave
+  }
+}
+
+package com.example.grpc.armeria {
+  class HelloServiceImpl {
+    -names : ArrayList<String>
+    +hello() : void
+    +lazyHello() : void
+    +blockingHello() : void
+    +lotsOfReplies() : void
+    +lotsOfGreetings() : StreamObserver<HelloRequest>
+    +onNext() : void
+    +onError() : void
+    +onCompleted() : void
+  }
+  class ArmeriaGrpcServer {
+    -logger : Logger
+    -server : Server
+    -localAddress : InetSocketAddress
+    -isLocalAddress : boolean
+    -exampleRequest : HelloRequest
+    -grpcService : HttpServiceWithRoutes
+    +main() : void
+  }
+}
+
+package com.example.grpc.chat {
+  class ChatClient {
+    -messages : ObservableList<String>
+    -messagesView : ListView<String>
+    -name : TextField
+    -message : TextField
+    -send : Button
+    +main() : void
+    +start() : void
+    +onNext() : void
+    +onError() : void
+    +onCompleted() : void
+  }
+  class ChatServer {
+    +main() : void
+  }
+}
+
+package com.example.grpc.client {
+  class ExampleInstrumentedTest {
+    +useAppContext() : void
+  }
+  class ExampleUnitTest {
+    -SERVER_ADDRESS : String
+    -PORT : int
+    +addition_isCorrect() : void
+    +testGRPC() : void
+  }
+  class MainActivity {
+    -tvResult : TextView
+    -btnConnect : Button
+    -SERVER_ADDRESS : String
+    -PORT : int
+    -dialog : SpotsDialog
+    +onCreate() : void
+  }
+  class ErrorHandlingGrpcClient {
+    -logger : Logger
+    -request : EchoRequest
+    +main() : void
+  }
+  class AuthClient {
+    -iat : long
+    -exp : long
+    -signer : JWTSigner
+    +main() : void
+    +createJwt() : String
+  }
+  class JwtCallCredential {
+    -jwt : String
+    +applyRequestMetadata() : void
+    +run() : void
+    +thisUsesUnstableApi() : void
+  }
+  class MetricsRxClient {
+    -channel : Channel
+    +main() : void
+  }
+  class MetricsClient {
+    +main() : void
+    +onNext() : void
+    +onError() : void
+    +onCompleted() : void
+  }
+  class ZipkinExampleClient {
+    +main() : void
+  }
+  class MyGrpcClient {
+    +main() : void
+  }
+  class ClientSideLoadBalancedEchoClient {
+    -THREADS : int
+    -RANDOM : Random
+    -channel : ManagedChannel
+    -self : String
+    +main() : void
+  }
+  class KubernetesNameResolverProvider {
+    -SCHEME : String
+    +isAvailable() : boolean
+    +priority() : int
+    +newNameResolver() : NameResolver
+    +getDefaultScheme() : String
+  }
+  class KubernetesNameResolver {
+    -namespace : String
+    -name : String
+    -port : int
+    -params : Attributes
+    -kubernetesClient : KubernetesClient
+    -listener : Listener
+    +getServiceAuthority() : String
+    +start() : void
+    +shutdown() : void
+    +refresh() : void
+    +watch() : void
+    +eventReceived() : void
+    +onClose() : void
+  }
+  class ClientSideLoadBalancedEchoClient {
+    -THREADS : int
+    -RANDOM : Random
+    -channel : ManagedChannel
+    -self : String
+    +main() : void
+  }
+  class SimpleEchoClient {
+    -THREADS : int
+    -RANDOM : Random
+    -channel : ManagedChannel
+    -self : String
+    +main() : void
+  }
+  class RxMetricsClient {
+    +main() : void
+  }
+}
+
+package com.example.grpc.eureka {
+  class EurekaServer {
+    +main() : void
+  }
+}
+
+package com.example.grpc.server {
+  class MyGrpcServer {
+    +main() : void
+    +greeting() : void
+  }
+  class ErrorGrpcServer {
+    +main() : void
+  }
+  class CustomException {
+  }
+  class UnknownStatusDescriptionInterceptor {
+    +sendMessage() : void
+    +close() : void
+  }
+  class GreetingServer {
+    +main() : void
+    +greeting() : void
+  }
+  class GoodbyeServer {
+    -channel : ManagedChannel
+    +main() : void
+    +greeting() : void
+    +secondGreeting() : void
+    +goodbye() : void
+  }
+  class JwtClientInterceptor {
+    +start() : void
+  }
+  class TraceIdClientInterceptor {
+    +start() : void
+  }
+  class TraceIdServerInterceptor {
+  }
+  class JwtServerInterceptor {
+    -secret : String
+    -verifier : JWTVerifier
+  }
+  class MetricsServer {
+    +main() : void
+  }
+  class GreetingServer {
+    +main() : void
+    +greeting() : void
+  }
+  class GoodbyeServer {
+    +main() : void
+    +goodbye() : void
+  }
+  class PrometheusServer {
+    -registry : CollectorRegistry
+    -port : int
+    -bossGroup : EventLoopGroup
+    -workerGroup : EventLoopGroup
+    -channel : Channel
+    -bootstrap : ServerBootstrap
+    -response : FullHttpResponse
+    -response : FullHttpResponse
+    -response : FullHttpResponse
+    +start() : void
+    +initChannel() : void
+    +channelRead0() : void
+    +awaitTermination() : void
+    +shutdown() : void
+  }
+  class EchoServer {
+    -LOGGER : Logger
+    +main() : void
+    +echo() : void
+  }
+  class RxMetricsServer {
+    -sum : long
+    -count : long
+    +main() : void
+  }
+}
+
+package com.example.grpc.springboot {
+  class GrpcClient {
+    +main() : void
+  }
+  class Cmd {
+  }
+  class GrpcServer {
+    +main() : void
+  }
+  class GuestbookServer {
+    +main() : void
+  }
+  interface GuestbookRepository <<Repository>> {
+  }
+  class GuestbookEntryDomain <<Entity>> {
+    -id : Long
+    -username : String
+    -message : String
+    +fromProto() : GuestbookEntryDomain
+    +fromProto() : GuestbookEntryDomain
+    +getId() : Long
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+package com.example.guestbook {
+  class GuestbookUiApplicationTests {
+    +contextLoads() : void
+  }
+  class ApplicationConfig {
+    -guestbookServiceEndpoint : String
+  }
+  class GuestbookUiApplication {
+    +main() : void
+  }
+  class GuestbookUiController <<Controller>> {
+    -iterator : Iterator<T>
+    +index() : String
+    +greet() : String
+    +iterator() : Iterator<T>
+  }
+}
+
+package com.exmaple.grpc.armeria {
+  class ArmeriaGrpcClient {
+    -logger : Logger
+    -uri : String
+    -blockingStub : HelloServiceBlockingStub
+    -blockingResponse : String
+    -futureStub : HelloServiceFutureStub
+    -future : ListenableFuture<HelloReply>
+    -countDownLatch1 : CountDownLatch
+    -helloService : HelloServiceStub
+    -countDownLatch2 : CountDownLatch
+    +main() : void
+    +onSuccess() : void
+    +onFailure() : void
+    +onNext() : void
+    +onError() : void
+    +onCompleted() : void
+  }
+}
+
+' --- Relatii ---
+GreetingServer --> Constant
+JwtClientInterceptor --> Constant
+TraceIdClientInterceptor --> Constant
+TraceIdServerInterceptor --> Constant
+JwtServerInterceptor --> Constant
+AuthClient --> TraceIdClientInterceptor
+GreetingServer --> Constant
+ZipkinExampleClient --> Constant
+MyServlet --> ChatUI
+ChatClient --|> Application
+ChatClient --> Application
+
+@enduml

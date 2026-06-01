@@ -1,0 +1,170 @@
+@startuml
+package com.romeh.ignitemanager; {
+class AlertManagerApplication {
+}
+
+class SwaggerConfiguration {
+}
+
+}
+
+package com.romeh.ignitemanager.compute; {
+class DataGridCompute {
+}
+
+class FailFastReducer {
+}
+
+class MapReduceResponse {
+}
+
+class ServiceResponse {
+}
+
+}
+
+package com.romeh.ignitemanager.config; {
+class AlertManagerConfiguration {
+}
+
+}
+
+package com.romeh.ignitemanager.entities; {
+class AlertConfigEntry {
+}
+
+class AlertEntry {
+}
+
+class AlertHolder {
+}
+
+class AlertsConfiguration {
+}
+
+class CacheNames {
+}
+
+class CustomErrorResponse {
+}
+
+}
+
+package com.romeh.ignitemanager.exception; {
+class ResourceNotFoundException {
+}
+
+}
+
+package com.romeh.ignitemanager.repositories; {
+class AlertsConfigStore {
+}
+
+class AlertsStore {
+}
+
+}
+
+package com.romeh.ignitemanager.repositories.impl; {
+class IgniteAlertConfigStore {
+}
+
+class IgniteAlertsStore {
+}
+
+class IgniteAlertsSoreTest {
+}
+
+}
+
+package com.romeh.ignitemanager.services; {
+class AlertsService {
+}
+
+class CleanExpiredAlertsService {
+}
+
+class ComputeService {
+}
+
+class DataLoaderService {
+}
+
+class MailService {
+}
+
+}
+
+package com.romeh.ignitemanager.web; {
+class AlertsController {
+}
+
+class ErrorHandler {
+}
+
+class AlertsControllerTest {
+}
+
+}
+
+package com.romeh.ignitemanager.integration; {
+class AlertManagerApplicationIT {
+}
+
+}
+
+FailFastReducer -- MapReduceResponse
+FailFastReducer -- ServiceResponse
+MapReduceResponse -- ServiceResponse
+AlertManagerConfiguration -- AlertConfigEntry
+AlertManagerConfiguration -- AlertEntry
+AlertManagerConfiguration -- CacheNames
+AlertHolder -- AlertEntry
+AlertsConfiguration -- AlertConfigEntry
+AlertsConfigStore -- AlertConfigEntry
+AlertsStore -- AlertEntry
+IgniteAlertConfigStore -- AlertConfigEntry
+IgniteAlertConfigStore -- CacheNames
+IgniteAlertConfigStore -- ResourceNotFoundException
+IgniteAlertConfigStore -- AlertsConfigStore
+IgniteAlertsStore -- AlertConfigEntry
+IgniteAlertsStore -- AlertEntry
+IgniteAlertsStore -- CacheNames
+IgniteAlertsStore -- ResourceNotFoundException
+IgniteAlertsStore -- AlertsConfigStore
+IgniteAlertsStore -- AlertsStore
+IgniteAlertsStore -- MailService
+AlertsService -- AlertConfigEntry
+AlertsService -- AlertEntry
+AlertsService -- AlertsConfigStore
+AlertsService -- AlertsStore
+CleanExpiredAlertsService -- AlertEntry
+CleanExpiredAlertsService -- CacheNames
+CleanExpiredAlertsService -- AlertsService
+ComputeService -- DataGridCompute
+ComputeService -- FailFastReducer
+ComputeService -- MapReduceResponse
+ComputeService -- ServiceResponse
+ComputeService -- AlertsService
+DataLoaderService -- AlertConfigEntry
+DataLoaderService -- AlertsConfiguration
+DataLoaderService -- CacheNames
+MailService -- AlertEntry
+MailService -- ResourceNotFoundException
+AlertsController -- AlertEntry
+AlertsController -- AlertsService
+ErrorHandler -- CustomErrorResponse
+ErrorHandler -- ResourceNotFoundException
+AlertManagerApplicationIT -- AlertManagerApplication
+AlertManagerApplicationIT -- MapReduceResponse
+AlertManagerApplicationIT -- ServiceResponse
+AlertManagerApplicationIT -- ComputeService
+IgniteAlertsSoreTest -- AlertEntry
+IgniteAlertsSoreTest -- CacheNames
+IgniteAlertsSoreTest -- AlertsStore
+IgniteAlertsSoreTest -- IgniteAlertsStore
+AlertsControllerTest -- AlertEntry
+AlertsControllerTest -- AlertsService
+AlertsControllerTest -- AlertsController
+AlertsControllerTest -- ErrorHandler
+@enduml

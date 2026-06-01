@@ -1,0 +1,183 @@
+@startuml
+package com.sw.project.aspect; {
+class RestControllerAspect {
+}
+
+}
+
+package com.sw.project.config; {
+class JpaConfiguration {
+}
+
+}
+
+package com.sw.project.controller; {
+class ProblemController {
+}
+
+class ProjectController {
+}
+
+class subProblemController {
+}
+
+}
+
+package com.sw.project.domain; {
+class AuditModel {
+}
+
+class LocalDateAttributeConverter {
+}
+
+class LocalDateTimeAttributeConverter {
+}
+
+class Problem {
+}
+
+class Project {
+}
+
+class subProblem {
+}
+
+class subProblemBody {
+}
+
+}
+
+package com.sw.project.exception; {
+class CustmizeExceptionHandler {
+}
+
+class CustomizeErrorDetail {
+}
+
+class DataFormatException {
+}
+
+class ElementNullException {
+}
+
+class InternerServerError {
+}
+
+class NotDefineException {
+}
+
+class NullPointerException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.sw.project; {
+class ProjectApiApplication {
+}
+
+class ProjectApiApplicationTests {
+}
+
+}
+
+package com.sw.project.repository; {
+class ProblemRepository {
+}
+
+class ProjectRepository {
+}
+
+class subProblemRepository {
+}
+
+}
+
+package com.sw.project.service; {
+class ProblemService {
+}
+
+class ProblemServiceImpl {
+}
+
+class ProjectService {
+}
+
+class ProjectServiceImpl {
+}
+
+class subProblemService {
+}
+
+class subProblemServiceImpl {
+}
+
+}
+
+package com.sw.project.swagger; {
+class SwaggerConfig {
+}
+
+}
+
+ProblemController -- Problem
+ProblemController -- Project
+ProblemController -- DataFormatException
+ProblemController -- ElementNullException
+ProblemController -- ResourceNotFoundException
+ProblemController -- ProblemRepository
+ProblemController -- ProblemService
+ProblemController -- ProjectService
+ProjectController -- Problem
+ProjectController -- Project
+ProjectController -- DataFormatException
+ProjectController -- ResourceNotFoundException
+ProjectController -- ProblemRepository
+ProjectController -- ProjectService
+subProblemController -- ProblemController
+subProblemController -- Problem
+subProblemController -- subProblem
+subProblemController -- subProblemBody
+subProblemController -- DataFormatException
+subProblemController -- ResourceNotFoundException
+subProblemController -- ProblemService
+subProblemController -- subProblemService
+Problem -- Project
+Problem -- subProblem
+subProblem -- Project
+subProblemBody -- Problem
+subProblemBody -- subProblem
+CustmizeExceptionHandler -- CustomizeErrorDetail
+CustmizeExceptionHandler -- DataFormatException
+CustmizeExceptionHandler -- ElementNullException
+CustmizeExceptionHandler -- NotDefineException
+CustmizeExceptionHandler -- ResourceNotFoundException
+ProjectApiApplication -- Project
+ProblemRepository -- Problem
+ProjectRepository -- Project
+subProblemRepository -- Problem
+subProblemRepository -- subProblem
+subProblemRepository -- ProblemRepository
+ProblemService -- Problem
+ProblemServiceImpl -- Problem
+ProblemServiceImpl -- ProblemRepository
+ProblemServiceImpl -- ProblemService
+ProjectService -- Project
+ProjectServiceImpl -- Project
+ProjectServiceImpl -- ProjectRepository
+ProjectServiceImpl -- ProjectService
+subProblemService -- Problem
+subProblemService -- subProblem
+subProblemService -- ProblemService
+subProblemServiceImpl -- Problem
+subProblemServiceImpl -- subProblem
+subProblemServiceImpl -- ProblemRepository
+subProblemServiceImpl -- subProblemRepository
+subProblemServiceImpl -- ProblemService
+subProblemServiceImpl -- ProblemServiceImpl
+subProblemServiceImpl -- subProblemService
+ProjectApiApplicationTests -- Project
+ProjectApiApplicationTests -- ProjectApiApplication
+@enduml

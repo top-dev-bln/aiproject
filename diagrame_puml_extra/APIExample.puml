@@ -1,0 +1,692 @@
+@startuml
+package com.fengwenyi.erwin.sample.advice; {
+class ApiResponseBodyAdvice {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.annotation; {
+class IgnoreResponseAdvice {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.base; {
+class BaseBizEntity {
+}
+
+class BaseEntity {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.controller; {
+class AdminSysMenuController {
+}
+
+class AdminSysPermissionController {
+}
+
+class AdminSysRoleController {
+}
+
+class AdminSysUserController {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.dto.menu; {
+class MenuDto {
+}
+
+class MenuGetPageDto {
+}
+
+class MenuGetTreeDto {
+}
+
+class MenuUpdateDto {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.dto.role; {
+class RoleDto {
+}
+
+class RoleGetPageDto {
+}
+
+class RoleUpdateDto {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.dto.user; {
+class UserDto {
+}
+
+class UserGetPageDto {
+}
+
+class UsernameDto {
+}
+
+class UserPasswordDto {
+}
+
+class UserUpdateDto {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.service; {
+class IAdminSysMenuService {
+}
+
+class IAdminSysRoleService {
+}
+
+class IAdminSysUserService {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.service.impl; {
+class AdminRoleServiceImpl {
+}
+
+class AdminSysMenuServiceImpl {
+}
+
+class AdminUserServiceImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.vo.menu; {
+class MenuParentOptionVo {
+}
+
+class MenuTreeItemVo {
+}
+
+class MenuVo {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.vo.role; {
+class RoleVo {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.admin.vo.user; {
+class UserDetailVo {
+}
+
+class UserSimpleVo {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.entity; {
+class MenuEntity {
+}
+
+class RoleEntity {
+}
+
+class RoleMenuEntity {
+}
+
+class TripartiteUserEntity {
+}
+
+class UserEntity {
+}
+
+class UserRoleEntity {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.enums; {
+class AuthTypeEnum {
+}
+
+class DeviceTypeEnum {
+}
+
+class RegisterTypeEnum {
+}
+
+class RoleEnum {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.index.controller; {
+class AuthController {
+}
+
+class SignInUserController {
+}
+
+class UserController {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.index.dto; {
+class GetUserInfoDto {
+}
+
+class LoginDto {
+}
+
+class WechatAppletRegisterDto {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.index.pojo.bo; {
+class TripartiteRegisterBo {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.index.service; {
+class ILoginUserService {
+}
+
+class IUserService {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.index.service.impl; {
+class LoginUserServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.index.vo; {
+class LoginVo {
+}
+
+class OrganOptionVo {
+}
+
+class RoleInfoVo {
+}
+
+class UserInfoVo {
+}
+
+class UserPhoneVo {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.mapper; {
+class IMenuMapper {
+}
+
+class IRoleMapper {
+}
+
+class IRoleMenuMapper {
+}
+
+class ITripartiteUserMapper {
+}
+
+class IUserMapper {
+}
+
+class IUserRoleMapper {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.mp.impl; {
+class MpMenuServiceImpl {
+}
+
+class MpRoleMenuServiceImpl {
+}
+
+class MpRoleServiceImpl {
+}
+
+class MpTripartiteUserServiceImpl {
+}
+
+class MpUserRoleServiceImpl {
+}
+
+class MpUserServiceImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.mp; {
+class IMpMenuService {
+}
+
+class IMpRoleMenuService {
+}
+
+class IMpRoleService {
+}
+
+class IMpTripartiteUserService {
+}
+
+class IMpUserRoleService {
+}
+
+class IMpUserService {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.satoken; {
+class StpInterfaceImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.strategy.impl; {
+class EmailVerifyCodeLoginStrategyImpl {
+}
+
+class LoginStrategyImpl {
+}
+
+class PasswordLoginStrategyImpl {
+}
+
+class WechatAppletLoginStrategyImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.strategy; {
+class LoginStrategy {
+}
+
+class LoginStrategyFactory {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.component.email.service; {
+class IMailService {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.component.email.service.impl; {
+class MailServiceImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.config; {
+class ErwinConfigProperties {
+}
+
+class MyBatisPlusConfig {
+}
+
+class OpenApiConfig {
+}
+
+class SaTokenConfigure {
+}
+
+class WebConfig {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.constant; {
+class ConfigCodeConstant {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.enums; {
+class ResultEnum {
+}
+
+}
+
+package com.fengwenyi.erwin.sample; {
+class ErwinSampleApplication {
+}
+
+class ErwinSampleApplicationTests {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.exception; {
+class BizException {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.handler; {
+class GlobalExceptionHandler {
+}
+
+class MyBatisPlusAutoFillMetaObjectHandler {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.service.impl; {
+class RedisServiceImpl {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.service; {
+class IRedisService {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.support; {
+class SpringContextSupport {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.template; {
+class TreeTemplate {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.util; {
+class BizUtils {
+}
+
+class BooleanUtils {
+}
+
+class ConfigUtils {
+}
+
+class PageUtils {
+}
+
+class PasswordUtils {
+}
+
+class RedisKeyUtils {
+}
+
+class BCryptTests {
+}
+
+class BizUtilsTests {
+}
+
+}
+
+package com.fengwenyi.erwin.sample.business.sys.service; {
+class UserServiceTests {
+}
+
+}
+
+ApiResponseBodyAdvice -- IgnoreResponseAdvice
+ApiResponseBodyAdvice -- ErwinConfigProperties
+BaseBizEntity -- BaseEntity
+AdminSysMenuController -- MenuDto
+AdminSysMenuController -- MenuGetPageDto
+AdminSysMenuController -- MenuGetTreeDto
+AdminSysMenuController -- MenuUpdateDto
+AdminSysMenuController -- IAdminSysMenuService
+AdminSysMenuController -- MenuParentOptionVo
+AdminSysMenuController -- MenuTreeItemVo
+AdminSysMenuController -- MenuVo
+AdminSysRoleController -- RoleDto
+AdminSysRoleController -- RoleGetPageDto
+AdminSysRoleController -- RoleUpdateDto
+AdminSysRoleController -- IAdminSysRoleService
+AdminSysRoleController -- RoleVo
+AdminSysUserController -- UserDto
+AdminSysUserController -- UserGetPageDto
+AdminSysUserController -- UsernameDto
+AdminSysUserController -- UserPasswordDto
+AdminSysUserController -- UserUpdateDto
+AdminSysUserController -- IAdminSysUserService
+AdminSysUserController -- UserDetailVo
+AdminSysUserController -- UserSimpleVo
+AdminSysUserController -- UserController
+IAdminSysMenuService -- MenuDto
+IAdminSysMenuService -- MenuGetPageDto
+IAdminSysMenuService -- MenuGetTreeDto
+IAdminSysMenuService -- MenuUpdateDto
+IAdminSysMenuService -- MenuParentOptionVo
+IAdminSysMenuService -- MenuTreeItemVo
+IAdminSysMenuService -- MenuVo
+IAdminSysRoleService -- RoleDto
+IAdminSysRoleService -- RoleGetPageDto
+IAdminSysRoleService -- RoleUpdateDto
+IAdminSysRoleService -- RoleVo
+IAdminSysUserService -- UserDto
+IAdminSysUserService -- UserGetPageDto
+IAdminSysUserService -- UsernameDto
+IAdminSysUserService -- UserPasswordDto
+IAdminSysUserService -- UserUpdateDto
+IAdminSysUserService -- UserDetailVo
+IAdminSysUserService -- UserSimpleVo
+AdminRoleServiceImpl -- RoleDto
+AdminRoleServiceImpl -- RoleGetPageDto
+AdminRoleServiceImpl -- RoleUpdateDto
+AdminRoleServiceImpl -- IAdminSysRoleService
+AdminRoleServiceImpl -- RoleVo
+AdminRoleServiceImpl -- MenuEntity
+AdminRoleServiceImpl -- RoleEntity
+AdminRoleServiceImpl -- RoleMenuEntity
+AdminRoleServiceImpl -- UserRoleEntity
+AdminRoleServiceImpl -- IMpMenuService
+AdminRoleServiceImpl -- IMpRoleMenuService
+AdminRoleServiceImpl -- IMpRoleService
+AdminRoleServiceImpl -- IMpUserRoleService
+AdminRoleServiceImpl -- ResultEnum
+AdminRoleServiceImpl -- BizException
+AdminRoleServiceImpl -- PageUtils
+AdminSysMenuServiceImpl -- MenuDto
+AdminSysMenuServiceImpl -- MenuGetPageDto
+AdminSysMenuServiceImpl -- MenuGetTreeDto
+AdminSysMenuServiceImpl -- MenuUpdateDto
+AdminSysMenuServiceImpl -- IAdminSysMenuService
+AdminSysMenuServiceImpl -- MenuParentOptionVo
+AdminSysMenuServiceImpl -- MenuTreeItemVo
+AdminSysMenuServiceImpl -- MenuVo
+AdminSysMenuServiceImpl -- MenuEntity
+AdminSysMenuServiceImpl -- RoleEntity
+AdminSysMenuServiceImpl -- RoleMenuEntity
+AdminSysMenuServiceImpl -- UserRoleEntity
+AdminSysMenuServiceImpl -- ILoginUserService
+AdminSysMenuServiceImpl -- IUserService
+AdminSysMenuServiceImpl -- IMpMenuService
+AdminSysMenuServiceImpl -- IMpRoleMenuService
+AdminSysMenuServiceImpl -- IMpUserRoleService
+AdminSysMenuServiceImpl -- ResultEnum
+AdminSysMenuServiceImpl -- BizException
+AdminSysMenuServiceImpl -- PageUtils
+AdminUserServiceImpl -- UserDto
+AdminUserServiceImpl -- UserGetPageDto
+AdminUserServiceImpl -- UsernameDto
+AdminUserServiceImpl -- UserPasswordDto
+AdminUserServiceImpl -- UserUpdateDto
+AdminUserServiceImpl -- IAdminSysUserService
+AdminUserServiceImpl -- RoleVo
+AdminUserServiceImpl -- UserDetailVo
+AdminUserServiceImpl -- UserSimpleVo
+AdminUserServiceImpl -- RoleEntity
+AdminUserServiceImpl -- UserEntity
+AdminUserServiceImpl -- UserRoleEntity
+AdminUserServiceImpl -- RoleEnum
+AdminUserServiceImpl -- ILoginUserService
+AdminUserServiceImpl -- UserServiceImpl
+AdminUserServiceImpl -- IUserService
+AdminUserServiceImpl -- IMpRoleService
+AdminUserServiceImpl -- IMpUserRoleService
+AdminUserServiceImpl -- IMpUserService
+AdminUserServiceImpl -- ResultEnum
+AdminUserServiceImpl -- BizException
+AdminUserServiceImpl -- BizUtils
+AdminUserServiceImpl -- PageUtils
+AdminUserServiceImpl -- PasswordUtils
+UserDetailVo -- UserSimpleVo
+UserSimpleVo -- RoleVo
+MenuEntity -- BaseBizEntity
+RoleEntity -- BaseBizEntity
+RoleMenuEntity -- BaseEntity
+RoleMenuEntity -- MenuEntity
+TripartiteUserEntity -- BaseBizEntity
+TripartiteUserEntity -- UserEntity
+UserEntity -- BaseBizEntity
+UserRoleEntity -- BaseEntity
+UserRoleEntity -- RoleEntity
+AuthController -- LoginDto
+AuthController -- LoginVo
+AuthController -- LoginStrategy
+AuthController -- LoginStrategyFactory
+SignInUserController -- MenuGetTreeDto
+SignInUserController -- IAdminSysMenuService
+SignInUserController -- MenuTreeItemVo
+SignInUserController -- UserController
+UserController -- IUserService
+UserController -- UserInfoVo
+UserController -- UserPhoneVo
+TripartiteRegisterBo -- RegisterTypeEnum
+LoginUserServiceImpl -- RoleEnum
+LoginUserServiceImpl -- ILoginUserService
+LoginUserServiceImpl -- UserServiceImpl
+LoginUserServiceImpl -- IUserService
+LoginUserServiceImpl -- ResultEnum
+LoginUserServiceImpl -- BizException
+UserServiceImpl -- RoleEntity
+UserServiceImpl -- TripartiteUserEntity
+UserServiceImpl -- UserEntity
+UserServiceImpl -- UserRoleEntity
+UserServiceImpl -- RegisterTypeEnum
+UserServiceImpl -- TripartiteRegisterBo
+UserServiceImpl -- IUserService
+UserServiceImpl -- RoleInfoVo
+UserServiceImpl -- UserInfoVo
+UserServiceImpl -- UserPhoneVo
+UserServiceImpl -- IMpRoleService
+UserServiceImpl -- IMpTripartiteUserService
+UserServiceImpl -- IMpUserRoleService
+UserServiceImpl -- IMpUserService
+UserServiceImpl -- ResultEnum
+UserServiceImpl -- BizException
+UserServiceImpl -- PasswordUtils
+IUserService -- UserEntity
+IUserService -- TripartiteRegisterBo
+IUserService -- UserInfoVo
+IUserService -- UserPhoneVo
+UserInfoVo -- RoleInfoVo
+IMenuMapper -- MenuEntity
+IRoleMapper -- RoleEntity
+IRoleMenuMapper -- MenuEntity
+IRoleMenuMapper -- RoleMenuEntity
+ITripartiteUserMapper -- TripartiteUserEntity
+ITripartiteUserMapper -- UserEntity
+IUserMapper -- UserEntity
+IUserRoleMapper -- RoleEntity
+IUserRoleMapper -- UserRoleEntity
+MpMenuServiceImpl -- MenuEntity
+MpMenuServiceImpl -- IMenuMapper
+MpMenuServiceImpl -- IMpMenuService
+MpRoleMenuServiceImpl -- MenuEntity
+MpRoleMenuServiceImpl -- RoleMenuEntity
+MpRoleMenuServiceImpl -- IRoleMenuMapper
+MpRoleMenuServiceImpl -- IMpRoleMenuService
+MpRoleServiceImpl -- RoleEntity
+MpRoleServiceImpl -- IRoleMapper
+MpRoleServiceImpl -- IMpRoleService
+MpTripartiteUserServiceImpl -- TripartiteUserEntity
+MpTripartiteUserServiceImpl -- UserEntity
+MpTripartiteUserServiceImpl -- UserServiceImpl
+MpTripartiteUserServiceImpl -- ITripartiteUserMapper
+MpTripartiteUserServiceImpl -- IMpTripartiteUserService
+MpUserRoleServiceImpl -- RoleEntity
+MpUserRoleServiceImpl -- UserRoleEntity
+MpUserRoleServiceImpl -- IUserRoleMapper
+MpUserRoleServiceImpl -- IMpUserRoleService
+MpUserServiceImpl -- UserEntity
+MpUserServiceImpl -- UserServiceImpl
+MpUserServiceImpl -- IUserMapper
+MpUserServiceImpl -- IMpUserService
+IMpMenuService -- MenuEntity
+IMpRoleMenuService -- MenuEntity
+IMpRoleMenuService -- RoleMenuEntity
+IMpRoleService -- RoleEntity
+IMpTripartiteUserService -- TripartiteUserEntity
+IMpTripartiteUserService -- UserEntity
+IMpUserRoleService -- RoleEntity
+IMpUserRoleService -- UserRoleEntity
+IMpUserService -- UserEntity
+StpInterfaceImpl -- IUserService
+EmailVerifyCodeLoginStrategyImpl -- UserEntity
+EmailVerifyCodeLoginStrategyImpl -- IUserService
+EmailVerifyCodeLoginStrategyImpl -- LoginStrategyImpl
+EmailVerifyCodeLoginStrategyImpl -- LoginStrategy
+EmailVerifyCodeLoginStrategyImpl -- RedisKeyUtils
+LoginStrategyImpl -- UserEntity
+LoginStrategyImpl -- LoginStrategy
+PasswordLoginStrategyImpl -- UserEntity
+PasswordLoginStrategyImpl -- IUserService
+PasswordLoginStrategyImpl -- LoginStrategyImpl
+PasswordLoginStrategyImpl -- LoginStrategy
+PasswordLoginStrategyImpl -- ResultEnum
+PasswordLoginStrategyImpl -- BizException
+PasswordLoginStrategyImpl -- PasswordUtils
+WechatAppletLoginStrategyImpl -- UserEntity
+WechatAppletLoginStrategyImpl -- LoginStrategyImpl
+WechatAppletLoginStrategyImpl -- LoginStrategy
+LoginStrategy -- UserEntity
+LoginStrategy -- LoginDto
+LoginStrategy -- LoginVo
+LoginStrategy -- ResultEnum
+LoginStrategy -- BizException
+LoginStrategy -- IRedisService
+LoginStrategy -- BooleanUtils
+LoginStrategyFactory -- AuthTypeEnum
+LoginStrategyFactory -- LoginDto
+LoginStrategyFactory -- EmailVerifyCodeLoginStrategyImpl
+LoginStrategyFactory -- LoginStrategyImpl
+LoginStrategyFactory -- PasswordLoginStrategyImpl
+LoginStrategyFactory -- LoginStrategy
+LoginStrategyFactory -- ResultEnum
+LoginStrategyFactory -- BizException
+LoginStrategyFactory -- SpringContextSupport
+MailServiceImpl -- IMailService
+GlobalExceptionHandler -- ResultEnum
+GlobalExceptionHandler -- BizException
+RedisServiceImpl -- IRedisService
+UserServiceTests -- UserEntity
+UserServiceTests -- IMpUserService
+UserServiceTests -- ErwinSampleApplication
+UserServiceTests -- PasswordUtils
+UserServiceTests -- ErwinSampleApplicationTests
+ErwinSampleApplicationTests -- ErwinSampleApplication
+BizUtilsTests -- BizUtils
+@enduml

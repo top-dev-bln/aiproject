@@ -1,0 +1,791 @@
+@startuml
+package com.qiwenshare.stock.advice; {
+class GlobalExceptionHandlerAdvice {
+}
+
+}
+
+package com.qiwenshare.stock.analysis.indicator; {
+class BOLLAnalysis {
+}
+
+class IndicatorAnalysis {
+}
+
+class KDJAnalysis {
+}
+
+class MAAnalysis {
+}
+
+class MACDAnalysis {
+}
+
+class RSIAnalysis {
+}
+
+class TurnoverRateAnalysis {
+}
+
+}
+
+package com.qiwenshare.stock.analysis.pressureandsupport; {
+class GoldPressureAndSupportPositions {
+}
+
+class KPressureAndSupportPositions {
+}
+
+class MaPressureAndSupportPositions {
+}
+
+class PressureAndSupportPositions {
+}
+
+}
+
+package com.qiwenshare.stock.analysis; {
+class ReplayOperation {
+}
+
+class TechnologyAnalysis {
+}
+
+}
+
+package com.qiwenshare.stock.analysis.tactics; {
+class BreakNeckLineAnalysis {
+}
+
+class CattleCatchingAnalysis {
+}
+
+class DragonVeinAnalysis {
+}
+
+class TacticsAnalysis {
+}
+
+}
+
+package com.qiwenshare.stock.api; {
+class IAbnormalaActionService {
+}
+
+class IEchnicalaspectService {
+}
+
+class IReplayService {
+}
+
+class IStockBidService {
+}
+
+class IStockDayInfoService {
+}
+
+class IStockDIService {
+}
+
+class IStockMonthInfoService {
+}
+
+class IStockOptionalService {
+}
+
+class IStockTimeInfoService {
+}
+
+class IStockWeekInfoService {
+}
+
+class IUserService {
+}
+
+}
+
+package com.qiwenshare.stock.common; {
+class HttpRequest {
+}
+
+class HttpsUtils {
+}
+
+class MiniuiUtil {
+}
+
+class ProxyBean {
+}
+
+class ProxyHttpRequest {
+}
+
+class TableData {
+}
+
+class TableQueryBean {
+}
+
+class TaskProcess {
+}
+
+}
+
+package com.qiwenshare.stock.component; {
+class JwtComp {
+}
+
+class UserDealComp {
+}
+
+}
+
+package com.qiwenshare.stock.config.jwt; {
+class JwtHeader {
+}
+
+class JwtPayload {
+}
+
+class JwtProperties {
+}
+
+class RegisterdClaims {
+}
+
+}
+
+package com.qiwenshare.stock.config.security.entrypoint; {
+class JwtAuthenticationEntryPoint {
+}
+
+}
+
+package com.qiwenshare.stock.config.security.filter; {
+class JwtAuthenticationTokenFilter {
+}
+
+class UrlFilterInvocationSecurityMetadataSource {
+}
+
+}
+
+package com.qiwenshare.stock.config.security.handle; {
+class JwtAccessDeniedHandler {
+}
+
+}
+
+package com.qiwenshare.stock.config.security.manager; {
+class UrlAccessDecisionManager {
+}
+
+}
+
+package com.qiwenshare.stock.config.security; {
+class SecurityConfig {
+}
+
+}
+
+package com.qiwenshare.stock.config; {
+class WebSocketConfig {
+}
+
+}
+
+package com.qiwenshare.stock.constant; {
+class ProxyConstant {
+}
+
+class StatusCode {
+}
+
+class StockConstant {
+}
+
+class StockTaskTypeEnum {
+}
+
+}
+
+package com.qiwenshare.stock.controller; {
+class StockController {
+}
+
+class UserController {
+}
+
+}
+
+package com.qiwenshare.stock.domain; {
+class AbnormalactionBean {
+}
+
+class EchnicalaspectBean {
+}
+
+class ReplayBean {
+}
+
+class StockBean {
+}
+
+class StockBidBean {
+}
+
+class StockBidObj {
+}
+
+class StockDayInfo {
+}
+
+class StockKlineBean {
+}
+
+class StockKLineObj {
+}
+
+class StockMonthInfo {
+}
+
+class StockOptionalBean {
+}
+
+class StockTimeInfo {
+}
+
+class StockTimeLineObj {
+}
+
+class StockWeekInfo {
+}
+
+}
+
+package com.qiwenshare.stock.domain.user; {
+class Permission {
+}
+
+class Role {
+}
+
+class RolePermission {
+}
+
+class UserBean {
+}
+
+class UserRole {
+}
+
+}
+
+package com.qiwenshare.stock.dto.user; {
+class RegisterDTO {
+}
+
+}
+
+package com.qiwenshare.stock.executor; {
+class ReplayRunnable {
+}
+
+class StockExecutor {
+}
+
+}
+
+package com.qiwenshare.stock.indicator.factory; {
+class IndicatorFactory {
+}
+
+class KDJIndicatorFactory {
+}
+
+class MACDIndicatorFactory {
+}
+
+class MAIndicatorFactory {
+}
+
+class RSIIndicatorFactory {
+}
+
+class WRIndicatorFactory {
+}
+
+}
+
+package com.qiwenshare.stock.indicator.product; {
+class Abnormalaction {
+}
+
+class Indicator {
+}
+
+class KDJ {
+}
+
+class MA {
+}
+
+class MACD {
+}
+
+class RSI {
+}
+
+class WR {
+}
+
+}
+
+package com.qiwenshare.stock.indicator.proxy; {
+class IndicatorProxy {
+}
+
+}
+
+package com.qiwenshare.stock.mapper; {
+class AbnormalaActionMapper {
+}
+
+class EchnicalaspectMapper {
+}
+
+class ReplayMapper {
+}
+
+class StockBidMapper {
+}
+
+class StockMapper {
+}
+
+class StockOptionalMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package com.qiwenshare.stock.service; {
+class AbnormalaActionService {
+}
+
+class EchnicalaspectService {
+}
+
+class ReplayService {
+}
+
+class StockBidService {
+}
+
+class StockDayInfoService {
+}
+
+class StockMonthInfoService {
+}
+
+class StockOptionalService {
+}
+
+class StockService {
+}
+
+class StockTimeInfoService {
+}
+
+class StockWeekInfoService {
+}
+
+class UserService {
+}
+
+}
+
+package com.qiwenshare.stock; {
+class StockApplication {
+}
+
+class StockApplicationTests {
+}
+
+}
+
+package com.qiwenshare.stock.vo.user; {
+class UserLoginVo {
+}
+
+}
+
+package com.qiwenshare.stock.websocket; {
+class StockWebsocket {
+}
+
+}
+
+BOLLAnalysis -- IndicatorAnalysis
+BOLLAnalysis -- ReplayBean
+BOLLAnalysis -- StockBean
+BOLLAnalysis -- StockDayInfo
+BOLLAnalysis -- Indicator
+IndicatorAnalysis -- TechnologyAnalysis
+IndicatorAnalysis -- ReplayBean
+IndicatorAnalysis -- Indicator
+KDJAnalysis -- IndicatorAnalysis
+KDJAnalysis -- ReplayBean
+KDJAnalysis -- StockBean
+KDJAnalysis -- StockDayInfo
+KDJAnalysis -- Indicator
+KDJAnalysis -- KDJ
+MAAnalysis -- IndicatorAnalysis
+MAAnalysis -- ReplayBean
+MAAnalysis -- StockBean
+MAAnalysis -- StockDayInfo
+MAAnalysis -- Indicator
+MAAnalysis -- MA
+MACDAnalysis -- IndicatorAnalysis
+MACDAnalysis -- StatusCode
+MACDAnalysis -- ReplayBean
+MACDAnalysis -- StockBean
+MACDAnalysis -- StockDayInfo
+MACDAnalysis -- Indicator
+MACDAnalysis -- MA
+MACDAnalysis -- MACD
+RSIAnalysis -- IndicatorAnalysis
+RSIAnalysis -- ReplayBean
+RSIAnalysis -- StockBean
+RSIAnalysis -- StockDayInfo
+RSIAnalysis -- Indicator
+RSIAnalysis -- RSI
+TurnoverRateAnalysis -- IndicatorAnalysis
+TurnoverRateAnalysis -- ReplayBean
+TurnoverRateAnalysis -- StockBean
+TurnoverRateAnalysis -- StockDayInfo
+TurnoverRateAnalysis -- Indicator
+GoldPressureAndSupportPositions -- PressureAndSupportPositions
+KPressureAndSupportPositions -- PressureAndSupportPositions
+KPressureAndSupportPositions -- TechnologyAnalysis
+KPressureAndSupportPositions -- ReplayBean
+KPressureAndSupportPositions -- StockBean
+KPressureAndSupportPositions -- StockDayInfo
+MaPressureAndSupportPositions -- PressureAndSupportPositions
+MaPressureAndSupportPositions -- TechnologyAnalysis
+MaPressureAndSupportPositions -- ReplayBean
+MaPressureAndSupportPositions -- StockBean
+MaPressureAndSupportPositions -- StockDayInfo
+PressureAndSupportPositions -- StockDayInfo
+ReplayOperation -- IndicatorAnalysis
+ReplayOperation -- MACDAnalysis
+ReplayOperation -- BreakNeckLineAnalysis
+ReplayOperation -- CattleCatchingAnalysis
+ReplayOperation -- DragonVeinAnalysis
+ReplayOperation -- TechnologyAnalysis
+ReplayOperation -- StatusCode
+ReplayOperation -- ReplayBean
+ReplayOperation -- StockBean
+ReplayOperation -- StockDayInfo
+ReplayOperation -- Indicator
+ReplayOperation -- MA
+ReplayOperation -- MACD
+BreakNeckLineAnalysis -- TacticsAnalysis
+BreakNeckLineAnalysis -- StatusCode
+BreakNeckLineAnalysis -- ReplayBean
+BreakNeckLineAnalysis -- StockBean
+BreakNeckLineAnalysis -- StockDayInfo
+BreakNeckLineAnalysis -- KDJ
+CattleCatchingAnalysis -- TacticsAnalysis
+CattleCatchingAnalysis -- StatusCode
+CattleCatchingAnalysis -- ReplayBean
+CattleCatchingAnalysis -- StockBean
+CattleCatchingAnalysis -- StockDayInfo
+DragonVeinAnalysis -- TacticsAnalysis
+DragonVeinAnalysis -- StatusCode
+DragonVeinAnalysis -- ReplayBean
+DragonVeinAnalysis -- StockBean
+DragonVeinAnalysis -- StockDayInfo
+TacticsAnalysis -- TechnologyAnalysis
+TechnologyAnalysis -- ReplayBean
+TechnologyAnalysis -- StockBean
+TechnologyAnalysis -- StockDayInfo
+IAbnormalaActionService -- AbnormalactionBean
+IAbnormalaActionService -- Abnormalaction
+IAbnormalaActionService -- AbnormalaActionService
+IEchnicalaspectService -- EchnicalaspectBean
+IEchnicalaspectService -- StockDayInfo
+IEchnicalaspectService -- EchnicalaspectService
+IReplayService -- ReplayBean
+IReplayService -- ReplayService
+IStockBidService -- StockBean
+IStockBidService -- StockBidBean
+IStockBidService -- StockBidService
+IStockDayInfoService -- StockBean
+IStockDayInfoService -- StockDayInfo
+IStockDayInfoService -- StockDayInfoService
+IStockDIService -- StockBean
+IStockDIService -- StockDayInfo
+IStockMonthInfoService -- StockBean
+IStockMonthInfoService -- StockDayInfo
+IStockMonthInfoService -- StockMonthInfo
+IStockMonthInfoService -- StockMonthInfoService
+IStockOptionalService -- StockOptionalBean
+IStockOptionalService -- StockOptionalService
+IStockTimeInfoService -- StockTimeInfo
+IStockTimeInfoService -- StockTimeInfoService
+IStockWeekInfoService -- StockBean
+IStockWeekInfoService -- StockDayInfo
+IStockWeekInfoService -- StockWeekInfo
+IStockWeekInfoService -- StockWeekInfoService
+IUserService -- Role
+IUserService -- UserBean
+IUserService -- UserService
+HttpsUtils -- MA
+MiniuiUtil -- TableQueryBean
+ProxyHttpRequest -- HttpRequest
+ProxyHttpRequest -- ProxyBean
+ProxyHttpRequest -- ProxyConstant
+JwtComp -- JwtProperties
+JwtComp -- RegisterdClaims
+UserDealComp -- UserBean
+UserDealComp -- UserMapper
+JwtPayload -- RegisterdClaims
+JwtProperties -- JwtHeader
+JwtProperties -- JwtPayload
+JwtAuthenticationTokenFilter -- UserService
+UrlFilterInvocationSecurityMetadataSource -- UrlAccessDecisionManager
+UrlFilterInvocationSecurityMetadataSource -- SecurityConfig
+UrlFilterInvocationSecurityMetadataSource -- Permission
+SecurityConfig -- JwtAuthenticationEntryPoint
+SecurityConfig -- JwtAuthenticationTokenFilter
+SecurityConfig -- JwtAccessDeniedHandler
+SecurityConfig -- UrlAccessDecisionManager
+SecurityConfig -- UserService
+StatusCode -- MA
+StockController -- ReplayOperation
+StockController -- IAbnormalaActionService
+StockController -- IEchnicalaspectService
+StockController -- IReplayService
+StockController -- IStockBidService
+StockController -- IStockDayInfoService
+StockController -- IStockDIService
+StockController -- IStockMonthInfoService
+StockController -- IStockOptionalService
+StockController -- IStockTimeInfoService
+StockController -- IStockWeekInfoService
+StockController -- HttpsUtils
+StockController -- TableData
+StockController -- TableQueryBean
+StockController -- TaskProcess
+StockController -- StockTaskTypeEnum
+StockController -- AbnormalactionBean
+StockController -- EchnicalaspectBean
+StockController -- ReplayBean
+StockController -- StockBean
+StockController -- StockBidBean
+StockController -- StockDayInfo
+StockController -- StockMonthInfo
+StockController -- StockOptionalBean
+StockController -- StockTimeInfo
+StockController -- StockWeekInfo
+StockController -- ReplayRunnable
+StockController -- StockExecutor
+StockController -- Abnormalaction
+StockController -- AbnormalaActionService
+StockController -- EchnicalaspectService
+StockController -- ReplayService
+StockController -- StockBidService
+StockController -- StockDayInfoService
+StockController -- StockMonthInfoService
+StockController -- StockOptionalService
+StockController -- StockTimeInfoService
+StockController -- StockWeekInfoService
+StockController -- StockWebsocket
+UserController -- IUserService
+UserController -- JwtComp
+UserController -- UserBean
+UserController -- RegisterDTO
+UserController -- UserService
+UserController -- UserLoginVo
+AbnormalactionBean -- Abnormalaction
+ReplayBean -- StockBean
+StockTimeLineObj -- StockTimeInfo
+Role -- Permission
+RolePermission -- Permission
+RolePermission -- Role
+RolePermission -- MA
+UserRole -- Role
+ReplayRunnable -- ReplayOperation
+ReplayRunnable -- IReplayService
+ReplayRunnable -- IStockDayInfoService
+ReplayRunnable -- TaskProcess
+ReplayRunnable -- ReplayBean
+ReplayRunnable -- StockBean
+ReplayRunnable -- StockDayInfo
+ReplayRunnable -- ReplayService
+ReplayRunnable -- StockDayInfoService
+ReplayRunnable -- StockWebsocket
+StockExecutor -- IAbnormalaActionService
+StockExecutor -- IEchnicalaspectService
+StockExecutor -- IStockBidService
+StockExecutor -- IStockDayInfoService
+StockExecutor -- IStockDIService
+StockExecutor -- IStockMonthInfoService
+StockExecutor -- IStockTimeInfoService
+StockExecutor -- IStockWeekInfoService
+StockExecutor -- TaskProcess
+StockExecutor -- StockTaskTypeEnum
+StockExecutor -- AbnormalactionBean
+StockExecutor -- EchnicalaspectBean
+StockExecutor -- StockBean
+StockExecutor -- StockBidBean
+StockExecutor -- StockDayInfo
+StockExecutor -- StockMonthInfo
+StockExecutor -- StockTimeInfo
+StockExecutor -- StockWeekInfo
+StockExecutor -- Abnormalaction
+StockExecutor -- Indicator
+StockExecutor -- IndicatorProxy
+StockExecutor -- AbnormalaActionService
+StockExecutor -- EchnicalaspectService
+StockExecutor -- StockBidService
+StockExecutor -- StockDayInfoService
+StockExecutor -- StockMonthInfoService
+StockExecutor -- StockTimeInfoService
+StockExecutor -- StockWeekInfoService
+StockExecutor -- StockWebsocket
+IndicatorFactory -- Indicator
+KDJIndicatorFactory -- IndicatorFactory
+KDJIndicatorFactory -- Indicator
+KDJIndicatorFactory -- KDJ
+MACDIndicatorFactory -- IndicatorFactory
+MACDIndicatorFactory -- Indicator
+MACDIndicatorFactory -- MA
+MACDIndicatorFactory -- MACD
+MAIndicatorFactory -- IndicatorFactory
+MAIndicatorFactory -- Indicator
+MAIndicatorFactory -- MA
+RSIIndicatorFactory -- IndicatorFactory
+RSIIndicatorFactory -- Indicator
+RSIIndicatorFactory -- RSI
+WRIndicatorFactory -- IndicatorFactory
+WRIndicatorFactory -- Indicator
+WRIndicatorFactory -- WR
+Abnormalaction -- StockTimeInfo
+Indicator -- StockDayInfo
+Indicator -- StockMonthInfo
+Indicator -- StockWeekInfo
+KDJ -- StockDayInfo
+KDJ -- StockMonthInfo
+KDJ -- StockWeekInfo
+KDJ -- Indicator
+MA -- StockDayInfo
+MA -- StockMonthInfo
+MA -- StockWeekInfo
+MA -- Indicator
+MACD -- StockDayInfo
+MACD -- StockMonthInfo
+MACD -- StockWeekInfo
+MACD -- Indicator
+MACD -- MA
+RSI -- StockDayInfo
+RSI -- StockMonthInfo
+RSI -- StockWeekInfo
+RSI -- Indicator
+WR -- StockDayInfo
+WR -- StockMonthInfo
+WR -- StockWeekInfo
+WR -- Indicator
+IndicatorProxy -- StockDayInfo
+IndicatorProxy -- StockMonthInfo
+IndicatorProxy -- StockWeekInfo
+IndicatorProxy -- IndicatorFactory
+IndicatorProxy -- KDJIndicatorFactory
+IndicatorProxy -- MACDIndicatorFactory
+IndicatorProxy -- MAIndicatorFactory
+IndicatorProxy -- RSIIndicatorFactory
+IndicatorProxy -- WRIndicatorFactory
+IndicatorProxy -- Indicator
+IndicatorProxy -- KDJ
+IndicatorProxy -- MA
+IndicatorProxy -- MACD
+IndicatorProxy -- RSI
+IndicatorProxy -- WR
+AbnormalaActionMapper -- AbnormalactionBean
+AbnormalaActionMapper -- Abnormalaction
+EchnicalaspectMapper -- EchnicalaspectBean
+ReplayMapper -- ReplayBean
+StockBidMapper -- StockBidBean
+StockMapper -- TableQueryBean
+StockMapper -- StockBean
+StockMapper -- StockDayInfo
+StockMapper -- StockMonthInfo
+StockMapper -- StockTimeInfo
+StockMapper -- StockWeekInfo
+StockOptionalMapper -- StockOptionalBean
+UserMapper -- Role
+UserMapper -- UserBean
+UserMapper -- UserRole
+AbnormalaActionService -- AbnormalactionBean
+AbnormalaActionService -- Abnormalaction
+AbnormalaActionService -- AbnormalaActionMapper
+EchnicalaspectService -- CattleCatchingAnalysis
+EchnicalaspectService -- TacticsAnalysis
+EchnicalaspectService -- EchnicalaspectBean
+EchnicalaspectService -- ReplayBean
+EchnicalaspectService -- StockBean
+EchnicalaspectService -- StockDayInfo
+EchnicalaspectService -- KDJ
+EchnicalaspectService -- MA
+EchnicalaspectService -- MACD
+EchnicalaspectService -- RSI
+EchnicalaspectService -- EchnicalaspectMapper
+ReplayService -- ReplayBean
+ReplayService -- ReplayMapper
+StockBidService -- HttpsUtils
+StockBidService -- StockBean
+StockBidService -- StockBidBean
+StockBidService -- StockBidMapper
+StockDayInfoService -- HttpsUtils
+StockDayInfoService -- StockBean
+StockDayInfoService -- StockDayInfo
+StockDayInfoService -- StockMapper
+StockMonthInfoService -- StockBean
+StockMonthInfoService -- StockDayInfo
+StockMonthInfoService -- StockMonthInfo
+StockMonthInfoService -- Indicator
+StockMonthInfoService -- IndicatorProxy
+StockMonthInfoService -- StockMapper
+StockOptionalService -- StockOptionalBean
+StockOptionalService -- StockOptionalMapper
+StockService -- IStockDIService
+StockService -- HttpsUtils
+StockService -- MiniuiUtil
+StockService -- TableQueryBean
+StockService -- StockBean
+StockService -- StockDayInfo
+StockService -- StockMonthInfo
+StockService -- StockTimeInfo
+StockService -- StockWeekInfo
+StockService -- StockMapper
+StockTimeInfoService -- HttpsUtils
+StockTimeInfoService -- StockTimeInfo
+StockTimeInfoService -- StockMapper
+StockWeekInfoService -- StockBean
+StockWeekInfoService -- StockDayInfo
+StockWeekInfoService -- StockWeekInfo
+StockWeekInfoService -- Indicator
+StockWeekInfoService -- IndicatorProxy
+StockWeekInfoService -- StockMapper
+UserService -- JwtComp
+UserService -- UserDealComp
+UserService -- Role
+UserService -- UserBean
+UserService -- UserRole
+UserService -- UserMapper
+StockWebsocket -- TaskProcess
+StockApplicationTests -- StockApplication
+@enduml

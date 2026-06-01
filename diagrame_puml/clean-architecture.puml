@@ -1,0 +1,254 @@
+@startuml
+
+package com.d4i.sample.movie {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.d4i.sample.movie.category {
+  class Category {
+    -id : Long
+    -name : String
+    -available : Boolean
+  }
+}
+
+package com.d4i.sample.movie.category.exception {
+  class CategoryAlreadyExistException {
+    -serialVersionUID : long
+  }
+}
+
+package com.d4i.sample.movie.category.ports {
+  interface CategoryRepositoryService {
+    +getAllCategories() : Collection<Category>
+    +saveCategory() : void
+    +doesCategoryNameExists() : Boolean
+  }
+  class UpdateCategoryInFilmsEventsGateway {
+  }
+}
+
+package com.d4i.sample.movie.category.usecase {
+  interface GetAllCategoriesUseCase {
+    +execute() : Collection<Category>
+  }
+  class CreateCategoryUseCaseImpl {
+    -categoryRepositoryService : CategoryRepositoryService
+    +execute() : void
+  }
+  interface CreateCategoryUseCase {
+    +execute() : void
+  }
+  class GetAllCategoriesUseCaseImpl {
+    -categoryRepositoryService : CategoryRepositoryService
+    +execute() : Collection<Category>
+  }
+}
+
+package com.d4i.sample.movie.configuration {
+  class SwaggerConfig {
+    +api() : Docket
+  }
+  class CategoryConfiguration {
+    -categoryRepository : CategoryRepository
+    +createCategoryRepositoryConverter() : CategoryRepositoryConverter
+    +createCategoryRestConverter() : CategoryRestConverter
+    +createCategoriServiceImpl() : CategoryServiceImpl
+    +createGetAllCategoriesUseCase() : GetAllCategoriesUseCaseImpl
+    +createCreateCategoryUseCase() : CreateCategoryUseCaseImpl
+  }
+}
+
+package com.d4i.sample.movie.delivery {
+  interface CategoryController {
+  }
+}
+
+package com.d4i.sample.movie.delivery.converters {
+  class CategoryRestConverter {
+    -rest : CategoryRest
+    -entity : Category
+    +mapToEntity() : Category
+    +mapToRest() : CategoryRest
+  }
+}
+
+package com.d4i.sample.movie.delivery.impl {
+  class CategoryControllerImpl <<Controller>> {
+    -getAllCategoriesUseCase : GetAllCategoriesUseCase
+    -createCategoryUseCase : CreateCategoryUseCase
+    -categoryRestConverter : CategoryRestConverter
+    -category : CategoryRest
+    +getCategories() : NetflixResponse<Collection<CategoryRest>>
+    +createCategory() : NetflixResponse<Boolean>
+  }
+}
+
+package com.d4i.sample.movie.delivery.responses {
+  class NetflixResponse {
+    -status : String
+    -code : String
+    -message : String
+    -data : T
+    -serialVersionUID : long
+    +getStatus() : String
+    +setStatus() : void
+    +getCode() : String
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getData() : T
+    +setData() : void
+  }
+}
+
+package com.d4i.sample.movie.delivery.rest {
+  class CategoryRest {
+    -serialVersionUID : long
+    -name : String
+    -available : Boolean
+  }
+}
+
+package com.d4i.sample.movie.persistence.converters {
+  class CategoryRepositoryConverter {
+    -persistenceObject : Category
+    -entityObject : CategoryEntity
+    +mapToTable() : CategoryEntity
+    +mapToEntity() : Category
+  }
+}
+
+package com.d4i.sample.movie.persistence.entities {
+  class CategoryEntity <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -name : String
+    -available : Boolean
+  }
+}
+
+package com.d4i.sample.movie.persistence.impl {
+  class CategoryServiceImpl {
+    -categoryRepository : CategoryRepository
+    -categoryRepositoryConverter : CategoryRepositoryConverter
+    -category : Category
+    -name : String
+    +getAllCategories() : Collection<Category>
+    +saveCategory() : void
+    +doesCategoryNameExists() : Boolean
+  }
+}
+
+package com.d4i.sample.movie.persistence.repositories {
+  interface CategoryRepository {
+    +findByName() : Collection<Category>
+  }
+}
+
+package com.d4i.sample.movie.shared {
+  interface RestConverter {
+    -rest : R
+    -entity : E
+  }
+  interface RepositoryConverter {
+    -persistenceObject : P
+    -tableObject : T
+  }
+  class SelfValidating {
+    -validator : Validator
+    +validateSelf() : void
+  }
+}
+
+package com.d4i.sample.movie.shared.constants {
+  class CommonConstants {
+    -SUCCESS : String
+    -OK : String
+    -UTF_8 : String
+  }
+  class RestConstants {
+    -APPLICATION_NAME : String
+    -API_VERSION_1 : String
+    -RESOURCE_CATEGORY : String
+  }
+  class ExceptionConstants {
+    -ERROR : String
+    -BAD_REQUEST_DEFAULT_MESSAGE : String
+    -BAD_REQUEST_EXISTS_CATEGORY_MESSAGE : String
+  }
+}
+
+package com.d4i.sample.movie.shared.exceptions {
+  class NetflixException {
+    -serialVersionUID : long
+    -code : int
+    -code : int
+    -message : String
+    +getCode() : int
+  }
+  class BadRequestException {
+    -serialVersionUID : long
+    -message : String
+  }
+  class NotFoundException {
+    -serialVersionUID : long
+    -message : String
+  }
+}
+
+' --- Relatii ---
+CategoryConfiguration --> CreateCategoryUseCaseImpl
+CategoryConfiguration --> GetAllCategoriesUseCaseImpl
+CategoryConfiguration --> CategoryRestConverter
+CategoryConfiguration --> CategoryRepositoryConverter
+CategoryConfiguration --> CategoryServiceImpl
+CategoryConfiguration --> CategoryRepository
+BadRequestException --|> NetflixException
+NotFoundException --|> NetflixException
+CategoryServiceImpl ..|> CategoryRepositoryService
+CategoryServiceImpl --> Category
+CategoryServiceImpl --> CategoryRepositoryService
+CategoryServiceImpl --> CategoryRepositoryConverter
+CategoryServiceImpl --> CategoryRepository
+CategoryRepositoryConverter ..|> RepositoryConverter
+CategoryRepositoryConverter --> Category
+CategoryRepositoryConverter --> CategoryEntity
+CategoryRepositoryConverter --> RepositoryConverter
+CategoryRepository --> Category
+CategoryRepository --> CategoryEntity
+CategoryController --> NetflixResponse
+CategoryController --> CategoryRest
+CategoryController --> NetflixException
+CategoryControllerImpl ..|> CategoryController
+CategoryControllerImpl --> CategoryAlreadyExistException
+CategoryControllerImpl --> CreateCategoryUseCase
+CategoryControllerImpl --> GetAllCategoriesUseCase
+CategoryControllerImpl --> CategoryController
+CategoryControllerImpl --> CategoryRestConverter
+CategoryControllerImpl --> NetflixResponse
+CategoryControllerImpl --> CategoryRest
+CategoryControllerImpl --> CommonConstants
+CategoryControllerImpl --> RestConstants
+CategoryControllerImpl --> NetflixException
+CategoryRestConverter ..|> RestConverter
+CategoryRestConverter --> Category
+CategoryRestConverter --> CategoryRest
+CategoryRestConverter --> RestConverter
+Category --|> SelfValidating
+Category --> SelfValidating
+GetAllCategoriesUseCase --> Category
+CreateCategoryUseCaseImpl ..|> CreateCategoryUseCase
+CreateCategoryUseCaseImpl --> Category
+CreateCategoryUseCaseImpl --> CategoryAlreadyExistException
+CreateCategoryUseCaseImpl --> CategoryRepositoryService
+CreateCategoryUseCase --> Category
+CreateCategoryUseCase --> CategoryAlreadyExistException
+GetAllCategoriesUseCaseImpl ..|> GetAllCategoriesUseCase
+GetAllCategoriesUseCaseImpl --> Category
+GetAllCategoriesUseCaseImpl --> CategoryRepositoryService
+CategoryRepositoryService --> Category
+
+@enduml

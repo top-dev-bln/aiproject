@@ -1,0 +1,142 @@
+@startuml
+
+package com.drools.core {
+  class KieTemplate {
+    -classLoader : ClassLoader
+    +afterPropertiesSet() : void
+    +setBeanClassLoader() : void
+    +getKieSession() : KieSession
+    +encodeToString() : String
+    +decodeToSession() : KieSession
+    +getKieBase() : KieBase
+    +doRead0() : void
+  }
+  class RuleCache {
+    -logger : Logger
+    -kieTemplate : KieTemplate
+    +run() : void
+  }
+  class KieSchedule {
+    -kieTemplate : KieTemplate
+    +execute() : void
+    +run() : void
+    +afterPropertiesSet() : void
+  }
+  class KieAccessor {
+    -logger : Logger
+    -PATH_SPLIT : String
+    -path : String
+    -mode : String
+    -update : Long
+    -listener : String
+    -verify : String
+    -charset : String
+    +afterPropertiesSet() : void
+    +getPath() : String
+    +setPath() : void
+    +getMode() : String
+    +setMode() : void
+    +getUpdate() : Long
+    +setUpdate() : void
+    +getListener() : String
+  }
+}
+
+package com.drools.core.common {
+  class Constants {
+    -SUFFIX_DRL : String
+    -SUFFIX_EXCEL : String
+    -SUFFIX_EXCEL_2007 : String
+    -SUFFIX_CSV : String
+    -LISTENER_OPEN : String
+    -LISTENER_CLOSE : String
+  }
+}
+
+package com.drools.core.config {
+  class DroolsAutoConfiguration {
+    +kieTemplate() : KieTemplate
+    +kieSchedule() : KieSchedule
+  }
+  class DroolsProperties {
+    -path : String
+    -update : Long
+    -mode : String
+    -listener : String
+    -autoUpdate : String
+    -verify : String
+    -charset : String
+    +getPath() : String
+    +setPath() : void
+    +getUpdate() : Long
+    +setUpdate() : void
+    +getMode() : String
+    +setMode() : void
+    +getListener() : String
+    +setListener() : void
+  }
+}
+
+package com.drools.core.listener {
+  class DefaultRuleRuntimeEventListener {
+    -logger : Logger
+    +objectInserted() : void
+    +objectUpdated() : void
+    +objectDeleted() : void
+  }
+  class DefaultAgendaEventListener {
+    -logger : Logger
+    +matchCreated() : void
+    +matchCancelled() : void
+    +beforeMatchFired() : void
+    +afterMatchFired() : void
+    +agendaGroupPopped() : void
+    +agendaGroupPushed() : void
+    +beforeRuleFlowGroupActivated() : void
+    +afterRuleFlowGroupActivated() : void
+  }
+  class DefaultProcessEventListener {
+    -logger : Logger
+    +beforeProcessStarted() : void
+    +afterProcessStarted() : void
+    +beforeProcessCompleted() : void
+    +afterProcessCompleted() : void
+    +beforeNodeTriggered() : void
+    +afterNodeTriggered() : void
+    +beforeNodeLeft() : void
+    +afterNodeLeft() : void
+  }
+}
+
+package com.drools.core.util {
+  class FileUtil {
+    -LOG : Logger
+    -TEMP_DIR : String
+    +fileList() : void
+    +copyResourceToTempFile() : File
+    +createTempDir() : void
+  }
+  class ScheduledThreadPoolExecutorUtil {
+    -RULE_SCHEDULE : ScheduledThreadPoolExecutor
+    -CACHE_KIE : ScheduledThreadPoolExecutor
+    -POOL_NUMBER : AtomicInteger
+    -group : ThreadGroup
+    -threadNumber : AtomicInteger
+    -namePrefix : String
+    +rejectedExecution() : void
+    +rejectedExecution() : void
+    +newThread() : Thread
+  }
+}
+
+' --- Relatii ---
+KieTemplate --|> KieAccessor
+KieTemplate --> DefaultAgendaEventListener
+KieTemplate --> DefaultProcessEventListener
+KieTemplate --> DefaultRuleRuntimeEventListener
+KieTemplate --> FileUtil
+KieSchedule --> ScheduledThreadPoolExecutorUtil
+DroolsAutoConfiguration --> KieSchedule
+DroolsAutoConfiguration --> KieTemplate
+
+@enduml

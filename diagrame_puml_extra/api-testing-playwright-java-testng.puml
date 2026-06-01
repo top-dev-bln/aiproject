@@ -1,0 +1,115 @@
+@startuml
+package io.github.mfaisalkhatri.api.logger; {
+class Logger {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.manager; {
+class RequestManager {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.reqres.data; {
+class EmployeeData {
+}
+
+class EmployeeDataBuilder {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.reqres.tests; {
+class ApiTests {
+}
+
+class BaseTest {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.restfulbooker.data; {
+class BookingData {
+}
+
+class BookingDataBuilder {
+}
+
+class BookingDates {
+}
+
+class PartialBookingData {
+}
+
+class TokenBuilder {
+}
+
+class Tokencreds {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.restfulbooker.tests; {
+class BaseTest {
+}
+
+class RestfulBookerEndToEndTests {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.restfulecommerce; {
+class BaseTest {
+}
+
+class HappyPathTests {
+}
+
+class SadPathTests {
+}
+
+}
+
+package io.github.mfaisalkhatri.api.restfulecommerce.testdata; {
+class OrderData {
+}
+
+class OrderDataBuilder {
+}
+
+class TokenBuilder {
+}
+
+class TokenData {
+}
+
+}
+
+EmployeeDataBuilder -- EmployeeData
+ApiTests -- EmployeeData
+ApiTests -- EmployeeDataBuilder
+ApiTests -- BaseTest
+BaseTest -- Logger
+BookingData -- BookingDates
+BookingDataBuilder -- BookingData
+BookingDataBuilder -- BookingDates
+BookingDataBuilder -- PartialBookingData
+PartialBookingData -- BookingData
+TokenBuilder -- TokenData
+RestfulBookerEndToEndTests -- BaseTest
+RestfulBookerEndToEndTests -- BookingData
+RestfulBookerEndToEndTests -- BookingDataBuilder
+RestfulBookerEndToEndTests -- PartialBookingData
+RestfulBookerEndToEndTests -- TokenBuilder
+RestfulBookerEndToEndTests -- Tokencreds
+HappyPathTests -- BaseTest
+HappyPathTests -- TokenBuilder
+HappyPathTests -- OrderData
+HappyPathTests -- OrderDataBuilder
+SadPathTests -- BaseTest
+SadPathTests -- TokenBuilder
+SadPathTests -- OrderData
+SadPathTests -- OrderDataBuilder
+OrderDataBuilder -- OrderData
+@enduml

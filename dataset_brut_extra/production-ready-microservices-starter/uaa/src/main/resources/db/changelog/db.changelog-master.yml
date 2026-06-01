@@ -1,0 +1,36 @@
+databaseChangeLog:
+
+  # Initialize application tables
+
+  - include:
+      file: "classpath:/db/changelog/create-table/create-table-org.yml"
+
+  - include:
+      file: "classpath:/db/changelog/create-table/create-table-tenant.yml"
+
+  - include:
+      file: "classpath:/db/changelog/create-table/create-table-role.yml"
+
+  - include:
+      file: "classpath:/db/changelog/create-table/create-table-user.yml"
+
+  - include:
+      file: "classpath:/db/changelog/create-table/create-table-user-roles.yml"
+
+
+  # Init Data
+
+  - include:
+      file: "classpath:/db/changelog/init-data/create-chumbok-org.yml"
+
+  - include:
+      file: "classpath:/db/changelog/init-data/create-chumbok-tenant.yml"
+
+  - include:
+      file: "classpath:/db/changelog/init-data/create-chumbok-roles.yml"
+
+  - include:
+      file: "classpath:/db/changelog/init-data/create-chumbok-super-admin-user.yml"
+
+  - include:
+      file: "classpath:/db/changelog/init-data/create-chumbok-super-admin-user-roles.yml"

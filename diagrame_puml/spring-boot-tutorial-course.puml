@@ -1,0 +1,198 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+
+package com.springboot.first.app {
+  class SpringbootFirstAppApplicationTests {
+  }
+  class StudentController <<Controller>> {
+    +getStudent() : Student
+    +getStudents() : List<Student>
+    +studentPathVariable() : Student
+    +studentQueryParam() : Student
+  }
+  class SpringbootFirstAppApplication {
+    +main() : void
+  }
+  class HelloWorldController <<Controller>> {
+    +helloWorld() : String
+  }
+  class Student {
+    -firstName : String
+    -lastName : String
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+  }
+}
+
+package net.javaguides.sms {
+  class StudentManagementSystemApplicationTests {
+  }
+  class StudentManagementSystemApplication {
+    -studentRepository : StudentRepository
+    +main() : void
+    +run() : void
+  }
+}
+
+package net.javaguides.sms.controller {
+  class StudentController <<Controller>> {
+    -studentService : StudentService
+    +listStudents() : String
+    +createStudentForm() : String
+    +saveStudent() : String
+    +editStudentForm() : String
+    +updateStudent() : String
+    +deleteStudent() : String
+  }
+}
+
+package net.javaguides.sms.entity {
+  class Student <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -email : String
+    +getId() : Long
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+}
+
+package net.javaguides.sms.repository {
+  interface StudentRepository {
+  }
+}
+
+package net.javaguides.sms.service {
+  interface StudentService {
+  }
+}
+
+package net.javaguides.sms.service.impl {
+  class StudentServiceImpl <<Service>> {
+    -studentRepository : StudentRepository
+    +getAllStudents() : List<Student>
+    +saveStudent() : Student
+    +getStudentById() : Student
+    +updateStudent() : Student
+    +deleteStudentById() : void
+  }
+}
+
+package net.javaguides.springboot {
+  class SpringbootBackendApplicationTests {
+  }
+  class SpringbootBackendApplication {
+    +main() : void
+  }
+}
+
+package net.javaguides.springboot.controller {
+  class EmployeeController <<Controller>> {
+    -employeeService : EmployeeService
+    +saveEmployee() : ResponseEntity<Employee>
+    +getAllEmployees() : List<Employee>
+    +getEmployeeById() : ResponseEntity<Employee>
+    +updateEmployee() : ResponseEntity<Employee>
+    +deleteEmployee() : ResponseEntity<String>
+  }
+}
+
+package net.javaguides.springboot.exception {
+  class ResourceNotFoundException {
+    -serialVersionUID : long
+    -resourceName : String
+    -fieldName : String
+    -fieldValue : Object
+    +getResourceName() : String
+    +getFieldName() : String
+    +getFieldValue() : Object
+  }
+}
+
+package net.javaguides.springboot.model {
+  class Employee <<Entity>> {
+    -id : long
+    -firstName : String
+    -lastName : String
+    -email : String
+  }
+}
+
+package net.javaguides.springboot.repository {
+  interface EmployeeRepository {
+  }
+}
+
+package net.javaguides.springboot.service {
+  interface EmployeeService {
+  }
+}
+
+package net.javaguides.springboot.service.impl {
+  class EmployeeServiceImpl <<Service>> {
+    -employeeRepository : EmployeeRepository
+    +saveEmployee() : Employee
+    +getAllEmployees() : List<Employee>
+    +getEmployeeById() : Employee
+    +updateEmployee() : Employee
+    +deleteEmployee() : void
+  }
+}
+
+' --- Relatii ---
+EmployeeRepository --> Employee
+EmployeeController --> Employee
+EmployeeController --> EmployeeService
+EmployeeService --> Employee
+EmployeeServiceImpl ..|> EmployeeService
+EmployeeServiceImpl --> ResourceNotFoundException
+EmployeeServiceImpl --> Employee
+EmployeeServiceImpl --> EmployeeRepository
+EmployeeServiceImpl --> EmployeeService
+StudentManagementSystemApplication --> Student
+StudentManagementSystemApplication --> StudentRepository
+StudentRepository --> Student
+StudentController --> Student
+StudentController --> StudentService
+StudentService --> Student
+StudentServiceImpl ..|> StudentService
+StudentServiceImpl --> Student
+StudentServiceImpl --> StudentRepository
+StudentServiceImpl --> StudentService
+
+@enduml

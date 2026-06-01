@@ -1,0 +1,107 @@
+@startuml
+package com.example.gatewaymvcsample; {
+class GatewayMvcApplication {
+}
+
+class HttpbinUriResolver {
+}
+
+class Route01FirstRoute {
+}
+
+class Route02SecondRoute {
+}
+
+class Route03HeaderPredicate {
+}
+
+class Route04HostPredicate {
+}
+
+class Route05NestedPredicate {
+}
+
+class Route06ReadBodyPredicate {
+}
+
+class Route07AddRequestHeaderFilter {
+}
+
+class Route08SetPathFilter {
+}
+
+class Route09AddResponseHeaderFilter {
+}
+
+class Route10SetStatusFilter {
+}
+
+class Route11LoadBalancerFilter {
+}
+
+class Route12Bucket4jFilter {
+}
+
+class Route13CircuitBreakerFilter {
+}
+
+class Route14RetryFilter {
+}
+
+class Route15ConfigRefresh {
+}
+
+class Route16WeightPredicate {
+}
+
+class Route17ModifyRequestBody {
+}
+
+class Route18ModifyResponseBody {
+}
+
+class Route19FunctionHandler {
+}
+
+class Route20StreamHandler {
+}
+
+class Route21VersionPredicate {
+}
+
+class GatewayMvcApplicationTests {
+}
+
+class HttpbinConfiguration {
+}
+
+class RabbitMQConfiguration {
+}
+
+class TestGatewayMvcApplication {
+}
+
+}
+
+Route01FirstRoute -- HttpbinUriResolver
+Route02SecondRoute -- HttpbinUriResolver
+Route03HeaderPredicate -- HttpbinUriResolver
+Route04HostPredicate -- HttpbinUriResolver
+Route05NestedPredicate -- HttpbinUriResolver
+Route06ReadBodyPredicate -- HttpbinUriResolver
+Route07AddRequestHeaderFilter -- HttpbinUriResolver
+Route08SetPathFilter -- HttpbinUriResolver
+Route09AddResponseHeaderFilter -- HttpbinUriResolver
+Route10SetStatusFilter -- HttpbinUriResolver
+Route12Bucket4jFilter -- HttpbinUriResolver
+Route13CircuitBreakerFilter -- HttpbinUriResolver
+Route16WeightPredicate -- HttpbinUriResolver
+Route17ModifyRequestBody -- HttpbinUriResolver
+Route18ModifyResponseBody -- HttpbinUriResolver
+Route21VersionPredicate -- HttpbinUriResolver
+GatewayMvcApplicationTests -- GatewayMvcApplication
+GatewayMvcApplicationTests -- HttpbinConfiguration
+TestGatewayMvcApplication -- GatewayMvcApplication
+TestGatewayMvcApplication -- HttpbinConfiguration
+TestGatewayMvcApplication -- RabbitMQConfiguration
+@enduml

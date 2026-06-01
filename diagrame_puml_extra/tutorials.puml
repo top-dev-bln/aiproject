@@ -1,0 +1,185 @@
+@startuml
+package com.spring.cloud.example.configserver; {
+class ConfigServerApplication {
+}
+
+class ConfigServerApplicationTests {
+}
+
+}
+
+package com.example; {
+class HateoasSpringDataRestExampleApplication {
+}
+
+class HateoasSpringDataRestExampleApplicationTests {
+}
+
+class ReactorTests {
+}
+
+}
+
+package com.example.resources; {
+class City {
+}
+
+class CityRepository {
+}
+
+class Country {
+}
+
+class CountryRepository {
+}
+
+}
+
+package com.tutorials.hibernatetips.config; {
+class HibernateJacksonConfig {
+}
+
+}
+
+package com.tutorials.hibernatetips.controllers; {
+class WebApi {
+}
+
+}
+
+package com.tutorials.hibernatetips; {
+class HibernateTipsApplication {
+}
+
+class HibernateTipsApplicationTests {
+}
+
+}
+
+package com.tutorials.hibernatetips.models; {
+class BaseEntity {
+}
+
+class Student {
+}
+
+class University {
+}
+
+}
+
+package com.tutorials.hibernatetips.repositories; {
+class StudentRepository {
+}
+
+class UniversityRepository {
+}
+
+}
+
+package com.example.junit5springboot; {
+class Junit5SpringBootApplication {
+}
+
+class Junit5SpringBootApplicationTests {
+}
+
+}
+
+package com.spring.cloud.example.libraryservice; {
+class LibraryServiceApplication {
+}
+
+class LibraryServiceApplicationTests {
+}
+
+}
+
+package com.spring.see.example; {
+class SeeDemoApplication {
+}
+
+class SeeDemoApplicationTests {
+}
+
+}
+
+package com.spring.example; {
+class Application {
+}
+
+class ApplicationTests {
+}
+
+}
+
+package com.spring.example.controllers; {
+class PersonController {
+}
+
+class RoutesConfiguration {
+}
+
+}
+
+package com.spring.example.models; {
+class Person {
+}
+
+}
+
+package com.spring.example.repositories; {
+class PersonRespository {
+}
+
+}
+
+package com.spring.example.security; {
+class SecurityConfiguration {
+}
+
+}
+
+ConfigServerApplication -- Application
+ConfigServerApplicationTests -- ConfigServerApplication
+ConfigServerApplicationTests -- Application
+ConfigServerApplicationTests -- ApplicationTests
+HateoasSpringDataRestExampleApplication -- Application
+City -- Country
+CityRepository -- City
+CountryRepository -- Country
+HateoasSpringDataRestExampleApplicationTests -- HateoasSpringDataRestExampleApplication
+HateoasSpringDataRestExampleApplicationTests -- Application
+HateoasSpringDataRestExampleApplicationTests -- ApplicationTests
+WebApi -- Student
+WebApi -- University
+WebApi -- StudentRepository
+WebApi -- UniversityRepository
+HibernateTipsApplication -- Application
+Student -- BaseEntity
+Student -- University
+University -- BaseEntity
+StudentRepository -- Student
+UniversityRepository -- University
+HibernateTipsApplicationTests -- HibernateTipsApplication
+HibernateTipsApplicationTests -- Application
+HibernateTipsApplicationTests -- ApplicationTests
+Junit5SpringBootApplication -- Application
+Junit5SpringBootApplicationTests -- Junit5SpringBootApplication
+Junit5SpringBootApplicationTests -- Application
+Junit5SpringBootApplicationTests -- ApplicationTests
+LibraryServiceApplication -- Application
+LibraryServiceApplicationTests -- LibraryServiceApplication
+LibraryServiceApplicationTests -- Application
+LibraryServiceApplicationTests -- ApplicationTests
+SeeDemoApplication -- Application
+SeeDemoApplicationTests -- SeeDemoApplication
+SeeDemoApplicationTests -- Application
+SeeDemoApplicationTests -- ApplicationTests
+PersonController -- Person
+PersonController -- PersonRespository
+RoutesConfiguration -- Person
+RoutesConfiguration -- PersonRespository
+PersonRespository -- Person
+ApplicationTests -- Application
+@enduml

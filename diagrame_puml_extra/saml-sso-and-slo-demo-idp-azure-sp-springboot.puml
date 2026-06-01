@@ -1,0 +1,79 @@
+@startuml
+package com.spring.boot.security.saml; {
+class Application {
+}
+
+class CommonTestSupport {
+}
+
+class TestConfig {
+}
+
+}
+
+package com.spring.boot.security.saml.config; {
+class MvcConfig {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.spring.boot.security.saml.controllers; {
+class LandingController {
+}
+
+class SSOController {
+}
+
+class LandingControllerTest {
+}
+
+class SSOControllerTest {
+}
+
+}
+
+package com.spring.boot.security.saml.core; {
+class CurrentUserHandlerMethodArgumentResolver {
+}
+
+class SAMLUserDetailsServiceImpl {
+}
+
+class CurrentUserHandlerMethodArgumentResolverTest {
+}
+
+class SAMLUserDetailsServiceImplTest {
+}
+
+}
+
+package com.spring.boot.security.saml.stereotypes; {
+class CurrentUser {
+}
+
+}
+
+MvcConfig -- CurrentUserHandlerMethodArgumentResolver
+MvcConfig -- CurrentUser
+WebSecurityConfig -- SAMLUserDetailsServiceImpl
+LandingController -- CurrentUser
+CurrentUserHandlerMethodArgumentResolver -- CurrentUser
+LandingControllerTest -- LandingController
+LandingControllerTest -- CommonTestSupport
+LandingControllerTest -- TestConfig
+SSOControllerTest -- SSOController
+SSOControllerTest -- CommonTestSupport
+SSOControllerTest -- TestConfig
+CurrentUserHandlerMethodArgumentResolverTest -- CurrentUserHandlerMethodArgumentResolver
+CurrentUserHandlerMethodArgumentResolverTest -- CurrentUser
+CurrentUserHandlerMethodArgumentResolverTest -- CommonTestSupport
+CurrentUserHandlerMethodArgumentResolverTest -- TestConfig
+SAMLUserDetailsServiceImplTest -- SAMLUserDetailsServiceImpl
+SAMLUserDetailsServiceImplTest -- CommonTestSupport
+SAMLUserDetailsServiceImplTest -- TestConfig
+TestConfig -- Application
+TestConfig -- MvcConfig
+@enduml

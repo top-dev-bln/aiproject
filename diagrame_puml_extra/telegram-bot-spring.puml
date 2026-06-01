@@ -1,0 +1,2294 @@
+@startuml
+package io.ksilisk.telegrambot.examples.advanced.longpolling.config; {
+class TelegramBotConfig {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.handler.callback; {
+class ClickMeCallbackUpdateHandler {
+}
+
+class ThrowExceptionCallbackUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.handler.command; {
+class CallbackCommandUpdateHandler {
+}
+
+class StartHelpCommandUpdateHandler {
+}
+
+class ThrowCommandUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.handler.exception; {
+class UserMessageUpdateExceptionHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.handler.message; {
+class DefaultMessageUpdateHandler {
+}
+
+class PhotoMessageUpdateHandler {
+}
+
+class TestMessageUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.interceptor; {
+class FilterMessageReactionUpdateInterceptor {
+}
+
+class LoggingUpdateInterceptor {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.nomatch; {
+class UserMessageUpdateNoMatchStrategy {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling.rule.message; {
+class DefaultMessageUpdateRule {
+}
+
+class PhotoMessageUpdateRule {
+}
+
+class TestMessageUpdateRule {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.advanced.longpolling; {
+class TelegramBotAdvancedSampleLongPollingApplication {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling.handler.callback; {
+class TestCallbackHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling.handler.command; {
+class CallbackCommandHandler {
+}
+
+class ExceptionCommandHandler {
+}
+
+class StartCommandHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling.handler.inline; {
+class AnyInlineHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling.handler.message; {
+class AnyMessageHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling.interceptor; {
+class LoggingUpdateInterceptor {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling; {
+class LongPollingSampleApplication {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.longpolling.rule; {
+class AnyInlineUpdateRule {
+}
+
+class AnyMessageUpdateRule {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook.handler.callback; {
+class TestCallbackHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook.handler.command; {
+class CallbackCommandHandler {
+}
+
+class ExceptionCommandHandler {
+}
+
+class StartCommandHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook.handler.inline; {
+class AnyInlineHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook.handler.message; {
+class AnyMessageHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook.interceptor; {
+class LoggingUpdateInterceptor {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook.rule; {
+class AnyInlineUpdateRule {
+}
+
+class AnyMessageUpdateRule {
+}
+
+}
+
+package io.ksilisk.telegrambot.examples.webhook; {
+class WebhookSampleApplication {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.delivery; {
+class DefaultDeliveryThreadPoolExecutorFactory {
+}
+
+class DefaultUpdateDelivery {
+}
+
+class Delivery {
+}
+
+class DeliveryThreadPoolExecutorFactory {
+}
+
+class UpdateDelivery {
+}
+
+class DefaultUpdateDeliveryTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.dispatcher; {
+class Dispatcher {
+}
+
+class SimpleUpdateDispatcher {
+}
+
+class UpdateDispatcher {
+}
+
+class SimpleUpdateDispatcherTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.exception.file; {
+class TelegramFileDownloadException {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.exception.handler; {
+class ExceptionHandlerExecutionException {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.exception.registry; {
+class CallbackHandlerAlreadyExists {
+}
+
+class CommandHandlerAlreadyExists {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.exception.request; {
+class TelegramRequestException {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.exception.strategy; {
+class StrategyExecutionException {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.executor; {
+class ApiExecutor {
+}
+
+class TelegramBotClientFactory {
+}
+
+class TelegramBotExecutor {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.executor.resolver; {
+class DefaultSwitchableTelegramBotApiUrlProvider {
+}
+
+class DefaultTelegramBotApiUrlProvider {
+}
+
+class SwitchableTelegramBotApiUrlProvider {
+}
+
+class TelegramBotApiUrlProvider {
+}
+
+class DefaultSwitchableTelegramBotApiUrlProviderTest {
+}
+
+class DefaultTelegramBotApiUrlProviderTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.executor.retry.impl; {
+class CompositeRetryRule {
+}
+
+class FixedRetryDelayStrategy {
+}
+
+class MaxAttemptsRetryRule {
+}
+
+class RetryableMethodsRetryRule {
+}
+
+class FixedRetryDelayStrategyTest {
+}
+
+class MaxAttemptsRetryRuleTest {
+}
+
+class RetryableMethodsRetryRuleTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.executor.retry; {
+class RetryDelayStrategy {
+}
+
+class RetryingTelegramBotClientFactory {
+}
+
+class RetryingTelegramBotExecutor {
+}
+
+class RetryRule {
+}
+
+class RetryingTelegramBotExecutorTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.file; {
+class TelegramBotFileClient {
+}
+
+class TelegramBotFiles {
+}
+
+class TelegramBotFilesTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.exception; {
+class CompositeUpdateExceptionHandler {
+}
+
+class ExceptionHandler {
+}
+
+class ExceptionHandlerErrorPolicy {
+}
+
+class UpdateExceptionHandler {
+}
+
+class CompositeUpdateExceptionHandlerTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.exception.impl; {
+class LoggingUpdateExceptionHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.update.callback; {
+class CallbackUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.update.command; {
+class CommandUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.update; {
+class Handler {
+}
+
+class UpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.update.inline; {
+class InlineUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.handler.update.message; {
+class MessageUpdateHandler {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.ingress; {
+class Ingress {
+}
+
+class NoIngressUpdateIngress {
+}
+
+class UpdateIngress {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.interceptor; {
+class CompositeUpdateInterceptor {
+}
+
+class Interceptor {
+}
+
+class UpdateInterceptor {
+}
+
+class CompositeUpdateInterceptorTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.matcher; {
+class Matcher {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.mdc; {
+class MDCSnapshot {
+}
+
+class UpdateMDC {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.order; {
+class CoreOrdered {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.poller; {
+class Poller {
+}
+
+class UpdatePoller {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.properties; {
+class ClientApiProperties {
+}
+
+class ClientRetryProperties {
+}
+
+class DeliveryProperties {
+}
+
+class ExceptionHandlerProperties {
+}
+
+class NoMatchStrategyProperties {
+}
+
+class OkHttpClientProperties {
+}
+
+class RoutingProperties {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry.handler.callback; {
+class CallbackHandlerRegistry {
+}
+
+class DefaultCallbackHandlerRegistry {
+}
+
+class DefaultCallbackHandlerRegistryTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry.handler.command; {
+class CommandHandlerRegistry {
+}
+
+class DefaultCommandHandlerRegistry {
+}
+
+class DefaultCommandHandlerRegistryTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry.handler; {
+class HandlerRegistry {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry; {
+class Registry {
+}
+
+class UpdateRegistry {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry.rule.inline; {
+class DefaultInlineUpdateRuleRegistry {
+}
+
+class InlineUpdateRuleRegistry {
+}
+
+class DefaultInlineUpdateRuleRegistryTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry.rule.message; {
+class DefaultMessageUpdateRuleRegistry {
+}
+
+class MessageUpdateRuleRegistry {
+}
+
+class DefaultMessageUpdateRuleRegistryTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.registry.rule; {
+class UpdateRuleRegistry {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.router; {
+class CallbackUpdateRouter {
+}
+
+class CompositeUpdateRouter {
+}
+
+class InlineUpdateRouter {
+}
+
+class MessageUpdateRouter {
+}
+
+class Router {
+}
+
+class UpdateRouter {
+}
+
+class DefaultCallbackUpdateRouterTest {
+}
+
+class DefaultInlineUpdateRouterTest {
+}
+
+class DefaultMessageUpdateRouterTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.router.detector; {
+class CommandDetector {
+}
+
+class DefaultCommandDetector {
+}
+
+class DefaultCommandDetectorTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.router.impl; {
+class DefaultCallbackUpdateRouter {
+}
+
+class DefaultInlineUpdateRouter {
+}
+
+class DefaultMessageUpdateRouter {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.rule; {
+class InlineUpdateRule {
+}
+
+class MessageUpdateRule {
+}
+
+class Rule {
+}
+
+class UpdateRule {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.selector; {
+class ExceptionHandlerSelector {
+}
+
+class NoMatchStrategySelector {
+}
+
+class UpdateExceptionHandlerSelector {
+}
+
+class UpdateNoMatchStrategySelector {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.selector.impl; {
+class DefaultExceptionHandlerSelector {
+}
+
+class DefaultNoMatchStrategySelector {
+}
+
+class DefaultUpdateExceptionHandlerSelectorTest {
+}
+
+class DefaultUpdateNoMatchStrategySelectorTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.strategy; {
+class CompositeUpdateNoMatchStrategy {
+}
+
+class NoMatchStrategy {
+}
+
+class StrategyErrorPolicy {
+}
+
+class UpdateNoMatchStrategy {
+}
+
+class CompositeUpdateNoMatchStrategyTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.strategy.impl; {
+class LoggingUpdateNoMatchStrategy {
+}
+
+}
+
+package io.ksilisk.telegrambot.core.update; {
+class BoostExtractors {
+}
+
+class BusinessExtractors {
+}
+
+class CallbackExtractors {
+}
+
+class ChatStateExtractors {
+}
+
+class InlineExtractors {
+}
+
+class MessageLikeExtractors {
+}
+
+class PaymentExtractors {
+}
+
+class PollExtractors {
+}
+
+class ReactionExtractors {
+}
+
+class Updates {
+}
+
+class UpdateType {
+}
+
+class UpdatesTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.configuration; {
+class LongPollingIngressConfiguration {
+}
+
+class LongPollingMasterConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.executor; {
+class ReportingMasterAwareTelegramBotExecutor {
+}
+
+class ReportingMasterAwareTelegramBotExecutorTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.failover.impl; {
+class DefaultMasterFailureClassifier {
+}
+
+class DefaultMasterManager {
+}
+
+class DefaultMasterFailureClassifierTest {
+}
+
+class DefaultMasterManagerTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.failover; {
+class MasterFailureClassifier {
+}
+
+class MasterManager {
+}
+
+class MasterSwitchPolicy {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.failover.policy.duration; {
+class DurationBasedMasterSwitchPolicy {
+}
+
+class DurationBasedMasterSwitchPolicyTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.ingress; {
+class DefaultLongPollingUpdateIngress {
+}
+
+class LongPollingUpdateIngress {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.poller; {
+class DefaultUpdatePoller {
+}
+
+class DefaultUpdatePollerTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.properties; {
+class DurationFailoverProperties {
+}
+
+class FailoverProperties {
+}
+
+class LongPollingProperties {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.retry; {
+class GetUpdatesExcludedRetryRule {
+}
+
+class GetUpdatesExcludedRetryRuleTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling.store; {
+class InMemoryOffsetStore {
+}
+
+class OffsetStore {
+}
+
+class InMemoryOffsetStoreTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.longpolling; {
+class TelegramBotLongPollingAutoConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.bpp; {
+class DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor {
+}
+
+class DeliveryThreadPoolExecutorMetricsInterceptor {
+}
+
+class MetricsRecorderResolver {
+}
+
+class ProxyInterfaces {
+}
+
+class TelegramBotExecutorMetricsInterceptor {
+}
+
+class TelegramBotExecutorObservabilityBeanPostProcessor {
+}
+
+class TelegramBotFileClientMetricsInterceptor {
+}
+
+class TelegramBotFileClientObservabilityBeanPostProcessor {
+}
+
+class UpdateDeliveryMetricsInterceptor {
+}
+
+class UpdateDeliveryObservabilityBeanPostProcessor {
+}
+
+class UpdateHandlerMetricsInterceptor {
+}
+
+class UpdateHandlerObservabilityBeanPostProcessor {
+}
+
+class DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest {
+}
+
+class MetricsRecorderResolverTest {
+}
+
+class TelegramBotExecutorObservabilityBeanPostProcessorTest {
+}
+
+class TelegramBotFileClientObservabilityBeanPostProcessorTest {
+}
+
+class UpdateDeliveryObservabilityBeanPostProcessorTest {
+}
+
+class UpdateHandlerObservabilityBeanPostProcessorTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.configuration; {
+class TelegramBotObservabilityBeanPostProcessorConfiguration {
+}
+
+class TelegramBotObservabilityMetricsConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.handler.exception; {
+class ObservabilityUpdateExceptionHandler {
+}
+
+class ObservabilityUpdateExceptionHandlerTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.marker; {
+class ObservabilityWrapped {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.metrics; {
+class TelegramBotChannel {
+}
+
+class TelegramBotMetric {
+}
+
+class TelegramBotMetricTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.nomatch; {
+class ObservabilityUpdateNoMatchStrategy {
+}
+
+class ObservabilityUpdateNoMatchStrategyTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.properties; {
+class TelegramBotObservabilityProperties {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.recorder.impl; {
+class MicrometerMetricsRecorder {
+}
+
+class NoopMetricsRecorder {
+}
+
+class MicrometerMetricsRecorderTest {
+}
+
+class NoopMetricsRecorderTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.recorder; {
+class MetricsRecorder {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability.resolver; {
+class DefaultTelegramBotChannelResolver {
+}
+
+class TelegramBotChannelResolver {
+}
+
+class DefaultTelegramBotChannelResolverTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.observability; {
+class TelegramBotObservabilityAutoConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.adapter; {
+class SpringCoreOrderAdapter {
+}
+
+class SpringCoreOrderAdapterTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.condition.client; {
+class OkHttpSelectedCondition {
+}
+
+class SpringSelectedCondition {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.config.diagnostic; {
+class TelegramBotDiagnosticsConfiguration {
+}
+
+class TelegramBotStartupDiagnostics {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.config.dispatch; {
+class DeliveryConfiguration {
+}
+
+class DispatcherConfiguration {
+}
+
+class ExceptionHandlerConfiguration {
+}
+
+class NoMatchStrategyConfiguration {
+}
+
+class RoutingConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.config.transport.client; {
+class OkHttpTelegramClientConfiguration {
+}
+
+class SpringTelegramClientConfiguration {
+}
+
+class TelegramClientConfiguration {
+}
+
+class TelegramClientCoreConfiguration {
+}
+
+class TelegramClientRetryConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.config.transport; {
+class CustomMissingIngressConfiguration {
+}
+
+class LongPollingMissingIngressConfiguration {
+}
+
+class NoIngressModeConfiguration {
+}
+
+class WebhookMissingIngressConfiguration {
+}
+
+class NoIngressModeConfigurationTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.customizer; {
+class OkHttpClientCustomizer {
+}
+
+class OkHttpClientCustomizerTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.executor.factory; {
+class OkHttpTelegramBotClientFactory {
+}
+
+class RestClientTelegramBotClientFactory {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.executor; {
+class OkHttpTelegramBotExecutor {
+}
+
+class OkHttpTelegramBotFileClient {
+}
+
+class RestClientTelegramBotExecutor {
+}
+
+class RestClientTelegramBotFileClient {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure.properties; {
+class ClientProperties {
+}
+
+class TelegramBotProperties {
+}
+
+}
+
+package io.ksilisk.telegrambot.autoconfigure; {
+class TelegramBotAutoConfiguration {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.controller; {
+class DefaultWebhookController {
+}
+
+class WebhookController {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.converter; {
+class TelegramUpdateHttpMessageConverter {
+}
+
+class TelegramUpdateHttpMessageConverterTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.exception; {
+class WebhookRegisteringException {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.filter; {
+class WebhookSecretTokenFilter {
+}
+
+class WebhookSecretTokenFilterTest {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.ingress; {
+class DefaultWebhookUpdateIngress {
+}
+
+class WebhookUpdateIngress {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.lifecycle; {
+class DefaultWebhookLifecycle {
+}
+
+class WebhookLifecycle {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook.properties; {
+class WebhookProperties {
+}
+
+}
+
+package io.ksilisk.telegrambot.webhook; {
+class TelegramBotWebhookAutoConfiguration {
+}
+
+}
+
+TelegramBotConfig -- ExceptionHandler
+TelegramBotConfig -- LoggingUpdateExceptionHandler
+TelegramBotConfig -- UpdateExceptionHandler
+TelegramBotConfig -- Handler
+TelegramBotConfig -- ExceptionHandlerSelector
+TelegramBotConfig -- NoMatchStrategySelector
+TelegramBotConfig -- UpdateExceptionHandlerSelector
+TelegramBotConfig -- UpdateNoMatchStrategySelector
+TelegramBotConfig -- LoggingUpdateNoMatchStrategy
+TelegramBotConfig -- NoMatchStrategy
+TelegramBotConfig -- UpdateNoMatchStrategy
+ClickMeCallbackUpdateHandler -- TelegramBotExecutor
+ClickMeCallbackUpdateHandler -- CallbackUpdateHandler
+ClickMeCallbackUpdateHandler -- Handler
+ClickMeCallbackUpdateHandler -- UpdateHandler
+ClickMeCallbackUpdateHandler -- Updates
+ThrowExceptionCallbackUpdateHandler -- CallbackUpdateHandler
+ThrowExceptionCallbackUpdateHandler -- Handler
+ThrowExceptionCallbackUpdateHandler -- UpdateHandler
+CallbackCommandUpdateHandler -- TelegramBotExecutor
+CallbackCommandUpdateHandler -- CommandUpdateHandler
+CallbackCommandUpdateHandler -- Handler
+CallbackCommandUpdateHandler -- UpdateHandler
+CallbackCommandUpdateHandler -- Updates
+StartHelpCommandUpdateHandler -- TelegramBotExecutor
+StartHelpCommandUpdateHandler -- CommandUpdateHandler
+StartHelpCommandUpdateHandler -- Handler
+StartHelpCommandUpdateHandler -- UpdateHandler
+StartHelpCommandUpdateHandler -- NoMatchStrategy
+StartHelpCommandUpdateHandler -- Updates
+ThrowCommandUpdateHandler -- CommandUpdateHandler
+ThrowCommandUpdateHandler -- Handler
+ThrowCommandUpdateHandler -- UpdateHandler
+UserMessageUpdateExceptionHandler -- TelegramBotExecutor
+UserMessageUpdateExceptionHandler -- ExceptionHandler
+UserMessageUpdateExceptionHandler -- UpdateExceptionHandler
+UserMessageUpdateExceptionHandler -- Handler
+UserMessageUpdateExceptionHandler -- Updates
+UserMessageUpdateExceptionHandler -- UpdateType
+DefaultMessageUpdateHandler -- TelegramBotExecutor
+DefaultMessageUpdateHandler -- Handler
+DefaultMessageUpdateHandler -- MessageUpdateHandler
+DefaultMessageUpdateHandler -- UpdateHandler
+DefaultMessageUpdateHandler -- Updates
+PhotoMessageUpdateHandler -- TelegramBotExecutor
+PhotoMessageUpdateHandler -- TelegramBotFileClient
+PhotoMessageUpdateHandler -- Handler
+PhotoMessageUpdateHandler -- MessageUpdateHandler
+PhotoMessageUpdateHandler -- UpdateHandler
+PhotoMessageUpdateHandler -- Updates
+TestMessageUpdateHandler -- TelegramBotExecutor
+TestMessageUpdateHandler -- Handler
+TestMessageUpdateHandler -- MessageUpdateHandler
+TestMessageUpdateHandler -- UpdateHandler
+TestMessageUpdateHandler -- Updates
+FilterMessageReactionUpdateInterceptor -- Interceptor
+FilterMessageReactionUpdateInterceptor -- UpdateInterceptor
+FilterMessageReactionUpdateInterceptor -- Updates
+FilterMessageReactionUpdateInterceptor -- UpdateType
+LoggingUpdateInterceptor -- Interceptor
+LoggingUpdateInterceptor -- UpdateInterceptor
+UserMessageUpdateNoMatchStrategy -- TelegramBotExecutor
+UserMessageUpdateNoMatchStrategy -- NoMatchStrategy
+UserMessageUpdateNoMatchStrategy -- UpdateNoMatchStrategy
+UserMessageUpdateNoMatchStrategy -- Updates
+DefaultMessageUpdateRule -- DefaultMessageUpdateHandler
+DefaultMessageUpdateRule -- Handler
+DefaultMessageUpdateRule -- MessageUpdateHandler
+DefaultMessageUpdateRule -- UpdateHandler
+DefaultMessageUpdateRule -- Matcher
+DefaultMessageUpdateRule -- MessageUpdateRule
+DefaultMessageUpdateRule -- Rule
+DefaultMessageUpdateRule -- UpdateRule
+PhotoMessageUpdateRule -- PhotoMessageUpdateHandler
+PhotoMessageUpdateRule -- Handler
+PhotoMessageUpdateRule -- MessageUpdateHandler
+PhotoMessageUpdateRule -- UpdateHandler
+PhotoMessageUpdateRule -- Matcher
+PhotoMessageUpdateRule -- MessageUpdateRule
+PhotoMessageUpdateRule -- Rule
+PhotoMessageUpdateRule -- UpdateRule
+TestMessageUpdateRule -- TestMessageUpdateHandler
+TestMessageUpdateRule -- Handler
+TestMessageUpdateRule -- MessageUpdateHandler
+TestMessageUpdateRule -- UpdateHandler
+TestMessageUpdateRule -- Matcher
+TestMessageUpdateRule -- MessageUpdateRule
+TestMessageUpdateRule -- Rule
+TestMessageUpdateRule -- UpdateRule
+TestCallbackHandler -- TelegramBotExecutor
+TestCallbackHandler -- CallbackUpdateHandler
+TestCallbackHandler -- Handler
+TestCallbackHandler -- UpdateHandler
+TestCallbackHandler -- Updates
+CallbackCommandHandler -- TelegramBotExecutor
+CallbackCommandHandler -- CommandUpdateHandler
+CallbackCommandHandler -- Handler
+CallbackCommandHandler -- UpdateHandler
+CallbackCommandHandler -- Updates
+ExceptionCommandHandler -- CommandUpdateHandler
+ExceptionCommandHandler -- Handler
+ExceptionCommandHandler -- UpdateHandler
+StartCommandHandler -- TelegramBotExecutor
+StartCommandHandler -- CommandUpdateHandler
+StartCommandHandler -- Handler
+StartCommandHandler -- UpdateHandler
+StartCommandHandler -- Updates
+AnyInlineHandler -- TelegramBotExecutor
+AnyInlineHandler -- Handler
+AnyInlineHandler -- InlineUpdateHandler
+AnyInlineHandler -- UpdateHandler
+AnyMessageHandler -- TelegramBotExecutor
+AnyMessageHandler -- Handler
+AnyMessageHandler -- MessageUpdateHandler
+AnyMessageHandler -- UpdateHandler
+AnyMessageHandler -- Updates
+AnyInlineUpdateRule -- AnyInlineHandler
+AnyInlineUpdateRule -- Handler
+AnyInlineUpdateRule -- UpdateHandler
+AnyInlineUpdateRule -- Matcher
+AnyInlineUpdateRule -- InlineUpdateRule
+AnyInlineUpdateRule -- Rule
+AnyInlineUpdateRule -- UpdateRule
+AnyMessageUpdateRule -- AnyMessageHandler
+AnyMessageUpdateRule -- Handler
+AnyMessageUpdateRule -- UpdateHandler
+AnyMessageUpdateRule -- Matcher
+AnyMessageUpdateRule -- MessageUpdateRule
+AnyMessageUpdateRule -- Rule
+AnyMessageUpdateRule -- UpdateRule
+DefaultDeliveryThreadPoolExecutorFactory -- Delivery
+DefaultDeliveryThreadPoolExecutorFactory -- DeliveryThreadPoolExecutorFactory
+DefaultDeliveryThreadPoolExecutorFactory -- Handler
+DefaultDeliveryThreadPoolExecutorFactory -- DeliveryProperties
+DefaultUpdateDelivery -- Delivery
+DefaultUpdateDelivery -- UpdateDelivery
+DefaultUpdateDelivery -- Dispatcher
+DefaultUpdateDelivery -- UpdateDispatcher
+DefaultUpdateDelivery -- CompositeUpdateExceptionHandler
+DefaultUpdateDelivery -- ExceptionHandler
+DefaultUpdateDelivery -- UpdateExceptionHandler
+DefaultUpdateDelivery -- Handler
+DefaultUpdateDelivery -- CompositeUpdateInterceptor
+DefaultUpdateDelivery -- Interceptor
+DefaultUpdateDelivery -- UpdateInterceptor
+DefaultUpdateDelivery -- MDCSnapshot
+DefaultUpdateDelivery -- UpdateMDC
+DefaultUpdateDelivery -- DeliveryProperties
+DefaultUpdateDelivery -- Updates
+DeliveryThreadPoolExecutorFactory -- Delivery
+UpdateDelivery -- Delivery
+UpdateDelivery -- Dispatcher
+UpdateDelivery -- UpdateDispatcher
+UpdateDelivery -- Poller
+UpdateDelivery -- UpdatePoller
+UpdateDelivery -- Updates
+SimpleUpdateDispatcher -- Dispatcher
+SimpleUpdateDispatcher -- UpdateDispatcher
+SimpleUpdateDispatcher -- CompositeUpdateRouter
+SimpleUpdateDispatcher -- Router
+SimpleUpdateDispatcher -- UpdateRouter
+SimpleUpdateDispatcher -- CompositeUpdateNoMatchStrategy
+SimpleUpdateDispatcher -- NoMatchStrategy
+SimpleUpdateDispatcher -- UpdateNoMatchStrategy
+UpdateDispatcher -- Dispatcher
+ExceptionHandlerExecutionException -- ExceptionHandler
+ExceptionHandlerExecutionException -- Handler
+CallbackHandlerAlreadyExists -- Handler
+CommandHandlerAlreadyExists -- Handler
+DefaultSwitchableTelegramBotApiUrlProvider -- SwitchableTelegramBotApiUrlProvider
+DefaultSwitchableTelegramBotApiUrlProvider -- TelegramBotApiUrlProvider
+DefaultTelegramBotApiUrlProvider -- TelegramBotApiUrlProvider
+SwitchableTelegramBotApiUrlProvider -- TelegramBotApiUrlProvider
+CompositeRetryRule -- RetryRule
+CompositeRetryRule -- Rule
+FixedRetryDelayStrategy -- RetryDelayStrategy
+MaxAttemptsRetryRule -- RetryRule
+MaxAttemptsRetryRule -- Rule
+RetryableMethodsRetryRule -- RetryRule
+RetryableMethodsRetryRule -- Rule
+RetryingTelegramBotClientFactory -- CompositeRetryRule
+RetryingTelegramBotClientFactory -- RetryDelayStrategy
+RetryingTelegramBotClientFactory -- RetryingTelegramBotExecutor
+RetryingTelegramBotClientFactory -- RetryRule
+RetryingTelegramBotClientFactory -- TelegramBotClientFactory
+RetryingTelegramBotClientFactory -- TelegramBotExecutor
+RetryingTelegramBotClientFactory -- TelegramBotFileClient
+RetryingTelegramBotClientFactory -- Rule
+RetryingTelegramBotExecutor -- TelegramRequestException
+RetryingTelegramBotExecutor -- CompositeRetryRule
+RetryingTelegramBotExecutor -- RetryDelayStrategy
+RetryingTelegramBotExecutor -- RetryRule
+RetryingTelegramBotExecutor -- TelegramBotExecutor
+RetryingTelegramBotExecutor -- Rule
+RetryRule -- CoreOrdered
+RetryRule -- Rule
+TelegramBotClientFactory -- TelegramBotExecutor
+TelegramBotClientFactory -- TelegramBotFileClient
+TelegramBotExecutor -- TelegramRequestException
+TelegramBotExecutor -- ApiExecutor
+TelegramBotFileClient -- TelegramFileDownloadException
+TelegramBotFiles -- TelegramFileDownloadException
+TelegramBotFiles -- TelegramBotExecutor
+CompositeUpdateExceptionHandler -- ExceptionHandlerExecutionException
+CompositeUpdateExceptionHandler -- ExceptionHandler
+CompositeUpdateExceptionHandler -- ExceptionHandlerErrorPolicy
+CompositeUpdateExceptionHandler -- UpdateExceptionHandler
+CompositeUpdateExceptionHandler -- Handler
+CompositeUpdateExceptionHandler -- ExceptionHandlerSelector
+CompositeUpdateExceptionHandler -- UpdateExceptionHandlerSelector
+ExceptionHandler -- Handler
+ExceptionHandler -- CoreOrdered
+ExceptionHandler -- ExceptionHandlerSelector
+ExceptionHandlerErrorPolicy -- ExceptionHandler
+ExceptionHandlerErrorPolicy -- Handler
+LoggingUpdateExceptionHandler -- ExceptionHandler
+LoggingUpdateExceptionHandler -- UpdateExceptionHandler
+LoggingUpdateExceptionHandler -- Handler
+UpdateExceptionHandler -- ExceptionHandler
+UpdateExceptionHandler -- Handler
+CallbackUpdateHandler -- Handler
+CallbackUpdateHandler -- UpdateHandler
+CommandUpdateHandler -- Handler
+CommandUpdateHandler -- UpdateHandler
+InlineUpdateHandler -- Handler
+InlineUpdateHandler -- UpdateHandler
+InlineUpdateHandler -- InlineUpdateRule
+InlineUpdateHandler -- Rule
+InlineUpdateHandler -- UpdateRule
+MessageUpdateHandler -- Handler
+MessageUpdateHandler -- UpdateHandler
+MessageUpdateHandler -- MessageUpdateRule
+MessageUpdateHandler -- Rule
+MessageUpdateHandler -- UpdateRule
+UpdateHandler -- Handler
+Ingress -- Delivery
+Ingress -- UpdateDelivery
+NoIngressUpdateIngress -- Ingress
+NoIngressUpdateIngress -- UpdateIngress
+UpdateIngress -- Ingress
+CompositeUpdateInterceptor -- Interceptor
+CompositeUpdateInterceptor -- UpdateInterceptor
+UpdateInterceptor -- Interceptor
+UpdateMDC -- Updates
+UpdatePoller -- Poller
+ClientRetryProperties -- TelegramBotExecutor
+DeliveryProperties -- Delivery
+ExceptionHandlerProperties -- ExceptionHandler
+ExceptionHandlerProperties -- ExceptionHandlerErrorPolicy
+ExceptionHandlerProperties -- Handler
+NoMatchStrategyProperties -- Handler
+NoMatchStrategyProperties -- UpdateHandler
+NoMatchStrategyProperties -- NoMatchStrategy
+NoMatchStrategyProperties -- StrategyErrorPolicy
+OkHttpClientProperties -- ClientProperties
+RoutingProperties -- CallbackUpdateRouter
+RoutingProperties -- InlineUpdateRouter
+RoutingProperties -- MessageUpdateRouter
+RoutingProperties -- Router
+RoutingProperties -- UpdateRouter
+CallbackHandlerRegistry -- CallbackUpdateHandler
+CallbackHandlerRegistry -- Handler
+CallbackHandlerRegistry -- UpdateHandler
+CallbackHandlerRegistry -- HandlerRegistry
+CallbackHandlerRegistry -- Registry
+DefaultCallbackHandlerRegistry -- CallbackHandlerAlreadyExists
+DefaultCallbackHandlerRegistry -- CallbackUpdateHandler
+DefaultCallbackHandlerRegistry -- Handler
+DefaultCallbackHandlerRegistry -- UpdateHandler
+DefaultCallbackHandlerRegistry -- CallbackHandlerRegistry
+DefaultCallbackHandlerRegistry -- HandlerRegistry
+DefaultCallbackHandlerRegistry -- Registry
+CommandHandlerRegistry -- CommandUpdateHandler
+CommandHandlerRegistry -- Handler
+CommandHandlerRegistry -- UpdateHandler
+CommandHandlerRegistry -- HandlerRegistry
+CommandHandlerRegistry -- Registry
+DefaultCommandHandlerRegistry -- CommandHandlerAlreadyExists
+DefaultCommandHandlerRegistry -- CommandUpdateHandler
+DefaultCommandHandlerRegistry -- Handler
+DefaultCommandHandlerRegistry -- UpdateHandler
+DefaultCommandHandlerRegistry -- CommandHandlerRegistry
+DefaultCommandHandlerRegistry -- HandlerRegistry
+DefaultCommandHandlerRegistry -- Registry
+HandlerRegistry -- Handler
+HandlerRegistry -- UpdateHandler
+HandlerRegistry -- Registry
+HandlerRegistry -- UpdateRegistry
+Registry -- Handler
+DefaultInlineUpdateRuleRegistry -- Handler
+DefaultInlineUpdateRuleRegistry -- UpdateHandler
+DefaultInlineUpdateRuleRegistry -- CoreOrdered
+DefaultInlineUpdateRuleRegistry -- Registry
+DefaultInlineUpdateRuleRegistry -- InlineUpdateRuleRegistry
+DefaultInlineUpdateRuleRegistry -- UpdateRuleRegistry
+DefaultInlineUpdateRuleRegistry -- InlineUpdateRule
+DefaultInlineUpdateRuleRegistry -- Rule
+DefaultInlineUpdateRuleRegistry -- UpdateRule
+InlineUpdateRuleRegistry -- Registry
+InlineUpdateRuleRegistry -- UpdateRuleRegistry
+InlineUpdateRuleRegistry -- InlineUpdateRule
+InlineUpdateRuleRegistry -- Rule
+InlineUpdateRuleRegistry -- UpdateRule
+DefaultMessageUpdateRuleRegistry -- DefaultMessageUpdateRule
+DefaultMessageUpdateRuleRegistry -- Handler
+DefaultMessageUpdateRuleRegistry -- UpdateHandler
+DefaultMessageUpdateRuleRegistry -- CoreOrdered
+DefaultMessageUpdateRuleRegistry -- Registry
+DefaultMessageUpdateRuleRegistry -- MessageUpdateRuleRegistry
+DefaultMessageUpdateRuleRegistry -- UpdateRuleRegistry
+DefaultMessageUpdateRuleRegistry -- MessageUpdateRule
+DefaultMessageUpdateRuleRegistry -- Rule
+DefaultMessageUpdateRuleRegistry -- UpdateRule
+MessageUpdateRuleRegistry -- Registry
+MessageUpdateRuleRegistry -- UpdateRuleRegistry
+MessageUpdateRuleRegistry -- MessageUpdateRule
+MessageUpdateRuleRegistry -- Rule
+MessageUpdateRuleRegistry -- UpdateRule
+UpdateRuleRegistry -- Handler
+UpdateRuleRegistry -- UpdateHandler
+UpdateRuleRegistry -- Registry
+UpdateRuleRegistry -- UpdateRegistry
+UpdateRuleRegistry -- Rule
+UpdateRuleRegistry -- UpdateRule
+UpdateRegistry -- Handler
+UpdateRegistry -- UpdateHandler
+UpdateRegistry -- Registry
+CallbackUpdateRouter -- Router
+CallbackUpdateRouter -- UpdateRouter
+CompositeUpdateRouter -- Router
+CompositeUpdateRouter -- UpdateRouter
+DefaultCommandDetector -- CommandDetector
+DefaultCallbackUpdateRouter -- Handler
+DefaultCallbackUpdateRouter -- UpdateHandler
+DefaultCallbackUpdateRouter -- CallbackHandlerRegistry
+DefaultCallbackUpdateRouter -- HandlerRegistry
+DefaultCallbackUpdateRouter -- Registry
+DefaultCallbackUpdateRouter -- CallbackUpdateRouter
+DefaultCallbackUpdateRouter -- Router
+DefaultCallbackUpdateRouter -- UpdateRouter
+DefaultCallbackUpdateRouter -- Updates
+DefaultCallbackUpdateRouter -- UpdateType
+DefaultInlineUpdateRouter -- Handler
+DefaultInlineUpdateRouter -- UpdateHandler
+DefaultInlineUpdateRouter -- Registry
+DefaultInlineUpdateRouter -- InlineUpdateRuleRegistry
+DefaultInlineUpdateRouter -- UpdateRuleRegistry
+DefaultInlineUpdateRouter -- InlineUpdateRouter
+DefaultInlineUpdateRouter -- Router
+DefaultInlineUpdateRouter -- UpdateRouter
+DefaultInlineUpdateRouter -- InlineUpdateRule
+DefaultInlineUpdateRouter -- Rule
+DefaultInlineUpdateRouter -- UpdateRule
+DefaultInlineUpdateRouter -- Updates
+DefaultInlineUpdateRouter -- UpdateType
+DefaultMessageUpdateRouter -- Handler
+DefaultMessageUpdateRouter -- UpdateHandler
+DefaultMessageUpdateRouter -- CommandHandlerRegistry
+DefaultMessageUpdateRouter -- HandlerRegistry
+DefaultMessageUpdateRouter -- Registry
+DefaultMessageUpdateRouter -- MessageUpdateRuleRegistry
+DefaultMessageUpdateRouter -- UpdateRuleRegistry
+DefaultMessageUpdateRouter -- CommandDetector
+DefaultMessageUpdateRouter -- MessageUpdateRouter
+DefaultMessageUpdateRouter -- Router
+DefaultMessageUpdateRouter -- UpdateRouter
+DefaultMessageUpdateRouter -- MessageUpdateRule
+DefaultMessageUpdateRouter -- Rule
+DefaultMessageUpdateRouter -- UpdateRule
+DefaultMessageUpdateRouter -- Updates
+DefaultMessageUpdateRouter -- UpdateType
+InlineUpdateRouter -- Router
+InlineUpdateRouter -- UpdateRouter
+MessageUpdateRouter -- Router
+MessageUpdateRouter -- UpdateRouter
+Router -- Handler
+Router -- Registry
+UpdateRouter -- Router
+InlineUpdateRule -- Handler
+InlineUpdateRule -- UpdateHandler
+InlineUpdateRule -- Rule
+InlineUpdateRule -- UpdateRule
+MessageUpdateRule -- Handler
+MessageUpdateRule -- UpdateHandler
+MessageUpdateRule -- Rule
+MessageUpdateRule -- UpdateRule
+Rule -- Handler
+Rule -- Matcher
+Rule -- CoreOrdered
+UpdateRule -- Handler
+UpdateRule -- UpdateHandler
+UpdateRule -- Rule
+ExceptionHandlerSelector -- Handler
+DefaultExceptionHandlerSelector -- ExceptionHandler
+DefaultExceptionHandlerSelector -- UpdateExceptionHandler
+DefaultExceptionHandlerSelector -- Handler
+DefaultExceptionHandlerSelector -- ExceptionHandlerSelector
+DefaultExceptionHandlerSelector -- UpdateExceptionHandlerSelector
+DefaultNoMatchStrategySelector -- NoMatchStrategySelector
+DefaultNoMatchStrategySelector -- UpdateNoMatchStrategySelector
+DefaultNoMatchStrategySelector -- NoMatchStrategy
+DefaultNoMatchStrategySelector -- UpdateNoMatchStrategy
+NoMatchStrategySelector -- NoMatchStrategy
+UpdateExceptionHandlerSelector -- ExceptionHandler
+UpdateExceptionHandlerSelector -- UpdateExceptionHandler
+UpdateExceptionHandlerSelector -- Handler
+UpdateExceptionHandlerSelector -- ExceptionHandlerSelector
+UpdateNoMatchStrategySelector -- NoMatchStrategySelector
+UpdateNoMatchStrategySelector -- NoMatchStrategy
+UpdateNoMatchStrategySelector -- UpdateNoMatchStrategy
+CompositeUpdateNoMatchStrategy -- StrategyExecutionException
+CompositeUpdateNoMatchStrategy -- NoMatchStrategySelector
+CompositeUpdateNoMatchStrategy -- UpdateNoMatchStrategySelector
+CompositeUpdateNoMatchStrategy -- NoMatchStrategy
+CompositeUpdateNoMatchStrategy -- StrategyErrorPolicy
+CompositeUpdateNoMatchStrategy -- UpdateNoMatchStrategy
+LoggingUpdateNoMatchStrategy -- Handler
+LoggingUpdateNoMatchStrategy -- NoMatchStrategy
+LoggingUpdateNoMatchStrategy -- UpdateNoMatchStrategy
+NoMatchStrategy -- Handler
+NoMatchStrategy -- CoreOrdered
+UpdateNoMatchStrategy -- NoMatchStrategy
+Updates -- BoostExtractors
+Updates -- BusinessExtractors
+Updates -- CallbackExtractors
+Updates -- ChatStateExtractors
+Updates -- InlineExtractors
+Updates -- MessageLikeExtractors
+Updates -- PaymentExtractors
+Updates -- PollExtractors
+Updates -- ReactionExtractors
+Updates -- UpdateType
+DefaultUpdateDeliveryTest -- DefaultUpdateDelivery
+DefaultUpdateDeliveryTest -- Delivery
+DefaultUpdateDeliveryTest -- UpdateDelivery
+DefaultUpdateDeliveryTest -- Dispatcher
+DefaultUpdateDeliveryTest -- UpdateDispatcher
+DefaultUpdateDeliveryTest -- CompositeUpdateExceptionHandler
+DefaultUpdateDeliveryTest -- ExceptionHandler
+DefaultUpdateDeliveryTest -- UpdateExceptionHandler
+DefaultUpdateDeliveryTest -- Handler
+DefaultUpdateDeliveryTest -- CompositeUpdateInterceptor
+DefaultUpdateDeliveryTest -- Interceptor
+DefaultUpdateDeliveryTest -- UpdateInterceptor
+DefaultUpdateDeliveryTest -- Matcher
+DefaultUpdateDeliveryTest -- DeliveryProperties
+DefaultUpdateDeliveryTest -- Updates
+SimpleUpdateDispatcherTest -- Dispatcher
+SimpleUpdateDispatcherTest -- SimpleUpdateDispatcher
+SimpleUpdateDispatcherTest -- UpdateDispatcher
+SimpleUpdateDispatcherTest -- CompositeUpdateRouter
+SimpleUpdateDispatcherTest -- Router
+SimpleUpdateDispatcherTest -- UpdateRouter
+SimpleUpdateDispatcherTest -- CompositeUpdateNoMatchStrategy
+SimpleUpdateDispatcherTest -- NoMatchStrategy
+SimpleUpdateDispatcherTest -- UpdateNoMatchStrategy
+DefaultSwitchableTelegramBotApiUrlProviderTest -- DefaultSwitchableTelegramBotApiUrlProvider
+DefaultSwitchableTelegramBotApiUrlProviderTest -- SwitchableTelegramBotApiUrlProvider
+DefaultSwitchableTelegramBotApiUrlProviderTest -- TelegramBotApiUrlProvider
+DefaultTelegramBotApiUrlProviderTest -- DefaultTelegramBotApiUrlProvider
+DefaultTelegramBotApiUrlProviderTest -- TelegramBotApiUrlProvider
+FixedRetryDelayStrategyTest -- FixedRetryDelayStrategy
+FixedRetryDelayStrategyTest -- RetryDelayStrategy
+MaxAttemptsRetryRuleTest -- MaxAttemptsRetryRule
+MaxAttemptsRetryRuleTest -- RetryRule
+MaxAttemptsRetryRuleTest -- Rule
+RetryableMethodsRetryRuleTest -- RetryableMethodsRetryRule
+RetryableMethodsRetryRuleTest -- RetryRule
+RetryableMethodsRetryRuleTest -- Rule
+RetryingTelegramBotExecutorTest -- TelegramRequestException
+RetryingTelegramBotExecutorTest -- CompositeRetryRule
+RetryingTelegramBotExecutorTest -- RetryDelayStrategy
+RetryingTelegramBotExecutorTest -- RetryingTelegramBotExecutor
+RetryingTelegramBotExecutorTest -- RetryRule
+RetryingTelegramBotExecutorTest -- TelegramBotExecutor
+RetryingTelegramBotExecutorTest -- Rule
+TelegramBotFilesTest -- TelegramFileDownloadException
+TelegramBotFilesTest -- TelegramBotExecutor
+TelegramBotFilesTest -- TelegramBotFiles
+TelegramBotFilesTest -- Matcher
+CompositeUpdateExceptionHandlerTest -- ExceptionHandlerExecutionException
+CompositeUpdateExceptionHandlerTest -- CompositeUpdateExceptionHandler
+CompositeUpdateExceptionHandlerTest -- ExceptionHandler
+CompositeUpdateExceptionHandlerTest -- ExceptionHandlerErrorPolicy
+CompositeUpdateExceptionHandlerTest -- UpdateExceptionHandler
+CompositeUpdateExceptionHandlerTest -- Handler
+CompositeUpdateExceptionHandlerTest -- ExceptionHandlerSelector
+CompositeUpdateExceptionHandlerTest -- UpdateExceptionHandlerSelector
+CompositeUpdateInterceptorTest -- CompositeUpdateInterceptor
+CompositeUpdateInterceptorTest -- Interceptor
+CompositeUpdateInterceptorTest -- UpdateInterceptor
+DefaultCallbackHandlerRegistryTest -- CallbackHandlerAlreadyExists
+DefaultCallbackHandlerRegistryTest -- CallbackUpdateHandler
+DefaultCallbackHandlerRegistryTest -- Handler
+DefaultCallbackHandlerRegistryTest -- UpdateHandler
+DefaultCallbackHandlerRegistryTest -- CallbackHandlerRegistry
+DefaultCallbackHandlerRegistryTest -- DefaultCallbackHandlerRegistry
+DefaultCallbackHandlerRegistryTest -- HandlerRegistry
+DefaultCallbackHandlerRegistryTest -- Registry
+DefaultCommandHandlerRegistryTest -- CommandHandlerAlreadyExists
+DefaultCommandHandlerRegistryTest -- CommandUpdateHandler
+DefaultCommandHandlerRegistryTest -- Handler
+DefaultCommandHandlerRegistryTest -- UpdateHandler
+DefaultCommandHandlerRegistryTest -- CommandHandlerRegistry
+DefaultCommandHandlerRegistryTest -- DefaultCommandHandlerRegistry
+DefaultCommandHandlerRegistryTest -- HandlerRegistry
+DefaultCommandHandlerRegistryTest -- Registry
+DefaultInlineUpdateRuleRegistryTest -- Handler
+DefaultInlineUpdateRuleRegistryTest -- UpdateHandler
+DefaultInlineUpdateRuleRegistryTest -- Registry
+DefaultInlineUpdateRuleRegistryTest -- DefaultInlineUpdateRuleRegistry
+DefaultInlineUpdateRuleRegistryTest -- InlineUpdateRuleRegistry
+DefaultInlineUpdateRuleRegistryTest -- UpdateRuleRegistry
+DefaultInlineUpdateRuleRegistryTest -- InlineUpdateRule
+DefaultInlineUpdateRuleRegistryTest -- Rule
+DefaultInlineUpdateRuleRegistryTest -- UpdateRule
+DefaultMessageUpdateRuleRegistryTest -- DefaultMessageUpdateRule
+DefaultMessageUpdateRuleRegistryTest -- Handler
+DefaultMessageUpdateRuleRegistryTest -- UpdateHandler
+DefaultMessageUpdateRuleRegistryTest -- Registry
+DefaultMessageUpdateRuleRegistryTest -- DefaultMessageUpdateRuleRegistry
+DefaultMessageUpdateRuleRegistryTest -- MessageUpdateRuleRegistry
+DefaultMessageUpdateRuleRegistryTest -- UpdateRuleRegistry
+DefaultMessageUpdateRuleRegistryTest -- MessageUpdateRule
+DefaultMessageUpdateRuleRegistryTest -- Rule
+DefaultMessageUpdateRuleRegistryTest -- UpdateRule
+DefaultCallbackUpdateRouterTest -- Handler
+DefaultCallbackUpdateRouterTest -- UpdateHandler
+DefaultCallbackUpdateRouterTest -- CallbackHandlerRegistry
+DefaultCallbackUpdateRouterTest -- HandlerRegistry
+DefaultCallbackUpdateRouterTest -- Registry
+DefaultCallbackUpdateRouterTest -- CallbackUpdateRouter
+DefaultCallbackUpdateRouterTest -- DefaultCallbackUpdateRouter
+DefaultCallbackUpdateRouterTest -- Router
+DefaultCallbackUpdateRouterTest -- UpdateRouter
+DefaultInlineUpdateRouterTest -- Handler
+DefaultInlineUpdateRouterTest -- UpdateHandler
+DefaultInlineUpdateRouterTest -- Registry
+DefaultInlineUpdateRouterTest -- InlineUpdateRuleRegistry
+DefaultInlineUpdateRouterTest -- UpdateRuleRegistry
+DefaultInlineUpdateRouterTest -- DefaultInlineUpdateRouter
+DefaultInlineUpdateRouterTest -- InlineUpdateRouter
+DefaultInlineUpdateRouterTest -- Router
+DefaultInlineUpdateRouterTest -- UpdateRouter
+DefaultInlineUpdateRouterTest -- InlineUpdateRule
+DefaultInlineUpdateRouterTest -- Rule
+DefaultInlineUpdateRouterTest -- UpdateRule
+DefaultMessageUpdateRouterTest -- Handler
+DefaultMessageUpdateRouterTest -- UpdateHandler
+DefaultMessageUpdateRouterTest -- CommandHandlerRegistry
+DefaultMessageUpdateRouterTest -- HandlerRegistry
+DefaultMessageUpdateRouterTest -- Registry
+DefaultMessageUpdateRouterTest -- MessageUpdateRuleRegistry
+DefaultMessageUpdateRouterTest -- UpdateRuleRegistry
+DefaultMessageUpdateRouterTest -- CommandDetector
+DefaultMessageUpdateRouterTest -- DefaultMessageUpdateRouter
+DefaultMessageUpdateRouterTest -- MessageUpdateRouter
+DefaultMessageUpdateRouterTest -- Router
+DefaultMessageUpdateRouterTest -- UpdateRouter
+DefaultMessageUpdateRouterTest -- MessageUpdateRule
+DefaultMessageUpdateRouterTest -- Rule
+DefaultMessageUpdateRouterTest -- UpdateRule
+DefaultCommandDetectorTest -- CommandDetector
+DefaultCommandDetectorTest -- DefaultCommandDetector
+DefaultUpdateExceptionHandlerSelectorTest -- ExceptionHandler
+DefaultUpdateExceptionHandlerSelectorTest -- UpdateExceptionHandler
+DefaultUpdateExceptionHandlerSelectorTest -- Handler
+DefaultUpdateExceptionHandlerSelectorTest -- ExceptionHandlerSelector
+DefaultUpdateExceptionHandlerSelectorTest -- DefaultExceptionHandlerSelector
+DefaultUpdateExceptionHandlerSelectorTest -- UpdateExceptionHandlerSelector
+DefaultUpdateNoMatchStrategySelectorTest -- DefaultNoMatchStrategySelector
+DefaultUpdateNoMatchStrategySelectorTest -- NoMatchStrategySelector
+DefaultUpdateNoMatchStrategySelectorTest -- UpdateNoMatchStrategySelector
+DefaultUpdateNoMatchStrategySelectorTest -- NoMatchStrategy
+DefaultUpdateNoMatchStrategySelectorTest -- UpdateNoMatchStrategy
+CompositeUpdateNoMatchStrategyTest -- StrategyExecutionException
+CompositeUpdateNoMatchStrategyTest -- NoMatchStrategySelector
+CompositeUpdateNoMatchStrategyTest -- UpdateNoMatchStrategySelector
+CompositeUpdateNoMatchStrategyTest -- CompositeUpdateNoMatchStrategy
+CompositeUpdateNoMatchStrategyTest -- NoMatchStrategy
+CompositeUpdateNoMatchStrategyTest -- StrategyErrorPolicy
+CompositeUpdateNoMatchStrategyTest -- UpdateNoMatchStrategy
+UpdatesTest -- Updates
+UpdatesTest -- UpdateType
+LongPollingIngressConfiguration -- Delivery
+LongPollingIngressConfiguration -- UpdateDelivery
+LongPollingIngressConfiguration -- RetryRule
+LongPollingIngressConfiguration -- TelegramBotExecutor
+LongPollingIngressConfiguration -- Ingress
+LongPollingIngressConfiguration -- UpdateIngress
+LongPollingIngressConfiguration -- Poller
+LongPollingIngressConfiguration -- UpdatePoller
+LongPollingIngressConfiguration -- Rule
+LongPollingIngressConfiguration -- Updates
+LongPollingIngressConfiguration -- ReportingMasterAwareTelegramBotExecutor
+LongPollingIngressConfiguration -- MasterManager
+LongPollingIngressConfiguration -- DefaultLongPollingUpdateIngress
+LongPollingIngressConfiguration -- LongPollingUpdateIngress
+LongPollingIngressConfiguration -- DefaultUpdatePoller
+LongPollingIngressConfiguration -- LongPollingProperties
+LongPollingIngressConfiguration -- GetUpdatesExcludedRetryRule
+LongPollingIngressConfiguration -- InMemoryOffsetStore
+LongPollingIngressConfiguration -- OffsetStore
+LongPollingMasterConfiguration -- SwitchableTelegramBotApiUrlProvider
+LongPollingMasterConfiguration -- TelegramBotApiUrlProvider
+LongPollingMasterConfiguration -- DefaultMasterFailureClassifier
+LongPollingMasterConfiguration -- DefaultMasterManager
+LongPollingMasterConfiguration -- MasterFailureClassifier
+LongPollingMasterConfiguration -- MasterManager
+LongPollingMasterConfiguration -- MasterSwitchPolicy
+LongPollingMasterConfiguration -- DurationBasedMasterSwitchPolicy
+LongPollingMasterConfiguration -- LongPollingProperties
+ReportingMasterAwareTelegramBotExecutor -- TelegramRequestException
+ReportingMasterAwareTelegramBotExecutor -- TelegramBotExecutor
+ReportingMasterAwareTelegramBotExecutor -- MasterManager
+DefaultMasterFailureClassifier -- MasterFailureClassifier
+DefaultMasterManager -- SwitchableTelegramBotApiUrlProvider
+DefaultMasterManager -- TelegramBotApiUrlProvider
+DefaultMasterManager -- MasterManager
+DefaultMasterManager -- MasterSwitchPolicy
+DurationBasedMasterSwitchPolicy -- MasterFailureClassifier
+DurationBasedMasterSwitchPolicy -- MasterSwitchPolicy
+DefaultLongPollingUpdateIngress -- Ingress
+DefaultLongPollingUpdateIngress -- UpdateIngress
+DefaultLongPollingUpdateIngress -- Poller
+DefaultLongPollingUpdateIngress -- UpdatePoller
+DefaultLongPollingUpdateIngress -- LongPollingUpdateIngress
+LongPollingUpdateIngress -- Ingress
+LongPollingUpdateIngress -- UpdateIngress
+DefaultUpdatePoller -- Delivery
+DefaultUpdatePoller -- UpdateDelivery
+DefaultUpdatePoller -- TelegramBotExecutor
+DefaultUpdatePoller -- Poller
+DefaultUpdatePoller -- UpdatePoller
+DefaultUpdatePoller -- Updates
+DefaultUpdatePoller -- LongPollingProperties
+DefaultUpdatePoller -- OffsetStore
+DurationFailoverProperties -- FailoverProperties
+LongPollingProperties -- Updates
+LongPollingProperties -- FailoverProperties
+GetUpdatesExcludedRetryRule -- RetryRule
+GetUpdatesExcludedRetryRule -- Rule
+GetUpdatesExcludedRetryRule -- Updates
+InMemoryOffsetStore -- OffsetStore
+TelegramBotLongPollingAutoConfiguration -- Ingress
+TelegramBotLongPollingAutoConfiguration -- LongPollingIngressConfiguration
+TelegramBotLongPollingAutoConfiguration -- LongPollingMasterConfiguration
+ReportingMasterAwareTelegramBotExecutorTest -- TelegramRequestException
+ReportingMasterAwareTelegramBotExecutorTest -- TelegramBotExecutor
+ReportingMasterAwareTelegramBotExecutorTest -- ReportingMasterAwareTelegramBotExecutor
+ReportingMasterAwareTelegramBotExecutorTest -- MasterManager
+DefaultMasterFailureClassifierTest -- DefaultMasterFailureClassifier
+DefaultMasterFailureClassifierTest -- MasterFailureClassifier
+DefaultMasterManagerTest -- SwitchableTelegramBotApiUrlProvider
+DefaultMasterManagerTest -- TelegramBotApiUrlProvider
+DefaultMasterManagerTest -- DefaultMasterManager
+DefaultMasterManagerTest -- MasterManager
+DefaultMasterManagerTest -- MasterSwitchPolicy
+DurationBasedMasterSwitchPolicyTest -- MasterFailureClassifier
+DurationBasedMasterSwitchPolicyTest -- MasterSwitchPolicy
+DurationBasedMasterSwitchPolicyTest -- DurationBasedMasterSwitchPolicy
+DefaultUpdatePollerTest -- Delivery
+DefaultUpdatePollerTest -- UpdateDelivery
+DefaultUpdatePollerTest -- TelegramBotExecutor
+DefaultUpdatePollerTest -- Matcher
+DefaultUpdatePollerTest -- Poller
+DefaultUpdatePollerTest -- UpdatePoller
+DefaultUpdatePollerTest -- Updates
+DefaultUpdatePollerTest -- DefaultUpdatePoller
+DefaultUpdatePollerTest -- LongPollingProperties
+DefaultUpdatePollerTest -- OffsetStore
+GetUpdatesExcludedRetryRuleTest -- RetryRule
+GetUpdatesExcludedRetryRuleTest -- Rule
+GetUpdatesExcludedRetryRuleTest -- Updates
+GetUpdatesExcludedRetryRuleTest -- GetUpdatesExcludedRetryRule
+InMemoryOffsetStoreTest -- InMemoryOffsetStore
+InMemoryOffsetStoreTest -- OffsetStore
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- Delivery
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- DeliveryThreadPoolExecutorFactory
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- Interceptor
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- DeliveryThreadPoolExecutorMetricsInterceptor
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- MetricsRecorderResolver
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- ProxyInterfaces
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- ObservabilityWrapped
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor -- MetricsRecorder
+DeliveryThreadPoolExecutorMetricsInterceptor -- Delivery
+DeliveryThreadPoolExecutorMetricsInterceptor -- DeliveryThreadPoolExecutorFactory
+DeliveryThreadPoolExecutorMetricsInterceptor -- Interceptor
+DeliveryThreadPoolExecutorMetricsInterceptor -- TelegramBotMetric
+DeliveryThreadPoolExecutorMetricsInterceptor -- MetricsRecorder
+MetricsRecorderResolver -- NoopMetricsRecorder
+MetricsRecorderResolver -- MetricsRecorder
+TelegramBotExecutorMetricsInterceptor -- TelegramBotExecutor
+TelegramBotExecutorMetricsInterceptor -- Interceptor
+TelegramBotExecutorMetricsInterceptor -- TelegramBotMetric
+TelegramBotExecutorMetricsInterceptor -- MetricsRecorder
+TelegramBotExecutorObservabilityBeanPostProcessor -- TelegramBotExecutor
+TelegramBotExecutorObservabilityBeanPostProcessor -- Interceptor
+TelegramBotExecutorObservabilityBeanPostProcessor -- MetricsRecorderResolver
+TelegramBotExecutorObservabilityBeanPostProcessor -- ProxyInterfaces
+TelegramBotExecutorObservabilityBeanPostProcessor -- TelegramBotExecutorMetricsInterceptor
+TelegramBotExecutorObservabilityBeanPostProcessor -- ObservabilityWrapped
+TelegramBotExecutorObservabilityBeanPostProcessor -- MetricsRecorder
+TelegramBotFileClientMetricsInterceptor -- TelegramBotFileClient
+TelegramBotFileClientMetricsInterceptor -- Interceptor
+TelegramBotFileClientMetricsInterceptor -- TelegramBotMetric
+TelegramBotFileClientMetricsInterceptor -- MetricsRecorder
+TelegramBotFileClientObservabilityBeanPostProcessor -- TelegramBotFileClient
+TelegramBotFileClientObservabilityBeanPostProcessor -- Interceptor
+TelegramBotFileClientObservabilityBeanPostProcessor -- MetricsRecorderResolver
+TelegramBotFileClientObservabilityBeanPostProcessor -- ProxyInterfaces
+TelegramBotFileClientObservabilityBeanPostProcessor -- TelegramBotFileClientMetricsInterceptor
+TelegramBotFileClientObservabilityBeanPostProcessor -- ObservabilityWrapped
+TelegramBotFileClientObservabilityBeanPostProcessor -- MetricsRecorder
+UpdateDeliveryMetricsInterceptor -- Delivery
+UpdateDeliveryMetricsInterceptor -- UpdateDelivery
+UpdateDeliveryMetricsInterceptor -- Interceptor
+UpdateDeliveryMetricsInterceptor -- TelegramBotMetric
+UpdateDeliveryMetricsInterceptor -- MetricsRecorder
+UpdateDeliveryObservabilityBeanPostProcessor -- Delivery
+UpdateDeliveryObservabilityBeanPostProcessor -- UpdateDelivery
+UpdateDeliveryObservabilityBeanPostProcessor -- Interceptor
+UpdateDeliveryObservabilityBeanPostProcessor -- MetricsRecorderResolver
+UpdateDeliveryObservabilityBeanPostProcessor -- ProxyInterfaces
+UpdateDeliveryObservabilityBeanPostProcessor -- UpdateDeliveryMetricsInterceptor
+UpdateDeliveryObservabilityBeanPostProcessor -- ObservabilityWrapped
+UpdateDeliveryObservabilityBeanPostProcessor -- MetricsRecorder
+UpdateHandlerMetricsInterceptor -- Handler
+UpdateHandlerMetricsInterceptor -- UpdateHandler
+UpdateHandlerMetricsInterceptor -- Interceptor
+UpdateHandlerMetricsInterceptor -- TelegramBotChannel
+UpdateHandlerMetricsInterceptor -- TelegramBotMetric
+UpdateHandlerMetricsInterceptor -- MetricsRecorder
+UpdateHandlerMetricsInterceptor -- TelegramBotChannelResolver
+UpdateHandlerObservabilityBeanPostProcessor -- Handler
+UpdateHandlerObservabilityBeanPostProcessor -- UpdateHandler
+UpdateHandlerObservabilityBeanPostProcessor -- Interceptor
+UpdateHandlerObservabilityBeanPostProcessor -- MetricsRecorderResolver
+UpdateHandlerObservabilityBeanPostProcessor -- ProxyInterfaces
+UpdateHandlerObservabilityBeanPostProcessor -- UpdateHandlerMetricsInterceptor
+UpdateHandlerObservabilityBeanPostProcessor -- ObservabilityWrapped
+UpdateHandlerObservabilityBeanPostProcessor -- TelegramBotChannel
+UpdateHandlerObservabilityBeanPostProcessor -- MetricsRecorder
+UpdateHandlerObservabilityBeanPostProcessor -- DefaultTelegramBotChannelResolver
+UpdateHandlerObservabilityBeanPostProcessor -- TelegramBotChannelResolver
+TelegramBotObservabilityBeanPostProcessorConfiguration -- Delivery
+TelegramBotObservabilityBeanPostProcessorConfiguration -- DeliveryThreadPoolExecutorFactory
+TelegramBotObservabilityBeanPostProcessorConfiguration -- UpdateDelivery
+TelegramBotObservabilityBeanPostProcessorConfiguration -- TelegramBotExecutor
+TelegramBotObservabilityBeanPostProcessorConfiguration -- TelegramBotFileClient
+TelegramBotObservabilityBeanPostProcessorConfiguration -- Handler
+TelegramBotObservabilityBeanPostProcessorConfiguration -- UpdateHandler
+TelegramBotObservabilityBeanPostProcessorConfiguration -- DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor
+TelegramBotObservabilityBeanPostProcessorConfiguration -- TelegramBotExecutorObservabilityBeanPostProcessor
+TelegramBotObservabilityBeanPostProcessorConfiguration -- TelegramBotFileClientObservabilityBeanPostProcessor
+TelegramBotObservabilityBeanPostProcessorConfiguration -- UpdateDeliveryObservabilityBeanPostProcessor
+TelegramBotObservabilityBeanPostProcessorConfiguration -- UpdateHandlerObservabilityBeanPostProcessor
+TelegramBotObservabilityBeanPostProcessorConfiguration -- TelegramBotChannel
+TelegramBotObservabilityBeanPostProcessorConfiguration -- MetricsRecorder
+TelegramBotObservabilityBeanPostProcessorConfiguration -- TelegramBotChannelResolver
+TelegramBotObservabilityMetricsConfiguration -- ExceptionHandler
+TelegramBotObservabilityMetricsConfiguration -- UpdateExceptionHandler
+TelegramBotObservabilityMetricsConfiguration -- Handler
+TelegramBotObservabilityMetricsConfiguration -- Registry
+TelegramBotObservabilityMetricsConfiguration -- NoMatchStrategy
+TelegramBotObservabilityMetricsConfiguration -- UpdateNoMatchStrategy
+TelegramBotObservabilityMetricsConfiguration -- ObservabilityUpdateExceptionHandler
+TelegramBotObservabilityMetricsConfiguration -- TelegramBotChannel
+TelegramBotObservabilityMetricsConfiguration -- ObservabilityUpdateNoMatchStrategy
+TelegramBotObservabilityMetricsConfiguration -- TelegramBotObservabilityProperties
+TelegramBotObservabilityMetricsConfiguration -- MicrometerMetricsRecorder
+TelegramBotObservabilityMetricsConfiguration -- NoopMetricsRecorder
+TelegramBotObservabilityMetricsConfiguration -- MetricsRecorder
+TelegramBotObservabilityMetricsConfiguration -- DefaultTelegramBotChannelResolver
+TelegramBotObservabilityMetricsConfiguration -- TelegramBotChannelResolver
+ObservabilityUpdateExceptionHandler -- ExceptionHandler
+ObservabilityUpdateExceptionHandler -- UpdateExceptionHandler
+ObservabilityUpdateExceptionHandler -- Handler
+ObservabilityUpdateExceptionHandler -- UpdateType
+ObservabilityUpdateExceptionHandler -- TelegramBotMetric
+ObservabilityUpdateExceptionHandler -- MetricsRecorder
+TelegramBotMetric -- Delivery
+TelegramBotMetric -- UpdateDelivery
+TelegramBotMetric -- TelegramBotExecutor
+TelegramBotMetric -- TelegramBotFileClient
+TelegramBotMetric -- Handler
+TelegramBotMetric -- UpdateHandler
+TelegramBotMetric -- Updates
+TelegramBotMetric -- UpdateType
+TelegramBotMetric -- TelegramBotChannel
+ObservabilityUpdateNoMatchStrategy -- NoMatchStrategy
+ObservabilityUpdateNoMatchStrategy -- UpdateNoMatchStrategy
+ObservabilityUpdateNoMatchStrategy -- TelegramBotMetric
+ObservabilityUpdateNoMatchStrategy -- MetricsRecorder
+MicrometerMetricsRecorder -- Registry
+MicrometerMetricsRecorder -- TelegramBotMetric
+MicrometerMetricsRecorder -- MetricsRecorder
+NoopMetricsRecorder -- TelegramBotMetric
+NoopMetricsRecorder -- MetricsRecorder
+MetricsRecorder -- TelegramBotMetric
+DefaultTelegramBotChannelResolver -- CallbackUpdateHandler
+DefaultTelegramBotChannelResolver -- CommandUpdateHandler
+DefaultTelegramBotChannelResolver -- Handler
+DefaultTelegramBotChannelResolver -- InlineUpdateHandler
+DefaultTelegramBotChannelResolver -- MessageUpdateHandler
+DefaultTelegramBotChannelResolver -- UpdateHandler
+DefaultTelegramBotChannelResolver -- TelegramBotChannel
+DefaultTelegramBotChannelResolver -- TelegramBotChannelResolver
+TelegramBotChannelResolver -- Handler
+TelegramBotChannelResolver -- TelegramBotChannel
+TelegramBotObservabilityAutoConfiguration -- Registry
+TelegramBotObservabilityAutoConfiguration -- TelegramBotObservabilityBeanPostProcessorConfiguration
+TelegramBotObservabilityAutoConfiguration -- TelegramBotObservabilityMetricsConfiguration
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest -- Delivery
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest -- DeliveryThreadPoolExecutorFactory
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest -- Registry
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest -- DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessor
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest -- TelegramBotMetric
+DeliveryThreadPoolExecutorFactoryObservabilityBeanPostProcessorTest -- TelegramBotObservabilityAutoConfiguration
+MetricsRecorderResolverTest -- Matcher
+MetricsRecorderResolverTest -- MetricsRecorderResolver
+MetricsRecorderResolverTest -- NoopMetricsRecorder
+MetricsRecorderResolverTest -- MetricsRecorder
+TelegramBotExecutorObservabilityBeanPostProcessorTest -- TelegramRequestException
+TelegramBotExecutorObservabilityBeanPostProcessorTest -- TelegramBotExecutor
+TelegramBotExecutorObservabilityBeanPostProcessorTest -- Registry
+TelegramBotExecutorObservabilityBeanPostProcessorTest -- TelegramBotExecutorObservabilityBeanPostProcessor
+TelegramBotExecutorObservabilityBeanPostProcessorTest -- TelegramBotMetric
+TelegramBotExecutorObservabilityBeanPostProcessorTest -- TelegramBotObservabilityAutoConfiguration
+TelegramBotFileClientObservabilityBeanPostProcessorTest -- TelegramFileDownloadException
+TelegramBotFileClientObservabilityBeanPostProcessorTest -- TelegramBotFileClient
+TelegramBotFileClientObservabilityBeanPostProcessorTest -- Registry
+TelegramBotFileClientObservabilityBeanPostProcessorTest -- TelegramBotFileClientObservabilityBeanPostProcessor
+TelegramBotFileClientObservabilityBeanPostProcessorTest -- TelegramBotMetric
+TelegramBotFileClientObservabilityBeanPostProcessorTest -- TelegramBotObservabilityAutoConfiguration
+UpdateDeliveryObservabilityBeanPostProcessorTest -- Delivery
+UpdateDeliveryObservabilityBeanPostProcessorTest -- UpdateDelivery
+UpdateDeliveryObservabilityBeanPostProcessorTest -- Registry
+UpdateDeliveryObservabilityBeanPostProcessorTest -- Updates
+UpdateDeliveryObservabilityBeanPostProcessorTest -- UpdateDeliveryObservabilityBeanPostProcessor
+UpdateDeliveryObservabilityBeanPostProcessorTest -- TelegramBotMetric
+UpdateDeliveryObservabilityBeanPostProcessorTest -- TelegramBotObservabilityAutoConfiguration
+UpdateHandlerObservabilityBeanPostProcessorTest -- CommandUpdateHandler
+UpdateHandlerObservabilityBeanPostProcessorTest -- Handler
+UpdateHandlerObservabilityBeanPostProcessorTest -- UpdateHandler
+UpdateHandlerObservabilityBeanPostProcessorTest -- Registry
+UpdateHandlerObservabilityBeanPostProcessorTest -- UpdateHandlerObservabilityBeanPostProcessor
+UpdateHandlerObservabilityBeanPostProcessorTest -- TelegramBotChannel
+UpdateHandlerObservabilityBeanPostProcessorTest -- TelegramBotMetric
+UpdateHandlerObservabilityBeanPostProcessorTest -- TelegramBotObservabilityAutoConfiguration
+ObservabilityUpdateExceptionHandlerTest -- ExceptionHandler
+ObservabilityUpdateExceptionHandlerTest -- UpdateExceptionHandler
+ObservabilityUpdateExceptionHandlerTest -- Handler
+ObservabilityUpdateExceptionHandlerTest -- Registry
+ObservabilityUpdateExceptionHandlerTest -- ObservabilityUpdateExceptionHandler
+ObservabilityUpdateExceptionHandlerTest -- TelegramBotMetric
+ObservabilityUpdateExceptionHandlerTest -- MicrometerMetricsRecorder
+ObservabilityUpdateExceptionHandlerTest -- MetricsRecorder
+TelegramBotMetricTest -- TelegramBotMetric
+ObservabilityUpdateNoMatchStrategyTest -- Registry
+ObservabilityUpdateNoMatchStrategyTest -- NoMatchStrategy
+ObservabilityUpdateNoMatchStrategyTest -- UpdateNoMatchStrategy
+ObservabilityUpdateNoMatchStrategyTest -- TelegramBotMetric
+ObservabilityUpdateNoMatchStrategyTest -- ObservabilityUpdateNoMatchStrategy
+ObservabilityUpdateNoMatchStrategyTest -- MicrometerMetricsRecorder
+ObservabilityUpdateNoMatchStrategyTest -- MetricsRecorder
+MicrometerMetricsRecorderTest -- CommandUpdateHandler
+MicrometerMetricsRecorderTest -- Handler
+MicrometerMetricsRecorderTest -- UpdateHandler
+MicrometerMetricsRecorderTest -- Registry
+MicrometerMetricsRecorderTest -- TelegramBotMetric
+MicrometerMetricsRecorderTest -- MicrometerMetricsRecorder
+MicrometerMetricsRecorderTest -- MetricsRecorder
+NoopMetricsRecorderTest -- TelegramBotMetric
+NoopMetricsRecorderTest -- NoopMetricsRecorder
+NoopMetricsRecorderTest -- MetricsRecorder
+DefaultTelegramBotChannelResolverTest -- CallbackUpdateHandler
+DefaultTelegramBotChannelResolverTest -- CommandUpdateHandler
+DefaultTelegramBotChannelResolverTest -- Handler
+DefaultTelegramBotChannelResolverTest -- InlineUpdateHandler
+DefaultTelegramBotChannelResolverTest -- MessageUpdateHandler
+DefaultTelegramBotChannelResolverTest -- UpdateHandler
+DefaultTelegramBotChannelResolverTest -- TelegramBotChannel
+DefaultTelegramBotChannelResolverTest -- DefaultTelegramBotChannelResolver
+DefaultTelegramBotChannelResolverTest -- TelegramBotChannelResolver
+SpringCoreOrderAdapter -- CoreOrdered
+TelegramBotDiagnosticsConfiguration -- TelegramBotStartupDiagnostics
+TelegramBotDiagnosticsConfiguration -- TelegramBotProperties
+TelegramBotStartupDiagnostics -- Handler
+TelegramBotStartupDiagnostics -- UpdateHandler
+TelegramBotStartupDiagnostics -- Interceptor
+TelegramBotStartupDiagnostics -- UpdateInterceptor
+TelegramBotStartupDiagnostics -- Rule
+TelegramBotStartupDiagnostics -- UpdateRule
+TelegramBotStartupDiagnostics -- TelegramBotProperties
+DeliveryConfiguration -- DefaultDeliveryThreadPoolExecutorFactory
+DeliveryConfiguration -- DefaultUpdateDelivery
+DeliveryConfiguration -- Delivery
+DeliveryConfiguration -- DeliveryThreadPoolExecutorFactory
+DeliveryConfiguration -- UpdateDelivery
+DeliveryConfiguration -- Dispatcher
+DeliveryConfiguration -- UpdateDispatcher
+DeliveryConfiguration -- CompositeUpdateExceptionHandler
+DeliveryConfiguration -- ExceptionHandler
+DeliveryConfiguration -- UpdateExceptionHandler
+DeliveryConfiguration -- Handler
+DeliveryConfiguration -- CompositeUpdateInterceptor
+DeliveryConfiguration -- Interceptor
+DeliveryConfiguration -- UpdateInterceptor
+DeliveryConfiguration -- TelegramBotProperties
+DispatcherConfiguration -- Dispatcher
+DispatcherConfiguration -- SimpleUpdateDispatcher
+DispatcherConfiguration -- UpdateDispatcher
+DispatcherConfiguration -- CompositeUpdateRouter
+DispatcherConfiguration -- Router
+DispatcherConfiguration -- UpdateRouter
+DispatcherConfiguration -- CompositeUpdateNoMatchStrategy
+DispatcherConfiguration -- NoMatchStrategy
+DispatcherConfiguration -- UpdateNoMatchStrategy
+ExceptionHandlerConfiguration -- CompositeUpdateExceptionHandler
+ExceptionHandlerConfiguration -- ExceptionHandler
+ExceptionHandlerConfiguration -- ExceptionHandlerErrorPolicy
+ExceptionHandlerConfiguration -- LoggingUpdateExceptionHandler
+ExceptionHandlerConfiguration -- UpdateExceptionHandler
+ExceptionHandlerConfiguration -- Handler
+ExceptionHandlerConfiguration -- CoreOrdered
+ExceptionHandlerConfiguration -- ExceptionHandlerSelector
+ExceptionHandlerConfiguration -- DefaultExceptionHandlerSelector
+ExceptionHandlerConfiguration -- UpdateExceptionHandlerSelector
+ExceptionHandlerConfiguration -- SpringCoreOrderAdapter
+ExceptionHandlerConfiguration -- TelegramBotProperties
+NoMatchStrategyConfiguration -- CoreOrdered
+NoMatchStrategyConfiguration -- DefaultNoMatchStrategySelector
+NoMatchStrategyConfiguration -- NoMatchStrategySelector
+NoMatchStrategyConfiguration -- UpdateNoMatchStrategySelector
+NoMatchStrategyConfiguration -- CompositeUpdateNoMatchStrategy
+NoMatchStrategyConfiguration -- LoggingUpdateNoMatchStrategy
+NoMatchStrategyConfiguration -- NoMatchStrategy
+NoMatchStrategyConfiguration -- StrategyErrorPolicy
+NoMatchStrategyConfiguration -- UpdateNoMatchStrategy
+NoMatchStrategyConfiguration -- SpringCoreOrderAdapter
+NoMatchStrategyConfiguration -- TelegramBotProperties
+RoutingConfiguration -- DefaultMessageUpdateRule
+RoutingConfiguration -- CallbackUpdateHandler
+RoutingConfiguration -- CommandUpdateHandler
+RoutingConfiguration -- Handler
+RoutingConfiguration -- UpdateHandler
+RoutingConfiguration -- CoreOrdered
+RoutingConfiguration -- CallbackHandlerRegistry
+RoutingConfiguration -- DefaultCallbackHandlerRegistry
+RoutingConfiguration -- CommandHandlerRegistry
+RoutingConfiguration -- DefaultCommandHandlerRegistry
+RoutingConfiguration -- HandlerRegistry
+RoutingConfiguration -- Registry
+RoutingConfiguration -- DefaultInlineUpdateRuleRegistry
+RoutingConfiguration -- InlineUpdateRuleRegistry
+RoutingConfiguration -- DefaultMessageUpdateRuleRegistry
+RoutingConfiguration -- MessageUpdateRuleRegistry
+RoutingConfiguration -- UpdateRuleRegistry
+RoutingConfiguration -- CallbackUpdateRouter
+RoutingConfiguration -- CompositeUpdateRouter
+RoutingConfiguration -- CommandDetector
+RoutingConfiguration -- DefaultCommandDetector
+RoutingConfiguration -- DefaultCallbackUpdateRouter
+RoutingConfiguration -- DefaultInlineUpdateRouter
+RoutingConfiguration -- DefaultMessageUpdateRouter
+RoutingConfiguration -- InlineUpdateRouter
+RoutingConfiguration -- MessageUpdateRouter
+RoutingConfiguration -- Router
+RoutingConfiguration -- UpdateRouter
+RoutingConfiguration -- InlineUpdateRule
+RoutingConfiguration -- MessageUpdateRule
+RoutingConfiguration -- Rule
+RoutingConfiguration -- UpdateRule
+RoutingConfiguration -- SpringCoreOrderAdapter
+OkHttpTelegramClientConfiguration -- TelegramBotApiUrlProvider
+OkHttpTelegramClientConfiguration -- CompositeRetryRule
+OkHttpTelegramClientConfiguration -- RetryDelayStrategy
+OkHttpTelegramClientConfiguration -- RetryingTelegramBotClientFactory
+OkHttpTelegramClientConfiguration -- RetryRule
+OkHttpTelegramClientConfiguration -- TelegramBotClientFactory
+OkHttpTelegramClientConfiguration -- TelegramBotExecutor
+OkHttpTelegramClientConfiguration -- TelegramBotFileClient
+OkHttpTelegramClientConfiguration -- Rule
+OkHttpTelegramClientConfiguration -- OkHttpSelectedCondition
+OkHttpTelegramClientConfiguration -- TelegramClientConfiguration
+OkHttpTelegramClientConfiguration -- OkHttpClientCustomizer
+OkHttpTelegramClientConfiguration -- OkHttpTelegramBotClientFactory
+OkHttpTelegramClientConfiguration -- TelegramBotProperties
+SpringTelegramClientConfiguration -- TelegramBotApiUrlProvider
+SpringTelegramClientConfiguration -- CompositeRetryRule
+SpringTelegramClientConfiguration -- RetryDelayStrategy
+SpringTelegramClientConfiguration -- RetryingTelegramBotClientFactory
+SpringTelegramClientConfiguration -- RetryRule
+SpringTelegramClientConfiguration -- TelegramBotClientFactory
+SpringTelegramClientConfiguration -- TelegramBotExecutor
+SpringTelegramClientConfiguration -- TelegramBotFileClient
+SpringTelegramClientConfiguration -- Rule
+SpringTelegramClientConfiguration -- SpringSelectedCondition
+SpringTelegramClientConfiguration -- TelegramClientConfiguration
+SpringTelegramClientConfiguration -- RestClientTelegramBotClientFactory
+SpringTelegramClientConfiguration -- TelegramBotProperties
+TelegramClientConfiguration -- TelegramClientCoreConfiguration
+TelegramClientConfiguration -- TelegramClientRetryConfiguration
+TelegramClientCoreConfiguration -- DefaultSwitchableTelegramBotApiUrlProvider
+TelegramClientCoreConfiguration -- SwitchableTelegramBotApiUrlProvider
+TelegramClientCoreConfiguration -- TelegramBotApiUrlProvider
+TelegramClientCoreConfiguration -- TelegramBotProperties
+TelegramClientRetryConfiguration -- CompositeRetryRule
+TelegramClientRetryConfiguration -- FixedRetryDelayStrategy
+TelegramClientRetryConfiguration -- MaxAttemptsRetryRule
+TelegramClientRetryConfiguration -- RetryableMethodsRetryRule
+TelegramClientRetryConfiguration -- RetryDelayStrategy
+TelegramClientRetryConfiguration -- RetryingTelegramBotExecutor
+TelegramClientRetryConfiguration -- RetryRule
+TelegramClientRetryConfiguration -- TelegramBotExecutor
+TelegramClientRetryConfiguration -- CoreOrdered
+TelegramClientRetryConfiguration -- ClientRetryProperties
+TelegramClientRetryConfiguration -- Rule
+TelegramClientRetryConfiguration -- SpringCoreOrderAdapter
+TelegramClientRetryConfiguration -- TelegramBotProperties
+CustomMissingIngressConfiguration -- Ingress
+CustomMissingIngressConfiguration -- UpdateIngress
+LongPollingMissingIngressConfiguration -- Ingress
+LongPollingMissingIngressConfiguration -- UpdateIngress
+LongPollingMissingIngressConfiguration -- LongPollingUpdateIngress
+NoIngressModeConfiguration -- Ingress
+NoIngressModeConfiguration -- NoIngressUpdateIngress
+NoIngressModeConfiguration -- UpdateIngress
+WebhookMissingIngressConfiguration -- Ingress
+WebhookMissingIngressConfiguration -- UpdateIngress
+WebhookMissingIngressConfiguration -- WebhookUpdateIngress
+OkHttpTelegramBotClientFactory -- TelegramBotApiUrlProvider
+OkHttpTelegramBotClientFactory -- TelegramBotClientFactory
+OkHttpTelegramBotClientFactory -- TelegramBotExecutor
+OkHttpTelegramBotClientFactory -- TelegramBotFileClient
+OkHttpTelegramBotClientFactory -- OkHttpClientProperties
+OkHttpTelegramBotClientFactory -- OkHttpClientCustomizer
+OkHttpTelegramBotClientFactory -- OkHttpTelegramBotExecutor
+OkHttpTelegramBotClientFactory -- OkHttpTelegramBotFileClient
+OkHttpTelegramBotClientFactory -- ClientProperties
+RestClientTelegramBotClientFactory -- TelegramBotApiUrlProvider
+RestClientTelegramBotClientFactory -- TelegramBotClientFactory
+RestClientTelegramBotClientFactory -- TelegramBotExecutor
+RestClientTelegramBotClientFactory -- TelegramBotFileClient
+RestClientTelegramBotClientFactory -- RestClientTelegramBotExecutor
+RestClientTelegramBotClientFactory -- RestClientTelegramBotFileClient
+OkHttpTelegramBotExecutor -- TelegramRequestException
+OkHttpTelegramBotExecutor -- TelegramBotApiUrlProvider
+OkHttpTelegramBotExecutor -- TelegramBotExecutor
+OkHttpTelegramBotFileClient -- TelegramFileDownloadException
+OkHttpTelegramBotFileClient -- TelegramBotApiUrlProvider
+OkHttpTelegramBotFileClient -- TelegramBotExecutor
+OkHttpTelegramBotFileClient -- TelegramBotFileClient
+OkHttpTelegramBotFileClient -- TelegramBotFiles
+RestClientTelegramBotExecutor -- TelegramRequestException
+RestClientTelegramBotExecutor -- TelegramBotApiUrlProvider
+RestClientTelegramBotExecutor -- TelegramBotExecutor
+RestClientTelegramBotFileClient -- TelegramFileDownloadException
+RestClientTelegramBotFileClient -- TelegramBotApiUrlProvider
+RestClientTelegramBotFileClient -- TelegramBotExecutor
+RestClientTelegramBotFileClient -- TelegramBotFileClient
+RestClientTelegramBotFileClient -- TelegramBotFiles
+ClientProperties -- ClientApiProperties
+ClientProperties -- ClientRetryProperties
+TelegramBotProperties -- Delivery
+TelegramBotProperties -- ExceptionHandler
+TelegramBotProperties -- Handler
+TelegramBotProperties -- DeliveryProperties
+TelegramBotProperties -- ExceptionHandlerProperties
+TelegramBotProperties -- NoMatchStrategyProperties
+TelegramBotProperties -- RoutingProperties
+TelegramBotProperties -- NoMatchStrategy
+TelegramBotProperties -- ClientProperties
+TelegramBotAutoConfiguration -- Delivery
+TelegramBotAutoConfiguration -- Dispatcher
+TelegramBotAutoConfiguration -- ExceptionHandler
+TelegramBotAutoConfiguration -- Handler
+TelegramBotAutoConfiguration -- Ingress
+TelegramBotAutoConfiguration -- NoMatchStrategy
+TelegramBotAutoConfiguration -- TelegramBotDiagnosticsConfiguration
+TelegramBotAutoConfiguration -- DeliveryConfiguration
+TelegramBotAutoConfiguration -- DispatcherConfiguration
+TelegramBotAutoConfiguration -- ExceptionHandlerConfiguration
+TelegramBotAutoConfiguration -- NoMatchStrategyConfiguration
+TelegramBotAutoConfiguration -- RoutingConfiguration
+TelegramBotAutoConfiguration -- TelegramClientConfiguration
+TelegramBotAutoConfiguration -- CustomMissingIngressConfiguration
+TelegramBotAutoConfiguration -- LongPollingMissingIngressConfiguration
+TelegramBotAutoConfiguration -- NoIngressModeConfiguration
+TelegramBotAutoConfiguration -- WebhookMissingIngressConfiguration
+TelegramBotAutoConfiguration -- TelegramBotProperties
+SpringCoreOrderAdapterTest -- CoreOrdered
+SpringCoreOrderAdapterTest -- SpringCoreOrderAdapter
+NoIngressModeConfigurationTest -- Ingress
+NoIngressModeConfigurationTest -- NoIngressUpdateIngress
+NoIngressModeConfigurationTest -- UpdateIngress
+NoIngressModeConfigurationTest -- NoIngressModeConfiguration
+OkHttpClientCustomizerTest -- Interceptor
+OkHttpClientCustomizerTest -- OkHttpClientCustomizer
+DefaultWebhookController -- Ingress
+DefaultWebhookController -- UpdateIngress
+DefaultWebhookController -- WebhookController
+DefaultWebhookController -- WebhookUpdateIngress
+DefaultWebhookUpdateIngress -- Delivery
+DefaultWebhookUpdateIngress -- UpdateDelivery
+DefaultWebhookUpdateIngress -- Ingress
+DefaultWebhookUpdateIngress -- UpdateIngress
+DefaultWebhookUpdateIngress -- Updates
+DefaultWebhookUpdateIngress -- WebhookUpdateIngress
+WebhookUpdateIngress -- Delivery
+WebhookUpdateIngress -- UpdateDelivery
+WebhookUpdateIngress -- Ingress
+WebhookUpdateIngress -- UpdateIngress
+DefaultWebhookLifecycle -- TelegramBotExecutor
+DefaultWebhookLifecycle -- Updates
+DefaultWebhookLifecycle -- WebhookRegisteringException
+DefaultWebhookLifecycle -- WebhookLifecycle
+DefaultWebhookLifecycle -- WebhookProperties
+WebhookProperties -- Updates
+WebhookProperties -- WebhookController
+TelegramBotWebhookAutoConfiguration -- Delivery
+TelegramBotWebhookAutoConfiguration -- UpdateDelivery
+TelegramBotWebhookAutoConfiguration -- TelegramBotExecutor
+TelegramBotWebhookAutoConfiguration -- Ingress
+TelegramBotWebhookAutoConfiguration -- UpdateIngress
+TelegramBotWebhookAutoConfiguration -- DefaultWebhookController
+TelegramBotWebhookAutoConfiguration -- WebhookController
+TelegramBotWebhookAutoConfiguration -- TelegramUpdateHttpMessageConverter
+TelegramBotWebhookAutoConfiguration -- WebhookSecretTokenFilter
+TelegramBotWebhookAutoConfiguration -- DefaultWebhookUpdateIngress
+TelegramBotWebhookAutoConfiguration -- WebhookUpdateIngress
+TelegramBotWebhookAutoConfiguration -- DefaultWebhookLifecycle
+TelegramBotWebhookAutoConfiguration -- WebhookLifecycle
+TelegramBotWebhookAutoConfiguration -- WebhookProperties
+TelegramUpdateHttpMessageConverterTest -- TelegramUpdateHttpMessageConverter
+WebhookSecretTokenFilterTest -- WebhookSecretTokenFilter
+@enduml

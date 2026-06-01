@@ -1,0 +1,123 @@
+@startuml
+
+package com.github {
+  class AopLogConfig {
+    -logOnErr : boolean
+    -tag : String
+    -headers : String[]
+    -args : boolean
+    -respBody : boolean
+    -stackTraceOnErr : boolean
+    -asyncMode : boolean
+    +isLogOnErr() : boolean
+    +setLogOnErr() : void
+    +getTag() : String
+    +setTag() : void
+    +getHeaders() : String[]
+    +setHeaders() : void
+    +isArgs() : boolean
+    +setArgs() : void
+  }
+  class AopLogAutoConfiguration {
+    -log : Logger
+    +nothingCollector() : LogCollector
+    +collectorAsyncExecutor() : Executor
+  }
+  interface AopLog {
+  }
+  class SpringElSupporter {
+    -parser : SpelExpressionParser
+    -paramNameDiscoverer : ParameterNameDiscoverer
+    -pattern : Pattern
+    -target : Object
+    -args : Object[]
+    +getByExpression() : Object
+    +getTarget() : Object
+    +setTarget() : void
+    +getArgs() : Object[]
+    +setArgs() : void
+  }
+  class AopLogProcessor {
+    -applicationContext : ApplicationContext
+    -collectorExecutor : CollectorExecutor
+    -logCollector : LogCollector
+    -elSupporter : SpringElSupporter
+    -appName : String
+    +getAppName() : String
+    +getAppName() : String
+    +proceed() : Object
+  }
+  interface Collector {
+  }
+  class LogData {
+    -LOG_DATA : ThreadLocal<LogData>
+    -CONTENT_BUILDER : ThreadLocal<StringBuilder>
+    -appName : String
+    -host : String
+    -port : Integer
+    -clientIp : String
+    -reqUrl : String
+    -httpMethod : String
+    -headers : Object
+    -tag : String
+    +getAppName() : String
+    +setAppName() : void
+    +getHost() : String
+    +setHost() : void
+    +getPort() : Integer
+    +setPort() : void
+    +getClientIp() : String
+    +setClientIp() : void
+  }
+  class CollectorExecutor {
+  }
+  class MessageFormatter {
+    -DELIMITER : String
+    -ESCAPE_CHAR : String
+    -EMPTY : String
+    +format() : String
+    +escapeReplace() : int
+  }
+  class LogDataAspect {
+    -aopLogProcessor : AopLogProcessor
+    +aopLogPointCut() : void
+    +note() : Object
+  }
+  class DataExtractor {
+    -log : Logger
+    -AND_REG : String
+    -EQUALS_REG : String
+    +getRequest() : HttpServletRequest
+    +getResponse() : HttpServletResponse
+    +getArgs() : Object
+    +getResult() : Object
+    +appletArgs() : Object
+    +xmlArgs() : Object
+    +logHttpRequest() : void
+  }
+}
+
+package com.github.collector {
+  class NothingCollector {
+    +collect() : void
+  }
+  interface LogCollector {
+  }
+}
+
+' --- Relatii ---
+AopLogConfig --> LogCollector
+AopLogConfig --> NothingCollector
+AopLogAutoConfiguration --> LogCollector
+AopLogAutoConfiguration --> NothingCollector
+AopLog --> LogCollector
+AopLog --> NothingCollector
+AopLogProcessor --> LogCollector
+AopLogProcessor --> NothingCollector
+NothingCollector ..|> LogCollector
+NothingCollector --> LogData
+LogCollector --|> Collector
+LogCollector --> Collector
+LogCollector --> LogData
+
+@enduml

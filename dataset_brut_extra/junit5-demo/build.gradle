@@ -1,0 +1,56 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.0.RC1'
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+	id 'maven'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 12
+targetCompatibility = 12
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+// Special syntax for overriding spring-boot-dependencies
+// ext['junit-jupiter.version'] = '5.5.2'
+// ext['spring.version']        = '5.2.0.RELEASE'
+
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter")
+
+	implementation("org.junit.jupiter:junit-jupiter-api") {
+		because('We implement JUnit Jupiter extensions in src/main/java')
+	}
+	implementation("org.hamcrest:hamcrest-library") {
+		because('We implement JUnit Jupiter extensions in src/main/java')
+	}
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.junit.jupiter:junit-jupiter-migrationsupport") {
+		because('To demonstrate @EnableJUnit4MigrationSupport')
+	}
+	// testImplementation("org.junit.platform:junit-platform-runner") {
+	// 	because('To demonstrate @RunWith(JUnitPlatform.class)')
+	// }
+}
+
+test {
+	useJUnitPlatform()
+
+	testLogging {
+		events "passed", "skipped", "failed" // "standardOut", "standardError"
+	}
+}
+
+wrapper {
+	gradleVersion = '5.6.2'
+}

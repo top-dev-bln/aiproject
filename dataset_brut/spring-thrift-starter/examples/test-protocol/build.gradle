@@ -1,0 +1,27 @@
+import org.gradle.internal.os.OperatingSystem
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir file("generated-src/generated/java")
+        }
+    }
+}
+
+idea {
+    module {
+        sourceDirs += file('src/main/thrift')
+        sourceDirs += file("generated-src/generated/java")
+    }
+}
+
+dependencies {
+    compile "org.apache.thrift:libthrift"
+}

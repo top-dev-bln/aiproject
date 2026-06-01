@@ -1,0 +1,34 @@
+@startuml
+package com.example.graphqlserver; {
+class Author {
+}
+
+class Book {
+}
+
+class BookController {
+}
+
+class GraphqlServerApplication {
+}
+
+class BookControllerTests {
+}
+
+class GraphqlServerApplicationTests {
+}
+
+class GraphqlServerApplication {
+}
+
+class GraphqlServerApplicationTests {
+}
+
+}
+
+BookController -- Author
+BookController -- Book
+BookControllerTests -- Book
+BookControllerTests -- BookController
+GraphqlServerApplicationTests -- GraphqlServerApplication
+@enduml

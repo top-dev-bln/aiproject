@@ -1,0 +1,155 @@
+@startuml
+package com.reljicd.config; {
+class GlobalExceptionHandler {
+}
+
+class MyAccessDeniedHandler {
+}
+
+class SpringSecurityConfig {
+}
+
+}
+
+package com.reljicd.controller; {
+class CustomErrorController {
+}
+
+class HomeController {
+}
+
+class LinkController {
+}
+
+class LinksController {
+}
+
+class LoginController {
+}
+
+class RegistrationController {
+}
+
+}
+
+package com.reljicd; {
+class DemoApplication {
+}
+
+class DemoApplicationTests {
+}
+
+}
+
+package com.reljicd.model; {
+class Link {
+}
+
+class Role {
+}
+
+class Tag {
+}
+
+class User {
+}
+
+}
+
+package com.reljicd.repository; {
+class LinkRepository {
+}
+
+class RoleRepository {
+}
+
+class TagRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.reljicd.service.impl; {
+class LinkServiceImp {
+}
+
+class TagServiceImp {
+}
+
+class UserServiceImp {
+}
+
+}
+
+package com.reljicd.service; {
+class LinkService {
+}
+
+class TagService {
+}
+
+class UserService {
+}
+
+}
+
+package com.reljicd.util; {
+class Pager {
+}
+
+}
+
+MyAccessDeniedHandler -- User
+SpringSecurityConfig -- Link
+SpringSecurityConfig -- Role
+SpringSecurityConfig -- User
+HomeController -- Link
+HomeController -- LinkService
+HomeController -- Pager
+LinkController -- Link
+LinkController -- Tag
+LinkController -- User
+LinkController -- LinkService
+LinkController -- TagService
+LinkController -- UserService
+LinksController -- Link
+LinksController -- User
+LinksController -- LinkService
+LinksController -- UserService
+LinksController -- Pager
+RegistrationController -- User
+RegistrationController -- UserService
+Link -- Tag
+Link -- User
+Role -- User
+LinkRepository -- Link
+LinkRepository -- User
+RoleRepository -- Role
+TagRepository -- Tag
+UserRepository -- User
+LinkServiceImp -- Link
+LinkServiceImp -- User
+LinkServiceImp -- LinkRepository
+LinkServiceImp -- LinkService
+TagServiceImp -- Link
+TagServiceImp -- Tag
+TagServiceImp -- User
+TagServiceImp -- LinkRepository
+TagServiceImp -- TagRepository
+TagServiceImp -- TagService
+UserServiceImp -- Role
+UserServiceImp -- User
+UserServiceImp -- RoleRepository
+UserServiceImp -- UserRepository
+UserServiceImp -- UserService
+LinkService -- Link
+LinkService -- User
+TagService -- Link
+TagService -- Tag
+TagService -- User
+UserService -- User
+Pager -- Link
+DemoApplicationTests -- DemoApplication
+@enduml

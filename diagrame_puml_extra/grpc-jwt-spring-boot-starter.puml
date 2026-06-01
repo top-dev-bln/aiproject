@@ -1,0 +1,121 @@
+@startuml
+package io.github.majusko.grpc.jwt.annotation; {
+class Allow {
+}
+
+class Exposed {
+}
+
+}
+
+package io.github.majusko.grpc.jwt.data; {
+class AllowedMethod {
+}
+
+class GrpcHeader {
+}
+
+class GrpcJwtContext {
+}
+
+class JwtContextData {
+}
+
+}
+
+package io.github.majusko.grpc.jwt.exception; {
+class AuthException {
+}
+
+class UnauthenticatedException {
+}
+
+}
+
+package io.github.majusko.grpc.jwt; {
+class GrpcJwtAutoConfiguration {
+}
+
+class GrpcJwtProperties {
+}
+
+class GrpcJwtSpringBootStarterApplication {
+}
+
+class GrpcJwtSpringBootStarterApplicationTest {
+}
+
+}
+
+package io.github.majusko.grpc.jwt.interceptor; {
+class AllowedCollector {
+}
+
+class AuthClientInterceptor {
+}
+
+class AuthServerInterceptor {
+}
+
+}
+
+package io.github.majusko.grpc.jwt.service.dto; {
+class JwtData {
+}
+
+class JwtMetadata {
+}
+
+class JwtToken {
+}
+
+}
+
+package io.github.majusko.grpc.jwt.service; {
+class GrpcRole {
+}
+
+class JwtService {
+}
+
+}
+
+AllowedMethod -- Allow
+GrpcJwtContext -- JwtContextData
+GrpcJwtAutoConfiguration -- GrpcJwtProperties
+GrpcJwtAutoConfiguration -- AuthClientInterceptor
+GrpcJwtAutoConfiguration -- JwtService
+AllowedCollector -- Allow
+AllowedCollector -- Exposed
+AllowedCollector -- AllowedMethod
+AuthClientInterceptor -- GrpcHeader
+AuthClientInterceptor -- JwtService
+AuthServerInterceptor -- Allow
+AuthServerInterceptor -- Exposed
+AuthServerInterceptor -- AllowedMethod
+AuthServerInterceptor -- GrpcHeader
+AuthServerInterceptor -- GrpcJwtContext
+AuthServerInterceptor -- JwtContextData
+AuthServerInterceptor -- AuthException
+AuthServerInterceptor -- UnauthenticatedException
+AuthServerInterceptor -- AllowedCollector
+AuthServerInterceptor -- JwtService
+JwtService -- GrpcJwtProperties
+JwtService -- JwtData
+JwtService -- JwtMetadata
+JwtService -- JwtToken
+JwtService -- GrpcRole
+GrpcJwtSpringBootStarterApplicationTest -- Allow
+GrpcJwtSpringBootStarterApplicationTest -- Exposed
+GrpcJwtSpringBootStarterApplicationTest -- GrpcHeader
+GrpcJwtSpringBootStarterApplicationTest -- GrpcJwtContext
+GrpcJwtSpringBootStarterApplicationTest -- JwtContextData
+GrpcJwtSpringBootStarterApplicationTest -- GrpcJwtProperties
+GrpcJwtSpringBootStarterApplicationTest -- GrpcJwtSpringBootStarterApplication
+GrpcJwtSpringBootStarterApplicationTest -- AllowedCollector
+GrpcJwtSpringBootStarterApplicationTest -- AuthClientInterceptor
+GrpcJwtSpringBootStarterApplicationTest -- AuthServerInterceptor
+GrpcJwtSpringBootStarterApplicationTest -- JwtData
+GrpcJwtSpringBootStarterApplicationTest -- GrpcRole
+GrpcJwtSpringBootStarterApplicationTest -- JwtService
+@enduml

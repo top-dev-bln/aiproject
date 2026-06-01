@@ -1,0 +1,35 @@
+@startuml
+package com.example.practice.java.modern.tech.sandbox.app {
+class SandboxApplication {
+}
+
+class SandboxApplicationTests {
+}
+
+}
+
+package com.example.practice.java.modern.tech.sandbox.library.hello; {
+class HelloService {
+}
+
+class HelloServiceTest {
+}
+
+}
+
+package com.example.practice.java.modern.tech.sandbox.library.hello.lambda; {
+class ImplementDataStructureByLambda {
+}
+
+}
+
+package com.example.practice.java.modern.tech.sandbox.library.hello.lambda {
+class ImplementDataStructureByLambda {
+}
+
+}
+
+SandboxApplication -- HelloService
+SandboxApplicationTests -- SandboxApplication
+HelloServiceTest -- HelloService
+@enduml

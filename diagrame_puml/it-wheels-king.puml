@@ -1,0 +1,279 @@
+@startuml
+
+package cn.it.learning {
+  class FtpUtilTest {
+    -ftpUtil : FtpUtil
+    +testFtpDownloadFile() : void
+  }
+  class ComplexReportUtilTest {
+    +complexReportExportTest() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package cn.it.learning.annotation {
+  interface ImportFieldValid {
+  }
+}
+
+package cn.it.learning.config {
+  class FtpConfig {
+    -clientCharset : String
+    -serverHostname : String
+    -serverPort : Integer
+    -serverUsername : String
+    -serverPassword : String
+    -serverWorkingPath : String
+    -serverCharset : String
+  }
+  class SeaweedFsConfig {
+    -host : String
+    -port : Integer
+  }
+}
+
+package cn.it.learning.constant {
+  class ExportConstant {
+    -EXCEL_CONTENT_TYPE : String
+    -UTF_8 : String
+    -CONTENT_DISPOSITION : String
+    -ATTACHMENT_FILENAME : String
+    -XLSX_SUFFIX : String
+    -CSV_SUFFIX : String
+    -SHEET_NAME : String
+    -DEFAULT_CELL_LENGTH : Integer
+  }
+  class ImportConstant {
+    -MAX_INSERT_COUNT : Integer
+    -XLSX_TYPE : String
+    -XLS_TYPE : String
+    -CSV_TYPE : String
+  }
+  class CommonConstant {
+    -CONTENT_TYPE : String
+    -UTF_8 : String
+    -CONTENT_DISPOSITION : String
+    -ATTACHMENT_FILENAME : String
+  }
+}
+
+package cn.it.learning.controller {
+  class TestComplexReportController <<Controller>> {
+    +downloadComplexReport() : void
+  }
+  class TestFtpServerController <<Controller>> {
+    -ftpUtils : FtpUtil
+    -ftpConfig : FtpConfig
+    +upload() : void
+    +download() : void
+  }
+  class TestSeaweedFsController <<Controller>> {
+    -seaweedFsUtil : SeaweedFsUtil
+    +uploadFile() : void
+    +downloadFile() : void
+    +deleteFile() : void
+  }
+  class TestCsvAndExcelExportController <<Controller>> {
+    -userService : UserServiceImpl
+    +uploadUserListWithExcel() : void
+    +exportUserListWithExcel() : void
+    +exportUserDynamicListWithExcel() : void
+    +downloadUserTemplate() : void
+    +exportUserListWithCsv() : void
+    +uploadUserListWithCsv() : void
+  }
+}
+
+package cn.it.learning.mapper {
+  interface UserMapper {
+  }
+}
+
+package cn.it.learning.model {
+  class UserExportCsvVo {
+    -id : Integer
+    -name : String
+    -password : String
+  }
+  class User {
+    -id : Integer
+    -name : String
+    -password : String
+  }
+  class UserExportVo {
+    -id : Integer
+    -name : String
+    -password : String
+  }
+  class UserCsvDto {
+    -id : Integer
+    -name : String
+    -password : String
+    -date : Date
+  }
+  class UserDto {
+    -id : Integer
+    -name : String
+    -password : String
+    -relationId : Long
+  }
+  class ImportCommonConstant {
+    -ZERO : Integer
+    -STRING_TYPE : String
+  }
+}
+
+package cn.it.learning.model.test.ftp {
+  class FtpDownloadParam {
+    -hostname : String
+    -port : Integer
+    -username : String
+    -password : String
+    -workingPath : String
+    -downloadPath : String
+    -fileName : String
+  }
+  class FtpUploadParam {
+    -hostname : String
+    -port : Integer
+    -username : String
+    -password : String
+    -workingPath : String
+    -inputStream : InputStream
+    -saveName : String
+  }
+}
+
+package cn.it.learning.refactor {
+  interface ThrowingConsumer {
+  }
+}
+
+package cn.it.learning.service {
+  class UserServiceImpl <<Service>> {
+    -userMapper : UserMapper
+    -userService : UserServiceImpl
+    +setUserMapper() : void
+    +setUserMapper() : void
+    +init() : void
+    +uploadUserListDemoWithExcel() : void
+    +exportUserListDemoWithExcel() : void
+    +exportUserListDynamicDemoWithExcel() : void
+    +downloadTemplateDemo() : void
+    +exportUserListWithCsv() : void
+  }
+}
+
+package cn.it.learning.util.browser {
+  class BrowserAdapterUtil {
+    +buildingFileNameAdapterBrowser() : String
+  }
+}
+
+package cn.it.learning.util.complex_report {
+  class ComplexExcelReportUtil {
+    -configuration : Configuration
+    +exportComplexByTemplate() : void
+    +exportReportByBrowser() : void
+  }
+}
+
+package cn.it.learning.util.csv {
+  class CsvExportUtil {
+  }
+  class CsvImportUtil {
+    +handleError() : void
+  }
+}
+
+package cn.it.learning.util.excel {
+  class ExcelExportUtil {
+    +downloadTemplate() : void
+  }
+  class ExcelImportCommonListener {
+    -persistentDataList : List<T>
+    -persistentActionMethod : ThrowingConsumer<List<T>>
+    -errorLogList : List<String>
+    -count : Long
+    +onException() : void
+    +invokeHead() : void
+    +invoke() : void
+    +doAfterAllAnalysed() : void
+  }
+  class ExcelImportUtil {
+  }
+}
+
+package cn.it.learning.util.file_system {
+  class SeaweedFsUtil {
+    -seaweedFsConfig : SeaweedFsConfig
+    -contentType : ContentType
+    +uploadFile() : String
+    +deleteFileByFid() : void
+    +downloadFileByFid() : void
+  }
+}
+
+package cn.it.learning.util.ftp {
+  class FtpUtil {
+    -ftpClientCharset : String
+    -ftpServerCharset : String
+    +connect() : Boolean
+    +disconnect() : void
+    +upload() : boolean
+    +download() : boolean
+    +downloadFileToDestination() : Boolean
+  }
+}
+
+package cn.it.learning.valid {
+  class ImportValid {
+    +validRequireField() : void
+  }
+}
+
+' --- Relatii ---
+FtpUtilTest --> FtpUtil
+ComplexReportUtilTest --> User
+ComplexReportUtilTest --> ComplexExcelReportUtil
+FtpUtil --> FtpDownloadParam
+FtpUtil --> FtpUploadParam
+ExcelExportUtil --> ExportConstant
+ExcelImportCommonListener --> ImportConstant
+ExcelImportCommonListener --> ThrowingConsumer
+ExcelImportCommonListener --> ImportValid
+ExcelImportUtil --> ThrowingConsumer
+ExcelImportUtil --> ExcelImportCommonListener
+SeaweedFsUtil --> SeaweedFsConfig
+SeaweedFsUtil --> CommonConstant
+SeaweedFsUtil --> BrowserAdapterUtil
+BrowserAdapterUtil --> CommonConstant
+CsvExportUtil --> ExportConstant
+CsvExportUtil --> UserExportVo
+CsvImportUtil --> ImportConstant
+CsvImportUtil --> ThrowingConsumer
+CsvImportUtil --> ImportValid
+ComplexExcelReportUtil --> ExportConstant
+UserMapper --> User
+TestComplexReportController --> User
+TestComplexReportController --> ComplexExcelReportUtil
+TestFtpServerController --> FtpConfig
+TestFtpServerController --> FtpDownloadParam
+TestFtpServerController --> FtpUploadParam
+TestFtpServerController --> FtpUtil
+TestSeaweedFsController --> SeaweedFsUtil
+TestCsvAndExcelExportController --> UserServiceImpl
+UserCsvDto --> ImportFieldValid
+UserDto --> ImportFieldValid
+UserServiceImpl --> ImportConstant
+UserServiceImpl --> UserMapper
+UserServiceImpl --> CsvExportUtil
+UserServiceImpl --> CsvImportUtil
+UserServiceImpl --> ExcelExportUtil
+UserServiceImpl --> ExcelImportUtil
+ImportValid --> ImportFieldValid
+ImportValid --> ImportCommonConstant
+
+@enduml

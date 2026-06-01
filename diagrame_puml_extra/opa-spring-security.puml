@@ -1,0 +1,73 @@
+@startuml
+package Versions { {
+class Dependencies {
+}
+
+}
+
+package com.bisnode.opa.spring.security.filter.autoconfigure; {
+class OpaFilterConfiguration {
+}
+
+class OpaFilterConfigurer {
+}
+
+class OpaSpringFilterAutoConfiguration {
+}
+
+}
+
+package com.bisnode.opa.spring.security.filter.decision; {
+class AccessDecider {
+}
+
+class AccessDecision {
+}
+
+}
+
+package com.bisnode.opa.spring.security.filter.decision.request; {
+class ByRequestDecider {
+}
+
+class DefaultOpaRequestSupplier {
+}
+
+class Jwt {
+}
+
+class OpaInput {
+}
+
+class OpaRequestSupplier {
+}
+
+}
+
+package com.bisnode.opa.spring.security.filter; {
+class OpaFilter {
+}
+
+}
+
+OpaFilterConfiguration -- OpaFilter
+OpaFilterConfigurer -- OpaFilterConfiguration
+OpaFilterConfigurer -- AccessDecider
+OpaFilterConfigurer -- ByRequestDecider
+OpaFilterConfigurer -- OpaFilter
+OpaSpringFilterAutoConfiguration -- OpaFilterConfiguration
+OpaSpringFilterAutoConfiguration -- OpaFilterConfigurer
+OpaSpringFilterAutoConfiguration -- OpaFilter
+AccessDecider -- AccessDecision
+ByRequestDecider -- AccessDecider
+ByRequestDecider -- AccessDecision
+ByRequestDecider -- DefaultOpaRequestSupplier
+ByRequestDecider -- OpaRequestSupplier
+DefaultOpaRequestSupplier -- Jwt
+DefaultOpaRequestSupplier -- OpaInput
+DefaultOpaRequestSupplier -- OpaRequestSupplier
+OpaInput -- Jwt
+OpaInput -- OpaFilter
+OpaFilter -- AccessDecider
+OpaFilter -- AccessDecision
+@enduml

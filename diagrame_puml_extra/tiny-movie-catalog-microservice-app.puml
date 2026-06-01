@@ -1,0 +1,203 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.selimhorri.app; {
+class ApiGatewayApplication {
+}
+
+class ApiGatewayApplicationTests {
+}
+
+}
+
+package com.selimhorri.pack.config; {
+class CommandLineRunnerConfig {
+}
+
+class RestTemplateConfig {
+}
+
+class RestTemplateConfig {
+}
+
+}
+
+package com.selimhorri.pack; {
+class DaoServiceApplication {
+}
+
+class DaoServiceApplicationTests {
+}
+
+class DirectorServiceApplication {
+}
+
+class DirectorServiceApplicationTests {
+}
+
+class DiscoveryServerApplication {
+}
+
+class DiscoveryServerApplicationTests {
+}
+
+class MovieServiceApplication {
+}
+
+class MovieServiceApplicationTests {
+}
+
+}
+
+package com.selimhorri.pack.model.dto; {
+class DtoCollection {
+}
+
+}
+
+package com.selimhorri.pack.model.entity; {
+class Director {
+}
+
+class Movie {
+}
+
+}
+
+package com.selimhorri.pack.repository; {
+class DirectorRepository {
+}
+
+class MovieRepository {
+}
+
+}
+
+package com.selimhorri.pack.resource; {
+class DirectorResource {
+}
+
+class MovieResource {
+}
+
+class DirectorResource {
+}
+
+class MovieResource {
+}
+
+}
+
+package com.selimhorri.pack.service; {
+class DirectorService {
+}
+
+class MovieService {
+}
+
+class DirectorService {
+}
+
+class DirectorServiceImpl {
+}
+
+class MovieService {
+}
+
+class MovieServiceImpl {
+}
+
+}
+
+package com.selimhorri.pack.service.impl; {
+class DirectorServiceImpl {
+}
+
+class MovieServiceImpl {
+}
+
+}
+
+package com.selimhorri.pack.constant; {
+class BackendApiUrlConstant {
+}
+
+class BackendApiUrlConstant {
+}
+
+}
+
+package com.selimhorri.pack.model; {
+class Director {
+}
+
+class DtoCollection {
+}
+
+class Movie {
+}
+
+class Director {
+}
+
+class DtoCollection {
+}
+
+class Movie {
+}
+
+}
+
+MavenWrapperDownloader -- Director
+ApiGatewayApplicationTests -- ApiGatewayApplication
+Director -- Movie
+DirectorRepository -- Director
+MovieRepository -- Movie
+DirectorResource -- DtoCollection
+DirectorResource -- Director
+DirectorResource -- DirectorService
+MovieResource -- DtoCollection
+MovieResource -- Movie
+MovieResource -- MovieService
+DirectorService -- Director
+DirectorServiceImpl -- DtoCollection
+DirectorServiceImpl -- Director
+DirectorServiceImpl -- DirectorService
+DirectorServiceImpl -- BackendApiUrlConstant
+MovieServiceImpl -- DtoCollection
+MovieServiceImpl -- Movie
+MovieServiceImpl -- MovieService
+MovieServiceImpl -- BackendApiUrlConstant
+MovieService -- Movie
+DaoServiceApplicationTests -- DaoServiceApplication
+DirectorServiceApplication -- Director
+DirectorServiceApplication -- DirectorService
+DirectorServiceApplicationTests -- Director
+DirectorServiceApplicationTests -- DirectorService
+DirectorServiceApplicationTests -- DirectorServiceApplication
+DiscoveryServerApplicationTests -- DiscoveryServerApplication
+MovieServiceApplication -- Movie
+MovieServiceApplication -- MovieService
+MovieServiceApplicationTests -- Movie
+MovieServiceApplicationTests -- MovieService
+MovieServiceApplicationTests -- MovieServiceApplication
+@enduml

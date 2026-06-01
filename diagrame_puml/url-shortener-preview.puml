@@ -1,0 +1,70 @@
+@startuml
+
+package dev.camila.url.shortener.preview {
+  class UrlShortenerPreviewApplicationTests {
+  }
+  class UrlShortenerPreviewApplication {
+    +main() : void
+  }
+}
+
+package dev.camila.url.shortener.preview.configuration {
+  class Swagger3Config {
+    +publicApi() : GroupedOpenApi
+  }
+}
+
+package dev.camila.url.shortener.preview.exceptions {
+  class RestExceptionHandler {
+    +businessException() : ResponseEntity<ExceptionDetails>
+  }
+  class BusinessException {
+  }
+}
+
+package dev.camila.url.shortener.preview.model {
+  class Url <<Entity>> {
+    -id : UUID
+    -originalUrl : String
+    -shortUrl : String
+  }
+}
+
+package dev.camila.url.shortener.preview.repository {
+  class UrlRepositoryTest {
+    -urlRepository : UrlRepository
+    -testEntityManager : TestEntityManager
+    -url1 : Url
+    -url2 : Url
+  }
+  interface UrlRepository <<Repository>> {
+  }
+}
+
+package dev.camila.url.shortener.preview.resource {
+  class UrlResourceTest {
+    -mockMvc : MockMvc
+    -urlService : UrlService
+    -urlRepository : UrlRepository
+    -URL : String
+    -url1 : Url
+    -url2 : Url
+  }
+}
+
+package dev.camila.url.shortener.preview.service {
+  class UrlServiceTest {
+    -urlRepository : UrlRepository
+    -urlService : UrlService
+  }
+}
+
+' --- Relatii ---
+UrlRepositoryTest --> Url
+UrlServiceTest --> Url
+UrlServiceTest --> UrlRepository
+UrlResourceTest --> Url
+UrlResourceTest --> UrlRepository
+UrlRepository --> Url
+
+@enduml

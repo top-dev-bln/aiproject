@@ -1,0 +1,130 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.controllers; {
+class AuthController {
+}
+
+class TestController {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.models; {
+class ERole {
+}
+
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.payload.request; {
+class LoginRequest {
+}
+
+class SignupRequest {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.payload.response; {
+class MessageResponse {
+}
+
+class UserInfoResponse {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.repository; {
+class RoleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.security.jwt; {
+class AuthEntryPointJwt {
+}
+
+class AuthTokenFilter {
+}
+
+class JwtUtils {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.security.services; {
+class UserDetailsImpl {
+}
+
+class UserDetailsServiceImpl {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb.security; {
+class WebSecurityConfig {
+}
+
+}
+
+package com.bezkoder.spring.security.mongodb; {
+class SpringBootMongodbLoginApplication {
+}
+
+class SpringBootMongodbLoginApplicationTests {
+}
+
+}
+
+AuthController -- ERole
+AuthController -- Role
+AuthController -- User
+AuthController -- LoginRequest
+AuthController -- SignupRequest
+AuthController -- MessageResponse
+AuthController -- UserInfoResponse
+AuthController -- RoleRepository
+AuthController -- UserRepository
+AuthController -- JwtUtils
+AuthController -- UserDetailsImpl
+TestController -- Role
+TestController -- User
+ERole -- Role
+User -- Role
+LoginRequest -- User
+SignupRequest -- Role
+SignupRequest -- User
+UserInfoResponse -- Role
+UserInfoResponse -- User
+RoleRepository -- ERole
+RoleRepository -- Role
+UserRepository -- User
+AuthTokenFilter -- User
+AuthTokenFilter -- JwtUtils
+AuthTokenFilter -- UserDetailsServiceImpl
+JwtUtils -- User
+JwtUtils -- UserDetailsImpl
+UserDetailsImpl -- Role
+UserDetailsImpl -- User
+UserDetailsServiceImpl -- User
+UserDetailsServiceImpl -- UserRepository
+UserDetailsServiceImpl -- UserDetailsImpl
+WebSecurityConfig -- User
+WebSecurityConfig -- AuthEntryPointJwt
+WebSecurityConfig -- AuthTokenFilter
+WebSecurityConfig -- UserDetailsServiceImpl
+SpringBootMongodbLoginApplicationTests -- SpringBootMongodbLoginApplication
+@enduml

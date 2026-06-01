@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, user management domain. It serves User as its primary actors. The main business capabilities include class for name, class loader, fast json.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [],
+        "controllers": [
+          "ListFileController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage class for name operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ClassForNameController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage class loader operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ClassLoaderController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage fast json operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "FastJsonController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to manage hello operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ClassForNameController[\"ClassForNameController\"]\n    ClassLoaderController[\"ClassLoaderController\"]\n    FastJsonController[\"FastJsonController\"]\n    HelloController[\"HelloController\"]\n    IndexController[\"IndexController\"]\n    JackSonController[\"JackSonController\"]\n    JdbcController[\"JdbcController\"]\n    ListFileController[\"ListFileController\"]\n    UploadController[\"UploadController\"]\n  end"
+  }
+}

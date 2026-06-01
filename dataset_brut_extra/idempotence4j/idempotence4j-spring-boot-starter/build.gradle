@@ -1,0 +1,32 @@
+apply plugin: 'docker-compose'
+
+dependencies {
+    api project(':idempotence4j-core')
+    implementation project(':idempotence4j-postgres')
+    implementation project(':idempotence4j-mariadb')
+    implementation project(':idempotence4j-metrics')
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation libraries.spring_jdbc
+    implementation libraries.jackson_datatype
+
+    integrationTestImplementation 'org.springframework.boot:spring-boot-starter-test'
+    integrationTestImplementation 'org.springframework.boot:spring-boot-starter-web'
+    integrationTestImplementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    integrationTestImplementation project(':idempotence4j-core')
+    integrationTestImplementation project(':idempotence4j-postgres')
+    integrationTestImplementation project(':idempotence4j-metrics')
+    integrationTestImplementation libraries.hikari
+    integrationTestImplementation libraries.postgresql
+    integrationTestImplementation libraries.spock_spring
+}
+
+dockerCompose {
+    useComposeFiles = ["${rootDir}/gradle/docker-compose/docker-compose.yml"]
+    startedServices = ['postgres']
+    stopContainers = true
+    removeContainers = true
+}
+if(!isRunningOnCI()) {
+    dockerCompose.isRequiredBy(integrationTest)
+}

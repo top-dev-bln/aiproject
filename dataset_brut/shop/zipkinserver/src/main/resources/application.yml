@@ -1,0 +1,26 @@
+server:
+  port: 9411
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8501/eureka/
+  instance:
+      instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+
+
+logging:
+  level:
+   org:
+    hibernate: DEBUG
+management:
+  security:
+    enabled: false
+
+
+
+
+
+
+

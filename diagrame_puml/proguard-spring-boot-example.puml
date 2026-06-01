@@ -1,0 +1,52 @@
+@startuml
+
+package com.slm.proguard.example.spring.boot {
+  class ApplicationContextTest {
+    -exampleService : ExampleService
+    -calculateResult : int
+    -objectMapperSerializeResult : String
+    +shouldStartContextSuccessfully() : void
+  }
+  class Application {
+    -exampleService : ExampleService
+    +main() : void
+    +testOutput() : void
+  }
+}
+
+package com.slm.proguard.example.spring.boot.config {
+  class BeanConfig {
+    +objectMapper() : ObjectMapper
+  }
+}
+
+package com.slm.proguard.example.spring.boot.dto {
+  class ExampleObjectMapperDto {
+    -variableString : String
+    -variableInt : int
+    -variableObject : Object
+  }
+  class ExampleDto {
+    -variableString : String
+    -variableInt : int
+    -variableObject : Object
+  }
+}
+
+package com.slm.proguard.example.spring.boot.service {
+  class ExampleService <<Service>> {
+    -objectMapper : ObjectMapper
+    -exampleDto : ExampleDto
+    -exampleObjectMapper : ExampleObjectMapperDto
+    +calculate() : int
+    +serializeObjectToString() : String
+  }
+}
+
+' --- Relatii ---
+ApplicationContextTest --> ExampleService
+Application --> ExampleService
+ExampleService --> ExampleDto
+ExampleService --> ExampleObjectMapperDto
+
+@enduml

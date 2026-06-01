@@ -1,0 +1,12 @@
+@startuml
+package com.mybatis.spring.boot.autoconfigure; {
+class MybatisSqlCompletePrintInterceptor {
+}
+
+class MybatisSqlPrintAutoConfiguration {
+}
+
+}
+
+MybatisSqlPrintAutoConfiguration -- MybatisSqlCompletePrintInterceptor
+@enduml

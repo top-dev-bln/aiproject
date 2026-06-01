@@ -1,0 +1,477 @@
+@startuml
+
+package br.com.jorgeacetozi.ebookChat {
+  class Application {
+    +main() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.authentication.api {
+  class AuthenticationController <<Controller>> {
+    -userService : UserService
+    -newUserValidator : NewUserValidator
+    +initBinder() : void
+    +login() : String
+    +newAccount() : String
+    +createAccount() : String
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.authentication.domain.model {
+  class User <<Entity>> {
+    -username : String
+    -password : String
+    -name : String
+    -email : String
+    -roles : Set<Role>
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+  class Role <<Entity>> {
+    -id : Integer
+    -name : String
+    -prime : int
+    +getId() : Integer
+    +setId() : void
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.authentication.domain.repository {
+  interface RoleRepository {
+  }
+  interface UserRepository {
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.authentication.domain.service {
+  interface UserService {
+  }
+  class DefaultUserService <<Service>> {
+    -userRepository : UserRepository
+    -roleRepository : RoleRepository
+    -bCryptPasswordEncoder : BCryptPasswordEncoder
+    +createUser() : User
+  }
+  class UserDetailsServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.authentication.domain.validator {
+  class NewUserValidator {
+    -userRepository : UserRepository
+    +supports() : boolean
+    +validate() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.chat.api {
+  class ChatController <<Controller>> {
+    -chatRoomService : ChatRoomService
+    +getRooms() : ModelAndView
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.chatroom.api {
+  class ChatRoomController <<Controller>> {
+    -chatRoomService : ChatRoomService
+    -instantMessageService : InstantMessageService
+    +createChatRoom() : ChatRoom
+    +join() : ModelAndView
+    +listChatRoomConnectedUsersOnSubscribe() : List<ChatRoomUser>
+    +listOldMessagesFromUserOnSubscribe() : List<InstantMessage>
+    +sendMessage() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.chatroom.domain.model {
+  class InstantMessageBuilder {
+    -instantMessage : InstantMessage
+    -instantMessageChatRoom : InstantMessageChatRoom
+    -instantMessageType : InstantMessageType
+    -instantMessageText : InstantMessageText
+    -instantMessageFromUser : InstantMessageFromUser
+    -instantMessageToUser : InstantMessageToUser
+    +newMessage() : InstantMessageChatRoom
+    +withChatRoomId() : InstantMessageType
+    +systemMessage() : InstantMessageText
+    +publicMessage() : InstantMessageFromUser
+    +privateMessage() : InstantMessageToUser
+    +toUser() : InstantMessageFromUser
+    +fromUser() : InstantMessageText
+    +withText() : InstantMessage
+  }
+  class InstantMessage {
+    -username : String
+    -chatRoomId : String
+    -date : Date
+    -fromUser : String
+    -toUser : String
+    -text : String
+    -prime : int
+    +isPublic() : boolean
+    +isFromAdmin() : boolean
+    +getUsername() : String
+    +setUsername() : void
+    +getChatRoomId() : String
+    +setChatRoomId() : void
+    +getDate() : Date
+    +setDate() : void
+  }
+  class ChatRoomUser {
+    -username : String
+    -joinedAt : Date
+    -prime : int
+    +getUsername() : String
+    +setUsername() : void
+    +getJoinedAt() : Date
+    +compareTo() : int
+  }
+  class ChatRoom {
+    -id : String
+    -name : String
+    -description : String
+    -connectedUsers : List<ChatRoomUser>
+    -prime : int
+    +getId() : String
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getConnectedUsers() : List<ChatRoomUser>
+    +addUser() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.chatroom.domain.repository {
+  interface InstantMessageRepository {
+  }
+  interface ChatRoomRepository {
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.chatroom.domain.service {
+  class RedisChatRoomService <<Service>> {
+    -webSocketMessagingTemplate : SimpMessagingTemplate
+    -chatRoomRepository : ChatRoomRepository
+    -instantMessageService : InstantMessageService
+    +save() : ChatRoom
+    +findById() : ChatRoom
+    +join() : ChatRoom
+    +leave() : ChatRoom
+    +sendPublicMessage() : void
+    +sendPrivateMessage() : void
+    +findAll() : List<ChatRoom>
+  }
+  interface ChatRoomService {
+  }
+  class CassandraInstantMessageService <<Service>> {
+    -instantMessageRepository : InstantMessageRepository
+    -chatRoomService : ChatRoomService
+    +appendInstantMessageToConversations() : void
+    +findAllInstantMessagesFor() : List<InstantMessage>
+  }
+  interface InstantMessageService {
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.chatroom.websocket {
+  class WebSocketEvents {
+    -chatRoomService : ChatRoomService
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.configuration {
+  class WebSecurityConfig {
+    -userDetailsService : UserDetailsService
+    +configure() : void
+    +configureGlobal() : void
+    +bCryptPasswordEncoder() : BCryptPasswordEncoder
+  }
+  class CassandraConfig {
+    +getKeyspaceName() : String
+    +cluster() : CassandraClusterFactoryBean
+    +cassandraMapping() : CassandraMappingContext
+  }
+  class WebConfig {
+    +localeResolver() : LocaleResolver
+    +localeChangeInterceptor() : LocaleChangeInterceptor
+    +addInterceptors() : void
+  }
+  class WebSocketConfigSpringSession {
+    -relayHost : String
+    -relayPort : Integer
+    +configureStompEndpoints() : void
+    +configureMessageBroker() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.integrationTests {
+  class IntegrationTestsSuite {
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.integrationTests.authentication.api {
+  class AuthenticationControllerTest {
+    -userService : UserService
+    -userRepository : UserRepository
+    -wac : WebApplicationContext
+    -springSecurityFilter : FilterChainProxy
+    -mockMvc : MockMvc
+    +setup() : void
+    +shouldNavigateToLoginPage() : void
+    +shouldNavigateToNewAccountPage() : void
+    +shouldAuthenticateAdminWithRoleAdmin() : void
+    +shouldAuthenticateUserWithRoleUser() : void
+    +shouldNotAuthenticateNonExistingUser() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.integrationTests.authentication.domain.service {
+  class DefaultUserServiceTest {
+    -userService : UserService
+    -userRepository : UserRepository
+    -roleRepository : RoleRepository
+    +shouldCreateNewUserWithRoleUser() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.integrationTests.chatroom.api {
+  class ChatRoomControllerTest {
+    -wac : WebApplicationContext
+    -springSecurityFilter : FilterChainProxy
+    -mockMvc : MockMvc
+    +setup() : void
+    +shouldNotCreateChatRoomWhenThereIsNoAuthentication() : void
+    +shouldCreateChatRoomWhenUserHasRoleAdmin() : void
+    +shouldNotCreateChatRoomWhenUserDoesntHaveRoleAdmin() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.integrationTests.chatroom.domain.service {
+  class CassandraInstantMessageServiceTest {
+    -chatRoomService : ChatRoomService
+    -instantMessageService : InstantMessageService
+    -chatRoomRepository : ChatRoomRepository
+    -instantMessageRepository : InstantMessageRepository
+    -chatRoom : ChatRoom
+    -jorgeAcetozi : ChatRoomUser
+    -jorgeAcetozi : ChatRoomUser
+    -jorgeAcetozi : ChatRoomUser
+    -johnPetrucci : ChatRoomUser
+    +setup() : void
+    +destroy() : void
+    +shouldReceiveWelcomeAndGoodByeMessagesFromAdmin() : void
+    +shouldStoreEntireConversationWithPublicMessage() : void
+    +shouldStoreEntireConversationWithPrivateMessages() : void
+  }
+  class RedisChatRoomServiceTest {
+    -chatRoomService : ChatRoomService
+    -chatRoomRepository : ChatRoomRepository
+    -instantMessageRepository : InstantMessageRepository
+    -chatRoom : ChatRoom
+    +setup() : void
+    +destroy() : void
+    +shouldJoinUsersToChatRoom() : void
+    +shouldLeaveUsersFromChatRoom() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.integrationTests.test {
+  interface EbookChatTest {
+  }
+  class AbstractIntegrationTest {
+    -cassandra : GenericContainer
+    -mysql : GenericContainer
+    -redis : GenericContainer
+    -rabbitmq : GenericContainer
+    +waitForMysqlContainerStartup() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.unitTests {
+  class UnitTestsSuite {
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.unitTests.chatroom.domain.model {
+  class InstantMessageBuilderTest {
+    -chatRoomId : String
+    -fromUser : String
+    -toUser : String
+    -publicMessageText : String
+    -privateMessageText : String
+    -systemMessageText : String
+    +shouldCreatePublicInstantMessage() : void
+    +shouldCreatePrivateInstantMessage() : void
+    +shouldCreateSystemInstantMessage() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.unitTests.chatroom.domain.service {
+  class RedisChatRoomServiceTest {
+    -chatRoomService : ChatRoomService
+    -webSocketMessagingTemplate : SimpMessagingTemplate
+    -chatRoomRepository : ChatRoomRepository
+    -instantMessageService : InstantMessageService
+    -chatRoomCaptor : ArgumentCaptor<ChatRoom>
+    -toUserCaptor : ArgumentCaptor<String>
+    -destinationCaptor : ArgumentCaptor<String>
+    -instantMessageCaptor : ArgumentCaptor<InstantMessage>
+    -messageObjectCaptor : ArgumentCaptor<Object>
+    +shouldJoinUserToChatRoom() : void
+    +shouldLeaveUserFromChatRoom() : void
+    +shouldSendPublicMessage() : void
+    +shouldSendPrivateMessage() : void
+    +shouldSaveNewChatRoom() : void
+    +shouldFindChatRoomById() : void
+    +shouldFindAllChatRooms() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.unitTests.utils {
+  class DestinationsTest {
+    -chatRoomId : String
+    +shouldGetPublicMessagesDestination() : void
+    +shouldGetPrivateMessagesDestination() : void
+    +shouldGetConnectedUsersDestination() : void
+  }
+  class SystemMessagesTest {
+    -chatRoomId : String
+    -username : String
+    +shouldGetWelcomeInstantMessage() : void
+    +shouldGetGoodbyeInstantMessage() : void
+  }
+}
+
+package br.com.jorgeacetozi.ebookChat.utils {
+  class Destinations {
+    +publicMessages() : String
+    +privateMessages() : String
+    +connectedUsers() : String
+  }
+  class SystemMessages {
+    +welcome() : InstantMessage
+    +goodbye() : InstantMessage
+  }
+  enum SystemUsers {
+    -username : String
+    +getUsername() : String
+  }
+}
+
+' --- Relatii ---
+UnitTestsSuite --> RedisChatRoomServiceTest
+UnitTestsSuite --> InstantMessageBuilderTest
+UnitTestsSuite --> DestinationsTest
+UnitTestsSuite --> SystemMessagesTest
+DestinationsTest --> Destinations
+SystemMessagesTest --> InstantMessage
+SystemMessagesTest --> SystemMessages
+SystemMessagesTest --> SystemUsers
+InstantMessageBuilderTest --> InstantMessage
+InstantMessageBuilderTest --> InstantMessageBuilder
+InstantMessageBuilderTest --> SystemUsers
+RedisChatRoomServiceTest --> ChatRoom
+RedisChatRoomServiceTest --> ChatRoomUser
+RedisChatRoomServiceTest --> InstantMessage
+RedisChatRoomServiceTest --> InstantMessageBuilder
+RedisChatRoomServiceTest --> ChatRoomRepository
+RedisChatRoomServiceTest --> ChatRoomService
+RedisChatRoomServiceTest --> InstantMessageService
+RedisChatRoomServiceTest --> RedisChatRoomService
+RedisChatRoomServiceTest --> Destinations
+RedisChatRoomServiceTest --> SystemMessages
+IntegrationTestsSuite --|> AbstractIntegrationTest
+IntegrationTestsSuite --> AuthenticationControllerTest
+IntegrationTestsSuite --> DefaultUserServiceTest
+IntegrationTestsSuite --> ChatRoomControllerTest
+IntegrationTestsSuite --> CassandraInstantMessageServiceTest
+IntegrationTestsSuite --> RedisChatRoomServiceTest
+IntegrationTestsSuite --> AbstractIntegrationTest
+ChatRoomControllerTest --> ChatRoom
+ChatRoomControllerTest --> EbookChatTest
+CassandraInstantMessageServiceTest --> ChatRoom
+CassandraInstantMessageServiceTest --> ChatRoomUser
+CassandraInstantMessageServiceTest --> InstantMessage
+CassandraInstantMessageServiceTest --> InstantMessageBuilder
+CassandraInstantMessageServiceTest --> ChatRoomRepository
+CassandraInstantMessageServiceTest --> InstantMessageRepository
+CassandraInstantMessageServiceTest --> ChatRoomService
+CassandraInstantMessageServiceTest --> InstantMessageService
+CassandraInstantMessageServiceTest --> EbookChatTest
+CassandraInstantMessageServiceTest --> SystemMessages
+CassandraInstantMessageServiceTest --> SystemUsers
+RedisChatRoomServiceTest --> ChatRoom
+RedisChatRoomServiceTest --> ChatRoomUser
+RedisChatRoomServiceTest --> ChatRoomRepository
+RedisChatRoomServiceTest --> InstantMessageRepository
+RedisChatRoomServiceTest --> ChatRoomService
+RedisChatRoomServiceTest --> EbookChatTest
+AuthenticationControllerTest --> User
+AuthenticationControllerTest --> UserRepository
+AuthenticationControllerTest --> UserService
+AuthenticationControllerTest --> EbookChatTest
+DefaultUserServiceTest --> Role
+DefaultUserServiceTest --> User
+DefaultUserServiceTest --> RoleRepository
+DefaultUserServiceTest --> UserRepository
+DefaultUserServiceTest --> UserService
+DefaultUserServiceTest --> EbookChatTest
+ChatController --> ChatRoom
+ChatController --> ChatRoomService
+SystemMessages --> InstantMessage
+SystemMessages --> InstantMessageBuilder
+WebSocketEvents --> ChatRoomUser
+WebSocketEvents --> ChatRoomService
+ChatRoomController --> ChatRoom
+ChatRoomController --> ChatRoomUser
+ChatRoomController --> InstantMessage
+ChatRoomController --> ChatRoomService
+ChatRoomController --> InstantMessageService
+InstantMessageRepository --> InstantMessage
+ChatRoomRepository --> ChatRoom
+InstantMessageBuilder --> SystemUsers
+InstantMessage --> SystemUsers
+RedisChatRoomService ..|> ChatRoomService
+RedisChatRoomService --> ChatRoom
+RedisChatRoomService --> ChatRoomUser
+RedisChatRoomService --> InstantMessage
+RedisChatRoomService --> ChatRoomRepository
+RedisChatRoomService --> Destinations
+RedisChatRoomService --> SystemMessages
+ChatRoomService --> ChatRoom
+ChatRoomService --> ChatRoomUser
+ChatRoomService --> InstantMessage
+CassandraInstantMessageService ..|> InstantMessageService
+CassandraInstantMessageService --> ChatRoom
+CassandraInstantMessageService --> InstantMessage
+CassandraInstantMessageService --> InstantMessageRepository
+InstantMessageService --> InstantMessage
+AuthenticationController --> User
+AuthenticationController --> UserService
+AuthenticationController --> NewUserValidator
+RoleRepository --> Role
+UserRepository --> User
+NewUserValidator --> User
+NewUserValidator --> UserRepository
+UserService --> User
+DefaultUserService ..|> UserService
+DefaultUserService --> Role
+DefaultUserService --> User
+DefaultUserService --> RoleRepository
+DefaultUserService --> UserRepository
+UserDetailsServiceImpl --> User
+UserDetailsServiceImpl --> UserRepository
+
+@enduml

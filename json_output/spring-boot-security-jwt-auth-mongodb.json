@@ -1,0 +1,42 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include auth, test, user details impl. Core business data revolves around User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage test operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with user details impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthController[\"AuthController\"]\n    TestController[\"TestController\"]\n  end\n  subgraph Services\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n  end\n  subgraph Data_Access\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthTokenFilter[\"AuthTokenFilter\"]\n    JwtUtils[\"JwtUtils\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+  }
+}

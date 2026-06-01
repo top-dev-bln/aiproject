@@ -1,0 +1,613 @@
+@startuml
+package com.david.ecommerceapi.assistant.application; {
+class AssistantServiceImpl {
+}
+
+}
+
+package com.david.ecommerceapi.assistant.domain; {
+class AssistantService {
+}
+
+class AssistantSuggestion {
+}
+
+class PromptType {
+}
+
+}
+
+package com.david.ecommerceapi.assistant.infraestructure; {
+class AssistantController {
+}
+
+class AssistantControllerImpl {
+}
+
+}
+
+package com.david.ecommerceapi.assistant.infraestructure.dto; {
+class ProductSuggestionDTO {
+}
+
+}
+
+package com.david.ecommerceapi.assistant.infraestructure.mapper; {
+class SuggestionMapper {
+}
+
+}
+
+package com.david.ecommerceapi.assistant.infraestructure.rest; {
+class OpenAiAssistantImpl {
+}
+
+}
+
+package com.david.ecommerceapi.assistant.infraestructure.utility; {
+class PromptLoader {
+}
+
+}
+
+package com.david.ecommerceapi.auth.application; {
+class AuthenticationService {
+}
+
+}
+
+package com.david.ecommerceapi.auth.infrastructure; {
+class AuthenticationController {
+}
+
+class AuthenticationRequest {
+}
+
+class AuthenticationResponse {
+}
+
+class RegisterRequest {
+}
+
+}
+
+package com.david.ecommerceapi.config.application; {
+class JwtService {
+}
+
+}
+
+package com.david.ecommerceapi.config.infrastructure; {
+class ApplicationConfig {
+}
+
+class AuthenticationConfig {
+}
+
+class OpenAPIConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package com.david.ecommerceapi.config.infrastructure.filter; {
+class JwtAuthFilter {
+}
+
+}
+
+package com.david.ecommerceapi; {
+class EcommerceApiApplication {
+}
+
+class EcommerceApiApplicationTests {
+}
+
+}
+
+package com.david.ecommerceapi.exception.domain; {
+class BadRequestException {
+}
+
+class ErrorMessage {
+}
+
+class InvalidTokenException {
+}
+
+class MalformedHeaderException {
+}
+
+class NotFoundException {
+}
+
+}
+
+package com.david.ecommerceapi.exception.infrastructure; {
+class ApiExceptionHandler {
+}
+
+}
+
+package com.david.ecommerceapi.payment.application; {
+class PaymentCard {
+}
+
+class PaymentPaypal {
+}
+
+class PaymentService {
+}
+
+}
+
+package com.david.ecommerceapi.payment.domain; {
+class PaymentInterface {
+}
+
+}
+
+package com.david.ecommerceapi.payment.infrastructure; {
+class PaymentController {
+}
+
+}
+
+package com.david.ecommerceapi.product.application; {
+class ProductService {
+}
+
+class ProductServiceTest {
+}
+
+}
+
+package com.david.ecommerceapi.product.domain; {
+class Category {
+}
+
+class Product {
+}
+
+class ProductRepository {
+}
+
+}
+
+package com.david.ecommerceapi.product.infrastructure.entity; {
+class ProductCacheEntity {
+}
+
+class ProductEntity {
+}
+
+}
+
+package com.david.ecommerceapi.product.infrastructure.mapper; {
+class ProductMapper {
+}
+
+}
+
+package com.david.ecommerceapi.product.infrastructure; {
+class ProductController {
+}
+
+class ProductControllerImpl {
+}
+
+class ProductControllerMvcTest {
+}
+
+class ProductControllerRestTest {
+}
+
+class ProductControllerTest {
+}
+
+}
+
+package com.david.ecommerceapi.product.infrastructure.repository; {
+class CacheProductRepository {
+}
+
+class QueryProductRepository {
+}
+
+}
+
+package com.david.ecommerceapi.product.infrastructure.repository.implementation; {
+class PostgresProductRepositoryImpl {
+}
+
+class RedisProductRepositoryImpl {
+}
+
+}
+
+package com.david.ecommerceapi.productShoppingCart.application; {
+class ProductShoppingCartService {
+}
+
+}
+
+package com.david.ecommerceapi.productShoppingCart.domain; {
+class ProductShoppingCart {
+}
+
+}
+
+package com.david.ecommerceapi.productShoppingCart.infrastructure; {
+class ProductShoppingCartDTO {
+}
+
+class ProductShoppingCartDTOMapper {
+}
+
+class ProductShoppingCartRepository {
+}
+
+class ProductShoppingController {
+}
+
+}
+
+package com.david.ecommerceapi.scheduling; {
+class ScheduledTasks {
+}
+
+}
+
+package com.david.ecommerceapi.shoppingCart.application; {
+class ShoppingCartService {
+}
+
+}
+
+package com.david.ecommerceapi.shoppingCart.domain; {
+class ShoppingCart {
+}
+
+class ShoppingCartRepository {
+}
+
+}
+
+package com.david.ecommerceapi.shoppingCart.infrastructure; {
+class MySqlShoppingCartRepository {
+}
+
+class ShoppingCartController {
+}
+
+class SpringShoppingCartRepository {
+}
+
+}
+
+package com.david.ecommerceapi.user.application; {
+class UserServiceImpl {
+}
+
+class UserServiceImplTest {
+}
+
+}
+
+package com.david.ecommerceapi.user.domain; {
+class Role {
+}
+
+class User {
+}
+
+class UserRepository {
+}
+
+class UserService {
+}
+
+}
+
+package com.david.ecommerceapi.user.infrastructure.annotation; {
+class MaskData {
+}
+
+class ProtectDataSerializer {
+}
+
+}
+
+package com.david.ecommerceapi.user.infrastructure.dto; {
+class UserDTO {
+}
+
+}
+
+package com.david.ecommerceapi.user.infrastructure.entity; {
+class UserEntity {
+}
+
+}
+
+package com.david.ecommerceapi.user.infrastructure.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.david.ecommerceapi.user.infrastructure.repository; {
+class MySqlUserRepository {
+}
+
+class SpringUserRepository {
+}
+
+}
+
+package com.david.ecommerceapi.user.infrastructure; {
+class UserController {
+}
+
+class UserControllerImpl {
+}
+
+class UserEntityControllerTest {
+}
+
+}
+
+package com.david.ecommerceapi.util; {
+class FileUploadUtil {
+}
+
+}
+
+package com.david.ecommerceapi.config; {
+class TestConfiguration {
+}
+
+}
+
+package com.david.ecommerceapi.product.repository; {
+class ProductRepositoryTest {
+}
+
+}
+
+AssistantServiceImpl -- AssistantService
+AssistantServiceImpl -- AssistantSuggestion
+AssistantServiceImpl -- Product
+AssistantService -- Product
+AssistantSuggestion -- Product
+AssistantController -- ProductSuggestionDTO
+AssistantController -- Product
+AssistantControllerImpl -- AssistantService
+AssistantControllerImpl -- AssistantController
+AssistantControllerImpl -- ProductSuggestionDTO
+AssistantControllerImpl -- SuggestionMapper
+AssistantControllerImpl -- Product
+ProductSuggestionDTO -- Product
+SuggestionMapper -- ProductSuggestionDTO
+SuggestionMapper -- Product
+OpenAiAssistantImpl -- AssistantSuggestion
+OpenAiAssistantImpl -- PromptType
+OpenAiAssistantImpl -- ProductSuggestionDTO
+OpenAiAssistantImpl -- SuggestionMapper
+OpenAiAssistantImpl -- PromptLoader
+OpenAiAssistantImpl -- Product
+OpenAiAssistantImpl -- ProductRepository
+OpenAiAssistantImpl -- PostgresProductRepositoryImpl
+PromptLoader -- PromptType
+AuthenticationService -- AuthenticationRequest
+AuthenticationService -- AuthenticationResponse
+AuthenticationService -- JwtService
+AuthenticationService -- NotFoundException
+AuthenticationService -- Role
+AuthenticationService -- User
+AuthenticationService -- UserRepository
+AuthenticationService -- UserEntity
+AuthenticationService -- UserMapper
+AuthenticationController -- AuthenticationService
+AuthenticationController -- AuthenticationRequest
+AuthenticationController -- AuthenticationResponse
+AuthenticationController -- RegisterRequest
+AuthenticationController -- User
+AuthenticationController -- UserMapper
+JwtService -- User
+AuthenticationConfig -- NotFoundException
+AuthenticationConfig -- User
+AuthenticationConfig -- UserRepository
+AuthenticationConfig -- SpringUserRepository
+JwtAuthFilter -- JwtService
+JwtAuthFilter -- User
+OpenAPIConfig -- Product
+OpenAPIConfig -- User
+SecurityConfig -- JwtAuthFilter
+SecurityConfig -- User
+InvalidTokenException -- BadRequestException
+MalformedHeaderException -- BadRequestException
+ApiExceptionHandler -- BadRequestException
+ApiExceptionHandler -- ErrorMessage
+ApiExceptionHandler -- InvalidTokenException
+ApiExceptionHandler -- NotFoundException
+PaymentCard -- PaymentInterface
+PaymentPaypal -- PaymentInterface
+PaymentService -- PaymentInterface
+PaymentController -- PaymentService
+ProductService -- NotFoundException
+ProductService -- Category
+ProductService -- Product
+ProductService -- ProductRepository
+ProductService -- PostgresProductRepositoryImpl
+ProductService -- RedisProductRepositoryImpl
+ProductService -- FileUploadUtil
+Product -- Category
+Product -- ProductShoppingCart
+Product -- ShoppingCart
+ProductRepository -- Product
+ProductCacheEntity -- Category
+ProductCacheEntity -- Product
+ProductCacheEntity -- ProductShoppingCart
+ProductCacheEntity -- ShoppingCart
+ProductEntity -- Category
+ProductEntity -- Product
+ProductEntity -- ProductShoppingCart
+ProductEntity -- ShoppingCart
+ProductMapper -- Product
+ProductMapper -- ProductCacheEntity
+ProductMapper -- ProductEntity
+ProductController -- Product
+ProductControllerImpl -- ProductService
+ProductControllerImpl -- Product
+ProductControllerImpl -- ProductController
+CacheProductRepository -- Product
+CacheProductRepository -- ProductRepository
+CacheProductRepository -- ProductCacheEntity
+PostgresProductRepositoryImpl -- Product
+PostgresProductRepositoryImpl -- ProductRepository
+PostgresProductRepositoryImpl -- ProductEntity
+PostgresProductRepositoryImpl -- ProductMapper
+PostgresProductRepositoryImpl -- QueryProductRepository
+RedisProductRepositoryImpl -- Product
+RedisProductRepositoryImpl -- ProductRepository
+RedisProductRepositoryImpl -- ProductCacheEntity
+RedisProductRepositoryImpl -- ProductMapper
+RedisProductRepositoryImpl -- CacheProductRepository
+QueryProductRepository -- Product
+QueryProductRepository -- ProductRepository
+QueryProductRepository -- ProductEntity
+ProductShoppingCartService -- Product
+ProductShoppingCartService -- ProductShoppingCart
+ProductShoppingCartService -- ProductShoppingCartRepository
+ProductShoppingCartService -- ShoppingCartService
+ProductShoppingCartService -- ShoppingCart
+ProductShoppingCartService -- ShoppingCartRepository
+ProductShoppingCartService -- SpringShoppingCartRepository
+ProductShoppingCart -- ShoppingCart
+ProductShoppingCartDTO -- Product
+ProductShoppingCartDTO -- ProductShoppingCart
+ProductShoppingCartDTO -- ShoppingCart
+ProductShoppingCartDTOMapper -- Product
+ProductShoppingCartDTOMapper -- ProductShoppingCart
+ProductShoppingCartDTOMapper -- ProductShoppingCartDTO
+ProductShoppingCartDTOMapper -- ShoppingCart
+ProductShoppingCartRepository -- Product
+ProductShoppingCartRepository -- ProductShoppingCart
+ProductShoppingCartRepository -- ShoppingCart
+ProductShoppingCartRepository -- ShoppingCartRepository
+ProductShoppingController -- Product
+ProductShoppingController -- ProductShoppingCartService
+ProductShoppingController -- ProductShoppingCart
+ProductShoppingController -- ShoppingCartService
+ProductShoppingController -- ShoppingCart
+ShoppingCartService -- BadRequestException
+ShoppingCartService -- NotFoundException
+ShoppingCartService -- Product
+ShoppingCartService -- ProductRepository
+ShoppingCartService -- QueryProductRepository
+ShoppingCartService -- ProductShoppingCart
+ShoppingCartService -- ProductShoppingCartDTO
+ShoppingCartService -- ShoppingCart
+ShoppingCartService -- ShoppingCartRepository
+ShoppingCart -- User
+ShoppingCart -- UserEntity
+ShoppingCartRepository -- ShoppingCart
+ShoppingCartRepository -- User
+ShoppingCartRepository -- UserEntity
+MySqlShoppingCartRepository -- ShoppingCart
+MySqlShoppingCartRepository -- ShoppingCartRepository
+MySqlShoppingCartRepository -- SpringShoppingCartRepository
+MySqlShoppingCartRepository -- User
+MySqlShoppingCartRepository -- UserEntity
+ShoppingCartController -- Product
+ShoppingCartController -- ProductShoppingCart
+ShoppingCartController -- ProductShoppingCartDTO
+ShoppingCartController -- ShoppingCartService
+ShoppingCartController -- ShoppingCart
+SpringShoppingCartRepository -- ShoppingCart
+SpringShoppingCartRepository -- ShoppingCartRepository
+SpringShoppingCartRepository -- User
+SpringShoppingCartRepository -- UserEntity
+UserServiceImpl -- NotFoundException
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+User -- Role
+UserRepository -- User
+UserService -- User
+MaskData -- ProtectDataSerializer
+UserDTO -- Role
+UserDTO -- User
+UserDTO -- MaskData
+UserEntity -- Role
+UserEntity -- User
+UserMapper -- RegisterRequest
+UserMapper -- User
+UserMapper -- UserDTO
+UserMapper -- UserEntity
+MySqlUserRepository -- User
+MySqlUserRepository -- UserRepository
+MySqlUserRepository -- UserEntity
+MySqlUserRepository -- UserMapper
+MySqlUserRepository -- SpringUserRepository
+SpringUserRepository -- User
+SpringUserRepository -- UserRepository
+SpringUserRepository -- UserEntity
+UserController -- User
+UserController -- UserDTO
+UserControllerImpl -- NotFoundException
+UserControllerImpl -- User
+UserControllerImpl -- UserService
+UserControllerImpl -- UserDTO
+UserControllerImpl -- UserMapper
+UserControllerImpl -- UserController
+TestConfiguration -- Role
+TestConfiguration -- User
+TestConfiguration -- UserRepository
+EcommerceApiApplicationTests -- EcommerceApiApplication
+ProductServiceTest -- NotFoundException
+ProductServiceTest -- ProductService
+ProductServiceTest -- Category
+ProductServiceTest -- Product
+ProductServiceTest -- ProductRepository
+ProductServiceTest -- PostgresProductRepositoryImpl
+ProductServiceTest -- RedisProductRepositoryImpl
+ProductServiceTest -- FileUploadUtil
+ProductControllerMvcTest -- AuthenticationRequest
+ProductControllerMvcTest -- AuthenticationResponse
+ProductControllerMvcTest -- EcommerceApiApplication
+ProductControllerMvcTest -- Product
+ProductControllerMvcTest -- ProductController
+ProductControllerRestTest -- AuthenticationRequest
+ProductControllerRestTest -- AuthenticationResponse
+ProductControllerRestTest -- Product
+ProductControllerRestTest -- ProductController
+ProductControllerTest -- ProductService
+ProductControllerTest -- Category
+ProductControllerTest -- Product
+ProductControllerTest -- ProductController
+ProductControllerTest -- ProductControllerImpl
+ProductRepositoryTest -- Category
+ProductRepositoryTest -- Product
+ProductRepositoryTest -- ProductRepository
+ProductRepositoryTest -- ProductEntity
+ProductRepositoryTest -- QueryProductRepository
+UserServiceImplTest -- UserServiceImpl
+UserServiceImplTest -- Role
+UserServiceImplTest -- User
+UserServiceImplTest -- UserRepository
+UserServiceImplTest -- UserService
+UserServiceImplTest -- UserDTO
+UserEntityControllerTest -- UserServiceImpl
+UserEntityControllerTest -- Role
+UserEntityControllerTest -- User
+UserEntityControllerTest -- UserService
+UserEntityControllerTest -- UserDTO
+UserEntityControllerTest -- UserEntity
+UserEntityControllerTest -- UserMapper
+UserEntityControllerTest -- UserController
+UserEntityControllerTest -- UserControllerImpl
+@enduml

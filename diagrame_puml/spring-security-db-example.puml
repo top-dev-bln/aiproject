@@ -1,0 +1,88 @@
+@startuml
+
+package com.techprimers.security.securitydbexample {
+  class SecurityDbExampleApplicationTests {
+    +contextLoads() : void
+  }
+  class SecurityDbExampleApplication {
+    +main() : void
+  }
+}
+
+package com.techprimers.security.securitydbexample.config {
+  class SecurityConfiguration {
+    -userDetailsService : CustomUserDetailsService
+    +configure() : void
+    +configure() : void
+    +encode() : String
+    +matches() : boolean
+  }
+}
+
+package com.techprimers.security.securitydbexample.model {
+  class Users <<Entity>> {
+    -id : int
+    -email : String
+    -password : String
+    -name : String
+    -lastName : String
+    -active : int
+    -roles : Set<Role>
+    +getId() : int
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getName() : String
+    +setName() : void
+  }
+  class CustomUserDetails {
+    -users : Users
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+    +isEnabled() : boolean
+  }
+  class Role <<Entity>> {
+    -roleId : int
+    -role : String
+    +getRoleId() : int
+    +setRoleId() : void
+    +getRole() : String
+    +setRole() : void
+  }
+}
+
+package com.techprimers.security.securitydbexample.repository {
+  interface UsersRepository {
+  }
+}
+
+package com.techprimers.security.securitydbexample.resource {
+  class HelloResource <<Controller>> {
+    +hello() : String
+    +securedHello() : String
+    +alternate() : String
+  }
+}
+
+package com.techprimers.security.securitydbexample.service {
+  class CustomUserDetailsService <<Service>> {
+    -usersRepository : UsersRepository
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+' --- Relatii ---
+UsersRepository --> Users
+SecurityConfiguration --> UsersRepository
+SecurityConfiguration --> CustomUserDetailsService
+CustomUserDetails --|> Users
+CustomUserDetailsService --> CustomUserDetails
+CustomUserDetailsService --> Users
+CustomUserDetailsService --> UsersRepository
+
+@enduml

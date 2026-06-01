@@ -1,0 +1,73 @@
+@startuml
+
+package com.spring4all.swagger {
+  class DocketBeanFactoryPostProcessor {
+    -beanFactory : BeanFactory
+    +setBeanFactory() : void
+    +postProcessBeanFactory() : void
+  }
+  class SwaggerAuthorizationConfiguration {
+    -properties : SwaggerAuthorizationProperties
+    +securityContext() : SecurityContext
+    +getSecuritySchemes() : List<SecurityScheme>
+  }
+  class SwaggerAuthorizationProperties {
+    -name : String
+    -type : String
+    -keyName : String
+    -authRegex : String
+  }
+  class SwaggerUiConfiguration {
+    +uiConfiguration() : UiConfiguration
+  }
+  class SwaggerProperties {
+    -title : String
+    -description : String
+    -version : String
+    -license : String
+    -licenseUrl : String
+    -termsOfServiceUrl : String
+    -contact : Contact
+    -basePackage : String
+    -basePath : List<String>
+    -excludePath : List<String>
+  }
+  class SwaggerAutoConfiguration {
+    +docketBeanFactoryPostProcessor() : DocketBeanFactoryPostProcessor
+  }
+  class PathSelectors {
+    -pathRegex : String
+    -antPattern : String
+    +any() : Predicate<String>
+    +none() : Predicate<String>
+    +regex() : Predicate<String>
+    +apply() : boolean
+    +ant() : Predicate<String>
+    +apply() : boolean
+  }
+  class SwaggerUiProperties {
+    -apiSorter : String
+    -jsonEditor : Boolean
+    -showRequestHeaders : Boolean
+    -submitMethods : String
+    -requestTimeout : Long
+    -deepLinking : Boolean
+    -displayOperationId : Boolean
+    -defaultModelsExpandDepth : Integer
+    -defaultModelExpandDepth : Integer
+    -defaultModelRendering : ModelRendering
+  }
+  class DocketConfiguration {
+    -beanFactory : BeanFactory
+    -swaggerProperties : SwaggerProperties
+    -authConfiguration : SwaggerAuthorizationConfiguration
+    -BEAN_NAME : String
+    +setBeanFactory() : void
+    +createSpringFoxRestApi() : void
+  }
+}
+
+' --- Relatii ---
+SwaggerAuthorizationConfiguration --> PathSelectors
+
+@enduml

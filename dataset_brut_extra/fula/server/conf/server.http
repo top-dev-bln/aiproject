@@ -1,0 +1,16 @@
+GET http://localhost:80/state
+Accept: application/json
+
+### 注册用户
+POST http://{{host}}:{{port}}/customer/register
+Content-Type: application/json
+
+{
+  "name": "demoData",
+  "phone": "demoData",
+  "email": "demoData",
+  "sex": 1,
+  "password": "demoData"
+}
+
+### RestfulToolkit idea plugin

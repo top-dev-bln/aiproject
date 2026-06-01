@@ -1,0 +1,370 @@
+@startuml
+package com.gucardev.springboottest.config; {
+class CacheCustomizer {
+}
+
+class CachingConfigurationProperties {
+}
+
+class InitialDataCreator {
+}
+
+class CachingConfigurationPropertiesTest {
+}
+
+}
+
+package com.gucardev.springboottest.constant; {
+class Constants {
+}
+
+class ConstantsTest {
+}
+
+}
+
+package com.gucardev.springboottest.controller; {
+class AddressController {
+}
+
+class UserController {
+}
+
+class AddressControllerIntegrationTest {
+}
+
+class AddressControllerIntegrationTestSupport {
+}
+
+class UserControllerIntegrationTestSupport {
+}
+
+class UserControllerUnitTest {
+}
+
+class UserControllerUserControllerIntegrationTest {
+}
+
+}
+
+package com.gucardev.springboottest.dto; {
+class AddressDTO {
+}
+
+class RestPageResponse {
+}
+
+class UserDTO {
+}
+
+}
+
+package com.gucardev.springboottest.dto.converter; {
+class AddressConverter {
+}
+
+class UserConverter {
+}
+
+class UserConverterTest {
+}
+
+}
+
+package com.gucardev.springboottest.dto.request; {
+class AddressRequest {
+}
+
+class UserRequest {
+}
+
+class UserRequestTest {
+}
+
+}
+
+package com.gucardev.springboottest.exception; {
+class GlobalExceptionHandler {
+}
+
+class NotFoundException {
+}
+
+class GlobalExceptionHandlerTest {
+}
+
+class NotFoundExceptionTest {
+}
+
+}
+
+package com.gucardev.springboottest.model; {
+class Address {
+}
+
+class BaseEntity {
+}
+
+class User {
+}
+
+class AddressTest {
+}
+
+class UserTest {
+}
+
+}
+
+package com.gucardev.springboottest.model.projection; {
+class MailUserNameProjection {
+}
+
+class UsernameLengthProjection {
+}
+
+}
+
+package com.gucardev.springboottest.remote; {
+class RemoteUserClient {
+}
+
+}
+
+package com.gucardev.springboottest.repository; {
+class AddressRepository {
+}
+
+class UserCustomRepository {
+}
+
+class UserCustomRepositoryImpl {
+}
+
+class UserRepository {
+}
+
+class AddressRepositoryTest {
+}
+
+class UserRepositoryTest {
+}
+
+}
+
+package com.gucardev.springboottest.service; {
+class AddressService {
+}
+
+class UserService {
+}
+
+}
+
+package com.gucardev.springboottest.service.impl; {
+class AddressServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+class AddressServiceTest {
+}
+
+class AddressServiceTestSupport {
+}
+
+class UserServiceTest {
+}
+
+class UserServiceTestSupport {
+}
+
+}
+
+package com.gucardev.springboottest.spesification; {
+class UserSpecifications {
+}
+
+}
+
+package com.gucardev.springboottest; {
+class SpringBootTestApplication {
+}
+
+class SpringBootTestApplicationTests {
+}
+
+}
+
+CacheCustomizer -- CachingConfigurationProperties
+CacheCustomizer -- Address
+CacheCustomizer -- User
+InitialDataCreator -- Address
+InitialDataCreator -- User
+InitialDataCreator -- AddressRepository
+InitialDataCreator -- UserRepository
+AddressController -- AddressDTO
+AddressController -- AddressRequest
+AddressController -- Address
+AddressController -- User
+AddressController -- AddressService
+UserController -- UserRequest
+UserController -- UserDTO
+UserController -- MailUserNameProjection
+UserController -- UsernameLengthProjection
+UserController -- User
+UserController -- UserService
+AddressDTO -- Address
+AddressConverter -- AddressDTO
+AddressConverter -- AddressRequest
+AddressConverter -- Address
+AddressConverter -- User
+UserConverter -- UserRequest
+UserConverter -- UserDTO
+UserConverter -- User
+AddressRequest -- Address
+UserRequest -- User
+UserDTO -- User
+GlobalExceptionHandler -- Constants
+GlobalExceptionHandler -- NotFoundException
+Address -- BaseEntity
+Address -- User
+MailUserNameProjection -- User
+UsernameLengthProjection -- User
+User -- BaseEntity
+RemoteUserClient -- RestPageResponse
+RemoteUserClient -- UserDTO
+RemoteUserClient -- User
+AddressRepository -- Address
+AddressRepository -- User
+UserCustomRepository -- UsernameLengthProjection
+UserCustomRepository -- User
+UserCustomRepositoryImpl -- UsernameLengthProjection
+UserCustomRepositoryImpl -- User
+UserCustomRepositoryImpl -- UserCustomRepository
+UserRepository -- MailUserNameProjection
+UserRepository -- User
+UserRepository -- UserCustomRepository
+AddressService -- AddressDTO
+AddressService -- AddressRequest
+AddressService -- Address
+AddressService -- User
+AddressServiceImpl -- AddressDTO
+AddressServiceImpl -- AddressConverter
+AddressServiceImpl -- AddressRequest
+AddressServiceImpl -- NotFoundException
+AddressServiceImpl -- Address
+AddressServiceImpl -- User
+AddressServiceImpl -- AddressRepository
+AddressServiceImpl -- AddressService
+AddressServiceImpl -- UserService
+UserServiceImpl -- UserConverter
+UserServiceImpl -- UserRequest
+UserServiceImpl -- UserDTO
+UserServiceImpl -- NotFoundException
+UserServiceImpl -- MailUserNameProjection
+UserServiceImpl -- UsernameLengthProjection
+UserServiceImpl -- User
+UserServiceImpl -- RemoteUserClient
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+UserServiceImpl -- UserSpecifications
+UserService -- UserRequest
+UserService -- UserDTO
+UserService -- MailUserNameProjection
+UserService -- UsernameLengthProjection
+UserService -- User
+UserSpecifications -- User
+SpringBootTestApplication -- CachingConfigurationProperties
+CachingConfigurationPropertiesTest -- CachingConfigurationProperties
+CachingConfigurationPropertiesTest -- Address
+CachingConfigurationPropertiesTest -- User
+ConstantsTest -- Constants
+AddressControllerIntegrationTest -- AddressController
+AddressControllerIntegrationTest -- AddressDTO
+AddressControllerIntegrationTest -- AddressRequest
+AddressControllerIntegrationTest -- Address
+AddressControllerIntegrationTest -- User
+AddressControllerIntegrationTest -- AddressControllerIntegrationTestSupport
+AddressControllerIntegrationTestSupport -- AddressController
+AddressControllerIntegrationTestSupport -- AddressRequest
+AddressControllerIntegrationTestSupport -- UserRequest
+AddressControllerIntegrationTestSupport -- UserDTO
+AddressControllerIntegrationTestSupport -- Address
+AddressControllerIntegrationTestSupport -- User
+UserControllerIntegrationTestSupport -- UserController
+UserControllerIntegrationTestSupport -- UserRequest
+UserControllerIntegrationTestSupport -- RestPageResponse
+UserControllerIntegrationTestSupport -- UserDTO
+UserControllerIntegrationTestSupport -- User
+UserControllerIntegrationTestSupport -- UserRepository
+UserControllerUnitTest -- UserController
+UserControllerUnitTest -- UserRequest
+UserControllerUnitTest -- UserDTO
+UserControllerUnitTest -- User
+UserControllerUnitTest -- UserService
+UserControllerUserControllerIntegrationTest -- UserController
+UserControllerUserControllerIntegrationTest -- UserRequest
+UserControllerUserControllerIntegrationTest -- RestPageResponse
+UserControllerUserControllerIntegrationTest -- UserDTO
+UserControllerUserControllerIntegrationTest -- User
+UserControllerUserControllerIntegrationTest -- UserControllerIntegrationTestSupport
+UserConverterTest -- UserConverter
+UserConverterTest -- UserRequest
+UserConverterTest -- UserDTO
+UserConverterTest -- User
+UserRequestTest -- UserRequest
+UserRequestTest -- User
+GlobalExceptionHandlerTest -- Constants
+GlobalExceptionHandlerTest -- GlobalExceptionHandler
+GlobalExceptionHandlerTest -- NotFoundException
+NotFoundExceptionTest -- NotFoundException
+AddressTest -- Address
+AddressTest -- User
+UserTest -- Address
+UserTest -- User
+AddressRepositoryTest -- Address
+AddressRepositoryTest -- User
+AddressRepositoryTest -- AddressRepository
+UserRepositoryTest -- MailUserNameProjection
+UserRepositoryTest -- UsernameLengthProjection
+UserRepositoryTest -- User
+UserRepositoryTest -- UserRepository
+UserRepositoryTest -- UserSpecifications
+AddressServiceTest -- AddressDTO
+AddressServiceTest -- AddressConverter
+AddressServiceTest -- AddressRequest
+AddressServiceTest -- Address
+AddressServiceTest -- User
+AddressServiceTest -- AddressRepository
+AddressServiceTest -- AddressService
+AddressServiceTest -- AddressServiceImpl
+AddressServiceTest -- UserService
+AddressServiceTest -- AddressServiceTestSupport
+AddressServiceTestSupport -- AddressDTO
+AddressServiceTestSupport -- AddressRequest
+AddressServiceTestSupport -- UserDTO
+AddressServiceTestSupport -- Address
+AddressServiceTestSupport -- User
+AddressServiceTestSupport -- AddressService
+UserServiceTest -- UserConverter
+UserServiceTest -- UserRequest
+UserServiceTest -- RestPageResponse
+UserServiceTest -- UserDTO
+UserServiceTest -- MailUserNameProjection
+UserServiceTest -- UsernameLengthProjection
+UserServiceTest -- User
+UserServiceTest -- RemoteUserClient
+UserServiceTest -- UserRepository
+UserServiceTest -- UserServiceImpl
+UserServiceTest -- UserService
+UserServiceTest -- UserServiceTestSupport
+UserServiceTestSupport -- UserRequest
+UserServiceTestSupport -- UserDTO
+UserServiceTestSupport -- MailUserNameProjection
+UserServiceTestSupport -- UsernameLengthProjection
+UserServiceTestSupport -- User
+UserServiceTestSupport -- UserService
+SpringBootTestApplicationTests -- SpringBootTestApplication
+@enduml

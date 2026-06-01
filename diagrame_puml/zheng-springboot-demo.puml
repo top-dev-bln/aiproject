@@ -1,0 +1,309 @@
+@startuml
+
+package com.zheng {
+  class SpringbootApplicationTests {
+    -stringRedisTemplate : StringRedisTemplate
+    -userMapper : UserMapper
+    +contextLoads() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class WmsApplicationTests {
+    +contextLoads() : void
+  }
+  class WmsApplication {
+    +main() : void
+  }
+  class ApiGatewayApplication {
+    +main() : void
+    +accessFilter() : AccessFilter
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class EurekaRibbonApplication {
+    +main() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class ComputeServiceApplication {
+    +main() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class ConfigServerApplication {
+    +main() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class EurekaFeignApplication {
+    +main() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class EurekaServerApplication {
+    +main() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class ConfigClientApplication {
+    +main() : void
+  }
+}
+
+package com.zheng.controller {
+  class WmsController <<Controller>> {
+    +buy() : String
+  }
+}
+
+package com.zheng.domain {
+  class Inventory <<Entity>> {
+    -id : Long
+    -name : String
+    -count : Long
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getCount() : Long
+    +setCount() : void
+  }
+  class Records <<Entity>> {
+    -id : Long
+    -productid : Long
+    -count : Long
+    -userid : Long
+    +getId() : Long
+    +setId() : void
+    +getProductid() : Long
+    +setProductid() : void
+    +getCount() : Long
+    +setCount() : void
+    +getUserid() : Long
+    +setUserid() : void
+  }
+}
+
+package com.zheng.filter {
+  class AccessFilter {
+    -log : Logger
+    +filterType() : String
+    +filterOrder() : int
+    +shouldFilter() : boolean
+    +run() : Object
+  }
+}
+
+package com.zheng.repository {
+  interface RecordsRepository {
+  }
+  interface InventoryRepository {
+  }
+}
+
+package com.zheng.service {
+  class WmsService <<Service>> {
+    +buy() : String
+  }
+  class ComputeService <<Service>> {
+    +addService() : String
+    +addServiceFallback() : String
+  }
+  class ComputeClientHystrix {
+    +add() : Integer
+  }
+  interface ComputeClient {
+  }
+}
+
+package com.zheng.springboot {
+  class WebSecurityConfig {
+    +configure() : void
+    +configureGlobal() : void
+  }
+  class Swagger2 {
+    +createRestApi() : Docket
+  }
+  class SpringbootApplication {
+    +main() : void
+  }
+  class DataSourceConfig {
+    +primaryDataSource() : DataSource
+    +secondaryDataSource() : DataSource
+    +primaryJdbcTemplate() : JdbcTemplate
+    +secondaryJdbcTemplate() : JdbcTemplate
+  }
+}
+
+package com.zheng.springboot.aspect {
+  class WebLogAspect {
+    -logger : Logger
+    +webLog() : void
+    +doBefore() : void
+    +doAfterReturning() : void
+  }
+}
+
+package com.zheng.springboot.dao {
+  interface UserMapper {
+  }
+}
+
+package com.zheng.springboot.domain {
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -age : Integer
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+}
+
+package com.zheng.springboot.exception {
+  class MyException {
+  }
+  class GlobalExceptionHandler {
+    +defaultErrorHandler() : ModelAndView
+    +jsonErrorHandler() : ErrorInfo<String>
+  }
+  class ErrorInfo {
+    -OK : Integer
+    -ERROR : Integer
+    -code : Integer
+    -message : String
+    -url : String
+    -data : T
+    +getUrl() : String
+    +setUrl() : void
+    +getOK() : Integer
+    +getERROR() : Integer
+    +getCode() : Integer
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+package com.zheng.springboot.rabbitmq {
+  class Receiver {
+    +process() : void
+  }
+  class Sender {
+    -rabbitTemplate : AmqpTemplate
+    +send() : void
+  }
+  class RabbitConfig {
+    +helloQueue() : Queue
+  }
+}
+
+package com.zheng.springboot.service {
+  interface UserService {
+  }
+  class UserServiceImpl <<Service>> {
+    -primaryJdbcTemplate : JdbcTemplate
+    +create() : void
+    +deleteByName() : void
+    +getAllUsers() : Integer
+    +deleteAllUsers() : void
+  }
+  interface UserRepository {
+  }
+}
+
+package com.zheng.springboot.task {
+  class ScheduledTasks {
+    -dateFormat : SimpleDateFormat
+    +reportCurrentTime() : void
+    +test() : void
+  }
+}
+
+package com.zheng.springboot.web {
+  class HelloControllerTests {
+    -mvc : MockMvc
+    +setUp() : void
+    +hello() : void
+  }
+  class HelloController <<Controller>> {
+    -stringRedisTemplate : StringRedisTemplate
+    -appDescription : String
+    -env : String
+    -mailSender : JavaMailSender
+    -sender : Sender
+    +index() : String
+    +hello() : String
+    +login() : String
+    +redis() : String
+    +error1() : String
+    +error2() : String
+    +appDescription() : String
+    +env() : String
+  }
+  class UserController <<Controller>> {
+    -userSerivce : UserService
+    +getUserList() : List<User>
+    +postUser() : String
+    +getUser() : User
+    +putUser() : String
+    +deleteUser() : String
+  }
+}
+
+package com.zheng.web {
+  class ConsumerController <<Controller>> {
+    -computeService : ComputeService
+    +add() : String
+  }
+  class ComputeController <<Controller>> {
+    -logger : Logger
+    -client : DiscoveryClient
+    +add() : Integer
+  }
+  class ConsumerController <<Controller>> {
+    +add() : Integer
+  }
+  class TestController <<Controller>> {
+    -from : String
+    +from() : String
+  }
+}
+
+' --- Relatii ---
+SpringbootApplicationTests --> SpringbootApplication
+SpringbootApplicationTests --> UserMapper
+SpringbootApplicationTests --> User
+HelloControllerTests --> SpringbootApplication
+HelloController --> User
+HelloController --> MyException
+HelloController --> Sender
+UserController --> User
+UserController --> UserService
+UserMapper --> User
+UserServiceImpl ..|> UserService
+UserRepository --> User
+RecordsRepository --> Inventory
+InventoryRepository --> Inventory
+WmsController --> WmsService
+WmsService --> InventoryRepository
+WmsService --> RecordsRepository
+ApiGatewayApplication --> AccessFilter
+ConsumerController --> ComputeService
+ConsumerController --> ComputeClient
+ComputeClientHystrix ..|> ComputeClient
+
+@enduml

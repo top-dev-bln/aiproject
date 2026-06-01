@@ -1,0 +1,560 @@
+{
+	"info": {
+		"_postman_id": "cb4397f7-bdbb-48c8-8250-d62f0e33b070",
+		"name": "Search API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1075867"
+	},
+	"item": [
+		{
+			"name": "get all Cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars paginated",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text"
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars sorted",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars?sort=manufacturer,desc",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "manufacturer,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars filtered",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars?country=Japan",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Japan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars filtered paginated ",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text"
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars filtered sorted",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text"
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all Cars filtered sorted paginated",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"type": "text",
+						"value": "0"
+					},
+					{
+						"key": "Page-Size",
+						"type": "text",
+						"value": "5"
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars?country=Japan&type=Small&sort=createDate,asc",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Japan"
+						},
+						{
+							"key": "type",
+							"value": "Small"
+						},
+						{
+							"key": "sort",
+							"value": "createDate,asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload csv file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars/upload",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"upload"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "upload csv file",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cars/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cars",
+								"upload"
+							]
+						}
+					},
+					"status": "Unsupported Media Type",
+					"code": 415,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Jun 2020 01:43:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2020-06-20T01:43:52.578+0000\",\n    \"status\": 415,\n    \"error\": \"Unsupported Media Type\",\n    \"message\": \"Content type '' not supported\",\n    \"path\": \"/api/cars/upload\"\n}"
+				}
+			]
+		},
+		{
+			"name": "extract all Cars in csv file",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "./spring-boot-efficient-search-api/src/main/resources/static/Cars.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars/extract",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"extract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "extract all Cars sorted  in csv file",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"type": "text",
+						"value": "0",
+						"disabled": true
+					},
+					{
+						"key": "Page-Size",
+						"type": "text",
+						"value": "5",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars/extract?sort=manufacturer,desc",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"extract"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "manufacturer,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "extract all Cars filtered in csv file",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars/extract?country=Japan",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"extract"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Japan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "extract all Cars filtered sorted in csv file",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Page-Number",
+						"value": "0",
+						"type": "text"
+					},
+					{
+						"key": "Page-Size",
+						"value": "5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{http}}://{{domain}}/api/cars/extract?country=Japan&country=Japan&type=Small&sort=createDate,desc",
+					"protocol": "{{http}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"extract"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Japan"
+						},
+						{
+							"key": "country",
+							"value": "Japan"
+						},
+						{
+							"key": "type",
+							"value": "Small"
+						},
+						{
+							"key": "sort",
+							"value": "createDate,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

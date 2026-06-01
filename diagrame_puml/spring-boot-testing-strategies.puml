@@ -1,0 +1,101 @@
+@startuml
+
+package io.tpd.superheroes {
+  class MvcTestsApplication {
+    +main() : void
+  }
+}
+
+package io.tpd.superheroes.controller {
+  class SuperHeroControllerMockMvcWithContextTest {
+    -mvc : MockMvc
+    -superHeroRepository : SuperHeroRepository
+    -jsonSuperHero : JacksonTester<SuperHero>
+    +canRetrieveByIdWhenExists() : void
+    +canRetrieveByIdWhenDoesNotExist() : void
+    +canRetrieveByNameWhenExists() : void
+    +canRetrieveByNameWhenDoesNotExist() : void
+    +canCreateANewSuperHero() : void
+    +headerIsPresent() : void
+  }
+  class SuperHeroControllerMockMvcStandaloneTest {
+    -mvc : MockMvc
+    -superHeroRepository : SuperHeroRepository
+    -superHeroController : SuperHeroController
+    -jsonSuperHero : JacksonTester<SuperHero>
+    +setup() : void
+    +canRetrieveByIdWhenExists() : void
+    +canRetrieveByIdWhenDoesNotExist() : void
+    +canRetrieveByNameWhenExists() : void
+    +canRetrieveByNameWhenDoesNotExist() : void
+    +canCreateANewSuperHero() : void
+    +headerIsPresent() : void
+  }
+  class SuperHeroControllerSpringBootMockTest {
+    -mvc : MockMvc
+    -superHeroRepository : SuperHeroRepository
+    -jsonSuperHero : JacksonTester<SuperHero>
+    +canRetrieveByIdWhenExists() : void
+    +canRetrieveByIdWhenDoesNotExist() : void
+    +canRetrieveByNameWhenExists() : void
+    +canRetrieveByNameWhenDoesNotExist() : void
+    +canCreateANewSuperHero() : void
+    +headerIsPresent() : void
+  }
+  class SuperHeroControllerSpringBootTest {
+    -superHeroRepository : SuperHeroRepository
+    -restTemplate : TestRestTemplate
+    +canRetrieveByIdWhenExists() : void
+    +canRetrieveByIdWhenDoesNotExist() : void
+    +canRetrieveByNameWhenExists() : void
+    +canRetrieveByNameWhenDoesNotExist() : void
+    +canCreateANewSuperHero() : void
+    +headerIsPresent() : void
+  }
+  class SuperHeroController <<Controller>> {
+    -superHeroRepository : SuperHeroRepository
+    +getSuperHeroById() : SuperHero
+    +getSuperHeroByHeroName() : Optional<SuperHero>
+    +addNewSuperHero() : void
+  }
+  class SuperHeroFilter {
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+  }
+  class SuperHeroExceptionHandler {
+    +handleNonExistingHero() : void
+  }
+}
+
+package io.tpd.superheroes.exceptions {
+  class NonExistingHeroException {
+  }
+}
+
+package io.tpd.superheroes.repository {
+  interface SuperHeroRepository {
+  }
+  class SuperHeroRepositoryImpl {
+    -superHeroList : List<SuperHero>
+    +getSuperHero() : SuperHero
+    +getSuperHero() : Optional<SuperHero>
+    +saveSuperHero() : void
+  }
+}
+
+' --- Relatii ---
+SuperHeroControllerMockMvcWithContextTest --> NonExistingHeroException
+SuperHeroControllerMockMvcWithContextTest --> SuperHeroRepository
+SuperHeroControllerMockMvcStandaloneTest --> NonExistingHeroException
+SuperHeroControllerMockMvcStandaloneTest --> SuperHeroRepository
+SuperHeroControllerSpringBootMockTest --> NonExistingHeroException
+SuperHeroControllerSpringBootMockTest --> SuperHeroRepository
+SuperHeroControllerSpringBootTest --> NonExistingHeroException
+SuperHeroControllerSpringBootTest --> SuperHeroRepository
+SuperHeroRepositoryImpl ..|> SuperHeroRepository
+SuperHeroRepositoryImpl --> NonExistingHeroException
+SuperHeroController --> SuperHeroRepository
+SuperHeroExceptionHandler --> NonExistingHeroException
+
+@enduml

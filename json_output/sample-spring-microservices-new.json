@@ -1,0 +1,58 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, recruitment domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include department, employee, organization.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage department operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "DepartmentClient",
+          "DepartmentRepository"
+        ],
+        "controllers": [
+          "DepartmentController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage employee operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "EmployeeRepository"
+        ],
+        "controllers": [
+          "EmployeeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage organization operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "Organization",
+          "OrganizationRepository"
+        ],
+        "controllers": [
+          "OrganizationController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to interact with department client functionality, so that the system fulfills my needs.",
+        "services": [
+          "DepartmentClient"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to interact with department repository functionality, so that the system fulfills my needs.",
+        "services": [
+          "DepartmentRepository"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DepartmentController[\"DepartmentController\"]\n    EmployeeController[\"EmployeeController\"]\n    OrganizationController[\"OrganizationController\"]\n  end\n  subgraph Services\n    DepartmentClient[\"DepartmentClient\"]\n    DepartmentRepository[\"DepartmentRepository\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    ErrorCode[\"ErrorCode\"]\n    Organization[\"Organization\"]\n    OrganizationRepository[\"OrganizationRepository\"]\n  end\n  Controllers --> Services"
+  }
+}

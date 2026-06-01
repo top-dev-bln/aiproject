@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the IoT, messaging domain. It serves User as its primary actors. The main business capabilities include traffic data. Core business data revolves around WindowTrafficData.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with traffic data functionality, so that the system fulfills my needs.",
+        "services": [
+          "TrafficDataService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Services\n    TrafficDataService[\"TrafficDataService\"]\n  end\n  subgraph Data_Access\n    POITrafficDataRepository[\"POITrafficDataRepository\"]\n    TotalTrafficDataRepository[\"TotalTrafficDataRepository\"]\n    WindowTrafficData[\"WindowTrafficData\"]\n    WindowTrafficDataRepository[\"WindowTrafficDataRepository\"]\n  end\n  subgraph Infrastructure\n    CassandraConfig[\"CassandraConfig\"]\n    WebSocketConfig[\"WebSocketConfig\"]\n  end\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

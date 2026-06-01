@@ -1,0 +1,38 @@
+@startuml
+
+package com.thepracticaldeveloper.rabbitmqconfig {
+  class MessagingApplication {
+    -EXCHANGE_NAME : String
+    -QUEUE_GENERIC_NAME : String
+    -QUEUE_SPECIFIC_NAME : String
+    -ROUTING_KEY : String
+    -connectionFactory : ConnectionFactory
+    -rabbitTemplate : var
+    +main() : void
+    +appExchange() : TopicExchange
+    +appQueueGeneric() : Queue
+    +appQueueSpecific() : Queue
+    +declareBindingGeneric() : Binding
+    +declareBindingSpecific() : Binding
+    +rabbitTemplate() : RabbitTemplate
+    +producerJackson2MessageConverter() : Jackson2JsonMessageConverter
+  }
+  class CustomMessageSender <<Service>> {
+    -log : Logger
+    -rabbitTemplate : RabbitTemplate
+    -rabbitTemplate : RabbitTemplate
+    -message : var
+    +sendMessage() : void
+  }
+  class CustomMessageListener <<Service>> {
+    -log : Logger
+    -message : Message
+    -customMessage : CustomMessage
+    +receiveMessage() : void
+    +receiveMessage() : void
+  }
+}
+
+' --- Relatii ---
+
+@enduml

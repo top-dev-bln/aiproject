@@ -1,0 +1,572 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package kodlama.io.hrms.api.controllers; {
+class ActivationPanelController {
+}
+
+class CityController {
+}
+
+class EmployerController {
+}
+
+class ImagesController {
+}
+
+class JobController {
+}
+
+class JobPositionsController {
+}
+
+class JobSeekersController {
+}
+
+class WorkPlacesController {
+}
+
+class WorkTimesController {
+}
+
+}
+
+package kodlama.io.hrms.business.abstracts; {
+class ActivationPanelService {
+}
+
+class CityService {
+}
+
+class EmployerService {
+}
+
+class ImageService {
+}
+
+class JobPositionService {
+}
+
+class JobSeekerService {
+}
+
+class JobService {
+}
+
+class WorkPlaceService {
+}
+
+class WorkTimeService {
+}
+
+}
+
+package kodlama.io.hrms.business.concretes; {
+class ActivationPanelManager {
+}
+
+class CityManager {
+}
+
+class EmployerManager {
+}
+
+class ImageManager {
+}
+
+class JobManager {
+}
+
+class JobPositionManager {
+}
+
+class JobSeekerManager {
+}
+
+class WorkPlaceManager {
+}
+
+class WorkTimeManager {
+}
+
+}
+
+package kodlama.io.hrms.business.constants; {
+class Messages {
+}
+
+}
+
+package kodlama.io.hrms.core.utilities.adapters.adapters.abstracts; {
+class EmailVerificationService {
+}
+
+class ImageService {
+}
+
+class JobSeekerCheckService {
+}
+
+}
+
+package kodlama.io.hrms.core.utilities.adapters.adapters.concretes; {
+class CloudinaryImageServiceAdapter {
+}
+
+class EmailServiceAdapterService {
+}
+
+class MernisServiceAdapter {
+}
+
+}
+
+package kodlama.io.hrms.core.utilities.results; {
+class DataResult {
+}
+
+class FailDataResult {
+}
+
+class FailResult {
+}
+
+class Result {
+}
+
+class SuccessDataResult {
+}
+
+class SuccessResult {
+}
+
+}
+
+package kodlama.io.hrms.dataAccess.abstracts; {
+class ActivationPanelDao {
+}
+
+class CityDao {
+}
+
+class EmployerDao {
+}
+
+class ImageDao {
+}
+
+class JobDao {
+}
+
+class JobPositionDao {
+}
+
+class JobSeekerDao {
+}
+
+class SystemUserDao {
+}
+
+class UserDao {
+}
+
+class WorkPlaceDao {
+}
+
+class WorkTimeDao {
+}
+
+}
+
+package kodlama.io.hrms.entities.abstracts; {
+class User {
+}
+
+}
+
+package kodlama.io.hrms.entities.concretes; {
+class ActivationPanelForSystemUser {
+}
+
+class AttendedSchool {
+}
+
+class City {
+}
+
+class Department {
+}
+
+class Employer {
+}
+
+class Image {
+}
+
+class Job {
+}
+
+class JobPosition {
+}
+
+class JobSeeker {
+}
+
+class KnownLanguage {
+}
+
+class LanguageLevel {
+}
+
+class School {
+}
+
+class SystemUser {
+}
+
+class WorkExperience {
+}
+
+class WorkPlace {
+}
+
+class WorkTime {
+}
+
+}
+
+package kodlama.io.hrms.entities.dtos; {
+class JobForAddDto {
+}
+
+class JobForGetAllDto {
+}
+
+class PanelForJob {
+}
+
+}
+
+package kodlama.io.hrms; {
+class HrmsApplication {
+}
+
+class HrmsApplicationTests {
+}
+
+}
+
+package mernisService; {
+class ECHDateTimeConverter {
+}
+
+class ECHExtendedSoapSerializationEnvelope {
+}
+
+class ECHHelper {
+}
+
+class ECHKPSPublicSoap {
+}
+
+class ECHKPSPublicSoap12 {
+}
+
+class ECHMarshalGuid {
+}
+
+class ECHStandardDateTimeConverter {
+}
+
+}
+
+ActivationPanelController -- ActivationPanelService
+ActivationPanelController -- User
+ActivationPanelController -- ActivationPanelForSystemUser
+ActivationPanelController -- Job
+ActivationPanelController -- SystemUser
+ActivationPanelController -- PanelForJob
+CityController -- CityService
+CityController -- City
+EmployerController -- EmployerService
+EmployerController -- EmployerManager
+EmployerController -- DataResult
+EmployerController -- Result
+EmployerController -- Employer
+ImagesController -- ImageService
+ImagesController -- Image
+JobController -- JobService
+JobController -- DataResult
+JobController -- Result
+JobController -- Employer
+JobController -- Job
+JobController -- JobForAddDto
+JobController -- JobForGetAllDto
+JobPositionsController -- JobPositionService
+JobPositionsController -- DataResult
+JobPositionsController -- Result
+JobPositionsController -- Job
+JobPositionsController -- JobPosition
+JobSeekersController -- JobSeekerService
+JobSeekersController -- DataResult
+JobSeekersController -- FailResult
+JobSeekersController -- Result
+JobSeekersController -- SuccessResult
+JobSeekersController -- Employer
+JobSeekersController -- Job
+JobSeekersController -- JobSeeker
+JobSeekersController -- WorkExperience
+WorkPlacesController -- WorkPlaceService
+WorkPlacesController -- DataResult
+WorkPlacesController -- Result
+WorkPlacesController -- Job
+WorkPlacesController -- JobSeeker
+WorkPlacesController -- WorkPlace
+WorkTimesController -- WorkTimeService
+WorkTimesController -- WorkTime
+ActivationPanelService -- Result
+ActivationPanelService -- Job
+ActivationPanelService -- PanelForJob
+CityService -- DataResult
+CityService -- Result
+CityService -- City
+EmployerService -- DataResult
+EmployerService -- Result
+EmployerService -- Employer
+ImageService -- Result
+ImageService -- Image
+JobPositionService -- DataResult
+JobPositionService -- Result
+JobPositionService -- Job
+JobPositionService -- JobPosition
+JobSeekerService -- DataResult
+JobSeekerService -- Result
+JobSeekerService -- Job
+JobSeekerService -- JobSeeker
+JobService -- DataResult
+JobService -- Result
+JobService -- Employer
+JobService -- Job
+JobService -- JobForAddDto
+JobService -- JobForGetAllDto
+WorkPlaceService -- DataResult
+WorkPlaceService -- Result
+WorkPlaceService -- WorkPlace
+WorkTimeService -- DataResult
+WorkTimeService -- Result
+WorkTimeService -- WorkPlace
+WorkTimeService -- WorkTime
+ActivationPanelManager -- ActivationPanelService
+ActivationPanelManager -- Messages
+ActivationPanelManager -- Result
+ActivationPanelManager -- SuccessResult
+ActivationPanelManager -- ActivationPanelDao
+ActivationPanelManager -- SystemUserDao
+ActivationPanelManager -- UserDao
+ActivationPanelManager -- User
+ActivationPanelManager -- ActivationPanelForSystemUser
+ActivationPanelManager -- Job
+ActivationPanelManager -- SystemUser
+ActivationPanelManager -- PanelForJob
+CityManager -- CityService
+CityManager -- Messages
+CityManager -- DataResult
+CityManager -- Result
+CityManager -- SuccessDataResult
+CityManager -- SuccessResult
+CityManager -- CityDao
+CityManager -- City
+EmployerManager -- EmployerService
+EmployerManager -- Messages
+EmployerManager -- EmailVerificationService
+EmployerManager -- DataResult
+EmployerManager -- FailResult
+EmployerManager -- Result
+EmployerManager -- SuccessDataResult
+EmployerManager -- SuccessResult
+EmployerManager -- EmployerDao
+EmployerManager -- UserDao
+EmployerManager -- User
+EmployerManager -- Employer
+ImageManager -- ImageService
+ImageManager -- Messages
+ImageManager -- Result
+ImageManager -- SuccessResult
+ImageManager -- ImageDao
+ImageManager -- Image
+JobManager -- JobService
+JobManager -- Messages
+JobManager -- DataResult
+JobManager -- Result
+JobManager -- SuccessDataResult
+JobManager -- SuccessResult
+JobManager -- ActivationPanelDao
+JobManager -- CityDao
+JobManager -- EmployerDao
+JobManager -- JobDao
+JobManager -- JobPositionDao
+JobManager -- WorkPlaceDao
+JobManager -- WorkTimeDao
+JobManager -- User
+JobManager -- ActivationPanelForSystemUser
+JobManager -- City
+JobManager -- Employer
+JobManager -- Job
+JobManager -- JobPosition
+JobManager -- SystemUser
+JobManager -- WorkPlace
+JobManager -- WorkTime
+JobManager -- JobForAddDto
+JobManager -- JobForGetAllDto
+JobPositionManager -- JobPositionService
+JobPositionManager -- Messages
+JobPositionManager -- DataResult
+JobPositionManager -- Result
+JobPositionManager -- SuccessDataResult
+JobPositionManager -- JobPositionDao
+JobPositionManager -- Job
+JobPositionManager -- JobPosition
+JobSeekerManager -- JobSeekerService
+JobSeekerManager -- Messages
+JobSeekerManager -- EmailVerificationService
+JobSeekerManager -- JobSeekerCheckService
+JobSeekerManager -- DataResult
+JobSeekerManager -- FailResult
+JobSeekerManager -- Result
+JobSeekerManager -- SuccessDataResult
+JobSeekerManager -- SuccessResult
+JobSeekerManager -- JobSeekerDao
+JobSeekerManager -- UserDao
+JobSeekerManager -- User
+JobSeekerManager -- Job
+JobSeekerManager -- JobSeeker
+JobSeekerManager -- WorkExperience
+WorkPlaceManager -- WorkPlaceService
+WorkPlaceManager -- Messages
+WorkPlaceManager -- DataResult
+WorkPlaceManager -- Result
+WorkPlaceManager -- SuccessDataResult
+WorkPlaceManager -- WorkPlaceDao
+WorkPlaceManager -- WorkPlace
+WorkTimeManager -- WorkPlaceService
+WorkTimeManager -- WorkTimeService
+WorkTimeManager -- Messages
+WorkTimeManager -- DataResult
+WorkTimeManager -- Result
+WorkTimeManager -- SuccessDataResult
+WorkTimeManager -- WorkPlaceDao
+WorkTimeManager -- WorkTimeDao
+WorkTimeManager -- WorkPlace
+WorkTimeManager -- WorkTime
+Messages -- User
+Messages -- City
+Messages -- Employer
+Messages -- Image
+Messages -- Job
+Messages -- JobSeeker
+Messages -- WorkPlace
+Messages -- WorkTime
+EmailVerificationService -- Result
+EmailVerificationService -- User
+JobSeekerCheckService -- Result
+JobSeekerCheckService -- Job
+JobSeekerCheckService -- JobSeeker
+CloudinaryImageServiceAdapter -- ImageService
+CloudinaryImageServiceAdapter -- Result
+CloudinaryImageServiceAdapter -- SuccessResult
+CloudinaryImageServiceAdapter -- Image
+EmailServiceAdapterService -- Messages
+EmailServiceAdapterService -- EmailVerificationService
+EmailServiceAdapterService -- Result
+EmailServiceAdapterService -- SuccessResult
+EmailServiceAdapterService -- User
+MernisServiceAdapter -- Messages
+MernisServiceAdapter -- JobSeekerCheckService
+MernisServiceAdapter -- FailResult
+MernisServiceAdapter -- Result
+MernisServiceAdapter -- SuccessResult
+MernisServiceAdapter -- User
+MernisServiceAdapter -- Job
+MernisServiceAdapter -- JobSeeker
+MernisServiceAdapter -- ECHKPSPublicSoap
+DataResult -- Result
+FailDataResult -- DataResult
+FailDataResult -- Result
+FailResult -- Result
+SuccessDataResult -- DataResult
+SuccessDataResult -- Result
+SuccessResult -- Result
+ActivationPanelDao -- User
+ActivationPanelDao -- ActivationPanelForSystemUser
+ActivationPanelDao -- Job
+ActivationPanelDao -- SystemUser
+CityDao -- City
+EmployerDao -- Employer
+EmployerDao -- Job
+ImageDao -- Result
+ImageDao -- Image
+JobDao -- User
+JobDao -- ActivationPanelForSystemUser
+JobDao -- Employer
+JobDao -- Job
+JobDao -- SystemUser
+JobDao -- JobForGetAllDto
+JobPositionDao -- Job
+JobPositionDao -- JobPosition
+JobSeekerDao -- Job
+JobSeekerDao -- JobSeeker
+JobSeekerDao -- WorkExperience
+SystemUserDao -- UserDao
+SystemUserDao -- User
+SystemUserDao -- SystemUser
+UserDao -- User
+WorkPlaceDao -- DataResult
+WorkPlaceDao -- Result
+WorkPlaceDao -- WorkPlace
+WorkTimeDao -- WorkTime
+ActivationPanelForSystemUser -- User
+ActivationPanelForSystemUser -- Job
+ActivationPanelForSystemUser -- SystemUser
+AttendedSchool -- Job
+AttendedSchool -- JobSeeker
+AttendedSchool -- School
+City -- Job
+Employer -- User
+Employer -- Job
+Image -- Job
+Image -- JobSeeker
+Job -- JobPosition
+Job -- WorkPlace
+Job -- WorkTime
+JobPosition -- WorkExperience
+JobSeeker -- User
+JobSeeker -- Job
+JobSeeker -- KnownLanguage
+JobSeeker -- School
+JobSeeker -- WorkExperience
+KnownLanguage -- Job
+KnownLanguage -- LanguageLevel
+School -- User
+School -- Department
+SystemUser -- User
+WorkExperience -- Job
+JobForAddDto -- Job
+JobForGetAllDto -- Job
+PanelForJob -- User
+PanelForJob -- Job
+ECHExtendedSoapSerializationEnvelope -- ECHDateTimeConverter
+ECHExtendedSoapSerializationEnvelope -- ECHHelper
+ECHExtendedSoapSerializationEnvelope -- ECHMarshalGuid
+ECHExtendedSoapSerializationEnvelope -- ECHStandardDateTimeConverter
+ECHKPSPublicSoap -- Result
+ECHKPSPublicSoap -- ECHExtendedSoapSerializationEnvelope
+ECHKPSPublicSoap12 -- Result
+ECHKPSPublicSoap12 -- ECHExtendedSoapSerializationEnvelope
+ECHKPSPublicSoap12 -- ECHKPSPublicSoap
+ECHStandardDateTimeConverter -- ECHDateTimeConverter
+HrmsApplicationTests -- HrmsApplication
+@enduml

@@ -1,0 +1,101 @@
+@startuml
+
+package cz.jirutka.rsql.parser {
+  class RSQLParser {
+    -ENCODING : Charset
+    -nodesFactory : NodesFactory
+    +parse() : Node
+  }
+  class UnknownOperatorException {
+    -operator : String
+    +getOperator() : String
+  }
+  class RSQLParserException {
+  }
+}
+
+package cz.jirutka.rsql.parser.ast {
+  class ComparisonOperator {
+    -SYMBOL_PATTERN : Pattern
+    -symbols : String[]
+    -multiValue : boolean
+    +getSymbol() : String
+    +getSymbols() : String[]
+    +isMultiValue() : boolean
+  }
+  class StringUtils {
+    +join() : String
+    +isBlank() : boolean
+  }
+  interface Node {
+  }
+  class LogicalNode {
+    -children : List<Node>
+    -operator : LogicalOperator
+    +withChildren() : LogicalNode
+    +iterator() : Iterator<Node>
+    +getOperator() : LogicalOperator
+    +getChildren() : List<Node>
+  }
+  class NoArgRSQLVisitorAdapter {
+    +visit() : R
+    +visit() : R
+    +visit() : R
+    +visit() : R
+    +visit() : R
+    +visit() : R
+  }
+  class RSQLOperators {
+    -EQUAL : ComparisonOperator
+    +defaultOperators() : Set<ComparisonOperator>
+  }
+  interface RSQLVisitor {
+  }
+  class AbstractNode {
+  }
+  class AndNode {
+    +withChildren() : AndNode
+  }
+  class NodesFactory {
+    +createLogicalNode() : LogicalNode
+    +createComparisonNode() : ComparisonNode
+  }
+  class Assert {
+    +isTrue() : void
+    +notNull() : void
+    +notEmpty() : void
+    +notEmpty() : void
+    +notBlank() : void
+  }
+  enum LogicalOperator {
+    -symbol : String
+  }
+  class ComparisonNode {
+    -operator : ComparisonOperator
+    -selector : String
+    -arguments : List<String>
+    +getOperator() : ComparisonOperator
+    +withOperator() : ComparisonNode
+    +getSelector() : String
+    +withSelector() : ComparisonNode
+    +getArguments() : List<String>
+    +withArguments() : ComparisonNode
+  }
+  class OrNode {
+    +withChildren() : OrNode
+  }
+}
+
+' --- Relatii ---
+RSQLParser --> ComparisonOperator
+RSQLParser --> Node
+RSQLParser --> NodesFactory
+RSQLParser --> RSQLOperators
+LogicalNode --|> AbstractNode
+AbstractNode ..|> Node
+AndNode --|> LogicalNode
+NodesFactory --> UnknownOperatorException
+ComparisonNode --|> AbstractNode
+OrNode --|> LogicalNode
+
+@enduml

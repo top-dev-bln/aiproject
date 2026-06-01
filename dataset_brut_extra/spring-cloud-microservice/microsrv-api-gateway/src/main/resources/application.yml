@@ -1,0 +1,36 @@
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+
+spring:
+  application:
+    name: microsrv-api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "docs.spring.io"
+            allowedMethods:
+            - GET
+server:
+  port: 5555
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+#      routes:
+#        - id: default_path_to_http
+#          uri: https://baidu.com
+#          order: 10
+#          predicates:
+#            - Path=/**
+#          filters:
+#            - SetPath=/
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://10.255.131.162:8000/eureka/,http://10.255.131.163:8000/eureka/,http://10.255.131.164:8000/eureka/

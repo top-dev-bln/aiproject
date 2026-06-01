@@ -1,0 +1,33 @@
+@startuml
+
+package com.jamesye.starter.realtimeserver {
+  class RealTimeServerApplication {
+    -host : String
+    -port : Integer
+    +socketIOServer() : SocketIOServer
+    +main() : void
+  }
+  class ServerCommandLineRunner {
+    -server : SocketIOServer
+    +run() : void
+  }
+}
+
+package com.jamesye.starter.realtimeserver.modules.chat {
+  class ChatModule {
+    -log : Logger
+    -namespace : SocketIONamespace
+  }
+  class ChatMessage {
+    -userName : String
+    -message : String
+    +getUserName() : String
+    +setUserName() : void
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+' --- Relatii ---
+
+@enduml

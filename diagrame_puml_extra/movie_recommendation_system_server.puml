@@ -1,0 +1,699 @@
+@startuml
+package cn.zjw.mrs.config; {
+class CorsConfig {
+}
+
+class ExecutorConfig {
+}
+
+class MybatisPlusConfig {
+}
+
+class MySqlDataModelConfig {
+}
+
+class OssClientConfig {
+}
+
+class RedisConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package cn.zjw.mrs.controller; {
+class AuthController {
+}
+
+class CommentController {
+}
+
+class MovieController {
+}
+
+class RecommendationController {
+}
+
+class UserController {
+}
+
+class UserPreferenceController {
+}
+
+}
+
+package cn.zjw.mrs.entity; {
+class Comment {
+}
+
+class LoginUser {
+}
+
+class Movie {
+}
+
+class MovieFeature {
+}
+
+class MovieRegion {
+}
+
+class MovieType {
+}
+
+class Preference {
+}
+
+class Recommendation {
+}
+
+class RegionLike {
+}
+
+class Result {
+}
+
+class SameLikes {
+}
+
+class TypeLike {
+}
+
+class User {
+}
+
+class UserLike {
+}
+
+}
+
+package cn.zjw.mrs.enums; {
+class HttpCodeEnum {
+}
+
+class LikedStatusEnum {
+}
+
+class RecommendationTypeEnum {
+}
+
+class RegionEnum {
+}
+
+class SexEnum {
+}
+
+class TypeEnum {
+}
+
+}
+
+package cn.zjw.mrs.filter; {
+class JwtAuthenticationTokenFilter {
+}
+
+}
+
+package cn.zjw.mrs.handler; {
+class AccessDeniedHandlerImpl {
+}
+
+class AuthenticationEntryPointImpl {
+}
+
+}
+
+package cn.zjw.mrs.mapper; {
+class CommentMapper {
+}
+
+class MovieFeatureMapper {
+}
+
+class MovieMapper {
+}
+
+class MovieRegionMapper {
+}
+
+class MovieTypeMapper {
+}
+
+class RecommendationMapper {
+}
+
+class RegionLikeMapper {
+}
+
+class SameLikesMapper {
+}
+
+class TypeLikeMapper {
+}
+
+class UserLikeMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package cn.zjw.mrs; {
+class MovieRecommendationSystemApplication {
+}
+
+class CommentTest {
+}
+
+class JiebaTest {
+}
+
+class MailTest {
+}
+
+class MovieRecommendationSystemApplicationTests {
+}
+
+class MovieTest {
+}
+
+class RecommendTest {
+}
+
+class RedisTest {
+}
+
+class UserLikeTest {
+}
+
+class UserMapperTest {
+}
+
+}
+
+package cn.zjw.mrs.service; {
+class AuthService {
+}
+
+class CommentService {
+}
+
+class MovieFeatureService {
+}
+
+class MovieRegionService {
+}
+
+class MovieService {
+}
+
+class MovieTypeService {
+}
+
+class OssService {
+}
+
+class RecommendationService {
+}
+
+class RegionLikeService {
+}
+
+class SameLikesService {
+}
+
+class TypeLikeService {
+}
+
+class UserLikeRedisService {
+}
+
+class UserLikeService {
+}
+
+class UserService {
+}
+
+}
+
+package cn.zjw.mrs.service.impl; {
+class AuthServiceImpl {
+}
+
+class CommentServiceImpl {
+}
+
+class MovieFeatureServiceImpl {
+}
+
+class MovieRegionServiceImpl {
+}
+
+class MovieServiceImpl {
+}
+
+class MovieTypeServiceImpl {
+}
+
+class OssServiceImpl {
+}
+
+class RecommendationServiceImpl {
+}
+
+class RegionLikeServiceImpl {
+}
+
+class SameLikesServiceImpl {
+}
+
+class TypeLikeServiceImpl {
+}
+
+class UserDetailsServiceImpl {
+}
+
+class UserLikeRedisServiceImpl {
+}
+
+class UserLikeServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package cn.zjw.mrs.utils; {
+class Base64DecodedMultipartFile {
+}
+
+class FastJsonRedisSerializer {
+}
+
+class FileUtil {
+}
+
+class JwtUtil {
+}
+
+class MailUtil {
+}
+
+class MyDataModel {
+}
+
+class PicUrlUtil {
+}
+
+class RecommendationUtil {
+}
+
+class RedisCache {
+}
+
+class RedisKeyUtil {
+}
+
+class WebUtils {
+}
+
+}
+
+package cn.zjw.mrs.vo.comment; {
+class CommentMovieVo {
+}
+
+class CommentStripVo {
+}
+
+}
+
+package cn.zjw.mrs.vo.movie; {
+class MovieCardVo {
+}
+
+class MovieStripVo {
+}
+
+class RecommendedMovieVo {
+}
+
+class ReviewedMovieStripVo {
+}
+
+}
+
+package cn.zjw.mrs.vo.movie.relation; {
+class CategoryVo {
+}
+
+class LinkVo {
+}
+
+class NodeVo {
+}
+
+}
+
+package cn.zjw.mrs.vo.user; {
+class LoginUserVo {
+}
+
+class UserInfoVo {
+}
+
+}
+
+MySqlDataModelConfig -- User
+RedisConfig -- FastJsonRedisSerializer
+SecurityConfig -- User
+SecurityConfig -- JwtAuthenticationTokenFilter
+AuthController -- LoginUser
+AuthController -- Result
+AuthController -- User
+AuthController -- AuthService
+AuthController -- UserService
+AuthController -- RedisCache
+CommentController -- Comment
+CommentController -- LoginUser
+CommentController -- Movie
+CommentController -- Recommendation
+CommentController -- Result
+CommentController -- User
+CommentController -- UserLike
+CommentController -- CommentService
+CommentController -- RecommendationService
+CommentController -- UserLikeRedisService
+CommentController -- UserLikeService
+CommentController -- CommentMovieVo
+CommentController -- CommentStripVo
+MovieController -- LoginUser
+MovieController -- Movie
+MovieController -- Result
+MovieController -- User
+MovieController -- MovieService
+MovieController -- PicUrlUtil
+MovieController -- MovieCardVo
+MovieController -- MovieStripVo
+MovieController -- ReviewedMovieStripVo
+RecommendationController -- LoginUser
+RecommendationController -- Movie
+RecommendationController -- Recommendation
+RecommendationController -- Result
+RecommendationController -- User
+RecommendationController -- RecommendationService
+RecommendationController -- RecommendedMovieVo
+UserController -- LoginUser
+UserController -- Result
+UserController -- User
+UserController -- OssService
+UserController -- UserService
+UserController -- Base64DecodedMultipartFile
+UserController -- UserInfoVo
+UserPreferenceController -- LoginUser
+UserPreferenceController -- Preference
+UserPreferenceController -- Recommendation
+UserPreferenceController -- RegionLike
+UserPreferenceController -- Result
+UserPreferenceController -- TypeLike
+UserPreferenceController -- User
+UserPreferenceController -- RecommendationService
+UserPreferenceController -- RegionLikeService
+UserPreferenceController -- TypeLikeService
+UserPreferenceController -- UserService
+LoginUser -- User
+MovieFeature -- Movie
+MovieRegion -- Movie
+MovieType -- Movie
+User -- SexEnum
+UserLike -- User
+RecommendationTypeEnum -- Recommendation
+RecommendationTypeEnum -- TypeEnum
+JwtAuthenticationTokenFilter -- LoginUser
+JwtAuthenticationTokenFilter -- User
+JwtAuthenticationTokenFilter -- JwtUtil
+JwtAuthenticationTokenFilter -- RedisCache
+AccessDeniedHandlerImpl -- Result
+AccessDeniedHandlerImpl -- WebUtils
+AuthenticationEntryPointImpl -- Result
+AuthenticationEntryPointImpl -- HttpCodeEnum
+AuthenticationEntryPointImpl -- WebUtils
+CommentMapper -- Comment
+CommentMapper -- Movie
+CommentMapper -- Preference
+CommentMapper -- CommentMovieVo
+CommentMapper -- CommentStripVo
+MovieFeatureMapper -- Movie
+MovieFeatureMapper -- MovieFeature
+MovieFeatureMapper -- MovieRegion
+MovieFeatureMapper -- User
+MovieMapper -- Movie
+MovieMapper -- User
+MovieMapper -- MovieCardVo
+MovieMapper -- MovieStripVo
+MovieMapper -- ReviewedMovieStripVo
+MovieRegionMapper -- Movie
+MovieRegionMapper -- MovieRegion
+MovieRegionMapper -- User
+MovieTypeMapper -- Movie
+MovieTypeMapper -- MovieType
+MovieTypeMapper -- User
+RecommendationMapper -- Movie
+RecommendationMapper -- Recommendation
+RecommendationMapper -- User
+RecommendationMapper -- RecommendedMovieVo
+RegionLikeMapper -- RegionLike
+SameLikesMapper -- SameLikes
+TypeLikeMapper -- TypeLike
+UserLikeMapper -- User
+UserLikeMapper -- UserLike
+UserMapper -- User
+MovieRecommendationSystemApplication -- Movie
+MovieRecommendationSystemApplication -- Recommendation
+AuthService -- Result
+AuthService -- User
+CommentService -- Comment
+CommentService -- Movie
+CommentService -- CommentMovieVo
+CommentService -- CommentStripVo
+AuthServiceImpl -- Result
+AuthServiceImpl -- User
+AuthServiceImpl -- UserMapper
+AuthServiceImpl -- AuthService
+AuthServiceImpl -- UserService
+AuthServiceImpl -- MailUtil
+AuthServiceImpl -- RedisCache
+CommentServiceImpl -- Comment
+CommentServiceImpl -- Movie
+CommentServiceImpl -- User
+CommentServiceImpl -- UserLike
+CommentServiceImpl -- CommentMapper
+CommentServiceImpl -- UserMapper
+CommentServiceImpl -- CommentService
+CommentServiceImpl -- UserLikeRedisService
+CommentServiceImpl -- UserLikeService
+CommentServiceImpl -- FileUtil
+CommentServiceImpl -- PicUrlUtil
+CommentServiceImpl -- CommentMovieVo
+CommentServiceImpl -- CommentStripVo
+CommentServiceImpl -- MovieStripVo
+MovieFeatureServiceImpl -- Movie
+MovieFeatureServiceImpl -- MovieFeature
+MovieFeatureServiceImpl -- MovieFeatureMapper
+MovieFeatureServiceImpl -- MovieFeatureService
+MovieRegionServiceImpl -- Movie
+MovieRegionServiceImpl -- MovieRegion
+MovieRegionServiceImpl -- MovieRegionMapper
+MovieRegionServiceImpl -- MovieRegionService
+MovieServiceImpl -- Movie
+MovieServiceImpl -- User
+MovieServiceImpl -- MovieMapper
+MovieServiceImpl -- MovieService
+MovieServiceImpl -- PicUrlUtil
+MovieServiceImpl -- MovieCardVo
+MovieServiceImpl -- MovieStripVo
+MovieServiceImpl -- ReviewedMovieStripVo
+MovieTypeServiceImpl -- Movie
+MovieTypeServiceImpl -- MovieType
+MovieTypeServiceImpl -- MovieTypeMapper
+MovieTypeServiceImpl -- MovieTypeService
+OssServiceImpl -- Result
+OssServiceImpl -- User
+OssServiceImpl -- UserMapper
+OssServiceImpl -- OssService
+RecommendationServiceImpl -- Comment
+RecommendationServiceImpl -- Movie
+RecommendationServiceImpl -- MovieFeature
+RecommendationServiceImpl -- MovieRegion
+RecommendationServiceImpl -- MovieType
+RecommendationServiceImpl -- Preference
+RecommendationServiceImpl -- Recommendation
+RecommendationServiceImpl -- RegionLike
+RecommendationServiceImpl -- Result
+RecommendationServiceImpl -- TypeLike
+RecommendationServiceImpl -- User
+RecommendationServiceImpl -- RecommendationTypeEnum
+RecommendationServiceImpl -- TypeEnum
+RecommendationServiceImpl -- CommentMapper
+RecommendationServiceImpl -- MovieFeatureMapper
+RecommendationServiceImpl -- MovieMapper
+RecommendationServiceImpl -- MovieRegionMapper
+RecommendationServiceImpl -- MovieTypeMapper
+RecommendationServiceImpl -- RecommendationMapper
+RecommendationServiceImpl -- RegionLikeMapper
+RecommendationServiceImpl -- TypeLikeMapper
+RecommendationServiceImpl -- RecommendationService
+RecommendationServiceImpl -- PicUrlUtil
+RecommendationServiceImpl -- RecommendationUtil
+RecommendationServiceImpl -- MovieCardVo
+RecommendationServiceImpl -- MovieStripVo
+RecommendationServiceImpl -- RecommendedMovieVo
+RecommendationServiceImpl -- CategoryVo
+RecommendationServiceImpl -- LinkVo
+RecommendationServiceImpl -- NodeVo
+RecommendationServiceImpl -- ReviewedMovieStripVo
+RegionLikeServiceImpl -- RegionLike
+RegionLikeServiceImpl -- User
+RegionLikeServiceImpl -- RegionLikeMapper
+RegionLikeServiceImpl -- RegionLikeService
+SameLikesServiceImpl -- SameLikes
+SameLikesServiceImpl -- SameLikesMapper
+SameLikesServiceImpl -- SameLikesService
+TypeLikeServiceImpl -- RegionLike
+TypeLikeServiceImpl -- TypeLike
+TypeLikeServiceImpl -- User
+TypeLikeServiceImpl -- RegionLikeMapper
+TypeLikeServiceImpl -- TypeLikeMapper
+TypeLikeServiceImpl -- TypeLikeService
+UserDetailsServiceImpl -- LoginUser
+UserDetailsServiceImpl -- User
+UserDetailsServiceImpl -- UserMapper
+UserLikeRedisServiceImpl -- Comment
+UserLikeRedisServiceImpl -- User
+UserLikeRedisServiceImpl -- UserLike
+UserLikeRedisServiceImpl -- LikedStatusEnum
+UserLikeRedisServiceImpl -- UserLikeRedisService
+UserLikeRedisServiceImpl -- RedisCache
+UserLikeRedisServiceImpl -- RedisKeyUtil
+UserLikeServiceImpl -- Comment
+UserLikeServiceImpl -- User
+UserLikeServiceImpl -- UserLike
+UserLikeServiceImpl -- CommentMapper
+UserLikeServiceImpl -- UserLikeMapper
+UserLikeServiceImpl -- UserLikeRedisService
+UserLikeServiceImpl -- UserLikeService
+UserLikeServiceImpl -- RedisCache
+UserServiceImpl -- Comment
+UserServiceImpl -- LoginUser
+UserServiceImpl -- Recommendation
+UserServiceImpl -- Result
+UserServiceImpl -- User
+UserServiceImpl -- SexEnum
+UserServiceImpl -- CommentMapper
+UserServiceImpl -- UserMapper
+UserServiceImpl -- RecommendationService
+UserServiceImpl -- UserService
+UserServiceImpl -- JwtUtil
+UserServiceImpl -- PicUrlUtil
+UserServiceImpl -- RedisCache
+UserServiceImpl -- LoginUserVo
+UserServiceImpl -- UserInfoVo
+MovieFeatureService -- Movie
+MovieFeatureService -- MovieFeature
+MovieRegionService -- Movie
+MovieRegionService -- MovieRegion
+MovieService -- Movie
+MovieService -- Result
+MovieService -- User
+MovieService -- MovieCardVo
+MovieService -- MovieStripVo
+MovieService -- ReviewedMovieStripVo
+MovieTypeService -- Movie
+MovieTypeService -- MovieType
+OssService -- Result
+RecommendationService -- Movie
+RecommendationService -- Recommendation
+RecommendationService -- User
+RecommendationService -- RecommendedMovieVo
+RegionLikeService -- RegionLike
+RegionLikeService -- User
+SameLikesService -- SameLikes
+TypeLikeService -- TypeLike
+TypeLikeService -- User
+UserLikeRedisService -- Comment
+UserLikeRedisService -- User
+UserLikeRedisService -- UserLike
+UserLikeService -- Comment
+UserLikeService -- User
+UserLikeService -- UserLike
+UserLikeService -- CommentStripVo
+UserService -- Result
+UserService -- User
+UserService -- UserInfoVo
+MyDataModel -- User
+PicUrlUtil -- LoginUser
+PicUrlUtil -- Movie
+PicUrlUtil -- User
+RecommendationUtil -- Recommendation
+RecommendationUtil -- RecommendationTypeEnum
+RecommendationUtil -- TypeEnum
+CommentMovieVo -- Comment
+CommentMovieVo -- Movie
+CommentMovieVo -- CommentStripVo
+CommentMovieVo -- MovieStripVo
+CommentStripVo -- Comment
+MovieCardVo -- Movie
+MovieStripVo -- Movie
+RecommendedMovieVo -- Movie
+ReviewedMovieStripVo -- Movie
+ReviewedMovieStripVo -- MovieStripVo
+LoginUserVo -- LoginUser
+LoginUserVo -- User
+LoginUserVo -- UserInfoVo
+UserInfoVo -- User
+UserInfoVo -- SexEnum
+CommentTest -- Comment
+CommentTest -- Movie
+CommentTest -- Preference
+CommentTest -- User
+CommentTest -- CommentMapper
+CommentTest -- CommentMovieVo
+CommentTest -- CommentStripVo
+CommentTest -- MovieStripVo
+MailTest -- AuthService
+MovieRecommendationSystemApplicationTests -- Movie
+MovieRecommendationSystemApplicationTests -- Recommendation
+MovieRecommendationSystemApplicationTests -- MovieRecommendationSystemApplication
+MovieTest -- Movie
+MovieTest -- MovieRegion
+MovieTest -- MovieType
+MovieTest -- User
+MovieTest -- MovieMapper
+MovieTest -- MovieRegionMapper
+MovieTest -- MovieTypeMapper
+MovieTest -- MovieStripVo
+MovieTest -- ReviewedMovieStripVo
+RecommendTest -- Movie
+RecommendTest -- Recommendation
+RecommendTest -- Result
+RecommendTest -- User
+RecommendTest -- RecommendationService
+RedisTest -- RedisCache
+UserLikeTest -- Comment
+UserLikeTest -- User
+UserLikeTest -- UserLike
+UserLikeTest -- UserLikeRedisService
+UserLikeTest -- UserLikeService
+UserMapperTest -- Comment
+UserMapperTest -- Movie
+UserMapperTest -- User
+UserMapperTest -- SexEnum
+UserMapperTest -- CommentMapper
+UserMapperTest -- MovieMapper
+UserMapperTest -- UserMapper
+UserMapperTest -- MovieCardVo
+@enduml

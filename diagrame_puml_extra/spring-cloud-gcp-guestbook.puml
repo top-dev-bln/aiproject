@@ -1,0 +1,355 @@
+@startuml
+package com.example.frontend; {
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class OutboundGateway {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class OutboundGateway {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class OutboundGateway {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class OutboundGateway {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class OutboundGateway {
+}
+
+class FrontendApplicationTests {
+}
+
+class FrontendApplication {
+}
+
+class FrontendController {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessagesClient {
+}
+
+class OutboundGateway {
+}
+
+class FrontendApplicationTests {
+}
+
+}
+
+package com.example.guestbook; {
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+class GuestbookApplication {
+}
+
+class GuestbookMessage {
+}
+
+class GuestbookMessageRepository {
+}
+
+class GuestbookApplicationTests {
+}
+
+}
+
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.example.demo; {
+class DemoApplication {
+}
+
+class DemoApplicationTests {
+}
+
+class DemoApplication {
+}
+
+class DemoApplicationTests {
+}
+
+}
+
+FrontendController -- GuestbookMessage
+FrontendController -- GuestbookMessagesClient
+FrontendController -- OutboundGateway
+GuestbookMessagesClient -- GuestbookMessage
+FrontendApplicationTests -- FrontendApplication
+GuestbookMessageRepository -- GuestbookMessage
+GuestbookApplicationTests -- GuestbookApplication
+DemoApplicationTests -- DemoApplication
+@enduml

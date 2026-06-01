@@ -1,0 +1,25 @@
+@startuml
+package io.github.jponge.vertx.boot; {
+class BootVerticle {
+}
+
+class BootVerticleTest {
+}
+
+}
+
+package io.github.jponge.vertx.boot.samples; {
+class BarVerticle {
+}
+
+class ConfigDumpingVerticle {
+}
+
+class FooVerticle {
+}
+
+}
+
+BootVerticleTest -- BootVerticle
+BootVerticleTest -- ConfigDumpingVerticle
+@enduml

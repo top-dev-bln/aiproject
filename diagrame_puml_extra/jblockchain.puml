@@ -1,0 +1,156 @@
+@startuml
+package de.neozo.jblockchain.client; {
+class BlockchainClient {
+}
+
+}
+
+package de.neozo.jblockchain.common.domain; {
+class Address {
+}
+
+class Block {
+}
+
+class Node {
+}
+
+class Transaction {
+}
+
+}
+
+package de.neozo.jblockchain.common; {
+class SignatureUtils {
+}
+
+}
+
+package de.neozo.jblockchain.node; {
+class BlockchainNode {
+}
+
+class Config {
+}
+
+}
+
+package de.neozo.jblockchain.node.rest; {
+class AddressController {
+}
+
+class BlockController {
+}
+
+class NodeController {
+}
+
+class TransactionController {
+}
+
+}
+
+package de.neozo.jblockchain.node.service; {
+class AddressService {
+}
+
+class BlockService {
+}
+
+class MiningService {
+}
+
+class NodeService {
+}
+
+class TransactionService {
+}
+
+class BlockServiceTests {
+}
+
+class MiningServiceTests {
+}
+
+class TransactionServiceTests {
+}
+
+}
+
+BlockchainClient -- Address
+BlockchainClient -- Block
+BlockchainClient -- Node
+BlockchainClient -- Transaction
+BlockchainClient -- SignatureUtils
+Block -- Transaction
+Node -- Address
+BlockchainNode -- Block
+BlockchainNode -- Node
+Config -- Address
+Config -- Block
+Config -- Node
+Config -- Transaction
+AddressController -- Address
+AddressController -- Node
+AddressController -- AddressService
+AddressController -- NodeService
+BlockController -- Block
+BlockController -- Node
+BlockController -- BlockService
+BlockController -- MiningService
+BlockController -- NodeService
+NodeController -- Address
+NodeController -- Node
+NodeController -- NodeService
+TransactionController -- Node
+TransactionController -- Transaction
+TransactionController -- NodeService
+TransactionController -- TransactionService
+AddressService -- Address
+AddressService -- Node
+BlockService -- Address
+BlockService -- Block
+BlockService -- Node
+BlockService -- Transaction
+BlockService -- Config
+BlockService -- TransactionService
+MiningService -- Block
+MiningService -- Node
+MiningService -- Transaction
+MiningService -- Config
+MiningService -- BlockService
+MiningService -- NodeService
+MiningService -- TransactionService
+NodeService -- Address
+NodeService -- Block
+NodeService -- Node
+NodeService -- Transaction
+NodeService -- Config
+NodeService -- AddressService
+NodeService -- BlockService
+NodeService -- TransactionService
+TransactionService -- Address
+TransactionService -- Block
+TransactionService -- Node
+TransactionService -- Transaction
+TransactionService -- SignatureUtils
+TransactionService -- AddressService
+BlockServiceTests -- Address
+BlockServiceTests -- Block
+BlockServiceTests -- Transaction
+BlockServiceTests -- SignatureUtils
+BlockServiceTests -- AddressService
+BlockServiceTests -- BlockService
+BlockServiceTests -- TransactionService
+MiningServiceTests -- Address
+MiningServiceTests -- Transaction
+MiningServiceTests -- SignatureUtils
+MiningServiceTests -- AddressService
+MiningServiceTests -- MiningService
+MiningServiceTests -- TransactionService
+TransactionServiceTests -- Address
+TransactionServiceTests -- Transaction
+TransactionServiceTests -- SignatureUtils
+TransactionServiceTests -- AddressService
+TransactionServiceTests -- TransactionService
+@enduml

@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+
+security:
+  jwt:
+    token:
+      # For production, set JWT_SECRET (and optionally JWT_EXPIRE_MS) via environment variables. Do not use the default in production.
+      secret-key: ${JWT_SECRET:secret-key}
+      expire-length: ${JWT_EXPIRE_MS:300000} # 5 minutes default; override with JWT_EXPIRE_MS (milliseconds)

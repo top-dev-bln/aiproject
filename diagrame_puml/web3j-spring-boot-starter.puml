@@ -1,0 +1,59 @@
+@startuml
+
+package org.web3j.spring.actuate {
+  class Web3jHealthIndicator {
+    -web3j : Web3j
+    +doHealthCheck() : void
+  }
+}
+
+package org.web3j.spring.autoconfigure {
+  class Web3jHealthIndicatorTest {
+    +testHealthCheckIndicatorDown() : void
+    +testHealthCheckIndicatorUp() : void
+  }
+  class Web3jAutoConfigurationTest {
+    -context : AnnotationConfigApplicationContext
+    +tearDown() : void
+    +testEmptyClientAddress() : void
+    +testHttpClient() : void
+    +testUnixIpcClient() : void
+    +testWindowsIpcClient() : void
+    +testAdminClient() : void
+    +testNoAdminClient() : void
+    +testHealthCheckIndicatorDown() : void
+  }
+  class Web3jAutoConfiguration {
+    -log : Log
+    -properties : Web3jProperties
+    +web3j() : Web3j
+    +admin() : Admin
+  }
+  class Web3jProperties {
+    -WEB3J_PREFIX : String
+    -clientAddress : String
+    -adminClient : Boolean
+    -networkId : String
+    -httpTimeoutSeconds : Long
+    +getClientAddress() : String
+    +setClientAddress() : void
+    +isAdminClient() : Boolean
+    +setAdminClient() : void
+    +getNetworkId() : String
+    +setNetworkId() : void
+    +getHttpTimeoutSeconds() : Long
+    +setHttpTimeoutSeconds() : void
+  }
+}
+
+package org.web3j.spring.autoconfigure.context {
+  class SpringApplicationTest {
+    +nameService() : Web3j
+  }
+}
+
+' --- Relatii ---
+Web3jHealthIndicatorTest --> SpringApplicationTest
+Web3jAutoConfiguration --> Web3jHealthIndicator
+
+@enduml

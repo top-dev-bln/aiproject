@@ -1,0 +1,18 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.integralblue.log4jdbc.spring; {
+class Log4jdbcAutoConfiguration {
+}
+
+class Log4jdbcBeanPostProcessor {
+}
+
+}
+
+Log4jdbcAutoConfiguration -- Log4jdbcBeanPostProcessor
+@enduml

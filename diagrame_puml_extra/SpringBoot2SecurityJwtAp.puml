@@ -1,0 +1,102 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.app.raghu.config; {
+class AppConfig {
+}
+
+class InvaildUserAuthenticationEntryPoint {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package com.app.raghu.controller; {
+class UserRestController {
+}
+
+}
+
+package com.app.raghu.entity; {
+class User {
+}
+
+class UserRequest {
+}
+
+class UserResponse {
+}
+
+}
+
+package com.app.raghu.filter; {
+class SecurityFilter {
+}
+
+}
+
+package com.app.raghu.repository; {
+class UserRepository {
+}
+
+}
+
+package com.app.raghu.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.app.raghu.service; {
+class IUserService {
+}
+
+}
+
+package com.app.raghu; {
+class SpringBootRestSecurityJwtNewApplication {
+}
+
+class SpringBootRestSecurityJwtNewApplicationTests {
+}
+
+}
+
+package com.app.raghu.util; {
+class JwtUtil {
+}
+
+}
+
+package in.nit.raghu; {
+class SpringBoot2SecurityJwtApApplicationTests {
+}
+
+}
+
+InvaildUserAuthenticationEntryPoint -- User
+SecurityConfig -- User
+SecurityConfig -- SecurityFilter
+UserRestController -- User
+UserRestController -- UserRequest
+UserRestController -- UserResponse
+UserRestController -- IUserService
+UserRestController -- JwtUtil
+UserRequest -- User
+UserResponse -- User
+SecurityFilter -- User
+SecurityFilter -- JwtUtil
+UserRepository -- User
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- IUserService
+IUserService -- User
+JwtUtil -- User
+SpringBootRestSecurityJwtNewApplicationTests -- SpringBootRestSecurityJwtNewApplication
+@enduml

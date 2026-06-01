@@ -1,0 +1,236 @@
+@startuml
+package io.github.tri5m.tucache.example.component; {
+class TestBean {
+}
+
+}
+
+package io.github.tri5m.tucache.example.configure; {
+class TestConfiguration {
+}
+
+}
+
+package io.github.tri5m.tucache.example.controller; {
+class BaseTestController {
+}
+
+class GenericInterfacesTest {
+}
+
+}
+
+package io.github.tri5m.tucache.example; {
+class ExampleApplication {
+}
+
+}
+
+package io.github.tri5m.tucache.example.model; {
+class TestEnum {
+}
+
+class User {
+}
+
+}
+
+package io.github.tri5m.tucache.test; {
+class BenchmarkingTest {
+}
+
+}
+
+package io.github.tri5m.tucache.core.annotation; {
+class TuCache {
+}
+
+class TuCacheClear {
+}
+
+}
+
+package io.github.tri5m.tucache.core.aspect; {
+class ResultSupplier {
+}
+
+class TuCacheAspect {
+}
+
+}
+
+package io.github.tri5m.tucache.core.bean.impl; {
+class DefaultTuKeyGenerate {
+}
+
+}
+
+package io.github.tri5m.tucache.core.bean; {
+class TuConditionProcess {
+}
+
+class TuKeyGenerate {
+}
+
+}
+
+package io.github.tri5m.tucache.core.cache; {
+class AbstractTuCacheService {
+}
+
+class TuCacheService {
+}
+
+}
+
+package io.github.tri5m.tucache.core.cache.impl; {
+class LocalCacheService {
+}
+
+class RedisCacheService {
+}
+
+class RedissonCacheService {
+}
+
+}
+
+package io.github.tri5m.tucache.core.config; {
+class TuCacheProfiles {
+}
+
+}
+
+package io.github.tri5m.tucache.core.localcache; {
+class TuTreeCache {
+}
+
+}
+
+package io.github.tri5m.tucache.core.pool; {
+class TucacheDefaultThreadPool {
+}
+
+}
+
+package io.github.tri5m.tucache.core.util; {
+class SystemInfo {
+}
+
+}
+
+package io.github.tri5m.tucache.core.test; {
+class LocalCacheTest {
+}
+
+}
+
+package io.github.tri5m.tucache.autoconfigure.configure.cache; {
+class LocalCacheServiceConfigure {
+}
+
+class RedisCacheServiceConfigure {
+}
+
+class RedissonCacheServiceConfigure {
+}
+
+}
+
+package io.github.tri5m.tucache.autoconfigure.configure; {
+class TuCacheAutoConfigure {
+}
+
+class TuCacheCondition {
+}
+
+class TuCacheProfilesConfigure {
+}
+
+}
+
+BaseTestController -- GenericInterfacesTest
+BaseTestController -- TestEnum
+BaseTestController -- User
+BaseTestController -- TuCache
+BaseTestController -- TuCacheClear
+GenericInterfacesTest -- User
+BenchmarkingTest -- TuCache
+BenchmarkingTest -- LocalCacheService
+BenchmarkingTest -- TuCacheService
+BenchmarkingTest -- TuCacheProfiles
+BenchmarkingTest -- TucacheDefaultThreadPool
+TuCache -- TuCacheAspect
+TuCacheClear -- TuCache
+TuCacheClear -- TuCacheAspect
+TuCacheAspect -- ResultSupplier
+TuCacheAspect -- DefaultTuKeyGenerate
+TuCacheAspect -- TuConditionProcess
+TuCacheAspect -- TuKeyGenerate
+TuCacheAspect -- TuCacheService
+TuCacheAspect -- TuCacheProfiles
+TuCacheAspect -- TucacheDefaultThreadPool
+DefaultTuKeyGenerate -- TuCache
+DefaultTuKeyGenerate -- TuKeyGenerate
+DefaultTuKeyGenerate -- TuCacheProfiles
+TuConditionProcess -- TuCache
+TuConditionProcess -- TuCacheClear
+TuKeyGenerate -- TuCache
+TuKeyGenerate -- TuCacheProfiles
+AbstractTuCacheService -- User
+AbstractTuCacheService -- TuCache
+AbstractTuCacheService -- TuCacheService
+LocalCacheService -- TuCache
+LocalCacheService -- AbstractTuCacheService
+LocalCacheService -- TuCacheService
+LocalCacheService -- TuTreeCache
+RedisCacheService -- TuCache
+RedisCacheService -- AbstractTuCacheService
+RedisCacheService -- TuCacheService
+RedissonCacheService -- TuCache
+RedissonCacheService -- AbstractTuCacheService
+RedissonCacheService -- TuCacheService
+TuCacheService -- TuCache
+TuCacheProfiles -- TuCache
+TuCacheProfiles -- SystemInfo
+TucacheDefaultThreadPool -- TuCache
+TucacheDefaultThreadPool -- TuCacheProfiles
+LocalCacheTest -- TuCache
+LocalCacheTest -- LocalCacheService
+LocalCacheTest -- TuCacheProfiles
+LocalCacheTest -- TucacheDefaultThreadPool
+LocalCacheServiceConfigure -- TuCache
+LocalCacheServiceConfigure -- LocalCacheService
+LocalCacheServiceConfigure -- TuCacheService
+LocalCacheServiceConfigure -- TuCacheCondition
+RedisCacheServiceConfigure -- TuCache
+RedisCacheServiceConfigure -- RedisCacheService
+RedisCacheServiceConfigure -- TuCacheService
+RedisCacheServiceConfigure -- TuCacheCondition
+RedissonCacheServiceConfigure -- TuCache
+RedissonCacheServiceConfigure -- RedissonCacheService
+RedissonCacheServiceConfigure -- TuCacheService
+RedissonCacheServiceConfigure -- TuCacheCondition
+TuCacheAutoConfigure -- TuCache
+TuCacheAutoConfigure -- TuCacheAspect
+TuCacheAutoConfigure -- DefaultTuKeyGenerate
+TuCacheAutoConfigure -- TuKeyGenerate
+TuCacheAutoConfigure -- AbstractTuCacheService
+TuCacheAutoConfigure -- LocalCacheService
+TuCacheAutoConfigure -- RedisCacheService
+TuCacheAutoConfigure -- RedissonCacheService
+TuCacheAutoConfigure -- TuCacheService
+TuCacheAutoConfigure -- TuCacheProfiles
+TuCacheAutoConfigure -- LocalCacheServiceConfigure
+TuCacheAutoConfigure -- RedisCacheServiceConfigure
+TuCacheAutoConfigure -- RedissonCacheServiceConfigure
+TuCacheAutoConfigure -- TuCacheProfilesConfigure
+TuCacheCondition -- TuCache
+TuCacheCondition -- LocalCacheService
+TuCacheCondition -- RedisCacheService
+TuCacheCondition -- RedissonCacheService
+TuCacheCondition -- TuCacheProfiles
+TuCacheCondition -- TuCacheProfilesConfigure
+TuCacheProfilesConfigure -- TuCache
+TuCacheProfilesConfigure -- TuCacheProfiles
+@enduml

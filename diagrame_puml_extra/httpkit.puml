@@ -1,0 +1,346 @@
+@startuml
+package com.lnwazg.httpkit.anno.httpmethod; {
+class CONNECT {
+}
+
+class DELETE {
+}
+
+class GET {
+}
+
+class HEAD {
+}
+
+class OPTIONS {
+}
+
+class PATCH {
+}
+
+class POST {
+}
+
+class PUT {
+}
+
+class TRACE {
+}
+
+}
+
+package com.lnwazg.httpkit.anno; {
+class IgnoreRoute {
+}
+
+class JsonResponse {
+}
+
+class XmlResponse {
+}
+
+}
+
+package com.lnwazg.httpkit.client; {
+class AjaxUtils {
+}
+
+}
+
+package com.lnwazg.httpkit.client.rpc; {
+class HttpRpc {
+}
+
+}
+
+package com.lnwazg.httpkit; {
+class CommonResponse {
+}
+
+class Constants {
+}
+
+class ControllerPathMethodMapper {
+}
+
+class HttpResponseCode {
+}
+
+}
+
+package com.lnwazg.httpkit.controller; {
+class BaseController {
+}
+
+}
+
+package com.lnwazg.httpkit.exception; {
+class MalformedRequestException {
+}
+
+class RoutingException {
+}
+
+}
+
+package com.lnwazg.httpkit.exchange; {
+class Exchange {
+}
+
+class ExchangeFactory {
+}
+
+class SocketExchangeFactory {
+}
+
+}
+
+package com.lnwazg.httpkit.exchange.exchangehandler; {
+class ExchangeHandler {
+}
+
+class HttpExchangeHandler {
+}
+
+}
+
+package com.lnwazg.httpkit.filter.adapter.business; {
+class LogicChainAdapter {
+}
+
+class ValidationFilterAdapter {
+}
+
+}
+
+package com.lnwazg.httpkit.filter.adapter; {
+class CommonCtrlFilterAdapter {
+}
+
+}
+
+package com.lnwazg.httpkit.filter.common; {
+class CORSFilter {
+}
+
+class ShowUserAgentFilter {
+}
+
+}
+
+package com.lnwazg.httpkit.filter; {
+class ControllerCallback {
+}
+
+class CtrlFilter {
+}
+
+class CtrlFilterChain {
+}
+
+}
+
+package com.lnwazg.httpkit.handler; {
+class HttpHandler {
+}
+
+}
+
+package com.lnwazg.httpkit.handler.route; {
+class RegexMapDetail {
+}
+
+class Router {
+}
+
+}
+
+package com.lnwazg.httpkit.io; {
+class HttpReader {
+}
+
+class HttpWriter {
+}
+
+class IOInfo {
+}
+
+}
+
+package com.lnwazg.httpkit.outer.entity; {
+class HttpServiceSummary {
+}
+
+class PathRemark {
+}
+
+}
+
+package com.lnwazg.httpkit.page; {
+class RenderPage {
+}
+
+}
+
+package com.lnwazg.httpkit.proxy; {
+class ControllerProxy {
+}
+
+}
+
+package com.lnwazg.httpkit.server; {
+class HttpServer {
+}
+
+class Server {
+}
+
+}
+
+package com.lnwazg.httpkit.util; {
+class RenderUtils {
+}
+
+}
+
+package com.lnwazg.main.ctrl; {
+class FirstController {
+}
+
+}
+
+package com.lnwazg.main; {
+class Test {
+}
+
+}
+
+AjaxUtils -- Test
+CommonResponse -- Constants
+CommonResponse -- HttpHandler
+CommonResponse -- HttpResponseCode
+CommonResponse -- Server
+CommonResponse -- RenderUtils
+BaseController -- GET
+BaseController -- HEAD
+BaseController -- POST
+BaseController -- HttpResponseCode
+BaseController -- HttpReader
+BaseController -- HttpWriter
+BaseController -- IOInfo
+BaseController -- HttpServer
+BaseController -- Server
+BaseController -- RenderUtils
+ControllerPathMethodMapper -- BaseController
+ControllerPathMethodMapper -- CtrlFilter
+ControllerPathMethodMapper -- CtrlFilterChain
+ControllerPathMethodMapper -- IOInfo
+ExchangeFactory -- Exchange
+ExchangeHandler -- Exchange
+ExchangeHandler -- HttpServer
+ExchangeHandler -- Server
+HttpExchangeHandler -- CommonResponse
+HttpExchangeHandler -- MalformedRequestException
+HttpExchangeHandler -- RoutingException
+HttpExchangeHandler -- Exchange
+HttpExchangeHandler -- ExchangeHandler
+HttpExchangeHandler -- HttpHandler
+HttpExchangeHandler -- HttpReader
+HttpExchangeHandler -- HttpWriter
+HttpExchangeHandler -- IOInfo
+HttpExchangeHandler -- HttpServer
+HttpExchangeHandler -- Server
+SocketExchangeFactory -- Exchange
+SocketExchangeFactory -- ExchangeFactory
+SocketExchangeFactory -- Server
+LogicChainAdapter -- CommonCtrlFilterAdapter
+LogicChainAdapter -- CtrlFilter
+ValidationFilterAdapter -- CommonCtrlFilterAdapter
+ValidationFilterAdapter -- CtrlFilter
+CommonCtrlFilterAdapter -- BaseController
+CommonCtrlFilterAdapter -- CtrlFilter
+CommonCtrlFilterAdapter -- CtrlFilterChain
+CORSFilter -- BaseController
+CORSFilter -- CtrlFilter
+CORSFilter -- CtrlFilterChain
+ShowUserAgentFilter -- LogicChainAdapter
+CtrlFilter -- CtrlFilterChain
+CtrlFilterChain -- BaseController
+CtrlFilterChain -- ControllerCallback
+HttpHandler -- IOInfo
+Router -- IgnoreRoute
+Router -- CommonResponse
+Router -- BaseController
+Router -- ControllerPathMethodMapper
+Router -- RoutingException
+Router -- HttpHandler
+Router -- RegexMapDetail
+Router -- HttpResponseCode
+Router -- HttpReader
+Router -- IOInfo
+Router -- HttpServiceSummary
+Router -- RenderPage
+Router -- HttpServer
+Router -- Server
+Router -- RenderUtils
+HttpResponseCode -- HEAD
+HttpResponseCode -- Server
+HttpReader -- DELETE
+HttpReader -- GET
+HttpReader -- HEAD
+HttpReader -- POST
+HttpReader -- PUT
+HttpReader -- MalformedRequestException
+HttpWriter -- HttpResponseCode
+HttpWriter -- Server
+IOInfo -- HttpReader
+IOInfo -- HttpWriter
+IOInfo -- HttpServer
+IOInfo -- Server
+HttpServiceSummary -- PathRemark
+RenderPage -- HttpResponseCode
+RenderPage -- IOInfo
+RenderPage -- HttpServer
+RenderPage -- Server
+RenderPage -- RenderUtils
+ControllerProxy -- CONNECT
+ControllerProxy -- DELETE
+ControllerProxy -- GET
+ControllerProxy -- HEAD
+ControllerProxy -- OPTIONS
+ControllerProxy -- PATCH
+ControllerProxy -- POST
+ControllerProxy -- PUT
+ControllerProxy -- TRACE
+ControllerProxy -- JsonResponse
+ControllerProxy -- XmlResponse
+ControllerProxy -- BaseController
+ControllerProxy -- ControllerCallback
+ControllerProxy -- CtrlFilter
+ControllerProxy -- CtrlFilterChain
+HttpServer -- Constants
+HttpServer -- Exchange
+HttpServer -- ExchangeFactory
+HttpServer -- SocketExchangeFactory
+HttpServer -- CORSFilter
+HttpServer -- CtrlFilter
+HttpServer -- CtrlFilterChain
+HttpServer -- HttpServiceSummary
+HttpServer -- PathRemark
+HttpServer -- ControllerProxy
+HttpServer -- Server
+Server -- Exchange
+Server -- ExchangeFactory
+RenderUtils -- Constants
+RenderUtils -- HttpResponseCode
+RenderUtils -- HttpReader
+RenderUtils -- HttpWriter
+RenderUtils -- IOInfo
+RenderUtils -- HttpServer
+RenderUtils -- Server
+FirstController -- BaseController
+Test -- Constants
+Test -- HttpServer
+Test -- Server
+Test -- FirstController
+@enduml

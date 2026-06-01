@@ -1,0 +1,26 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the messaging, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include chat, web socket event listener. Core business data revolves around ChatMessage.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage chat operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ChatController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage web socket event listener operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "WebSocketEventListener"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ChatController[\"ChatController\"]\n    WebSocketEventListener[\"WebSocketEventListener\"]\n  end\n  subgraph Data_Access\n    ChatMessage[\"ChatMessage\"]\n  end\n  subgraph Infrastructure\n    WebSocketConfig[\"WebSocketConfig\"]\n  end"
+  }
+}

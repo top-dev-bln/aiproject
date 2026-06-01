@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxxtai.express.dao.EdgeCostDAO" >
+    <resultMap id="BaseResultMap" type="com.xxxtai.express.model.EdgeCost" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+        <result column="features" property="features" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="edge_num" property="edgeNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="cost" property="cost" jdbcType="BIGINT" javaType="java.lang.Long"/>
+        <result column="agv_num" property="agvNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="start_node_num" property="startNodeNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="destination_node_num" property="destinationNodeNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="target_city" property="targetCity" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id,create_time,modify_time, features, edge_num, cost, agv_num, start_node_num, destination_node_num,target_city
+    </sql>
+
+    <select id="getCostsByEdgeNum" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM edge_cost
+        WHERE edge_num = #{edgeNum}
+    </select>
+
+    <insert id="insert" parameterType="com.xxxtai.express.model.EdgeCost" >
+        INSERT INTO
+        edge_cost
+        (create_time, modify_time, edge_num, cost, agv_num, start_node_num, destination_node_num,target_city)
+        VALUES
+        (#{createTime},  #{modifyTime}, #{edgeNum}, #{cost}, #{agvNum}, #{startNodeNum}, #{destinationNodeNum}, #{targetCity})
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List" >
+        INSERT INTO
+        edge_cost
+        (create_time, modify_time, edge_num, cost, agv_num, start_node_num, destination_node_num,target_city)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.createTime},  #{item.modifyTime}, #{item.edgeNum}, #{item.cost}, #{item.agvNum}, #{item.startNodeNum}, #{item.destinationNodeNum}, #{item.targetCity})
+        </foreach>
+    </insert>
+
+    <!--<update id="update" parameterType="com.xxxtai.dispatch.domain.StationDO" >-->
+        <!--UPDATE-->
+        <!--station_info-->
+        <!--SET-->
+        <!--<if test="dispatchNo != null">dispatch_no = #{dispatchNo}</if>-->
+        <!--<if test="taskType != null">,task_type = #{taskType}</if>-->
+        <!--<if test="matterType != null">,matter_type = #{matterType}</if>-->
+        <!--<if test="dispatchFinished != null">,dispatch_finished = #{dispatchFinished}</if>-->
+
+        <!--WHERE station_no = #{stationNo}-->
+    <!--</update>-->
+
+    <delete id="deleteAll">
+        DELETE FROM
+        edge_cost
+        WHERE
+        id > 0
+    </delete>
+
+</mapper>

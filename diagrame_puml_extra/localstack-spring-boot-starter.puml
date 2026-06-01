@@ -1,0 +1,178 @@
+@startuml
+package com.sivalabs.demo; {
+class LocalStackStarterDemoApplication {
+}
+
+class SpringbootLocalStackDemoApplicationTest {
+}
+
+}
+
+package com.sivalabs.demo.services; {
+class DynamoDBService {
+}
+
+class S3Service {
+}
+
+class SNSService {
+}
+
+class SQSService {
+}
+
+class CloudWatchTest {
+}
+
+class DynamoDBServiceTest {
+}
+
+class DynamoDBStreamsTest {
+}
+
+class IAMTest {
+}
+
+class KinesisTest {
+}
+
+class LambdaTest {
+}
+
+class S3ServiceTest {
+}
+
+class SecretsManagerTest {
+}
+
+class SNSServiceTest {
+}
+
+class SQSServiceTest {
+}
+
+}
+
+package io.github.sivalabs.localstack.autoconfigure.configurator; {
+class AbstractAmazonClient {
+}
+
+class AmazonCloudWatchConfiguration {
+}
+
+class AmazonDynamoDBConfiguration {
+}
+
+class AmazonDynamoDBStreamsConfiguration {
+}
+
+class AmazonIAMConfiguration {
+}
+
+class AmazonKinesisConfiguration {
+}
+
+class AmazonS3Configuration {
+}
+
+class AmazonSNSConfiguration {
+}
+
+class AmazonSQSConfiguration {
+}
+
+class AWSLambdaConfiguration {
+}
+
+class AWSSecretsManagerConfiguration {
+}
+
+class ConditionalOnLocalStackService {
+}
+
+class LocalStackContainerConfiguration {
+}
+
+}
+
+package io.github.sivalabs.localstack.autoconfigure; {
+class LocalStackAutoConfiguration {
+}
+
+class LocalStackAutoConfigurationTest {
+}
+
+}
+
+package io.github.sivalabs.localstack; {
+class EnableLocalStack {
+}
+
+class LocalStackProperties {
+}
+
+}
+
+LocalStackStarterDemoApplication -- EnableLocalStack
+DynamoDBServiceTest -- DynamoDBService
+S3ServiceTest -- S3Service
+SNSServiceTest -- SNSService
+SNSServiceTest -- SQSService
+SQSServiceTest -- SQSService
+SpringbootLocalStackDemoApplicationTest -- LocalStackProperties
+AmazonCloudWatchConfiguration -- AbstractAmazonClient
+AmazonCloudWatchConfiguration -- ConditionalOnLocalStackService
+AmazonCloudWatchConfiguration -- LocalStackProperties
+AmazonDynamoDBConfiguration -- AbstractAmazonClient
+AmazonDynamoDBConfiguration -- ConditionalOnLocalStackService
+AmazonDynamoDBConfiguration -- LocalStackProperties
+AmazonDynamoDBStreamsConfiguration -- AbstractAmazonClient
+AmazonDynamoDBStreamsConfiguration -- ConditionalOnLocalStackService
+AmazonDynamoDBStreamsConfiguration -- LocalStackProperties
+AmazonIAMConfiguration -- AbstractAmazonClient
+AmazonIAMConfiguration -- ConditionalOnLocalStackService
+AmazonIAMConfiguration -- LocalStackProperties
+AmazonKinesisConfiguration -- AbstractAmazonClient
+AmazonKinesisConfiguration -- ConditionalOnLocalStackService
+AmazonKinesisConfiguration -- LocalStackProperties
+AmazonS3Configuration -- AbstractAmazonClient
+AmazonS3Configuration -- ConditionalOnLocalStackService
+AmazonS3Configuration -- LocalStackProperties
+AmazonSNSConfiguration -- AbstractAmazonClient
+AmazonSNSConfiguration -- ConditionalOnLocalStackService
+AmazonSNSConfiguration -- LocalStackProperties
+AmazonSQSConfiguration -- AbstractAmazonClient
+AmazonSQSConfiguration -- ConditionalOnLocalStackService
+AmazonSQSConfiguration -- LocalStackProperties
+AWSLambdaConfiguration -- AbstractAmazonClient
+AWSLambdaConfiguration -- ConditionalOnLocalStackService
+AWSLambdaConfiguration -- LocalStackProperties
+AWSSecretsManagerConfiguration -- AbstractAmazonClient
+AWSSecretsManagerConfiguration -- ConditionalOnLocalStackService
+AWSSecretsManagerConfiguration -- LocalStackProperties
+ConditionalOnLocalStackService -- LocalStackProperties
+LocalStackContainerConfiguration -- LocalStackProperties
+LocalStackAutoConfiguration -- AmazonCloudWatchConfiguration
+LocalStackAutoConfiguration -- AmazonDynamoDBConfiguration
+LocalStackAutoConfiguration -- AmazonDynamoDBStreamsConfiguration
+LocalStackAutoConfiguration -- AmazonIAMConfiguration
+LocalStackAutoConfiguration -- AmazonKinesisConfiguration
+LocalStackAutoConfiguration -- AmazonS3Configuration
+LocalStackAutoConfiguration -- AmazonSNSConfiguration
+LocalStackAutoConfiguration -- AmazonSQSConfiguration
+LocalStackAutoConfiguration -- AWSLambdaConfiguration
+LocalStackAutoConfiguration -- AWSSecretsManagerConfiguration
+LocalStackAutoConfiguration -- LocalStackContainerConfiguration
+EnableLocalStack -- LocalStackAutoConfiguration
+LocalStackAutoConfigurationTest -- AmazonCloudWatchConfiguration
+LocalStackAutoConfigurationTest -- AmazonDynamoDBConfiguration
+LocalStackAutoConfigurationTest -- AmazonIAMConfiguration
+LocalStackAutoConfigurationTest -- AmazonKinesisConfiguration
+LocalStackAutoConfigurationTest -- AmazonS3Configuration
+LocalStackAutoConfigurationTest -- AmazonSNSConfiguration
+LocalStackAutoConfigurationTest -- AmazonSQSConfiguration
+LocalStackAutoConfigurationTest -- AWSLambdaConfiguration
+LocalStackAutoConfigurationTest -- AWSSecretsManagerConfiguration
+LocalStackAutoConfigurationTest -- LocalStackAutoConfiguration
+LocalStackAutoConfigurationTest -- LocalStackProperties
+@enduml

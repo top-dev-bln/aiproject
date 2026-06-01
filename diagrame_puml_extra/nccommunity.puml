@@ -1,0 +1,495 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package cn.codingcrea.nccommunity.actuator; {
+class DatabaseEndpoint {
+}
+
+}
+
+package cn.codingcrea.nccommunity.annotation; {
+class LoginRequired {
+}
+
+}
+
+package cn.codingcrea.nccommunity.aspect; {
+class ServiceLogAspect {
+}
+
+}
+
+package cn.codingcrea.nccommunity.config; {
+class AlphaConfig {
+}
+
+class EsConfig {
+}
+
+class KaptchaConfig {
+}
+
+class QuartzConfig {
+}
+
+class RedisConfig {
+}
+
+class SecurityConfig {
+}
+
+class ThreadPoolConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package cn.codingcrea.nccommunity.controller.advice; {
+class ExceptionAdvice {
+}
+
+}
+
+package cn.codingcrea.nccommunity.controller; {
+class AlphaController {
+}
+
+class CommentController {
+}
+
+class DataController {
+}
+
+class DiscussPostController {
+}
+
+class FollowController {
+}
+
+class HomeController {
+}
+
+class LikeController {
+}
+
+class LoginController {
+}
+
+class MessageController {
+}
+
+class SearchController {
+}
+
+class UserController {
+}
+
+}
+
+package cn.codingcrea.nccommunity.controller.interceptor; {
+class DataInterceptor {
+}
+
+class LoginRequiredInterceptor {
+}
+
+class LoginTicketInterceptor {
+}
+
+class MessageInterceptor {
+}
+
+}
+
+package cn.codingcrea.nccommunity.dao; {
+class AlphaDao {
+}
+
+class AlphaDaoImpl {
+}
+
+class AlphaDaoImpl2 {
+}
+
+class CommentMapper {
+}
+
+class DiscussPostMapper {
+}
+
+class LoginTicketMapper {
+}
+
+class MessageMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package cn.codingcrea.nccommunity.dao.elasticsearch; {
+class DiscussPostRepository {
+}
+
+}
+
+package cn.codingcrea.nccommunity.entity; {
+class Comment {
+}
+
+class DiscussPost {
+}
+
+class Event {
+}
+
+class LoginTicket {
+}
+
+class Message {
+}
+
+class Page {
+}
+
+class User {
+}
+
+}
+
+package cn.codingcrea.nccommunity.event; {
+class EventConsumer {
+}
+
+class EventProducer {
+}
+
+}
+
+package cn.codingcrea.nccommunity; {
+class NccommunityApplication {
+}
+
+class NccommunityServletInitializer {
+}
+
+class CaffeineTest {
+}
+
+class ElasticsearchTest {
+}
+
+class KafkaTest {
+}
+
+class LoggerTest {
+}
+
+class MailTest {
+}
+
+class MaperTest {
+}
+
+class NccommunityApplicationTests {
+}
+
+class QuartzTest {
+}
+
+class RedisTest {
+}
+
+class SensitiveTest {
+}
+
+class ThreadPoolTest {
+}
+
+}
+
+package cn.codingcrea.nccommunity.quartz; {
+class AlphaJob {
+}
+
+class PostScoreRefreshJob {
+}
+
+}
+
+package cn.codingcrea.nccommunity.service; {
+class AlphaService {
+}
+
+class CommentService {
+}
+
+class DataService {
+}
+
+class DiscussPostService {
+}
+
+class ElasticSearchService {
+}
+
+class FollowService {
+}
+
+class LikeService {
+}
+
+class MessageService {
+}
+
+class UserService {
+}
+
+}
+
+package cn.codingcrea.nccommunity.util; {
+class CommunityConstant {
+}
+
+class CookieUtil {
+}
+
+class HostHolder {
+}
+
+class MailClient {
+}
+
+class NcCommunityUtil {
+}
+
+class RedisKeyUtil {
+}
+
+class SensitiveFilter {
+}
+
+}
+
+DatabaseEndpoint -- Message
+DatabaseEndpoint -- NcCommunityUtil
+QuartzConfig -- AlphaJob
+QuartzConfig -- PostScoreRefreshJob
+QuartzConfig -- QuartzTest
+SecurityConfig -- CommunityConstant
+SecurityConfig -- NcCommunityUtil
+WebMvcConfig -- LoginRequired
+WebMvcConfig -- DataInterceptor
+WebMvcConfig -- LoginRequiredInterceptor
+WebMvcConfig -- LoginTicketInterceptor
+WebMvcConfig -- MessageInterceptor
+WebMvcConfig -- LoginTicket
+WebMvcConfig -- Message
+ExceptionAdvice -- Message
+ExceptionAdvice -- NcCommunityUtil
+AlphaController -- NcCommunityUtil
+CommentController -- Comment
+CommentController -- DiscussPost
+CommentController -- Event
+CommentController -- User
+CommentController -- EventProducer
+CommentController -- CommentService
+CommentController -- DiscussPostService
+CommentController -- CommunityConstant
+CommentController -- HostHolder
+CommentController -- RedisKeyUtil
+DataController -- Page
+DataController -- DataService
+DiscussPostController -- Comment
+DiscussPostController -- DiscussPost
+DiscussPostController -- Event
+DiscussPostController -- Page
+DiscussPostController -- User
+DiscussPostController -- EventProducer
+DiscussPostController -- CommentService
+DiscussPostController -- DiscussPostService
+DiscussPostController -- LikeService
+DiscussPostController -- UserService
+DiscussPostController -- CommunityConstant
+DiscussPostController -- HostHolder
+DiscussPostController -- NcCommunityUtil
+DiscussPostController -- RedisKeyUtil
+FollowController -- Event
+FollowController -- Page
+FollowController -- User
+FollowController -- EventProducer
+FollowController -- FollowService
+FollowController -- UserService
+FollowController -- CommunityConstant
+FollowController -- HostHolder
+FollowController -- NcCommunityUtil
+HomeController -- DiscussPost
+HomeController -- Page
+HomeController -- User
+HomeController -- DiscussPostService
+HomeController -- LikeService
+HomeController -- UserService
+HomeController -- CommunityConstant
+DataInterceptor -- User
+DataInterceptor -- DataService
+DataInterceptor -- HostHolder
+LoginRequiredInterceptor -- LoginRequired
+LoginRequiredInterceptor -- User
+LoginRequiredInterceptor -- HostHolder
+LoginTicketInterceptor -- LoginTicket
+LoginTicketInterceptor -- User
+LoginTicketInterceptor -- UserService
+LoginTicketInterceptor -- CookieUtil
+LoginTicketInterceptor -- HostHolder
+MessageInterceptor -- Message
+MessageInterceptor -- User
+MessageInterceptor -- MessageService
+MessageInterceptor -- HostHolder
+LikeController -- Event
+LikeController -- User
+LikeController -- EventProducer
+LikeController -- LikeService
+LikeController -- CommunityConstant
+LikeController -- HostHolder
+LikeController -- NcCommunityUtil
+LikeController -- RedisKeyUtil
+LoginController -- Message
+LoginController -- Page
+LoginController -- User
+LoginController -- UserService
+LoginController -- CommunityConstant
+LoginController -- NcCommunityUtil
+LoginController -- RedisKeyUtil
+MessageController -- Message
+MessageController -- Page
+MessageController -- User
+MessageController -- MessageService
+MessageController -- UserService
+MessageController -- CommunityConstant
+MessageController -- HostHolder
+MessageController -- NcCommunityUtil
+SearchController -- DiscussPost
+SearchController -- Page
+SearchController -- User
+SearchController -- ElasticSearchService
+SearchController -- LikeService
+SearchController -- UserService
+SearchController -- CommunityConstant
+UserController -- LoginRequired
+UserController -- Message
+UserController -- Page
+UserController -- User
+UserController -- FollowService
+UserController -- LikeService
+UserController -- UserService
+UserController -- CommunityConstant
+UserController -- HostHolder
+UserController -- NcCommunityUtil
+AlphaDaoImpl -- AlphaDao
+AlphaDaoImpl2 -- AlphaDao
+AlphaDaoImpl2 -- AlphaDaoImpl
+CommentMapper -- Comment
+DiscussPostMapper -- Comment
+DiscussPostMapper -- DiscussPost
+DiscussPostRepository -- DiscussPost
+LoginTicketMapper -- LoginTicket
+MessageMapper -- Message
+UserMapper -- User
+Comment -- User
+DiscussPost -- Comment
+DiscussPost -- User
+Event -- User
+LoginTicket -- User
+EventConsumer -- Comment
+EventConsumer -- DiscussPost
+EventConsumer -- Event
+EventConsumer -- Message
+EventConsumer -- User
+EventConsumer -- DiscussPostService
+EventConsumer -- ElasticSearchService
+EventConsumer -- MessageService
+EventConsumer -- CommunityConstant
+EventProducer -- Event
+NccommunityServletInitializer -- NccommunityApplication
+PostScoreRefreshJob -- Comment
+PostScoreRefreshJob -- DiscussPost
+PostScoreRefreshJob -- DiscussPostService
+PostScoreRefreshJob -- ElasticSearchService
+PostScoreRefreshJob -- LikeService
+PostScoreRefreshJob -- CommunityConstant
+PostScoreRefreshJob -- RedisKeyUtil
+CommentService -- CommentMapper
+CommentService -- DiscussPostMapper
+CommentService -- Comment
+CommentService -- DiscussPost
+CommentService -- CommunityConstant
+CommentService -- SensitiveFilter
+DataService -- RedisKeyUtil
+DiscussPostService -- DiscussPostMapper
+DiscussPostService -- Comment
+DiscussPostService -- DiscussPost
+DiscussPostService -- SensitiveFilter
+ElasticSearchService -- DiscussPostRepository
+ElasticSearchService -- DiscussPost
+ElasticSearchService -- Page
+FollowService -- User
+FollowService -- UserService
+FollowService -- CommunityConstant
+FollowService -- RedisKeyUtil
+LikeService -- User
+LikeService -- RedisKeyUtil
+MessageService -- MessageMapper
+MessageService -- Message
+MessageService -- SensitiveFilter
+UserService -- LoginTicketMapper
+UserService -- UserMapper
+UserService -- LoginTicket
+UserService -- User
+UserService -- CommunityConstant
+UserService -- MailClient
+UserService -- NcCommunityUtil
+UserService -- RedisKeyUtil
+HostHolder -- User
+MailClient -- Message
+RedisKeyUtil -- User
+SensitiveFilter -- Message
+CaffeineTest -- DiscussPost
+CaffeineTest -- User
+CaffeineTest -- NccommunityApplication
+CaffeineTest -- DiscussPostService
+ElasticsearchTest -- DiscussPostMapper
+ElasticsearchTest -- DiscussPostRepository
+ElasticsearchTest -- DiscussPost
+ElasticsearchTest -- Page
+ElasticsearchTest -- NccommunityApplication
+KafkaTest -- Message
+KafkaTest -- NccommunityApplication
+LoggerTest -- NccommunityApplication
+MailTest -- NccommunityApplication
+MailTest -- MailClient
+MaperTest -- DiscussPostMapper
+MaperTest -- LoginTicketMapper
+MaperTest -- MessageMapper
+MaperTest -- UserMapper
+MaperTest -- DiscussPost
+MaperTest -- LoginTicket
+MaperTest -- Message
+MaperTest -- User
+MaperTest -- NccommunityApplication
+NccommunityApplicationTests -- AlphaDao
+NccommunityApplicationTests -- NccommunityApplication
+NccommunityApplicationTests -- AlphaService
+QuartzTest -- NccommunityApplication
+RedisTest -- NccommunityApplication
+SensitiveTest -- NccommunityApplication
+SensitiveTest -- SensitiveFilter
+ThreadPoolTest -- NccommunityApplication
+ThreadPoolTest -- AlphaService
+@enduml

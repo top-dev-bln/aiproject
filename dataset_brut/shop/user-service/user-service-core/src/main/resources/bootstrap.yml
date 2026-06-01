@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: user-service
+  cloud:
+    config:
+      profile: dev
+      discovery:
+        enabled: false
+        service-id: config-server
+
+server:
+  port: 8001

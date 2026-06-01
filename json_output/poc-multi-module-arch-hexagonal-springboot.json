@@ -1,0 +1,53 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the messaging, content management domain. It serves User as its primary actors. The main business capabilities include global default exception handler, person, person service port. Core business data revolves around PersonEntity.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage global default exception handler operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "GlobalDefaultExceptionHandler"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage person operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "KafkaPersonConsumer",
+          "KafkaPersonProducer"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage person service port operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "PersonServicePort"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with kafka person consumer functionality, so that the system fulfills my needs.",
+        "services": [
+          "KafkaPersonConsumer"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with kafka person producer functionality, so that the system fulfills my needs.",
+        "services": [
+          "KafkaPersonProducer"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GlobalDefaultExceptionHandler[\"GlobalDefaultExceptionHandler\"]\n    PersonController[\"PersonController\"]\n    PersonServicePort[\"PersonServicePort\"]\n  end\n  subgraph Services\n    KafkaPersonConsumer[\"KafkaPersonConsumer\"]\n    KafkaPersonProducer[\"KafkaPersonProducer\"]\n  end\n  subgraph Data_Access\n    PersonEntity[\"PersonEntity\"]\n    PersonRepository[\"PersonRepository\"]\n  end\n  subgraph Infrastructure\n    AppBeansConfig[\"AppBeansConfig\"]\n    JaegerConfig[\"JaegerConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

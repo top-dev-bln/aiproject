@@ -1,0 +1,77 @@
+@startuml
+package com.corundumstudio.socketio.spring.boot.handler; {
+class AbstractSocketEventHandler {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot.hooks; {
+class SocketioServerShutdownHook {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot.listener; {
+class JWTAuthorizationListener {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot; {
+class SocketioHazelcastProperties {
+}
+
+class SocketioRedissonConfiguration {
+}
+
+class SocketioRedissonProperties {
+}
+
+class SocketioRedisTemplateConfiguration {
+}
+
+class SocketioRedisTemplateProperties {
+}
+
+class SocketioServerAutoConfiguration {
+}
+
+class SocketioServerProperties {
+}
+
+}
+
+package com.corundumstudio.socketio.store; {
+class RedisTemplateMap {
+}
+
+class RedisTemplatePubSubStore {
+}
+
+class RedisTemplateStore {
+}
+
+class RedisTemplateStoreFactory {
+}
+
+}
+
+package org.redisson.config; {
+class RedissonConfig {
+}
+
+}
+
+SocketioRedissonConfiguration -- SocketioRedissonProperties
+SocketioRedissonConfiguration -- SocketioServerAutoConfiguration
+SocketioRedissonConfiguration -- RedissonConfig
+SocketioRedisTemplateConfiguration -- SocketioRedisTemplateProperties
+SocketioRedisTemplateConfiguration -- SocketioServerAutoConfiguration
+SocketioRedisTemplateConfiguration -- RedisTemplateStore
+SocketioRedisTemplateConfiguration -- RedisTemplateStoreFactory
+SocketioServerAutoConfiguration -- SocketioServerShutdownHook
+SocketioServerAutoConfiguration -- SocketioServerProperties
+RedisTemplateStoreFactory -- RedisTemplateMap
+RedisTemplateStoreFactory -- RedisTemplatePubSubStore
+RedisTemplateStoreFactory -- RedisTemplateStore
+@enduml

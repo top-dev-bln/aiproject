@@ -1,0 +1,81 @@
+@startuml
+
+package com.learnk8s.app {
+  class SpringBootApplicationTests {
+    -QUEUE_NAME : String
+    -broker : EmbeddedActiveMQBroker
+    -queueService : QueueService
+    +configure() : void
+    +setup() : void
+    +testSend() : void
+    +testReceive() : void
+  }
+  class SpringBootApplication {
+    -queueName : String
+    -workerName : String
+    -workerEnabled : boolean
+    -queueService : QueueService
+    +main() : void
+    +configureJmsListeners() : void
+  }
+}
+
+package com.learnk8s.app.controller {
+  class HelloController <<Controller>> {
+    -queueService : QueueService
+    -queueName : String
+    -workerName : String
+    -storeEnabled : boolean
+    -workerEnabled : boolean
+    +home() : String
+    +submit() : String
+    +metrics() : String
+    +health() : ResponseEntity
+  }
+}
+
+package com.learnk8s.app.model {
+  class Ticket {
+    -quantity : long
+    +getQuantity() : long
+    +setQuantity() : void
+  }
+}
+
+package com.learnk8s.app.queue {
+  class QueueConfig {
+    -brokerUrl : String
+    +activeMQConnectionFactory() : ActiveMQConnectionFactory
+    +jmsListenerContainerFactory() : DefaultJmsListenerContainerFactory
+    +cachingConnectionFactory() : CachingConnectionFactory
+    +jmsTemplate() : JmsTemplate
+    +queue() : QueueService
+  }
+  class QueueService {
+    -LOGGER : Logger
+    -jmsTemplate : JmsTemplate
+    -counter : int
+    +completedJobs() : int
+    +send() : void
+    +pendingJobs() : int
+    +isUp() : boolean
+    +onMessage() : void
+  }
+}
+
+package com.learnk8s.app.service {
+  class QueueServiceServiceImplTest {
+    -queueService : QueueService
+  }
+}
+
+' --- Relatii ---
+SpringBootApplicationTests --> QueueService
+QueueServiceServiceImplTest --|> SpringBootApplicationTests
+QueueServiceServiceImplTest --> QueueService
+QueueServiceServiceImplTest --> SpringBootApplicationTests
+SpringBootApplication --> QueueService
+HelloController --> Ticket
+HelloController --> QueueService
+
+@enduml

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Demo</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width" />
+	<base href="/" />
+	<link rel="stylesheet" type="text/css" href="/npm/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/npm/@springio/utils/style.css" />
+	<script async src="/npm/es-module-shims"></script>
+	<script type="importmap">
+		{
+			"imports": {
+				"bootstrap": "/npm/bootstrap",
+				"@popperjs/core": "/npm/@popperjs/core",
+				"chart.js": "/npm/chart.js",
+				"@springio/utils": "/npm/@springio/utils",
+				"react": "/npm/react/umd/react.development.js",
+				"react-dom": "/npm/react-dom/umd/react-dom.development.js",
+				"@babel/standalone": "/npm/@babel/standalone"
+			}
+		}
+	</script>
+	<script type="module">
+		import 'bootstrap';
+		import '@springio/utils';
+		import * as React from 'react';
+		import * as ReactDOM from 'react-dom';
+		import '@babel/standalone';
+	</script>
+</head>
+
+<body>
+	<header>
+		<h1>Demo</h1>
+		<nav class="nav nav-tabs">
+			<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#message" href="#">Message</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#stream" href="#">Stream</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#test" href="#">Test</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#docs" href="#">Docs</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#chart" href="#">Chart</a>
+		</nav>
+	</header>
+	<main>
+		<br />
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="message" role="tabpanel">
+				<div class="container" id="hello"></div>
+			</div>
+			<div class="tab-pane fade" id="stream" role="tabpanel">
+				<div class="container">
+					<div id="load"></div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="test" role="tabpanel">
+				<div class="container" id="root"></div>
+			</div>
+			<div class="tab-pane fade" id="docs" role="tabpanel">
+				<div class="container" title="Content">
+					<div class="content primary">
+						<div class="title">One</div>
+						<div class="content">Some content</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Two</div>
+						<div class="content">Secondary</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Three</div>
+						<div class="content">Third option</div>
+					</div>
+				</div>
+				<div class="container" title="Another">
+					<div class="content primary">
+						<div class="title">One</div>
+						<div class="content">Some more content</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Two</div>
+						<div class="content">Secondary stuff</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Three</div>
+						<div class="content">Third option again</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="chart" role="tabpanel" data-controller="chart">
+				<div class="container">
+					<canvas id="canvas"></canvas>
+				</div>
+				<div class="container" id=chooser>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script type="module">
+		import { Chart, BarController, BarElement, PieController, ArcElement, LinearScale, CategoryScale, Title, Legend } from 'chart.js';
+		Chart.register(BarController, BarElement, PieController, ArcElement, LinearScale, CategoryScale, Title, Legend);
+		window.Chart = Chart;
+	</script>
+
+	<script type="text/babel">
+		class ChartChooser extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = {};
+				this.clear = this.clear.bind(this);
+				this.bar = this.bar.bind(this);
+				this.pie = this.pie.bind(this);
+				this.doughnut = this.doughnut.bind(this);
+			};
+			pops(type, legend) {
+				let chart = this;
+				this.clear();
+				fetch("/pops").then(response => {
+					response.json().then(data => {
+						data.type = type;
+						data.options.plugins.legend.display = legend;
+						chart.setState({ active: new Chart(document.getElementById("canvas"), data) });
+					});
+				});
+			};
+			clear() {
+				if (this.state.active) {
+					this.state.active.destroy();
+				}
+			};
+			bar() {
+				this.pops("bar", false);
+			};
+			pie() {
+				this.pops("pie", true);
+			};
+			doughnut() {
+				this.pops("doughnut", true);
+			};
+			render() {
+				return <div>
+					<button className="btn btn-primary" onClick={this.clear}>Clear</button>
+					<button className="btn btn-primary" onClick={this.bar}>Bar</button>
+					<button className="btn btn-primary" onClick={this.pie}>Pie</button>
+					<button className="btn btn-primary" onClick={this.doughnut}>Doughnut</button>
+				</div>;
+			}
+		}
+		ReactDOM.render(
+			<ChartChooser />,
+			document.getElementById('chooser')
+		);
+	</script>
+
+	<script type="text/babel">
+		class Auth extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { user: 'Unauthenticated' };
+			};
+			componentDidMount() {
+				let hello = this;
+				fetch("/user").then(response => {
+					response.json().then(data => {
+						hello.setState({ user: `Logged in as: ${data.name}` });
+					});
+				});
+			};
+			render() {
+				return <div id="auth">{this.state.user}</div>;
+			}
+		};
+		class Hello extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { name: '', message: '' };
+				this.greet = this.greet.bind(this);
+				this.change = this.change.bind(this);
+			};
+			greet() {
+				this.setState({ message: `Hello ${this.state.name}!` })
+			}
+			change(event) {
+				this.setState({ name: event.target.value })
+			}
+			render() {
+				return <div>
+					<div id="greeting">{this.state.message}</div>
+					<input id="name" name="value" type="text" value={this.state.name} onChange={this.change} />
+					<button className="btn btn-primary" onClick={this.greet}>Greet</button>
+				</div>;
+			}
+		}
+		ReactDOM.render(
+			<div className="container" id="hello">
+				<Auth />
+				<Hello />
+			</div>,
+			document.getElementById('hello')
+		);
+	</script>
+
+	<script type="text/babel">
+		class Content extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { html: '' };
+				this.fetch = this.fetch.bind(this);
+			};
+			fetch() {
+				let hello = this;
+				fetch("/test").then(response => {
+					response.text().then(data => {
+						hello.setState({ html: data });
+					});
+				});
+			}
+			render() {
+				return <div>
+					<div dangerouslySetInnerHTML={{ __html: this.state.html }}></div>
+					<button className="btn btn-primary" onClick={this.fetch}>Fetch</button>
+				</div>;
+			}
+		}
+		ReactDOM.render(
+			<Content />,
+			document.getElementById('root')
+		);
+	</script>
+
+	<script type="module">
+		var events = new EventSource("/stream");
+		events.onmessage = e => {
+			document.getElementById("load").innerHTML = e.data;
+		}
+	</script>
+
+</body>
+
+</html>

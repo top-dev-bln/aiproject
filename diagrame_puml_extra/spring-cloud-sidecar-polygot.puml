@@ -1,0 +1,66 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.barath.app; {
+class ConfigServerApplication {
+}
+
+class ConfigServerApplicationTests {
+}
+
+class Application {
+}
+
+class ApplicationTests {
+}
+
+class EurekaServerApplication {
+}
+
+class EurekaServerApplicationTests {
+}
+
+class Application {
+}
+
+class MsstoreMicroserviceApplicationTests {
+}
+
+class SidecarApplication {
+}
+
+class SidecarApplicationTests {
+}
+
+class ZuulProxyApplication {
+}
+
+class ZuulProxyApplicationTests {
+}
+
+}
+
+ConfigServerApplication -- Application
+ConfigServerApplicationTests -- ConfigServerApplication
+ConfigServerApplicationTests -- Application
+ConfigServerApplicationTests -- ApplicationTests
+ApplicationTests -- Application
+EurekaServerApplication -- Application
+EurekaServerApplicationTests -- Application
+EurekaServerApplicationTests -- ApplicationTests
+EurekaServerApplicationTests -- EurekaServerApplication
+MsstoreMicroserviceApplicationTests -- Application
+MsstoreMicroserviceApplicationTests -- ApplicationTests
+SidecarApplication -- Application
+SidecarApplicationTests -- Application
+SidecarApplicationTests -- ApplicationTests
+SidecarApplicationTests -- SidecarApplication
+ZuulProxyApplication -- Application
+ZuulProxyApplicationTests -- Application
+ZuulProxyApplicationTests -- ApplicationTests
+ZuulProxyApplicationTests -- ZuulProxyApplication
+@enduml

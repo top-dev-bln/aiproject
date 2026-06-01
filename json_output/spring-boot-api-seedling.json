@@ -1,0 +1,56 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include account, role, upload. Core business data revolves around AccountDO. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "AccountService",
+          "AccountServiceImpl"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage role operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "RoleService",
+          "RoleServiceImpl"
+        ],
+        "controllers": [
+          "RoleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage upload operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "UploadController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with abstract functionality, so that the system fulfills my needs.",
+        "services": [
+          "AbstractService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountController[\"AccountController\"]\n    RoleController[\"RoleController\"]\n    UploadController[\"UploadController\"]\n  end\n  subgraph Services\n    AbstractService[\"AbstractService\"]\n    AccountService[\"AccountService\"]\n    AccountServiceImpl[\"AccountServiceImpl\"]\n    RoleService[\"RoleService\"]\n    RoleServiceImpl[\"RoleServiceImpl\"]\n    Service[\"Service\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n  end\n  subgraph Data_Access\n    AccountDO[\"AccountDO\"]\n  end\n  subgraph Security\n    AuthenticationFilter[\"AuthenticationFilter\"]\n    CorsFilter[\"CorsFilter\"]\n    MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n  end\n  subgraph Infrastructure\n    JasyptConfig[\"JasyptConfig\"]\n    RedisCacheConfig[\"RedisCacheConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    Swagger3Config[\"Swagger3Config\"]\n    ValidatorConfig[\"ValidatorConfig\"]\n    WebMvcConfig[\"WebMvcConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

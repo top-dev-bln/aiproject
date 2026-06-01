@@ -1,0 +1,223 @@
+@startuml
+package io.github.whitedg.mybatis.crypto; {
+class AbsEncryptionPlugin {
+}
+
+class EncryptedField {
+}
+
+class EncryptedFieldsProvider {
+}
+
+class EncryptedParamConfig {
+}
+
+class EncryptedParamsProvider {
+}
+
+class EncryptorProvider {
+}
+
+class IEncryptor {
+}
+
+class Mode {
+}
+
+class MybatisCryptoConfig {
+}
+
+class MybatisCryptoException {
+}
+
+class MybatisDecryptionPlugin {
+}
+
+class MybatisEncryptionPlugin {
+}
+
+class MybatisQueryEncryptionPlugin {
+}
+
+class ReflectUtil {
+}
+
+class Util {
+}
+
+class AES256Encryptor {
+}
+
+class Base64Encryptor {
+}
+
+class BasicTextEncryptor {
+}
+
+class CachedTextEncryptor {
+}
+
+class StrongTextEncryptor {
+}
+
+class MyBatisCryptoAutoConfiguration {
+}
+
+class MybatisCryptoInitializer {
+}
+
+class MybatisCryptoProperties {
+}
+
+}
+
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package io.github.whitedg.demo.controller; {
+class AddressController {
+}
+
+class UserController {
+}
+
+}
+
+package io.github.whitedg.demo.encryptor; {
+class MyEncryptor {
+}
+
+}
+
+package io.github.whitedg.demo.entity; {
+class Address {
+}
+
+class BaseEntity {
+}
+
+class IdCard {
+}
+
+class SimpleUser {
+}
+
+class User {
+}
+
+class UserWithAssociation {
+}
+
+}
+
+package io.github.whitedg.demo.mapper; {
+class AddressMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package io.github.whitedg.demo; {
+class MybatisCryptoDemoApplication {
+}
+
+class MybatisCryptoDemoApplicationTests {
+}
+
+}
+
+AbsEncryptionPlugin -- EncryptedField
+AbsEncryptionPlugin -- EncryptedFieldsProvider
+AbsEncryptionPlugin -- EncryptedParamConfig
+AbsEncryptionPlugin -- EncryptedParamsProvider
+AbsEncryptionPlugin -- EncryptorProvider
+AbsEncryptionPlugin -- IEncryptor
+AbsEncryptionPlugin -- Mode
+AbsEncryptionPlugin -- MybatisCryptoConfig
+AbsEncryptionPlugin -- MybatisCryptoException
+AbsEncryptionPlugin -- MybatisEncryptionPlugin
+AbsEncryptionPlugin -- Util
+EncryptedField -- IEncryptor
+EncryptedFieldsProvider -- EncryptedField
+EncryptedFieldsProvider -- ReflectUtil
+EncryptedFieldsProvider -- Util
+EncryptedParamConfig -- EncryptedField
+EncryptedParamConfig -- IEncryptor
+EncryptedParamsProvider -- EncryptedField
+EncryptedParamsProvider -- EncryptedParamConfig
+EncryptedParamsProvider -- IEncryptor
+EncryptedParamsProvider -- MybatisCryptoException
+EncryptedParamsProvider -- Util
+EncryptorProvider -- EncryptedField
+EncryptorProvider -- IEncryptor
+EncryptorProvider -- MybatisCryptoException
+MybatisCryptoConfig -- IEncryptor
+MybatisDecryptionPlugin -- EncryptedField
+MybatisDecryptionPlugin -- EncryptedFieldsProvider
+MybatisDecryptionPlugin -- EncryptorProvider
+MybatisDecryptionPlugin -- IEncryptor
+MybatisDecryptionPlugin -- MybatisCryptoConfig
+MybatisDecryptionPlugin -- MybatisCryptoException
+MybatisDecryptionPlugin -- Util
+MybatisEncryptionPlugin -- MybatisCryptoConfig
+MybatisQueryEncryptionPlugin -- AbsEncryptionPlugin
+MybatisQueryEncryptionPlugin -- MybatisCryptoConfig
+ReflectUtil -- Util
+Util -- EncryptedField
+Util -- IEncryptor
+Util -- Mode
+AddressController -- Address
+AddressController -- AddressMapper
+UserController -- User
+UserController -- UserWithAssociation
+UserController -- UserMapper
+MyEncryptor -- IEncryptor
+Address -- EncryptedField
+Address -- BaseEntity
+Address -- AES256Encryptor
+IdCard -- EncryptedField
+SimpleUser -- EncryptedField
+SimpleUser -- MyEncryptor
+SimpleUser -- BaseEntity
+SimpleUser -- User
+User -- EncryptedField
+User -- Base64Encryptor
+User -- StrongTextEncryptor
+UserWithAssociation -- EncryptedField
+UserWithAssociation -- Address
+UserWithAssociation -- IdCard
+UserWithAssociation -- SimpleUser
+UserWithAssociation -- User
+UserWithAssociation -- Base64Encryptor
+UserWithAssociation -- StrongTextEncryptor
+AddressMapper -- Address
+UserMapper -- EncryptedField
+UserMapper -- MyEncryptor
+UserMapper -- IdCard
+UserMapper -- User
+UserMapper -- UserWithAssociation
+MybatisCryptoDemoApplicationTests -- MybatisCryptoDemoApplication
+AES256Encryptor -- CachedTextEncryptor
+Base64Encryptor -- IEncryptor
+BasicTextEncryptor -- CachedTextEncryptor
+CachedTextEncryptor -- IEncryptor
+StrongTextEncryptor -- CachedTextEncryptor
+MyBatisCryptoAutoConfiguration -- MybatisCryptoConfig
+MyBatisCryptoAutoConfiguration -- MybatisDecryptionPlugin
+MyBatisCryptoAutoConfiguration -- MybatisEncryptionPlugin
+MyBatisCryptoAutoConfiguration -- MybatisQueryEncryptionPlugin
+MyBatisCryptoAutoConfiguration -- MybatisCryptoInitializer
+MyBatisCryptoAutoConfiguration -- MybatisCryptoProperties
+MybatisCryptoInitializer -- EncryptedField
+MybatisCryptoInitializer -- EncryptedFieldsProvider
+MybatisCryptoInitializer -- EncryptorProvider
+MybatisCryptoInitializer -- IEncryptor
+MybatisCryptoInitializer -- Util
+MybatisCryptoProperties -- IEncryptor
+MybatisCryptoProperties -- MybatisCryptoConfig
+@enduml

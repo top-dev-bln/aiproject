@@ -1,0 +1,300 @@
+@startuml
+
+package com.farukgenc.boilerplate.springboot {
+  class SpringBootBoilerplateApplication {
+    +main() : void
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.configuration {
+  class MessageConfiguration {
+    -messageSource : ReloadableResourceBundleMessageSource
+    -messageSource : ReloadableResourceBundleMessageSource
+    -messageSource : ReloadableResourceBundleMessageSource
+    -bean : LocalValidatorFactoryBean
+    +validationMessageSource() : MessageSource
+    +getValidator() : LocalValidatorFactoryBean
+  }
+  class PasswordEncoderConfiguration {
+    +encoder() : BCryptPasswordEncoder
+  }
+  class SwaggerConfiguration {
+    -appName : String
+    -appDescription : String
+    -appVersion : String
+    -appLicense : String
+    -appLicenseUrl : String
+    -contactName : String
+    -contactUrl : String
+    -contactMail : String
+    -apiInformation : Info
+    -components : Components
+    +openAPI() : OpenAPI
+  }
+  class SecurityConfiguration {
+    -jwtAuthenticationFilter : JwtAuthenticationFilter
+    -unauthorizedHandler : JwtAuthenticationEntryPoint
+    -authenticationConfiguration : AuthenticationConfiguration
+    +authenticationManager() : AuthenticationManager
+    +securityFilterChain() : SecurityFilterChain
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.controller {
+  class HelloController <<Controller>> {
+    +sayHello() : ResponseEntity<String>
+  }
+  class RegistrationController <<Controller>> {
+    -userService : UserService
+    -registrationResponse : RegistrationResponse
+    +registrationRequest() : ResponseEntity<RegistrationResponse>
+  }
+  class LoginController <<Controller>> {
+    -jwtTokenService : JwtTokenService
+    -loginResponse : LoginResponse
+    +loginRequest() : ResponseEntity<LoginResponse>
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.exceptions {
+  class ValidationErrorResponse {
+    -status : HttpStatus
+    -time : LocalDateTime
+    -message : List<String>
+  }
+  class LoginControllerAdvice {
+    -response : ApiExceptionResponse
+  }
+  class RegistrationException {
+    -errorMessage : String
+  }
+  class RegistrationControllerAdvice {
+    -response : ApiExceptionResponse
+  }
+  class ValidationAdvice {
+    -fieldErrors : List<FieldError>
+    -errorList : List<String>
+    -validationErrorResponse : ValidationErrorResponse
+    +handleMethodArgumentNotValidException() : ResponseEntity<ValidationErrorResponse>
+  }
+  class ApiExceptionResponse {
+    -message : String
+    -status : HttpStatus
+    -time : LocalDateTime
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.model {
+  enum UserRole {
+  }
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -username : String
+    -password : String
+    -email : String
+    -userRole : UserRole
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.repository {
+  interface UserRepository {
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.security.dto {
+  class RegistrationRequest {
+    -name : String
+    -email : String
+    -username : String
+    -password : String
+  }
+  class AuthenticatedUserDto {
+    -name : String
+    -username : String
+    -password : String
+    -userRole : UserRole
+  }
+  class LoginRequest {
+    -username : String
+    -password : String
+  }
+  class LoginResponse {
+    -token : String
+  }
+  class RegistrationResponse {
+    -message : String
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.security.jwt {
+  class JwtTokenService <<Service>> {
+    -userService : UserService
+    -jwtTokenManager : JwtTokenManager
+    -authenticationManager : AuthenticationManager
+    -username : String
+    -password : String
+    -usernamePasswordAuthenticationToken : UsernamePasswordAuthenticationToken
+    -authenticatedUserDto : AuthenticatedUserDto
+    -user : User
+    -token : String
+    +getLoginResponse() : LoginResponse
+  }
+  class JwtProperties {
+    -issuer : String
+    -secretKey : String
+    -expirationMinute : long
+  }
+  class JwtAuthenticationEntryPoint {
+    +commence() : void
+  }
+  class JwtTokenManager {
+    -jwtProperties : JwtProperties
+    -username : String
+    -userRole : UserRole
+    -decodedJWT : DecodedJWT
+    -usernameFromToken : String
+    -equalsUsername : boolean
+    -tokenExpired : boolean
+    -expirationDateFromToken : Date
+    -decodedJWT : DecodedJWT
+    -jwtVerifier : JWTVerifier
+    +generateToken() : String
+    +getUsernameFromToken() : String
+    +validateToken() : boolean
+  }
+  class JwtAuthenticationFilter <<Service>> {
+    -jwtTokenManager : JwtTokenManager
+    -userDetailsService : UserDetailsServiceImpl
+    -header : String
+    -securityContext : SecurityContext
+    -canBeStartTokenValidation : boolean
+    -user : UserDetails
+    -validToken : boolean
+    -authentication : UsernamePasswordAuthenticationToken
+    +doFilterInternal() : void
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.security.mapper {
+  interface UserMapper {
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.security.service {
+  interface UserService {
+  }
+  class UserServiceImpl <<Service>> {
+    -REGISTRATION_SUCCESSFUL : String
+    -userRepository : UserRepository
+    -bCryptPasswordEncoder : BCryptPasswordEncoder
+    -userValidationService : UserValidationService
+    -generalMessageAccessor : GeneralMessageAccessor
+    -user : User
+    -username : String
+    -registrationSuccessMessage : String
+    -user : User
+    +findByUsername() : User
+    +registration() : RegistrationResponse
+    +findAuthenticatedUserByUsername() : AuthenticatedUserDto
+  }
+  class UserDetailsServiceImpl <<Service>> {
+    -USERNAME_OR_PASSWORD_INVALID : String
+    -userService : UserService
+    -authenticatedUser : AuthenticatedUserDto
+    -authenticatedUsername : String
+    -authenticatedPassword : String
+    -userRole : UserRole
+    -grantedAuthority : SimpleGrantedAuthority
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.security.utils {
+  class SecurityConstants {
+    -TOKEN_PREFIX : String
+    -HEADER_STRING : String
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.service {
+  class UserValidationService <<Service>> {
+    -EMAIL_ALREADY_EXISTS : String
+    -USERNAME_ALREADY_EXISTS : String
+    -userRepository : UserRepository
+    -exceptionMessageAccessor : ExceptionMessageAccessor
+    -email : String
+    -username : String
+    -existsByUsername : boolean
+    -existsUsername : String
+    -existsByEmail : boolean
+    -existsEmail : String
+    +validateUser() : void
+  }
+}
+
+package com.farukgenc.boilerplate.springboot.utils {
+  class GeneralMessageAccessor <<Service>> {
+    -messageSource : MessageSource
+    +getMessage() : String
+  }
+  class ExceptionMessageAccessor <<Service>> {
+    -messageSource : MessageSource
+    +getMessage() : String
+  }
+  class ProjectConstants {
+    -DEFAULT_ENCODING : String
+    -TURKISH_LOCALE : Locale
+  }
+}
+
+' --- Relatii ---
+MessageConfiguration --> ProjectConstants
+SecurityConfiguration --> JwtAuthenticationEntryPoint
+SecurityConfiguration --> JwtAuthenticationFilter
+UserRepository --> User
+AuthenticatedUserDto --> UserRole
+JwtTokenService --> UserMapper
+JwtTokenService --> UserService
+JwtTokenService --> User
+JwtTokenService --> AuthenticatedUserDto
+JwtTokenService --> LoginRequest
+JwtTokenService --> LoginResponse
+JwtTokenManager --> User
+JwtTokenManager --> UserRole
+JwtAuthenticationFilter --> UserDetailsServiceImpl
+JwtAuthenticationFilter --> SecurityConstants
+UserMapper --> User
+UserMapper --> AuthenticatedUserDto
+UserMapper --> RegistrationRequest
+UserService --> User
+UserService --> AuthenticatedUserDto
+UserService --> RegistrationRequest
+UserService --> RegistrationResponse
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRole
+UserServiceImpl --> UserRepository
+UserServiceImpl --> AuthenticatedUserDto
+UserServiceImpl --> RegistrationRequest
+UserServiceImpl --> RegistrationResponse
+UserServiceImpl --> UserMapper
+UserServiceImpl --> UserValidationService
+UserServiceImpl --> GeneralMessageAccessor
+UserDetailsServiceImpl --> UserRole
+UserDetailsServiceImpl --> AuthenticatedUserDto
+UserDetailsServiceImpl --> User
+LoginControllerAdvice --> LoginController
+RegistrationControllerAdvice --> RegistrationController
+RegistrationController --> RegistrationRequest
+RegistrationController --> RegistrationResponse
+RegistrationController --> UserService
+LoginController --> LoginRequest
+LoginController --> LoginResponse
+LoginController --> JwtTokenService
+UserValidationService --> ExceptionMessageAccessor
+UserValidationService --> RegistrationException
+UserValidationService --> UserRepository
+UserValidationService --> RegistrationRequest
+
+@enduml

@@ -1,0 +1,52 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include public users, secured users, token service. Core business data revolves around User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "PublicUsersController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "UserAuthenticationService"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage public users operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "PublicUsersController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage secured users operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "SecuredUsersController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to manage token service operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "JWTTokenService"
+        ],
+        "controllers": [
+          "TokenService"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    PublicUsersController[\"PublicUsersController\"]\n    SecuredUsersController[\"SecuredUsersController\"]\n    TokenService[\"TokenService\"]\n    UserAuthenticationService[\"UserAuthenticationService\"]\n    UserCrudService[\"UserCrudService\"]\n  end\n  subgraph Services\n    DateService[\"DateService\"]\n    InMemoryUsers[\"InMemoryUsers\"]\n    JWTTokenService[\"JWTTokenService\"]\n    JodaDateService[\"JodaDateService\"]\n    TokenAuthenticationService[\"TokenAuthenticationService\"]\n    UUIDAuthenticationService[\"UUIDAuthenticationService\"]\n  end\n  subgraph Data_Access\n    User[\"User\"]\n  end\n  subgraph Security\n    SecurityConfig[\"SecurityConfig\"]\n    TokenAuthenticationFilter[\"TokenAuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    DateServiceConfig[\"DateServiceConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

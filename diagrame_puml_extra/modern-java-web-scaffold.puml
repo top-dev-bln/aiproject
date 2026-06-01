@@ -1,0 +1,105 @@
+@startuml
+package org.lavenderx.config; {
+class RootConfig {
+}
+
+class SimpleStartupRunner {
+}
+
+class WebConfig {
+}
+
+}
+
+package org.lavenderx.controller; {
+class ApiBaseController {
+}
+
+class BaseController {
+}
+
+class UserController {
+}
+
+}
+
+package org.lavenderx.filter; {
+class StatelessJwtFilter {
+}
+
+}
+
+package org.lavenderx.http; {
+class BaseRequest {
+}
+
+class BaseResponse {
+}
+
+class ErrorResponse {
+}
+
+}
+
+package org.lavenderx.model.dao.impl; {
+class UserDAOImpl {
+}
+
+}
+
+package org.lavenderx.model.dao; {
+class UserDAO {
+}
+
+}
+
+package org.lavenderx.model.entity; {
+class AbstractId {
+}
+
+class UserEntity {
+}
+
+}
+
+package org.lavenderx.model.mapper; {
+class UerMapper {
+}
+
+}
+
+package org.lavenderx.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package org.lavenderx.service; {
+class UserService {
+}
+
+}
+
+package org.lavenderx; {
+class WebAppBoot {
+}
+
+}
+
+WebConfig -- RootConfig
+WebConfig -- StatelessJwtFilter
+ApiBaseController -- BaseController
+ApiBaseController -- BaseResponse
+BaseController -- BaseResponse
+BaseController -- ErrorResponse
+UserController -- BaseController
+UserController -- UserService
+ErrorResponse -- BaseResponse
+UserDAOImpl -- UserDAO
+UserDAOImpl -- UserEntity
+UserDAO -- UserEntity
+UserEntity -- AbstractId
+UerMapper -- UserEntity
+UserServiceImpl -- UserDAO
+UserServiceImpl -- UserService
+@enduml

@@ -1,0 +1,1091 @@
+@startuml
+package com.banksolution.account.cmd.client; {
+class CustomerServiceClient {
+}
+
+}
+
+package com.banksolution.account.cmd; {
+class CommandApplication {
+}
+
+}
+
+package com.banksolution.account.cmd.commands.accounting; {
+class AccountCommandHandler {
+}
+
+class IAccountCommandHandler {
+}
+
+class OpenAccountCommand {
+}
+
+}
+
+package com.banksolution.account.cmd.commands.transaction; {
+class ITransactionCommandHandler {
+}
+
+class TransactionCommand {
+}
+
+class TransactionCommandHandler {
+}
+
+}
+
+package com.banksolution.account.cmd.configuration; {
+class JacksonConfig {
+}
+
+class RabbitMQConfig {
+}
+
+}
+
+package com.banksolution.account.cmd.controllers; {
+class AccountController {
+}
+
+class AccountTransactionController {
+}
+
+}
+
+package com.banksolution.account.cmd.domain; {
+class AccountAggregate {
+}
+
+class AccountBalance {
+}
+
+class AccountTransaction {
+}
+
+class EventModel {
+}
+
+}
+
+package com.banksolution.account.cmd.dto; {
+class AccountBalanceResponse {
+}
+
+class ErrorResponse {
+}
+
+class OpenAccountResponse {
+}
+
+class TransactionCreateResponse {
+}
+
+}
+
+package com.banksolution.account.cmd.dto.request; {
+class AccountCreateRequest {
+}
+
+class AccountTransactionRequest {
+}
+
+}
+
+package com.banksolution.account.cmd.factory.account; {
+class AccountBalanceEventFactory {
+}
+
+class AccountBalanceFactory {
+}
+
+class AccountBalanceResponseFactory {
+}
+
+class AccountOpenedEventFactory {
+}
+
+class FundsDepositedEventFactory {
+}
+
+class FundsWithDrawnEventFactory {
+}
+
+class OpenAccountResponseFactory {
+}
+
+class AccountBalanceEventFactoryTest {
+}
+
+class AccountBalanceFactoryTest {
+}
+
+class AccountBalanceResponseFactoryTest {
+}
+
+class AccountOpenedEventFactoryTest {
+}
+
+class FundsDepositedEventFactoryTest {
+}
+
+class FundsWithDrawnEventFactoryTest {
+}
+
+class OpenAccountResponseFactoryTest {
+}
+
+}
+
+package com.banksolution.account.cmd.factory; {
+class EventModelFactory {
+}
+
+}
+
+package com.banksolution.account.cmd.factory.transaction; {
+class TransactionCreatedEventFactory {
+}
+
+class TransactionCreateResponseFactory {
+}
+
+class TransactionFailedEventFactory {
+}
+
+class TransactionCreatedEventFactoryTest {
+}
+
+class TransactionCreateResponseFactoryTest {
+}
+
+}
+
+package com.banksolution.account.cmd.infrastructure.accounting; {
+class AccountEventProducer {
+}
+
+class AccountEventSourcingHandler {
+}
+
+class AccountEventStore {
+}
+
+}
+
+package com.banksolution.account.cmd.infrastructure; {
+class BaseCommandDispatcher {
+}
+
+}
+
+package com.banksolution.account.cmd.infrastructure.transaction; {
+class TransactionEventProducer {
+}
+
+class TransactionEventSourcingHandler {
+}
+
+class TransactionEventStore {
+}
+
+}
+
+package com.banksolution.account.cmd.repository; {
+class EventStoreRepository {
+}
+
+}
+
+package com.banksolution.account.cmd.fixtures.account; {
+class AccountBalanceEventFixtures {
+}
+
+class AccountBalanceFixtures {
+}
+
+class AccountBalanceResponseFixtures {
+}
+
+class AccountOpenedEventFixtures {
+}
+
+class FundsDepositedEventFixtures {
+}
+
+class FundsWithDrawnEventFixtures {
+}
+
+class OpenAccountCommandFixtures {
+}
+
+class OpenAccountResponseFixtures {
+}
+
+}
+
+package com.banksolution.account.cmd.fixtures.transaction; {
+class TransactionCommandFixtures {
+}
+
+class TransactionCreatedEventFixtures {
+}
+
+class TransactionCreateResponseFixtures {
+}
+
+}
+
+package com.banksolution.account.query.configuration; {
+class MyBatisConfig {
+}
+
+class RabbitMQConfig {
+}
+
+}
+
+package com.banksolution.account.query.controllers; {
+class AccountController {
+}
+
+class AccountTransactionController {
+}
+
+}
+
+package com.banksolution.account.query.domain; {
+class Account {
+}
+
+class AccountBalance {
+}
+
+class AccountTransaction {
+}
+
+}
+
+package com.banksolution.account.query.dto; {
+class AccountResponse {
+}
+
+class BalanceResponse {
+}
+
+}
+
+package com.banksolution.account.query.factory.account; {
+class AccountBalanceFactory {
+}
+
+class AccountFactory {
+}
+
+class AccountResponseFactory {
+}
+
+class BalanceResponseFactory {
+}
+
+}
+
+package com.banksolution.account.query.factory.transaction; {
+class AccountTransactionFactory {
+}
+
+}
+
+package com.banksolution.account.query.infrastructure; {
+class BaseQueryDispatcher {
+}
+
+}
+
+package com.banksolution.account.query.infrastructure.consumers.accounting; {
+class AccountEventConsumer {
+}
+
+class IAccountEventConsumer {
+}
+
+}
+
+package com.banksolution.account.query.infrastructure.consumers.transaction; {
+class ITransactionEventConsumer {
+}
+
+class TransactionEventConsumer {
+}
+
+}
+
+package com.banksolution.account.query.infrastructure.handlers.accounting; {
+class AccountEventHandler {
+}
+
+class IAccountEventHandler {
+}
+
+}
+
+package com.banksolution.account.query.infrastructure.handlers.transaction; {
+class ITransactionEventHandler {
+}
+
+class TransactionEventHandler {
+}
+
+}
+
+package com.banksolution.account.query.mappers; {
+class AccountBalanceMapper {
+}
+
+class AccountMapper {
+}
+
+class TransactionMapper {
+}
+
+}
+
+package com.banksolution.account.query.queries.accounting; {
+class AccountQueryHandler {
+}
+
+class FindAccountByIdQuery {
+}
+
+class FindAllAccountsQuery {
+}
+
+class IAccountQueryHandler {
+}
+
+}
+
+package com.banksolution.account.query.queries.transaction; {
+class FindAllTransactionsByAccountIdQuery {
+}
+
+class ITransactionQueryHandler {
+}
+
+class TransactionQueryHandler {
+}
+
+}
+
+package com.banksolution.account.query; {
+class QueryApplication {
+}
+
+}
+
+package com.banksolution.common.constants; {
+class Constants {
+}
+
+}
+
+package com.banksolution.common.dto; {
+class BaseResponse {
+}
+
+}
+
+package com.banksolution.common.enums; {
+class TransactionDirection {
+}
+
+class TransactionStatus {
+}
+
+}
+
+package com.banksolution.common.events; {
+class AccountBalanceEvent {
+}
+
+class AccountOpenedEvent {
+}
+
+class CustomerCreatedEvent {
+}
+
+class FundsDepositedEvent {
+}
+
+class FundsWithDrawnEvent {
+}
+
+class TransactionCreatedEvent {
+}
+
+class TransactionFailedEvent {
+}
+
+}
+
+package com.banksolution.common.exceptions; {
+class AccountAlreadyExists {
+}
+
+class AccountBalanceNotFoundException {
+}
+
+class AccountNotFoundException {
+}
+
+class AggregateNotFoundException {
+}
+
+class ConcurrencyException {
+}
+
+class CurrencyNotSupportedException {
+}
+
+class CustomerNotFoundException {
+}
+
+class InsufficientFundsException {
+}
+
+class InvaildDirectionException {
+}
+
+class TransactionAmountException {
+}
+
+class TransactionDescriptonException {
+}
+
+class TransactionNotFoundException {
+}
+
+}
+
+package com.banksolution.common.utils; {
+class GenerateUuidUtils {
+}
+
+class ObjectMapperUtils {
+}
+
+}
+
+package com.banksolution.common.validation; {
+class ValidationHelper {
+}
+
+}
+
+package com.banksolution.cqrs.core.commands; {
+class BaseCommand {
+}
+
+class CommandHandlerMethod {
+}
+
+}
+
+package com.banksolution.cqrs.core.domain; {
+class AggregateRoot {
+}
+
+class BaseEntity {
+}
+
+}
+
+package com.banksolution.cqrs.core.events; {
+class BaseEvent {
+}
+
+}
+
+package com.banksolution.cqrs.core.generics; {
+class GenericResponse {
+}
+
+class ResponseModel {
+}
+
+class ResponseStatus {
+}
+
+}
+
+package com.banksolution.cqrs.core.handlers; {
+class EventSourcingHandler {
+}
+
+}
+
+package com.banksolution.cqrs.core.infrastructure; {
+class CommandDispatcher {
+}
+
+class EventStore {
+}
+
+class QueryDispatcher {
+}
+
+}
+
+package com.banksolution.cqrs.core.messages; {
+class Message {
+}
+
+}
+
+package com.banksolution.cqrs.core.producers; {
+class EventProducer {
+}
+
+}
+
+package com.banksolution.cqrs.core.queries; {
+class BaseQuery {
+}
+
+class QueryHandlerMethod {
+}
+
+}
+
+package com.banksolution.customer.configuration; {
+class MyBatisConfig {
+}
+
+}
+
+package com.banksolution.customer.controllers; {
+class CustomerController {
+}
+
+}
+
+package com.banksolution.customer; {
+class CustomerApplication {
+}
+
+}
+
+package com.banksolution.customer.dto.request; {
+class CustomerCreateRequest {
+}
+
+}
+
+package com.banksolution.customer.dto.response; {
+class CustomerResponse {
+}
+
+}
+
+package com.banksolution.customer.mapper; {
+class CustomerMapper {
+}
+
+}
+
+package com.banksolution.customer.model; {
+class Customer {
+}
+
+}
+
+package com.banksolution.customer.process; {
+class CustomerProcess {
+}
+
+}
+
+package com.banksolution.customer.service; {
+class CustomerService {
+}
+
+class ICustomerService {
+}
+
+}
+
+CustomerServiceClient -- Customer
+CustomerServiceClient -- CustomerService
+CommandApplication -- AccountCommandHandler
+CommandApplication -- IAccountCommandHandler
+CommandApplication -- OpenAccountCommand
+CommandApplication -- ITransactionCommandHandler
+CommandApplication -- TransactionCommand
+CommandApplication -- TransactionCommandHandler
+CommandApplication -- Account
+CommandApplication -- CommandDispatcher
+AccountCommandHandler -- CustomerServiceClient
+AccountCommandHandler -- IAccountCommandHandler
+AccountCommandHandler -- OpenAccountCommand
+AccountCommandHandler -- AccountAggregate
+AccountCommandHandler -- AccountBalance
+AccountCommandHandler -- OpenAccountResponse
+AccountCommandHandler -- OpenAccountResponseFactory
+AccountCommandHandler -- Account
+AccountCommandHandler -- AccountResponse
+AccountCommandHandler -- AccountResponseFactory
+AccountCommandHandler -- CurrencyNotSupportedException
+AccountCommandHandler -- CustomerNotFoundException
+AccountCommandHandler -- ValidationHelper
+AccountCommandHandler -- GenericResponse
+AccountCommandHandler -- ResponseModel
+AccountCommandHandler -- ResponseStatus
+AccountCommandHandler -- EventSourcingHandler
+AccountCommandHandler -- Customer
+AccountCommandHandler -- CustomerService
+IAccountCommandHandler -- OpenAccountCommand
+IAccountCommandHandler -- Account
+IAccountCommandHandler -- ResponseModel
+OpenAccountCommand -- Account
+OpenAccountCommand -- BaseCommand
+ITransactionCommandHandler -- TransactionCommand
+ITransactionCommandHandler -- TransactionCommandHandler
+ITransactionCommandHandler -- ResponseModel
+TransactionCommand -- TransactionDirection
+TransactionCommand -- BaseCommand
+TransactionCommandHandler -- TransactionCommand
+TransactionCommandHandler -- AccountAggregate
+TransactionCommandHandler -- AccountBalance
+TransactionCommandHandler -- AccountTransaction
+TransactionCommandHandler -- TransactionCreateResponse
+TransactionCommandHandler -- TransactionCreateResponseFactory
+TransactionCommandHandler -- Account
+TransactionCommandHandler -- TransactionDirection
+TransactionCommandHandler -- AccountBalanceNotFoundException
+TransactionCommandHandler -- AccountNotFoundException
+TransactionCommandHandler -- CurrencyNotSupportedException
+TransactionCommandHandler -- InsufficientFundsException
+TransactionCommandHandler -- InvaildDirectionException
+TransactionCommandHandler -- TransactionAmountException
+TransactionCommandHandler -- TransactionDescriptonException
+TransactionCommandHandler -- ValidationHelper
+TransactionCommandHandler -- GenericResponse
+TransactionCommandHandler -- ResponseModel
+TransactionCommandHandler -- ResponseStatus
+TransactionCommandHandler -- EventSourcingHandler
+RabbitMQConfig -- Constants
+RabbitMQConfig -- Message
+AccountController -- Account
+AccountController -- FindAccountByIdQuery
+AccountController -- FindAllAccountsQuery
+AccountController -- ResponseModel
+AccountController -- QueryDispatcher
+AccountTransactionController -- AccountTransaction
+AccountTransactionController -- Account
+AccountTransactionController -- FindAllTransactionsByAccountIdQuery
+AccountTransactionController -- ResponseModel
+AccountTransactionController -- QueryDispatcher
+AccountAggregate -- OpenAccountCommand
+AccountAggregate -- TransactionCommand
+AccountAggregate -- AccountBalance
+AccountAggregate -- AccountBalanceEventFactory
+AccountAggregate -- AccountBalanceFactory
+AccountAggregate -- AccountOpenedEventFactory
+AccountAggregate -- FundsDepositedEventFactory
+AccountAggregate -- FundsWithDrawnEventFactory
+AccountAggregate -- Account
+AccountAggregate -- AccountBalanceEvent
+AccountAggregate -- AccountOpenedEvent
+AccountAggregate -- FundsDepositedEvent
+AccountAggregate -- FundsWithDrawnEvent
+AccountAggregate -- AccountAlreadyExists
+AccountAggregate -- AccountBalanceNotFoundException
+AccountAggregate -- InsufficientFundsException
+AccountAggregate -- AggregateRoot
+AccountAggregate -- Customer
+AccountBalance -- Account
+AccountBalance -- BaseEvent
+AccountTransaction -- Account
+AccountTransaction -- BaseEntity
+EventModel -- BaseEvent
+AccountBalanceResponse -- AccountBalance
+AccountBalanceResponse -- Account
+AccountBalanceResponse -- BalanceResponse
+ErrorResponse -- BaseResponse
+OpenAccountResponse -- AccountBalance
+OpenAccountResponse -- AccountBalanceResponse
+OpenAccountResponse -- Account
+OpenAccountResponse -- AccountResponse
+OpenAccountResponse -- BalanceResponse
+AccountCreateRequest -- Account
+AccountTransactionRequest -- AccountTransaction
+AccountTransactionRequest -- Account
+AccountTransactionRequest -- TransactionDirection
+TransactionCreateResponse -- TransactionDirection
+AccountBalanceEventFactory -- AccountBalance
+AccountBalanceEventFactory -- Account
+AccountBalanceEventFactory -- AccountBalanceEvent
+AccountBalanceEventFactory -- Customer
+AccountBalanceFactory -- AccountBalance
+AccountBalanceFactory -- Account
+AccountBalanceFactory -- AccountBalanceEvent
+AccountBalanceFactory -- Customer
+AccountBalanceResponseFactory -- AccountBalance
+AccountBalanceResponseFactory -- AccountBalanceResponse
+AccountBalanceResponseFactory -- Account
+AccountBalanceResponseFactory -- BalanceResponse
+AccountBalanceResponseFactory -- BalanceResponseFactory
+AccountOpenedEventFactory -- OpenAccountCommand
+AccountOpenedEventFactory -- Account
+AccountOpenedEventFactory -- AccountOpenedEvent
+AccountOpenedEventFactory -- Customer
+FundsDepositedEventFactory -- TransactionCommand
+FundsDepositedEventFactory -- Account
+FundsDepositedEventFactory -- FundsDepositedEvent
+FundsWithDrawnEventFactory -- TransactionCommand
+FundsWithDrawnEventFactory -- Account
+FundsWithDrawnEventFactory -- FundsWithDrawnEvent
+OpenAccountResponseFactory -- AccountAggregate
+OpenAccountResponseFactory -- AccountBalance
+OpenAccountResponseFactory -- AccountBalanceResponse
+OpenAccountResponseFactory -- OpenAccountResponse
+OpenAccountResponseFactory -- AccountBalanceResponseFactory
+OpenAccountResponseFactory -- Account
+OpenAccountResponseFactory -- AccountResponse
+OpenAccountResponseFactory -- BalanceResponse
+OpenAccountResponseFactory -- AccountResponseFactory
+OpenAccountResponseFactory -- BalanceResponseFactory
+OpenAccountResponseFactory -- Customer
+EventModelFactory -- AccountAggregate
+EventModelFactory -- EventModel
+EventModelFactory -- Account
+EventModelFactory -- BaseEvent
+TransactionCreatedEventFactory -- TransactionCommand
+TransactionCreatedEventFactory -- Account
+TransactionCreatedEventFactory -- TransactionStatus
+TransactionCreatedEventFactory -- TransactionCreatedEvent
+TransactionCreateResponseFactory -- AccountTransaction
+TransactionCreateResponseFactory -- TransactionCreateResponse
+TransactionCreateResponseFactory -- Account
+TransactionFailedEventFactory -- TransactionCommand
+TransactionFailedEventFactory -- Account
+TransactionFailedEventFactory -- TransactionStatus
+TransactionFailedEventFactory -- TransactionFailedEvent
+AccountEventProducer -- Account
+AccountEventProducer -- BaseEvent
+AccountEventProducer -- EventProducer
+AccountEventSourcingHandler -- AccountAggregate
+AccountEventSourcingHandler -- Account
+AccountEventSourcingHandler -- AggregateRoot
+AccountEventSourcingHandler -- BaseEvent
+AccountEventSourcingHandler -- EventSourcingHandler
+AccountEventSourcingHandler -- EventStore
+AccountEventSourcingHandler -- EventProducer
+AccountEventStore -- AccountAggregate
+AccountEventStore -- EventModel
+AccountEventStore -- EventStoreRepository
+AccountEventStore -- Account
+AccountEventStore -- AggregateNotFoundException
+AccountEventStore -- ConcurrencyException
+AccountEventStore -- BaseEvent
+AccountEventStore -- EventStore
+AccountEventStore -- EventProducer
+BaseCommandDispatcher -- BaseCommand
+BaseCommandDispatcher -- CommandHandlerMethod
+BaseCommandDispatcher -- ResponseModel
+BaseCommandDispatcher -- CommandDispatcher
+TransactionEventProducer -- BaseEvent
+TransactionEventProducer -- EventProducer
+TransactionEventSourcingHandler -- AccountTransaction
+TransactionEventSourcingHandler -- Account
+TransactionEventSourcingHandler -- TransactionNotFoundException
+TransactionEventSourcingHandler -- AggregateRoot
+TransactionEventSourcingHandler -- BaseEvent
+TransactionEventSourcingHandler -- EventSourcingHandler
+TransactionEventSourcingHandler -- EventStore
+TransactionEventSourcingHandler -- EventProducer
+TransactionEventStore -- EventModel
+TransactionEventStore -- EventModelFactory
+TransactionEventStore -- EventStoreRepository
+TransactionEventStore -- AggregateNotFoundException
+TransactionEventStore -- ConcurrencyException
+TransactionEventStore -- BaseEvent
+TransactionEventStore -- EventStore
+TransactionEventStore -- EventProducer
+EventStoreRepository -- EventModel
+EventStoreRepository -- EventStore
+AccountBalanceEventFactoryTest -- AccountBalance
+AccountBalanceEventFactoryTest -- AccountBalanceEventFactory
+AccountBalanceEventFactoryTest -- AccountBalanceEventFixtures
+AccountBalanceEventFactoryTest -- AccountBalanceFixtures
+AccountBalanceEventFactoryTest -- Account
+AccountBalanceEventFactoryTest -- AccountBalanceEvent
+AccountBalanceEventFactoryTest -- Customer
+AccountBalanceFactoryTest -- AccountBalance
+AccountBalanceFactoryTest -- AccountBalanceFactory
+AccountBalanceFactoryTest -- AccountBalanceEventFixtures
+AccountBalanceFactoryTest -- AccountBalanceFixtures
+AccountBalanceFactoryTest -- Account
+AccountBalanceFactoryTest -- AccountBalanceEvent
+AccountBalanceFactoryTest -- Customer
+AccountBalanceResponseFactoryTest -- AccountBalance
+AccountBalanceResponseFactoryTest -- AccountBalanceResponse
+AccountBalanceResponseFactoryTest -- AccountBalanceResponseFactory
+AccountBalanceResponseFactoryTest -- AccountBalanceFixtures
+AccountBalanceResponseFactoryTest -- AccountBalanceResponseFixtures
+AccountBalanceResponseFactoryTest -- Account
+AccountBalanceResponseFactoryTest -- BalanceResponse
+AccountBalanceResponseFactoryTest -- BalanceResponseFactory
+AccountOpenedEventFactoryTest -- OpenAccountCommand
+AccountOpenedEventFactoryTest -- AccountBalance
+AccountOpenedEventFactoryTest -- AccountOpenedEventFactory
+AccountOpenedEventFactoryTest -- AccountOpenedEventFixtures
+AccountOpenedEventFactoryTest -- OpenAccountCommandFixtures
+AccountOpenedEventFactoryTest -- Account
+AccountOpenedEventFactoryTest -- AccountOpenedEvent
+AccountOpenedEventFactoryTest -- Customer
+FundsDepositedEventFactoryTest -- TransactionCommand
+FundsDepositedEventFactoryTest -- FundsDepositedEventFactory
+FundsDepositedEventFactoryTest -- FundsDepositedEventFixtures
+FundsDepositedEventFactoryTest -- TransactionCommandFixtures
+FundsDepositedEventFactoryTest -- Account
+FundsDepositedEventFactoryTest -- FundsDepositedEvent
+FundsWithDrawnEventFactoryTest -- AccountBalance
+FundsWithDrawnEventFactoryTest -- FundsWithDrawnEventFactory
+FundsWithDrawnEventFactoryTest -- FundsWithDrawnEventFixtures
+FundsWithDrawnEventFactoryTest -- Account
+FundsWithDrawnEventFactoryTest -- FundsWithDrawnEvent
+FundsWithDrawnEventFactoryTest -- Customer
+OpenAccountResponseFactoryTest -- OpenAccountResponse
+OpenAccountResponseFactoryTest -- OpenAccountResponseFactory
+OpenAccountResponseFactoryTest -- OpenAccountResponseFixtures
+OpenAccountResponseFactoryTest -- Account
+OpenAccountResponseFactoryTest -- AccountResponse
+OpenAccountResponseFactoryTest -- AccountResponseFactory
+TransactionCreatedEventFactoryTest -- TransactionCreatedEventFactory
+TransactionCreatedEventFactoryTest -- TransactionCreatedEventFixtures
+TransactionCreatedEventFactoryTest -- Account
+TransactionCreatedEventFactoryTest -- TransactionDirection
+TransactionCreatedEventFactoryTest -- TransactionStatus
+TransactionCreatedEventFactoryTest -- TransactionCreatedEvent
+TransactionCreateResponseFactoryTest -- TransactionCreateResponse
+TransactionCreateResponseFactoryTest -- TransactionCreateResponseFactory
+TransactionCreateResponseFactoryTest -- TransactionCreateResponseFixtures
+TransactionCreateResponseFactoryTest -- TransactionDirection
+AccountBalanceEventFixtures -- AccountBalance
+AccountBalanceEventFixtures -- Account
+AccountBalanceEventFixtures -- AccountBalanceEvent
+AccountBalanceFixtures -- AccountBalance
+AccountBalanceFixtures -- Account
+AccountBalanceResponseFixtures -- AccountBalance
+AccountBalanceResponseFixtures -- AccountBalanceResponse
+AccountBalanceResponseFixtures -- Account
+AccountBalanceResponseFixtures -- BalanceResponse
+AccountOpenedEventFixtures -- AccountBalance
+AccountOpenedEventFixtures -- AccountBalanceEventFixtures
+AccountOpenedEventFixtures -- Account
+AccountOpenedEventFixtures -- AccountBalanceEvent
+AccountOpenedEventFixtures -- AccountOpenedEvent
+FundsDepositedEventFixtures -- FundsDepositedEvent
+FundsWithDrawnEventFixtures -- FundsWithDrawnEvent
+OpenAccountCommandFixtures -- OpenAccountCommand
+OpenAccountCommandFixtures -- Account
+OpenAccountResponseFixtures -- AccountBalance
+OpenAccountResponseFixtures -- AccountBalanceResponse
+OpenAccountResponseFixtures -- OpenAccountResponse
+OpenAccountResponseFixtures -- AccountBalanceResponseFixtures
+OpenAccountResponseFixtures -- Account
+OpenAccountResponseFixtures -- AccountResponse
+OpenAccountResponseFixtures -- BalanceResponse
+TransactionCommandFixtures -- TransactionCommand
+TransactionCommandFixtures -- TransactionDirection
+TransactionCreatedEventFixtures -- TransactionDirection
+TransactionCreatedEventFixtures -- TransactionStatus
+TransactionCreatedEventFixtures -- TransactionCreatedEvent
+TransactionCreateResponseFixtures -- TransactionCreateResponse
+TransactionCreateResponseFixtures -- TransactionDirection
+MyBatisConfig -- CustomerMapper
+MyBatisConfig -- Customer
+Account -- BaseEntity
+AccountResponse -- Account
+AccountResponse -- BalanceResponse
+AccountFactory -- Account
+AccountFactory -- AccountOpenedEvent
+AccountFactory -- Customer
+AccountResponseFactory -- AccountBalance
+AccountResponseFactory -- Account
+AccountResponseFactory -- AccountResponse
+AccountResponseFactory -- BalanceResponse
+AccountResponseFactory -- BalanceResponseFactory
+AccountResponseFactory -- Customer
+BalanceResponseFactory -- AccountBalance
+BalanceResponseFactory -- Account
+BalanceResponseFactory -- BalanceResponse
+AccountTransactionFactory -- AccountTransaction
+AccountTransactionFactory -- Account
+AccountTransactionFactory -- TransactionCreatedEvent
+AccountTransactionFactory -- TransactionFailedEvent
+BaseQueryDispatcher -- ResponseModel
+BaseQueryDispatcher -- QueryDispatcher
+BaseQueryDispatcher -- BaseQuery
+BaseQueryDispatcher -- QueryHandlerMethod
+AccountEventConsumer -- Account
+AccountEventConsumer -- IAccountEventConsumer
+AccountEventConsumer -- AccountEventHandler
+AccountEventConsumer -- IAccountEventHandler
+AccountEventConsumer -- Constants
+AccountEventConsumer -- AccountOpenedEvent
+IAccountEventConsumer -- Account
+IAccountEventConsumer -- AccountOpenedEvent
+ITransactionEventConsumer -- TransactionEventConsumer
+ITransactionEventConsumer -- FundsDepositedEvent
+ITransactionEventConsumer -- FundsWithDrawnEvent
+ITransactionEventConsumer -- TransactionCreatedEvent
+ITransactionEventConsumer -- TransactionFailedEvent
+TransactionEventConsumer -- ITransactionEventHandler
+TransactionEventConsumer -- TransactionEventHandler
+TransactionEventConsumer -- Constants
+TransactionEventConsumer -- FundsDepositedEvent
+TransactionEventConsumer -- FundsWithDrawnEvent
+TransactionEventConsumer -- TransactionCreatedEvent
+TransactionEventConsumer -- TransactionFailedEvent
+AccountEventHandler -- AccountBalance
+AccountEventHandler -- AccountBalanceFactory
+AccountEventHandler -- Account
+AccountEventHandler -- AccountFactory
+AccountEventHandler -- IAccountEventHandler
+AccountEventHandler -- AccountBalanceMapper
+AccountEventHandler -- AccountMapper
+AccountEventHandler -- AccountBalanceEvent
+AccountEventHandler -- AccountOpenedEvent
+IAccountEventHandler -- Account
+IAccountEventHandler -- AccountOpenedEvent
+ITransactionEventHandler -- TransactionEventHandler
+ITransactionEventHandler -- FundsDepositedEvent
+ITransactionEventHandler -- FundsWithDrawnEvent
+ITransactionEventHandler -- TransactionCreatedEvent
+ITransactionEventHandler -- TransactionFailedEvent
+TransactionEventHandler -- AccountBalance
+TransactionEventHandler -- AccountTransaction
+TransactionEventHandler -- Account
+TransactionEventHandler -- AccountTransactionFactory
+TransactionEventHandler -- AccountBalanceMapper
+TransactionEventHandler -- TransactionMapper
+TransactionEventHandler -- FundsDepositedEvent
+TransactionEventHandler -- FundsWithDrawnEvent
+TransactionEventHandler -- TransactionCreatedEvent
+TransactionEventHandler -- TransactionFailedEvent
+AccountBalanceMapper -- AccountBalance
+AccountBalanceMapper -- Account
+AccountMapper -- Account
+AccountMapper -- Customer
+TransactionMapper -- AccountTransaction
+TransactionMapper -- Account
+AccountQueryHandler -- AccountBalance
+AccountQueryHandler -- Account
+AccountQueryHandler -- AccountResponse
+AccountQueryHandler -- AccountResponseFactory
+AccountQueryHandler -- AccountBalanceMapper
+AccountQueryHandler -- AccountMapper
+AccountQueryHandler -- FindAccountByIdQuery
+AccountQueryHandler -- FindAllAccountsQuery
+AccountQueryHandler -- IAccountQueryHandler
+AccountQueryHandler -- GenericResponse
+AccountQueryHandler -- ResponseModel
+AccountQueryHandler -- ResponseStatus
+FindAccountByIdQuery -- Account
+FindAccountByIdQuery -- BaseQuery
+FindAllAccountsQuery -- Account
+FindAllAccountsQuery -- BaseQuery
+IAccountQueryHandler -- Account
+IAccountQueryHandler -- FindAccountByIdQuery
+IAccountQueryHandler -- FindAllAccountsQuery
+IAccountQueryHandler -- ResponseModel
+FindAllTransactionsByAccountIdQuery -- Account
+FindAllTransactionsByAccountIdQuery -- BaseQuery
+ITransactionQueryHandler -- Account
+ITransactionQueryHandler -- FindAllTransactionsByAccountIdQuery
+ITransactionQueryHandler -- TransactionQueryHandler
+ITransactionQueryHandler -- ResponseModel
+TransactionQueryHandler -- AccountTransaction
+TransactionQueryHandler -- Account
+TransactionQueryHandler -- TransactionMapper
+TransactionQueryHandler -- FindAllTransactionsByAccountIdQuery
+TransactionQueryHandler -- GenericResponse
+TransactionQueryHandler -- ResponseModel
+TransactionQueryHandler -- ResponseStatus
+QueryApplication -- Account
+QueryApplication -- AccountQueryHandler
+QueryApplication -- FindAccountByIdQuery
+QueryApplication -- FindAllAccountsQuery
+QueryApplication -- IAccountQueryHandler
+QueryApplication -- FindAllTransactionsByAccountIdQuery
+QueryApplication -- ITransactionQueryHandler
+QueryApplication -- TransactionQueryHandler
+QueryApplication -- QueryDispatcher
+Constants -- Account
+Constants -- AccountOpenedEvent
+Constants -- FundsDepositedEvent
+Constants -- FundsWithDrawnEvent
+Constants -- TransactionCreatedEvent
+Constants -- TransactionFailedEvent
+AccountBalanceEvent -- AccountBalance
+AccountBalanceEvent -- Account
+AccountOpenedEvent -- AccountBalance
+AccountOpenedEvent -- Account
+AccountOpenedEvent -- AccountBalanceEvent
+AccountOpenedEvent -- BaseEvent
+CustomerCreatedEvent -- BaseEvent
+CustomerCreatedEvent -- Customer
+FundsDepositedEvent -- BaseEvent
+FundsWithDrawnEvent -- BaseEvent
+TransactionCreatedEvent -- TransactionDirection
+TransactionCreatedEvent -- BaseEvent
+TransactionFailedEvent -- TransactionDirection
+TransactionFailedEvent -- BaseEvent
+AccountAlreadyExists -- Account
+AccountBalanceNotFoundException -- AccountBalance
+AccountBalanceNotFoundException -- Account
+AccountNotFoundException -- Account
+CustomerNotFoundException -- Customer
+ValidationHelper -- Constants
+BaseCommand -- Message
+CommandHandlerMethod -- BaseCommand
+CommandHandlerMethod -- ResponseModel
+AggregateRoot -- BaseEvent
+AggregateRoot -- Message
+BaseEvent -- Message
+GenericResponse -- ResponseModel
+GenericResponse -- ResponseStatus
+ResponseModel -- ResponseStatus
+EventSourcingHandler -- AggregateRoot
+CommandDispatcher -- BaseCommand
+CommandDispatcher -- CommandHandlerMethod
+CommandDispatcher -- ResponseModel
+EventStore -- BaseEvent
+QueryDispatcher -- ResponseModel
+QueryDispatcher -- BaseQuery
+QueryDispatcher -- QueryHandlerMethod
+EventProducer -- BaseEvent
+QueryHandlerMethod -- ResponseModel
+QueryHandlerMethod -- BaseQuery
+CustomerController -- Account
+CustomerController -- ResponseStatus
+CustomerController -- CustomerCreateRequest
+CustomerController -- CustomerResponse
+CustomerController -- Customer
+CustomerController -- CustomerProcess
+CustomerApplication -- Customer
+CustomerCreateRequest -- Customer
+CustomerResponse -- Customer
+CustomerMapper -- Customer
+CustomerProcess -- ObjectMapperUtils
+CustomerProcess -- CustomerCreateRequest
+CustomerProcess -- CustomerResponse
+CustomerProcess -- Customer
+CustomerProcess -- CustomerService
+CustomerService -- CustomerMapper
+CustomerService -- Customer
+CustomerService -- ICustomerService
+ICustomerService -- Customer
+@enduml

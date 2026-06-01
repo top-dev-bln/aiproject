@@ -1,0 +1,504 @@
+@startuml
+package com.tuya.connector.open.api.config; {
+class TuyaRegionConfig {
+}
+
+}
+
+package com.tuya.connector.open.api.context; {
+class TuyaContext {
+}
+
+class TuyaContextManager {
+}
+
+}
+
+package com.tuya.connector.open.api.errorprocessor; {
+class TokenInvalidErrorProcessor {
+}
+
+class TokenValidErrorProcessorTest {
+}
+
+}
+
+package com.tuya.connector.open.api.header; {
+class TuyaHeaderProcessor {
+}
+
+}
+
+package com.tuya.connector.open.api.model; {
+class PageResult {
+}
+
+class PageResultWithTotal {
+}
+
+class Device {
+}
+
+}
+
+package com.tuya.connector.open.api.token; {
+class TokenConnector {
+}
+
+class TuyaToken {
+}
+
+class TuyaTokenManager {
+}
+
+class TuyaTokenTest {
+}
+
+}
+
+package com.tuya.connector.open.api.abilities; {
+class DeviceAbility {
+}
+
+}
+
+package com.tuya.connector.open.api.connectors.device; {
+class ConnectorTest {
+}
+
+class DeviceConnector {
+}
+
+class IndustryDeviceConnector {
+}
+
+}
+
+package com.tuya.connector.open.api; {
+class SecurityInfo {
+}
+
+}
+
+package com.tuya.connector.open.common.constant; {
+class EnvConstant {
+}
+
+class TuyaRegion {
+}
+
+}
+
+package com.tuya.connector.open.common.util; {
+class Sha256Util {
+}
+
+}
+
+package com.tuya.connector.open.messaging; {
+class AESBase64Utils {
+}
+
+class MessageFactory {
+}
+
+class MessageRegister {
+}
+
+class SourceMessage {
+}
+
+class TuyaMessageDispatcher {
+}
+
+class MessageTest {
+}
+
+class SecurityInfo {
+}
+
+}
+
+package com.tuya.connector.open.messaging.autoconfig; {
+class DynamicMessageManager {
+}
+
+class EnableDynamicMessaging {
+}
+
+class EnableMessaging {
+}
+
+class MessageAutoConfiguration {
+}
+
+class MessageProperties {
+}
+
+class MessageScanRegister {
+}
+
+class TuyaMessageDataSource {
+}
+
+}
+
+package com.tuya.connector.open.messaging.event; {
+class AutomationExternalActionMessage {
+}
+
+class BaseTuyaMessage {
+}
+
+class BindUserMessage {
+}
+
+class DeleteMessage {
+}
+
+class DeviceDpCommandMessage {
+}
+
+class DeviceSignalMessage {
+}
+
+class DpNameUpdateMessage {
+}
+
+class HomeCreateMessage {
+}
+
+class HomeDeleteMessage {
+}
+
+class HomeUpdateMessage {
+}
+
+class NameUpdateMessage {
+}
+
+class OfflineMessage {
+}
+
+class OnlineMessage {
+}
+
+class RoomCreateMessage {
+}
+
+class RoomDeleteMessage {
+}
+
+class RoomNameUodateMessage {
+}
+
+class RoomSortMessage {
+}
+
+class SceneExecuteMessage {
+}
+
+class ShareMessage {
+}
+
+class StatusReportMessage {
+}
+
+class UnknownMessage {
+}
+
+class UpgradeStatusMessage {
+}
+
+class UserDeleteMessage {
+}
+
+class UserRegisterMessage {
+}
+
+class UserUpdateMessage {
+}
+
+}
+
+package com.tuya.connector.open.spring.boot; {
+class TuyaAutoConfiguration {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.ability.api; {
+class DeviceConnector {
+}
+
+class ThingConnector {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.ability.messaging.msg; {
+class DeviceNameUpdate {
+}
+
+class DeviceOfflineMessage {
+}
+
+class DeviceOnlineMessage {
+}
+
+class DevicePropertyMessage {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.ability.messaging; {
+class TuyaMessageListener {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.ability.model; {
+class Device {
+}
+
+class DeviceDetail {
+}
+
+class DeviceProperties {
+}
+
+class DeviceSpecification {
+}
+
+class Firmware {
+}
+
+class IssueParam {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.config; {
+class CustomOkHttpClient {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.service; {
+class DeviceService {
+}
+
+class SIService {
+}
+
+class SIServiceTest {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample; {
+class TuyaSpringBootStarterSampleApplication {
+}
+
+class TuyaSpringBootStarterSampleApplicationTests {
+}
+
+}
+
+package com.tuya.open.spring.boot.sample.web; {
+class DeviceController {
+}
+
+class SIController {
+}
+
+}
+
+TuyaRegionConfig -- EnvConstant
+TuyaRegionConfig -- TuyaRegion
+TuyaContextManager -- TuyaContext
+TuyaHeaderProcessor -- TuyaToken
+TuyaHeaderProcessor -- Sha256Util
+PageResultWithTotal -- PageResult
+TokenConnector -- TuyaToken
+TuyaTokenManager -- TokenConnector
+TuyaTokenManager -- TuyaToken
+DeviceAbility -- Device
+ConnectorTest -- TuyaContext
+ConnectorTest -- TuyaContextManager
+ConnectorTest -- TuyaHeaderProcessor
+ConnectorTest -- TuyaToken
+ConnectorTest -- TuyaTokenManager
+ConnectorTest -- DeviceConnector
+ConnectorTest -- IndustryDeviceConnector
+ConnectorTest -- Device
+ConnectorTest -- SecurityInfo
+DeviceConnector -- Device
+IndustryDeviceConnector -- DeviceAbility
+IndustryDeviceConnector -- DeviceConnector
+IndustryDeviceConnector -- Device
+TokenValidErrorProcessorTest -- TuyaContext
+TokenValidErrorProcessorTest -- TuyaContextManager
+TokenValidErrorProcessorTest -- TokenInvalidErrorProcessor
+TokenValidErrorProcessorTest -- TuyaHeaderProcessor
+TokenValidErrorProcessorTest -- TuyaToken
+TokenValidErrorProcessorTest -- TuyaTokenManager
+TokenValidErrorProcessorTest -- DeviceConnector
+TokenValidErrorProcessorTest -- Device
+TokenValidErrorProcessorTest -- SecurityInfo
+TuyaTokenTest -- TuyaContext
+TuyaTokenTest -- TuyaContextManager
+TuyaTokenTest -- TuyaHeaderProcessor
+TuyaTokenTest -- TokenConnector
+TuyaTokenTest -- TuyaToken
+TuyaTokenTest -- TuyaTokenManager
+TuyaTokenTest -- SecurityInfo
+DynamicMessageManager -- EnvConstant
+DynamicMessageManager -- TuyaRegion
+DynamicMessageManager -- TuyaMessageDataSource
+DynamicMessageManager -- TuyaMessageDispatcher
+EnableDynamicMessaging -- DynamicMessageManager
+EnableMessaging -- MessageAutoConfiguration
+EnableMessaging -- MessageScanRegister
+MessageAutoConfiguration -- MessageProperties
+MessageAutoConfiguration -- TuyaMessageDataSource
+MessageAutoConfiguration -- TuyaMessageDispatcher
+MessageProperties -- EnvConstant
+MessageProperties -- TuyaRegion
+MessageScanRegister -- MessageRegister
+AutomationExternalActionMessage -- BaseTuyaMessage
+AutomationExternalActionMessage -- SourceMessage
+BaseTuyaMessage -- SourceMessage
+BindUserMessage -- BaseTuyaMessage
+BindUserMessage -- SourceMessage
+DeleteMessage -- BaseTuyaMessage
+DeleteMessage -- SourceMessage
+DeviceDpCommandMessage -- Device
+DeviceDpCommandMessage -- BaseTuyaMessage
+DeviceDpCommandMessage -- SourceMessage
+DeviceSignalMessage -- Device
+DeviceSignalMessage -- BaseTuyaMessage
+DeviceSignalMessage -- SourceMessage
+DpNameUpdateMessage -- BaseTuyaMessage
+DpNameUpdateMessage -- NameUpdateMessage
+DpNameUpdateMessage -- SourceMessage
+HomeCreateMessage -- BaseTuyaMessage
+HomeCreateMessage -- SourceMessage
+HomeDeleteMessage -- BaseTuyaMessage
+HomeDeleteMessage -- DeleteMessage
+HomeDeleteMessage -- SourceMessage
+HomeUpdateMessage -- BaseTuyaMessage
+HomeUpdateMessage -- SourceMessage
+NameUpdateMessage -- BaseTuyaMessage
+NameUpdateMessage -- SourceMessage
+OfflineMessage -- BaseTuyaMessage
+OfflineMessage -- SourceMessage
+OnlineMessage -- BaseTuyaMessage
+OnlineMessage -- SourceMessage
+RoomCreateMessage -- BaseTuyaMessage
+RoomCreateMessage -- SourceMessage
+RoomDeleteMessage -- BaseTuyaMessage
+RoomDeleteMessage -- DeleteMessage
+RoomDeleteMessage -- SourceMessage
+RoomNameUodateMessage -- BaseTuyaMessage
+RoomNameUodateMessage -- SourceMessage
+RoomSortMessage -- BaseTuyaMessage
+RoomSortMessage -- SourceMessage
+SceneExecuteMessage -- BaseTuyaMessage
+SceneExecuteMessage -- SourceMessage
+ShareMessage -- BaseTuyaMessage
+ShareMessage -- SourceMessage
+StatusReportMessage -- BaseTuyaMessage
+StatusReportMessage -- SourceMessage
+UnknownMessage -- BaseTuyaMessage
+UnknownMessage -- SourceMessage
+UpgradeStatusMessage -- BaseTuyaMessage
+UpgradeStatusMessage -- SourceMessage
+UserDeleteMessage -- BaseTuyaMessage
+UserDeleteMessage -- DeleteMessage
+UserDeleteMessage -- SourceMessage
+UserRegisterMessage -- BaseTuyaMessage
+UserRegisterMessage -- SourceMessage
+UserUpdateMessage -- BaseTuyaMessage
+UserUpdateMessage -- SourceMessage
+MessageFactory -- AESBase64Utils
+MessageFactory -- BaseTuyaMessage
+MessageFactory -- UnknownMessage
+MessageFactory -- SourceMessage
+MessageRegister -- AESBase64Utils
+MessageRegister -- BaseTuyaMessage
+MessageRegister -- UnknownMessage
+MessageRegister -- SourceMessage
+TuyaMessageDispatcher -- TuyaMessageDataSource
+TuyaMessageDispatcher -- BaseTuyaMessage
+TuyaMessageDispatcher -- MessageRegister
+TuyaMessageDispatcher -- SourceMessage
+MessageTest -- SecurityInfo
+MessageTest -- TuyaMessageDataSource
+MessageTest -- BindUserMessage
+MessageTest -- DeleteMessage
+MessageTest -- NameUpdateMessage
+MessageTest -- OfflineMessage
+MessageTest -- OnlineMessage
+MessageTest -- StatusReportMessage
+MessageTest -- UnknownMessage
+MessageTest -- TuyaMessageDispatcher
+TuyaAutoConfiguration -- TuyaRegionConfig
+TuyaAutoConfiguration -- TokenInvalidErrorProcessor
+TuyaAutoConfiguration -- TuyaRegion
+ThingConnector -- Device
+ThingConnector -- DeviceDetail
+ThingConnector -- DeviceProperties
+ThingConnector -- DeviceSpecification
+ThingConnector -- Firmware
+DeviceNameUpdate -- Device
+DeviceNameUpdate -- BaseTuyaMessage
+DeviceNameUpdate -- SourceMessage
+DeviceOfflineMessage -- Device
+DeviceOfflineMessage -- BaseTuyaMessage
+DeviceOfflineMessage -- OfflineMessage
+DeviceOfflineMessage -- SourceMessage
+DeviceOnlineMessage -- Device
+DeviceOnlineMessage -- BaseTuyaMessage
+DeviceOnlineMessage -- OnlineMessage
+DeviceOnlineMessage -- SourceMessage
+DevicePropertyMessage -- Device
+DevicePropertyMessage -- BaseTuyaMessage
+DevicePropertyMessage -- SourceMessage
+TuyaMessageListener -- Device
+TuyaMessageListener -- NameUpdateMessage
+TuyaMessageListener -- OfflineMessage
+TuyaMessageListener -- OnlineMessage
+TuyaMessageListener -- StatusReportMessage
+TuyaMessageListener -- DeviceNameUpdate
+TuyaMessageListener -- DeviceOfflineMessage
+TuyaMessageListener -- DeviceOnlineMessage
+TuyaMessageListener -- DevicePropertyMessage
+DeviceDetail -- Device
+DeviceProperties -- Device
+DeviceSpecification -- Device
+DeviceService -- DeviceConnector
+DeviceService -- Device
+SIService -- Device
+SIService -- ThingConnector
+SIService -- DeviceDetail
+SIService -- DeviceProperties
+SIService -- DeviceSpecification
+SIService -- Firmware
+TuyaSpringBootStarterSampleApplication -- EnableMessaging
+DeviceController -- Device
+DeviceController -- DeviceService
+SIController -- Device
+SIController -- DeviceProperties
+SIController -- DeviceSpecification
+SIController -- Firmware
+SIController -- SIService
+SIServiceTest -- Device
+SIServiceTest -- DeviceDetail
+SIServiceTest -- DeviceProperties
+SIServiceTest -- DeviceSpecification
+SIServiceTest -- Firmware
+SIServiceTest -- SIService
+TuyaSpringBootStarterSampleApplicationTests -- MessageProperties
+TuyaSpringBootStarterSampleApplicationTests -- TuyaSpringBootStarterSampleApplication
+@enduml

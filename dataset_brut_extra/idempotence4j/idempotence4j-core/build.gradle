@@ -1,0 +1,8 @@
+dependencies {
+    implementation libraries.spring_jdbc
+    implementation libraries.jackson_datatype
+    implementation libraries.dbScheduler
+    implementation libraries.cronUtils
+
+    testImplementation project(':idempotence4j-test')
+}

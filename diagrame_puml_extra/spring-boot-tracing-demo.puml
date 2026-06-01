@@ -1,0 +1,113 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.example; {
+class HttpService1Application {
+}
+
+class HttpService2Application {
+}
+
+class ApplicationIT {
+}
+
+class HttpService1Application {
+}
+
+class HttpService2Application {
+}
+
+class HttpService1Application {
+}
+
+class HttpService2Application {
+}
+
+class HttpService1Application {
+}
+
+class HttpService2Application {
+}
+
+}
+
+package com.example.service1; {
+class KafkaService1Application {
+}
+
+class TracingProducerConfig {
+}
+
+class KafkaService1Application {
+}
+
+class TracingProducerConfig {
+}
+
+class KafkaService1Application {
+}
+
+class TracingProducerConfig {
+}
+
+}
+
+package com.example.service2; {
+class Commit {
+}
+
+class CommitRepository {
+}
+
+class KafkaService2Application {
+}
+
+class TracingConsumer {
+}
+
+class TracingConsumerConfig {
+}
+
+class Commit {
+}
+
+class CommitRepository {
+}
+
+class KafkaService2Application {
+}
+
+class TracingConsumer {
+}
+
+class TracingConsumerConfig {
+}
+
+class Commit {
+}
+
+class CommitRepository {
+}
+
+class KafkaService2Application {
+}
+
+class TracingConsumer {
+}
+
+class TracingConsumerConfig {
+}
+
+}
+
+HttpService2Application -- Commit
+KafkaService1Application -- Commit
+CommitRepository -- Commit
+TracingConsumer -- Commit
+TracingConsumer -- CommitRepository
+TracingConsumerConfig -- TracingConsumer
+@enduml

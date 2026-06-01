@@ -1,0 +1,312 @@
+@startuml
+package com.lin; {
+class AwesomeVideoApplication {
+}
+
+class BaseControllerTest {
+}
+
+class BaseTest {
+}
+
+}
+
+package com.lin.config; {
+class CacheConfig {
+}
+
+class SidConfig {
+}
+
+class Swagger2Config {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package com.lin.controller; {
+class BaseController {
+}
+
+class BgmController {
+}
+
+class RegisterLoginController {
+}
+
+class UserController {
+}
+
+class VideoController {
+}
+
+class RegisterLoginControllerTest {
+}
+
+}
+
+package com.lin.dao; {
+class BgmMapper {
+}
+
+class CommentMapper {
+}
+
+class CommentMapperCustom {
+}
+
+class SearchRecordsMapper {
+}
+
+class UserFansMapper {
+}
+
+class UserLikeVideosMapper {
+}
+
+class UserMapper {
+}
+
+class UserReportMapper {
+}
+
+class VideoMapper {
+}
+
+class VideoMapperCustom {
+}
+
+}
+
+package com.lin.enums; {
+class VideoStatusEnum {
+}
+
+}
+
+package com.lin.model; {
+class Bgm {
+}
+
+class Comment {
+}
+
+class SearchRecords {
+}
+
+class User {
+}
+
+class UserFans {
+}
+
+class UserLikeVideos {
+}
+
+class UserReport {
+}
+
+class Video {
+}
+
+}
+
+package com.lin.model.vo; {
+class CommentVo {
+}
+
+class PublisherVideoVo {
+}
+
+class UserVo {
+}
+
+class VideoVo {
+}
+
+}
+
+package com.lin.service; {
+class BgmService {
+}
+
+class UserService {
+}
+
+class VideoService {
+}
+
+}
+
+package com.lin.service.impl; {
+class BgmServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+class VideoServiceImpl {
+}
+
+class UserServiceImplTest {
+}
+
+}
+
+package com.lin.utils; {
+class FFmpegUtils {
+}
+
+class JsonResult {
+}
+
+class MD5Utils {
+}
+
+class MyMapper {
+}
+
+class PagedResult {
+}
+
+class RedisOperator {
+}
+
+class TimeAgoUtils {
+}
+
+}
+
+AwesomeVideoApplication -- Video
+Swagger2Config -- User
+WebMvcConfig -- Video
+BaseController -- Video
+BaseController -- RedisOperator
+BgmController -- BaseController
+BgmController -- Bgm
+BgmController -- BgmService
+BgmController -- JsonResult
+RegisterLoginController -- BaseController
+RegisterLoginController -- User
+RegisterLoginController -- UserVo
+RegisterLoginController -- UserService
+RegisterLoginController -- JsonResult
+RegisterLoginController -- MD5Utils
+UserController -- BaseController
+UserController -- User
+UserController -- UserReport
+UserController -- Video
+UserController -- PublisherVideoVo
+UserController -- UserVo
+UserController -- VideoVo
+UserController -- UserService
+UserController -- JsonResult
+VideoController -- BaseController
+VideoController -- VideoStatusEnum
+VideoController -- Bgm
+VideoController -- Comment
+VideoController -- User
+VideoController -- Video
+VideoController -- BgmService
+VideoController -- VideoService
+VideoController -- FFmpegUtils
+VideoController -- JsonResult
+VideoController -- PagedResult
+BgmMapper -- Bgm
+BgmMapper -- MyMapper
+CommentMapper -- Comment
+CommentMapper -- MyMapper
+CommentMapperCustom -- CommentMapper
+CommentMapperCustom -- Comment
+CommentMapperCustom -- CommentVo
+CommentMapperCustom -- MyMapper
+SearchRecordsMapper -- SearchRecords
+SearchRecordsMapper -- MyMapper
+UserFansMapper -- User
+UserFansMapper -- UserFans
+UserFansMapper -- MyMapper
+UserLikeVideosMapper -- User
+UserLikeVideosMapper -- UserLikeVideos
+UserLikeVideosMapper -- Video
+UserLikeVideosMapper -- MyMapper
+UserMapper -- User
+UserMapper -- MyMapper
+UserReportMapper -- User
+UserReportMapper -- UserReport
+UserReportMapper -- MyMapper
+VideoMapper -- Video
+VideoMapper -- MyMapper
+VideoMapperCustom -- VideoMapper
+VideoMapperCustom -- Video
+VideoMapperCustom -- VideoVo
+VideoMapperCustom -- MyMapper
+VideoStatusEnum -- Video
+Comment -- User
+UserFans -- User
+UserLikeVideos -- User
+UserLikeVideos -- Video
+UserReport -- User
+UserReport -- Video
+CommentVo -- Comment
+CommentVo -- User
+PublisherVideoVo -- User
+PublisherVideoVo -- Video
+PublisherVideoVo -- UserVo
+PublisherVideoVo -- VideoVo
+UserVo -- User
+VideoVo -- Video
+BgmService -- Bgm
+BgmServiceImpl -- CacheConfig
+BgmServiceImpl -- BgmMapper
+BgmServiceImpl -- Bgm
+BgmServiceImpl -- User
+BgmServiceImpl -- BgmService
+UserServiceImpl -- CacheConfig
+UserServiceImpl -- UserFansMapper
+UserServiceImpl -- UserLikeVideosMapper
+UserServiceImpl -- UserMapper
+UserServiceImpl -- UserReportMapper
+UserServiceImpl -- User
+UserServiceImpl -- UserFans
+UserServiceImpl -- UserLikeVideos
+UserServiceImpl -- UserReport
+UserServiceImpl -- Video
+UserServiceImpl -- UserService
+VideoServiceImpl -- CacheConfig
+VideoServiceImpl -- CommentMapper
+VideoServiceImpl -- CommentMapperCustom
+VideoServiceImpl -- SearchRecordsMapper
+VideoServiceImpl -- UserLikeVideosMapper
+VideoServiceImpl -- UserMapper
+VideoServiceImpl -- VideoMapper
+VideoServiceImpl -- VideoMapperCustom
+VideoServiceImpl -- Comment
+VideoServiceImpl -- SearchRecords
+VideoServiceImpl -- User
+VideoServiceImpl -- UserLikeVideos
+VideoServiceImpl -- Video
+VideoServiceImpl -- CommentVo
+VideoServiceImpl -- VideoVo
+VideoServiceImpl -- VideoService
+VideoServiceImpl -- PagedResult
+VideoServiceImpl -- TimeAgoUtils
+UserService -- User
+UserService -- UserReport
+UserService -- Video
+VideoService -- Comment
+VideoService -- Video
+VideoService -- PagedResult
+FFmpegUtils -- Video
+BaseControllerTest -- BaseController
+RegisterLoginControllerTest -- BaseController
+RegisterLoginControllerTest -- RegisterLoginController
+RegisterLoginControllerTest -- User
+RegisterLoginControllerTest -- BaseControllerTest
+RegisterLoginControllerTest -- BaseTest
+UserServiceImplTest -- User
+UserServiceImplTest -- UserServiceImpl
+UserServiceImplTest -- UserService
+UserServiceImplTest -- BaseTest
+@enduml

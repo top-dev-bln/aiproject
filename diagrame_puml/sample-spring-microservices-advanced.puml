@@ -1,0 +1,314 @@
+@startuml
+
+package pl.piomin.microservices.advanced.account {
+  class TestApplication {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.account.api {
+  class AccountController <<Controller>> {
+    -logger : Logger
+    +findByNumber() : Account
+    +findByCustomer() : List<Account>
+    +findAll() : List<Account>
+    +add() : Account
+    +update() : Account
+  }
+}
+
+package pl.piomin.microservices.advanced.account.config {
+  class AccountContainersConfiguration {
+    +mongodbContainer() : MongoDBContainer
+  }
+}
+
+package pl.piomin.microservices.advanced.account.model {
+  class Account {
+    -id : String
+    -number : String
+    -balance : int
+    -customerId : String
+    +getId() : String
+    +setId() : void
+    +getNumber() : String
+    +setNumber() : void
+    +getBalance() : int
+    +setBalance() : void
+    +getCustomerId() : String
+    +setCustomerId() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.account.repository {
+  class AccountRepositoryTest {
+    -mongoDBContainer : MongoDBContainer
+    -id : String
+    +testAddAccount() : void
+    +testFindAccount() : void
+    +testFindAccountByNumber() : void
+  }
+  interface AccountRepository {
+    +findByNumber() : Account
+    +findByCustomerId() : List<Account>
+  }
+}
+
+package pl.piomin.microservices.advanced.customer {
+  class CustomerRepositoryTests {
+    -mongoDBContainer : MongoDBContainer
+    -id : String
+    +testAddCustomer() : void
+    +testFindCustomer() : void
+    +testFindCustomerByPesel() : void
+  }
+  class CustomerControllerTests {
+    -mongoDBContainer : MongoDBContainer
+    -id : String
+    +addCustomerTest() : void
+    +findCustomerWithAccounts() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.customer.api {
+  class CustomerController <<Controller>> {
+    -accountClient : AccountClient
+    -repository : CustomerRepository
+    -logger : Logger
+    +findByPesel() : Customer
+    +findAll() : List<Customer>
+    +findById() : Customer
+    +add() : Customer
+  }
+}
+
+package pl.piomin.microservices.advanced.customer.contract {
+  class Account {
+    -id : String
+    -number : String
+    -balance : int
+    +getId() : String
+    +setId() : void
+    +getNumber() : String
+    +setNumber() : void
+    +getBalance() : int
+    +setBalance() : void
+  }
+  interface AccountClient {
+  }
+}
+
+package pl.piomin.microservices.advanced.customer.model {
+  class Customer {
+    -id : String
+    -pesel : String
+    -name : String
+    -type : CustomerType
+    -accounts : List<Account>
+    +getId() : String
+    +setId() : void
+    +getPesel() : String
+    +setPesel() : void
+    +getName() : String
+    +setName() : void
+    +getType() : CustomerType
+    +setType() : void
+  }
+  enum CustomerType {
+  }
+}
+
+package pl.piomin.microservices.advanced.customer.repository {
+  interface CustomerRepository {
+    +findByPesel() : Customer
+  }
+}
+
+package pl.piomin.microservices.advanced.discovery {
+  class Application {
+    +main() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.gateway {
+  class Application {
+    +main() : void
+    +apis() : Set<SwaggerUrl>
+  }
+}
+
+package pl.piomin.microservices.advanced.product {
+  class ProductRepositoryTests {
+    -mongoDBContainer : MongoDBContainer
+    -id : String
+    +testAddProduct() : void
+    +testFindProduct() : void
+    +testFindProductByAccountId() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.product.api {
+  class ProductController <<Controller>> {
+    -accountClient : AccountClient
+    -repository : ProductRepository
+    -logger : Logger
+    +findByPesel() : Product
+    +findAll() : List<Product>
+    +findById() : Product
+    +add() : Product
+  }
+}
+
+package pl.piomin.microservices.advanced.product.contract {
+  class Account {
+    -id : String
+    -number : String
+    -balance : int
+    -customerId : String
+    +getId() : String
+    +setId() : void
+    +getNumber() : String
+    +setNumber() : void
+    +getBalance() : int
+    +setBalance() : void
+    +getCustomerId() : String
+    +setCustomerId() : void
+  }
+  interface AccountClient {
+  }
+}
+
+package pl.piomin.microservices.advanced.product.model {
+  class Product {
+    -id : String
+    -balance : int
+    -accountId : String
+    -customerId : String
+    -type : ProductType
+    -dateOfStart : LocalDate
+    -dateOfEnd : LocalDate
+    +getId() : String
+    +setId() : void
+    +getBalance() : int
+    +setBalance() : void
+    +getAccountId() : String
+    +setAccountId() : void
+    +getCustomerId() : String
+    +setCustomerId() : void
+  }
+  enum ProductType {
+  }
+}
+
+package pl.piomin.microservices.advanced.product.repository {
+  interface ProductRepository {
+    +findByAccountId() : Product
+  }
+}
+
+package pl.piomin.microservices.advanced.transfer {
+  class Application {
+    +main() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.transfer.api {
+  class TransferController <<Controller>> {
+    -accountClient : AccountClient
+    -repository : TransferRepository
+    -logger : Logger
+    +findBySender() : List<Transfer>
+    +findByRecipient() : List<Transfer>
+    +findAll() : List<Transfer>
+    +findById() : Transfer
+    +add() : Transfer
+  }
+}
+
+package pl.piomin.microservices.advanced.transfer.contract {
+  class Account {
+    -id : String
+    -number : String
+    -balance : int
+    -customerId : String
+    +getId() : String
+    +setId() : void
+    +getNumber() : String
+    +setNumber() : void
+    +getBalance() : int
+    +setBalance() : void
+    +getCustomerId() : String
+    +setCustomerId() : void
+  }
+  interface AccountClient {
+  }
+}
+
+package pl.piomin.microservices.advanced.transfer.model {
+  class Transfer {
+    -id : String
+    -sender : String
+    -recipient : String
+    -amount : int
+    -createAt : LocalDateTime
+    +getId() : String
+    +setId() : void
+    +getSender() : String
+    +setSender() : void
+    +getRecipient() : String
+    +setRecipient() : void
+    +getAmount() : int
+    +setAmount() : void
+  }
+}
+
+package pl.piomin.microservices.advanced.transfer.repository {
+  interface TransferRepository {
+    +findByRecipient() : List<Transfer>
+    +findBySender() : List<Transfer>
+  }
+}
+
+' --- Relatii ---
+ProductRepositoryTests --> Product
+ProductRepositoryTests --> ProductType
+ProductRepositoryTests --> ProductRepository
+Application --> AccountClient
+ProductRepository --> Product
+ProductController --> Account
+ProductController --> AccountClient
+ProductController --> Product
+ProductController --> ProductRepository
+TestApplication --> AccountContainersConfiguration
+AccountRepositoryTest --> Account
+AccountRepository --> Account
+AccountController --> Account
+AccountController --> AccountRepository
+CustomerRepositoryTests --> Customer
+CustomerRepositoryTests --> CustomerType
+CustomerRepositoryTests --> CustomerRepository
+CustomerControllerTests --> Customer
+CustomerControllerTests --> CustomerType
+Application --> AccountClient
+CustomerRepository --> Customer
+Customer --> Account
+CustomerController --> Account
+CustomerController --> AccountClient
+CustomerController --> Customer
+CustomerController --> CustomerRepository
+Application --> AccountClient
+TransferRepository --> Transfer
+TransferController --> AccountClient
+TransferController --> Transfer
+TransferController --> TransferRepository
+
+@enduml

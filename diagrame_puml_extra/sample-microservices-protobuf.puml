@@ -1,0 +1,146 @@
+@startuml
+package pl.piomin.services.protobuf.account; {
+class Application {
+}
+
+class AccountApplicationTest {
+}
+
+}
+
+package pl.piomin.services.protobuf.account.controller; {
+class AccountController {
+}
+
+}
+
+package pl.piomin.services.protobuf.account.data; {
+class AccountRepository {
+}
+
+}
+
+package pl.piomin.services.grpc.account; {
+class AccountApplication {
+}
+
+class AccountServicesTests {
+}
+
+}
+
+package pl.piomin.services.grpc.account.repository; {
+class AccountRepository {
+}
+
+}
+
+package pl.piomin.services.grpc.account.service; {
+class AccountsService {
+}
+
+}
+
+package pl.piomin.services.protobuf.customer; {
+class Application {
+}
+
+class CustomerApplicationTest {
+}
+
+}
+
+package pl.piomin.services.protobuf.customer.config; {
+class LoadBalancerConfigurationProperties {
+}
+
+class ServiceConfig {
+}
+
+}
+
+package pl.piomin.services.protobuf.customer.contract; {
+class AccountClient {
+}
+
+}
+
+package pl.piomin.services.protobuf.customer.controller; {
+class CustomerController {
+}
+
+}
+
+package pl.piomin.services.protobuf.customer.data; {
+class CustomerRepository {
+}
+
+}
+
+package pl.piomin.services.protobuf.customer.loadbalancer; {
+class StaticServiceInstance {
+}
+
+class StaticServiceInstanceListSupplier {
+}
+
+}
+
+package pl.piomin.services.grpc.customer.client; {
+class AccountClient {
+}
+
+}
+
+package pl.piomin.services.grpc.customer; {
+class CustomerApplication {
+}
+
+class CustomerServicesTests {
+}
+
+}
+
+package pl.piomin.services.grpc.customer.repository; {
+class CustomerRepository {
+}
+
+}
+
+package pl.piomin.services.grpc.customer.service; {
+class CustomersService {
+}
+
+}
+
+package pl.piomin.services.discovery; {
+class DiscoveryService {
+}
+
+}
+
+Application -- CustomerRepository
+AccountController -- AccountRepository
+AccountApplicationTest -- Application
+AccountApplicationTest -- AccountApplication
+AccountApplication -- Application
+AccountApplication -- AccountRepository
+AccountsService -- AccountRepository
+AccountServicesTests -- AccountsService
+LoadBalancerConfigurationProperties -- ServiceConfig
+AccountClient -- AccountsService
+CustomerController -- AccountClient
+CustomerController -- CustomerRepository
+StaticServiceInstanceListSupplier -- LoadBalancerConfigurationProperties
+StaticServiceInstanceListSupplier -- ServiceConfig
+StaticServiceInstanceListSupplier -- StaticServiceInstance
+CustomerApplicationTest -- Application
+CustomerApplicationTest -- CustomerApplication
+CustomerApplication -- Application
+CustomerApplication -- AccountsService
+CustomerApplication -- CustomerRepository
+CustomersService -- AccountClient
+CustomersService -- CustomerRepository
+CustomerServicesTests -- CustomersService
+DiscoveryService -- Application
+@enduml

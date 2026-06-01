@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:include="frontend/partials/head(title=#{job.create.title})">
+</head>
+<!--<div th:include="frontend/partials/head"></div>-->
+<body>
+<div th:replace="frontend/partials/menu"></div>
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <h1 th:text="#{job.create.title}"></h1>
+
+            <div class="alert alert-danger" th:if="${error}" th:utext="${error}"></div>
+
+            <form method="POST" th:action="@{/job/save}">
+
+                <div class="form-group">
+                    <label th:text="#{category}"></label>
+                    <select name="category" class="form-control">
+                        <option th:each="c: ${categories}" th:text="${c.name}" th:value="${c.id}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label th:text="#{title}"></label>
+                    <input type="text" name="title" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                     <label th:text="#{description}"></label>
+                    <textarea name="description" class="form-control" rows="10"></textarea>
+                </div>
+
+                <div class="form-group">
+                     <label th:text="#{budget}"></label>
+                    <input type="number" name="budget" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label th:text="#{job_type}"></label>
+                    <select name="type" class="form-control">
+                        <option value="fixed" th:text="#{option.fixed}"></option>
+                        <option value="hourly" th:text="#{option.hourly}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label th:text="#{expertize_level}"></label>
+                    <select name="expertizeLevel" class="form-control">
+                        <option value="beginner" th:text="#{option.exp_level.beginner}"></option>
+                        <option value="intermediate" th:text="#{option.exp_level.intermediate}"></option>
+                        <option value="expert" th:text="#{option.exp_level.expert}"></option>
+                        
+                    </select>
+                </div>
+
+                <p>
+                    <input type="submit" class="btn btn-primary" />
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

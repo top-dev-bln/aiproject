@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, file management domain. It serves API Consumer, Customer, System as its primary actors. The main business capabilities include weather service, weather service. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage weather service operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "WeatherServiceController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    WeatherServiceController[\"WeatherServiceController\"]\n    WeatherServiceEndpoint[\"WeatherServiceEndpoint\"]\n  end\n  subgraph Security\n    CustomSoapFaultInterceptor[\"CustomSoapFaultInterceptor\"]\n    LogCorrelationFilter[\"LogCorrelationFilter\"]\n    SoapMsgToMdcExtractionLoggingInInterceptor[\"SoapMsgToMdcExtractionLoggingInInterceptor\"]\n    SoapMsgToMdcExtractionLoggingOutInterceptor[\"SoapMsgToMdcExtractionLoggingOutInterceptor\"]\n  end\n  subgraph Infrastructure\n    ApplicationConfiguration[\"ApplicationConfiguration\"]\n    ApplicationTestConfiguration[\"ApplicationTestConfiguration\"]\n    SimpleBootCxfConfiguration[\"SimpleBootCxfConfiguration\"]\n    SimpleBootCxfSystemTestConfiguration[\"SimpleBootCxfSystemTestConfiguration\"]\n    WeatherSoapFaultHelper[\"WeatherSoapFaultHelper\"]\n    WebServiceConfiguration[\"WebServiceConfiguration\"]\n    WebServiceIntegrationTestConfiguration[\"WebServiceIntegrationTestConfiguration\"]\n    WebServiceSystemTestConfiguration[\"WebServiceSystemTestConfiguration\"]\n  end\n  Controllers --> Security\n  Infrastructure --> Security"
+  }
+}

@@ -1,0 +1,112 @@
+@startuml
+package com.ruubel; {
+class Application {
+}
+
+}
+
+package com.ruubel.aspect; {
+class AroundGetContactsAspect {
+}
+
+}
+
+package com.ruubel.controller; {
+class BankController {
+}
+
+}
+
+package com.ruubel.model; {
+class Bank {
+}
+
+class BankInformation {
+}
+
+}
+
+package com.ruubel.service; {
+class BankService {
+}
+
+}
+
+package com.ruubel.service.factory; {
+class ScraperFactoryService {
+}
+
+}
+
+package com.ruubel.service.observer; {
+class BankInformationPublisherService {
+}
+
+class BankInformationReceived {
+}
+
+class PrinterService {
+}
+
+class SaverService {
+}
+
+}
+
+package com.ruubel.service.strategy; {
+class BankScraperStrategy {
+}
+
+class HttpFetchService {
+}
+
+class SebScraper {
+}
+
+class SwedbankScraper {
+}
+
+}
+
+AroundGetContactsAspect -- Bank
+AroundGetContactsAspect -- BankService
+BankController -- Bank
+BankController -- BankInformation
+BankController -- BankService
+BankInformation -- Bank
+BankService -- Bank
+BankService -- BankInformation
+BankService -- ScraperFactoryService
+BankService -- BankInformationPublisherService
+BankService -- BankScraperStrategy
+ScraperFactoryService -- Bank
+ScraperFactoryService -- BankScraperStrategy
+ScraperFactoryService -- HttpFetchService
+ScraperFactoryService -- SebScraper
+ScraperFactoryService -- SwedbankScraper
+BankInformationPublisherService -- Bank
+BankInformationPublisherService -- BankInformation
+BankInformationPublisherService -- BankInformationReceived
+BankInformationReceived -- Bank
+BankInformationReceived -- BankInformation
+PrinterService -- Bank
+PrinterService -- BankInformation
+PrinterService -- BankService
+PrinterService -- BankInformationPublisherService
+PrinterService -- BankInformationReceived
+SaverService -- Bank
+SaverService -- BankInformation
+SaverService -- BankService
+SaverService -- BankInformationPublisherService
+SaverService -- BankInformationReceived
+BankScraperStrategy -- Bank
+BankScraperStrategy -- BankInformation
+SebScraper -- Bank
+SebScraper -- BankInformation
+SebScraper -- BankScraperStrategy
+SebScraper -- HttpFetchService
+SwedbankScraper -- Bank
+SwedbankScraper -- BankInformation
+SwedbankScraper -- BankScraperStrategy
+SwedbankScraper -- HttpFetchService
+@enduml

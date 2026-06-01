@@ -1,0 +1,60 @@
+server:
+  port: 8010
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/easy-notes
+      port: 27017
+  # 线程池配置
+  thread-pool:
+    default:
+      corePoolSize: 2
+      maximumPoolSize: 4
+      keepAliveTime: 3000
+      queueCapacity: 1024
+
+# JWT配置
+jwt:
+  # 秘钥
+  secret: ji934fsfS9fA01eoPq23
+  # 过期时间(毫秒)
+  expiration: 36000000
+  # 请求头Key
+  header: JWTHeaderName
+
+# OAuth2客户端配置
+oauth2:
+  clients:
+    github:
+      client-id: d2456e0d3f62d5838fb2
+      client-name: Github
+      client-name-cn: Github
+      client-secret: 60ec6d3c4dcf47281fe06124da535faf33cb17ec
+      access-token-uri: https://github.com/login/oauth/access_token
+      user-authorization-uri: https://github.com/login/oauth/authorize
+      user-info-uri: https://api.github.com/user
+    qq:
+      client-id: d2456e0d3f62d5838fb2
+      client-name: QQ
+      client-name-cn: 腾讯QQ
+      client-secret: 60ec6d3c4dcf47281fe06124da535faf33cb17ec
+      access-token-uri: https://github.com/login/oauth/access_token
+      user-authorization-uri: https://github.com/login/oauth/authorize
+      user-info-uri: https://api.github.com/user
+    wechat:
+      client-id: d2456e0d3f62d5838fb2
+      client-name: wechat
+      client-name-cn: 微信
+      client-secret: 60ec6d3c4dcf47281fe06124da535faf33cb17ec
+      access-token-uri: https://github.com/login/oauth/access_token
+      user-authorization-uri: https://github.com/login/oauth/authorize
+      user-info-uri: https://api.github.com/user
+    weibo:
+      client-id: 922586374
+      client-name: weibo
+      client-name-cn: 微博
+      client-secret: 16f1553320a4ac89b68b3b05655bbe55
+      access-token-uri: https://api.weibo.com/oauth2/access_token
+      user-authorization-uri: https://api.weibo.com/2/oauth2/authorize
+      user-info-uri: https://api.weibo.com/2/users/show.json

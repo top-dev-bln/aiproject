@@ -1,0 +1,981 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class ShardingJdbcMasterSlaveApplicationTests {
+    +contextLoads() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class ShardingJdbcDbMsTblApplicationTests {
+    +contextLoads() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class SharedingJdbcMasterSlaveTablesApplicationTests {
+    +contextLoads() : void
+  }
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+  class StaticInnerClz {
+    -name : String
+    -age : int
+    +test() : void
+    +test() : void
+  }
+
+package com.forezp {
+  class Chapter3ApplicationTests {
+    +contextLoads() : void
+  }
+  class Chapter3Application {
+    +main() : void
+  }
+  class Swagger2 {
+    +createRestApi() : Docket
+  }
+  class SpringbootMybatisApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootMybatisApplication {
+    +main() : void
+  }
+  class Chapter4ApplicationTests {
+    +contextLoads() : void
+  }
+  class Chapter4Application {
+    +main() : void
+  }
+  class SpringbootUploadFileApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootUploadFileApplication {
+    +main() : void
+  }
+  class SpringbootWithDockerApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootWithDockerApplication <<Controller>> {
+    +home() : String
+    +main() : void
+  }
+  class SpringbootMongodbApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootMongodbApplication {
+    -repository : CustomerRepository
+    +main() : void
+    +run() : void
+  }
+  class SpringbootResttemplateApplication {
+    -log : Logger
+    +main() : void
+    +main() : void
+    +restTemplate() : RestTemplate
+    +run() : CommandLineRunner
+  }
+  class SpringbootJpaApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootJpaApplication {
+    +main() : void
+  }
+  class SpringbootMybatisApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootMybatisApplication {
+    +main() : void
+  }
+  class SpringbootValidateFormApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootValidateFormApplication {
+    +main() : void
+  }
+  class SpringbootElkApplicationTests {
+    -logger : Logger
+    +contextLoads() : void
+    +test() : void
+  }
+  class SpringbootElkApplication {
+    +main() : void
+  }
+  class SpringbootHandlingFormSubmissionApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootHandlingFormSubmissionApplication {
+    +main() : void
+  }
+  class SpringbootRabbitmqApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootRabbitmqApplication {
+    -queueName : String
+    +main() : void
+  }
+  class Runner {
+    -rabbitTemplate : RabbitTemplate
+    -receiver : Receiver
+    -context : ConfigurableApplicationContext
+    +run() : void
+  }
+  class FirstspringbootApplicationTests {
+    +contextLoads() : void
+  }
+  class HelloController <<Controller>> {
+    -cupSize : String
+    -age : Integer
+    -content : String
+    -girlProperties : GirlProperties
+    +say() : String
+  }
+  class GirlController <<Controller>> {
+    -girlRep : GirlRep
+    +getGirlList() : List<Girl>
+    +addGirl() : Girl
+    +getGirl() : Girl
+    +updateGirl() : Girl
+    +updateGirl() : void
+    +getGirls() : List<Girl>
+  }
+  class GirlProperties {
+    -cupSize : String
+    -age : int
+    +getCupSize() : String
+    +setCupSize() : void
+    +getAge() : int
+    +setAge() : void
+  }
+  class Girl <<Entity>> {
+    -id : Integer
+    -cupSize : String
+    -age : Integer
+    +getId() : Integer
+    +setId() : void
+    +getAge() : Integer
+    +setAge() : void
+    +getCupSize() : String
+    +setCupSize() : void
+  }
+  interface GirlRep {
+    +findByAge() : List<Girl>
+  }
+  class FirstspringbootApplication {
+    +main() : void
+  }
+  class AppRunner {
+    -logger : Logger
+    -gitHubLookupService : GitHubLookupService
+    +run() : void
+  }
+  class SpringbootAsynchronousMethodsApplication {
+    +main() : void
+    +getAsyncExecutor() : Executor
+  }
+  class SpringbootRedisApplicationTests {
+    -logger : Logger
+    +contextLoads() : void
+    +testRedis() : void
+  }
+  class SpringbootRedisApplication {
+    -LOGGER : Logger
+    +main() : void
+  }
+  class SpringbootJdbcApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootJdbcApplication {
+    +main() : void
+  }
+  class SpringbootConfigApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootConfigApplication {
+    +main() : void
+  }
+  class LibaryApplicationTests {
+    -service : Service
+    +contextLoads() : void
+  }
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application <<Controller>> {
+    -service : Service
+    +main() : void
+    +home() : String
+  }
+  class SpringbootJmsApplicationTests {
+    -mailSender : JavaMailSenderImpl
+    +contextLoads() : void
+    +sendTxtMail() : void
+    +sendHtmlMail() : void
+    +sendAttachedImageMail() : void
+    +sendAttendedFileMail() : void
+  }
+  class SpringbootJmsApplication {
+    +main() : void
+  }
+  class HelloControllerIT {
+    -port : int
+    -base : URL
+    -template : TestRestTemplate
+    +setUp() : void
+    +getHello() : void
+  }
+  class HelloControllerTest {
+    -mvc : MockMvc
+    +getHello() : void
+  }
+  class SpringbootFirstApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootFirstApplication {
+    +main() : void
+    +commandLineRunner() : CommandLineRunner
+  }
+  class WebLayerTest {
+    -mockMvc : MockMvc
+    +shouldReturnDefaultMessage() : void
+  }
+  class SpringbootRestdocsApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootRestdocsApplication {
+    +main() : void
+  }
+  class SpringbootSchedulingTasksApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootSchedulingTasksApplication {
+    +main() : void
+  }
+  class SpringbootBeatlsqlApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringbootBeatlsqlApplication {
+    +main() : void
+    +getBeetlGroupUtilConfiguration() : BeetlGroupUtilConfiguration
+    +getBeetlSpringViewResolver() : BeetlSpringViewResolver
+    +getBeetlSqlScannerConfigurer() : BeetlSqlScannerConfigurer
+    +getSqlManagerFactoryBean() : SqlManagerFactoryBean
+    +getDataSource() : DataSource
+    +getDataSourceTransactionManager() : DataSourceTransactionManager
+  }
+}
+
+package com.forezp.bean {
+  class User {
+    -name : String
+    -age : int
+    +getName() : String
+    +setName() : void
+    +getAge() : int
+    +setAge() : void
+  }
+  class ConfigBean {
+    -name : String
+    -age : int
+    -number : int
+    -uuid : String
+    -max : int
+    -value : String
+    -greeting : String
+    +getName() : String
+    +setName() : void
+    +getAge() : int
+    +setAge() : void
+    +getNumber() : int
+    +setNumber() : void
+    +getUuid() : String
+    +setUuid() : void
+  }
+}
+
+package com.forezp.controller {
+  class BookContrller <<Controller>> {
+    +getBook() : List<Book>
+    +postBook() : String
+    +getBook() : Book
+    +putUser() : String
+    +deleteUser() : String
+    +jsonTest() : String
+  }
+}
+
+package com.forezp.dao {
+  interface AccountMapper {
+  }
+  interface CustomerRepository {
+  }
+  interface AccountDao {
+  }
+  interface AccountMapper2 {
+  }
+  interface AccountMapper {
+  }
+  class RedisDao <<Repository>> {
+    -template : StringRedisTemplate
+    +setKey() : void
+    +getValue() : String
+  }
+  interface IAccountDAO {
+  }
+  interface AccountDao {
+  }
+}
+
+package com.forezp.dao.impl {
+  class AccountDaoImpl <<Repository>> {
+    -jdbcTemplate : JdbcTemplate
+    +add() : int
+    +update() : int
+    +delete() : int
+    +findAccountById() : Account
+    +findAccountList() : List<Account>
+  }
+}
+
+package com.forezp.entity {
+  class Book {
+    -id : long
+    -name : String
+    -price : double
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getPrice() : double
+    +setPrice() : void
+  }
+  class Account {
+    -id : int
+    -name : String
+    -money : double
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getMoney() : double
+    +setMoney() : void
+  }
+  class Customer {
+    -id : String
+    -firstName : String
+    -lastName : String
+  }
+  class Account <<Entity>> {
+    -id : int
+    -name : String
+    -money : double
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getMoney() : double
+    +setMoney() : void
+  }
+  class Account {
+    -id : int
+    -name : String
+    -money : double
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getMoney() : double
+    +setMoney() : void
+  }
+  class PersonForm {
+    -name : String
+    -age : Integer
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+  class Greeting {
+    -id : long
+    -content : String
+    +getId() : long
+    +setId() : void
+    +getContent() : String
+    +setContent() : void
+  }
+  class User {
+    -name : String
+    -blog : String
+    +getName() : String
+    +setName() : void
+    +getBlog() : String
+    +setBlog() : void
+  }
+  class Account {
+    -id : int
+    -name : String
+    -money : double
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getMoney() : double
+    +setMoney() : void
+  }
+  class Account {
+    -id : int
+    -name : String
+    -money : double
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getMoney() : double
+    +setMoney() : void
+  }
+}
+
+package com.forezp.message {
+  class Receiver {
+    -latch : CountDownLatch
+    +receiveMessage() : void
+    +getLatch() : CountDownLatch
+  }
+  class Receiver {
+    -LOGGER : Logger
+    -latch : CountDownLatch
+    +receiveMessage() : void
+  }
+}
+
+package com.forezp.service {
+  class AccountService <<Service>> {
+    -accountMapper : AccountMapper
+    +add() : int
+    +update() : int
+    +delete() : int
+    +findAccount() : Account
+    +findAccountList() : List<Account>
+  }
+  class AccountService <<Service>> {
+    -accountMapper : AccountMapper
+    +add() : int
+    +update() : int
+    +delete() : int
+    +findAccount() : Account
+    +findAccountList() : List<Account>
+  }
+  class AccountService2 <<Service>> {
+    +transfer() : void
+  }
+  class GitHubLookupService <<Service>> {
+    -logger : Logger
+    -restTemplate : RestTemplate
+    +findUser() : Future<User>
+  }
+  interface IAccountService {
+  }
+  class ServiceConfiguration {
+    +service() : Service
+  }
+  class Service {
+    -message : String
+    +message() : String
+  }
+  class ServiceProperties {
+    -message : String
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+package com.forezp.service.impl {
+  class AccountService <<Service>> {
+    +add() : int
+    +update() : int
+    +delete() : int
+    +findAccountById() : Account
+    +findAccountList() : List<Account>
+  }
+}
+
+package com.forezp.shardingjdbcdbmstbl {
+  class ShardingJdbcDbMsTblApplication {
+    +main() : void
+  }
+}
+
+package com.forezp.shardingjdbcdbmstbl.entity {
+  class User {
+    -serialVersionUID : long
+    -id : Integer
+    -username : String
+    -password : String
+    +getId() : Integer
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+    +compareTo() : int
+  }
+}
+
+package com.forezp.shardingjdbcdbmstbl.repository {
+  interface UserRepository {
+  }
+}
+
+package com.forezp.shardingjdbcdbmstbl.service {
+  interface UserService {
+  }
+}
+
+package com.forezp.shardingjdbcdbmstbl.service.impl {
+  class UserServiceImpl <<Service>> {
+    +addUser() : Integer
+    +list() : List<User>
+    +deleteAll() : void
+  }
+}
+
+package com.forezp.shardingjdbcdbmstbl.web {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +list() : Object
+    +add() : Object
+    +delete() : Object
+  }
+}
+
+package com.forezp.shardingjdbcmasterslave {
+  class ShardingJdbcMasterSlaveApplication {
+    +main() : void
+  }
+}
+
+package com.forezp.shardingjdbcmasterslave.entity {
+  class User {
+    -serialVersionUID : long
+    -id : Integer
+    -username : String
+    -password : String
+    +getId() : Integer
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.forezp.shardingjdbcmasterslave.repository {
+  interface UserRepository {
+  }
+}
+
+package com.forezp.shardingjdbcmasterslave.service {
+  interface UserService {
+  }
+}
+
+package com.forezp.shardingjdbcmasterslave.service.impl {
+  class UserServiceImpl <<Service>> {
+    +addUser() : Long
+    +list() : List<User>
+  }
+}
+
+package com.forezp.shardingjdbcmasterslave.web {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +list() : Object
+    +add() : Object
+  }
+}
+
+package com.forezp.sharedingjdbcmasterslavetables {
+  class MyPreciseShardingAlgorithm {
+    +doSharding() : String
+  }
+  class SharedingJdbcMasterSlaveTablesApplication {
+    +main() : void
+  }
+}
+
+package com.forezp.sharedingjdbcmasterslavetables.entity {
+  class User {
+    -serialVersionUID : long
+    -id : Integer
+    -username : String
+    -password : String
+    +getId() : Integer
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.forezp.sharedingjdbcmasterslavetables.repository {
+  interface UserRepository {
+  }
+}
+
+package com.forezp.sharedingjdbcmasterslavetables.service {
+  interface UserService {
+  }
+}
+
+package com.forezp.sharedingjdbcmasterslavetables.service.impl {
+  class UserServiceImpl <<Service>> {
+    +addUser() : Integer
+    +list() : List<User>
+  }
+}
+
+package com.forezp.sharedingjdbcmasterslavetables.web {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +list() : Object
+    +add() : Object
+  }
+}
+
+package com.forezp.storage {
+  class FileSystemStorageService <<Service>> {
+    -rootLocation : Path
+    +store() : void
+    +loadAll() : Stream<Path>
+    +load() : Path
+    +loadAsResource() : Resource
+    +deleteAll() : void
+    +init() : void
+  }
+  class StorageProperties {
+    -location : String
+    +getLocation() : String
+    +setLocation() : void
+  }
+  class StorageException {
+  }
+  class StorageFileNotFoundException {
+  }
+  interface StorageService {
+  }
+}
+
+package com.forezp.task {
+  class ScheduledTasks {
+    -log : Logger
+    -dateFormat : SimpleDateFormat
+    +reportCurrentTime() : void
+  }
+}
+
+package com.forezp.web {
+  class AccountController <<Controller>> {
+    +getAccounts() : List<Account>
+    +getAccountById() : Account
+    +updateAccount() : String
+    +delete() : String
+    +postAccount() : String
+  }
+  class UserController <<Controller>> {
+    +getUser() : String
+    +updateUserName() : String
+  }
+  class FileUploadController <<Controller>> {
+    -storageService : StorageService
+    +listUploadedFiles() : String
+    +serveFile() : ResponseEntity<Resource>
+    +handleFileUpload() : String
+    +handleStorageFileNotFound() : ResponseEntity
+  }
+  class AccountController <<Controller>> {
+    +getAccounts() : List<Account>
+    +getAccountById() : Account
+    +updateAccount() : String
+    +postAccount() : String
+  }
+  class AccountController2 <<Controller>> {
+    +transfer() : void
+  }
+  class AccountController <<Controller>> {
+    +getAccounts() : List<Account>
+    +getAccountById() : Account
+    +updateAccount() : String
+    +delete() : String
+    +postAccount() : String
+  }
+  class WebController <<Controller>> {
+    +addViewControllers() : void
+    +showForm() : String
+    +checkPersonInfo() : String
+  }
+  class GreetingController <<Controller>> {
+    +greetingForm() : String
+    +greetingSubmit() : String
+  }
+  class AccountController <<Controller>> {
+    +getAccounts() : List<Account>
+    +getAccountById() : Account
+    +updateAccount() : String
+    +postAccount() : String
+  }
+  class LucyController <<Controller>> {
+    +miya() : String
+    +user() : String
+  }
+  class MiyaController <<Controller>> {
+    -name : String
+    -age : int
+    +miya() : String
+  }
+  class HelloController <<Controller>> {
+    +index() : String
+    +commandLineRunner() : CommandLineRunner
+  }
+  class HomeController <<Controller>> {
+  }
+  class AccountController <<Controller>> {
+    +getAccounts() : List<Account>
+    +getAccountById() : Account
+    +getAccountById() : Account
+    +updateAccount() : String
+    +postAccount() : String
+  }
+}
+
+package forezp {
+  class DemoApplicationTests {
+    +contextLoads() : void
+  }
+  class AppRunner {
+    -logger : Logger
+    -bookRepository : BookRepository
+    +run() : void
+  }
+  class DemoApplication {
+    +main() : void
+  }
+}
+
+package forezp.dao {
+  interface BookRepository {
+  }
+}
+
+package forezp.dao.impl {
+  class SimpleBookRepository {
+    +getByIsbn() : Book
+  }
+}
+
+package forezp.entity {
+  class Book {
+    -isbn : String
+    -title : String
+    +getIsbn() : String
+    +setIsbn() : void
+    +getTitle() : String
+    +setTitle() : void
+  }
+}
+
+package io.github.forezp.springbootzkdemo {
+  class SpringbootZkDemoApplicationTests {
+  }
+  class ZkTest {
+    -address : String
+    -session_timeout : int
+    -cout : CountDownLatch
+    -stat : Stat
+    +main() : void
+    +process() : void
+  }
+  class SpringbootZkDemoApplication {
+    +main() : void
+  }
+}
+
+package io.github.forezp.springkafkademo {
+  class SpringKafkaDemoApplicationTests {
+  }
+  class SpringKafkaDemoApplication {
+    +main() : void
+  }
+}
+
+package io.github.forezp.springkafkademo.entity {
+  class User {
+    -id : Integer
+    -name : String
+    -age : Integer
+    +getId() : Integer
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+}
+
+package io.github.forezp.springkafkademo.service {
+  class KafkaProducer {
+    -topicUser : String
+    +sendUserMessage() : void
+  }
+  class kafkaConsumer {
+    +onMessage() : void
+    +onMessage2() : void
+  }
+}
+
+package io.github.forezp.springkafkademo.web {
+  class KafkaController <<Controller>> {
+    -kafkaProducer : KafkaProducer
+    +createMsg() : User
+  }
+}
+
+' --- Relatii ---
+BookContrller --> Book
+AccountController --> Account
+AccountController --> AccountService
+AccountMapper --> Account
+AccountService --> AccountMapper
+AccountService --> Account
+AccountService --> Service
+SpringbootUploadFileApplication --> StorageProperties
+SpringbootUploadFileApplication --> StorageService
+FileUploadController --> StorageFileNotFoundException
+FileUploadController --> StorageService
+FileSystemStorageService ..|> StorageService
+FileSystemStorageService --> Service
+StorageFileNotFoundException --|> StorageException
+AppRunner --> BookRepository
+BookRepository --> Book
+SimpleBookRepository ..|> BookRepository
+SimpleBookRepository --> BookRepository
+SimpleBookRepository --> Book
+SpringbootMongodbApplication --> CustomerRepository
+SpringbootMongodbApplication --> Customer
+CustomerRepository --> Customer
+AccountController --> AccountDao
+AccountController --> Account
+AccountDao --> Account
+SpringbootMybatisApplicationTests --> AccountService
+AccountController2 --> AccountService
+AccountController2 --> AccountService2
+AccountController --> Account
+AccountController --> AccountService
+AccountMapper --> Account
+AccountService --> AccountMapper
+AccountService --> AccountMapper2
+AccountService --> Account
+AccountService --> Service
+AccountService2 --> AccountMapper2
+AccountService2 --> Service
+WebController --> PersonForm
+UserRepository --> User
+UserController --> User
+UserController --> UserService
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserRepository
+UserServiceImpl --> User
+UserServiceImpl --> UserService
+UserServiceImpl --> Service
+UserRepository --> User
+UserController --> User
+UserController --> UserService
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> UserService
+UserServiceImpl --> Service
+UserRepository --> User
+UserController --> User
+UserController --> UserService
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> UserService
+UserServiceImpl --> Service
+GreetingController --> Greeting
+SpringbootRabbitmqApplication --> Receiver
+Runner --> Receiver
+AppRunner --> User
+AppRunner --> GitHubLookupService
+GitHubLookupService --> User
+GitHubLookupService --> Service
+SpringbootRedisApplicationTests --> RedisDao
+SpringbootRedisApplication --> Receiver
+AccountController --> Account
+AccountController --> IAccountService
+IAccountDAO --> Account
+AccountDaoImpl ..|> IAccountDAO
+AccountDaoImpl --> IAccountDAO
+AccountDaoImpl --> Account
+IAccountService --> Account
+AccountService ..|> IAccountService
+AccountService --> IAccountDAO
+AccountService --> Account
+AccountService --> IAccountService
+AccountService --> Service
+LucyController --> ConfigBean
+LucyController --> User
+KafkaController --> User
+KafkaController --> KafkaProducer
+KafkaProducer --> User
+LibaryApplicationTests --> Service
+LibaryApplicationTests --> ServiceConfiguration
+Application --> Service
+Application --> ServiceConfiguration
+WebLayerTest --> HomeController
+AccountController --> AccountDao
+AccountController --> Account
+AccountDao --> Account
+
+@enduml

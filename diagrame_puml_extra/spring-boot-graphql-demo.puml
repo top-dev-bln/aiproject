@@ -1,0 +1,46 @@
+@startuml
+package io.github.helloworlde.graphql.config; {
+class DataInitializer {
+}
+
+}
+
+package io.github.helloworlde.graphql; {
+class GraphqlApplication {
+}
+
+class GraphqlApplicationTests {
+}
+
+}
+
+package io.github.helloworlde.graphql.model; {
+class Post {
+}
+
+}
+
+package io.github.helloworlde.graphql.repository; {
+class PostRepository {
+}
+
+}
+
+package io.github.helloworlde.graphql.resolver; {
+class PostMutation {
+}
+
+class PostQuery {
+}
+
+}
+
+DataInitializer -- Post
+DataInitializer -- PostRepository
+PostRepository -- Post
+PostMutation -- Post
+PostMutation -- PostRepository
+PostQuery -- Post
+PostQuery -- PostRepository
+GraphqlApplicationTests -- GraphqlApplication
+@enduml

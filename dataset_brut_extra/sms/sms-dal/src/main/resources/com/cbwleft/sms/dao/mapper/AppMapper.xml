@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbwleft.sms.dao.mapper.AppMapper">
+  <resultMap id="BaseResultMap" type="com.cbwleft.sms.dao.model.App">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="TINYINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="private_key" jdbcType="VARCHAR" property="privateKey" />
+    <result column="prefix" jdbcType="VARCHAR" property="prefix" />
+    <result column="validate_code_length" jdbcType="TINYINT" property="validateCodeLength" />
+    <result column="channel_params" jdbcType="VARCHAR" property="channelParams" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+</mapper>

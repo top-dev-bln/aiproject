@@ -1,0 +1,154 @@
+@startuml
+package com.xiaogang.xxljobadminsdk.config; {
+class XxlJobAdminAutoConfigure {
+}
+
+class XxlJobAdminProperties {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.constants; {
+class ExecutorBlockStrategyEnum {
+}
+
+class ExecutorRouteStrategyEnum {
+}
+
+class GlueTypeEnum {
+}
+
+class MisfireStrategyEnum {
+}
+
+class ScheduleTypeEnum {
+}
+
+class TriggerStatusEnum {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.dto; {
+class HttpHeader {
+}
+
+class JobGroupQuery {
+}
+
+class JobQuery {
+}
+
+class ReturnT {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.model; {
+class DefaultXxlJobAddParam {
+}
+
+class JobUpdateParam {
+}
+
+class XxlJobInfo {
+}
+
+class XxlJobInfoAddParam {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.service.impl; {
+class XxlJobServiceImpl {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.service; {
+class XxlJobService {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.utils; {
+class MyUtil {
+}
+
+}
+
+package com.xiaogang.xxljobadminsdk.vo; {
+class DataItem {
+}
+
+class JobGroupPageResult {
+}
+
+class JobInfoPageItem {
+}
+
+class JobInfoPageResult {
+}
+
+}
+
+XxlJobAdminAutoConfigure -- XxlJobAdminProperties
+XxlJobAdminAutoConfigure -- HttpHeader
+XxlJobAdminAutoConfigure -- ReturnT
+XxlJobAdminAutoConfigure -- XxlJobServiceImpl
+XxlJobAdminAutoConfigure -- XxlJobService
+JobQuery -- TriggerStatusEnum
+DefaultXxlJobAddParam -- ExecutorBlockStrategyEnum
+DefaultXxlJobAddParam -- ExecutorRouteStrategyEnum
+DefaultXxlJobAddParam -- GlueTypeEnum
+DefaultXxlJobAddParam -- MisfireStrategyEnum
+DefaultXxlJobAddParam -- ScheduleTypeEnum
+JobUpdateParam -- ExecutorBlockStrategyEnum
+JobUpdateParam -- ExecutorRouteStrategyEnum
+JobUpdateParam -- MisfireStrategyEnum
+JobUpdateParam -- ScheduleTypeEnum
+XxlJobInfo -- ExecutorRouteStrategyEnum
+XxlJobInfo -- GlueTypeEnum
+XxlJobInfo -- MisfireStrategyEnum
+XxlJobInfo -- ScheduleTypeEnum
+XxlJobInfo -- TriggerStatusEnum
+XxlJobInfoAddParam -- ScheduleTypeEnum
+XxlJobInfoAddParam -- XxlJobInfo
+XxlJobServiceImpl -- XxlJobAdminProperties
+XxlJobServiceImpl -- ExecutorBlockStrategyEnum
+XxlJobServiceImpl -- ExecutorRouteStrategyEnum
+XxlJobServiceImpl -- GlueTypeEnum
+XxlJobServiceImpl -- MisfireStrategyEnum
+XxlJobServiceImpl -- ScheduleTypeEnum
+XxlJobServiceImpl -- TriggerStatusEnum
+XxlJobServiceImpl -- HttpHeader
+XxlJobServiceImpl -- JobGroupQuery
+XxlJobServiceImpl -- JobQuery
+XxlJobServiceImpl -- ReturnT
+XxlJobServiceImpl -- DefaultXxlJobAddParam
+XxlJobServiceImpl -- JobUpdateParam
+XxlJobServiceImpl -- XxlJobInfo
+XxlJobServiceImpl -- XxlJobInfoAddParam
+XxlJobServiceImpl -- XxlJobService
+XxlJobServiceImpl -- MyUtil
+XxlJobServiceImpl -- DataItem
+XxlJobServiceImpl -- JobGroupPageResult
+XxlJobServiceImpl -- JobInfoPageItem
+XxlJobServiceImpl -- JobInfoPageResult
+XxlJobService -- TriggerStatusEnum
+XxlJobService -- JobGroupQuery
+XxlJobService -- JobQuery
+XxlJobService -- DefaultXxlJobAddParam
+XxlJobService -- JobUpdateParam
+XxlJobService -- XxlJobInfo
+XxlJobService -- XxlJobInfoAddParam
+XxlJobService -- JobGroupPageResult
+XxlJobService -- JobInfoPageItem
+XxlJobService -- JobInfoPageResult
+JobGroupPageResult -- DataItem
+JobInfoPageItem -- ExecutorBlockStrategyEnum
+JobInfoPageItem -- ExecutorRouteStrategyEnum
+JobInfoPageItem -- MisfireStrategyEnum
+JobInfoPageItem -- ScheduleTypeEnum
+JobInfoPageResult -- JobInfoPageItem
+@enduml

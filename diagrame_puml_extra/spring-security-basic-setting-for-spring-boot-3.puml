@@ -1,0 +1,81 @@
+@startuml
+package com.nahwasa.springsecuritybasicsettingforspringboot3.config; {
+class AdminAuthorize {
+}
+
+class MyUserDetailService {
+}
+
+class SpringSecurityConfig {
+}
+
+class UserAuthorize {
+}
+
+}
+
+package com.nahwasa.springsecuritybasicsettingforspringboot3.controller; {
+class AuthorizationController {
+}
+
+class StatusCheckController {
+}
+
+class ViewController {
+}
+
+}
+
+package com.nahwasa.springsecuritybasicsettingforspringboot3.domain; {
+class Member {
+}
+
+}
+
+package com.nahwasa.springsecuritybasicsettingforspringboot3.dto; {
+class MemberJoinDto {
+}
+
+}
+
+package com.nahwasa.springsecuritybasicsettingforspringboot3.repository; {
+class MemberRepository {
+}
+
+}
+
+package com.nahwasa.springsecuritybasicsettingforspringboot3.service; {
+class MemberService {
+}
+
+class RegisterMemberService {
+}
+
+}
+
+package com.nahwasa.springsecuritybasicsettingforspringboot3; {
+class SpringBootSecurityBasicSettingApplication {
+}
+
+class StatusCheckControllerTest {
+}
+
+}
+
+MyUserDetailService -- Member
+MyUserDetailService -- MemberService
+AuthorizationController -- Member
+AuthorizationController -- MemberJoinDto
+AuthorizationController -- MemberService
+AuthorizationController -- RegisterMemberService
+ViewController -- AdminAuthorize
+ViewController -- UserAuthorize
+MemberJoinDto -- Member
+MemberRepository -- Member
+MemberService -- Member
+MemberService -- MemberRepository
+RegisterMemberService -- Member
+RegisterMemberService -- MemberRepository
+RegisterMemberService -- MemberService
+StatusCheckControllerTest -- StatusCheckController
+@enduml

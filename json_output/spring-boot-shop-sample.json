@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the e-commerce, authentication domain. It serves Customer, User as its primary actors. The main business capabilities include cart, home, login. Core business data revolves around Category, Product, User.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to add items to a shopping cart and check out, so that I can conveniently collect items before purchasing.",
+        "services": [
+          "ShoppingCartService",
+          "ShoppingCartServiceImpl"
+        ],
+        "controllers": [
+          "CartController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to log into the system, so that I can access my personalized dashboard and features.",
+        "services": [],
+        "controllers": [
+          "LoginController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [
+          "ProductService",
+          "ProductServiceImpl"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to organize items into categories, so that users can easily navigate and filter available items.",
+        "services": [
+          "CategoryService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CartController[\"CartController\"]\n    HomeController[\"HomeController\"]\n    LoginController[\"LoginController\"]\n    ProductController[\"ProductController\"]\n    RegisterController[\"RegisterController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    CategoryService[\"CategoryService\"]\n    CategoryServiceImpl[\"CategoryServiceImpl\"]\n    ProductService[\"ProductService\"]\n    ProductServiceImpl[\"ProductServiceImpl\"]\n    ShoppingCartService[\"ShoppingCartService\"]\n    ShoppingCartServiceImpl[\"ShoppingCartServiceImpl\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Category[\"Category\"]\n    CategoryRepository[\"CategoryRepository\"]\n    Product[\"Product\"]\n    ProductRepository[\"ProductRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Infrastructure\n    WebMvcConfig[\"WebMvcConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

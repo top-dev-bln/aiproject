@@ -1,0 +1,106 @@
+@startuml
+
+  class CodeGenerator {
+    -JDBC_URL : String
+    -JDBC_USERNAME : String
+    -JDBC_PASSWORD : String
+    -JDBC_DIVER_CLASS_NAME : String
+    -PROJECT_PATH : String
+    -TEMPLATE_FILE_PATH : String
+    -JAVA_PATH : String
+    -RESOURCES_PATH : String
+    -PACKAGE_PATH_SERVICE : String
+    -PACKAGE_PATH_SERVICE_IMPL : String
+    +main() : void
+    +genCode() : void
+    +genCodeByCustomModelName() : void
+    +genModelAndMapper() : void
+    +genService() : void
+    +genController() : void
+  }
+
+package com.company.project {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.company.project.configurer {
+  class MybatisConfigurer {
+    +sqlSessionFactoryBean() : SqlSessionFactory
+    +mapperScannerConfigurer() : MapperScannerConfigurer
+  }
+  class WebMvcConfigurer {
+    -logger : Logger
+    -env : String
+    +configureMessageConverters() : void
+    +configureHandlerExceptionResolvers() : void
+    +resolveException() : ModelAndView
+    +addCorsMappings() : void
+    +addInterceptors() : void
+    +preHandle() : boolean
+  }
+}
+
+package com.company.project.core {
+  class ProjectConstant {
+    -BASE_PACKAGE : String
+    -MODEL_PACKAGE : String
+    -MAPPER_PACKAGE : String
+    -SERVICE_PACKAGE : String
+    -SERVICE_IMPL_PACKAGE : String
+    -CONTROLLER_PACKAGE : String
+    -MAPPER_INTERFACE_REFERENCE : String
+  }
+  class ServiceException {
+  }
+  interface Mapper {
+  }
+  class AbstractService {
+    -mapper : Mapper<T>
+    -modelClass : Class<T>
+    +save() : void
+    +save() : void
+    +deleteById() : void
+    +deleteByIds() : void
+    +update() : void
+    +findById() : T
+    +findBy() : T
+    +findByIds() : List<T>
+  }
+  interface Service {
+  }
+  enum ResultCode {
+    -code : int
+    +code() : int
+  }
+  class Result {
+    -code : int
+    -message : String
+    -data : T
+    +setCode() : Result
+    +getCode() : int
+    +getMessage() : String
+    +setMessage() : Result
+    +getData() : T
+    +setData() : Result
+  }
+  class ResultGenerator {
+    -DEFAULT_SUCCESS_MESSAGE : String
+    +genSuccessResult() : Result
+    +genFailResult() : Result
+  }
+}
+
+package com.conpany.project {
+  class Tester {
+  }
+}
+
+' --- Relatii ---
+Tester --> Application
+WebMvcConfigurer --> Result
+WebMvcConfigurer --> ResultCode
+WebMvcConfigurer --> ServiceException
+
+@enduml

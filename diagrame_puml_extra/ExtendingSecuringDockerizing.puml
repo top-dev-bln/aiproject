@@ -1,0 +1,249 @@
+@startuml
+package com.example.ec.domain; {
+class Difficulty {
+}
+
+class Region {
+}
+
+class RegionConverter {
+}
+
+class Role {
+}
+
+class Tour {
+}
+
+class TourPackage {
+}
+
+class TourRating {
+}
+
+class User {
+}
+
+class RegionConverterTest {
+}
+
+class RegionTest {
+}
+
+class TourPackageTest {
+}
+
+class TourRatingTest {
+}
+
+class TourTest {
+}
+
+}
+
+package com.example.ec; {
+class ExplorecaliApplication {
+}
+
+class ExplorecaliApplicationTests {
+}
+
+}
+
+package com.example.ec.repo; {
+class RoleRepository {
+}
+
+class TourPackageRepository {
+}
+
+class TourRatingRepository {
+}
+
+class TourRepository {
+}
+
+class UserRepository {
+}
+
+class UserRepositoryTest {
+}
+
+}
+
+package com.example.ec.security; {
+class ExploreCaliUserDetailsService {
+}
+
+class JwtProvider {
+}
+
+class JwtTokenFilter {
+}
+
+class WebSecurityConfiguration {
+}
+
+}
+
+package com.example.ec.service; {
+class TourRatingService {
+}
+
+class UserService {
+}
+
+class TourRatingServiceIntegrationTest {
+}
+
+class TourRatingServiceTest {
+}
+
+class UserServiceIntegrationTest {
+}
+
+}
+
+package com.example.ec.web; {
+class ExceptionHandlerController {
+}
+
+class LoginDto {
+}
+
+class RatingController {
+}
+
+class RatingDto {
+}
+
+class TourRatingController {
+}
+
+class UserController {
+}
+
+class JwtRequestHelper {
+}
+
+class LoginDtoTest {
+}
+
+class RatingControllerTest {
+}
+
+class RatingDtoTest {
+}
+
+class TourRatingControllerTest {
+}
+
+class UserControllerTest {
+}
+
+}
+
+RegionConverter -- Region
+Tour -- Difficulty
+Tour -- Region
+Tour -- TourPackage
+TourRating -- Tour
+User -- Role
+RoleRepository -- Role
+TourPackageRepository -- Tour
+TourPackageRepository -- TourPackage
+TourRatingRepository -- Tour
+TourRatingRepository -- TourRating
+TourRepository -- Tour
+TourRepository -- TourPackage
+UserRepository -- User
+ExploreCaliUserDetailsService -- Role
+ExploreCaliUserDetailsService -- User
+ExploreCaliUserDetailsService -- UserRepository
+ExploreCaliUserDetailsService -- JwtProvider
+JwtProvider -- Role
+JwtProvider -- User
+JwtTokenFilter -- Role
+JwtTokenFilter -- User
+JwtTokenFilter -- ExploreCaliUserDetailsService
+WebSecurityConfiguration -- User
+WebSecurityConfiguration -- ExploreCaliUserDetailsService
+WebSecurityConfiguration -- JwtTokenFilter
+TourRatingService -- Tour
+TourRatingService -- TourRating
+TourRatingService -- TourRatingRepository
+TourRatingService -- TourRepository
+UserService -- Role
+UserService -- User
+UserService -- RoleRepository
+UserService -- UserRepository
+UserService -- JwtProvider
+LoginDto -- User
+RatingController -- Tour
+RatingController -- TourRating
+RatingController -- TourRatingService
+RatingController -- RatingDto
+RatingDto -- Tour
+TourRatingController -- Role
+TourRatingController -- Tour
+TourRatingController -- TourRating
+TourRatingController -- TourRatingService
+TourRatingController -- RatingController
+TourRatingController -- RatingDto
+UserController -- Role
+UserController -- User
+UserController -- UserService
+UserController -- LoginDto
+RegionConverterTest -- Region
+RegionConverterTest -- RegionConverter
+RegionTest -- Region
+TourPackageTest -- Tour
+TourPackageTest -- TourPackage
+TourRatingTest -- Difficulty
+TourRatingTest -- Region
+TourRatingTest -- Tour
+TourRatingTest -- TourPackage
+TourRatingTest -- TourRating
+TourTest -- Difficulty
+TourTest -- Region
+TourTest -- Tour
+TourTest -- TourPackage
+ExplorecaliApplicationTests -- ExplorecaliApplication
+UserRepositoryTest -- User
+UserRepositoryTest -- UserRepository
+TourRatingServiceIntegrationTest -- Tour
+TourRatingServiceIntegrationTest -- TourRating
+TourRatingServiceIntegrationTest -- TourRatingService
+TourRatingServiceTest -- Tour
+TourRatingServiceTest -- TourRating
+TourRatingServiceTest -- TourRatingRepository
+TourRatingServiceTest -- TourRepository
+TourRatingServiceTest -- TourRatingService
+UserServiceIntegrationTest -- User
+UserServiceIntegrationTest -- UserService
+JwtRequestHelper -- Role
+JwtRequestHelper -- JwtProvider
+LoginDtoTest -- User
+LoginDtoTest -- LoginDto
+RatingControllerTest -- Tour
+RatingControllerTest -- TourRating
+RatingControllerTest -- TourRatingService
+RatingControllerTest -- RatingController
+RatingControllerTest -- RatingDto
+RatingDtoTest -- RatingDto
+TourRatingControllerTest -- Role
+TourRatingControllerTest -- Tour
+TourRatingControllerTest -- TourRating
+TourRatingControllerTest -- TourRatingService
+TourRatingControllerTest -- RatingController
+TourRatingControllerTest -- RatingDto
+TourRatingControllerTest -- TourRatingController
+TourRatingControllerTest -- JwtRequestHelper
+TourRatingControllerTest -- RatingControllerTest
+UserControllerTest -- Role
+UserControllerTest -- User
+UserControllerTest -- UserService
+UserControllerTest -- LoginDto
+UserControllerTest -- UserController
+UserControllerTest -- JwtRequestHelper
+@enduml

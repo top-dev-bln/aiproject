@@ -1,0 +1,8 @@
+databaseChangeLog:
+
+  # Initialize application tables
+
+  - include:
+      file: "classpath:/db/changelog/create-table/create-table-file.yml"
+
+

@@ -1,0 +1,303 @@
+@startuml
+
+package demo.ecommerce.auth {
+  class Application {
+    +main() : void
+  }
+}
+
+package demo.ecommerce.auth.config {
+  class DataBaseConfig {
+    +dataSource() : DataSource
+  }
+  class ResourceServerConfig {
+    -PUBLIC_RESOURCES : String[]
+    +configure() : void
+  }
+  class AuthorizationServerConfig {
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +tokenStore() : TokenStore
+    +accessTokenConverter() : JwtAccessTokenConverter
+    +encoder() : BCryptPasswordEncoder
+    +userDetailsService() : ClientDetailsService
+  }
+}
+
+package demo.ecommerce.auth.controller {
+  class JWTKeyEndPoint {
+    -keys : List<JSONObject>
+    +key() : ResponseEntity
+  }
+  class UserController <<Controller>> {
+    +getLoginUser() : Principal
+    +merchantRegister() : User
+    +clientRegister() : User
+  }
+}
+
+package demo.ecommerce.auth.exception {
+  class EmailAlreadyExists {
+    +getMessage() : String
+  }
+}
+
+package demo.ecommerce.auth.model {
+  class User {
+    -id : Long
+    -email : String
+    -password : String
+    -roles : String
+    -firstName : String
+    -lastName : String
+    -createDate : Date
+    -updateDate : Date
+    -lastLogin : Date
+  }
+}
+
+package demo.ecommerce.auth.repository {
+  interface UserRepository {
+  }
+}
+
+package demo.ecommerce.auth.security.model {
+  class ClientDetailsInfo {
+    -user : User
+    -roles : String[]
+    -roles : String[]
+    +getClientId() : String
+    +getResourceIds() : Set<String>
+    +isSecretRequired() : boolean
+    +getClientSecret() : String
+    +isScoped() : boolean
+    +getScope() : Set<String>
+    +getAuthorizedGrantTypes() : Set<String>
+    +getRegisteredRedirectUri() : Set<String>
+  }
+}
+
+package demo.ecommerce.auth.security.service {
+  class ClientDetailsServiceImpl <<Service>> {
+    +loadClientByClientId() : ClientDetails
+  }
+}
+
+package demo.ecommerce.auth.service {
+  class UserService <<Service>> {
+    +createUser() : User
+  }
+}
+
+package demo.ecommerce.config {
+  class Application {
+    +main() : void
+  }
+  class DatabaseConfig {
+    +connectionFactory() : PostgresqlConnectionFactory
+    +dataBaseClient() : DatabaseClient
+  }
+  class SecurityConfig {
+    +extractAuthorities() : Collection<GrantedAuthority>
+    +convert() : Mono<AbstractAuthenticationToken>
+    +extractAuthorities() : Collection<GrantedAuthority>
+  }
+}
+
+package demo.ecommerce.discovery {
+  class Application {
+    +main() : void
+  }
+}
+
+package demo.ecommerce.migration {
+  class Application {
+    -hostEnvName : String
+    -portEnvName : String
+    -schemaEnvName : String
+    -userEnvName : String
+    -passwordEnvName : String
+    +main() : void
+  }
+}
+
+package demo.ecommerce.model.order {
+  class ShoppingCartItem {
+    -id : Long
+    -product : Product
+    -productId : Long
+    -shoppingCartId : Long
+    -quantity : Integer
+    -unitCostPrice : Double
+    -unitPrice : Double
+    -totalPrice : Double
+    -shippingCost : Double
+  }
+  class ShoppingCart {
+    -id : Long
+    -totalQuantity : Integer
+    -subTotalPrice : Double
+    -totalShippingCost : Double
+    -totalCost : Double
+    -userId : Long
+    -createdOn : Date
+    -updatedOn : Date
+    -cartItemList : List<ShoppingCartItem>
+  }
+}
+
+package demo.ecommerce.model.product {
+  class Product {
+    -id : Long
+    -sku : String
+    -title : String
+    -costPrice : Double
+    -sellPrice : Double
+    -inventoryCounts : Integer
+    -userId : Long
+    -createdOn : Date
+    -updatedOn : Date
+    +increaseInventory() : void
+    +decreaseInventory() : void
+  }
+}
+
+package demo.ecommerce.model.user {
+  class User {
+    -id : Long
+    -email : String
+    -password : String
+    -roles : String
+    -firstName : String
+    -lastName : String
+    -createDate : Date
+    -updateDate : Date
+    -lastLogin : Date
+  }
+}
+
+package demo.ecommerce.model.util {
+  class Count {
+  }
+}
+
+package demo.ecommerce.monitoring {
+  class Application {
+    +main() : void
+  }
+}
+
+package demo.ecommerce.order {
+  class Application {
+    +main() : void
+  }
+}
+
+package demo.ecommerce.order.controller {
+  class OrderController <<Controller>> {
+    +saveOrder() : Mono<ResponseEntity>
+    +updateOrder() : Mono<ResponseEntity>
+  }
+}
+
+package demo.ecommerce.order.service {
+  class OrderService <<Service>> {
+    -PRODUCT_NOT_AVAILABLE_MESSAGE : String
+    -logger : Logger
+    -newCartProducts : Flux<Product>
+    -tempExistingCart : Mono<ShoppingCart>
+    -shoppingCartMono : Mono<ShoppingCart>
+    +saveShoppingCart() : Mono<ShoppingCart>
+    +deleteCartItems() : Mono<Void>
+    +getShoppingCart() : Mono<ShoppingCart>
+    +getUserShoppingCarts() : Mono<Page<ShoppingCart>>
+  }
+}
+
+package demo.ecommerce.product {
+  class Application {
+    +main() : void
+  }
+}
+
+package demo.ecommerce.product.controller {
+  class ProductController <<Controller>> {
+    +getProducts() : Mono<Page<Product>>
+    +getMerchantProducts() : Mono<Page<Product>>
+    +saveProduct() : Mono<Product>
+    +updateProduct() : Mono<Product>
+    +getNonZeroInventoryProducts() : Mono<Page<Product>>
+    +getZeroInventoryProducts() : Mono<Page<Product>>
+  }
+}
+
+package demo.ecommerce.product.service {
+  class ProductService <<Service>> {
+    +saveProduct() : Mono<Product>
+    +saveProduct() : Mono<Product>
+    +findAllProductsPaged() : Mono<Page<Product>>
+    +findNotAvailableProductsPaged() : Mono<Page<Product>>
+    +findAvailableProductsPaged() : Mono<Page<Product>>
+    +findUserProductsPaged() : Mono<Page<Product>>
+  }
+}
+
+package demo.ecommerce.proxy {
+  class Application {
+    +main() : void
+    +routeLocator() : RouteLocator
+  }
+}
+
+package demo.ecommerce.repository.order {
+  interface ShoppingCartRepository {
+  }
+  interface ShoppingCartItemRepository {
+  }
+}
+
+package demo.ecommerce.repository.product {
+  interface ProductRepository {
+  }
+}
+
+package demo.ecommerce.repository.user {
+  interface UserRepository {
+  }
+}
+
+' --- Relatii ---
+UserRepository --> User
+AuthorizationServerConfig --> ClientDetailsServiceImpl
+ClientDetailsInfo --> User
+ClientDetailsServiceImpl --> User
+ClientDetailsServiceImpl --> UserRepository
+ClientDetailsServiceImpl --> ClientDetailsInfo
+UserController --> User
+UserController --> UserService
+UserService --> EmailAlreadyExists
+UserService --> User
+UserService --> UserRepository
+ShoppingCartRepository --> ShoppingCart
+ShoppingCartItemRepository --> ShoppingCartItem
+UserRepository --> User
+ProductRepository --> Product
+ShoppingCartItem --> Product
+OrderController --> ShoppingCart
+OrderController --> OrderService
+OrderService --> ShoppingCart
+OrderService --> ShoppingCartItem
+OrderService --> Product
+OrderService --> User
+OrderService --> ShoppingCartItemRepository
+OrderService --> ShoppingCartRepository
+OrderService --> ProductRepository
+OrderService --> UserRepository
+ProductController --> Product
+ProductController --> ProductService
+ProductService --> Product
+ProductService --> ProductRepository
+ProductService --> UserRepository
+
+@enduml

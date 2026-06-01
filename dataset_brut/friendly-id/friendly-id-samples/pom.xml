@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>friendly-id-samples</artifactId>
+    <packaging>pom</packaging>
+    <name>FriendlyId Samples</name>
+    <description>Sample applications demonstrating FriendlyId usage</description>
+
+    <parent>
+        <groupId>com.devskiller.friendly-id</groupId>
+        <artifactId>friendly-id-project</artifactId>
+        <version>${revision}</version>
+        <relativePath>..</relativePath>
+    </parent>
+
+    <modules>
+        <module>friendly-id-spring-boot-simple</module>
+        <module>friendly-id-spring-boot3-simple</module>
+        <module>friendly-id-spring-boot-customized</module>
+        <module>friendly-id-spring-boot-hateos</module>
+        <module>friendly-id-spring-boot-jpa-demo</module>
+        <module>friendly-id-contracts</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <configuration>
+                    <skipPublishing>true</skipPublishing>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

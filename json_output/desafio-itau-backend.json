@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the recruitment domain. It serves User as its primary actors. The main business capabilities include estatistica.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage estatistica operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "EstatisticaController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    EstatisticaController[\"EstatisticaController\"]\n  end\n  subgraph Data_Access\n    TransacaoRepository[\"TransacaoRepository\"]\n  end"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include article, demo, feign. Core business data revolves around Item, JwtUser, Role, User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "JwtAuthenticationController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "JwtUserDetailsService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage article operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ArticleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage demo operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage feign operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "FeignController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ArticleController[\"ArticleController\"]\n    DemoController[\"DemoController\"]\n    FeignController[\"FeignController\"]\n    IndexController[\"IndexController\"]\n    JwtAuthenticationController[\"JwtAuthenticationController\"]\n    ParamsController[\"ParamsController\"]\n    PoiController[\"PoiController\"]\n    RedisController[\"RedisController\"]\n    TaxiController[\"TaxiController\"]\n    TestController[\"TestController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    JwtUserDetailsService[\"JwtUserDetailsService\"]\n    TaxiFareCalculatorService[\"TaxiFareCalculatorService\"]\n  end\n  subgraph Data_Access\n    ArticleRepository[\"ArticleRepository\"]\n    Item[\"Item\"]\n    JwtUser[\"JwtUser\"]\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n    UserRole[\"UserRole\"]\n    UserRoleList[\"UserRoleList\"]\n    UserRoleRepository[\"UserRoleRepository\"]\n    WsMessage[\"WsMessage\"]\n    WsMessageRepository[\"WsMessageRepository\"]\n    WsSite[\"WsSite\"]\n    WsSiteRepository[\"WsSiteRepository\"]\n  end\n  subgraph Security\n    ConfigurationFilter[\"ConfigurationFilter\"]\n    CorsFilter[\"CorsFilter\"]\n    CustomFromLoginFilter[\"CustomFromLoginFilter\"]\n    JwtRequestFilter[\"JwtRequestFilter\"]\n    WebSocketFilter[\"WebSocketFilter\"]\n  end\n  subgraph Infrastructure\n    AspectConfig[\"AspectConfig\"]\n    DruidConfiguration[\"DruidConfiguration\"]\n    GateWayCorsConfig[\"GateWayCorsConfig\"]\n    JmsConfig[\"JmsConfig\"]\n    MybatisPlusConfig[\"MybatisPlusConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n    TaxiFareConfiguration[\"TaxiFareConfiguration\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n    WebSocketConfig[\"WebSocketConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

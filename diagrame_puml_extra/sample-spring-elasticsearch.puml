@@ -1,0 +1,84 @@
+@startuml
+package pl.piomin.services.elasticsearch.controller; {
+class EmployeeController {
+}
+
+class EmployeeController {
+}
+
+}
+
+package pl.piomin.services.elasticsearch.model; {
+class Department {
+}
+
+class Employee {
+}
+
+class Organization {
+}
+
+class Department {
+}
+
+class Employee {
+}
+
+class Organization {
+}
+
+}
+
+package pl.piomin.services.elasticsearch.repository; {
+class EmployeeRepository {
+}
+
+class EmployeeRepository {
+}
+
+}
+
+package pl.piomin.services.elasticsearch; {
+class SampleApplication {
+}
+
+class SampleDataSet {
+}
+
+class EmployeeRepositoryPerformanceTest {
+}
+
+class EmployeeRepositoryTest {
+}
+
+class SampleApplication {
+}
+
+class SampleDataSet {
+}
+
+class EmployeeRepositoryTest {
+}
+
+}
+
+EmployeeController -- Employee
+EmployeeController -- Organization
+EmployeeController -- EmployeeRepository
+Employee -- Department
+Employee -- Organization
+EmployeeRepository -- Employee
+EmployeeRepository -- Organization
+SampleApplication -- SampleDataSet
+SampleDataSet -- Department
+SampleDataSet -- Employee
+SampleDataSet -- Organization
+EmployeeRepositoryPerformanceTest -- Department
+EmployeeRepositoryPerformanceTest -- Employee
+EmployeeRepositoryPerformanceTest -- Organization
+EmployeeRepositoryPerformanceTest -- EmployeeRepository
+EmployeeRepositoryTest -- Department
+EmployeeRepositoryTest -- Employee
+EmployeeRepositoryTest -- Organization
+EmployeeRepositoryTest -- EmployeeRepository
+@enduml

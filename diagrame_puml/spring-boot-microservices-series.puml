@@ -1,0 +1,248 @@
+@startuml
+
+package com.sivalabs.catalogservice {
+  class CatalogServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class CatalogServiceApplication {
+    +restTemplate() : RestTemplate
+    +main() : void
+  }
+}
+
+package com.sivalabs.catalogservice.entities {
+  class Product <<Entity>> {
+    -id : Long
+    -code : String
+    -name : String
+    -description : String
+    -price : double
+    -inStock : boolean
+  }
+}
+
+package com.sivalabs.catalogservice.exceptions {
+  class ProductNotFoundException {
+  }
+}
+
+package com.sivalabs.catalogservice.repositories {
+  interface ProductRepository {
+  }
+}
+
+package com.sivalabs.catalogservice.services {
+  interface InventoryServiceFeignClient {
+  }
+  class ProductService <<Service>> {
+    -productRepository : ProductRepository
+    -inventoryServiceClient : InventoryServiceClient
+    -availableProducts : List<Product>
+    +findAllProducts() : List<Product>
+    +findProductByCode() : Optional<Product>
+  }
+  class InventoryServiceClient <<Service>> {
+    -restTemplate : RestTemplate
+    -inventoryServiceFeignClient : InventoryServiceFeignClient
+    -INVENTORY_API_PATH : String
+    +getProductInventoryLevels() : List<ProductInventoryResponse>
+    +getProductInventoryByCode() : Optional<ProductInventoryResponse>
+  }
+}
+
+package com.sivalabs.catalogservice.utils {
+  class ContextCopyHystrixConcurrencyStrategy {
+    -actual : Callable<T>
+    -correlationId : String
+    +call() : T
+  }
+  class MyThreadLocalsHolder {
+    -CORRELATION_ID : ThreadLocal<String>
+    +setCorrelationId() : void
+    +getCorrelationId() : String
+  }
+}
+
+package com.sivalabs.catalogservice.web.controllers {
+  class ProductController <<Controller>> {
+    -productService : ProductService
+    +allProducts() : List<Product>
+    +productByCode() : Product
+  }
+}
+
+package com.sivalabs.catalogservice.web.models {
+  class ProductInventoryResponse {
+    -productCode : String
+    -availableQuantity : Integer
+  }
+}
+
+package com.sivalabs.configserver {
+  class ConfigServerApplicationTests {
+    +contextLoads() : void
+  }
+  class ConfigServerApplication {
+    +main() : void
+  }
+}
+
+package com.sivalabs.hystrixdashboard {
+  class HystrixDashboardApplicationTests {
+    +contextLoads() : void
+  }
+  class HystrixDashboardApplication {
+    +main() : void
+  }
+}
+
+package com.sivalabs.inventoryservice {
+  class InventoryServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class InventoryServiceApplication {
+    +main() : void
+  }
+}
+
+package com.sivalabs.inventoryservice.entities {
+  class InventoryItem <<Entity>> {
+    -id : Long
+    -productCode : String
+    -availableQuantity : Integer
+  }
+}
+
+package com.sivalabs.inventoryservice.repositories {
+  interface InventoryItemRepository {
+  }
+}
+
+package com.sivalabs.inventoryservice.web.controllers {
+  class InventoryController <<Controller>> {
+    -inventoryItemRepository : InventoryItemRepository
+    +findInventoryByProductCode() : ResponseEntity<InventoryItem>
+    +getInventory() : List<InventoryItem>
+  }
+}
+
+package com.sivalabs.oauth2server {
+  class Oauth2ServerApplicationTests {
+    +contextLoads() : void
+  }
+  class WebMvcConfig {
+    +addViewControllers() : void
+  }
+  class WebSecurityConfigurer {
+    +authenticationManagerBean() : AuthenticationManager
+    +userDetailsServiceBean() : UserDetailsService
+    +passwordEncoder() : PasswordEncoder
+    +configure() : void
+    +configure() : void
+  }
+  class OAuth2Config {
+    -redirectUri : String
+    +configure() : void
+    +configure() : void
+  }
+  class Oauth2ServerApplication <<Controller>> {
+    +main() : void
+  }
+}
+
+package com.sivalabs.orderservice {
+  class OrderServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class OrderServiceApplication {
+    +main() : void
+  }
+}
+
+package com.sivalabs.orderservice.entities {
+  class Order <<Entity>> {
+    -id : Long
+    -customerEmail : String
+    -customerAddress : String
+    -items : List<OrderItem>
+  }
+  class OrderItem <<Entity>> {
+    -id : Long
+    -productId : Long
+    -quantity : int
+    -productPrice : BigDecimal
+    +getPrice() : BigDecimal
+  }
+}
+
+package com.sivalabs.orderservice.repositories {
+  interface OrderRepository {
+  }
+}
+
+package com.sivalabs.orderservice.web.controllers {
+  class OrderController <<Controller>> {
+    -repo : OrderRepository
+    +createOrder() : Order
+    +findOrderById() : Optional<Order>
+  }
+}
+
+package com.sivalabs.serviceregistry {
+  class ServiceRegistryApplicationTests {
+    +contextLoads() : void
+  }
+  class ServiceRegistryApplication {
+    +main() : void
+  }
+}
+
+package com.sivalabs.shoppingcartui {
+  class ShoppingcartUiApplicationTests {
+    +contextLoads() : void
+  }
+  class ShoppingcartUiApplication {
+    +main() : void
+  }
+}
+
+package com.sivalabs.shoppingcartui.filters {
+  class AuthHeaderFilter {
+    +filterType() : String
+    +filterOrder() : int
+    +shouldFilter() : boolean
+    +run() : Object
+  }
+}
+
+package com.sivalabs.zipkinserver {
+  class ZipkinServerApplicationTests {
+    +contextLoads() : void
+  }
+  class ZipkinServerApplication {
+    +main() : void
+  }
+}
+
+' --- Relatii ---
+ShoppingcartUiApplication --> AuthHeaderFilter
+WebSecurityConfigurer --> Order
+OrderController --> Order
+OrderController --> OrderRepository
+OrderRepository --> Order
+ProductController --> Product
+ProductController --> ProductNotFoundException
+ProductController --> ProductService
+ProductRepository --> Product
+InventoryServiceFeignClient --> ProductInventoryResponse
+ProductService --> Product
+ProductService --> ProductRepository
+ProductService --> MyThreadLocalsHolder
+ProductService --> ProductInventoryResponse
+InventoryServiceClient --> MyThreadLocalsHolder
+InventoryServiceClient --> ProductInventoryResponse
+InventoryController --> InventoryItem
+InventoryController --> InventoryItemRepository
+InventoryItemRepository --> InventoryItem
+
+@enduml

@@ -1,0 +1,45 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, social media domain. It serves User as its primary actors. The main business capabilities include category, category impl, category rest. Core business data revolves around CategoryEntity, RepositoryConverter.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to organize items into categories, so that users can easily navigate and filter available items.",
+        "services": [
+          "CategoryRepositoryService",
+          "CategoryServiceImpl"
+        ],
+        "controllers": [
+          "CategoryController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage category impl operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "CategoryControllerImpl"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage category rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "CategoryRest"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with category repository functionality, so that the system fulfills my needs.",
+        "services": [
+          "CategoryRepositoryService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CategoryController[\"CategoryController\"]\n    CategoryControllerImpl[\"CategoryControllerImpl\"]\n    CategoryRest[\"CategoryRest\"]\n  end\n  subgraph Services\n    CategoryRepositoryService[\"CategoryRepositoryService\"]\n    CategoryServiceImpl[\"CategoryServiceImpl\"]\n  end\n  subgraph Data_Access\n    CategoryEntity[\"CategoryEntity\"]\n    CategoryRepository[\"CategoryRepository\"]\n    RepositoryConverter[\"RepositoryConverter\"]\n  end\n  subgraph Infrastructure\n    CategoryConfiguration[\"CategoryConfiguration\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

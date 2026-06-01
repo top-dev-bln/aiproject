@@ -1,0 +1,213 @@
+@startuml
+package com.pelinhangisi.advertisementservice; {
+class AdvertisementServiceApplication {
+}
+
+}
+
+package com.pelinhangisi.advertisementservice.config; {
+class RabbitConfig {
+}
+
+class SpringFoxConfig {
+}
+
+}
+
+package com.pelinhangisi.advertisementservice.controller; {
+class AdvertisementController {
+}
+
+}
+
+package com.pelinhangisi.advertisementservice.dto; {
+class AdvertisementDto {
+}
+
+class UserRequest {
+}
+
+}
+
+package com.pelinhangisi.advertisementservice.entity; {
+class Advertisement {
+}
+
+class AdvertisementStatus {
+}
+
+class BaseEntityModel {
+}
+
+class PriorityType {
+}
+
+}
+
+package com.pelinhangisi.advertisementservice.repository; {
+class AdvertisementRepository {
+}
+
+}
+
+package com.pelinhangisi.advertisementservice.service; {
+class AdvertisementService {
+}
+
+class AdvertisementServiceImpl {
+}
+
+}
+
+package com.pelinhangisi.apigateway; {
+class ApiGatewayApplication {
+}
+
+}
+
+package com.pelinhangisi.apigateway.config; {
+class SecurityConfig {
+}
+
+}
+
+package com.pelinhangisi.discoveryserver.config; {
+class SecurityConfig {
+}
+
+}
+
+package com.pelinhangisi.discoveryserver; {
+class DiscoveryServerApplication {
+}
+
+}
+
+package com.pelinhangisi.reportsservice.config; {
+class RabbitConfig {
+}
+
+}
+
+package com.pelinhangisi.reportsservice.dto; {
+class AdvertisementDto {
+}
+
+}
+
+package com.pelinhangisi.reportsservice.entity; {
+class Reports {
+}
+
+}
+
+package com.pelinhangisi.reportsservice; {
+class ReportsServiceApplication {
+}
+
+}
+
+package com.pelinhangisi.reportsservice.repository; {
+class ReportsRepository {
+}
+
+}
+
+package com.pelinhangisi.reportsservice.service; {
+class ReportsService {
+}
+
+}
+
+package com.pelinhangisi.userservice.config; {
+class ModelMapperConfig {
+}
+
+class SpringFoxConfig {
+}
+
+}
+
+package com.pelinhangisi.userservice.controller; {
+class UserController {
+}
+
+}
+
+package com.pelinhangisi.userservice.dto; {
+class UserRequest {
+}
+
+}
+
+package com.pelinhangisi.userservice.entity; {
+class User {
+}
+
+}
+
+package com.pelinhangisi.userservice.repository; {
+class UserRepository {
+}
+
+}
+
+package com.pelinhangisi.userservice.service; {
+class UserService {
+}
+
+}
+
+package com.pelinhangisi.userservice; {
+class UserServiceApplication {
+}
+
+class UserServiceApplicationTests {
+}
+
+}
+
+AdvertisementServiceApplication -- Advertisement
+AdvertisementServiceApplication -- AdvertisementService
+AdvertisementController -- AdvertisementDto
+AdvertisementController -- Advertisement
+AdvertisementController -- AdvertisementService
+AdvertisementDto -- Advertisement
+UserRequest -- User
+Advertisement -- AdvertisementStatus
+Advertisement -- BaseEntityModel
+Advertisement -- PriorityType
+AdvertisementRepository -- Advertisement
+AdvertisementService -- AdvertisementDto
+AdvertisementService -- Advertisement
+AdvertisementServiceImpl -- AdvertisementDto
+AdvertisementServiceImpl -- Advertisement
+AdvertisementServiceImpl -- AdvertisementStatus
+AdvertisementServiceImpl -- PriorityType
+AdvertisementServiceImpl -- AdvertisementRepository
+AdvertisementServiceImpl -- AdvertisementService
+SecurityConfig -- User
+ReportsServiceApplication -- Reports
+ReportsServiceApplication -- ReportsService
+ReportsRepository -- Reports
+ReportsService -- AdvertisementDto
+ReportsService -- Advertisement
+ReportsService -- Reports
+ReportsService -- ReportsRepository
+ReportsService -- User
+UserController -- UserRequest
+UserController -- User
+UserController -- UserService
+UserRepository -- UserRequest
+UserRepository -- User
+UserService -- UserRequest
+UserService -- User
+UserService -- UserRepository
+UserServiceApplication -- User
+UserServiceApplication -- UserService
+UserServiceApplicationTests -- UserRequest
+UserServiceApplicationTests -- User
+UserServiceApplicationTests -- UserRepository
+UserServiceApplicationTests -- UserService
+UserServiceApplicationTests -- UserServiceApplication
+@enduml

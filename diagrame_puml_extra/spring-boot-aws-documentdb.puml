@@ -1,0 +1,36 @@
+@startuml
+package com.barath.app; {
+class Application {
+}
+
+class Customer {
+}
+
+class CustomerController {
+}
+
+class CustomerRepository {
+}
+
+class CustomerService {
+}
+
+class MongoConfiguration {
+}
+
+class SwaggerConfiguration {
+}
+
+class ApplicationTests {
+}
+
+}
+
+CustomerController -- Customer
+CustomerController -- CustomerService
+CustomerRepository -- Customer
+CustomerService -- Customer
+CustomerService -- CustomerRepository
+SwaggerConfiguration -- Customer
+ApplicationTests -- Application
+@enduml

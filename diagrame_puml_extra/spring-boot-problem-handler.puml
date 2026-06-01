@@ -1,0 +1,929 @@
+@startuml
+package com.ksoot.problem.core; {
+class AbstractThrowableProblem {
+}
+
+class ApplicationException {
+}
+
+class ApplicationProblem {
+}
+
+class ContentNegotiation {
+}
+
+class DefaultProblem {
+}
+
+class ErrorResponseBuilder {
+}
+
+class ErrorType {
+}
+
+class Exceptional {
+}
+
+class FallbackContentNegotiationStrategy {
+}
+
+class GeneralErrorKey {
+}
+
+class Lists {
+}
+
+class MediaTypes {
+}
+
+class MultiProblem {
+}
+
+class Problem {
+}
+
+class ProblemConstant {
+}
+
+class Problems {
+}
+
+class ProblemSupport {
+}
+
+class ProblemUtils {
+}
+
+class StackTraceProcessor {
+}
+
+class ThrowableProblem {
+}
+
+}
+
+package com.ksoot.problem.jackson; {
+class AbstractThrowableProblemMixIn {
+}
+
+class ExceptionalMixin {
+}
+
+class HttpMethodDeserializer {
+}
+
+class HttpMethodSerializer {
+}
+
+class HttpStatusDeserializer {
+}
+
+class HttpStatusSerializer {
+}
+
+class ProblemMixIn {
+}
+
+class ProblemModule {
+}
+
+}
+
+package com.ksoot.problem.spring.advice; {
+class AdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.application; {
+class ApplicationAdviceTraits {
+}
+
+class ApplicationExceptionAdviceTrait {
+}
+
+class ApplicationMultiProblemAdviceTrait {
+}
+
+class ApplicationProblemAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.dao; {
+class AbstractDaoExceptionHandler {
+}
+
+class BaseDataIntegrityAdvice {
+}
+
+class ConstraintNameResolver {
+}
+
+class DaoAdviceTraits {
+}
+
+class Database {
+}
+
+class DataIntegrityViolationAdviceTrait {
+}
+
+class DBType {
+}
+
+class DuplicateKeyExceptionAdviceTrait {
+}
+
+class MongoConstraintNameResolver {
+}
+
+class MysqlConstraintNameResolver {
+}
+
+class OracleConstraintNameResolver {
+}
+
+class PostgresConstraintNameResolver {
+}
+
+class SQLServerConstraintNameResolver {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.general; {
+class GeneralAdviceTraits {
+}
+
+class ProblemAdviceTrait {
+}
+
+class ThrowableAdviceTrait {
+}
+
+class UnsupportedOperationAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.http; {
+class BaseNotAcceptableAdviceTrait {
+}
+
+class HttpAdviceTraits {
+}
+
+class HttpMediaTypeNotAcceptableAdviceTrait {
+}
+
+class HttpMediaTypeNotSupportedExceptionAdviceTrait {
+}
+
+class HttpRequestMethodNotSupportedAdviceTrait {
+}
+
+class MethodNotAllowedAdviceTrait {
+}
+
+class NotAcceptableStatusAdviceTrait {
+}
+
+class ResponseStatusAdviceTrait {
+}
+
+class UnsupportedMediaTypeStatusAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.io; {
+class DataBufferLimitExceptionAdviceTrait {
+}
+
+class IOAdviceTraits {
+}
+
+class MaxUploadSizeExceededExceptionAdviceTrait {
+}
+
+class MessageNotReadableAdviceTrait {
+}
+
+class MultipartAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.network; {
+class CircuitBreakerOpenAdviceTrait {
+}
+
+class NetworkAdviceTraits {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.routing; {
+class MissingRequestHeaderAdviceTrait {
+}
+
+class MissingServletRequestParameterAdviceTrait {
+}
+
+class MissingServletRequestPartAdviceTrait {
+}
+
+class NoHandlerFoundAdviceTrait {
+}
+
+class RoutingAdviceTraits {
+}
+
+class ServletRequestBindingAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.security; {
+class AccessDeniedExceptionAdviceTrait {
+}
+
+class AuthenticationExceptionAdviceTrait {
+}
+
+class BadCredentialsExceptionAdviceTrait {
+}
+
+class InsufficientAuthenticationAdviceTrait {
+}
+
+class ProblemAccessDeniedHandler {
+}
+
+class ProblemAuthenticationEntryPoint {
+}
+
+class ProblemServerAccessDeniedHandler {
+}
+
+class ProblemServerAuthenticationEntryPoint {
+}
+
+class SecurityAdviceTraits {
+}
+
+class UsernameNotFoundAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.validation; {
+class BaseBindingResultHandlingAdviceTrait {
+}
+
+class BaseValidationAdviceTrait {
+}
+
+class BindAdviceTrait {
+}
+
+class ConstraintViolationAdviceTrait {
+}
+
+class MethodArgumentNotValidAdviceTrait {
+}
+
+class MethodArgumentTypeMismatchAdviceTrait {
+}
+
+class OpenApiValidationAdviceTrait {
+}
+
+class TypeMismatchAdviceTrait {
+}
+
+class ValidationAdviceTraits {
+}
+
+class ViolationVM {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.web; {
+class ProblemHandlingWeb {
+}
+
+}
+
+package com.ksoot.problem.spring.advice.webflux; {
+class ProblemHandlingWebflux {
+}
+
+class SpringWebfluxProblemResponseUtils {
+}
+
+class WebExchangeBindAdviceTrait {
+}
+
+}
+
+package com.ksoot.problem.spring.boot.autoconfigure; {
+class DaoAdviceEnabled {
+}
+
+class OpenApiConfigsEnabled {
+}
+
+class OpenAPIValidationAdviceEnabled {
+}
+
+class ORMAdviceEnabled {
+}
+
+class ORMUrlAvailable {
+}
+
+class ProblemDaoConfiguration {
+}
+
+class ProblemJacksonConfiguration {
+}
+
+class ProblemJacksonEnabled {
+}
+
+class ProblemMicrometerTraceProvider {
+}
+
+class ProblemMicrometerTraceProviderConfig {
+}
+
+class SecurityAdviceEnabled {
+}
+
+class TraceProvider {
+}
+
+class TracingHeaderEnabledCondition {
+}
+
+}
+
+package com.ksoot.problem.spring.boot.autoconfigure.web; {
+class OpenApiValidationExceptionHandler {
+}
+
+class PathConfigurableOpenApiValidationFilter {
+}
+
+class ProblemTracingWebFilter {
+}
+
+class ProblemWebAutoConfiguration {
+}
+
+class SpringWebErrorResponseBuilder {
+}
+
+class WebDaoExceptionHandler {
+}
+
+class WebExceptionHandler {
+}
+
+class WebSecurityExceptionHandler {
+}
+
+}
+
+package com.ksoot.problem.spring.boot.autoconfigure.webflux; {
+class ProblemTracingWebFluxFilter {
+}
+
+class ProblemWebfluxAutoConfiguration {
+}
+
+class SpringWebfluxErrorResponseBuilder {
+}
+
+class WebFluxDaoExceptionHandler {
+}
+
+class WebFluxExceptionHandler {
+}
+
+class WebFluxSecurityExceptionHandler {
+}
+
+}
+
+package com.ksoot.problem.spring.config; {
+class ProblemBeanRegistry {
+}
+
+class ProblemConfigException {
+}
+
+class ProblemMessageProvider {
+}
+
+class ProblemMessageProviderConfig {
+}
+
+class ProblemMessageSourceResolver {
+}
+
+class ProblemProperties {
+}
+
+}
+
+AbstractThrowableProblem -- Problem
+AbstractThrowableProblem -- ThrowableProblem
+ApplicationException -- Problem
+ApplicationException -- ProblemSupport
+ApplicationException -- ProblemUtils
+ApplicationException -- ThrowableProblem
+ApplicationProblem -- Problem
+ApplicationProblem -- ProblemSupport
+ApplicationProblem -- ProblemUtils
+ApplicationProblem -- ThrowableProblem
+ContentNegotiation -- FallbackContentNegotiationStrategy
+DefaultProblem -- AbstractThrowableProblem
+DefaultProblem -- Problem
+DefaultProblem -- ThrowableProblem
+ErrorResponseBuilder -- ContentNegotiation
+ErrorResponseBuilder -- FallbackContentNegotiationStrategy
+ErrorResponseBuilder -- MediaTypes
+ErrorResponseBuilder -- Problem
+ErrorResponseBuilder -- ProblemConstant
+ErrorResponseBuilder -- TraceProvider
+ErrorResponseBuilder -- ProblemBeanRegistry
+ErrorResponseBuilder -- ProblemProperties
+Exceptional -- Problem
+Exceptional -- ThrowableProblem
+FallbackContentNegotiationStrategy -- MediaTypes
+MultiProblem -- Problem
+MultiProblem -- Problems
+Problem -- ProblemUtils
+Problem -- ThrowableProblem
+ProblemConstant -- GeneralErrorKey
+ProblemConstant -- Problem
+ProblemConstant -- Database
+Problems -- ApplicationException
+Problems -- ApplicationProblem
+Problems -- ErrorType
+Problems -- GeneralErrorKey
+Problems -- Problem
+Problems -- ProblemConstant
+Problems -- ProblemUtils
+Problems -- ThrowableProblem
+ProblemSupport -- Problem
+ProblemSupport -- ThrowableProblem
+ProblemUtils -- Lists
+ProblemUtils -- ThrowableProblem
+ProblemUtils -- ProblemBeanRegistry
+ProblemUtils -- ProblemMessageProvider
+ThrowableProblem -- StackTraceProcessor
+AbstractThrowableProblemMixIn -- AbstractThrowableProblem
+AbstractThrowableProblemMixIn -- Problem
+AbstractThrowableProblemMixIn -- ThrowableProblem
+AbstractThrowableProblemMixIn -- ProblemMixIn
+ExceptionalMixin -- Exceptional
+ProblemMixIn -- DefaultProblem
+ProblemMixIn -- Problem
+ProblemModule -- AbstractThrowableProblem
+ProblemModule -- DefaultProblem
+ProblemModule -- Exceptional
+ProblemModule -- Problem
+ProblemModule -- ThrowableProblem
+ProblemModule -- AbstractThrowableProblemMixIn
+ProblemModule -- ExceptionalMixin
+ProblemModule -- HttpMethodDeserializer
+ProblemModule -- HttpMethodSerializer
+ProblemModule -- HttpStatusDeserializer
+ProblemModule -- HttpStatusSerializer
+ProblemModule -- ProblemMixIn
+AdviceTrait -- ErrorResponseBuilder
+AdviceTrait -- Problem
+AdviceTrait -- ProblemConstant
+AdviceTrait -- Problems
+AdviceTrait -- ProblemUtils
+AdviceTrait -- ThrowableProblem
+AdviceTrait -- ProblemBeanRegistry
+AdviceTrait -- ProblemMessageProvider
+AdviceTrait -- ProblemMessageSourceResolver
+ApplicationAdviceTraits -- ApplicationException
+ApplicationAdviceTraits -- ApplicationProblem
+ApplicationAdviceTraits -- MultiProblem
+ApplicationAdviceTraits -- Problem
+ApplicationAdviceTraits -- AdviceTrait
+ApplicationAdviceTraits -- ApplicationExceptionAdviceTrait
+ApplicationAdviceTraits -- ApplicationMultiProblemAdviceTrait
+ApplicationAdviceTraits -- ApplicationProblemAdviceTrait
+ApplicationAdviceTraits -- ProblemAdviceTrait
+ApplicationExceptionAdviceTrait -- ApplicationException
+ApplicationExceptionAdviceTrait -- Problem
+ApplicationExceptionAdviceTrait -- ProblemConstant
+ApplicationExceptionAdviceTrait -- AdviceTrait
+ApplicationMultiProblemAdviceTrait -- GeneralErrorKey
+ApplicationMultiProblemAdviceTrait -- Lists
+ApplicationMultiProblemAdviceTrait -- MultiProblem
+ApplicationMultiProblemAdviceTrait -- Problem
+ApplicationMultiProblemAdviceTrait -- ProblemConstant
+ApplicationMultiProblemAdviceTrait -- ProblemSupport
+ApplicationMultiProblemAdviceTrait -- AdviceTrait
+ApplicationMultiProblemAdviceTrait -- ProblemAdviceTrait
+ApplicationMultiProblemAdviceTrait -- ProblemMessageSourceResolver
+ApplicationProblemAdviceTrait -- ApplicationProblem
+ApplicationProblemAdviceTrait -- Problem
+ApplicationProblemAdviceTrait -- ProblemConstant
+ApplicationProblemAdviceTrait -- AdviceTrait
+ApplicationProblemAdviceTrait -- ProblemAdviceTrait
+AbstractDaoExceptionHandler -- Problem
+AbstractDaoExceptionHandler -- AdviceTrait
+AbstractDaoExceptionHandler -- ConstraintNameResolver
+AbstractDaoExceptionHandler -- DaoAdviceTraits
+AbstractDaoExceptionHandler -- Database
+AbstractDaoExceptionHandler -- DBType
+AbstractDaoExceptionHandler -- ProblemConfigException
+BaseDataIntegrityAdvice -- AdviceTrait
+ConstraintNameResolver -- DBType
+DaoAdviceTraits -- AdviceTrait
+DaoAdviceTraits -- DataIntegrityViolationAdviceTrait
+DaoAdviceTraits -- DuplicateKeyExceptionAdviceTrait
+DataIntegrityViolationAdviceTrait -- GeneralErrorKey
+DataIntegrityViolationAdviceTrait -- Problem
+DataIntegrityViolationAdviceTrait -- ProblemConstant
+DataIntegrityViolationAdviceTrait -- AdviceTrait
+DataIntegrityViolationAdviceTrait -- BaseDataIntegrityAdvice
+DataIntegrityViolationAdviceTrait -- ProblemMessageSourceResolver
+DBType -- Database
+DuplicateKeyExceptionAdviceTrait -- GeneralErrorKey
+DuplicateKeyExceptionAdviceTrait -- Problem
+DuplicateKeyExceptionAdviceTrait -- ProblemConstant
+DuplicateKeyExceptionAdviceTrait -- AdviceTrait
+DuplicateKeyExceptionAdviceTrait -- BaseDataIntegrityAdvice
+DuplicateKeyExceptionAdviceTrait -- ProblemMessageSourceResolver
+MongoConstraintNameResolver -- Problem
+MongoConstraintNameResolver -- ProblemConstant
+MongoConstraintNameResolver -- ConstraintNameResolver
+MongoConstraintNameResolver -- DBType
+MysqlConstraintNameResolver -- ConstraintNameResolver
+MysqlConstraintNameResolver -- DBType
+OracleConstraintNameResolver -- ConstraintNameResolver
+OracleConstraintNameResolver -- DBType
+PostgresConstraintNameResolver -- ConstraintNameResolver
+PostgresConstraintNameResolver -- DBType
+SQLServerConstraintNameResolver -- ConstraintNameResolver
+SQLServerConstraintNameResolver -- DBType
+GeneralAdviceTraits -- Problem
+GeneralAdviceTraits -- AdviceTrait
+GeneralAdviceTraits -- ProblemAdviceTrait
+GeneralAdviceTraits -- ThrowableAdviceTrait
+GeneralAdviceTraits -- UnsupportedOperationAdviceTrait
+ProblemAdviceTrait -- DefaultProblem
+ProblemAdviceTrait -- Problem
+ProblemAdviceTrait -- ThrowableProblem
+ProblemAdviceTrait -- AdviceTrait
+ThrowableAdviceTrait -- GeneralErrorKey
+ThrowableAdviceTrait -- Problem
+ThrowableAdviceTrait -- AdviceTrait
+UnsupportedOperationAdviceTrait -- GeneralErrorKey
+UnsupportedOperationAdviceTrait -- Problem
+UnsupportedOperationAdviceTrait -- AdviceTrait
+BaseNotAcceptableAdviceTrait -- GeneralErrorKey
+BaseNotAcceptableAdviceTrait -- MediaTypes
+BaseNotAcceptableAdviceTrait -- Problem
+BaseNotAcceptableAdviceTrait -- ProblemConstant
+BaseNotAcceptableAdviceTrait -- AdviceTrait
+BaseNotAcceptableAdviceTrait -- ProblemMessageSourceResolver
+HttpAdviceTraits -- AdviceTrait
+HttpAdviceTraits -- HttpMediaTypeNotAcceptableAdviceTrait
+HttpAdviceTraits -- HttpMediaTypeNotSupportedExceptionAdviceTrait
+HttpAdviceTraits -- HttpRequestMethodNotSupportedAdviceTrait
+HttpAdviceTraits -- MethodNotAllowedAdviceTrait
+HttpAdviceTraits -- NotAcceptableStatusAdviceTrait
+HttpAdviceTraits -- ResponseStatusAdviceTrait
+HttpAdviceTraits -- UnsupportedMediaTypeStatusAdviceTrait
+HttpMediaTypeNotAcceptableAdviceTrait -- GeneralErrorKey
+HttpMediaTypeNotAcceptableAdviceTrait -- MediaTypes
+HttpMediaTypeNotAcceptableAdviceTrait -- Problem
+HttpMediaTypeNotAcceptableAdviceTrait -- ProblemConstant
+HttpMediaTypeNotAcceptableAdviceTrait -- AdviceTrait
+HttpMediaTypeNotAcceptableAdviceTrait -- ProblemMessageSourceResolver
+HttpMediaTypeNotSupportedExceptionAdviceTrait -- MediaTypes
+HttpMediaTypeNotSupportedExceptionAdviceTrait -- AdviceTrait
+HttpMediaTypeNotSupportedExceptionAdviceTrait -- BaseNotAcceptableAdviceTrait
+HttpRequestMethodNotSupportedAdviceTrait -- GeneralErrorKey
+HttpRequestMethodNotSupportedAdviceTrait -- Problem
+HttpRequestMethodNotSupportedAdviceTrait -- ProblemConstant
+HttpRequestMethodNotSupportedAdviceTrait -- AdviceTrait
+HttpRequestMethodNotSupportedAdviceTrait -- ProblemMessageSourceResolver
+MethodNotAllowedAdviceTrait -- GeneralErrorKey
+MethodNotAllowedAdviceTrait -- Problem
+MethodNotAllowedAdviceTrait -- ProblemConstant
+MethodNotAllowedAdviceTrait -- AdviceTrait
+MethodNotAllowedAdviceTrait -- ProblemMessageSourceResolver
+NotAcceptableStatusAdviceTrait -- GeneralErrorKey
+NotAcceptableStatusAdviceTrait -- Problem
+NotAcceptableStatusAdviceTrait -- AdviceTrait
+NotAcceptableStatusAdviceTrait -- BaseNotAcceptableAdviceTrait
+ResponseStatusAdviceTrait -- AdviceTrait
+UnsupportedMediaTypeStatusAdviceTrait -- MediaTypes
+UnsupportedMediaTypeStatusAdviceTrait -- AdviceTrait
+UnsupportedMediaTypeStatusAdviceTrait -- BaseNotAcceptableAdviceTrait
+DataBufferLimitExceptionAdviceTrait -- Problem
+DataBufferLimitExceptionAdviceTrait -- ProblemConstant
+DataBufferLimitExceptionAdviceTrait -- AdviceTrait
+DataBufferLimitExceptionAdviceTrait -- ProblemMessageSourceResolver
+IOAdviceTraits -- AdviceTrait
+IOAdviceTraits -- DataBufferLimitExceptionAdviceTrait
+IOAdviceTraits -- MaxUploadSizeExceededExceptionAdviceTrait
+IOAdviceTraits -- MessageNotReadableAdviceTrait
+IOAdviceTraits -- MultipartAdviceTrait
+MaxUploadSizeExceededExceptionAdviceTrait -- Problem
+MaxUploadSizeExceededExceptionAdviceTrait -- ProblemConstant
+MaxUploadSizeExceededExceptionAdviceTrait -- AdviceTrait
+MaxUploadSizeExceededExceptionAdviceTrait -- ProblemMessageSourceResolver
+MessageNotReadableAdviceTrait -- GeneralErrorKey
+MessageNotReadableAdviceTrait -- Problem
+MessageNotReadableAdviceTrait -- ProblemConstant
+MessageNotReadableAdviceTrait -- AdviceTrait
+MessageNotReadableAdviceTrait -- ProblemMessageSourceResolver
+MultipartAdviceTrait -- GeneralErrorKey
+MultipartAdviceTrait -- Problem
+MultipartAdviceTrait -- AdviceTrait
+CircuitBreakerOpenAdviceTrait -- AdviceTrait
+NetworkAdviceTraits -- AdviceTrait
+NetworkAdviceTraits -- CircuitBreakerOpenAdviceTrait
+MissingRequestHeaderAdviceTrait -- GeneralErrorKey
+MissingRequestHeaderAdviceTrait -- Problem
+MissingRequestHeaderAdviceTrait -- ProblemConstant
+MissingRequestHeaderAdviceTrait -- AdviceTrait
+MissingRequestHeaderAdviceTrait -- BaseValidationAdviceTrait
+MissingRequestHeaderAdviceTrait -- ProblemMessageSourceResolver
+MissingServletRequestParameterAdviceTrait -- GeneralErrorKey
+MissingServletRequestParameterAdviceTrait -- Problem
+MissingServletRequestParameterAdviceTrait -- ProblemConstant
+MissingServletRequestParameterAdviceTrait -- AdviceTrait
+MissingServletRequestParameterAdviceTrait -- BaseValidationAdviceTrait
+MissingServletRequestParameterAdviceTrait -- ProblemMessageSourceResolver
+MissingServletRequestPartAdviceTrait -- GeneralErrorKey
+MissingServletRequestPartAdviceTrait -- Problem
+MissingServletRequestPartAdviceTrait -- ProblemConstant
+MissingServletRequestPartAdviceTrait -- AdviceTrait
+MissingServletRequestPartAdviceTrait -- BaseValidationAdviceTrait
+MissingServletRequestPartAdviceTrait -- ProblemMessageSourceResolver
+NoHandlerFoundAdviceTrait -- GeneralErrorKey
+NoHandlerFoundAdviceTrait -- Problem
+NoHandlerFoundAdviceTrait -- ProblemConstant
+NoHandlerFoundAdviceTrait -- AdviceTrait
+NoHandlerFoundAdviceTrait -- ProblemMessageSourceResolver
+RoutingAdviceTraits -- AdviceTrait
+RoutingAdviceTraits -- MissingRequestHeaderAdviceTrait
+RoutingAdviceTraits -- MissingServletRequestParameterAdviceTrait
+RoutingAdviceTraits -- MissingServletRequestPartAdviceTrait
+RoutingAdviceTraits -- NoHandlerFoundAdviceTrait
+RoutingAdviceTraits -- ServletRequestBindingAdviceTrait
+ServletRequestBindingAdviceTrait -- GeneralErrorKey
+ServletRequestBindingAdviceTrait -- Problem
+ServletRequestBindingAdviceTrait -- AdviceTrait
+AccessDeniedExceptionAdviceTrait -- GeneralErrorKey
+AccessDeniedExceptionAdviceTrait -- Problem
+AccessDeniedExceptionAdviceTrait -- ProblemConstant
+AccessDeniedExceptionAdviceTrait -- AdviceTrait
+AccessDeniedExceptionAdviceTrait -- ProblemMessageSourceResolver
+AuthenticationExceptionAdviceTrait -- GeneralErrorKey
+AuthenticationExceptionAdviceTrait -- Problem
+AuthenticationExceptionAdviceTrait -- ProblemConstant
+AuthenticationExceptionAdviceTrait -- AdviceTrait
+AuthenticationExceptionAdviceTrait -- ProblemMessageSourceResolver
+BadCredentialsExceptionAdviceTrait -- GeneralErrorKey
+BadCredentialsExceptionAdviceTrait -- Problem
+BadCredentialsExceptionAdviceTrait -- ProblemConstant
+BadCredentialsExceptionAdviceTrait -- AdviceTrait
+BadCredentialsExceptionAdviceTrait -- ProblemMessageSourceResolver
+InsufficientAuthenticationAdviceTrait -- GeneralErrorKey
+InsufficientAuthenticationAdviceTrait -- Problem
+InsufficientAuthenticationAdviceTrait -- ProblemConstant
+InsufficientAuthenticationAdviceTrait -- AdviceTrait
+InsufficientAuthenticationAdviceTrait -- ProblemMessageSourceResolver
+ProblemAccessDeniedHandler -- Problem
+ProblemAuthenticationEntryPoint -- Problem
+ProblemServerAccessDeniedHandler -- Problem
+ProblemServerAccessDeniedHandler -- AdviceTrait
+ProblemServerAccessDeniedHandler -- SecurityAdviceTraits
+ProblemServerAccessDeniedHandler -- SpringWebfluxProblemResponseUtils
+ProblemServerAuthenticationEntryPoint -- Problem
+ProblemServerAuthenticationEntryPoint -- AdviceTrait
+ProblemServerAuthenticationEntryPoint -- SecurityAdviceTraits
+ProblemServerAuthenticationEntryPoint -- SpringWebfluxProblemResponseUtils
+SecurityAdviceTraits -- AdviceTrait
+SecurityAdviceTraits -- AccessDeniedExceptionAdviceTrait
+SecurityAdviceTraits -- AuthenticationExceptionAdviceTrait
+SecurityAdviceTraits -- BadCredentialsExceptionAdviceTrait
+SecurityAdviceTraits -- InsufficientAuthenticationAdviceTrait
+SecurityAdviceTraits -- UsernameNotFoundAdviceTrait
+UsernameNotFoundAdviceTrait -- GeneralErrorKey
+UsernameNotFoundAdviceTrait -- Problem
+UsernameNotFoundAdviceTrait -- ProblemConstant
+UsernameNotFoundAdviceTrait -- AdviceTrait
+UsernameNotFoundAdviceTrait -- ProblemMessageSourceResolver
+BaseBindingResultHandlingAdviceTrait -- Problem
+BaseBindingResultHandlingAdviceTrait -- ProblemConstant
+BaseBindingResultHandlingAdviceTrait -- AdviceTrait
+BaseBindingResultHandlingAdviceTrait -- BaseValidationAdviceTrait
+BaseBindingResultHandlingAdviceTrait -- ViolationVM
+BaseBindingResultHandlingAdviceTrait -- ProblemMessageSourceResolver
+BaseValidationAdviceTrait -- Problem
+BaseValidationAdviceTrait -- AdviceTrait
+BaseValidationAdviceTrait -- ViolationVM
+BaseValidationAdviceTrait -- ProblemBeanRegistry
+BaseValidationAdviceTrait -- ProblemMessageProvider
+BaseValidationAdviceTrait -- ProblemMessageSourceResolver
+BindAdviceTrait -- Problem
+BindAdviceTrait -- ProblemConstant
+BindAdviceTrait -- AdviceTrait
+BindAdviceTrait -- BaseBindingResultHandlingAdviceTrait
+BindAdviceTrait -- BaseValidationAdviceTrait
+BindAdviceTrait -- ViolationVM
+BindAdviceTrait -- ProblemMessageSourceResolver
+ConstraintViolationAdviceTrait -- Problem
+ConstraintViolationAdviceTrait -- ProblemConstant
+ConstraintViolationAdviceTrait -- AdviceTrait
+ConstraintViolationAdviceTrait -- BaseValidationAdviceTrait
+ConstraintViolationAdviceTrait -- ViolationVM
+ConstraintViolationAdviceTrait -- ProblemMessageSourceResolver
+MethodArgumentNotValidAdviceTrait -- Problem
+MethodArgumentNotValidAdviceTrait -- ProblemConstant
+MethodArgumentNotValidAdviceTrait -- AdviceTrait
+MethodArgumentNotValidAdviceTrait -- BaseBindingResultHandlingAdviceTrait
+MethodArgumentNotValidAdviceTrait -- BaseValidationAdviceTrait
+MethodArgumentNotValidAdviceTrait -- ViolationVM
+MethodArgumentNotValidAdviceTrait -- ProblemMessageSourceResolver
+MethodArgumentTypeMismatchAdviceTrait -- GeneralErrorKey
+MethodArgumentTypeMismatchAdviceTrait -- Problem
+MethodArgumentTypeMismatchAdviceTrait -- ProblemConstant
+MethodArgumentTypeMismatchAdviceTrait -- AdviceTrait
+MethodArgumentTypeMismatchAdviceTrait -- BaseValidationAdviceTrait
+MethodArgumentTypeMismatchAdviceTrait -- TypeMismatchAdviceTrait
+MethodArgumentTypeMismatchAdviceTrait -- ProblemMessageSourceResolver
+OpenApiValidationAdviceTrait -- GeneralErrorKey
+OpenApiValidationAdviceTrait -- Problem
+OpenApiValidationAdviceTrait -- ProblemConstant
+OpenApiValidationAdviceTrait -- AdviceTrait
+OpenApiValidationAdviceTrait -- BaseValidationAdviceTrait
+OpenApiValidationAdviceTrait -- ViolationVM
+OpenApiValidationAdviceTrait -- ProblemMessageSourceResolver
+TypeMismatchAdviceTrait -- GeneralErrorKey
+TypeMismatchAdviceTrait -- Problem
+TypeMismatchAdviceTrait -- ProblemConstant
+TypeMismatchAdviceTrait -- AdviceTrait
+TypeMismatchAdviceTrait -- BaseValidationAdviceTrait
+TypeMismatchAdviceTrait -- ProblemMessageSourceResolver
+ValidationAdviceTraits -- AdviceTrait
+ValidationAdviceTraits -- BindAdviceTrait
+ValidationAdviceTraits -- ConstraintViolationAdviceTrait
+ValidationAdviceTraits -- MethodArgumentNotValidAdviceTrait
+ValidationAdviceTraits -- MethodArgumentTypeMismatchAdviceTrait
+ValidationAdviceTraits -- TypeMismatchAdviceTrait
+ViolationVM -- Problem
+ViolationVM -- ProblemConstant
+ProblemHandlingWeb -- Problem
+ProblemHandlingWeb -- AdviceTrait
+ProblemHandlingWeb -- ApplicationAdviceTraits
+ProblemHandlingWeb -- GeneralAdviceTraits
+ProblemHandlingWeb -- HttpAdviceTraits
+ProblemHandlingWeb -- IOAdviceTraits
+ProblemHandlingWeb -- NetworkAdviceTraits
+ProblemHandlingWeb -- RoutingAdviceTraits
+ProblemHandlingWeb -- ValidationAdviceTraits
+ProblemHandlingWeb -- WebExceptionHandler
+ProblemHandlingWebflux -- Problem
+ProblemHandlingWebflux -- AdviceTrait
+ProblemHandlingWebflux -- ApplicationAdviceTraits
+ProblemHandlingWebflux -- GeneralAdviceTraits
+ProblemHandlingWebflux -- HttpAdviceTraits
+ProblemHandlingWebflux -- IOAdviceTraits
+ProblemHandlingWebflux -- NetworkAdviceTraits
+ProblemHandlingWebflux -- RoutingAdviceTraits
+ProblemHandlingWebflux -- BindAdviceTrait
+ProblemHandlingWebflux -- ValidationAdviceTraits
+ProblemHandlingWebflux -- ProblemHandlingWeb
+ProblemHandlingWebflux -- WebExchangeBindAdviceTrait
+ProblemHandlingWebflux -- WebFluxExceptionHandler
+SpringWebfluxProblemResponseUtils -- Problem
+WebExchangeBindAdviceTrait -- Problem
+WebExchangeBindAdviceTrait -- ProblemConstant
+WebExchangeBindAdviceTrait -- AdviceTrait
+WebExchangeBindAdviceTrait -- BaseBindingResultHandlingAdviceTrait
+WebExchangeBindAdviceTrait -- BindAdviceTrait
+WebExchangeBindAdviceTrait -- ViolationVM
+WebExchangeBindAdviceTrait -- ProblemMessageSourceResolver
+DaoAdviceEnabled -- Database
+DaoAdviceEnabled -- ORMUrlAvailable
+OpenAPIValidationAdviceEnabled -- Problem
+OpenAPIValidationAdviceEnabled -- OpenApiConfigsEnabled
+ORMAdviceEnabled -- Problem
+ProblemDaoConfiguration -- Problem
+ProblemDaoConfiguration -- ConstraintNameResolver
+ProblemDaoConfiguration -- Database
+ProblemDaoConfiguration -- MongoConstraintNameResolver
+ProblemDaoConfiguration -- PostgresConstraintNameResolver
+ProblemDaoConfiguration -- SQLServerConstraintNameResolver
+ProblemDaoConfiguration -- DaoAdviceEnabled
+ProblemDaoConfiguration -- ORMAdviceEnabled
+ProblemDaoConfiguration -- ORMUrlAvailable
+ProblemDaoConfiguration -- ProblemProperties
+ProblemJacksonConfiguration -- Problem
+ProblemJacksonConfiguration -- ProblemModule
+ProblemJacksonConfiguration -- ProblemJacksonEnabled
+ProblemJacksonConfiguration -- ProblemProperties
+ProblemJacksonEnabled -- Problem
+ProblemMicrometerTraceProvider -- Problem
+ProblemMicrometerTraceProvider -- TraceProvider
+ProblemMicrometerTraceProvider -- ProblemProperties
+ProblemMicrometerTraceProviderConfig -- Problem
+ProblemMicrometerTraceProviderConfig -- ProblemMicrometerTraceProvider
+ProblemMicrometerTraceProviderConfig -- TraceProvider
+ProblemMicrometerTraceProviderConfig -- ProblemProperties
+SecurityAdviceEnabled -- Problem
+TracingHeaderEnabledCondition -- Problem
+OpenApiValidationExceptionHandler -- Problem
+OpenApiValidationExceptionHandler -- AdviceTrait
+OpenApiValidationExceptionHandler -- OpenApiValidationAdviceTrait
+OpenApiValidationExceptionHandler -- OpenAPIValidationAdviceEnabled
+OpenApiValidationExceptionHandler -- PathConfigurableOpenApiValidationFilter
+OpenApiValidationExceptionHandler -- ProblemConfigException
+OpenApiValidationExceptionHandler -- ProblemProperties
+PathConfigurableOpenApiValidationFilter -- Problem
+PathConfigurableOpenApiValidationFilter -- ProblemProperties
+ProblemTracingWebFilter -- Problem
+ProblemTracingWebFilter -- TraceProvider
+ProblemWebAutoConfiguration -- ErrorResponseBuilder
+ProblemWebAutoConfiguration -- Problem
+ProblemWebAutoConfiguration -- TraceProvider
+ProblemWebAutoConfiguration -- TracingHeaderEnabledCondition
+ProblemWebAutoConfiguration -- ProblemTracingWebFilter
+ProblemWebAutoConfiguration -- SpringWebErrorResponseBuilder
+ProblemWebAutoConfiguration -- ProblemProperties
+SpringWebErrorResponseBuilder -- ErrorResponseBuilder
+SpringWebErrorResponseBuilder -- MediaTypes
+SpringWebErrorResponseBuilder -- Problem
+SpringWebErrorResponseBuilder -- TraceProvider
+WebDaoExceptionHandler -- Problem
+WebDaoExceptionHandler -- AbstractDaoExceptionHandler
+WebDaoExceptionHandler -- ConstraintNameResolver
+WebDaoExceptionHandler -- DaoAdviceEnabled
+WebDaoExceptionHandler -- ORMAdviceEnabled
+WebDaoExceptionHandler -- ProblemProperties
+WebExceptionHandler -- Problem
+WebExceptionHandler -- ProblemProperties
+WebSecurityExceptionHandler -- Problem
+WebSecurityExceptionHandler -- AdviceTrait
+WebSecurityExceptionHandler -- ProblemAccessDeniedHandler
+WebSecurityExceptionHandler -- ProblemAuthenticationEntryPoint
+WebSecurityExceptionHandler -- SecurityAdviceTraits
+WebSecurityExceptionHandler -- SecurityAdviceEnabled
+WebSecurityExceptionHandler -- ProblemProperties
+ProblemTracingWebFluxFilter -- Problem
+ProblemTracingWebFluxFilter -- TraceProvider
+ProblemWebfluxAutoConfiguration -- ErrorResponseBuilder
+ProblemWebfluxAutoConfiguration -- Problem
+ProblemWebfluxAutoConfiguration -- TraceProvider
+ProblemWebfluxAutoConfiguration -- TracingHeaderEnabledCondition
+ProblemWebfluxAutoConfiguration -- ProblemTracingWebFluxFilter
+ProblemWebfluxAutoConfiguration -- SpringWebfluxErrorResponseBuilder
+ProblemWebfluxAutoConfiguration -- ProblemProperties
+SpringWebfluxErrorResponseBuilder -- ErrorResponseBuilder
+SpringWebfluxErrorResponseBuilder -- MediaTypes
+SpringWebfluxErrorResponseBuilder -- Problem
+SpringWebfluxErrorResponseBuilder -- TraceProvider
+WebFluxDaoExceptionHandler -- Problem
+WebFluxDaoExceptionHandler -- AbstractDaoExceptionHandler
+WebFluxDaoExceptionHandler -- ConstraintNameResolver
+WebFluxDaoExceptionHandler -- DaoAdviceEnabled
+WebFluxDaoExceptionHandler -- ProblemProperties
+WebFluxExceptionHandler -- Problem
+WebFluxExceptionHandler -- ProblemHandlingWeb
+WebFluxExceptionHandler -- ProblemProperties
+WebFluxSecurityExceptionHandler -- Problem
+WebFluxSecurityExceptionHandler -- AdviceTrait
+WebFluxSecurityExceptionHandler -- ProblemServerAccessDeniedHandler
+WebFluxSecurityExceptionHandler -- ProblemServerAuthenticationEntryPoint
+WebFluxSecurityExceptionHandler -- SecurityAdviceTraits
+WebFluxSecurityExceptionHandler -- SecurityAdviceEnabled
+WebFluxSecurityExceptionHandler -- ProblemProperties
+ProblemBeanRegistry -- Problem
+ProblemBeanRegistry -- ProblemProperties
+ProblemConfigException -- Problem
+ProblemMessageProvider -- Problem
+ProblemMessageProviderConfig -- Problem
+ProblemMessageProviderConfig -- ProblemMessageProvider
+ProblemMessageSourceResolver -- Problem
+ProblemMessageSourceResolver -- ProblemConstant
+ProblemProperties -- Problem
+@enduml

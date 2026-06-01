@@ -1,0 +1,19 @@
+server:
+  port: 8501
+
+spring:
+  application:
+    name: eureka
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    enableSelfPreservation: false
+
+
+# 自定义属性
+h2:
+  web:
+    enabled: true

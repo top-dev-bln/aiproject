@@ -1,0 +1,343 @@
+@startuml
+
+package com.github.piomin {
+  class MainControllerReactiveTests {
+    +findById() : void
+    +findByIdReqParam() : void
+    +postById() : void
+    +postByIdReqParam() : void
+    +handleFormData() : void
+    +getFilename() : String
+  }
+  class Main {
+    +main() : void
+  }
+  class MainControllerTests {
+    +findById() : void
+    +findByIdReqParam() : void
+    +postById() : void
+    +postByIdReqParam() : void
+    +postMultipart() : void
+    +getTestFile() : Resource
+  }
+  class Main {
+    +main() : void
+  }
+  class MainControllerTests {
+    +findById() : void
+    +findByIdReqParam() : void
+    +postById() : void
+    +postByIdReqParam() : void
+    +postMultipart() : void
+    +getTestFile() : Resource
+  }
+  class MemoryAppender {
+    +reset() : void
+    +contains() : boolean
+    +countEventsForLogger() : int
+    +search() : List<ILoggingEvent>
+    +search() : List<ILoggingEvent>
+    +getSize() : int
+    +getLoggedEvents() : List<ILoggingEvent>
+  }
+  class Main {
+    +main() : void
+  }
+}
+
+package com.github.piomin.controller {
+  class MainController <<Controller>> {
+    +findById() : Mono<String>
+    +postWithId() : Mono<String>
+    +findByIdRequest() : Mono<String>
+    +postWithIdRequest() : Mono<String>
+    +handleFormData() : Mono<String>
+  }
+  class MainController <<Controller>> {
+    +findById() : String
+    +postWithId() : String
+    +findByIdRequest() : String
+    +postWithIdRequest() : String
+    +processFile() : String
+  }
+  class MainController <<Controller>> {
+    +findById() : String
+    +postWithId() : String
+    +findByIdRequest() : String
+    +postWithIdRequest() : String
+    +processFile() : String
+  }
+}
+
+package pl.piomin.logging {
+  class MemoryAppender {
+    +reset() : void
+    +contains() : boolean
+    +countEventsForLogger() : int
+    +search() : List<ILoggingEvent>
+    +search() : List<ILoggingEvent>
+    +getSize() : int
+    +getLoggedEvents() : List<ILoggingEvent>
+  }
+  class LogstashAutoConfigurationTest {
+    +startup() : void
+  }
+  class MemoryAppender {
+    +reset() : void
+    +contains() : boolean
+    +countEventsForLogger() : int
+    +search() : List<ILoggingEvent>
+    +search() : List<ILoggingEvent>
+    +getSize() : int
+    +getLoggedEvents() : List<ILoggingEvent>
+  }
+}
+
+package pl.piomin.logging.builder {
+  class LoggingPrinter {
+    -AUDIT_KEY : String
+    -logHeaders : boolean
+    -ignorePayload : boolean
+    -logger : Logger
+    -logHeaders : boolean
+    -ignorePayload : boolean
+    -logger : Logger
+    +printRequest() : void
+    +printResponse() : void
+    +showLogHeader() : Builder
+    +ignorePayload() : Builder
+    +build() : LoggingPrinter
+  }
+}
+
+package pl.piomin.logging.commons.client {
+  class RestClientSetHeaderInterceptor {
+    +intercept() : ClientHttpResponse
+  }
+  class RestTemplateSetHeaderInterceptor {
+    +intercept() : ClientHttpResponse
+  }
+}
+
+package pl.piomin.logging.commons.util {
+  class UniqueIDGenerator {
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    +generateAndSetMDC() : void
+  }
+}
+
+package pl.piomin.logging.commons.wrapper {
+  class SpringResponseWrapper {
+    -outputStream : ServletOutputStream
+    -writer : PrintWriter
+    -copier : ServletOutputStreamWrapper
+    +getOutputStream() : ServletOutputStream
+    +getWriter() : PrintWriter
+    +flushBuffer() : void
+    +getContentAsByteArray() : byte[]
+  }
+  class ServletOutputStreamWrapper {
+    -outputStream : OutputStream
+    -copy : ByteArrayOutputStream
+    +write() : void
+    +getCopy() : byte[]
+    +isReady() : boolean
+    +setWriteListener() : void
+  }
+  class SpringRequestWrapper {
+    -body : byte[]
+    +getInputStream() : ServletInputStream
+    +isFinished() : boolean
+    +isReady() : boolean
+    +setReadListener() : void
+    +read() : int
+  }
+}
+
+package pl.piomin.logging.config {
+  class SpringLoggingAutoConfiguration {
+    -LOGSTASH_APPENDER_NAME : String
+    -url : String
+    -ignorePatterns : String
+    -logHeaders : boolean
+    -trustStoreLocation : String
+    -trustStorePassword : String
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    -ignorePayload : boolean
+    -restTemplate : RestTemplate
+    +generator() : UniqueIDGenerator
+    +loggingFilter() : SpringLoggingFilter
+    +restTemplate() : RestTemplate
+    +existingRestTemplate() : RestTemplate
+    +restClient() : RestClient
+    +logstashAppender() : LogstashTcpSocketAppender
+    +getUrl() : String
+    +setUrl() : void
+  }
+  class SpringLoggingAutoConfiguration {
+    -LOKI_APPENDER_NAME : String
+    -url : String
+    -ignorePatterns : String
+    -logHeaders : boolean
+    -trustStoreLocation : String
+    -trustStorePassword : String
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    -restTemplate : RestTemplate
+    +generator() : UniqueIDGenerator
+    +loggingFilter() : SpringLoggingFilter
+    +restTemplate() : RestTemplate
+    +existingRestTemplate() : RestTemplate
+    +restClient() : RestClient
+    +lokiAppender() : Loki4jAppender
+    +getUrl() : String
+    +setUrl() : void
+  }
+}
+
+package pl.piomin.logging.filter {
+  class SpringLoggingFilter {
+    -LOGGER : Logger
+    -REQUEST_ID_HEADER : String
+    -CORRELATION_ID_HEADER : String
+    -OPERATION_NAME_MDC_KEY : String
+    -generator : UniqueIDGenerator
+    -ignorePatterns : String
+    -context : ApplicationContext
+    -loggingPrinter : LoggingPrinter
+    -startTime : long
+    -wrappedRequest : SpringRequestWrapper
+    +doFilterInternal() : void
+  }
+  class SpringLoggingFilter {
+    -LOGGER : Logger
+    -generator : UniqueIDGenerator
+    -ignorePatterns : String
+    -logHeaders : boolean
+    -startTime : long
+    -wrappedRequest : SpringRequestWrapper
+    -wrappedResponse : SpringResponseWrapper
+    -duration : long
+    +doFilterInternal() : void
+  }
+}
+
+package pl.piomin.logging.reactive {
+  class ReactiveLogstashAutoConfigurationTest {
+    +startup() : void
+  }
+}
+
+package pl.piomin.logging.reactive.config {
+  class ReactiveSpringLoggingAutoConfiguration {
+    -LOGSTASH_APPENDER_NAME : String
+    -url : String
+    -ignorePatterns : String
+    -logHeaders : boolean
+    -useContentLength : boolean
+    -trustStoreLocation : String
+    -trustStorePassword : String
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    +generator() : UniqueIDGenerator
+    +reactiveSpringLoggingFilter() : ReactiveSpringLoggingFilter
+    +logstashAppender() : LogstashTcpSocketAppender
+    +getUrl() : String
+    +setUrl() : void
+    +getIgnorePatterns() : String
+    +setIgnorePatterns() : void
+    +isLogHeaders() : boolean
+  }
+}
+
+package pl.piomin.logging.reactive.filter {
+  class ReactiveSpringLoggingFilter {
+    -LOGGER : Logger
+    -generator : UniqueIDGenerator
+    -ignorePatterns : String
+    -logHeaders : boolean
+    -useContentLength : boolean
+    -requestId : String
+    -startTime : long
+    -duration : long
+    +filter() : Mono<Void>
+    +getRequest() : ServerHttpRequest
+    +getResponse() : ServerHttpResponse
+  }
+}
+
+package pl.piomin.logging.reactive.interceptor {
+  class RequestLoggingInterceptor {
+    -LOGGER : Logger
+    -logHeaders : boolean
+    -requestId : String
+    +getBody() : Flux<DataBuffer>
+  }
+  class ResponseLoggingInterceptor {
+    -LOGGER : Logger
+    -startTime : long
+    -logHeaders : boolean
+    -requestId : String
+    +writeWith() : Mono<Void>
+  }
+}
+
+package pl.piomin.logging.reactive.util {
+  class UniqueIDGenerator {
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    +generateAndSetMDC() : void
+  }
+}
+
+package pl.piomin.logging.util {
+  class UniqueIDGenerator {
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    +generateAndSetMDC() : void
+  }
+  class UniqueIDGenerator {
+    -requestIdHeaderName : String
+    -correlationIdHeaderName : String
+    +generateAndSetMDC() : void
+  }
+}
+
+' --- Relatii ---
+MainControllerReactiveTests --> MemoryAppender
+MainControllerReactiveTests --> ReactiveSpringLoggingFilter
+MainControllerReactiveTests --> RequestLoggingInterceptor
+MainControllerReactiveTests --> ResponseLoggingInterceptor
+LogstashAutoConfigurationTest --> SpringLoggingAutoConfiguration
+LogstashAutoConfigurationTest --> SpringLoggingFilter
+LogstashAutoConfigurationTest --> UniqueIDGenerator
+SpringLoggingAutoConfiguration --> RestClientSetHeaderInterceptor
+SpringLoggingAutoConfiguration --> SpringLoggingFilter
+SpringLoggingAutoConfiguration --> UniqueIDGenerator
+SpringLoggingFilter --> LoggingPrinter
+SpringLoggingFilter --> UniqueIDGenerator
+SpringLoggingFilter --> SpringRequestWrapper
+SpringLoggingFilter --> SpringResponseWrapper
+LoggingPrinter --> SpringRequestWrapper
+LoggingPrinter --> SpringResponseWrapper
+SpringLoggingAutoConfiguration --> RestClientSetHeaderInterceptor
+SpringLoggingAutoConfiguration --> SpringLoggingFilter
+SpringLoggingAutoConfiguration --> UniqueIDGenerator
+SpringLoggingFilter --> UniqueIDGenerator
+SpringLoggingFilter --> SpringRequestWrapper
+SpringLoggingFilter --> SpringResponseWrapper
+MainControllerTests --> MemoryAppender
+MainControllerTests --> SpringLoggingFilter
+ReactiveLogstashAutoConfigurationTest --> ReactiveSpringLoggingAutoConfiguration
+ReactiveLogstashAutoConfigurationTest --> ReactiveSpringLoggingFilter
+ReactiveLogstashAutoConfigurationTest --> UniqueIDGenerator
+ReactiveSpringLoggingAutoConfiguration --> ReactiveSpringLoggingFilter
+ReactiveSpringLoggingAutoConfiguration --> UniqueIDGenerator
+ReactiveSpringLoggingFilter --> RequestLoggingInterceptor
+ReactiveSpringLoggingFilter --> ResponseLoggingInterceptor
+ReactiveSpringLoggingFilter --> UniqueIDGenerator
+MainControllerTests --> SpringLoggingFilter
+
+@enduml

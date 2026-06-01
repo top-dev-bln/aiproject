@@ -1,0 +1,105 @@
+@startuml
+package {{PACKAGE}}.config; {
+class api-versioning-config {
+}
+
+class exception-handler {
+}
+
+}
+
+package {{PACKAGE}}.shared; {
+class base-entity {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}.rest; {
+class controller {
+}
+
+class resttestclient-test {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}.client; {
+class http-service-client {
+}
+
+}
+
+package {{PACKAGE}}; {
+class modularity-test {
+}
+
+class testcontainers-test {
+}
+
+}
+
+package level to enable null checking for the entire package. {
+class package-info-jspecify {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}.domain; {
+class repository {
+}
+
+class rich-entity {
+}
+
+class service-cqrs {
+}
+
+class custom-repository {
+}
+
+class query-repository {
+}
+
+class query-service {
+}
+
+class relationship-patterns {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}.service; {
+class resilience-service {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}.rest.converters; {
+class spring-converter {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}.domain.vo; {
+class value-object {
+}
+
+}
+
+package {{PACKAGE}}.{{MODULE}}; {
+class dto-projection {
+}
+
+}
+
+package-info-jspecify -- controller
+package-info-jspecify -- repository
+resttestclient-test -- controller
+service-cqrs -- repository
+testcontainers-test -- repository
+custom-repository -- repository
+dto-projection -- repository
+query-repository -- repository
+query-service -- repository
+relationship-patterns -- repository
+@enduml

@@ -1,0 +1,877 @@
+@startuml
+
+package com.alibaba.cloud.examples.schedulerx {
+  class SchedulerxApplication {
+    +main() : void
+  }
+}
+
+package com.alibaba.cloud.examples.schedulerx.domain {
+  class ParallelAccountInfo {
+    -id : long
+    -name : String
+    -accountId : String
+  }
+  class OrderInfo {
+    -id : String
+    -value : int
+    +getId() : String
+    +setId() : void
+    +getValue() : int
+    +setValue() : void
+  }
+  class Record {
+    -id : int
+    -name : String
+    -data : String
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getData() : String
+    +setData() : void
+  }
+  class AccountInfo {
+    -id : long
+    -name : String
+    -accountId : String
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAccountId() : String
+    +setAccountId() : void
+  }
+  class PageTask {
+    -tableName : String
+    -startId : long
+    -endId : long
+    +getTableName() : String
+    +getStartId() : long
+    +getEndId() : long
+  }
+}
+
+package com.alibaba.cloud.examples.schedulerx.job {
+  class ShardingJob {
+    +process() : ProcessResult
+  }
+  class BroadcastJob {
+    +process() : ProcessResult
+    +preProcess() : void
+    +postProcess() : ProcessResult
+  }
+  class SimpleJob {
+    -logger : Logger
+    +process() : ProcessResult
+    +kill() : void
+  }
+  class ScanSingleTableJob {
+    -PAGE_SIZE : int
+    +process() : ProcessResult
+  }
+  class MapReduceJob {
+    +process() : ProcessResult
+    +reduce() : ProcessResult
+  }
+  class ScanShardingTableJob {
+    -PAGE_SIZE : int
+    +process() : ProcessResult
+  }
+  class KillJob {
+    -logger : Logger
+    +process() : ProcessResult
+    +kill() : void
+  }
+  class ParallelJob {
+    -logger : Logger
+    +reduce() : ProcessResult
+    +process() : ProcessResult
+  }
+  class SleepJob {
+    -logger : Logger
+    +process() : ProcessResult
+    +kill() : void
+  }
+  class TradeOrderJob {
+    -LOGGER : Logger
+    +process() : ProcessResult
+    +reduce() : ProcessResult
+  }
+}
+
+package com.alibaba.cloud.spring.boot.compileflow.actuate {
+  class CompileflowEndpoint {
+    -compileflowProperties : CompileflowProperties
+  }
+}
+
+package com.alibaba.cloud.spring.boot.compileflow.actuate.autoconfigure {
+  class CompileflowEndpointAutoConfiguration {
+    +redisDescribeAvailableResourceEndpoint() : CompileflowEndpoint
+  }
+}
+
+package com.alibaba.cloud.spring.boot.compileflow.autoconfigure {
+  class CompileflowAutoConfiguration {
+    -log : Logger
+    -compileflowProperties : CompileflowProperties
+    -applicationContext : ApplicationContext
+    +init() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.compileflow.env {
+  class CompileflowProperties {
+    -flowSourceType : String
+    -precompile : boolean
+    -precompileProcessFiles : List<String>
+    -precompileProcessDirs : List<String>
+    +getFlowSourceType() : String
+    +setFlowSourceType() : void
+    +isPrecompile() : boolean
+    +setPrecompile() : void
+    +getPrecompileProcessFiles() : List<String>
+    +setPrecompileProcessFiles() : void
+    +getPrecompileProcessDirs() : List<String>
+    +setPrecompileProcessDirs() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.context.autoconfigure {
+  class AliCloudContextAutoConfiguration {
+  }
+  class EdasContextAutoConfiguration {
+    +aliCloudEdasSdk() : AliCloudEdasSdk
+  }
+}
+
+package com.alibaba.cloud.spring.boot.context.condition {
+  class OnAliCloudEndpointCondition {
+    +getMatchOutcome() : ConditionOutcome
+  }
+  interface ConditionalOnRequiredProperties {
+  }
+  class OnRequiredPropertyCondition {
+    -annotationName : String
+    +getMatchOutcome() : ConditionOutcome
+    +doGetMatchOutcome() : ConditionOutcome
+    +doGetMatchOutcome() : ConditionOutcome
+  }
+  class OnRequiredPropertiesCondition {
+    -annotationName : String
+    +getMatchOutcome() : ConditionOutcome
+  }
+  interface ConditionalOnRequiredProperty {
+  }
+  interface ConditionalOnAliCloudEndpoint {
+  }
+}
+
+package com.alibaba.cloud.spring.boot.context.env {
+  class EdasProperties {
+    -DEFAULT_APPLICATION_NAME : String
+    -applicationName : String
+    -namespace : String
+    -enabled : boolean
+    +getRegionId() : String
+    +isApplicationNameValid() : boolean
+    +getApplicationName() : String
+    +setApplicationName() : void
+    +getNamespace() : String
+    +setNamespace() : void
+    +isEnabled() : boolean
+    +setEnabled() : void
+  }
+  class AliCloudProperties {
+    -PROPERTY_PREFIX : String
+    -ACCESS_KEY_PROPERTY : String
+    -SECRET_KEY_PROPERTY : String
+    -accessKey : String
+    -secretKey : String
+    +getAccessKey() : String
+    +setAccessKey() : void
+    +getSecretKey() : String
+    +setSecretKey() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.ds.autocofigure {
+  class RdsAutoConfiguration {
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.compileflow {
+  class CompileflowApplication {
+    +main() : void
+    +ktvService() : KtvService
+  }
+  class CompileflowController <<Controller>> {
+    -code : String
+    -code : String
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.compileflow.mock {
+  class MockJavaClazz {
+    +mockJavaMethod() : void
+    +mockJavaMethod() : void
+    +mockReturnMethod() : int
+    +doException() : void
+    +mockMonitorMethod() : void
+    +calPrice() : int
+  }
+  class KtvService {
+    +sing() : void
+    +payMoney() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.fc {
+  class FCMain {
+    -name : String
+    +main() : void
+    +getAll() : Supplier<List<User>>
+    +stream() : InputOutputFunction
+    +user() : Consumer<User>
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.oss {
+  class OssApplication {
+    -BUCKET_NAME : String
+    -ossClient : OSS
+    +main() : void
+    +appRunner() : AppRunner
+    +run() : void
+  }
+  class OssController <<Controller>> {
+    -ossClient : OSS
+    -localFile : Resource
+    -remoteFile : Resource
+    +upload() : String
+    +fileResource() : String
+    +download() : String
+    +uploadWithOutputStream() : String
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.rds {
+  class Order {
+    -id : long
+    -userId : String
+    -commodityCode : String
+    -count : int
+    -money : int
+    +getId() : long
+    +setId() : void
+    +getUserId() : String
+    +setUserId() : void
+    +getCommodityCode() : String
+    +setCommodityCode() : void
+    +getCount() : int
+    +setCount() : void
+  }
+  class RdsController <<Controller>> {
+    -READ_SQL : String
+    -UPDATE_SQL : String
+    -dataSource : DataSource
+    +getDataSource() : String
+    +query() : List<Order>
+    +update() : List<Order>
+  }
+  class RdsApplication {
+    +main() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.redis {
+  class RedisApplication {
+    +main() : void
+  }
+  class RedisController <<Controller>> {
+    -redisTemplate : StringRedisTemplate
+    -key : String
+  }
+}
+
+package com.alibaba.cloud.spring.boot.examples.sms {
+  class SmsApplication {
+    +main() : void
+  }
+  class SmsController <<Controller>> {
+    -environment : Environment
+    -smsService : ISmsService
+    -smsReportMessageListener : SmsReportMessageListener
+    -phoneNumber : String
+    -signName : String
+    -templateCode : String
+    +getSmsReportQueuename() : String
+    +batchsendCheckCode() : SendBatchSmsResponse
+    +sendCheckCode() : SendSmsResponse
+    +querySendDetailsResponse() : QuerySendDetailsResponse
+    +smsReport() : List<Message>
+  }
+}
+
+package com.alibaba.cloud.spring.boot.fc {
+  class TestMain {
+    +main() : void
+  }
+  class AliCloudFCAdapterTest {
+    +init() : void
+    +string2stringWithStreamTest() : void
+    +string2objectWithStreamTest() : void
+    +string2objectWithRequestTest() : void
+    +string2stringWithRequestTest() : void
+    +getRequestId() : String
+    +getExecutionCredentials() : Credentials
+    +getFunctionParam() : FunctionParam
+  }
+  class User {
+    -id : Long
+    -name : String
+  }
+  class StreamRequestFCSpringFunctionInvoker {
+    +handleRequest() : void
+  }
+  interface InputOutputFunction {
+  }
+  class Pair {
+    -key : K
+    -value : V
+    +getKey() : K
+    +getValue() : V
+  }
+  interface RequestResponseFunction {
+  }
+  class RequestResponsePair {
+  }
+  class HttpRequestFCSpringFunctionInvoker {
+    +handleRequest() : void
+  }
+  class InputOutputPair {
+  }
+  class AbstractAliyunFCInvoker {
+    -EXECUTION_CTX_DELEGATE : ExecutionContextDelegate
+    -mapper : ObjectMapper
+    -target : Context
+    +initialize() : void
+    +close() : void
+    +doInvokeAsStream() : Object
+    +doInvoke() : Object
+    +functionReturnsMessage() : boolean
+    +serializeBody() : String
+    +serializeResult() : byte[]
+    +getRequestId() : String
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss {
+  class OssConstants {
+    -PREFIX : String
+    -ENABLED : String
+    -OSS_TASK_EXECUTOR_BEAN_NAME : String
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss.actuate {
+  class OssEndpoint {
+    -applicationContext : ApplicationContext
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss.actuate.autoconfigure {
+  class OssEndpointAutoConfiguration {
+    +ossEndpoint() : OssEndpoint
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss.autoconfigure {
+  class OssAutoConfiguration {
+    +ossStorageProtocolResolver() : OssStorageProtocolResolver
+    +ossTaskExecutor() : ExecutorService
+  }
+  class OssContextAutoConfiguration {
+    +ossClient() : OSS
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss.context {
+  class OssApplicationListener {
+    -log : Logger
+    +onApplicationEvent() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss.env {
+  class OssProperties {
+    -authorizationMode : AliCloudAuthorizationMode
+    -endpoint : String
+    -sts : StsToken
+    -config : ClientBuilderConfiguration
+    -accessKey : String
+    -secretKey : String
+    -securityToken : String
+    +getAuthorizationMode() : AliCloudAuthorizationMode
+    +setAuthorizationMode() : void
+    +getConfig() : ClientBuilderConfiguration
+    +setConfig() : void
+    +getEndpoint() : String
+    +setEndpoint() : void
+    +getSts() : StsToken
+    +setSts() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.oss.resource {
+  class DummyOssClient {
+    +getStoreKey() : String
+    +putObject() : PutObjectResult
+    +getOSSObject() : OSSObject
+    +createBucket() : Bucket
+    +bucketList() : List<Bucket>
+  }
+  class OssStorageResourceTest {
+    -expectedEx : ExpectedException
+    -beanFactory : ConfigurableListableBeanFactory
+    -oss : OSS
+    -bucketResource : Resource
+    -remoteResource : Resource
+    +generateRandomBytes() : byte[]
+    +testResourceType() : void
+    +testValidObject() : void
+    +testBucketResource() : void
+    +testBucketNotEndingInSlash() : void
+    +testSpecifyPathCorrect() : void
+    +testSpecifyBucketCorrect() : void
+    +testBucketOutputStream() : void
+  }
+  class OssStorageProtocolResolver {
+    -PROTOCOL : String
+    -log : Logger
+    -beanFactory : ConfigurableListableBeanFactory
+    -oss : OSS
+    +resolve() : Resource
+    +setResourceLoader() : void
+    +postProcessBeanFactory() : void
+  }
+  class OssStorageResource {
+    -logger : Logger
+    -MESSAGE_KEY_NOT_EXIST : String
+    -oss : OSS
+    -bucketName : String
+    -objectKey : String
+    -location : URI
+    -autoCreateFiles : boolean
+    -ossTaskExecutor : ExecutorService
+    -beanFactory : ConfigurableListableBeanFactory
+    -out : PipedOutputStream
+    +isAutoCreateFiles() : boolean
+    +exists() : boolean
+    +getURL() : URL
+    +getURI() : URI
+    +getFile() : File
+    +contentLength() : long
+    +lastModified() : long
+    +createRelative() : Resource
+  }
+}
+
+package com.alibaba.cloud.spring.boot.rds.actuate.autoconfigure {
+  class RdsEndpointAutoConfigurationTest {
+    -rdsInstancesEndpoint : RdsInstancesEndpoint
+    +testRedisDescribeAvailableResourceEndpoint() : void
+  }
+  class RdsEndpointAutoConfiguration {
+    -rdsProperties : RdsProperties
+    +iAcsClient() : IAcsClient
+    +rdsInstanceEndpoint() : RdsInstancesEndpoint
+    +rdsSlowEndpoint() : RdsSlowEndpoint
+    +rdsPerformanceEndpoint() : RdsPerformanceEndpoint
+    +errorEndpoint() : RdsErrorEndpoint
+  }
+}
+
+package com.alibaba.cloud.spring.boot.rds.actuate.endpoint {
+  class RdsPerformanceEndpoint {
+    -MYSQL_DEFAULT_KEYS : String
+    -SQL_SERVER_DEFAULT_KEYS : String
+    -POSTGRE_SQL_DEFAULT_KEYS : String
+    -TIME_RANGE : Long
+    -rdsProperties : RdsProperties
+  }
+  class RdsErrorEndpoint {
+    -TIME_PATTEN : String
+    -TIME_RANGE : Long
+  }
+  class AbstractInvoker {
+    -log : Logger
+    -iAcsClient : IAcsClient
+    -rdsProperties : RdsProperties
+    -CACHE_TIME : long
+  }
+  class RdsSlowEndpoint {
+    -TIME_PATTEN : String
+    -TIME_RANGE : Long
+  }
+  class RdsInstancesEndpoint {
+  }
+}
+
+package com.alibaba.cloud.spring.boot.rds.env {
+  class RdsProperties {
+    -defaultRegionId : String
+    -allRegionIds : String
+    -performanceKey : String
+    +getPerformanceKey() : String
+    +setPerformanceKey() : void
+    +getDefaultRegionId() : String
+    +setDefaultRegionId() : void
+    +getAllRegionIds() : String
+    +setAllRegionIds() : void
+  }
+  class RDSConstants {
+    -MODULE_NAME : String
+    -PROPERTY_PREFIX : String
+    -ENABLE : String
+    -ACTUATOR_PREFIX : String
+  }
+}
+
+package com.alibaba.cloud.spring.boot.redis.actuate.autoconfigure {
+  class RedisEndpointAutoConfigurationTest {
+    -redisDescribeAvailableResourceEndpoint : RedisDescribeAvailableResourceEndpoint
+    +testRedisDescribeAvailableResourceEndpoint() : void
+  }
+  class RedisEndpointAutoConfiguration {
+    -aliCloudProperties : AliCloudProperties
+    -redisProperties : RedisProperties
+    +redisDescribeAvailableResourceEndpoint() : RedisDescribeAvailableResourceEndpoint
+    +redisDescribeAccountsEndpoint() : RedisDescribeAccountsEndpoint
+    +redisDescribeInstancesEndpoint() : RedisDescribeInstancesEndpoint
+  }
+}
+
+package com.alibaba.cloud.spring.boot.redis.actuate.endpoint {
+  class RedisDescribeAvailableResourceEndpoint {
+    +describeAvailableResourceWithDefaultRegionId() : Object
+    +describeAvailableResource() : Object
+  }
+  class RedisDescribeInstancesEndpoint {
+    +describeInstancesWithDefaultRegion() : Object
+    +describeInstances() : Object
+  }
+  class AbstractRedisEndpoint {
+    -aliCloudProperties : AliCloudProperties
+    -redisProperties : RedisProperties
+    +getAliCloudProperties() : AliCloudProperties
+    +getAccessKey() : String
+    +getSecretKey() : String
+    +createIAcsClient() : IAcsClient
+    +execute() : Object
+    +getInstanceId() : String
+    +getDefaultRegionID() : String
+  }
+  class RedisDescribeAccountsEndpoint {
+    +describeAccountsWithDefaultRegionId() : Object
+    +describeAccounts() : Object
+  }
+}
+
+package com.alibaba.cloud.spring.boot.redis.autocofigure {
+  class RedisAutoConfiguration {
+  }
+}
+
+package com.alibaba.cloud.spring.boot.redis.env {
+  class RedisProperties {
+    -PROPERTY_PREFIX : String
+    -INSTANCE_ID_PROPERTY : String
+    -defaultRegionId : String
+    -instanceId : String
+    +getInstanceId() : String
+    +setInstanceId() : void
+    +getDefaultRegionId() : String
+    +setDefaultRegionId() : void
+  }
+}
+
+package com.alibaba.cloud.spring.boot.sms {
+  interface SmsMessageListener {
+  }
+  class AbstractSmsService {
+    +getHangZhouRegionClientProfile() : IAcsClient
+  }
+  class SmsInitializerEventListener {
+    -isCalled : AtomicBoolean
+    -msConfigProperties : SmsProperties
+    -smsService : ISmsService
+    +onApplicationEvent() : void
+  }
+  class SmsServiceImpl {
+    -log : Logger
+    -smsProperties : SmsProperties
+    -aliCloudProperties : AliCloudProperties
+    +sendSmsRequest() : SendSmsResponse
+    +sendSmsRequest() : SendSmsResponse
+    +startSmsReportMessageListener() : boolean
+    +startSmsUpMessageListener() : boolean
+    +sendSmsBatchRequest() : SendBatchSmsResponse
+    +sendSmsBatchRequest() : SendBatchSmsResponse
+    +querySendDetails() : QuerySendDetailsResponse
+    +querySendDetails() : QuerySendDetailsResponse
+  }
+  interface SmsUpMessageListener {
+  }
+  interface SmsReportMessageListener {
+  }
+  interface ISmsService {
+  }
+}
+
+package com.alibaba.cloud.spring.boot.sms.actuate {
+  class ReceiveMessageEntity {
+    -messageType : String
+    -queueName : String
+    -messageListener : MessageListener
+    +getMessageType() : String
+    +setMessageType() : void
+    +getQueueName() : String
+    +setQueueName() : void
+    +getMessageListener() : MessageListener
+    +setMessageListener() : void
+  }
+  class EndpointManager {
+    -BACKLOG_SIZE : int
+    -SEND_REENTRANT_LOCK : ReentrantLock
+    -SEND_BATCH_REENTRANT_LOCK : ReentrantLock
+    -SEND_SMS_REQUESTS : LinkedBlockingQueue<SendSmsRequest>
+    -SEND_BATCH_SMS_REQUESTS : LinkedBlockingQueue<SendBatchSmsRequest>
+    -RECEIVE_MESSAGE_ENTITIES : LinkedBlockingQueue<ReceiveMessageEntity>
+    +addSendSmsRequest() : void
+    +addSendBatchSmsRequest() : void
+    +addReceiveMessageEntity() : void
+  }
+  class SmsEndpoint {
+  }
+}
+
+package com.alibaba.cloud.spring.boot.sms.actuate.autoconfigure {
+  class SmsEndpointAutoConfiguration {
+    +smsEndpoint() : SmsEndpoint
+  }
+}
+
+package com.alibaba.cloud.spring.boot.sms.autoconfigure {
+  class SmsContextAutoConfiguration {
+  }
+  class SmsAutoConfiguration {
+    +smsService() : SmsServiceImpl
+    +smsInitializePostListener() : SmsInitializerEventListener
+  }
+}
+
+package com.alibaba.cloud.spring.boot.sms.base {
+  class QueryTokenForMnsQueueResponse {
+    -requestId : String
+    -code : String
+    -message : String
+    -accessKeyId : String
+    -accessKeySecret : String
+    -securityToken : String
+    -createTime : String
+    -expireTime : String
+    +getRequestId() : String
+    +setRequestId() : void
+    +getCode() : String
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +setMessageTokenDTO() : void
+    +getInstance() : QueryTokenForMnsQueueResponse
+  }
+  class QueryTokenForMnsQueueResponseUnmarshaller {
+    +unmarshall() : QueryTokenForMnsQueueResponse
+  }
+  class QueryTokenForMnsQueueRequest {
+    -resourceOwnerAccount : String
+    -messageType : String
+    -resourceOwnerId : Long
+    -ownerId : Long
+    +getResourceOwnerAccount() : String
+    +setResourceOwnerAccount() : void
+    +getMessageType() : String
+    +setMessageType() : void
+    +getResourceOwnerId() : Long
+    +setResourceOwnerId() : void
+    +getOwnerId() : Long
+    +setOwnerId() : void
+  }
+  class TokenForAlicom {
+    -messageType : String
+    -token : String
+    -expireTime : Long
+    -tempAccessKeyId : String
+    -tempAccessKeySecret : String
+    -client : MNSClient
+    -queue : CloudQueue
+    +getMessageType() : String
+    +setMessageType() : void
+    +getToken() : String
+    +setToken() : void
+    +getExpireTime() : Long
+    +setExpireTime() : void
+    +getTempAccessKeyId() : String
+    +setTempAccessKeyId() : void
+  }
+  class DefaultAlicomMessagePuller {
+    -log : Logger
+    -mnsAccountEndpoint : String
+    -endpointNameForPop : String
+    -regionIdForPop : String
+    -domainForPop : String
+    -tokenGetter : TokenGetterForAlicom
+    -messageListener : MessageListener
+    -isRunning : boolean
+    -pullMsgThreadSize : Integer
+    -debugLogOpen : boolean
+    +openDebugLog() : void
+    +getSleepSecondWhenNoData() : Integer
+    +setSleepSecondWhenNoData() : void
+    +getPullMsgThreadSize() : Integer
+    +setPullMsgThreadSize() : void
+    +getExecutorService() : ExecutorService
+    +setExecutorService() : void
+    +setPolling() : boolean
+  }
+  interface MessageListener {
+  }
+  class TokenGetterForAlicom {
+    -log : Logger
+    -accessKeyId : String
+    -accessKeySecret : String
+    -endpointNameForPop : String
+    -regionIdForPop : String
+    -domainForPop : String
+    -iAcsClient : IAcsClient
+    -ownerId : Long
+    -PRODUCT_NAME : String
+    -bufferTime : long
+    +getTokenByMessageType() : TokenForAlicom
+  }
+}
+
+package com.alibaba.cloud.spring.boot.sms.env {
+  class SmsProperties {
+    -SMS_PRODUCT : String
+    -SMS_DOMAIN : String
+    -reportQueueName : String
+    -upQueueName : String
+    -connectTimeout : String
+    -readTimeout : String
+    +getConnectTimeout() : String
+    +setConnectTimeout() : void
+    +getReadTimeout() : String
+    +setReadTimeout() : void
+    +getReportQueueName() : String
+    +setReportQueueName() : void
+    +getUpQueueName() : String
+    +setUpQueueName() : void
+  }
+}
+
+' --- Relatii ---
+CompileflowApplication --> KtvService
+ScanSingleTableJob --> PageTask
+ScanSingleTableJob --> Record
+ScanSingleTableJob --> Pair
+ScanShardingTableJob --> PageTask
+ScanShardingTableJob --> Record
+ScanShardingTableJob --> Pair
+ParallelJob --> ParallelAccountInfo
+TradeOrderJob --> OrderInfo
+SmsController --> ISmsService
+FCMain --> InputOutputFunction
+OnAliCloudEndpointCondition --> AliCloudProperties
+ConditionalOnAliCloudEndpoint --> AliCloudProperties
+AliCloudContextAutoConfiguration --> AliCloudProperties
+EdasContextAutoConfiguration --> AliCloudProperties
+EdasContextAutoConfiguration --> EdasProperties
+OssAutoConfiguration --> OssConstants
+OssAutoConfiguration --> OssStorageProtocolResolver
+OssContextAutoConfiguration --> AliCloudContextAutoConfiguration
+OssContextAutoConfiguration --> AliCloudProperties
+OssContextAutoConfiguration --> OssProperties
+OssEndpointAutoConfiguration --> OssEndpoint
+RedisEndpointAutoConfigurationTest --> RedisDescribeAvailableResourceEndpoint
+RedisDescribeAvailableResourceEndpoint --|> AbstractRedisEndpoint
+RedisDescribeAvailableResourceEndpoint --> AliCloudProperties
+RedisDescribeAvailableResourceEndpoint --> RedisProperties
+RedisDescribeInstancesEndpoint --|> AbstractRedisEndpoint
+RedisDescribeInstancesEndpoint --> AliCloudProperties
+RedisDescribeInstancesEndpoint --> RedisProperties
+AbstractRedisEndpoint --> AliCloudProperties
+AbstractRedisEndpoint --> RedisProperties
+RedisDescribeAccountsEndpoint --|> AbstractRedisEndpoint
+RedisDescribeAccountsEndpoint --> AliCloudProperties
+RedisDescribeAccountsEndpoint --> RedisProperties
+RedisEndpointAutoConfiguration --> AliCloudContextAutoConfiguration
+RedisEndpointAutoConfiguration --> ConditionalOnAliCloudEndpoint
+RedisEndpointAutoConfiguration --> ConditionalOnRequiredProperty
+RedisEndpointAutoConfiguration --> AliCloudProperties
+RedisEndpointAutoConfiguration --> RedisDescribeAccountsEndpoint
+RedisEndpointAutoConfiguration --> RedisDescribeAvailableResourceEndpoint
+RedisEndpointAutoConfiguration --> RedisDescribeInstancesEndpoint
+RedisEndpointAutoConfiguration --> RedisAutoConfiguration
+RedisEndpointAutoConfiguration --> RedisProperties
+RedisAutoConfiguration --> RedisProperties
+StreamRequestFCSpringFunctionInvoker --|> AbstractAliyunFCInvoker
+RequestResponsePair --|> Pair
+HttpRequestFCSpringFunctionInvoker --|> AbstractAliyunFCInvoker
+InputOutputPair --|> Pair
+CompileflowAutoConfiguration --> CompileflowProperties
+CompileflowEndpoint --> CompileflowProperties
+CompileflowEndpointAutoConfiguration --> CompileflowEndpoint
+CompileflowEndpointAutoConfiguration --> CompileflowProperties
+RdsEndpointAutoConfigurationTest --> RdsInstancesEndpoint
+RdsAutoConfiguration --> RDSConstants
+RdsAutoConfiguration --> RdsProperties
+RdsPerformanceEndpoint --|> AbstractInvoker
+RdsPerformanceEndpoint --> RdsProperties
+RdsErrorEndpoint --|> AbstractInvoker
+AbstractInvoker --> RdsProperties
+RdsSlowEndpoint --|> AbstractInvoker
+RdsInstancesEndpoint --|> AbstractInvoker
+RdsEndpointAutoConfiguration --> AliCloudProperties
+RdsEndpointAutoConfiguration --> RdsErrorEndpoint
+RdsEndpointAutoConfiguration --> RdsInstancesEndpoint
+RdsEndpointAutoConfiguration --> RdsPerformanceEndpoint
+RdsEndpointAutoConfiguration --> RdsSlowEndpoint
+RdsEndpointAutoConfiguration --> RDSConstants
+RdsEndpointAutoConfiguration --> RdsProperties
+SmsMessageListener --|> MessageListener
+SmsMessageListener --> MessageListener
+AbstractSmsService ..|> ISmsService
+SmsInitializerEventListener --> MessageListener
+SmsInitializerEventListener --> SmsProperties
+SmsServiceImpl --|> AbstractSmsService
+SmsServiceImpl --> AliCloudProperties
+SmsServiceImpl --> EndpointManager
+SmsServiceImpl --> ReceiveMessageEntity
+SmsServiceImpl --> DefaultAlicomMessagePuller
+SmsServiceImpl --> SmsProperties
+SmsUpMessageListener --|> SmsMessageListener
+SmsReportMessageListener --|> SmsMessageListener
+SmsContextAutoConfiguration --> SmsProperties
+SmsAutoConfiguration --> AliCloudProperties
+SmsAutoConfiguration --> ISmsService
+SmsAutoConfiguration --> SmsInitializerEventListener
+SmsAutoConfiguration --> SmsServiceImpl
+SmsAutoConfiguration --> SmsProperties
+ReceiveMessageEntity --> MessageListener
+SmsEndpointAutoConfiguration --> SmsEndpoint
+
+@enduml

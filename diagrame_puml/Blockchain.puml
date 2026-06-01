@@ -1,0 +1,113 @@
+@startuml
+
+package agent {
+  class AgentServerThread {
+    -client : Socket
+    -agent : Agent
+    -agent : Agent
+    -client : Socket
+    -in : ObjectInputStream
+    -msg : Message
+    +run() : void
+  }
+  class Message {
+    -serialVersionUID : long
+    -message : Message
+    -sender : int
+    -receiver : int
+    -type : MESSAGE_TYPE
+    -blocks : List<Block>
+  }
+  class AgentManager {
+    -agents : List<Agent>
+    -root : Block
+    -a : Agent
+    -agent : Agent
+    -name : String
+    -agent : Agent
+    +addAgent() : Agent
+    +getAgent() : Agent
+    +getAllAgents() : List<Agent>
+    +deleteAgent() : void
+    +getAgentBlockchain() : List<Block>
+    +deleteAllAgents() : void
+    +createBlock() : Block
+  }
+  class Agent {
+    -name : String
+    -address : String
+    -port : int
+    -peers : List<Agent>
+    -blockchain : List<Block>
+    -serverSocket : ServerSocket
+    -executor : ScheduledThreadPoolExecutor
+    -listening : boolean
+    -name : String
+    -address : String
+    +getName() : String
+    +getAddress() : String
+    +getPort() : int
+    +getBlockchain() : List<Block>
+  }
+  class Block {
+    -serialVersionUID : long
+    -index : int
+    -timestamp : Long
+    -hash : String
+    -previousHash : String
+    -creator : String
+    -o : Object
+    -block : Block
+    -hexString : StringBuilder
+    +getCreator() : String
+    +getIndex() : int
+    +getTimestamp() : long
+    +getHash() : String
+    +getPreviousHash() : String
+  }
+}
+
+package web {
+  class AgentControllerTest {
+    -AGENT1 : String
+    -AGENT2 : String
+    -AGENT3 : String
+    -port : int
+    -baseUrl : URL
+    -template : TestRestTemplate
+    -mapper : ObjectMapper
+    -a : Agent
+    -name : String
+    -port : int
+    +before() : void
+    +after() : void
+    +getEmptyAgent() : void
+    +addGetDeleteAgent() : void
+    +getDeleteAllAgents() : void
+    +createBlockSingleAgent() : void
+    +createBlockMultiAgent() : void
+    +sendBlockchainToNewAgent() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class AgentController <<Controller>> {
+    -agentManager : AgentManager
+    -name : String
+    +getAgent() : Agent
+    +deleteAgent() : void
+    +addAgent() : Agent
+    +getAllAgents() : List<Agent>
+    +deleteAllAgents() : void
+    +createBlock() : Block
+  }
+}
+
+' --- Relatii ---
+AgentControllerTest --> Agent
+AgentControllerTest --> Block
+AgentController --> Agent
+AgentController --> AgentManager
+AgentController --> Block
+
+@enduml

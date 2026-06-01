@@ -1,0 +1,53 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves API Consumer, Customer, System, User as its primary actors. The main business capabilities include access token, bind, cage captcha. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "IUserIdObtainService",
+          "UserIdObtainServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage access token operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AccessTokenController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage bind operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "BindController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage cage captcha operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "CageCaptchaController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage captcha operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "CaptchaController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccessTokenController[\"AccessTokenController\"]\n    BindController[\"BindController\"]\n    CageCaptchaController[\"CageCaptchaController\"]\n    CaptchaController[\"CaptchaController\"]\n    IndexController[\"IndexController\"]\n    NotBindExceptionController[\"NotBindExceptionController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    DefaultValidateService[\"DefaultValidateService\"]\n    IUserIdObtainService[\"IUserIdObtainService\"]\n    IValidateService[\"IValidateService\"]\n    TriggerLogoutService[\"TriggerLogoutService\"]\n    UserIdObtainServiceImpl[\"UserIdObtainServiceImpl\"]\n  end\n  subgraph Security\n    CustomerAuthWebflowConfiguration[\"CustomerAuthWebflowConfiguration\"]\n    GitHubMemoryPrincipalBindResolver[\"GitHubMemoryPrincipalBindResolver\"]\n    GithubProperties[\"GithubProperties\"]\n    PrincipalBindResolver[\"PrincipalBindResolver\"]\n    RealmConfiguration[\"RealmConfiguration\"]\n    SimpleUrlPatternMatcherStrategy[\"SimpleUrlPatternMatcherStrategy\"]\n    ThirdPartyLoginAspect[\"ThirdPartyLoginAspect\"]\n    UsernamePasswordSysCredential[\"UsernamePasswordSysCredential\"]\n    UsernamePasswordSystemAuthenticationHandler[\"UsernamePasswordSystemAuthenticationHandler\"]\n  end\n  subgraph Infrastructure\n    CaptchaConfiguration[\"CaptchaConfiguration\"]\n    ClientConfiguration[\"ClientConfiguration\"]\n    CustomAuthenticationEventExecutionPlanConfiguration[\"CustomAuthenticationEventExecutionPlanConfiguration\"]\n    MailProperties[\"MailProperties\"]\n    SSOMailValidateConfiguration[\"SSOMailValidateConfiguration\"]\n    SSOValidateConfiguration[\"SSOValidateConfiguration\"]\n    ShiroConfiguration[\"ShiroConfiguration\"]\n    SingleLogoutTriggerConfiguration[\"SingleLogoutTriggerConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

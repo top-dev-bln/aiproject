@@ -1,0 +1,205 @@
+@startuml
+package de.odrotbohm.examples.ddd.verification; {
+class Address {
+}
+
+class Customer {
+}
+
+class Order {
+}
+
+class AggregateStructureVerificationTests {
+}
+
+class TestUtils {
+}
+
+}
+
+package de.odrotbohm.examples.ddd.integration; {
+class EmailAddress {
+}
+
+class ExampleApplication {
+}
+
+class EmailAddressSerializationTests {
+}
+
+class TestUtils {
+}
+
+}
+
+package de.odrotbohm.examples.ddd.persistence; {
+class Address {
+}
+
+class Customer {
+}
+
+class CustomerRepository {
+}
+
+class ExampleApplication {
+}
+
+class Order {
+}
+
+class OrderRepository {
+}
+
+class PersistentModelTests {
+}
+
+}
+
+package de.odrotbohm.examples.ddd.modulith.catalog; {
+class Catalog {
+}
+
+class package-info {
+}
+
+class Product {
+}
+
+class CatalogIntegrationTests {
+}
+
+}
+
+package de.odrotbohm.examples.ddd.modulith.inventory; {
+class InsufficientStock {
+}
+
+class Inventory {
+}
+
+class InventoryItem {
+}
+
+class InventoryItemRepository {
+}
+
+class InventoryListener {
+}
+
+class package-info {
+}
+
+class InventoryIntegrationTests {
+}
+
+class InventoryListenerUnitTests {
+}
+
+}
+
+package de.odrotbohm.examples.ddd.modulith; {
+class ModulithApplication {
+}
+
+class package-info {
+}
+
+class DocumentationTests {
+}
+
+}
+
+package de.odrotbohm.examples.ddd.modulith.orders; {
+class DefaultOrderManagement {
+}
+
+class EmailSender {
+}
+
+class LineItem {
+}
+
+class Order {
+}
+
+class OrderManagement {
+}
+
+class OrderRepository {
+}
+
+class package-info {
+}
+
+class EmailNotificationTest {
+}
+
+class OrderManagementIntegrationTests {
+}
+
+}
+
+Customer -- Address
+Order -- Product
+Order -- LineItem
+AggregateStructureVerificationTests -- Customer
+AggregateStructureVerificationTests -- Order
+AggregateStructureVerificationTests -- TestUtils
+EmailAddress -- Address
+EmailAddressSerializationTests -- Address
+EmailAddressSerializationTests -- TestUtils
+EmailAddressSerializationTests -- EmailAddress
+CustomerRepository -- Customer
+OrderRepository -- Order
+PersistentModelTests -- Address
+PersistentModelTests -- Customer
+PersistentModelTests -- Order
+PersistentModelTests -- CustomerRepository
+PersistentModelTests -- OrderRepository
+PersistentModelTests -- LineItem
+Catalog -- Product
+InsufficientStock -- Product
+Inventory -- Order
+Inventory -- Product
+Inventory -- InventoryItem
+Inventory -- InventoryItemRepository
+Inventory -- LineItem
+InventoryItem -- Product
+InventoryItemRepository -- Product
+InventoryItemRepository -- InventoryItem
+InventoryListener -- Order
+InventoryListener -- Product
+InventoryListener -- InsufficientStock
+InventoryListener -- Inventory
+InventoryListener -- InventoryItem
+InventoryListener -- OrderManagement
+DefaultOrderManagement -- Order
+DefaultOrderManagement -- OrderRepository
+DefaultOrderManagement -- OrderManagement
+EmailSender -- Order
+LineItem -- Product
+OrderManagement -- Order
+CatalogIntegrationTests -- Catalog
+CatalogIntegrationTests -- Product
+CatalogIntegrationTests -- Inventory
+DocumentationTests -- ModulithApplication
+InventoryIntegrationTests -- Order
+InventoryIntegrationTests -- Product
+InventoryIntegrationTests -- InsufficientStock
+InventoryIntegrationTests -- Inventory
+InventoryIntegrationTests -- InventoryItem
+InventoryIntegrationTests -- InventoryListener
+InventoryIntegrationTests -- OrderManagement
+InventoryListenerUnitTests -- Product
+InventoryListenerUnitTests -- Inventory
+InventoryListenerUnitTests -- InventoryListener
+EmailNotificationTest -- Order
+EmailNotificationTest -- Product
+EmailNotificationTest -- Inventory
+EmailNotificationTest -- EmailSender
+EmailNotificationTest -- OrderManagement
+OrderManagementIntegrationTests -- Order
+OrderManagementIntegrationTests -- Product
+OrderManagementIntegrationTests -- OrderManagement
+@enduml

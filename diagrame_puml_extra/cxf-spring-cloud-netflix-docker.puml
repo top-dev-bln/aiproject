@@ -1,0 +1,273 @@
+@startuml
+package de.jonashackt; {
+class EurekaServiceregistryApplication {
+}
+
+class EurekaServiceregistryApplicationTests {
+}
+
+class WeatherBackendApplication {
+}
+
+class WeatherBackendApplicationTests {
+}
+
+class WeatherclientApplication {
+}
+
+class WeatherclientTest {
+}
+
+class WeatherclientTestApplication {
+}
+
+class WeatherServiceMock {
+}
+
+class WeatherServiceApplication {
+}
+
+class WeatherServiceTestApplication {
+}
+
+}
+
+package de.jonashackt.admin; {
+class SpringBootAdminApplication {
+}
+
+}
+
+package de.jonashackt.businesslogic; {
+class IncredibleLogic {
+}
+
+}
+
+package de.jonashackt.configuration; {
+class OpenAPIConfig {
+}
+
+class OpenAPIConfig {
+}
+
+class WeatherclientConfiguration {
+}
+
+class WeatherBackendAdapterStub {
+}
+
+class WeatherServiceTestConfiguration {
+}
+
+}
+
+package de.jonashackt.controller; {
+class WeatherBackendController {
+}
+
+class WeatherclientController {
+}
+
+}
+
+package de.jonashackt.model; {
+class GeneralOutlook {
+}
+
+class MethodOfPayment {
+}
+
+class Product {
+}
+
+class User {
+}
+
+class Weather {
+}
+
+class Forecast {
+}
+
+class Temperature {
+}
+
+class GeneralOutlook {
+}
+
+class MethodOfPayment {
+}
+
+class Product {
+}
+
+class User {
+}
+
+class Weather {
+}
+
+}
+
+package de.jonashackt.transformation; {
+class WeatherServiceInputTransformer {
+}
+
+class WeatherServiceOutputTransformer {
+}
+
+class GetCityForecastByZIPInMapper {
+}
+
+class GetCityForecastByZIPOutMapper {
+}
+
+class GetCityWeatherByZIPOutMapper {
+}
+
+class GetWeatherInformationOutMapper {
+}
+
+}
+
+package de.jonashackt.adapter; {
+class WeatherBackendAdapter {
+}
+
+class WeatherBackendAdapterImpl {
+}
+
+class WeatherBackendClient {
+}
+
+}
+
+package de.jonashackt.endpoint; {
+class WeatherServiceEndpoint {
+}
+
+class WeatherServiceEndpointIntegrationTest {
+}
+
+}
+
+package de.jonashackt.fault; {
+class WeatherFaultBuilder {
+}
+
+}
+
+package de.jonashackt.edge.configuration; {
+class OpenAPIConfig {
+}
+
+}
+
+package de.jonashackt.edge.filters.pre; {
+class LoggingFilter {
+}
+
+}
+
+package de.jonashackt.edge; {
+class ZuulEdgeserviceApplication {
+}
+
+class ZuulEdgeserviceApplicationTests {
+}
+
+}
+
+EurekaServiceregistryApplicationTests -- EurekaServiceregistryApplication
+IncredibleLogic -- GeneralOutlook
+IncredibleLogic -- Weather
+WeatherBackendController -- IncredibleLogic
+WeatherBackendController -- GeneralOutlook
+WeatherBackendController -- MethodOfPayment
+WeatherBackendController -- Product
+WeatherBackendController -- User
+WeatherBackendController -- Weather
+WeatherBackendController -- Forecast
+GeneralOutlook -- Weather
+Product -- Forecast
+User -- MethodOfPayment
+Weather -- Product
+Weather -- User
+WeatherBackendApplication -- Weather
+WeatherBackendApplicationTests -- IncredibleLogic
+WeatherBackendApplicationTests -- GeneralOutlook
+WeatherBackendApplicationTests -- MethodOfPayment
+WeatherBackendApplicationTests -- Product
+WeatherBackendApplicationTests -- User
+WeatherBackendApplicationTests -- Weather
+WeatherBackendApplicationTests -- WeatherBackendApplication
+WeatherBackendApplicationTests -- Forecast
+WeatherclientConfiguration -- Weather
+WeatherclientController -- Weather
+WeatherclientController -- Forecast
+WeatherclientController -- WeatherServiceInputTransformer
+WeatherclientController -- WeatherServiceOutputTransformer
+Forecast -- Temperature
+WeatherServiceInputTransformer -- MethodOfPayment
+WeatherServiceInputTransformer -- Product
+WeatherServiceInputTransformer -- Weather
+WeatherServiceInputTransformer -- Forecast
+WeatherServiceOutputTransformer -- Weather
+WeatherServiceOutputTransformer -- Forecast
+WeatherServiceOutputTransformer -- Temperature
+WeatherclientApplication -- Weather
+WeatherclientTest -- Weather
+WeatherclientTest -- WeatherclientTestApplication
+WeatherclientTestApplication -- Weather
+WeatherclientTestApplication -- WeatherServiceMock
+WeatherServiceMock -- Weather
+WeatherServiceMock -- Forecast
+WeatherServiceMock -- Temperature
+WeatherBackendAdapter -- GeneralOutlook
+WeatherBackendAdapter -- Weather
+WeatherBackendAdapterImpl -- GeneralOutlook
+WeatherBackendAdapterImpl -- Weather
+WeatherBackendAdapterImpl -- WeatherBackendAdapter
+WeatherBackendAdapterImpl -- WeatherBackendClient
+WeatherBackendClient -- GeneralOutlook
+WeatherBackendClient -- Weather
+WeatherServiceEndpoint -- GeneralOutlook
+WeatherServiceEndpoint -- Weather
+WeatherServiceEndpoint -- Forecast
+WeatherServiceEndpoint -- WeatherBackendAdapter
+WeatherServiceEndpoint -- GetCityForecastByZIPInMapper
+WeatherServiceEndpoint -- GetCityForecastByZIPOutMapper
+WeatherServiceEndpoint -- GetCityWeatherByZIPOutMapper
+WeatherServiceEndpoint -- GetWeatherInformationOutMapper
+WeatherFaultBuilder -- Weather
+GetCityForecastByZIPInMapper -- MethodOfPayment
+GetCityForecastByZIPInMapper -- Product
+GetCityForecastByZIPInMapper -- User
+GetCityForecastByZIPInMapper -- Weather
+GetCityForecastByZIPInMapper -- Forecast
+GetCityForecastByZIPOutMapper -- GeneralOutlook
+GetCityForecastByZIPOutMapper -- Weather
+GetCityForecastByZIPOutMapper -- Forecast
+GetCityForecastByZIPOutMapper -- Temperature
+GetCityWeatherByZIPOutMapper -- GeneralOutlook
+GetCityWeatherByZIPOutMapper -- Weather
+GetWeatherInformationOutMapper -- Weather
+WeatherServiceApplication -- Weather
+WeatherServiceApplication -- WeatherFaultBuilder
+WeatherBackendAdapterStub -- GeneralOutlook
+WeatherBackendAdapterStub -- Weather
+WeatherBackendAdapterStub -- WeatherBackendAdapter
+WeatherServiceTestConfiguration -- Weather
+WeatherServiceTestConfiguration -- WeatherBackendAdapter
+WeatherServiceTestConfiguration -- WeatherBackendAdapterStub
+WeatherServiceEndpointIntegrationTest -- Weather
+WeatherServiceEndpointIntegrationTest -- Forecast
+WeatherServiceEndpointIntegrationTest -- WeatherServiceEndpoint
+WeatherServiceEndpointIntegrationTest -- WeatherServiceTestApplication
+WeatherServiceTestApplication -- Weather
+WeatherServiceTestApplication -- WeatherServiceApplication
+WeatherServiceTestApplication -- WeatherServiceTestConfiguration
+ZuulEdgeserviceApplication -- LoggingFilter
+ZuulEdgeserviceApplicationTests -- ZuulEdgeserviceApplication
+@enduml

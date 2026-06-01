@@ -1,0 +1,111 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.configuration; {
+class CorsConfig {
+}
+
+class JpaConfiguration {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.controller; {
+class CarController {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.entity; {
+class Car {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.entity.utils; {
+class PagingHeaders {
+}
+
+class PagingResponse {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.model; {
+class Vehicle {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.repository; {
+class CarRepository {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.service; {
+class CarService {
+}
+
+class GenericCsv {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi; {
+class SpringBootEfficientSearchApiApplication {
+}
+
+class CarControllerTest {
+}
+
+class CarServiceTest {
+}
+
+class CarTest {
+}
+
+class SpringBootEfficientSearchApiApplicationTests {
+}
+
+}
+
+package com.mak.springbootefficientsearchapi.util; {
+class Builder {
+}
+
+}
+
+CarController -- Car
+CarController -- PagingHeaders
+CarController -- PagingResponse
+CarController -- Vehicle
+CarController -- CarService
+PagingResponse -- Car
+CarRepository -- Car
+CarService -- Car
+CarService -- PagingHeaders
+CarService -- PagingResponse
+CarService -- CarRepository
+CarService -- GenericCsv
+GenericCsv -- Car
+CarControllerTest -- CarController
+CarControllerTest -- Car
+CarControllerTest -- Vehicle
+CarControllerTest -- CarService
+CarControllerTest -- Builder
+CarServiceTest -- Car
+CarServiceTest -- PagingHeaders
+CarServiceTest -- PagingResponse
+CarServiceTest -- CarRepository
+CarServiceTest -- CarService
+CarServiceTest -- Builder
+CarTest -- Car
+CarTest -- Builder
+SpringBootEfficientSearchApiApplicationTests -- SpringBootEfficientSearchApiApplication
+Builder -- Car
+@enduml

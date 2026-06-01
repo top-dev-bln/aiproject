@@ -1,0 +1,316 @@
+@startuml
+
+package netgloo {
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class BuildSearchIndex {
+    -entityManager : EntityManager
+    -event : ApplicationReadyEvent
+    +onApplicationEvent() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class Notification {
+    -message : String
+    +getContent() : String
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package netgloo.configs {
+  class DatabaseConfig {
+    -env : Environment
+    -dataSource : DataSource
+    -entityManagerFactory : LocalContainerEntityManagerFactoryBean
+    +dataSource() : DataSource
+    +entityManagerFactory() : LocalContainerEntityManagerFactoryBean
+    +transactionManager() : JpaTransactionManager
+    +exceptionTranslation() : PersistenceExceptionTranslationPostProcessor
+  }
+  class DatabaseConfig {
+    -DB_DRIVER : String
+    -DB_PASSWORD : String
+    -DB_URL : String
+    -DB_USERNAME : String
+    -HIBERNATE_DIALECT : String
+    -HIBERNATE_SHOW_SQL : String
+    -HIBERNATE_HBM2DDL_AUTO : String
+    -ENTITYMANAGER_PACKAGES_TO_SCAN : String
+    +dataSource() : DataSource
+    +sessionFactory() : LocalSessionFactoryBean
+    +transactionManager() : HibernateTransactionManager
+  }
+  class WebSecurityConfig {
+    +configureGlobal() : void
+    +configure() : void
+  }
+  class WebSocketConfig {
+    +registerStompEndpoints() : void
+    +configureMessageBroker() : void
+  }
+}
+
+package netgloo.controllers {
+  class MainController <<Controller>> {
+    +index() : String
+  }
+  class UserController <<Controller>> {
+    -userDao : UserDao
+    +create() : String
+    +delete() : String
+    +getByEmail() : String
+    +updateName() : String
+  }
+  class HomeController <<Controller>> {
+    -log : Logger
+    +index() : String
+  }
+  class MainController <<Controller>> {
+    -userSearch : UserSearch
+    +index() : String
+    +search() : String
+  }
+  class MainController <<Controller>> {
+    +index() : String
+  }
+  class UserController <<Controller>> {
+    -userDao : UserDao
+    +create() : String
+    +delete() : String
+    +getByEmail() : String
+    +updateUser() : String
+  }
+  class MainController <<Controller>> {
+    +index() : String
+  }
+  class UserController <<Controller>> {
+    -_userDao : UserDao
+    +delete() : String
+    +getByEmail() : String
+    +create() : String
+  }
+  class MainController <<Controller>> {
+    +index() : String
+  }
+  class AnotherController <<Controller>> {
+    +example1() : String
+  }
+  class MainController <<Controller>> {
+    +index() : String
+  }
+  class MainController <<Controller>> {
+    -env : Environment
+    +index() : String
+  }
+  class MainController <<Controller>> {
+    +index() : String
+  }
+  class UserController <<Controller>> {
+    -companyRepository : CompanyRepository
+    -personRepository : PersonRepository
+    -userRepository : UserRepository
+    +createPerson() : String
+    +createCompany() : String
+    +deleteUser() : String
+    +deletePerson() : String
+    +getUser() : String
+    +update() : String
+  }
+  class MainController <<Controller>> {
+    -notificationService : NotificationService
+    +index() : String
+    +notifications() : String
+  }
+  class MainController <<Controller>> {
+    -userRepository : UserRepository
+    +index() : String
+  }
+}
+
+package netgloo.models {
+  class UserDao <<Repository>> {
+    -entityManager : EntityManager
+    +create() : void
+    +delete() : void
+    +getAll() : List<User>
+    +getByEmail() : User
+    +getById() : User
+    +update() : void
+  }
+  class User <<Entity>> {
+    -id : long
+    -email : String
+    -name : String
+    +getId() : long
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getName() : String
+    +setName() : void
+  }
+  class User <<Entity>> {
+    -id : long
+    -email : String
+    -name : String
+    -city : String
+    +getId() : long
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getName() : String
+    +setName() : void
+    +getCity() : String
+    +setCity() : void
+  }
+  interface UserDao {
+    +findByEmail() : User
+  }
+  class User <<Entity>> {
+    -id : long
+    -email : String
+    -name : String
+    +getId() : long
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getName() : String
+    +setName() : void
+  }
+  class UserDao <<Repository>> {
+    -_sessionFactory : SessionFactory
+    +save() : void
+    +delete() : void
+    +getAll() : List<User>
+    +getByEmail() : User
+    +getById() : User
+    +update() : void
+  }
+  class User <<Entity>> {
+    -id : long
+    -email : String
+    -name : String
+    +getId() : long
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getName() : String
+    +setName() : void
+  }
+  interface CompanyRepository {
+  }
+  class User <<Entity>> {
+    -id : long
+    -email : String
+    +getId() : long
+    +getEmail() : String
+    +setId() : void
+    +setEmail() : void
+  }
+  interface UserBaseRepository {
+    +findByEmail() : T
+  }
+  class Person <<Entity>> {
+    -firstName : String
+    -lastName : String
+    +getFirstName() : String
+    +getLastName() : String
+    +setFirstName() : void
+    +setLastName() : void
+  }
+  interface PersonRepository {
+  }
+  class Company <<Entity>> {
+    -name : String
+    -hqCity : String
+    +getName() : String
+    +getHqCity() : String
+    +setName() : void
+    +setHqCity() : void
+  }
+  interface UserRepository {
+  }
+  class User <<Entity>> {
+    -id : long
+    -createTime : DateTime
+    -birthdayDate : LocalDate
+    +getId() : long
+    +getCreateTime() : DateTime
+    +getBirthdayDate() : LocalDate
+    +setId() : void
+    +setCreateTime() : void
+    +setBirthdayDate() : void
+  }
+  interface UserRepository {
+  }
+}
+
+package netgloo.search {
+  class UserSearch <<Repository>> {
+    -entityManager : EntityManager
+    +search() : List<User>
+  }
+}
+
+package netgloo.services {
+  class NotificationService <<Service>> {
+    -messagingTemplate : SimpMessagingTemplate
+    +notify() : void
+  }
+}
+
+' --- Relatii ---
+UserController --> User
+UserController --> UserDao
+UserSearch --> User
+MainController --> User
+MainController --> UserSearch
+UserController --> User
+UserController --> UserDao
+UserController --> User
+UserController --> UserDao
+CompanyRepository --|> UserBaseRepository
+Person --|> User
+PersonRepository --|> UserBaseRepository
+Company --|> User
+UserRepository --|> UserBaseRepository
+UserController --> Company
+UserController --> CompanyRepository
+UserController --> Person
+UserController --> PersonRepository
+UserController --> User
+UserController --> UserRepository
+MainController --> Notification
+MainController --> NotificationService
+NotificationService --> Notification
+MainController --> User
+MainController --> UserRepository
+
+@enduml

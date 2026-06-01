@@ -1,0 +1,117 @@
+@startuml
+package com.example.client; {
+class ClientApplication {
+}
+
+class ClientApplication {
+}
+
+class ClientApplication {
+}
+
+class ClientApplication {
+}
+
+}
+
+package com.example.consumer; {
+class ConsumerApplicationTests {
+}
+
+class ConsumerApplicationTests {
+}
+
+class ConsumerApplicationTests {
+}
+
+}
+
+package com.example.demo; {
+class DemoApplication {
+}
+
+class IntegrationTests {
+}
+
+class PostRepositoryTest {
+}
+
+class DemoApplication {
+}
+
+class DemoApplication {
+}
+
+class DemoApplication {
+}
+
+class DemoApplication {
+}
+
+class DemoApplication {
+}
+
+class DemoApplicationTests {
+}
+
+class DemoApplication {
+}
+
+class DemoApplicationTests {
+}
+
+class DemoApplication {
+}
+
+class DemoApplication {
+}
+
+class FireAndForgetExample {
+}
+
+class RequestChannelExample {
+}
+
+class RequestResponseExample {
+}
+
+class RequestStreamExample {
+}
+
+class DemoApplicationTests {
+}
+
+}
+
+package censed to the Apache Software Foundation (ASF) under one {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.example.server; {
+class ServerApplication {
+}
+
+class HelloController {
+}
+
+class ServerApplication {
+}
+
+}
+
+package com.example.producer; {
+class ProducerApplicationTests {
+}
+
+class ProducerApplicationTests {
+}
+
+}
+
+DemoApplicationTests -- DemoApplication
+@enduml

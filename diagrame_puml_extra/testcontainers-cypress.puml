@@ -1,0 +1,61 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package io.github.wimdeblauwe.testcontainers.cypress; {
+class CypressContainer {
+}
+
+class CypressTest {
+}
+
+class CypressTestResults {
+}
+
+class CypressTestSuite {
+}
+
+class GatherTestResultsStrategy {
+}
+
+class MochawesomeGatherTestResultsStrategy {
+}
+
+class CypressContainerTest {
+}
+
+class MochawesomeGatherTestResultsStrategyTest {
+}
+
+}
+
+package io.github.wimdeblauwe.testcontainers.cypress.util; {
+class FilenameUtils {
+}
+
+}
+
+CypressContainer -- CypressTest
+CypressContainer -- CypressTestResults
+CypressContainer -- GatherTestResultsStrategy
+CypressContainer -- MochawesomeGatherTestResultsStrategy
+CypressContainer -- FilenameUtils
+CypressTestResults -- CypressTest
+CypressTestResults -- CypressTestSuite
+CypressTestSuite -- CypressTest
+GatherTestResultsStrategy -- CypressTest
+GatherTestResultsStrategy -- CypressTestResults
+MochawesomeGatherTestResultsStrategy -- CypressTest
+MochawesomeGatherTestResultsStrategy -- CypressTestResults
+MochawesomeGatherTestResultsStrategy -- CypressTestSuite
+MochawesomeGatherTestResultsStrategy -- GatherTestResultsStrategy
+CypressContainerTest -- CypressContainer
+MochawesomeGatherTestResultsStrategyTest -- CypressTest
+MochawesomeGatherTestResultsStrategyTest -- CypressTestResults
+MochawesomeGatherTestResultsStrategyTest -- CypressTestSuite
+MochawesomeGatherTestResultsStrategyTest -- GatherTestResultsStrategy
+MochawesomeGatherTestResultsStrategyTest -- MochawesomeGatherTestResultsStrategy
+@enduml

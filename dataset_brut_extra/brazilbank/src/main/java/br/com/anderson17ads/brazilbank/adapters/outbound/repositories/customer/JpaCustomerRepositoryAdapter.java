@@ -1,0 +1,68 @@
+package br.com.anderson17ads.brazilbank.adapters.outbound.repositories.customer;
+
+import br.com.anderson17ads.brazilbank.adapters.outbound.entities.JpaCustomerEntity;
+import br.com.anderson17ads.brazilbank.adapters.outbound.mapper.OutboundCustomerMapper;
+
+import br.com.anderson17ads.brazilbank.domain.customer.Customer;
+import br.com.anderson17ads.brazilbank.domain.customer.CustomerRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+public class JpaCustomerRepositoryAdapter implements CustomerRepository {
+    private final JpaCustomerRepository jpaCustomerRepository;
+
+    public JpaCustomerRepositoryAdapter(JpaCustomerRepository jpaCustomerRepository) {
+        this.jpaCustomerRepository = jpaCustomerRepository;
+    }
+
+    @Override
+    public Customer save(Customer customer) {
+        JpaCustomerEntity jpaCustomerEntity = new JpaCustomerEntity(customer);
+        jpaCustomerRepository.save(jpaCustomerEntity);
+        return OutboundCustomerMapper.toEntity(jpaCustomerEntity);
+    }
+
+    @Override
+    public Optional<Customer> findById(UUID id) {
+        Optional<JpaCustomerEntity> jpaCustomerEntity = jpaCustomerRepository.findById(id);
+        return jpaCustomerEntity.map(OutboundCustomerMapper::toEntity);
+    }
+
+    @Override
+    public Optional<Customer> findByEmail(String email) {
+        Optional<JpaCustomerEntity> jpaCustomerEntity = jpaCustomerRepository.findByEmail(email);
+
+        if (jpaCustomerEntity.isPresent()) {
+            return jpaCustomerEntity.map(OutboundCustomerMapper::toEntity);
+        }
+
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(UUID id) {
+        return jpaCustomerRepository.existsById(id);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return jpaCustomerRepository.existsByEmail(email);
+    }
+
+    @Override
+    public List<Customer> findAll() {
+        return jpaCustomerRepository
+                .findAll()
+                .stream()
+                .map(OutboundCustomerMapper::toEntity)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        jpaCustomerRepository.deleteById(id);
+    }
+}

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, social media domain. It serves User as its primary actors. The main business capabilities include my1 impl, my2, my2 impl. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with my1 impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyService1Impl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with my2 functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyService2"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with my2 impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyService2Impl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with my3 impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyService3Impl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with my4 impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyService4Impl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Services\n    MyService1Impl[\"MyService1Impl\"]\n    MyService2[\"MyService2\"]\n    MyService2Impl[\"MyService2Impl\"]\n    MyService3Impl[\"MyService3Impl\"]\n    MyService4Impl[\"MyService4Impl\"]\n    MyService5Impl[\"MyService5Impl\"]\n    MyService6Impl[\"MyService6Impl\"]\n  end\n  subgraph Security\n    AbstractInterceptor[\"AbstractInterceptor\"]\n    AbstractRegistrarInterceptor[\"AbstractRegistrarInterceptor\"]\n    MyInterceptor[\"MyInterceptor\"]\n  end\n  subgraph Infrastructure\n    MyAutoConfiguration[\"MyAutoConfiguration\"]\n    MyConfiguration[\"MyConfiguration\"]\n    MyConfigurationExtension[\"MyConfigurationExtension\"]\n  end\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

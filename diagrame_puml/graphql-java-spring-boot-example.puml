@@ -1,0 +1,129 @@
+@startuml
+
+package com.example.DemoGraphQL {
+  class DemoGraphQlApplicationTests {
+    -restTemplate : TestRestTemplate
+    +contextLoads() : void
+    +h2Connection() : void
+    +h2Version() : void
+    +artifactProperty() : void
+  }
+  class DemoGraphQlApplication {
+    +main() : void
+    +errorHandler() : GraphQLErrorHandler
+    +processErrors() : List<GraphQLError>
+    +isClientError() : boolean
+    +authorResolver() : BookResolver
+    +query() : Query
+    +mutation() : Mutation
+    +demo() : CommandLineRunner
+  }
+  class MyProperties {
+    -version : String
+    -artifactId : String
+    -h2 : H2
+    -version : String
+  }
+}
+
+package com.example.DemoGraphQL.exception {
+  class GraphQLErrorAdapter {
+    -error : GraphQLError
+    +getLocations() : List<SourceLocation>
+    +getErrorType() : ErrorClassification
+    +getPath() : List<Object>
+    +getMessage() : String
+  }
+  class BookNotFoundException {
+    +getLocations() : List<SourceLocation>
+    +getErrorType() : ErrorType
+  }
+}
+
+package com.example.DemoGraphQL.model {
+  class Author <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    +getId() : Long
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+  }
+  class Book <<Entity>> {
+    -id : Long
+    -title : String
+    -isbn : String
+    -pageCount : int
+    -author : Author
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getIsbn() : String
+    +setIsbn() : void
+    +getPageCount() : int
+    +setPageCount() : void
+  }
+}
+
+package com.example.DemoGraphQL.repository {
+  interface AuthorRepository {
+  }
+  interface BookRepository {
+  }
+}
+
+package com.example.DemoGraphQL.resolver {
+  class QueryTest {
+    +test() : void
+  }
+  class Mutation {
+    -bookRepository : BookRepository
+    -authorRepository : AuthorRepository
+    +newAuthor() : Author
+    +newBook() : Book
+    +deleteBook() : boolean
+    +updateBookPageCount() : Book
+  }
+  class BookResolver {
+    -authorRepository : AuthorRepository
+    +getAuthor() : Author
+  }
+  class Query {
+    -bookRepository : BookRepository
+    -authorRepository : AuthorRepository
+    +findAllBooks() : Iterable<Book>
+    +countBooks() : long
+    +findAllAuthors() : Iterable<Author>
+    +countAuthors() : long
+  }
+}
+
+' --- Relatii ---
+DemoGraphQlApplication --> GraphQLErrorAdapter
+DemoGraphQlApplication --> Author
+DemoGraphQlApplication --> Book
+DemoGraphQlApplication --> AuthorRepository
+DemoGraphQlApplication --> BookRepository
+DemoGraphQlApplication --> BookResolver
+DemoGraphQlApplication --> Mutation
+DemoGraphQlApplication --> Query
+AuthorRepository --> Author
+BookRepository --> Book
+Mutation --> BookNotFoundException
+Mutation --> Author
+Mutation --> Book
+Mutation --> AuthorRepository
+Mutation --> BookRepository
+BookResolver --> Author
+BookResolver --> Book
+BookResolver --> AuthorRepository
+Query --> Author
+Query --> Book
+Query --> AuthorRepository
+Query --> BookRepository
+
+@enduml

@@ -1,0 +1,337 @@
+@startuml
+
+package com.merapar.graphql {
+  class GraphQlPropertiesTestConfiguration {
+  }
+  class GraphQlPropertiesTest {
+    -graphQlProperties : GraphQlProperties
+    +testPropertyInjection() : void
+  }
+  class ScalarsTest {
+    +instant_ParseValue_String() : void
+    +instant_ParseValue_Instant() : void
+    +instant_ParseLiteral_OtherType_ShouldReturnNull() : void
+    +instant_Serialize_StringValue() : void
+    +instant_ParseLiteral_WrongStringInput_ShouldThrowDateTimeParseException() : void
+    +duration_ParseValue_String() : void
+    +duration_ParseValue_Duration() : void
+    +duration_ParseLiteral_OtherType_ShouldReturnNull() : void
+  }
+  class Scalars {
+    -GraphQlInstant : GraphQLScalarType
+    -GraphQlDuration : GraphQLScalarType
+    +serialize() : Instant
+    +parseValue() : Instant
+    +parseLiteral() : Instant
+    +serialize() : Duration
+    +parseValue() : Duration
+    +parseLiteral() : Duration
+  }
+  class GraphQlAutoConfiguration {
+  }
+  class GraphQlProperties {
+    -rootQueryName : String
+    -rootQueryDescription : String
+    -rootMutationName : String
+    -rootMutationDescription : String
+  }
+  interface GraphQlFields {
+  }
+}
+
+package com.merapar.graphql.base {
+  class TypedValueMapTest {
+    +equalsImplemented() : void
+  }
+  class GraphQlFieldsHelper {
+    -INPUT : String
+    -FILTER : String
+    +getInputMap() : TypedValueMap
+    +getFilterMap() : TypedValueMap
+  }
+  class TypedValueMap {
+    +containsKey() : boolean
+  }
+}
+
+package com.merapar.graphql.controller {
+  class GraphQlControllerTest {
+    -mockMvc : MockMvc
+    -userDataFetcher : UserDataFetcher
+    -GRAPH_QL_PATH : String
+    +setup() : void
+    +getUsers() : void
+    +addUser() : void
+    +updateUser() : void
+    +deleteUser() : void
+    +invalidName_shouldGiveBackErrors() : void
+  }
+  class GraphQlControllerTestConfiguration {
+    +userDataFetcher() : UserDataFetcher
+    +userFields() : UserFields
+  }
+  class GraphQlControllerImpl <<Controller>> {
+    -graphQlExecutor : GraphQlExecutor
+    +executeOperation() : Object
+  }
+  interface GraphQlController {
+  }
+}
+
+package com.merapar.graphql.controller.data {
+  class UserFields {
+    -userDataFetcher : UserDataFetcher
+    -userType : GraphQLObjectType
+    -addUserInputType : GraphQLInputObjectType
+    -updateUserInputType : GraphQLInputObjectType
+    -deleteUserInputType : GraphQLInputObjectType
+    -filterUserInputType : GraphQLInputObjectType
+    -usersField : GraphQLFieldDefinition
+    -addUserField : GraphQLFieldDefinition
+    -updateUserField : GraphQLFieldDefinition
+    -deleteUserField : GraphQLFieldDefinition
+    +postConstruct() : void
+  }
+  class UserDataFetcher {
+    +getUsersByFilter() : List<User>
+    +addUser() : User
+    +updateUser() : User
+    +deleteUser() : User
+  }
+  class User {
+    -id : Integer
+    -name : String
+  }
+}
+
+package com.merapar.graphql.executor {
+  class GraphQlExecutorImplTest {
+    -graphQlExecutor : GraphQlExecutor
+    +processRequest_invalidVariablesJson_shouldThrowException() : void
+    +processRequest_invalidVariablesType_shouldThrowException() : void
+    +processRequestWithoutVariables_shouldExecuteProcess() : void
+    +processRequestWithEmptyString_shouldExecuteProcess() : void
+  }
+  class GraphQlExecutorPropertiesTest {
+    -graphQlExecutorProperties : GraphQlExecutorProperties
+    +testPropertyInjection() : void
+  }
+  class GraphQlExecutorImplTestConfiguration {
+    +configuration() : GraphQlProperties
+    +schema() : GraphQlSchemaBuilder
+    +objectMapper() : ObjectMapper
+    +graphQlProcessorProperties() : GraphQlExecutorProperties
+    +graphQlProcessor() : GraphQlExecutor
+  }
+  class GraphQlExecutorPropertiesTestConfiguration {
+  }
+  class GraphQlExecutorImpl {
+    -processorProperties : GraphQlExecutorProperties
+    -jacksonObjectMapper : ObjectMapper
+    -schemaBuilder : GraphQlSchemaBuilder
+    -graphQL : GraphQL
+    +createGraphQL() : GraphQL
+    +createQueryExecutionStrategy() : ExecutionStrategy
+    +createMutationExecutionStrategy() : ExecutionStrategy
+    +createSubscriptionExecutionStrategy() : ExecutionStrategy
+    +beforeExecuteRequest() : void
+    +executeRequest() : Object
+  }
+  class GraphQlExecutorProperties {
+    -minimumThreadPoolSizeQuery : Integer
+    -maximumThreadPoolSizeQuery : Integer
+    -keepAliveTimeInSecondsQuery : Integer
+    -minimumThreadPoolSizeMutation : Integer
+    -maximumThreadPoolSizeMutation : Integer
+    -keepAliveTimeInSecondsMutation : Integer
+    -minimumThreadPoolSizeSubscription : Integer
+    -maximumThreadPoolSizeSubscription : Integer
+    -keepAliveTimeInSecondsSubscription : Integer
+  }
+  interface GraphQlExecutor {
+  }
+}
+
+package com.merapar.graphql.sample {
+  class ApplicationTest {
+    -applicationContext : ApplicationContext
+    +testApplicationContext() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class CustomGraphQlExecutorImpl {
+    +beforeExecuteRequest() : void
+  }
+}
+
+package com.merapar.graphql.sample.dataFetchers {
+  class UserDataFetcher {
+    +getUsersByFilter() : List<User>
+    +addUser() : User
+    +updateUser() : User
+    +deleteUser() : User
+    +getRoles() : List<Role>
+  }
+  class RoleDataFetcher {
+    +getRolesByFilter() : List<Role>
+    +addRole() : Role
+    +updateRole() : Role
+    +deleteRole() : Role
+  }
+}
+
+package com.merapar.graphql.sample.domain {
+  class User {
+    -id : Integer
+    -name : String
+    -roles : List<Role>
+  }
+  class Role {
+    -id : Integer
+    -name : String
+  }
+}
+
+package com.merapar.graphql.sample.fields {
+  class UserFieldsTestConfiguration {
+    +userDataFetcher() : UserDataFetcher
+    +userFields() : UserFields
+    +roleDataFetcher() : RoleDataFetcher
+    +roleFields() : RoleFields
+  }
+  class UserFieldsTest {
+    -mockMvc : MockMvc
+    -userDataFetcher : UserDataFetcher
+    +setup() : void
+    +getUsers() : void
+    +getUsersById() : void
+    +addUser() : void
+    +updateUser() : void
+    +deleteUser() : void
+  }
+  class RoleFieldsTest {
+    -mockMvc : MockMvc
+    -roleDataFetcher : RoleDataFetcher
+    +setup() : void
+    +getRoles() : void
+    +getRolesById() : void
+    +addRole() : void
+    +updateRole() : void
+    +deleteRole() : void
+  }
+  class RoleFieldsTestConfiguration {
+    +roleDataFetcher() : RoleDataFetcher
+    +roleFields() : RoleFields
+  }
+  class UserFields {
+    -userDataFetcher : UserDataFetcher
+    -roleFields : RoleFields
+    -userType : GraphQLObjectType
+    -addUserInputType : GraphQLInputObjectType
+    -updateUserInputType : GraphQLInputObjectType
+    -deleteUserInputType : GraphQLInputObjectType
+    -filterUserInputType : GraphQLInputObjectType
+    -usersField : GraphQLFieldDefinition
+    -addUserField : GraphQLFieldDefinition
+    -updateUserField : GraphQLFieldDefinition
+    +postConstruct() : void
+  }
+  class RoleFields {
+    -roleDataFetcher : RoleDataFetcher
+    -roleType : GraphQLObjectType
+    -addRoleInputType : GraphQLInputObjectType
+    -updateRoleInputType : GraphQLInputObjectType
+    -deleteRoleInputType : GraphQLInputObjectType
+    -filterRoleInputType : GraphQLInputObjectType
+    -rolesField : GraphQLFieldDefinition
+    -addRoleField : GraphQLFieldDefinition
+    -updateRoleField : GraphQLFieldDefinition
+    -deleteRoleField : GraphQLFieldDefinition
+    +postConstruct() : void
+  }
+  class HelloWorldFields {
+    +getQueryFields() : List<GraphQLFieldDefinition>
+    +getMutationFields() : List<GraphQLFieldDefinition>
+  }
+}
+
+package com.merapar.graphql.schema {
+  class GraphQlSchemaBuilderImplTest {
+    -graphQlProperties : GraphQlProperties
+    -graphQlSchemaBuilder : GraphQlSchemaBuilderImpl
+    +setup() : void
+    +noMutations_shouldGenerateSchemaWithOnlyQueries() : void
+    +noQueries_shouldThrowException() : void
+    +configuredRootQueryAndMutationDescriptions_shouldBeAppliedOnSchema() : void
+    +noQueriesAndMutations_shouldGenerateGettingStartedGraphQlSchema() : void
+    +getQueryFields() : List<GraphQLFieldDefinition>
+    +getMutationFields() : List<GraphQLFieldDefinition>
+  }
+  class GraphQlSchemaBuilderImpl {
+    -properties : GraphQlProperties
+    -graphQlFieldsDefinitions : List<GraphQlFields>
+    -schema : GraphQLSchema
+    +postConstruct() : void
+  }
+  interface GraphQlSchemaBuilder {
+  }
+}
+
+' --- Relatii ---
+UserFieldsTestConfiguration --> GraphQlAutoConfiguration
+UserFieldsTestConfiguration --> RoleDataFetcher
+UserFieldsTestConfiguration --> UserDataFetcher
+UserFieldsTest --> GraphQlControllerImpl
+UserFieldsTest --> User
+UserFieldsTest --> UserDataFetcher
+RoleFieldsTest --> GraphQlControllerImpl
+RoleFieldsTest --> RoleDataFetcher
+RoleFieldsTest --> Role
+RoleFieldsTestConfiguration --> GraphQlAutoConfiguration
+RoleFieldsTestConfiguration --> RoleDataFetcher
+RoleFieldsTestConfiguration --> UserDataFetcher
+CustomGraphQlExecutorImpl --|> GraphQlExecutorImpl
+CustomGraphQlExecutorImpl --> GraphQlExecutorImpl
+UserFields ..|> GraphQlFields
+UserFields --> GraphQlFields
+UserFields --> UserDataFetcher
+UserFields --> User
+UserFields --> Scalars
+RoleFields ..|> GraphQlFields
+RoleFields --> GraphQlFields
+RoleFields --> RoleDataFetcher
+RoleFields --> Scalars
+HelloWorldFields ..|> GraphQlFields
+HelloWorldFields --> GraphQlFields
+UserDataFetcher --> TypedValueMap
+UserDataFetcher --> Role
+UserDataFetcher --> User
+RoleDataFetcher --> TypedValueMap
+RoleDataFetcher --> Role
+GraphQlControllerTest --> User
+GraphQlControllerTest --> UserDataFetcher
+GraphQlControllerTestConfiguration --> GraphQlAutoConfiguration
+GraphQlControllerTestConfiguration --> UserDataFetcher
+GraphQlControllerTestConfiguration --> UserFields
+UserFields ..|> GraphQlFields
+UserFields --> GraphQlFields
+UserFields --> Scalars
+UserDataFetcher --> TypedValueMap
+GraphQlSchemaBuilderImplTest --> GraphQlProperties
+GraphQlSchemaBuilderImplTest --> GraphQlFields
+GraphQlExecutorImplTestConfiguration --> GraphQlProperties
+GraphQlExecutorImplTestConfiguration --> GraphQlSchemaBuilder
+GraphQlAutoConfiguration --> GraphQlControllerImpl
+GraphQlAutoConfiguration --> GraphQlExecutorProperties
+GraphQlAutoConfiguration --> GraphQlExecutorImpl
+GraphQlAutoConfiguration --> GraphQlSchemaBuilderImpl
+GraphQlControllerImpl ..|> GraphQlController
+GraphQlControllerImpl --> GraphQlExecutor
+GraphQlSchemaBuilderImpl ..|> GraphQlSchemaBuilder
+GraphQlSchemaBuilderImpl --> GraphQlProperties
+GraphQlSchemaBuilderImpl --> GraphQlFields
+GraphQlExecutorImpl ..|> GraphQlExecutor
+GraphQlExecutorImpl --> GraphQlSchemaBuilder
+
+@enduml

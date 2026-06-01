@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the scheduling, messaging domain. It serves System as its primary actors. The main business capabilities include index, restful, sample.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a System, I want to browse and apply for job postings, so that I can find employment opportunities matching my skills.",
+        "services": [
+          "ScheduleJobService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a System, I want to manage index operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a System, I want to manage restful operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "RestfulController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a System, I want to interact with sample functionality, so that the system fulfills my needs.",
+        "services": [
+          "SampleService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a System, I want to interact with schedule job functionality, so that the system fulfills my needs.",
+        "services": [
+          "ScheduleJobService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    IndexController[\"IndexController\"]\n    RestfulController[\"RestfulController\"]\n  end\n  subgraph Services\n    SampleService[\"SampleService\"]\n    ScheduleJobService[\"ScheduleJobService\"]\n  end\n  subgraph Infrastructure\n    RabbitConfig[\"RabbitConfig\"]\n    SchedulerConfig[\"SchedulerConfig\"]\n  end\n  Controllers --> Services\n  Infrastructure --> Services"
+  }
+}

@@ -1,0 +1,205 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+
+    dependencies {
+        classpath 'net.researchgate:gradle-release:2.6.0'
+        classpath 'com.adarshr:gradle-test-logger-plugin:1.5.0'
+    }
+}
+
+ext {
+    isPublishing = System.properties['env'] == 'publishing'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: 'jacoco'
+apply plugin: 'net.researchgate.release'
+apply plugin: 'com.adarshr.test-logger'
+
+group = 'org.kgusarov'
+version = "${version}"
+archivesBaseName = 'spring-boot-netty'
+
+description = "Spring Boot Netty integration"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+if (isPublishing) {
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from javadoc
+    }
+
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts {
+        archives javadocJar, sourcesJar
+    }
+
+    signing {
+        sign configurations.archives
+    }
+}
+
+test {
+    failFast true
+    maxParallelForks 1
+}
+
+testlogger {
+    theme 'mocha'
+
+    showSummary true
+    showStandardStreams true
+    showPassedStandardStreams false
+    showSkippedStandardStreams false
+    showFailedStandardStreams true
+    showPassed false
+    showSkipped false
+    showFailed true
+}
+
+release {
+    tagTemplate = 'v${version}'
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.deprecation = true
+    options.compilerArgs << "-Xlint:deprecation"
+    options.compilerArgs << "-Xlint:unchecked"
+}
+
+def springBootVersion = '2.2.3.RELEASE'
+def slf4jVersion = '1.7.30'
+def nettyVersion = '4.1.44.Final'
+def guavaVersion = '26.0-jre'
+def javaxElVersion = '3.0.1-b10'
+def javaxElApiVersion = '3.0.1-b06'
+def hibernateValidatorVersion = '6.0.12.Final'
+def findbugsAnnotationsVersion = '3.0.0'
+def h2Version = '1.4.197'
+def jaxbApiVersion = '2.3.0'
+def byteBuddyVersion = '1.10.2'
+def junitJupiterApiVersion = '5.5.2'
+def classmateVersion = '1.5.1'
+def asmVersion = '5.0.4'
+
+configurations.all {
+    resolutionStrategy {
+        force   'org.junit.jupiter:junit-jupiter-api:' + junitJupiterApiVersion,
+                'net.bytebuddy:byte-buddy-agent:' + byteBuddyVersion,
+                'net.bytebuddy:byte-buddy:' + byteBuddyVersion,
+                'com.fasterxml:classmate:' + classmateVersion,
+                'org.slf4j:slf4j-api:' + slf4jVersion
+        failOnVersionConflict()
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://repo.maven.apache.org/maven2"
+    }
+}
+
+sourceSets {
+    test {
+        java {
+            srcDir "src/test/java"
+            srcDir "src/integration-test/java"
+        }
+        resources {
+            srcDir "src/test/resources"
+            srcDir "src/integration-test/resources"
+        }
+    }
+}
+
+dependencies {
+    compile group: 'io.netty', name: 'netty-all', version: nettyVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'com.google.guava', name: 'guava', version: guavaVersion
+    compile group: 'com.google.code.findbugs', name: 'annotations', version: findbugsAnnotationsVersion
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: hibernateValidatorVersion
+    compile group: 'javax.el', name: 'javax.el-api', version: javaxElApiVersion
+    compile group: 'org.glassfish', name: 'javax.el', version: javaxElVersion
+    compile group: 'org.ow2.asm', name: 'asm', version: asmVersion
+
+    annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: springBootVersion
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
+    testCompile group: 'com.h2database', name: 'h2', version: h2Version
+    testCompile group: 'javax.xml.bind', name: 'jaxb-api', version: jaxbApiVersion
+}
+
+if (isPublishing) {
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment {
+                    MavenDeployment deployment -> signing.signPom(deployment)
+                }
+
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
+
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
+
+                pom.project {
+                    name 'Spring Boot Netty'
+                    packaging 'jar'
+                    description 'Spring Boot integration with Netty'
+                    url 'https://github.com/kgusarov/spring-boot-netty'
+
+                    scm {
+                        connection 'scm:git:https://github.com/kgusarov/spring-boot-netty.git'
+                        developerConnection 'scm:git:https://github.com/kgusarov/spring-boot-netty.git'
+                        url 'https://github.com/kgusarov/spring-boot-netty'
+                    }
+
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'kgusarov'
+                            name 'Konstantin Gusarov'
+                            email 'konstantins.gusarovs@gmail.com'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

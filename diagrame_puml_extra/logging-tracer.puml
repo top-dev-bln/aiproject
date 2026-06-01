@@ -1,0 +1,294 @@
+@startuml
+package com.lzhpo.tracer.dubbo; {
+class TracerDubboFilter {
+}
+
+}
+
+package com.lzhpo.tracer.feign; {
+class TracerFeignAutoConfiguration {
+}
+
+class TracerFeignRequestInterceptor {
+}
+
+}
+
+package com.lzhpo.tracer.httpclient; {
+class InjectTracerContext {
+}
+
+class ProxyMinimalHttpClient {
+}
+
+class TracerHttpClientAuoConfiguration {
+}
+
+class TracerHttpClientInterceptor {
+}
+
+class TracerHttpClients {
+}
+
+}
+
+package com.lzhpo.tracer.okhttp; {
+class TracerOkHttpAuoConfiguration {
+}
+
+class TracerOkHttpInterceptor {
+}
+
+}
+
+package com.lzhpo.tracer.reactor.netty; {
+class ReactorNettyAutoConfiguration {
+}
+
+class ReactorNettyBeanPostProcessor {
+}
+
+}
+
+package com.lzhpo.tracer.resttemplate; {
+class TracerRestTemplateAuoConfiguration {
+}
+
+class TracerRestTemplateBeanPostProcessor {
+}
+
+class TracerRestTemplateInterceptor {
+}
+
+}
+
+package com.lzhpo.tracer.scg; {
+class TracerScgAutoConfiguration {
+}
+
+class TracerScgGlobalFilter {
+}
+
+}
+
+package com.lzhpo.tracer.webclient; {
+class TracerWebClientAuoConfiguration {
+}
+
+class TracerWebClientBeanPostProcessor {
+}
+
+}
+
+package com.lzhpo.tracer; {
+class DefaultTracerContextFactory {
+}
+
+class TracerAutoConfiguration {
+}
+
+class TracerConstants {
+}
+
+class TracerContextCustomizer {
+}
+
+class TracerContextFactory {
+}
+
+class TracerEnvPostProcessor {
+}
+
+class TracerProperties {
+}
+
+}
+
+package com.lzhpo.tracer.servlet; {
+class TracerContextServletListener {
+}
+
+class TracerServletAutoConfiguration {
+}
+
+}
+
+package com.lzhpo.tracer.support; {
+class ThreadPoolTaskExecutorBeanPostProcessor {
+}
+
+class TracerTaskDecoratorDelegate {
+}
+
+}
+
+package com.lzhpo.tracer.util; {
+class TracerUtils {
+}
+
+}
+
+package com.lzhpo.tracer.webflux; {
+class TracerWebfluxAutoConfiguration {
+}
+
+class TracerWebfluxFilter {
+}
+
+}
+
+package com.lzhpo.tracer.sample.dubbo; {
+class DemoService {
+}
+
+class DemoServiceController {
+}
+
+class DubboConsumerSampleApplication {
+}
+
+class DemoServiceImpl {
+}
+
+class DubboProviderSampleApplication {
+}
+
+}
+
+package com.lzhpo.tracer.sample.feign; {
+class FeignSampleApplication {
+}
+
+class FeignSampleController {
+}
+
+class SampleTracerContextCustomizer {
+}
+
+class ServiceSampleClient {
+}
+
+class RequestAttributesTaskDecorator {
+}
+
+class RestTemplateSampleApplication {
+}
+
+class RestTemplateSampleController {
+}
+
+}
+
+package com.lzhpo.tracer.httpclient.sample; {
+class HttpClientSampleApplication {
+}
+
+class HttpClientSampleController {
+}
+
+}
+
+package com.lzhpo.tracer.okhttp.sample; {
+class OkHttpSampleApplication {
+}
+
+class OkHttpSampleController {
+}
+
+}
+
+package com.lzhpo.tracer.reactor.netty.sample; {
+class ReactorNettySampleApplication {
+}
+
+class ReactorNettySampleController {
+}
+
+}
+
+package com.lzhpo.tracer.sample.service; {
+class ServiceSampleApplication {
+}
+
+class ServiceSampleController {
+}
+
+}
+
+package com.lzhpo.tracer.webclient.sample; {
+class WebClientSampleApplication {
+}
+
+class WebClientSampleController {
+}
+
+}
+
+TracerDubboFilter -- TracerContextFactory
+TracerDubboFilter -- TracerProperties
+TracerFeignAutoConfiguration -- TracerFeignRequestInterceptor
+TracerFeignAutoConfiguration -- TracerContextFactory
+TracerFeignRequestInterceptor -- TracerContextFactory
+InjectTracerContext -- TracerContextFactory
+ProxyMinimalHttpClient -- InjectTracerContext
+ProxyMinimalHttpClient -- TracerContextFactory
+TracerHttpClientAuoConfiguration -- TracerHttpClientInterceptor
+TracerHttpClientAuoConfiguration -- TracerHttpClients
+TracerHttpClientAuoConfiguration -- TracerContextFactory
+TracerHttpClientInterceptor -- InjectTracerContext
+TracerHttpClientInterceptor -- TracerContextFactory
+TracerHttpClients -- ProxyMinimalHttpClient
+TracerHttpClients -- TracerHttpClientInterceptor
+TracerHttpClients -- TracerContextFactory
+TracerOkHttpAuoConfiguration -- TracerOkHttpInterceptor
+TracerOkHttpAuoConfiguration -- TracerContextFactory
+TracerOkHttpInterceptor -- TracerContextFactory
+ReactorNettyAutoConfiguration -- ReactorNettyBeanPostProcessor
+ReactorNettyAutoConfiguration -- TracerScgGlobalFilter
+ReactorNettyAutoConfiguration -- TracerContextFactory
+ReactorNettyBeanPostProcessor -- TracerContextFactory
+TracerRestTemplateAuoConfiguration -- TracerRestTemplateBeanPostProcessor
+TracerRestTemplateAuoConfiguration -- TracerRestTemplateInterceptor
+TracerRestTemplateAuoConfiguration -- TracerContextFactory
+TracerRestTemplateBeanPostProcessor -- TracerRestTemplateInterceptor
+TracerRestTemplateInterceptor -- TracerContextFactory
+TracerScgAutoConfiguration -- TracerScgGlobalFilter
+TracerScgAutoConfiguration -- TracerContextFactory
+TracerScgGlobalFilter -- TracerContextFactory
+TracerWebClientAuoConfiguration -- TracerScgGlobalFilter
+TracerWebClientAuoConfiguration -- TracerWebClientBeanPostProcessor
+TracerWebClientAuoConfiguration -- TracerContextFactory
+TracerWebClientBeanPostProcessor -- TracerContextFactory
+DefaultTracerContextFactory -- TracerConstants
+DefaultTracerContextFactory -- TracerContextCustomizer
+DefaultTracerContextFactory -- TracerContextFactory
+TracerContextServletListener -- TracerContextFactory
+TracerContextServletListener -- TracerProperties
+TracerServletAutoConfiguration -- TracerContextServletListener
+TracerServletAutoConfiguration -- TracerAutoConfiguration
+TracerServletAutoConfiguration -- TracerContextFactory
+TracerServletAutoConfiguration -- TracerProperties
+ThreadPoolTaskExecutorBeanPostProcessor -- TracerTaskDecoratorDelegate
+TracerAutoConfiguration -- DefaultTracerContextFactory
+TracerAutoConfiguration -- ThreadPoolTaskExecutorBeanPostProcessor
+TracerAutoConfiguration -- TracerContextCustomizer
+TracerAutoConfiguration -- TracerContextFactory
+TracerAutoConfiguration -- TracerProperties
+TracerContextFactory -- TracerConstants
+TracerContextFactory -- TracerContextCustomizer
+TracerEnvPostProcessor -- TracerConstants
+TracerProperties -- TracerConstants
+TracerUtils -- TracerConstants
+TracerWebfluxAutoConfiguration -- TracerAutoConfiguration
+TracerWebfluxAutoConfiguration -- TracerContextFactory
+TracerWebfluxAutoConfiguration -- TracerProperties
+TracerWebfluxAutoConfiguration -- TracerWebfluxFilter
+TracerWebfluxFilter -- TracerContextFactory
+TracerWebfluxFilter -- TracerProperties
+DemoServiceController -- DemoService
+DemoServiceImpl -- DemoService
+FeignSampleController -- ServiceSampleClient
+SampleTracerContextCustomizer -- TracerContextCustomizer
+HttpClientSampleController -- TracerHttpClients
+RequestAttributesTaskDecorator -- TracerTaskDecoratorDelegate
+@enduml

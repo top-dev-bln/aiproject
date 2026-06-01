@@ -1,0 +1,54 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include user, security, security impl. Core business data revolves around Role, User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with security functionality, so that the system fulfills my needs.",
+        "services": [
+          "SecurityService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with security impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "SecurityServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with user details impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with user impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "UserServiceImpl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    SecurityService[\"SecurityService\"]\n    SecurityServiceImpl[\"SecurityServiceImpl\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    UserValidator[\"UserValidator\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+  }
+}

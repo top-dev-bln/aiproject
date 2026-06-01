@@ -1,0 +1,41 @@
+       
+eureka:
+  client:
+    serviceUrl:      
+       defaultZone: http://localhost:9000/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+sidecar:
+  port: 3000
+  health-uri: http://localhost:3000/health
+  
+    
+zuul:
+  routes:
+    wstore: 
+      path: /wstore/**
+      url: http://localhost:3000
+      
+      
+management:
+   endpoint:
+     health:
+       enabled: true
+     info:
+       enabled: true
+     loggers:
+       enabled: true
+     metrics:
+       enabled: true
+   endpoints:
+      web:
+        exposure:
+            include:
+             - health
+             - configprops
+             - loggers
+             - metrics
+             - info
+             - httptrace
+             - env

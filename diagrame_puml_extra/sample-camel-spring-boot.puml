@@ -1,0 +1,97 @@
+@startuml
+package pl.piomin.services.camel.account; {
+class AccountRoute {
+}
+
+class CamelAccountService {
+}
+
+class AccountConsulTests {
+}
+
+class AccountRouteTests {
+}
+
+}
+
+package pl.piomin.services.camel.account.service; {
+class AccountService {
+}
+
+}
+
+package pl.piomin.services.camel.common.model; {
+class Account {
+}
+
+class Customer {
+}
+
+class Register {
+}
+
+}
+
+package pl.piomin.services.camel.customer; {
+class CamelCustomerService {
+}
+
+class CustomerRoute {
+}
+
+class CustomerConsulTests {
+}
+
+class CustomerRouteTests {
+}
+
+}
+
+package pl.piomin.services.camel.customer.service; {
+class AggregationStrategyImpl {
+}
+
+class CustomerService {
+}
+
+}
+
+package pl.piomin.services.camel.gateway; {
+class CamelGateway {
+}
+
+class RouteGateway {
+}
+
+class GatewayTest {
+}
+
+}
+
+AccountRoute -- Account
+AccountRoute -- Customer
+CamelAccountService -- AccountService
+CamelAccountService -- Account
+AccountService -- Account
+AccountService -- Customer
+AccountConsulTests -- Account
+AccountConsulTests -- Register
+AccountRouteTests -- AccountRoute
+AccountRouteTests -- Account
+AccountRouteTests -- Customer
+Account -- Customer
+CamelCustomerService -- Customer
+CamelCustomerService -- CustomerService
+CustomerRoute -- Account
+CustomerRoute -- Customer
+CustomerRoute -- AggregationStrategyImpl
+AggregationStrategyImpl -- Account
+AggregationStrategyImpl -- Customer
+CustomerService -- Customer
+CustomerConsulTests -- Customer
+CustomerConsulTests -- Register
+CustomerRouteTests -- Customer
+CustomerRouteTests -- CustomerRoute
+RouteGateway -- Account
+RouteGateway -- Customer
+@enduml

@@ -1,0 +1,309 @@
+@startuml
+package com.javachinna.config; {
+class AppProperties {
+}
+
+class CurrentUser {
+}
+
+class RestAuthenticationEntryPoint {
+}
+
+class SetupDataLoader {
+}
+
+class WebConfig {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.javachinna.controller; {
+class AuthController {
+}
+
+class UserController {
+}
+
+}
+
+package com.javachinna; {
+class DemoApplication {
+}
+
+}
+
+package com.javachinna.dto; {
+class ApiResponse {
+}
+
+class JwtAuthenticationResponse {
+}
+
+class LocalUser {
+}
+
+class LoginRequest {
+}
+
+class SignUpRequest {
+}
+
+class SocialProvider {
+}
+
+class UserInfo {
+}
+
+}
+
+package com.javachinna.exception; {
+class BadRequestException {
+}
+
+class OAuth2AuthenticationProcessingException {
+}
+
+class ResourceNotFoundException {
+}
+
+class UserAlreadyExistAuthenticationException {
+}
+
+}
+
+package com.javachinna.exception.handler; {
+class RestResponseEntityExceptionHandler {
+}
+
+}
+
+package com.javachinna.model; {
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.javachinna.repo; {
+class RoleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.javachinna.security.jwt; {
+class TokenAuthenticationFilter {
+}
+
+class TokenProvider {
+}
+
+}
+
+package com.javachinna.security.oauth2; {
+class CustomOAuth2UserService {
+}
+
+class CustomOidcUserService {
+}
+
+class HttpCookieOAuth2AuthorizationRequestRepository {
+}
+
+class OAuth2AccessTokenResponseConverterWithDefaults {
+}
+
+class OAuth2AuthenticationFailureHandler {
+}
+
+class OAuth2AuthenticationSuccessHandler {
+}
+
+}
+
+package com.javachinna.security.oauth2.user; {
+class FacebookOAuth2UserInfo {
+}
+
+class GithubOAuth2UserInfo {
+}
+
+class GoogleOAuth2UserInfo {
+}
+
+class LinkedinOAuth2UserInfo {
+}
+
+class OAuth2UserInfo {
+}
+
+class OAuth2UserInfoFactory {
+}
+
+}
+
+package com.javachinna.service; {
+class LocalUserDetailService {
+}
+
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.javachinna.util; {
+class CookieUtils {
+}
+
+class GeneralUtils {
+}
+
+}
+
+package com.javachinna.validator; {
+class PasswordMatches {
+}
+
+class PasswordMatchesValidator {
+}
+
+}
+
+CurrentUser -- User
+SetupDataLoader -- SocialProvider
+SetupDataLoader -- Role
+SetupDataLoader -- User
+SetupDataLoader -- RoleRepository
+SetupDataLoader -- UserRepository
+WebSecurityConfig -- RestAuthenticationEntryPoint
+WebSecurityConfig -- User
+WebSecurityConfig -- TokenAuthenticationFilter
+WebSecurityConfig -- CustomOAuth2UserService
+WebSecurityConfig -- CustomOidcUserService
+WebSecurityConfig -- HttpCookieOAuth2AuthorizationRequestRepository
+WebSecurityConfig -- OAuth2AccessTokenResponseConverterWithDefaults
+WebSecurityConfig -- OAuth2AuthenticationFailureHandler
+WebSecurityConfig -- OAuth2AuthenticationSuccessHandler
+WebSecurityConfig -- UserService
+AuthController -- ApiResponse
+AuthController -- JwtAuthenticationResponse
+AuthController -- LocalUser
+AuthController -- LoginRequest
+AuthController -- SignUpRequest
+AuthController -- UserInfo
+AuthController -- UserAlreadyExistAuthenticationException
+AuthController -- User
+AuthController -- TokenProvider
+AuthController -- UserService
+AuthController -- GeneralUtils
+UserController -- CurrentUser
+UserController -- LocalUser
+UserController -- UserInfo
+UserController -- Role
+UserController -- User
+UserController -- GeneralUtils
+JwtAuthenticationResponse -- UserInfo
+JwtAuthenticationResponse -- User
+LocalUser -- UserInfo
+LocalUser -- Role
+LocalUser -- User
+LocalUser -- GeneralUtils
+SignUpRequest -- SocialProvider
+SignUpRequest -- User
+SignUpRequest -- PasswordMatches
+UserInfo -- User
+RestResponseEntityExceptionHandler -- ApiResponse
+UserAlreadyExistAuthenticationException -- User
+Role -- User
+RoleRepository -- Role
+UserRepository -- User
+TokenAuthenticationFilter -- LocalUser
+TokenAuthenticationFilter -- User
+TokenAuthenticationFilter -- TokenProvider
+TokenAuthenticationFilter -- LocalUserDetailService
+TokenProvider -- AppProperties
+TokenProvider -- LocalUser
+TokenProvider -- User
+CustomOAuth2UserService -- SocialProvider
+CustomOAuth2UserService -- OAuth2AuthenticationProcessingException
+CustomOAuth2UserService -- User
+CustomOAuth2UserService -- OAuth2AuthenticationFailureHandler
+CustomOAuth2UserService -- UserService
+CustomOidcUserService -- UserInfo
+CustomOidcUserService -- OAuth2AuthenticationProcessingException
+CustomOidcUserService -- User
+CustomOidcUserService -- OAuth2AuthenticationFailureHandler
+CustomOidcUserService -- UserService
+HttpCookieOAuth2AuthorizationRequestRepository -- CookieUtils
+OAuth2AuthenticationFailureHandler -- HttpCookieOAuth2AuthorizationRequestRepository
+OAuth2AuthenticationFailureHandler -- CookieUtils
+OAuth2AuthenticationSuccessHandler -- AppProperties
+OAuth2AuthenticationSuccessHandler -- BadRequestException
+OAuth2AuthenticationSuccessHandler -- TokenProvider
+OAuth2AuthenticationSuccessHandler -- HttpCookieOAuth2AuthorizationRequestRepository
+OAuth2AuthenticationSuccessHandler -- CookieUtils
+FacebookOAuth2UserInfo -- UserInfo
+FacebookOAuth2UserInfo -- User
+FacebookOAuth2UserInfo -- OAuth2UserInfo
+GithubOAuth2UserInfo -- UserInfo
+GithubOAuth2UserInfo -- User
+GithubOAuth2UserInfo -- OAuth2UserInfo
+GoogleOAuth2UserInfo -- UserInfo
+GoogleOAuth2UserInfo -- User
+GoogleOAuth2UserInfo -- OAuth2UserInfo
+LinkedinOAuth2UserInfo -- UserInfo
+LinkedinOAuth2UserInfo -- User
+LinkedinOAuth2UserInfo -- OAuth2UserInfo
+OAuth2UserInfo -- UserInfo
+OAuth2UserInfo -- User
+OAuth2UserInfoFactory -- SocialProvider
+OAuth2UserInfoFactory -- UserInfo
+OAuth2UserInfoFactory -- OAuth2AuthenticationProcessingException
+OAuth2UserInfoFactory -- User
+OAuth2UserInfoFactory -- FacebookOAuth2UserInfo
+OAuth2UserInfoFactory -- GithubOAuth2UserInfo
+OAuth2UserInfoFactory -- GoogleOAuth2UserInfo
+OAuth2UserInfoFactory -- LinkedinOAuth2UserInfo
+OAuth2UserInfoFactory -- OAuth2UserInfo
+LocalUserDetailService -- LocalUser
+LocalUserDetailService -- ResourceNotFoundException
+LocalUserDetailService -- Role
+LocalUserDetailService -- User
+LocalUserDetailService -- UserService
+LocalUserDetailService -- GeneralUtils
+UserService -- LocalUser
+UserService -- SignUpRequest
+UserService -- UserInfo
+UserService -- UserAlreadyExistAuthenticationException
+UserService -- User
+UserServiceImpl -- LocalUser
+UserServiceImpl -- SignUpRequest
+UserServiceImpl -- SocialProvider
+UserServiceImpl -- UserInfo
+UserServiceImpl -- OAuth2AuthenticationProcessingException
+UserServiceImpl -- UserAlreadyExistAuthenticationException
+UserServiceImpl -- Role
+UserServiceImpl -- User
+UserServiceImpl -- RoleRepository
+UserServiceImpl -- UserRepository
+UserServiceImpl -- OAuth2UserInfo
+UserServiceImpl -- OAuth2UserInfoFactory
+UserServiceImpl -- UserService
+UserServiceImpl -- GeneralUtils
+GeneralUtils -- SocialProvider
+GeneralUtils -- UserInfo
+GeneralUtils -- Role
+GeneralUtils -- User
+PasswordMatches -- PasswordMatchesValidator
+PasswordMatchesValidator -- SignUpRequest
+@enduml

@@ -1,0 +1,162 @@
+@startuml
+package pl.piomin.samples.springboot.tips.client; {
+class PersonService {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.config; {
+class TipsAppProperties {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.controller; {
+class ClientsController {
+}
+
+class PersonController {
+}
+
+class TipController {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.data.model; {
+class Address {
+}
+
+class Contact {
+}
+
+class Gender {
+}
+
+class Person {
+}
+
+class Person2 {
+}
+
+class Tip {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.data.repository; {
+class PersonRepository {
+}
+
+class TipRepository {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.exception.handler; {
+class TipNotFoundHandler {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.hints; {
+class NativeResourceHints {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.listener; {
+class ApplicationStartupListener {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips.service; {
+class PersonService {
+}
+
+class TipService {
+}
+
+}
+
+package pl.piomin.samples.springboot.tips; {
+class TipsApp {
+}
+
+class AppTest {
+}
+
+class PersonsControllerTests {
+}
+
+class PersonsControllerViaRestClientTests {
+}
+
+class PersonsServiceTest {
+}
+
+class TipsAppTest {
+}
+
+class TipsControllerTest {
+}
+
+class TipsRepositoryTest {
+}
+
+}
+
+PersonService -- Address
+PersonService -- Person
+PersonService -- Tip
+PersonService -- PersonRepository
+PersonService -- TipRepository
+TipsAppProperties -- Tip
+TipsAppProperties -- TipsApp
+ClientsController -- PersonService
+ClientsController -- Person
+PersonController -- Person
+PersonController -- PersonRepository
+TipController -- Tip
+TipController -- TipRepository
+Person -- Address
+Person -- Contact
+Person -- Gender
+Person2 -- Person
+PersonRepository -- Address
+PersonRepository -- Person
+TipRepository -- Tip
+TipNotFoundHandler -- Tip
+ApplicationStartupListener -- Tip
+ApplicationStartupListener -- TipRepository
+TipService -- Tip
+TipService -- TipRepository
+TipsApp -- PersonService
+TipsApp -- Person
+TipsApp -- Person2
+TipsApp -- Tip
+TipsApp -- NativeResourceHints
+PersonsControllerTests -- Address
+PersonsControllerTests -- Contact
+PersonsControllerTests -- Gender
+PersonsControllerTests -- Person
+PersonsControllerViaRestClientTests -- Person
+PersonsServiceTest -- PersonService
+PersonsServiceTest -- Address
+PersonsServiceTest -- Contact
+PersonsServiceTest -- Person
+PersonsServiceTest -- Tip
+PersonsServiceTest -- TipService
+TipsAppTest -- Person
+TipsAppTest -- Person2
+TipsAppTest -- Tip
+TipsAppTest -- TipsApp
+TipsAppTest -- AppTest
+TipsControllerTest -- PersonService
+TipsControllerTest -- Person
+TipsControllerTest -- Tip
+TipsControllerTest -- TipService
+TipsRepositoryTest -- Tip
+TipsRepositoryTest -- TipRepository
+@enduml

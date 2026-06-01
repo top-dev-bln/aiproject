@@ -1,0 +1,2571 @@
+@startuml
+
+package com.codingmore {
+  class SampleTest {
+    -userMapper : UsersMapper
+    -iUsersService : IUsersService
+    -LOGGER : Logger
+    +testSelect() : void
+  }
+  class CodingmoreAdminBootstrap {
+    +main() : void
+  }
+}
+
+package com.codingmore.annotation {
+  interface CacheException {
+  }
+}
+
+package com.codingmore.aspect {
+  class RedisCacheAspect {
+    -LOGGER : Logger
+    +cacheAspect() : void
+    +doAround() : Object
+  }
+}
+
+package com.codingmore.component {
+  class WebLog {
+    -description : String
+    -username : String
+    -startTime : Long
+    -spendTime : Integer
+    -basePath : String
+    -uri : String
+    -url : String
+    -method : String
+    -ip : String
+    -parameter : Object
+    +getDescription() : String
+    +setDescription() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getStartTime() : Long
+    +setStartTime() : void
+    +getSpendTime() : Integer
+    +setSpendTime() : void
+  }
+  class JwtAuthenticationTokenFilter {
+    -LOGGER : Logger
+    -userDetailsService : UserDetailsService
+    -jwtTokenUtil : JwtTokenUtil
+    -tokenHeader : String
+    -tokenHead : String
+    +doFilterInternal() : void
+  }
+  class WebLogAspect {
+    -LOGGER : Logger
+    +webLog() : void
+    +doBefore() : void
+    +doAfterReturning() : void
+    +doAround() : Object
+  }
+  class DynamicSecurityFilter {
+    -dynamicSecurityMetadataSource : DynamicSecurityMetadataSource
+    -ignoreUrlsConfig : IgnoreUrlsConfig
+    +setMyAccessDecisionManager() : void
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+    +obtainSecurityMetadataSource() : SecurityMetadataSource
+  }
+  class BindingResultAspect {
+    +BindingResult() : void
+    +doAround() : Object
+  }
+  class DynamicSecurityMetadataSource {
+    -dynamicSecurityService : DynamicSecurityService
+    +loadDataSource() : void
+    +clearDataSource() : void
+    +getAttributes() : Collection<ConfigAttribute>
+    +getAllConfigAttributes() : Collection<ConfigAttribute>
+    +supports() : boolean
+  }
+  class RestAuthenticationEntryPoint {
+    +commence() : void
+  }
+  class DynamicAccessDecisionManager {
+    +decide() : void
+    +supports() : boolean
+    +supports() : boolean
+  }
+  class RestfulAccessDeniedHandler {
+    +handle() : void
+  }
+  interface DynamicSecurityService {
+  }
+}
+
+package com.codingmore.componet {
+  class DateConverter {
+    -dateFormat : String
+    -shortDateFormat : String
+    -timeStampFormat : String
+    +convert() : Date
+  }
+}
+
+package com.codingmore.config {
+  class WebConfigBeans {
+    -handlerAdapter : RequestMappingHandlerAdapter
+    +initEditableAvlidation() : void
+  }
+  class SecurityConfig {
+    -dynamicSecurityService : DynamicSecurityService
+    +configure() : void
+    +configure() : void
+    +passwordEncoder() : PasswordEncoder
+    +jwtAuthenticationTokenFilter() : JwtAuthenticationTokenFilter
+    +authenticationManagerBean() : AuthenticationManager
+    +restfulAccessDeniedHandler() : RestfulAccessDeniedHandler
+    +restAuthenticationEntryPoint() : RestAuthenticationEntryPoint
+    +ignoreUrlsConfig() : IgnoreUrlsConfig
+  }
+  class GlobalCorsConfig {
+    +corsFilter() : CorsFilter
+  }
+  class RedisConfig {
+    +redisSerializer() : RedisSerializer<Object>
+    +redisCacheManager() : RedisCacheManager
+  }
+  class SwaggerConfig {
+    +docket() : Docket
+  }
+  class MyBatisConfig {
+    +mybatisPlusInterceptor() : MybatisPlusInterceptor
+  }
+  class CodingmoreSecurityConfig {
+    -usersService : IUsersService
+    +userDetailsService() : UserDetailsService
+    +dynamicSecurityService() : DynamicSecurityService
+  }
+  class IgnoreUrlsConfig {
+    -urls : List<String>
+  }
+}
+
+package com.codingmore.controller {
+  class LinksController <<Controller>> {
+  }
+  class TermRelationshipsController <<Controller>> {
+  }
+  class TermTaxonomyController <<Controller>> {
+    -termTaxonomyService : ITermTaxonomyService
+    -objectMapper : ObjectMapper
+    -iUsersService : IUsersService
+    +insert() : ResultObject<String>
+    +getById() : ResultObject<TermTaxonomy>
+    +update() : ResultObject<String>
+    +delete() : ResultObject<String>
+    +getPyParentId() : ResultObject<List<TermTaxonomyTreeNode>>
+    +getNextLevelPyParentId() : ResultObject<List<TermTaxonomyTreeNode>>
+  }
+  class PostsController <<Controller>> {
+    -postsService : IPostsService
+    -iUsersService : IUsersService
+    +insert() : ResultObject<String>
+    +getById() : ResultObject<PostsVo>
+    +update() : ResultObject<String>
+    +delete() : ResultObject<String>
+  }
+  class UsersController <<Controller>> {
+    -usersService : IUsersService
+    -tokenHeader : String
+    -tokenHead : String
+    +getById() : ResultObject<Users>
+    +update() : ResultObject<String>
+    +delete() : ResultObject<String>
+    +register() : ResultObject<String>
+    +login() : ResultObject
+    +refreshToken() : ResultObject
+    +getAdminInfo() : ResultObject
+    +logout() : ResultObject
+  }
+  class SiteController <<Controller>> {
+    -siteService : ISiteService
+    -objectMapper : ObjectMapper
+    +insert() : ResultObject<String>
+    +getSite() : ResultObject<Site>
+    +update() : ResultObject<String>
+  }
+  class PostTagController <<Controller>> {
+    -postTagService : IPostTagService
+    +getByPostId() : ResultObject<List<PostTag>>
+    +getByObjectId() : ResultObject<List<PostTag>>
+    +delete() : ResultObject<String>
+  }
+  class PostTagRelationController <<Controller>> {
+  }
+  class CommentsController <<Controller>> {
+    -LOGGER : Logger
+  }
+}
+
+package com.codingmore.dto {
+  class PostsParam {
+    -serialVersionUID : long
+    -postsId : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -menuOrder : Integer
+    -postType : String
+    -termTaxonomyId : Long
+  }
+  class SiteParam {
+    -serialVersionUID : long
+    -siteName : String
+    -siteDesc : String
+    -keywords : String
+    -attribute : String
+  }
+  class PostTagParam {
+    -serialVersionUID : long
+    -description : String
+    -postId : Long
+    -termOrder : int
+  }
+  class TermTaxonomyParam {
+    -serialVersionUID : long
+    -termTaxonomyId : Long
+    -description : String
+    -name : String
+    -parentId : Long
+    -attribute : String
+    -type : String
+  }
+  class UsersLoginParam {
+    -serialVersionUID : long
+    -userLogin : String
+    -userPass : String
+  }
+  class PostsPageQueryParam {
+    +getPageSize() : long
+    +setPageSize() : void
+    +getPage() : long
+    +setPage() : void
+    +getTermTaxonomyId() : Long
+    +setTermTaxonomyId() : void
+    +getPostType() : PostType
+    +setPostType() : void
+  }
+  class UpdateAdminPasswordParam {
+    -username : String
+    -oldPassword : String
+    -newPassword : String
+  }
+  class UsersParam {
+    -serialVersionUID : long
+    -userLogin : String
+    -userPass : String
+    -userNicename : String
+    -userEmail : String
+  }
+}
+
+package com.codingmore.exception {
+  class ApiException {
+    -errorCode : IErrorCode
+    +getErrorCode() : IErrorCode
+  }
+  class GlobalExceptionHandler {
+    +handle() : ResultObject
+  }
+  class Asserts {
+    +fail() : void
+    +fail() : void
+  }
+}
+
+package com.codingmore.mapper {
+  interface CommentsMapper {
+  }
+  interface PostTagMapper {
+  }
+  interface LinksMapper {
+  }
+  interface UsersMapper {
+  }
+  interface TermRelationshipsMapper {
+  }
+  interface PostTagRelationMapper {
+  }
+  interface PostsMapper {
+  }
+  interface TermTaxonomyMapper {
+  }
+  interface SiteMapper {
+  }
+}
+
+package com.codingmore.model {
+  class TermRelationships {
+    -serialVersionUID : long
+    -termRelationshipsId : Long
+    -termTaxonomyId : Long
+    -termOrder : Integer
+    -type : Integer
+  }
+  class Posts {
+    -serialVersionUID : long
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+  }
+  class AdminUserDetails {
+    -users : Users
+    -resourceList : List<AdminResource>
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+    +isEnabled() : boolean
+    +getUsers() : Users
+  }
+  class PostTag {
+    -serialVersionUID : long
+    -postTagId : Long
+    -description : String
+  }
+  class Users {
+    -serialVersionUID : long
+    -id : Long
+    -userLogin : String
+    -userPass : String
+    -userNicename : String
+    -userEmail : String
+    -userUrl : String
+    -userRegistered : Date
+    -userActivationKey : String
+    -userStatus : Integer
+  }
+  class AdminResource {
+    -id : Long
+    -createTime : Date
+    -name : String
+    -url : String
+    -description : String
+    -categoryId : Long
+    -serialVersionUID : long
+    +getId() : Long
+    +setId() : void
+    +getCreateTime() : Date
+    +setCreateTime() : void
+    +getName() : String
+    +setName() : void
+    +getUrl() : String
+    +setUrl() : void
+  }
+  class TermTaxonomy {
+    -serialVersionUID : long
+    -termTaxonomyId : Long
+    -name : String
+    -description : String
+    -parentId : Long
+    -createUserId : Long
+    -createTime : Date
+    -updateTime : Date
+  }
+  class Links {
+    -serialVersionUID : long
+    -linkId : Long
+    -linkUrl : String
+    -linkName : String
+    -linkImage : String
+    -linkTarget : String
+    -linkDescription : String
+    -linkVisible : String
+    -linkOwner : Long
+  }
+  class PostTagRelation {
+    -serialVersionUID : long
+    -postId : Long
+    -postTagId : Long
+    -termOrder : Integer
+  }
+  class Comments {
+    -serialVersionUID : long
+    -commentId : Long
+    -commentPostId : Long
+    -commentAuthor : String
+    -commentAuthorEmail : String
+    -commentAuthorUrl : String
+    -commentAuthorIp : String
+    -commentDate : Date
+    -commentContent : String
+    -commentApproved : String
+  }
+  class Site {
+    -serialVersionUID : long
+    -siteId : Long
+    -siteName : String
+    -siteDesc : String
+    -keywords : String
+    -updateTime : Date
+  }
+}
+
+package com.codingmore.service {
+  interface IUsersService {
+  }
+  interface IPostsService {
+  }
+  interface IPostTagService {
+  }
+  interface ITermRelationshipsService {
+  }
+  interface ITermTaxonomyService {
+  }
+  interface ICommentsService {
+  }
+  interface ISiteService {
+  }
+  interface ILinksService {
+  }
+  interface IPostTagRelationService {
+  }
+}
+
+package com.codingmore.service.impl {
+  class UsersServiceImpl <<Service>> {
+    -LOGGER : Logger
+    -passwordEncoder : PasswordEncoder
+    -jwtTokenUtil : JwtTokenUtil
+    +getAdminByUsername() : Users
+    +register() : boolean
+    +login() : String
+    +refreshToken() : String
+    +updatePassword() : int
+    +loadUserByUsername() : UserDetails
+    +getResourceList() : List<UmsResource>
+    +getCurrentLoginUser() : Users
+  }
+  class PostTagServiceImpl <<Service>> {
+    -postTagRelationService : IPostTagRelationService
+    +savePostTag() : boolean
+    +getByPostId() : List<PostTag>
+  }
+  class TermTaxonomyServiceImpl <<Service>> {
+    -termRelationshipsService : ITermRelationshipsService
+    +removeTermTaxonomy() : boolean
+    +getAllByParentId() : List<TermTaxonomyTreeNode>
+    +getChildrenByParentId() : List<TermTaxonomyTreeNode>
+  }
+  class PostsServiceImpl <<Service>> {
+    -iUsersService : IUsersService
+    -iTermRelationshipsService : ITermRelationshipsService
+    -iPostTagService : IPostTagService
+    -iPostTagRelationService : IPostTagRelationService
+    -objectMapper : ObjectMapper
+    +savePosts() : boolean
+    +updatePosts() : boolean
+    +removePostsById() : boolean
+    +getPostsById() : PostsVo
+    +findByPage() : IPage<PostsVo>
+  }
+  class SiteServiceImpl <<Service>> {
+  }
+  class PostTagRelationServiceImpl <<Service>> {
+  }
+  class LinksServiceImpl <<Service>> {
+  }
+  class CommentsServiceImpl <<Service>> {
+  }
+  class TermRelationshipsServiceImpl <<Service>> {
+  }
+}
+
+package com.codingmore.state {
+  enum PostType {
+  }
+  enum PostStatus {
+  }
+  enum UserStatus {
+    -status : int
+    +getStatus() : int
+  }
+  enum UserType {
+    -userType : int
+    +getUserType() : int
+  }
+  enum TermRelationType {
+    -type : Integer
+    +getType() : Integer
+  }
+}
+
+package com.codingmore.util {
+  class JwtTokenUtil {
+    -LOGGER : Logger
+    -CLAIM_KEY_USERNAME : String
+    -CLAIM_KEY_CREATED : String
+    -secret : String
+    -expiration : Long
+    -tokenHead : String
+    +getUserNameFromToken() : String
+    +validateToken() : boolean
+    +generateToken() : String
+    +refreshHeadToken() : String
+  }
+  class SpringUtil {
+    -applicationContext : ApplicationContext
+    +getApplicationContext() : ApplicationContext
+    +setApplicationContext() : void
+    +getBean() : Object
+  }
+  class CodeGenerator {
+    +scanner() : String
+    +main() : void
+  }
+}
+
+package com.codingmore.vo {
+  class TermTaxonomyTreeNode {
+    -termTaxonomyId : Long
+    -parentId : Long
+    -name : String
+    -description : String
+    -children : List<TermTaxonomyTreeNode>
+  }
+  class PostsVo {
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+    -menuOrder : Integer
+  }
+}
+
+package com.codingmore.webapi {
+  class ResultObject {
+    -code : long
+    -message : String
+    -result : T
+    +getCode() : long
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getResult() : T
+    +setResult() : void
+  }
+  enum ResultCode {
+    -code : long
+    -message : String
+    +getCode() : long
+    +getMessage() : String
+  }
+  interface IErrorCode {
+  }
+}
+
+package com.example.codingmorejpa {
+  class CodingmoreJpaApplicationTests {
+    -userService : UserService
+  }
+  class CodingmoreJpaApplication {
+    +main() : void
+  }
+}
+
+package com.example.codingmorejpa.entity {
+  class User <<Entity>> {
+    -id : Integer
+    -name : String
+    -password : String
+    -age : Integer
+  }
+}
+
+package com.example.codingmorejpa.repository {
+  interface UserRepository {
+  }
+}
+
+package com.example.codingmorejpa.service {
+  interface UserService {
+  }
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    +findById() : User
+    +findAll() : List<User>
+    +save() : User
+    +delete() : void
+    +findAll() : Page<User>
+    +findByNameLike() : List<User>
+  }
+}
+
+package top.codingmore {
+  class CodingmoreRedisApplicationTests {
+    -redisTemplate : RedisTemplate
+    -stringRedisTemplate : StringRedisTemplate
+    +testRedis() : void
+  }
+  class CodingmoreRedisApplication {
+    +main() : void
+  }
+  class CodingmoreValidatorApplicationTests {
+  }
+  class CodingmoreMongoDBApplication {
+    +main() : void
+  }
+  class CodingmoreValidatorApplicationTests {
+  }
+  class CodingmoreValidatorApplication {
+    +main() : void
+  }
+  class CodingmoreValidatorApplicationTests {
+  }
+  class CodingmoreRabbitMQApplication {
+    +main() : void
+  }
+  class CodingmoreMybatisApplicationTests {
+    -userMapper : UserMapper
+    -postTagMapper : PostTagMapper
+    -postMapper : PostMapper
+  }
+  class CodingmoreMybatisApplication {
+    +main() : void
+  }
+  class CodingmoreSwaggerApplicationTests {
+  }
+  class CodingmoreSwaggerApplication {
+    +main() : void
+  }
+  class CodingmoreAutogeneratorApplicationTests {
+  }
+  class CodingmoreAutogeneratorApplication {
+    +main() : void
+  }
+  class CodingmoreQuartzApplicationTests {
+  }
+  class CodingmoreQuartzApplication {
+    +main() : void
+  }
+  class SpringbootDockerApplicationTests {
+  }
+  class SpringbootDockerApplication {
+    +main() : void
+  }
+  class CodingmoreValidatorApplicationTests {
+  }
+  class CodingmoreElasticsearchApplication {
+    +main() : void
+  }
+  class CodingmoreLogbackApplicationTests {
+    -logger : Logger
+  }
+  class CodingmoreLogbackApplication {
+    +main() : void
+  }
+  class CodingmoreKnife4jApplicationTests {
+  }
+  class CodingmoreKnife4jApplication {
+    +main() : void
+  }
+  class CodingmoreFilterInterceptorListenerApplicationTests {
+  }
+  class CodingmoreFilterInterceptorListenerApplication {
+    +main() : void
+  }
+  class CodingmoreSpringtaskApplicationTests {
+  }
+  class CodingmoreSpringtaskApplication {
+    +main() : void
+  }
+}
+
+package top.codingmore.codingmorehelloword {
+  class CodingmoreHellowordApplicationTests {
+  }
+  class CodingmoreHellowordApplication {
+    +main() : void
+  }
+}
+
+package top.codingmore.codingmorehelloword.controller {
+  class HelloController <<Controller>> {
+    +hello() : String
+  }
+}
+
+package top.codingmore.codingmoremysql {
+  class CodingmoreMysqlApplicationTests {
+    -jdbcTemplate : JdbcTemplate
+    -dataSource : DataSource
+    +testMysql() : void
+    +mapRow() : User
+  }
+  class CodingmoreMysqlApplication {
+    +main() : void
+  }
+  class User {
+    -id : Integer
+    -name : String
+    -password : String
+    -age : Integer
+  }
+}
+
+package top.codingmore.codingmoretransactional {
+  class CodingmoreTransactionalApplicationTests {
+  }
+  class CodingmoreTransactionalApplication {
+    +main() : void
+  }
+}
+
+package top.codingmore.codingmoretransactional.controller {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +all() : String
+    +update() : String
+  }
+}
+
+package top.codingmore.codingmoretransactional.entity {
+  class User <<Entity>> {
+    -id : Integer
+    -name : String
+    -password : String
+    -age : Integer
+  }
+}
+
+package top.codingmore.codingmoretransactional.repository {
+  interface UserRepository {
+  }
+}
+
+package top.codingmore.codingmoretransactional.service {
+  interface UserService {
+  }
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    +findById() : User
+    +findAll() : List<User>
+    +save() : User
+    +delete() : void
+    +findAll() : Page<User>
+    +findByNameLike() : List<User>
+    +update() : void
+  }
+}
+
+package top.codingmore.component {
+  class WorkConsumer {
+    +receiveOne() : void
+    +receiveTwo() : void
+  }
+  class BroadcastConsumer {
+    +receiveOne() : void
+    +receiveTwo() : void
+  }
+  class SimpleConsumer {
+    +receive() : void
+  }
+  class PublishPostJob {
+    -scheduleService : IScheduleService
+    +executeInternal() : void
+  }
+}
+
+package top.codingmore.config {
+  class SwaggerConfig {
+    +docket() : Docket
+  }
+  class MybatisPlusConfig {
+    +mybatisPlusInterceptor() : MybatisPlusInterceptor
+    +configurationCustomizer() : ConfigurationCustomizer
+  }
+  class SwaggerConfig {
+    +docket() : Docket
+  }
+  class MybatisPlusConfig {
+    +mybatisPlusInterceptor() : MybatisPlusInterceptor
+    +configurationCustomizer() : ConfigurationCustomizer
+  }
+  class RabbitConfig {
+    +rabbitListenerContainerFactory() : RabbitListenerContainerFactory
+  }
+  class SwaggerConfig {
+    +docket() : Docket
+  }
+  class MybatisPlusConfig {
+    +mybatisPlusInterceptor() : MybatisPlusInterceptor
+  }
+  class SwaggerConfig {
+    +docket() : Docket
+    +springfoxHandlerProviderBeanPostProcessor() : BeanPostProcessor
+    +postProcessAfterInitialization() : Object
+  }
+  class ESConfig {
+    +client() : RestHighLevelClient
+    +elasticsearchTemplate() : ElasticsearchOperations
+  }
+  class SwaggerConfig {
+    +docket() : Docket
+  }
+  class MybatisPlusConfig {
+    +mybatisPlusInterceptor() : MybatisPlusInterceptor
+  }
+  class SwaggerConfig {
+    +docket() : Docket
+    +springfoxHandlerProviderBeanPostProcessor() : BeanPostProcessor
+    +postProcessAfterInitialization() : Object
+  }
+  class InterceptorConfig {
+    +addInterceptors() : void
+  }
+  class SpringTaskConfig {
+    +configureTasks() : void
+  }
+}
+
+package top.codingmore.controller {
+  class MemberReadHistoryController <<Controller>> {
+    -memberReadHistoryService : IMemberReadHistoryService
+    +create() : ResultObject
+    +delete() : ResultObject
+    +list() : ResultObject<List<MemberReadHistory>>
+  }
+  class UserController <<Controller>> {
+    -userService : IUserService
+    +login() : ResultObject
+  }
+  class UserController <<Controller>> {
+    -userService : IUserService
+    +login() : ResultObject
+  }
+  class RabbitMQController <<Controller>> {
+    -rabbitTemplate : RabbitTemplate
+    +sendSimple() : ResultObject
+    +sendWork() : ResultObject
+    +sendBroadcast() : ResultObject
+  }
+  class UserController <<Controller>> {
+    -userService : IUserService
+    +login() : ResultObject
+  }
+  class SwaggerController <<Controller>> {
+    +test() : String
+  }
+  class QuartzController <<Controller>> {
+    +addTask() : ResultObject<String>
+  }
+  class DockerController <<Controller>> {
+    +hello() : String
+  }
+  class EsPostController <<Controller>> {
+    -esPostService : EsPostServiceImpl
+    +importAll() : ResultObject
+    +search() : ResultObject<Page<EsPosts>>
+  }
+  class UserController <<Controller>> {
+    -userService : IUserService
+    +login() : ResultObject
+  }
+  class Knife4jController <<Controller>> {
+    +test() : String
+  }
+  class MyInterceptorController <<Controller>> {
+    +hello() : String
+  }
+  class MyFilterController <<Controller>> {
+  }
+}
+
+package top.codingmore.dto {
+  class UserParam {
+    -name : String
+    -password : String
+  }
+  class UserParam {
+    -name : String
+    -password : String
+  }
+  class UserParam {
+    -name : String
+    -password : String
+  }
+  class PostsPageQueryParam {
+    -orderBy : String
+    -isAsc : boolean
+    -termTaxonomyId : Long
+    -postTitleKeyword : String
+    -searchTagId : Long
+    -postStatus : String
+  }
+  class JobDTO {
+    -serialVersionUID : long
+    -DataStr : String
+    -date : String
+  }
+  class UserParam {
+    -name : String
+    -password : String
+  }
+  class PostsPageQueryParam {
+    -orderBy : String
+    -isAsc : boolean
+    -termTaxonomyId : Long
+    -postTitleKeyword : String
+    -searchTagId : Long
+    -postStatus : String
+  }
+}
+
+package top.codingmore.entity {
+  class Posts {
+    -postsId : Long
+    -postAuthor : Long
+    -postContent : String
+    -postTitle : String
+  }
+  class User {
+    -id : Integer
+    -age : Integer
+    -name : String
+    -password : String
+  }
+  class PostTag {
+    -postTagId : Long
+    -description : String
+  }
+}
+
+package top.codingmore.filter {
+  class MyFilter {
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+  }
+}
+
+package top.codingmore.generator {
+  class CodeGenerator {
+    +main() : void
+  }
+}
+
+package top.codingmore.interceptor {
+  class LoggerInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+}
+
+package top.codingmore.listener {
+  class MyListener {
+    +contextInitialized() : void
+    +contextDestroyed() : void
+  }
+}
+
+package top.codingmore.mapper {
+  interface UserMapper {
+  }
+  interface UserMapper {
+  }
+  interface EsPostMapper {
+  }
+  interface PostsMapper {
+  }
+  interface UserMapper {
+  }
+  interface PostTagMapper {
+  }
+  interface PostMapper {
+  }
+  interface UserMapper {
+  }
+  interface EsPostMapper {
+  }
+  interface PostsMapper {
+  }
+  interface UserMapper {
+  }
+}
+
+package top.codingmore.mbg.dao {
+  interface PostsMapper {
+  }
+}
+
+package top.codingmore.mbg.po {
+  class Posts {
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+    -menuOrder : Integer
+    -postType : String
+    -commentCount : Long
+    -pageView : Long
+    +getPostsId() : Long
+    +setPostsId() : void
+    +getPostAuthor() : Long
+    +setPostAuthor() : void
+    +getPostDate() : Date
+    +setPostDate() : void
+    +getPostStatus() : String
+    +setPostStatus() : void
+  }
+}
+
+package top.codingmore.model {
+  class MemberReadHistory {
+    -id : String
+    -memberId : Long
+    -memberNickname : String
+    -postId : Long
+    -postTitle : String
+    -postContent : String
+    -postExcerpt : String
+    -createDate : Date
+  }
+  class User {
+    -id : Integer
+    -age : Integer
+    -name : String
+    -password : String
+  }
+  class User {
+    -id : Integer
+    -age : Integer
+    -name : String
+    -password : String
+  }
+  class EsPosts {
+    -serialVersionUID : long
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+  }
+  class Posts {
+    -serialVersionUID : long
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+  }
+  class User {
+    -id : Integer
+    -age : Integer
+    -name : String
+    -password : String
+  }
+  class PostTag {
+    -serialVersionUID : long
+    -postTagId : Long
+    -description : String
+  }
+  class EsPosts {
+    -serialVersionUID : long
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+  }
+  class Posts {
+    -serialVersionUID : long
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+  }
+  class User {
+    -id : Integer
+    -age : Integer
+    -name : String
+    -password : String
+  }
+  class PostTag {
+    -serialVersionUID : long
+    -postTagId : Long
+    -description : String
+  }
+}
+
+package top.codingmore.mpg.controller {
+  class Qrtz_cron_triggersController <<Controller>> {
+  }
+  class LinksController <<Controller>> {
+  }
+  class Qrtz_triggersController <<Controller>> {
+  }
+  class Qrtz_fired_triggersController <<Controller>> {
+  }
+  class Role_resource_relationController <<Controller>> {
+  }
+  class Resource_categoryController <<Controller>> {
+  }
+  class Term_relationshipsController <<Controller>> {
+  }
+  class Qrtz_paused_trigger_grpsController <<Controller>> {
+  }
+  class ResourceController <<Controller>> {
+  }
+  class Qrtz_simple_triggersController <<Controller>> {
+  }
+  class Qrtz_blob_triggersController <<Controller>> {
+  }
+  class Role_menu_relationController <<Controller>> {
+  }
+  class PostsController <<Controller>> {
+  }
+  class MenuController <<Controller>> {
+  }
+  class Qrtz_calendarsController <<Controller>> {
+  }
+  class Term_taxonomyController <<Controller>> {
+  }
+  class RoleController <<Controller>> {
+  }
+  class Admin_role_relationController <<Controller>> {
+  }
+  class UsersController <<Controller>> {
+  }
+  class Post_tag_relationController <<Controller>> {
+  }
+  class SiteController <<Controller>> {
+  }
+  class Qrtz_simprop_triggersController <<Controller>> {
+  }
+  class Qrtz_scheduler_stateController <<Controller>> {
+  }
+  class Post_tagController <<Controller>> {
+  }
+  class Qrtz_job_detailsController <<Controller>> {
+  }
+  class Qrtz_locksController <<Controller>> {
+  }
+  class CommentsController <<Controller>> {
+  }
+}
+
+package top.codingmore.mpg.entity {
+  class Role_resource_relation {
+    -serialVersionUID : long
+    -role_resource_relation_id : Long
+    -role_id : Long
+    -resource_id : Long
+    +getRole_resource_relation_id() : Long
+    +setRole_resource_relation_id() : void
+    +getRole_id() : Long
+    +setRole_id() : void
+    +getResource_id() : Long
+    +setResource_id() : void
+  }
+  class Qrtz_job_details {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -JOB_NAME : String
+    -JOB_GROUP : String
+    -DESCRIPTION : String
+    -JOB_CLASS_NAME : String
+    -IS_DURABLE : String
+    -IS_NONCONCURRENT : String
+    -IS_UPDATE_DATA : String
+    -REQUESTS_RECOVERY : String
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getJOB_NAME() : String
+    +setJOB_NAME() : void
+    +getJOB_GROUP() : String
+    +setJOB_GROUP() : void
+    +getDESCRIPTION() : String
+    +setDESCRIPTION() : void
+  }
+  class Post_tag {
+    -serialVersionUID : long
+    -post_tag_id : Long
+    -description : String
+    +getPost_tag_id() : Long
+    +setPost_tag_id() : void
+    +getDescription() : String
+    +setDescription() : void
+  }
+  class Posts {
+    -serialVersionUID : long
+    -posts_id : Long
+    -post_author : Long
+    -post_date : Date
+    -post_content : String
+    -post_title : String
+    -post_excerpt : String
+    -post_status : String
+    -comment_status : String
+    -post_modified : Date
+    +getPosts_id() : Long
+    +setPosts_id() : void
+    +getPost_author() : Long
+    +setPost_author() : void
+    +getPost_date() : Date
+    +setPost_date() : void
+    +getPost_content() : String
+    +setPost_content() : void
+  }
+  class Resource {
+    -serialVersionUID : long
+    -resource_id : Long
+    -category_id : Long
+    -create_time : Date
+    -name : String
+    -url : String
+    -description : String
+    +getResource_id() : Long
+    +setResource_id() : void
+    +getCategory_id() : Long
+    +setCategory_id() : void
+    +getCreate_time() : Date
+    +setCreate_time() : void
+    +getName() : String
+    +setName() : void
+  }
+  class Qrtz_simple_triggers {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -TRIGGER_NAME : String
+    -TRIGGER_GROUP : String
+    -REPEAT_COUNT : Long
+    -REPEAT_INTERVAL : Long
+    -TIMES_TRIGGERED : Long
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getTRIGGER_NAME() : String
+    +setTRIGGER_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+    +getREPEAT_COUNT() : Long
+    +setREPEAT_COUNT() : void
+  }
+  class Menu {
+    -serialVersionUID : long
+    -menu_id : Long
+    -parent_id : Long
+    -create_time : Date
+    -title : String
+    -level : Integer
+    -sort : Integer
+    -name : String
+    -icon : String
+    -hidden : Integer
+    +getMenu_id() : Long
+    +setMenu_id() : void
+    +getParent_id() : Long
+    +setParent_id() : void
+    +getCreate_time() : Date
+    +setCreate_time() : void
+    +getTitle() : String
+    +setTitle() : void
+  }
+  class Qrtz_scheduler_state {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -INSTANCE_NAME : String
+    -LAST_CHECKIN_TIME : Long
+    -CHECKIN_INTERVAL : Long
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getINSTANCE_NAME() : String
+    +setINSTANCE_NAME() : void
+    +getLAST_CHECKIN_TIME() : Long
+    +setLAST_CHECKIN_TIME() : void
+    +getCHECKIN_INTERVAL() : Long
+    +setCHECKIN_INTERVAL() : void
+  }
+  class Role_menu_relation {
+    -serialVersionUID : long
+    -role_menu_relation_id : Long
+    -role_id : Long
+    -menu_id : Long
+    +getRole_menu_relation_id() : Long
+    +setRole_menu_relation_id() : void
+    +getRole_id() : Long
+    +setRole_id() : void
+    +getMenu_id() : Long
+    +setMenu_id() : void
+  }
+  class Post_tag_relation {
+    -serialVersionUID : long
+    -post_id : Long
+    -post_tag_id : Long
+    -term_order : Integer
+    +getPost_id() : Long
+    +setPost_id() : void
+    +getPost_tag_id() : Long
+    +setPost_tag_id() : void
+    +getTerm_order() : Integer
+    +setTerm_order() : void
+  }
+  class Users {
+    -serialVersionUID : long
+    -users_id : Long
+    -user_login : String
+    -user_pass : String
+    -user_nicename : String
+    -user_email : String
+    -user_url : String
+    -user_registered : Date
+    -user_activation_key : String
+    -user_status : Integer
+    +getUsers_id() : Long
+    +setUsers_id() : void
+    +getUser_login() : String
+    +setUser_login() : void
+    +getUser_pass() : String
+    +setUser_pass() : void
+    +getUser_nicename() : String
+    +setUser_nicename() : void
+  }
+  class Qrtz_calendars {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -CALENDAR_NAME : String
+    -CALENDAR : Blob
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getCALENDAR_NAME() : String
+    +setCALENDAR_NAME() : void
+    +getCALENDAR() : Blob
+    +setCALENDAR() : void
+  }
+  class Qrtz_simprop_triggers {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -TRIGGER_NAME : String
+    -TRIGGER_GROUP : String
+    -STR_PROP_1 : String
+    -STR_PROP_2 : String
+    -STR_PROP_3 : String
+    -INT_PROP_1 : Integer
+    -INT_PROP_2 : Integer
+    -LONG_PROP_1 : Long
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getTRIGGER_NAME() : String
+    +setTRIGGER_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+    +getSTR_PROP_1() : String
+    +setSTR_PROP_1() : void
+  }
+  class Links {
+    -serialVersionUID : long
+    -link_id : Long
+    -link_url : String
+    -link_name : String
+    -link_image : String
+    -link_target : String
+    -link_description : String
+    -link_visible : String
+    -link_owner : Long
+    +getLink_id() : Long
+    +setLink_id() : void
+    +getLink_url() : String
+    +setLink_url() : void
+    +getLink_name() : String
+    +setLink_name() : void
+    +getLink_image() : String
+    +setLink_image() : void
+  }
+  class Resource_category {
+    -serialVersionUID : long
+    -resource_category_id : Long
+    -create_time : Date
+    -name : String
+    -sort : Integer
+    +getResource_category_id() : Long
+    +setResource_category_id() : void
+    +getCreate_time() : Date
+    +setCreate_time() : void
+    +getName() : String
+    +setName() : void
+    +getSort() : Integer
+    +setSort() : void
+  }
+  class Qrtz_cron_triggers {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -TRIGGER_NAME : String
+    -TRIGGER_GROUP : String
+    -CRON_EXPRESSION : String
+    -TIME_ZONE_ID : String
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getTRIGGER_NAME() : String
+    +setTRIGGER_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+    +getCRON_EXPRESSION() : String
+    +setCRON_EXPRESSION() : void
+  }
+  class Qrtz_triggers {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -TRIGGER_NAME : String
+    -TRIGGER_GROUP : String
+    -JOB_NAME : String
+    -JOB_GROUP : String
+    -DESCRIPTION : String
+    -NEXT_FIRE_TIME : Long
+    -PREV_FIRE_TIME : Long
+    -PRIORITY : Integer
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getTRIGGER_NAME() : String
+    +setTRIGGER_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+    +getJOB_NAME() : String
+    +setJOB_NAME() : void
+  }
+  class Qrtz_fired_triggers {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -ENTRY_ID : String
+    -TRIGGER_NAME : String
+    -TRIGGER_GROUP : String
+    -INSTANCE_NAME : String
+    -FIRED_TIME : Long
+    -SCHED_TIME : Long
+    -PRIORITY : Integer
+    -STATE : String
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getENTRY_ID() : String
+    +setENTRY_ID() : void
+    +getTRIGGER_NAME() : String
+    +setTRIGGER_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+  }
+  class Comments {
+    -serialVersionUID : long
+    -comment_id : Long
+    -comment_post_id : Long
+    -comment_author : String
+    -comment_author_email : String
+    -comment_author_url : String
+    -comment_author_ip : String
+    -comment_date : Date
+    -comment_content : String
+    -comment_approved : String
+    +getComment_id() : Long
+    +setComment_id() : void
+    +getComment_post_id() : Long
+    +setComment_post_id() : void
+    +getComment_author() : String
+    +setComment_author() : void
+    +getComment_author_email() : String
+    +setComment_author_email() : void
+  }
+  class Term_taxonomy {
+    -serialVersionUID : long
+    -term_taxonomy_id : Long
+    -description : String
+    -name : String
+    -parent_id : Long
+    -create_user_id : Long
+    -create_time : Date
+    -update_time : Date
+    -attribute : String
+    +getTerm_taxonomy_id() : Long
+    +setTerm_taxonomy_id() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getName() : String
+    +setName() : void
+    +getParent_id() : Long
+    +setParent_id() : void
+  }
+  class Role {
+    -serialVersionUID : long
+    -role_id : Long
+    -name : String
+    -description : String
+    -create_time : Date
+    -status : Integer
+    +getRole_id() : Long
+    +setRole_id() : void
+    +getName() : String
+    +setName() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getCreate_time() : Date
+    +setCreate_time() : void
+  }
+  class Term_relationships {
+    -serialVersionUID : long
+    -term_relationships_id : Long
+    -term_taxonomy_id : Long
+    -term_order : Integer
+    -type : Integer
+    +getTerm_relationships_id() : Long
+    +setTerm_relationships_id() : void
+    +getTerm_taxonomy_id() : Long
+    +setTerm_taxonomy_id() : void
+    +getTerm_order() : Integer
+    +setTerm_order() : void
+    +getType() : Integer
+    +setType() : void
+  }
+  class Qrtz_locks {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -LOCK_NAME : String
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getLOCK_NAME() : String
+    +setLOCK_NAME() : void
+  }
+  class Qrtz_blob_triggers {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -TRIGGER_NAME : String
+    -TRIGGER_GROUP : String
+    -BLOB_DATA : Blob
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getTRIGGER_NAME() : String
+    +setTRIGGER_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+    +getBLOB_DATA() : Blob
+    +setBLOB_DATA() : void
+  }
+  class Admin_role_relation {
+    -serialVersionUID : long
+    -admin_role_relation_id : Long
+    -users_id : Long
+    -role_id : Long
+    +getAdmin_role_relation_id() : Long
+    +setAdmin_role_relation_id() : void
+    +getUsers_id() : Long
+    +setUsers_id() : void
+    +getRole_id() : Long
+    +setRole_id() : void
+  }
+  class Site {
+    -serialVersionUID : long
+    -site_id : Long
+    -site_name : String
+    -keywords : String
+    -site_desc : String
+    -attribute : String
+    -update_time : Date
+    +getSite_id() : Long
+    +setSite_id() : void
+    +getSite_name() : String
+    +setSite_name() : void
+    +getKeywords() : String
+    +setKeywords() : void
+    +getSite_desc() : String
+    +setSite_desc() : void
+  }
+  class Qrtz_paused_trigger_grps {
+    -serialVersionUID : long
+    -SCHED_NAME : String
+    -TRIGGER_GROUP : String
+    +getSCHED_NAME() : String
+    +setSCHED_NAME() : void
+    +getTRIGGER_GROUP() : String
+    +setTRIGGER_GROUP() : void
+  }
+}
+
+package top.codingmore.mpg.mapper {
+  interface Qrtz_simprop_triggersMapper {
+  }
+  interface CommentsMapper {
+  }
+  interface Role_resource_relationMapper {
+  }
+  interface Term_relationshipsMapper {
+  }
+  interface LinksMapper {
+  }
+  interface UsersMapper {
+  }
+  interface Qrtz_calendarsMapper {
+  }
+  interface Post_tagMapper {
+  }
+  interface Qrtz_scheduler_stateMapper {
+  }
+  interface Qrtz_blob_triggersMapper {
+  }
+  interface Qrtz_triggersMapper {
+  }
+  interface Qrtz_job_detailsMapper {
+  }
+  interface Role_menu_relationMapper {
+  }
+  interface ResourceMapper {
+  }
+  interface PostsMapper {
+  }
+  interface Qrtz_cron_triggersMapper {
+  }
+  interface Qrtz_simple_triggersMapper {
+  }
+  interface Resource_categoryMapper {
+  }
+  interface Admin_role_relationMapper {
+  }
+  interface Term_taxonomyMapper {
+  }
+  interface Post_tag_relationMapper {
+  }
+  interface Qrtz_locksMapper {
+  }
+  interface RoleMapper {
+  }
+  interface Qrtz_fired_triggersMapper {
+  }
+  interface Qrtz_paused_trigger_grpsMapper {
+  }
+  interface SiteMapper {
+  }
+  interface MenuMapper {
+  }
+}
+
+package top.codingmore.mpg.service {
+  interface IUsersService {
+  }
+  interface IPost_tag_relationService {
+  }
+  interface IPostsService {
+  }
+  interface IMenuService {
+  }
+  interface IQrtz_job_detailsService {
+  }
+  interface IQrtz_cron_triggersService {
+  }
+  interface IQrtz_scheduler_stateService {
+  }
+  interface IRole_menu_relationService {
+  }
+  interface IRoleService {
+  }
+  interface IAdmin_role_relationService {
+  }
+  interface ITerm_relationshipsService {
+  }
+  interface IPost_tagService {
+  }
+  interface IQrtz_calendarsService {
+  }
+  interface IQrtz_simple_triggersService {
+  }
+  interface IResourceService {
+  }
+  interface ICommentsService {
+  }
+  interface ISiteService {
+  }
+  interface IResource_categoryService {
+  }
+  interface IQrtz_fired_triggersService {
+  }
+  interface IQrtz_simprop_triggersService {
+  }
+  interface IQrtz_locksService {
+  }
+  interface ILinksService {
+  }
+  interface IQrtz_paused_trigger_grpsService {
+  }
+  interface IQrtz_blob_triggersService {
+  }
+  interface ITerm_taxonomyService {
+  }
+  interface IQrtz_triggersService {
+  }
+  interface IRole_resource_relationService {
+  }
+}
+
+package top.codingmore.mpg.service.impl {
+  class Qrtz_job_detailsServiceImpl <<Service>> {
+  }
+  class UsersServiceImpl <<Service>> {
+  }
+  class Post_tagServiceImpl <<Service>> {
+  }
+  class PostsServiceImpl <<Service>> {
+  }
+  class Qrtz_paused_trigger_grpsServiceImpl <<Service>> {
+  }
+  class ResourceServiceImpl <<Service>> {
+  }
+  class Resource_categoryServiceImpl <<Service>> {
+  }
+  class Qrtz_scheduler_stateServiceImpl <<Service>> {
+  }
+  class SiteServiceImpl <<Service>> {
+  }
+  class Qrtz_calendarsServiceImpl <<Service>> {
+  }
+  class Qrtz_triggersServiceImpl <<Service>> {
+  }
+  class Role_menu_relationServiceImpl <<Service>> {
+  }
+  class LinksServiceImpl <<Service>> {
+  }
+  class RoleServiceImpl <<Service>> {
+  }
+  class Qrtz_blob_triggersServiceImpl <<Service>> {
+  }
+  class Post_tag_relationServiceImpl <<Service>> {
+  }
+  class Qrtz_simple_triggersServiceImpl <<Service>> {
+  }
+  class Qrtz_simprop_triggersServiceImpl <<Service>> {
+  }
+  class CommentsServiceImpl <<Service>> {
+  }
+  class Term_taxonomyServiceImpl <<Service>> {
+  }
+  class Qrtz_fired_triggersServiceImpl <<Service>> {
+  }
+  class Role_resource_relationServiceImpl <<Service>> {
+  }
+  class Term_relationshipsServiceImpl <<Service>> {
+  }
+  class Qrtz_cron_triggersServiceImpl <<Service>> {
+  }
+  class Admin_role_relationServiceImpl <<Service>> {
+  }
+  class Qrtz_locksServiceImpl <<Service>> {
+  }
+  class MenuServiceImpl <<Service>> {
+  }
+}
+
+package top.codingmore.repository {
+  interface MemberReadHistoryRepository {
+  }
+  interface EsPostRepository {
+  }
+}
+
+package top.codingmore.service {
+  interface IUserService {
+  }
+  interface IMemberReadHistoryService {
+  }
+  interface IUserService {
+  }
+  interface IUserService {
+  }
+  interface IPostsService {
+  }
+  interface IEsPostService {
+  }
+  interface IScheduleService {
+  }
+  interface IUserService {
+  }
+  interface IPostsService {
+  }
+  interface IEsPostService {
+  }
+}
+
+package top.codingmore.service.impl {
+  class MemberReadHistoryServiceImpl <<Service>> {
+    -memberReadHistoryRepository : MemberReadHistoryRepository
+    +create() : int
+    +delete() : int
+    +list() : List<MemberReadHistory>
+  }
+  class UserServiceImpl <<Service>> {
+  }
+  class UserServiceImpl <<Service>> {
+  }
+  class PostsServiceImpl <<Service>> {
+    +findByPage() : IPage<PostsVo>
+  }
+  class UserServiceImpl <<Service>> {
+  }
+  class ScheduleServiceImpl <<Service>> {
+    -defaultGroup : String
+    +scheduleJob() : String
+    +scheduleFixTimeJob() : String
+    +cancelScheduleJob() : Boolean
+  }
+  class PostsServiceImpl <<Service>> {
+    +findByPage() : IPage<PostsVo>
+  }
+  class EsPostServiceImpl <<Service>> {
+    -esPostRepository : EsPostRepository
+    -esPostMapper : EsPostMapper
+    +importAll() : int
+    +delete() : void
+    +create() : EsPosts
+    +search() : Page<EsPosts>
+  }
+  class UserServiceImpl <<Service>> {
+  }
+}
+
+package top.codingmore.task {
+  class CronTask {
+    +cron() : void
+    +reportCurrentTimeWithFixedRate() : void
+    +reportCurrentTimeWithFixedDelay() : void
+    +reportCurrentTimeWithInitialDelay() : void
+  }
+}
+
+package top.codingmore.vo {
+  class BaseVO {
+    +put() : M
+  }
+  interface IContainerFactory {
+  }
+  class PostsVo {
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+    -menuOrder : Integer
+  }
+  class BaseVO {
+    +put() : M
+  }
+  interface IContainerFactory {
+  }
+  class PostsVo {
+    -postsId : Long
+    -postAuthor : Long
+    -postDate : Date
+    -postContent : String
+    -postTitle : String
+    -postExcerpt : String
+    -postStatus : String
+    -commentStatus : String
+    -postModified : Date
+    -menuOrder : Integer
+  }
+}
+
+package top.codingmore.webapi {
+  class ApiException {
+    -errorCode : IErrorCode
+    +getErrorCode() : IErrorCode
+  }
+  class GlobalExceptionHandler {
+    +handle() : ResultObject
+  }
+  class WebLog {
+    -description : String
+    -username : String
+    -startTime : Long
+    -spendTime : Integer
+    -basePath : String
+    -uri : String
+    -url : String
+    -method : String
+    -ip : String
+    -parameter : Object
+  }
+  class ResultObject {
+    -code : long
+    -message : String
+    -result : T
+    +getCode() : long
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getResult() : T
+    +setResult() : void
+  }
+  class WebLogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfterReturning() : void
+    +doAround() : Object
+  }
+  class BindingResultAspect {
+    +BindingResult() : void
+    +doAround() : Object
+  }
+  enum ResultCode {
+    -code : long
+    -message : String
+    +getCode() : long
+    +getMessage() : String
+  }
+  interface IErrorCode {
+  }
+  class Asserts {
+    +fail() : void
+    +fail() : void
+  }
+  class ApiException {
+    -errorCode : IErrorCode
+    +getErrorCode() : IErrorCode
+  }
+  class GlobalExceptionHandler {
+    +handle() : ResultObject
+  }
+  class WebLog {
+    -description : String
+    -username : String
+    -startTime : Long
+    -spendTime : Integer
+    -basePath : String
+    -uri : String
+    -url : String
+    -method : String
+    -ip : String
+    -parameter : Object
+  }
+  class ResultObject {
+    -code : long
+    -message : String
+    -result : T
+    +getCode() : long
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getResult() : T
+    +setResult() : void
+  }
+  class WebLogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfterReturning() : void
+    +doAround() : Object
+  }
+  class BindingResultAspect {
+    +BindingResult() : void
+    +doAround() : Object
+  }
+  enum ResultCode {
+    -code : long
+    -message : String
+    +getCode() : long
+    +getMessage() : String
+  }
+  interface IErrorCode {
+  }
+  class Asserts {
+    +fail() : void
+    +fail() : void
+  }
+  class ApiException {
+    -errorCode : IErrorCode
+    +getErrorCode() : IErrorCode
+  }
+  class GlobalExceptionHandler {
+    +handle() : ResultObject
+  }
+  class WebLog {
+    -description : String
+    -username : String
+    -startTime : Long
+    -spendTime : Integer
+    -basePath : String
+    -uri : String
+    -url : String
+    -method : String
+    -ip : String
+    -parameter : Object
+  }
+  class ResultObject {
+    -code : long
+    -message : String
+    -result : T
+    +getCode() : long
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getResult() : T
+    +setResult() : void
+  }
+  class WebLogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfterReturning() : void
+    +doAround() : Object
+  }
+  class BindingResultAspect {
+    +BindingResult() : void
+    +doAround() : Object
+  }
+  enum ResultCode {
+    -code : long
+    -message : String
+    +getCode() : long
+    +getMessage() : String
+  }
+  interface IErrorCode {
+  }
+  class Asserts {
+    +fail() : void
+    +fail() : void
+  }
+  class ResultObject {
+    -code : long
+    -message : String
+    -result : T
+    +getCode() : long
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getResult() : T
+    +setResult() : void
+  }
+  enum ResultCode {
+    -code : long
+    -message : String
+    +getCode() : long
+    +getMessage() : String
+  }
+  interface IErrorCode {
+  }
+  class ApiException {
+    -errorCode : IErrorCode
+    +getErrorCode() : IErrorCode
+  }
+  class GlobalExceptionHandler {
+    +handle() : ResultObject
+  }
+  class WebLog {
+    -description : String
+    -username : String
+    -startTime : Long
+    -spendTime : Integer
+    -basePath : String
+    -uri : String
+    -url : String
+    -method : String
+    -ip : String
+    -parameter : Object
+  }
+  class ResultObject {
+    -code : long
+    -message : String
+    -result : T
+    +getCode() : long
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getResult() : T
+    +setResult() : void
+  }
+  class WebLogAspect {
+    +webLog() : void
+    +doBefore() : void
+    +doAfterReturning() : void
+    +doAround() : Object
+  }
+  class BindingResultAspect {
+    +BindingResult() : void
+    +doAround() : Object
+  }
+  enum ResultCode {
+    -code : long
+    -message : String
+    +getCode() : long
+    +getMessage() : String
+  }
+  interface IErrorCode {
+  }
+  class Asserts {
+    +fail() : void
+    +fail() : void
+  }
+}
+
+package top.condingmore.codingmorethymeleaf {
+  class CodingmoreThymeleafApplicationTests {
+  }
+  class CodingmoreThymeleafApplication {
+    +main() : void
+  }
+}
+
+package top.condingmore.codingmorethymeleaf.controller {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +all() : String
+  }
+}
+
+package top.condingmore.codingmorethymeleaf.entity {
+  class User <<Entity>> {
+    -id : Integer
+    -name : String
+    -password : String
+    -age : Integer
+  }
+}
+
+package top.condingmore.codingmorethymeleaf.repository {
+  interface UserRepository {
+  }
+}
+
+package top.condingmore.codingmorethymeleaf.service {
+  interface UserService {
+  }
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    +findById() : User
+    +findAll() : List<User>
+    +save() : User
+    +delete() : void
+    +findAll() : Page<User>
+    +findByNameLike() : List<User>
+  }
+}
+
+' --- Relatii ---
+CodingmoreRedisApplicationTests --> Resource
+MemberReadHistoryRepository --> MemberReadHistory
+UserMapper --> User
+MemberReadHistoryController --> MemberReadHistory
+MemberReadHistoryController --> IMemberReadHistoryService
+MemberReadHistoryController --> ResultObject
+UserController --> UserParam
+UserController --> User
+UserController --> IUserService
+UserController --> Asserts
+UserController --> BindingResultAspect
+UserController --> ResultObject
+ResultCode ..|> IErrorCode
+IUserService --> User
+IMemberReadHistoryService --> MemberReadHistory
+MemberReadHistoryServiceImpl ..|> IMemberReadHistoryService
+MemberReadHistoryServiceImpl --> MemberReadHistory
+MemberReadHistoryServiceImpl --> MemberReadHistoryRepository
+MemberReadHistoryServiceImpl --> IMemberReadHistoryService
+UserServiceImpl --> UserMapper
+UserServiceImpl --> User
+UserServiceImpl --> IUserService
+UserMapper --> User
+UserController --> UserParam
+UserController --> User
+UserController --> IUserService
+UserController --> Asserts
+UserController --> BindingResultAspect
+UserController --> ResultObject
+ResultCode ..|> IErrorCode
+IUserService --> User
+UserServiceImpl --> UserMapper
+UserServiceImpl --> User
+UserServiceImpl --> IUserService
+PostsVo --|> BaseVO
+PostsVo --> PostTag
+EsPostMapper --> EsPosts
+PostsMapper --> PostsPageQueryParam
+PostsMapper --> Posts
+PostsMapper --> PostsVo
+UserMapper --> User
+RabbitMQController --> ResultObject
+UserController --> UserParam
+UserController --> User
+UserController --> IUserService
+UserController --> Asserts
+UserController --> BindingResultAspect
+UserController --> ResultObject
+ResultCode ..|> IErrorCode
+IUserService --> User
+IPostsService --> PostsPageQueryParam
+IPostsService --> Posts
+IPostsService --> PostsVo
+IEsPostService --> EsPosts
+PostsServiceImpl --> PostsPageQueryParam
+PostsServiceImpl --> PostsMapper
+PostsServiceImpl --> Posts
+PostsServiceImpl --> IPostsService
+PostsServiceImpl --> PostsVo
+UserServiceImpl --> UserMapper
+UserServiceImpl --> User
+UserServiceImpl --> IUserService
+CodingmoreMybatisApplicationTests --> PostTag
+CodingmoreMybatisApplicationTests --> Posts
+CodingmoreMybatisApplicationTests --> User
+CodingmoreMybatisApplicationTests --> PostMapper
+CodingmoreMybatisApplicationTests --> PostTagMapper
+CodingmoreMybatisApplicationTests --> UserMapper
+PostTagMapper --> PostTag
+PostMapper --> Posts
+PostMapper --> User
+UserMapper --> User
+UserRepository --> User
+UserController --> UserService
+UserController --> Resource
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> Resource
+PostsMapper --> Posts
+Qrtz_simprop_triggersMapper --> Qrtz_simprop_triggers
+CommentsMapper --> Comments
+Role_resource_relationMapper --> Role_resource_relation
+Term_relationshipsMapper --> Term_relationships
+LinksMapper --> Links
+UsersMapper --> Users
+Qrtz_calendarsMapper --> Qrtz_calendars
+Post_tagMapper --> Post_tag
+Qrtz_scheduler_stateMapper --> Qrtz_scheduler_state
+Qrtz_blob_triggersMapper --> Qrtz_blob_triggers
+Qrtz_triggersMapper --> Qrtz_triggers
+Qrtz_job_detailsMapper --> Qrtz_job_details
+Role_menu_relationMapper --> Role_menu_relation
+ResourceMapper --> Resource
+PostsMapper --> Posts
+Qrtz_cron_triggersMapper --> Qrtz_cron_triggers
+Qrtz_simple_triggersMapper --> Qrtz_simple_triggers
+Resource_categoryMapper --> Resource_category
+Admin_role_relationMapper --> Admin_role_relation
+Term_taxonomyMapper --> Term_taxonomy
+Post_tag_relationMapper --> Post_tag_relation
+Qrtz_locksMapper --> Qrtz_locks
+RoleMapper --> Role
+Qrtz_fired_triggersMapper --> Qrtz_fired_triggers
+Qrtz_paused_trigger_grpsMapper --> Qrtz_paused_trigger_grps
+SiteMapper --> Site
+MenuMapper --> Menu
+IUsersService --> Users
+IPost_tag_relationService --> Post_tag_relation
+IPostsService --> Posts
+IMenuService --> Menu
+IQrtz_job_detailsService --> Qrtz_job_details
+IQrtz_cron_triggersService --> Qrtz_cron_triggers
+IQrtz_scheduler_stateService --> Qrtz_scheduler_state
+IRole_menu_relationService --> Role_menu_relation
+IRoleService --> Role
+IAdmin_role_relationService --> Admin_role_relation
+ITerm_relationshipsService --> Term_relationships
+IPost_tagService --> Post_tag
+IQrtz_calendarsService --> Qrtz_calendars
+IQrtz_simple_triggersService --> Qrtz_simple_triggers
+IResourceService --> Resource
+ICommentsService --> Comments
+ISiteService --> Site
+IResource_categoryService --> Resource_category
+IQrtz_fired_triggersService --> Qrtz_fired_triggers
+IQrtz_simprop_triggersService --> Qrtz_simprop_triggers
+IQrtz_locksService --> Qrtz_locks
+ILinksService --> Links
+IQrtz_paused_trigger_grpsService --> Qrtz_paused_trigger_grps
+IQrtz_blob_triggersService --> Qrtz_blob_triggers
+ITerm_taxonomyService --> Term_taxonomy
+IQrtz_triggersService --> Qrtz_triggers
+IRole_resource_relationService --> Role_resource_relation
+Qrtz_job_detailsServiceImpl --> Qrtz_job_details
+Qrtz_job_detailsServiceImpl --> Qrtz_job_detailsMapper
+Qrtz_job_detailsServiceImpl --> IQrtz_job_detailsService
+UsersServiceImpl --> Users
+UsersServiceImpl --> UsersMapper
+UsersServiceImpl --> IUsersService
+Post_tagServiceImpl --> Post_tag
+Post_tagServiceImpl --> Post_tagMapper
+Post_tagServiceImpl --> IPost_tagService
+PostsServiceImpl --> Posts
+PostsServiceImpl --> PostsMapper
+PostsServiceImpl --> IPostsService
+Qrtz_paused_trigger_grpsServiceImpl --> Qrtz_paused_trigger_grps
+Qrtz_paused_trigger_grpsServiceImpl --> Qrtz_paused_trigger_grpsMapper
+Qrtz_paused_trigger_grpsServiceImpl --> IQrtz_paused_trigger_grpsService
+ResourceServiceImpl --> Resource
+ResourceServiceImpl --> ResourceMapper
+ResourceServiceImpl --> IResourceService
+Resource_categoryServiceImpl --> Resource_category
+Resource_categoryServiceImpl --> Resource_categoryMapper
+Resource_categoryServiceImpl --> IResource_categoryService
+Qrtz_scheduler_stateServiceImpl --> Qrtz_scheduler_state
+Qrtz_scheduler_stateServiceImpl --> Qrtz_scheduler_stateMapper
+Qrtz_scheduler_stateServiceImpl --> IQrtz_scheduler_stateService
+SiteServiceImpl --> Site
+SiteServiceImpl --> SiteMapper
+SiteServiceImpl --> ISiteService
+Qrtz_calendarsServiceImpl --> Qrtz_calendars
+Qrtz_calendarsServiceImpl --> Qrtz_calendarsMapper
+Qrtz_calendarsServiceImpl --> IQrtz_calendarsService
+Qrtz_triggersServiceImpl --> Qrtz_triggers
+Qrtz_triggersServiceImpl --> Qrtz_triggersMapper
+Qrtz_triggersServiceImpl --> IQrtz_triggersService
+Role_menu_relationServiceImpl --> Role_menu_relation
+Role_menu_relationServiceImpl --> Role_menu_relationMapper
+Role_menu_relationServiceImpl --> IRole_menu_relationService
+LinksServiceImpl --> Links
+LinksServiceImpl --> LinksMapper
+LinksServiceImpl --> ILinksService
+RoleServiceImpl --> Role
+RoleServiceImpl --> RoleMapper
+RoleServiceImpl --> IRoleService
+Qrtz_blob_triggersServiceImpl --> Qrtz_blob_triggers
+Qrtz_blob_triggersServiceImpl --> Qrtz_blob_triggersMapper
+Qrtz_blob_triggersServiceImpl --> IQrtz_blob_triggersService
+Post_tag_relationServiceImpl --> Post_tag_relation
+Post_tag_relationServiceImpl --> Post_tag_relationMapper
+Post_tag_relationServiceImpl --> IPost_tag_relationService
+Qrtz_simple_triggersServiceImpl --> Qrtz_simple_triggers
+Qrtz_simple_triggersServiceImpl --> Qrtz_simple_triggersMapper
+Qrtz_simple_triggersServiceImpl --> IQrtz_simple_triggersService
+Qrtz_simprop_triggersServiceImpl --> Qrtz_simprop_triggers
+Qrtz_simprop_triggersServiceImpl --> Qrtz_simprop_triggersMapper
+Qrtz_simprop_triggersServiceImpl --> IQrtz_simprop_triggersService
+CommentsServiceImpl --> Comments
+CommentsServiceImpl --> CommentsMapper
+CommentsServiceImpl --> ICommentsService
+Term_taxonomyServiceImpl --> Term_taxonomy
+Term_taxonomyServiceImpl --> Term_taxonomyMapper
+Term_taxonomyServiceImpl --> ITerm_taxonomyService
+Qrtz_fired_triggersServiceImpl --> Qrtz_fired_triggers
+Qrtz_fired_triggersServiceImpl --> Qrtz_fired_triggersMapper
+Qrtz_fired_triggersServiceImpl --> IQrtz_fired_triggersService
+Role_resource_relationServiceImpl --> Role_resource_relation
+Role_resource_relationServiceImpl --> Role_resource_relationMapper
+Role_resource_relationServiceImpl --> IRole_resource_relationService
+Term_relationshipsServiceImpl --> Term_relationships
+Term_relationshipsServiceImpl --> Term_relationshipsMapper
+Term_relationshipsServiceImpl --> ITerm_relationshipsService
+Qrtz_cron_triggersServiceImpl --> Qrtz_cron_triggers
+Qrtz_cron_triggersServiceImpl --> Qrtz_cron_triggersMapper
+Qrtz_cron_triggersServiceImpl --> IQrtz_cron_triggersService
+Admin_role_relationServiceImpl --> Admin_role_relation
+Admin_role_relationServiceImpl --> Admin_role_relationMapper
+Admin_role_relationServiceImpl --> IAdmin_role_relationService
+Qrtz_locksServiceImpl --> Qrtz_locks
+Qrtz_locksServiceImpl --> Qrtz_locksMapper
+Qrtz_locksServiceImpl --> IQrtz_locksService
+MenuServiceImpl --> Menu
+MenuServiceImpl --> MenuMapper
+MenuServiceImpl --> IMenuService
+PublishPostJob --> IScheduleService
+QuartzController --> PublishPostJob
+QuartzController --> JobDTO
+QuartzController --> IScheduleService
+QuartzController --> ResultObject
+ResultCode ..|> IErrorCode
+ScheduleServiceImpl ..|> IScheduleService
+ScheduleServiceImpl --> IScheduleService
+CodingmoreMysqlApplicationTests --> Resource
+SampleTest --> UsersMapper
+SampleTest --> IUsersService
+PostsPageQueryParam --> PostType
+WebConfigBeans --> DateConverter
+SecurityConfig --> JwtTokenUtil
+CodingmoreSecurityConfig --|> SecurityConfig
+CodingmoreSecurityConfig --> DynamicSecurityService
+CodingmoreSecurityConfig --> IUsersService
+CommentsMapper --> Comments
+PostTagMapper --> PostTag
+LinksMapper --> Links
+UsersMapper --> Users
+TermRelationshipsMapper --> TermRelationships
+PostTagRelationMapper --> PostTagRelation
+PostsMapper --> PostsPageQueryParam
+PostsMapper --> Posts
+PostsMapper --> PostsVo
+TermTaxonomyMapper --> TermTaxonomy
+SiteMapper --> Site
+JwtAuthenticationTokenFilter --> JwtTokenUtil
+DynamicSecurityFilter --> IgnoreUrlsConfig
+BindingResultAspect --> ResultObject
+RestAuthenticationEntryPoint --> ResultObject
+RestfulAccessDeniedHandler --> ResultObject
+TermTaxonomyController --> TermTaxonomyParam
+TermTaxonomyController --> TermTaxonomy
+TermTaxonomyController --> ITermTaxonomyService
+TermTaxonomyController --> IUsersService
+TermTaxonomyController --> TermTaxonomyTreeNode
+TermTaxonomyController --> ResultObject
+PostsController --> PostsPageQueryParam
+PostsController --> PostsParam
+PostsController --> IPostsService
+PostsController --> IUsersService
+PostsController --> PostStatus
+PostsController --> PostType
+PostsController --> PostsVo
+PostsController --> ResultObject
+UsersController --> UsersLoginParam
+UsersController --> UsersParam
+UsersController --> Users
+UsersController --> IUsersService
+UsersController --> ResultObject
+SiteController --> SiteParam
+SiteController --> Site
+SiteController --> ISiteService
+SiteController --> ResultObject
+PostTagController --> PostTag
+PostTagController --> IPostTagService
+PostTagController --> ResultObject
+AdminUserDetails --> UserStatus
+RedisCacheAspect --> CacheException
+ResultCode ..|> IErrorCode
+IUsersService --> Users
+IUsersService --> UpdateAdminPasswordParam
+IPostsService --> PostsPageQueryParam
+IPostsService --> PostsParam
+IPostsService --> Posts
+IPostsService --> PostsVo
+IPostTagService --> PostTagParam
+IPostTagService --> PostTag
+ITermRelationshipsService --> TermRelationships
+ITermTaxonomyService --> TermTaxonomy
+ITermTaxonomyService --> TermTaxonomyTreeNode
+ICommentsService --> Comments
+ISiteService --> Site
+ILinksService --> Links
+IPostTagRelationService --> PostTagRelation
+UsersServiceImpl --> AdminUserDetails
+UsersServiceImpl --> Asserts
+UsersServiceImpl --> AdminResource
+UsersServiceImpl --> Users
+UsersServiceImpl --> UsersMapper
+UsersServiceImpl --> IUsersService
+UsersServiceImpl --> UserStatus
+UsersServiceImpl --> UserType
+UsersServiceImpl --> JwtTokenUtil
+UsersServiceImpl --> UpdateAdminPasswordParam
+PostTagServiceImpl --> PostTagParam
+PostTagServiceImpl --> PostTag
+PostTagServiceImpl --> PostTagMapper
+PostTagServiceImpl --> PostTagRelation
+PostTagServiceImpl --> IPostTagRelationService
+PostTagServiceImpl --> IPostTagService
+TermTaxonomyServiceImpl --> TermRelationships
+TermTaxonomyServiceImpl --> TermTaxonomy
+TermTaxonomyServiceImpl --> TermTaxonomyMapper
+TermTaxonomyServiceImpl --> ITermRelationshipsService
+TermTaxonomyServiceImpl --> ITermTaxonomyService
+TermTaxonomyServiceImpl --> TermTaxonomyTreeNode
+PostsServiceImpl --> PostTagParam
+PostsServiceImpl --> PostsPageQueryParam
+PostsServiceImpl --> PostsParam
+PostsServiceImpl --> PostsMapper
+PostsServiceImpl --> TermRelationType
+PostsServiceImpl --> PostsVo
+SiteServiceImpl --> Site
+SiteServiceImpl --> SiteMapper
+SiteServiceImpl --> ISiteService
+PostTagRelationServiceImpl --> PostTagRelation
+PostTagRelationServiceImpl --> PostTagRelationMapper
+PostTagRelationServiceImpl --> IPostTagRelationService
+LinksServiceImpl --> Links
+LinksServiceImpl --> LinksMapper
+LinksServiceImpl --> ILinksService
+CommentsServiceImpl --> Comments
+CommentsServiceImpl --> CommentsMapper
+CommentsServiceImpl --> ICommentsService
+TermRelationshipsServiceImpl --> TermRelationships
+TermRelationshipsServiceImpl --> TermRelationshipsMapper
+TermRelationshipsServiceImpl --> ITermRelationshipsService
+ApiException --> IErrorCode
+GlobalExceptionHandler --> ResultObject
+Asserts --> IErrorCode
+CodingmoreJpaApplicationTests --> User
+CodingmoreJpaApplicationTests --> UserService
+CodingmoreJpaApplicationTests --> Resource
+UserRepository --> User
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> Resource
+PostsVo --|> BaseVO
+PostsVo --> PostTag
+EsPostRepository --> EsPosts
+EsPostMapper --> EsPosts
+PostsMapper --> PostsPageQueryParam
+PostsMapper --> Posts
+PostsMapper --> PostsVo
+UserMapper --> User
+EsPostController --> UserParam
+EsPostController --> EsPosts
+EsPostController --> EsPostServiceImpl
+EsPostController --> ResultObject
+UserController --> UserParam
+UserController --> User
+UserController --> IUserService
+UserController --> Asserts
+UserController --> BindingResultAspect
+UserController --> ResultObject
+ResultCode ..|> IErrorCode
+IUserService --> User
+IPostsService --> PostsPageQueryParam
+IPostsService --> Posts
+IPostsService --> PostsVo
+IEsPostService --> EsPosts
+PostsServiceImpl --> PostsPageQueryParam
+PostsServiceImpl --> PostsMapper
+PostsServiceImpl --> Posts
+PostsServiceImpl --> IPostsService
+PostsServiceImpl --> PostsVo
+EsPostServiceImpl ..|> IEsPostService
+EsPostServiceImpl --> EsPostMapper
+EsPostServiceImpl --> EsPosts
+EsPostServiceImpl --> EsPostRepository
+EsPostServiceImpl --> IEsPostService
+UserServiceImpl --> UserMapper
+UserServiceImpl --> User
+UserServiceImpl --> IUserService
+UserRepository --> User
+UserController --> User
+UserController --> UserService
+UserController --> Resource
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> Resource
+InterceptorConfig --> LoggerInterceptor
+
+@enduml

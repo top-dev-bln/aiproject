@@ -1,0 +1,148 @@
+@startuml
+
+package io.jmnarloch.spring.boot.rxjava {
+  class Demo {
+    -port : int
+    -restTemplate : TestRestTemplate
+    -title : String
+    -issueDate : Date
+    +getInvoices() : Observable<Invoice>
+    +shouldRetrieveInvoices() : void
+    +getTitle() : String
+    +getIssueDate() : Date
+  }
+}
+
+package io.jmnarloch.spring.boot.rxjava.async {
+  class SingleDeferredResultTest {
+    -port : int
+    -restTemplate : TestRestTemplate
+    +single() : SingleDeferredResult<String>
+    +singleWithResponse() : SingleDeferredResult<ResponseEntity<String>>
+    +event() : SingleDeferredResult<EventDto>
+    +error() : SingleDeferredResult<Object>
+    +shouldRetrieveSingleValue() : void
+    +shouldRetrieveSingleValueWithStatusCode() : void
+    +shouldRetrieveJsonSerializedPojoValue() : void
+    +shouldRetrieveErrorResponse() : void
+  }
+  class ObservableDeferredResultTest {
+    -port : int
+    -restTemplate : TestRestTemplate
+    +empty() : ObservableDeferredResult<String>
+    +single() : ObservableDeferredResult<String>
+    +multiple() : ObservableDeferredResult<String>
+    +event() : ObservableDeferredResult<EventDto>
+    +error() : ObservableDeferredResult<Object>
+    +timeout() : ObservableDeferredResult<String>
+    +apply() : String
+    +shouldRetrieveEmptyResponse() : void
+  }
+  class ObservableSseEmitterTest {
+    -port : int
+    -restTemplate : TestRestTemplate
+    +single() : ObservableSseEmitter<String>
+    +messages() : ObservableSseEmitter<String>
+    +event() : ObservableSseEmitter<EventDto>
+    +shouldRetrieveSse() : void
+    +shouldRetrieveSseWithMultipleMessages() : void
+    +shouldRetrieveJsonOverSseWithMultipleMessages() : void
+  }
+  class ObservableSseEmitter {
+    -observer : ResponseBodyEmitterObserver<T>
+  }
+  class SingleDeferredResult {
+    -EMPTY_RESULT : Object
+    -observer : DeferredResultObserver<T>
+  }
+  class ObservableDeferredResult {
+    -EMPTY_RESULT : Object
+    -observer : DeferredResultObserver<List<T>>
+  }
+  class ResponseBodyEmitterObserver {
+    -mediaType : MediaType
+    -responseBodyEmitter : ResponseBodyEmitter
+    -completed : boolean
+    +onNext() : void
+    +onError() : void
+    +onComplete() : void
+    +run() : void
+  }
+  class DeferredResultObserver {
+    -deferredResult : DeferredResult<T>
+    +onNext() : void
+    +onError() : void
+    +onComplete() : void
+    +run() : void
+  }
+}
+
+package io.jmnarloch.spring.boot.rxjava.config {
+  class RxJavaMvcAutoConfiguration {
+    -handlers : List<AsyncHandlerMethodReturnValueHandler>
+    +observableReturnValueHandler() : ObservableReturnValueHandler
+    +singleReturnValueHandler() : SingleReturnValueHandler
+    +rxJavaWebMvcConfiguration() : WebMvcConfigurer
+    +addReturnValueHandlers() : void
+  }
+  interface RxJava {
+  }
+}
+
+package io.jmnarloch.spring.boot.rxjava.dto {
+  class EventDto {
+    -name : String
+    -date : Date
+    +getName() : String
+    +getDate() : Date
+  }
+}
+
+package io.jmnarloch.spring.boot.rxjava.mvc {
+  class SingleReturnValueHandlerTest {
+    -port : int
+    -restTemplate : TestRestTemplate
+    +single() : Single<String>
+    +singleWithResponse() : Single<ResponseEntity<String>>
+    +error() : Single<Object>
+    +shouldRetrieveSingleValue() : void
+    +shouldRetrieveSingleValueWithStatusCode() : void
+    +shouldRetrieveErrorResponse() : void
+  }
+  class ObservableReturnValueHandlerTest {
+    -port : int
+    -restTemplate : TestRestTemplate
+    -adapter : RequestMappingHandlerAdapter
+    -returnValueHandlers : List<HandlerMethodReturnValueHandler>
+    -customReturnValueHandlers : List<HandlerMethodReturnValueHandler>
+    +prioritizeCustomReturnValueHandlers() : void
+    +empty() : Observable<Void>
+    +single() : Observable<String>
+    +multiple() : Observable<String>
+    +error() : Observable<Object>
+    +timeout() : Observable<String>
+    +apply() : String
+    +shouldRetrieveEmptyResponse() : void
+  }
+  class ObservableReturnValueHandler {
+    +isAsyncReturnValue() : boolean
+    +supportsReturnType() : boolean
+    +handleReturnValue() : void
+  }
+  class SingleReturnValueHandler {
+    +isAsyncReturnValue() : boolean
+    +supportsReturnType() : boolean
+    +handleReturnValue() : void
+  }
+}
+
+' --- Relatii ---
+SingleDeferredResultTest --> EventDto
+ObservableDeferredResultTest --> EventDto
+ObservableSseEmitterTest --> EventDto
+ObservableReturnValueHandler --> ObservableDeferredResult
+SingleReturnValueHandler --> SingleDeferredResult
+RxJavaMvcAutoConfiguration --> ObservableReturnValueHandler
+RxJavaMvcAutoConfiguration --> SingleReturnValueHandler
+
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+package com.okta.spring.AuthorizationServerApplication; {
+class AuthorizationServerApplication {
+}
+
+class AuthServerConfig {
+}
+
+class SecurityConfiguration {
+}
+
+class UserController {
+}
+
+class AuthorizationServerApplicationTests {
+}
+
+}
+
+package com.okta.spring.OktaOAuthClient; {
+class OktaOAuthClientApplication {
+}
+
+class SecurityConfiguration {
+}
+
+class WebController {
+}
+
+class OktaOAuthClientApplicationTests {
+}
+
+}
+
+package com.okta.spring.SpringBootOAuthClient; {
+class SecurityConfiguration {
+}
+
+class SpringBootOAuthClientApplication {
+}
+
+class WebController {
+}
+
+class SpringBootOAuthClientApplicationTests {
+}
+
+}
+
+AuthServerConfig -- AuthorizationServerApplication
+UserController -- AuthorizationServerApplication
+AuthorizationServerApplicationTests -- AuthorizationServerApplication
+OktaOAuthClientApplicationTests -- OktaOAuthClientApplication
+SpringBootOAuthClientApplicationTests -- SpringBootOAuthClientApplication
+@enduml

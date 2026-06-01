@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: root
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  data:
+    redis:
+      repositories:
+        enabled: false
+  ai:
+    openai:
+      chat:
+        enabled: false
+      embedding:
+        enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health"
+  zipkin:
+    tracing:
+      endpoint: ""
+  prometheus:
+    metrics:
+      export:
+        enabled: false
+  tracing:
+    sampling:
+      probability: 0.0

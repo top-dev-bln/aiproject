@@ -1,0 +1,69 @@
+@startuml
+
+package com.pig4cloud.plugin.oss {
+  class OssAutoConfiguration {
+    +ossTemplate() : OssTemplate
+    +ossEndpoint() : OssEndpoint
+  }
+  class OssProperties {
+    -PREFIX : String
+    -enable : boolean
+    -endpoint : String
+    -customDomain : String
+    -pathStyleAccess : Boolean
+    -chunkedEncodingEnabled : Boolean
+    -region : String
+    -accessKey : String
+    -secretKey : String
+    -bucketName : String
+  }
+}
+
+package com.pig4cloud.plugin.oss.http {
+  class OssEndpoint <<Controller>> {
+    -ossTemplate : OssTemplate
+    +createBucket() : Bucket
+    +getBuckets() : List<Bucket>
+    +getBucket() : Bucket
+    +deleteBucket() : void
+    +filterObject() : List<S3Object>
+    +deleteObject() : void
+  }
+}
+
+package com.pig4cloud.plugin.oss.service {
+  class MinioOssTemplateTest {
+    -TEST_BUCKET_NAME : String
+    -TEST_OBJECT_NAME : String
+    -TEST_UPLOAD_OBJECT_NAME : String
+    -ossTemplate : OssTemplate
+    +init() : void
+    +getBucket() : void
+    +getObject() : void
+    +getObjectUrl() : void
+    +destroy() : void
+    +getObjectUpload() : void
+    +getObjectUploadExpired() : void
+  }
+  class OssTemplate {
+    -ossProperties : OssProperties
+    -s3Client : S3Client
+    -s3Presigner : S3Presigner
+    +createBucket() : void
+    +headBucket() : boolean
+    +getAllBuckets() : List<Bucket>
+    +getBucket() : Optional<Bucket>
+    +removeBucket() : void
+    +getAllObjectsByPrefix() : List<S3Object>
+    +getObjectURL() : String
+    +getObjectURL() : String
+  }
+}
+
+' --- Relatii ---
+OssAutoConfiguration --> OssEndpoint
+OssAutoConfiguration --> OssTemplate
+OssEndpoint --> OssTemplate
+OssTemplate --> OssProperties
+
+@enduml

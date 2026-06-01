@@ -1,0 +1,8 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/datasets/database.dtd">
+
+<dataset>
+    <recommendations/>
+    <book id="2" name="First" author="Author"/>
+    <book id="3" name="Second" author="Author"/>
+    <book id="4" name="Second" author="Another author"/>
+</dataset>

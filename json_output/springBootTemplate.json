@@ -1,0 +1,56 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, file management domain. It serves User as its primary actors. The main business capabilities include user cache, user, i user cache. Core business data revolves around UserDao, UserEntity.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "IUserCacheService",
+          "UserCacheServiceImpl"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage user cache operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "IUserCacheService",
+          "UserCacheServiceImpl"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with i user cache functionality, so that the system fulfills my needs.",
+        "services": [
+          "IUserCacheService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with i user functionality, so that the system fulfills my needs.",
+        "services": [
+          "IUserService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with user cache impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "UserCacheServiceImpl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    UserCacheController[\"UserCacheController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    IUserCacheService[\"IUserCacheService\"]\n    IUserService[\"IUserService\"]\n    UserCacheServiceImpl[\"UserCacheServiceImpl\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    UserDao[\"UserDao\"]\n    UserEntity[\"UserEntity\"]\n  end\n  subgraph Infrastructure\n    DemoConfig[\"DemoConfig\"]\n    DruidConfig[\"DruidConfig\"]\n    MyBatisConfig[\"MyBatisConfig\"]\n    MyBatisScannerConfig[\"MyBatisScannerConfig\"]\n    PackageConfig[\"PackageConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    TimeTaskConfig[\"TimeTaskConfig\"]\n    TransactionConfig[\"TransactionConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

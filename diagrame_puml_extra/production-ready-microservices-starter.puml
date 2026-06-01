@@ -1,0 +1,1060 @@
+@startuml
+package com.chumbok.blog; {
+class ContextLoadIT {
+}
+
+class Application {
+}
+
+}
+
+package com.chumbok.blog.config; {
+class AppConfig {
+}
+
+class EurekaClientConfig {
+}
+
+class ExceptionHandlerAdvice {
+}
+
+class JpaAuditConfig {
+}
+
+class ModelMappingConfig {
+}
+
+class MultiTenantJpaConfig {
+}
+
+}
+
+package com.chumbok.blog.controller; {
+class CategoryController {
+}
+
+class PingController {
+}
+
+class PostController {
+}
+
+class SiteController {
+}
+
+class TagController {
+}
+
+}
+
+package com.chumbok.blog.domain.model; {
+class BaseEntity {
+}
+
+class Category {
+}
+
+class DraftPost {
+}
+
+class Post {
+}
+
+class PublishedPost {
+}
+
+class Site {
+}
+
+class Tag {
+}
+
+}
+
+package com.chumbok.blog.domain.repository; {
+class CategoryRepository {
+}
+
+class DraftPostRepository {
+}
+
+class PublishedPostRepository {
+}
+
+class SiteRepository {
+}
+
+class TagRepository {
+}
+
+}
+
+package com.chumbok.blog.dto.request; {
+class CategoryCreateUpdateRequest {
+}
+
+class PostCreateUpdateRequest {
+}
+
+class SiteCreateUpdateRequest {
+}
+
+class TagCreateUpdateRequest {
+}
+
+}
+
+package com.chumbok.blog.dto.response; {
+class CategoriesResponse {
+}
+
+class CategoryResponse {
+}
+
+class IdentityResponse {
+}
+
+class PostResponse {
+}
+
+class PostsResponse {
+}
+
+class SiteResponse {
+}
+
+class SitesResponse {
+}
+
+class TagResponse {
+}
+
+class TagsResponse {
+}
+
+}
+
+package com.chumbok.blog.service; {
+class CategoryService {
+}
+
+class CategoryServiceImpl {
+}
+
+class PostService {
+}
+
+class PostServiceImpl {
+}
+
+class SiteService {
+}
+
+class SiteServiceImpl {
+}
+
+class TagService {
+}
+
+class TagServiceImpl {
+}
+
+}
+
+package com.chumbok.contact; {
+class ContextLoadIT {
+}
+
+class Application {
+}
+
+}
+
+package com.chumbok.contact.config; {
+class AppConfig {
+}
+
+class EurekaClientConfig {
+}
+
+class ExceptionHandlerAdvice {
+}
+
+class JpaAuditConfig {
+}
+
+class MultiTenantJpaConfig {
+}
+
+}
+
+package com.chumbok.contact.controller; {
+class ContactController {
+}
+
+class PingController {
+}
+
+}
+
+package com.chumbok.contact.domain.model; {
+class BaseEntity {
+}
+
+class Contact {
+}
+
+}
+
+package com.chumbok.contact.domain.repository; {
+class ContactRepository {
+}
+
+}
+
+package com.chumbok.contact.dto.request; {
+class ContactCreateUpdateRequest {
+}
+
+}
+
+package com.chumbok.contact.dto.response; {
+class ContactResponse {
+}
+
+class ContactsResponse {
+}
+
+class IdentityResponse {
+}
+
+}
+
+package com.chumbok.contact.service; {
+class ContactService {
+}
+
+}
+
+package com.chumbok.filestorage; {
+class ContextLoadIT {
+}
+
+class Application {
+}
+
+}
+
+package com.chumbok.filestorage.config; {
+class AppConfig {
+}
+
+class EurekaClientConfig {
+}
+
+class ExceptionHandlerAdvice {
+}
+
+class JpaAuditConfig {
+}
+
+class MultiTenantJpaConfig {
+}
+
+class StorageServiceConfig {
+}
+
+}
+
+package com.chumbok.filestorage.controller; {
+class FileStorageController {
+}
+
+class PingController {
+}
+
+}
+
+package com.chumbok.filestorage.domain.model; {
+class BaseEntity {
+}
+
+class File {
+}
+
+}
+
+package com.chumbok.filestorage.domain.repository; {
+class FileRepository {
+}
+
+}
+
+package com.chumbok.filestorage.dto.request; {
+class StoreFileCreateRequest {
+}
+
+}
+
+package com.chumbok.filestorage.dto.response; {
+class FileResponse {
+}
+
+class FilesResponse {
+}
+
+class IdentityResponse {
+}
+
+}
+
+package com.chumbok.filestorage.exception; {
+class IORuntimeException {
+}
+
+}
+
+package com.chumbok.filestorage.service; {
+class FileSystemStorageService {
+}
+
+class GoogleDriveStorageService {
+}
+
+class StorageService {
+}
+
+}
+
+package com.chumbok.gateway; {
+class Application {
+}
+
+class ApplicationTest {
+}
+
+}
+
+package com.chumbok.notification; {
+class ContextLoadIT {
+}
+
+class IntegrationTestBase {
+}
+
+class Application {
+}
+
+}
+
+package com.chumbok.notification.domain.repository; {
+class NotificationRepositoryIT {
+}
+
+class NotificationRepository {
+}
+
+}
+
+package com.chumbok.notification.config; {
+class AppConfig {
+}
+
+class EurekaClientConfig {
+}
+
+class ExceptionHandlerAdvice {
+}
+
+class JpaAuditConfig {
+}
+
+class MultiTenantJpaConfig {
+}
+
+}
+
+package com.chumbok.notification.controller; {
+class NotificationController {
+}
+
+class PingController {
+}
+
+}
+
+package com.chumbok.notification.domain.model; {
+class BaseEntity {
+}
+
+class Notification {
+}
+
+class NotificationType {
+}
+
+}
+
+package com.chumbok.notification.dto.request; {
+class NotificationCreateRequest {
+}
+
+}
+
+package com.chumbok.notification.dto.response; {
+class IdentityResponse {
+}
+
+class NotificationResponse {
+}
+
+class NotificationsResponse {
+}
+
+}
+
+package com.chumbok.notification.service; {
+class NotificationService {
+}
+
+}
+
+package com.chumbok.serviceregistry; {
+class Application {
+}
+
+class ApplicationTest {
+}
+
+}
+
+package com.chumbok.uaa.conf; {
+class ExceptionHandlingAdviceIT {
+}
+
+class WebSecurityConfigIT {
+}
+
+class AppConfig {
+}
+
+class CorsConfig {
+}
+
+class EurekaClientConfig {
+}
+
+class ExceptionHandlerAdvice {
+}
+
+class JpaAuditConfig {
+}
+
+class MappingConfig {
+}
+
+class SecurityConfig {
+}
+
+class MappingConfigTest {
+}
+
+}
+
+package com.chumbok.uaa; {
+class ContextLoadIT {
+}
+
+class IntegrationTestBase {
+}
+
+class Application {
+}
+
+}
+
+package com.chumbok.uaa.controller; {
+class PingControllerIT {
+}
+
+class VersionControllerIT {
+}
+
+class LoggedInUserInfoController {
+}
+
+class LoginController {
+}
+
+class LogoutController {
+}
+
+class OrgController {
+}
+
+class PingController {
+}
+
+class PublicUserController {
+}
+
+class RefreshTokenController {
+}
+
+class TenantController {
+}
+
+class TenantUserController {
+}
+
+class UserController {
+}
+
+class VersionController {
+}
+
+}
+
+package com.chumbok.uaa.domain.repository; {
+class DataJpaAuditIT {
+}
+
+class UserRepositoryIT {
+}
+
+class OrgRepository {
+}
+
+class RoleRepository {
+}
+
+class TenantRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.chumbok.uaa.domain.model; {
+class BaseEntity {
+}
+
+class Org {
+}
+
+class Role {
+}
+
+class Tenant {
+}
+
+class User {
+}
+
+}
+
+package com.chumbok.uaa.dto.request; {
+class LoginRequest {
+}
+
+class OrgCreateUpdateRequest {
+}
+
+class PublicUserCreateRequest {
+}
+
+class TenantCreateUpdateRequest {
+}
+
+class UserCreateRequest {
+}
+
+class UserUpdateRequest {
+}
+
+}
+
+package com.chumbok.uaa.dto.response; {
+class IdentityResponse {
+}
+
+class LoggedInUserInfoResponse {
+}
+
+class OrgResponse {
+}
+
+class OrgsResponse {
+}
+
+class TenantResponse {
+}
+
+class TenantsResponse {
+}
+
+class UserResponse {
+}
+
+class UsersResponse {
+}
+
+}
+
+package com.chumbok.uaa.security; {
+class AuthenticationHandler {
+}
+
+class AuthJwtProperties {
+}
+
+class AuthTokenBuilder {
+}
+
+class ChumbokSecurityProperties {
+}
+
+class DefaultAuthenticationHandler {
+}
+
+class DefaultSecurityRoleConstants {
+}
+
+class MultiTenantUserDetailsService {
+}
+
+class AuthTokenBuilderTest {
+}
+
+class MultiTenantUserDetailsServiceTest {
+}
+
+}
+
+package com.chumbok.uaa.service; {
+class OrgService {
+}
+
+class TenantService {
+}
+
+class UserPreferenceService {
+}
+
+class UserService {
+}
+
+}
+
+package com.chumbok.uaa.util; {
+class JwtUtil {
+}
+
+}
+
+Application -- Post
+AppConfig -- JwtUtil
+JpaAuditConfig -- User
+ModelMappingConfig -- Site
+ModelMappingConfig -- SiteCreateUpdateRequest
+ModelMappingConfig -- SiteResponse
+ModelMappingConfig -- MappingConfig
+ModelMappingConfig -- Org
+ModelMappingConfig -- Tenant
+MultiTenantJpaConfig -- Org
+MultiTenantJpaConfig -- Tenant
+MultiTenantJpaConfig -- User
+CategoryController -- Category
+CategoryController -- Post
+CategoryController -- CategoryCreateUpdateRequest
+CategoryController -- CategoriesResponse
+CategoryController -- CategoryResponse
+CategoryController -- IdentityResponse
+CategoryController -- CategoryService
+PostController -- Post
+PostController -- PostCreateUpdateRequest
+PostController -- IdentityResponse
+PostController -- PostResponse
+PostController -- PostsResponse
+PostController -- PostService
+SiteController -- Post
+SiteController -- Site
+SiteController -- SiteCreateUpdateRequest
+SiteController -- IdentityResponse
+SiteController -- SiteResponse
+SiteController -- SitesResponse
+SiteController -- SiteService
+TagController -- Post
+TagController -- Tag
+TagController -- TagCreateUpdateRequest
+TagController -- IdentityResponse
+TagController -- TagResponse
+TagController -- TagsResponse
+TagController -- TagService
+BaseEntity -- Application
+BaseEntity -- JpaAuditConfig
+BaseEntity -- User
+Category -- BaseEntity
+Category -- Site
+DraftPost -- Post
+DraftPost -- PublishedPost
+Post -- BaseEntity
+Post -- Category
+Post -- Tag
+PublishedPost -- Post
+Site -- BaseEntity
+Tag -- BaseEntity
+Tag -- Site
+CategoryRepository -- Category
+DraftPostRepository -- DraftPost
+DraftPostRepository -- Post
+PublishedPostRepository -- Post
+PublishedPostRepository -- PublishedPost
+SiteRepository -- Site
+TagRepository -- Tag
+CategoryCreateUpdateRequest -- Category
+PostCreateUpdateRequest -- Post
+SiteCreateUpdateRequest -- Site
+TagCreateUpdateRequest -- Tag
+CategoriesResponse -- Category
+CategoriesResponse -- CategoryResponse
+CategoryResponse -- Category
+PostResponse -- Post
+PostsResponse -- Post
+PostsResponse -- PostResponse
+SiteResponse -- Site
+SitesResponse -- Site
+SitesResponse -- SiteResponse
+TagResponse -- Tag
+TagsResponse -- Tag
+TagsResponse -- TagResponse
+CategoryService -- Category
+CategoryService -- CategoryCreateUpdateRequest
+CategoryService -- CategoriesResponse
+CategoryService -- CategoryResponse
+CategoryService -- IdentityResponse
+CategoryServiceImpl -- Category
+CategoryServiceImpl -- Site
+CategoryServiceImpl -- CategoryRepository
+CategoryServiceImpl -- SiteRepository
+CategoryServiceImpl -- CategoryCreateUpdateRequest
+CategoryServiceImpl -- CategoriesResponse
+CategoryServiceImpl -- CategoryResponse
+CategoryServiceImpl -- IdentityResponse
+CategoryServiceImpl -- CategoryService
+CategoryServiceImpl -- User
+PostService -- Post
+PostService -- PostCreateUpdateRequest
+PostService -- IdentityResponse
+PostService -- PostResponse
+PostService -- PostsResponse
+PostServiceImpl -- Category
+PostServiceImpl -- DraftPost
+PostServiceImpl -- Post
+PostServiceImpl -- PublishedPost
+PostServiceImpl -- Tag
+PostServiceImpl -- DraftPostRepository
+PostServiceImpl -- PublishedPostRepository
+PostServiceImpl -- PostCreateUpdateRequest
+PostServiceImpl -- IdentityResponse
+PostServiceImpl -- PostResponse
+PostServiceImpl -- PostsResponse
+PostServiceImpl -- PostService
+SiteService -- Site
+SiteService -- SiteCreateUpdateRequest
+SiteService -- IdentityResponse
+SiteService -- SiteResponse
+SiteService -- SitesResponse
+SiteServiceImpl -- Site
+SiteServiceImpl -- SiteRepository
+SiteServiceImpl -- SiteCreateUpdateRequest
+SiteServiceImpl -- IdentityResponse
+SiteServiceImpl -- SiteResponse
+SiteServiceImpl -- SitesResponse
+SiteServiceImpl -- SiteService
+SiteServiceImpl -- User
+TagService -- Tag
+TagService -- TagCreateUpdateRequest
+TagService -- IdentityResponse
+TagService -- TagResponse
+TagService -- TagsResponse
+TagServiceImpl -- Site
+TagServiceImpl -- Tag
+TagServiceImpl -- SiteRepository
+TagServiceImpl -- TagRepository
+TagServiceImpl -- TagCreateUpdateRequest
+TagServiceImpl -- IdentityResponse
+TagServiceImpl -- TagResponse
+TagServiceImpl -- TagsResponse
+TagServiceImpl -- TagService
+TagServiceImpl -- User
+ContactController -- Post
+ContactController -- IdentityResponse
+ContactController -- Contact
+ContactController -- ContactCreateUpdateRequest
+ContactController -- ContactResponse
+ContactController -- ContactsResponse
+ContactController -- ContactService
+Contact -- BaseEntity
+ContactRepository -- Contact
+ContactRepository -- User
+ContactCreateUpdateRequest -- Contact
+ContactResponse -- Contact
+ContactsResponse -- Contact
+ContactsResponse -- ContactResponse
+ContactService -- IdentityResponse
+ContactService -- Contact
+ContactService -- ContactRepository
+ContactService -- ContactCreateUpdateRequest
+ContactService -- ContactResponse
+ContactService -- ContactsResponse
+ContactService -- User
+StorageServiceConfig -- File
+StorageServiceConfig -- FileRepository
+StorageServiceConfig -- FileSystemStorageService
+StorageServiceConfig -- GoogleDriveStorageService
+StorageServiceConfig -- StorageService
+FileStorageController -- Post
+FileStorageController -- IdentityResponse
+FileStorageController -- File
+FileStorageController -- StoreFileCreateRequest
+FileStorageController -- FilesResponse
+FileStorageController -- StorageService
+File -- BaseEntity
+FileRepository -- File
+StoreFileCreateRequest -- File
+FileResponse -- File
+FilesResponse -- File
+FilesResponse -- FileResponse
+FileSystemStorageService -- IdentityResponse
+FileSystemStorageService -- File
+FileSystemStorageService -- FileRepository
+FileSystemStorageService -- StoreFileCreateRequest
+FileSystemStorageService -- FileResponse
+FileSystemStorageService -- FilesResponse
+FileSystemStorageService -- IORuntimeException
+FileSystemStorageService -- StorageService
+FileSystemStorageService -- User
+GoogleDriveStorageService -- IdentityResponse
+GoogleDriveStorageService -- File
+GoogleDriveStorageService -- StoreFileCreateRequest
+GoogleDriveStorageService -- FilesResponse
+GoogleDriveStorageService -- IORuntimeException
+GoogleDriveStorageService -- StorageService
+StorageService -- IdentityResponse
+StorageService -- File
+StorageService -- StoreFileCreateRequest
+StorageService -- FilesResponse
+ApplicationTest -- Application
+NotificationRepositoryIT -- Application
+NotificationRepositoryIT -- Notification
+NotificationRepositoryIT -- NotificationType
+NotificationRepositoryIT -- NotificationRepository
+NotificationRepositoryIT -- Org
+NotificationRepositoryIT -- Tenant
+NotificationRepositoryIT -- User
+IntegrationTestBase -- Application
+NotificationController -- Post
+NotificationController -- IdentityResponse
+NotificationController -- Notification
+NotificationController -- NotificationCreateRequest
+NotificationController -- NotificationsResponse
+NotificationController -- NotificationService
+Notification -- BaseEntity
+Notification -- NotificationType
+NotificationRepository -- Notification
+NotificationCreateRequest -- Notification
+NotificationResponse -- Notification
+NotificationsResponse -- Notification
+NotificationsResponse -- NotificationResponse
+NotificationService -- IdentityResponse
+NotificationService -- Notification
+NotificationService -- NotificationType
+NotificationService -- NotificationRepository
+NotificationService -- NotificationCreateRequest
+NotificationService -- NotificationResponse
+NotificationService -- NotificationsResponse
+WebSecurityConfigIT -- SecurityConfig
+WebSecurityConfigIT -- LoginRequest
+PingControllerIT -- PingController
+PingControllerIT -- IntegrationTestBase
+VersionControllerIT -- Application
+VersionControllerIT -- VersionController
+DataJpaAuditIT -- Application
+DataJpaAuditIT -- Org
+DataJpaAuditIT -- Tenant
+DataJpaAuditIT -- User
+DataJpaAuditIT -- OrgRepository
+UserRepositoryIT -- Application
+UserRepositoryIT -- DataJpaAuditIT
+UserRepositoryIT -- Org
+UserRepositoryIT -- Tenant
+UserRepositoryIT -- User
+UserRepositoryIT -- OrgRepository
+UserRepositoryIT -- TenantRepository
+UserRepositoryIT -- UserRepository
+SecurityConfig -- Application
+SecurityConfig -- Org
+SecurityConfig -- Tenant
+SecurityConfig -- User
+SecurityConfig -- AuthenticationHandler
+SecurityConfig -- ChumbokSecurityProperties
+SecurityConfig -- DefaultAuthenticationHandler
+LoggedInUserInfoController -- User
+LoggedInUserInfoController -- LoggedInUserInfoResponse
+LoggedInUserInfoController -- UserPreferenceService
+LoginController -- Post
+LoginController -- Org
+LoginController -- Tenant
+LoginController -- User
+LoginController -- LoginRequest
+LoginController -- AuthenticationHandler
+LoginController -- AuthTokenBuilder
+LogoutController -- User
+LogoutController -- AuthenticationHandler
+OrgController -- Post
+OrgController -- IdentityResponse
+OrgController -- Org
+OrgController -- OrgCreateUpdateRequest
+OrgController -- OrgResponse
+OrgController -- OrgsResponse
+OrgController -- OrgService
+PublicUserController -- Post
+PublicUserController -- IdentityResponse
+PublicUserController -- UserController
+PublicUserController -- User
+PublicUserController -- PublicUserCreateRequest
+PublicUserController -- UserCreateRequest
+PublicUserController -- UserService
+RefreshTokenController -- User
+RefreshTokenController -- AuthTokenBuilder
+TenantController -- Post
+TenantController -- IdentityResponse
+TenantController -- Tenant
+TenantController -- TenantCreateUpdateRequest
+TenantController -- TenantResponse
+TenantController -- TenantsResponse
+TenantController -- TenantService
+TenantUserController -- Post
+TenantUserController -- IdentityResponse
+TenantUserController -- UserController
+TenantUserController -- Tenant
+TenantUserController -- User
+TenantUserController -- UserCreateRequest
+TenantUserController -- UserUpdateRequest
+TenantUserController -- UserResponse
+TenantUserController -- UsersResponse
+TenantUserController -- UserService
+UserController -- Post
+UserController -- IdentityResponse
+UserController -- User
+UserController -- UserCreateRequest
+UserController -- UserResponse
+UserController -- UsersResponse
+UserController -- UserService
+Org -- BaseEntity
+Role -- BaseEntity
+Role -- Org
+Role -- Tenant
+Role -- User
+Tenant -- BaseEntity
+Tenant -- Org
+User -- Org
+User -- Tenant
+OrgRepository -- Org
+RoleRepository -- Role
+TenantRepository -- Org
+TenantRepository -- Tenant
+UserRepository -- Org
+UserRepository -- Tenant
+UserRepository -- User
+OrgCreateUpdateRequest -- Org
+PublicUserCreateRequest -- User
+PublicUserCreateRequest -- UserCreateRequest
+TenantCreateUpdateRequest -- Tenant
+UserCreateRequest -- User
+UserCreateRequest -- UserUpdateRequest
+UserUpdateRequest -- User
+LoggedInUserInfoResponse -- User
+OrgResponse -- Org
+OrgsResponse -- Org
+OrgsResponse -- OrgResponse
+TenantResponse -- Tenant
+TenantsResponse -- Tenant
+TenantsResponse -- TenantResponse
+UserResponse -- User
+UsersResponse -- User
+UsersResponse -- UserResponse
+AuthTokenBuilder -- Tenant
+AuthTokenBuilder -- User
+AuthTokenBuilder -- AuthJwtProperties
+AuthTokenBuilder -- JwtUtil
+ChumbokSecurityProperties -- Org
+ChumbokSecurityProperties -- Tenant
+DefaultAuthenticationHandler -- AuthenticationHandler
+DefaultSecurityRoleConstants -- Role
+MultiTenantUserDetailsService -- LoginController
+MultiTenantUserDetailsService -- Org
+MultiTenantUserDetailsService -- Role
+MultiTenantUserDetailsService -- Tenant
+MultiTenantUserDetailsService -- User
+MultiTenantUserDetailsService -- UserRepository
+OrgService -- IdentityResponse
+OrgService -- Org
+OrgService -- Role
+OrgService -- Tenant
+OrgService -- User
+OrgService -- OrgRepository
+OrgService -- TenantRepository
+OrgService -- UserRepository
+OrgService -- OrgCreateUpdateRequest
+OrgService -- OrgResponse
+OrgService -- OrgsResponse
+OrgService -- DefaultSecurityRoleConstants
+TenantService -- IdentityResponse
+TenantService -- Org
+TenantService -- Role
+TenantService -- Tenant
+TenantService -- User
+TenantService -- OrgRepository
+TenantService -- TenantRepository
+TenantService -- UserRepository
+TenantService -- TenantCreateUpdateRequest
+TenantService -- TenantResponse
+TenantService -- TenantsResponse
+TenantService -- DefaultSecurityRoleConstants
+UserPreferenceService -- Org
+UserPreferenceService -- Tenant
+UserPreferenceService -- User
+UserPreferenceService -- UserRepository
+UserPreferenceService -- LoggedInUserInfoResponse
+UserService -- IdentityResponse
+UserService -- Org
+UserService -- Role
+UserService -- Tenant
+UserService -- User
+UserService -- OrgRepository
+UserService -- RoleRepository
+UserService -- TenantRepository
+UserService -- UserRepository
+UserService -- PublicUserCreateRequest
+UserService -- UserCreateRequest
+UserService -- UserUpdateRequest
+UserService -- UserResponse
+UserService -- UsersResponse
+UserService -- DefaultSecurityRoleConstants
+MappingConfigTest -- MappingConfig
+AuthTokenBuilderTest -- Org
+AuthTokenBuilderTest -- Tenant
+AuthTokenBuilderTest -- User
+AuthTokenBuilderTest -- AuthJwtProperties
+AuthTokenBuilderTest -- AuthTokenBuilder
+AuthTokenBuilderTest -- JwtUtil
+MultiTenantUserDetailsServiceTest -- Org
+MultiTenantUserDetailsServiceTest -- Role
+MultiTenantUserDetailsServiceTest -- Tenant
+MultiTenantUserDetailsServiceTest -- User
+MultiTenantUserDetailsServiceTest -- UserRepository
+MultiTenantUserDetailsServiceTest -- MultiTenantUserDetailsService
+@enduml

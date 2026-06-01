@@ -1,0 +1,25 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: user-denormalizer
+
+  jackson:
+    serialization.write-dates-as-timestamps: false
+
+  data:
+    elasticsearch:
+      cluster-name: es-cluster
+      cluster-nodes: elasticsearch:9300
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, info, prometheus
+
+application:
+  kafka:
+    bootstrapServers: kafka:29092
+    groupId: user-denormalizer

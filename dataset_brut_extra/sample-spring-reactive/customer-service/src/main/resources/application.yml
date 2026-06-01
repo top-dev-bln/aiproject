@@ -1,0 +1,6 @@
+server:  
+  port: ${PORT:2223}
+  
+spring:  
+  application:
+    name: customer-service

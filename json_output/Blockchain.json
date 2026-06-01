@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the blockchain, messaging domain. It serves User as its primary actors. The main business capabilities include agent.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage agent operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AgentController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AgentController[\"AgentController\"]\n  end"
+  }
+}

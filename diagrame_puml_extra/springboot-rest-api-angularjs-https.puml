@@ -1,0 +1,80 @@
+@startuml
+package com.kaluzny; {
+class Application {
+}
+
+}
+
+package com.kaluzny.config; {
+class CORSFilter {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package com.kaluzny.domain; {
+class User {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.kaluzny.service.exception; {
+class UserAlreadyExistsException {
+}
+
+}
+
+package com.kaluzny.service; {
+class UserService {
+}
+
+class UserServiceBean {
+}
+
+class UserServiceTest {
+}
+
+}
+
+package com.kaluzny.web; {
+class UserController {
+}
+
+class UserControllerTest {
+}
+
+}
+
+package com.kaluzny.repository; {
+class UserRepositoryTest {
+}
+
+}
+
+SecurityConfig -- CORSFilter
+SecurityConfig -- User
+UserRepository -- User
+UserAlreadyExistsException -- User
+UserService -- User
+UserServiceBean -- User
+UserServiceBean -- UserRepository
+UserServiceBean -- UserAlreadyExistsException
+UserServiceBean -- UserService
+UserController -- User
+UserController -- UserAlreadyExistsException
+UserController -- UserService
+UserRepositoryTest -- User
+UserRepositoryTest -- UserRepository
+UserServiceTest -- User
+UserServiceTest -- UserRepository
+UserServiceTest -- UserService
+UserControllerTest -- Application
+UserControllerTest -- User
+UserControllerTest -- UserService
+UserControllerTest -- UserController
+@enduml

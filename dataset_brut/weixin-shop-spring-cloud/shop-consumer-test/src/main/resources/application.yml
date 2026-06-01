@@ -1,0 +1,15 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: consumer
+
+logging:
+  level:
+    com.chengzhx76.gethub.client.ConsumerClient : debug
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka.didispace.com/eureka/

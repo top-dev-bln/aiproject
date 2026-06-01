@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: ecommerce-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: root
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 6000
+  ai:
+    openai:
+      api-key: ${OPEN_AI_KEY}
+      chat:
+        options:
+          model: "gpt-4o-mini"
+          temperature: 0
+          max-tokens: 1000
+          top-p: 1.0
+          presence-penalty: 0.0
+          frequency-penalty: 0.0
+      embedding:
+        options:
+          model: "text-embedding-3-small"
+    vectorstore:
+      pgvector:
+        initialize-schema: true  # Automatically initializes the pgvector schema in the database
+        index-type: HNSW  # Uses HNSW (Hierarchical Navigable Small World) for approximate nearest neighbor search
+        distance-type: COSINE_DISTANCE  # Uses cosine distance to measure vector similarity
+        dimensions: 1536  # Defines the number of dimensions for stored vectors (e.g., OpenAI embeddings)
+        max-document-batch-size: 10000  # (Optional) Maximum number of documents per batch insert for better performance
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  endpoint:
+    health:
+      show:
+        details: always
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server:
+          requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  pattern:
+    correlation: [ "${ spring.application.name: },%X{ traceId:- },%X{ spanId:- }" ]
+
+

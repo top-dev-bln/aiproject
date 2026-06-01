@@ -1,0 +1,82 @@
+
+server:
+  port: 8888
+  session:
+    timeout: 10 #http session timeout in minutes
+#  port: 8443
+#  ssl:
+#    key-store: classpath:keystore.jks
+#    key-store-password: secret
+#    keyStoreType: JKS
+#    keyAlias: localhost
+
+fileserver:
+   home: /home/juraj/Downloads
+   data:
+     storage: inmemory
+   anonymous:        #setting for anonymous users
+     role: anonymous #role of anonymous users
+   admin:            #setting for admin users
+     role: master    #role of admin users
+   users:
+     - username: master
+       password: secret
+       roles:
+         - master
+         - public
+         - anonymous
+     - username: public
+       password: secret
+       roles:
+         - public
+         - anonymous
+     - username: jane
+       password: secret
+       roles:
+         - jane
+         - public
+         - anonymous
+     - username: joe
+       password: secret
+       roles:
+         - joe
+         - public
+         - anonymous
+   filters:
+     - path: '*'
+       access: READ_WRITE
+       roles:
+         - master
+     - path: 'public/*'
+       access: READ_WRITE
+       roles:
+         - public
+     - path: 'jane/*'
+       access: READ_WRITE
+       roles:
+         - jane
+     - path: 'joe/*'
+       access: READ_WRITE
+       roles:
+         - joe
+     - path: 'joe/for-jane/*'
+       access: READ_WRITE
+       roles:
+         - joe
+         - jane
+     - path: 'joe/for-everybody/*'
+       access: READ
+       roles:
+         - public
+     - path: 'joe/for-everybody/*'
+       access: READ_WRITE
+       roles:
+         - joe
+     - path: 'anonymous-read/*'
+       access: READ
+       roles:
+         - anonymous
+     - path: 'anonymous-readwrite/*'
+       access: READ_WRITE
+       roles:
+         - anonymous

@@ -1,0 +1,1002 @@
+@startuml
+
+  class Main {
+    +main() : void
+  }
+
+package app {
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class AppController <<Controller>> {
+    +index() : String
+  }
+}
+
+package app.ses {
+  class SESWorker {
+    -LOG : Logger
+    -iCanContinue : boolean
+    -queue : Queue<AmazonEmail>
+    -item : AmazonEmail
+    -MAX_SLEEP_TIME : int
+    -sesClient : AmazonSimpleEmailService
+    -id : int
+    +run() : void
+    +add() : void
+    +stopWorker() : void
+    +getTime() : String
+  }
+  class AmazonEmail {
+    -to : List<String>
+    -cc : List<String>
+    -bcc : List<String>
+    -from : SESFrom
+    -subject : String
+    -body : String
+    -html : boolean
+    -files : List<AmazonAttachment>
+    +getTo() : List<String>
+    +setTo() : void
+    +setTo() : void
+    +getCc() : List<String>
+    +setCc() : void
+    +setCc() : void
+    +getBcc() : List<String>
+    +setBcc() : void
+  }
+  enum SESFrom {
+    -email : String
+    -name : String
+    +getEmail() : String
+    +getName() : String
+  }
+  class AmazonAttachment {
+    -name : String
+    -content : byte[]
+    -contentType : String
+    +getName() : String
+    +setName() : void
+    +getContent() : byte[]
+    +setContent() : void
+    +getContentType() : String
+    +setContentType() : void
+  }
+  class SESProcessor {
+    -LOG : Logger
+    -iCanContinue : boolean
+    -sInstance : SESProcessor
+    -workers : SESWorker[]
+    -queue : Queue<AmazonEmail>
+    -MAX_SLEEP_TIME : int
+    -MAX_WORKERS : int
+    -current : int
+    +run() : void
+    +add() : void
+    +stopProcessor() : void
+    +getTime() : String
+  }
+}
+
+package com.attacmosian.thymeleaf.forms {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacmosian.thymeleaf.forms.controllers {
+  class ProjectController <<Controller>> {
+    +createProjectForm() : String
+    +saveProjectSubmission() : String
+  }
+}
+
+package com.attacmosian.thymeleaf.forms.domains {
+  class Project {
+    -id : Long
+    -title : String
+    -type : String
+    -color : String
+    -description : String
+    -days : Integer
+    -price : Double
+    -featured : Boolean
+    -launchDate : LocalDateTime
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getType() : String
+    +setType() : void
+    +getColor() : String
+    +setColor() : void
+  }
+}
+
+package com.attacomsian.console {
+  class ConsoleApplication {
+    -helloService : HelloService
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.attacomsian.console.services {
+  class HelloService <<Service>> {
+    -message : String
+    +getMessage() : String
+    +getMessage() : String
+  }
+}
+
+package com.attacomsian.cookies {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacomsian.cookies.controllers {
+  class CookieController <<Controller>> {
+    +readCookie() : String
+    +setCookie() : String
+    +deleteCookie() : String
+    +readAllCookies() : String
+  }
+}
+
+package com.attacomsian.exportcsv {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacomsian.exportcsv.controllers {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +exportCSV() : void
+  }
+}
+
+package com.attacomsian.exportcsv.data {
+  class UserService <<Service>> {
+    +listUsers() : List<User>
+  }
+  class User {
+    -id : long
+    -name : String
+    -email : String
+    -country : String
+    -age : int
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getCountry() : String
+    +setCountry() : void
+  }
+}
+
+package com.attacomsian.getstarted {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacomsian.getstarted.controllers {
+  class IndexController <<Controller>> {
+    +index() : String
+  }
+}
+
+package com.attacomsian.jackson {
+  class Customer {
+    -id : Long
+    -name : String
+    -email : String
+    -phone : String
+    -age : int
+    -projects : String[]
+    -address : Address
+    -paymentMethods : List<String>
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPhone() : String
+    +setPhone() : void
+  }
+  class Address {
+    -street : String
+    -city : String
+    -zipcode : int
+    -country : String
+    +getStreet() : String
+    +setStreet() : void
+    +getCity() : String
+    +setCity() : void
+    +getZipcode() : int
+    +setZipcode() : void
+    +getCountry() : String
+    +setCountry() : void
+  }
+  class JacksonApplication {
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.attacomsian.jpa {
+  class Application {
+    +main() : void
+    +bookDemo() : CommandLineRunner
+  }
+  class Application {
+    -log : Logger
+    +main() : void
+    +userDemo() : CommandLineRunner
+  }
+  class Application {
+    +main() : void
+    +mappingDemo() : CommandLineRunner
+  }
+  class Application {
+    +main() : void
+    +auditingDemo() : CommandLineRunner
+  }
+  class Application {
+    +main() : void
+    +demo() : CommandLineRunner
+  }
+  class Application {
+    +main() : void
+    +sortingDemo() : CommandLineRunner
+  }
+  class Application {
+    +main() : void
+    +noteDemo() : CommandLineRunner
+  }
+  class Application {
+    -em : EntityManager
+    +main() : void
+    +runner() : CommandLineRunner
+  }
+  class Application {
+    +main() : void
+    +specificationsDemo() : CommandLineRunner
+  }
+}
+
+package com.attacomsian.jpa.composite.domains {
+  class EmployeeId {
+    -employeeId : Long
+    -departmentId : Long
+    +getEmployeeId() : Long
+    +setEmployeeId() : void
+    +getDepartmentId() : Long
+    +setDepartmentId() : void
+  }
+  class Account <<Entity>> {
+    -accountNumber : String
+    -accountType : String
+    -balance : double
+    +getAccountNumber() : String
+    +setAccountNumber() : void
+    +getAccountType() : String
+    +setAccountType() : void
+    +getBalance() : double
+    +setBalance() : void
+  }
+  class AccountId {
+    -accountNumber : String
+    -accountType : String
+  }
+  class Employee <<Entity>> {
+    -employeeId : EmployeeId
+    -name : String
+    -email : String
+    -phoneNumber : String
+    +getEmployeeId() : EmployeeId
+    +setEmployeeId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPhoneNumber() : String
+    +setPhoneNumber() : void
+  }
+}
+
+package com.attacomsian.jpa.composite.repositories {
+  interface AccountRepository {
+  }
+  interface EmployeeRepository {
+  }
+}
+
+package com.attacomsian.jpa.config {
+  class AuditConfiguration {
+    +auditorAware() : AuditorAware<String>
+  }
+}
+
+package com.attacomsian.jpa.custom.domains {
+  class Note <<Entity>> {
+    -id : Long
+    -title : String
+    -priority : int
+    -featured : boolean
+    -created : Date
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getPriority() : int
+    +setPriority() : void
+    +isFeatured() : boolean
+    +setFeatured() : void
+  }
+}
+
+package com.attacomsian.jpa.custom.repositories {
+  interface NoteRepository {
+  }
+}
+
+package com.attacomsian.jpa.derived.domains {
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -email : String
+    -age : int
+    -birthDate : Date
+    -active : boolean
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getAge() : int
+    +setAge() : void
+  }
+}
+
+package com.attacomsian.jpa.derived.repositories {
+  interface UserRepository {
+  }
+}
+
+package com.attacomsian.jpa.domains {
+  class Book <<Entity>> {
+    -id : Long
+    -title : String
+    -isbn : String
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getIsbn() : String
+    +setIsbn() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -email : String
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+  class Auditable {
+    -createdBy : T
+    -createdDate : Date
+    -lastModifiedBy : T
+    -lastModifiedDate : Date
+    +getCreatedBy() : T
+    +setCreatedBy() : void
+    +getCreatedDate() : Date
+    +setCreatedDate() : void
+    +getLastModifiedBy() : T
+    +setLastModifiedBy() : void
+    +getLastModifiedDate() : Date
+    +setLastModifiedDate() : void
+  }
+  class EntityAuditorAware {
+    +getCurrentAuditor() : Optional<String>
+  }
+  class Todo <<Entity>> {
+    -id : Long
+    -title : String
+    -completed : boolean
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +isCompleted() : boolean
+    +setCompleted() : void
+  }
+  class Person <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -age : int
+    +getId() : Long
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+    +getAge() : int
+    +setAge() : void
+  }
+  class Employee <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -age : int
+    -salary : double
+    +getId() : Long
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+    +getAge() : int
+    +setAge() : void
+  }
+  class Note <<Entity>> {
+    -id : Long
+    -title : String
+    -content : String
+    -created : Date
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getContent() : String
+    +setContent() : void
+    +getCreated() : Date
+    +setCreated() : void
+  }
+  class Movie <<Entity>> {
+    -id : Long
+    -title : String
+    -genre : String
+    -rating : double
+    -watchTime : double
+    -releaseYear : int
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getGenre() : String
+    +setGenre() : void
+    +getRating() : double
+    +setRating() : void
+  }
+}
+
+package com.attacomsian.jpa.many2many.domains {
+  class Course <<Entity>> {
+    -id : Long
+    -title : String
+    -abbreviation : String
+    -modules : int
+    -fee : double
+    -students : Set<Student>
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getAbbreviation() : String
+    +setAbbreviation() : void
+    +getModules() : int
+    +setModules() : void
+  }
+  class Student <<Entity>> {
+    -id : Long
+    -name : String
+    -age : int
+    -grade : String
+    -courses : Set<Course>
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : int
+    +setAge() : void
+    +getGrade() : String
+    +setGrade() : void
+  }
+}
+
+package com.attacomsian.jpa.many2many.repositories {
+  interface StudentRepository {
+  }
+  interface CourseRepository {
+  }
+}
+
+package com.attacomsian.jpa.named.domains {
+  class Book <<Entity>> {
+    -id : Long
+    -title : String
+    -isbn : String
+    -pages : int
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getIsbn() : String
+    +setIsbn() : void
+    +getPages() : int
+    +setPages() : void
+  }
+}
+
+package com.attacomsian.jpa.named.repositories {
+  interface BookRepository {
+  }
+}
+
+package com.attacomsian.jpa.one2many.domains {
+  class Page <<Entity>> {
+    -id : Long
+    -number : int
+    -content : String
+    -chapter : String
+    -book : Book
+    +getId() : Long
+    +setId() : void
+    +getNumber() : int
+    +setNumber() : void
+    +getContent() : String
+    +setContent() : void
+    +getChapter() : String
+    +setChapter() : void
+  }
+  class Book <<Entity>> {
+    -id : Long
+    -title : String
+    -author : String
+    -isbn : String
+    -pages : Set<Page>
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getAuthor() : String
+    +setAuthor() : void
+    +getIsbn() : String
+    +setIsbn() : void
+  }
+}
+
+package com.attacomsian.jpa.one2many.repositories {
+  interface PageRepository {
+  }
+  interface BookRepository {
+  }
+}
+
+package com.attacomsian.jpa.one2one.domains {
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -email : String
+    -password : String
+    -address : Address
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+  class Address <<Entity>> {
+    -id : Long
+    -street : String
+    -city : String
+    -state : String
+    -zipCode : String
+    -country : String
+    -user : User
+    +getId() : Long
+    +setId() : void
+    +getStreet() : String
+    +setStreet() : void
+    +getCity() : String
+    +setCity() : void
+    +getState() : String
+    +setState() : void
+  }
+}
+
+package com.attacomsian.jpa.one2one.repositories {
+  interface AddressRepository {
+  }
+  interface UserRepository {
+  }
+}
+
+package com.attacomsian.jpa.repositories {
+  interface BookRepository {
+  }
+  interface UserRepository {
+  }
+  interface TodoRepository {
+  }
+  interface PersonRepository {
+  }
+  interface EmployeeRepository {
+  }
+  interface NoteRepository {
+  }
+  interface MovieRepository {
+  }
+}
+
+package com.attacomsian.jpa.repositories.specs {
+  class SearchCriteria {
+    -key : String
+    -value : Object
+    -operation : SearchOperation
+    +getKey() : String
+    +setKey() : void
+    +getValue() : Object
+    +setValue() : void
+    +getOperation() : SearchOperation
+    +setOperation() : void
+  }
+  enum SearchOperation {
+  }
+  class MovieSpecification {
+    -list : List<SearchCriteria>
+    +add() : void
+    +toPredicate() : Predicate
+  }
+}
+
+package com.attacomsian.parsecsv {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacomsian.parsecsv.controllers {
+  class UploadController <<Controller>> {
+    +index() : String
+    +uploadCSVFile() : String
+  }
+}
+
+package com.attacomsian.parsecsv.domains {
+  class User {
+    -id : long
+    -name : String
+    -email : String
+    -countryCode : String
+    -age : int
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getCountryCode() : String
+    +setCountryCode() : void
+  }
+}
+
+package com.attacomsian.rest {
+  class Application {
+    -restService : RestService
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.attacomsian.rest.models {
+  class Post {
+    -userId : int
+    -id : int
+    -title : String
+    -body : String
+    +getUserId() : int
+    +setUserId() : void
+    +getId() : int
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getBody() : String
+    +setBody() : void
+  }
+}
+
+package com.attacomsian.rest.services {
+  class RestService <<Service>> {
+    -restTemplate : RestTemplate
+    +getPostsPlainJSON() : String
+    +getPostsAsObject() : Post[]
+    +getPostWithUrlParameters() : Post
+    +getPostWithResponseHandling() : Post
+    +getPostWithCustomHeaders() : Post
+    +createPost() : Post
+    +createPostWithObject() : Post
+    +updatePost() : void
+  }
+}
+
+package com.attacomsian.scheduling {
+  class Application {
+    +main() : void
+  }
+  class SchedulerConfig {
+    -POOL_SIZE : int
+    +configureTasks() : void
+  }
+  class ScheduledTasks {
+    -logger : Logger
+    -formatter : DateTimeFormatter
+    +scheduleTaskWithFixedRate() : void
+    +scheduleTaskWithFixedDelay() : void
+    +scheduleTaskWithFixedRateAndInitialDelay() : void
+    +scheduleTaskWithCronExpression() : void
+    +scheduleTaskWithCronExpression2() : void
+    +scheduleDynamicTaskWithFixedRate() : void
+    +scheduleDynamicTaskWithFixedDelay() : void
+    +scheduleDynamicTaskWithCronExpression() : void
+  }
+}
+
+package com.attacomsian.stripe {
+  class StripeApplication {
+    +main() : void
+  }
+}
+
+package com.attacomsian.stripe.commons {
+  class Response {
+    -status : boolean
+    -details : String
+    +isStatus() : boolean
+    +setStatus() : void
+    +getDetails() : String
+    +setDetails() : void
+  }
+}
+
+package com.attacomsian.stripe.controllers {
+  class PaymentController <<Controller>> {
+    -API_PUBLIC_KEY : String
+    -stripeService : StripeService
+    +homepage() : String
+    +subscriptionPage() : String
+    +chargePage() : String
+  }
+}
+
+package com.attacomsian.stripe.services {
+  class StripeService <<Service>> {
+    -API_SECRET_KEY : String
+    +createCustomer() : String
+    +createSubscription() : String
+    +cancelSubscription() : boolean
+    +retrieveCoupon() : Coupon
+    +createCharge() : String
+  }
+}
+
+package com.attacomsian.thymeleaf.layouts {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacomsian.thymeleaf.layouts.controllers {
+  class IndexController <<Controller>> {
+    +homePage() : String
+    +contactPage() : String
+    +aboutPage() : String
+  }
+}
+
+package com.attacomsian.uploadfiles {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.attacomsian.uploadfiles.commons {
+  class FileResponse {
+    -name : String
+    -uri : String
+    -type : String
+    -size : long
+    +getName() : String
+    +setName() : void
+    +getUri() : String
+    +setUri() : void
+    +getType() : String
+    +setType() : void
+    +getSize() : long
+    +setSize() : void
+  }
+}
+
+package com.attacomsian.uploadfiles.controllers {
+  class FileController <<Controller>> {
+    -storageService : StorageService
+    +listAllFiles() : String
+    +downloadFile() : ResponseEntity<Resource>
+    +uploadFile() : FileResponse
+    +uploadMultipleFiles() : List<FileResponse>
+  }
+}
+
+package com.attacomsian.uploadfiles.storage {
+  class FileSystemStorageService <<Service>> {
+    -rootLocation : Path
+    +init() : void
+    +store() : String
+    +loadAll() : Stream<Path>
+    +load() : Path
+    +loadAsResource() : Resource
+    +deleteAll() : void
+  }
+  class StorageProperties {
+    -location : String
+    +getLocation() : String
+    +setLocation() : void
+  }
+  class StorageException {
+  }
+  class FileNotFoundException {
+  }
+  interface StorageService {
+  }
+}
+
+package com.attacomsian.xml {
+  class XmlParserApplication {
+    -xmlService : XMLService
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.attacomsian.xml.models {
+  class Course {
+    -id : int
+    -title : String
+    -price : double
+    -created : Date
+    -students : List<Student>
+    +getId() : int
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getPrice() : double
+    +setPrice() : void
+    +getCreated() : Date
+    +setCreated() : void
+  }
+  class Student {
+    -id : int
+    -firstName : String
+    -lastName : String
+    -avatar : String
+    +getId() : int
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+    +getAvatar() : String
+    +setAvatar() : void
+  }
+}
+
+package com.attacomsian.xml.services {
+  class XMLService <<Service>> {
+    -logger : Logger
+    +parseCourse() : Course
+  }
+}
+
+' --- Relatii ---
+Application --> Book
+Application --> BookRepository
+BookRepository --> Book
+Application --> User
+Application --> UserRepository
+UserRepository --> User
+Application --> Account
+Application --> AccountId
+Application --> Employee
+Application --> EmployeeId
+Application --> AccountRepository
+Application --> EmployeeRepository
+PageRepository --> Book
+PageRepository --> Page
+BookRepository --> Book
+AddressRepository --> Address
+UserRepository --> User
+AccountRepository --> Account
+AccountRepository --> AccountId
+EmployeeRepository --> Employee
+EmployeeRepository --> EmployeeId
+StudentRepository --> Student
+CourseRepository --> Course
+Application --> Todo
+Application --> TodoRepository
+Todo --|> Auditable
+AuditConfiguration --> EntityAuditorAware
+TodoRepository --> Todo
+Application --> Person
+Application --> PersonRepository
+PersonRepository --> Person
+PersonRepository --> Page
+Application --> Employee
+Application --> EmployeeRepository
+EmployeeRepository --> Employee
+Application --> Note
+Application --> NoteRepository
+NoteRepository --> Note
+Application --> Note
+Application --> NoteRepository
+Application --> User
+Application --> UserRepository
+Application --> Book
+Application --> BookRepository
+Application --> Page
+UserRepository --> User
+UserRepository --> Page
+BookRepository --> Book
+NoteRepository --> Note
+NoteRepository --> Page
+Application --> Movie
+Application --> MovieRepository
+Application --> MovieSpecification
+Application --> SearchCriteria
+Application --> SearchOperation
+Application --> Page
+MovieRepository --> Movie
+MovieSpecification --> Movie
+ProjectController --> Project
+Application --> Post
+Application --> RestService
+RestService --> Post
+ConsoleApplication --> HelloService
+Application --> StorageProperties
+FileSystemStorageService ..|> StorageService
+FileNotFoundException --|> StorageException
+FileController --> FileResponse
+FileController --> StorageService
+PaymentController --> Response
+PaymentController --> StripeService
+StripeService --> Customer
+UserController --> User
+UserController --> UserService
+AppController --> AmazonEmail
+AppController --> SESFrom
+AppController --> SESProcessor
+SESWorker --> Address
+XmlParserApplication --> Course
+XmlParserApplication --> XMLService
+XMLService --> Course
+XMLService --> Student
+UploadController --> User
+
+@enduml

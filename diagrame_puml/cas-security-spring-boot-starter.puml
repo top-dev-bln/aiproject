@@ -1,0 +1,419 @@
+@startuml
+
+package com.kakawait.sample {
+  class CasSecuritySpringBootSampleApplicationWithCustomLogoutProfileIT {
+  }
+  class CasSecuritySpringBootSampleApplicationIT {
+    -applicationContext : ApplicationContext
+  }
+  class CasSecuritySpringBootSampleApplication {
+    -configured : boolean
+    -casLogoutSuccessHandler : LogoutSuccessHandler
+    -casLogoutSuccessHandler : LogoutSuccessHandler
+    -authenticationManagerBuilder : AuthenticationManagerBuilder
+    -casRestTemplate : RestTemplate
+    -proxyTicketProvider : ProxyTicketProvider
+    -assertionProvider : AssertionProvider
+    +main() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +addViewControllers() : void
+    +configure() : void
+  }
+}
+
+package com.kakawait.spring.boot.security.cas.autoconfigure {
+  class CasSecurityAutoConfigurationTest {
+    -CAS_SERVER_BASE_URL : String
+    -CAS_SERVICE_BASE_URL : String
+    -CAS_SERVICE_LOGIN_URL : String
+    -context : ConfigurableApplicationContext
+    +tearDown() : void
+    +autoConfiguration_MissingCasServerBaseUrl_SkipAutoConfiguration() : void
+    +autoConfiguration_DisableProperty_SkipAutoConfiguration() : void
+    +autoConfigure_WithoutServiceBaseUrl_Exception() : void
+    +autoConfigure_DynamicModeWithoutServiceBaseUrl_NoException() : void
+    +autoConfigure_StaticMode_DefaultBeans() : void
+    +autoConfigure_DynamicMode_SpecificBeans() : void
+    +autoConfigure_EmptyConfiguration_ProxyGrantingTicketStorageImplBean() : void
+  }
+  class CasSingleSignOutFilterConfigurerTest {
+    +configure_WithAnyParameters_InjectInsideSingleSignOutHandler() : void
+  }
+  class CasAuthenticationProviderSecurityBuilderTest {
+    -builder : CasAuthenticationProviderSecurityBuilder
+    +setUp() : void
+    +build_Default_ResolutionModeStatic() : void
+    +build_WithDynamicResolutionMode_InstanceOfDynamicProxyCallbackUrlCasAuthenticationProvider() : void
+    +build_AnyParameters_InjectInsideCasAuthenticationProvider() : void
+  }
+  class CasTicketValidatorBuilderTest {
+    -CAS_SERVER_URL_PREFIX : String
+    -V1_WARN_MESSAGE_TEMPLATE : String
+    -SERVICE_VALIDATOR_WARN_MESSAGE_TEMPLATE : String
+    -builder : CasTicketValidatorBuilder
+    +setUp() : void
+    +build_DefaultTicketValidator_Cas30ProxyTicketValidator() : void
+    +build_UnsupportedProtocolVersion_FallbackToProtocolVersion3() : void
+    +build_WithProtocolVersion1_Cas10TicketValidator() : void
+    +build_WithProtocolVersion2_Cas20ProxyTicketValidator() : void
+    +build_WithoutProxyTicketValidator_CasX0ServiceTicketValidator() : void
+    +build_WithProxyTicketValidator_IgnoredWithProtocolVersion1() : void
+    +build_UsingProtocolVersion3AndAnyParameters_InjectInsideTicketValidator() : void
+  }
+  class CasAuthenticationFilterConfigurerTest {
+    +configure_WithAnyParameters_InjectInsideCasAuthenticationFilter() : void
+  }
+  class CasAssertionUserDetailsServiceConfiguration {
+  }
+  class CasAuthenticationFilterConfigurer {
+    -requiresAuthenticationRequestMatcher : RequestMatcher
+    -authenticationFailureHandler : AuthenticationFailureHandler
+    -proxyAuthenticationFailureHandler : AuthenticationFailureHandler
+    -authenticationSuccessHandler : AuthenticationSuccessHandler
+    -proxyGrantingTicketStorage : ProxyGrantingTicketStorage
+    -serviceAuthenticationDetailsSource : ServiceAuthenticationDetailsSource
+    -proxyReceptorUrl : String
+  }
+  class CasSecurityConfigurerAdapter {
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+  }
+  class CasSecurityCondition {
+  }
+  class CasAuthenticationProviderSecurityBuilder {
+    -authenticationUserDetailsService : AuthenticationUserDetailsService<CasAssertionAuthenticationToken>
+    -grantedAuthoritiesMapper : GrantedAuthoritiesMapper
+    -messageSource : MessageSource
+    -statelessTicketCache : StatelessTicketCache
+    -ticketValidator : TicketValidator
+    -key : String
+    +build() : CasAuthenticationProvider
+  }
+  class CasTicketValidatorBuilder {
+    -casServerUrlPrefix : String
+    -protocolVersion : int
+    -proxyTicketValidator : Boolean
+    -OMISSION_MESSAGE_TEMPLATE : String
+    -OMISSION_MESSAGE_TEMPLATE : String
+    +getCasServerUrlPrefix() : String
+    +build() : TicketValidator
+    +configure() : void
+    +build() : TicketValidator
+    +build() : TicketValidator
+    +configure() : void
+    +build() : TicketValidator
+    +build() : TicketValidator
+  }
+  class CasSecurityProperties {
+    -CAS_AUTH_ORDER : int
+    -enabled : boolean
+    -authorization : Authorization
+    -user : User
+    -server : Server
+    -service : Service
+    -key : String
+    -paths : String[]
+    -authorizeMode : SecurityAuthorizeMode
+    -proxyValidation : ProxyValidation
+    +getAuthorizeMode() : SecurityAuthorizeMode
+  }
+  class CasSingleSignOutFilterConfigurer {
+    -sessionMappingStorage : SessionMappingStorage
+    -relayStateParameterName : String
+    -logoutParameterName : String
+    -artifactParameterName : String
+  }
+  class CasSecurityAutoConfiguration {
+    -casSecurityProperties : CasSecurityProperties
+    -serviceProperties : ServiceProperties
+    -serverLoginUrl : String
+    -casSecurityProperties : CasSecurityProperties
+    -userDetailsService : AbstractCasAssertionUserDetailsService
+    -authenticationDetailsSource : ServiceAuthenticationDetailsSource
+    -proxyGrantingTicketStorage : ProxyGrantingTicketStorage
+    -logoutSuccessHandler : LogoutSuccessHandler
+    -casSecurityProperties : CasSecurityProperties
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +configure() : void
+  }
+  interface CasSecurityConfigurer {
+  }
+  class CasTicketValidatorConfiguration {
+    -casSecurityProperties : CasSecurityProperties
+  }
+  class SpringBoot1CasHttpSecurityConfigurerAdapter {
+    -SPRING_BOOT_WEB_SECURITY_CONFIGURATION_CLASS : String
+    -securityProperties : SpringBoot1SecurityProperties
+    -SECURITY_PROPERTIES_HEADERS_CLASS : String
+    -securityProperties : Object
+    -basicProperties : Object
+    -userProperties : Object
+    +configure() : void
+    +getHeaders() : Object
+    +getBasic() : Basic
+    +getUser() : User
+    +isEnabled() : boolean
+    +getRoles() : List<String>
+  }
+  class CasHttpSecurityConfigurer {
+    -authenticationManager : AuthenticationManager
+    -securityConfigurerAdapter : CasHttpSecurityConfigurerAdapter
+    -isInitialized : boolean
+    -filterConfigurer : CasAuthenticationFilterConfigurer
+    -singleSignOutFilterConfigurer : CasSingleSignOutFilterConfigurer
+    -providerBuilder : CasAuthenticationProviderSecurityBuilder
+    -configurers : List<CasSecurityConfigurer>
+    -casSecurityProperties : CasSecurityProperties
+    -authenticationEntryPoint : CasAuthenticationEntryPoint
+    -serviceProperties : ServiceProperties
+    +init() : void
+    +configure() : void
+    +afterPropertiesSet() : void
+    +init() : void
+    +configure() : void
+  }
+}
+
+package com.kakawait.spring.security.cas {
+  class LaxServicePropertiesTest {
+    +afterPropertiesSet_WithDynamicServiceResolutionAndNullOrEmptyService_Ok() : void
+    +afterPropertiesSet_WithoutDynamicServiceResolutionValueAndNullOrEmptyService_IllegalArgumentException() : void
+    +afterPropertiesSet_WithNullService_NoException() : void
+    +afterPropertiesSet_WithNullOrEmptyArtifactParameter_IllegalArgumentException() : void
+    +afterPropertiesSet_WithNullOrEmptyServiceParameter_IllegalArgumentException() : void
+  }
+  class LaxServiceProperties {
+    -dynamicServiceResolution : boolean
+    +afterPropertiesSet() : void
+    +isDynamicServiceResolution() : boolean
+  }
+}
+
+package com.kakawait.spring.security.cas.authentication {
+  class DynamicProxyCallbackUrlCasAuthenticationProviderTest {
+    -authentication : Authentication
+    -serialVersionUID : long
+    -serialVersionUID : long
+    -serialVersionUID : long
+    +authenticate_WithNullDetails_DoNothing() : void
+    +authenticate_WithDetailsNotInstanceOfProxyCallbackAndServiceAuthenticationDetails_DoNothing() : void
+    +authenticate_WithNullTicketValidator_DoNothing() : void
+    +getServiceUrl() : String
+    +getProxyCallbackUrl() : String
+    +setContext() : void
+    +authenticate_WithTicketValidatorNotInstanceOfCas20ServiceTicketValidator_DoNothing() : void
+    +getServiceUrl() : String
+  }
+  class DynamicProxyCallbackUrlCasAuthenticationProvider {
+    +authenticate() : Authentication
+  }
+}
+
+package com.kakawait.spring.security.cas.client {
+  class CasAuthorizationInterceptorTest {
+    -proxyTicketProvider : ProxyTicketProvider
+    -casAuthorizationInterceptor : ClientHttpRequestInterceptor
+    -httpRequestArgumentCaptor : ArgumentCaptor<HttpRequest>
+    +setUp() : void
+    +intercept_NullProxyTicket_IllegalStateException() : void
+    +intercept_BasicService_ProxyTicketAsQueryParameter() : void
+    +intercept_ServiceWithExistingQueryParameters_ProxyTicketAsQueryParameter() : void
+    +intercept_ServiceWithExistingQueryParameters_ProxyTicketAsQueryEscapedParameter() : void
+    +intercept_ServiceWithConflictQueryParameter_QueryParameterOverride() : void
+  }
+  class CasAuthorizationInterceptor {
+    -serviceProperties : ServiceProperties
+    -proxyTicketProvider : ProxyTicketProvider
+    +intercept() : ClientHttpResponse
+    +getURI() : URI
+  }
+}
+
+package com.kakawait.spring.security.cas.client.ticket {
+  class AttributePrincipalProxyTicketProviderTest {
+    -assertionProvider : AssertionProvider
+    -proxyTicketProvider : ProxyTicketProvider
+    +setUp() : void
+    +getProxyTicket_NullAttributePrincipal_IllegalStateException() : void
+    +getProxyTicket_ValidService_ProxyTicketValue() : void
+  }
+  class AttributePrincipalProxyTicketProvider {
+    -EXCEPTION_MESSAGE : String
+    -assertionProvider : AssertionProvider
+    +getProxyTicket() : String
+  }
+  interface ProxyTicketProvider {
+  }
+}
+
+package com.kakawait.spring.security.cas.client.validation {
+  class SecurityContextHolderAssertionProviderTest {
+    +getAssertion_NullAuthentication_IllegalStateException() : void
+    +getAssertion_UnwantedAuthenticationType_IllegalStateException() : void
+    +getAssertion_ValidSecurityContextHolder_Assertion() : void
+  }
+  class SecurityContextHolderAssertionProvider {
+    +getAssertion() : Assertion
+  }
+  interface AssertionProvider {
+  }
+  interface ProxyCallbackUrlAwareTicketValidator {
+  }
+}
+
+package com.kakawait.spring.security.cas.userdetails {
+  class GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsServiceTest {
+    -assertion : Assertion
+    -principal : AttributePrincipal
+    +loadUserDetails_NullOrBlankPrincipalName_UsernameNotFoundException() : void
+    +loadUserDetails_WithoutAttributes_OnlyDefaultRoles() : void
+    +loadUserDetails_WithNonMatchingAttributes_OnlyDefaultRoles() : void
+    +loadUserDetails_WithMatchingAttributes_MergedRoles() : void
+  }
+  class GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService {
+    -NON_EXISTENT_PASSWORD_VALUE : String
+    -attributes : String[]
+    -toUppercase : boolean
+    +loadUserDetails() : UserDetails
+  }
+}
+
+package com.kakawait.spring.security.cas.web {
+  class RequestAwareCasAuthenticationEntryPointTest {
+    -CAS_SERVER_LOGIN_URL : String
+    +constructor_WithNullLoginPath_IllegalArgumentException() : void
+    +afterPropertiesSet_WithNullOrEmptyLoginUrl_IllegalArgumentException() : void
+    +afterPropertiesSet_WithNullLoginUrl_IllegalArgumentException() : void
+    +createServiceUrl_AbsoluteUrlAsLoginPath_NoTransformation() : void
+    +createServiceUrl_WithoutContextPath_AppendToBaseUrl() : void
+    +createServiceUrl_WithContextPath_AppendToBaseUrl() : void
+  }
+  class RequestAwareCasAuthenticationEntryPoint {
+    -loginPath : URI
+    +afterPropertiesSet() : void
+    +createServiceUrl() : String
+    +buildUrl() : Optional<String>
+  }
+}
+
+package com.kakawait.spring.security.cas.web.authentication {
+  class ProxyCallbackAndServiceAuthenticationDetailsSourceTest {
+    -serialVersionUID : long
+    +buildDetails_WithUri_DefaultProxyCallbackAndServiceAuthenticationDetails() : void
+    +buildDetails_WithCustomProxyCallbackAndServiceAuthenticationDetails_DelegateTo() : void
+    +getProxyCallbackUrl() : String
+    +setContext() : void
+    +getServiceUrl() : String
+  }
+  class CasLogoutSuccessHandlerTest {
+    -casLogout : URI
+    -request : MockHttpServletRequest
+    -response : MockHttpServletResponse
+    +setUp() : void
+    +onLogoutSuccess_WithService_ServiceAsQueryParameterValue() : void
+  }
+  class RequestAwareCasLogoutSuccessHandlerTest {
+    -casLogout : URI
+    -request : MockHttpServletRequest
+    -response : MockHttpServletResponse
+    +setUp() : void
+    +onLogoutSuccess_WithService_UseHttpServletRequestAsService() : void
+  }
+  class DefaultProxyCallbackAndServiceAuthenticationDetailsTest {
+    -serviceProperties : ServiceProperties
+    -request : MockHttpServletRequest
+    +setUp() : void
+    +getProxyCallbackUrl_NullProxyCallbackUri_Null() : void
+    +getProxyCallbackUrl_AbsoluteProxyCallbackUri_NoTransformation() : void
+    +getProxyCallbackUrl_ProxyCallbackUriAndWithoutContextPath_AppendToBaseUrl() : void
+    +getProxyCallbackUrl_ProxyCallbackUriAndWithContextPath_AppendToBaseUrl() : void
+    +getServiceUrl_WithoutArtifactParameterQueryString_HttpServletRequestUrl() : void
+    +getServiceUrl_WithArtifactParameterQueryString_CleanQueryString() : void
+  }
+  class ProxyCallbackAndServiceAuthenticationDetailsSource {
+    -serviceAuthenticationDetails : ProxyCallbackAndServiceAuthenticationDetails
+    +buildDetails() : ServiceAuthenticationDetails
+  }
+  class RequestAwareCasLogoutSuccessHandler {
+    +determineTargetUrl() : String
+  }
+  class DefaultProxyCallbackAndServiceAuthenticationDetails {
+    -serialVersionUID : long
+    -proxyCallbackUri : URI
+    +setContext() : void
+    +getProxyCallbackUrl() : String
+    +getServiceUrl() : String
+  }
+  class CasLogoutSuccessHandler {
+    -logger : Logger
+    -casLogout : URI
+    -serviceProperties : ServiceProperties
+    +onLogoutSuccess() : void
+    +determineTargetUrl() : String
+    +addLogoutServiceParameter() : void
+  }
+  interface ProxyCallbackAndServiceAuthenticationDetails {
+  }
+}
+
+' --- Relatii ---
+CasSecuritySpringBootSampleApplicationWithCustomLogoutProfileIT --|> CasSecuritySpringBootSampleApplicationIT
+CasSecuritySpringBootSampleApplicationIT --> CasAuthorizationInterceptor
+CasSecuritySpringBootSampleApplication --> CasHttpSecurityConfigurer
+CasSecuritySpringBootSampleApplication --> CasSecurityCondition
+CasSecuritySpringBootSampleApplication --> CasSecurityConfigurerAdapter
+CasSecuritySpringBootSampleApplication --> CasSecurityProperties
+CasSecuritySpringBootSampleApplication --> CasAuthorizationInterceptor
+CasSecuritySpringBootSampleApplication --> ProxyTicketProvider
+CasSecuritySpringBootSampleApplication --> AssertionProvider
+RequestAwareCasAuthenticationEntryPointTest --> LaxServiceProperties
+ProxyCallbackAndServiceAuthenticationDetailsSourceTest --> LaxServiceProperties
+CasLogoutSuccessHandlerTest --> LaxServiceProperties
+RequestAwareCasLogoutSuccessHandlerTest --> LaxServiceProperties
+DefaultProxyCallbackAndServiceAuthenticationDetailsTest --> LaxServiceProperties
+DynamicProxyCallbackUrlCasAuthenticationProviderTest --> ProxyCallbackAndServiceAuthenticationDetails
+CasAuthorizationInterceptorTest --> ProxyTicketProvider
+AttributePrincipalProxyTicketProviderTest --> AssertionProvider
+RequestAwareCasLogoutSuccessHandler --|> CasLogoutSuccessHandler
+DefaultProxyCallbackAndServiceAuthenticationDetails ..|> ProxyCallbackAndServiceAuthenticationDetails
+DynamicProxyCallbackUrlCasAuthenticationProvider --> ProxyCallbackUrlAwareTicketValidator
+DynamicProxyCallbackUrlCasAuthenticationProvider --> ProxyCallbackAndServiceAuthenticationDetails
+CasAuthorizationInterceptor --> ProxyTicketProvider
+AttributePrincipalProxyTicketProvider ..|> ProxyTicketProvider
+AttributePrincipalProxyTicketProvider --> AssertionProvider
+SecurityContextHolderAssertionProvider ..|> AssertionProvider
+CasSecurityAutoConfigurationTest --> LaxServiceProperties
+CasSecurityAutoConfigurationTest --> AttributePrincipalProxyTicketProvider
+CasSecurityAutoConfigurationTest --> ProxyTicketProvider
+CasSecurityAutoConfigurationTest --> AssertionProvider
+CasSecurityAutoConfigurationTest --> SecurityContextHolderAssertionProvider
+CasSecurityAutoConfigurationTest --> CasLogoutSuccessHandler
+CasSecurityAutoConfigurationTest --> ProxyCallbackAndServiceAuthenticationDetailsSource
+CasSecurityAutoConfigurationTest --> RequestAwareCasLogoutSuccessHandler
+CasAuthenticationProviderSecurityBuilderTest --> DynamicProxyCallbackUrlCasAuthenticationProvider
+CasAssertionUserDetailsServiceConfiguration --> GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService
+CasSecurityConfigurerAdapter ..|> CasSecurityConfigurer
+CasAuthenticationProviderSecurityBuilder --> DynamicProxyCallbackUrlCasAuthenticationProvider
+CasSecurityAutoConfiguration --> LaxServiceProperties
+CasSecurityAutoConfiguration --> AttributePrincipalProxyTicketProvider
+CasSecurityAutoConfiguration --> ProxyTicketProvider
+CasSecurityAutoConfiguration --> AssertionProvider
+CasSecurityAutoConfiguration --> SecurityContextHolderAssertionProvider
+CasSecurityAutoConfiguration --> RequestAwareCasAuthenticationEntryPoint
+CasSecurityAutoConfiguration --> CasLogoutSuccessHandler
+CasSecurityAutoConfiguration --> ProxyCallbackAndServiceAuthenticationDetailsSource
+CasSecurityAutoConfiguration --> RequestAwareCasLogoutSuccessHandler
+SpringBoot1CasHttpSecurityConfigurerAdapter --|> CasSecurityConfigurerAdapter
+
+@enduml

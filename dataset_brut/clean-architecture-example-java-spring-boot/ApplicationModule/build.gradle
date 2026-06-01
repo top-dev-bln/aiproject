@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+version 'unspecified'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter:2.1.0.RELEASE')
+    compile project(':Ports')
+    compile project(':Entities')
+    compile project(':UseCases')
+    compile project(':Presenters')
+    compile project(':DBAdapterJpa')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

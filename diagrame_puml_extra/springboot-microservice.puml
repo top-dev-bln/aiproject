@@ -1,0 +1,1214 @@
+@startuml
+package com.nasr.apigateway; {
+class ApiGatewayApplication {
+}
+
+}
+
+package com.nasr.apigateway.config; {
+class Oauth2LoginConfig {
+}
+
+}
+
+package com.nasr.apigateway.constant; {
+class ConstantField {
+}
+
+}
+
+package com.nasr.apigateway.controller; {
+class GatewayLoginController {
+}
+
+}
+
+package com.nasr.apigateway.dto.response; {
+class TokenInfoResponseDto {
+}
+
+class UserInfoResponseDto {
+}
+
+}
+
+package com.nasr.apigateway.external.response; {
+class UserResponseDto {
+}
+
+}
+
+package com.nasr.apigateway.external.service; {
+class ExternalUserService {
+}
+
+}
+
+package com.nasr.apigateway.external.service.impl; {
+class ExternalUserServiceImpl {
+}
+
+}
+
+package com.nasr.apigateway.fallback; {
+class OrderFallbackController {
+}
+
+class PaymentFallbackController {
+}
+
+class ProductFallbackController {
+}
+
+}
+
+package com.nasr.apigateway.util; {
+class Oauth2TokenUtil {
+}
+
+}
+
+package com.nasr.authorizationserver; {
+class AuthorizationServerApplication {
+}
+
+class AuthorizationServerApplicationTests {
+}
+
+}
+
+package com.nasr.authorizationserver.config; {
+class AccessTokenDecoderConfig {
+}
+
+class AuthorizationServerConfig {
+}
+
+class CustomAuthenticationProvider {
+}
+
+class CustomUserDetail {
+}
+
+class CustomUserDetailService {
+}
+
+class KeyPairConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package com.nasr.authorizationserver.constant; {
+class ConstantField {
+}
+
+}
+
+package com.nasr.authorizationserver.controller; {
+class UserController {
+}
+
+}
+
+package com.nasr.authorizationserver.domain; {
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.nasr.authorizationserver.dto.response; {
+class RoleResponseDto {
+}
+
+class UserResponseDto {
+}
+
+class UserRoleResponseDto {
+}
+
+}
+
+package com.nasr.authorizationserver.filter; {
+class AccessTokenAuthenticationFilter {
+}
+
+}
+
+package com.nasr.authorizationserver.init; {
+class DataInitializer {
+}
+
+}
+
+package com.nasr.authorizationserver.repository; {
+class RoleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.nasr.authorizationserver.service.impl; {
+class RoleServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.nasr.authorizationserver.service; {
+class RoleService {
+}
+
+class UserService {
+}
+
+}
+
+package com.nasr.configserver; {
+class ConfigServerApplication {
+}
+
+class ConfigServerApplicationTests {
+}
+
+}
+
+package com.nasr.orderhandlerservice; {
+class AutowiringSpringBeanJobFactory {
+}
+
+class OrderHandlerServiceApplication {
+}
+
+class OrderHandlerServiceApplicationTests {
+}
+
+}
+
+package com.nasr.orderhandlerservice.config; {
+class OpenApiConfig {
+}
+
+class ResourceServerConfig {
+}
+
+class SchedulerConfig {
+}
+
+class WebclientConfig {
+}
+
+}
+
+package com.nasr.orderhandlerservice.constant; {
+class ConstantField {
+}
+
+}
+
+package com.nasr.orderhandlerservice.controller; {
+class OrderPlacedHandlerController {
+}
+
+}
+
+package com.nasr.orderhandlerservice.intercept; {
+class WebclientInterceptor {
+}
+
+}
+
+package com.nasr.orderhandlerservice.job; {
+class OrderPlacedHandlerJob {
+}
+
+}
+
+package com.nasr.orderhandlerservice.model.enumeration; {
+class PaymentMode {
+}
+
+class PaymentStatus {
+}
+
+}
+
+package com.nasr.orderhandlerservice.model.request; {
+class JobDescriptorRequest {
+}
+
+class RevertProductRequest {
+}
+
+class TriggerDescriptorRequest {
+}
+
+}
+
+package com.nasr.orderhandlerservice.model.response; {
+class OrderDetailResponse {
+}
+
+class OrderResponse {
+}
+
+}
+
+package com.nasr.orderhandlerservice.service; {
+class OrderPlacedHandlerService {
+}
+
+}
+
+package com.nasr.orderservice.base.domain; {
+class BaseEntity {
+}
+
+}
+
+package com.nasr.orderservice.base.mapper; {
+class BaseMapper {
+}
+
+}
+
+package com.nasr.orderservice.base.service; {
+class BaseService {
+}
+
+}
+
+package com.nasr.orderservice.base.service.impl; {
+class BaseServiceImpl {
+}
+
+}
+
+package com.nasr.orderservice.config; {
+class CircuitBreakerConfig {
+}
+
+class OpenApiConfig {
+}
+
+class ResourceServerConfig {
+}
+
+class SchemaConfig {
+}
+
+class WebclientConfig {
+}
+
+class ProjectConfig {
+}
+
+class WebclientConfig {
+}
+
+class WireMockConfig {
+}
+
+}
+
+package com.nasr.orderservice.constant; {
+class ConstantField {
+}
+
+}
+
+package com.nasr.orderservice.controller; {
+class OrderController {
+}
+
+class OrderControllerTest {
+}
+
+}
+
+package com.nasr.orderservice.domain.enumeration; {
+class OrderStatus {
+}
+
+class PaymentMode {
+}
+
+class PaymentStatus {
+}
+
+}
+
+package com.nasr.orderservice.domain; {
+class Order {
+}
+
+class OrderDetail {
+}
+
+}
+
+package com.nasr.orderservice.dto.request; {
+class OrderDetailRequest {
+}
+
+class OrderPlaceRequest {
+}
+
+class OrderRequest {
+}
+
+}
+
+package com.nasr.orderservice.dto.response; {
+class OrderDetailResponse {
+}
+
+class OrderResponse {
+}
+
+}
+
+package com.nasr.orderservice.exception; {
+class EntityNotFoundException {
+}
+
+class EntityNotValidException {
+}
+
+class ErrorResponse {
+}
+
+class ExternalServiceException {
+}
+
+class OrderDetailNotFoundException {
+}
+
+class OrderNotFoundException {
+}
+
+class OrderNotValidException {
+}
+
+class RestResponseEntityExceptionHandler {
+}
+
+}
+
+package com.nasr.orderservice.external.request; {
+class DecreaseProductQuantityRequest {
+}
+
+class JobDescriptorRequest {
+}
+
+class TriggerDescriptorRequest {
+}
+
+}
+
+package com.nasr.orderservice.external.response; {
+class PaymentResponse {
+}
+
+class ProductResponse {
+}
+
+}
+
+package com.nasr.orderservice.intercept; {
+class WebclientInterceptor {
+}
+
+}
+
+package com.nasr.orderservice.mapper; {
+class OrderDetailMapper {
+}
+
+class OrderMapper {
+}
+
+}
+
+package com.nasr.orderservice; {
+class OrderServiceApplication {
+}
+
+class OrderServiceApplicationTests {
+}
+
+class TestServiceInstanceSupplier {
+}
+
+}
+
+package com.nasr.orderservice.repository; {
+class OrderDetailRepository {
+}
+
+class OrderRepository {
+}
+
+class OrderDetailRepositoryTest {
+}
+
+}
+
+package com.nasr.orderservice.service.impl; {
+class OrderDetailServiceImpl {
+}
+
+class OrderServiceImpl {
+}
+
+class OrderDetailServiceImplTest {
+}
+
+class OrderServiceImplTest {
+}
+
+}
+
+package com.nasr.orderservice.service; {
+class OrderDetailService {
+}
+
+class OrderService {
+}
+
+}
+
+package com.nasr.orderservice.util; {
+class Oauth2TokenUtil {
+}
+
+}
+
+package com.nasr.paymentservice.base.domain; {
+class BaseEntity {
+}
+
+}
+
+package com.nasr.paymentservice.base.mapper; {
+class BaseMapper {
+}
+
+}
+
+package com.nasr.paymentservice.base.service; {
+class BaseService {
+}
+
+}
+
+package com.nasr.paymentservice.base.service.impl; {
+class BaseServiceImpl {
+}
+
+}
+
+package com.nasr.paymentservice.config; {
+class OpenApiConfig {
+}
+
+class ResourceServerConfig {
+}
+
+class SchemaConfig {
+}
+
+class WebclientConfig {
+}
+
+class ProjectConfig {
+}
+
+class WireMockConfig {
+}
+
+}
+
+package com.nasr.paymentservice.constant; {
+class ConstantField {
+}
+
+}
+
+package com.nasr.paymentservice.controller; {
+class PaymentController {
+}
+
+class PaymentControllerTest {
+}
+
+}
+
+package com.nasr.paymentservice.domain.enumeration; {
+class PaymentMode {
+}
+
+class PaymentStatus {
+}
+
+}
+
+package com.nasr.paymentservice.domain; {
+class Transaction {
+}
+
+}
+
+package com.nasr.paymentservice.dto.request; {
+class AccountInfo {
+}
+
+class PaymentRequest {
+}
+
+}
+
+package com.nasr.paymentservice.dto.response; {
+class PaymentResponse {
+}
+
+}
+
+package com.nasr.paymentservice.exception; {
+class EntityNotFoundException {
+}
+
+class ErrorResponse {
+}
+
+class ExternalServiceException {
+}
+
+class InvalidPaymentException {
+}
+
+class PaymentNotFoundException {
+}
+
+class RestResponseEntityExceptionHandler {
+}
+
+}
+
+package com.nasr.paymentservice.external.response; {
+class OrderResponse {
+}
+
+}
+
+package com.nasr.paymentservice.intercept; {
+class WebclientInterceptor {
+}
+
+}
+
+package com.nasr.paymentservice.mapper; {
+class PaymentMapper {
+}
+
+}
+
+package com.nasr.paymentservice; {
+class PaymentServiceApplication {
+}
+
+class PaymentServiceApplicationTests {
+}
+
+class TestServiceInstanceListSupplier {
+}
+
+}
+
+package com.nasr.paymentservice.repository; {
+class TransactionRepository {
+}
+
+class TransactionRepositoryTest {
+}
+
+}
+
+package com.nasr.paymentservice.service.impl; {
+class StripePaymentServiceImpl {
+}
+
+class TransactionServiceImpl {
+}
+
+class TransactionServiceImplTest {
+}
+
+}
+
+package com.nasr.paymentservice.service; {
+class PaymentService {
+}
+
+class TransactionService {
+}
+
+}
+
+package com.nasr.paymentservice.util; {
+class Oauth2TokenUtil {
+}
+
+}
+
+package com.nasr.productservice.base.domain; {
+class BaseEntity {
+}
+
+}
+
+package com.nasr.productservice.base.mapper; {
+class BaseMapper {
+}
+
+}
+
+package com.nasr.productservice.base.service; {
+class BaseService {
+}
+
+}
+
+package com.nasr.productservice.base.service.impl; {
+class BaseServiceImpl {
+}
+
+}
+
+package com.nasr.productservice.config; {
+class OpenApiConfig {
+}
+
+class ResourceServerConfig {
+}
+
+class SchemaConfig {
+}
+
+}
+
+package com.nasr.productservice.constant; {
+class ConstantField {
+}
+
+}
+
+package com.nasr.productservice.controller; {
+class ProductController {
+}
+
+class ProductControllerTest {
+}
+
+}
+
+package com.nasr.productservice.domain; {
+class Product {
+}
+
+class ProductCategory {
+}
+
+}
+
+package com.nasr.productservice.dto.request; {
+class DecreaseProductQuantityRequest {
+}
+
+class ProductRequest {
+}
+
+class RevertProductRequest {
+}
+
+}
+
+package com.nasr.productservice.dto.response; {
+class ProductCategoryResponse {
+}
+
+class ProductResponse {
+}
+
+}
+
+package com.nasr.productservice.exception; {
+class EntityNotFoundException {
+}
+
+class EntityNotValidException {
+}
+
+class ProductNotFoundException {
+}
+
+class ProductNotValidException {
+}
+
+class RestResponseEntityExceptionHandler {
+}
+
+}
+
+package com.nasr.productservice.mapper; {
+class ProductMapper {
+}
+
+}
+
+package com.nasr.productservice; {
+class ProductServiceApplication {
+}
+
+class ProductServiceApplicationTest {
+}
+
+}
+
+package com.nasr.productservice.repository; {
+class ProductRepository {
+}
+
+class ProductRepositoryTest {
+}
+
+}
+
+package com.nasr.productservice.service.impl; {
+class ProductServiceImpl {
+}
+
+}
+
+package com.nasr.productservice.service; {
+class ProductService {
+}
+
+class ProductServiceImplTest {
+}
+
+}
+
+package com.nasr.serviceregistry; {
+class ServiceRegistryApplication {
+}
+
+class ServiceRegistryApplicationTests {
+}
+
+}
+
+GatewayLoginController -- TokenInfoResponseDto
+GatewayLoginController -- UserInfoResponseDto
+GatewayLoginController -- ExternalUserService
+GatewayLoginController -- Oauth2TokenUtil
+GatewayLoginController -- User
+GatewayLoginController -- UserService
+TokenInfoResponseDto -- UserInfoResponseDto
+TokenInfoResponseDto -- UserResponseDto
+TokenInfoResponseDto -- User
+UserInfoResponseDto -- User
+UserResponseDto -- User
+ExternalUserService -- UserInfoResponseDto
+ExternalUserService -- User
+ExternalUserService -- UserService
+ExternalUserServiceImpl -- UserInfoResponseDto
+ExternalUserServiceImpl -- UserResponseDto
+ExternalUserServiceImpl -- ExternalUserService
+ExternalUserServiceImpl -- User
+ExternalUserServiceImpl -- UserServiceImpl
+ExternalUserServiceImpl -- UserService
+OrderFallbackController -- Order
+ProductFallbackController -- Product
+AccessTokenDecoderConfig -- KeyPairConfig
+AuthorizationServerConfig -- Order
+CustomAuthenticationProvider -- User
+CustomUserDetail -- Role
+CustomUserDetail -- User
+CustomUserDetailService -- CustomUserDetail
+CustomUserDetailService -- Role
+CustomUserDetailService -- User
+CustomUserDetailService -- UserService
+KeyPairConfig -- Order
+SecurityConfig -- User
+SecurityConfig -- AccessTokenAuthenticationFilter
+UserController -- UserResponseDto
+UserController -- User
+UserController -- UserService
+User -- Role
+RoleResponseDto -- Role
+UserRoleResponseDto -- Role
+UserRoleResponseDto -- User
+UserRoleResponseDto -- RoleResponseDto
+AccessTokenAuthenticationFilter -- ConstantField
+DataInitializer -- Role
+DataInitializer -- User
+DataInitializer -- RoleService
+DataInitializer -- UserService
+RoleRepository -- Role
+UserRepository -- UserResponseDto
+UserRepository -- Role
+UserRepository -- User
+RoleServiceImpl -- Role
+RoleServiceImpl -- RoleResponseDto
+RoleServiceImpl -- RoleRepository
+RoleServiceImpl -- RoleService
+RoleServiceImpl -- Transaction
+UserServiceImpl -- UserResponseDto
+UserServiceImpl -- Role
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+UserServiceImpl -- Transaction
+RoleService -- Role
+RoleService -- RoleResponseDto
+UserService -- UserResponseDto
+UserService -- Role
+UserService -- User
+AuthorizationServerApplicationTests -- AuthorizationServerApplication
+ConfigServerApplicationTests -- ConfigServerApplication
+ResourceServerConfig -- ConstantField
+SchedulerConfig -- AutowiringSpringBeanJobFactory
+WebclientConfig -- WebclientInterceptor
+OrderPlacedHandlerController -- JobDescriptorRequest
+OrderPlacedHandlerController -- OrderPlacedHandlerService
+OrderPlacedHandlerController -- Order
+WebclientInterceptor -- ConstantField
+OrderPlacedHandlerJob -- RevertProductRequest
+OrderPlacedHandlerJob -- OrderResponse
+OrderPlacedHandlerJob -- OrderStatus
+OrderPlacedHandlerJob -- Order
+OrderPlacedHandlerJob -- Product
+OrderPlacedHandlerJob -- ProductRequest
+JobDescriptorRequest -- TriggerDescriptorRequest
+RevertProductRequest -- DecreaseProductQuantityRequest
+RevertProductRequest -- Product
+RevertProductRequest -- ProductRequest
+OrderDetailResponse -- Order
+OrderDetailResponse -- OrderDetail
+OrderResponse -- Order
+OrderHandlerServiceApplication -- Order
+OrderPlacedHandlerService -- JobDescriptorRequest
+OrderPlacedHandlerService -- Order
+OrderHandlerServiceApplicationTests -- OrderHandlerServiceApplication
+OrderHandlerServiceApplicationTests -- Order
+BaseService -- BaseEntity
+BaseServiceImpl -- BaseEntity
+BaseServiceImpl -- BaseMapper
+BaseServiceImpl -- BaseService
+BaseServiceImpl -- EntityNotFoundException
+BaseServiceImpl -- Product
+OrderController -- Oauth2TokenUtil
+OrderController -- Role
+OrderController -- OrderResponse
+OrderController -- OrderStatus
+OrderController -- Order
+OrderController -- OrderRequest
+OrderController -- ExternalServiceException
+OrderController -- ProductResponse
+OrderController -- OrderService
+OrderController -- Product
+OrderStatus -- Order
+Order -- BaseEntity
+OrderDetail -- BaseEntity
+OrderDetail -- Order
+OrderDetailRequest -- Order
+OrderDetailRequest -- OrderDetail
+OrderPlaceRequest -- Order
+OrderRequest -- PaymentMode
+OrderRequest -- Order
+OrderRequest -- OrderPlaceRequest
+OrderDetailNotFoundException -- Order
+OrderDetailNotFoundException -- OrderDetail
+OrderDetailNotFoundException -- EntityNotFoundException
+OrderNotFoundException -- Order
+OrderNotFoundException -- EntityNotFoundException
+OrderNotValidException -- Order
+OrderNotValidException -- EntityNotValidException
+RestResponseEntityExceptionHandler -- EntityNotFoundException
+RestResponseEntityExceptionHandler -- EntityNotValidException
+RestResponseEntityExceptionHandler -- ErrorResponse
+DecreaseProductQuantityRequest -- Product
+PaymentResponse -- PaymentMode
+PaymentResponse -- PaymentStatus
+ProductResponse -- Product
+ProductResponse -- ProductCategory
+ProductResponse -- ProductCategoryResponse
+OrderDetailMapper -- OrderDetailResponse
+OrderDetailMapper -- BaseMapper
+OrderDetailMapper -- Order
+OrderDetailMapper -- OrderDetail
+OrderDetailMapper -- OrderDetailRequest
+OrderMapper -- OrderResponse
+OrderMapper -- BaseMapper
+OrderMapper -- Order
+OrderMapper -- OrderRequest
+OrderServiceApplication -- Order
+OrderServiceApplication -- OrderService
+OrderDetailRepository -- Order
+OrderDetailRepository -- OrderDetail
+OrderRepository -- Order
+OrderDetailServiceImpl -- OrderDetailResponse
+OrderDetailServiceImpl -- BaseMapper
+OrderDetailServiceImpl -- BaseService
+OrderDetailServiceImpl -- BaseServiceImpl
+OrderDetailServiceImpl -- Order
+OrderDetailServiceImpl -- OrderDetail
+OrderDetailServiceImpl -- OrderDetailRequest
+OrderDetailServiceImpl -- OrderDetailNotFoundException
+OrderDetailServiceImpl -- OrderNotFoundException
+OrderDetailServiceImpl -- OrderDetailRepository
+OrderDetailServiceImpl -- OrderDetailService
+OrderDetailServiceImpl -- Transaction
+OrderServiceImpl -- ConstantField
+OrderServiceImpl -- JobDescriptorRequest
+OrderServiceImpl -- TriggerDescriptorRequest
+OrderServiceImpl -- OrderDetailResponse
+OrderServiceImpl -- OrderResponse
+OrderServiceImpl -- BaseMapper
+OrderServiceImpl -- BaseService
+OrderServiceImpl -- BaseServiceImpl
+OrderServiceImpl -- OrderStatus
+OrderServiceImpl -- Order
+OrderServiceImpl -- OrderDetail
+OrderServiceImpl -- OrderDetailRequest
+OrderServiceImpl -- OrderPlaceRequest
+OrderServiceImpl -- OrderRequest
+OrderServiceImpl -- ErrorResponse
+OrderServiceImpl -- ExternalServiceException
+OrderServiceImpl -- OrderNotFoundException
+OrderServiceImpl -- DecreaseProductQuantityRequest
+OrderServiceImpl -- ProductResponse
+OrderServiceImpl -- OrderRepository
+OrderServiceImpl -- OrderDetailService
+OrderServiceImpl -- OrderService
+OrderServiceImpl -- Transaction
+OrderServiceImpl -- Product
+OrderServiceImpl -- ProductService
+OrderDetailService -- OrderDetailResponse
+OrderDetailService -- BaseService
+OrderDetailService -- Order
+OrderDetailService -- OrderDetail
+OrderDetailService -- OrderDetailRequest
+OrderService -- OrderResponse
+OrderService -- BaseService
+OrderService -- Order
+OrderService -- OrderRequest
+OrderService -- ProductResponse
+OrderService -- Product
+ProjectConfig -- WireMockConfig
+ProjectConfig -- TestServiceInstanceListSupplier
+OrderControllerTest -- OrderResponse
+OrderControllerTest -- OrderController
+OrderControllerTest -- OrderStatus
+OrderControllerTest -- Order
+OrderControllerTest -- OrderPlaceRequest
+OrderControllerTest -- OrderRequest
+OrderControllerTest -- ProductResponse
+OrderControllerTest -- ProjectConfig
+OrderControllerTest -- WireMockConfig
+OrderControllerTest -- Product
+OrderControllerTest -- ProductRequest
+OrderServiceApplicationTests -- Order
+OrderServiceApplicationTests -- OrderServiceApplication
+OrderServiceApplicationTests -- OrderService
+OrderDetailRepositoryTest -- Order
+OrderDetailRepositoryTest -- OrderDetail
+OrderDetailRepositoryTest -- OrderDetailRepository
+OrderDetailServiceImplTest -- OrderDetailResponse
+OrderDetailServiceImplTest -- Order
+OrderDetailServiceImplTest -- OrderDetail
+OrderDetailServiceImplTest -- OrderNotFoundException
+OrderDetailServiceImplTest -- OrderDetailMapper
+OrderDetailServiceImplTest -- OrderDetailRepository
+OrderDetailServiceImplTest -- OrderDetailServiceImpl
+OrderDetailServiceImplTest -- OrderDetailService
+OrderServiceImplTest -- JobDescriptorRequest
+OrderServiceImplTest -- TriggerDescriptorRequest
+OrderServiceImplTest -- OrderDetailResponse
+OrderServiceImplTest -- OrderResponse
+OrderServiceImplTest -- OrderStatus
+OrderServiceImplTest -- Order
+OrderServiceImplTest -- OrderDetail
+OrderServiceImplTest -- OrderPlaceRequest
+OrderServiceImplTest -- OrderRequest
+OrderServiceImplTest -- EntityNotFoundException
+OrderServiceImplTest -- OrderNotFoundException
+OrderServiceImplTest -- DecreaseProductQuantityRequest
+OrderServiceImplTest -- ProductResponse
+OrderServiceImplTest -- OrderMapper
+OrderServiceImplTest -- OrderRepository
+OrderServiceImplTest -- OrderServiceImpl
+OrderServiceImplTest -- OrderDetailService
+OrderServiceImplTest -- OrderService
+OrderServiceImplTest -- Product
+OrderServiceImplTest -- ProductRequest
+PaymentController -- Role
+PaymentController -- Order
+PaymentController -- PaymentResponse
+PaymentController -- Transaction
+PaymentController -- PaymentRequest
+PaymentController -- TransactionService
+Transaction -- PaymentMode
+Transaction -- PaymentStatus
+Transaction -- BaseEntity
+PaymentRequest -- PaymentMode
+PaymentRequest -- PaymentStatus
+PaymentRequest -- AccountInfo
+PaymentNotFoundException -- EntityNotFoundException
+PaymentMapper -- BaseMapper
+PaymentMapper -- PaymentResponse
+PaymentMapper -- Transaction
+PaymentMapper -- PaymentRequest
+PaymentServiceApplication -- PaymentService
+TransactionRepository -- Order
+TransactionRepository -- PaymentResponse
+TransactionRepository -- Transaction
+StripePaymentServiceImpl -- PaymentMode
+StripePaymentServiceImpl -- PaymentRequest
+StripePaymentServiceImpl -- PaymentService
+TransactionServiceImpl -- PaymentStatus
+TransactionServiceImpl -- OrderResponse
+TransactionServiceImpl -- BaseService
+TransactionServiceImpl -- BaseServiceImpl
+TransactionServiceImpl -- OrderStatus
+TransactionServiceImpl -- Order
+TransactionServiceImpl -- ErrorResponse
+TransactionServiceImpl -- ExternalServiceException
+TransactionServiceImpl -- PaymentResponse
+TransactionServiceImpl -- Transaction
+TransactionServiceImpl -- PaymentRequest
+TransactionServiceImpl -- InvalidPaymentException
+TransactionServiceImpl -- PaymentMapper
+TransactionServiceImpl -- TransactionRepository
+TransactionServiceImpl -- PaymentService
+TransactionServiceImpl -- TransactionService
+PaymentService -- PaymentRequest
+TransactionService -- BaseService
+TransactionService -- Order
+TransactionService -- PaymentResponse
+TransactionService -- Transaction
+TransactionService -- PaymentRequest
+PaymentControllerTest -- PaymentMode
+PaymentControllerTest -- PaymentStatus
+PaymentControllerTest -- OrderStatus
+PaymentControllerTest -- Order
+PaymentControllerTest -- OrderRequest
+PaymentControllerTest -- PaymentResponse
+PaymentControllerTest -- ProjectConfig
+PaymentControllerTest -- WireMockConfig
+PaymentControllerTest -- PaymentController
+PaymentControllerTest -- AccountInfo
+PaymentControllerTest -- PaymentRequest
+PaymentServiceApplicationTests -- PaymentServiceApplication
+PaymentServiceApplicationTests -- PaymentService
+TransactionRepositoryTest -- PaymentMode
+TransactionRepositoryTest -- PaymentStatus
+TransactionRepositoryTest -- Order
+TransactionRepositoryTest -- Transaction
+TransactionRepositoryTest -- TransactionRepository
+TransactionServiceImplTest -- PaymentMode
+TransactionServiceImplTest -- PaymentStatus
+TransactionServiceImplTest -- OrderResponse
+TransactionServiceImplTest -- Order
+TransactionServiceImplTest -- PaymentResponse
+TransactionServiceImplTest -- Transaction
+TransactionServiceImplTest -- AccountInfo
+TransactionServiceImplTest -- PaymentRequest
+TransactionServiceImplTest -- InvalidPaymentException
+TransactionServiceImplTest -- PaymentNotFoundException
+TransactionServiceImplTest -- PaymentMapper
+TransactionServiceImplTest -- TransactionRepository
+TransactionServiceImplTest -- TransactionServiceImpl
+TransactionServiceImplTest -- PaymentService
+TransactionServiceImplTest -- TransactionService
+ProductController -- Role
+ProductController -- RevertProductRequest
+ProductController -- DecreaseProductQuantityRequest
+ProductController -- ProductResponse
+ProductController -- Product
+ProductController -- ProductRequest
+ProductController -- ProductMapper
+ProductController -- ProductService
+Product -- BaseEntity
+ProductCategory -- BaseEntity
+ProductCategory -- Product
+ProductRequest -- Product
+ProductCategoryResponse -- Product
+ProductCategoryResponse -- ProductCategory
+ProductNotFoundException -- EntityNotFoundException
+ProductNotFoundException -- Product
+ProductNotValidException -- EntityNotValidException
+ProductNotValidException -- Product
+ProductMapper -- BaseMapper
+ProductMapper -- ProductResponse
+ProductMapper -- Product
+ProductMapper -- ProductRequest
+ProductServiceApplication -- Product
+ProductServiceApplication -- ProductService
+ProductRepository -- Product
+ProductServiceImpl -- RevertProductRequest
+ProductServiceImpl -- BaseService
+ProductServiceImpl -- BaseServiceImpl
+ProductServiceImpl -- EntityNotFoundException
+ProductServiceImpl -- DecreaseProductQuantityRequest
+ProductServiceImpl -- ProductResponse
+ProductServiceImpl -- Transaction
+ProductServiceImpl -- Product
+ProductServiceImpl -- ProductRequest
+ProductServiceImpl -- ProductNotFoundException
+ProductServiceImpl -- ProductNotValidException
+ProductServiceImpl -- ProductMapper
+ProductServiceImpl -- ProductRepository
+ProductServiceImpl -- ProductService
+ProductService -- RevertProductRequest
+ProductService -- BaseService
+ProductService -- DecreaseProductQuantityRequest
+ProductService -- ProductResponse
+ProductService -- Product
+ProductService -- ProductRequest
+ProductControllerTest -- User
+ProductControllerTest -- RevertProductRequest
+ProductControllerTest -- DecreaseProductQuantityRequest
+ProductControllerTest -- ProductResponse
+ProductControllerTest -- ProductController
+ProductControllerTest -- Product
+ProductControllerTest -- ProductRequest
+ProductServiceApplicationTest -- Product
+ProductServiceApplicationTest -- ProductServiceApplication
+ProductServiceApplicationTest -- ProductService
+ProductRepositoryTest -- Product
+ProductRepositoryTest -- ProductRepository
+ProductServiceImplTest -- RevertProductRequest
+ProductServiceImplTest -- DecreaseProductQuantityRequest
+ProductServiceImplTest -- ProductResponse
+ProductServiceImplTest -- Product
+ProductServiceImplTest -- ProductRequest
+ProductServiceImplTest -- ProductNotFoundException
+ProductServiceImplTest -- ProductNotValidException
+ProductServiceImplTest -- ProductMapper
+ProductServiceImplTest -- ProductRepository
+ProductServiceImplTest -- ProductServiceImpl
+ProductServiceImplTest -- ProductService
+ServiceRegistryApplicationTests -- ServiceRegistryApplication
+@enduml

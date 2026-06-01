@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="frontend/partials/head(title='Find jobs')">
+</head>
+<body>
+    <div th:replace="frontend/partials/menu"></div>
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 th:if="${is_my_jobs_page} == false" th:text="#{job.list.title_recent}">Recent jobs</h1>
+                <h1 th:if="${is_my_jobs_page} == true" th:text="#{menu.my_jobs}">My jobs</h1>
+
+                <table class="table table-stripped">
+                    <tr>
+                        <th th:text="#{job}">Job title</th>
+                        <th th:text="#{description}">Description</th>
+                        <th> </th>
+                    </tr>
+
+                    <tr th:each="job : ${jobs_page.content}">
+                        <td th:text="'#' + ${job.id} +' '+ ${job.title}"></td>
+                        <td>
+                            <span class="job-list-description" th:utext="${job.description}"></span>
+                            <p>&nbsp;</p>
+                            <p>
+                                <i class="glyphicon glyphicon-time"></i> <span th:text="${job.created}"></span><br />
+                                <i class="glyphicon glyphicon-usd"></i>
+                                <span th:text="${job.budget != null ? job.budget : ''}"></span>
+                                (<span th:text="${job.type}"></span>)
+                                /
+                                <span th:text="${job.expertizeLevel}"></span>
+                            </p>
+                        </td>
+                        <td><a th:href="@{'/job/view/' + ${job.id}}" class="btn btn-primary" th:text="#{job.list.view}">View</a></td>
+                    </tr>
+
+                </table>
+
+                <ul class="pagination">
+					<li th:each="i : ${#numbers.sequence( 1, jobs_page.totalPages)}">
+						<a th:href="${page_url + '&amp;page=' + i}"
+						   th:text="${i}"
+						   th:class="${i == jobs_page.number + 1 ? 'bold' : ''}">-999</a>
+					</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $('.job-list-description').each(function(){
+        var v = $(this).html();
+        var len = v.length;
+        var maxLen = 350;
+        v = v.substring(0, maxLen);
+        v = v.trim();
+        if(len > maxLen){
+            v += "...";
+        }
+        $(this).html(v);
+    });
+</script>
+</body>
+</html>
+

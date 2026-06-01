@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationListener=com.xpinjection.library.config.init.ActiveProfilesChecker,com.xpinjection.library.config.init.HttpServerPortLogger
+org.springframework.boot.diagnostics.FailureAnalyzer=com.xpinjection.library.config.init.ActiveProfileMissedFailureAnalyzer

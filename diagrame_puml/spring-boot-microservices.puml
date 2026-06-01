@@ -1,0 +1,52 @@
+@startuml
+
+package com.marcuseisele.springboot_microservices.configservice {
+  class ConfigserviceApplicationTests {
+    +contextLoads() : void
+  }
+  class ConfigserviceApplication {
+    +main() : void
+  }
+}
+
+package com.marcuseisele.springboot_microservices.counterservice {
+  class CounterserviceApplicationTests {
+    +contextLoads() : void
+  }
+  class CounterserviceApplication {
+    +main() : void
+  }
+}
+
+package com.marcuseisele.springboot_microservices.counterservice.api {
+  class CounterController <<Controller>> {
+    -count : AtomicLong
+    -prefixMessage : String
+    +getCount() : String
+  }
+}
+
+package com.marcuseisele.springboot_microservices.gateway {
+  class GatewayApplicationTests {
+    +contextLoads() : void
+  }
+  class SecurityConfig {
+    +userDetailsService() : UserDetailsService
+  }
+  class GatewayApplication {
+    +main() : void
+  }
+}
+
+package com.marcuseisele.springboot_microservices.registryservice {
+  class RegistryserviceApplicationTests {
+    +contextLoads() : void
+  }
+  class RegistryserviceApplication {
+    +main() : void
+  }
+}
+
+' --- Relatii ---
+
+@enduml

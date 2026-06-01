@@ -1,0 +1,53 @@
+@startuml
+package org.paginationdemo; {
+class Application {
+}
+
+class ApplicationTests {
+}
+
+}
+
+package org.paginationdemo.controller; {
+class PersonController {
+}
+
+}
+
+package org.paginationdemo.domain; {
+class Pager {
+}
+
+class Person {
+}
+
+}
+
+package org.paginationdemo.repository; {
+class PersonRepository {
+}
+
+}
+
+package org.paginationdemo.service.impl; {
+class PersonServiceImpl {
+}
+
+}
+
+package org.paginationdemo.service; {
+class PersonService {
+}
+
+}
+
+PersonController -- Pager
+PersonController -- Person
+PersonController -- PersonService
+PersonRepository -- Person
+PersonServiceImpl -- Person
+PersonServiceImpl -- PersonRepository
+PersonServiceImpl -- PersonService
+PersonService -- Person
+ApplicationTests -- Application
+@enduml

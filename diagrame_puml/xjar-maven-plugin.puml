@@ -1,0 +1,44 @@
+@startuml
+
+package io.xjar {
+  class XArray {
+    +isEmpty() : boolean
+  }
+  class XIncludeAntEntryFilter {
+    +filtrate() : boolean
+  }
+  class XBuilder {
+    -project : MavenProject
+    -algorithm : String
+    -keySize : int
+    -ivSize : int
+    -password : String
+    -sourceDir : File
+    -sourceJar : String
+    -targetDir : File
+    -targetJar : String
+    -includes : String[]
+    +execute() : void
+    +getProject() : MavenProject
+    +setProject() : void
+    +getAlgorithm() : String
+    +setAlgorithm() : void
+    +getKeySize() : int
+    +setKeySize() : void
+    +getIvSize() : int
+  }
+  class XAntEntryFilter {
+    -SYMBOLS : String[]
+    -pattern : Pattern
+    +matches() : boolean
+  }
+  class XExcludeAntEntryFilter {
+    +filtrate() : boolean
+  }
+}
+
+' --- Relatii ---
+XIncludeAntEntryFilter --|> XAntEntryFilter
+XExcludeAntEntryFilter --|> XAntEntryFilter
+
+@enduml

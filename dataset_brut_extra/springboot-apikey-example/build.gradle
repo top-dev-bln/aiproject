@@ -1,0 +1,44 @@
+plugins {
+    id 'com.gradle.build-scan' version '2.1'
+    id 'java'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'com.github.hierynomus.license' version '0.14.0'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'org.flywaydb.flyway' version '5.2.0'
+}
+
+// Gradle Build Scan
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+    publishOnFailure()
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.flywaydb:flyway-core:5.2.0'
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.6.2'
+    implementation 'commons-codec:commons-codec:1.11'
+
+    runtime 'org.postgresql:postgresql'
+}
+
+// Database
+flyway {
+    url = 'jdbc:postgresql://localhost:5432/postgres'
+    user = 'postgres'
+}
+
+// Licensing
+license {
+    header rootProject.file('codequality/HEADER')
+    strictCheck true
+    excludes([ "**/*.json", "**/*.html", "**/*.js", "**/*.jpg" ])
+}

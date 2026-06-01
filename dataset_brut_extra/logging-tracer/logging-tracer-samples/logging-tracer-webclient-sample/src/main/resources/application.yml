@@ -1,0 +1,10 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: webclient-sample
+
+logging:
+  level:
+    com.lzhpo: debug

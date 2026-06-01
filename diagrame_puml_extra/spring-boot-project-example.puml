@@ -1,0 +1,193 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.annotation; {
+class ApiLogger {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.aspect; {
+class ApiLogAspect {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.controller; {
+class CustomerController {
+}
+
+class CustomerRefController {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.dto; {
+class ApiLog {
+}
+
+class Customer {
+}
+
+class CustomerRef {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.dto.shared; {
+class AbstractGenericDtoType {
+}
+
+class CustomRestError {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.entity; {
+class ApiLogEntity {
+}
+
+class CustomerEntity {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.exception; {
+class GlobalRestExceptionHandler {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.impl; {
+class CustomerServiceImpl {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.mapper; {
+class ApiLogMapper {
+}
+
+class CustomerMapper {
+}
+
+class CustomObjectMapper {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.message; {
+class MessageUtilityServiceImpl {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.repository; {
+class ApiLogRepository {
+}
+
+class CustomerRepository {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.service; {
+class ICustomerService {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.spring.config; {
+class CommonConfig {
+}
+
+class OpenApiConfig {
+}
+
+class WebConfig {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.spring.spring; {
+class SpringBootProjectExampleApplication {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample.utility; {
+class CommonUtility {
+}
+
+}
+
+package evrentan.examples.springbootprojectexample; {
+class ICustomerServiceTest {
+}
+
+class SpringBootProjectExampleApplicationTests {
+}
+
+}
+
+ApiLogger -- ApiLog
+ApiLogAspect -- ApiLogger
+ApiLogAspect -- ApiLog
+ApiLogAspect -- ApiLogEntity
+ApiLogAspect -- ApiLogMapper
+ApiLogAspect -- CustomObjectMapper
+ApiLogAspect -- ApiLogRepository
+ApiLogAspect -- CommonUtility
+CustomerController -- ApiLogger
+CustomerController -- ApiLog
+CustomerController -- Customer
+CustomerController -- CustomerRef
+CustomerController -- ICustomerService
+CustomerRefController -- Customer
+CustomerRefController -- CustomerRef
+CustomerRefController -- ICustomerService
+Customer -- AbstractGenericDtoType
+CustomerRef -- Customer
+CustomerRef -- AbstractGenericDtoType
+ApiLogEntity -- ApiLog
+CustomerEntity -- Customer
+GlobalRestExceptionHandler -- Customer
+GlobalRestExceptionHandler -- CustomRestError
+GlobalRestExceptionHandler -- MessageUtilityServiceImpl
+GlobalRestExceptionHandler -- CommonUtility
+CustomerServiceImpl -- Customer
+CustomerServiceImpl -- CustomerRef
+CustomerServiceImpl -- CustomerEntity
+CustomerServiceImpl -- CustomerMapper
+CustomerServiceImpl -- CustomerRepository
+CustomerServiceImpl -- ICustomerService
+ApiLogMapper -- ApiLog
+ApiLogMapper -- ApiLogEntity
+CustomerMapper -- Customer
+CustomerMapper -- CustomerRef
+CustomerMapper -- CustomerEntity
+CustomObjectMapper -- Customer
+ApiLogRepository -- ApiLog
+ApiLogRepository -- ApiLogEntity
+CustomerRepository -- Customer
+CustomerRepository -- CustomerEntity
+ICustomerService -- Customer
+ICustomerService -- CustomerRef
+CommonConfig -- CustomObjectMapper
+OpenApiConfig -- Customer
+SpringBootProjectExampleApplication -- CommonConfig
+SpringBootProjectExampleApplication -- OpenApiConfig
+SpringBootProjectExampleApplication -- WebConfig
+ICustomerServiceTest -- Customer
+ICustomerServiceTest -- CustomerRef
+ICustomerServiceTest -- CustomerEntity
+ICustomerServiceTest -- CustomerServiceImpl
+ICustomerServiceTest -- CustomerMapper
+ICustomerServiceTest -- CustomerRepository
+ICustomerServiceTest -- ICustomerService
+SpringBootProjectExampleApplicationTests -- SpringBootProjectExampleApplication
+@enduml

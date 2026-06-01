@@ -1,0 +1,395 @@
+@startuml
+package br.com.anderson17ads.brazilbank.adapters.inbound.controllers; {
+class AccountController {
+}
+
+class CustomerController {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.inbound.dto.account; {
+class AccountRequest {
+}
+
+class AccountResponse {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.inbound.dto.customer; {
+class CustomerIdRequest {
+}
+
+class CustomerRequest {
+}
+
+class CustomerResponse {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.inbound.mapper; {
+class AccountMapper {
+}
+
+class InboundCustomerMapper {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.inbound.paths; {
+class ApiPaths {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.outbound.entities; {
+class JpaAccountEntity {
+}
+
+class JpaCustomerEntity {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.outbound.mapper; {
+class AccountMapper {
+}
+
+class OutboundCustomerMapper {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.outbound.repositories.account; {
+class JpaAccountRepository {
+}
+
+class JpaAccountRepositoryAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.adapters.outbound.repositories.customer; {
+class JpaCustomerRepository {
+}
+
+class JpaCustomerRepositoryAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.command.account; {
+class CreateAccountCommand {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.command.customer; {
+class CreateCustomerCommand {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.usecase.account.create; {
+class CreateAccountUseCase {
+}
+
+class CreateAccountUseCaseAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.usecase.account.list; {
+class ListAccountUseCase {
+}
+
+class ListAccountUseCaseAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.usecase.customer.create; {
+class CreateCustomerUseCase {
+}
+
+class CreateCustomerUseCaseAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.usecase.customer.findById; {
+class FindByIdCustomerUseCase {
+}
+
+class FindByIdCustomerUseCaseAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.application.usecase.customer.list; {
+class ListCustomerUseCase {
+}
+
+class ListCustomerUseCaseAdapter {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank; {
+class BrazilbankApplication {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.domain.account; {
+class Account {
+}
+
+class AccountFactory {
+}
+
+class AccountRepository {
+}
+
+class AccountType {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.domain.account.policy; {
+class AccountNumberPolicy {
+}
+
+class MaxAccountsPerCustomerPolicy {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.domain.customer; {
+class Customer {
+}
+
+class CustomerFactory {
+}
+
+class CustomerRepository {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.domain.customer.policy; {
+class CheckCustomerAlreadyExistsByEmailPolicy {
+}
+
+class CheckCustomerExistsByUuidPolicy {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.domain.exception; {
+class DomainException {
+}
+
+class ErrorMapper {
+}
+
+class ErrorResponse {
+}
+
+class ValidationError {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.infrastructure.config.account; {
+class AccountFactoryConfig {
+}
+
+class AccountPolicyConfig {
+}
+
+class AccountRepositoryConfig {
+}
+
+class AccountUseCaseConfig {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.infrastructure.config.customer; {
+class CustomerFactoryConfig {
+}
+
+class CustomerPolicyConfig {
+}
+
+class CustomerRepositoryConfig {
+}
+
+class CustomerUseCaseConfig {
+}
+
+}
+
+package br.com.anderson17ads.brazilbank.infrastructure.exception; {
+class GlobalExceptionHandler {
+}
+
+}
+
+AccountController -- AccountRequest
+AccountController -- AccountResponse
+AccountController -- AccountMapper
+AccountController -- ApiPaths
+AccountController -- CreateAccountUseCase
+AccountController -- ListAccountUseCase
+AccountController -- Account
+CustomerController -- CustomerIdRequest
+CustomerController -- CustomerRequest
+CustomerController -- CustomerResponse
+CustomerController -- InboundCustomerMapper
+CustomerController -- ApiPaths
+CustomerController -- CreateCustomerUseCase
+CustomerController -- FindByIdCustomerUseCase
+CustomerController -- ListCustomerUseCase
+CustomerController -- Customer
+AccountRequest -- Account
+AccountResponse -- Account
+AccountResponse -- AccountType
+CustomerIdRequest -- Customer
+CustomerRequest -- Customer
+CustomerResponse -- Customer
+AccountMapper -- JpaAccountEntity
+AccountMapper -- Account
+AccountMapper -- Customer
+InboundCustomerMapper -- CustomerRequest
+InboundCustomerMapper -- CustomerResponse
+InboundCustomerMapper -- CreateCustomerCommand
+InboundCustomerMapper -- Customer
+JpaAccountEntity -- Account
+JpaAccountEntity -- AccountType
+JpaAccountEntity -- Customer
+JpaCustomerEntity -- Customer
+OutboundCustomerMapper -- JpaCustomerEntity
+OutboundCustomerMapper -- Customer
+JpaAccountRepository -- JpaAccountEntity
+JpaAccountRepository -- Account
+JpaAccountRepository -- AccountRepository
+JpaAccountRepository -- Customer
+JpaAccountRepositoryAdapter -- AccountMapper
+JpaAccountRepositoryAdapter -- JpaAccountEntity
+JpaAccountRepositoryAdapter -- JpaAccountRepository
+JpaAccountRepositoryAdapter -- Account
+JpaAccountRepositoryAdapter -- AccountRepository
+JpaAccountRepositoryAdapter -- Customer
+JpaCustomerRepository -- JpaCustomerEntity
+JpaCustomerRepository -- Customer
+JpaCustomerRepository -- CustomerRepository
+JpaCustomerRepositoryAdapter -- JpaCustomerEntity
+JpaCustomerRepositoryAdapter -- OutboundCustomerMapper
+JpaCustomerRepositoryAdapter -- JpaCustomerRepository
+JpaCustomerRepositoryAdapter -- Customer
+JpaCustomerRepositoryAdapter -- CustomerRepository
+CreateAccountCommand -- Account
+CreateAccountCommand -- AccountType
+CreateAccountCommand -- Customer
+CreateCustomerCommand -- Customer
+CreateAccountUseCase -- CreateAccountCommand
+CreateAccountUseCase -- Account
+CreateAccountUseCaseAdapter -- CreateAccountCommand
+CreateAccountUseCaseAdapter -- CreateAccountUseCase
+CreateAccountUseCaseAdapter -- Account
+CreateAccountUseCaseAdapter -- AccountFactory
+CreateAccountUseCaseAdapter -- AccountRepository
+CreateAccountUseCaseAdapter -- AccountNumberPolicy
+CreateAccountUseCaseAdapter -- MaxAccountsPerCustomerPolicy
+CreateAccountUseCaseAdapter -- Customer
+CreateAccountUseCaseAdapter -- CheckCustomerExistsByUuidPolicy
+ListAccountUseCase -- Account
+ListAccountUseCaseAdapter -- ListAccountUseCase
+ListAccountUseCaseAdapter -- Account
+ListAccountUseCaseAdapter -- AccountRepository
+CreateCustomerUseCase -- CreateCustomerCommand
+CreateCustomerUseCase -- Customer
+CreateCustomerUseCaseAdapter -- CreateCustomerCommand
+CreateCustomerUseCaseAdapter -- CreateCustomerUseCase
+CreateCustomerUseCaseAdapter -- Customer
+CreateCustomerUseCaseAdapter -- CustomerFactory
+CreateCustomerUseCaseAdapter -- CustomerRepository
+CreateCustomerUseCaseAdapter -- CheckCustomerAlreadyExistsByEmailPolicy
+FindByIdCustomerUseCase -- Customer
+FindByIdCustomerUseCaseAdapter -- FindByIdCustomerUseCase
+FindByIdCustomerUseCaseAdapter -- Customer
+FindByIdCustomerUseCaseAdapter -- CustomerRepository
+ListCustomerUseCase -- Customer
+ListCustomerUseCaseAdapter -- ListCustomerUseCase
+ListCustomerUseCaseAdapter -- Customer
+ListCustomerUseCaseAdapter -- CustomerRepository
+Account -- AccountType
+Account -- Customer
+AccountFactory -- Account
+AccountFactory -- AccountType
+AccountRepository -- Account
+AccountRepository -- Customer
+AccountNumberPolicy -- Account
+MaxAccountsPerCustomerPolicy -- Account
+MaxAccountsPerCustomerPolicy -- AccountRepository
+MaxAccountsPerCustomerPolicy -- Customer
+CustomerFactory -- Customer
+CustomerRepository -- Customer
+CheckCustomerAlreadyExistsByEmailPolicy -- Customer
+CheckCustomerAlreadyExistsByEmailPolicy -- CustomerRepository
+CheckCustomerExistsByUuidPolicy -- Customer
+CheckCustomerExistsByUuidPolicy -- CustomerRepository
+ErrorMapper -- DomainException
+ErrorMapper -- ErrorResponse
+ErrorResponse -- ValidationError
+AccountFactoryConfig -- Account
+AccountFactoryConfig -- AccountFactory
+AccountPolicyConfig -- Account
+AccountPolicyConfig -- AccountRepository
+AccountPolicyConfig -- AccountNumberPolicy
+AccountPolicyConfig -- MaxAccountsPerCustomerPolicy
+AccountPolicyConfig -- Customer
+AccountRepositoryConfig -- JpaAccountRepository
+AccountRepositoryConfig -- JpaAccountRepositoryAdapter
+AccountRepositoryConfig -- Account
+AccountRepositoryConfig -- AccountRepository
+AccountUseCaseConfig -- CreateAccountUseCase
+AccountUseCaseConfig -- CreateAccountUseCaseAdapter
+AccountUseCaseConfig -- ListAccountUseCase
+AccountUseCaseConfig -- ListAccountUseCaseAdapter
+AccountUseCaseConfig -- Account
+AccountUseCaseConfig -- AccountFactory
+AccountUseCaseConfig -- AccountRepository
+AccountUseCaseConfig -- AccountNumberPolicy
+AccountUseCaseConfig -- MaxAccountsPerCustomerPolicy
+AccountUseCaseConfig -- Customer
+AccountUseCaseConfig -- CheckCustomerExistsByUuidPolicy
+CustomerFactoryConfig -- Customer
+CustomerFactoryConfig -- CustomerFactory
+CustomerPolicyConfig -- Customer
+CustomerPolicyConfig -- CustomerRepository
+CustomerPolicyConfig -- CheckCustomerAlreadyExistsByEmailPolicy
+CustomerPolicyConfig -- CheckCustomerExistsByUuidPolicy
+CustomerRepositoryConfig -- JpaCustomerRepository
+CustomerRepositoryConfig -- JpaCustomerRepositoryAdapter
+CustomerRepositoryConfig -- Customer
+CustomerRepositoryConfig -- CustomerRepository
+CustomerUseCaseConfig -- CreateCustomerUseCase
+CustomerUseCaseConfig -- CreateCustomerUseCaseAdapter
+CustomerUseCaseConfig -- FindByIdCustomerUseCase
+CustomerUseCaseConfig -- FindByIdCustomerUseCaseAdapter
+CustomerUseCaseConfig -- ListCustomerUseCase
+CustomerUseCaseConfig -- ListCustomerUseCaseAdapter
+CustomerUseCaseConfig -- Customer
+CustomerUseCaseConfig -- CustomerFactory
+CustomerUseCaseConfig -- CustomerRepository
+CustomerUseCaseConfig -- CheckCustomerAlreadyExistsByEmailPolicy
+GlobalExceptionHandler -- DomainException
+GlobalExceptionHandler -- ErrorMapper
+GlobalExceptionHandler -- ErrorResponse
+GlobalExceptionHandler -- ValidationError
+@enduml

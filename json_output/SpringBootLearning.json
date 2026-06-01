@@ -1,0 +1,57 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, messaging domain. It serves Customer, System, User as its primary actors. The main business capabilities include account, account2, book contrller. Core business data revolves around AccountDao, AccountDaoImpl, Book, Girl.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "AccountService",
+          "AccountService2",
+          "IAccountService"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [],
+        "controllers": [
+          "FileUploadController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to manage account2 operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AccountController2"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to manage book contrller operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "BookContrller"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountController[\"AccountController\"]\n    AccountController2[\"AccountController2\"]\n    BookContrller[\"BookContrller\"]\n    FileUploadController[\"FileUploadController\"]\n    GirlController[\"GirlController\"]\n    GreetingController[\"GreetingController\"]\n    HelloController[\"HelloController\"]\n    HomeController[\"HomeController\"]\n    KafkaController[\"KafkaController\"]\n    LucyController[\"LucyController\"]\n    MiyaController[\"MiyaController\"]\n    UserController[\"UserController\"]\n    WebController[\"WebController\"]\n  end\n  subgraph Services\n    AccountService[\"AccountService\"]\n    AccountService2[\"AccountService2\"]\n    FileSystemStorageService[\"FileSystemStorageService\"]\n    GitHubLookupService[\"GitHubLookupService\"]\n    IAccountService[\"IAccountService\"]\n    KafkaProducer[\"KafkaProducer\"]\n    Service[\"Service\"]\n    StorageService[\"StorageService\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    AccountDao[\"AccountDao\"]\n    AccountDaoImpl[\"AccountDaoImpl\"]\n    Book[\"Book\"]\n    BookRepository[\"BookRepository\"]\n    CustomerRepository[\"CustomerRepository\"]\n    Girl[\"Girl\"]\n    IAccountDAO[\"IAccountDAO\"]\n    RedisDao[\"RedisDao\"]\n    SimpleBookRepository[\"SimpleBookRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Infrastructure\n    ServiceConfiguration[\"ServiceConfiguration\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

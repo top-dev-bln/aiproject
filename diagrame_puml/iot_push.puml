@@ -1,0 +1,807 @@
+@startuml
+
+package com.lxr.iot {
+  class App {
+    +main() : void
+  }
+  class SubListener <<Service>> {
+    +callBack() : void
+    +callThrowable() : void
+  }
+  class ServerApplication {
+    +main() : void
+  }
+  class DefaultAutoService <<Service>> {
+    +authorized() : boolean
+  }
+}
+
+package com.lxr.iot.auto {
+  interface MqttMessageListener {
+  }
+  interface MqttListener {
+  }
+  class MqttProducerConfigure {
+    -_BLACKLOG : int
+    -CPU : int
+    -SEDU_DAY : int
+    -TIMEOUT : int
+    -BUF_SIZE : int
+    -applicationContext : ConfigurableApplicationContext
+    +initServer() : Producer
+    +setApplicationContext() : void
+    +destroy() : void
+  }
+  class InitServer {
+    -serverBean : InitBean
+    +open() : void
+    +close() : void
+  }
+  class ServerAutoConfigure {
+    -_BLACKLOG : int
+    -CPU : int
+    -SEDU_DAY : int
+    -TIMEOUT : int
+    -BUF_SIZE : int
+    +initServer() : InitServer
+  }
+}
+
+package com.lxr.iot.bootstrap {
+  class AbstractBootstrapClient {
+    -CLIENT_CONTEXT : SSLContext
+    -PROTOCOL : String
+    +initHandler() : void
+  }
+  class MqttProducer {
+    +connect() : Producer
+    +pub() : void
+    +pub() : void
+    +pub() : void
+    +pub() : void
+    +sub() : void
+    +unsub() : void
+    +unsub() : void
+  }
+  class MqttApi {
+    -scheduledExecutorService : ScheduledExecutorService
+    +pubMessage() : void
+    +subMessage() : void
+    +sendAck() : void
+    +pubRecMessage() : void
+    +unSubMessage() : void
+    +sendDisConnect() : void
+  }
+  interface Producer {
+  }
+  interface BootstrapClient {
+  }
+  class AbsMqttProducer {
+    -channel : Channel
+    -mqttListener : MqttListener
+    -nettyBootstrapClient : NettyBootstrapClient
+    -sacnScheduled : SacnScheduled
+    -topics : List<MqttTopicSubscription>
+    -_BLACKLOG : int
+    -CPU : int
+    -SEDU_DAY : int
+    -TIMEOUT : int
+    -BUF_SIZE : int
+    +connectTo() : void
+    +disConnect() : void
+    +pubRecMessage() : void
+    +pubMessage() : void
+    +initPool() : void
+    +subMessage() : void
+    +unsub() : void
+    +close() : void
+  }
+  interface BootstrapServer {
+  }
+  interface BaseApi {
+  }
+  interface ChannelService {
+  }
+  class ScheduledPool <<Service>> {
+    -scheduledExecutorService : ScheduledExecutorService
+    -serverBean : InitBean
+    +main() : void
+    +run() : void
+  }
+  interface BaseAuthService {
+  }
+  class NettyBootstrapServer {
+    -serverBean : InitBean
+    -bossGroup : EventLoopGroup
+    -workGroup : EventLoopGroup
+    -index : AtomicInteger
+    -index : AtomicInteger
+    -index : AtomicInteger
+    -index : AtomicInteger
+    +getServerBean() : InitBean
+    +setServerBean() : void
+    +start() : void
+    +initChannel() : void
+    +newThread() : Thread
+    +newThread() : Thread
+    +newThread() : Thread
+    +newThread() : Thread
+  }
+  class AbstractBootstrapServer {
+    -PROTOCOL : String
+    -SERVER_CONTEXT : SSLContext
+    -MQTT_CSV_LIST : String
+    +initHandler() : void
+  }
+}
+
+package com.lxr.iot.bootstrap.Bean {
+  class SendMqttMessage {
+    -Topic : String
+    -payload : byte[]
+    -qos : int
+    -retained : boolean
+    -dup : boolean
+    -messageId : int
+    -timestamp : long
+  }
+  class SubMessage {
+    -topic : String
+    -qos : MqttQoS
+  }
+}
+
+package com.lxr.iot.bootstrap.bean {
+  class RetainMessage {
+    -byteBuf : byte[]
+    -qoS : MqttQoS
+    +getString() : String
+  }
+  class SessionMessage {
+    -byteBuf : byte[]
+    -qoS : MqttQoS
+    -topic : String
+    +getString() : String
+  }
+  class MqttChannel {
+    -deviceId : String
+    -isWill : boolean
+    -topic : Set<String>
+    -index : AtomicInteger
+    -receive : Set<Integer>
+    +messageId() : int
+    +addRecevice() : void
+    +checkRecevice() : boolean
+    +removeRecevice() : boolean
+    +addSendMqttMessage() : void
+    +getSendMqttMessage() : SendMqttMessage
+    +removeSendMqttMessage() : void
+    +isLogin() : boolean
+  }
+  class SendMqttMessage {
+    -messageId : int
+    -channel : Channel
+    -time : long
+    -byteBuf : byte[]
+    -isRetain : boolean
+    -qos : MqttQoS
+    -topic : String
+  }
+  class WillMeaasge {
+    -willTopic : String
+    -willMessage : String
+    -isRetain : boolean
+    -qos : int
+  }
+}
+
+package com.lxr.iot.bootstrap.cache {
+  class Cache {
+    +put() : boolean
+    +del() : SendMqttMessage
+  }
+}
+
+package com.lxr.iot.bootstrap.channel {
+  class MqttHandlerServiceService {
+    +close() : void
+    +puback() : void
+    +pubrec() : void
+    +pubrel() : void
+    +pubcomp() : void
+    +heart() : void
+    +suback() : void
+    +pubBackMessage() : void
+  }
+  class PublishApiSevice {
+    -transfer : MessageTransfer
+    +writeWillMsg() : void
+    +sendQosConfirmMsg() : void
+    +sendQos0Msg() : void
+    +sendPubBack() : void
+    +sendPubRec() : void
+    +sendPubRel() : void
+    +sendToPubComp() : void
+  }
+  class MqttHandlerService {
+    -messageTransfer : MessageTransfer
+    -baseAuthService : BaseAuthService
+    +login() : boolean
+    +publish() : void
+    +subscribe() : void
+    +close() : void
+    +pong() : void
+    +unsubscribe() : void
+    +puback() : void
+    +disconnect() : void
+  }
+  class WillService {
+    +save() : void
+    +doSend() : void
+    +del() : void
+  }
+  class ClientSessionService <<Service>> {
+    +saveSessionMsg() : void
+    +getByteBuf() : ConcurrentLinkedQueue<SessionMessage>
+  }
+  class MqttChannelService {
+    -clientSessionService : ClientSessionService
+    -willService : WillService
+    -transfer : MessageTransfer
+    -payload : MqttConnectPayload
+    -buildWill : WillMeaasge
+    +unsubscribe() : void
+    +doPubrel() : void
+    +doPubrec() : void
+    +connectSuccess() : boolean
+    +suscribeSuccess() : void
+    +loginSuccess() : void
+    +publishSuccess() : void
+    +closeSuccess() : void
+  }
+  class AbstractChannelService {
+    -_login : AttributeKey<Boolean>
+    -_deviceId : AttributeKey<String>
+    -SPLITOR : char
+    -executorService : ExecutorService
+    +getChannels() : Collection<MqttChannel>
+    +deleteChannel() : boolean
+    +addChannel() : boolean
+    +getMqttChannel() : MqttChannel
+    +getDeviceId() : String
+    +getTopic() : String[]
+  }
+}
+
+package com.lxr.iot.bootstrap.channel.cache {
+  class CacheMap {
+    -topic : K
+    +putData() : boolean
+    +delete() : boolean
+    +getData() : List<V>
+    +getTopic() : K
+    +delValue() : boolean
+    +put() : boolean
+  }
+}
+
+package com.lxr.iot.bootstrap.coder {
+  class WebSocketFrameToByteBufDecoder {
+    +decode() : void
+  }
+  class ByteBufToWebSocketFrameEncoder {
+    +encode() : void
+  }
+}
+
+package com.lxr.iot.bootstrap.handler {
+  class DefaultMqttHandler {
+    -mqttHandlerApi : ClientMqttHandlerService
+    -mqttProducer : MqttProducer
+    -mqttListener : MqttListener
+    -connectOptions : ConnectOptions
+    +channelActive() : void
+    +doMessage() : void
+    +exceptionCaught() : void
+    +channelInactive() : void
+  }
+  class DefaultMqttHandler {
+    -mqttHandlerApi : MqttHandlerIntf
+    +doMessage() : void
+    +channelActive() : void
+    +exceptionCaught() : void
+  }
+}
+
+package com.lxr.iot.bootstrap.queue {
+  class MessageTransfer {
+    -messageStarter : MessageStarter<MessageEvent>
+    +addQueue() : void
+    +removeQueue() : void
+  }
+  class MessageHandler {
+    -messageTransfer : MessageTransfer
+    +onEvent() : void
+    +sendAck() : void
+  }
+  class MessageEvent {
+    -message : SendMqttMessage
+  }
+  interface MessageStarter {
+  }
+  class DisruptorMessageStarter {
+    -disruptor : Disruptor<MessageEvent>
+    -eventHandler : EventHandler<MessageEvent>
+    +getRingBuffer() : RingBuffer<MessageEvent>
+    +shutdown() : void
+    +destroy() : void
+  }
+}
+
+package com.lxr.iot.bootstrap.scan {
+  class SacnScheduled {
+    -producer : Producer
+    -seconds : int
+    -scheduledExecutorService : ScheduledExecutorService
+    +start() : void
+    +close() : void
+    +doInfo() : void
+  }
+  class ScanRunnable {
+    -queue : ConcurrentLinkedQueue<SendMqttMessage>
+    +addQueue() : boolean
+    +addQueues() : boolean
+    +run() : void
+    +doInfo() : void
+  }
+}
+
+package com.lxr.iot.client {
+  class main {
+    +main() : void
+    +callBack() : void
+    +callThrowable() : void
+  }
+  class MyListener <<Service>> {
+    +callBack() : void
+    +callThrowable() : void
+  }
+}
+
+package com.lxr.iot.enums {
+  enum QosStatus {
+  }
+  enum ProtocolEnum {
+  }
+  enum SessionStatus {
+  }
+  enum SubStatus {
+  }
+  enum ConfirmStatus {
+  }
+}
+
+package com.lxr.iot.example {
+  class MqttMain {
+    +main() : void
+    +callBack() : void
+    +callThrowable() : void
+  }
+}
+
+package com.lxr.iot.exception {
+  class ConnectionException {
+  }
+  class NoFindHandlerException {
+  }
+}
+
+package com.lxr.iot.ip {
+  class IpUtils {
+    +internetIp() : String
+    +intranetIp() : String
+    +getHost() : String
+  }
+}
+
+package com.lxr.iot.mqtt {
+  class ServerMqttHandlerService {
+    +login() : boolean
+    +publish() : void
+    +subscribe() : void
+    +pong() : void
+    +unsubscribe() : void
+    +disconnect() : void
+    +doTimeOut() : void
+  }
+  interface MqttHandlerIntf {
+  }
+  class ClientMqttHandlerService {
+    +doTimeOut() : void
+    +heart() : void
+    +suback() : void
+    +pubBackMessage() : void
+    +unsubBack() : void
+  }
+  class MqttHander {
+    +channelRead0() : void
+    +doMessage() : void
+    +channelInactive() : void
+    +userEventTriggered() : void
+  }
+}
+
+package com.lxr.iot.paho {
+  class MqttClientProducerTest {
+    -qos : int
+    -broker : String
+    -userName : String
+    -passWord : String
+    -service : ExecutorService
+    -index : int
+    -threadId : String
+    +main() : void
+    +connectionLost() : void
+    +deliveryComplete() : void
+    +messageArrived() : void
+  }
+}
+
+package com.lxr.iot.paho.comsumer2 {
+  class MqttClientConsumerTest {
+    -qos : int
+    -broker : String
+    -userName : String
+    -passWord : String
+    -service : ExecutorService
+    -index : int
+    -threadId : String
+    +main() : void
+    +connectionLost() : void
+    +deliveryComplete() : void
+    +messageArrived() : void
+  }
+}
+
+package com.lxr.iot.paho.consumer {
+  class MqttClientConsumerTest1 {
+    -qos : int
+    -broker : String
+    -userName : String
+    -passWord : String
+    -threadId : String
+    +main() : void
+    +connectionLost() : void
+    +deliveryComplete() : void
+    +messageArrived() : void
+  }
+}
+
+package com.lxr.iot.pool {
+  class ExecutorQueue {
+    -serialVersionUID : long
+    -threadPoolExecutor : StandardThreadExecutor
+    +setStandardThreadExecutor() : void
+    +force() : boolean
+    +offer() : boolean
+  }
+  class DefaultThreadFactory {
+    -poolNumber : AtomicInteger
+    -threadGroup : ThreadGroup
+    -currentThreadNumber : AtomicInteger
+    -namePrefix : String
+    -priority : int
+    -isDaemon : boolean
+    +newThread() : Thread
+  }
+  class StandardThreadExecutor {
+    -DEFAULT_MIN_THREADS : int
+    -DEFAULT_MAX_THREADS : int
+    -DEFAULT_MAX_IDLE_TIME : int
+    -submittedTasksCount : AtomicInteger
+    -maxSubmittedTaskCount : int
+    +execute() : void
+    +getSubmittedTasksCount() : int
+    +afterExecute() : void
+  }
+  interface Scheduled {
+  }
+}
+
+package com.lxr.iot.properties {
+  class ConnectOptions {
+    -connectTime : long
+    -serverIp : String
+    -port : int
+    -keepalive : boolean
+    -reuseaddr : boolean
+    -tcpNodelay : boolean
+    -backlog : int
+    -sndbuf : int
+    -revbuf : int
+    -heart : int
+  }
+  class InitBean {
+    -protocol : ProtocolEnum
+    -port : int
+    -serverName : String
+    -keepalive : boolean
+    -reuseaddr : boolean
+    -tcpNodelay : boolean
+    -backlog : int
+    -sndbuf : int
+    -revbuf : int
+    -heart : int
+  }
+}
+
+package com.lxr.iot.spring {
+  class springTest {
+    -producer : Producer
+  }
+}
+
+package com.lxr.iot.ssl {
+  class SecureSocketKeyStore {
+    -CERT_BYTES : byte[]
+    +getKeyStore() : KeyStore
+    +asInputStream() : InputStream
+    +getCertificatePassword() : char[]
+    +getKeyStorePassword() : char[]
+    +getCertificatePasswordString() : String
+    +getKeyStorePasswordString() : String
+  }
+  class SecureSokcetTrustManagerFactory {
+    -DUMMY_TRUST_MANAGER : TrustManager
+    +getAcceptedIssuers() : X509Certificate[]
+    +checkClientTrusted() : void
+    +checkServerTrusted() : void
+    +getTrustManagers() : TrustManager[]
+    +engineGetTrustManagers() : TrustManager[]
+    +engineInit() : void
+    +engineInit() : void
+  }
+  class SecureSocketSslContextFactory {
+    -PROTOCOL : String
+    -SERVER_CONTEXT : SSLContext
+    -CLIENT_CONTEXT : SSLContext
+    +getServerContext() : SSLContext
+    +getClientContext() : SSLContext
+  }
+  class X509CertTool {
+    +main() : void
+  }
+  class StreamReader {
+    +toByteArray() : String
+  }
+}
+
+package com.lxr.iot.util {
+  class RemotingUtil {
+    -OS_NAME : String
+    -log : Logger
+    -isLinuxPlatform : boolean
+    -isWindowsPlatform : boolean
+    -method : Method
+    -selectorProvider : SelectorProvider
+    -e : Exception
+    -e : Exception
+    -networkInterface : NetworkInterface
+    -en : Enumeration<InetAddress>
+    +isWindowsPlatform() : boolean
+    +openSelector() : Selector
+    +isLinuxPlatform() : boolean
+    +getLocalAddress() : String
+    +normalizeHostAddress() : String
+    +string2SocketAddress() : SocketAddress
+    +socketAddress2String() : String
+    +connect() : SocketChannel
+  }
+  class IdWorker {
+    -twepoch : long
+    -workerIdBits : long
+    -datacenterIdBits : long
+    -maxWorkerId : long
+    -maxDatacenterId : long
+    -sequenceBits : long
+    -workerIdShift : long
+    -datacenterIdShift : long
+    -timestampLeftShift : long
+    -sequenceMask : long
+    +getMaxWorkerId() : long
+    +getDatacenterId() : long
+  }
+  class MessageId {
+    -index : AtomicInteger
+    +messageId() : int
+  }
+  class SpringBeanUtils {
+    -applicationContext : ApplicationContext
+    +setApplicationContext() : void
+    +getApplicationContext() : ApplicationContext
+    +getBean() : Object
+  }
+  class ByteBufUtil {
+    +copyByteBuf() : byte[]
+  }
+}
+
+package com.lxr.iot.zookeeper {
+  interface ZkStateListener {
+  }
+  class testZk {
+    -acl : List<ACL>
+    -nodeCache : NodeCache
+    +main() : void
+    +getDefaultAcl() : List<ACL>
+    +getAclForPath() : List<ACL>
+    +process() : void
+    +eventReceived() : void
+    +childEvent() : void
+    +nodeChanged() : void
+    +childEvent() : void
+  }
+  class ZkUtils {
+    -zkClient : CuratorFramework
+    +init() : void
+    +destory() : void
+    +createNode() : boolean
+    +deleteNode() : boolean
+    +deleteNode() : boolean
+    +getNodeData() : byte[]
+    +getNodeDataStr() : String
+    +exists() : Stat
+  }
+}
+
+' --- Relatii ---
+AbstractBootstrapClient ..|> BootstrapClient
+AbstractBootstrapClient --> MqttHander
+AbstractBootstrapClient --> ConnectOptions
+AbstractBootstrapClient --> SecureSokcetTrustManagerFactory
+MqttProducer --|> AbsMqttProducer
+MqttProducer --> SendMqttMessage
+MqttProducer --> SubMessage
+MqttProducer --> ConfirmStatus
+MqttProducer --> ConnectOptions
+MqttProducer --> MessageId
+MqttApi --> SendMqttMessage
+MqttApi --> MessageId
+Producer --> MqttListener
+Producer --> SubMessage
+Producer --> ConnectOptions
+AbsMqttProducer --|> MqttApi
+AbsMqttProducer ..|> Producer
+AbsMqttProducer --> MqttListener
+AbsMqttProducer --> SendMqttMessage
+AbsMqttProducer --> Cache
+AbsMqttProducer --> MqttHandlerServiceService
+AbsMqttProducer --> DefaultMqttHandler
+AbsMqttProducer --> SacnScheduled
+AbsMqttProducer --> ConfirmStatus
+AbsMqttProducer --> IpUtils
+AbsMqttProducer --> ConnectOptions
+AbsMqttProducer --> MessageId
+DefaultMqttHandler --|> MqttHander
+DefaultMqttHandler --> MqttListener
+DefaultMqttHandler --> MqttProducer
+DefaultMqttHandler --> Producer
+DefaultMqttHandler --> ClientMqttHandlerService
+DefaultMqttHandler --> MqttHander
+DefaultMqttHandler --> ConnectOptions
+DefaultMqttHandler --> ByteBufUtil
+Cache --> SendMqttMessage
+SendMqttMessage --> ConfirmStatus
+SendMqttMessage --> QosStatus
+SacnScheduled --|> ScanRunnable
+SacnScheduled --> SendMqttMessage
+SacnScheduled --> Producer
+SacnScheduled --> Scheduled
+ScanRunnable --|> MqttApi
+ScanRunnable --> SendMqttMessage
+ScanRunnable --> MqttApi
+ScanRunnable --> ConfirmStatus
+MqttHandlerServiceService --|> ClientMqttHandlerService
+MqttHandlerServiceService --> Cache
+MqttHandlerServiceService --> ConfirmStatus
+MqttHandlerServiceService --> ClientMqttHandlerService
+MqttProducerConfigure --> MqttProducer
+MqttProducerConfigure --> Producer
+MqttProducerConfigure --> SubMessage
+MqttProducerConfigure --> ConnectOptions
+InitBean --> ProtocolEnum
+InitBean --> MqttHander
+ServerMqttHandlerService ..|> MqttHandlerIntf
+ClientMqttHandlerService ..|> MqttHandlerIntf
+BootstrapServer --> InitBean
+ChannelService --> MqttChannel
+ChannelService --> WillMeaasge
+ScheduledPool ..|> Scheduled
+ScheduledPool --> Scheduled
+ScheduledPool --> InitBean
+NettyBootstrapServer --|> AbstractBootstrapServer
+NettyBootstrapServer --> IpUtils
+NettyBootstrapServer --> InitBean
+NettyBootstrapServer --> RemotingUtil
+AbstractBootstrapServer ..|> BootstrapServer
+AbstractBootstrapServer --> ByteBufToWebSocketFrameEncoder
+AbstractBootstrapServer --> WebSocketFrameToByteBufDecoder
+AbstractBootstrapServer --> InitBean
+AbstractBootstrapServer --> SecureSocketSslContextFactory
+AbstractBootstrapServer --> SpringBeanUtils
+DefaultMqttHandler --|> MqttHander
+DefaultMqttHandler --> ChannelService
+DefaultMqttHandler --> MqttChannel
+DefaultMqttHandler --> NoFindHandlerException
+DefaultMqttHandler --> MqttHander
+DefaultMqttHandler --> MqttHandlerIntf
+DefaultMqttHandler --> ServerMqttHandlerService
+DefaultMqttHandler --> ConnectOptions
+MqttChannel --> SessionStatus
+MqttChannel --> SubStatus
+SendMqttMessage --> ConfirmStatus
+PublishApiSevice --> MqttChannel
+PublishApiSevice --> SendMqttMessage
+PublishApiSevice --> WillMeaasge
+PublishApiSevice --> MessageTransfer
+PublishApiSevice --> ConfirmStatus
+MqttHandlerService --|> ServerMqttHandlerService
+MqttHandlerService ..|> BaseApi
+MqttHandlerService --> BaseApi
+MqttHandlerService --> BaseAuthService
+MqttHandlerService --> ChannelService
+MqttHandlerService --> MessageTransfer
+MqttHandlerService --> ConfirmStatus
+MqttHandlerService --> ServerMqttHandlerService
+WillService ..|> BaseApi
+WillService --> WillMeaasge
+WillService --> BaseApi
+WillService --> ChannelService
+ClientSessionService --> SessionMessage
+MqttChannelService --|> AbstractChannelService
+MqttChannelService --> MessageTransfer
+MqttChannelService --> ConfirmStatus
+MqttChannelService --> SessionStatus
+MqttChannelService --> SubStatus
+MqttChannelService --> ConnectionException
+MqttChannelService --> ByteBufUtil
+AbstractChannelService --|> PublishApiSevice
+AbstractChannelService ..|> ChannelService
+AbstractChannelService ..|> BaseApi
+AbstractChannelService --> Cache
+AbstractChannelService --> MqttChannel
+AbstractChannelService --> RetainMessage
+AbstractChannelService --> BaseApi
+AbstractChannelService --> ChannelService
+AbstractChannelService --> CacheMap
+AbstractChannelService --> MessageTransfer
+MessageTransfer --> SendMqttMessage
+MessageHandler --> SendMqttMessage
+MessageEvent --> SendMqttMessage
+DisruptorMessageStarter ..|> MessageStarter
+InitServer --> BootstrapServer
+InitServer --> NettyBootstrapServer
+InitServer --> InitBean
+ServerAutoConfigure --> ProtocolEnum
+ServerAutoConfigure --> InitBean
+SubListener ..|> MqttListener
+SubListener --> MqttListener
+SubListener --> MqttMessageListener
+MqttMain --> MqttListener
+MqttMain --> MqttProducer
+MqttMain --> Producer
+MqttMain --> ConnectOptions
+springTest --> Producer
+DefaultAutoService ..|> BaseAuthService
+DefaultAutoService --> BaseAuthService
+MqttClientConsumerTest --> SecureSocketSslContextFactory
+MqttClientConsumerTest1 --> SecureSocketSslContextFactory
+main --> MqttListener
+main --> MqttProducer
+main --> Producer
+main --> ConnectOptions
+MyListener ..|> MqttListener
+MyListener --> MqttListener
+MyListener --> MqttMessageListener
+
+@enduml

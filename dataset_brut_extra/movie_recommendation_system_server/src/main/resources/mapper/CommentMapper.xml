@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zjw.mrs.mapper.CommentMapper">
+
+    <resultMap id="BaseResultMap" type="cn.zjw.mrs.entity.Comment">
+            <result property="uid" column="uid" jdbcType="BIGINT"/>
+            <result property="mid" column="mid" jdbcType="BIGINT"/>
+            <result property="comment" column="comment" jdbcType="VARCHAR"/>
+            <result property="score" column="score" jdbcType="INTEGER"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+            <result property="agree" column="agree" jdbcType="INTEGER"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="nickname" column="user_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,mid,comment,
+        score,time,agree,
+        type,user_name
+    </sql>
+
+    <select id="selectOwnCommentByUidAndMid" resultType="cn.zjw.mrs.vo.comment.CommentStripVo">
+        SELECT c.id, c.score, c.comment, c.time, c.nickname, c.agree, u.avatar FROM `comment` c
+        JOIN `user` u ON c.uid = u.id
+        WHERE uid = ${uid} AND mid = ${mid}
+    </select>
+
+    <select id="selectMoreCommentsByMovieId" resultType="cn.zjw.mrs.vo.comment.CommentStripVo">
+        SELECT c.id, c.score, c.comment, c.time, c.nickname, c.agree, c.type, u.avatar FROM `comment` c
+        JOIN `user` u ON c.uid = u.id
+        WHERE mid = ${mid}
+        ORDER BY c.time DESC
+        LIMIT ${currentPage}, ${pageSize}
+    </select>
+
+    <resultMap id="CommentMovieResultMap" type="cn.zjw.mrs.vo.comment.CommentMovieVo">
+        <association property="commentStripVo" javaType="cn.zjw.mrs.vo.comment.CommentStripVo">
+            <result property="id" column="id" jdbcType="BIGINT"/>
+            <result property="comment" column="comment" jdbcType="VARCHAR"/>
+            <result property="score" column="score" jdbcType="INTEGER"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+            <result property="agree" column="agree" jdbcType="INTEGER"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        </association>
+        <association property="movieStripVo" javaType="cn.zjw.mrs.vo.movie.MovieStripVo">
+            <id property="id" column="mid" jdbcType="BIGINT"/>
+            <result property="did" column="did" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="directors" column="directors" jdbcType="VARCHAR"/>
+            <result property="actors" column="actors" jdbcType="VARCHAR"/>
+            <result property="types" column="types" jdbcType="VARCHAR"/>
+            <result property="regions" column="regions" jdbcType="VARCHAR"/>
+            <result property="score" column="m_score" jdbcType="DOUBLE"/>
+            <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <select id="selectOwnCommentMovieMoments" resultMap="CommentMovieResultMap" resultType="cn.zjw.mrs.vo.comment.CommentMovieVo">
+        SELECT c.*, u.avatar, m.did, m.name, m.score m_score, m.pic, m.directors, m.actors, m.regions, m.types FROM `comment` c
+        JOIN `user` u ON c.uid = u.id
+        JOIN `movie` m ON c.mid = m.id
+        WHERE uid = ${uid}
+        ORDER BY c.time DESC
+        LIMIT ${currentIndex}, ${pageSize}
+    </select>
+
+    <resultMap id="preferenceResultMap" type="cn.zjw.mrs.entity.Preference">
+        <id property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="mid" column="mid" jdbcType="BIGINT"/>
+        <result property="score" column="score" jdbcType="INTEGER"/>
+        <result property="cnt" column="cnt" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectAllPreferences" resultMap="preferenceResultMap" resultType="cn.zjw.mrs.entity.Preference">
+        SELECT c.uid, c.mid, c.score, cc.cnt FROM `comment` c
+        JOIN (SELECT uid, COUNT(uid) cnt FROM `comment` GROUP BY uid) cc ON c.uid = cc.uid
+        ORDER BY c.uid
+    </select>
+</mapper>

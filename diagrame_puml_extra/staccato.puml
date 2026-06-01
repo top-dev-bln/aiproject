@@ -1,0 +1,1288 @@
+@startuml
+package com.planet.staccato.api; {
+class ApiApi {
+}
+
+class ApiController {
+}
+
+class FieldsPropertyEditor {
+}
+
+class ParameterValidator {
+}
+
+class SortbyPropertyEditor {
+}
+
+}
+
+package com.planet.staccato.catalog; {
+class CatalogRouteInitializer {
+}
+
+class LinkGenerator {
+}
+
+class PropertyField {
+}
+
+class RequestHandler {
+}
+
+class RootCatalog {
+}
+
+class RootCatalogConfig {
+}
+
+class SubcatalogPropertiesService {
+}
+
+}
+
+package com.planet.staccato.collection; {
+class CollectionApi {
+}
+
+class CollectionController {
+}
+
+class CatalogType {
+}
+
+class CollectionMetadata {
+}
+
+class CollectionMetadataAdapter {
+}
+
+class LinkHelper {
+}
+
+class Subcatalog {
+}
+
+}
+
+package com.planet.staccato.config; {
+class ExtensionConfig {
+}
+
+class MicrometerConfig {
+}
+
+class StacConfiguration {
+}
+
+class LinksConfigProps {
+}
+
+class StaccatoMediaType {
+}
+
+class StaccatoRelType {
+}
+
+class StaccatoSchemas {
+}
+
+class StacConfigProps {
+}
+
+}
+
+package com.planet.staccato.exceptions; {
+class DataBufferWriter {
+}
+
+class ErrorResponseComposer {
+}
+
+class InvalidParameterException {
+}
+
+class StaccatoControllerAdvice {
+}
+
+class StaccatoErrorWebExceptionHandler {
+}
+
+}
+
+package com.planet.staccato.exceptions.handlers; {
+class AbstractBadRequestExceptionHandler {
+}
+
+class AbstractExceptionHandler {
+}
+
+class InvalidParameterExceptionHandler {
+}
+
+class NoSuchElementExceptionHandler {
+}
+
+class ServerWebInputExceptionHandler {
+}
+
+class WebExchangeBindExceptionHandler {
+}
+
+}
+
+package com.planet.staccato.filters; {
+class CentroidBuilderFilter {
+}
+
+class CentroidExclusionFilter {
+}
+
+class LinkBuilderFilter {
+}
+
+class PropertiesExclusionFilter {
+}
+
+class SelfLinkExclusionFilter {
+}
+
+class VersionFilter {
+}
+
+class ItemIndexFilter {
+}
+
+class ItemSearchFilter {
+}
+
+class ItemsFilterProcessor {
+}
+
+class ItemUpdateFilter {
+}
+
+}
+
+package com.planet.staccato.oaf; {
+class DefaultOafService {
+}
+
+class OafApi {
+}
+
+class OafController {
+}
+
+}
+
+package com.planet.staccato.schema; {
+class DefaultSchemaService {
+}
+
+class SchemaApi {
+}
+
+class SchemaController {
+}
+
+}
+
+package com.planet.staccato; {
+class StaccatoApplication {
+}
+
+class StaccatoApplicationInitializer {
+}
+
+class StaccatoHealthIndicator {
+}
+
+class FieldName {
+}
+
+class SearchRequestUtils {
+}
+
+class SerializationUtils {
+}
+
+class StacInitializer {
+}
+
+}
+
+package com.planet.staccato.stats; {
+class StatsApi {
+}
+
+class StatsController {
+}
+
+}
+
+package com.planet.staccato.transaction; {
+class TransactionApi {
+}
+
+class TransactionController {
+}
+
+}
+
+package com.planet.staccato.landsat8; {
+class Landsat8 {
+}
+
+class Landsat8AutoConfig {
+}
+
+class Landsat8CollectionMetadata {
+}
+
+class Landsat8ItemProperties {
+}
+
+}
+
+package com.planet.staccato.planet; {
+class Planet {
+}
+
+class PlanetAutoConfig {
+}
+
+class PlanetCollectionMetadata {
+}
+
+class PlanetItemProperties {
+}
+
+}
+
+package com.planet.staccato.dto.api.extensions; {
+class FieldsExtension {
+}
+
+class QueryExtension {
+}
+
+class SortExtension {
+}
+
+}
+
+package com.planet.staccato.dto.api; {
+class SearchRequest {
+}
+
+class SingleGeometry {
+}
+
+class SingleGeometryValidator {
+}
+
+}
+
+package com.planet.staccato.dto; {
+class ItemStatisticsResponse {
+}
+
+class StacTransactionResponse {
+}
+
+}
+
+package com.planet.staccato.elasticsearch.annotation; {
+class Mapping {
+}
+
+class MappingType {
+}
+
+}
+
+package com.planet.staccato.exception; {
+class CatalogException {
+}
+
+class ItemNotFoundException {
+}
+
+class SerializationException {
+}
+
+class StaccatoRuntimeException {
+}
+
+class StacException {
+}
+
+}
+
+package com.planet.staccato.model; {
+class Asset {
+}
+
+class Bbox {
+}
+
+class Catalog {
+}
+
+class Centroid {
+}
+
+class Collections {
+}
+
+class Conformance {
+}
+
+class Context {
+}
+
+class Doc {
+}
+
+class DoubleRange {
+}
+
+class Extent {
+}
+
+class GeoJson {
+}
+
+class GeometryCollection {
+}
+
+class GeometryCollection2D {
+}
+
+class GeoPolygon2D {
+}
+
+class Int64Range {
+}
+
+class Int64Set {
+}
+
+class Item {
+}
+
+class ItemCollection {
+}
+
+class ItemCollectionLinks {
+}
+
+class ItemProperties {
+}
+
+class ItemType {
+}
+
+class LinearRing2D {
+}
+
+class LineString {
+}
+
+class LineString2D {
+}
+
+class Link {
+}
+
+class MultiLineString {
+}
+
+class MultiLineString2D {
+}
+
+class MultiPoint {
+}
+
+class MultiPoint2D {
+}
+
+class MultiPolygon {
+}
+
+class MultiPolygon2D {
+}
+
+class Point {
+}
+
+class Point2D {
+}
+
+class Polygon {
+}
+
+class Polygon2D {
+}
+
+class Provider {
+}
+
+class Stats {
+}
+
+}
+
+package com.planet.staccato.properties; {
+class CoreProperties {
+}
+
+}
+
+package com.planet.staccato.properties.extension; {
+class DataCube {
+}
+
+class EO {
+}
+
+class File {
+}
+
+class ItemAssets {
+}
+
+class Label {
+}
+
+class PointCloud {
+}
+
+class Processing {
+}
+
+class Projection {
+}
+
+class Sar {
+}
+
+class ScientificCitation {
+}
+
+class SingleFileStac {
+}
+
+class TiledAssetsLinks {
+}
+
+class TiledAssetsSets {
+}
+
+class TiledAssetsTemplates {
+}
+
+class Timestamps {
+}
+
+class Version {
+}
+
+class View {
+}
+
+}
+
+package com.planet.staccato.properties.ogc; {
+class TileMatrix2D {
+}
+
+}
+
+package com.planet.staccato.queryables; {
+class QueryableProperty {
+}
+
+class Queryables {
+}
+
+}
+
+package com.planet.staccato.service; {
+class AggregationService {
+}
+
+class ApiService {
+}
+
+class CatalogService {
+}
+
+class CollectionService {
+}
+
+class SchemaService {
+}
+
+class TransactionService {
+}
+
+}
+
+package com.planet.staccato.grpc; {
+class GrpcAutoConfig {
+}
+
+class GrpcConfigProps {
+}
+
+}
+
+package com.planet.staccato.grpc.service; {
+class GrpcApiService {
+}
+
+class GrpcCatalogService {
+}
+
+class GrpcCollectionsService {
+}
+
+class GrpcTransactionService {
+}
+
+}
+
+package com.planet.staccato.kafka.config; {
+class KafkaAutoConfig {
+}
+
+class KafkaConfigProps {
+}
+
+}
+
+package com.planet.staccato.kafka; {
+class KafkaItemListener {
+}
+
+class TestProducer {
+}
+
+}
+
+package com.planet.staccato.es.api; {
+class ElasticsearchApiService {
+}
+
+class PropertiesVisitor {
+}
+
+}
+
+package com.planet.staccato.es.catalog; {
+class ElasticsearchCatalogService {
+}
+
+}
+
+package com.planet.staccato.es.collection; {
+class ElasticsearchCollectionService {
+}
+
+}
+
+package com.planet.staccato.es.config; {
+class ElasticsearchConfig {
+}
+
+class ElasticsearchConfigProps {
+}
+
+class IndexAliasConfigProps {
+}
+
+}
+
+package com.planet.staccato.es.exception; {
+class FilterException {
+}
+
+class ItemException {
+}
+
+}
+
+package com.planet.staccato.es; {
+class IndexAliasLookup {
+}
+
+class QueryBuilderHelper {
+}
+
+class ScrollWrapper {
+}
+
+}
+
+package com.planet.staccato.es.initializer; {
+class ElasticsearchAvailabilityChecker {
+}
+
+class ElasticsearchIndexInitializer {
+}
+
+}
+
+package com.planet.staccato.es.repository; {
+class ElasticsearchRepository {
+}
+
+class ElasticsearchWebClient {
+}
+
+class ItemCollectionBuilder {
+}
+
+class NextTokenHelper {
+}
+
+}
+
+package com.planet.staccato.es.stats; {
+class ElasticStatsService {
+}
+
+}
+
+package com.planet.staccato.es.transaction; {
+class ElasticTransactionService {
+}
+
+}
+
+ApiApi -- SearchRequest
+ApiApi -- Mapping
+ApiApi -- Item
+ApiApi -- ItemCollection
+ApiController -- ApiApi
+ApiController -- FieldsPropertyEditor
+ApiController -- SortbyPropertyEditor
+ApiController -- FieldsExtension
+ApiController -- SortExtension
+ApiController -- SearchRequest
+ApiController -- Item
+ApiController -- ItemCollection
+ApiController -- ApiService
+FieldsPropertyEditor -- FieldsExtension
+FieldsPropertyEditor -- SearchRequest
+ParameterValidator -- InvalidParameterException
+ParameterValidator -- SearchRequest
+SortbyPropertyEditor -- SortExtension
+SortbyPropertyEditor -- SearchRequest
+CatalogRouteInitializer -- LinkGenerator
+CatalogRouteInitializer -- PropertyField
+CatalogRouteInitializer -- RequestHandler
+CatalogRouteInitializer -- SubcatalogPropertiesService
+CatalogRouteInitializer -- CatalogType
+CatalogRouteInitializer -- CollectionMetadata
+CatalogRouteInitializer -- Subcatalog
+CatalogRouteInitializer -- LinksConfigProps
+CatalogRouteInitializer -- Catalog
+CatalogRouteInitializer -- Context
+CatalogRouteInitializer -- Extent
+CatalogRouteInitializer -- Item
+CatalogRouteInitializer -- ItemCollection
+CatalogRouteInitializer -- Link
+CatalogRouteInitializer -- AggregationService
+LinkGenerator -- PropertyField
+LinkGenerator -- CollectionMetadata
+LinkGenerator -- LinksConfigProps
+LinkGenerator -- StaccatoMediaType
+LinkGenerator -- Item
+LinkGenerator -- Link
+LinkGenerator -- EO
+RequestHandler -- LinkGenerator
+RequestHandler -- PropertyField
+RequestHandler -- SubcatalogPropertiesService
+RequestHandler -- CollectionMetadata
+RequestHandler -- Subcatalog
+RequestHandler -- FieldsExtension
+RequestHandler -- SearchRequest
+RequestHandler -- Catalog
+RequestHandler -- Extent
+RequestHandler -- Item
+RequestHandler -- ItemCollection
+RequestHandler -- Link
+RequestHandler -- AggregationService
+RequestHandler -- ApiService
+RequestHandler -- CatalogService
+RequestHandler -- ElasticsearchApiService
+RootCatalog -- Catalog
+RootCatalogConfig -- RootCatalog
+RootCatalogConfig -- DefaultOafService
+RootCatalogConfig -- Planet
+RootCatalogConfig -- LinksConfigProps
+RootCatalogConfig -- StaccatoMediaType
+RootCatalogConfig -- StaccatoRelType
+RootCatalogConfig -- StacConfigProps
+RootCatalogConfig -- Catalog
+RootCatalogConfig -- Conformance
+RootCatalogConfig -- Link
+RootCatalogConfig -- EO
+RootCatalogConfig -- Version
+SubcatalogPropertiesService -- PropertyField
+SubcatalogPropertiesService -- CatalogType
+SubcatalogPropertiesService -- CollectionMetadata
+SubcatalogPropertiesService -- Subcatalog
+SubcatalogPropertiesService -- Catalog
+SubcatalogPropertiesService -- Collections
+CollectionApi -- CollectionMetadata
+CollectionApi -- StaccatoMediaType
+CollectionApi -- SearchRequest
+CollectionApi -- Mapping
+CollectionApi -- Collections
+CollectionApi -- Item
+CollectionApi -- ItemCollection
+CollectionApi -- EO
+CollectionApi -- Queryables
+CollectionController -- CollectionApi
+CollectionController -- CollectionMetadata
+CollectionController -- SearchRequest
+CollectionController -- Collections
+CollectionController -- Item
+CollectionController -- ItemCollection
+CollectionController -- Queryables
+CollectionController -- ApiService
+CollectionController -- CollectionService
+ExtensionConfig -- CollectionMetadata
+ExtensionConfig -- StacConfigProps
+ExtensionConfig -- Item
+ExtensionConfig -- CoreProperties
+ExtensionConfig -- Version
+StacConfiguration -- CollectionMetadata
+ErrorResponseComposer -- AbstractExceptionHandler
+ErrorResponseComposer -- StacException
+AbstractBadRequestExceptionHandler -- AbstractExceptionHandler
+AbstractExceptionHandler -- StacException
+InvalidParameterExceptionHandler -- AbstractBadRequestExceptionHandler
+InvalidParameterExceptionHandler -- InvalidParameterException
+NoSuchElementExceptionHandler -- AbstractBadRequestExceptionHandler
+ServerWebInputExceptionHandler -- AbstractBadRequestExceptionHandler
+ServerWebInputExceptionHandler -- InvalidParameterException
+WebExchangeBindExceptionHandler -- AbstractBadRequestExceptionHandler
+StaccatoControllerAdvice -- ErrorResponseComposer
+StaccatoControllerAdvice -- Mapping
+StaccatoControllerAdvice -- StacException
+StaccatoErrorWebExceptionHandler -- DataBufferWriter
+StaccatoErrorWebExceptionHandler -- ErrorResponseComposer
+StaccatoErrorWebExceptionHandler -- StacException
+CentroidBuilderFilter -- ItemIndexFilter
+CentroidBuilderFilter -- Centroid
+CentroidBuilderFilter -- Context
+CentroidBuilderFilter -- Item
+CentroidBuilderFilter -- Link
+CentroidBuilderFilter -- EO
+CentroidExclusionFilter -- SearchRequest
+CentroidExclusionFilter -- ItemSearchFilter
+CentroidExclusionFilter -- Centroid
+CentroidExclusionFilter -- Item
+LinkBuilderFilter -- LinksConfigProps
+LinkBuilderFilter -- StaccatoMediaType
+LinkBuilderFilter -- StacConfigProps
+LinkBuilderFilter -- SearchRequest
+LinkBuilderFilter -- ItemSearchFilter
+LinkBuilderFilter -- Context
+LinkBuilderFilter -- Item
+LinkBuilderFilter -- Link
+LinkBuilderFilter -- EO
+PropertiesExclusionFilter -- SearchRequest
+PropertiesExclusionFilter -- ItemSearchFilter
+PropertiesExclusionFilter -- Item
+SelfLinkExclusionFilter -- LinkBuilderFilter
+SelfLinkExclusionFilter -- ItemIndexFilter
+SelfLinkExclusionFilter -- Item
+SelfLinkExclusionFilter -- Link
+VersionFilter -- LinksConfigProps
+VersionFilter -- StaccatoMediaType
+VersionFilter -- StacConfigProps
+VersionFilter -- SearchRequest
+VersionFilter -- ItemSearchFilter
+VersionFilter -- Item
+VersionFilter -- Link
+VersionFilter -- Version
+DefaultOafService -- Conformance
+DefaultOafService -- Queryables
+OafApi -- StaccatoMediaType
+OafApi -- Mapping
+OafApi -- Conformance
+OafApi -- Queryables
+OafController -- DefaultOafService
+OafController -- OafApi
+OafController -- Conformance
+OafController -- Queryables
+DefaultSchemaService -- CollectionMetadata
+DefaultSchemaService -- SchemaService
+SchemaApi -- Mapping
+SchemaController -- SchemaApi
+SchemaController -- SchemaService
+StaccatoApplicationInitializer -- StaccatoApplication
+StaccatoApplicationInitializer -- StaccatoHealthIndicator
+StaccatoApplicationInitializer -- StacConfigProps
+StaccatoApplicationInitializer -- StacInitializer
+StaccatoHealthIndicator -- StaccatoApplication
+StatsApi -- ItemStatisticsResponse
+StatsApi -- Mapping
+StatsApi -- Item
+StatsApi -- Stats
+StatsController -- StatsApi
+StatsController -- ItemStatisticsResponse
+StatsController -- Item
+StatsController -- Stats
+StatsController -- AggregationService
+StatsController -- IndexAliasLookup
+TransactionApi -- StacTransactionResponse
+TransactionApi -- Mapping
+TransactionApi -- Item
+TransactionController -- TransactionApi
+TransactionController -- StacTransactionResponse
+TransactionController -- Item
+TransactionController -- TransactionService
+Landsat8 -- Subcatalog
+Landsat8 -- Mapping
+Landsat8 -- MappingType
+Landsat8 -- Processing
+Landsat8AutoConfig -- Landsat8
+Landsat8AutoConfig -- Landsat8CollectionMetadata
+Landsat8AutoConfig -- CatalogType
+Landsat8AutoConfig -- CollectionMetadata
+Landsat8AutoConfig -- LinkHelper
+Landsat8AutoConfig -- LinksConfigProps
+Landsat8AutoConfig -- StaccatoSchemas
+Landsat8AutoConfig -- StacConfigProps
+Landsat8AutoConfig -- Catalog
+Landsat8AutoConfig -- Link
+Landsat8AutoConfig -- EO
+Landsat8AutoConfig -- Processing
+Landsat8AutoConfig -- Version
+Landsat8AutoConfig -- View
+Landsat8AutoConfig -- QueryableProperty
+Landsat8AutoConfig -- Queryables
+Landsat8CollectionMetadata -- Landsat8
+Landsat8CollectionMetadata -- Landsat8ItemProperties
+Landsat8CollectionMetadata -- Planet
+Landsat8CollectionMetadata -- CollectionMetadata
+Landsat8CollectionMetadata -- CollectionMetadataAdapter
+Landsat8CollectionMetadata -- Item
+Landsat8CollectionMetadata -- ItemProperties
+Landsat8CollectionMetadata -- Provider
+Landsat8CollectionMetadata -- EO
+Landsat8CollectionMetadata -- Version
+Landsat8ItemProperties -- Landsat8
+Landsat8ItemProperties -- CollectionMetadata
+Landsat8ItemProperties -- Item
+Landsat8ItemProperties -- ItemProperties
+Landsat8ItemProperties -- Provider
+Landsat8ItemProperties -- CoreProperties
+Landsat8ItemProperties -- EO
+Landsat8ItemProperties -- View
+Planet -- Item
+Planet -- ItemType
+Planet -- Provider
+PlanetAutoConfig -- Planet
+PlanetAutoConfig -- PlanetCollectionMetadata
+PlanetAutoConfig -- CatalogType
+PlanetAutoConfig -- CollectionMetadata
+PlanetAutoConfig -- LinkHelper
+PlanetAutoConfig -- LinksConfigProps
+PlanetAutoConfig -- StaccatoSchemas
+PlanetAutoConfig -- StacConfigProps
+PlanetAutoConfig -- Catalog
+PlanetAutoConfig -- Item
+PlanetAutoConfig -- Link
+PlanetAutoConfig -- Provider
+PlanetAutoConfig -- EO
+PlanetAutoConfig -- Version
+PlanetAutoConfig -- View
+PlanetAutoConfig -- QueryableProperty
+PlanetAutoConfig -- Queryables
+PlanetCollectionMetadata -- Planet
+PlanetCollectionMetadata -- PlanetItemProperties
+PlanetCollectionMetadata -- CollectionMetadata
+PlanetCollectionMetadata -- CollectionMetadataAdapter
+PlanetCollectionMetadata -- Item
+PlanetCollectionMetadata -- ItemProperties
+PlanetCollectionMetadata -- Provider
+PlanetCollectionMetadata -- Version
+PlanetItemProperties -- Planet
+PlanetItemProperties -- CollectionMetadata
+PlanetItemProperties -- Mapping
+PlanetItemProperties -- MappingType
+PlanetItemProperties -- Item
+PlanetItemProperties -- ItemProperties
+PlanetItemProperties -- Provider
+PlanetItemProperties -- CoreProperties
+PlanetItemProperties -- EO
+PlanetItemProperties -- View
+CatalogType -- Catalog
+CollectionMetadata -- CatalogType
+CollectionMetadata -- Asset
+CollectionMetadata -- Catalog
+CollectionMetadata -- Extent
+CollectionMetadata -- Item
+CollectionMetadata -- ItemType
+CollectionMetadata -- Link
+CollectionMetadata -- Provider
+CollectionMetadata -- Stats
+CollectionMetadata -- CoreProperties
+CollectionMetadata -- Version
+CollectionMetadataAdapter -- CatalogType
+CollectionMetadataAdapter -- CollectionMetadata
+CollectionMetadataAdapter -- Asset
+CollectionMetadataAdapter -- Catalog
+CollectionMetadataAdapter -- Extent
+CollectionMetadataAdapter -- Item
+CollectionMetadataAdapter -- ItemType
+CollectionMetadataAdapter -- Link
+CollectionMetadataAdapter -- Provider
+CollectionMetadataAdapter -- Stats
+CollectionMetadataAdapter -- CoreProperties
+CollectionMetadataAdapter -- Version
+LinkHelper -- LinksConfigProps
+LinkHelper -- StaccatoMediaType
+LinkHelper -- StaccatoRelType
+LinkHelper -- Catalog
+LinkHelper -- Link
+LinkHelper -- EO
+LinksConfigProps -- Link
+StaccatoMediaType -- EO
+StacConfigProps -- Link
+SearchRequest -- FieldsExtension
+SearchRequest -- SortExtension
+SearchRequest -- SingleGeometry
+SearchRequest -- Bbox
+SearchRequest -- Collections
+SearchRequest -- Item
+SingleGeometry -- SingleGeometryValidator
+SingleGeometry -- Doc
+SingleGeometryValidator -- SearchRequest
+SingleGeometryValidator -- Bbox
+SingleGeometryValidator -- Context
+ItemStatisticsResponse -- Item
+Mapping -- MappingType
+MappingType -- EO
+CatalogException -- Catalog
+ItemNotFoundException -- Item
+FieldName -- EO
+ItemIndexFilter -- Item
+ItemSearchFilter -- SearchRequest
+ItemSearchFilter -- Item
+ItemsFilterProcessor -- SearchRequest
+ItemsFilterProcessor -- ItemIndexFilter
+ItemsFilterProcessor -- ItemSearchFilter
+ItemsFilterProcessor -- ItemUpdateFilter
+ItemsFilterProcessor -- Item
+ItemsFilterProcessor -- ItemCollection
+ItemUpdateFilter -- Item
+Catalog -- Subcatalog
+Catalog -- Link
+Catalog -- Stats
+Catalog -- Version
+Collections -- CollectionMetadata
+Collections -- Link
+GeoJson -- Item
+GeoJson -- ItemType
+GeometryCollection -- GeoJson
+GeometryCollection -- GeometryCollection2D
+GeometryCollection2D -- GeoJson
+GeoPolygon2D -- Polygon
+GeoPolygon2D -- Polygon2D
+Item -- Asset
+Item -- Bbox
+Item -- Centroid
+Item -- Link
+Item -- CoreProperties
+Item -- Version
+ItemCollection -- Context
+ItemCollection -- Item
+ItemCollection -- Link
+ItemCollection -- Version
+ItemCollectionLinks -- Item
+ItemCollectionLinks -- ItemCollection
+ItemCollectionLinks -- Link
+ItemProperties -- Item
+ItemProperties -- Provider
+ItemType -- GeometryCollection
+ItemType -- Item
+ItemType -- ItemCollection
+ItemType -- LineString
+ItemType -- MultiLineString
+ItemType -- MultiPoint
+ItemType -- MultiPolygon
+ItemType -- Point
+ItemType -- Polygon
+ItemType -- EO
+LinearRing2D -- Point
+LinearRing2D -- Point2D
+LineString -- GeoJson
+LineString -- LineString2D
+LineString2D -- Point
+LineString2D -- Point2D
+Link -- Asset
+MultiLineString -- GeoJson
+MultiLineString -- LineString
+MultiLineString -- LineString2D
+MultiLineString -- MultiLineString2D
+MultiLineString2D -- LineString
+MultiLineString2D -- LineString2D
+MultiPoint -- GeoJson
+MultiPoint -- MultiPoint2D
+MultiPoint -- Point
+MultiPoint -- Point2D
+MultiPoint2D -- Point
+MultiPoint2D -- Point2D
+MultiPolygon -- GeoJson
+MultiPolygon -- MultiPolygon2D
+MultiPolygon -- Polygon
+MultiPolygon -- Polygon2D
+MultiPolygon2D -- Polygon
+MultiPolygon2D -- Polygon2D
+Point -- GeoJson
+Point -- Point2D
+Polygon -- GeoJson
+Polygon -- Polygon2D
+Polygon2D -- LinearRing2D
+CoreProperties -- Mapping
+CoreProperties -- MappingType
+CoreProperties -- Provider
+EO -- Mapping
+File -- Mapping
+File -- Processing
+ItemAssets -- Asset
+ItemAssets -- Item
+Label -- Stats
+PointCloud -- Mapping
+PointCloud -- MappingType
+PointCloud -- Point
+Projection -- Mapping
+Projection -- MappingType
+Projection -- Bbox
+Projection -- Centroid
+Projection -- EO
+Sar -- Mapping
+Sar -- MappingType
+SingleFileStac -- CollectionMetadata
+SingleFileStac -- Collections
+SingleFileStac -- Item
+SingleFileStac -- File
+TiledAssetsLinks -- Asset
+TiledAssetsLinks -- Link
+TiledAssetsLinks -- TileMatrix2D
+TiledAssetsSets -- Asset
+TiledAssetsSets -- Link
+TiledAssetsSets -- TileMatrix2D
+TiledAssetsTemplates -- Asset
+Version -- Mapping
+Version -- MappingType
+View -- Mapping
+View -- MappingType
+TileMatrix2D -- Mapping
+TileMatrix2D -- MappingType
+TileMatrix2D -- Asset
+TileMatrix2D -- EO
+Queryables -- EO
+Queryables -- View
+Queryables -- QueryableProperty
+SearchRequestUtils -- FieldsExtension
+SearchRequestUtils -- SortExtension
+SearchRequestUtils -- SearchRequest
+SearchRequestUtils -- Bbox
+SearchRequestUtils -- Collections
+SerializationUtils -- SerializationException
+SerializationUtils -- Item
+SerializationUtils -- Processing
+AggregationService -- ItemStatisticsResponse
+AggregationService -- Extent
+AggregationService -- Item
+AggregationService -- Stats
+ApiService -- SearchRequest
+ApiService -- Item
+ApiService -- ItemCollection
+CatalogService -- CollectionMetadata
+CatalogService -- Catalog
+CatalogService -- Item
+CatalogService -- ItemCollection
+CollectionService -- CollectionMetadata
+CollectionService -- Collections
+CollectionService -- Queryables
+TransactionService -- StacTransactionResponse
+TransactionService -- Item
+GrpcAutoConfig -- GrpcConfigProps
+GrpcApiService -- FieldsExtension
+GrpcApiService -- SearchRequest
+GrpcApiService -- Bbox
+GrpcApiService -- Collections
+GrpcApiService -- Item
+GrpcApiService -- SearchRequestUtils
+GrpcApiService -- SerializationUtils
+GrpcApiService -- ApiService
+GrpcCatalogService -- Catalog
+GrpcCatalogService -- CatalogService
+GrpcCollectionsService -- Collections
+GrpcCollectionsService -- CollectionService
+GrpcTransactionService -- StacTransactionResponse
+GrpcTransactionService -- Item
+GrpcTransactionService -- TransactionService
+KafkaAutoConfig -- Item
+KafkaAutoConfig -- TransactionService
+KafkaAutoConfig -- KafkaConfigProps
+KafkaAutoConfig -- KafkaItemListener
+KafkaAutoConfig -- TestProducer
+KafkaItemListener -- SerializationException
+KafkaItemListener -- Collections
+KafkaItemListener -- Item
+KafkaItemListener -- SerializationUtils
+KafkaItemListener -- TransactionService
+KafkaItemListener -- StacInitializer
+KafkaItemListener -- KafkaConfigProps
+TestProducer -- Link
+TestProducer -- Point
+TestProducer -- Polygon
+TestProducer -- KafkaConfigProps
+ElasticsearchApiService -- CollectionMetadata
+ElasticsearchApiService -- LinksConfigProps
+ElasticsearchApiService -- StacConfigProps
+ElasticsearchApiService -- SearchRequest
+ElasticsearchApiService -- ItemsFilterProcessor
+ElasticsearchApiService -- Collections
+ElasticsearchApiService -- Item
+ElasticsearchApiService -- ItemCollection
+ElasticsearchApiService -- Link
+ElasticsearchApiService -- ApiService
+ElasticsearchApiService -- CollectionService
+ElasticsearchApiService -- ElasticsearchCollectionService
+ElasticsearchApiService -- IndexAliasLookup
+ElasticsearchApiService -- QueryBuilderHelper
+ElasticsearchApiService -- ElasticsearchRepository
+PropertiesVisitor -- Context
+ElasticsearchCatalogService -- CollectionMetadata
+ElasticsearchCatalogService -- SearchRequest
+ElasticsearchCatalogService -- Catalog
+ElasticsearchCatalogService -- Collections
+ElasticsearchCatalogService -- Item
+ElasticsearchCatalogService -- ItemCollection
+ElasticsearchCatalogService -- Link
+ElasticsearchCatalogService -- ApiService
+ElasticsearchCatalogService -- CatalogService
+ElasticsearchCatalogService -- ElasticsearchApiService
+ElasticsearchCatalogService -- IndexAliasLookup
+ElasticsearchCollectionService -- CatalogType
+ElasticsearchCollectionService -- CollectionMetadata
+ElasticsearchCollectionService -- CollectionMetadataAdapter
+ElasticsearchCollectionService -- LinksConfigProps
+ElasticsearchCollectionService -- StaccatoRuntimeException
+ElasticsearchCollectionService -- Catalog
+ElasticsearchCollectionService -- Collections
+ElasticsearchCollectionService -- Extent
+ElasticsearchCollectionService -- Link
+ElasticsearchCollectionService -- Stats
+ElasticsearchCollectionService -- Queryables
+ElasticsearchCollectionService -- CollectionService
+ElasticsearchCollectionService -- ElasticStatsService
+ElasticsearchConfig -- CollectionMetadata
+ElasticsearchConfig -- Provider
+ElasticsearchConfig -- ElasticsearchConfigProps
+ElasticsearchConfig -- ElasticsearchIndexInitializer
+ElasticsearchConfigProps -- Mapping
+ElasticsearchConfigProps -- MappingType
+ElasticsearchConfigProps -- EO
+ItemException -- Item
+IndexAliasLookup -- CollectionMetadata
+IndexAliasLookup -- IndexAliasConfigProps
+ElasticsearchAvailabilityChecker -- Context
+ElasticsearchAvailabilityChecker -- Version
+ElasticsearchAvailabilityChecker -- StacInitializer
+ElasticsearchAvailabilityChecker -- ElasticsearchConfig
+ElasticsearchAvailabilityChecker -- ElasticsearchConfigProps
+ElasticsearchIndexInitializer -- CatalogType
+ElasticsearchIndexInitializer -- CollectionMetadata
+ElasticsearchIndexInitializer -- Subcatalog
+ElasticsearchIndexInitializer -- Mapping
+ElasticsearchIndexInitializer -- MappingType
+ElasticsearchIndexInitializer -- Catalog
+ElasticsearchIndexInitializer -- StacInitializer
+ElasticsearchIndexInitializer -- ElasticsearchConfigProps
+QueryBuilderHelper -- FieldsExtension
+QueryBuilderHelper -- SearchRequest
+QueryBuilderHelper -- FieldName
+QueryBuilderHelper -- Bbox
+QueryBuilderHelper -- LineString
+QueryBuilderHelper -- MultiLineString
+QueryBuilderHelper -- MultiPoint
+QueryBuilderHelper -- MultiPolygon
+QueryBuilderHelper -- Point
+QueryBuilderHelper -- Polygon
+QueryBuilderHelper -- EO
+QueryBuilderHelper -- SearchRequestUtils
+QueryBuilderHelper -- PropertiesVisitor
+QueryBuilderHelper -- FilterException
+ElasticsearchRepository -- SortExtension
+ElasticsearchRepository -- SearchRequest
+ElasticsearchRepository -- StacTransactionResponse
+ElasticsearchRepository -- StaccatoRuntimeException
+ElasticsearchRepository -- FieldName
+ElasticsearchRepository -- Context
+ElasticsearchRepository -- Doc
+ElasticsearchRepository -- Item
+ElasticsearchRepository -- ItemCollection
+ElasticsearchRepository -- ItemProperties
+ElasticsearchRepository -- SerializationUtils
+ElasticsearchRepository -- ElasticsearchConfig
+ElasticsearchRepository -- ElasticsearchConfigProps
+ElasticsearchRepository -- QueryBuilderHelper
+ElasticsearchRepository -- ElasticsearchWebClient
+ElasticsearchRepository -- ItemCollectionBuilder
+ElasticsearchRepository -- NextTokenHelper
+ElasticsearchWebClient -- Item
+ElasticsearchWebClient -- ElasticsearchConfig
+ElasticsearchWebClient -- ElasticsearchConfigProps
+ElasticsearchWebClient -- ItemException
+ItemCollectionBuilder -- LinksConfigProps
+ItemCollectionBuilder -- StaccatoMediaType
+ItemCollectionBuilder -- StacConfigProps
+ItemCollectionBuilder -- SearchRequest
+ItemCollectionBuilder -- Bbox
+ItemCollectionBuilder -- Collections
+ItemCollectionBuilder -- Context
+ItemCollectionBuilder -- Item
+ItemCollectionBuilder -- ItemCollection
+ItemCollectionBuilder -- Link
+ItemCollectionBuilder -- EO
+ItemCollectionBuilder -- Version
+ItemCollectionBuilder -- QueryBuilderHelper
+ItemCollectionBuilder -- NextTokenHelper
+ScrollWrapper -- Item
+ElasticStatsService -- SearchRequest
+ElasticStatsService -- ItemStatisticsResponse
+ElasticStatsService -- FieldName
+ElasticStatsService -- Bbox
+ElasticStatsService -- Extent
+ElasticStatsService -- Item
+ElasticStatsService -- Provider
+ElasticStatsService -- Stats
+ElasticStatsService -- AggregationService
+ElasticStatsService -- QueryBuilderHelper
+ElasticTransactionService -- StacTransactionResponse
+ElasticTransactionService -- ItemsFilterProcessor
+ElasticTransactionService -- Doc
+ElasticTransactionService -- Item
+ElasticTransactionService -- SerializationUtils
+ElasticTransactionService -- ApiService
+ElasticTransactionService -- TransactionService
+ElasticTransactionService -- ElasticsearchApiService
+ElasticTransactionService -- ElasticsearchConfig
+ElasticTransactionService -- ElasticsearchConfigProps
+ElasticTransactionService -- IndexAliasLookup
+ElasticTransactionService -- ElasticsearchRepository
+@enduml

@@ -1,0 +1,219 @@
+@startuml
+package com.naughtyzombie.boilerplate.springreactboilerplate.config; {
+class WebSecurityConfig {
+}
+
+class WebSocketConfiguration {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.model; {
+class Book {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.model.security; {
+class Role {
+}
+
+class RoleName {
+}
+
+class User {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.repository; {
+class BookRespository {
+}
+
+class BookRespositoryTest {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.resource; {
+class BookResource {
+}
+
+class AuthenticationRestControllerTest {
+}
+
+class BookResourceTest {
+}
+
+class MethodProtectedRestControllerTest {
+}
+
+class UserRestControllerTest {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.security.controller; {
+class AuthenticationException {
+}
+
+class AuthenticationRestController {
+}
+
+class MethodProtectedRestController {
+}
+
+class UserRestController {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.security; {
+class JwtAuthenticationEntryPoint {
+}
+
+class JwtAuthenticationRequest {
+}
+
+class JwtAuthorizationTokenFilter {
+}
+
+class JWTLogoutSuccessHandler {
+}
+
+class JwtTokenUtil {
+}
+
+class JwtUser {
+}
+
+class JwtUserFactory {
+}
+
+class ValidationResource {
+}
+
+class WebSocketSecurityConfiguration {
+}
+
+class JwtTokenUtilTest {
+}
+
+class UserDetailsDummy {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.security.repository; {
+class UserRepository {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.security.service; {
+class JwtAuthenticationResponse {
+}
+
+class JwtUserDetailsService {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.service; {
+class BookService {
+}
+
+class BookServiceTest {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate; {
+class SpringReactBoilerplateApplication {
+}
+
+class SpringReactBoilerplateApplicationTests {
+}
+
+}
+
+package com.naughtyzombie.boilerplate.springreactboilerplate.websocket; {
+class WebSocketController {
+}
+
+}
+
+WebSecurityConfig -- User
+WebSecurityConfig -- JwtAuthenticationEntryPoint
+WebSecurityConfig -- JwtAuthorizationTokenFilter
+WebSecurityConfig -- JWTLogoutSuccessHandler
+WebSecurityConfig -- JwtTokenUtil
+WebSecurityConfig -- JwtUser
+WebSecurityConfig -- JwtUserDetailsService
+Role -- RoleName
+Role -- User
+BookRespository -- Book
+BookResource -- Book
+BookResource -- BookService
+AuthenticationRestController -- User
+AuthenticationRestController -- AuthenticationException
+AuthenticationRestController -- JwtAuthenticationRequest
+AuthenticationRestController -- JwtTokenUtil
+AuthenticationRestController -- JwtUser
+AuthenticationRestController -- JwtAuthenticationResponse
+MethodProtectedRestController -- Role
+UserRestController -- User
+UserRestController -- JwtTokenUtil
+UserRestController -- JwtUser
+JwtAuthenticationEntryPoint -- AuthenticationException
+JwtAuthenticationRequest -- User
+JwtAuthorizationTokenFilter -- User
+JwtAuthorizationTokenFilter -- JwtTokenUtil
+JwtTokenUtil -- User
+JwtTokenUtil -- JwtUser
+JwtUser -- User
+JwtUserFactory -- Role
+JwtUserFactory -- User
+JwtUserFactory -- JwtUser
+UserRepository -- User
+JwtUserDetailsService -- User
+JwtUserDetailsService -- JwtUser
+JwtUserDetailsService -- JwtUserFactory
+JwtUserDetailsService -- UserRepository
+WebSocketSecurityConfiguration -- Role
+BookService -- Book
+BookService -- BookRespository
+BookRespositoryTest -- Book
+BookRespositoryTest -- BookRespository
+AuthenticationRestControllerTest -- Role
+AuthenticationRestControllerTest -- RoleName
+AuthenticationRestControllerTest -- User
+AuthenticationRestControllerTest -- AuthenticationRestController
+AuthenticationRestControllerTest -- JwtAuthenticationRequest
+AuthenticationRestControllerTest -- JwtTokenUtil
+AuthenticationRestControllerTest -- JwtUser
+AuthenticationRestControllerTest -- JwtUserFactory
+AuthenticationRestControllerTest -- JwtUserDetailsService
+BookResourceTest -- Book
+BookResourceTest -- BookResource
+MethodProtectedRestControllerTest -- Role
+MethodProtectedRestControllerTest -- User
+MethodProtectedRestControllerTest -- MethodProtectedRestController
+MethodProtectedRestControllerTest -- JwtTokenUtil
+UserRestControllerTest -- Role
+UserRestControllerTest -- RoleName
+UserRestControllerTest -- User
+UserRestControllerTest -- UserRestController
+UserRestControllerTest -- JwtTokenUtil
+UserRestControllerTest -- JwtUser
+UserRestControllerTest -- JwtUserFactory
+UserRestControllerTest -- JwtUserDetailsService
+JwtTokenUtilTest -- User
+JwtTokenUtilTest -- JwtTokenUtil
+JwtTokenUtilTest -- JwtUser
+JwtTokenUtilTest -- UserDetailsDummy
+UserDetailsDummy -- User
+BookServiceTest -- Book
+BookServiceTest -- BookService
+SpringReactBoilerplateApplicationTests -- SpringReactBoilerplateApplication
+@enduml

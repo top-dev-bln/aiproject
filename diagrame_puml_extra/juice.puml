@@ -1,0 +1,974 @@
+@startuml
+package juice.amazonaws.constants; {
+class AmazonS3Constant {
+}
+
+}
+
+package juice.amazonaws.dynamodb; {
+class AmazonDynamoDBBuilder {
+}
+
+}
+
+package juice.amazonaws.s3; {
+class AmazonS3Builder {
+}
+
+class AmazonS3Template {
+}
+
+}
+
+package juice.amazonaws.s3.generator; {
+class DefaultFileKeyGenerator {
+}
+
+class FileKeyGenerator {
+}
+
+}
+
+package juice.amazonaws.s3.metadata; {
+class DefaultFileMetadata {
+}
+
+class FileMetadata {
+}
+
+class UserMetadataKey {
+}
+
+}
+
+package juice.commons; {
+class AbstractIterator {
+}
+
+class Assertions {
+}
+
+class CharMatcher {
+}
+
+class Joiner {
+}
+
+class NumberCodec {
+}
+
+class Splitter {
+}
+
+class TimerContext {
+}
+
+}
+
+package juice.commons.collection; {
+class ConcurrentHashSet {
+}
+
+class ConcurrentReferenceHashMap {
+}
+
+class Lists {
+}
+
+class Maps {
+}
+
+class Sets {
+}
+
+}
+
+package juice.commons.primitives; {
+class Ints {
+}
+
+class Longs {
+}
+
+}
+
+package juice.commons.range; {
+class TimeRange {
+}
+
+}
+
+package juice.concurrent; {
+class DefaultThreadFactory {
+}
+
+class UnsafeAccess {
+}
+
+}
+
+package juice.contracts; {
+class ListResultDTO {
+}
+
+class PagingListResultDTO {
+}
+
+class ResponseCode {
+}
+
+class ResponseDTO {
+}
+
+class ResultCode {
+}
+
+class ResultDTO {
+}
+
+}
+
+package juice.enums; {
+class GenderEnum {
+}
+
+}
+
+package juice.exceptions; {
+class InvalidTokenException {
+}
+
+class NestedIOException {
+}
+
+class NestedRuntimeException {
+}
+
+class SerializationException {
+}
+
+class TokenExpiryException {
+}
+
+}
+
+package juice.serializer; {
+class JdkSerializationSerializer {
+}
+
+class ObjectSerializer {
+}
+
+class StringSerializer {
+}
+
+}
+
+package juice.util; {
+class AESUtils {
+}
+
+class ArrayUtils {
+}
+
+class Base64Utils {
+}
+
+class BitUtils {
+}
+
+class ClassUtils {
+}
+
+class CodecUtils {
+}
+
+class CollectionUtils {
+}
+
+class DateUtils {
+}
+
+class DecimalUtils {
+}
+
+class FileUtils {
+}
+
+class IdCardUtils {
+}
+
+class IoUtils {
+}
+
+class IpUtils {
+}
+
+class JdkUtils {
+}
+
+class MobileUtils {
+}
+
+class ObjectUtils {
+}
+
+class RandomUtils {
+}
+
+class ReflectionUtils {
+}
+
+class RSAUtils {
+}
+
+class StringUtils {
+}
+
+class TypeUtils {
+}
+
+class URLCodec {
+}
+
+class URLSignUtils {
+}
+
+class UUIDUtils {
+}
+
+class VersionUtils {
+}
+
+class BitUtilsTest {
+}
+
+}
+
+package juice; {
+class AppTest {
+}
+
+class RSATest {
+}
+
+class UnsafeTest {
+}
+
+class AppTest {
+}
+
+}
+
+package juice.entity; {
+class UserAddress {
+}
+
+class UserInfo {
+}
+
+}
+
+package juice.core.logback; {
+class IPLogConfig {
+}
+
+}
+
+package juice.core.util; {
+class CookieUtils {
+}
+
+class JodaTimeUtils {
+}
+
+class JsonUtils {
+}
+
+class ServletResponseUtils {
+}
+
+}
+
+package juice.datasource; {
+class DynamicDataSource {
+}
+
+class DynamicDSContextHolder {
+}
+
+}
+
+package juice.threadpool.constants; {
+class Constant {
+}
+
+}
+
+package juice.threadpool.constants.enums; {
+class QueueType {
+}
+
+class RejectedExecutionType {
+}
+
+}
+
+package juice.threadpool; {
+class DynamicThreadPoolExecutor {
+}
+
+class DynamicThreadPoolExecutorFactoryBean {
+}
+
+}
+
+package juice.threadpool.queue; {
+class ResizableCapacityLinkedBlockingQueue {
+}
+
+}
+
+package juice.threadpool.util; {
+class DurationStyle {
+}
+
+}
+
+package juice.ftp; {
+class CommandCallback {
+}
+
+class FileItem {
+}
+
+class FtpAccessException {
+}
+
+class FtpTemplate {
+}
+
+}
+
+package juice.ftp.constants; {
+class FtpConstant {
+}
+
+}
+
+package juice.ftp.util; {
+class FtpUtils {
+}
+
+}
+
+package juice.lock; {
+class AbstractDistributedLock {
+}
+
+class DistributedLock {
+}
+
+class DistributedLockException {
+}
+
+class DistributedLockManager {
+}
+
+class DistributedReadWriteLock {
+}
+
+class MultiLock {
+}
+
+class RedLock {
+}
+
+}
+
+package juice.lock.redis; {
+class AbstractRedisLock {
+}
+
+class RedisDistributedLock {
+}
+
+class RedisDistributedLockManager {
+}
+
+class RedisReadLock {
+}
+
+class RedisReadWriteLock {
+}
+
+class RedisScriptHolder {
+}
+
+class RedisWriteLock {
+}
+
+}
+
+package juice.ratelimiter.internal; {
+class RedisConcurrentRateLimiter {
+}
+
+class RedisRateLimiter {
+}
+
+class SemaphoreBasedRateLimiter {
+}
+
+}
+
+package juice.ratelimiter; {
+class RateLimiter {
+}
+
+class RateLimiterConfig {
+}
+
+class AppTest {
+}
+
+}
+
+package juice.security.annotation; {
+class OptionalAuth {
+}
+
+class RequiredAuth {
+}
+
+}
+
+package juice.security.interceptor; {
+class AbstractAuthInterceptor {
+}
+
+class JwtAuthInterceptor {
+}
+
+}
+
+package juice.security.internal; {
+class ClientType {
+}
+
+class JwtUserPrincipal {
+}
+
+}
+
+package juice.security.security; {
+class DefaultSecurityContext {
+}
+
+}
+
+package juice.security; {
+class SecurityContext {
+}
+
+class SecurityContextHolder {
+}
+
+class UserPrincipal {
+}
+
+}
+
+package juice.security.util; {
+class TokenUtils {
+}
+
+}
+
+package juice.spi.annotation; {
+class Alias {
+}
+
+class SPI {
+}
+
+}
+
+package juice.spi; {
+class ExtensionLoader {
+}
+
+class Scope {
+}
+
+class Car {
+}
+
+class ExtensionLoaderTest {
+}
+
+}
+
+package juice.spi.util; {
+class ClassUtils {
+}
+
+class ReflectUtils {
+}
+
+class StringUtils {
+}
+
+}
+
+package juice.spi.impl; {
+class AudiCar {
+}
+
+class BenzCar {
+}
+
+}
+
+package juice.springboot.autoconfigure; {
+class AmazonS3AutoConfiguration {
+}
+
+class DistributedLockAutoConfiguration {
+}
+
+class DynamicThreadPoolAutoConfigure {
+}
+
+class FtpTemplateAutoConfiguration {
+}
+
+class RateLimiterAutoConfiguration {
+}
+
+class RestTemplateAutoConfiguration {
+}
+
+class TracingAutoConfiguration {
+}
+
+}
+
+package juice.springboot.properties; {
+class AmazonS3ConfigProperties {
+}
+
+class FtpClientConfigProperties {
+}
+
+class RateLimiterConfigProperties {
+}
+
+class RestTemplateConfigProperties {
+}
+
+class TracingInterceptProperties {
+}
+
+}
+
+package juice.config.springsupport.annotation; {
+class DistributedTracing {
+}
+
+class DLock {
+}
+
+class DSRouting {
+}
+
+class EnableDistributedLock {
+}
+
+class EnableDynamicDataSource {
+}
+
+}
+
+package juice.config.springsupport; {
+class CommonAnnotationPointcut {
+}
+
+class Constant {
+}
+
+class ExpressionEvaluator {
+}
+
+}
+
+package juice.config.springsupport.datasource; {
+class DynamicDataSourceInterceptor {
+}
+
+class DynamicDataSourcePointcutAdvisor {
+}
+
+class DynamicDataSourceRegistrar {
+}
+
+}
+
+package juice.config.springsupport.lock; {
+class DLockInterceptor {
+}
+
+class DLockPointcutAdvisor {
+}
+
+class DLockRegistrar {
+}
+
+class LockInvokeConfig {
+}
+
+class LockInvokeContext {
+}
+
+}
+
+package juice.config.springsupport.tracing.filter; {
+class TracingFilter {
+}
+
+}
+
+package juice.config.springsupport.tracing.interceptor; {
+class TracingInterceptor {
+}
+
+}
+
+package juice.config.springsupport.tracing; {
+class RestTemplateTracingInterceptor {
+}
+
+class TraceThreadPoolTaskExecutor {
+}
+
+class TracingHttpServletResponseWrapper {
+}
+
+}
+
+package juice.config.springsupport.util; {
+class AnnotationScanUtils {
+}
+
+class BeanRegistrarUtils {
+}
+
+class ExpressionUtils {
+}
+
+}
+
+package juice.tracing; {
+class TracingConstants {
+}
+
+class TracingContext {
+}
+
+}
+
+package juice.tracing.ttl; {
+class CallableDecorator {
+}
+
+class RunnableDecorator {
+}
+
+class TaskDecorator {
+}
+
+}
+
+AmazonS3Constant -- Constant
+AmazonS3Builder -- AmazonS3Constant
+AmazonS3Builder -- StringUtils
+AmazonS3Builder -- Constant
+AmazonS3Template -- AmazonS3Constant
+AmazonS3Template -- Constant
+DefaultFileKeyGenerator -- FileKeyGenerator
+DefaultFileKeyGenerator -- FileMetadata
+DefaultFileKeyGenerator -- StringUtils
+DefaultFileKeyGenerator -- UUIDUtils
+FileKeyGenerator -- FileMetadata
+DefaultFileMetadata -- FileMetadata
+DefaultFileMetadata -- StringUtils
+AbstractIterator -- Assertions
+Assertions -- ArrayUtils
+Assertions -- CollectionUtils
+Assertions -- StringUtils
+Assertions -- Car
+ConcurrentReferenceHashMap -- Assertions
+ConcurrentReferenceHashMap -- ObjectUtils
+Lists -- Assertions
+Maps -- Assertions
+Maps -- Ints
+Sets -- ConcurrentHashSet
+Joiner -- Assertions
+NumberCodec -- StringUtils
+TimeRange -- DateUtils
+Splitter -- AbstractIterator
+Splitter -- Assertions
+Splitter -- CharMatcher
+TimerContext -- Assertions
+ListResultDTO -- ResultDTO
+PagingListResultDTO -- ListResultDTO
+PagingListResultDTO -- ResultDTO
+PagingListResultDTO -- CollectionUtils
+ResponseDTO -- ResponseCode
+ResultDTO -- ResultCode
+GenderEnum -- StringUtils
+InvalidTokenException -- NestedRuntimeException
+SerializationException -- NestedRuntimeException
+JdkSerializationSerializer -- Assertions
+JdkSerializationSerializer -- NestedIOException
+JdkSerializationSerializer -- SerializationException
+JdkSerializationSerializer -- ObjectSerializer
+JdkSerializationSerializer -- ClassUtils
+ObjectSerializer -- SerializationException
+ObjectSerializer -- StringSerializer
+StringSerializer -- Assertions
+ArrayUtils -- RandomUtils
+BitUtils -- Sets
+CodecUtils -- StringUtils
+CollectionUtils -- Ints
+FileUtils -- DecimalUtils
+FileUtils -- IoUtils
+FileUtils -- StringUtils
+IdCardUtils -- GenderEnum
+IdCardUtils -- StringUtils
+IdCardUtils -- Car
+MobileUtils -- StringUtils
+ReflectionUtils -- Assertions
+ReflectionUtils -- ConcurrentReferenceHashMap
+RSAUtils -- StringUtils
+TypeUtils -- Assertions
+TypeUtils -- ClassUtils
+URLCodec -- StringUtils
+URLSignUtils -- CodecUtils
+VersionUtils -- StringUtils
+UserInfo -- UserAddress
+RSATest -- Base64Utils
+RSATest -- RSAUtils
+RSATest -- StringUtils
+UnsafeTest -- UnsafeAccess
+BitUtilsTest -- BitUtils
+IPLogConfig -- IpUtils
+CookieUtils -- StringUtils
+JsonUtils -- DateUtils
+JsonUtils -- StringUtils
+ServletResponseUtils -- ResponseCode
+ServletResponseUtils -- ResponseDTO
+ServletResponseUtils -- ResultDTO
+ServletResponseUtils -- StringUtils
+ServletResponseUtils -- JsonUtils
+DynamicDataSource -- StringUtils
+DynamicDataSource -- DynamicDSContextHolder
+DynamicDSContextHolder -- StringUtils
+QueueType -- ResizableCapacityLinkedBlockingQueue
+DynamicThreadPoolExecutor -- DefaultThreadFactory
+DynamicThreadPoolExecutor -- StringUtils
+DynamicThreadPoolExecutor -- Constant
+DynamicThreadPoolExecutor -- QueueType
+DynamicThreadPoolExecutor -- RejectedExecutionType
+DynamicThreadPoolExecutor -- ResizableCapacityLinkedBlockingQueue
+DynamicThreadPoolExecutor -- DurationStyle
+DynamicThreadPoolExecutorFactoryBean -- DynamicThreadPoolExecutor
+DurationStyle -- Assertions
+DurationStyle -- StringUtils
+FtpConstant -- Constant
+FtpTemplate -- CollectionUtils
+FtpTemplate -- IoUtils
+FtpTemplate -- Constant
+FtpTemplate -- CommandCallback
+FtpTemplate -- FtpConstant
+FtpTemplate -- FileItem
+FtpTemplate -- FtpAccessException
+FtpTemplate -- FtpUtils
+FtpUtils -- CollectionUtils
+FtpUtils -- StringUtils
+AbstractDistributedLock -- DistributedLock
+DistributedLockException -- NestedRuntimeException
+DistributedLockException -- DistributedLock
+DistributedLockManager -- DistributedLock
+DistributedLockManager -- DistributedReadWriteLock
+DistributedLockManager -- MultiLock
+DistributedReadWriteLock -- DistributedLock
+MultiLock -- DistributedLock
+AbstractRedisLock -- UUIDUtils
+AbstractRedisLock -- AbstractDistributedLock
+AbstractRedisLock -- DistributedLock
+RedisDistributedLock -- DistributedLock
+RedisDistributedLock -- AbstractRedisLock
+RedisDistributedLock -- RedisScriptHolder
+RedisDistributedLockManager -- DistributedLock
+RedisDistributedLockManager -- DistributedLockManager
+RedisDistributedLockManager -- DistributedReadWriteLock
+RedisDistributedLockManager -- MultiLock
+RedisDistributedLockManager -- RedisDistributedLock
+RedisDistributedLockManager -- RedisReadWriteLock
+RedisReadLock -- AbstractRedisLock
+RedisReadWriteLock -- DistributedLock
+RedisReadWriteLock -- DistributedReadWriteLock
+RedisReadWriteLock -- RedisReadLock
+RedisReadWriteLock -- RedisWriteLock
+RedisWriteLock -- AbstractRedisLock
+RedLock -- DistributedLock
+RedLock -- MultiLock
+RedisConcurrentRateLimiter -- Lists
+RedisConcurrentRateLimiter -- RateLimiter
+RedisConcurrentRateLimiter -- RateLimiterConfig
+RedisRateLimiter -- Lists
+RedisRateLimiter -- RateLimiter
+RedisRateLimiter -- RateLimiterConfig
+SemaphoreBasedRateLimiter -- RateLimiter
+SemaphoreBasedRateLimiter -- RateLimiterConfig
+RateLimiter -- RateLimiterConfig
+RateLimiterConfig -- Assertions
+AbstractAuthInterceptor -- OptionalAuth
+AbstractAuthInterceptor -- RequiredAuth
+AbstractAuthInterceptor -- DefaultSecurityContext
+AbstractAuthInterceptor -- SecurityContext
+AbstractAuthInterceptor -- SecurityContextHolder
+JwtAuthInterceptor -- AbstractAuthInterceptor
+JwtUserPrincipal -- ClientType
+JwtUserPrincipal -- UserPrincipal
+DefaultSecurityContext -- SecurityContext
+DefaultSecurityContext -- UserPrincipal
+SecurityContext -- UserPrincipal
+SecurityContextHolder -- SecurityContext
+UserPrincipal -- ClientType
+TokenUtils -- InvalidTokenException
+TokenUtils -- TokenExpiryException
+TokenUtils -- Base64Utils
+TokenUtils -- CodecUtils
+TokenUtils -- StringUtils
+TokenUtils -- JsonUtils
+TokenUtils -- ClientType
+TokenUtils -- JwtUserPrincipal
+TokenUtils -- UserPrincipal
+SPI -- Scope
+ExtensionLoader -- ClassUtils
+ExtensionLoader -- StringUtils
+ExtensionLoader -- Alias
+ExtensionLoader -- SPI
+ExtensionLoader -- Scope
+ExtensionLoader -- ReflectUtils
+ReflectUtils -- ClassUtils
+ReflectUtils -- StringUtils
+Car -- SPI
+ExtensionLoaderTest -- SPI
+ExtensionLoaderTest -- ExtensionLoader
+ExtensionLoaderTest -- Car
+AudiCar -- Car
+BenzCar -- Car
+AmazonS3AutoConfiguration -- AmazonS3Builder
+AmazonS3AutoConfiguration -- AmazonS3Template
+AmazonS3AutoConfiguration -- JsonUtils
+AmazonS3AutoConfiguration -- AmazonS3ConfigProperties
+DistributedLockAutoConfiguration -- DistributedLock
+DistributedLockAutoConfiguration -- DistributedLockManager
+DistributedLockAutoConfiguration -- RedisDistributedLock
+DistributedLockAutoConfiguration -- RedisDistributedLockManager
+DynamicThreadPoolAutoConfigure -- DynamicThreadPoolExecutor
+DynamicThreadPoolAutoConfigure -- DynamicThreadPoolExecutorFactoryBean
+FtpTemplateAutoConfiguration -- JsonUtils
+FtpTemplateAutoConfiguration -- FtpTemplate
+FtpTemplateAutoConfiguration -- FtpClientConfigProperties
+RateLimiterAutoConfiguration -- JsonUtils
+RateLimiterAutoConfiguration -- RedisRateLimiter
+RateLimiterAutoConfiguration -- RateLimiter
+RateLimiterAutoConfiguration -- RateLimiterConfig
+RateLimiterAutoConfiguration -- RateLimiterConfigProperties
+RestTemplateAutoConfiguration -- RestTemplateConfigProperties
+RestTemplateAutoConfiguration -- DistributedTracing
+TracingAutoConfiguration -- Splitter
+TracingAutoConfiguration -- CollectionUtils
+TracingAutoConfiguration -- StringUtils
+TracingAutoConfiguration -- JsonUtils
+TracingAutoConfiguration -- TracingInterceptProperties
+TracingAutoConfiguration -- DistributedTracing
+TracingAutoConfiguration -- TracingFilter
+TracingAutoConfiguration -- TracingInterceptor
+TracingAutoConfiguration -- RestTemplateTracingInterceptor
+TracingAutoConfiguration -- TracingContext
+FtpClientConfigProperties -- StringUtils
+RateLimiterConfigProperties -- RateLimiter
+RateLimiterConfigProperties -- RateLimiterConfig
+EnableDistributedLock -- Constant
+EnableDistributedLock -- DistributedLock
+EnableDistributedLock -- DLock
+EnableDistributedLock -- DLockRegistrar
+EnableDynamicDataSource -- DynamicDataSource
+EnableDynamicDataSource -- DynamicDataSourcePointcutAdvisor
+EnableDynamicDataSource -- DynamicDataSourceRegistrar
+CommonAnnotationPointcut -- AnnotationScanUtils
+DynamicDataSourceInterceptor -- DynamicDataSource
+DynamicDataSourceInterceptor -- DynamicDSContextHolder
+DynamicDataSourceInterceptor -- DSRouting
+DynamicDataSourceInterceptor -- AnnotationScanUtils
+DynamicDataSourcePointcutAdvisor -- DynamicDataSource
+DynamicDataSourcePointcutAdvisor -- DSRouting
+DynamicDataSourcePointcutAdvisor -- CommonAnnotationPointcut
+DynamicDataSourcePointcutAdvisor -- DynamicDataSourceInterceptor
+DynamicDataSourceRegistrar -- DynamicDataSource
+DynamicDataSourceRegistrar -- DynamicDataSourcePointcutAdvisor
+DynamicDataSourceRegistrar -- BeanRegistrarUtils
+ExpressionEvaluator -- LockInvokeContext
+DLockInterceptor -- Assertions
+DLockInterceptor -- ConcurrentReferenceHashMap
+DLockInterceptor -- StringUtils
+DLockInterceptor -- DistributedLock
+DLockInterceptor -- DistributedLockException
+DLockInterceptor -- DistributedLockManager
+DLockInterceptor -- DLock
+DLockInterceptor -- LockInvokeConfig
+DLockInterceptor -- LockInvokeContext
+DLockInterceptor -- AnnotationScanUtils
+DLockInterceptor -- ExpressionUtils
+DLockPointcutAdvisor -- DLock
+DLockPointcutAdvisor -- CommonAnnotationPointcut
+DLockPointcutAdvisor -- DLockInterceptor
+DLockRegistrar -- DistributedLock
+DLockRegistrar -- DLock
+DLockRegistrar -- DLockPointcutAdvisor
+DLockRegistrar -- BeanRegistrarUtils
+TracingFilter -- Splitter
+TracingFilter -- TimerContext
+TracingFilter -- CollectionUtils
+TracingFilter -- StringUtils
+TracingFilter -- Constant
+TracingFilter -- TracingHttpServletResponseWrapper
+TracingFilter -- TracingConstants
+TracingFilter -- TracingContext
+TracingInterceptor -- TimerContext
+TracingInterceptor -- StringUtils
+TracingInterceptor -- Constant
+TracingInterceptor -- TracingConstants
+TracingInterceptor -- TracingContext
+RestTemplateTracingInterceptor -- StringUtils
+RestTemplateTracingInterceptor -- Constant
+RestTemplateTracingInterceptor -- TracingInterceptor
+RestTemplateTracingInterceptor -- TracingConstants
+RestTemplateTracingInterceptor -- TracingContext
+TraceThreadPoolTaskExecutor -- TaskDecorator
+AnnotationScanUtils -- ConcurrentReferenceHashMap
+ExpressionUtils -- ExpressionEvaluator
+ExpressionUtils -- LockInvokeContext
+TracingConstants -- Constant
+TracingContext -- StringUtils
+TracingContext -- UUIDUtils
+TracingContext -- Constant
+TracingContext -- TracingConstants
+TaskDecorator -- CallableDecorator
+TaskDecorator -- RunnableDecorator
+@enduml

@@ -1,0 +1,1041 @@
+@startuml
+package com.ivanfranchin.springdatajparelationships.config; {
+class ErrorAttributesConfig {
+}
+
+class SwaggerConfig {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.exception; {
+class CourseNotFoundException {
+}
+
+class CourseStudentNotFoundException {
+}
+
+class StudentNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.mapper; {
+class CourseMapper {
+}
+
+class CourseStudentMapper {
+}
+
+class StudentMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.model; {
+class Course {
+}
+
+class CourseStudent {
+}
+
+class CourseStudentPk {
+}
+
+class Student {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.repository; {
+class CourseRepository {
+}
+
+class CourseStudentRepository {
+}
+
+class StudentRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.rest.dto; {
+class CourseResponse {
+}
+
+class CourseStudentResponse {
+}
+
+class CreateCourseRequest {
+}
+
+class CreateStudentRequest {
+}
+
+class StudentResponse {
+}
+
+class UpdateCourseRequest {
+}
+
+class UpdateCourseStudentRequest {
+}
+
+class UpdateStudentRequest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.rest; {
+class StudentCourseController {
+}
+
+class StudentCourseControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.compositepkextracolumn.service; {
+class CourseService {
+}
+
+class CourseServiceImpl {
+}
+
+class CourseStudentService {
+}
+
+class CourseStudentServiceImpl {
+}
+
+class StudentService {
+}
+
+class StudentServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.exception; {
+class BookNotFoundException {
+}
+
+class WriterNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.mapper; {
+class BookMapper {
+}
+
+class WriterMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.model; {
+class Book {
+}
+
+class Writer {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.repository; {
+class BookRepository {
+}
+
+class WriterRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.rest.dto; {
+class BookResponse {
+}
+
+class CreateBookRequest {
+}
+
+class CreateWriterRequest {
+}
+
+class UpdateBookRequest {
+}
+
+class UpdateWriterRequest {
+}
+
+class WriterResponse {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.rest; {
+class WriterBookController {
+}
+
+class WriterBookControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepk.service; {
+class BookService {
+}
+
+class BookServiceImpl {
+}
+
+class WriterService {
+}
+
+class WriterServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.exception; {
+class ArticleNotFoundException {
+}
+
+class CommentNotFoundException {
+}
+
+class ReviewerNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.mapper; {
+class ArticleMapper {
+}
+
+class CommentMapper {
+}
+
+class ReviewerMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.model; {
+class Article {
+}
+
+class Comment {
+}
+
+class Reviewer {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.repository; {
+class ArticleRepository {
+}
+
+class CommentRepository {
+}
+
+class ReviewerRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.rest.dto; {
+class ArticleResponse {
+}
+
+class CommentResponse {
+}
+
+class CreateArticleRequest {
+}
+
+class CreateCommentRequest {
+}
+
+class CreateReviewerRequest {
+}
+
+class ReviewerResponse {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.rest; {
+class ReviewerArticleController {
+}
+
+class ReviewerArticleControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.manytomany.simplepkextracolumn.service; {
+class ArticleService {
+}
+
+class ArticleServiceImpl {
+}
+
+class CommentService {
+}
+
+class CommentServiceImpl {
+}
+
+class ReviewerService {
+}
+
+class ReviewerServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.exception; {
+class PlayerNotFoundException {
+}
+
+class WeaponNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.mapper; {
+class PlayerMapper {
+}
+
+class WeaponMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.model; {
+class Player {
+}
+
+class Weapon {
+}
+
+class WeaponPk {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.repository; {
+class PlayerRepository {
+}
+
+class WeaponRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.rest.dto; {
+class CreatePlayerRequest {
+}
+
+class CreateWeaponRequest {
+}
+
+class PlayerResponse {
+}
+
+class WeaponResponse {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.rest; {
+class PlayerWeaponController {
+}
+
+class PlayerWeaponControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.compositepk.service; {
+class PlayerService {
+}
+
+class PlayerServiceImpl {
+}
+
+class WeaponService {
+}
+
+class WeaponServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.exception; {
+class DishNotFoundException {
+}
+
+class RestaurantNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.mapper; {
+class DishMapper {
+}
+
+class RestaurantMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.model; {
+class Dish {
+}
+
+class Restaurant {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.repository; {
+class DishRepository {
+}
+
+class RestaurantRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.rest.dto; {
+class CreateDishRequest {
+}
+
+class CreateRestaurantRequest {
+}
+
+class DishResponse {
+}
+
+class RestaurantResponse {
+}
+
+class UpdateDishRequest {
+}
+
+class UpdateRestaurantRequest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.rest; {
+class RestaurantDishController {
+}
+
+class RestaurantDishControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetomany.simplepk.service; {
+class DishService {
+}
+
+class DishServiceImpl {
+}
+
+class RestaurantService {
+}
+
+class RestaurantServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.exception; {
+class PersonNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.mapper; {
+class PersonMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.model; {
+class Person {
+}
+
+class PersonDetail {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.repository; {
+class PersonRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.rest.dto; {
+class CreatePersonDetailRequest {
+}
+
+class CreatePersonRequest {
+}
+
+class PersonDetailResponse {
+}
+
+class PersonResponse {
+}
+
+class UpdatePersonDetailRequest {
+}
+
+class UpdatePersonRequest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.rest; {
+class PersonDetailController {
+}
+
+class PersonDetailControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.sharedpk.service; {
+class PersonService {
+}
+
+class PersonServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.exception; {
+class TeamNotFoundException {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.mapper; {
+class TeamMapper {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.model; {
+class Team {
+}
+
+class TeamDetail {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.repository; {
+class TeamRepository {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.rest.dto; {
+class CreateTeamDetailRequest {
+}
+
+class CreateTeamRequest {
+}
+
+class TeamDetailResponse {
+}
+
+class TeamResponse {
+}
+
+class UpdateTeamDetailRequest {
+}
+
+class UpdateTeamRequest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.rest; {
+class TeamDetailController {
+}
+
+class TeamDetailControllerTest {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships.onetoone.simplepk.service; {
+class TeamService {
+}
+
+class TeamServiceImpl {
+}
+
+}
+
+package com.ivanfranchin.springdatajparelationships; {
+class SpringDataJpaRelationshipsApplication {
+}
+
+class MyContainers {
+}
+
+}
+
+CourseNotFoundException -- Course
+CourseStudentNotFoundException -- StudentNotFoundException
+CourseStudentNotFoundException -- Course
+CourseStudentNotFoundException -- CourseStudent
+CourseStudentNotFoundException -- CourseStudentPk
+CourseStudentNotFoundException -- Student
+StudentNotFoundException -- Student
+CourseMapper -- Course
+CourseMapper -- CourseResponse
+CourseMapper -- CreateCourseRequest
+CourseMapper -- UpdateCourseRequest
+CourseStudentMapper -- StudentMapper
+CourseStudentMapper -- Course
+CourseStudentMapper -- CourseStudent
+CourseStudentMapper -- Student
+CourseStudentMapper -- CourseStudentResponse
+CourseStudentMapper -- StudentResponse
+CourseStudentMapper -- UpdateCourseStudentRequest
+StudentMapper -- Student
+StudentMapper -- CreateStudentRequest
+StudentMapper -- StudentResponse
+StudentMapper -- UpdateStudentRequest
+Course -- CourseStudent
+Course -- Student
+CourseStudent -- CourseStudentPk
+CourseStudent -- Student
+CourseStudentPk -- Course
+CourseStudentPk -- Student
+CourseRepository -- Course
+CourseStudentRepository -- Course
+CourseStudentRepository -- CourseStudent
+CourseStudentRepository -- CourseStudentPk
+CourseStudentRepository -- Student
+CourseStudentRepository -- StudentRepository
+StudentRepository -- Student
+CourseResponse -- Course
+CourseResponse -- CourseStudent
+CourseResponse -- Student
+CourseStudentResponse -- Course
+CourseStudentResponse -- CourseStudent
+CourseStudentResponse -- Student
+CourseStudentResponse -- StudentResponse
+CreateCourseRequest -- Course
+CreateStudentRequest -- Student
+StudentResponse -- Course
+StudentResponse -- CourseStudent
+StudentResponse -- Student
+UpdateCourseRequest -- Course
+UpdateCourseStudentRequest -- Course
+UpdateCourseStudentRequest -- CourseStudent
+UpdateCourseStudentRequest -- Student
+UpdateStudentRequest -- Student
+StudentCourseController -- CourseMapper
+StudentCourseController -- CourseStudentMapper
+StudentCourseController -- StudentMapper
+StudentCourseController -- Course
+StudentCourseController -- CourseStudent
+StudentCourseController -- Student
+StudentCourseController -- CourseResponse
+StudentCourseController -- CourseStudentResponse
+StudentCourseController -- CreateCourseRequest
+StudentCourseController -- CreateStudentRequest
+StudentCourseController -- StudentResponse
+StudentCourseController -- UpdateCourseRequest
+StudentCourseController -- UpdateCourseStudentRequest
+StudentCourseController -- UpdateStudentRequest
+StudentCourseController -- CourseService
+StudentCourseController -- CourseStudentService
+StudentCourseController -- StudentService
+CourseService -- Course
+CourseServiceImpl -- CourseNotFoundException
+CourseServiceImpl -- Course
+CourseServiceImpl -- CourseRepository
+CourseServiceImpl -- CourseService
+CourseStudentService -- Course
+CourseStudentService -- CourseStudent
+CourseStudentService -- Student
+CourseStudentService -- StudentService
+CourseStudentServiceImpl -- CourseStudentNotFoundException
+CourseStudentServiceImpl -- StudentNotFoundException
+CourseStudentServiceImpl -- Course
+CourseStudentServiceImpl -- CourseStudent
+CourseStudentServiceImpl -- CourseStudentPk
+CourseStudentServiceImpl -- Student
+CourseStudentServiceImpl -- CourseStudentRepository
+CourseStudentServiceImpl -- StudentRepository
+CourseStudentServiceImpl -- CourseStudentService
+CourseStudentServiceImpl -- StudentService
+CourseStudentServiceImpl -- StudentServiceImpl
+StudentService -- Student
+StudentServiceImpl -- StudentNotFoundException
+StudentServiceImpl -- Student
+StudentServiceImpl -- StudentRepository
+StudentServiceImpl -- StudentService
+BookNotFoundException -- Book
+WriterNotFoundException -- Writer
+BookMapper -- Book
+BookMapper -- BookResponse
+BookMapper -- CreateBookRequest
+BookMapper -- UpdateBookRequest
+WriterMapper -- Writer
+WriterMapper -- CreateWriterRequest
+WriterMapper -- UpdateWriterRequest
+WriterMapper -- WriterResponse
+Book -- Writer
+BookRepository -- Book
+WriterRepository -- Writer
+BookResponse -- Book
+BookResponse -- Writer
+CreateBookRequest -- Book
+CreateWriterRequest -- Writer
+UpdateBookRequest -- Book
+UpdateWriterRequest -- Writer
+WriterResponse -- Book
+WriterResponse -- Writer
+WriterBookController -- BookMapper
+WriterBookController -- WriterMapper
+WriterBookController -- Book
+WriterBookController -- Writer
+WriterBookController -- BookResponse
+WriterBookController -- CreateBookRequest
+WriterBookController -- CreateWriterRequest
+WriterBookController -- UpdateBookRequest
+WriterBookController -- UpdateWriterRequest
+WriterBookController -- WriterResponse
+WriterBookController -- BookService
+WriterBookController -- WriterService
+BookService -- Book
+BookServiceImpl -- BookNotFoundException
+BookServiceImpl -- Book
+BookServiceImpl -- BookRepository
+BookServiceImpl -- BookService
+WriterService -- Writer
+WriterServiceImpl -- WriterNotFoundException
+WriterServiceImpl -- Writer
+WriterServiceImpl -- WriterRepository
+WriterServiceImpl -- WriterService
+ArticleNotFoundException -- Article
+CommentNotFoundException -- Comment
+ReviewerNotFoundException -- Reviewer
+ArticleMapper -- Article
+ArticleMapper -- ArticleResponse
+ArticleMapper -- CreateArticleRequest
+CommentMapper -- Article
+CommentMapper -- Comment
+CommentMapper -- Reviewer
+CommentMapper -- CommentResponse
+CommentMapper -- CreateCommentRequest
+CommentMapper -- ArticleService
+CommentMapper -- ReviewerService
+ReviewerMapper -- Reviewer
+ReviewerMapper -- CreateReviewerRequest
+ReviewerMapper -- ReviewerResponse
+Article -- Comment
+Comment -- Reviewer
+ArticleRepository -- Article
+CommentRepository -- Comment
+ReviewerRepository -- Reviewer
+ArticleResponse -- Article
+ArticleResponse -- Comment
+ArticleResponse -- Reviewer
+CommentResponse -- Article
+CommentResponse -- Comment
+CommentResponse -- Reviewer
+CreateArticleRequest -- Article
+CreateCommentRequest -- Comment
+CreateReviewerRequest -- Reviewer
+ReviewerResponse -- Article
+ReviewerResponse -- Comment
+ReviewerResponse -- Reviewer
+ReviewerArticleController -- ArticleMapper
+ReviewerArticleController -- CommentMapper
+ReviewerArticleController -- ReviewerMapper
+ReviewerArticleController -- Article
+ReviewerArticleController -- Comment
+ReviewerArticleController -- Reviewer
+ReviewerArticleController -- ArticleResponse
+ReviewerArticleController -- CommentResponse
+ReviewerArticleController -- CreateArticleRequest
+ReviewerArticleController -- CreateCommentRequest
+ReviewerArticleController -- CreateReviewerRequest
+ReviewerArticleController -- ReviewerResponse
+ReviewerArticleController -- ArticleService
+ReviewerArticleController -- CommentService
+ReviewerArticleController -- ReviewerService
+ArticleService -- Article
+ArticleServiceImpl -- ArticleNotFoundException
+ArticleServiceImpl -- Article
+ArticleServiceImpl -- ArticleRepository
+ArticleServiceImpl -- ArticleService
+CommentService -- Comment
+CommentServiceImpl -- CommentNotFoundException
+CommentServiceImpl -- Comment
+CommentServiceImpl -- CommentRepository
+CommentServiceImpl -- CommentService
+ReviewerService -- Reviewer
+ReviewerServiceImpl -- ReviewerNotFoundException
+ReviewerServiceImpl -- Reviewer
+ReviewerServiceImpl -- ReviewerRepository
+ReviewerServiceImpl -- ReviewerService
+PlayerNotFoundException -- Player
+WeaponNotFoundException -- Weapon
+WeaponNotFoundException -- WeaponPk
+PlayerMapper -- Player
+PlayerMapper -- CreatePlayerRequest
+PlayerMapper -- PlayerResponse
+WeaponMapper -- Weapon
+WeaponMapper -- CreateWeaponRequest
+WeaponMapper -- WeaponResponse
+Player -- Weapon
+Weapon -- WeaponPk
+PlayerRepository -- Player
+WeaponRepository -- Weapon
+WeaponRepository -- WeaponPk
+CreatePlayerRequest -- Player
+CreateWeaponRequest -- Weapon
+PlayerResponse -- Player
+PlayerResponse -- Weapon
+WeaponResponse -- Weapon
+PlayerWeaponController -- PlayerMapper
+PlayerWeaponController -- WeaponMapper
+PlayerWeaponController -- Player
+PlayerWeaponController -- Weapon
+PlayerWeaponController -- CreatePlayerRequest
+PlayerWeaponController -- CreateWeaponRequest
+PlayerWeaponController -- PlayerResponse
+PlayerWeaponController -- WeaponResponse
+PlayerWeaponController -- PlayerService
+PlayerWeaponController -- WeaponService
+PlayerService -- Player
+PlayerServiceImpl -- PlayerNotFoundException
+PlayerServiceImpl -- Player
+PlayerServiceImpl -- PlayerRepository
+PlayerServiceImpl -- PlayerService
+WeaponService -- Weapon
+WeaponServiceImpl -- WeaponNotFoundException
+WeaponServiceImpl -- Weapon
+WeaponServiceImpl -- WeaponPk
+WeaponServiceImpl -- WeaponRepository
+WeaponServiceImpl -- WeaponService
+DishNotFoundException -- Dish
+DishNotFoundException -- Restaurant
+RestaurantNotFoundException -- Restaurant
+DishMapper -- Dish
+DishMapper -- CreateDishRequest
+DishMapper -- DishResponse
+DishMapper -- UpdateDishRequest
+RestaurantMapper -- Restaurant
+RestaurantMapper -- CreateRestaurantRequest
+RestaurantMapper -- RestaurantResponse
+RestaurantMapper -- UpdateRestaurantRequest
+Dish -- Restaurant
+DishRepository -- Dish
+DishRepository -- Restaurant
+RestaurantRepository -- Restaurant
+CreateDishRequest -- Dish
+CreateRestaurantRequest -- Restaurant
+DishResponse -- Dish
+RestaurantResponse -- Dish
+RestaurantResponse -- Restaurant
+RestaurantResponse -- DishResponse
+UpdateDishRequest -- Dish
+UpdateRestaurantRequest -- Restaurant
+RestaurantDishController -- DishMapper
+RestaurantDishController -- RestaurantMapper
+RestaurantDishController -- Dish
+RestaurantDishController -- Restaurant
+RestaurantDishController -- CreateDishRequest
+RestaurantDishController -- CreateRestaurantRequest
+RestaurantDishController -- DishResponse
+RestaurantDishController -- RestaurantResponse
+RestaurantDishController -- UpdateDishRequest
+RestaurantDishController -- UpdateRestaurantRequest
+RestaurantDishController -- DishService
+RestaurantDishController -- RestaurantService
+DishService -- Dish
+DishServiceImpl -- DishNotFoundException
+DishServiceImpl -- Dish
+DishServiceImpl -- Restaurant
+DishServiceImpl -- DishRepository
+DishServiceImpl -- DishService
+RestaurantService -- Restaurant
+RestaurantServiceImpl -- RestaurantNotFoundException
+RestaurantServiceImpl -- Restaurant
+RestaurantServiceImpl -- RestaurantRepository
+RestaurantServiceImpl -- RestaurantService
+PersonNotFoundException -- Person
+PersonMapper -- Person
+PersonMapper -- PersonDetail
+PersonMapper -- CreatePersonDetailRequest
+PersonMapper -- CreatePersonRequest
+PersonMapper -- PersonResponse
+PersonMapper -- UpdatePersonDetailRequest
+PersonMapper -- UpdatePersonRequest
+Person -- PersonDetail
+PersonRepository -- Person
+CreatePersonDetailRequest -- Person
+CreatePersonDetailRequest -- PersonDetail
+CreatePersonRequest -- Person
+PersonDetailResponse -- Person
+PersonDetailResponse -- PersonDetail
+PersonResponse -- Person
+PersonResponse -- PersonDetail
+PersonResponse -- PersonDetailResponse
+UpdatePersonDetailRequest -- Person
+UpdatePersonDetailRequest -- PersonDetail
+UpdatePersonRequest -- Person
+PersonDetailController -- PersonMapper
+PersonDetailController -- Person
+PersonDetailController -- PersonDetail
+PersonDetailController -- CreatePersonDetailRequest
+PersonDetailController -- CreatePersonRequest
+PersonDetailController -- PersonResponse
+PersonDetailController -- UpdatePersonDetailRequest
+PersonDetailController -- UpdatePersonRequest
+PersonDetailController -- PersonService
+PersonService -- Person
+PersonServiceImpl -- PersonNotFoundException
+PersonServiceImpl -- Person
+PersonServiceImpl -- PersonRepository
+PersonServiceImpl -- PersonService
+TeamNotFoundException -- Team
+TeamMapper -- Team
+TeamMapper -- TeamDetail
+TeamMapper -- CreateTeamDetailRequest
+TeamMapper -- CreateTeamRequest
+TeamMapper -- TeamResponse
+TeamMapper -- UpdateTeamDetailRequest
+TeamMapper -- UpdateTeamRequest
+Team -- TeamDetail
+TeamRepository -- Team
+CreateTeamDetailRequest -- Team
+CreateTeamDetailRequest -- TeamDetail
+CreateTeamRequest -- Team
+TeamDetailResponse -- Team
+TeamDetailResponse -- TeamDetail
+TeamResponse -- Team
+TeamResponse -- TeamDetail
+TeamResponse -- TeamDetailResponse
+UpdateTeamDetailRequest -- Team
+UpdateTeamDetailRequest -- TeamDetail
+UpdateTeamRequest -- Team
+TeamDetailController -- TeamMapper
+TeamDetailController -- Team
+TeamDetailController -- TeamDetail
+TeamDetailController -- CreateTeamDetailRequest
+TeamDetailController -- CreateTeamRequest
+TeamDetailController -- TeamResponse
+TeamDetailController -- UpdateTeamDetailRequest
+TeamDetailController -- UpdateTeamRequest
+TeamDetailController -- TeamService
+TeamService -- Team
+TeamServiceImpl -- TeamNotFoundException
+TeamServiceImpl -- Team
+TeamServiceImpl -- TeamRepository
+TeamServiceImpl -- TeamService
+StudentCourseControllerTest -- Course
+StudentCourseControllerTest -- CourseStudent
+StudentCourseControllerTest -- CourseStudentPk
+StudentCourseControllerTest -- Student
+StudentCourseControllerTest -- CourseRepository
+StudentCourseControllerTest -- CourseStudentRepository
+StudentCourseControllerTest -- StudentRepository
+StudentCourseControllerTest -- CourseResponse
+StudentCourseControllerTest -- CourseStudentResponse
+StudentCourseControllerTest -- CreateCourseRequest
+StudentCourseControllerTest -- CreateStudentRequest
+StudentCourseControllerTest -- StudentResponse
+StudentCourseControllerTest -- UpdateCourseRequest
+StudentCourseControllerTest -- UpdateCourseStudentRequest
+StudentCourseControllerTest -- UpdateStudentRequest
+StudentCourseControllerTest -- StudentCourseController
+StudentCourseControllerTest -- MyContainers
+WriterBookControllerTest -- Book
+WriterBookControllerTest -- Writer
+WriterBookControllerTest -- BookRepository
+WriterBookControllerTest -- WriterRepository
+WriterBookControllerTest -- BookResponse
+WriterBookControllerTest -- CreateBookRequest
+WriterBookControllerTest -- CreateWriterRequest
+WriterBookControllerTest -- UpdateBookRequest
+WriterBookControllerTest -- UpdateWriterRequest
+WriterBookControllerTest -- WriterResponse
+WriterBookControllerTest -- WriterBookController
+WriterBookControllerTest -- MyContainers
+ReviewerArticleControllerTest -- Article
+ReviewerArticleControllerTest -- Comment
+ReviewerArticleControllerTest -- Reviewer
+ReviewerArticleControllerTest -- ArticleRepository
+ReviewerArticleControllerTest -- CommentRepository
+ReviewerArticleControllerTest -- ReviewerRepository
+ReviewerArticleControllerTest -- ArticleResponse
+ReviewerArticleControllerTest -- CommentResponse
+ReviewerArticleControllerTest -- CreateArticleRequest
+ReviewerArticleControllerTest -- CreateCommentRequest
+ReviewerArticleControllerTest -- CreateReviewerRequest
+ReviewerArticleControllerTest -- ReviewerResponse
+ReviewerArticleControllerTest -- ReviewerArticleController
+ReviewerArticleControllerTest -- MyContainers
+PlayerWeaponControllerTest -- Player
+PlayerWeaponControllerTest -- Weapon
+PlayerWeaponControllerTest -- WeaponPk
+PlayerWeaponControllerTest -- PlayerRepository
+PlayerWeaponControllerTest -- WeaponRepository
+PlayerWeaponControllerTest -- CreatePlayerRequest
+PlayerWeaponControllerTest -- CreateWeaponRequest
+PlayerWeaponControllerTest -- PlayerResponse
+PlayerWeaponControllerTest -- WeaponResponse
+PlayerWeaponControllerTest -- PlayerWeaponController
+PlayerWeaponControllerTest -- MyContainers
+RestaurantDishControllerTest -- Dish
+RestaurantDishControllerTest -- Restaurant
+RestaurantDishControllerTest -- DishRepository
+RestaurantDishControllerTest -- RestaurantRepository
+RestaurantDishControllerTest -- CreateDishRequest
+RestaurantDishControllerTest -- CreateRestaurantRequest
+RestaurantDishControllerTest -- DishResponse
+RestaurantDishControllerTest -- RestaurantResponse
+RestaurantDishControllerTest -- UpdateDishRequest
+RestaurantDishControllerTest -- UpdateRestaurantRequest
+RestaurantDishControllerTest -- RestaurantDishController
+RestaurantDishControllerTest -- MyContainers
+PersonDetailControllerTest -- Person
+PersonDetailControllerTest -- PersonDetail
+PersonDetailControllerTest -- PersonRepository
+PersonDetailControllerTest -- CreatePersonDetailRequest
+PersonDetailControllerTest -- CreatePersonRequest
+PersonDetailControllerTest -- PersonResponse
+PersonDetailControllerTest -- UpdatePersonDetailRequest
+PersonDetailControllerTest -- UpdatePersonRequest
+PersonDetailControllerTest -- PersonDetailController
+PersonDetailControllerTest -- MyContainers
+TeamDetailControllerTest -- Team
+TeamDetailControllerTest -- TeamDetail
+TeamDetailControllerTest -- TeamRepository
+TeamDetailControllerTest -- CreateTeamDetailRequest
+TeamDetailControllerTest -- CreateTeamRequest
+TeamDetailControllerTest -- TeamResponse
+TeamDetailControllerTest -- UpdateTeamDetailRequest
+TeamDetailControllerTest -- UpdateTeamRequest
+TeamDetailControllerTest -- TeamDetailController
+TeamDetailControllerTest -- MyContainers
+@enduml

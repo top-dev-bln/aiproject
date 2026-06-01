@@ -1,0 +1,692 @@
+@startuml
+package org.lecoder.easyflow.common.config; {
+class CacheConfig {
+}
+
+class MybatisPlusConfig {
+}
+
+class ScriptEngineConfig {
+}
+
+class SwaggerConfig {
+}
+
+class WebConfig {
+}
+
+}
+
+package org.lecoder.easyflow.common.constraint; {
+class Contains {
+}
+
+class ContainsValidator {
+}
+
+}
+
+package org.lecoder.easyflow.common.entity; {
+class BaseEntity {
+}
+
+}
+
+package org.lecoder.easyflow.common.exception; {
+class FlowException {
+}
+
+class MyExceptionHandler {
+}
+
+}
+
+package org.lecoder.easyflow.common.toolkit; {
+class Constants {
+}
+
+class NetworkUtils {
+}
+
+class RequestHolder {
+}
+
+class SpringContextHolder {
+}
+
+}
+
+package org.lecoder.easyflow.common.web; {
+class CommonResult {
+}
+
+}
+
+package org.lecoder.easyflow; {
+class EasyflowApplication {
+}
+
+class MybatisPlusGenerator {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.annotation; {
+class Node {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.controller; {
+class AdminController {
+}
+
+class FlowController {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.dto; {
+class ApproveFormDTO {
+}
+
+class DefinitionFormDTO {
+}
+
+class DefinitionNodeFormDTO {
+}
+
+class NodeTaskDTO {
+}
+
+class NodeUserDTO {
+}
+
+class TaskFilterDTO {
+}
+
+class TaskInstanceDTO {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.entity; {
+class FlowDefinition {
+}
+
+class FlowDefinitionNode {
+}
+
+class FlowInstance {
+}
+
+class FlowInstanceNode {
+}
+
+class FlowVariable {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.enums; {
+class FlowActionEnum {
+}
+
+class FlowModuleEnum {
+}
+
+class InstanceStatusEnum {
+}
+
+class NodeStatusEnum {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.mapper; {
+class FlowDefinitionMapper {
+}
+
+class FlowDefinitionNodeMapper {
+}
+
+class FlowInstanceMapper {
+}
+
+class FlowInstanceNodeMapper {
+}
+
+class FlowVariableMapper {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.node; {
+class BaseNode {
+}
+
+class DeptManager {
+}
+
+class GeneralManager {
+}
+
+class HrManager {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.service; {
+class IFlowApiService {
+}
+
+class IFlowBaseService {
+}
+
+class IFlowDefinitionNodeService {
+}
+
+class IFlowDefinitionService {
+}
+
+class IFlowInstanceNodeService {
+}
+
+class IFlowInstanceService {
+}
+
+class IFlowService {
+}
+
+class IFlowVariableService {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.service.impl; {
+class FlowApiServiceImpl {
+}
+
+class FlowDefinitionNodeServiceImpl {
+}
+
+class FlowDefinitionServiceImpl {
+}
+
+class FlowInstanceNodeServiceImpl {
+}
+
+class FlowInstanceServiceImpl {
+}
+
+class FlowServiceImpl {
+}
+
+class FlowVariableServiceImpl {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.toolkit; {
+class FlowActionHelper {
+}
+
+class VariableTypeHelper {
+}
+
+}
+
+package org.lecoder.easyflow.modules.core.vo; {
+class DefinitionDetailVO {
+}
+
+class FlowDetailVO {
+}
+
+class NodeRelClassVO {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.controller; {
+class LeaveController {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.dto; {
+class ApplyListDTO {
+}
+
+class LeaveFormDTO {
+}
+
+class QueryFilterDTO {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.entity; {
+class LeaveApply {
+}
+
+class LeaveEmployee {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.enums; {
+class LeaveTypeEnum {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.handler; {
+class AnnualLeaveHandler {
+}
+
+class ILeaveTypeHandler {
+}
+
+class MaternityLeaveHandler {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.mapper; {
+class LeaveApplyMapper {
+}
+
+class LeaveEmployeeMapper {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.service; {
+class ILeaveApplyService {
+}
+
+class ILeaveEmployeeService {
+}
+
+class ILeaveService {
+}
+
+}
+
+package org.lecoder.easyflow.modules.leave.service.impl; {
+class LeaveApplyServiceImpl {
+}
+
+class LeaveEmployeeServiceImpl {
+}
+
+class LeaveServiceImpl {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.config; {
+class InterceptorConfig {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.constant; {
+class CacheConsts {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.controller; {
+class UserController {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.dto; {
+class LoginFormDTO {
+}
+
+class LoginUserDTO {
+}
+
+class UserDTO {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.entity; {
+class SysUser {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.interceptor; {
+class LoginInterceptor {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.mapper; {
+class SysUserMapper {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.service.impl; {
+class SysUserServiceImpl {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.service; {
+class ISysUserService {
+}
+
+}
+
+package org.lecoder.easyflow.modules.sys.vo; {
+class SearchUserVO {
+}
+
+}
+
+package org.lecoder.easyflow.core; {
+class FlowApiServiceTest {
+}
+
+class FlowDefinitionMapperTest {
+}
+
+}
+
+SwaggerConfig -- EasyflowApplication
+Contains -- ContainsValidator
+MyExceptionHandler -- FlowException
+MyExceptionHandler -- CommonResult
+RequestHolder -- UserDTO
+AdminController -- CommonResult
+AdminController -- EasyflowApplication
+AdminController -- Node
+AdminController -- DefinitionFormDTO
+AdminController -- DefinitionNodeFormDTO
+AdminController -- FlowDefinition
+AdminController -- FlowDefinitionNode
+AdminController -- IFlowDefinitionNodeService
+AdminController -- IFlowDefinitionService
+AdminController -- DefinitionDetailVO
+AdminController -- NodeRelClassVO
+FlowController -- SpringContextHolder
+FlowController -- CommonResult
+FlowController -- Node
+FlowController -- ApproveFormDTO
+FlowController -- TaskFilterDTO
+FlowController -- TaskInstanceDTO
+FlowController -- FlowInstance
+FlowController -- FlowInstanceNode
+FlowController -- FlowActionEnum
+FlowController -- FlowModuleEnum
+FlowController -- NodeStatusEnum
+FlowController -- IFlowBaseService
+FlowController -- IFlowInstanceNodeService
+FlowController -- IFlowInstanceService
+FlowController -- IFlowService
+FlowController -- FlowDetailVO
+DefinitionNodeFormDTO -- Node
+NodeTaskDTO -- Node
+NodeUserDTO -- Node
+NodeUserDTO -- UserDTO
+FlowDefinition -- BaseEntity
+FlowDefinitionNode -- BaseEntity
+FlowDefinitionNode -- Node
+FlowDefinitionNode -- FlowDefinition
+FlowInstance -- BaseEntity
+FlowInstanceNode -- BaseEntity
+FlowInstanceNode -- Node
+FlowInstanceNode -- FlowInstance
+FlowVariable -- BaseEntity
+FlowModuleEnum -- IFlowBaseService
+FlowModuleEnum -- ILeaveService
+NodeStatusEnum -- Node
+FlowDefinitionMapper -- FlowDefinition
+FlowDefinitionNodeMapper -- Node
+FlowDefinitionNodeMapper -- FlowDefinition
+FlowDefinitionNodeMapper -- FlowDefinitionNode
+FlowInstanceMapper -- Constants
+FlowInstanceMapper -- TaskInstanceDTO
+FlowInstanceMapper -- FlowInstance
+FlowInstanceNodeMapper -- Node
+FlowInstanceNodeMapper -- FlowInstance
+FlowInstanceNodeMapper -- FlowInstanceNode
+FlowVariableMapper -- FlowVariable
+BaseNode -- Node
+BaseNode -- NodeTaskDTO
+BaseNode -- NodeUserDTO
+BaseNode -- UserDTO
+DeptManager -- Node
+DeptManager -- NodeTaskDTO
+DeptManager -- NodeUserDTO
+DeptManager -- BaseNode
+DeptManager -- UserDTO
+GeneralManager -- Node
+GeneralManager -- NodeTaskDTO
+GeneralManager -- NodeUserDTO
+GeneralManager -- BaseNode
+GeneralManager -- UserDTO
+HrManager -- Node
+HrManager -- NodeTaskDTO
+HrManager -- NodeUserDTO
+HrManager -- BaseNode
+HrManager -- UserDTO
+IFlowApiService -- Node
+IFlowApiService -- NodeUserDTO
+IFlowApiService -- FlowInstance
+IFlowApiService -- FlowInstanceNode
+IFlowApiService -- FlowModuleEnum
+IFlowApiService -- UserDTO
+IFlowDefinitionNodeService -- Node
+IFlowDefinitionNodeService -- DefinitionNodeFormDTO
+IFlowDefinitionNodeService -- FlowDefinition
+IFlowDefinitionNodeService -- FlowDefinitionNode
+IFlowDefinitionNodeService -- FlowVariable
+IFlowDefinitionService -- DefinitionFormDTO
+IFlowDefinitionService -- FlowDefinition
+IFlowInstanceNodeService -- Node
+IFlowInstanceNodeService -- FlowDefinition
+IFlowInstanceNodeService -- FlowDefinitionNode
+IFlowInstanceNodeService -- FlowInstance
+IFlowInstanceNodeService -- FlowInstanceNode
+IFlowInstanceService -- FlowInstance
+IFlowInstanceService -- FlowModuleEnum
+IFlowService -- Node
+IFlowService -- TaskFilterDTO
+IFlowService -- TaskInstanceDTO
+IFlowService -- FlowInstance
+IFlowService -- FlowInstanceNode
+IFlowService -- FlowActionEnum
+IFlowVariableService -- FlowVariable
+FlowApiServiceImpl -- FlowException
+FlowApiServiceImpl -- Node
+FlowApiServiceImpl -- NodeUserDTO
+FlowApiServiceImpl -- FlowDefinition
+FlowApiServiceImpl -- FlowDefinitionNode
+FlowApiServiceImpl -- FlowInstance
+FlowApiServiceImpl -- FlowInstanceNode
+FlowApiServiceImpl -- FlowVariable
+FlowApiServiceImpl -- FlowModuleEnum
+FlowApiServiceImpl -- InstanceStatusEnum
+FlowApiServiceImpl -- NodeStatusEnum
+FlowApiServiceImpl -- IFlowApiService
+FlowApiServiceImpl -- IFlowDefinitionNodeService
+FlowApiServiceImpl -- IFlowDefinitionService
+FlowApiServiceImpl -- IFlowInstanceNodeService
+FlowApiServiceImpl -- IFlowInstanceService
+FlowApiServiceImpl -- IFlowVariableService
+FlowApiServiceImpl -- VariableTypeHelper
+FlowApiServiceImpl -- UserDTO
+FlowDefinitionNodeServiceImpl -- Node
+FlowDefinitionNodeServiceImpl -- DefinitionNodeFormDTO
+FlowDefinitionNodeServiceImpl -- FlowDefinition
+FlowDefinitionNodeServiceImpl -- FlowDefinitionNode
+FlowDefinitionNodeServiceImpl -- FlowVariable
+FlowDefinitionNodeServiceImpl -- FlowDefinitionNodeMapper
+FlowDefinitionNodeServiceImpl -- IFlowDefinitionNodeService
+FlowDefinitionServiceImpl -- Node
+FlowDefinitionServiceImpl -- DefinitionFormDTO
+FlowDefinitionServiceImpl -- FlowDefinition
+FlowDefinitionServiceImpl -- FlowDefinitionNode
+FlowDefinitionServiceImpl -- FlowDefinitionMapper
+FlowDefinitionServiceImpl -- FlowDefinitionNodeMapper
+FlowDefinitionServiceImpl -- IFlowDefinitionService
+FlowInstanceNodeServiceImpl -- Node
+FlowInstanceNodeServiceImpl -- NodeTaskDTO
+FlowInstanceNodeServiceImpl -- NodeUserDTO
+FlowInstanceNodeServiceImpl -- FlowDefinition
+FlowInstanceNodeServiceImpl -- FlowDefinitionNode
+FlowInstanceNodeServiceImpl -- FlowInstance
+FlowInstanceNodeServiceImpl -- FlowInstanceNode
+FlowInstanceNodeServiceImpl -- NodeStatusEnum
+FlowInstanceNodeServiceImpl -- FlowInstanceNodeMapper
+FlowInstanceNodeServiceImpl -- BaseNode
+FlowInstanceNodeServiceImpl -- IFlowInstanceNodeService
+FlowInstanceNodeServiceImpl -- UserDTO
+FlowInstanceServiceImpl -- RequestHolder
+FlowInstanceServiceImpl -- FlowInstance
+FlowInstanceServiceImpl -- FlowModuleEnum
+FlowInstanceServiceImpl -- FlowInstanceMapper
+FlowInstanceServiceImpl -- IFlowInstanceService
+FlowInstanceServiceImpl -- UserDTO
+FlowServiceImpl -- FlowException
+FlowServiceImpl -- RequestHolder
+FlowServiceImpl -- SpringContextHolder
+FlowServiceImpl -- Node
+FlowServiceImpl -- NodeUserDTO
+FlowServiceImpl -- TaskFilterDTO
+FlowServiceImpl -- TaskInstanceDTO
+FlowServiceImpl -- FlowInstance
+FlowServiceImpl -- FlowInstanceNode
+FlowServiceImpl -- FlowActionEnum
+FlowServiceImpl -- FlowModuleEnum
+FlowServiceImpl -- InstanceStatusEnum
+FlowServiceImpl -- NodeStatusEnum
+FlowServiceImpl -- FlowInstanceMapper
+FlowServiceImpl -- IFlowApiService
+FlowServiceImpl -- IFlowBaseService
+FlowServiceImpl -- IFlowInstanceNodeService
+FlowServiceImpl -- IFlowService
+FlowServiceImpl -- UserDTO
+FlowServiceImpl -- SysUser
+FlowServiceImpl -- ISysUserService
+FlowVariableServiceImpl -- FlowVariable
+FlowVariableServiceImpl -- FlowVariableMapper
+FlowVariableServiceImpl -- IFlowVariableService
+VariableTypeHelper -- FlowVariable
+DefinitionDetailVO -- Node
+DefinitionDetailVO -- FlowDefinition
+DefinitionDetailVO -- FlowDefinitionNode
+FlowDetailVO -- Node
+FlowDetailVO -- FlowInstance
+FlowDetailVO -- FlowInstanceNode
+FlowDetailVO -- FlowActionEnum
+NodeRelClassVO -- Node
+LeaveController -- CommonResult
+LeaveController -- ApplyListDTO
+LeaveController -- LeaveFormDTO
+LeaveController -- QueryFilterDTO
+LeaveController -- LeaveApply
+LeaveController -- ILeaveService
+LeaveFormDTO -- Contains
+LeaveApply -- BaseEntity
+LeaveEmployee -- BaseEntity
+LeaveTypeEnum -- AnnualLeaveHandler
+LeaveTypeEnum -- ILeaveTypeHandler
+LeaveTypeEnum -- MaternityLeaveHandler
+AnnualLeaveHandler -- FlowException
+AnnualLeaveHandler -- LeaveFormDTO
+AnnualLeaveHandler -- LeaveApply
+AnnualLeaveHandler -- LeaveEmployee
+AnnualLeaveHandler -- ILeaveTypeHandler
+AnnualLeaveHandler -- ILeaveEmployeeService
+ILeaveTypeHandler -- LeaveFormDTO
+ILeaveTypeHandler -- LeaveApply
+MaternityLeaveHandler -- FlowException
+MaternityLeaveHandler -- LeaveFormDTO
+MaternityLeaveHandler -- LeaveEmployee
+MaternityLeaveHandler -- ILeaveTypeHandler
+MaternityLeaveHandler -- ILeaveEmployeeService
+LeaveApplyMapper -- Constants
+LeaveApplyMapper -- ApplyListDTO
+LeaveApplyMapper -- LeaveApply
+LeaveEmployeeMapper -- LeaveEmployee
+ILeaveApplyService -- LeaveApply
+ILeaveEmployeeService -- LeaveEmployee
+ILeaveService -- IFlowBaseService
+ILeaveService -- ApplyListDTO
+ILeaveService -- LeaveFormDTO
+ILeaveService -- QueryFilterDTO
+ILeaveService -- LeaveApply
+LeaveApplyServiceImpl -- IFlowBaseService
+LeaveApplyServiceImpl -- LeaveApply
+LeaveApplyServiceImpl -- LeaveApplyMapper
+LeaveApplyServiceImpl -- ILeaveApplyService
+LeaveEmployeeServiceImpl -- LeaveEmployee
+LeaveEmployeeServiceImpl -- LeaveEmployeeMapper
+LeaveEmployeeServiceImpl -- ILeaveEmployeeService
+LeaveServiceImpl -- FlowException
+LeaveServiceImpl -- RequestHolder
+LeaveServiceImpl -- SpringContextHolder
+LeaveServiceImpl -- FlowInstance
+LeaveServiceImpl -- FlowModuleEnum
+LeaveServiceImpl -- IFlowApiService
+LeaveServiceImpl -- IFlowInstanceService
+LeaveServiceImpl -- ApplyListDTO
+LeaveServiceImpl -- LeaveFormDTO
+LeaveServiceImpl -- QueryFilterDTO
+LeaveServiceImpl -- LeaveApply
+LeaveServiceImpl -- LeaveTypeEnum
+LeaveServiceImpl -- ILeaveTypeHandler
+LeaveServiceImpl -- LeaveApplyMapper
+LeaveServiceImpl -- ILeaveApplyService
+LeaveServiceImpl -- ILeaveService
+LeaveServiceImpl -- UserDTO
+InterceptorConfig -- LoginInterceptor
+UserController -- NetworkUtils
+UserController -- RequestHolder
+UserController -- CommonResult
+UserController -- CacheConsts
+UserController -- LoginFormDTO
+UserController -- LoginUserDTO
+UserController -- UserDTO
+UserController -- SysUser
+UserController -- ISysUserService
+UserController -- SearchUserVO
+LoginUserDTO -- UserDTO
+SysUser -- BaseEntity
+LoginInterceptor -- NetworkUtils
+LoginInterceptor -- RequestHolder
+LoginInterceptor -- SpringContextHolder
+LoginInterceptor -- CommonResult
+LoginInterceptor -- UserDTO
+LoginInterceptor -- SysUser
+LoginInterceptor -- ISysUserService
+SysUserMapper -- SysUser
+SysUserServiceImpl -- FlowException
+SysUserServiceImpl -- CacheConsts
+SysUserServiceImpl -- LoginFormDTO
+SysUserServiceImpl -- UserDTO
+SysUserServiceImpl -- SysUser
+SysUserServiceImpl -- SysUserMapper
+SysUserServiceImpl -- ISysUserService
+ISysUserService -- LoginFormDTO
+ISysUserService -- UserDTO
+ISysUserService -- SysUser
+MybatisPlusGenerator -- BaseEntity
+FlowApiServiceTest -- Node
+FlowApiServiceTest -- FlowInstance
+FlowApiServiceTest -- FlowInstanceNode
+FlowApiServiceTest -- FlowModuleEnum
+FlowApiServiceTest -- IFlowApiService
+FlowDefinitionMapperTest -- FlowDefinition
+FlowDefinitionMapperTest -- FlowDefinitionMapper
+@enduml

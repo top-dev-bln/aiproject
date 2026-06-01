@@ -1,0 +1,249 @@
+@startuml
+
+package com.bezkoder.spring.security.jwt {
+  class SpringSecurityRefreshTokenApplicationTests {
+  }
+  class SpringSecurityRefreshTokenApplication {
+    +main() : void
+  }
+}
+
+package com.bezkoder.spring.security.jwt.advice {
+  class TokenControllerAdvice {
+    +handleTokenRefreshException() : ErrorMessage
+  }
+  class ErrorMessage {
+    -statusCode : int
+    -timestamp : Date
+    -message : String
+    -description : String
+    +getStatusCode() : int
+    +getTimestamp() : Date
+    +getMessage() : String
+    +getDescription() : String
+  }
+}
+
+package com.bezkoder.spring.security.jwt.controllers {
+  class AuthController <<Controller>> {
+  }
+  class TestController <<Controller>> {
+    +allAccess() : String
+    +userAccess() : String
+    +moderatorAccess() : String
+    +adminAccess() : String
+  }
+}
+
+package com.bezkoder.spring.security.jwt.exception {
+  class TokenRefreshException {
+    -serialVersionUID : long
+  }
+}
+
+package com.bezkoder.spring.security.jwt.models {
+  class RefreshToken <<Entity>> {
+    -id : long
+    -user : User
+    -token : String
+    -expiryDate : Instant
+    +getId() : long
+    +setId() : void
+    +getUser() : User
+    +setUser() : void
+    +getToken() : String
+    +setToken() : void
+    +getExpiryDate() : Instant
+    +setExpiryDate() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    -roles : Set<Role>
+    +getId() : Long
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+  enum ERole {
+  }
+  class Role <<Entity>> {
+    -id : Integer
+    -name : ERole
+    +getId() : Integer
+    +setId() : void
+    +getName() : ERole
+    +setName() : void
+  }
+}
+
+package com.bezkoder.spring.security.jwt.payload.request {
+  class SignupRequest {
+    -username : String
+    -email : String
+    -role : Set<String>
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getRole() : Set<String>
+    +setRole() : void
+  }
+  class LoginRequest {
+    -username : String
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.bezkoder.spring.security.jwt.payload.response {
+  class UserInfoResponse {
+    -id : Long
+    -username : String
+    -email : String
+    -roles : List<String>
+    +getId() : Long
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getRoles() : List<String>
+  }
+  class MessageResponse {
+    -message : String
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+package com.bezkoder.spring.security.jwt.repository {
+  interface RefreshTokenRepository <<Repository>> {
+  }
+  interface RoleRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package com.bezkoder.spring.security.jwt.security {
+  class WebSecurityConfig {
+    -unauthorizedHandler : AuthEntryPointJwt
+    +authenticationJwtTokenFilter() : AuthTokenFilter
+    +configure() : void
+    +authenticationProvider() : DaoAuthenticationProvider
+    +authenticationManagerBean() : AuthenticationManager
+    +authenticationManager() : AuthenticationManager
+    +passwordEncoder() : PasswordEncoder
+    +configure() : void
+    +filterChain() : SecurityFilterChain
+  }
+}
+
+package com.bezkoder.spring.security.jwt.security.jwt {
+  class JwtUtils {
+    -logger : Logger
+    -jwtSecret : String
+    -jwtExpirationMs : int
+    -jwtCookie : String
+    -jwtRefreshCookie : String
+    +generateJwtCookie() : ResponseCookie
+    +generateJwtCookie() : ResponseCookie
+    +generateRefreshJwtCookie() : ResponseCookie
+    +getJwtFromCookies() : String
+    +getJwtRefreshFromCookies() : String
+    +getCleanJwtCookie() : ResponseCookie
+    +getCleanJwtRefreshCookie() : ResponseCookie
+    +getUserNameFromJwtToken() : String
+  }
+  class AuthEntryPointJwt {
+    -logger : Logger
+    -mapper : ObjectMapper
+    +commence() : void
+  }
+  class AuthTokenFilter {
+    -jwtUtils : JwtUtils
+    -userDetailsService : UserDetailsServiceImpl
+    -logger : Logger
+    +doFilterInternal() : void
+  }
+}
+
+package com.bezkoder.spring.security.jwt.security.services {
+  class RefreshTokenService <<Service>> {
+    -refreshTokenDurationMs : Long
+    -refreshTokenRepository : RefreshTokenRepository
+    -userRepository : UserRepository
+    +findByToken() : Optional<RefreshToken>
+    +createRefreshToken() : RefreshToken
+    +verifyExpiration() : RefreshToken
+    +deleteByUserId() : int
+  }
+  class UserDetailsServiceImpl <<Service>> {
+    +loadUserByUsername() : UserDetails
+  }
+  class UserDetailsImpl {
+    -serialVersionUID : long
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    +build() : UserDetailsImpl
+    +getId() : Long
+    +getEmail() : String
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+  }
+}
+
+' --- Relatii ---
+RefreshTokenRepository --> RefreshToken
+RefreshTokenRepository --> User
+RoleRepository --> ERole
+RoleRepository --> Role
+UserRepository --> User
+WebSecurityConfig --> AuthEntryPointJwt
+WebSecurityConfig --> AuthTokenFilter
+WebSecurityConfig --> UserDetailsServiceImpl
+JwtUtils --> User
+JwtUtils --> UserDetailsImpl
+AuthTokenFilter --> UserDetailsServiceImpl
+RefreshTokenService --> TokenRefreshException
+RefreshTokenService --> RefreshToken
+RefreshTokenService --> RefreshTokenRepository
+RefreshTokenService --> UserRepository
+UserDetailsServiceImpl --> User
+UserDetailsServiceImpl --> UserRepository
+UserDetailsImpl --> User
+TokenControllerAdvice --> TokenRefreshException
+AuthController --> TokenRefreshException
+AuthController --> ERole
+AuthController --> RefreshToken
+AuthController --> Role
+AuthController --> User
+AuthController --> LoginRequest
+AuthController --> SignupRequest
+AuthController --> UserInfoResponse
+AuthController --> MessageResponse
+AuthController --> RoleRepository
+AuthController --> UserRepository
+AuthController --> JwtUtils
+AuthController --> RefreshTokenService
+AuthController --> UserDetailsImpl
+
+@enduml

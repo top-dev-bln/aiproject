@@ -1,0 +1,55 @@
+@startuml
+package biz.paluch.redis.streamfeaturepoll.config; {
+class PollProperties {
+}
+
+class RedisConfiguration {
+}
+
+}
+
+package biz.paluch.redis.streamfeaturepoll; {
+class PollStatsUpdater {
+}
+
+class PollVote {
+}
+
+class StreamFeaturePollApplication {
+}
+
+class VoteMessage {
+}
+
+class VoteService {
+}
+
+}
+
+package biz.paluch.redis.streamfeaturepoll.web; {
+class IndexPageController {
+}
+
+class PollController {
+}
+
+}
+
+package example; {
+class StreamConsumer {
+}
+
+class StreamProducer {
+}
+
+}
+
+RedisConfiguration -- PollProperties
+RedisConfiguration -- PollStatsUpdater
+RedisConfiguration -- VoteMessage
+PollStatsUpdater -- VoteMessage
+VoteService -- VoteMessage
+PollController -- PollVote
+PollController -- VoteMessage
+PollController -- VoteService
+@enduml

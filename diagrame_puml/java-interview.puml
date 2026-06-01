@@ -1,0 +1,140 @@
+@startuml
+
+  class StreamTest {
+    -collect : List<Integer>
+    +debugStream() : void
+  }
+  interface Sink {
+  }
+  class is {
+    -objects : List<StreamObject>
+    -result : List<Object>
+    -downstream : Sink
+    +opWrapSink() : Sink
+    +of() : ReferencePipeline
+    +filter() : Stream
+    +opWrapSink() : Sink
+    +accept() : void
+    +map() : Stream
+    +opWrapSink() : Sink
+    +accept() : void
+  }
+  class is {
+  }
+  class StreamObject {
+    -id : int
+    -name : String
+    +getId() : int
+    +setId() : void
+    +getName() : String
+    +setName() : void
+  }
+  class Deadlock {
+    -monitor1 : Object
+    -monitor2 : Object
+    -args : String[]
+    +main() : void
+  }
+
+package dsa {
+  class ValidParenthesesTest {
+    -solution : ValidParentheses
+  }
+  class MeanOfRangeInArrayTest {
+  }
+  class LongestSubstringWithoutRepeatingCharactersTest {
+  }
+  class MinStackTest {
+  }
+  class FindAllAnagramsInStringTest {
+  }
+  class SearchInsertPositionTest {
+    -solution : SearchInsertPosition
+  }
+  class SingleNumberTest {
+    -solution : SingleNumber
+  }
+  class MoveZeroesTest {
+    -solution : MoveZeroes
+  }
+  class FindAllAnagramsInString {
+    +findAnagrams() : List<Integer>
+  }
+  class MaximumDepthOfBinaryTree {
+  }
+  class MoveZeroes {
+    +moveZeroes() : void
+  }
+  class ReverseLinkedList {
+    +reverseList() : ListNode
+  }
+  class SearchInsertPosition {
+    +searchInsert() : int
+  }
+  class MinStack {
+    -stack : Stack<Integer>
+    -minStack : Stack<Integer>
+    +push() : void
+    +pop() : void
+    +top() : int
+    +getMin() : int
+  }
+  class ValidParentheses {
+    +isValid() : boolean
+  }
+  class IntersectionOfTwoLinkedLists {
+  }
+  class LongestSubstringWithoutRepeatingCharacters {
+    +lengthOfLongestSubstring() : int
+  }
+  class SingleNumber {
+    +singleNumber() : int
+  }
+  class MeanOfRangeInArray {
+    +findMean() : ArrayList<Integer>
+  }
+}
+
+package kata {
+  class GetTopAgeForNameTest {
+    -solution : GetTopAgeForName
+    -result : List<Person>
+    +getTopAgeForName() : void
+  }
+  class GetTopAgeForName {
+  }
+  class SomeConsumer {
+    +consume() : List<User>
+  }
+}
+
+package leetcode {
+  class MaximalSquareBruteForceTest {
+    -maximalSquareBruteForce : MaximalSquareBruteForce
+  }
+  class MaximalSquareBruteForce {
+    +maximalSquare() : int
+  }
+}
+
+package review {
+  class InterviewService {
+    -scoreRepository : ScoreRepository
+    -transactionTemplate : TransactionTemplate
+    -interviewScoreMLService : InterviewScoreMLService
+    -objectMapper : ObjectMapper
+    -name : String
+    -tasksSolvedId : List<Integer>
+    -name : String
+    -score : int
+    +process() : void
+    +getName() : String
+    +getTasksSolvedId() : List<Integer>
+    +getName() : String
+    +getScore() : int
+  }
+}
+
+' --- Relatii ---
+
+@enduml

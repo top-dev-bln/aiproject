@@ -1,0 +1,848 @@
+@startuml
+package com.github.mikesafonov.smpp.api; {
+class BaseSenderManager {
+}
+
+class IndexDetectionStrategy {
+}
+
+class NoSenderClientException {
+}
+
+class RandomIndexDetectionStrategy {
+}
+
+class RoundRobinIndexDetectionStrategy {
+}
+
+class SenderManager {
+}
+
+class StrategySenderManager {
+}
+
+class RandomIndexDetectionStrategyTest {
+}
+
+class RoundRobinIndexDetectionStrategyTest {
+}
+
+class StrategySenderManagerTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.config; {
+class ConnectionMode {
+}
+
+class ConnectionType {
+}
+
+class SmppAutoConfiguration {
+}
+
+class SmppProperties {
+}
+
+class SmscConnection {
+}
+
+class SmscConnectionFactoryBean {
+}
+
+class SmscConnectionsHolder {
+}
+
+class SmscConnectionFactoryBeanTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core; {
+class ClientFactory {
+}
+
+class ClientFactoryTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.connection; {
+class BaseSenderConnectionManager {
+}
+
+class BaseSmppSessionConfiguration {
+}
+
+class ConnectionManager {
+}
+
+class ConnectionManagerFactory {
+}
+
+class ReceiverConfiguration {
+}
+
+class ReceiverConnectionManager {
+}
+
+class ResponseClientRebindTask {
+}
+
+class SessionReconnector {
+}
+
+class TransceiverConfiguration {
+}
+
+class TransceiverConnectionManager {
+}
+
+class TransmitterConfiguration {
+}
+
+class TransmitterConnectionManager {
+}
+
+class ConnectionManagerFactoryTest {
+}
+
+class ReceiverConfigurationTest {
+}
+
+class ReceiverConnectionManagerTest {
+}
+
+class ResponseClientRebindTaskTest {
+}
+
+class TransceiverConfigurationTest {
+}
+
+class TransceiverConnectionManagerTest {
+}
+
+class TransmitterConfigurationTest {
+}
+
+class TransmitterConnectionManagerTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.dto; {
+class CancelMessage {
+}
+
+class CancelMessageResponse {
+}
+
+class DeliveryReport {
+}
+
+class Message {
+}
+
+class MessageErrorInformation {
+}
+
+class MessageResponse {
+}
+
+class MessageType {
+}
+
+class DeliveryReportTest {
+}
+
+class MessageBuilderTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.exceptions; {
+class ClientNameSmppException {
+}
+
+class IllegalAddressException {
+}
+
+class ResponseClientBindException {
+}
+
+class SenderClientBindException {
+}
+
+class SmppException {
+}
+
+class SmppMessageBuildingException {
+}
+
+class SmppSessionException {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.generators; {
+class AlwaysSuccessSmppResultGenerator {
+}
+
+class SmppResultGenerator {
+}
+
+class AlwaysSuccessSmppResultGeneratorTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.reciever; {
+class DeliveryReportConsumer {
+}
+
+class NullDeliveryReportConsumer {
+}
+
+class ResponseClient {
+}
+
+class ResponseSmppSessionHandler {
+}
+
+class StandardResponseClient {
+}
+
+class ResponseClientRebindTaskTest {
+}
+
+class ResponseSmppSessionHandlerTest {
+}
+
+class StandardResponseClientTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.sender; {
+class AddressBuilder {
+}
+
+class DataCoding {
+}
+
+class DefaultTypeOfAddressParser {
+}
+
+class FlashSubmitSmEncoder {
+}
+
+class MessageBuilder {
+}
+
+class MockSenderClient {
+}
+
+class SenderClient {
+}
+
+class SilentSubmitSmEncoder {
+}
+
+class SimpleSubmitSmEncoder {
+}
+
+class StandardSenderClient {
+}
+
+class SubmitSmEncoder {
+}
+
+class SubmitSmEncoderFactory {
+}
+
+class TestSenderClient {
+}
+
+class TypeOfAddressParser {
+}
+
+class UnknownTypeOfAddressParser {
+}
+
+class AddressBuilderTest {
+}
+
+class BaseStandardSenderClientTest {
+}
+
+class DefaultTypeOfAddressParserTest {
+}
+
+class MessageBuilderTest {
+}
+
+class MockSenderClientTest {
+}
+
+class StandardSenderClientCancelMessageTest {
+}
+
+class StandardSenderClientSendMessageTest {
+}
+
+class StandardSenderClientTest {
+}
+
+class SubmitSmEncoderFactoryTest {
+}
+
+class TestSenderClientTest {
+}
+
+class UnknownTypeOfAddressParserTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.core.utils; {
+class CountWithEncoding {
+}
+
+class JodaJavaConverter {
+}
+
+class MessageUtil {
+}
+
+class Utils {
+}
+
+class JodaJavaConverterTest {
+}
+
+class MessageUtilTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp.util; {
+class Randomizer {
+}
+
+}
+
+package com.github.mikesafonov.smpp.handler; {
+class CustomHandlerConfiguration {
+}
+
+class CustomHandlerTest {
+}
+
+class SmppSessionListenerImpl {
+}
+
+}
+
+package com.github.mikesafonov.smpp.roundrobin; {
+class RoundRobinApplicationConfiguration {
+}
+
+class RoundRobinApplicationService {
+}
+
+class RoundRobinSmppTest {
+}
+
+}
+
+package com.github.mikesafonov.smpp; {
+class SingleClientTest {
+}
+
+class TestUtils {
+}
+
+}
+
+package com.github.mikesafonov.smpp.transceiver; {
+class TransceiverConfiguration {
+}
+
+class TransceiverTest {
+}
+
+}
+
+BaseSenderManager -- NoSenderClientException
+BaseSenderManager -- SenderManager
+BaseSenderManager -- SmscConnection
+BaseSenderManager -- SenderClient
+IndexDetectionStrategy -- SenderManager
+IndexDetectionStrategy -- StrategySenderManager
+NoSenderClientException -- SenderClient
+RandomIndexDetectionStrategy -- IndexDetectionStrategy
+RoundRobinIndexDetectionStrategy -- IndexDetectionStrategy
+SenderManager -- SenderClient
+StrategySenderManager -- BaseSenderManager
+StrategySenderManager -- NoSenderClientException
+StrategySenderManager -- SenderManager
+StrategySenderManager -- SmscConnection
+StrategySenderManager -- SenderClient
+SmppAutoConfiguration -- IndexDetectionStrategy
+SmppAutoConfiguration -- RoundRobinIndexDetectionStrategy
+SmppAutoConfiguration -- SenderManager
+SmppAutoConfiguration -- StrategySenderManager
+SmppAutoConfiguration -- SmppProperties
+SmppAutoConfiguration -- SmscConnection
+SmppAutoConfiguration -- SmscConnectionFactoryBean
+SmppAutoConfiguration -- SmscConnectionsHolder
+SmppAutoConfiguration -- ClientFactory
+SmppAutoConfiguration -- ConnectionManager
+SmppAutoConfiguration -- ConnectionManagerFactory
+SmppAutoConfiguration -- DeliveryReport
+SmppAutoConfiguration -- AlwaysSuccessSmppResultGenerator
+SmppAutoConfiguration -- SmppResultGenerator
+SmppAutoConfiguration -- DeliveryReportConsumer
+SmppAutoConfiguration -- DefaultTypeOfAddressParser
+SmppAutoConfiguration -- TypeOfAddressParser
+SmppProperties -- ConnectionMode
+SmppProperties -- ConnectionType
+SmscConnection -- ConnectionManager
+SmscConnection -- ResponseClient
+SmscConnection -- SenderClient
+SmscConnectionFactoryBean -- ConnectionMode
+SmscConnectionFactoryBean -- ConnectionType
+SmscConnectionFactoryBean -- SmppProperties
+SmscConnectionFactoryBean -- SmscConnection
+SmscConnectionFactoryBean -- SmscConnectionsHolder
+SmscConnectionFactoryBean -- ClientFactory
+SmscConnectionFactoryBean -- ConnectionManager
+SmscConnectionFactoryBean -- ConnectionManagerFactory
+SmscConnectionFactoryBean -- DeliveryReport
+SmscConnectionFactoryBean -- SmppResultGenerator
+SmscConnectionFactoryBean -- DeliveryReportConsumer
+SmscConnectionFactoryBean -- ResponseClient
+SmscConnectionFactoryBean -- ResponseSmppSessionHandler
+SmscConnectionFactoryBean -- SenderClient
+SmscConnectionFactoryBean -- TypeOfAddressParser
+SmscConnectionFactoryBean -- Utils
+SmscConnectionsHolder -- SmscConnection
+ClientFactory -- SmppProperties
+ClientFactory -- ConnectionManager
+ClientFactory -- Message
+ClientFactory -- SmppResultGenerator
+ClientFactory -- ResponseClient
+ClientFactory -- StandardResponseClient
+ClientFactory -- MessageBuilder
+ClientFactory -- MockSenderClient
+ClientFactory -- SenderClient
+ClientFactory -- StandardSenderClient
+ClientFactory -- TestSenderClient
+ClientFactory -- TypeOfAddressParser
+ClientFactory -- Utils
+BaseSenderConnectionManager -- BaseSmppSessionConfiguration
+BaseSenderConnectionManager -- ConnectionManager
+BaseSenderConnectionManager -- Message
+BaseSenderConnectionManager -- SmppSessionException
+ConnectionManager -- BaseSmppSessionConfiguration
+ConnectionManagerFactory -- SmppProperties
+ConnectionManagerFactory -- ConnectionManager
+ConnectionManagerFactory -- ReceiverConfiguration
+ConnectionManagerFactory -- ReceiverConnectionManager
+ConnectionManagerFactory -- TransceiverConfiguration
+ConnectionManagerFactory -- TransceiverConnectionManager
+ConnectionManagerFactory -- TransmitterConfiguration
+ConnectionManagerFactory -- TransmitterConnectionManager
+ConnectionManagerFactory -- Utils
+ReceiverConfiguration -- SmppProperties
+ReceiverConfiguration -- BaseSmppSessionConfiguration
+ReceiverConnectionManager -- BaseSmppSessionConfiguration
+ReceiverConnectionManager -- ConnectionManager
+ReceiverConnectionManager -- ReceiverConfiguration
+ReceiverConnectionManager -- ResponseClientRebindTask
+ReceiverConnectionManager -- Message
+ReceiverConnectionManager -- ResponseClientBindException
+ReceiverConnectionManager -- ResponseClient
+ResponseClientRebindTask -- SessionReconnector
+ResponseClientRebindTask -- ResponseClient
+TransceiverConfiguration -- DeliveryReport
+TransceiverConfiguration -- DeliveryReportConsumer
+TransceiverConnectionManager -- BaseSenderConnectionManager
+TransceiverConnectionManager -- ConnectionManager
+TransceiverConnectionManager -- TransceiverConfiguration
+TransmitterConfiguration -- SmppProperties
+TransmitterConfiguration -- BaseSmppSessionConfiguration
+TransmitterConnectionManager -- BaseSenderConnectionManager
+TransmitterConnectionManager -- ConnectionManager
+TransmitterConnectionManager -- TransmitterConfiguration
+CancelMessage -- Message
+CancelMessageResponse -- CancelMessage
+CancelMessageResponse -- Message
+CancelMessageResponse -- MessageErrorInformation
+CancelMessageResponse -- MessageResponse
+DeliveryReport -- Message
+DeliveryReport -- ResponseClient
+DeliveryReport -- JodaJavaConverter
+Message -- MessageType
+Message -- MessageBuilder
+MessageErrorInformation -- Message
+MessageResponse -- Message
+MessageResponse -- MessageErrorInformation
+ClientNameSmppException -- SmppException
+ResponseClientBindException -- ResponseClient
+SenderClientBindException -- SenderClient
+SmppException -- Message
+SmppMessageBuildingException -- Message
+SmppMessageBuildingException -- SmppException
+SmppSessionException -- SmppException
+AlwaysSuccessSmppResultGenerator -- CancelMessage
+AlwaysSuccessSmppResultGenerator -- CancelMessageResponse
+AlwaysSuccessSmppResultGenerator -- Message
+AlwaysSuccessSmppResultGenerator -- MessageResponse
+AlwaysSuccessSmppResultGenerator -- SmppResultGenerator
+SmppResultGenerator -- CancelMessage
+SmppResultGenerator -- CancelMessageResponse
+SmppResultGenerator -- Message
+SmppResultGenerator -- MessageResponse
+SmppResultGenerator -- MockSenderClient
+SmppResultGenerator -- SenderClient
+SmppResultGenerator -- TestSenderClient
+DeliveryReportConsumer -- DeliveryReport
+NullDeliveryReportConsumer -- DeliveryReport
+NullDeliveryReportConsumer -- DeliveryReportConsumer
+ResponseSmppSessionHandler -- DeliveryReport
+ResponseSmppSessionHandler -- Message
+ResponseSmppSessionHandler -- DeliveryReportConsumer
+StandardResponseClient -- ConnectionManager
+StandardResponseClient -- ResponseClient
+AddressBuilder -- TypeOfAddressParser
+DefaultTypeOfAddressParser -- Message
+DefaultTypeOfAddressParser -- IllegalAddressException
+DefaultTypeOfAddressParser -- TypeOfAddressParser
+FlashSubmitSmEncoder -- Message
+FlashSubmitSmEncoder -- DataCoding
+FlashSubmitSmEncoder -- SubmitSmEncoder
+FlashSubmitSmEncoder -- CountWithEncoding
+FlashSubmitSmEncoder -- MessageUtil
+MessageBuilder -- CancelMessage
+MessageBuilder -- MessageType
+MessageBuilder -- IllegalAddressException
+MessageBuilder -- SmppMessageBuildingException
+MessageBuilder -- AddressBuilder
+MessageBuilder -- SubmitSmEncoder
+MessageBuilder -- SubmitSmEncoderFactory
+MessageBuilder -- TypeOfAddressParser
+MockSenderClient -- ConnectionManager
+MockSenderClient -- CancelMessage
+MockSenderClient -- CancelMessageResponse
+MockSenderClient -- Message
+MockSenderClient -- MessageResponse
+MockSenderClient -- SenderClient
+SenderClient -- ConnectionManager
+SenderClient -- CancelMessage
+SenderClient -- CancelMessageResponse
+SenderClient -- Message
+SenderClient -- MessageResponse
+SilentSubmitSmEncoder -- Message
+SilentSubmitSmEncoder -- DataCoding
+SilentSubmitSmEncoder -- SubmitSmEncoder
+SilentSubmitSmEncoder -- CountWithEncoding
+SilentSubmitSmEncoder -- MessageUtil
+SimpleSubmitSmEncoder -- Message
+SimpleSubmitSmEncoder -- DataCoding
+SimpleSubmitSmEncoder -- SubmitSmEncoder
+SimpleSubmitSmEncoder -- CountWithEncoding
+SimpleSubmitSmEncoder -- MessageUtil
+StandardSenderClient -- ConnectionManager
+StandardSenderClient -- CancelMessage
+StandardSenderClient -- CancelMessageResponse
+StandardSenderClient -- Message
+StandardSenderClient -- MessageErrorInformation
+StandardSenderClient -- MessageResponse
+StandardSenderClient -- IllegalAddressException
+StandardSenderClient -- SenderClientBindException
+StandardSenderClient -- SmppException
+StandardSenderClient -- SmppSessionException
+StandardSenderClient -- MessageBuilder
+StandardSenderClient -- SenderClient
+SubmitSmEncoder -- Message
+SubmitSmEncoderFactory -- Message
+SubmitSmEncoderFactory -- MessageType
+SubmitSmEncoderFactory -- FlashSubmitSmEncoder
+SubmitSmEncoderFactory -- SilentSubmitSmEncoder
+SubmitSmEncoderFactory -- SimpleSubmitSmEncoder
+SubmitSmEncoderFactory -- SubmitSmEncoder
+TestSenderClient -- ConnectionManager
+TestSenderClient -- CancelMessage
+TestSenderClient -- CancelMessageResponse
+TestSenderClient -- Message
+TestSenderClient -- MessageResponse
+TestSenderClient -- SenderClient
+UnknownTypeOfAddressParser -- TypeOfAddressParser
+MessageUtil -- Message
+MessageUtil -- CountWithEncoding
+Utils -- ClientNameSmppException
+Utils -- SmppException
+RandomIndexDetectionStrategyTest -- IndexDetectionStrategy
+RandomIndexDetectionStrategyTest -- RandomIndexDetectionStrategy
+RoundRobinIndexDetectionStrategyTest -- IndexDetectionStrategy
+RoundRobinIndexDetectionStrategyTest -- RoundRobinIndexDetectionStrategy
+StrategySenderManagerTest -- IndexDetectionStrategy
+StrategySenderManagerTest -- NoSenderClientException
+StrategySenderManagerTest -- RandomIndexDetectionStrategy
+StrategySenderManagerTest -- RoundRobinIndexDetectionStrategy
+StrategySenderManagerTest -- SenderManager
+StrategySenderManagerTest -- StrategySenderManager
+StrategySenderManagerTest -- SmscConnection
+StrategySenderManagerTest -- SenderClient
+StrategySenderManagerTest -- Randomizer
+SmscConnectionFactoryBeanTest -- ConnectionMode
+SmscConnectionFactoryBeanTest -- ConnectionType
+SmscConnectionFactoryBeanTest -- SmppProperties
+SmscConnectionFactoryBeanTest -- SmscConnection
+SmscConnectionFactoryBeanTest -- SmscConnectionFactoryBean
+SmscConnectionFactoryBeanTest -- SmscConnectionsHolder
+SmscConnectionFactoryBeanTest -- ClientFactory
+SmscConnectionFactoryBeanTest -- ConnectionManager
+SmscConnectionFactoryBeanTest -- ConnectionManagerFactory
+SmscConnectionFactoryBeanTest -- TransceiverConnectionManager
+SmscConnectionFactoryBeanTest -- DeliveryReport
+SmscConnectionFactoryBeanTest -- SmppResultGenerator
+SmscConnectionFactoryBeanTest -- DeliveryReportConsumer
+SmscConnectionFactoryBeanTest -- ResponseClient
+SmscConnectionFactoryBeanTest -- ResponseSmppSessionHandler
+SmscConnectionFactoryBeanTest -- StandardResponseClient
+SmscConnectionFactoryBeanTest -- MockSenderClient
+SmscConnectionFactoryBeanTest -- SenderClient
+SmscConnectionFactoryBeanTest -- StandardSenderClient
+SmscConnectionFactoryBeanTest -- TestSenderClient
+SmscConnectionFactoryBeanTest -- TypeOfAddressParser
+SmscConnectionFactoryBeanTest -- Randomizer
+ClientFactoryTest -- SmppProperties
+ClientFactoryTest -- ClientFactory
+ClientFactoryTest -- ConnectionManager
+ClientFactoryTest -- Message
+ClientFactoryTest -- ClientNameSmppException
+ClientFactoryTest -- SmppException
+ClientFactoryTest -- SmppResultGenerator
+ClientFactoryTest -- ResponseClient
+ClientFactoryTest -- StandardResponseClient
+ClientFactoryTest -- MockSenderClient
+ClientFactoryTest -- SenderClient
+ClientFactoryTest -- StandardSenderClient
+ClientFactoryTest -- TestSenderClient
+ClientFactoryTest -- TypeOfAddressParser
+ClientFactoryTest -- Randomizer
+ConnectionManagerFactoryTest -- SmppProperties
+ConnectionManagerFactoryTest -- ConnectionManager
+ConnectionManagerFactoryTest -- ConnectionManagerFactory
+ConnectionManagerFactoryTest -- ReceiverConfiguration
+ConnectionManagerFactoryTest -- ReceiverConnectionManager
+ConnectionManagerFactoryTest -- TransceiverConfiguration
+ConnectionManagerFactoryTest -- TransceiverConnectionManager
+ConnectionManagerFactoryTest -- TransmitterConfiguration
+ConnectionManagerFactoryTest -- TransmitterConnectionManager
+ConnectionManagerFactoryTest -- Message
+ConnectionManagerFactoryTest -- ClientNameSmppException
+ConnectionManagerFactoryTest -- SmppException
+ConnectionManagerFactoryTest -- Randomizer
+ReceiverConfigurationTest -- SmppProperties
+ReceiverConfigurationTest -- ReceiverConfiguration
+ReceiverConfigurationTest -- Randomizer
+ReceiverConnectionManagerTest -- ConnectionManager
+ReceiverConnectionManagerTest -- ReceiverConfiguration
+ReceiverConnectionManagerTest -- ReceiverConnectionManager
+ReceiverConnectionManagerTest -- ResponseClientRebindTask
+ReceiverConnectionManagerTest -- ResponseClientBindException
+ReceiverConnectionManagerTest -- SmppSessionException
+ReceiverConnectionManagerTest -- ResponseClient
+ReceiverConnectionManagerTest -- ResponseSmppSessionHandler
+ReceiverConnectionManagerTest -- Randomizer
+ResponseClientRebindTaskTest -- ResponseClientRebindTask
+ResponseClientRebindTaskTest -- ResponseClient
+TransceiverConfigurationTest -- SmppProperties
+TransceiverConfigurationTest -- TransceiverConfiguration
+TransceiverConfigurationTest -- Randomizer
+TransceiverConnectionManagerTest -- ConnectionManager
+TransceiverConnectionManagerTest -- TransceiverConfiguration
+TransceiverConnectionManagerTest -- TransceiverConnectionManager
+TransceiverConnectionManagerTest -- SmppException
+TransceiverConnectionManagerTest -- SmppSessionException
+TransceiverConnectionManagerTest -- ResponseSmppSessionHandler
+TransceiverConnectionManagerTest -- Randomizer
+TransmitterConfigurationTest -- SmppProperties
+TransmitterConfigurationTest -- TransmitterConfiguration
+TransmitterConfigurationTest -- Randomizer
+TransmitterConnectionManagerTest -- ConnectionManager
+TransmitterConnectionManagerTest -- TransmitterConfiguration
+TransmitterConnectionManagerTest -- TransmitterConnectionManager
+TransmitterConnectionManagerTest -- SmppException
+TransmitterConnectionManagerTest -- SmppSessionException
+TransmitterConnectionManagerTest -- ResponseSmppSessionHandler
+TransmitterConnectionManagerTest -- Randomizer
+DeliveryReportTest -- DeliveryReport
+DeliveryReportTest -- Message
+DeliveryReportTest -- ResponseClient
+DeliveryReportTest -- Randomizer
+MessageBuilderTest -- CancelMessage
+MessageBuilderTest -- Message
+MessageBuilderTest -- MessageType
+MessageBuilderTest -- AddressBuilder
+MessageBuilderTest -- DataCoding
+MessageBuilderTest -- DefaultTypeOfAddressParser
+MessageBuilderTest -- MessageBuilder
+MessageBuilderTest -- SubmitSmEncoder
+MessageBuilderTest -- SubmitSmEncoderFactory
+MessageBuilderTest -- TypeOfAddressParser
+MessageBuilderTest -- MessageUtil
+AlwaysSuccessSmppResultGeneratorTest -- SmscConnection
+AlwaysSuccessSmppResultGeneratorTest -- CancelMessage
+AlwaysSuccessSmppResultGeneratorTest -- CancelMessageResponse
+AlwaysSuccessSmppResultGeneratorTest -- Message
+AlwaysSuccessSmppResultGeneratorTest -- MessageErrorInformation
+AlwaysSuccessSmppResultGeneratorTest -- MessageResponse
+AlwaysSuccessSmppResultGeneratorTest -- MessageType
+AlwaysSuccessSmppResultGeneratorTest -- AlwaysSuccessSmppResultGenerator
+AlwaysSuccessSmppResultGeneratorTest -- SmppResultGenerator
+AlwaysSuccessSmppResultGeneratorTest -- Randomizer
+ResponseSmppSessionHandlerTest -- DeliveryReport
+ResponseSmppSessionHandlerTest -- Message
+ResponseSmppSessionHandlerTest -- DeliveryReportConsumer
+ResponseSmppSessionHandlerTest -- ResponseSmppSessionHandler
+ResponseSmppSessionHandlerTest -- Randomizer
+StandardResponseClientTest -- ConnectionManager
+StandardResponseClientTest -- ReceiverConfiguration
+StandardResponseClientTest -- Message
+StandardResponseClientTest -- ResponseClientBindException
+StandardResponseClientTest -- ResponseClient
+StandardResponseClientTest -- StandardResponseClient
+StandardResponseClientTest -- Randomizer
+AddressBuilderTest -- AddressBuilder
+AddressBuilderTest -- TypeOfAddressParser
+BaseStandardSenderClientTest -- ConnectionManager
+BaseStandardSenderClientTest -- Message
+BaseStandardSenderClientTest -- MessageBuilder
+BaseStandardSenderClientTest -- SenderClient
+BaseStandardSenderClientTest -- StandardSenderClient
+BaseStandardSenderClientTest -- StandardSenderClientTest
+BaseStandardSenderClientTest -- Randomizer
+DefaultTypeOfAddressParserTest -- IllegalAddressException
+DefaultTypeOfAddressParserTest -- DefaultTypeOfAddressParser
+DefaultTypeOfAddressParserTest -- TypeOfAddressParser
+MockSenderClientTest -- CancelMessage
+MockSenderClientTest -- Message
+MockSenderClientTest -- MessageType
+MockSenderClientTest -- AlwaysSuccessSmppResultGenerator
+MockSenderClientTest -- SmppResultGenerator
+MockSenderClientTest -- MockSenderClient
+MockSenderClientTest -- SenderClient
+MockSenderClientTest -- Randomizer
+StandardSenderClientCancelMessageTest -- SmscConnection
+StandardSenderClientCancelMessageTest -- TransmitterConfiguration
+StandardSenderClientCancelMessageTest -- CancelMessage
+StandardSenderClientCancelMessageTest -- CancelMessageResponse
+StandardSenderClientCancelMessageTest -- Message
+StandardSenderClientCancelMessageTest -- MessageErrorInformation
+StandardSenderClientCancelMessageTest -- MessageResponse
+StandardSenderClientCancelMessageTest -- SenderClient
+StandardSenderClientCancelMessageTest -- StandardSenderClient
+StandardSenderClientCancelMessageTest -- BaseStandardSenderClientTest
+StandardSenderClientCancelMessageTest -- StandardSenderClientTest
+StandardSenderClientCancelMessageTest -- Randomizer
+StandardSenderClientSendMessageTest -- TransmitterConfiguration
+StandardSenderClientSendMessageTest -- Message
+StandardSenderClientSendMessageTest -- MessageErrorInformation
+StandardSenderClientSendMessageTest -- MessageResponse
+StandardSenderClientSendMessageTest -- MessageType
+StandardSenderClientSendMessageTest -- IllegalAddressException
+StandardSenderClientSendMessageTest -- SmppMessageBuildingException
+StandardSenderClientSendMessageTest -- SenderClient
+StandardSenderClientSendMessageTest -- StandardSenderClient
+StandardSenderClientSendMessageTest -- BaseStandardSenderClientTest
+StandardSenderClientSendMessageTest -- StandardSenderClientTest
+StandardSenderClientSendMessageTest -- Randomizer
+StandardSenderClientTest -- TransmitterConfiguration
+StandardSenderClientTest -- Message
+StandardSenderClientTest -- SenderClientBindException
+StandardSenderClientTest -- SmppSessionException
+StandardSenderClientTest -- DefaultTypeOfAddressParser
+StandardSenderClientTest -- MessageBuilder
+StandardSenderClientTest -- SenderClient
+StandardSenderClientTest -- StandardSenderClient
+StandardSenderClientTest -- TypeOfAddressParser
+StandardSenderClientTest -- Randomizer
+SubmitSmEncoderFactoryTest -- Message
+SubmitSmEncoderFactoryTest -- FlashSubmitSmEncoder
+SubmitSmEncoderFactoryTest -- SilentSubmitSmEncoder
+SubmitSmEncoderFactoryTest -- SimpleSubmitSmEncoder
+SubmitSmEncoderFactoryTest -- SubmitSmEncoder
+SubmitSmEncoderFactoryTest -- SubmitSmEncoderFactory
+TestSenderClientTest -- CancelMessage
+TestSenderClientTest -- Message
+TestSenderClientTest -- MessageType
+TestSenderClientTest -- AlwaysSuccessSmppResultGenerator
+TestSenderClientTest -- SmppResultGenerator
+TestSenderClientTest -- SenderClient
+TestSenderClientTest -- TestSenderClient
+TestSenderClientTest -- Randomizer
+UnknownTypeOfAddressParserTest -- TypeOfAddressParser
+UnknownTypeOfAddressParserTest -- UnknownTypeOfAddressParser
+JodaJavaConverterTest -- JodaJavaConverter
+MessageUtilTest -- Message
+MessageUtilTest -- CountWithEncoding
+MessageUtilTest -- MessageUtil
+Randomizer -- SmppProperties
+Randomizer -- ReceiverConfiguration
+Randomizer -- TransceiverConfiguration
+Randomizer -- TransmitterConfiguration
+CustomHandlerConfiguration -- SmppSessionListenerImpl
+CustomHandlerTest -- SenderManager
+CustomHandlerTest -- SmppAutoConfiguration
+CustomHandlerTest -- DeliveryReport
+CustomHandlerTest -- Message
+CustomHandlerTest -- MessageResponse
+CustomHandlerTest -- CustomHandlerConfiguration
+CustomHandlerTest -- SmppSessionListenerImpl
+SmppSessionListenerImpl -- Message
+RoundRobinApplicationConfiguration -- SenderManager
+RoundRobinApplicationConfiguration -- DeliveryReport
+RoundRobinApplicationConfiguration -- DeliveryReportConsumer
+RoundRobinApplicationConfiguration -- RoundRobinApplicationService
+RoundRobinApplicationService -- SenderManager
+RoundRobinApplicationService -- Message
+RoundRobinApplicationService -- SenderClient
+RoundRobinSmppTest -- SmppAutoConfiguration
+RoundRobinSmppTest -- DeliveryReport
+RoundRobinSmppTest -- Message
+RoundRobinSmppTest -- Utils
+RoundRobinSmppTest -- RoundRobinApplicationConfiguration
+RoundRobinSmppTest -- RoundRobinApplicationService
+RoundRobinSmppTest -- TestUtils
+SingleClientTest -- SmppProperties
+SingleClientTest -- CancelMessage
+SingleClientTest -- DeliveryReport
+SingleClientTest -- Message
+SingleClientTest -- DataCoding
+SingleClientTest -- SenderClient
+SingleClientTest -- Utils
+SingleClientTest -- TestUtils
+TestUtils -- SmppProperties
+TestUtils -- ClientFactory
+TestUtils -- ConnectionManager
+TestUtils -- ConnectionManagerFactory
+TestUtils -- DefaultTypeOfAddressParser
+TestUtils -- SenderClient
+TestUtils -- TypeOfAddressParser
+TestUtils -- Utils
+TransceiverTest -- SenderManager
+TransceiverTest -- SmppAutoConfiguration
+TransceiverTest -- TransceiverConfiguration
+TransceiverTest -- DeliveryReport
+TransceiverTest -- Message
+TransceiverTest -- MessageResponse
+TransceiverTest -- DeliveryReportConsumer
+TransceiverTest -- ResponseClient
+TransceiverTest -- Utils
+TransceiverTest -- TestUtils
+@enduml

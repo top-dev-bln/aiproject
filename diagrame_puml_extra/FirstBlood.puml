@@ -1,0 +1,390 @@
+@startuml
+package com.tothefor.config; {
+class CorsConfig {
+}
+
+class InterceptorConfig {
+}
+
+class JWTInterceptor {
+}
+
+}
+
+package com.tothefor.config.mybatis_plus; {
+class MybatisPlusConfig {
+}
+
+class MyMetaObjectHandler {
+}
+
+}
+
+package com.tothefor.controller; {
+class itemController {
+}
+
+class itemTypeController {
+}
+
+class menuController {
+}
+
+class RecordController {
+}
+
+class userController {
+}
+
+class userRoleController {
+}
+
+}
+
+package com.tothefor.mapper; {
+class ItemMapper {
+}
+
+class ItemTypeMapper {
+}
+
+class MenuMapper {
+}
+
+class RecordMapper {
+}
+
+class RoleMenuMapper {
+}
+
+class UserMapper {
+}
+
+class UserRoleMapper {
+}
+
+}
+
+package com.tothefor.pojo.dto; {
+class CheckURL {
+}
+
+class LoginDTO {
+}
+
+class PieData {
+}
+
+class RequestReturnInfo {
+}
+
+class UserPassword {
+}
+
+}
+
+package com.tothefor.pojo.entity; {
+class Item {
+}
+
+class ItemType {
+}
+
+class Menu {
+}
+
+class Record {
+}
+
+class RoleMenu {
+}
+
+class User {
+}
+
+class UserRole {
+}
+
+}
+
+package com.tothefor.resultR; {
+class R {
+}
+
+class RCode {
+}
+
+}
+
+package com.tothefor; {
+class SchoolJavaApplication {
+}
+
+class SchoolJavaApplicationTests {
+}
+
+}
+
+package com.tothefor.service.impl; {
+class ItemServiceImpl {
+}
+
+class ItemTypeServiceImpl {
+}
+
+class MenuServiceImpl {
+}
+
+class RecordServiceImpl {
+}
+
+class RoleMenuServiceImpl {
+}
+
+class UserRoleServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.tothefor.service; {
+class ItemService {
+}
+
+class ItemTypeService {
+}
+
+class MenuService {
+}
+
+class RecordService {
+}
+
+class RoleMenuService {
+}
+
+class UserRoleService {
+}
+
+class UserService {
+}
+
+}
+
+package com.tothefor.utils; {
+class JWTUtils {
+}
+
+class MD5Utils {
+}
+
+class RequestInfoUtils {
+}
+
+}
+
+InterceptorConfig -- JWTInterceptor
+InterceptorConfig -- R
+JWTInterceptor -- UserMapper
+JWTInterceptor -- User
+JWTInterceptor -- R
+JWTInterceptor -- JWTUtils
+MyMetaObjectHandler -- R
+MyMetaObjectHandler -- MD5Utils
+itemController -- ItemMapper
+itemController -- ItemTypeMapper
+itemController -- PieData
+itemController -- Item
+itemController -- ItemType
+itemController -- Record
+itemController -- R
+itemController -- ItemServiceImpl
+itemController -- ItemTypeServiceImpl
+itemController -- ItemService
+itemController -- ItemTypeService
+itemTypeController -- ItemMapper
+itemTypeController -- ItemTypeMapper
+itemTypeController -- Item
+itemTypeController -- ItemType
+itemTypeController -- R
+itemTypeController -- ItemServiceImpl
+itemTypeController -- ItemTypeServiceImpl
+itemTypeController -- ItemService
+itemTypeController -- ItemTypeService
+menuController -- MenuMapper
+menuController -- UserMapper
+menuController -- UserRoleMapper
+menuController -- Menu
+menuController -- User
+menuController -- UserRole
+menuController -- R
+menuController -- MenuServiceImpl
+menuController -- UserRoleServiceImpl
+menuController -- UserServiceImpl
+menuController -- MenuService
+menuController -- UserRoleService
+menuController -- UserService
+RecordController -- ItemMapper
+RecordController -- ItemTypeMapper
+RecordController -- RecordMapper
+RecordController -- PieData
+RecordController -- Item
+RecordController -- ItemType
+RecordController -- Record
+RecordController -- R
+RecordController -- ItemServiceImpl
+RecordController -- ItemTypeServiceImpl
+RecordController -- RecordServiceImpl
+RecordController -- ItemService
+RecordController -- ItemTypeService
+RecordController -- RecordService
+userController -- MenuMapper
+userController -- RoleMenuMapper
+userController -- UserMapper
+userController -- UserRoleMapper
+userController -- CheckURL
+userController -- LoginDTO
+userController -- RequestReturnInfo
+userController -- UserPassword
+userController -- Menu
+userController -- Record
+userController -- RoleMenu
+userController -- User
+userController -- UserRole
+userController -- R
+userController -- MenuServiceImpl
+userController -- RoleMenuServiceImpl
+userController -- UserRoleServiceImpl
+userController -- UserServiceImpl
+userController -- MenuService
+userController -- RoleMenuService
+userController -- UserRoleService
+userController -- UserService
+userController -- JWTUtils
+userController -- MD5Utils
+userController -- RequestInfoUtils
+userRoleController -- UserRoleMapper
+userRoleController -- Item
+userRoleController -- ItemType
+userRoleController -- Menu
+userRoleController -- RoleMenu
+userRoleController -- User
+userRoleController -- UserRole
+userRoleController -- R
+userRoleController -- UserRoleServiceImpl
+userRoleController -- UserRoleService
+ItemMapper -- Item
+ItemMapper -- R
+ItemTypeMapper -- Item
+ItemTypeMapper -- ItemType
+ItemTypeMapper -- R
+MenuMapper -- Menu
+MenuMapper -- User
+MenuMapper -- R
+RecordMapper -- Record
+RecordMapper -- R
+RoleMenuMapper -- MenuMapper
+RoleMenuMapper -- Menu
+RoleMenuMapper -- RoleMenu
+RoleMenuMapper -- R
+UserMapper -- User
+UserMapper -- R
+UserRoleMapper -- User
+UserRoleMapper -- UserRole
+UserRoleMapper -- R
+CheckURL -- R
+LoginDTO -- Menu
+LoginDTO -- R
+RequestReturnInfo -- R
+RequestReturnInfo -- RequestInfoUtils
+UserPassword -- User
+Item -- R
+ItemType -- Item
+Record -- R
+RoleMenu -- Menu
+RoleMenu -- R
+User -- R
+UserRole -- User
+UserRole -- R
+R -- RCode
+SchoolJavaApplication -- R
+ItemServiceImpl -- ItemMapper
+ItemServiceImpl -- Item
+ItemServiceImpl -- ItemService
+ItemTypeServiceImpl -- ItemTypeMapper
+ItemTypeServiceImpl -- Item
+ItemTypeServiceImpl -- ItemType
+ItemTypeServiceImpl -- ItemTypeService
+MenuServiceImpl -- MenuMapper
+MenuServiceImpl -- UserMapper
+MenuServiceImpl -- Menu
+MenuServiceImpl -- User
+MenuServiceImpl -- MenuService
+MenuServiceImpl -- UserService
+RecordServiceImpl -- ItemMapper
+RecordServiceImpl -- RecordMapper
+RecordServiceImpl -- Item
+RecordServiceImpl -- Record
+RecordServiceImpl -- R
+RecordServiceImpl -- ItemService
+RecordServiceImpl -- RecordService
+RoleMenuServiceImpl -- MenuMapper
+RoleMenuServiceImpl -- RoleMenuMapper
+RoleMenuServiceImpl -- Menu
+RoleMenuServiceImpl -- RoleMenu
+RoleMenuServiceImpl -- R
+RoleMenuServiceImpl -- MenuServiceImpl
+RoleMenuServiceImpl -- MenuService
+RoleMenuServiceImpl -- RoleMenuService
+UserRoleServiceImpl -- ItemMapper
+UserRoleServiceImpl -- MenuMapper
+UserRoleServiceImpl -- RoleMenuMapper
+UserRoleServiceImpl -- UserRoleMapper
+UserRoleServiceImpl -- Item
+UserRoleServiceImpl -- Menu
+UserRoleServiceImpl -- RoleMenu
+UserRoleServiceImpl -- User
+UserRoleServiceImpl -- UserRole
+UserRoleServiceImpl -- R
+UserRoleServiceImpl -- MenuServiceImpl
+UserRoleServiceImpl -- RoleMenuServiceImpl
+UserRoleServiceImpl -- ItemService
+UserRoleServiceImpl -- MenuService
+UserRoleServiceImpl -- RoleMenuService
+UserRoleServiceImpl -- UserRoleService
+UserServiceImpl -- MenuMapper
+UserServiceImpl -- RoleMenuMapper
+UserServiceImpl -- UserMapper
+UserServiceImpl -- LoginDTO
+UserServiceImpl -- Menu
+UserServiceImpl -- RoleMenu
+UserServiceImpl -- User
+UserServiceImpl -- R
+UserServiceImpl -- UserService
+ItemService -- Item
+ItemTypeService -- Item
+ItemTypeService -- ItemType
+MenuService -- Menu
+RecordService -- Record
+RecordService -- R
+RoleMenuService -- Menu
+RoleMenuService -- RoleMenu
+RoleMenuService -- R
+RoleMenuService -- MenuService
+UserRoleService -- Item
+UserRoleService -- Menu
+UserRoleService -- RoleMenu
+UserRoleService -- User
+UserRoleService -- UserRole
+UserRoleService -- R
+UserService -- LoginDTO
+UserService -- Item
+UserService -- Menu
+UserService -- User
+MD5Utils -- R
+RequestInfoUtils -- User
+RequestInfoUtils -- R
+SchoolJavaApplicationTests -- SchoolJavaApplication
+@enduml

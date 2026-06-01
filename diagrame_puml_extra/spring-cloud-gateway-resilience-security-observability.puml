@@ -1,0 +1,22 @@
+@startuml
+package com.thomasvitale.bookservice; {
+class BookServiceApplication {
+}
+
+class BookServiceApplicationTests {
+}
+
+}
+
+package com.thomasvitale.edgeservice; {
+class EdgeServiceApplication {
+}
+
+class EdgeServiceApplicationTests {
+}
+
+}
+
+BookServiceApplicationTests -- BookServiceApplication
+EdgeServiceApplicationTests -- EdgeServiceApplication
+@enduml

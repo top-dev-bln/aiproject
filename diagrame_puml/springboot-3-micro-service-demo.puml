@@ -1,0 +1,102 @@
+@startuml
+
+package com.alibou.configserver {
+  class ConfigServerApplicationTests {
+  }
+  class ConfigServerApplication {
+    +main() : void
+  }
+}
+
+package com.alibou.discovery {
+  class DiscoveryApplicationTests {
+  }
+  class DiscoveryApplication {
+    +main() : void
+  }
+}
+
+package com.alibou.gateway {
+  class GatewayApplicationTests {
+  }
+  class GatewayApplication {
+    +main() : void
+  }
+}
+
+package com.alibou.school {
+  class SchoolApplicationTests {
+  }
+  class School <<Entity>> {
+    -id : Integer
+    -name : String
+    -email : String
+  }
+  class FullSchoolResponse {
+    -name : String
+    -email : String
+  }
+  interface SchoolRepository {
+  }
+  class SchoolController <<Controller>> {
+    -service : SchoolService
+    +save() : void
+    +findAllSchools() : ResponseEntity<List<School>>
+    +findAllSchools() : ResponseEntity<FullSchoolResponse>
+  }
+  class SchoolApplication {
+    +main() : void
+  }
+  class SchoolService <<Service>> {
+    -repository : SchoolRepository
+    -client : StudentClient
+    +saveSchool() : void
+    +findAllSchools() : List<School>
+    +findSchoolsWithStudents() : FullSchoolResponse
+  }
+  class Student {
+    -firstname : String
+    -lastname : String
+    -email : String
+  }
+}
+
+package com.alibou.school.client {
+  interface StudentClient {
+  }
+}
+
+package com.alibou.student {
+  class StudentApplicationTests {
+  }
+  class StudentService <<Service>> {
+    -repository : StudentRepository
+    +saveStudent() : void
+    +findAllStudents() : List<Student>
+    +findAllStudentsBySchool() : List<Student>
+  }
+  interface StudentRepository {
+  }
+  class StudentController <<Controller>> {
+    -service : StudentService
+    +save() : void
+    +findAllStudents() : ResponseEntity<List<Student>>
+    +findAllStudents() : ResponseEntity<List<Student>>
+  }
+  class StudentApplication {
+    +main() : void
+  }
+  class Student <<Entity>> {
+    -id : Integer
+    -firstname : String
+    -lastname : String
+    -email : String
+    -schoolId : Integer
+  }
+}
+
+' --- Relatii ---
+SchoolService --> StudentClient
+StudentClient --> Student
+
+@enduml

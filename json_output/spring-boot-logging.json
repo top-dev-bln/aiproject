@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, video/streaming domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include main. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage main operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "MainController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    MainController[\"MainController\"]\n  end\n  subgraph Security\n    ReactiveSpringLoggingFilter[\"ReactiveSpringLoggingFilter\"]\n    RequestLoggingInterceptor[\"RequestLoggingInterceptor\"]\n    ResponseLoggingInterceptor[\"ResponseLoggingInterceptor\"]\n    RestClientSetHeaderInterceptor[\"RestClientSetHeaderInterceptor\"]\n    RestTemplateSetHeaderInterceptor[\"RestTemplateSetHeaderInterceptor\"]\n    SpringLoggingFilter[\"SpringLoggingFilter\"]\n  end\n  subgraph Infrastructure\n    ReactiveSpringLoggingAutoConfiguration[\"ReactiveSpringLoggingAutoConfiguration\"]\n    SpringLoggingAutoConfiguration[\"SpringLoggingAutoConfiguration\"]\n  end\n  Controllers --> Security\n  Infrastructure --> Security"
+  }
+}

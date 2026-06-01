@@ -1,0 +1,415 @@
+@startuml
+package censed to the Apache Software Foundation (ASF) under one {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.aop; {
+class ReactiveTimedAspect {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command; {
+class CommandApplication {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.config; {
+class LocalizationConfiguration {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.domain; {
+class Address {
+}
+
+class Job {
+}
+
+class User {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.exception; {
+class EntityNotFoundException {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.repository; {
+class UserRepository {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.service.dto; {
+class AddressDto {
+}
+
+class JobDto {
+}
+
+class UserDto {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.service.mapper; {
+class AddressMapper {
+}
+
+class JobMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.service; {
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.web.error; {
+class RestErrorConstants {
+}
+
+class RestErrorDto {
+}
+
+class RestExceptionTranslator {
+}
+
+class RestFieldErrorDto {
+}
+
+class RestFieldsErrorsDto {
+}
+
+}
+
+package com.github.joumenharzli.cdc.command.web; {
+class UserResource {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.aop; {
+class TimedAspect {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.config; {
+class ElasticsearchConfiguration {
+}
+
+class KafkaConfiguration {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer; {
+class DenormalizerApplication {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.domain; {
+class Address {
+}
+
+class Job {
+}
+
+class User {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.exception; {
+class EntityNotFoundException {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.listener; {
+class EventDispatcher {
+}
+
+class EventHandler {
+}
+
+class EventHandlerFactory {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.listener.handler; {
+class AbstractSimpleEventHandler {
+}
+
+class AddressEventHandler {
+}
+
+class JobEventHandler {
+}
+
+class UserEventHandler {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.listener.support; {
+class DebeziumEvent {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.repository; {
+class UserRepository {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.service.dto; {
+class AddressDto {
+}
+
+class JobDto {
+}
+
+class UserDto {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.service.mapper; {
+class AddressMapper {
+}
+
+class JobMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package com.github.joumenharzli.cdc.denormalizer.service; {
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.aop; {
+class ReactiveTimedAspect {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.config; {
+class ElasticsearchConfiguration {
+}
+
+class LocalizationConfiguration {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.domain; {
+class Address {
+}
+
+class Job {
+}
+
+class User {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query; {
+class QueryApplication {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.repository; {
+class UserRepository {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.service.dto; {
+class AddressDto {
+}
+
+class JobDto {
+}
+
+class QueryOperator {
+}
+
+class QueryParameter {
+}
+
+class UserDto {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.service.mapper; {
+class AddressMapper {
+}
+
+class JobMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.service; {
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.util; {
+class QueryUtils {
+}
+
+class SearchQueryBuilder {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.web.error; {
+class RestErrorConstants {
+}
+
+class RestErrorDto {
+}
+
+class RestExceptionTranslator {
+}
+
+class RestFieldErrorDto {
+}
+
+class RestFieldsErrorsDto {
+}
+
+}
+
+package com.github.joumenharzli.cdc.query.web; {
+class UserResource {
+}
+
+}
+
+ReactiveTimedAspect -- TimedAspect
+Address -- AddressDto
+User -- Address
+User -- Job
+UserRepository -- User
+JobDto -- Job
+UserDto -- Address
+UserDto -- Job
+UserDto -- User
+UserDto -- AddressDto
+UserDto -- JobDto
+AddressMapper -- Address
+AddressMapper -- AddressDto
+JobMapper -- Job
+JobMapper -- JobDto
+UserMapper -- Address
+UserMapper -- Job
+UserMapper -- User
+UserMapper -- UserDto
+UserMapper -- AddressMapper
+UserMapper -- JobMapper
+UserService -- User
+UserService -- UserDto
+UserService -- QueryParameter
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserDto
+UserServiceImpl -- UserMapper
+UserServiceImpl -- UserService
+UserServiceImpl -- QueryParameter
+UserServiceImpl -- SearchQueryBuilder
+RestExceptionTranslator -- RestErrorConstants
+RestExceptionTranslator -- RestErrorDto
+RestExceptionTranslator -- RestFieldErrorDto
+RestExceptionTranslator -- RestFieldsErrorsDto
+RestFieldsErrorsDto -- RestErrorDto
+RestFieldsErrorsDto -- RestFieldErrorDto
+UserResource -- User
+UserResource -- UserDto
+UserResource -- UserService
+UserResource -- QueryUtils
+KafkaConfiguration -- DebeziumEvent
+EventDispatcher -- EventHandler
+EventDispatcher -- EventHandlerFactory
+EventDispatcher -- DebeziumEvent
+EventHandler -- DebeziumEvent
+EventHandlerFactory -- Address
+EventHandlerFactory -- Job
+EventHandlerFactory -- User
+EventHandlerFactory -- EventHandler
+EventHandlerFactory -- AddressEventHandler
+EventHandlerFactory -- JobEventHandler
+EventHandlerFactory -- UserEventHandler
+AbstractSimpleEventHandler -- EventHandler
+AbstractSimpleEventHandler -- DebeziumEvent
+AddressEventHandler -- Address
+AddressEventHandler -- User
+AddressEventHandler -- AddressDto
+AddressEventHandler -- UserService
+AddressEventHandler -- EventHandler
+AddressEventHandler -- AbstractSimpleEventHandler
+AddressEventHandler -- DebeziumEvent
+JobEventHandler -- Job
+JobEventHandler -- User
+JobEventHandler -- JobDto
+JobEventHandler -- UserService
+JobEventHandler -- EventHandler
+JobEventHandler -- AbstractSimpleEventHandler
+JobEventHandler -- DebeziumEvent
+UserEventHandler -- User
+UserEventHandler -- UserDto
+UserEventHandler -- UserService
+UserEventHandler -- EventHandler
+UserEventHandler -- AbstractSimpleEventHandler
+UserEventHandler -- DebeziumEvent
+QueryParameter -- QueryOperator
+QueryUtils -- QueryOperator
+QueryUtils -- QueryParameter
+SearchQueryBuilder -- QueryOperator
+SearchQueryBuilder -- QueryParameter
+@enduml

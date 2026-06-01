@@ -1,0 +1,1727 @@
+@startuml
+
+package com.github.chengzhx76.base.server {
+  class EurekaServerApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.consumer.test.user {
+  class ServiceTestApplication {
+    +main() : void
+  }
+  interface RefactorCartService {
+  }
+  class Controller <<Controller>> {
+    -userService : RefactorUserService
+    -cartService : RefactorCartService
+    +getAccountByLoginName() : Account
+    +testCart() : void
+  }
+  interface RefactorUserService {
+  }
+}
+
+package com.github.chengzhx76.mq.config {
+  class RabbitConfig {
+    +validate() : Queue
+    +notice() : Queue
+    +activity() : Queue
+    +exchange() : TopicExchange
+    +bindingExchangeValidate() : Binding
+    +bindingExchangeNotice() : Binding
+    +bindingExchangeActivity() : Binding
+  }
+}
+
+package com.github.chengzhx76.mq.constant {
+  class QueueName {
+    -VALIDATE : String
+    -NOTICE : String
+    -ACTIVITY : String
+    -EXCHANGE : String
+  }
+}
+
+package com.github.chengzhx76.mq.enums {
+  enum MsgType {
+    -name : String
+    +getName() : String
+  }
+}
+
+package com.github.chengzhx76.mq.model {
+  class SmsModel {
+    -serialVersionUID : long
+    -phone : String
+    -userIp : String
+    -type : MsgType
+    -date : Date
+    -content : String
+    +getPhone() : String
+    +setPhone() : void
+    +getUserIp() : String
+    +setUserIp() : void
+    +getSerialVersionUID() : long
+    +getType() : MsgType
+    +setType() : void
+    +getDate() : Date
+  }
+}
+
+package com.github.chengzhx76.mq.test {
+  class RabbitMQApplicationTests {
+    -smsService : RabbitSmsService
+    +hello() : void
+  }
+}
+
+package com.github.chengzhx76.service.cart {
+  class CartServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.cart.service.api.entity {
+  class ShoppingCart {
+    -accessId : String
+    -totalQuantity : int
+    -cartInfos : List<CartInfo>
+    +getAccessId() : String
+    +setAccessId() : ShoppingCart
+    +getTotalQuantity() : int
+    +setTotalQuantity() : void
+    +getCartInfos() : List<CartInfo>
+    +setCartInfos() : void
+  }
+  class CartInfo {
+    -accessId : String
+    -productId : String
+    -quantity : int
+    -isChoose : boolean
+    +getAccessId() : String
+    +setAccessId() : CartInfo
+    +getProductId() : String
+    +setProductId() : CartInfo
+    +getQuantity() : int
+    +setQuantity() : void
+    +isChoose() : boolean
+    +setChoose() : void
+  }
+}
+
+package com.github.chengzhx76.service.cart.service.api.model {
+  class ProductModel {
+    -id : String
+    -count : int
+    +getId() : String
+    +setId() : void
+    +getCount() : int
+    +setCount() : void
+  }
+}
+
+package com.github.chengzhx76.service.cart.service.api.service {
+  interface CartService {
+  }
+}
+
+package com.github.chengzhx76.service.cart.service.impl {
+  class CartServiceImpl <<Controller>> {
+    -redisService : RedisService
+    +addProductCount() : Long
+    +subProductCount() : Long
+    +getAllProductIds() : Set<String>
+    +getChooseProductIds() : Set<String>
+    +getCounts() : Long
+    +deleteProduct() : void
+    +getShoppingCart() : ShoppingCart
+    +addProduct() : void
+  }
+}
+
+package com.github.chengzhx76.service.comment {
+  class CommentServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.comment.api.entity {
+  class Comment {
+    -orderDetailId : String
+    -productId : String
+    -accountId : String
+    -title : String
+    -content : String
+    -useful : int
+    -useless : int
+    -parentId : String
+    -productScore : double
+    -deliveryScore : double
+    +getProductScore() : double
+    +setProductScore() : Comment
+    +getDeliveryScore() : double
+    +setDeliveryScore() : Comment
+    +getOrderDetailId() : String
+    +setOrderDetailId() : void
+    +getProductId() : String
+    +setProductId() : void
+  }
+}
+
+package com.github.chengzhx76.service.comment.api.service {
+  interface CommentService {
+  }
+}
+
+package com.github.chengzhx76.service.comment.dao {
+  interface CommentDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.comment.service.impl {
+  class CommentServiceImpl <<Controller>> {
+    -commentDao : CommentDaoMapper
+    +getByProductId() : List<Comment>
+  }
+}
+
+package com.github.chengzhx76.service.httpclient {
+  class HttpClientService {
+  }
+}
+
+package com.github.chengzhx76.service.httpclient.config {
+  class IdleClientEvictExpiredConnections {
+    -connMgr : HttpClientConnectionManager
+    +run() : void
+    +shutdown() : void
+  }
+  class HttpClient {
+    -maxTotal : Integer
+    -defaultMaxPerRoute : Integer
+    -connectTimeout : Integer
+    -connectionRequestTimeout : Integer
+    -socketTimeout : Integer
+    -staleConnectionCheckEnabled : boolean
+    +getHttpClientConnectionManager() : PoolingHttpClientConnectionManager
+    +getHttpClientBuilder() : HttpClientBuilder
+    +getCloseableHttpClient() : CloseableHttpClient
+    +getRequestConfig() : RequestConfig
+    +closeIdleConnection() : void
+  }
+}
+
+package com.github.chengzhx76.service.message {
+  class MessageServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.message.api.entity {
+  class SmsTemplate {
+    -type : MsgType
+    -content : String
+    -timeout : int
+    -isEnable : boolean
+    +getTimeout() : int
+    +setTimeout() : void
+    +getType() : MsgType
+    +setType() : void
+    +getContent() : String
+    +setContent() : void
+    +isEnable() : boolean
+    +setEnable() : void
+  }
+  class SmsHistory {
+    -phone : String
+    -content : String
+    -timeout : int
+    -type : MsgType
+    -sender : String
+    -receiverId : String
+    -userIp : String
+    -validate : String
+    -startOfDay : Date
+    +getStartOfDay() : Date
+    +setStartOfDay() : void
+    +getPhone() : String
+    +setPhone() : void
+    +getContent() : String
+    +setContent() : void
+    +getTimeout() : int
+    +setTimeout() : void
+  }
+  class EmailTemplate {
+    -type : MsgType
+    -content : String
+    -isEnable : boolean
+    +getType() : MsgType
+    +setType() : void
+    +getContent() : String
+    +setContent() : void
+    +isEnable() : boolean
+    +setEnable() : void
+  }
+}
+
+package com.github.chengzhx76.service.message.api.service {
+  interface SmsService {
+  }
+}
+
+package com.github.chengzhx76.service.message.dao {
+  interface SmsHistoryDaoMapper <<Repository>> {
+  }
+  interface SmsTemplateDaoMapper <<Repository>> {
+  }
+  interface EmailTemplateDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.message.service {
+  class SmsServiceImpl <<Service>> {
+    -logger : Logger
+    -smsTemplateDao : SmsTemplateDaoMapper
+    -smsHistoryDao : SmsHistoryDaoMapper
+    +getCountByDay() : int
+    +getCountByIp() : int
+    +sendValidate() : void
+    +getInfoByPhoneAndType() : SmsHistory
+    +sendNotice() : void
+    +sendActivity() : void
+  }
+}
+
+package com.github.chengzhx76.service.mq.api {
+  interface RabbitSmsService {
+  }
+}
+
+package com.github.chengzhx76.service.order {
+  class OrderServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.order.api.entity {
+  class Country {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class Village {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class OrderReturnDetail {
+    -returnOid : String
+    -no : String
+    -name : String
+    -quantity : int
+    -subtatal : BigDecimal
+    -marketPrice : BigDecimal
+    -salePrice : BigDecimal
+    -dealPrice : BigDecimal
+    -discountRate : double
+    -isGift : boolean
+    +getReturnOid() : String
+    +setReturnOid() : OrderReturnDetail
+    +getNo() : String
+    +setNo() : OrderReturnDetail
+    +getName() : String
+    +setName() : OrderReturnDetail
+    +getQuantity() : int
+    +setQuantity() : OrderReturnDetail
+  }
+  class Town {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class FlowStatus {
+    -name : String
+    -preStatusId : String
+    -nextStatusId : String
+    -payWay : String
+    -orderBy : int
+    +getName() : String
+    +setName() : void
+    +getPreStatusId() : String
+    +setPreStatusId() : void
+    +getNextStatusId() : String
+    +setNextStatusId() : void
+    +getPayWay() : String
+    +setPayWay() : void
+  }
+  class RefundType {
+    -name : String
+    +getName() : String
+    +setName() : RefundType
+  }
+  class OrderProductDetail {
+    -orderInfoId : String
+    -oid : String
+    -name : String
+    -quantity : int
+    -subtotal : BigDecimal
+    -marketPrice : BigDecimal
+    -salePrice : BigDecimal
+    -dealPrice : BigDecimal
+    -discountRate : double
+    -isComment : boolean
+    +getOrderInfoId() : String
+    +setOrderInfoId() : void
+    +getOid() : String
+    +setOid() : void
+    +getName() : String
+    +setName() : void
+    +getQuantity() : int
+    +setQuantity() : void
+  }
+  class ReturnReason {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class ArayacakAddress {
+    -name : String
+    -province : String
+    -city : String
+    -country : String
+    -town : String
+    -village : String
+    -address : String
+    +getName() : String
+    +setName() : void
+    +getProvince() : String
+    +setProvince() : void
+    +getCity() : String
+    +setCity() : void
+    +getCountry() : String
+    +setCountry() : void
+  }
+  class Pay {
+    -name : String
+    -payWay : String
+    -icon : String
+    -orderBy : int
+    -recommend : Boolean
+    +getName() : String
+    +setName() : void
+    +getPayWay() : String
+    +setPayWay() : void
+    +getIcon() : String
+    +setIcon() : void
+    +getOrderBy() : int
+    +setOrderBy() : void
+  }
+  class OrderReturn {
+    -accessId : String
+    -returnId : String
+    -orderInfoOid : String
+    -orderInfoId : String
+    -refundPayable : BigDecimal
+    -refundPaid : BigDecimal
+    -salePriceTatal : BigDecimal
+    -consignee : String
+    -mobile : String
+    -address : String
+    +getAccessId() : String
+    +setAccessId() : void
+    +getReturnId() : String
+    +setReturnId() : void
+    +getOrderInfoOid() : String
+    +setOrderInfoOid() : void
+    +getOrderInfoId() : String
+    +setOrderInfoId() : void
+  }
+  class Province {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class OrderInfo {
+    -accountId : String
+    -oid : String
+    -relateOid : String
+    -amountPayable : BigDecimal
+    -amountPaid : BigDecimal
+    -consignee : String
+    -mobile : String
+    -address : String
+    -deliveryTime : String
+    -pay : String
+    +getVillage() : String
+    +setVillage() : void
+    +getIp() : String
+    +setIp() : void
+    +getOid() : String
+    +setOid() : void
+    +getCommentId() : String
+    +setCommentId() : void
+  }
+  class City {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class DeliveryType {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class ArayacakDeliveryTime {
+    -name : String
+    +getName() : String
+    +setName() : ArayacakDeliveryTime
+  }
+  class ReturnStatus {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class DeliveryTime {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package com.github.chengzhx76.service.order.api.enumType {
+  enum FlowStatus {
+    -name : String
+    +getName() : String
+  }
+  interface OrderStatus {
+    -name : String
+    +getName() : String
+  }
+  interface PayWay {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  enum PayStatus {
+    -name : String
+    +getName() : String
+  }
+  interface OrderType {
+    -name : String
+    +getName() : String
+  }
+}
+
+package com.github.chengzhx76.service.order.api.service {
+  interface OrderService {
+  }
+}
+
+package com.github.chengzhx76.service.order.dao {
+  interface PayDaoMapper <<Repository>> {
+  }
+  interface VillageDaoMapper <<Repository>> {
+  }
+  interface CountryDaoMapper <<Repository>> {
+  }
+  interface OrderReturnDaoMapper <<Repository>> {
+  }
+  interface ArayacakDeliveryTimeDaoMapper <<Repository>> {
+  }
+  interface CityDaoMapper <<Repository>> {
+  }
+  interface TownDaoMapper <<Repository>> {
+  }
+  interface ProvinceDaoMapper <<Repository>> {
+  }
+  interface DeliveryTypeDaoMapper {
+  }
+  interface ArayacakAddressDaoMapper <<Repository>> {
+  }
+  interface OrderReturnDetailDaoMapper <<Repository>> {
+  }
+  interface FlowStatusDaoMapper <<Repository>> {
+  }
+  interface ReturnStatusDaoMapper <<Repository>> {
+  }
+  interface ReturnReasonDaoMapper <<Repository>> {
+  }
+  interface RefundTypeDaoMapper <<Repository>> {
+  }
+  interface DeliveryTimeDaoMapper <<Repository>> {
+  }
+  interface OrderProductDetailDaoMapper <<Repository>> {
+  }
+  interface OrderInfoDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.order.service.impl {
+  class OrderServiceImpl <<Controller>> {
+    -orderInfoDao : OrderInfoDaoMapper
+    -orderProductDetailDao : OrderProductDetailDaoMapper
+    -deliveryTimeDao : DeliveryTimeDaoMapper
+    -payDao : PayDaoMapper
+    -townDao : TownDaoMapper
+    -arayacakAddressDao : ArayacakAddressDaoMapper
+    -flowStatusDao : FlowStatusDaoMapper
+    +getAllDeliveryTimes() : List<DeliveryTime>
+    +getDeliveryTime() : DeliveryTime
+    +getAllPay() : List<Pay>
+    +getOrderInfos() : PageInfo<OrderInfo>
+    +getOrderDetail() : OrderInfo
+    +addOrder() : OrderInfo
+    +getPay() : Pay
+    +getRecommendPay() : Pay
+  }
+}
+
+package com.github.chengzhx76.service.product {
+  class ProductServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.product.api.entity {
+  class Product {
+    -name : String
+    -marketPrice : BigDecimal
+    -salePrice : BigDecimal
+    -no : String
+    -keywords : String
+    -typeId : String
+    -unitsInStock : int
+    -isAlive : boolean
+    -modifyAdminId : String
+    -isIndex : boolean
+    +getTag() : String
+    +setTag() : void
+    +getUnitDesc() : String
+    +setUnitDesc() : void
+    +getDefaultPicture() : Picture
+    +setDefaultPicture() : void
+    +getPictures() : List<Picture>
+    +setPictures() : void
+  }
+  class Picture {
+    -productId : String
+    -pictureUrl : String
+    -width : int
+    -height : int
+    -isDefault : Boolean
+    +getWidth() : int
+    +setWidth() : void
+    +getHeight() : int
+    +setHeight() : void
+    +getProductId() : String
+    +setProductId() : void
+    +getPictureUrl() : String
+    +setPictureUrl() : void
+  }
+  class ProductType {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package com.github.chengzhx76.service.product.api.service {
+  interface ProductService {
+  }
+}
+
+package com.github.chengzhx76.service.product.dao {
+  interface ProductDaoMapper <<Repository>> {
+  }
+  interface PictureDaoMapper <<Repository>> {
+  }
+  interface ProductTypeDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.product.service.impl {
+  class ProductServiceImpl <<Controller>> {
+    -productDao : ProductDaoMapper
+    -pictureDao : PictureDaoMapper
+    -productTypeDao : ProductTypeDaoMapper
+    +getById() : Product
+    +updateStockById() : void
+    +getByTypeId() : List<Product>
+    +getDefaultPictureById() : Product
+    +getIndex() : List<Product>
+    +getProductType() : List<ProductType>
+    +getAllPicture() : List<Picture>
+    +getDefaultPictureByProductId() : Picture
+  }
+}
+
+package com.github.chengzhx76.service.promotion {
+  class SystemServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.promotion.api.entity {
+  class CouponHistory {
+    -code : String
+    -txBehavior : String
+    -accountId : String
+    -isSendUsed : String
+    +getCode() : String
+    +setCode() : void
+    +getTxBehavior() : String
+    +setTxBehavior() : void
+    +getAccountId() : String
+    +setAccountId() : void
+    +getIsSendUsed() : String
+    +setIsSendUsed() : void
+  }
+  class Coupon {
+    -name : String
+    -type : String
+    -faceValue : BigDecimal
+    -delayDay : int
+    -isFree : boolean
+    -isReuse : boolean
+    -enoughMoney : BigDecimal
+    -discount : BigDecimal
+    -includeGroup : String
+    -excludeGroup : String
+    +getName() : String
+    +setName() : void
+    +getType() : String
+    +setType() : void
+    +getFaceValue() : BigDecimal
+    +setFaceValue() : void
+    +getDelayDay() : int
+    +setDelayDay() : void
+  }
+  class CouponCode {
+    -couponId : String
+    -code : String
+    -accountId : String
+    -isUsed : boolean
+    -coupon : Coupon
+    +getCouponId() : String
+    +setCouponId() : void
+    +getCode() : String
+    +setCode() : void
+    +getAccountId() : String
+    +setAccountId() : void
+    +isUsed() : boolean
+    +setUsed() : void
+  }
+}
+
+package com.github.chengzhx76.service.promotion.api.enums {
+  interface CouponType {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package com.github.chengzhx76.service.promotion.api.service {
+  interface CouponService {
+  }
+}
+
+package com.github.chengzhx76.service.promotion.dao {
+  interface CouponCodeDaoMapper <<Repository>> {
+  }
+  interface CouponHistoryDaoMapper <<Repository>> {
+  }
+  interface CouponDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.promotion.service.impl {
+  class CouponServiceImpl <<Controller>> {
+    -couponCodeDao : CouponCodeDaoMapper
+    -couponDao : CouponDaoMapper
+    +getCouponCodeByUser() : List<CouponCode>
+    +getCouponById() : CouponCode
+    +updateCouponUsedById() : void
+  }
+}
+
+package com.github.chengzhx76.service.rabbitmq {
+  class Receiver {
+    +process() : void
+  }
+  class RabbitMQApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.rabbitmq.service.impl {
+  class RabbitSmsServiceImpl <<Controller>> {
+    -rabbitSmsTemplate : RabbitTemplate
+    +sendValidate() : void
+    +sendCashNotify() : void
+  }
+}
+
+package com.github.chengzhx76.service.redis {
+  class RedisService <<Service>> {
+    -logger : Logger
+    -pattern : String
+    -key : String
+    -key : String
+    -key : String
+    -key : String
+    -key : String
+    -key : String
+    +setRedisTemplate() : void
+    +remove() : void
+    +removePattern() : void
+    +remove() : void
+    +exists() : boolean
+  }
+}
+
+package com.github.chengzhx76.service.redis.config {
+  class RedisConfig {
+    -dateBase : int
+    -host : String
+    -port : int
+    -password : String
+    -maxTotal : int
+    -maxWait : int
+    -maxIdle : int
+    -minIdle : int
+    -timeout : int
+    +stringSerializer() : StringRedisSerializer
+    +jdkSerializer() : JdkSerializationRedisSerializer
+    +jsonSerializer() : GenericJackson2JsonRedisSerializer
+    +factory() : RedisConnectionFactory
+  }
+}
+
+package com.github.chengzhx76.service.system {
+  class SystemServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.system.api.entity {
+  class PictureResource {
+    -pictureResourceType : String
+    -name : String
+    -picture_url : String
+    -href : String
+    -description : String
+    +getPictureResourceType() : String
+    +setPictureResourceType() : PictureResource
+    +getName() : String
+    +setName() : PictureResource
+    +getPicture_url() : String
+    +setPicture_url() : PictureResource
+    +getHref() : String
+    +setHref() : PictureResource
+  }
+  class Notice {
+    -title : String
+    -content : String
+    -linkUrl : String
+    -noticeTypeId : String
+    +getTitle() : String
+    +setTitle() : Notice
+    +getContent() : String
+    +setContent() : Notice
+    +getLinkUrl() : String
+    +setLinkUrl() : void
+  }
+  class SystemParam {
+    -name : String
+    -title : String
+    -logo : String
+    -description : String
+    -copyright : String
+    +getName() : String
+    +setName() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getLogo() : String
+    +setLogo() : void
+    +getDescription() : String
+    +setDescription() : void
+  }
+  class AdJoinPosition {
+    -adId : String
+    -adPositionId : String
+    +getAdId() : String
+    +setAdId() : AdJoinPosition
+    +getAdPositionId() : String
+    +setAdPositionId() : AdJoinPosition
+  }
+  class NoticeType {
+    -name : String
+    -type : String
+  }
+  class Ad {
+    -name : String
+    -pictureUrl : String
+    -linkUrl : String
+    -width : int
+    -height : int
+    -priority : int
+    -isEnable : boolean
+    +getName() : String
+    +setName() : Ad
+    +getPictureUrl() : String
+    +setPictureUrl() : Ad
+    +getLinkUrl() : String
+    +setLinkUrl() : Ad
+    +getWidth() : int
+    +setWidth() : Ad
+  }
+  class PictureResourceType {
+    -name : String
+    +getName() : String
+    +setName() : PictureResourceType
+  }
+  class AdPosition {
+    -name : String
+    -type : String
+    +getName() : String
+    +setName() : AdPosition
+    +getType() : String
+    +setType() : AdPosition
+  }
+}
+
+package com.github.chengzhx76.service.system.api.service {
+  interface SystemService {
+  }
+}
+
+package com.github.chengzhx76.service.system.dao {
+  interface AdDaoMapper <<Repository>> {
+  }
+  interface NoticeDaoMapper <<Repository>> {
+  }
+  interface AdJoinPositionDaoMapper <<Repository>> {
+  }
+  interface SystemParamDaoMapper <<Repository>> {
+  }
+  interface AdPositionDaoMapper <<Repository>> {
+  }
+  interface NoticeTypeDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.system.service.impl {
+  class SystemServiceImpl <<Controller>> {
+    -adDao : AdDaoMapper
+    -noticeDao : NoticeDaoMapper
+    +getIndexAds() : List<Ad>
+    +getIndexNotices() : List<Notice>
+  }
+}
+
+package com.github.chengzhx76.service.user {
+  class UserServiceApplication {
+    +main() : void
+  }
+}
+
+package com.github.chengzhx76.service.user.api.entity {
+  class DeliveryAddress {
+    -accountId : String
+    -regionProvinceId : String
+    -regionCityId : String
+    -regionCountryId : String
+    -villageId : String
+    -consignee : String
+    -address : String
+    -mobile : String
+    -sex : String
+    -tag : String
+    +getSex() : String
+    +setSex() : void
+    +getTag() : String
+    +setTag() : void
+    +getAccountId() : String
+    +setAccountId() : void
+    +getRegionProvinceId() : String
+    +setRegionProvinceId() : void
+  }
+  class CouponRecord {
+    -accountId : String
+    -couponCodeId : String
+    -txType : String
+    -behaviorId : String
+    -txResult : String
+    +getAccountId() : String
+    +setAccountId() : void
+    +getCouponCodeId() : String
+    +setCouponCodeId() : void
+    +getTxType() : String
+    +setTxType() : void
+    +getBehaviorId() : String
+    +setBehaviorId() : void
+  }
+  class Country {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class AccountLevel {
+    -accountId : int
+    -level : int
+    -name : String
+    -needRonusPoint : int
+    -nextLevelNeedPoint : int
+    -reductPercent : double
+    -consumeScale : String
+    -freeFrequency : int
+    -isEnable : Boolean
+    +getLevel() : int
+    +setLevel() : void
+    +getAccountId() : int
+    +setAccountId() : void
+    +getNeedRonusPoint() : int
+    +setNeedRonusPoint() : void
+    +getName() : String
+    +setName() : void
+  }
+  class AccountUpgradeHistory {
+    -accountId : int
+    -previousLevels : int
+    -currentLevels : int
+    -previousBonusPoint : int
+    -currentBonusPoint : int
+    +getAccountId() : int
+    +setAccountId() : void
+    +getPreviousLevels() : int
+    +setPreviousLevels() : void
+    +getCurrentLevels() : int
+    +setCurrentLevels() : void
+    +getPreviousBonusPoint() : int
+    +setPreviousBonusPoint() : void
+  }
+  class Account {
+    -avatar : String
+    -nickname : String
+    -accountLevelId : String
+    -credit : String
+    -username : String
+    -password : String
+    -bonusPointUsable : int
+    -bonusPointUpgrade : int
+    -balance : BigDecimal
+    -isEmployee : boolean
+    +getAvatar() : String
+    +setAvatar() : void
+    +getNickname() : String
+    +setNickname() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+  class Province {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class BonusPointRecord {
+    -accountId : String
+    -beforeBonusPoints : int
+    -txBonusPoints : int
+    -frozenBonusPoints : int
+    -afterBonusPoints : int
+    -txType : String
+    -behaviorId : String
+    -txResult : String
+    +getAccountId() : String
+    +setAccountId() : void
+    +getBeforeBonusPoints() : int
+    +setBeforeBonusPoints() : void
+    +getTxBonusPoints() : int
+    +setTxBonusPoints() : void
+    +getFrozenBonusPoints() : int
+    +setFrozenBonusPoints() : void
+  }
+  class City {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+  class CashRecord {
+    -accountId : String
+    -beforeMoney : BigDecimal
+    -txMoney : BigDecimal
+    -frozenMoney : BigDecimal
+    -afterBonusPoints : BigDecimal
+    -txType : String
+    -behaviorId : String
+    -txResult : String
+    +getAccountId() : String
+    +setAccountId() : void
+    +getBeforeMoney() : BigDecimal
+    +setBeforeMoney() : void
+    +getTxMoney() : BigDecimal
+    +setTxMoney() : void
+    +getFrozenMoney() : BigDecimal
+    +setFrozenMoney() : void
+  }
+  class Member {
+    -accountId : String
+    -name : String
+    -employer : String
+    -mobile : String
+    -address : String
+    -email : String
+    -idcard : String
+    -sex : String
+    -birthday : Date
+    -regionProvinceId : int
+    +getAccountId() : String
+    +setAccountId() : void
+    +getName() : String
+    +setName() : void
+    +getEmployer() : String
+    +setEmployer() : void
+    +getMobile() : String
+    +setMobile() : void
+  }
+  class ProductFocus {
+    -accountId : String
+    -productId : String
+    +getAccountId() : String
+    +setAccountId() : void
+    +getProductId() : String
+    +setProductId() : void
+  }
+  class Behavior {
+    -behaviorType : String
+    -name : String
+    -oid : String
+    +getName() : String
+    +setName() : void
+    +getOid() : String
+    +setOid() : void
+    +getBehaviorType() : String
+    +setBehaviorType() : void
+  }
+}
+
+package com.github.chengzhx76.service.user.api.entity.enumType {
+  interface TXType {
+    -name : String
+    +getName() : String
+  }
+  interface SourceFrom {
+  }
+  interface Credit {
+  }
+  interface BehaviorType {
+  }
+}
+
+package com.github.chengzhx76.service.user.api.service {
+  interface UserService {
+  }
+}
+
+package com.github.chengzhx76.service.user.dao {
+  interface CountryDaoMapper <<Repository>> {
+  }
+  interface CityDaoMapper <<Repository>> {
+  }
+  interface BehaviorDaoMapper <<Repository>> {
+  }
+  interface ProductFocusDaoMapper <<Repository>> {
+  }
+  interface CouponRecordDaoMapper <<Repository>> {
+  }
+  interface ProvinceDaoMapper <<Repository>> {
+  }
+  interface AccountDaoMapper {
+  }
+  interface CashRecordDaoMapper <<Repository>> {
+  }
+  interface DeliveryAddressDaoMapper <<Repository>> {
+  }
+  interface AccountLevelDaoMapper <<Repository>> {
+  }
+  interface AccountUpgradeHistoryDaoMapper <<Repository>> {
+  }
+  interface BonusPointRecordDaoMapper <<Repository>> {
+  }
+  interface MemberDaoMapper <<Repository>> {
+  }
+}
+
+package com.github.chengzhx76.service.user.service.impl {
+  class UserServiceImpl <<Controller>> {
+    -logger : Logger
+    -accountDao : AccountDaoMapper
+    -accountLevelDao : AccountLevelDaoMapper
+    -memberDao : MemberDaoMapper
+    -deliveryAddressDao : DeliveryAddressDaoMapper
+    -behaviorDao : BehaviorDaoMapper
+    -bonusPointRecordDao : BonusPointRecordDaoMapper
+    -couponRecordDao : CouponRecordDaoMapper
+    -cashRecordDao : CashRecordDaoMapper
+    -productFocusDao : ProductFocusDaoMapper
+    +getAccountByLoginName() : Account
+    +getAccountById() : Account
+    +saveAccess() : void
+    +validateLogin() : String
+    +getDefaultAddress() : DeliveryAddress
+    +getDeliveryAddress() : DeliveryAddress
+    +getAllDeliveryAddr() : List<DeliveryAddress>
+    +getAccount() : Account
+  }
+}
+
+package com.github.chengzhx76.shop.common.constant {
+  interface Constant {
+  }
+}
+
+package com.github.chengzhx76.shop.common.constant.weixin {
+  class WeixinFinalValue {
+    -WX_TOKEN : String
+    -APPID : String
+    -APPSECRET : String
+  }
+  class WeixinUrl {
+    -ACCESS_TOKEN_URL : String
+    -ADDMENU_URL : String
+    -ADD_TEMPMEDIA_URL : String
+    -GET_MEDIA_URL : String
+    -SEND_TEMPLATEMSG_URL : String
+    -ADD_GROUP : String
+    -QUERY_ALL_GROUP : String
+    -QUERY_USER_GROUP : String
+    -MODIFY_GROUP_NAME : String
+    -MOVE_USER_GROUP : String
+  }
+}
+
+package com.github.chengzhx76.shop.common.core.dao {
+  interface BaseDaoMapper {
+  }
+}
+
+package com.github.chengzhx76.shop.common.entity {
+  class BaseEntity {
+    -serialVersionUID : long
+    -id : String
+    -isNewRecord : boolean
+    -isUpdate : boolean
+    +preInsert() : void
+    +preUpdate() : void
+    +getId() : String
+    +setId() : void
+    +getIsNewRecord() : boolean
+    +setIsNewRecord() : void
+    +isUpdate() : boolean
+    +setUpdate() : void
+  }
+  class DataEntity {
+    -remarks : String
+    -createDate : Date
+    -updateDate : Date
+    -status : String
+    +preUpdate() : void
+    +preInsert() : void
+    +getRemarks() : String
+    +setRemarks() : void
+    +getCreateDate() : Date
+    +setCreateDate() : void
+    +getUpdateDate() : Date
+    +setUpdateDate() : void
+  }
+}
+
+package com.github.chengzhx76.shop.common.entity.enums {
+  interface Status {
+    -code : int
+    -name : String
+    +getCode() : int
+    +getName() : String
+  }
+  interface Sex {
+    -name : String
+    +getName() : String
+  }
+}
+
+package com.github.chengzhx76.shop.common.entity.id {
+  class IdGenerator {
+    -workerId : long
+    -twepoch : long
+    -sequence : long
+    -workerIdBits : long
+    -maxWorkerId : long
+    -sequenceBits : long
+    -workerIdShift : long
+    -timestampLeftShift : long
+    -sequenceMask : long
+    -lastTimestamp : long
+    +main() : void
+  }
+  class IdGen {
+    -random : SecureRandom
+    +uuid() : String
+  }
+}
+
+package com.github.chengzhx76.shop.common.exception {
+  class ErrorEntity {
+    -errcode : String
+    -errmsg : String
+    +getErrcode() : String
+    +setErrcode() : void
+    +getErrmsg() : String
+    +setErrmsg() : void
+  }
+  class WeixinException {
+    -serialVersionUID : long
+    -code : int
+    -errorMsg : String
+    +getCode() : int
+    +setCode() : void
+    +getErrorMsg() : String
+    +setErrorMsg() : void
+  }
+  class BusinessException {
+    -serialVersionUID : long
+    -code : int
+    -errorMsg : String
+    +getCode() : int
+    +setCode() : void
+    +getErrorMsg() : String
+    +setErrorMsg() : void
+  }
+  class MassageException {
+    -serialVersionUID : long
+    -code : int
+    -errorMsg : String
+    +getCode() : int
+    +setCode() : void
+    +getErrorMsg() : String
+    +setErrorMsg() : void
+  }
+}
+
+package com.github.chengzhx76.shop.common.security {
+  class CodecUtil {
+    +createRandomNum() : String
+    +createUUID() : String
+  }
+  class Digests {
+    -SHA1 : String
+    -MD5 : String
+    -CHARSET : String
+    -random : SecureRandom
+    +generateSalt() : byte[]
+    +md5() : String
+    +md5() : byte[]
+    +md5() : byte[]
+    +sha1() : String
+    +sha1() : byte[]
+    +sha1() : byte[]
+    +sha1() : byte[]
+  }
+  class SecretUtils {
+    -HASH_ALGORITHM : String
+    -SALT_SIZE : int
+    -HASH_INTERATIONS : int
+    +entryptPassword() : String
+    +validatePassword() : boolean
+  }
+  class Encodes {
+    -logger : Logger
+    +encodeHex() : String
+    +decodeHex() : byte[]
+    +unescapeHtml() : String
+    +escapeHtml() : String
+    +encodeURL() : String
+    +decodeURL() : String
+    +encodeBASE64() : String
+    +decodeBASE64() : String
+  }
+}
+
+package com.github.chengzhx76.shop.common.util {
+  class Exceptions {
+    +unchecked() : RuntimeException
+    +getStackTraceToString() : String
+  }
+}
+
+package com.github.chengzhx76.web.mobile {
+  class WebMobileApplication {
+  }
+}
+
+package com.github.chengzhx76.web.mobile.controller {
+  class IndexController {
+  }
+}
+
+package com.github.chengzhx76.web.mobile.dto {
+  class SwiperDto {
+    -name : String
+    -pictureUrl : String
+    -linkUrl : String
+    +getName() : String
+    +setName() : void
+    +getPictureUrl() : String
+    +setPictureUrl() : void
+    +getLinkUrl() : String
+    +setLinkUrl() : void
+  }
+}
+
+package com.github.chengzhx76.web.mobile.refactor {
+  interface RefactorSystemService {
+  }
+}
+
+package com.github.chengzhx76.web.mobile.service {
+  class SysIndexService <<Service>> {
+    -systemService : RefactorSystemService
+    +getSwiper() : List<SwiperDto>
+    +getNotices() : List<Notice>
+  }
+}
+
+' --- Relatii ---
+CountryDaoMapper --|> BaseDaoMapper
+CountryDaoMapper --> Country
+CountryDaoMapper --> BaseDaoMapper
+CityDaoMapper --|> BaseDaoMapper
+CityDaoMapper --> City
+CityDaoMapper --> BaseDaoMapper
+BehaviorDaoMapper --|> BaseDaoMapper
+BehaviorDaoMapper --> Behavior
+BehaviorDaoMapper --> BaseDaoMapper
+ProductFocusDaoMapper --|> BaseDaoMapper
+ProductFocusDaoMapper --> ProductFocus
+ProductFocusDaoMapper --> BaseDaoMapper
+CouponRecordDaoMapper --|> BaseDaoMapper
+CouponRecordDaoMapper --> CouponRecord
+CouponRecordDaoMapper --> BaseDaoMapper
+ProvinceDaoMapper --|> BaseDaoMapper
+ProvinceDaoMapper --> Province
+ProvinceDaoMapper --> BaseDaoMapper
+AccountDaoMapper --|> BaseDaoMapper
+AccountDaoMapper --> Account
+AccountDaoMapper --> BaseDaoMapper
+CashRecordDaoMapper --|> BaseDaoMapper
+CashRecordDaoMapper --> CashRecord
+CashRecordDaoMapper --> BaseDaoMapper
+DeliveryAddressDaoMapper --|> BaseDaoMapper
+DeliveryAddressDaoMapper --> DeliveryAddress
+DeliveryAddressDaoMapper --> BaseDaoMapper
+AccountLevelDaoMapper --|> BaseDaoMapper
+AccountLevelDaoMapper --> AccountLevel
+AccountLevelDaoMapper --> BaseDaoMapper
+AccountUpgradeHistoryDaoMapper --|> BaseDaoMapper
+AccountUpgradeHistoryDaoMapper --> AccountUpgradeHistory
+AccountUpgradeHistoryDaoMapper --> BaseDaoMapper
+BonusPointRecordDaoMapper --|> BaseDaoMapper
+BonusPointRecordDaoMapper --> BonusPointRecord
+BonusPointRecordDaoMapper --> BaseDaoMapper
+MemberDaoMapper --|> BaseDaoMapper
+MemberDaoMapper --> Member
+MemberDaoMapper --> BaseDaoMapper
+UserServiceImpl ..|> UserService
+UserServiceImpl --> Credit
+UserServiceImpl --> SourceFrom
+UserServiceImpl --> UserService
+UserServiceImpl --> Sex
+SysIndexService --> Ad
+SysIndexService --> Notice
+SysIndexService --> SwiperDto
+SysIndexService --> RefactorSystemService
+RefactorSystemService --|> SystemService
+RefactorSystemService --> SystemService
+Digests --> Exceptions
+Encodes --> Exceptions
+CouponCodeDaoMapper --|> BaseDaoMapper
+CouponCodeDaoMapper --> CouponCode
+CouponCodeDaoMapper --> BaseDaoMapper
+CouponHistoryDaoMapper --|> BaseDaoMapper
+CouponHistoryDaoMapper --> CouponHistory
+CouponHistoryDaoMapper --> BaseDaoMapper
+CouponDaoMapper --|> BaseDaoMapper
+CouponDaoMapper --> Coupon
+CouponDaoMapper --> BaseDaoMapper
+CouponServiceImpl ..|> CouponService
+CouponServiceImpl --> Coupon
+CouponServiceImpl --> CouponCode
+CouponServiceImpl --> CouponService
+CouponServiceImpl --> CouponCodeDaoMapper
+CouponServiceImpl --> CouponDaoMapper
+PayDaoMapper --|> BaseDaoMapper
+PayDaoMapper --> Pay
+PayDaoMapper --> BaseDaoMapper
+VillageDaoMapper --|> BaseDaoMapper
+VillageDaoMapper --> Village
+VillageDaoMapper --> BaseDaoMapper
+CountryDaoMapper --|> BaseDaoMapper
+CountryDaoMapper --> Country
+CountryDaoMapper --> BaseDaoMapper
+OrderReturnDaoMapper --|> BaseDaoMapper
+OrderReturnDaoMapper --> OrderReturn
+OrderReturnDaoMapper --> BaseDaoMapper
+ArayacakDeliveryTimeDaoMapper --|> BaseDaoMapper
+ArayacakDeliveryTimeDaoMapper --> ArayacakDeliveryTime
+ArayacakDeliveryTimeDaoMapper --> BaseDaoMapper
+CityDaoMapper --|> BaseDaoMapper
+CityDaoMapper --> City
+CityDaoMapper --> BaseDaoMapper
+TownDaoMapper --|> BaseDaoMapper
+TownDaoMapper --> Town
+TownDaoMapper --> BaseDaoMapper
+ProvinceDaoMapper --|> BaseDaoMapper
+ProvinceDaoMapper --> Province
+ProvinceDaoMapper --> BaseDaoMapper
+DeliveryTypeDaoMapper --|> BaseDaoMapper
+DeliveryTypeDaoMapper --> DeliveryType
+DeliveryTypeDaoMapper --> BaseDaoMapper
+ArayacakAddressDaoMapper --|> BaseDaoMapper
+ArayacakAddressDaoMapper --> ArayacakAddress
+ArayacakAddressDaoMapper --> BaseDaoMapper
+OrderReturnDetailDaoMapper --|> BaseDaoMapper
+OrderReturnDetailDaoMapper --> OrderReturnDetail
+OrderReturnDetailDaoMapper --> BaseDaoMapper
+FlowStatusDaoMapper --|> BaseDaoMapper
+FlowStatusDaoMapper --> FlowStatus
+FlowStatusDaoMapper --> BaseDaoMapper
+ReturnStatusDaoMapper --|> BaseDaoMapper
+ReturnStatusDaoMapper --> ReturnStatus
+ReturnStatusDaoMapper --> BaseDaoMapper
+ReturnReasonDaoMapper --|> BaseDaoMapper
+ReturnReasonDaoMapper --> ReturnReason
+ReturnReasonDaoMapper --> BaseDaoMapper
+RefundTypeDaoMapper --|> BaseDaoMapper
+RefundTypeDaoMapper --> RefundType
+RefundTypeDaoMapper --> BaseDaoMapper
+DeliveryTimeDaoMapper --|> BaseDaoMapper
+DeliveryTimeDaoMapper --> DeliveryTime
+DeliveryTimeDaoMapper --> BaseDaoMapper
+OrderProductDetailDaoMapper --|> BaseDaoMapper
+OrderProductDetailDaoMapper --> OrderProductDetail
+OrderProductDetailDaoMapper --> BaseDaoMapper
+OrderInfoDaoMapper --|> BaseDaoMapper
+OrderInfoDaoMapper --> OrderInfo
+OrderInfoDaoMapper --> BaseDaoMapper
+OrderServiceImpl ..|> OrderService
+OrderServiceImpl --> OrderService
+ProductDaoMapper --|> BaseDaoMapper
+ProductDaoMapper --> Product
+ProductDaoMapper --> BaseDaoMapper
+PictureDaoMapper --|> BaseDaoMapper
+PictureDaoMapper --> Picture
+PictureDaoMapper --> BaseDaoMapper
+ProductTypeDaoMapper --|> BaseDaoMapper
+ProductTypeDaoMapper --> ProductType
+ProductTypeDaoMapper --> BaseDaoMapper
+ProductServiceImpl ..|> ProductService
+ProductServiceImpl --> Picture
+ProductServiceImpl --> Product
+ProductServiceImpl --> ProductType
+ProductServiceImpl --> ProductService
+ProductServiceImpl --> PictureDaoMapper
+ProductServiceImpl --> ProductDaoMapper
+ProductServiceImpl --> ProductTypeDaoMapper
+RabbitMQApplicationTests --> MsgType
+RabbitMQApplicationTests --> SmsModel
+RabbitMQApplicationTests --> RabbitSmsService
+RabbitMQApplicationTests --> RabbitMQApplication
+Receiver --> SmsModel
+RabbitSmsServiceImpl ..|> RabbitSmsService
+RabbitSmsServiceImpl --> RabbitSmsService
+SmsHistoryDaoMapper --|> BaseDaoMapper
+SmsHistoryDaoMapper --> SmsHistory
+SmsHistoryDaoMapper --> BaseDaoMapper
+SmsTemplateDaoMapper --|> BaseDaoMapper
+SmsTemplateDaoMapper --> SmsTemplate
+SmsTemplateDaoMapper --> BaseDaoMapper
+EmailTemplateDaoMapper --|> BaseDaoMapper
+EmailTemplateDaoMapper --> EmailTemplate
+EmailTemplateDaoMapper --> BaseDaoMapper
+SmsServiceImpl ..|> SmsService
+SmsServiceImpl --> MsgType
+SmsServiceImpl --> SmsModel
+SmsServiceImpl --> SmsHistory
+SmsServiceImpl --> SmsTemplate
+SmsServiceImpl --> SmsService
+SmsServiceImpl --> SmsHistoryDaoMapper
+SmsServiceImpl --> SmsTemplateDaoMapper
+SmsServiceImpl --> CodecUtil
+CommentDaoMapper --|> BaseDaoMapper
+CommentDaoMapper --> Comment
+CommentDaoMapper --> BaseDaoMapper
+CommentServiceImpl ..|> CommentService
+CommentServiceImpl --> Comment
+CommentServiceImpl --> CommentService
+CommentServiceImpl --> CommentDaoMapper
+AdDaoMapper --|> BaseDaoMapper
+AdDaoMapper --> Ad
+AdDaoMapper --> BaseDaoMapper
+NoticeDaoMapper --|> BaseDaoMapper
+NoticeDaoMapper --> Notice
+NoticeDaoMapper --> BaseDaoMapper
+AdJoinPositionDaoMapper --|> BaseDaoMapper
+AdJoinPositionDaoMapper --> AdJoinPosition
+AdJoinPositionDaoMapper --> BaseDaoMapper
+SystemParamDaoMapper --|> BaseDaoMapper
+SystemParamDaoMapper --> SystemParam
+SystemParamDaoMapper --> BaseDaoMapper
+AdPositionDaoMapper --|> BaseDaoMapper
+AdPositionDaoMapper --> AdPosition
+AdPositionDaoMapper --> BaseDaoMapper
+NoticeTypeDaoMapper --|> BaseDaoMapper
+NoticeTypeDaoMapper --> NoticeType
+NoticeTypeDaoMapper --> BaseDaoMapper
+SystemServiceImpl ..|> SystemService
+SystemServiceImpl --> Ad
+SystemServiceImpl --> Notice
+SystemServiceImpl --> SystemService
+SystemServiceImpl --> AdDaoMapper
+SystemServiceImpl --> NoticeDaoMapper
+Comment --|> DataEntity
+Comment --> DataEntity
+CommentService --> Comment
+ShoppingCart --|> DataEntity
+ShoppingCart --> DataEntity
+CartInfo --|> DataEntity
+CartInfo --> DataEntity
+CartService --> ShoppingCart
+CartService --> ProductModel
+Country --|> DataEntity
+Country --> DataEntity
+Village --|> DataEntity
+Village --> DataEntity
+OrderReturnDetail --|> DataEntity
+OrderReturnDetail --> DataEntity
+Town --|> DataEntity
+Town --> DataEntity
+FlowStatus --|> DataEntity
+FlowStatus --> DataEntity
+RefundType --|> DataEntity
+RefundType --> DataEntity
+OrderProductDetail --|> DataEntity
+OrderProductDetail --> DataEntity
+ReturnReason --|> DataEntity
+ReturnReason --> DataEntity
+ArayacakAddress --|> DataEntity
+ArayacakAddress --> DataEntity
+Pay --|> DataEntity
+Pay --> DataEntity
+OrderReturn --|> DataEntity
+OrderReturn --> DataEntity
+Province --|> DataEntity
+Province --> DataEntity
+OrderInfo --|> DataEntity
+OrderInfo --> DataEntity
+City --|> DataEntity
+City --> DataEntity
+DeliveryType --|> DataEntity
+DeliveryType --> DataEntity
+ArayacakDeliveryTime --|> DataEntity
+ArayacakDeliveryTime --> DataEntity
+ReturnStatus --|> DataEntity
+ReturnStatus --> DataEntity
+DeliveryTime --|> DataEntity
+DeliveryTime --> DataEntity
+CouponHistory --|> DataEntity
+CouponHistory --> DataEntity
+Coupon --|> DataEntity
+Coupon --> DataEntity
+CouponCode --|> DataEntity
+CouponCode --> DataEntity
+CouponService --> CouponCode
+DataEntity --> Status
+DataEntity --> IdGen
+DeliveryAddress --|> DataEntity
+DeliveryAddress --> DataEntity
+CouponRecord --|> DataEntity
+CouponRecord --> DataEntity
+Country --|> DataEntity
+Country --> DataEntity
+AccountLevel --|> DataEntity
+AccountLevel --> DataEntity
+AccountUpgradeHistory --|> DataEntity
+AccountUpgradeHistory --> DataEntity
+Account --|> DataEntity
+Account --> DataEntity
+Province --|> DataEntity
+Province --> DataEntity
+BonusPointRecord --|> DataEntity
+BonusPointRecord --> DataEntity
+City --|> DataEntity
+City --> DataEntity
+CashRecord --|> DataEntity
+CashRecord --> DataEntity
+Member --|> DataEntity
+Member --> DataEntity
+ProductFocus --|> DataEntity
+ProductFocus --> DataEntity
+Behavior --|> DataEntity
+Behavior --> DataEntity
+SmsTemplate --|> DataEntity
+SmsTemplate --> MsgType
+SmsTemplate --> DataEntity
+SmsHistory --|> DataEntity
+SmsHistory --> MsgType
+SmsHistory --> DataEntity
+EmailTemplate --|> DataEntity
+EmailTemplate --> MsgType
+EmailTemplate --> DataEntity
+SmsService --> MsgType
+SmsService --> SmsModel
+SmsService --> SmsHistory
+Product --|> DataEntity
+Product --> DataEntity
+Picture --|> DataEntity
+Picture --> DataEntity
+ProductType --|> DataEntity
+ProductType --> DataEntity
+ProductService --> Picture
+ProductService --> Product
+ProductService --> ProductType
+PictureResource --|> DataEntity
+PictureResource --> DataEntity
+Notice --|> DataEntity
+Notice --> DataEntity
+SystemParam --|> DataEntity
+SystemParam --> DataEntity
+AdJoinPosition --|> DataEntity
+AdJoinPosition --> DataEntity
+NoticeType --|> DataEntity
+NoticeType --> DataEntity
+Ad --|> DataEntity
+Ad --> DataEntity
+PictureResourceType --|> DataEntity
+PictureResourceType --> DataEntity
+AdPosition --|> DataEntity
+AdPosition --> DataEntity
+SystemService --> Ad
+SystemService --> Notice
+SmsModel --> MsgType
+CartServiceImpl ..|> CartService
+CartServiceImpl --> CartInfo
+CartServiceImpl --> ShoppingCart
+CartServiceImpl --> ProductModel
+CartServiceImpl --> CartService
+CartServiceImpl --> RedisService
+CartServiceImpl --> Constant
+RefactorCartService --|> CartService
+RefactorCartService --> CartService
+Controller --> Account
+RefactorUserService --|> UserService
+RefactorUserService --> UserService
+
+@enduml

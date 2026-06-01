@@ -1,0 +1,51 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "15:00"
+      timezone: "UTC"
+    target-branch: 'main'
+    commit-message:
+      prefix: 'chore(deps-maven): '
+      prefix-development: 'chore(deps-dev): '
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    rebase-strategy: "auto"
+    allow:
+      - dependency-type: "all"
+    ignore:
+      # Ignore major Java version updates - handle manually
+      - dependency-name: "org.springframework.boot:spring-boot-starter-parent"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: 'docker'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: "16:00"
+      timezone: "UTC"
+    target-branch: 'main'
+    commit-message:
+      prefix: 'chore(deps-docker): '
+    rebase-strategy: "auto"
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: "17:00"
+      timezone: "UTC"
+    target-branch: 'main'
+    commit-message:
+      prefix: 'ci(deps): '
+    rebase-strategy: "auto"

@@ -1,0 +1,418 @@
+@startuml
+package dev.sarj.sarjdev.common; {
+class Constant {
+}
+
+}
+
+package dev.sarj.sarjdev.controller; {
+class ChargingStationDetailController {
+}
+
+class ChargingStationMapIndexerController {
+}
+
+class ChargingStationProviderController {
+}
+
+class ChargingStationSearchController {
+}
+
+class IndicesSettingsController {
+}
+
+}
+
+package dev.sarj.sarjdev.controller.configuration; {
+class FilterConfiguration {
+}
+
+class WebConfiguration {
+}
+
+}
+
+package dev.sarj.sarjdev.controller.filter; {
+class AccessLogFilter {
+}
+
+}
+
+package dev.sarj.sarjdev.core.aspect.performance; {
+class ElapsedType {
+}
+
+class Performance {
+}
+
+class PerformanceAspect {
+}
+
+}
+
+package dev.sarj.sarjdev.core.elasticsearch.configuration; {
+class ElasticClientProviderImpl {
+}
+
+class ElasticSearchClientProvider {
+}
+
+}
+
+package dev.sarj.sarjdev.core.elasticsearch.service; {
+class ElasticSearchService {
+}
+
+class ElasticSearchServiceImpl {
+}
+
+}
+
+package dev.sarj.sarjdev.core.elasticsearch.settings; {
+class ElasticSearchIndicesService {
+}
+
+class ElasticSearchIndicesServiceImpl {
+}
+
+}
+
+package dev.sarj.sarjdev.core.file; {
+class ResourceFileContentReader {
+}
+
+class ResourceFileContentReaderImpl {
+}
+
+}
+
+package dev.sarj.sarjdev.core.utils; {
+class ExceptionUtils {
+}
+
+class JSONUtils {
+}
+
+}
+
+package dev.sarj.sarjdev.entity.domain.charging; {
+class ChargingLocation {
+}
+
+class ChargingStation {
+}
+
+class GeoLocation {
+}
+
+class Operator {
+}
+
+class PaymentType {
+}
+
+class Plug {
+}
+
+class PlugSubType {
+}
+
+class PlugType {
+}
+
+}
+
+package dev.sarj.sarjdev.entity.domain.dao; {
+class AccessLog {
+}
+
+class MethodExecutionTime {
+}
+
+}
+
+package dev.sarj.sarjdev.entity.enums; {
+class ChargingProvider {
+}
+
+}
+
+package dev.sarj.sarjdev.repository; {
+class AccessLogRepository {
+}
+
+class MethodExecutionTimeRepository {
+}
+
+}
+
+package dev.sarj.sarjdev; {
+class SarjdevApplication {
+}
+
+class SarjdevApplicationTests {
+}
+
+}
+
+package dev.sarj.sarjdev.service.accesslog; {
+class AccessLogService {
+}
+
+class AccessLogServiceImpl {
+}
+
+}
+
+package dev.sarj.sarjdev.service.chargingstationdetail.template; {
+class ChargingStationDetailTemplate {
+}
+
+}
+
+package dev.sarj.sarjdev.service.chargingstationdetail.template.provider.epdk; {
+class EPDKChargingStationDetailService {
+}
+
+}
+
+package dev.sarj.sarjdev.service.configuration; {
+class CachingConfig {
+}
+
+}
+
+package dev.sarj.sarjdev.service.configuration.condition; {
+class ShouldProvideEPDKCondition {
+}
+
+class ShouldProvideIndividualServiceProvidersCondition {
+}
+
+}
+
+package dev.sarj.sarjdev.service.elasticsearch.indexer.mapper; {
+class IndexDocumentMapper {
+}
+
+}
+
+package dev.sarj.sarjdev.service.elasticsearch.indexer.model; {
+class ChargingIndexDocument {
+}
+
+}
+
+package dev.sarj.sarjdev.service.elasticsearch.indexer.template; {
+class ElasticSearchIndexerTemplate {
+}
+
+}
+
+package dev.sarj.sarjdev.service.elasticsearch.indexer.template.provider.epdk; {
+class EPDKElasticSearchIndexer {
+}
+
+}
+
+package dev.sarj.sarjdev.service.elasticsearch.indexer.template.provider.epdk.model; {
+class Availability {
+}
+
+class Price {
+}
+
+class Socket {
+}
+
+class Station {
+}
+
+}
+
+package dev.sarj.sarjdev.service.elasticsearch.settings; {
+class ElasticSearchIndicesSettingsService {
+}
+
+class ElasticSearchIndicesSettingsServiceImpl {
+}
+
+}
+
+package dev.sarj.sarjdev.service.methodexecutiontime; {
+class MethodExecutionTimeService {
+}
+
+class MethodExecutionTimeServiceImpl {
+}
+
+}
+
+package dev.sarj.sarjdev.service.search.response; {
+class NearestChargingStation {
+}
+
+class NearestSearchResult {
+}
+
+class SearchResult {
+}
+
+class SearchSuggestionResult {
+}
+
+class SuggestedChargingStation {
+}
+
+}
+
+package dev.sarj.sarjdev.service.search; {
+class SearchService {
+}
+
+class SearchServiceImpl {
+}
+
+}
+
+ChargingStationDetailController -- ChargingStation
+ChargingStationDetailController -- ChargingStationDetailTemplate
+ChargingStationDetailController -- Station
+ChargingStationMapIndexerController -- ChargingStation
+ChargingStationMapIndexerController -- ElasticSearchIndexerTemplate
+ChargingStationMapIndexerController -- Station
+ChargingStationProviderController -- ChargingStation
+ChargingStationProviderController -- ChargingProvider
+ChargingStationProviderController -- Station
+ChargingStationSearchController -- ChargingStation
+ChargingStationSearchController -- Station
+ChargingStationSearchController -- NearestSearchResult
+ChargingStationSearchController -- SearchResult
+ChargingStationSearchController -- SearchSuggestionResult
+ChargingStationSearchController -- SearchService
+FilterConfiguration -- AccessLogFilter
+FilterConfiguration -- AccessLog
+AccessLogFilter -- ExceptionUtils
+AccessLogFilter -- AccessLog
+AccessLogFilter -- AccessLogService
+IndicesSettingsController -- ChargingStation
+IndicesSettingsController -- Station
+IndicesSettingsController -- ElasticSearchIndicesSettingsService
+ElapsedType -- Performance
+ElapsedType -- PerformanceAspect
+Performance -- PerformanceAspect
+PerformanceAspect -- MethodExecutionTime
+PerformanceAspect -- MethodExecutionTimeService
+ElasticClientProviderImpl -- ElasticSearchClientProvider
+ElasticSearchService -- SearchService
+ElasticSearchServiceImpl -- ElasticSearchClientProvider
+ElasticSearchServiceImpl -- ElasticSearchService
+ElasticSearchServiceImpl -- SearchService
+ElasticSearchServiceImpl -- SearchServiceImpl
+ElasticSearchIndicesServiceImpl -- ElasticSearchClientProvider
+ElasticSearchIndicesServiceImpl -- ElasticSearchIndicesService
+ResourceFileContentReaderImpl -- ResourceFileContentReader
+ResourceFileContentReaderImpl -- ExceptionUtils
+ChargingStation -- ChargingLocation
+ChargingStation -- GeoLocation
+ChargingStation -- Operator
+ChargingStation -- PaymentType
+ChargingStation -- Plug
+ChargingStation -- ChargingProvider
+ChargingStation -- IndexDocumentMapper
+ChargingStation -- ChargingIndexDocument
+ChargingStation -- Station
+Plug -- PlugSubType
+Plug -- PlugType
+MethodExecutionTime -- ElapsedType
+AccessLogRepository -- AccessLog
+MethodExecutionTimeRepository -- MethodExecutionTime
+AccessLogService -- AccessLog
+AccessLogServiceImpl -- AccessLog
+AccessLogServiceImpl -- AccessLogRepository
+AccessLogServiceImpl -- AccessLogService
+ChargingStationDetailTemplate -- ChargingStation
+ChargingStationDetailTemplate -- ChargingProvider
+ChargingStationDetailTemplate -- Station
+ChargingStationDetailTemplate -- SearchService
+EPDKChargingStationDetailService -- ChargingStation
+EPDKChargingStationDetailService -- ChargingProvider
+EPDKChargingStationDetailService -- ChargingStationDetailTemplate
+EPDKChargingStationDetailService -- Station
+EPDKChargingStationDetailService -- SearchService
+IndexDocumentMapper -- ChargingIndexDocument
+ChargingIndexDocument -- Station
+ElasticSearchIndexerTemplate -- Constant
+ElasticSearchIndexerTemplate -- ElasticSearchService
+ElasticSearchIndexerTemplate -- ChargingProvider
+ElasticSearchIndexerTemplate -- IndexDocumentMapper
+ElasticSearchIndexerTemplate -- ChargingIndexDocument
+ElasticSearchIndexerTemplate -- SearchService
+EPDKElasticSearchIndexer -- ElasticSearchService
+EPDKElasticSearchIndexer -- ResourceFileContentReader
+EPDKElasticSearchIndexer -- JSONUtils
+EPDKElasticSearchIndexer -- ChargingProvider
+EPDKElasticSearchIndexer -- ShouldProvideEPDKCondition
+EPDKElasticSearchIndexer -- ElasticSearchIndexerTemplate
+EPDKElasticSearchIndexer -- Station
+EPDKElasticSearchIndexer -- SearchService
+Socket -- Availability
+Socket -- Price
+Station -- ChargingLocation
+Station -- GeoLocation
+Station -- Operator
+Station -- PaymentType
+Station -- Plug
+Station -- PlugSubType
+Station -- PlugType
+Station -- ChargingProvider
+Station -- IndexDocumentMapper
+Station -- Price
+Station -- Socket
+ElasticSearchIndicesSettingsService -- ChargingStation
+ElasticSearchIndicesSettingsService -- Station
+ElasticSearchIndicesSettingsServiceImpl -- Constant
+ElasticSearchIndicesSettingsServiceImpl -- ElasticSearchIndicesService
+ElasticSearchIndicesSettingsServiceImpl -- ResourceFileContentReader
+ElasticSearchIndicesSettingsServiceImpl -- ChargingStation
+ElasticSearchIndicesSettingsServiceImpl -- ElasticSearchIndexerTemplate
+ElasticSearchIndicesSettingsServiceImpl -- Station
+ElasticSearchIndicesSettingsServiceImpl -- ElasticSearchIndicesSettingsService
+MethodExecutionTimeService -- MethodExecutionTime
+MethodExecutionTimeServiceImpl -- ElapsedType
+MethodExecutionTimeServiceImpl -- Performance
+MethodExecutionTimeServiceImpl -- MethodExecutionTime
+MethodExecutionTimeServiceImpl -- MethodExecutionTimeRepository
+MethodExecutionTimeServiceImpl -- MethodExecutionTimeService
+NearestChargingStation -- ChargingStation
+NearestChargingStation -- Station
+NearestSearchResult -- ChargingStation
+NearestSearchResult -- Station
+NearestSearchResult -- NearestChargingStation
+NearestSearchResult -- SearchResult
+SearchResult -- ChargingStation
+SearchResult -- Station
+SearchSuggestionResult -- ChargingStation
+SearchSuggestionResult -- Station
+SearchSuggestionResult -- SuggestedChargingStation
+SuggestedChargingStation -- ChargingStation
+SuggestedChargingStation -- Station
+SearchService -- ChargingStation
+SearchService -- Station
+SearchService -- NearestSearchResult
+SearchService -- SearchResult
+SearchService -- SearchSuggestionResult
+SearchServiceImpl -- Constant
+SearchServiceImpl -- ElasticSearchService
+SearchServiceImpl -- ResourceFileContentReader
+SearchServiceImpl -- JSONUtils
+SearchServiceImpl -- ChargingStation
+SearchServiceImpl -- Station
+SearchServiceImpl -- NearestChargingStation
+SearchServiceImpl -- NearestSearchResult
+SearchServiceImpl -- SearchResult
+SearchServiceImpl -- SearchSuggestionResult
+SearchServiceImpl -- SuggestedChargingStation
+SearchServiceImpl -- SearchService
+SarjdevApplicationTests -- SarjdevApplication
+@enduml

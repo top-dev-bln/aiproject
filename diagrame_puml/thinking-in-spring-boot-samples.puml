@@ -1,0 +1,1148 @@
+@startuml
+
+  class DefaultPackageBootstrap {
+    +main() : void
+  }
+
+package org.springframework.context.annotation {
+  class ClassPathScanningCandidateComponentProvider {
+    -DEFAULT_RESOURCE_PATTERN : String
+    -logger : Log
+    -resourcePatternResolver : ResourcePatternResolver
+    -metadataReaderFactory : MetadataReaderFactory
+    -resourcePattern : String
+    -includeFilters : List<TypeFilter>
+    -excludeFilters : List<TypeFilter>
+    +setResourceLoader() : void
+    +getResourceLoader() : ResourceLoader
+    +setResourcePattern() : void
+    +addIncludeFilter() : void
+    +addExcludeFilter() : void
+    +resetFilters() : void
+    +registerDefaultFilters() : void
+    +findCandidateComponents() : Set<BeanDefinition>
+  }
+  class ClassPathScanningCandidateComponentProvider {
+    -DEFAULT_RESOURCE_PATTERN : String
+    -logger : Log
+    -resourcePatternResolver : ResourcePatternResolver
+    -metadataReaderFactory : MetadataReaderFactory
+    -resourcePattern : String
+    -includeFilters : List<TypeFilter>
+    -excludeFilters : List<TypeFilter>
+    +setResourceLoader() : void
+    +getResourceLoader() : ResourceLoader
+    +setResourcePattern() : void
+    +addIncludeFilter() : void
+    +addExcludeFilter() : void
+    +resetFilters() : void
+    +registerDefaultFilters() : void
+    +findCandidateComponents() : Set<BeanDefinition>
+  }
+}
+
+package org.springframework.core.type.classreading {
+  class AnnotationMetadataReadingVisitor {
+    -classLoader : ClassLoader
+    -annotationSet : Set<String>
+    -methodMetadataSet : Set<MethodMetadata>
+    -desc : String
+    +visitMethod() : MethodVisitor
+    +visitAnnotation() : AnnotationVisitor
+    +getAnnotationTypes() : Set<String>
+    +getMetaAnnotationTypes() : Set<String>
+    +hasAnnotation() : boolean
+    +hasMetaAnnotation() : boolean
+    +isAnnotated() : boolean
+    +hasAnnotatedMethods() : boolean
+  }
+  class SimpleMetadataReader {
+    -resource : Resource
+    -classReader : ClassReader
+    -classLoader : ClassLoader
+    -classMetadata : ClassMetadata
+    -annotationMetadata : AnnotationMetadata
+    +getResource() : Resource
+    +getClassMetadata() : ClassMetadata
+    +getAnnotationMetadata() : AnnotationMetadata
+  }
+  class ClassMetadataReadingVisitor {
+    -className : String
+    -isInterface : boolean
+    -isAbstract : boolean
+    -isFinal : boolean
+    -enclosingClassName : String
+    -independentInnerClass : boolean
+    -superClassName : String
+    -interfaces : String[]
+    +visit() : void
+    +visitOuterClass() : void
+    +visitInnerClass() : void
+    +visitSource() : void
+    +visitAnnotation() : AnnotationVisitor
+    +visitAttribute() : void
+    +visitField() : FieldVisitor
+    +visitMethod() : MethodVisitor
+  }
+  class AnnotationMetadataReadingVisitor {
+    -classLoader : ClassLoader
+    -desc : String
+    -className : String
+    +visitAnnotation() : AnnotationVisitor
+    +visit() : void
+    +visitEnd() : void
+    +getAnnotationTypes() : Set<String>
+    +hasAnnotation() : boolean
+    +getMetaAnnotationTypes() : Set<String>
+    +hasMetaAnnotation() : boolean
+  }
+  class SimpleMetadataReader {
+    -classReader : ClassReader
+    -classLoader : ClassLoader
+    +getClassMetadata() : ClassMetadata
+    +getAnnotationMetadata() : AnnotationMetadata
+  }
+  class ClassMetadataReadingVisitor {
+    -className : String
+    -isInterface : boolean
+    -isAbstract : boolean
+    -enclosingClassName : String
+    -independentInnerClass : boolean
+    -superClassName : String
+    -interfaces : String[]
+    +visit() : void
+    +visitOuterClass() : void
+    +visitInnerClass() : void
+    +getClassName() : String
+    +isInterface() : boolean
+    +isAbstract() : boolean
+    +isConcrete() : boolean
+    +isIndependent() : boolean
+  }
+}
+
+package org.springframework.core.type.filter {
+  class AnnotationTypeFilter {
+    -considerMetaAnnotations : boolean
+    +matchSelf() : boolean
+    +matchSuperClass() : Boolean
+  }
+  class AnnotationTypeFilter {
+    -considerMetaAnnotations : boolean
+    +matchSelf() : boolean
+    +matchSuperClass() : Boolean
+  }
+}
+
+package thinking.in.spring.boot {
+  class AppTest {
+    +suite() : Test
+    +testApp() : void
+  }
+  class App <<Controller>> {
+    +index() : String
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.autoconfigure {
+  class WebAutoConfiguration {
+  }
+}
+
+package thinking.in.spring.boot.config {
+  class WebConfiguration {
+    +helloWorld() : RouterFunction<ServerResponse>
+    +onWebServerReady() : void
+    +runner() : ApplicationRunner
+  }
+}
+
+package thinking.in.spring.boot.firstappbygui {
+  class FirstAppByGuiApplicationTests {
+    +contextLoads() : void
+  }
+  class FirstAppByGuiApplication {
+    +main() : void
+    +runner() : ApplicationRunner
+  }
+}
+
+package thinking.in.spring.boot.samples.api.domain {
+  class User {
+    -id : Long
+    -name : String
+    -age : Short
+    -birthday : LocalDate
+    -city : City
+    -homePage : String
+    -gitHub : String
+    -banks : List<String>
+    +getName() : String
+    +setName() : void
+    +getPostCode() : String
+    +setPostCode() : void
+    +setId() : void
+    +getId() : Long
+    +setName() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.auto.configuration {
+  class ServletRegistrationAutoConfiguration {
+    +defaultServletRegistrationBean() : ServletRegistrationBean
+  }
+}
+
+package thinking.in.spring.boot.samples.auto.configuration.bootstrap {
+  class AutoConfigurationBootstrap {
+    +main() : void
+  }
+  class EnableAutoConfigurationBootstrap {
+    +main() : void
+  }
+  class ResourceBootstrap {
+    +main() : void
+  }
+  class FormatterBootstrap {
+    +main() : void
+  }
+  class DerivedComponentHierarchyBootstrap {
+    +main() : void
+  }
+  class URLBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.auto.configuration.listener {
+  class DefaultAutoConfigurationImportListener {
+    +onAutoConfigurationImportEvent() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.autoconfigure.formatter {
+  class JsonFormatterTest {
+    -id : long
+    -name : String
+    +testFormat() : void
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+  }
+  class DefaultFormatter {
+    +format() : String
+  }
+  interface Formatter {
+  }
+  class JsonFormatter {
+    -objectMapper : ObjectMapper
+    +format() : String
+  }
+  class FormatterAutoConfiguration {
+    +defaultFormatter() : Formatter
+    +jsonFormatter() : Formatter
+    +objectMapperFormatter() : Formatter
+  }
+}
+
+package thinking.in.spring.boot.samples.chapter4.bootstrap {
+  class SpringBootBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.chapter4.servlet {
+  class EchoServlet {
+    +service() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.chapter4.traditional.web {
+  class TraditionalWebApplication {
+  }
+}
+
+package thinking.in.spring.boot.samples.chapter4.traditional.web.controller {
+  class HelloWorldRestController <<Controller>> {
+    +helloworld() : String
+  }
+}
+
+package thinking.in.spring.boot.samples.chapter4.traditional.web.servlet {
+  class JspFilter {
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+  }
+  class HelloWorldServlet {
+    +service() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.diagnostics {
+  class UnknownErrorFailureAnalyzer {
+    +analyze() : FailureAnalysis
+  }
+  class UnknownErrorSpringBootBootstrap {
+    +main() : void
+  }
+  class ConsoleFailureAnalysisReporter {
+    +report() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration {
+  class RelaxedNamesBootstrap {
+    +main() : void
+  }
+  class RelaxedPropertyResolverBootstrap {
+    +main() : void
+  }
+  class LegacySystemEnvironmentBehaviorBootstrap {
+    -id : Long
+    +main() : void
+    +getId() : Long
+    +setId() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.beans {
+  class LocalDatePropertyEditorRegistrar {
+    +registerCustomEditors() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.beans.propertyeditors {
+  class LocalDateEditor {
+    +setAsText() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.bootstrap {
+  class AnnotationTestPropertySourceTest {
+    -environment : Environment
+    +test() : void
+  }
+  class AnnotationValueDefaultValueBootstrap {
+    -userName : String
+    +main() : void
+  }
+  class AnnotationSpringBootTest {
+    -environment : ConfigurableEnvironment
+    +testGetProperty() : void
+  }
+  class AnnotationTestPropertySourceTest {
+    -environment : ConfigurableEnvironment
+    +init() : void
+    +testPrecedence() : void
+    +testFindPropertyLocation() : void
+    +testGetPropertySources() : void
+    +test() : void
+  }
+  class ConfigurationPropertyNameEqualityBootstrap {
+    +main() : void
+  }
+  class ExtendPropertySourcesBootstrap {
+    +main() : void
+  }
+  class ConfigurationPropertyNameHierarchyBootstrap {
+    +main() : void
+  }
+  class PropertySourceLoaderOrderBootstrap {
+    +main() : void
+  }
+  class AnnotationPropertySourceBootstrap {
+    +main() : void
+  }
+  class ConfigurationPropertyNameFormBootstrap {
+    +main() : void
+  }
+  class ConfigurationPropertyNameAdaptBootstrap {
+    +main() : void
+  }
+  class BindableBootstrap {
+    +main() : void
+  }
+  class DataBinderBootstrap {
+    +main() : void
+  }
+  class ConfigurationPropertiesExternalizedConfigurationBootstrap {
+    +user() : User
+    +userCityNameNotEmptyValidator() : Validator
+    +conversionService() : DefaultFormattingConversionService
+    +converter() : Converter
+    +stringToLocalDateGenericConverter() : GenericConverter
+    +main() : void
+  }
+  class ConfigurationPropertySourcesBootstrap {
+    +main() : void
+  }
+  class CommandLinePropertySourceBootstrap {
+    +main() : void
+  }
+  class BinderBootstrap {
+    +main() : void
+  }
+  class AnnotationConditionalOnPropertyBootstrap {
+    +enabledValue() : String
+    +main() : void
+    +postProcessor() : BeanDefinitionRegistryPostProcessor
+    +postProcessBeanDefinitionRegistry() : void
+    +postProcessBeanFactory() : void
+  }
+  class AnnotationValueExternalizedConfigurationBootstrap {
+    +conversionService() : DefaultFormattingConversionService
+    +main() : void
+  }
+  class RandomValuePropertySourceBootstrap {
+    +main() : void
+  }
+  class XmlPlaceholderExternalizedConfigurationBootstrap {
+    +main() : void
+  }
+  class SpringApplicationJsonPropertySourceBootstrap {
+    +main() : void
+  }
+  class PreferencesBootstrap {
+    +main() : void
+  }
+  class EnvironmentExternalizedConfigurationBootstrap {
+    +environment() : Environment
+    +main() : void
+  }
+  class SpringXmlConfigPlaceholderBootstrap {
+    +main() : void
+  }
+  class AttachedEnvironmentBootstrap {
+    +main() : void
+  }
+  class MapConfigurationPropertySourceBootstrap {
+    +main() : void
+  }
+  class ConverterBeanForAnnotationValueBootstrap {
+    +birthday() : LocalDate
+    +stringToLocalDateConverter() : StringToLocalDateConverter
+    +stringToLocalDateGenericConverter() : GenericConverter
+    +main() : void
+  }
+  class ExternalizedConfigurationBinderBootstrap {
+    +main() : void
+  }
+  class ResourcePropertySourceBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.bootstrap.web {
+  class ExternalizedConfigurationWebApplicationBootstrap {
+    +main() : void
+    +dispatcherServletRegistrationBean() : ServletRegistrationBean<DispatcherServlet>
+    +servletContextInitializer() : ServletContextInitializer
+    +webServerFactoryCustomizer() : WebServerFactoryCustomizer<TomcatServletWebServerFactory>
+    +servletWebServerFactory() : TomcatServletWebServerFactory
+    +getTomcatWebServer() : TomcatWebServer
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.condition {
+  class ConditionalOnProperties {
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.context {
+  class UserContextConfiguration {
+    -environment : Environment
+    +user() : User
+    +user2() : User
+    +changeUserName() : void
+  }
+  class ExtendPropertySourcesApplicationContextInitializer {
+    +initialize() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.convert.support {
+  class StringToLocalDateGenericConverter {
+    -delegate : StringToLocalDateConverter
+    +getConvertibleTypes() : Set<ConvertiblePair>
+    +convert() : Object
+  }
+  class StringToLocalDateConverter {
+    +convert() : LocalDate
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.env {
+  class ExtendPropertySourcesEnvironmentPostProcessor {
+    +postProcessEnvironment() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.listener {
+  class ExtendPropertySourcesRunListener {
+    +starting() : void
+    +environmentPrepared() : void
+    +contextPrepared() : void
+    +contextLoaded() : void
+    +started() : void
+    +running() : void
+    +failed() : void
+  }
+  class ExtendPropertySourcesApplicationListener {
+    +onApplicationEvent() : void
+    +onApplicationEvent() : void
+    +onApplicationEvent() : void
+    +supportsEventType() : boolean
+    +supportsSourceType() : boolean
+    +getOrder() : int
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.util {
+  class PropertySourceUtils {
+    +getResourcePropertySource() : ResourcePropertySource
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.validation {
+  class UserCityNameNotEmptyValidator {
+    +supports() : boolean
+    +validate() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.externalized.configuration.validation.constraints.groups {
+  class Common {
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.actuator.endpoints {
+  class SpringBoot13ActuatorEndpointsBootstrap {
+    -liveBeansView : LiveBeansView
+    +main() : void
+    +invoke() : String
+    +setApplicationContext() : void
+  }
+  class SpringBootActuatorEndpointsBootstrap {
+    +securityWebFilterChain() : SecurityWebFilterChain
+    +applicationRunner() : ApplicationRunner
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.actuator.management {
+  class ManagementContextResolverBootstrap {
+    -managementContextResolver : ManagementContextResolver
+    -applicationContext : ApplicationContext
+    -managementContext : ApplicationContext
+    +init() : void
+    +afterSingletonsInstantiated() : void
+    +onContextRefreshedEvent() : void
+    +applicationRunner() : ApplicationRunner
+    +main() : void
+  }
+  class ManagementContextEndpointsBootstrap <<Controller>> {
+    -applicationContext : ApplicationContext
+    +init() : void
+    +main() : void
+  }
+  class CustomizedManagementContextConfiguration {
+    +onContextRefreshed() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.actuator.security {
+  class WebEndpointsSecurityRiskBootstrap {
+    +main() : void
+    +invoke() : String
+  }
+  class EndpointsSecurityBootstrap <<Controller>> {
+    +main() : void
+    +hello() : String
+  }
+  class SpringSecurityHttpEndpointsBootstrap {
+    +configure() : void
+    +userDetailsService() : UserDetailsService
+    +main() : void
+  }
+  class SpringSecurityWebReactiveEndpointsBootstrap {
+    +securityWebFilterChain() : SecurityWebFilterChain
+    +userDetailsService() : MapReactiveUserDetailsService
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.java.beans {
+  class UserJavaBeansBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.jmx {
+  class DefaultGreeting {
+    +greet() : String
+  }
+  class GreetingOpenMBean {
+    -delegate : Greeting
+    -GREET_METHOD_NAME : String
+    +invoke() : Object
+    +getMBeanInfo() : MBeanInfo
+    +getAttribute() : Object
+    +setAttribute() : void
+    +getAttributes() : AttributeList
+    +setAttributes() : AttributeList
+  }
+  class OpenModelMetaDataClassBootstrap {
+    +main() : void
+  }
+  class GreetingOpenMBeanBootstrap {
+    +main() : void
+  }
+  class ObjectNameBootstrap {
+    +main() : void
+  }
+  class ObjectNamePatternMatchBootstrap {
+    +main() : void
+  }
+  class RequiredModelMBeanBootstrap {
+    +main() : void
+  }
+  class User {
+    -id : Long
+    -name : Name
+    +getId() : Long
+    +setId() : void
+    +getName() : Name
+    +setName() : void
+  }
+  interface UserMXBean {
+    -firstName : String
+    -lastName : String
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+  }
+  class Greeting {
+    +greet() : String
+  }
+  class DefaultGreetingCompliantMBeanBootstrap {
+    +main() : void
+  }
+  class GreetingCompliantMBeanBootstrap {
+    +main() : void
+  }
+  class GreetingMBeanIntrospectionBootstrap {
+    +main() : void
+  }
+  interface GreetingMBean {
+  }
+  class UserMXBeanBootstrap {
+    +main() : void
+  }
+  class StandardMBeanRegistrationBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.jmx.spring {
+  class SpringMBeanExporterBootstrap {
+    +calculator() : Calculator
+    +mBeanExporter() : MBeanExporter
+    +main() : void
+  }
+  class SpringJmxAnnotationBootstrap {
+    +calculator() : Calculator
+    +mBeanExporter() : AnnotationMBeanExporter
+    +exporter() : MBeanExporter
+    +assembler() : MBeanInfoAssembler
+    +jmxAttributeSource() : JmxAttributeSource
+    +namingStrategy() : MetadataNamingStrategy
+    +main() : void
+  }
+  class Calculator {
+    -version : String
+    +add() : int
+    +getVersion() : String
+    +setVersion() : void
+  }
+  class SpringMBeanServerBeanBootstrap {
+    +mBeanServer() : MBeanServerFactoryBean
+    +mBeanExporter() : MBeanExporter
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.jmx.spring.boot {
+  class SpringApplicationAdminBootstrap {
+    +main() : void
+  }
+  class SpringBootJmxAnnotationBootstrap {
+    +calculator() : Calculator
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.production.ready.spring {
+  class ObjectProviderBootstrap {
+    -helloWorldObjectProvider : ObjectProvider<String>
+    -helloWorld : String
+    +main() : void
+  }
+  class ObjectFactoryBootstrap {
+    -helloWorld : String
+    -objectFactory : ObjectFactory<String>
+    +helloWorld() : String
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring.application {
+  class ExitCodeExceptionMapperBootstrap {
+    +exitCodeExceptionMapper() : ExitCodeExceptionMapper
+    +main() : void
+  }
+  class UncaughtExceptionHandlerBootstrap {
+    +main() : void
+  }
+  class ExitCodeGeneratorExceptionBootstrap {
+    +main() : void
+    +getExitCode() : int
+  }
+  class ExitCodeGeneratorBootstrap {
+    +exitCodeGenerator() : ExitCodeGenerator
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring.application.bootstrap {
+  class ApplicationStartedEventListenerBootstrap {
+    +main() : void
+  }
+  class SystemExitBootstrap {
+    +main() : void
+    +finalize() : void
+  }
+  class ExitCodeGeneratorExceptionBootstrap {
+    +main() : void
+    +getExitCode() : int
+  }
+  class SpringApplicationBootstrap {
+    +main() : void
+  }
+  class ExitCodeGeneratorExceptionBootstrap {
+    +main() : void
+    +getExitCode() : int
+  }
+  class ApplicationContextInitializerBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring.application.config {
+  class SpringApplicationConfiguration {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring.application.context {
+  class HelloWorldApplicationContextInitializer {
+    +initialize() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring.application.event {
+  class SpringEventListenerBootstrap {
+    +main() : void
+  }
+  class MultipleSpringBootEventsListenerBootstrap {
+    +main() : void
+  }
+  class ExitCodeEventOnExitBootstrap {
+    +exitCodeGenerator() : ExitCodeGenerator
+    +main() : void
+  }
+  class DuplicatedEventListenerBootstrap {
+    +main() : void
+  }
+  class ApplicationPreparedEventListener {
+    +onApplicationEvent() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring.application.event.listener {
+  class ContextRefreshedEventListener {
+    -id : long
+    +onApplicationEvent() : void
+  }
+  class MultipleSpringBootEventsListener {
+    +supportsEventType() : boolean
+    +supportsSourceType() : boolean
+    +onApplicationEvent() : void
+    +getOrder() : int
+    +onSpringBootEvent() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring2.bootstrap {
+  class ConfigurableApplicationContextBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring25.annotation {
+  interface StringRepository <<Repository>> {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring25.bean {
+  class ComponentBean {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring25.bootstrap {
+  class DerivedComponentAnnotationBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring25.repository {
+  class AutowiredBeanHolder {
+    -repositories : Collection<NameRepository>
+    -nameRepository : NameRepository
+    +getRepositories() : Collection<NameRepository>
+  }
+  class NameRepository {
+    +findAll() : List<String>
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.annotation {
+  interface SecondLevelRepository <<Repository>> {
+  }
+  interface FirstLevelRepository <<Repository>> {
+  }
+  class ServerImportBeanDefinitionRegistrar {
+    +registerBeanDefinitions() : void
+  }
+  interface EnableServer {
+  }
+  interface EnableHelloWorld {
+  }
+  class ServerImportSelector {
+    +selectImports() : String[]
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.bootstrap {
+  class HierarchicalDerivedComponentAnnotationBootstrap {
+    +main() : void
+  }
+  class AnnotationConfigBootstrap {
+    +main() : void
+  }
+  class CalculatingServiceBootstrap {
+    +main() : void
+  }
+  class XmlConfigBootstrap {
+    +main() : void
+  }
+  class EnableHelloWorldBootstrap {
+    +main() : void
+  }
+  class EnableServerBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.config {
+  class SpringContextConfiguration {
+    +user() : User
+  }
+  class HelloWorldConfiguration {
+    +helloWorld() : String
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.domain {
+  class User {
+    -name : String
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.repository {
+  class MySecondLevelRepository {
+  }
+  class MyFirstLevelRepository {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.server {
+  class FtpServer {
+    +start() : void
+    +stop() : void
+  }
+  class HttpServer {
+    +start() : void
+    +stop() : void
+  }
+  interface Server {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.service {
+  interface CalculatingService {
+  }
+  class LambdaCalculatingService <<Service>> {
+    +sum() : Integer
+  }
+  class IterationCalculatingService <<Service>> {
+    +sum() : Integer
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.web {
+  class SpringWebMvcServletInitializer {
+    +getServletMappings() : String[]
+  }
+  class SpringContextLoaderInitializer {
+    +createRootApplicationContext() : WebApplicationContext
+  }
+  class SpringWebMvcConfiguration {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring3.web.controller {
+  class HelloWorldController <<Controller>> {
+    +hellloWorld() : String
+  }
+}
+
+package thinking.in.spring.boot.samples.spring4.annotation {
+  class OnSystemPropertyCondition {
+    +matches() : boolean
+  }
+  interface ConditionalOnSystemProperty {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring4.bootstrap {
+  class ConditionalOnSystemPropertyBootstrap {
+    +main() : void
+  }
+  class ComponentScanDefaultPackageBootstrap {
+    +main() : void
+  }
+  class AnnotationLookupBootstrap {
+    -helloWorld : String
+    +helloWorld() : String
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring4.config {
+  class PropertySourcesConfiguration {
+  }
+  class ConditionalMessageConfiguration {
+    +chineseMessage() : String
+    +englishMessage() : String
+  }
+  class RepeatablePropertySourceConfiguration {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring5.annotation {
+  interface TransactionalService <<Service>> {
+  }
+}
+
+package thinking.in.spring.boot.samples.spring5.bean {
+  class TransactionalServiceBean {
+    +save() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring5.bootstrap {
+  class TransactionalServiceStandardAnnotationMetadataBootstrap {
+    +main() : void
+  }
+  class AnnotationAttributesBootstrap {
+    +main() : void
+  }
+  class TransactionalServiceAnnotationMetadataBootstrap {
+    +main() : void
+  }
+  class TransactionalServiceBeanBootstrap {
+    +main() : void
+    +txManager() : PlatformTransactionManager
+    +getTransaction() : TransactionStatus
+    +commit() : void
+    +rollback() : void
+    +txManger2() : PlatformTransactionManager
+    +getTransaction() : TransactionStatus
+    +commit() : void
+  }
+  class TransactionalServiceAnnotationReflectionBootstrap {
+    +main() : void
+  }
+  class AnnotationMetadataPerformanceBootstrap {
+    +main() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.spring5.config {
+  class AnnotationIndexedConfiguration {
+  }
+  class CustomizedProcessor {
+    +getSupportedOptions() : Set<String>
+    +getSupportedAnnotationTypes() : Set<String>
+    +getSupportedSourceVersion() : SourceVersion
+    +init() : void
+    +process() : boolean
+  }
+}
+
+package thinking.in.spring.boot.samples.spring5.context.event {
+  class AnnotatedEventListenerBootstrap {
+    +main() : void
+    +onContextRefreshedEvent() : void
+    +onContextClosedEvent() : boolean
+  }
+  class ApplicationListenerOnSpringEventsBootstrap {
+    +main() : void
+  }
+  class AnnotatedEventListenerOnMultiEventsBootstrap {
+    +main() : void
+    +onEvent() : void
+    +onApplicationContextEvent() : void
+    +onEvents() : void
+  }
+  class AnnotatedAsyncEventListenerBootstrap {
+    +main() : void
+    +ontextRefreshedEvent() : Boolean
+  }
+  class GenericEventListenerBootstrap {
+    -name : String
+    +main() : void
+    +onUser() : void
+    +onUserEvent() : void
+    +onApplicationEvent() : void
+    +getResolvableType() : ResolvableType
+    +getSource() : T
+  }
+  class ApplicationListenerBeanOnCustomEventBootstrap {
+    +main() : void
+    +onApplicationEvent() : void
+  }
+}
+
+package thinking.in.spring.boot.samples.web {
+  class SpringBoot12WebApplicationBootstrap {
+    +main() : void
+  }
+  class SpringBoot15WebApplicationBootstrap <<Controller>> {
+    +main() : void
+    +configure() : void
+  }
+  class SpringBoot10WebApplicationBootstrap {
+    +main() : void
+    +onStartup() : void
+  }
+}
+
+package thinking.in.spring.boot.shared.servlet {
+  class HelloWorldServlet {
+    +init() : void
+    +doGet() : void
+  }
+}
+
+' --- Relatii ---
+MultipleSpringBootEventsListenerBootstrap --> MultipleSpringBootEventsListener
+DuplicatedEventListenerBootstrap --> ContextRefreshedEventListener
+MultipleSpringBootEventsListener --> MultipleSpringBootEventsListenerBootstrap
+DefaultFormatter ..|> Formatter
+JsonFormatter ..|> Formatter
+WebAutoConfiguration --> WebConfiguration
+FirstAppByGuiApplication --> WebConfiguration
+FormatterBootstrap --> Formatter
+FormatterBootstrap --> FormatterAutoConfiguration
+DefaultGreeting ..|> GreetingMBean
+User ..|> UserMXBean
+Greeting ..|> GreetingMBean
+SpringBootJmxAnnotationBootstrap --> Calculator
+UserJavaBeansBootstrap --> User
+SpringSecurityHttpEndpointsBootstrap --> User
+SpringSecurityWebReactiveEndpointsBootstrap --> User
+ObjectProviderBootstrap --> User
+ExtendPropertySourcesRunListener --> PropertySourceUtils
+ExtendPropertySourcesApplicationListener --> PropertySourceUtils
+UserContextConfiguration --> User
+ExtendPropertySourcesApplicationContextInitializer --> PropertySourceUtils
+ExtendPropertySourcesBootstrap --> PropertySourceUtils
+ConfigurationPropertiesExternalizedConfigurationBootstrap --> StringToLocalDateConverter
+ConfigurationPropertiesExternalizedConfigurationBootstrap --> StringToLocalDateGenericConverter
+ConfigurationPropertiesExternalizedConfigurationBootstrap --> User
+ConfigurationPropertiesExternalizedConfigurationBootstrap --> UserCityNameNotEmptyValidator
+AnnotationValueExternalizedConfigurationBootstrap --> UserContextConfiguration
+AnnotationValueExternalizedConfigurationBootstrap --> StringToLocalDateConverter
+AnnotationValueExternalizedConfigurationBootstrap --> StringToLocalDateGenericConverter
+AnnotationValueExternalizedConfigurationBootstrap --> User
+XmlPlaceholderExternalizedConfigurationBootstrap --> User
+EnvironmentExternalizedConfigurationBootstrap --> UserContextConfiguration
+EnvironmentExternalizedConfigurationBootstrap --> User
+SpringXmlConfigPlaceholderBootstrap --> User
+ConverterBeanForAnnotationValueBootstrap --> StringToLocalDateConverter
+ConverterBeanForAnnotationValueBootstrap --> StringToLocalDateGenericConverter
+ExternalizedConfigurationBinderBootstrap --> StringToLocalDateConverter
+ExternalizedConfigurationBinderBootstrap --> User
+ResourcePropertySourceBootstrap --> PropertySourceUtils
+ExtendPropertySourcesEnvironmentPostProcessor --> PropertySourceUtils
+LocalDatePropertyEditorRegistrar --> LocalDateEditor
+UserCityNameNotEmptyValidator --> User
+SpringApplicationBootstrap --> SpringApplicationConfiguration
+ApplicationContextInitializerBootstrap --> HelloWorldApplicationContextInitializer
+SpringBootBootstrap --> HelloWorldRestController
+SpringBootBootstrap --> JspFilter
+AnnotationMetadataReadingVisitor --|> ClassMetadataReadingVisitor
+ClassPathScanningCandidateComponentProvider --> AnnotationTypeFilter
+AnnotationMetadataReadingVisitor --|> ClassMetadataReadingVisitor
+ClassPathScanningCandidateComponentProvider --> AnnotationTypeFilter
+NameRepository --> StringRepository
+DerivedComponentAnnotationBootstrap --> NameRepository
+MySecondLevelRepository --> SecondLevelRepository
+MyFirstLevelRepository --> FirstLevelRepository
+AnnotationConfigBootstrap --> SpringContextConfiguration
+AnnotationConfigBootstrap --> User
+CalculatingServiceBootstrap --> CalculatingService
+XmlConfigBootstrap --> User
+EnableHelloWorldBootstrap --> EnableHelloWorld
+EnableServerBootstrap --> EnableServer
+EnableServerBootstrap --> Server
+SpringContextConfiguration --> User
+ServerImportBeanDefinitionRegistrar --> Server
+EnableServer --> Server
+EnableHelloWorld --> HelloWorldConfiguration
+ServerImportSelector --> FtpServer
+ServerImportSelector --> HttpServer
+ServerImportSelector --> Server
+FtpServer ..|> Server
+HttpServer ..|> Server
+LambdaCalculatingService ..|> CalculatingService
+IterationCalculatingService ..|> CalculatingService
+ConditionalOnSystemPropertyBootstrap --> ConditionalOnSystemProperty
+ConditionalOnSystemPropertyBootstrap --> ConditionalMessageConfiguration
+ConditionalMessageConfiguration --> ConditionalOnSystemProperty
+TransactionalServiceStandardAnnotationMetadataBootstrap --> TransactionalService
+AnnotationAttributesBootstrap --> TransactionalService
+AnnotationAttributesBootstrap --> TransactionalServiceBean
+TransactionalServiceAnnotationMetadataBootstrap --> TransactionalService
+TransactionalServiceBeanBootstrap --> TransactionalServiceBean
+TransactionalServiceAnnotationReflectionBootstrap --> TransactionalService
+AnnotationMetadataPerformanceBootstrap --> TransactionalService
+TransactionalServiceBean --> TransactionalService
+
+@enduml

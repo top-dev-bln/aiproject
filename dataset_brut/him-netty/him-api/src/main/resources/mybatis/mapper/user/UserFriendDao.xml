@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.lmxdawn.him.api.dao.user.UserFriendDao">
+
+    <select id="listByUid" resultType="com.lmxdawn.him.common.entity.user.UserFriend">
+        select id,uid,`friend_uid`,remark,un_msg_count,last_msg_content,modified_time
+        from `user_friend`
+        where uid = #{uid}
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="findByUidAndFriendUid" resultType="com.lmxdawn.him.common.entity.user.UserFriend">
+        select id
+        from `user_friend`
+        where uid = #{uid} and friend_uid=#{friendUid}
+        limit 1
+    </select>
+
+    <insert id="insertUserFriendAll">
+        insert into `user_friend`
+        (`uid`,friend_uid,remark,un_msg_count,last_msg_content,create_time,modified_time)
+        values
+        <foreach collection="list" item="item" separator=",">
+            <if test="item.uid != null
+                        and item.friendUid != null
+                        and item.createTime != null
+                        and item.modifiedTime != null">
+                (#{item.uid},
+                #{item.friendUid},
+                #{item.remark},
+                <choose>
+                    <when test="item.unMsgCount != null and item.unMsgCount != 0">
+                        #{item.unMsgCount},
+                    </when>
+                    <when test="item.unMsgCount != null and item.unMsgCount == 0">
+                        0,
+                    </when>
+                    <otherwise>
+                        0,
+                    </otherwise>
+                </choose>
+                #{item.lastMsgContent},
+                #{item.createTime},
+                #{item.modifiedTime})
+            </if>
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        un_msg_count=un_msg_count + VALUES(un_msg_count),
+        last_msg_content=VALUES(last_msg_content),
+        modified_time = VALUES(modified_time)
+    </insert>
+
+    <update id="updateUserFriend" parameterType="com.lmxdawn.him.common.entity.user.UserFriend">
+        update `user_friend`
+        <set>
+            <if test="remark != null">`remark`=#{remark},</if>
+            <choose>
+                <when test="unMsgCount != null and unMsgCount != 0">
+                    un_msg_count = un_msg_count + #{unMsgCount},
+                </when>
+                <when test="unMsgCount != null and unMsgCount == 0">
+                    un_msg_count = 0,
+                </when>
+                <otherwise>
+                </otherwise>
+            </choose>
+            <if test="lastMsgContent != null">last_msg_content=#{lastMsgContent},</if>
+            modified_time=#{modifiedTime}
+        </set>
+        where uid = #{uid} and friend_uid = #{friendUid}
+    </update>
+
+    <delete id="deleteByUidAndFriendUid">
+        delete from `user_friend` where uid = #{uid} and friend_uid = #{friendUid}
+    </delete>
+
+</mapper>

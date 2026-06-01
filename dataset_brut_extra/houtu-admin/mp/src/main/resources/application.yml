@@ -1,0 +1,30 @@
+server:
+  port: 29090
+  tomcat:
+    uri-encoding: UTF-8
+    max-connections: 2000
+    accept-count: 100
+    threads:
+      max: 600
+      min-spare: 30
+    accesslog:
+      enabled: true
+      directory: ${logging.file.path}
+      pattern: "%h %l %u %t %r %s %b %D"
+
+spring:
+  application:
+    name: sysadmin
+  profiles:
+    active: dev
+  security:
+    mfa: true
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.xx.mp.module.sys.entity
+  global-config:
+    db-config:
+      id-type: auto
+      table-underline: true
+

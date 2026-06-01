@@ -1,0 +1,422 @@
+@startuml
+package org.requirementsascode.eventbus; {
+class EventBus {
+}
+
+}
+
+package com.example.todolist.adapter.spring; {
+class TodoListConfiguration {
+}
+
+class TodoListExceptionHandling {
+}
+
+class TodoListGetRequestExample {
+}
+
+class TodoListBehaviorEndpointTest {
+}
+
+}
+
+package com.example.todolist.behavior; {
+class AddTask {
+}
+
+class DeleteTask {
+}
+
+class FilterTasks {
+}
+
+class FindOrCreateList {
+}
+
+class ListTasks {
+}
+
+class TodoListBehaviorModel {
+}
+
+class ToggleTaskCompletion {
+}
+
+class TodoListBehaviorTest {
+}
+
+}
+
+package com.example.todolist.behavior.request; {
+class AddTaskRequest {
+}
+
+class DeleteTaskRequest {
+}
+
+class FilterTasksRequest {
+}
+
+class FindOrCreateListRequest {
+}
+
+class ListTasksRequest {
+}
+
+class ToggleTaskCompletionRequest {
+}
+
+}
+
+package com.example.todolist.behavior.response; {
+class AddTaskResponse {
+}
+
+class ExceptionResponse {
+}
+
+class FilterTasksResponse {
+}
+
+class FindOrCreateListResponse {
+}
+
+class ListTasksResponse {
+}
+
+}
+
+package com.example.todolist.domain; {
+class IllegalTaskName {
+}
+
+class Task {
+}
+
+class TodoList {
+}
+
+class TodoListException {
+}
+
+class TodoListNotFound {
+}
+
+class TodoLists {
+}
+
+class TestTodoLists {
+}
+
+class TodoListTest {
+}
+
+}
+
+package com.example.todolist; {
+class TodoListApplication {
+}
+
+class TodoListApplicationTest {
+}
+
+}
+
+package org.requirementsascode.spring.behavior.test; {
+class EntityAccess {
+}
+
+class MockBehaviorEndpoint {
+}
+
+class TestRepository {
+}
+
+class TestEntity {
+}
+
+class TestRepositoryTest {
+}
+
+}
+
+package org.requirementsascode.serialization; {
+class AdaptedParameterNamesAnnotationIntrospector {
+}
+
+class Classes {
+}
+
+class ClassResolver {
+}
+
+class JacksonSubClassResolverBuilder {
+}
+
+class MessageSerializationModule {
+}
+
+class ParameterExtractor {
+}
+
+class SubClassValidator {
+}
+
+class RequestSerializationTest {
+}
+
+}
+
+package org.requirementsascode.spring.behavior.web; {
+class BehaviorConfiguration {
+}
+
+class BehaviorController {
+}
+
+class SerializationConfiguration {
+}
+
+class TransactionalBehavior {
+}
+
+}
+
+package org.requirementsascode.spring.testbehavior; {
+class EmptyBehavior {
+}
+
+class TestAddTaskRequest {
+}
+
+class TestAddTaskResponse {
+}
+
+class TestBehaviorModel {
+}
+
+class TestCompleteTaskRequest {
+}
+
+class TestCreateListRequest {
+}
+
+class TestCreateListResponse {
+}
+
+class TestExceptionThrower {
+}
+
+class TestResponse {
+}
+
+}
+
+package org.requirementsascode.spring.eventbus; {
+class EventBusBehaviorModel {
+}
+
+class EventBusConfiguration {
+}
+
+class EventListeners {
+}
+
+class SpringEventBus {
+}
+
+}
+
+TodoListConfiguration -- TodoListBehaviorModel
+TodoListConfiguration -- TodoList
+TodoListConfiguration -- TodoLists
+TodoListExceptionHandling -- ExceptionResponse
+TodoListExceptionHandling -- TodoList
+TodoListExceptionHandling -- TodoListException
+TodoListGetRequestExample -- ListTasks
+TodoListGetRequestExample -- ListTasksRequest
+TodoListGetRequestExample -- Task
+TodoListGetRequestExample -- TodoList
+AddTask -- AddTaskRequest
+AddTask -- AddTaskResponse
+AddTask -- Task
+AddTask -- TodoList
+AddTask -- TodoListNotFound
+AddTask -- TodoLists
+DeleteTask -- DeleteTaskRequest
+DeleteTask -- Task
+DeleteTask -- TodoList
+DeleteTask -- TodoListNotFound
+DeleteTask -- TodoLists
+FilterTasks -- FilterTasksRequest
+FilterTasks -- FilterTasksResponse
+FilterTasks -- Task
+FilterTasks -- TodoList
+FilterTasks -- TodoListNotFound
+FilterTasks -- TodoLists
+FindOrCreateList -- FindOrCreateListRequest
+FindOrCreateList -- FindOrCreateListResponse
+FindOrCreateList -- TodoList
+FindOrCreateList -- TodoLists
+ListTasks -- ListTasksRequest
+ListTasks -- ListTasksResponse
+ListTasks -- Task
+ListTasks -- TodoList
+ListTasks -- TodoListNotFound
+ListTasks -- TodoLists
+AddTaskRequest -- Task
+DeleteTaskRequest -- Task
+FilterTasksRequest -- Task
+ListTasksRequest -- Task
+ToggleTaskCompletionRequest -- ToggleTaskCompletion
+ToggleTaskCompletionRequest -- Task
+AddTaskResponse -- AddTaskRequest
+AddTaskResponse -- Task
+FilterTasksResponse -- ListTasks
+FilterTasksResponse -- Task
+ListTasksResponse -- ListTasksRequest
+ListTasksResponse -- Task
+TodoListBehaviorModel -- AddTask
+TodoListBehaviorModel -- DeleteTask
+TodoListBehaviorModel -- FilterTasks
+TodoListBehaviorModel -- FindOrCreateList
+TodoListBehaviorModel -- ListTasks
+TodoListBehaviorModel -- AddTaskRequest
+TodoListBehaviorModel -- DeleteTaskRequest
+TodoListBehaviorModel -- FilterTasksRequest
+TodoListBehaviorModel -- FindOrCreateListRequest
+TodoListBehaviorModel -- ListTasksRequest
+TodoListBehaviorModel -- ToggleTaskCompletionRequest
+TodoListBehaviorModel -- AddTaskResponse
+TodoListBehaviorModel -- FilterTasksResponse
+TodoListBehaviorModel -- FindOrCreateListResponse
+TodoListBehaviorModel -- ListTasksResponse
+TodoListBehaviorModel -- ToggleTaskCompletion
+TodoListBehaviorModel -- Task
+TodoListBehaviorModel -- TodoList
+TodoListBehaviorModel -- TodoLists
+ToggleTaskCompletion -- Task
+ToggleTaskCompletion -- TodoList
+ToggleTaskCompletion -- TodoListNotFound
+ToggleTaskCompletion -- TodoLists
+IllegalTaskName -- Task
+IllegalTaskName -- TodoList
+IllegalTaskName -- TodoListException
+Task -- TodoList
+TodoListException -- TodoList
+TodoListNotFound -- TodoList
+TodoListNotFound -- TodoListException
+TodoLists -- TodoList
+TodoListApplication -- TodoList
+TodoListBehaviorEndpointTest -- TodoListConfiguration
+TodoListBehaviorEndpointTest -- AddTask
+TodoListBehaviorEndpointTest -- DeleteTask
+TodoListBehaviorEndpointTest -- FilterTasks
+TodoListBehaviorEndpointTest -- FindOrCreateList
+TodoListBehaviorEndpointTest -- AddTaskRequest
+TodoListBehaviorEndpointTest -- DeleteTaskRequest
+TodoListBehaviorEndpointTest -- FilterTasksRequest
+TodoListBehaviorEndpointTest -- FindOrCreateListRequest
+TodoListBehaviorEndpointTest -- ToggleTaskCompletionRequest
+TodoListBehaviorEndpointTest -- AddTaskResponse
+TodoListBehaviorEndpointTest -- FilterTasksResponse
+TodoListBehaviorEndpointTest -- FindOrCreateListResponse
+TodoListBehaviorEndpointTest -- TodoListBehaviorModel
+TodoListBehaviorEndpointTest -- ToggleTaskCompletion
+TodoListBehaviorEndpointTest -- Task
+TodoListBehaviorEndpointTest -- TodoList
+TodoListBehaviorEndpointTest -- TodoLists
+TodoListBehaviorEndpointTest -- TestTodoLists
+TodoListBehaviorEndpointTest -- MockBehaviorEndpoint
+TodoListBehaviorTest -- AddTask
+TodoListBehaviorTest -- DeleteTask
+TodoListBehaviorTest -- FilterTasks
+TodoListBehaviorTest -- FindOrCreateList
+TodoListBehaviorTest -- ListTasks
+TodoListBehaviorTest -- AddTaskRequest
+TodoListBehaviorTest -- DeleteTaskRequest
+TodoListBehaviorTest -- FilterTasksRequest
+TodoListBehaviorTest -- FindOrCreateListRequest
+TodoListBehaviorTest -- ListTasksRequest
+TodoListBehaviorTest -- ToggleTaskCompletionRequest
+TodoListBehaviorTest -- AddTaskResponse
+TodoListBehaviorTest -- FilterTasksResponse
+TodoListBehaviorTest -- FindOrCreateListResponse
+TodoListBehaviorTest -- ListTasksResponse
+TodoListBehaviorTest -- TodoListBehaviorModel
+TodoListBehaviorTest -- ToggleTaskCompletion
+TodoListBehaviorTest -- IllegalTaskName
+TodoListBehaviorTest -- Task
+TodoListBehaviorTest -- TodoList
+TodoListBehaviorTest -- TodoListNotFound
+TodoListBehaviorTest -- TodoLists
+TodoListBehaviorTest -- TestTodoLists
+TestTodoLists -- Task
+TestTodoLists -- TodoList
+TestTodoLists -- TodoLists
+TestTodoLists -- EntityAccess
+TestTodoLists -- TestRepository
+TodoListTest -- IllegalTaskName
+TodoListTest -- Task
+TodoListTest -- TodoList
+TodoListApplicationTest -- AddTask
+TodoListApplicationTest -- FindOrCreateList
+TodoListApplicationTest -- ListTasks
+TodoListApplicationTest -- AddTaskRequest
+TodoListApplicationTest -- FindOrCreateListRequest
+TodoListApplicationTest -- ListTasksRequest
+TodoListApplicationTest -- AddTaskResponse
+TodoListApplicationTest -- FindOrCreateListResponse
+TodoListApplicationTest -- ListTasksResponse
+TodoListApplicationTest -- Task
+TodoListApplicationTest -- TodoList
+TodoListApplicationTest -- TodoListApplication
+TodoListApplicationTest -- MockBehaviorEndpoint
+TestRepository -- EntityAccess
+TestRepositoryTest -- EntityAccess
+TestRepositoryTest -- TestRepository
+TestRepositoryTest -- TestEntity
+AdaptedParameterNamesAnnotationIntrospector -- ParameterExtractor
+JacksonSubClassResolverBuilder -- Classes
+JacksonSubClassResolverBuilder -- ClassResolver
+MessageSerializationModule -- AdaptedParameterNamesAnnotationIntrospector
+MessageSerializationModule -- Classes
+MessageSerializationModule -- ClassResolver
+MessageSerializationModule -- JacksonSubClassResolverBuilder
+MessageSerializationModule -- ParameterExtractor
+MessageSerializationModule -- SubClassValidator
+SubClassValidator -- Classes
+BehaviorConfiguration -- TransactionalBehavior
+SerializationConfiguration -- MessageSerializationModule
+RequestSerializationTest -- AddTask
+RequestSerializationTest -- AddTaskRequest
+RequestSerializationTest -- Task
+RequestSerializationTest -- MessageSerializationModule
+RequestSerializationTest -- TestAddTaskRequest
+RequestSerializationTest -- TestBehaviorModel
+RequestSerializationTest -- TestCreateListRequest
+TestAddTaskRequest -- AddTask
+TestAddTaskRequest -- AddTaskRequest
+TestAddTaskRequest -- Task
+TestAddTaskResponse -- AddTask
+TestAddTaskResponse -- AddTaskResponse
+TestAddTaskResponse -- Task
+TestBehaviorModel -- AddTask
+TestBehaviorModel -- AddTaskRequest
+TestBehaviorModel -- AddTaskResponse
+TestBehaviorModel -- Task
+TestBehaviorModel -- TestAddTaskRequest
+TestBehaviorModel -- TestAddTaskResponse
+TestBehaviorModel -- TestCompleteTaskRequest
+TestBehaviorModel -- TestCreateListRequest
+TestBehaviorModel -- TestCreateListResponse
+TestCompleteTaskRequest -- Task
+TestCompleteTaskRequest -- TodoList
+TestResponse -- Task
+EventBusBehaviorModel -- EventBus
+EventBusConfiguration -- EventBus
+EventBusConfiguration -- EventBusBehaviorModel
+EventBusConfiguration -- SpringEventBus
+EventListeners -- TransactionalBehavior
+SpringEventBus -- EventBus
+@enduml

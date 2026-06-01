@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-service
+  labels:
+    app: employee-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employee-service
+  template:
+    metadata:
+      labels:
+        app: employee-service
+    spec:
+      containers:
+        - name: employee-service
+          image: piomin/employee-service
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: multicast
+              containerPort: 5701
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: employee-service
+  labels:
+    app: employee-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: employee-service
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hazelcast-service
+spec:
+  selector:
+    app: employee-service
+  ports:
+    - name: hazelcast
+      port: 5701
+  type: LoadBalancer

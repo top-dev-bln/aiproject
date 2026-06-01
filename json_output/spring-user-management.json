@@ -1,0 +1,55 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves Admin, User as its primary actors. The main business capabilities include admin, auth, permission. Core business data revolves around BaseModel, PermissionLoadMode. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserAccountService",
+          "UserAccountServiceImpl",
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [
+          "FileStorageServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "UserAccountService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to manage admin operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AdminController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminController[\"AdminController\"]\n    AuthController[\"AuthController\"]\n    PermissionController[\"PermissionController\"]\n    ResetPasswordController[\"ResetPasswordController\"]\n    RoleController[\"RoleController\"]\n    TokenController[\"TokenController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    FileStorageServiceImpl[\"FileStorageServiceImpl\"]\n    PermissionLoaderImpl[\"PermissionLoaderImpl\"]\n    PermissionService[\"PermissionService\"]\n    PermissionServiceImpl[\"PermissionServiceImpl\"]\n    RoleService[\"RoleService\"]\n    RoleServiceImpl[\"RoleServiceImpl\"]\n    UserAccountService[\"UserAccountService\"]\n    UserAccountServiceImpl[\"UserAccountServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    BaseModel[\"BaseModel\"]\n    PermissionLoadMode[\"PermissionLoadMode\"]\n    PermissionRepository[\"PermissionRepository\"]\n    RefreshTokenRepository[\"RefreshTokenRepository\"]\n    RoleRepository[\"RoleRepository\"]\n    UserAccountRepository[\"UserAccountRepository\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthenticationFilter[\"AuthenticationFilter\"]\n    CORSFilter[\"CORSFilter\"]\n    DataSeeder[\"DataSeeder\"]\n    Exists[\"Exists\"]\n    FieldMatchValidator[\"FieldMatchValidator\"]\n    JwtTokenUtil[\"JwtTokenUtil\"]\n    ModelUpdateListener[\"ModelUpdateListener\"]\n    OnRegistrationCompleteEvent[\"OnRegistrationCompleteEvent\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    RedisConfiguration[\"RedisConfiguration\"]\n    ResourceWebConfig[\"ResourceWebConfig\"]\n    SwaggerConfiguration[\"SwaggerConfiguration\"]\n    TemplateEngineConfig[\"TemplateEngineConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

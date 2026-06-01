@@ -1,0 +1,846 @@
+@startuml
+
+package io.github.mariazevedo88.travelsjavaapi {
+  class TravelsJavaApiApplication {
+    +main() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.controller.v1.account {
+  class AccountController <<Controller>> {
+    -accountDTO : AccountDTO
+    +create() : ResponseEntity<Response<AccountDTO>>
+    +findByAccountNumber() : ResponseEntity<Response<List<AccountDTO>>>
+    +findById() : ResponseEntity<Response<AccountDTO>>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.controller.v1.security {
+  class AuthenticationController <<Controller>> {
+    -authenticationManager : AuthenticationManager
+    -jwtTokenUtil : JwtTokenUtil
+    -userDetailsService : UserDetailsService
+    +generateTokenJwt() : ResponseEntity<Response<TokenDTO>>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.controller.v1.statistic {
+  class StatisticController <<Controller>> {
+    -statisticService : StatisticService
+    -travelService : TravelService
+    +create() : ResponseEntity<Response<StatisticDTO>>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.controller.v1.travel {
+  class TravelController <<Controller>> {
+    -travelDTO : TravelDTO
+    +create() : ResponseEntity<Response<TravelDTO>>
+    +update() : ResponseEntity<Response<TravelDTO>>
+    +findAllBetweenDates() : ResponseEntity<Response<List<TravelDTO>>>
+    +findByOrderNumber() : ResponseEntity<Response<List<TravelDTO>>>
+    +findById() : ResponseEntity<Response<TravelDTO>>
+    +delete() : ResponseEntity<Response<String>>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.controller.v1.user {
+  class UserAccountController <<Controller>> {
+    -service : UserAccountService
+    +create() : ResponseEntity<Response<UserAccountDTO>>
+  }
+  class UserController <<Controller>> {
+    -service : UserService
+    +create() : ResponseEntity<Response<UserDTO>>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.dto.model.account {
+  class AccountDTO {
+    -id : Long
+    -accountNumber : String
+    -accountType : String
+    +convertDTOToEntity() : Account
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.dto.model.security {
+  class JwtUserDTO {
+    -email : String
+    -password : String
+  }
+  class TokenDTO {
+    -token : String
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.dto.model.statistic {
+  class StatisticDTO {
+    -id : Long
+    -sum : BigDecimal
+    -avg : BigDecimal
+    -max : BigDecimal
+    -min : BigDecimal
+    -count : long
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.dto.model.travel {
+  class TravelDTO {
+    -id : Long
+    -orderNumber : String
+    -startDate : LocalDateTime
+    -endDate : LocalDateTime
+    -amount : BigDecimal
+    -type : String
+    -accountId : Long
+    +convertDTOToEntity() : Travel
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.dto.model.user {
+  class UserAccountDTO {
+    -id : Long
+    -userId : Long
+    -accountId : Long
+    +convertDTOToEntity() : UserAccount
+  }
+  class UserDTO {
+    -id : Long
+    -name : String
+    -password : String
+    -email : String
+    -role : String
+    +getPassword() : String
+    +convertDTOToEntity() : User
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.dto.response {
+  class ResponseError {
+    -timestamp : LocalDateTime
+    -details : String
+  }
+  class Response {
+    -data : T
+    -errors : Object
+    +addErrorMsgToResponse() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.enumeration {
+  enum TravelTypeEnum {
+    -value : String
+    +getValue() : String
+  }
+  enum AccountTypeEnum {
+    -value : String
+    +getValue() : String
+  }
+  enum APIUsagePlansEnum {
+    -bucketCapacity : int
+    +getLimit() : Bandwidth
+    +getBucketCapacity() : int
+    +resolvePlanFromApiKey() : APIUsagePlansEnum
+  }
+  enum RoleEnum {
+    -value : String
+    +getValue() : String
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.exception {
+  class TravelsJavaAPIExceptionHandler {
+    +handleTravelInvalidUpdateException() : ResponseEntity<Response<T>>
+    +handleTravelNotFoundException() : ResponseEntity<Response<T>>
+    +handleConflictException() : ResponseEntity<Response<T>>
+    +handleMessageNotReadableException() : ResponseEntity<Response<T>>
+    +handleTooManyRequestException() : ResponseEntity<Response<T>>
+    +handleAPIException() : ResponseEntity<Response<T>>
+  }
+  class TravelInvalidUpdateException {
+    -serialVersionUID : long
+  }
+  class TravelNotFoundException {
+    -serialVersionUID : long
+  }
+  class AccountNotFoundException {
+    -serialVersionUID : long
+  }
+  class DuplicateStatisticsException {
+    -serialVersionUID : long
+  }
+  class NotParsableContentException {
+    -serialVersionUID : long
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.filters {
+  class JwtAuthenticationTokenFilter {
+    -AUTH_HEADER : String
+    -BEARER_PREFIX : String
+    -userDetailsService : UserDetailsService
+    -jwtTokenUtil : JwtTokenUtil
+    +doFilterInternal() : void
+  }
+  class JwtAuthenticationEntryPointFilter {
+    +commence() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.it {
+  class TravelsJavaApiIntegrationTest {
+    -port : int
+    -token : String
+    -restTemplate : TestRestTemplate
+    -headers : HttpHeaders
+    -entity : HttpEntity<UserDTO>
+    -headers : HttpHeaders
+    -entity : HttpEntity<JwtUserDTO>
+    -headers : HttpHeaders
+    -entity : HttpEntity<AccountDTO>
+    -headers : HttpHeaders
+    +testCreateUser() : void
+    +testAuthentication() : void
+    +testCreateAccount() : void
+    +testCreateTravelOrderNumber123456() : void
+    +testCreateTravelOrderNumber258963() : void
+    +testFindAllTravels() : void
+    +testFindTravelById() : void
+    +testFindTravelByIdThatNotExists() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.model.account {
+  class Account <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -accountNumber : String
+    -accountType : AccountTypeEnum
+    +convertEntityToDTO() : AccountDTO
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.model.security {
+  class JwtUser {
+    -serialVersionUID : long
+    -id : Long
+    -username : String
+    -password : String
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+    +isEnabled() : boolean
+    +getId() : Long
+  }
+  class JwtUserFactory {
+    +create() : JwtUser
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.model.statistic {
+  class Statistic <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -sum : BigDecimal
+    -avg : BigDecimal
+    -max : BigDecimal
+    -min : BigDecimal
+    -count : long
+    +convertEntityToDTO() : StatisticDTO
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.model.travel {
+  class Travel <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -orderNumber : String
+    -startDate : LocalDateTime
+    -endDate : LocalDateTime
+    -amount : BigDecimal
+    -type : TravelTypeEnum
+    -account : Account
+    +convertEntityToDTO() : TravelDTO
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.model.user {
+  class User <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -name : String
+    -password : String
+    -email : String
+    -role : RoleEnum
+    +isAdmin() : boolean
+    +convertEntityToDTO() : UserDTO
+  }
+  class UserAccount <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -user : User
+    -account : Account
+    +convertEntityToDTO() : UserAccountDTO
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.repository.account {
+  interface AccountRepository <<Repository>> {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.repository.statistic {
+  interface StatisticRepository <<Repository>> {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.repository.travel {
+  interface TravelRepository <<Repository>> {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.repository.user {
+  interface UserAccountRepository {
+  }
+  interface UserRepository {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.account {
+  interface AccountService {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.account.impl {
+  class AccountServiceImpl <<Service>> {
+    +save() : Account
+    +findByAccountNumber() : Optional<Account>
+    +findById() : Optional<Account>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.ratelimiting {
+  interface APIUsagePlansService {
+    +resolveBucket() : Bucket
+    +newBucket() : Bucket
+    +bucket() : Bucket
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.ratelimiting.impl {
+  class APIUsagePlansServiceImpl <<Service>> {
+    +resolveBucket() : Bucket
+    +newBucket() : Bucket
+    +bucket() : Bucket
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.security.impl {
+  class JwtUserDetailsServiceImpl <<Service>> {
+    -userService : UserService
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.statistic {
+  interface StatisticService {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.statistic.impl {
+  class StatisticServiceImpl <<Service>> {
+    -statisticRepository : StatisticRepository
+    +save() : Statistic
+    +verifyIfStatisticsIsSame() : Statistic
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.travel {
+  interface TravelService {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.travel.impl {
+  class TravelServiceImpl <<Service>> {
+    -partialize : Partialize
+    +save() : Travel
+    +findByOrderNumber() : Optional<Travel>
+    +deleteById() : void
+    +findById() : Travel
+    +findBetweenDates() : Page<Travel>
+    +findAll() : List<Travel>
+    +getPartialJsonResponse() : TravelDTO
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.user {
+  interface UserService {
+  }
+  interface UserAccountService {
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.service.user.impl {
+  class UserAccountServiceImpl <<Service>> {
+    +save() : UserAccount
+    +findByUserIdAndAccountId() : Optional<UserAccount>
+  }
+  class UserServiceImpl <<Service>> {
+    +save() : User
+    +findByEmail() : Optional<User>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.controller.account {
+  class AccountControllerTest {
+    -URL : String
+    -ACCOUNT_NUMBER : String
+    -ACCOUNT_ID : Long
+    +testSave() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.controller.security {
+  class AuthenticationControllerTest {
+    -URL : String
+    -EMAIL : String
+    -PASSWORD : String
+    +testGenerateToken() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.controller.statistic {
+  class StatisticControllerTest {
+    -ID : Long
+    -SUM : BigDecimal
+    -AVG : BigDecimal
+    -MIN : BigDecimal
+    -MAX : BigDecimal
+    -COUNT : long
+    -URL : String
+    -headers : HttpHeaders
+    -mockMvc : MockMvc
+    -service : StatisticService
+    +testSave() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.controller.travel {
+  class TravelControllerTest {
+    -ID : Long
+    -ACCOUNT_ID : Long
+    -ORDER_NUMBER : String
+    -START_DATE : String
+    -END_DATE : String
+    -TYPE : TravelTypeEnum
+    -VALUE : BigDecimal
+    -URL : String
+    +testSave() : void
+    +testSaveInvalidTravel() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.controller.user {
+  class UserAccountControllerTest {
+    -URL : String
+    -ID : Long
+    -USER_ID : Long
+    -ACCOUNT_ID : Long
+    +testSave() : void
+  }
+  class UserControllerTest {
+    -URL : String
+    -ID : Long
+    -NAME : String
+    -PASSWORD : String
+    -EMAIL : String
+    +testSave() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.repository.account {
+  class AccountRepositoryTest {
+    -repository : AccountRepository
+    -ACCOUNT_NUMBER : String
+    -accounts : List<Account>
+    +testSave() : void
+    +testFindByAccountNumber() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.repository.statistic {
+  class StatisticRepositoryTest {
+    +testSave() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.repository.travel {
+  class TravelRepositoryTest {
+    -repository : TravelRepository
+    -accountRepository : AccountRepository
+    -ACCOUNT_NUMBER : String
+    +testSave() : void
+    +testFindByOrderNumber() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.repository.user {
+  class UserRepositoryTest {
+    -EMAIL : String
+    +testSave() : void
+    +testFindByEmail() : void
+  }
+  class UserAccountRepositoryTest {
+    -EMAIL : String
+    -ACCOUNT_NUMBER : String
+    -userRepository : UserRepository
+    -accountRepository : AccountRepository
+    -userAccRepository : UserAccountRepository
+    +testSave() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.service.account {
+  class AccountServiceTest {
+    -service : AccountService
+    -repository : AccountRepository
+    -ACCOUNT_NUMBER : String
+    +testSave() : void
+    +testFindByAccountNumber() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.service.statistic {
+  class StatisticServiceTest {
+    -SUM : BigDecimal
+    -AVG : BigDecimal
+    -MIN : BigDecimal
+    -MAX : BigDecimal
+    -COUNT : long
+    -service : StatisticService
+    -repository : StatisticRepository
+    +testSave() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.service.travel {
+  class TravelServiceTest {
+    -service : TravelService
+    -repository : TravelRepository
+    -DATE : LocalDateTime
+    +testSave() : void
+    +testFindByOrderNumber() : void
+    +testFindBetweenDates() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.test.service.user {
+  class UserAccountServiceTest {
+    -EMAIL : String
+    -ACCOUNT_NUMBER : String
+    -userAccountService : UserAccountService
+    -userAccRepository : UserAccountRepository
+    +testSave() : void
+  }
+  class UserServiceTest {
+    -service : UserService
+    -repository : UserRepository
+    -EMAIL : String
+    +testSave() : void
+    +testFindByEmail() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.util {
+  class TravelsApiUtil {
+    -HEADER_TRAVELS_API_VERSION : String
+    -HEADER_API_KEY : String
+    -HEADER_LIMIT_REMAINING : String
+    -HEADER_RETRY_AFTER : String
+    +isTravelEndDateGreaterThanStartDate() : boolean
+    +isTravelDTOEndDateGreaterThanStartDate() : boolean
+    +getDateFormater() : DateTimeFormatter
+    +getDateTimeFormater() : DateTimeFormatter
+    +getLocalDateTimeFromString() : LocalDateTime
+    +convertLocalDateToLocalDateTime() : LocalDateTime
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.util.config {
+  class SwaggerConfiguration {
+    -releaseVersion : String
+    -apiVersion : String
+    +api() : Docket
+  }
+  class CacheConfiguration {
+    +cacheManagerCustomizer() : CacheManagerCustomizer<ConcurrentMapCacheManager>
+    +customize() : void
+  }
+  class PageableConfiguration {
+  }
+  class RateLimitingConfiguration {
+    -interceptor : RateLimitInterceptor
+    +addInterceptors() : void
+  }
+  class TravelsApiConfiguration {
+    +discoverers() : LinkDiscoverers
+    +initPartialize() : void
+  }
+  class SecurityConfiguration {
+    -unauthorizedHandler : JwtAuthenticationEntryPointFilter
+    -userDetailsService : UserDetailsService
+    -activeProfile : String
+    +configureAuthentication() : void
+    +authenticationManagerBean() : AuthenticationManager
+    +passwordEncoder() : PasswordEncoder
+    +authenticationTokenFilterBean() : JwtAuthenticationTokenFilter
+    +configure() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.util.converters {
+  class BigDecimalConverter {
+    +convert() : void
+    +convert() : void
+    +getManagedObjectClass() : Class<BigDecimal>
+  }
+  class LocalDateTimeConverter {
+    -DATETIME_FORMAT : String
+    +convert() : void
+    +convert() : void
+    +getManagedObjectClass() : Class<LocalDateTime>
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.util.interceptor {
+  class RateLimitInterceptor {
+    -pricingPlanService : APIUsagePlansService
+    +preHandle() : boolean
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.util.logging {
+  class CacheEventLogger {
+    +onEvent() : void
+  }
+}
+
+package io.github.mariazevedo88.travelsjavaapi.util.security {
+  class JwtTokenUtil {
+    -CLAIM_KEY_USERNAME : String
+    -CLAIM_KEY_ROLE : String
+    -CLAIM_KEY_CREATED : String
+    -secret : String
+    -expiration : Long
+    +getUsernameFromToken() : String
+    +getExpirationDateFromToken() : Date
+    +validToken() : boolean
+    +getToken() : String
+    +getToken() : String
+  }
+  class BcryptUtil {
+    +getHash() : String
+    +isEncrypted() : boolean
+    +decode() : String
+  }
+}
+
+' --- Relatii ---
+UserRepositoryTest --> RoleEnum
+UserRepositoryTest --> User
+UserRepositoryTest --> UserRepository
+UserAccountRepositoryTest --> AccountTypeEnum
+UserAccountRepositoryTest --> RoleEnum
+UserAccountRepositoryTest --> Account
+UserAccountRepositoryTest --> User
+UserAccountRepositoryTest --> UserAccount
+UserAccountRepositoryTest --> AccountRepository
+UserAccountRepositoryTest --> UserAccountRepository
+UserAccountRepositoryTest --> UserRepository
+StatisticRepositoryTest --> Statistic
+StatisticRepositoryTest --> StatisticRepository
+AccountRepositoryTest --> AccountTypeEnum
+AccountRepositoryTest --> Account
+AccountRepositoryTest --> AccountRepository
+TravelRepositoryTest --> AccountTypeEnum
+TravelRepositoryTest --> TravelTypeEnum
+TravelRepositoryTest --> Account
+TravelRepositoryTest --> Travel
+TravelRepositoryTest --> AccountRepository
+TravelRepositoryTest --> TravelRepository
+AuthenticationControllerTest --> JwtUserDTO
+AuthenticationControllerTest --> RoleEnum
+AuthenticationControllerTest --> JwtUser
+AuthenticationControllerTest --> JwtUserFactory
+AuthenticationControllerTest --> User
+AuthenticationControllerTest --> BcryptUtil
+UserAccountControllerTest --> UserAccountDTO
+UserAccountControllerTest --> Account
+UserAccountControllerTest --> User
+UserAccountControllerTest --> UserAccount
+UserAccountControllerTest --> UserAccountService
+UserControllerTest --> UserDTO
+UserControllerTest --> RoleEnum
+UserControllerTest --> User
+UserControllerTest --> UserService
+StatisticControllerTest --> Statistic
+StatisticControllerTest --> StatisticService
+AccountControllerTest --> AccountDTO
+AccountControllerTest --> AccountTypeEnum
+AccountControllerTest --> Account
+AccountControllerTest --> AccountService
+TravelControllerTest --> TravelDTO
+TravelControllerTest --> AccountTypeEnum
+TravelControllerTest --> TravelTypeEnum
+TravelControllerTest --> Account
+TravelControllerTest --> Travel
+TravelControllerTest --> TravelService
+TravelControllerTest --> TravelsApiUtil
+UserAccountServiceTest --> AccountTypeEnum
+UserAccountServiceTest --> RoleEnum
+UserAccountServiceTest --> Account
+UserAccountServiceTest --> User
+UserAccountServiceTest --> UserAccount
+UserAccountServiceTest --> UserAccountRepository
+UserAccountServiceTest --> UserAccountService
+UserServiceTest --> RoleEnum
+UserServiceTest --> User
+UserServiceTest --> UserRepository
+UserServiceTest --> UserService
+StatisticServiceTest --> Statistic
+StatisticServiceTest --> StatisticRepository
+StatisticServiceTest --> StatisticService
+AccountServiceTest --> AccountTypeEnum
+AccountServiceTest --> Account
+AccountServiceTest --> AccountRepository
+AccountServiceTest --> AccountService
+TravelServiceTest --> AccountTypeEnum
+TravelServiceTest --> TravelTypeEnum
+TravelServiceTest --> Account
+TravelServiceTest --> Travel
+TravelServiceTest --> TravelRepository
+TravelServiceTest --> TravelService
+TravelsJavaApiIntegrationTest --> AccountDTO
+TravelsJavaApiIntegrationTest --> JwtUserDTO
+TravelsJavaApiIntegrationTest --> TravelDTO
+TravelsJavaApiIntegrationTest --> UserDTO
+TravelsJavaApiIntegrationTest --> APIUsagePlansEnum
+TravelsJavaApiIntegrationTest --> AccountTypeEnum
+TravelsJavaApiIntegrationTest --> RoleEnum
+TravelsJavaApiIntegrationTest --> TravelTypeEnum
+TravelsJavaApiIntegrationTest --> TravelsApiUtil
+UserAccountDTO --> Account
+UserAccountDTO --> User
+UserAccountDTO --> UserAccount
+UserDTO --> User
+UserDTO --> BcryptUtil
+AccountDTO --> Account
+TravelDTO --> Travel
+JwtAuthenticationTokenFilter --> JwtTokenUtil
+UserAccountRepository --> UserAccount
+UserRepository --> User
+StatisticRepository --> Statistic
+AccountRepository --> Account
+TravelRepository --> Travel
+TravelsApiUtil --> TravelDTO
+TravelsApiUtil --> Travel
+RateLimitingConfiguration --> RateLimitInterceptor
+TravelsApiConfiguration --> BigDecimalConverter
+TravelsApiConfiguration --> LocalDateTimeConverter
+SecurityConfiguration --> JwtAuthenticationEntryPointFilter
+SecurityConfiguration --> JwtAuthenticationTokenFilter
+RateLimitInterceptor --> APIUsagePlansService
+RateLimitInterceptor --> TravelsApiUtil
+AuthenticationController --> JwtUserDTO
+AuthenticationController --> TokenDTO
+AuthenticationController --> Response
+AuthenticationController --> TravelsApiUtil
+AuthenticationController --> JwtTokenUtil
+UserAccountController --> TravelController
+UserAccountController --> UserAccountDTO
+UserAccountController --> Response
+UserAccountController --> UserAccount
+UserAccountController --> UserAccountService
+UserAccountController --> TravelsApiUtil
+UserController --> UserDTO
+UserController --> Response
+UserController --> User
+UserController --> UserService
+UserController --> TravelsApiUtil
+StatisticController --> StatisticDTO
+StatisticController --> Response
+StatisticController --> Statistic
+StatisticController --> Travel
+StatisticController --> StatisticService
+StatisticController --> TravelService
+StatisticController --> TravelsApiUtil
+AccountController --> AccountDTO
+AccountController --> Response
+AccountController --> AccountNotFoundException
+AccountController --> TravelNotFoundException
+AccountController --> Account
+AccountController --> AccountService
+AccountController --> TravelsApiUtil
+TravelController --> TravelDTO
+TravelController --> Response
+TravelController --> NotParsableContentException
+TravelController --> TravelInvalidUpdateException
+TravelController --> TravelNotFoundException
+TravelController --> Travel
+TravelController --> TravelService
+TravelController --> TravelsApiUtil
+JwtUserFactory --> RoleEnum
+JwtUserFactory --> User
+User --> UserDTO
+User --> RoleEnum
+UserAccount --> UserAccountDTO
+UserAccount --> Account
+Statistic --> StatisticDTO
+Account --> AccountDTO
+Account --> AccountTypeEnum
+Travel --> TravelDTO
+Travel --> TravelTypeEnum
+Travel --> Account
+JwtUserDetailsServiceImpl --> JwtUserFactory
+JwtUserDetailsServiceImpl --> User
+JwtUserDetailsServiceImpl --> UserService
+UserService --> User
+UserAccountService --> UserAccount
+UserAccountServiceImpl ..|> UserAccountService
+UserAccountServiceImpl --> UserAccount
+UserAccountServiceImpl --> UserAccountRepository
+UserAccountServiceImpl --> UserAccountService
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> UserService
+APIUsagePlansServiceImpl ..|> APIUsagePlansService
+APIUsagePlansServiceImpl --> APIUsagePlansEnum
+APIUsagePlansServiceImpl --> APIUsagePlansService
+StatisticService --> DuplicateStatisticsException
+StatisticService --> Statistic
+StatisticServiceImpl ..|> StatisticService
+StatisticServiceImpl --> DuplicateStatisticsException
+StatisticServiceImpl --> Statistic
+StatisticServiceImpl --> StatisticRepository
+StatisticServiceImpl --> StatisticService
+AccountService --> Account
+AccountServiceImpl ..|> AccountService
+AccountServiceImpl --> Account
+AccountServiceImpl --> AccountRepository
+AccountServiceImpl --> AccountService
+TravelService --> TravelDTO
+TravelService --> TravelNotFoundException
+TravelService --> Travel
+TravelServiceImpl ..|> TravelService
+TravelServiceImpl --> TravelDTO
+TravelServiceImpl --> TravelNotFoundException
+TravelServiceImpl --> Travel
+TravelServiceImpl --> TravelRepository
+TravelServiceImpl --> TravelService
+TravelsJavaAPIExceptionHandler --> Response
+
+@enduml

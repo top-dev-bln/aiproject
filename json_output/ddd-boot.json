@@ -1,0 +1,71 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, content management domain. It serves API Consumer, Customer, System, User as its primary actors. The main business capabilities include example, user, user mng. Core business data revolves around Address, DDDEntity, ExampleAddress, ExampleDetail. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserCommandService",
+          "UserCommandServiceImpl",
+          "UserMngCommandService",
+          "UserMngCommandServiceImpl",
+          "UserMngQueryService",
+          "UserMngQueryServiceImpl",
+          "UserMsQueryService",
+          "UserMsQueryServiceImpl",
+          "UserQueryService",
+          "UserQueryServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [
+          "EventPublishingConfigService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
+        "services": [
+          "OrderItem"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage example operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "ExampleCommandService",
+          "ExampleCommandServiceImpl",
+          "ExampleQueryService",
+          "ExampleQueryServiceImpl"
+        ],
+        "controllers": [
+          "ExampleController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage user mng operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "UserMngCommandService",
+          "UserMngCommandServiceImpl",
+          "UserMngQueryService",
+          "UserMngQueryServiceImpl"
+        ],
+        "controllers": [
+          "UserMngController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ExampleController[\"ExampleController\"]\n    UserController[\"UserController\"]\n    UserMngController[\"UserMngController\"]\n    UserMsController[\"UserMsController\"]\n    WorkspaceMsController[\"WorkspaceMsController\"]\n  end\n  subgraph Services\n    DDDQueryService[\"DDDQueryService\"]\n    DDDQueryServiceImpl[\"DDDQueryServiceImpl\"]\n    DelegatingNamingMaintainService[\"DelegatingNamingMaintainService\"]\n    DelegatingNamingService[\"DelegatingNamingService\"]\n    EventPublishingConfigService[\"EventPublishingConfigService\"]\n    ExampleCommandService[\"ExampleCommandService\"]\n    ExampleCommandServiceImpl[\"ExampleCommandServiceImpl\"]\n    ExampleQueryService[\"ExampleQueryService\"]\n    ExampleQueryServiceImpl[\"ExampleQueryServiceImpl\"]\n    MicroServiceAutoConfiguration[\"MicroServiceAutoConfiguration\"]\n    OrderItem[\"OrderItem\"]\n    UserCommandService[\"UserCommandService\"]\n    UserCommandServiceImpl[\"UserCommandServiceImpl\"]\n    UserMngCommandService[\"UserMngCommandService\"]\n    UserMngCommandServiceImpl[\"UserMngCommandServiceImpl\"]\n    UserMngQueryService[\"UserMngQueryService\"]\n    UserMngQueryServiceImpl[\"UserMngQueryServiceImpl\"]\n    UserMsQueryService[\"UserMsQueryService\"]\n    UserMsQueryServiceImpl[\"UserMsQueryServiceImpl\"]\n    UserQueryService[\"UserQueryService\"]\n    UserQueryServiceImpl[\"UserQueryServiceImpl\"]\n    Workspace[\"Workspace\"]\n    WorkspaceMicroservice[\"WorkspaceMicroservice\"]\n    WorkspaceMsCommandService[\"WorkspaceMsCommandService\"]\n    WorkspaceMsCommandServiceImpl[\"WorkspaceMsCommandServiceImpl\"]\n  end\n  subgraph Data_Access\n    Address[\"Address\"]\n    DDDEntity[\"DDDEntity\"]\n    DDDRepository[\"DDDRepository\"]\n    ExampleAddress[\"ExampleAddress\"]\n    ExampleDetail[\"ExampleDetail\"]\n    ExampleDomainService[\"ExampleDomainService\"]\n    ExampleEntity[\"ExampleEntity\"]\n    ExampleLocationRepository[\"ExampleLocationRepository\"]\n    ExampleRepository[\"ExampleRepository\"]\n    ExampleSecurityRepository[\"ExampleSecurityRepository\"]\n    ExampleSecurityRepositoryImpl[\"ExampleSecurityRepositoryImpl\"]\n    LocationRepository[\"LocationRepository\"]\n    LocationRepositoryImpl[\"LocationRepositoryImpl\"]\n    SecurityRepository[\"SecurityRepository\"]\n    User[\"User\"]\n    UserDomainService[\"UserDomainService\"]\n    UserEntity[\"UserEntity\"]\n    UserProfilePageCondition[\"UserProfilePageCondition\"]\n    UserRepository[\"UserRepository\"]\n    WorkspaceEntity[\"WorkspaceEntity\"]\n    WorkspaceRepository[\"WorkspaceRepository\"]\n  end\n  subgraph Security\n    CryptoUtil[\"CryptoUtil\"]\n    WorkspaceSecurityInterceptor[\"WorkspaceSecurityInterceptor\"]\n  end\n  subgraph Infrastructure\n    AppConfig[\"AppConfig\"]\n    CellStyleConfig[\"CellStyleConfig\"]\n    CustomMybatisAutoConfiguration[\"CustomMybatisAutoConfiguration\"]\n    CustomWebAutoConfiguration[\"CustomWebAutoConfiguration\"]\n    DataCellConfig[\"DataCellConfig\"]\n    DefaultNacosConfigConverter[\"DefaultNacosConfigConverter\"]\n    EnableNacosConfig[\"EnableNacosConfig\"]\n    EnableNacosDiscovery[\"EnableNacosDiscovery\"]\n    ExampleDataObjectHandler[\"ExampleDataObjectHandler\"]\n    GlobalNacosPropertiesBeanDefinitionParser[\"GlobalNacosPropertiesBeanDefinitionParser\"]\n    HeaderCellConfig[\"HeaderCellConfig\"]\n    LogAutoFreshProcess[\"LogAutoFreshProcess\"]\n    MicroserviceProperties[\"MicroserviceProperties\"]\n    MicroserviceSecurityInterceptor[\"MicroserviceSecurityInterceptor\"]\n    MultiProfilesYamlConfigParseSupport[\"MultiProfilesYamlConfigParseSupport\"]\n    NacosBootConfigurationPropertiesBinder[\"NacosBootConfigurationPropertiesBinder\"]\n    NacosCharSequenceEditor[\"NacosCharSequenceEditor\"]\n    NacosConfigAutoConfiguration[\"NacosConfigAutoConfiguration\"]\n    NacosConfigLoader[\"NacosConfigLoader\"]\n    NacosConfigProperties[\"NacosConfigProperties\"]\n    NacosConfigPropertiesUtils[\"NacosConfigPropertiesUtils\"]\n    NacosConfigRemovedEvent[\"NacosConfigRemovedEvent\"]\n    NacosConfigurationPropertiesBinder[\"NacosConfigurationPropertiesBinder\"]\n    NacosLoggingListener[\"NacosLoggingListener\"]\n    NacosValueTarget[\"NacosValueTarget\"]\n    OpenFeignAutoConfiguration[\"OpenFeignAutoConfiguration\"]\n    OpenFeignProperties[\"OpenFeignProperties\"]\n    SheetConfig[\"SheetConfig\"]\n    WorkbookConfig[\"WorkbookConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

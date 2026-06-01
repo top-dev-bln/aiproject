@@ -1,0 +1,561 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package app.common.exception; {
+class BaseRuntimeException {
+}
+
+}
+
+package app.common.search; {
+class BaseSearchCriteria {
+}
+
+class PageSearchResult {
+}
+
+class QueryExecutor {
+}
+
+class SearchRequest {
+}
+
+}
+
+package app.common.utils; {
+class DateUtils {
+}
+
+class JsonUtils {
+}
+
+class SearchUtils {
+}
+
+}
+
+package app.common.validation; {
+class BaseValidator {
+}
+
+class CommonValidatorUtils {
+}
+
+}
+
+package app.config; {
+class SwaggerConfiguration {
+}
+
+}
+
+package app.controller; {
+class ProductController {
+}
+
+class ShelfController {
+}
+
+class StockClerkController {
+}
+
+class StockController {
+}
+
+class WarehouseController {
+}
+
+class WareTransactionController {
+}
+
+class WareTransactionDetailController {
+}
+
+}
+
+package app.dto; {
+class ProductDto {
+}
+
+class ShelfDto {
+}
+
+class StockClerkDto {
+}
+
+class StockDto {
+}
+
+class WarehouseDto {
+}
+
+class WareTransactionDetailDto {
+}
+
+class WareTransactionDto {
+}
+
+}
+
+package app.enums; {
+class MeasurementUnit {
+}
+
+class WareTransactionType {
+}
+
+}
+
+package app.error; {
+class ErrorResponse {
+}
+
+}
+
+package app.exception; {
+class FieldNotUniqueException {
+}
+
+class GeneralExceptionHandler {
+}
+
+class InvalidQuantityException {
+}
+
+class MissingRequiredFieldException {
+}
+
+class NotEnoughQuantityToExportException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package app.model; {
+class Product {
+}
+
+class Shelf {
+}
+
+class Stock {
+}
+
+class StockClerk {
+}
+
+class Warehouse {
+}
+
+class WareTransaction {
+}
+
+class WareTransactionDetail {
+}
+
+}
+
+package app.projection; {
+class StockProjection {
+}
+
+}
+
+package app.repository.impl; {
+class ProductRepositoryImpl {
+}
+
+class StockRepositoryImpl {
+}
+
+}
+
+package app.repository; {
+class ProductRepository {
+}
+
+class ProductRepositoryCustom {
+}
+
+class ShelfRepository {
+}
+
+class StockClerkRepository {
+}
+
+class StockRepository {
+}
+
+class StockRepositoryCustom {
+}
+
+class WarehouseRepository {
+}
+
+class WareTransactionDetailRepository {
+}
+
+class WareTransactionRepository {
+}
+
+}
+
+package app.search; {
+class ProductSearchCriteria {
+}
+
+class StockSearchCriteria {
+}
+
+}
+
+package app.service.impl; {
+class ProductServiceImpl {
+}
+
+class ShelfServiceImpl {
+}
+
+class StockClerkServiceImpl {
+}
+
+class StockServiceImpl {
+}
+
+class WarehouseServiceImpl {
+}
+
+class WareTransactionDetailServiceImpl {
+}
+
+class WareTransactionServiceImpl {
+}
+
+}
+
+package app.service; {
+class ProductService {
+}
+
+class ShelfService {
+}
+
+class StockClerkService {
+}
+
+class StockService {
+}
+
+class WarehouseService {
+}
+
+class WareTransactionDetailService {
+}
+
+class WareTransactionService {
+}
+
+}
+
+package app.validation; {
+class ProductDtoValidator {
+}
+
+class ShelfDtoValidator {
+}
+
+class StockClerkDtoValidator {
+}
+
+class WarehouseDtoValidator {
+}
+
+class WareTransactionDetailDtoValidator {
+}
+
+class WareTransactionDtoValidator {
+}
+
+}
+
+package app; {
+class WarehouseApplication {
+}
+
+class WarehouseApplicationTests {
+}
+
+}
+
+QueryExecutor -- BaseSearchCriteria
+QueryExecutor -- PageSearchResult
+SearchRequest -- BaseSearchCriteria
+JsonUtils -- SearchUtils
+SearchUtils -- BaseSearchCriteria
+SearchUtils -- PageSearchResult
+SearchUtils -- SearchRequest
+CommonValidatorUtils -- FieldNotUniqueException
+CommonValidatorUtils -- MissingRequiredFieldException
+ProductController -- PageSearchResult
+ProductController -- SearchRequest
+ProductController -- SearchUtils
+ProductController -- ProductDto
+ProductController -- Product
+ProductController -- ProductSearchCriteria
+ProductController -- ProductService
+ShelfController -- ShelfDto
+ShelfController -- Shelf
+ShelfController -- ShelfService
+StockClerkController -- StockClerkDto
+StockClerkController -- Stock
+StockClerkController -- StockClerk
+StockClerkController -- StockClerkService
+StockController -- PageSearchResult
+StockController -- SearchRequest
+StockController -- SearchUtils
+StockController -- StockDto
+StockController -- Product
+StockController -- Stock
+StockController -- StockProjection
+StockController -- StockSearchCriteria
+StockController -- StockService
+WarehouseController -- ShelfDto
+WarehouseController -- WarehouseDto
+WarehouseController -- Shelf
+WarehouseController -- Warehouse
+WarehouseController -- WarehouseService
+WareTransactionController -- WareTransactionDto
+WareTransactionController -- WareTransaction
+WareTransactionController -- WareTransactionService
+WareTransactionDetailController -- WareTransactionDetailDto
+WareTransactionDetailController -- WareTransaction
+WareTransactionDetailController -- WareTransactionDetail
+WareTransactionDetailController -- WareTransactionDetailService
+ProductDto -- MeasurementUnit
+ProductDto -- Product
+ShelfDto -- Shelf
+ShelfDto -- Warehouse
+StockClerkDto -- Stock
+StockClerkDto -- StockClerk
+StockDto -- Stock
+WarehouseDto -- ShelfDto
+WarehouseDto -- Shelf
+WarehouseDto -- Warehouse
+WareTransactionDetailDto -- Product
+WareTransactionDetailDto -- Shelf
+WareTransactionDetailDto -- WareTransaction
+WareTransactionDetailDto -- WareTransactionDetail
+WareTransactionDto -- WareTransactionDetailDto
+WareTransactionDto -- WareTransactionType
+WareTransactionDto -- Stock
+WareTransactionDto -- StockClerk
+WareTransactionDto -- WareTransaction
+WareTransactionDto -- WareTransactionDetail
+WareTransactionType -- WareTransaction
+FieldNotUniqueException -- BaseRuntimeException
+GeneralExceptionHandler -- BaseRuntimeException
+GeneralExceptionHandler -- ErrorResponse
+InvalidQuantityException -- BaseRuntimeException
+MissingRequiredFieldException -- BaseRuntimeException
+NotEnoughQuantityToExportException -- BaseRuntimeException
+ResourceNotFoundException -- BaseRuntimeException
+Product -- MeasurementUnit
+Shelf -- Warehouse
+StockClerk -- Stock
+WareTransaction -- Stock
+WareTransaction -- StockClerk
+WareTransaction -- WareTransactionDetail
+WareTransactionDetail -- Product
+WareTransactionDetail -- Shelf
+StockProjection -- Stock
+ProductRepositoryImpl -- PageSearchResult
+ProductRepositoryImpl -- QueryExecutor
+ProductRepositoryImpl -- SearchUtils
+ProductRepositoryImpl -- MeasurementUnit
+ProductRepositoryImpl -- Product
+ProductRepositoryImpl -- ProductRepository
+ProductRepositoryImpl -- ProductRepositoryCustom
+ProductRepositoryImpl -- ProductSearchCriteria
+StockRepositoryImpl -- PageSearchResult
+StockRepositoryImpl -- QueryExecutor
+StockRepositoryImpl -- SearchUtils
+StockRepositoryImpl -- Product
+StockRepositoryImpl -- Shelf
+StockRepositoryImpl -- Stock
+StockRepositoryImpl -- Warehouse
+StockRepositoryImpl -- StockRepository
+StockRepositoryImpl -- StockRepositoryCustom
+StockRepositoryImpl -- StockSearchCriteria
+ProductRepository -- Product
+ProductRepository -- ProductRepositoryCustom
+ProductRepositoryCustom -- PageSearchResult
+ProductRepositoryCustom -- Product
+ProductRepositoryCustom -- ProductSearchCriteria
+ShelfRepository -- Shelf
+StockClerkRepository -- Stock
+StockClerkRepository -- StockClerk
+StockRepository -- Product
+StockRepository -- Shelf
+StockRepository -- Stock
+StockRepository -- Warehouse
+StockRepository -- WareTransaction
+StockRepository -- WareTransactionDetail
+StockRepository -- StockProjection
+StockRepository -- StockRepositoryCustom
+StockRepositoryCustom -- PageSearchResult
+StockRepositoryCustom -- Stock
+StockRepositoryCustom -- StockSearchCriteria
+WarehouseRepository -- Warehouse
+WareTransactionDetailRepository -- WareTransactionType
+WareTransactionDetailRepository -- Product
+WareTransactionDetailRepository -- Shelf
+WareTransactionDetailRepository -- WareTransaction
+WareTransactionDetailRepository -- WareTransactionDetail
+WareTransactionRepository -- WareTransaction
+ProductSearchCriteria -- BaseSearchCriteria
+ProductSearchCriteria -- MeasurementUnit
+ProductSearchCriteria -- Product
+StockSearchCriteria -- BaseSearchCriteria
+StockSearchCriteria -- Stock
+ProductServiceImpl -- PageSearchResult
+ProductServiceImpl -- ProductDto
+ProductServiceImpl -- ResourceNotFoundException
+ProductServiceImpl -- Product
+ProductServiceImpl -- ProductRepository
+ProductServiceImpl -- ProductSearchCriteria
+ProductServiceImpl -- ProductService
+ProductServiceImpl -- ProductDtoValidator
+ShelfServiceImpl -- ShelfDto
+ShelfServiceImpl -- ResourceNotFoundException
+ShelfServiceImpl -- Shelf
+ShelfServiceImpl -- Warehouse
+ShelfServiceImpl -- ShelfRepository
+ShelfServiceImpl -- WarehouseRepository
+ShelfServiceImpl -- ShelfService
+ShelfServiceImpl -- ShelfDtoValidator
+StockClerkServiceImpl -- StockClerkDto
+StockClerkServiceImpl -- ResourceNotFoundException
+StockClerkServiceImpl -- Stock
+StockClerkServiceImpl -- StockClerk
+StockClerkServiceImpl -- StockClerkRepository
+StockClerkServiceImpl -- StockClerkService
+StockClerkServiceImpl -- StockClerkDtoValidator
+StockServiceImpl -- PageSearchResult
+StockServiceImpl -- StockDto
+StockServiceImpl -- Product
+StockServiceImpl -- Stock
+StockServiceImpl -- StockProjection
+StockServiceImpl -- StockRepository
+StockServiceImpl -- StockSearchCriteria
+StockServiceImpl -- StockService
+WarehouseServiceImpl -- ShelfDto
+WarehouseServiceImpl -- WarehouseDto
+WarehouseServiceImpl -- ResourceNotFoundException
+WarehouseServiceImpl -- Shelf
+WarehouseServiceImpl -- Warehouse
+WarehouseServiceImpl -- WarehouseRepository
+WarehouseServiceImpl -- WarehouseService
+WarehouseServiceImpl -- WarehouseDtoValidator
+WareTransactionDetailServiceImpl -- WareTransactionDetailDto
+WareTransactionDetailServiceImpl -- ResourceNotFoundException
+WareTransactionDetailServiceImpl -- Product
+WareTransactionDetailServiceImpl -- Shelf
+WareTransactionDetailServiceImpl -- WareTransaction
+WareTransactionDetailServiceImpl -- WareTransactionDetail
+WareTransactionDetailServiceImpl -- ProductRepository
+WareTransactionDetailServiceImpl -- ShelfRepository
+WareTransactionDetailServiceImpl -- WareTransactionDetailRepository
+WareTransactionDetailServiceImpl -- WareTransactionRepository
+WareTransactionDetailServiceImpl -- WareTransactionDetailService
+WareTransactionServiceImpl -- WareTransactionDetailDto
+WareTransactionServiceImpl -- WareTransactionDto
+WareTransactionServiceImpl -- ResourceNotFoundException
+WareTransactionServiceImpl -- Product
+WareTransactionServiceImpl -- Shelf
+WareTransactionServiceImpl -- Stock
+WareTransactionServiceImpl -- StockClerk
+WareTransactionServiceImpl -- WareTransaction
+WareTransactionServiceImpl -- WareTransactionDetail
+WareTransactionServiceImpl -- ProductRepository
+WareTransactionServiceImpl -- ShelfRepository
+WareTransactionServiceImpl -- StockClerkRepository
+WareTransactionServiceImpl -- WareTransactionRepository
+WareTransactionServiceImpl -- WareTransactionService
+WareTransactionServiceImpl -- WareTransactionDtoValidator
+ProductService -- PageSearchResult
+ProductService -- ProductDto
+ProductService -- Product
+ProductService -- ProductSearchCriteria
+ShelfService -- ShelfDto
+ShelfService -- Shelf
+StockClerkService -- StockClerkDto
+StockClerkService -- Stock
+StockClerkService -- StockClerk
+StockService -- PageSearchResult
+StockService -- StockDto
+StockService -- Product
+StockService -- Stock
+StockService -- StockProjection
+StockService -- StockSearchCriteria
+WarehouseService -- WarehouseDto
+WarehouseService -- Warehouse
+WareTransactionDetailService -- WareTransactionDetailDto
+WareTransactionDetailService -- WareTransaction
+WareTransactionDetailService -- WareTransactionDetail
+WareTransactionService -- WareTransactionDto
+WareTransactionService -- WareTransaction
+ProductDtoValidator -- BaseValidator
+ProductDtoValidator -- CommonValidatorUtils
+ProductDtoValidator -- ProductDto
+ProductDtoValidator -- Product
+ProductDtoValidator -- ProductRepository
+ShelfDtoValidator -- BaseValidator
+ShelfDtoValidator -- CommonValidatorUtils
+ShelfDtoValidator -- ShelfDto
+ShelfDtoValidator -- Shelf
+ShelfDtoValidator -- ShelfRepository
+StockClerkDtoValidator -- BaseValidator
+StockClerkDtoValidator -- CommonValidatorUtils
+StockClerkDtoValidator -- StockClerkDto
+StockClerkDtoValidator -- Stock
+StockClerkDtoValidator -- StockClerk
+StockClerkDtoValidator -- StockClerkRepository
+WarehouseDtoValidator -- BaseValidator
+WarehouseDtoValidator -- ShelfDto
+WarehouseDtoValidator -- WarehouseDto
+WarehouseDtoValidator -- FieldNotUniqueException
+WarehouseDtoValidator -- Shelf
+WarehouseDtoValidator -- Warehouse
+WarehouseDtoValidator -- ShelfDtoValidator
+WareTransactionDetailDtoValidator -- BaseValidator
+WareTransactionDetailDtoValidator -- CommonValidatorUtils
+WareTransactionDetailDtoValidator -- WareTransactionDetailDto
+WareTransactionDetailDtoValidator -- Product
+WareTransactionDetailDtoValidator -- Shelf
+WareTransactionDetailDtoValidator -- WareTransaction
+WareTransactionDetailDtoValidator -- WareTransactionDetail
+WareTransactionDtoValidator -- BaseValidator
+WareTransactionDtoValidator -- CommonValidatorUtils
+WareTransactionDtoValidator -- WareTransactionDetailDto
+WareTransactionDtoValidator -- WareTransactionDto
+WareTransactionDtoValidator -- WareTransactionType
+WareTransactionDtoValidator -- InvalidQuantityException
+WareTransactionDtoValidator -- NotEnoughQuantityToExportException
+WareTransactionDtoValidator -- Product
+WareTransactionDtoValidator -- Shelf
+WareTransactionDtoValidator -- Stock
+WareTransactionDtoValidator -- StockClerk
+WareTransactionDtoValidator -- WareTransaction
+WareTransactionDtoValidator -- WareTransactionDetail
+WareTransactionDtoValidator -- WareTransactionDetailRepository
+WareTransactionDtoValidator -- WareTransactionDetailDtoValidator
+WarehouseApplication -- Warehouse
+WarehouseApplicationTests -- Warehouse
+WarehouseApplicationTests -- WarehouseApplication
+@enduml

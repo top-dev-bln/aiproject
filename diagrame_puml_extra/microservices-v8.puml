@@ -1,0 +1,354 @@
+@startuml
+package microservices.book.gamification.client.dto; {
+class MultiplicationResultAttempt {
+}
+
+}
+
+package microservices.book.gamification.client; {
+class MultiplicationResultAttemptClient {
+}
+
+class MultiplicationResultAttemptClientImpl {
+}
+
+class MultiplicationResultAttemptDeserializer {
+}
+
+}
+
+package microservices.book.gamification.configuration; {
+class RabbitMQConfiguration {
+}
+
+class RestClientConfiguration {
+}
+
+class WebConfiguration {
+}
+
+}
+
+package microservices.book.gamification.controller; {
+class LeaderBoardController {
+}
+
+class UserStatsController {
+}
+
+class LeaderBoardControllerTest {
+}
+
+class UserStatsControllerTest {
+}
+
+}
+
+package microservices.book.gamification.domain; {
+class Badge {
+}
+
+class BadgeCard {
+}
+
+class GameStats {
+}
+
+class LeaderBoardRow {
+}
+
+class ScoreCard {
+}
+
+}
+
+package microservices.book.gamification.event; {
+class EventHandler {
+}
+
+class MultiplicationSolvedEvent {
+}
+
+class EventHandlerTest {
+}
+
+}
+
+package microservices.book.gamification.repository; {
+class BadgeCardRepository {
+}
+
+class ScoreCardRepository {
+}
+
+}
+
+package microservices.book.gamification.service; {
+class GameService {
+}
+
+class GameServiceImpl {
+}
+
+class LeaderBoardService {
+}
+
+class LeaderBoardServiceImpl {
+}
+
+class GameServiceImplTest {
+}
+
+class LeaderBoardServiceImplTest {
+}
+
+}
+
+package microservices.book; {
+class GamificationApplication {
+}
+
+class SocialMultiplicationApplication {
+}
+
+}
+
+package microservices.book.gateway.configuration; {
+class HystrixFallbackConfiguration {
+}
+
+class RibbonConfiguration {
+}
+
+class WebConfiguration {
+}
+
+}
+
+package microservices.book.gateway; {
+class GatewayApplication {
+}
+
+class GatewayApplicationTests {
+}
+
+}
+
+package microservices.book.serviceregistry; {
+class ServiceRegistryApplication {
+}
+
+class ServiceRegistryApplicationTests {
+}
+
+}
+
+package microservices.book.multiplication.configuration; {
+class RabbitMQConfiguration {
+}
+
+class WebConfiguration {
+}
+
+}
+
+package microservices.book.multiplication.controller; {
+class MultiplicationController {
+}
+
+class MultiplicationResultAttemptController {
+}
+
+class MultiplicationControllerTest {
+}
+
+class MultiplicationResultAttemptControllerTest {
+}
+
+}
+
+package microservices.book.multiplication.domain; {
+class Multiplication {
+}
+
+class MultiplicationResultAttempt {
+}
+
+class User {
+}
+
+}
+
+package microservices.book.multiplication.event; {
+class EventDispatcher {
+}
+
+class MultiplicationSolvedEvent {
+}
+
+}
+
+package microservices.book.multiplication.repository; {
+class MultiplicationRepository {
+}
+
+class MultiplicationResultAttemptRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package microservices.book.multiplication.service; {
+class MultiplicationService {
+}
+
+class MultiplicationServiceImpl {
+}
+
+class RandomGeneratorService {
+}
+
+class RandomGeneratorServiceImpl {
+}
+
+class MultiplicationServiceImplTest {
+}
+
+class RandomGeneratorServiceImplTest {
+}
+
+}
+
+MultiplicationResultAttempt -- Multiplication
+MultiplicationResultAttempt -- User
+MultiplicationResultAttemptClient -- MultiplicationResultAttempt
+MultiplicationResultAttemptClient -- Multiplication
+MultiplicationResultAttemptClientImpl -- MultiplicationResultAttempt
+MultiplicationResultAttemptClientImpl -- MultiplicationResultAttemptClient
+MultiplicationResultAttemptClientImpl -- Multiplication
+MultiplicationResultAttemptDeserializer -- MultiplicationResultAttempt
+MultiplicationResultAttemptDeserializer -- Multiplication
+LeaderBoardController -- LeaderBoardRow
+LeaderBoardController -- LeaderBoardService
+UserStatsController -- GameStats
+UserStatsController -- GameService
+UserStatsController -- User
+BadgeCard -- Badge
+BadgeCard -- User
+GameStats -- Badge
+GameStats -- BadgeCard
+GameStats -- ScoreCard
+EventHandler -- MultiplicationResultAttempt
+EventHandler -- MultiplicationSolvedEvent
+EventHandler -- GameService
+EventHandler -- Multiplication
+EventHandler -- User
+MultiplicationSolvedEvent -- Multiplication
+BadgeCardRepository -- Badge
+BadgeCardRepository -- BadgeCard
+BadgeCardRepository -- User
+ScoreCardRepository -- LeaderBoardRow
+ScoreCardRepository -- ScoreCard
+ScoreCardRepository -- User
+GameService -- GameStats
+GameService -- User
+GameServiceImpl -- MultiplicationResultAttempt
+GameServiceImpl -- MultiplicationResultAttemptClient
+GameServiceImpl -- Badge
+GameServiceImpl -- BadgeCard
+GameServiceImpl -- GameStats
+GameServiceImpl -- ScoreCard
+GameServiceImpl -- BadgeCardRepository
+GameServiceImpl -- ScoreCardRepository
+GameServiceImpl -- GameService
+GameServiceImpl -- Multiplication
+GameServiceImpl -- User
+LeaderBoardService -- LeaderBoardRow
+LeaderBoardServiceImpl -- LeaderBoardRow
+LeaderBoardServiceImpl -- ScoreCard
+LeaderBoardServiceImpl -- ScoreCardRepository
+LeaderBoardServiceImpl -- LeaderBoardService
+LeaderBoardControllerTest -- LeaderBoardController
+LeaderBoardControllerTest -- LeaderBoardRow
+LeaderBoardControllerTest -- LeaderBoardService
+UserStatsControllerTest -- UserStatsController
+UserStatsControllerTest -- Badge
+UserStatsControllerTest -- GameStats
+UserStatsControllerTest -- GameService
+UserStatsControllerTest -- User
+EventHandlerTest -- GameStats
+EventHandlerTest -- EventHandler
+EventHandlerTest -- MultiplicationSolvedEvent
+EventHandlerTest -- GameService
+EventHandlerTest -- Multiplication
+EventHandlerTest -- User
+GameServiceImplTest -- MultiplicationResultAttempt
+GameServiceImplTest -- MultiplicationResultAttemptClient
+GameServiceImplTest -- Badge
+GameServiceImplTest -- BadgeCard
+GameServiceImplTest -- GameStats
+GameServiceImplTest -- ScoreCard
+GameServiceImplTest -- BadgeCardRepository
+GameServiceImplTest -- ScoreCardRepository
+GameServiceImplTest -- GameService
+GameServiceImplTest -- GameServiceImpl
+GameServiceImplTest -- Multiplication
+GameServiceImplTest -- User
+LeaderBoardServiceImplTest -- LeaderBoardRow
+LeaderBoardServiceImplTest -- ScoreCard
+LeaderBoardServiceImplTest -- ScoreCardRepository
+LeaderBoardServiceImplTest -- LeaderBoardService
+LeaderBoardServiceImplTest -- LeaderBoardServiceImpl
+GatewayApplication -- RibbonConfiguration
+GatewayApplicationTests -- GatewayApplication
+ServiceRegistryApplicationTests -- ServiceRegistryApplication
+MultiplicationController -- Multiplication
+MultiplicationController -- MultiplicationService
+MultiplicationResultAttemptController -- MultiplicationResultAttempt
+MultiplicationResultAttemptController -- Multiplication
+MultiplicationResultAttemptController -- User
+MultiplicationResultAttemptController -- MultiplicationService
+EventDispatcher -- MultiplicationSolvedEvent
+EventDispatcher -- Multiplication
+MultiplicationRepository -- Multiplication
+MultiplicationResultAttemptRepository -- MultiplicationResultAttempt
+MultiplicationResultAttemptRepository -- Multiplication
+MultiplicationResultAttemptRepository -- User
+UserRepository -- User
+MultiplicationService -- MultiplicationResultAttempt
+MultiplicationService -- Multiplication
+MultiplicationService -- User
+MultiplicationServiceImpl -- MultiplicationResultAttempt
+MultiplicationServiceImpl -- MultiplicationSolvedEvent
+MultiplicationServiceImpl -- Multiplication
+MultiplicationServiceImpl -- User
+MultiplicationServiceImpl -- EventDispatcher
+MultiplicationServiceImpl -- MultiplicationResultAttemptRepository
+MultiplicationServiceImpl -- UserRepository
+MultiplicationServiceImpl -- MultiplicationService
+MultiplicationServiceImpl -- RandomGeneratorService
+RandomGeneratorServiceImpl -- RandomGeneratorService
+SocialMultiplicationApplication -- Multiplication
+MultiplicationControllerTest -- MultiplicationController
+MultiplicationControllerTest -- Multiplication
+MultiplicationControllerTest -- MultiplicationService
+MultiplicationResultAttemptControllerTest -- MultiplicationResultAttempt
+MultiplicationResultAttemptControllerTest -- MultiplicationResultAttemptController
+MultiplicationResultAttemptControllerTest -- Multiplication
+MultiplicationResultAttemptControllerTest -- User
+MultiplicationResultAttemptControllerTest -- MultiplicationService
+MultiplicationServiceImplTest -- MultiplicationResultAttempt
+MultiplicationServiceImplTest -- MultiplicationSolvedEvent
+MultiplicationServiceImplTest -- Multiplication
+MultiplicationServiceImplTest -- User
+MultiplicationServiceImplTest -- EventDispatcher
+MultiplicationServiceImplTest -- MultiplicationResultAttemptRepository
+MultiplicationServiceImplTest -- UserRepository
+MultiplicationServiceImplTest -- MultiplicationService
+MultiplicationServiceImplTest -- MultiplicationServiceImpl
+MultiplicationServiceImplTest -- RandomGeneratorService
+RandomGeneratorServiceImplTest -- RandomGeneratorService
+RandomGeneratorServiceImplTest -- RandomGeneratorServiceImpl
+@enduml

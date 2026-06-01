@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>plus.wcj</groupId>
+	<artifactId>spring-cloud-apisix</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+	<name>Spring Cloud APISIX</name>
+	<description>Spring Cloud APISIX</description>
+
+	<scm>
+		<url>https://github.com/galaxy-sea/spring-cloud-apisix</url>
+		<connection>scm:git:git://github.com/galaxy-sea/spring-cloud-apisix.git
+		</connection>
+		<developerConnection>
+			scm:git:ssh://git@github.com/galaxy-sea/spring-cloud-apisix.git
+		</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	<properties>
+
+		<revision>2021.0.1-3.0-SNAPSHOT</revision>
+		<spring-cloud.version>2021.0.5</spring-cloud.version>
+		<spring-boot.version>2.6.11</spring-boot.version>
+		<main.basedir>${basedir}</main.basedir>
+
+
+		<!-- Plugin versions -->
+		<!-- Sonar -->
+		<surefire.plugin.version>2.19.1</surefire.plugin.version>
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<flatten-maven-plugin.version>1.3.0</flatten-maven-plugin.version>
+		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+		<spring-javaformat-maven-plugin.version>0.0.26</spring-javaformat-maven-plugin.version>
+
+
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>${flatten-maven-plugin.version}</version>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+					<flattenMode>resolveCiFriendliesOnly</flattenMode>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>io.spring.javaformat</groupId>
+				<artifactId>spring-javaformat-maven-plugin</artifactId>
+				<version>${spring-javaformat-maven-plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven-deploy-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>wcj.plus</groupId>
+				<artifactId>spring-cloud-apisix-dependencies</artifactId>
+				<version>${revision}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>spring-cloud-apisix-dependencies</module>
+		<module>spring-cloud-apisix-core</module>
+		<module>spring-cloud-starter-apisix-discovery</module>
+        <module>spring-cloud-starter-apisix-loadbalancer</module>
+
+        <module>spring-cloud-apisix-examples</module>
+        <module>spring-cloud-apisix-devtools</module>
+    </modules>
+</project>

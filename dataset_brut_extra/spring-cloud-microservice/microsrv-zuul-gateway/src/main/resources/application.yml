@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: microsrv-zuul-gateway
+
+server:
+  port: 5555
+
+zuul:
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+  #禁止暴露所有注册的服务
+  #ignoredServices: '*'
+  prefix: /api # 设置一个公共的前缀
+  routes:
+    auth-service:
+      path: /auth/**
+      sensitiveHeaders: "*"
+      serviceId:  idsrv-server
+    order-service:
+      path: /order/**
+      sensitiveHeaders: "*"
+      serviceId:  order-service
+  add-proxy-headers: true
+
+#  zuul.routes.catalogservice.path=/catalog/**
+#  zuul.routes.catalogservice.serviceId=catalog-service
+#
+#  zuul.routes.orderservice.path=/orders/**
+#  zuul.routes.orderservice.serviceId=order-service
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:9030/oauth/token
+      user-authorization-uri: http://localhost:9030/oauth/authorize
+      client-id: webapp
+      client-secret: webapp_secret_123456
+    resource:
+      user-info-uri:  http://localhost:9030/userinfo
+      prefer-token-info: false
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://10.255.131.162:8000/eureka/,http://10.255.131.163:8000/eureka/,http://10.255.131.164:8000/eureka/

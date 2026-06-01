@@ -1,0 +1,447 @@
+@startuml
+package com.ecommerceapp.domain; {
+class Category {
+}
+
+class Order {
+}
+
+class OrderStatus {
+}
+
+class Product {
+}
+
+}
+
+package com.ecommerceapp.inventory.controller; {
+class InventoryController {
+}
+
+}
+
+package com.ecommerceapp.inventory.dto.request; {
+class ChangeStockDto {
+}
+
+class ProductDto {
+}
+
+class StockOperation {
+}
+
+}
+
+package com.ecommerceapp.inventory; {
+class InventoryApplication {
+}
+
+class SwaggerConfig {
+}
+
+}
+
+package com.ecommerceapp.inventory.repository; {
+class InventoryRepository {
+}
+
+}
+
+package com.ecommerceapp.inventory.service; {
+class InventoryService {
+}
+
+}
+
+package com.ecommerceapp.inventory.contract; {
+class InventoryProviderPact {
+}
+
+}
+
+package com.ecommerceapp.inventory.integration; {
+class InventoryServiceIntegrationTest {
+}
+
+}
+
+package com.ecommerceapp.inventory.unit.controller; {
+class InventoryControllerTest {
+}
+
+}
+
+package com.ecommerceapp.inventory.unit.repository; {
+class InventoryRepositoryTest {
+}
+
+class MongoDataFile {
+}
+
+class MongoSpringExtension {
+}
+
+}
+
+package com.ecommerceapp.inventory.unit.service; {
+class InventoryServiceTest {
+}
+
+}
+
+package com.ecommerceapp.shipment.controller; {
+class ShipmentController {
+}
+
+}
+
+package com.ecommerceapp.shipment.domain; {
+class Location {
+}
+
+class OrderShipment {
+}
+
+}
+
+package com.ecommerceapp.shipment.repository; {
+class OrderShipmentRepository {
+}
+
+}
+
+package com.ecommerceapp.shipment.service.kafka; {
+class KafkaConsumerConfig {
+}
+
+class MessageListenerShipment {
+}
+
+}
+
+package com.ecommerceapp.shipment.service; {
+class ShipmentService {
+}
+
+}
+
+package com.ecommerceapp.shipment; {
+class ShipmentApplication {
+}
+
+class SwaggerConfig {
+}
+
+}
+
+package com.ecommerceapp.shipment.contract; {
+class CreateShipmentConsumerPact {
+}
+
+}
+
+package com.ecommerceapp.shipment.integration; {
+class KafkaListenerIntegrationTest {
+}
+
+class KafkaProducerTestConfiguration {
+}
+
+class OrderShipmentServiceIntegrationTest {
+}
+
+}
+
+package com.ecommerceapp.shipment.unit.controller; {
+class ShipmentControllerTest {
+}
+
+}
+
+package com.ecommerceapp.shipment.unit.repository; {
+class MongoDataFile {
+}
+
+class MongoSpringExtension {
+}
+
+class OrderShipmentRepositoryTest {
+}
+
+}
+
+package com.ecommerceapp.shipment.unit.service; {
+class ShipmentServiceTest {
+}
+
+}
+
+package com.ecommerceapp.shop.controller; {
+class OrderController {
+}
+
+}
+
+package com.ecommerceapp.shop.dto.request; {
+class ChangeStockDto {
+}
+
+class OrderDto {
+}
+
+class StockOperation {
+}
+
+}
+
+package com.ecommerceapp.shop.exceptions; {
+class EmptyOrderException {
+}
+
+class StockUpdateException {
+}
+
+}
+
+package com.ecommerceapp.shop.repository; {
+class OrderRepository {
+}
+
+}
+
+package com.ecommerceapp.shop.service; {
+class InventoryClient {
+}
+
+class OrderService {
+}
+
+}
+
+package com.ecommerceapp.shop.service.kafka; {
+class KafkaProducerConfig {
+}
+
+class KafkaTopicConfig {
+}
+
+class MessageProducer {
+}
+
+}
+
+package com.ecommerceapp.shop; {
+class ShopApplication {
+}
+
+class SwaggerConfig {
+}
+
+}
+
+package com.ecommerceapp.shop.contract; {
+class CreateShipmentProviderPact {
+}
+
+class GetProductConsumerPact {
+}
+
+class UpdateStockConsumerPact {
+}
+
+}
+
+package com.ecommerceapp.shop.integration; {
+class OrderServiceIntegrationTest {
+}
+
+}
+
+package com.ecommerceapp.shop.unit.controller; {
+class OrderControllerTest {
+}
+
+}
+
+package com.ecommerceapp.shop.unit.repository; {
+class MongoDataFile {
+}
+
+class MongoSpringExtension {
+}
+
+class OrderRepositoryTest {
+}
+
+}
+
+package com.ecommerceapp.shop.unit.service; {
+class OrderServiceTest {
+}
+
+}
+
+Order -- OrderStatus
+Order -- Product
+Product -- Category
+InventoryController -- Product
+InventoryController -- ChangeStockDto
+InventoryController -- ProductDto
+InventoryController -- InventoryService
+ChangeStockDto -- StockOperation
+ProductDto -- Category
+ProductDto -- Product
+InventoryRepository -- Product
+InventoryService -- Category
+InventoryService -- Product
+InventoryService -- ChangeStockDto
+InventoryService -- ProductDto
+InventoryService -- StockOperation
+InventoryService -- InventoryRepository
+SwaggerConfig -- Order
+InventoryProviderPact -- Category
+InventoryProviderPact -- Product
+InventoryProviderPact -- ChangeStockDto
+InventoryProviderPact -- StockOperation
+InventoryProviderPact -- InventoryService
+InventoryServiceIntegrationTest -- Category
+InventoryServiceIntegrationTest -- Product
+InventoryServiceIntegrationTest -- InventoryService
+InventoryControllerTest -- Category
+InventoryControllerTest -- Product
+InventoryControllerTest -- InventoryController
+InventoryControllerTest -- ChangeStockDto
+InventoryControllerTest -- StockOperation
+InventoryControllerTest -- InventoryService
+InventoryRepositoryTest -- Category
+InventoryRepositoryTest -- Product
+InventoryRepositoryTest -- InventoryRepository
+InventoryRepositoryTest -- MongoDataFile
+InventoryRepositoryTest -- MongoSpringExtension
+MongoDataFile -- MongoSpringExtension
+InventoryServiceTest -- Category
+InventoryServiceTest -- Product
+InventoryServiceTest -- ChangeStockDto
+InventoryServiceTest -- ProductDto
+InventoryServiceTest -- StockOperation
+InventoryServiceTest -- InventoryRepository
+InventoryServiceTest -- InventoryService
+ShipmentController -- Order
+ShipmentController -- OrderShipment
+ShipmentController -- ShipmentService
+OrderShipment -- Order
+OrderShipment -- Location
+OrderShipmentRepository -- Order
+OrderShipmentRepository -- OrderShipment
+KafkaConsumerConfig -- Order
+MessageListenerShipment -- Order
+MessageListenerShipment -- OrderShipment
+MessageListenerShipment -- ShipmentService
+ShipmentService -- Order
+ShipmentService -- Location
+ShipmentService -- OrderShipment
+ShipmentService -- OrderShipmentRepository
+CreateShipmentConsumerPact -- Category
+CreateShipmentConsumerPact -- Order
+CreateShipmentConsumerPact -- Product
+KafkaListenerIntegrationTest -- Category
+KafkaListenerIntegrationTest -- Order
+KafkaListenerIntegrationTest -- Product
+KafkaListenerIntegrationTest -- OrderShipment
+KafkaListenerIntegrationTest -- OrderShipmentRepository
+KafkaListenerIntegrationTest -- KafkaConsumerConfig
+KafkaListenerIntegrationTest -- MessageListenerShipment
+KafkaListenerIntegrationTest -- ShipmentService
+KafkaListenerIntegrationTest -- KafkaProducerTestConfiguration
+KafkaProducerTestConfiguration -- Order
+OrderShipmentServiceIntegrationTest -- Category
+OrderShipmentServiceIntegrationTest -- Order
+OrderShipmentServiceIntegrationTest -- Product
+OrderShipmentServiceIntegrationTest -- OrderShipment
+OrderShipmentServiceIntegrationTest -- KafkaConsumerConfig
+OrderShipmentServiceIntegrationTest -- MessageListenerShipment
+OrderShipmentServiceIntegrationTest -- ShipmentService
+OrderShipmentServiceIntegrationTest -- KafkaProducerTestConfiguration
+ShipmentControllerTest -- Category
+ShipmentControllerTest -- Order
+ShipmentControllerTest -- Product
+ShipmentControllerTest -- ShipmentController
+ShipmentControllerTest -- Location
+ShipmentControllerTest -- OrderShipment
+ShipmentControllerTest -- ShipmentService
+OrderShipmentRepositoryTest -- Category
+OrderShipmentRepositoryTest -- Order
+OrderShipmentRepositoryTest -- Product
+OrderShipmentRepositoryTest -- MongoDataFile
+OrderShipmentRepositoryTest -- MongoSpringExtension
+OrderShipmentRepositoryTest -- Location
+OrderShipmentRepositoryTest -- OrderShipment
+OrderShipmentRepositoryTest -- OrderShipmentRepository
+ShipmentServiceTest -- Category
+ShipmentServiceTest -- Order
+ShipmentServiceTest -- Product
+ShipmentServiceTest -- Location
+ShipmentServiceTest -- OrderShipment
+ShipmentServiceTest -- OrderShipmentRepository
+ShipmentServiceTest -- MessageListenerShipment
+ShipmentServiceTest -- ShipmentService
+OrderController -- Order
+OrderController -- Product
+OrderController -- OrderDto
+OrderController -- EmptyOrderException
+OrderController -- StockUpdateException
+OrderController -- OrderService
+OrderDto -- Order
+OrderDto -- Product
+EmptyOrderException -- Order
+OrderRepository -- Order
+InventoryClient -- Product
+InventoryClient -- ChangeStockDto
+InventoryClient -- StockUpdateException
+KafkaProducerConfig -- Order
+KafkaTopicConfig -- Order
+MessageProducer -- Order
+OrderService -- Order
+OrderService -- Product
+OrderService -- ChangeStockDto
+OrderService -- StockOperation
+OrderService -- OrderDto
+OrderService -- EmptyOrderException
+OrderService -- OrderRepository
+OrderService -- InventoryClient
+OrderService -- MessageProducer
+CreateShipmentProviderPact -- Category
+CreateShipmentProviderPact -- Order
+CreateShipmentProviderPact -- Product
+GetProductConsumerPact -- Category
+GetProductConsumerPact -- Product
+OrderServiceIntegrationTest -- Category
+OrderServiceIntegrationTest -- Order
+OrderServiceIntegrationTest -- OrderStatus
+OrderServiceIntegrationTest -- Product
+OrderServiceIntegrationTest -- OrderService
+OrderControllerTest -- Category
+OrderControllerTest -- Order
+OrderControllerTest -- OrderStatus
+OrderControllerTest -- Product
+OrderControllerTest -- OrderController
+OrderControllerTest -- EmptyOrderException
+OrderControllerTest -- StockUpdateException
+OrderControllerTest -- OrderService
+OrderRepositoryTest -- Category
+OrderRepositoryTest -- Order
+OrderRepositoryTest -- Product
+OrderRepositoryTest -- MongoDataFile
+OrderRepositoryTest -- MongoSpringExtension
+OrderRepositoryTest -- OrderRepository
+OrderServiceTest -- Category
+OrderServiceTest -- Order
+OrderServiceTest -- Product
+OrderServiceTest -- OrderDto
+OrderServiceTest -- EmptyOrderException
+OrderServiceTest -- StockUpdateException
+OrderServiceTest -- OrderRepository
+OrderServiceTest -- InventoryClient
+OrderServiceTest -- MessageProducer
+OrderServiceTest -- OrderService
+@enduml

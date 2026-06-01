@@ -1,0 +1,483 @@
+@startuml
+package itx.fileserver.config; {
+class DataServiceProviderConfig {
+}
+
+class FileServerConfig {
+}
+
+class ServletFilterConfig {
+}
+
+class SessionListener {
+}
+
+}
+
+package itx.fileserver.controler; {
+class AdminController {
+}
+
+class AdminFilter {
+}
+
+class AuthController {
+}
+
+class FileServerController {
+}
+
+}
+
+package itx.fileserver.dto; {
+class AccessType {
+}
+
+class AuditConstants {
+}
+
+class AuditQuery {
+}
+
+class AuditRecord {
+}
+
+class DirectoryInfo {
+}
+
+class FileAccessFilter {
+}
+
+class FileInfo {
+}
+
+class FileList {
+}
+
+class FileStorageInfo {
+}
+
+class FilterAccessManagerData {
+}
+
+class FilterConfig {
+}
+
+class LoginRequest {
+}
+
+class MoveRequest {
+}
+
+class ResourceAccessInfo {
+}
+
+class RoleId {
+}
+
+class SessionId {
+}
+
+class SessionInfo {
+}
+
+class Sessions {
+}
+
+class UserConfig {
+}
+
+class UserData {
+}
+
+class UserId {
+}
+
+class UserManagerData {
+}
+
+}
+
+package itx.fileserver; {
+class FileServer {
+}
+
+}
+
+package itx.fileserver.services.data; {
+class AuditService {
+}
+
+class FileAccessManagerService {
+}
+
+class UserManagerService {
+}
+
+}
+
+package itx.fileserver.services.data.base; {
+class AuditQueryFilter {
+}
+
+class FileAccessManagerServiceImpl {
+}
+
+class UserManagerServiceImpl {
+}
+
+}
+
+package itx.fileserver.services.data.filesystem; {
+class AuditServiceFilesystem {
+}
+
+class FileAccessManagerServiceFilesystem {
+}
+
+class PersistenceService {
+}
+
+class PersistenceServiceImpl {
+}
+
+class UserManagerServiceFilesystem {
+}
+
+}
+
+package itx.fileserver.services.data.inmemory; {
+class AuditServiceInmemory {
+}
+
+class FileAccessManagerServiceInmemory {
+}
+
+class UserManagerServiceInmemory {
+}
+
+}
+
+package itx.fileserver.services; {
+class FileAccessService {
+}
+
+class FileAccessServiceImpl {
+}
+
+class FileService {
+}
+
+class FileServiceImpl {
+}
+
+class FileUtils {
+}
+
+class OperationNotAllowedException {
+}
+
+class SecurityService {
+}
+
+class SecurityServiceImpl {
+}
+
+}
+
+package itx.fileserver.test; {
+class AuditServiceInMemoryTest {
+}
+
+class AuditServiceTest {
+}
+
+class FileAccessManagerServiceTest {
+}
+
+class FileAccessServiceTest {
+}
+
+class FileServerITTest {
+}
+
+class FileUtilsTest {
+}
+
+class MostRestrictiveAccessTest {
+}
+
+class SecurityServiceTest {
+}
+
+class TestUtils {
+}
+
+class UserManagerServiceTest {
+}
+
+}
+
+package itx.fileserver.test.mocks; {
+class PersistenceServiceImpl {
+}
+
+}
+
+DataServiceProviderConfig -- FileServerConfig
+DataServiceProviderConfig -- FileServer
+DataServiceProviderConfig -- AuditService
+DataServiceProviderConfig -- FileAccessManagerService
+DataServiceProviderConfig -- AuditServiceFilesystem
+DataServiceProviderConfig -- FileAccessManagerServiceFilesystem
+DataServiceProviderConfig -- PersistenceService
+DataServiceProviderConfig -- PersistenceServiceImpl
+DataServiceProviderConfig -- UserManagerServiceFilesystem
+DataServiceProviderConfig -- AuditServiceInmemory
+DataServiceProviderConfig -- FileAccessManagerServiceInmemory
+DataServiceProviderConfig -- UserManagerServiceInmemory
+DataServiceProviderConfig -- UserManagerService
+FileServerConfig -- FilterConfig
+FileServerConfig -- UserConfig
+FileServerConfig -- FileServer
+ServletFilterConfig -- AdminFilter
+ServletFilterConfig -- FilterConfig
+ServletFilterConfig -- SecurityService
+SessionListener -- FileServerConfig
+SessionListener -- SessionId
+SessionListener -- FileServer
+SessionListener -- SecurityService
+AdminController -- AuditConstants
+AdminController -- AuditQuery
+AdminController -- AuditRecord
+AdminController -- FileAccessFilter
+AdminController -- FileStorageInfo
+AdminController -- FilterConfig
+AdminController -- RoleId
+AdminController -- SessionId
+AdminController -- Sessions
+AdminController -- UserConfig
+AdminController -- UserData
+AdminController -- UserId
+AdminController -- AuditService
+AdminController -- FileAccessManagerService
+AdminController -- UserManagerService
+AdminController -- FileService
+AdminController -- SecurityService
+AdminFilter -- SessionId
+AdminFilter -- SecurityService
+AuthController -- LoginRequest
+AuthController -- SessionId
+AuthController -- UserData
+AuthController -- SecurityService
+FileServerController -- FileList
+FileServerController -- MoveRequest
+FileServerController -- ResourceAccessInfo
+FileServerController -- SessionId
+FileServerController -- UserData
+FileServerController -- FileServer
+FileServerController -- FileService
+FileServerController -- OperationNotAllowedException
+FileServerController -- SecurityService
+AuditQuery -- UserId
+AuditQuery -- FileUtils
+AuditRecord -- UserId
+FileAccessFilter -- AccessType
+FileList -- DirectoryInfo
+FileList -- FileInfo
+FilterAccessManagerData -- FilterConfig
+SessionInfo -- RoleId
+SessionInfo -- SessionId
+SessionInfo -- UserId
+Sessions -- SessionInfo
+UserData -- RoleId
+UserData -- UserId
+UserManagerData -- UserConfig
+AuditService -- AuditQuery
+AuditService -- AuditRecord
+AuditQueryFilter -- AuditQuery
+AuditQueryFilter -- AuditRecord
+AuditQueryFilter -- UserId
+AuditQueryFilter -- FileUtils
+FileAccessManagerServiceImpl -- AccessType
+FileAccessManagerServiceImpl -- FileAccessFilter
+FileAccessManagerServiceImpl -- FilterConfig
+FileAccessManagerServiceImpl -- RoleId
+FileAccessManagerServiceImpl -- FileAccessManagerService
+UserManagerServiceImpl -- RoleId
+UserManagerServiceImpl -- UserData
+UserManagerServiceImpl -- UserId
+UserManagerServiceImpl -- UserManagerService
+FileAccessManagerService -- FileAccessFilter
+FileAccessManagerService -- FilterConfig
+FileAccessManagerService -- RoleId
+AuditServiceFilesystem -- AuditQuery
+AuditServiceFilesystem -- AuditRecord
+AuditServiceFilesystem -- AuditService
+AuditServiceFilesystem -- PersistenceService
+FileAccessManagerServiceFilesystem -- FilterAccessManagerData
+FileAccessManagerServiceFilesystem -- FilterConfig
+FileAccessManagerServiceFilesystem -- FileAccessManagerServiceImpl
+FileAccessManagerServiceFilesystem -- FileAccessManagerService
+FileAccessManagerServiceFilesystem -- PersistenceService
+PersistenceService -- AuditQuery
+PersistenceService -- AuditRecord
+PersistenceServiceImpl -- AuditQuery
+PersistenceServiceImpl -- AuditRecord
+PersistenceServiceImpl -- AuditQueryFilter
+PersistenceServiceImpl -- PersistenceService
+UserManagerServiceFilesystem -- RoleId
+UserManagerServiceFilesystem -- UserConfig
+UserManagerServiceFilesystem -- UserData
+UserManagerServiceFilesystem -- UserId
+UserManagerServiceFilesystem -- UserManagerData
+UserManagerServiceFilesystem -- UserManagerServiceImpl
+UserManagerServiceFilesystem -- PersistenceService
+UserManagerServiceFilesystem -- UserManagerService
+AuditServiceInmemory -- AuditQuery
+AuditServiceInmemory -- AuditRecord
+AuditServiceInmemory -- UserId
+AuditServiceInmemory -- AuditService
+AuditServiceInmemory -- AuditQueryFilter
+FileAccessManagerServiceInmemory -- FileServerConfig
+FileAccessManagerServiceInmemory -- FileServer
+FileAccessManagerServiceInmemory -- FileAccessManagerServiceImpl
+FileAccessManagerServiceInmemory -- FileAccessManagerService
+UserManagerServiceInmemory -- FileServerConfig
+UserManagerServiceInmemory -- RoleId
+UserManagerServiceInmemory -- UserData
+UserManagerServiceInmemory -- UserId
+UserManagerServiceInmemory -- FileServer
+UserManagerServiceInmemory -- UserManagerServiceImpl
+UserManagerServiceInmemory -- UserManagerService
+UserManagerService -- RoleId
+UserManagerService -- UserData
+UserManagerService -- UserId
+FileAccessService -- RoleId
+FileAccessServiceImpl -- AccessType
+FileAccessServiceImpl -- FileAccessFilter
+FileAccessServiceImpl -- RoleId
+FileAccessServiceImpl -- FileAccessManagerService
+FileAccessServiceImpl -- FileAccessService
+FileAccessServiceImpl -- FileUtils
+FileService -- FileList
+FileService -- FileStorageInfo
+FileService -- ResourceAccessInfo
+FileService -- UserData
+FileService -- OperationNotAllowedException
+FileServiceImpl -- FileServerConfig
+FileServiceImpl -- AuditConstants
+FileServiceImpl -- AuditQuery
+FileServiceImpl -- AuditRecord
+FileServiceImpl -- DirectoryInfo
+FileServiceImpl -- FileInfo
+FileServiceImpl -- FileList
+FileServiceImpl -- FileStorageInfo
+FileServiceImpl -- ResourceAccessInfo
+FileServiceImpl -- UserData
+FileServiceImpl -- FileServer
+FileServiceImpl -- AuditService
+FileServiceImpl -- FileAccessService
+FileServiceImpl -- FileService
+FileServiceImpl -- OperationNotAllowedException
+SecurityService -- RoleId
+SecurityService -- SessionId
+SecurityService -- Sessions
+SecurityService -- UserData
+SecurityServiceImpl -- AuditConstants
+SecurityServiceImpl -- AuditRecord
+SecurityServiceImpl -- RoleId
+SecurityServiceImpl -- SessionId
+SecurityServiceImpl -- SessionInfo
+SecurityServiceImpl -- Sessions
+SecurityServiceImpl -- UserData
+SecurityServiceImpl -- UserId
+SecurityServiceImpl -- AuditService
+SecurityServiceImpl -- UserManagerService
+SecurityServiceImpl -- SecurityService
+AuditServiceInMemoryTest -- AuditConstants
+AuditServiceInMemoryTest -- AuditQuery
+AuditServiceInMemoryTest -- AuditRecord
+AuditServiceInMemoryTest -- AuditService
+AuditServiceInMemoryTest -- AuditServiceInmemory
+AuditServiceTest -- AuditConstants
+AuditServiceTest -- AuditQuery
+AuditServiceTest -- AuditRecord
+AuditServiceTest -- UserId
+AuditServiceTest -- AuditService
+AuditServiceTest -- AuditServiceFilesystem
+AuditServiceTest -- PersistenceService
+AuditServiceTest -- PersistenceServiceImpl
+AuditServiceTest -- AuditServiceInmemory
+FileAccessManagerServiceTest -- FileServerConfig
+FileAccessManagerServiceTest -- FilterAccessManagerData
+FileAccessManagerServiceTest -- FilterConfig
+FileAccessManagerServiceTest -- RoleId
+FileAccessManagerServiceTest -- FileServer
+FileAccessManagerServiceTest -- FileAccessManagerService
+FileAccessManagerServiceTest -- FileAccessManagerServiceFilesystem
+FileAccessManagerServiceTest -- PersistenceService
+FileAccessManagerServiceTest -- PersistenceServiceImpl
+FileAccessManagerServiceTest -- FileAccessManagerServiceInmemory
+FileAccessManagerServiceTest -- FileAccessService
+FileAccessManagerServiceTest -- TestUtils
+FileAccessServiceTest -- FileServerConfig
+FileAccessServiceTest -- RoleId
+FileAccessServiceTest -- SessionId
+FileAccessServiceTest -- UserData
+FileAccessServiceTest -- FileServer
+FileAccessServiceTest -- AuditService
+FileAccessServiceTest -- FileAccessManagerService
+FileAccessServiceTest -- AuditServiceInmemory
+FileAccessServiceTest -- FileAccessManagerServiceInmemory
+FileAccessServiceTest -- UserManagerServiceInmemory
+FileAccessServiceTest -- UserManagerService
+FileAccessServiceTest -- FileAccessService
+FileAccessServiceTest -- FileAccessServiceImpl
+FileAccessServiceTest -- SecurityService
+FileAccessServiceTest -- SecurityServiceImpl
+FileAccessServiceTest -- TestUtils
+FileServerITTest -- FileStorageInfo
+FileServerITTest -- LoginRequest
+FileServerITTest -- SessionId
+FileServerITTest -- UserData
+FileServerITTest -- FileServer
+FileServerITTest -- TestUtils
+FileUtilsTest -- FileUtils
+MostRestrictiveAccessTest -- AccessType
+MostRestrictiveAccessTest -- FileAccessService
+MostRestrictiveAccessTest -- FileAccessServiceImpl
+SecurityServiceTest -- FileServerConfig
+SecurityServiceTest -- RoleId
+SecurityServiceTest -- SessionId
+SecurityServiceTest -- Sessions
+SecurityServiceTest -- UserData
+SecurityServiceTest -- FileServer
+SecurityServiceTest -- AuditService
+SecurityServiceTest -- AuditServiceInmemory
+SecurityServiceTest -- UserManagerServiceInmemory
+SecurityServiceTest -- UserManagerService
+SecurityServiceTest -- SecurityService
+SecurityServiceTest -- SecurityServiceImpl
+SecurityServiceTest -- TestUtils
+TestUtils -- FileServerConfig
+TestUtils -- FilterConfig
+TestUtils -- SessionId
+TestUtils -- UserConfig
+TestUtils -- FileServer
+TestUtils -- FileAccessService
+TestUtils -- SecurityService
+UserManagerServiceTest -- FileServerConfig
+UserManagerServiceTest -- RoleId
+UserManagerServiceTest -- UserData
+UserManagerServiceTest -- UserId
+UserManagerServiceTest -- UserManagerData
+UserManagerServiceTest -- FileServer
+UserManagerServiceTest -- PersistenceService
+UserManagerServiceTest -- PersistenceServiceImpl
+UserManagerServiceTest -- UserManagerServiceFilesystem
+UserManagerServiceTest -- UserManagerServiceInmemory
+UserManagerServiceTest -- UserManagerService
+UserManagerServiceTest -- FileAccessService
+UserManagerServiceTest -- TestUtils
+@enduml

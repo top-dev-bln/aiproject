@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.ksilisk</groupId>
+        <artifactId>telegram-bot-spring-parent</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>examples</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>telegram-bot-sample-long-polling</module>
+        <module>telegram-bot-sample-webhook</module>
+        <module>telegram-bot-advanced-sample-long-polling</module>
+    </modules>
+
+</project>

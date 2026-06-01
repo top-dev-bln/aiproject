@@ -1,0 +1,192 @@
+@startuml
+
+package io.dodn.springboot {
+  class ContextTest {
+  }
+  class DevelopTest {
+  }
+  class CoreApiApplicationTest {
+    +shouldBeLoadedContext() : void
+  }
+  class CoreApiApplication {
+    +main() : void
+  }
+}
+
+package io.dodn.springboot.client {
+  class ClientExampleTestApplication {
+    +main() : void
+  }
+  class ClientExampleContextTest {
+  }
+}
+
+package io.dodn.springboot.client.example {
+  class ExampleClientTest {
+    -exampleClient : ExampleClient
+    +shouldBeThrownExceptionWhenExample() : void
+  }
+  class ExampleConfig {
+  }
+  interface ExampleApi {
+  }
+  class ExampleClient {
+    -exampleApi : ExampleApi
+    +example() : ExampleClientResult
+  }
+}
+
+package io.dodn.springboot.core.api.config {
+  class AsyncExceptionHandler {
+    -log : Logger
+    +handleUncaughtException() : void
+  }
+  class AsyncConfig {
+    +getAsyncExecutor() : Executor
+    +getAsyncUncaughtExceptionHandler() : AsyncUncaughtExceptionHandler
+  }
+}
+
+package io.dodn.springboot.core.api.controller {
+  class HealthController <<Controller>> {
+    +health() : ResponseEntity<Object>
+  }
+  class ApiControllerAdvice {
+    -log : Logger
+  }
+}
+
+package io.dodn.springboot.core.api.controller.v1 {
+  class ExampleControllerTest {
+    -exampleService : ExampleService
+    +setUp() : void
+    +exampleGet() : void
+    +examplePost() : void
+  }
+  class ExampleController <<Controller>> {
+    -exampleExampleService : ExampleService
+    +exampleGet() : ApiResponse<ExampleResponseDto>
+    +examplePost() : ApiResponse<ExampleResponseDto>
+  }
+}
+
+package io.dodn.springboot.core.domain {
+  class ExampleService <<Service>> {
+    +processExample() : ExampleResult
+  }
+}
+
+package io.dodn.springboot.core.enums {
+  enum ExampleEnum {
+  }
+}
+
+package io.dodn.springboot.core.support.error {
+  enum ErrorCode {
+  }
+  class ErrorMessage {
+    -code : String
+    -message : String
+    -data : Object
+    +getCode() : String
+    +getMessage() : String
+    +getData() : Object
+  }
+  class CoreException {
+    -errorType : ErrorType
+    -data : Object
+    +getErrorType() : ErrorType
+    +getData() : Object
+  }
+  enum ErrorType {
+    -status : HttpStatus
+    -code : ErrorCode
+    -message : String
+    -logLevel : LogLevel
+    +getStatus() : HttpStatus
+    +getCode() : ErrorCode
+    +getMessage() : String
+    +getLogLevel() : LogLevel
+  }
+}
+
+package io.dodn.springboot.core.support.response {
+  enum ResultType {
+  }
+  class ApiResponse {
+    -result : ResultType
+    -data : S
+    -error : ErrorMessage
+    +getResult() : ResultType
+    +getData() : Object
+    +getError() : ErrorMessage
+  }
+}
+
+package io.dodn.springboot.storage.db {
+  class CoreDbContextTest {
+  }
+  class CoreDbTestApplication {
+    +main() : void
+  }
+}
+
+package io.dodn.springboot.storage.db.core {
+  class ExampleRepositoryIT {
+    -exampleRepository : ExampleRepository
+    +testShouldBeSavedAndFound() : void
+  }
+  class ExampleEntity <<Entity>> {
+    -exampleColumn : String
+    +getExampleColumn() : String
+  }
+  interface ExampleRepository {
+  }
+  class BaseEntity {
+    -id : Long
+    -createdAt : LocalDateTime
+    -updatedAt : LocalDateTime
+    +getId() : Long
+    +getCreatedAt() : LocalDateTime
+    +getUpdatedAt() : LocalDateTime
+  }
+}
+
+package io.dodn.springboot.storage.db.core.config {
+  class CoreDataSourceConfig {
+    +coreHikariConfig() : HikariConfig
+    +coreDataSource() : HikariDataSource
+  }
+  class CoreJpaConfig {
+  }
+}
+
+package io.dodn.springboot.test.api {
+  class RestDocsTest {
+    -mockMvc : MockMvc
+    -restDocumentation : RestDocumentationContextProvider
+    +setUp() : void
+    +mockController() : MockMvc
+  }
+}
+
+' --- Relatii ---
+ExampleClientTest --|> ClientExampleContextTest
+ExampleClientTest --> ClientExampleContextTest
+CoreApiApplicationTest --|> ContextTest
+ExampleControllerTest --|> RestDocsTest
+ExampleControllerTest --> ExampleService
+ExampleControllerTest --> RestDocsTest
+ApiResponse --> ErrorMessage
+ApiResponse --> ErrorType
+AsyncExceptionHandler --> CoreException
+ApiControllerAdvice --> CoreException
+ApiControllerAdvice --> ErrorType
+ApiControllerAdvice --> ApiResponse
+ExampleController --> ExampleService
+ExampleController --> ApiResponse
+ExampleRepositoryIT --|> CoreDbContextTest
+ExampleRepositoryIT --> CoreDbContextTest
+ExampleEntity --|> BaseEntity
+
+@enduml

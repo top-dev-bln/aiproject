@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="frontend/partials/head(title=#{bid.my_contracts.title})">
+</head>
+<body>
+    
+    <div th:replace="frontend/partials/menu"></div>
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <h1 th:text="#{bid.my_contracts.title}"></h1>
+
+                <table class="table table-stripped">
+
+                    <tr>
+                        <th th:text="#{job}"></th>
+                        <th th:text="#{price}">Price</th>
+                        <th> </th>
+                    </tr>
+
+                    <tr th:each="bid : ${contracts}">
+                    <td th:utext="${bid.job.title}"></td>
+                        <td th:utext="${#numbers.formatDecimal(bid.price, 0, 'POINT', 2, 'COMMA')}"></td>
+                         <td>
+                         	<a th:href="@{'/message/job_room/' + ${bid.job.id} + '/' + ${me.id == bid.user.id ? bid.job.author.id : bid.user.id} }" 
+                         		class="btn btn-primary"
+                         		th:text="#{job_room}"></a>
+                     	</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

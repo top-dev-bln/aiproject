@@ -1,0 +1,1106 @@
+@startuml
+package org.ylc.note.actuator; {
+class ActuatorApplication {
+}
+
+class CustomAuditEventRepository {
+}
+
+class ActuatorApplicationTests {
+}
+
+}
+
+package org.ylc.note.actuator.controller; {
+class LoggerController {
+}
+
+}
+
+package org.ylc.note.actuator.entity; {
+class Employee {
+}
+
+}
+
+package org.ylc.note.actuator.health; {
+class CustomHealthIndicator {
+}
+
+class MyState {
+}
+
+}
+
+package org.ylc.note.aop.annotation; {
+class VisitPermission {
+}
+
+}
+
+package org.ylc.note.aop.aop; {
+class PermissionAspect {
+}
+
+}
+
+package org.ylc.note.aop; {
+class AopApplication {
+}
+
+class AopApplicationTests {
+}
+
+}
+
+package org.ylc.note.aop.controller; {
+class PermissionController {
+}
+
+}
+
+package org.ylc.note.aop.handle; {
+class GlobalExceptionHandler {
+}
+
+}
+
+package org.ylc.note; {
+class App {
+}
+
+class AppTest {
+}
+
+class App {
+}
+
+}
+
+package org.ylc.note.thread; {
+class ExtendsThread {
+}
+
+class Run {
+}
+
+class RunnableThread {
+}
+
+}
+
+package org.ylc.note.demo; {
+class AnimalAutoConfiguration {
+}
+
+class AnimalProperties {
+}
+
+class AnimalService {
+}
+
+class BirdEnvironmentCondition {
+}
+
+class BirdService {
+}
+
+class FishEnvironmentCondition {
+}
+
+class FishService {
+}
+
+}
+
+package org.ylc.note.jpush; {
+class JPushAutoConfiguration {
+}
+
+class JPushEntity {
+}
+
+class JPushProperties {
+}
+
+class JPushService {
+}
+
+}
+
+package org.ylc.note.commonspringboottest; {
+class CommonSpringBootTestApplication {
+}
+
+}
+
+package org.ylc.note.commonspringboottest.controller; {
+class AnimalController {
+}
+
+class JPushController {
+}
+
+}
+
+package org.ylc.note.event.config; {
+class AsyncConfig {
+}
+
+}
+
+package org.ylc.note.event.controller; {
+class EventController {
+}
+
+}
+
+package org.ylc.note.event.event; {
+class NoticeEvent {
+}
+
+class NoticeListener {
+}
+
+}
+
+package org.ylc.note.event; {
+class EventApplication {
+}
+
+class EventApplicationTests {
+}
+
+}
+
+package org.ylc.note.freemarker.controller; {
+class FreemarkerController {
+}
+
+}
+
+package org.ylc.note.freemarker; {
+class FreemarkerApplication {
+}
+
+class FreemarkerApplicationTests {
+}
+
+}
+
+package org.ylc.note.freemarker.util; {
+class FreemarkerUtil {
+}
+
+}
+
+package org.ylc.note.jwt; {
+class AesJwtUtil {
+}
+
+class JwtApplication {
+}
+
+class NormalJwtUtil {
+}
+
+class JwtApplicationTests {
+}
+
+}
+
+package org.ylc.note.log4j2; {
+class Log4j2Application {
+}
+
+class Log4j2ApplicationTests {
+}
+
+}
+
+package org.ylc.note.log4j2.service; {
+class MyService {
+}
+
+}
+
+package org.ylc.note.logback; {
+class LogbackApplication {
+}
+
+class LogbackApplicationTests {
+}
+
+}
+
+package org.ylc.note.logback.service; {
+class MyService {
+}
+
+}
+
+package org.ylc.note.messagepush.config; {
+class WebSocketConfig {
+}
+
+}
+
+package org.ylc.note.messagepush.controller; {
+class SseEmitterController {
+}
+
+class WebSocketController {
+}
+
+}
+
+package org.ylc.note.messagepush; {
+class MessagePushApplication {
+}
+
+class MessagePushApplicationTests {
+}
+
+}
+
+package org.ylc.note.messagepush.server; {
+class SseEmitterServer {
+}
+
+class WebSocketServer {
+}
+
+}
+
+package org.ylc.note.mybatis; {
+class MybatisApplication {
+}
+
+class MybatisApplicationTests {
+}
+
+}
+
+package org.ylc.note.netty.client; {
+class HttpClient {
+}
+
+class HttpClientHandler {
+}
+
+}
+
+package org.ylc.note.netty; {
+class HttpServerApplication {
+}
+
+class HttpServerApplicationTests {
+}
+
+}
+
+package org.ylc.note.netty.server; {
+class HttpServer {
+}
+
+class HttpServerHandler {
+}
+
+}
+
+package org.ylc.note.nettyclient.client; {
+class NettyClient {
+}
+
+}
+
+package org.ylc.note.nettyclient.handler; {
+class NettyClientHandler {
+}
+
+}
+
+package org.ylc.note.nettyclient; {
+class NettyClientApplication {
+}
+
+class NettyClientApplicationTests {
+}
+
+}
+
+package org.ylc.note.nettyserver.handler; {
+class NettyServerHandler {
+}
+
+class WebSocketServerHandler {
+}
+
+}
+
+package org.ylc.note.nettyserver; {
+class NettyServerApplication {
+}
+
+class NettyServerApplicationTests {
+}
+
+}
+
+package org.ylc.note.nettyserver.server; {
+class NettyServer {
+}
+
+class WebSocketServer {
+}
+
+}
+
+package org.ylc.note.netty.websocket.handler; {
+class SocketMessageHandler {
+}
+
+}
+
+package org.ylc.note.netty.websocket; {
+class NettyWebsocketApplication {
+}
+
+class NettyWebsocketApplicationTests {
+}
+
+}
+
+package org.ylc.note.netty.websocket.server; {
+class NettyServer {
+}
+
+}
+
+package org.ylc.note.easypoi; {
+class EasyPoiApplication {
+}
+
+class EasyPoiApplicationTests {
+}
+
+}
+
+package org.ylc.note.normalpoi.controller; {
+class PoiController {
+}
+
+}
+
+package org.ylc.note.normalpoi; {
+class NormalPoiApplication {
+}
+
+class NormalPoiApplicationTests {
+}
+
+}
+
+package org.ylc.note.normalpoi.util; {
+class ExceUtil {
+}
+
+}
+
+package org.ylc.note.quartz.boot; {
+class ScheduleJobStartupBoot {
+}
+
+}
+
+package org.ylc.note.quartz.config; {
+class QuartzConfig {
+}
+
+}
+
+package org.ylc.note.quartz.constant; {
+class ConfigConstant {
+}
+
+class EnumConstant {
+}
+
+}
+
+package org.ylc.note.quartz.controller; {
+class ScheduleController {
+}
+
+}
+
+package org.ylc.note.quartz.entity; {
+class ScheduleJob {
+}
+
+class ScheduleJobLog {
+}
+
+}
+
+package org.ylc.note.quartz.job; {
+class JobOne {
+}
+
+class JobTwo {
+}
+
+class QuartzScheduleJob {
+}
+
+}
+
+package org.ylc.note.quartz; {
+class QuartzApplication {
+}
+
+class QuartzApplicationTests {
+}
+
+}
+
+package org.ylc.note.quartz.repository; {
+class ScheduleJobLogRepository {
+}
+
+class ScheduleJobRepository {
+}
+
+}
+
+package org.ylc.note.quartz.service; {
+class QuartzService {
+}
+
+class ScheduleJobLogService {
+}
+
+class ScheduleJobService {
+}
+
+}
+
+package org.ylc.note.quartz.util; {
+class ScheduleRunnable {
+}
+
+class SpringContextUtil {
+}
+
+}
+
+package org.ylc.note.rabbit.consumer.config; {
+class MessageAckListener {
+}
+
+class MessageListenerConfig {
+}
+
+}
+
+package org.ylc.note.rabbit.consumer; {
+class ConsumerApplication {
+}
+
+class ConsumerApplicationTests {
+}
+
+}
+
+package org.ylc.note.rabbit.consumer.receiver; {
+class DefaultReceiver {
+}
+
+class DirectReceiver {
+}
+
+class FanoutReceiverA {
+}
+
+class FanoutReceiverB {
+}
+
+class FanoutReceiverC {
+}
+
+class TopicFirstReceiver {
+}
+
+class TopicSecondReceiver {
+}
+
+}
+
+package org.ylc.note.rabbit.producer.config; {
+class DirectRabbitConfig {
+}
+
+class FanoutRabbitConfig {
+}
+
+class RabbitConfig {
+}
+
+class TopicRabbitConfig {
+}
+
+}
+
+package org.ylc.note.rabbit.producer.controller; {
+class SendMessageController {
+}
+
+}
+
+package org.ylc.note.rabbit.producer; {
+class ProducerApplication {
+}
+
+class ProducerApplicationTests {
+}
+
+}
+
+package org.ylc.note.ratelimiter; {
+class GuavaLimiter {
+}
+
+class RateLimiterApplication {
+}
+
+class RateLimiterApplicationTests {
+}
+
+}
+
+package org.ylc.note.redis.bit.controller; {
+class BitMapController {
+}
+
+}
+
+package org.ylc.note.redis.bloomfilter; {
+class BloomFilterHelper {
+}
+
+}
+
+package org.ylc.note.redis.config; {
+class RedisConfig {
+}
+
+}
+
+package org.ylc.note.redis.hyperloglog.annotation; {
+class Article {
+}
+
+}
+
+package org.ylc.note.redis.hyperloglog.aop; {
+class ArticleAop {
+}
+
+}
+
+package org.ylc.note.redis.hyperloglog.controller; {
+class ArticleController {
+}
+
+class HyperController {
+}
+
+}
+
+package org.ylc.note.redis.lock.config; {
+class RedissonConfig {
+}
+
+}
+
+package org.ylc.note.redis.lock.controller; {
+class RedisController {
+}
+
+class RedissonController {
+}
+
+}
+
+package org.ylc.note.redis.lock; {
+class RedisLock {
+}
+
+}
+
+package org.ylc.note.redis; {
+class RedisApplication {
+}
+
+class RedisApplicationTests {
+}
+
+}
+
+package org.ylc.note.redis.service; {
+class RedisService {
+}
+
+}
+
+package org.ylc.note.security.common; {
+class HttpResult {
+}
+
+}
+
+package org.ylc.note.security.config; {
+class AuthorizationTokenFilter {
+}
+
+class CustomAccessDecisionManager {
+}
+
+class CustomAccessDeniedHandler {
+}
+
+class CustomAuthenticationEntryPoint {
+}
+
+class CustomAuthenticationFailureHandler {
+}
+
+class CustomAuthenticationProvider {
+}
+
+class CustomAuthenticationSuccessHandler {
+}
+
+class CustomLogoutSuccessHandler {
+}
+
+class CustomUsernamePasswordAuthenticationFilter {
+}
+
+class RedisConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package org.ylc.note.security.constant; {
+class ConfigConstants {
+}
+
+}
+
+package org.ylc.note.security.controller; {
+class SecurityController {
+}
+
+class UserController {
+}
+
+}
+
+package org.ylc.note.security.entity; {
+class Menu {
+}
+
+class Role {
+}
+
+class RoleMenu {
+}
+
+class SecurityUserDetails {
+}
+
+class SysUserRoleExample {
+}
+
+class User {
+}
+
+class UserRole {
+}
+
+}
+
+package org.ylc.note.security.mapper; {
+class MenuMapper {
+}
+
+class RoleMapper {
+}
+
+class RoleMenuMapper {
+}
+
+class UserMapper {
+}
+
+class UserRoleMapper {
+}
+
+}
+
+package org.ylc.note.security; {
+class SecurityApplication {
+}
+
+class SecurityApplicationTests {
+}
+
+}
+
+package org.ylc.note.security.service; {
+class AccessAuthorityService {
+}
+
+class AccessDecisionService {
+}
+
+class RedisService {
+}
+
+class SecurityUserService {
+}
+
+}
+
+package org.ylc.note.security.util; {
+class AuthenticationUtil {
+}
+
+class TokenUtil {
+}
+
+}
+
+package org.ylc.note.shardingsphere.config; {
+class DruidConfiguration {
+}
+
+class LocalRegistryCenter {
+}
+
+}
+
+package org.ylc.note.shardingsphere.controller; {
+class SysLogController {
+}
+
+class UserController {
+}
+
+}
+
+package org.ylc.note.shardingsphere.dto; {
+class SysLogDto {
+}
+
+}
+
+package org.ylc.note.shardingsphere.entity; {
+class SysLog {
+}
+
+class User {
+}
+
+}
+
+package org.ylc.note.shardingsphere.mapper; {
+class SysLogMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package org.ylc.note.shardingsphere; {
+class ShardingSphereApplication {
+}
+
+class ShardingSphereApplicationTests {
+}
+
+}
+
+package org.ylc.note.shardingsphere.strategy; {
+class LogPreciseShardingAlgorithm {
+}
+
+class LogRangeShardingAlgorithm {
+}
+
+}
+
+ActuatorApplication -- App
+ActuatorApplicationTests -- ActuatorApplication
+ActuatorApplicationTests -- App
+PermissionAspect -- VisitPermission
+PermissionAspect -- Run
+AopApplication -- App
+PermissionController -- VisitPermission
+AopApplicationTests -- AopApplication
+AopApplicationTests -- PermissionController
+AopApplicationTests -- App
+Run -- RunnableThread
+AppTest -- App
+AnimalAutoConfiguration -- App
+AnimalAutoConfiguration -- AnimalProperties
+AnimalAutoConfiguration -- AnimalService
+AnimalAutoConfiguration -- BirdEnvironmentCondition
+AnimalAutoConfiguration -- BirdService
+AnimalAutoConfiguration -- FishEnvironmentCondition
+AnimalAutoConfiguration -- FishService
+AnimalService -- AnimalProperties
+BirdEnvironmentCondition -- BirdService
+BirdService -- AnimalProperties
+FishEnvironmentCondition -- FishService
+FishService -- AnimalProperties
+JPushAutoConfiguration -- App
+JPushAutoConfiguration -- JPushProperties
+JPushAutoConfiguration -- JPushService
+JPushProperties -- App
+JPushService -- JPushEntity
+JPushService -- HttpClient
+CommonSpringBootTestApplication -- App
+AnimalController -- AnimalService
+AnimalController -- BirdService
+AnimalController -- FishService
+EventController -- App
+EventController -- NoticeEvent
+NoticeEvent -- App
+NoticeListener -- App
+NoticeListener -- NoticeEvent
+EventApplication -- App
+EventApplicationTests -- App
+EventApplicationTests -- EventApplication
+FreemarkerController -- FreemarkerUtil
+FreemarkerApplication -- App
+FreemarkerApplicationTests -- App
+FreemarkerApplicationTests -- FreemarkerApplication
+JwtApplication -- App
+JwtApplicationTests -- App
+JwtApplicationTests -- JwtApplication
+Log4j2Application -- App
+Log4j2ApplicationTests -- App
+Log4j2ApplicationTests -- Log4j2Application
+Log4j2ApplicationTests -- MyService
+LogbackApplication -- App
+LogbackApplicationTests -- App
+LogbackApplicationTests -- MyService
+LogbackApplicationTests -- LogbackApplication
+SseEmitterController -- SseEmitterServer
+SseEmitterController -- User
+WebSocketController -- WebSocketServer
+WebSocketController -- User
+MessagePushApplication -- App
+SseEmitterServer -- Run
+SseEmitterServer -- User
+WebSocketServer -- HttpServer
+WebSocketServer -- WebSocketServerHandler
+MessagePushApplicationTests -- App
+MessagePushApplicationTests -- MessagePushApplication
+MybatisApplication -- App
+MybatisApplicationTests -- App
+MybatisApplicationTests -- MybatisApplication
+HttpClient -- HttpClientHandler
+HttpServerApplication -- App
+HttpServerApplication -- HttpServer
+HttpServer -- HttpServerHandler
+HttpServerApplicationTests -- App
+HttpServerApplicationTests -- HttpServerApplication
+HttpServerApplicationTests -- HttpServer
+NettyClient -- NettyClientHandler
+NettyClientApplication -- App
+NettyClientApplication -- NettyClient
+NettyClientApplicationTests -- App
+NettyClientApplicationTests -- NettyClient
+NettyClientApplicationTests -- NettyClientApplication
+NettyServerHandler -- NettyServer
+NettyServerApplication -- App
+NettyServerApplication -- NettyServer
+NettyServer -- WebSocketServer
+NettyServer -- HttpServer
+NettyServer -- SocketMessageHandler
+NettyServerApplicationTests -- App
+NettyServerApplicationTests -- NettyServerApplication
+NettyServerApplicationTests -- NettyServer
+NettyWebsocketApplication -- App
+NettyWebsocketApplicationTests -- App
+NettyWebsocketApplicationTests -- NettyWebsocketApplication
+EasyPoiApplication -- App
+EasyPoiApplicationTests -- App
+EasyPoiApplicationTests -- EasyPoiApplication
+NormalPoiApplication -- App
+NormalPoiApplicationTests -- App
+NormalPoiApplicationTests -- NormalPoiApplication
+ScheduleJobStartupBoot -- Run
+ScheduleJobStartupBoot -- ScheduleJob
+ScheduleJobStartupBoot -- QuartzService
+ScheduleJobStartupBoot -- ScheduleJobService
+QuartzConfig -- App
+ScheduleController -- ScheduleJob
+ScheduleController -- ScheduleJobService
+ScheduleJobLog -- ScheduleJob
+QuartzScheduleJob -- Run
+QuartzScheduleJob -- ConfigConstant
+QuartzScheduleJob -- EnumConstant
+QuartzScheduleJob -- ScheduleJob
+QuartzScheduleJob -- ScheduleJobLog
+QuartzScheduleJob -- ScheduleJobLogService
+QuartzScheduleJob -- ScheduleRunnable
+QuartzScheduleJob -- SpringContextUtil
+QuartzApplication -- App
+ScheduleJobLogRepository -- ScheduleJob
+ScheduleJobLogRepository -- ScheduleJobLog
+ScheduleJobRepository -- ScheduleJob
+QuartzService -- ConfigConstant
+QuartzService -- EnumConstant
+QuartzService -- ScheduleJob
+QuartzService -- QuartzScheduleJob
+ScheduleJobLogService -- ScheduleJob
+ScheduleJobLogService -- ScheduleJobLog
+ScheduleJobLogService -- ScheduleJobLogRepository
+ScheduleJobService -- EnumConstant
+ScheduleJobService -- ScheduleJob
+ScheduleJobService -- ScheduleJobRepository
+ScheduleJobService -- QuartzService
+ScheduleRunnable -- Run
+ScheduleRunnable -- SpringContextUtil
+SpringContextUtil -- App
+QuartzApplicationTests -- App
+QuartzApplicationTests -- QuartzApplication
+MessageListenerConfig -- MessageAckListener
+ConsumerApplication -- App
+ConsumerApplicationTests -- App
+ConsumerApplicationTests -- ConsumerApplication
+DirectRabbitConfig -- RabbitConfig
+FanoutRabbitConfig -- RabbitConfig
+TopicRabbitConfig -- RabbitConfig
+SendMessageController -- RabbitConfig
+SendMessageController -- TopicRabbitConfig
+ProducerApplication -- App
+ProducerApplicationTests -- App
+ProducerApplicationTests -- ProducerApplication
+RateLimiterApplication -- App
+RateLimiterApplicationTests -- App
+RateLimiterApplicationTests -- RateLimiterApplication
+BitMapController -- RedisService
+ArticleAop -- Article
+ArticleAop -- RedisService
+ArticleController -- Article
+ArticleController -- RedisService
+HyperController -- RedisService
+RedisController -- RedisLock
+RedisApplication -- App
+RedisApplicationTests -- App
+RedisApplicationTests -- RedisApplication
+HttpResult -- ConfigConstant
+HttpResult -- ConfigConstants
+AuthorizationTokenFilter -- User
+AuthorizationTokenFilter -- SecurityUserService
+AuthorizationTokenFilter -- TokenUtil
+CustomAccessDecisionManager -- Role
+CustomAccessDeniedHandler -- ConfigConstant
+CustomAccessDeniedHandler -- HttpResult
+CustomAccessDeniedHandler -- ConfigConstants
+CustomAuthenticationEntryPoint -- ConfigConstant
+CustomAuthenticationEntryPoint -- HttpResult
+CustomAuthenticationEntryPoint -- ConfigConstants
+CustomAuthenticationFailureHandler -- HttpResult
+CustomAuthenticationFailureHandler -- User
+CustomAuthenticationProvider -- User
+CustomAuthenticationSuccessHandler -- ConfigConstant
+CustomAuthenticationSuccessHandler -- RedisService
+CustomAuthenticationSuccessHandler -- HttpResult
+CustomAuthenticationSuccessHandler -- ConfigConstants
+CustomAuthenticationSuccessHandler -- Menu
+CustomAuthenticationSuccessHandler -- SecurityUserDetails
+CustomAuthenticationSuccessHandler -- User
+CustomAuthenticationSuccessHandler -- MenuMapper
+CustomAuthenticationSuccessHandler -- TokenUtil
+CustomLogoutSuccessHandler -- ConfigConstant
+CustomLogoutSuccessHandler -- RedisService
+CustomLogoutSuccessHandler -- HttpResult
+CustomLogoutSuccessHandler -- ConfigConstants
+CustomLogoutSuccessHandler -- TokenUtil
+CustomUsernamePasswordAuthenticationFilter -- User
+SecurityConfig -- AuthorizationTokenFilter
+SecurityConfig -- CustomAccessDeniedHandler
+SecurityConfig -- CustomAuthenticationEntryPoint
+SecurityConfig -- CustomAuthenticationFailureHandler
+SecurityConfig -- CustomAuthenticationSuccessHandler
+SecurityConfig -- CustomLogoutSuccessHandler
+SecurityConfig -- CustomUsernamePasswordAuthenticationFilter
+SecurityConfig -- Role
+SecurityConfig -- User
+SecurityConfig -- SecurityUserService
+ConfigConstants -- ConfigConstant
+SecurityController -- RedisService
+SecurityController -- HttpResult
+SecurityController -- User
+SecurityController -- UserMapper
+UserController -- User
+UserController -- UserMapper
+Menu -- User
+Role -- User
+RoleMenu -- Menu
+RoleMenu -- Role
+SecurityUserDetails -- User
+SysUserRoleExample -- Run
+SysUserRoleExample -- Role
+SysUserRoleExample -- User
+SysUserRoleExample -- UserRole
+UserRole -- Role
+UserRole -- User
+MenuMapper -- Menu
+MenuMapper -- User
+RoleMapper -- Role
+RoleMenuMapper -- Menu
+RoleMenuMapper -- Role
+RoleMenuMapper -- RoleMenu
+RoleMenuMapper -- MenuMapper
+UserMapper -- User
+UserRoleMapper -- Role
+UserRoleMapper -- User
+UserRoleMapper -- UserRole
+UserRoleMapper -- RoleMapper
+SecurityApplication -- App
+AccessAuthorityService -- SecurityUserDetails
+AccessAuthorityService -- User
+AccessDecisionService -- ConfigConstant
+AccessDecisionService -- RedisService
+AccessDecisionService -- ConfigConstants
+AccessDecisionService -- SecurityUserDetails
+AccessDecisionService -- User
+SecurityUserService -- ConfigConstant
+SecurityUserService -- RedisService
+SecurityUserService -- ConfigConstants
+SecurityUserService -- SecurityUserDetails
+SecurityUserService -- User
+SecurityUserService -- UserMapper
+SecurityApplicationTests -- App
+SecurityApplicationTests -- SecurityApplication
+DruidConfiguration -- User
+SysLogController -- SysLogDto
+SysLogController -- SysLog
+SysLogController -- SysLogMapper
+SysLogDto -- SysLog
+SysLogMapper -- SysLog
+ShardingSphereApplication -- App
+ShardingSphereApplicationTests -- App
+ShardingSphereApplicationTests -- ShardingSphereApplication
+@enduml

@@ -1,0 +1,7 @@
+netty:
+  servers:
+    - name: server1
+      host: localhost
+      port: 0
+      bossThreads: 4
+      workerThreads: 4

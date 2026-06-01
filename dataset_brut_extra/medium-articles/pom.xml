@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>io.tbc.medium</groupId>
+    <artifactId>medium-articles</artifactId>
+    <version>1.0.0</version>
+    <name>Medium Articles</name>
+    <description>All Medium Articles</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <modules>
+        <!-- <module>spring-soap-webservice</module> 
+        <module>spring-boot-wildfly-demo</module> 
+        <module>produce-soap-web-service</module> 
+		
+		<module>produce-soap-web-service-interceptors</module> -->
+		<module>spring-boot-kafka-demo</module>
+        <!--<module>consuming-soap-web-service</module> 
+	    <module>produce-soap-web-service-exceptions</module>
+        <module>spring-soap-digital-certificate-auth</module>
+        <module>spring-soap-digital-certificate-auth-client</module>
+        <module>spring-soap-username-password-auth</module>
+        <module>spring-soap-username-password-auth-client</module> -->
+		<module>spring-boot-pocket-api</module>
+		<module>spring-boot-pocket-api-actuator</module>
+		<module>spring-boot-pocket-api-querydsl</module>
+		
+    </modules>
+</project>

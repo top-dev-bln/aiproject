@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the recruitment domain. It serves User as its primary actors. The main business capabilities include super hero. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage super hero operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "SuperHeroController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SuperHeroController[\"SuperHeroController\"]\n  end\n  subgraph Data_Access\n    SuperHeroRepository[\"SuperHeroRepository\"]\n  end\n  subgraph Security\n    SuperHeroFilter[\"SuperHeroFilter\"]\n  end\n  Controllers --> Security\n  Security --> Data_Access"
+  }
+}

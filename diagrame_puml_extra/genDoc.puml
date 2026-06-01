@@ -1,0 +1,389 @@
+@startuml
+package com.easycodingnow; {
+class GenConfig {
+}
+
+class GenDoc {
+}
+
+}
+
+package com.easycodingnow.parse; {
+class Parse {
+}
+
+class ParseHelper {
+}
+
+class ParseHelperTest {
+}
+
+}
+
+package com.easycodingnow.reflect; {
+class Annotation {
+}
+
+class Class {
+}
+
+class Comment {
+}
+
+class Field {
+}
+
+class MarkerAnnotation {
+}
+
+class Member {
+}
+
+class Method {
+}
+
+class MethodParam {
+}
+
+class NormalAnnotation {
+}
+
+class SingleAnnotation {
+}
+
+}
+
+package com.easycodingnow.template; {
+class TemplateParse {
+}
+
+}
+
+package com.easycodingnow.template.vo; {
+class DocApiApiClass {
+}
+
+class DocApiMember {
+}
+
+class DocApiMethod {
+}
+
+class DocField {
+}
+
+class DocParseHelp {
+}
+
+class DocPojoClass {
+}
+
+class DocRequestParam {
+}
+
+}
+
+package com.easycodingnow.template.vo.rpc; {
+class RpcApiClass {
+}
+
+class RpcApiConvertHelper {
+}
+
+class RpcApiMember {
+}
+
+class RpcMethod {
+}
+
+}
+
+package com.easycodingnow.template.vo.spring; {
+class SpringConvertHelper {
+}
+
+class SpringMvcApiClass {
+}
+
+class SpringMvcApiMember {
+}
+
+class SpringMvcMethod {
+}
+
+}
+
+package com.easycodingnow.utils; {
+class CollectionUtils {
+}
+
+class FileUtils {
+}
+
+class IOUtils {
+}
+
+class StringUtils {
+}
+
+}
+
+package easycodingnow; {
+class ParseTest {
+}
+
+}
+
+package com.easycoding.demo.domain; {
+class Food {
+}
+
+class Result {
+}
+
+class User {
+}
+
+}
+
+package com.easycodingnow.demo.example; {
+class Main {
+}
+
+}
+
+package com.easycodingnow.demo.domain; {
+class Man {
+}
+
+class Man2 {
+}
+
+class Shop {
+}
+
+}
+
+package com.easycodingnow.demo.web1; {
+class IgnoreShopController {
+}
+
+class ShopController {
+}
+
+class UserController {
+}
+
+}
+
+package com.easycodingnow.demo.web2; {
+class GoodsController {
+}
+
+}
+
+package com.easycodingnow.gendoc.web; {
+class GenDocWebApp {
+}
+
+class GenWebConfig {
+}
+
+}
+
+GenConfig -- Annotation
+GenConfig -- Comment
+GenConfig -- CollectionUtils
+GenConfig -- FileUtils
+GenConfig -- StringUtils
+GenDoc -- GenConfig
+GenDoc -- Parse
+GenDoc -- Annotation
+GenDoc -- Class
+GenDoc -- Comment
+GenDoc -- Method
+GenDoc -- TemplateParse
+GenDoc -- DocApiApiClass
+GenDoc -- RpcApiClass
+GenDoc -- RpcApiConvertHelper
+GenDoc -- SpringConvertHelper
+GenDoc -- CollectionUtils
+GenDoc -- FileUtils
+GenDoc -- IOUtils
+GenDoc -- StringUtils
+Parse -- GenConfig
+Parse -- ParseHelper
+Parse -- Annotation
+Parse -- Class
+Parse -- Comment
+Parse -- Field
+Parse -- Member
+Parse -- Method
+Parse -- MethodParam
+Parse -- CollectionUtils
+Parse -- FileUtils
+Parse -- StringUtils
+ParseHelper -- Annotation
+ParseHelper -- Comment
+ParseHelper -- MarkerAnnotation
+ParseHelper -- Member
+ParseHelper -- NormalAnnotation
+ParseHelper -- SingleAnnotation
+ParseHelper -- CollectionUtils
+Annotation -- Member
+Class -- Field
+Class -- Member
+Class -- Method
+Comment -- CollectionUtils
+Comment -- StringUtils
+Field -- Member
+MarkerAnnotation -- Annotation
+Member -- GenConfig
+Member -- Comment
+Member -- CollectionUtils
+Member -- StringUtils
+Method -- Member
+Method -- MethodParam
+MethodParam -- Member
+NormalAnnotation -- Annotation
+SingleAnnotation -- Annotation
+TemplateParse -- Parse
+TemplateParse -- Class
+TemplateParse -- IOUtils
+DocApiApiClass -- Class
+DocApiApiClass -- Member
+DocApiApiClass -- Method
+DocApiApiClass -- DocApiMember
+DocApiApiClass -- DocApiMethod
+DocApiMember -- Member
+DocApiMember -- Method
+DocApiMethod -- Member
+DocApiMethod -- Method
+DocApiMethod -- DocApiMember
+DocApiMethod -- DocRequestParam
+DocField -- Class
+DocField -- Field
+DocField -- DocPojoClass
+DocParseHelp -- Parse
+DocParseHelp -- Class
+DocParseHelp -- Comment
+DocParseHelp -- Member
+DocParseHelp -- DocPojoClass
+DocParseHelp -- CollectionUtils
+DocPojoClass -- GenConfig
+DocPojoClass -- Parse
+DocPojoClass -- ParseHelper
+DocPojoClass -- Annotation
+DocPojoClass -- Class
+DocPojoClass -- Comment
+DocPojoClass -- Field
+DocPojoClass -- NormalAnnotation
+DocPojoClass -- SingleAnnotation
+DocPojoClass -- CollectionUtils
+DocPojoClass -- StringUtils
+DocRequestParam -- Class
+DocRequestParam -- DocPojoClass
+RpcApiClass -- Class
+RpcApiClass -- Member
+RpcApiClass -- Method
+RpcApiClass -- DocApiApiClass
+RpcApiClass -- DocApiMethod
+RpcApiClass -- RpcApiMember
+RpcApiConvertHelper -- Class
+RpcApiConvertHelper -- Member
+RpcApiConvertHelper -- Method
+RpcApiConvertHelper -- DocApiMethod
+RpcApiConvertHelper -- RpcApiClass
+RpcApiConvertHelper -- RpcMethod
+RpcApiConvertHelper -- CollectionUtils
+RpcApiMember -- GenConfig
+RpcApiMember -- Annotation
+RpcApiMember -- Comment
+RpcApiMember -- Member
+RpcApiMember -- Method
+RpcApiMember -- NormalAnnotation
+RpcApiMember -- SingleAnnotation
+RpcApiMember -- DocApiMember
+RpcApiMember -- CollectionUtils
+RpcApiMember -- StringUtils
+RpcMethod -- GenConfig
+RpcMethod -- Parse
+RpcMethod -- Annotation
+RpcMethod -- Class
+RpcMethod -- Comment
+RpcMethod -- Member
+RpcMethod -- Method
+RpcMethod -- MethodParam
+RpcMethod -- DocApiMethod
+RpcMethod -- DocParseHelp
+RpcMethod -- DocPojoClass
+RpcMethod -- DocRequestParam
+RpcMethod -- RpcApiMember
+RpcMethod -- CollectionUtils
+RpcMethod -- StringUtils
+SpringConvertHelper -- Annotation
+SpringConvertHelper -- Class
+SpringConvertHelper -- Method
+SpringConvertHelper -- DocApiMethod
+SpringConvertHelper -- SpringMvcApiClass
+SpringConvertHelper -- SpringMvcMethod
+SpringConvertHelper -- CollectionUtils
+SpringMvcApiClass -- Class
+SpringMvcApiClass -- Member
+SpringMvcApiClass -- Method
+SpringMvcApiClass -- DocApiApiClass
+SpringMvcApiClass -- DocApiMethod
+SpringMvcApiClass -- SpringMvcApiMember
+SpringMvcApiMember -- Annotation
+SpringMvcApiMember -- Comment
+SpringMvcApiMember -- Member
+SpringMvcApiMember -- Method
+SpringMvcApiMember -- MethodParam
+SpringMvcApiMember -- NormalAnnotation
+SpringMvcApiMember -- SingleAnnotation
+SpringMvcApiMember -- DocApiMember
+SpringMvcApiMember -- DocRequestParam
+SpringMvcApiMember -- CollectionUtils
+SpringMvcApiMember -- StringUtils
+SpringMvcMethod -- GenConfig
+SpringMvcMethod -- Parse
+SpringMvcMethod -- Annotation
+SpringMvcMethod -- Class
+SpringMvcMethod -- Comment
+SpringMvcMethod -- MarkerAnnotation
+SpringMvcMethod -- Member
+SpringMvcMethod -- Method
+SpringMvcMethod -- MethodParam
+SpringMvcMethod -- NormalAnnotation
+SpringMvcMethod -- SingleAnnotation
+SpringMvcMethod -- DocApiMethod
+SpringMvcMethod -- DocParseHelp
+SpringMvcMethod -- DocPojoClass
+SpringMvcMethod -- DocRequestParam
+SpringMvcMethod -- SpringMvcApiMember
+SpringMvcMethod -- CollectionUtils
+SpringMvcMethod -- StringUtils
+SpringMvcMethod -- Result
+ParseHelperTest -- Parse
+ParseHelperTest -- ParseHelper
+ParseTest -- Parse
+Main -- GenConfig
+Main -- GenDoc
+Main -- Comment
+Main -- User
+Main -- GenDocWebApp
+Main -- GenWebConfig
+Man2 -- Man
+Shop -- Field
+IgnoreShopController -- Shop
+IgnoreShopController -- ShopController
+ShopController -- Result
+ShopController -- Shop
+UserController -- User
+UserController -- Man
+UserController -- Man2
+GoodsController -- Food
+GenDocWebApp -- GenDoc
+GenDocWebApp -- Class
+GenDocWebApp -- GenWebConfig
+@enduml

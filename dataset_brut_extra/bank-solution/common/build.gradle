@@ -1,0 +1,20 @@
+plugins {
+	id 'java-library'
+	id 'io.spring.dependency-management'
+}
+
+group = 'com.banksolution'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation project(':cqrs.core')
+}
+

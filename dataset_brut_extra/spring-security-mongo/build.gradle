@@ -1,0 +1,168 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("pl.allegro.tech.build:axion-release-plugin:${axionReleasePluginVersion}")
+        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'signing'
+apply plugin: 'maven'
+apply plugin: 'pl.allegro.tech.build.axion-release'
+apply plugin: 'jacoco'
+apply plugin: "com.github.kt3k.coveralls"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "https://oss.jfrog.org/libs-snapshot/"
+    }
+}
+
+scmVersion {
+    tag {
+        prefix = 'RELEASE'
+    }
+}
+
+group = 'uk.co.caeldev'
+version = scmVersion.version
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+jar {
+    archivesBaseName = rootProject.name
+    group = group
+    version = version
+    manifest {
+        attributes 'Implementation-Title': 'Spring Security Mongo',
+                'Implementation-Version': version,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version'),
+                'Built-Gradle': gradle.gradleVersion
+    }
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing {
+    sign configurations.archives
+    required = { gradle.taskGraph.hasTask("uploadArchives") && !version.endsWith("SNAPSHOT") }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+        html.destination file("${buildDir}/jacoco")
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+                authentication(userName: "${System.env.ossrhUsername}", password: "${System.env.ossrhPassword}")
+            }
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+                authentication(userName: "${System.env.ossrhUsername}", password: "${System.env.ossrhPassword}")
+            }
+
+            //repository(url: "/Users/me/.m2/repository")
+
+            pom.project {
+
+                parent {
+                  groupId 'org.springframework.boot'
+                  artifactId 'spring-boot-starter-parent'
+                  version "${springBootVersion}"
+                }
+
+                name 'Spring Security Mongo'
+                packaging "jar"
+
+                description "A Commons Library to provide the repositories for mongo db"
+                url "https://github.com/caelcs/spring-security-mongo"
+
+                scm {
+                    url "https://github.com/caelcs/spring-security-mongo.git"
+                    connection "https://github.com/caelcs/spring-security-mongo.git"
+                    developerConnection "https://github.com/caelcs/spring-security-mongo.git"
+                }
+
+                licenses {
+                    license {
+                        name "MIT"
+                        url "http://opensource.org/licenses/MIT"
+                        distribution "repo"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id "caelcs"
+                        name "Adolfo Custidiano"
+                        email "adolfoecs@gmail.com"
+                    }
+                }
+            }
+        }
+    }
+}
+
+coveralls {
+    jacocoReportPath 'build/reports/jacoco/test/jacocoTestReport.xml'
+}
+
+tasks.coveralls {
+    dependsOn 'check'
+}
+
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}"
+    implementation "org.springframework.security.oauth:spring-security-oauth2:${springOAuth2Version}"
+    implementation "com.google.guava:guava:${guavaVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "org.apache.commons:commons-lang3:3.7"
+
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testImplementation "org.assertj:assertj-core:${assertjCoreVersion}"
+    testImplementation "uk.org.fyodor:fyodor-core:${fyodorVersion}"
+    testImplementation "com.github.fakemongo:fongo:${fongoVersion}"
+    testImplementation "com.lordofthejars:nosqlunit-mongodb:${nosqlunitMongodbVersion}"
+    testImplementation "com.jayway.jsonpath:json-path:${jsonPathVersion}"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = rootGradleVersion
+}

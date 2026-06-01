@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, file management domain. It serves User as its primary actors. The main business capabilities include oss.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage oss operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "OssEndpoint"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    OssEndpoint[\"OssEndpoint\"]\n  end\n  subgraph Infrastructure\n    OssAutoConfiguration[\"OssAutoConfiguration\"]\n  end"
+  }
+}

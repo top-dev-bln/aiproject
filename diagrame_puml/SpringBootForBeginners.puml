@@ -1,0 +1,452 @@
+@startuml
+
+package com.in28minutes.junit {
+  class AssertTest {
+    +test() : void
+  }
+  class MyMathTest {
+    +before() : void
+    +after() : void
+    +beforeClass() : void
+    +afterClass() : void
+    +sum_with3numbers() : void
+    +sum_with1number() : void
+  }
+  class MyMath {
+  }
+}
+
+package com.in28minutes.learning.jpa.jpain10steps {
+  class JpaIn10StepsApplicationTests {
+    +contextLoads() : void
+  }
+  class UserDaoServiceCommandLineRunner {
+    -log : Logger
+    -userDaoService : UserDAOService
+    +run() : void
+  }
+  class UserRepositoryCommandLineRunner {
+    -log : Logger
+    -userRepository : UserRepository
+    +run() : void
+  }
+  class JpaIn10StepsApplication {
+    +main() : void
+  }
+}
+
+package com.in28minutes.learning.jpa.jpain10steps.entity {
+  class User <<Entity>> {
+    -id : long
+    -name : String
+    -role : String
+    +getId() : long
+    +getName() : String
+    +getRole() : String
+  }
+}
+
+package com.in28minutes.learning.jpa.jpain10steps.service {
+  class UserDAOService <<Repository>> {
+    -entityManager : EntityManager
+    +insert() : long
+  }
+  interface UserRepository {
+  }
+}
+
+package com.in28minutes.mockito.mockitodemo {
+  class ListTest {
+    +testSize() : void
+    +testSize_multipleReturns() : void
+    +testGet_SpecificParameter() : void
+    +testGet_GenericParameter() : void
+  }
+  class SomeBusinessStubTest {
+    +testFindTheGreatestFromAllData() : void
+    +retrieveAllData() : int[]
+  }
+  class MockitoDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class SomeBusinessMockTest {
+    +testFindTheGreatestFromAllData() : void
+    +testFindTheGreatestFromAllData_ForOneValue() : void
+  }
+  class SomeBusinessMockAnnotationsTest {
+    +testFindTheGreatestFromAllData() : void
+    +testFindTheGreatestFromAllData_ForOneValue() : void
+    +testFindTheGreatestFromAllData_NoValues() : void
+  }
+  interface DataService {
+  }
+  class SomeBusinessImpl {
+    -dataService : DataService
+  }
+  class MockitoDemoApplication {
+    +main() : void
+  }
+}
+
+package com.in28minutes.spring.basics.springin5steps {
+  class SpringIn5StepsApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringIn5StepsApplication {
+    +main() : void
+  }
+  class BinarySearchImpl {
+    -sortAlgorithm : SortAlgorithm
+    +binarySearch() : int
+  }
+  class QuickSortAlgorithm {
+    +sort() : int[]
+  }
+  interface SortAlgorithm {
+    +sort() : int[]
+  }
+  class BubbleSortAlgorithm {
+    +sort() : int[]
+  }
+}
+
+package com.in28minutes.springboot {
+  class Application {
+    +main() : void
+    +dummy() : String
+  }
+  class WelcomeController <<Controller>> {
+    -service : WelcomeService
+    -configuration : BasicConfiguration
+    +welcome() : String
+    +dynamicConfiguration() : Map
+  }
+  class WelcomeService {
+    -welcomeMessage : String
+    +retrieveWelcomeMessage() : String
+  }
+  class Application {
+    +main() : void
+    +dummy() : String
+  }
+  class WelcomeController <<Controller>> {
+    -service : WelcomeService
+    -configuration : BasicConfiguration
+    +welcome() : String
+    +dynamicConfiguration() : Map
+  }
+  class WelcomeService {
+    -welcomeMessage : String
+    +retrieveWelcomeMessage() : String
+  }
+}
+
+package com.in28minutes.springboot.basics.springbootin10steps {
+  class SpringbootIn10StepsApplicationTests {
+    +contextLoads() : void
+  }
+  class BooksController <<Controller>> {
+    +getAllBooks() : List<Book>
+  }
+  class SpringbootIn10StepsApplication {
+    +main() : void
+  }
+  class Book {
+    +getId() : long
+    +getName() : String
+    +getAuthor() : String
+  }
+}
+
+package com.in28minutes.springboot.configuration {
+  class BasicConfiguration {
+    -value : boolean
+    -message : String
+    -number : int
+    +isValue() : boolean
+    +setValue() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getNumber() : int
+    +setNumber() : void
+  }
+  class BasicConfiguration {
+    -value : boolean
+    -message : String
+    -number : int
+    +isValue() : boolean
+    +setValue() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getNumber() : int
+    +setNumber() : void
+  }
+}
+
+package com.in28minutes.springboot.controller {
+  class SurveyControllerTest {
+    -mockMvc : MockMvc
+    -surveyService : SurveyService
+    +retrieveDetailsForQuestion() : void
+    +createSurveyQuestion() : void
+  }
+  class SurveyControllerIT {
+    -port : int
+    -uri : String
+    +before() : void
+    +testRetrieveSurveyQuestion() : void
+    +retrieveAllSurveyQuestions() : void
+    +addQuestion() : void
+  }
+  class SurveyController <<Controller>> {
+    -surveyService : SurveyService
+    +retrieveQuestions() : List<Question>
+    +retrieveDetailsForQuestion() : Question
+    +addQuestionToSurvey() : ResponseEntity<Void>
+  }
+  class SurveyControllerTest {
+    -mockMvc : MockMvc
+    -surveyService : SurveyService
+    +retrieveDetailsForQuestion() : void
+    +createSurveyQuestion() : void
+  }
+  class SurveyControllerIT {
+    -port : int
+    -uri : String
+    +before() : void
+    +testRetrieveSurveyQuestion() : void
+    +retrieveAllSurveyQuestions() : void
+    +addQuestion() : void
+  }
+  class SurveyController <<Controller>> {
+    -surveyService : SurveyService
+    +retrieveQuestions() : List<Question>
+    +retrieveDetailsForQuestion() : Question
+    +addQuestionToSurvey() : ResponseEntity<Void>
+  }
+}
+
+package com.in28minutes.springboot.jpa {
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -role : String
+    +getId() : Long
+    +getName() : String
+    +getRole() : String
+  }
+  class UserCommandLineRunner {
+    -log : Logger
+    -repository : UserRepository
+    +run() : void
+  }
+  interface UserRestRepository {
+  }
+  interface UserRepository {
+  }
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -role : String
+    +getId() : Long
+    +getName() : String
+    +getRole() : String
+  }
+  class UserCommandLineRunner {
+    -log : Logger
+    -repository : UserRepository
+    +run() : void
+  }
+  interface UserRestRepository {
+  }
+  interface UserRepository {
+  }
+}
+
+package com.in28minutes.springboot.model {
+  class Survey {
+    -id : String
+    -title : String
+    -description : String
+    -questions : List<Question>
+    +getId() : String
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getQuestions() : List<Question>
+    +setQuestions() : void
+  }
+  class Question {
+    -id : String
+    -description : String
+    -correctAnswer : String
+    -options : List<String>
+    -prime : int
+    +getId() : String
+    +setId() : void
+    +getDescription() : String
+    +getCorrectAnswer() : String
+    +getOptions() : List<String>
+  }
+  class Survey {
+    -id : String
+    -title : String
+    -description : String
+    -questions : List<Question>
+    +getId() : String
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getQuestions() : List<Question>
+    +setQuestions() : void
+  }
+  class Question {
+    -id : String
+    -description : String
+    -correctAnswer : String
+    -options : List<String>
+    -prime : int
+    +getId() : String
+    +setId() : void
+    +getDescription() : String
+    +getCorrectAnswer() : String
+    +getOptions() : List<String>
+  }
+}
+
+package com.in28minutes.springboot.security {
+  class SecurityConfig {
+    +configure() : void
+    +configure() : void
+  }
+  class SecurityConfig {
+    +configure() : void
+    +configure() : void
+  }
+}
+
+package com.in28minutes.springboot.service {
+  class SurveyService {
+    -surveys : List<Survey>
+    -random : SecureRandom
+    +retrieveAllSurveys() : List<Survey>
+    +retrieveSurvey() : Survey
+    +retrieveQuestions() : List<Question>
+    +retrieveQuestion() : Question
+    +addQuestion() : Question
+  }
+  class SurveyService {
+    -surveys : List<Survey>
+    -random : SecureRandom
+    +retrieveAllSurveys() : List<Survey>
+    +retrieveSurvey() : Survey
+    +retrieveQuestions() : List<Question>
+    +retrieveQuestion() : Question
+    +addQuestion() : Question
+  }
+}
+
+package com.in28minutes.springboot.web {
+  class SpringBootFirstWebApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringBootFirstWebApplication {
+    +main() : void
+  }
+}
+
+package com.in28minutes.springboot.web.controller {
+  class WelcomeController <<Controller>> {
+    +showWelcomePage() : String
+  }
+  class TodoController <<Controller>> {
+    +initBinder() : void
+    +showTodos() : String
+    +showAddTodoPage() : String
+    +deleteTodo() : String
+    +showUpdateTodoPage() : String
+    +updateTodo() : String
+    +addTodo() : String
+  }
+  class ErrorController <<Controller>> {
+    +handleException() : ModelAndView
+  }
+  class LogoutController <<Controller>> {
+    +logout() : String
+  }
+}
+
+package com.in28minutes.springboot.web.model {
+  class Todo {
+    -id : int
+    -user : String
+    -desc : String
+    -targetDate : Date
+    -isDone : boolean
+    -prime : int
+    +getId() : int
+    +setId() : void
+    +getUser() : String
+    +setUser() : void
+    +getDesc() : String
+    +setDesc() : void
+    +getTargetDate() : Date
+    +setTargetDate() : void
+  }
+}
+
+package com.in28minutes.springboot.web.security {
+  class SecurityConfiguration {
+    +configureGlobalSecurity() : void
+    +configure() : void
+  }
+}
+
+package com.in28minutes.springboot.web.service {
+  class TodoService <<Service>> {
+    -todos : List<Todo>
+    -todoCount : int
+    +retrieveTodos() : List<Todo>
+    +retrieveTodo() : Todo
+    +updateTodo() : void
+    +addTodo() : void
+    +deleteTodo() : void
+  }
+}
+
+' --- Relatii ---
+QuickSortAlgorithm ..|> SortAlgorithm
+BubbleSortAlgorithm ..|> SortAlgorithm
+UserDaoServiceCommandLineRunner --> User
+UserDaoServiceCommandLineRunner --> UserDAOService
+UserRepositoryCommandLineRunner --> User
+UserRepositoryCommandLineRunner --> UserRepository
+UserDAOService --> User
+UserRepository --> User
+TodoController --> Todo
+TodoController --> TodoService
+TodoService --> Todo
+SurveyControllerTest --> Question
+SurveyControllerTest --> SurveyService
+SurveyControllerIT --> Application
+SurveyControllerIT --> Question
+WelcomeController --> BasicConfiguration
+SurveyController --> Question
+SurveyController --> SurveyService
+SurveyService --> Question
+SurveyService --> Survey
+SurveyControllerTest --> Question
+SurveyControllerTest --> SurveyService
+SurveyControllerIT --> Application
+SurveyControllerIT --> Question
+WelcomeController --> BasicConfiguration
+SurveyController --> Question
+SurveyController --> SurveyService
+SurveyService --> Question
+SurveyService --> Survey
+
+@enduml

@@ -1,0 +1,190 @@
+@startuml
+package com.didispace; {
+class ComputeServiceApplication {
+}
+
+class Application {
+}
+
+class ComputeServiceApplication {
+}
+
+class ApplicationTests {
+}
+
+class ComputeServiceApplications {
+}
+
+}
+
+package com.didispace.domain; {
+class ReturnResult {
+}
+
+class ReturnResult {
+}
+
+class EventProcess {
+}
+
+class EventProcessMapper {
+}
+
+class Hredo {
+}
+
+class ReturnResult {
+}
+
+class User {
+}
+
+}
+
+package com.didispace.mapper; {
+class HredoDao {
+}
+
+class HredoMapper {
+}
+
+class HredoService {
+}
+
+}
+
+package com.didispace.rabbit; {
+class AmqpConfig {
+}
+
+class CommonListenableCallBack {
+}
+
+class RedisConfig {
+}
+
+class RedisObjectSerializer {
+}
+
+}
+
+package com.didispace.web; {
+class AsyncOperation {
+}
+
+class CommonListenableCallBack {
+}
+
+class EventProcess {
+}
+
+class EventProcessMapper {
+}
+
+class Hredo {
+}
+
+class PageInfo {
+}
+
+class ScheduledHRedo {
+}
+
+class Sendservice {
+}
+
+class ComputeControllera {
+}
+
+class ComputeControllerComaP {
+}
+
+class EventProcess {
+}
+
+class EventProcessMapper {
+}
+
+class RedisConfig {
+}
+
+class RedisObjectSerializer {
+}
+
+class TJshelper {
+}
+
+class User {
+}
+
+class AsyncOperations {
+}
+
+class CommonListenableCallBack {
+}
+
+class ComputeControllers {
+}
+
+class ComputeControllersBEH {
+}
+
+class TJhelper {
+}
+
+}
+
+ComputeServiceApplication -- Application
+HredoDao -- HredoMapper
+HredoDao -- EventProcess
+HredoDao -- Hredo
+HredoMapper -- EventProcess
+HredoMapper -- Hredo
+HredoService -- HredoMapper
+HredoService -- EventProcess
+HredoService -- Hredo
+AmqpConfig -- EventProcess
+AmqpConfig -- EventProcessMapper
+AmqpConfig -- ScheduledHRedo
+AmqpConfig -- User
+RedisConfig -- RedisObjectSerializer
+AsyncOperation -- CommonListenableCallBack
+EventProcessMapper -- EventProcess
+EventProcessMapper -- Hredo
+ScheduledHRedo -- HredoService
+ScheduledHRedo -- EventProcess
+ScheduledHRedo -- EventProcessMapper
+ScheduledHRedo -- Hredo
+ScheduledHRedo -- PageInfo
+Sendservice -- AmqpConfig
+Sendservice -- EventProcess
+Sendservice -- EventProcessMapper
+ComputeControllera -- ReturnResult
+ComputeControllera -- EventProcess
+ComputeControllera -- EventProcessMapper
+ComputeControllera -- TJshelper
+ComputeControllera -- User
+ComputeControllerComaP -- TJshelper
+ComputeControllerComaP -- User
+TJshelper -- ReturnResult
+TJshelper -- EventProcess
+TJshelper -- EventProcessMapper
+ApplicationTests -- Application
+ApplicationTests -- ComputeControllera
+ComputeServiceApplications -- ComputeServiceApplication
+ComputeServiceApplications -- Application
+AsyncOperations -- ReturnResult
+AsyncOperations -- CommonListenableCallBack
+AsyncOperations -- AsyncOperation
+ComputeControllers -- ReturnResult
+ComputeControllers -- User
+ComputeControllers -- TJhelper
+ComputeControllersBEH -- ReturnResult
+ComputeControllersBEH -- AsyncOperation
+ComputeControllersBEH -- EventProcess
+ComputeControllersBEH -- EventProcessMapper
+ComputeControllersBEH -- Hredo
+ComputeControllersBEH -- User
+ComputeControllersBEH -- AsyncOperations
+ComputeControllersBEH -- ComputeControllers
+@enduml

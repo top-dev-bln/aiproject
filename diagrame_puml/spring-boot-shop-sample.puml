@@ -1,0 +1,387 @@
+@startuml
+
+package com.syqu.shop {
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class StartupData {
+    -userService : UserService
+    -productService : ProductService
+    -categoryRepository : CategoryRepository
+    -logger : Logger
+    -NAME : String
+    -IMAGE_URL : String
+    -DESCRIPTION : String
+    -PRICE : BigDecimal
+    +run() : void
+  }
+}
+
+package com.syqu.shop.config {
+  class WebMvcConfig {
+    +localeResolver() : LocaleResolver
+    +localeChangeInterceptor() : LocaleChangeInterceptor
+    +messageSource() : MessageSource
+    +addInterceptors() : void
+  }
+  class WebSecurityConfig {
+    -userRepository : UserRepository
+    +userDetailsService() : UserDetailsService
+    +passwordEncoder() : BCryptPasswordEncoder
+    +authenticationManager() : AuthenticationManager
+    +configure() : void
+    +configure() : void
+    +configureGlobal() : void
+  }
+}
+
+package com.syqu.shop.controller {
+  class CartControllerMvcTests {
+    -mockMvc : MockMvc
+    +setUp() : void
+    +cartControllerStatus() : void
+  }
+  class HomeControllerMvcTests {
+    -mockMvc : MockMvc
+    -productService : ProductService
+    +setUp() : void
+    +homeControllerStatus() : void
+    +homeControllerStatus2() : void
+    +homeControllerStatus3() : void
+    +homeControllerStatus4() : void
+  }
+  class ControllersTests {
+    +checkIfHomeControllerNotNull() : void
+    +checkIfUserControllerNotNull() : void
+    +checkIfLoginControllerNotNull() : void
+    +checkIfRegisterControllerNotNull() : void
+    +checkIfProductControllerNotNull() : void
+    +checkIfCartControllerNotNull() : void
+  }
+  class LoginControllerMvcTests {
+    -mockMvc : MockMvc
+    +setUp() : void
+    +loginControllerStatus() : void
+  }
+  class RegisterController <<Controller>> {
+    -logger : Logger
+    -userService : UserService
+    -userValidator : UserValidator
+    +registration() : String
+    +registration() : String
+  }
+  class ProductController <<Controller>> {
+    -logger : Logger
+    -productService : ProductService
+    -productValidator : ProductValidator
+    -categoryService : CategoryService
+    +newProduct() : String
+    +newProduct() : String
+    +editProduct() : String
+    +editProduct() : String
+    +deleteProduct() : String
+  }
+  class CartController <<Controller>> {
+    -logger : Logger
+    -shoppingCartService : ShoppingCartService
+    -productService : ProductService
+    +cart() : String
+    +addProductToCart() : String
+    +removeProductFromCart() : String
+    +clearProductsInCart() : String
+    +cartCheckout() : String
+  }
+  class HomeController <<Controller>> {
+    -productService : ProductService
+    -categoryService : CategoryService
+    +home() : String
+    +homePost() : String
+    +about() : String
+  }
+  class LoginController <<Controller>> {
+    +login() : String
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +userPanel() : String
+  }
+}
+
+package com.syqu.shop.creator {
+  class ProductCreator {
+    -NAME : String
+    -DESCRIPTION : String
+    -PRICE : BigDecimal
+    -IMAGE_URL : String
+    +createTestProduct() : Product
+    +createTestProducts() : Set<Product>
+  }
+  class UserCreator {
+    -USERNAME : String
+    -PASSWORD : String
+    -FIRST_NAME : String
+    -LAST_NAME : String
+    -AGE : int
+    -EMAIL : String
+    -GENDER : String
+    -BALANCE : BigDecimal
+    -CITY : String
+    +createTestUser() : User
+  }
+}
+
+package com.syqu.shop.domain {
+  class Product <<Entity>> {
+    -id : long
+    -name : String
+    -category : Category
+    -description : String
+    -imageUrl : String
+    -price : BigDecimal
+  }
+  class Category <<Entity>> {
+    -id : long
+    -categoryName : String
+    -books : Set<Product>
+  }
+  class User <<Entity>> {
+    -id : long
+    -username : String
+    -email : String
+    -password : String
+    -passwordConfirm : String
+    -firstName : String
+    -lastName : String
+    -age : int
+    -city : String
+    -gender : String
+  }
+}
+
+package com.syqu.shop.model {
+  class ProductEntityTests {
+    -thrown : ExpectedException
+    -entityManager : TestEntityManager
+    +createProductWhenNameIsNullShouldThrowException() : void
+    +createProductWhenNameIsEmptyShouldThrowException() : void
+    +createProductWhenDescriptionIsNullShouldThrowException() : void
+    +createProductWhenDescriptionIsEmptyShouldThrowException() : void
+    +createProductWhenDescriptionIsToLongShouldThrowException() : void
+    +createProductWhenImageUrlIsNotValidUrlShouldThrowException() : void
+    +createProductWhenPriceIsNullThrowException() : void
+  }
+  class UserEntityTests {
+    -thrown : ExpectedException
+    -entityManager : TestEntityManager
+    +createUserWhenUsernameIsNullShouldThrowException() : void
+    +createUserWhenUsernameIsEmptyShouldThrowException() : void
+    +createUserWhenEmailIsEmptyShouldThrowException() : void
+    +createUserWhenEmailHaveInvalidFormatShouldThrowException() : void
+    +createUserWhenEmailIsNullShouldThrowException() : void
+    +createUserWhenPasswordIsNullShouldThrowException() : void
+    +createUserWhenPasswordIsEmptyShouldThrowException() : void
+    +createUserWhenPasswordConfirmIsNullShouldThrowException() : void
+  }
+}
+
+package com.syqu.shop.repository {
+  class UserRepositoryTests {
+    -entityManager : TestEntityManager
+    -userRepository : UserRepository
+    +checkIfUserRepositoryIsNotNull() : void
+    +checkIfParamsAreTheSame() : void
+    +whenFindByEmailThenReturnUser() : void
+    +whenFindByIdThenReturnUser() : void
+    +whenFindByIdAndNoUserThenReturnNull() : void
+    +whenFindByUsernameAndNoUserThenReturnNull() : void
+    +whenFindByEmailAndNoUserThenReturnNull() : void
+  }
+  class ProductRepositoryTests {
+    -entityManager : TestEntityManager
+    -productRepository : ProductRepository
+    +checkIfProductRepositoryIsNotNull() : void
+    +checkIfParamsAreTheSame() : void
+    +whenFindByNameThenReturnProduct() : void
+    +whenFindByIdThenReturnProduct() : void
+    +whenFindAllByOrderByIdAscThenReturnAllProducts() : void
+    +whenFindByIdAndNoProductReturnNull() : void
+    +whenFindByNameAndNoProductReturnNull() : void
+    +whenFindAllByOrderByIdAscAndNoProductsReturnNull() : void
+  }
+  interface ProductRepository <<Repository>> {
+  }
+  interface CategoryRepository {
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package com.syqu.shop.service {
+  class ShoppingCartServiceTests {
+    -shoppingCartService : ShoppingCartService
+    +checkIfShoppingCartServiceIsNotNull() : void
+    +addProductToCartTests() : void
+    +addTwoTheSameProductsToCartTests() : void
+    +removeProductFromCartTests() : void
+  }
+  class ProductServiceTests {
+    -productService : ProductService
+    +checkIfProductServiceIsNotNull() : void
+    +saveProductTests() : void
+    +editProductsTests() : void
+    +deleteProductsTests() : void
+    +whenFindByIdThenReturnProduct() : void
+    +whenFindAllByOrderByIdAscThenReturnAllProducts() : void
+    +whenCountThenReturnProductsCount() : void
+    +whenFindByIdAndNoProductThenReturnNull() : void
+  }
+  class UserServiceTests {
+    -userService : UserService
+    +checkIfUserServiceIsNotNull() : void
+    +saveUserTests() : void
+    +whenFindByIdThenReturnUser() : void
+    +whenFindByUsernameThenReturnUser() : void
+    +whenFindByEmailThenReturnUser() : void
+    +whenFindByIdAndNoUserThenReturnNull() : void
+    +whenFindByUsernameAndNoUserThenReturnNull() : void
+    +whenFindByEmailAndNoUserThenReturnNull() : void
+  }
+  interface UserService {
+  }
+  interface ShoppingCartService <<Service>> {
+  }
+  interface ProductService {
+  }
+  interface CategoryService {
+  }
+}
+
+package com.syqu.shop.service.impl {
+  class CategoryServiceImpl <<Service>> {
+    -categoryRepository : CategoryRepository
+    +save() : void
+    +findAll() : List<Category>
+  }
+  class UserServiceImpl <<Service>> {
+    -logger : Logger
+    -userRepository : UserRepository
+    -userDetailsService : UserDetailsService
+    -bCryptPasswordEncoder : BCryptPasswordEncoder
+    -authenticationManager : AuthenticationManager
+    +save() : void
+    +login() : void
+    +findByUsername() : User
+    +findByEmail() : User
+    +findById() : User
+  }
+  class ProductServiceImpl <<Service>> {
+    -productRepository : ProductRepository
+    +save() : void
+    +edit() : void
+    +delete() : void
+    +findById() : Product
+    +findAllByOrderByIdAsc() : List<Product>
+    +findAllByCategoryId() : List<Product>
+    +count() : long
+  }
+  class ShoppingCartServiceImpl <<Service>> {
+    +addProduct() : void
+    +removeProduct() : void
+    +clearProducts() : void
+    +totalPrice() : BigDecimal
+    +cartCheckout() : void
+  }
+  class UserDetailsServiceImpl <<Service>> {
+    -logger : Logger
+    -userRepository : UserRepository
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+package com.syqu.shop.validator {
+  class UserValidator {
+    -userService : UserService
+    +supports() : boolean
+    +validate() : void
+  }
+  class ProductValidator {
+    +supports() : boolean
+    +validate() : void
+  }
+}
+
+' --- Relatii ---
+ProductCreator --> Product
+UserCreator --> User
+UserRepositoryTests --> UserCreator
+UserRepositoryTests --> User
+ProductRepositoryTests --> ProductCreator
+ProductRepositoryTests --> Product
+CartControllerMvcTests --> ShoppingCartService
+CartControllerMvcTests --> ProductService
+HomeControllerMvcTests --> ProductService
+ProductEntityTests --> ProductCreator
+ProductEntityTests --> Product
+UserEntityTests --> UserCreator
+UserEntityTests --> User
+ShoppingCartServiceTests --> ProductCreator
+ShoppingCartServiceTests --> Product
+ProductServiceTests --> ProductCreator
+ProductServiceTests --> Product
+UserServiceTests --> UserCreator
+UserServiceTests --> User
+StartupData --> Category
+StartupData --> Product
+StartupData --> CategoryRepository
+StartupData --> ProductService
+StartupData --> User
+StartupData --> UserService
+ProductRepository --> Product
+CategoryRepository --> Category
+UserRepository --> User
+UserValidator --> User
+UserValidator --> UserService
+ProductValidator --> Product
+WebSecurityConfig --> UserDetailsServiceImpl
+WebSecurityConfig --> UserRepository
+RegisterController --> User
+RegisterController --> UserService
+RegisterController --> UserValidator
+ProductController --> Product
+ProductController --> CategoryService
+ProductController --> ProductService
+ProductController --> ProductValidator
+CartController --> ShoppingCartService
+CartController --> Product
+CartController --> ProductService
+HomeController --> Product
+HomeController --> CategoryService
+HomeController --> ProductService
+UserController --> User
+UserController --> UserService
+UserService --> User
+ShoppingCartService --> Product
+ProductService --> Product
+CategoryService --> Category
+CategoryServiceImpl ..|> CategoryService
+CategoryServiceImpl --> Category
+CategoryServiceImpl --> CategoryRepository
+CategoryServiceImpl --> CategoryService
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+ProductServiceImpl ..|> ProductService
+ProductServiceImpl --> Product
+ProductServiceImpl --> ProductRepository
+ProductServiceImpl --> ProductService
+ShoppingCartServiceImpl ..|> ShoppingCartService
+ShoppingCartServiceImpl --> Product
+ShoppingCartServiceImpl --> ShoppingCartService
+UserDetailsServiceImpl --> User
+UserDetailsServiceImpl --> UserRepository
+
+@enduml

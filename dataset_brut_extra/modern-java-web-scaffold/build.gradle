@@ -1,0 +1,10 @@
+group 'org.lavenderx'
+version '0.1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'idea'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.1'
+}

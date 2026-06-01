@@ -1,0 +1,855 @@
+@startuml
+
+package com.lmxdawn.api {
+  class BaseApiAdminApplicationTest {
+  }
+  class ApiAdminApplication {
+    +main() : void
+  }
+}
+
+package com.lmxdawn.api.admin.annotation {
+  interface AuthRuleAnnotation {
+  }
+}
+
+package com.lmxdawn.api.admin.aspect {
+  class AuthorizeAspect {
+    -authLoginService : AuthLoginService
+    +adminLoginVerify() : void
+    +doAdminAuthVerify() : void
+  }
+}
+
+package com.lmxdawn.api.admin.config {
+  class DruidStatFilter {
+  }
+  class PageHelperConfig {
+    +getPageHelper() : PageHelper
+  }
+  class DruidStatViewServlet {
+    -serialVersionUID : long
+  }
+  class CorsFilter {
+    -corsConfig : CorsConfig
+    +destroy() : void
+    +doFilter() : void
+    +init() : void
+  }
+  class PublicFileUrlConfig {
+    -uploadUrl : String
+    -domain : String
+    +setUploadUrl() : void
+    +getUploadUrl() : String
+    +setDomain() : void
+    +getDomain() : String
+  }
+  class CorsConfig {
+    -allowedOrigins : String
+    -allowedMethods : String
+    -allowedHeaders : String
+  }
+}
+
+package com.lmxdawn.api.admin.constant {
+  interface TestConstant {
+  }
+  interface CookieConstant {
+  }
+}
+
+package com.lmxdawn.api.admin.controller {
+  class HelloController <<Controller>> {
+    -authAdminService : AuthAdminService
+    +hello() : BaseResponse
+  }
+}
+
+package com.lmxdawn.api.admin.controller.ad {
+  class AdSiteController <<Controller>> {
+    -adSiteService : AdSiteService
+    +index() : BaseResponse
+    +adList() : BaseResponse
+    +save() : BaseResponse
+    +edit() : BaseResponse
+    +delete() : BaseResponse
+  }
+  class AdController <<Controller>> {
+    -adService : AdService
+    +index() : BaseResponse
+    +save() : BaseResponse
+    +edit() : BaseResponse
+    +delete() : BaseResponse
+  }
+}
+
+package com.lmxdawn.api.admin.controller.auth {
+  class AuthAdminController <<Controller>> {
+    -authAdminService : AuthAdminService
+    -authRoleService : AuthRoleService
+    -authRoleAdminService : AuthRoleAdminService
+    +index() : BaseResponse
+    +roleList() : BaseResponse
+    +save() : BaseResponse
+    +edit() : BaseResponse
+    +delete() : BaseResponse
+  }
+  class AuthPermissionRuleController <<Controller>> {
+    -authPermissionRuleService : AuthPermissionRuleService
+    +index() : BaseResponse
+    +save() : BaseResponse
+    +edit() : BaseResponse
+    +delete() : BaseResponse
+  }
+  class AuthRoleController <<Controller>> {
+    -authRoleService : AuthRoleService
+    -authPermissionRuleService : AuthPermissionRuleService
+    -authPermissionService : AuthPermissionService
+    +index() : BaseResponse
+    +authList() : BaseResponse
+    +auth() : BaseResponse
+    +save() : BaseResponse
+    +edit() : BaseResponse
+    +delete() : BaseResponse
+  }
+  class LoginController <<Controller>> {
+    -authLoginService : AuthLoginService
+    -authAdminService : AuthAdminService
+    +index() : BaseResponse
+    +userInfo() : BaseResponse
+    +out() : BaseResponse
+    +password() : BaseResponse
+  }
+}
+
+package com.lmxdawn.api.admin.controller.file {
+  class UploadController <<Controller>> {
+    +qiuNiuUpToken() : BaseResponse
+    +createFile() : BaseResponse
+  }
+}
+
+package com.lmxdawn.api.admin.converter {
+  class AdSaveForm2AdConverter {
+    +convert() : Ad
+  }
+}
+
+package com.lmxdawn.api.admin.dao.ad {
+  interface AdDao {
+  }
+  interface AdSiteDao {
+  }
+}
+
+package com.lmxdawn.api.admin.dao.auth {
+  interface AuthRoleDao {
+  }
+  interface AuthPermissionDao {
+  }
+  interface AuthRoleAdminDao {
+  }
+  interface AuthAdminDao {
+  }
+  interface AuthPermissionRuleDao {
+  }
+}
+
+package com.lmxdawn.api.admin.dto.auth {
+  class TestDTO {
+  }
+}
+
+package com.lmxdawn.api.admin.entity.ad {
+  class AdSite {
+    -siteId : Long
+    -siteName : String
+    -describe : String
+    -adIds : String
+    -createTime : Date
+    -modifiedTime : Date
+  }
+  class Ad {
+    -adId : Long
+    -title : String
+    -describe : String
+    -pic : String
+    -jumpType : Integer
+    -jumpUrl : String
+    -iosUrl : String
+    -androidUrl : String
+    -wxaAppid : String
+    -channelType : Integer
+  }
+}
+
+package com.lmxdawn.api.admin.entity.auth {
+  class AuthPermissionRule {
+    -id : Long
+    -pid : Long
+    -name : String
+    -title : String
+    -status : Integer
+    -condition : String
+    -listorder : Integer
+    -createTime : Date
+    -updateTime : Date
+  }
+  class AuthRoleAdmin {
+    -id : Long
+    -roleId : Long
+    -adminId : Long
+  }
+  class AuthRole {
+    -id : Long
+    -name : String
+    -pid : Long
+    -status : Long
+    -remark : String
+    -listorder : Long
+    -createTime : Date
+    -updateTime : Date
+  }
+  class AuthAdmin {
+    -id : Long
+    -username : String
+    -password : String
+    -tel : String
+    -email : String
+    -avatar : String
+    -sex : Integer
+    -lastLoginIp : String
+    -lastLoginTime : Date
+    -createTime : Date
+  }
+  class AuthPermission {
+    -id : Long
+    -roleId : Long
+    -permissionRuleId : Long
+    -type : String
+  }
+}
+
+package com.lmxdawn.api.admin.exception {
+  class JsonException {
+    -code : Integer
+  }
+}
+
+package com.lmxdawn.api.admin.handler {
+  class GlobalExceptionHandler {
+    +handlerJsonException() : BaseResponse
+    +handlerRuntimeException() : BaseResponse
+  }
+}
+
+package com.lmxdawn.api.admin.req {
+  class ListPageRequest {
+    -page : Integer
+    -limit : Integer
+  }
+}
+
+package com.lmxdawn.api.admin.req.ad {
+  class AdSiteQueryRequest {
+    -siteId : Long
+  }
+  class AdSiteSaveRequest {
+    -siteId : Long
+    -siteName : String
+    -describe : String
+    -adIds : List<Long>
+    -createTime : Date
+    -modifiedTime : Date
+  }
+  class AdQueryRequest {
+    -title : String
+  }
+  class AdSaveRequest {
+    -adId : Long
+    -title : String
+    -describe : String
+    -pic : String
+    -jumpType : Integer
+    -jumpUrl : String
+    -iosUrl : String
+    -androidUrl : String
+    -wxaAppid : String
+    -channelType : Integer
+  }
+}
+
+package com.lmxdawn.api.admin.req.auth {
+  class UpdatePasswordRequest {
+    -adminId : Long
+    -oldPassword : String
+    -newPassword : String
+  }
+  class AuthAdminQueryRequest {
+    -username : String
+    -status : Integer
+    -roleId : Long
+    -ids : List<Long>
+  }
+  class AuthAdminSaveRequest {
+    -id : Long
+    -username : String
+    -password : String
+    -status : Integer
+    -roles : List<Long>
+  }
+  class AuthRoleQueryRequest {
+    -name : String
+    -status : Integer
+  }
+  class AuthRoleSaveRequest {
+    -id : Long
+    -name : String
+    -pid : Long
+    -status : Long
+    -remark : String
+    -listorder : Long
+  }
+  class LoginRequest {
+    -userName : String
+    -pwd : String
+  }
+  class AuthRoleAuthRequest {
+    -roleId : Long
+    -authRules : List<Long>
+  }
+  class AuthPermissionRuleSaveRequest {
+    -id : Long
+    -pid : Long
+    -name : String
+    -title : String
+    -status : Integer
+    -condition : String
+    -listorder : Integer
+  }
+}
+
+package com.lmxdawn.api.admin.res {
+  class PageSimpleResponse {
+    -total : Long
+    -list : List<T>
+  }
+}
+
+package com.lmxdawn.api.admin.res.ad {
+  class AdSiteResponse {
+    -siteId : Long
+    -siteName : String
+    -describe : String
+    -ads : List<AdSimpleResponse>
+    -modifiedTime : Date
+  }
+  class AdResponse {
+    -adId : Long
+    -title : String
+    -describe : String
+    -pic : String
+    -jumpType : Integer
+    -jumpUrl : String
+    -iosUrl : String
+    -androidUrl : String
+    -wxaAppid : String
+    -channelType : Integer
+  }
+  class AdSimpleResponse {
+    -adId : Long
+    -title : String
+    -describe : String
+    -status : Integer
+  }
+}
+
+package com.lmxdawn.api.admin.res.auth {
+  class LoginUserInfoResponse {
+    -id : Long
+    -username : String
+    -avatar : String
+    -authRules : List<String>
+  }
+  class AuthAdminResponse {
+    -id : Long
+    -username : String
+    -lastLoginIp : String
+    -lastLoginTime : Date
+    -status : Integer
+    -roles : List<Long>
+  }
+  class AuthPermissionRuleMergeResponse {
+    -id : Long
+    -pid : Long
+    -name : String
+    -title : String
+    -status : Long
+    -condition : String
+    -listorder : Long
+    -children : List<AuthPermissionRuleMergeResponse>
+  }
+  class AuthRoleResponse {
+    -id : Long
+    -name : String
+    -pid : Long
+    -status : Long
+    -remark : String
+    -listorder : Long
+  }
+  class AuthAdminRoleResponse {
+    -id : Long
+    -name : String
+  }
+}
+
+package com.lmxdawn.api.admin.service.ad {
+  interface AdService {
+  }
+  interface AdSiteService {
+  }
+}
+
+package com.lmxdawn.api.admin.service.ad.impl {
+  class AdServiceImpl <<Service>> {
+    -adDao : AdDao
+    +listAdminPage() : List<Ad>
+    +listAdminByAdIdsIn() : List<Ad>
+    +insertAd() : boolean
+    +updateAd() : boolean
+    +deleteByAdId() : boolean
+  }
+  class AdSiteServiceImpl <<Service>> {
+    -adDao : AdDao
+    -adSiteDao : AdSiteDao
+    +listAdminPage() : List<AdSite>
+    +listAdminByAdIdsIn() : List<AdSimpleResponse>
+    +insertAdSite() : boolean
+    +updateAdSite() : boolean
+    +deleteBySiteId() : boolean
+  }
+}
+
+package com.lmxdawn.api.admin.service.auth {
+  interface AuthLoginService {
+  }
+  interface AuthRoleAdminService {
+  }
+  interface AuthPermissionRuleService {
+  }
+  interface AuthPermissionService {
+  }
+  interface AuthAdminService {
+  }
+  interface AuthRoleService {
+  }
+}
+
+package com.lmxdawn.api.admin.service.auth.impl {
+  class AuthAdminServiceImplTest {
+    -authAdminService : AuthAdminService
+    +listAdminPage() : void
+    +findByUserName() : void
+    +findById() : void
+    +findPwdById() : void
+    +insertAuthAdmin() : void
+    +updateAuthAdmin() : void
+  }
+  class AuthRoleAdminServiceImplTest {
+    -authRoleAdminService : AuthRoleAdminService
+    +listByAdminId() : void
+    +listByRoleId() : void
+    +insertAuthRoleAdminAll() : void
+  }
+  class AuthLoginServiceImplTest {
+    -authLoginService : AuthLoginService
+    +listRuleByAdminId() : void
+  }
+  class AuthPermissionRuleServiceImplTest {
+    -authPermissionRuleService : AuthPermissionRuleService
+    +listByIdIn() : void
+    +listByPid() : void
+    +listAll() : void
+  }
+  class AuthRoleServiceImplTest {
+    -authRoleService : AuthRoleService
+    +listAdminPage() : void
+    +listAuthAdminRolePage() : void
+  }
+  class AuthPermissionRuleServiceImpl <<Service>> {
+    -authPermissionRuleDao : AuthPermissionRuleDao
+    +listByIdIn() : List<AuthPermissionRule>
+    +listByPid() : List<AuthPermissionRule>
+    +listAll() : List<AuthPermissionRule>
+    +insertAuthPermissionRule() : boolean
+    +updateAuthPermissionRule() : boolean
+    +deleteById() : boolean
+  }
+  class AuthLoginServiceImpl <<Service>> {
+    -authRoleAdminService : AuthRoleAdminService
+    -authPermissionService : AuthPermissionService
+    -authPermissionRuleService : AuthPermissionRuleService
+    +listRuleByAdminId() : List<String>
+  }
+  class AuthPermissionServiceImpl <<Service>> {
+    -authPermissionDao : AuthPermissionDao
+    +listByRoleIdIn() : List<AuthPermission>
+    +listByRoleId() : List<AuthPermission>
+    +insertAuthPermissionAll() : int
+    +deleteByRoleId() : boolean
+  }
+  class AuthRoleAdminServiceImpl <<Service>> {
+    -authRoleAdminDao : AuthRoleAdminDao
+    +listByAdminId() : List<AuthRoleAdmin>
+    +listByAdminIdIn() : List<AuthRoleAdmin>
+    +listByRoleId() : List<AuthRoleAdmin>
+    +insertAuthRoleAdminAll() : int
+    +insertRolesAdminIdAll() : int
+    +deleteByAdminId() : boolean
+  }
+  class AuthRoleServiceImpl <<Service>> {
+    -authRoleDao : AuthRoleDao
+    +listAdminPage() : List<AuthRole>
+    +listAuthAdminRolePage() : List<AuthRole>
+    +findByName() : AuthRole
+    +insertAuthRole() : boolean
+    +updateAuthRole() : boolean
+    +deleteById() : boolean
+  }
+  class AuthAdminServiceImpl <<Service>> {
+    -authAdminDao : AuthAdminDao
+    +listAdminPage() : List<AuthAdmin>
+    +findByUserName() : AuthAdmin
+    +findById() : AuthAdmin
+    +findPwdById() : AuthAdmin
+    +insertAuthAdmin() : boolean
+    +updateAuthAdmin() : boolean
+    +deleteById() : boolean
+  }
+}
+
+package com.lmxdawn.api.admin.util {
+  class PermissionRuleTreeUtilsTest {
+    -authPermissionRuleService : AuthPermissionRuleService
+    +merge() : void
+  }
+  class JwtUtilsTest {
+    +createToken() : void
+    +createToken1() : void
+    +parse() : void
+  }
+  class CacheUtils {
+    -cacheUtils : CacheUtils
+    +init() : void
+    +expire() : boolean
+    +hasKey() : boolean
+    +sAdd() : Long
+    +sGetMembers() : Set<String>
+  }
+  class TreeUtils {
+    +Merge() : void
+  }
+  class JwtUtils {
+    +createToken() : String
+    +createToken() : String
+    +parse() : Claims
+  }
+  class PublicFileUtils {
+    +createUploadUrl() : String
+  }
+  class IpUtils {
+    +getIpAddr() : String
+  }
+  class PermissionRuleTreeUtils {
+    +merge() : List<AuthPermissionRuleMergeResponse>
+  }
+  class PasswordUtils {
+    +authAdminPwd() : String
+  }
+}
+
+package com.lmxdawn.api.admin.util.serializer {
+  class Date2LongSerializer {
+    +serialize() : void
+  }
+}
+
+package com.lmxdawn.api.common.constant {
+  interface CacheConstant {
+  }
+}
+
+package com.lmxdawn.api.common.converter {
+  class LongList2StringConverter {
+    +convert() : String
+  }
+  class String2LongListConverter {
+    +convert() : List<Long>
+  }
+  class String2StringListConverter {
+    +convert() : List<String>
+  }
+}
+
+package com.lmxdawn.api.common.enums {
+  enum ResultEnum {
+    -code : Integer
+    -message : String
+  }
+}
+
+package com.lmxdawn.api.common.req {
+  class BaseLimitRequest {
+    -page : Integer
+    -limit : Integer
+    -offset : Integer
+    +getPage() : Integer
+    +setPage() : void
+    +getLimit() : Integer
+    +setLimit() : void
+    +getOffset() : Integer
+    +setOffset() : void
+  }
+  class BaseRequest {
+    -reqNo : String
+    -timeStamp : Long
+    +getReqNo() : String
+    +setReqNo() : void
+    +getTimeStamp() : Long
+    +setTimeStamp() : void
+  }
+}
+
+package com.lmxdawn.api.common.res {
+  class BaseResponse {
+    -code : Integer
+    -message : String
+    -data : T
+  }
+}
+
+package com.lmxdawn.api.common.util {
+  class ResultVOUtilsTest {
+    +success() : void
+  }
+  class ResultVOUtils {
+    +success() : BaseResponse
+    +success() : BaseResponse
+    +error() : BaseResponse
+    +error() : BaseResponse
+    +error() : BaseResponse
+  }
+}
+
+' --- Relatii ---
+PermissionRuleTreeUtilsTest --|> BaseApiAdminApplicationTest
+PermissionRuleTreeUtilsTest --> BaseApiAdminApplicationTest
+PermissionRuleTreeUtilsTest --> AuthPermissionRule
+PermissionRuleTreeUtilsTest --> AuthPermissionRuleService
+PermissionRuleTreeUtilsTest --> AuthPermissionRuleMergeResponse
+JwtUtilsTest --|> BaseApiAdminApplicationTest
+JwtUtilsTest --> BaseApiAdminApplicationTest
+AuthAdminServiceImplTest --|> BaseApiAdminApplicationTest
+AuthAdminServiceImplTest --> BaseApiAdminApplicationTest
+AuthAdminServiceImplTest --> AuthAdmin
+AuthAdminServiceImplTest --> AuthAdminQueryRequest
+AuthAdminServiceImplTest --> AuthAdminService
+AuthRoleAdminServiceImplTest --|> BaseApiAdminApplicationTest
+AuthRoleAdminServiceImplTest --> BaseApiAdminApplicationTest
+AuthRoleAdminServiceImplTest --> AuthRoleAdmin
+AuthRoleAdminServiceImplTest --> AuthRoleAdminService
+AuthLoginServiceImplTest --|> BaseApiAdminApplicationTest
+AuthLoginServiceImplTest --> BaseApiAdminApplicationTest
+AuthLoginServiceImplTest --> AuthLoginService
+AuthPermissionRuleServiceImplTest --|> BaseApiAdminApplicationTest
+AuthPermissionRuleServiceImplTest --> BaseApiAdminApplicationTest
+AuthPermissionRuleServiceImplTest --> AuthPermissionRule
+AuthPermissionRuleServiceImplTest --> AuthPermissionRuleService
+AuthRoleServiceImplTest --|> BaseApiAdminApplicationTest
+AuthRoleServiceImplTest --> BaseApiAdminApplicationTest
+AuthRoleServiceImplTest --> AuthRole
+AuthRoleServiceImplTest --> AuthRoleService
+GlobalExceptionHandler --> ResultEnum
+GlobalExceptionHandler --> JsonException
+GlobalExceptionHandler --> ResultVOUtils
+GlobalExceptionHandler --> BaseResponse
+AdSaveForm2AdConverter --> Ad
+AdSaveForm2AdConverter --> AdSaveRequest
+PublicFileUtils --> PublicFileUrlConfig
+PermissionRuleTreeUtils --> AuthPermissionRule
+PermissionRuleTreeUtils --> AuthPermissionRuleMergeResponse
+CorsFilter --> CorsConfig
+AdDao --> Ad
+AdDao --> AdQueryRequest
+AdSiteDao --> AdSite
+AdSiteDao --> AdSiteQueryRequest
+AuthRoleDao --> AuthRole
+AuthRoleDao --> AuthRoleQueryRequest
+AuthPermissionDao --> AuthPermission
+AuthRoleAdminDao --> AuthRoleAdmin
+AuthAdminDao --> AuthAdmin
+AuthAdminDao --> AuthAdminQueryRequest
+AuthPermissionRuleDao --> AuthPermissionRule
+HelloController --> AuthAdminService
+HelloController --> ResultVOUtils
+HelloController --> BaseResponse
+AdSiteController --> AuthRuleAnnotation
+AdSiteController --> AdSite
+AdSiteController --> ResultEnum
+AdSiteController --> AdSiteQueryRequest
+AdSiteController --> AdSiteSaveRequest
+AdSiteController --> AdSiteService
+AdSiteController --> PageSimpleResponse
+AdSiteController --> BaseResponse
+AdSiteController --> AdSimpleResponse
+AdSiteController --> AdSiteResponse
+AdSiteController --> LongList2StringConverter
+AdSiteController --> String2LongListConverter
+AdSiteController --> ResultVOUtils
+AdController --> AuthRuleAnnotation
+AdController --> AdSaveForm2AdConverter
+AdController --> Ad
+AdController --> ResultEnum
+AdController --> AdQueryRequest
+AdController --> AdSaveRequest
+AdController --> AdService
+AdController --> PageSimpleResponse
+AdController --> BaseResponse
+AdController --> AdResponse
+AdController --> String2StringListConverter
+AdController --> ResultVOUtils
+UploadController --> BaseResponse
+UploadController --> ResultVOUtils
+AuthAdminController --> AuthRuleAnnotation
+AuthAdminController --> AuthAdmin
+AuthAdminController --> AuthRole
+AuthAdminController --> AuthRoleAdmin
+AuthAdminController --> ResultEnum
+AuthAdminController --> AuthAdminSaveRequest
+AuthAdminController --> AuthAdminQueryRequest
+AuthAdminController --> AuthAdminService
+AuthAdminController --> AuthRoleAdminService
+AuthAdminController --> AuthRoleService
+AuthAdminController --> PasswordUtils
+AuthAdminController --> AuthAdminRoleResponse
+AuthAdminController --> ResultVOUtils
+AuthAdminController --> PageSimpleResponse
+AuthAdminController --> BaseResponse
+AuthAdminController --> AuthAdminResponse
+AuthPermissionRuleController --> AuthRuleAnnotation
+AuthPermissionRuleController --> AuthPermissionRule
+AuthPermissionRuleController --> ResultEnum
+AuthPermissionRuleController --> AuthPermissionRuleSaveRequest
+AuthPermissionRuleController --> AuthPermissionRuleService
+AuthPermissionRuleController --> PermissionRuleTreeUtils
+AuthPermissionRuleController --> BaseResponse
+AuthPermissionRuleController --> AuthPermissionRuleMergeResponse
+AuthPermissionRuleController --> ResultVOUtils
+AuthRoleController --> AuthRuleAnnotation
+AuthRoleController --> AuthPermission
+AuthRoleController --> AuthPermissionRule
+AuthRoleController --> AuthRole
+AuthRoleController --> ResultEnum
+AuthRoleController --> AuthRoleAuthRequest
+AuthRoleController --> AuthRoleQueryRequest
+AuthRoleController --> AuthRoleSaveRequest
+AuthRoleController --> AuthPermissionRuleService
+AuthRoleController --> AuthPermissionService
+AuthRoleController --> AuthRoleService
+AuthRoleController --> PermissionRuleTreeUtils
+AuthRoleController --> PageSimpleResponse
+AuthRoleController --> BaseResponse
+AuthRoleController --> AuthPermissionRuleMergeResponse
+AuthRoleController --> AuthRoleResponse
+AuthRoleController --> ResultVOUtils
+LoginController --> AuthRuleAnnotation
+LoginController --> AuthAdmin
+LoginController --> ResultEnum
+LoginController --> JsonException
+LoginController --> LoginRequest
+LoginController --> UpdatePasswordRequest
+LoginController --> AuthAdminService
+LoginController --> AuthLoginService
+LoginController --> PasswordUtils
+LoginController --> LoginUserInfoResponse
+LoginController --> IpUtils
+LoginController --> JwtUtils
+LoginController --> ResultVOUtils
+LoginController --> BaseResponse
+AdSiteQueryRequest --|> ListPageRequest
+AdSiteQueryRequest --> ListPageRequest
+AdQueryRequest --|> ListPageRequest
+AdQueryRequest --> ListPageRequest
+AuthAdminQueryRequest --|> ListPageRequest
+AuthAdminQueryRequest --> ListPageRequest
+AuthRoleQueryRequest --|> ListPageRequest
+AuthRoleQueryRequest --> ListPageRequest
+AuthorizeAspect --> AuthRuleAnnotation
+AuthorizeAspect --> ResultEnum
+AuthorizeAspect --> JsonException
+AuthorizeAspect --> AuthLoginService
+AuthorizeAspect --> JwtUtils
+AdService --> Ad
+AdService --> AdQueryRequest
+AdSiteService --> AdSite
+AdSiteService --> AdSiteQueryRequest
+AdSiteService --> AdSimpleResponse
+AdServiceImpl ..|> AdService
+AdServiceImpl --> AdDao
+AdServiceImpl --> Ad
+AdServiceImpl --> AdQueryRequest
+AdServiceImpl --> AdService
+AdSiteServiceImpl ..|> AdSiteService
+AdSiteServiceImpl --> AdDao
+AdSiteServiceImpl --> AdSiteDao
+AdSiteServiceImpl --> AdSite
+AdSiteServiceImpl --> AdSiteQueryRequest
+AdSiteServiceImpl --> AdSiteService
+AdSiteServiceImpl --> AdSimpleResponse
+AuthRoleAdminService --> AuthRoleAdmin
+AuthPermissionRuleService --> AuthPermissionRule
+AuthPermissionService --> AuthPermission
+AuthAdminService --> AuthAdmin
+AuthAdminService --> AuthAdminQueryRequest
+AuthRoleService --> AuthRole
+AuthRoleService --> AuthRoleQueryRequest
+AuthPermissionRuleServiceImpl ..|> AuthPermissionRuleService
+AuthPermissionRuleServiceImpl --> AuthPermissionRuleDao
+AuthPermissionRuleServiceImpl --> AuthPermissionRule
+AuthPermissionRuleServiceImpl --> ResultEnum
+AuthPermissionRuleServiceImpl --> JsonException
+AuthPermissionRuleServiceImpl --> AuthPermissionRuleService
+AuthLoginServiceImpl ..|> AuthLoginService
+AuthLoginServiceImpl --> AuthPermission
+AuthLoginServiceImpl --> AuthPermissionRule
+AuthLoginServiceImpl --> AuthRoleAdmin
+AuthLoginServiceImpl --> CacheConstant
+AuthLoginServiceImpl --> CacheUtils
+AuthPermissionServiceImpl ..|> AuthPermissionService
+AuthPermissionServiceImpl --> AuthPermissionDao
+AuthPermissionServiceImpl --> AuthPermission
+AuthPermissionServiceImpl --> AuthPermissionService
+AuthRoleAdminServiceImpl ..|> AuthRoleAdminService
+AuthRoleAdminServiceImpl --> AuthRoleAdminDao
+AuthRoleAdminServiceImpl --> AuthRoleAdmin
+AuthRoleAdminServiceImpl --> AuthRoleAdminService
+AuthRoleAdminServiceImpl --> CacheConstant
+AuthRoleAdminServiceImpl --> CacheUtils
+AuthRoleServiceImpl ..|> AuthRoleService
+AuthRoleServiceImpl --> AuthRoleDao
+AuthRoleServiceImpl --> AuthRole
+AuthRoleServiceImpl --> AuthRoleQueryRequest
+AuthRoleServiceImpl --> AuthRoleService
+AuthAdminServiceImpl ..|> AuthAdminService
+AuthAdminServiceImpl --> AuthAdminDao
+AuthAdminServiceImpl --> AuthAdmin
+AuthAdminServiceImpl --> ResultEnum
+AuthAdminServiceImpl --> JsonException
+AuthAdminServiceImpl --> AuthAdminQueryRequest
+AuthAdminServiceImpl --> AuthAdminService
+JsonException --> ResultEnum
+ResultVOUtils --> ResultEnum
+ResultVOUtils --> BaseResponse
+BaseLimitRequest --|> BaseRequest
+
+@enduml

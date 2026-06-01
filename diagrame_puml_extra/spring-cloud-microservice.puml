@@ -1,0 +1,362 @@
+@startuml
+package com.spring.cloud.microsrvapigateway; {
+class MicrosrvApiGatewayApplication {
+}
+
+class MicrosrvApiGatewayApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvconfigclient.config; {
+class Config {
+}
+
+}
+
+package com.spring.cloud.microsrvconfigclient.controller; {
+class UserController {
+}
+
+}
+
+package com.spring.cloud.microsrvconfigclient; {
+class MicrosrvConfigClientApplication {
+}
+
+class MicrosrvConfigClientApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvconfigserver; {
+class MicrosrvConfigServerApplication {
+}
+
+class MicrosrvConfigServerApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrveurekaserver; {
+class MicrosrvEurekaServerApplication {
+}
+
+class WebSecurityConfig {
+}
+
+class MicrosrvEurekaServerApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrveurekaserviceconsumer; {
+class MicrosrvEurekaServiceConsumerApplication {
+}
+
+class MicrosrvEurekaServiceConsumerApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrveurekaserviceprovider.config; {
+class ResourceServerConfig {
+}
+
+}
+
+package com.spring.cloud.microsrveurekaserviceprovider.controller; {
+class OrderController {
+}
+
+}
+
+package com.spring.cloud.microsrveurekaserviceprovider; {
+class MicrosrvEurekaServiceProviderApplication {
+}
+
+class MicrosrvEurekaServiceProviderApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvflowable.config; {
+class BossTaskHandler {
+}
+
+class FlowableConfig {
+}
+
+class ManagerTaskHandler {
+}
+
+class MessageSourceConfig {
+}
+
+}
+
+package com.spring.cloud.microsrvflowable.controller; {
+class ExpenseController {
+}
+
+class HomeController {
+}
+
+}
+
+package com.spring.cloud.microsrvflowable; {
+class MicrosrvFlowableApplication {
+}
+
+class MicrosrvFlowableApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvgrpcserver; {
+class MicrosrvGrpcServerApplication {
+}
+
+class MicrosrvGrpcServerApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvhystrixdashboard; {
+class MicrosrvHystrixDashboardApplication {
+}
+
+class MicrosrvHystrixDashboardApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2authorizationcode.config; {
+class AuthorizationServerConfiguration {
+}
+
+class MvcConfig {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2authorizationcode.controller; {
+class UserController {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2authorizationcode; {
+class MicrosrvOauth2AuthorizationCodeApplication {
+}
+
+class MicrosrvOauth2AuthorizationCodeApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.config; {
+class AuthorizationServerConfiguration {
+}
+
+class CustomTokenGranter {
+}
+
+class ResourceServerConfiguration {
+}
+
+class TokenEnhancerConfiguration {
+}
+
+class WebMvcConfiguration {
+}
+
+class WebSecurityConfiguration {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.controller; {
+class UserController {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.endpoint; {
+class JwkSetEndpoint {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.entity; {
+class Users {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.exception; {
+class UserFriendlyException {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.filter; {
+class BeforeLoginFilter {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server; {
+class MicrosrvOauth2ServerApplication {
+}
+
+class MicrosrvOauth2ServerApplicationTests {
+}
+
+class TestJwtToken {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.repository; {
+class UserRepository {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.service.impl; {
+class UserDetailsServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.service; {
+class UserService {
+}
+
+}
+
+package com.spring.cloud.microsrvoauth2server.utils; {
+class AuthUtils {
+}
+
+class Constants {
+}
+
+}
+
+package com.spring.cloud.microsrvsleuthzipkin; {
+class MicrosrvSleuthZipkinApplication {
+}
+
+class ZipkinController {
+}
+
+class MicrosrvSleuthZipkinServerApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvspringbootadminserver; {
+class MicrosrvSpringBootAdminServerApplication {
+}
+
+class MicrosrvSpringBootAdminServerApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvspringsecuritylogin; {
+class MicrosrvSpringSecurityLoginApplication {
+}
+
+class MvcConfig {
+}
+
+class WebSecurityConfig {
+}
+
+class MicrosrvSpringSecurityLoginApplicationTests {
+}
+
+}
+
+package com.spring.cloud.microsrvzuulgateway.config; {
+class ResourceServerConfiguration {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.spring.cloud.microsrvzuulgateway.filter; {
+class OAuth2TokenFilter {
+}
+
+}
+
+package com.spring.cloud.microsrvzuulgateway; {
+class MicrosrvZuulGatewayApplication {
+}
+
+class MicrosrvZuulApplicationTests {
+}
+
+}
+
+MicrosrvApiGatewayApplicationTests -- MicrosrvApiGatewayApplication
+MicrosrvConfigClientApplication -- Config
+MicrosrvConfigClientApplicationTests -- Config
+MicrosrvConfigClientApplicationTests -- MicrosrvConfigClientApplication
+MicrosrvConfigServerApplication -- Config
+MicrosrvConfigServerApplicationTests -- Config
+MicrosrvConfigServerApplicationTests -- MicrosrvConfigServerApplication
+WebSecurityConfig -- Config
+MicrosrvEurekaServerApplicationTests -- MicrosrvEurekaServerApplication
+MicrosrvEurekaServiceConsumerApplicationTests -- MicrosrvEurekaServiceConsumerApplication
+ResourceServerConfig -- Config
+MicrosrvEurekaServiceProviderApplicationTests -- MicrosrvEurekaServiceProviderApplication
+FlowableConfig -- Config
+MessageSourceConfig -- Config
+ExpenseController -- Config
+MicrosrvFlowableApplicationTests -- MicrosrvFlowableApplication
+MicrosrvGrpcServerApplicationTests -- MicrosrvGrpcServerApplication
+MicrosrvHystrixDashboardApplicationTests -- MicrosrvHystrixDashboardApplication
+AuthorizationServerConfiguration -- Config
+AuthorizationServerConfiguration -- CustomTokenGranter
+AuthorizationServerConfiguration -- TokenEnhancerConfiguration
+AuthorizationServerConfiguration -- UserDetailsServiceImpl
+AuthorizationServerConfiguration -- Constants
+MvcConfig -- Config
+MicrosrvOauth2AuthorizationCodeApplicationTests -- MicrosrvOauth2AuthorizationCodeApplication
+ResourceServerConfiguration -- Config
+ResourceServerConfiguration -- ResourceServerConfig
+TokenEnhancerConfiguration -- Config
+WebMvcConfiguration -- Config
+WebMvcConfiguration -- MvcConfig
+WebSecurityConfiguration -- Config
+WebSecurityConfiguration -- WebSecurityConfig
+WebSecurityConfiguration -- BeforeLoginFilter
+JwkSetEndpoint -- Config
+UserRepository -- Users
+UserDetailsServiceImpl -- Users
+UserDetailsServiceImpl -- UserService
+UserServiceImpl -- Users
+UserServiceImpl -- UserFriendlyException
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+UserService -- Users
+AuthUtils -- UserFriendlyException
+MicrosrvOauth2ServerApplicationTests -- MicrosrvOauth2ServerApplication
+MicrosrvSpringBootAdminServerApplication -- Config
+MicrosrvSpringBootAdminServerApplicationTests -- MicrosrvSpringBootAdminServerApplication
+MicrosrvSpringSecurityLoginApplicationTests -- MicrosrvSpringSecurityLoginApplication
+MicrosrvZuulGatewayApplication -- OAuth2TokenFilter
+@enduml

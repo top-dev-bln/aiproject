@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: romehAlertManager
+  jackson:
+    default-property-inclusion: non_null
+
+mail:
+  service:
+    baseUrl: http://romeh-wsitt.com/Mail/soap/mail
+    user: romehALERT
+    password: romehALERT
+    undeliverable: undeliverable@belgacom-ics.com
+  from:
+    bpo.mailbox: romeh.alerts@romeh.com
+  default:
+    receiver: mahmoud.romih@romeh.com
+
+alerts:
+  alertConfigurations:
+   -
+      serviceCode: "CODE_TWO"
+      errorCode: "1001"
+      emails:
+        - "mahmoud.romih@romeh.com"
+      maxCount: "3"
+      mailTemplate: "ticket"
+   -
+      serviceCode: "CODE_ONE"
+      errorCode: "1002"
+      emails:
+        - "mahmoud.romih@romeh.com"
+        - "mahmoud.romih@romeh.com"
+      maxCount: "2"
+      mailTemplate: "ticket"
+
+enableFilePersistence: true
+igniteConnectorPort: 11211
+igniteServerPortRange: 47500..47509
+ignitePersistenceFilePath: /Users/romeh/github/spring-boot-ignite/data
+initialDelay: 10000
+fixedDelay: 60000
+

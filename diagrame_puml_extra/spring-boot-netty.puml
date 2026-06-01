@@ -1,0 +1,867 @@
+@startuml
+package org.kgusarov.integration.spring.netty.customresolvers; {
+class CustomResolversApplication {
+}
+
+class CustomResolversIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.customresolvers.handlers; {
+class CustomResolversController {
+}
+
+class ExceptionHandlerFilter {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.customresolvers.resolvers; {
+class RandomLongOnConnectResolver {
+}
+
+class RandomLongOnDisconnectResolver {
+}
+
+class RandomLongOnMessageResolver {
+}
+
+class RNG {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.empty; {
+class EmptyApplication {
+}
+
+class EmptyServersIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.duplicatedefs; {
+class DuplicateDefsApplication {
+}
+
+class DuplicateDefsIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.duplicatemessagebodies; {
+class DuplicateMessageBodiesApplication {
+}
+
+class DuplicateMessageBodiesIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.duplicatemessagebodies.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.mulhandler1.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.mulhandler1; {
+class MulHandler1Application {
+}
+
+class MulHandler1IntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.mulhandler2.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.mulhandler2; {
+class MulHandler2Application {
+}
+
+class MulHandler2IntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.mulhandler3.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.mulhandler3; {
+class MulHandler3Application {
+}
+
+class MulHandler3IntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.noconnectparamresolver.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.noconnectparamresolver; {
+class NoConnectParamResolverApplication {
+}
+
+class NoConnectParamResolverIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nodefs; {
+class NoDefsApplication {
+}
+
+class NoDefsIntergrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nodisconnectparamresolver.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nodisconnectparamresolver; {
+class NoDisconnectParamResolverApplication {
+}
+
+class NoDisconnectParamResolverIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nomessageparamresolver.handlers; {
+class WrongController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nomessageparamresolver; {
+class NoMessageParamResolverApplication {
+}
+
+class NoMessageParamResolverIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nonhandler.handlers; {
+class WrongHandler {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nonhandler; {
+class NonHandler1Application {
+}
+
+class NonHandler1IntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nonsharable1.handlers; {
+class Decoder {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nonsharable1; {
+class NonSharable1Application {
+}
+
+class NonSharable1IntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nonsharable2.handlers; {
+class Decoder {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.errors.nonsharable2; {
+class NonSharable2Application {
+}
+
+class NonSharable2IntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.etc; {
+class ClientHandler {
+}
+
+class ExceptionHandler {
+}
+
+class HandlerCallStack {
+}
+
+class HandlerMethodCalls {
+}
+
+class ProcessingCounter {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.multiple.handlers; {
+class ExceptionHandlerFilter1 {
+}
+
+class ExceptionHandlerFilter2 {
+}
+
+class Server1Handler {
+}
+
+class Server2Handler {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.multiple; {
+class MultipleServersApplication {
+}
+
+class MultipleServersIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.nettyfilters.handlers; {
+class AroundResponderFilter {
+}
+
+class ExceptionHandlerFilter {
+}
+
+class LongDecoder {
+}
+
+class LongEncoder {
+}
+
+class LongInverter {
+}
+
+class LongResponder {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.nettyfilters; {
+class NettyFiltersApplication {
+}
+
+class NettyFiltersIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.onconnect.handlers; {
+class ExceptionHandlerFilter {
+}
+
+class TransactionalOnConnectController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.onconnect; {
+class OnConnectApplication {
+}
+
+class OnConnectController {
+}
+
+class OnConnectIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.ondisconnect.handlers; {
+class ExceptionHandlerFilter {
+}
+
+class OnDisconnectController {
+}
+
+class TransactionalOnDisconnectController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.ondisconnect; {
+class OnDisconnectApplication {
+}
+
+class OnDisconnectIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.onmessage.handlers; {
+class Decoder {
+}
+
+class Encoder {
+}
+
+class ExceptionHandlerFilter {
+}
+
+class OnMessageController {
+}
+
+class TransactionalOnMessageController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.onmessage; {
+class OnMessageApplication {
+}
+
+class OnMessageIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.onmessagenohandler.handlers; {
+class ExceptionHandlerFilter {
+}
+
+class OnMessageNoHandlerController {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.onmessagenohandler; {
+class OnMessageNoHandlerApplication {
+}
+
+class OnMessageNoHandlerIntegrationTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty; {
+class ServerClient {
+}
+
+class TcpServerIntegrationTest {
+}
+
+class ChannelOptions {
+}
+
+class TcpServer {
+}
+
+class TcpServerLifeCycle {
+}
+
+class ChannelOptionsTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.annotations; {
+class NettyController {
+}
+
+class NettyFilter {
+}
+
+class NettyMessageBody {
+}
+
+class NettyOnConnect {
+}
+
+class NettyOnDisconnect {
+}
+
+class NettyOnMessage {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.configuration; {
+class EnableNettyServers {
+}
+
+class NettyServers {
+}
+
+class SpringNettyConfiguration {
+}
+
+class SpringNettyConfigurationProperties {
+}
+
+class TcpServerProperties {
+}
+
+class FilterBeanComparatorTest {
+}
+
+class OnConnectMethodComparatorTest {
+}
+
+class OnDisconnectMethodComparatorTest {
+}
+
+class OnMessageMethodComparatorTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.handlers; {
+class FlashPolicyHandler {
+}
+
+class FlashPolicyHandlerTest {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.support.invoke; {
+class AbstractMethodInvoker {
+}
+
+class GeneratedClassLoader {
+}
+
+class InvokerMethods {
+}
+
+class MethodHandleCreator {
+}
+
+class OnConnectMethodInvoker {
+}
+
+class OnDisconnectMethodInvoker {
+}
+
+class OnMessageMethodInvoker {
+}
+
+class GeneratedClassLoaderTest {
+}
+
+class MethodHandleCreatorTest {
+}
+
+class Victim {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.support.invoke.assembler; {
+class ConstructorAssembler {
+}
+
+class Descriptors {
+}
+
+class InvokerMethodAssembler {
+}
+
+class LabelAssembler {
+}
+
+class LocalVariableAssembler {
+}
+
+class MethodHandleFieldAssembler {
+}
+
+class MethodPrefixAssembler {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.support.resolvers.impl; {
+class ChannelFutureOnDisconnectResolver {
+}
+
+class ChannelHandlerContextOnConnectResolver {
+}
+
+class ChannelHandlerContextOnMessageResolver {
+}
+
+class ChannelOnConnectResolver {
+}
+
+class ChannelOnDisconnectResolver {
+}
+
+class ChannelOnMessageResolver {
+}
+
+class MessageBodyOnMessageResolver {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.support.resolvers; {
+class NettyCallbackParameterResolver {
+}
+
+class NettyOnConnectParameterResolver {
+}
+
+class NettyOnDisconnectParameterResolver {
+}
+
+class NettyOnMessageParameterResolver {
+}
+
+}
+
+package org.kgusarov.integration.spring.netty.support; {
+class SpringChannelFutureListener {
+}
+
+class SpringChannelHandler {
+}
+
+}
+
+CustomResolversApplication -- ProcessingCounter
+CustomResolversApplication -- EnableNettyServers
+CustomResolversApplication -- NettyServers
+CustomResolversIntegrationTest -- CustomResolversApplication
+CustomResolversIntegrationTest -- RNG
+CustomResolversIntegrationTest -- ClientHandler
+CustomResolversIntegrationTest -- ProcessingCounter
+CustomResolversIntegrationTest -- ServerClient
+CustomResolversIntegrationTest -- NettyServers
+CustomResolversController -- ProcessingCounter
+CustomResolversController -- NettyController
+CustomResolversController -- NettyOnConnect
+CustomResolversController -- NettyOnDisconnect
+CustomResolversController -- NettyOnMessage
+ExceptionHandlerFilter -- ExceptionHandler
+ExceptionHandlerFilter -- ProcessingCounter
+ExceptionHandlerFilter -- NettyFilter
+RandomLongOnConnectResolver -- RNG
+RandomLongOnConnectResolver -- NettyOnConnect
+RandomLongOnConnectResolver -- NettyOnConnectParameterResolver
+RandomLongOnDisconnectResolver -- RNG
+RandomLongOnDisconnectResolver -- NettyOnDisconnect
+RandomLongOnDisconnectResolver -- NettyOnDisconnectParameterResolver
+RandomLongOnMessageResolver -- RNG
+RandomLongOnMessageResolver -- NettyOnMessage
+RandomLongOnMessageResolver -- NettyOnMessageParameterResolver
+EmptyApplication -- EnableNettyServers
+EmptyApplication -- NettyServers
+EmptyServersIntegrationTest -- EmptyApplication
+EmptyServersIntegrationTest -- NettyServers
+DuplicateDefsApplication -- EnableNettyServers
+DuplicateDefsApplication -- NettyServers
+DuplicateDefsIntegrationTest -- DuplicateDefsApplication
+DuplicateMessageBodiesApplication -- EnableNettyServers
+DuplicateMessageBodiesApplication -- NettyServers
+DuplicateMessageBodiesIntegrationTest -- DuplicateMessageBodiesApplication
+WrongController -- NettyController
+WrongController -- NettyOnMessage
+MulHandler1Application -- EnableNettyServers
+MulHandler1Application -- NettyServers
+MulHandler1IntegrationTest -- MulHandler1Application
+MulHandler2Application -- EnableNettyServers
+MulHandler2Application -- NettyServers
+MulHandler2IntegrationTest -- MulHandler2Application
+MulHandler3Application -- EnableNettyServers
+MulHandler3Application -- NettyServers
+MulHandler3IntegrationTest -- MulHandler3Application
+NoConnectParamResolverApplication -- EnableNettyServers
+NoConnectParamResolverApplication -- NettyServers
+NoConnectParamResolverIntegrationTest -- DuplicateDefsApplication
+NoConnectParamResolverIntegrationTest -- NoConnectParamResolverApplication
+NoDefsApplication -- EnableNettyServers
+NoDefsApplication -- NettyServers
+NoDefsIntergrationTest -- NoDefsApplication
+NoDisconnectParamResolverApplication -- EnableNettyServers
+NoDisconnectParamResolverApplication -- NettyServers
+NoDisconnectParamResolverIntegrationTest -- NoDisconnectParamResolverApplication
+NoMessageParamResolverApplication -- EnableNettyServers
+NoMessageParamResolverApplication -- NettyServers
+NoMessageParamResolverIntegrationTest -- NoMessageParamResolverApplication
+WrongHandler -- NettyFilter
+NonHandler1Application -- EnableNettyServers
+NonHandler1Application -- NettyServers
+NonHandler1IntegrationTest -- NonHandler1Application
+Decoder -- HandlerMethodCalls
+Decoder -- NettyFilter
+NonSharable1Application -- EnableNettyServers
+NonSharable1Application -- NettyServers
+NonSharable1IntegrationTest -- NonSharable1Application
+NonSharable2Application -- EnableNettyServers
+NonSharable2Application -- NettyServers
+NonSharable2IntegrationTest -- NonSharable2Application
+ExceptionHandlerFilter1 -- ExceptionHandlerFilter
+ExceptionHandlerFilter1 -- ExceptionHandler
+ExceptionHandlerFilter1 -- NettyFilter
+ExceptionHandlerFilter2 -- ExceptionHandlerFilter
+ExceptionHandlerFilter2 -- ExceptionHandler
+ExceptionHandlerFilter2 -- NettyFilter
+Server1Handler -- NettyFilter
+Server2Handler -- NettyFilter
+MultipleServersApplication -- EnableNettyServers
+MultipleServersApplication -- NettyServers
+MultipleServersIntegrationTest -- ClientHandler
+MultipleServersIntegrationTest -- MultipleServersApplication
+MultipleServersIntegrationTest -- ServerClient
+MultipleServersIntegrationTest -- NettyServers
+AroundResponderFilter -- HandlerCallStack
+AroundResponderFilter -- NettyFilter
+LongDecoder -- Decoder
+LongDecoder -- HandlerCallStack
+LongDecoder -- NettyFilter
+LongEncoder -- HandlerCallStack
+LongEncoder -- Encoder
+LongEncoder -- NettyFilter
+LongInverter -- HandlerCallStack
+LongInverter -- NettyFilter
+LongResponder -- HandlerCallStack
+LongResponder -- NettyFilter
+NettyFiltersApplication -- NettyFilter
+NettyFiltersApplication -- EnableNettyServers
+NettyFiltersApplication -- NettyServers
+NettyFiltersIntegrationTest -- Decoder
+NettyFiltersIntegrationTest -- ClientHandler
+NettyFiltersIntegrationTest -- HandlerCallStack
+NettyFiltersIntegrationTest -- AroundResponderFilter
+NettyFiltersIntegrationTest -- LongDecoder
+NettyFiltersIntegrationTest -- LongEncoder
+NettyFiltersIntegrationTest -- LongInverter
+NettyFiltersIntegrationTest -- LongResponder
+NettyFiltersIntegrationTest -- NettyFiltersApplication
+NettyFiltersIntegrationTest -- Encoder
+NettyFiltersIntegrationTest -- ServerClient
+NettyFiltersIntegrationTest -- NettyFilter
+NettyFiltersIntegrationTest -- NettyServers
+TransactionalOnConnectController -- HandlerMethodCalls
+TransactionalOnConnectController -- ProcessingCounter
+TransactionalOnConnectController -- OnConnectController
+TransactionalOnConnectController -- NettyController
+TransactionalOnConnectController -- NettyOnConnect
+OnConnectApplication -- ProcessingCounter
+OnConnectApplication -- EnableNettyServers
+OnConnectApplication -- NettyServers
+OnConnectController -- HandlerMethodCalls
+OnConnectController -- ProcessingCounter
+OnConnectController -- NettyController
+OnConnectController -- NettyOnConnect
+OnConnectIntegrationTest -- ClientHandler
+OnConnectIntegrationTest -- HandlerMethodCalls
+OnConnectIntegrationTest -- ProcessingCounter
+OnConnectIntegrationTest -- TransactionalOnConnectController
+OnConnectIntegrationTest -- OnConnectApplication
+OnConnectIntegrationTest -- OnConnectController
+OnConnectIntegrationTest -- ServerClient
+OnConnectIntegrationTest -- NettyServers
+OnDisconnectController -- HandlerMethodCalls
+OnDisconnectController -- ProcessingCounter
+OnDisconnectController -- NettyController
+OnDisconnectController -- NettyOnDisconnect
+TransactionalOnDisconnectController -- HandlerMethodCalls
+TransactionalOnDisconnectController -- ProcessingCounter
+TransactionalOnDisconnectController -- OnDisconnectController
+TransactionalOnDisconnectController -- NettyController
+TransactionalOnDisconnectController -- NettyOnDisconnect
+OnDisconnectApplication -- ProcessingCounter
+OnDisconnectApplication -- EnableNettyServers
+OnDisconnectApplication -- NettyServers
+OnDisconnectIntegrationTest -- HandlerMethodCalls
+OnDisconnectIntegrationTest -- ProcessingCounter
+OnDisconnectIntegrationTest -- OnDisconnectController
+OnDisconnectIntegrationTest -- TransactionalOnDisconnectController
+OnDisconnectIntegrationTest -- OnDisconnectApplication
+OnDisconnectIntegrationTest -- ServerClient
+OnDisconnectIntegrationTest -- NettyServers
+Encoder -- HandlerMethodCalls
+Encoder -- NettyFilter
+OnMessageController -- HandlerMethodCalls
+OnMessageController -- ProcessingCounter
+OnMessageController -- NettyController
+OnMessageController -- NettyMessageBody
+OnMessageController -- NettyOnMessage
+TransactionalOnMessageController -- HandlerMethodCalls
+TransactionalOnMessageController -- ProcessingCounter
+TransactionalOnMessageController -- OnMessageController
+TransactionalOnMessageController -- NettyController
+TransactionalOnMessageController -- NettyOnMessage
+OnMessageApplication -- ProcessingCounter
+OnMessageApplication -- EnableNettyServers
+OnMessageApplication -- NettyServers
+OnMessageIntegrationTest -- Decoder
+OnMessageIntegrationTest -- ClientHandler
+OnMessageIntegrationTest -- HandlerMethodCalls
+OnMessageIntegrationTest -- ProcessingCounter
+OnMessageIntegrationTest -- Encoder
+OnMessageIntegrationTest -- OnMessageController
+OnMessageIntegrationTest -- TransactionalOnMessageController
+OnMessageIntegrationTest -- OnMessageApplication
+OnMessageIntegrationTest -- ServerClient
+OnMessageIntegrationTest -- NettyServers
+OnMessageNoHandlerController -- HandlerMethodCalls
+OnMessageNoHandlerController -- NettyController
+OnMessageNoHandlerController -- NettyMessageBody
+OnMessageNoHandlerController -- NettyOnMessage
+OnMessageNoHandlerApplication -- ProcessingCounter
+OnMessageNoHandlerApplication -- EnableNettyServers
+OnMessageNoHandlerApplication -- NettyServers
+OnMessageNoHandlerIntegrationTest -- HandlerMethodCalls
+OnMessageNoHandlerIntegrationTest -- ProcessingCounter
+OnMessageNoHandlerIntegrationTest -- OnMessageNoHandlerApplication
+OnMessageNoHandlerIntegrationTest -- ServerClient
+OnMessageNoHandlerIntegrationTest -- NettyServers
+ServerClient -- ExceptionHandler
+TcpServerIntegrationTest -- Decoder
+TcpServerIntegrationTest -- ClientHandler
+TcpServerIntegrationTest -- Encoder
+TcpServerIntegrationTest -- ServerClient
+TcpServerIntegrationTest -- ChannelOptions
+TcpServerIntegrationTest -- TcpServer
+NettyFilter -- NettyController
+EnableNettyServers -- NettyServers
+EnableNettyServers -- SpringNettyConfiguration
+NettyServers -- TcpServer
+SpringNettyConfiguration -- NettyController
+SpringNettyConfiguration -- NettyFilter
+SpringNettyConfiguration -- NettyOnConnect
+SpringNettyConfiguration -- NettyOnDisconnect
+SpringNettyConfiguration -- NettyOnMessage
+SpringNettyConfiguration -- ChannelOptions
+SpringNettyConfiguration -- NettyServers
+SpringNettyConfiguration -- SpringNettyConfigurationProperties
+SpringNettyConfiguration -- TcpServerProperties
+SpringNettyConfiguration -- OnConnectMethodInvoker
+SpringNettyConfiguration -- OnDisconnectMethodInvoker
+SpringNettyConfiguration -- OnMessageMethodInvoker
+SpringNettyConfiguration -- NettyCallbackParameterResolver
+SpringNettyConfiguration -- NettyOnConnectParameterResolver
+SpringNettyConfiguration -- NettyOnDisconnectParameterResolver
+SpringNettyConfiguration -- NettyOnMessageParameterResolver
+SpringNettyConfiguration -- SpringChannelFutureListener
+SpringNettyConfiguration -- SpringChannelHandler
+SpringNettyConfiguration -- TcpServer
+SpringNettyConfiguration -- TcpServerLifeCycle
+SpringNettyConfigurationProperties -- TcpServerProperties
+SpringNettyConfigurationProperties -- TcpServer
+TcpServerProperties -- ChannelOptions
+TcpServerProperties -- TcpServer
+AbstractMethodInvoker -- NettyController
+AbstractMethodInvoker -- ConstructorAssembler
+AbstractMethodInvoker -- InvokerMethodAssembler
+AbstractMethodInvoker -- MethodHandleFieldAssembler
+AbstractMethodInvoker -- MethodPrefixAssembler
+AbstractMethodInvoker -- GeneratedClassLoader
+ConstructorAssembler -- LabelAssembler
+Descriptors -- NettyOnConnect
+Descriptors -- NettyOnDisconnect
+Descriptors -- NettyOnMessage
+Descriptors -- MethodHandleCreator
+Descriptors -- NettyOnConnectParameterResolver
+Descriptors -- NettyOnDisconnectParameterResolver
+Descriptors -- NettyOnMessageParameterResolver
+InvokerMethodAssembler -- Descriptors
+InvokerMethodAssembler -- LabelAssembler
+InvokerMethodAssembler -- LocalVariableAssembler
+InvokerMethodAssembler -- MethodPrefixAssembler
+LocalVariableAssembler -- Descriptors
+MethodHandleFieldAssembler -- Descriptors
+MethodHandleFieldAssembler -- LabelAssembler
+GeneratedClassLoader -- MethodHandleCreator
+InvokerMethods -- OnConnectMethodInvoker
+InvokerMethods -- OnDisconnectMethodInvoker
+InvokerMethods -- OnMessageMethodInvoker
+OnConnectMethodInvoker -- NettyOnConnect
+OnConnectMethodInvoker -- AbstractMethodInvoker
+OnConnectMethodInvoker -- Descriptors
+OnConnectMethodInvoker -- NettyOnConnectParameterResolver
+OnDisconnectMethodInvoker -- NettyOnDisconnect
+OnDisconnectMethodInvoker -- AbstractMethodInvoker
+OnDisconnectMethodInvoker -- Descriptors
+OnDisconnectMethodInvoker -- NettyOnDisconnectParameterResolver
+OnMessageMethodInvoker -- NettyMessageBody
+OnMessageMethodInvoker -- NettyOnMessage
+OnMessageMethodInvoker -- AbstractMethodInvoker
+OnMessageMethodInvoker -- Descriptors
+OnMessageMethodInvoker -- NettyOnMessageParameterResolver
+ChannelFutureOnDisconnectResolver -- NettyOnDisconnect
+ChannelFutureOnDisconnectResolver -- NettyOnDisconnectParameterResolver
+ChannelHandlerContextOnConnectResolver -- NettyOnConnect
+ChannelHandlerContextOnConnectResolver -- NettyOnConnectParameterResolver
+ChannelHandlerContextOnMessageResolver -- NettyOnMessage
+ChannelHandlerContextOnMessageResolver -- NettyOnMessageParameterResolver
+ChannelOnConnectResolver -- NettyOnConnect
+ChannelOnConnectResolver -- NettyOnConnectParameterResolver
+ChannelOnDisconnectResolver -- NettyOnDisconnect
+ChannelOnDisconnectResolver -- NettyOnDisconnectParameterResolver
+ChannelOnMessageResolver -- NettyOnMessage
+ChannelOnMessageResolver -- NettyOnMessageParameterResolver
+MessageBodyOnMessageResolver -- NettyMessageBody
+MessageBodyOnMessageResolver -- NettyOnMessage
+MessageBodyOnMessageResolver -- NettyOnMessageParameterResolver
+NettyOnConnectParameterResolver -- NettyOnConnect
+NettyOnConnectParameterResolver -- NettyCallbackParameterResolver
+NettyOnDisconnectParameterResolver -- NettyOnDisconnect
+NettyOnDisconnectParameterResolver -- NettyCallbackParameterResolver
+NettyOnMessageParameterResolver -- NettyOnMessage
+NettyOnMessageParameterResolver -- NettyCallbackParameterResolver
+SpringChannelFutureListener -- NettyController
+SpringChannelFutureListener -- NettyOnDisconnect
+SpringChannelFutureListener -- OnDisconnectMethodInvoker
+SpringChannelHandler -- NettyController
+SpringChannelHandler -- OnConnectMethodInvoker
+SpringChannelHandler -- OnMessageMethodInvoker
+TcpServer -- ChannelOptions
+TcpServerLifeCycle -- NettyServers
+TcpServerLifeCycle -- TcpServer
+ChannelOptionsTest -- ChannelOptions
+FilterBeanComparatorTest -- NettyFilter
+FilterBeanComparatorTest -- SpringNettyConfiguration
+OnConnectMethodComparatorTest -- NettyOnConnect
+OnConnectMethodComparatorTest -- NettyOnDisconnect
+OnConnectMethodComparatorTest -- SpringNettyConfiguration
+OnDisconnectMethodComparatorTest -- NettyOnConnect
+OnDisconnectMethodComparatorTest -- NettyOnDisconnect
+OnDisconnectMethodComparatorTest -- SpringNettyConfiguration
+OnMessageMethodComparatorTest -- NettyOnConnect
+OnMessageMethodComparatorTest -- NettyOnMessage
+OnMessageMethodComparatorTest -- SpringNettyConfiguration
+FlashPolicyHandlerTest -- FlashPolicyHandler
+GeneratedClassLoaderTest -- Decoder
+GeneratedClassLoaderTest -- GeneratedClassLoader
+MethodHandleCreatorTest -- MethodHandleCreator
+MethodHandleCreatorTest -- Victim
+@enduml

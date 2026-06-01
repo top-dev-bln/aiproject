@@ -1,0 +1,30 @@
+debug: true
+
+library:
+  size: ${random.int(2,10)}
+
+spring:
+  freemarker:
+    cache: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  main:
+    lazy-initialization: false
+    banner-mode: off
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start_and_stop
+
+logging:
+  level:
+    web: DEBUG
+  include-application-group: false
+  include-application-name: false
+  structured:
+    ecs:
+      service:
+        environment: local-dev
+        node-name: laptop

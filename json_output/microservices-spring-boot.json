@@ -1,0 +1,34 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include home, user details impl. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage home operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with user details impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    HomeController[\"HomeController\"]\n  end\n  subgraph Services\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n  end\n  subgraph Security\n    JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n    JwtTokenAuthenticationFilter[\"JwtTokenAuthenticationFilter\"]\n    JwtUsernameAndPasswordAuthenticationFilter[\"JwtUsernameAndPasswordAuthenticationFilter\"]\n    SecurityCredentialsConfig[\"SecurityCredentialsConfig\"]\n    UserRole[\"UserRole\"]\n  end\n  subgraph Infrastructure\n    Gallery[\"Gallery\"]\n    Image[\"Image\"]\n    JwtConfig[\"JwtConfig\"]\n    SecurityTokenConfig[\"SecurityTokenConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

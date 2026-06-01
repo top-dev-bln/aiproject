@@ -1,0 +1,89 @@
+@startuml
+
+package com.demo {
+  class FooService {
+  }
+  class App {
+  }
+}
+
+package com.example.startupdemo {
+  class StartupDemoApplicationTests {
+  }
+  class StartupDemoApplication2Tests {
+  }
+  class StartupDemoApplication {
+    +main() : void
+  }
+}
+
+package com.maciejwalkowiak.spring.boot.startup {
+  class ReportRendererTests {
+    -reportRenderer : ReportRenderer
+  }
+  class TagsResolverTest {
+    -tagsResolver : TagsResolver
+    -tags : List<Tag>
+    -key : String
+    -value : String
+    +iterator() : Iterator<Tag>
+    +getKey() : String
+    +getValue() : String
+  }
+  class TimelineFactoryTest {
+    -startup : BufferingApplicationStartup
+    -timelineFactory : TimelineFactory
+  }
+  class StartupEventsController <<Controller>> {
+    -reportRenderer : ReportRenderer
+  }
+  class TimelineFactory {
+    -applicationStartup : BufferingApplicationStartup
+    -tagsResolver : TagsResolver
+    +getTimeline() : List<Event>
+  }
+  class TagsResolver {
+    -LOGGER : Logger
+    -ctx : ApplicationContext
+    +setApplicationContext() : void
+  }
+  class StartupEventsInitializer {
+    +initialize() : void
+  }
+  class Event {
+    -id : Long
+    -parentId : Long
+    -name : String
+    -value : long
+    -actualDuration : long
+    -children : List<Event>
+    +getName() : String
+    +getValue() : long
+    +getId() : Long
+    +getParentId() : Long
+    +getChildren() : List<Event>
+    +getActualDuration() : long
+  }
+  class StartupEventsAutoConfiguration {
+  }
+  class StartupEventsCustomizerFactory {
+    +createContextCustomizer() : ContextCustomizer
+  }
+  class StartupEventsCustomizer {
+    -LOGGER : Logger
+    -testName : String
+    +customizeContext() : void
+  }
+  class ReportRenderer {
+    -timelineFactory : TimelineFactory
+    -resourceLoader : ResourceLoader
+    -mapper : ObjectMapper
+    +serialize() : String
+  }
+}
+
+' --- Relatii ---
+ReportRendererTests --> App
+TagsResolverTest --> FooService
+
+@enduml

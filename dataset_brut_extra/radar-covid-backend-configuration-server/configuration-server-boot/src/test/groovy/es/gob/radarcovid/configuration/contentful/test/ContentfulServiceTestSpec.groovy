@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) 2020 Gobierno de España
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
+package es.gob.radarcovid.configuration.contentful.test
+
+import es.gob.radarcovid.configuration.api.KeyValueDto
+import es.gob.radarcovid.configuration.contentful.ContentfulService
+import org.spockframework.spring.SpringBean
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
+import spock.lang.Specification
+import spock.lang.Unroll
+
+@SpringBootTest
+@ActiveProfiles('test')
+class ContentfulServiceTestSpec extends Specification {
+
+    @SpringBean
+    ContentfulService contentfulService = Stub() {
+        getLocales('es-ES', 'iOS', '1.0.7') >> [new KeyValueDto('es-ES', 'Castellano')]
+    }
+
+    @Unroll
+    def 'get locales [#locale] with id [#id] and description [#description]'(String locale, String platform, String version, String id, String description) {
+        when:
+        List<KeyValueDto> list = contentfulService.getLocales(locale, platform, version)
+
+        then:
+        list.first().id == id
+        list.first().description == description
+
+        where:
+        locale  | platform  | version   | id      | description
+        'es-ES' | 'iOS'     | '1.0.7'   | 'es-ES' | 'Castellano'
+    }
+}
