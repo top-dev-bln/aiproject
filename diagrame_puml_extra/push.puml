@@ -1,0 +1,405 @@
+@startuml
+package cn.ctodb.push.core; {
+class Connection {
+}
+
+class Filter {
+}
+
+class FilterResult {
+}
+
+class PacketReceiver {
+}
+
+}
+
+package cn.ctodb.push.dto; {
+class Command {
+}
+
+class Error {
+}
+
+class ErrorCode {
+}
+
+class HandshakeReq {
+}
+
+class HandshakeResp {
+}
+
+class LoginReq {
+}
+
+class Message {
+}
+
+class Packet {
+}
+
+class TextMessage {
+}
+
+class User {
+}
+
+}
+
+package cn.ctodb.push.handler; {
+class AbstractHandler {
+}
+
+class ErrorHandler {
+}
+
+class HeartBeatHandler {
+}
+
+class PacketHandler {
+}
+
+class TextMessageHandler {
+}
+
+}
+
+package cn.ctodb.push.utils; {
+class MsgPackDecode {
+}
+
+class MsgPackEncode {
+}
+
+}
+
+package cn.ctodb.push.reg.conf; {
+class CacheConfiguration {
+}
+
+}
+
+package cn.ctodb.push.reg.controller; {
+class RegController {
+}
+
+}
+
+package cn.ctodb.push.reg.entity; {
+class ServerNode {
+}
+
+}
+
+package cn.ctodb.push.reg; {
+class RegApp {
+}
+
+}
+
+package cn.ctodb.push.reg.util; {
+class IpUtil {
+}
+
+}
+
+package cn.ctodb.push.client; {
+class Client {
+}
+
+class ClientHandler {
+}
+
+class ClientInfo {
+}
+
+class ClientProperties {
+}
+
+class HeartBeatTasker {
+}
+
+class Util {
+}
+
+}
+
+package cn.ctodb.push.client.conf; {
+class ClientConfiguration {
+}
+
+}
+
+package cn.ctodb.push.client.handler; {
+class HandshakeHandler {
+}
+
+}
+
+package cn.ctodb.push.client.Client; {
+class ClientTest {
+}
+
+}
+
+package cn.ctodb.push.server.conf; {
+class ApplicationProperties {
+}
+
+class ApplicationReadyEventListener {
+}
+
+class CacheConfiguration {
+}
+
+class KafkaConfiguration {
+}
+
+class ServerConfiguration {
+}
+
+}
+
+package cn.ctodb.push.server.filter; {
+class AuthFilter {
+}
+
+}
+
+package cn.ctodb.push.server.handler; {
+class HandshakeHandler {
+}
+
+class HeartBeatHandler {
+}
+
+class LoginHandler {
+}
+
+class TextMessageHandler {
+}
+
+}
+
+package cn.ctodb.push.server.info; {
+class ClientType {
+}
+
+}
+
+package cn.ctodb.push.server.kafka; {
+class KafkaConsumer {
+}
+
+}
+
+package cn.ctodb.push.server; {
+class PushServerApp {
+}
+
+class ServerHandler {
+}
+
+class UserManager {
+}
+
+}
+
+package cn.ctodb.push.server.service; {
+class MgsServer {
+}
+
+}
+
+package cn.ctodb.push.server.session; {
+class PushSession {
+}
+
+class Session {
+}
+
+class SessionManager {
+}
+
+}
+
+package cn.ctodb.push.server.util; {
+class SessionUtil {
+}
+
+}
+
+package cn.ctodb.push.server.test; {
+class TestKafka {
+}
+
+class TestRedis {
+}
+
+class TestUser {
+}
+
+}
+
+Connection -- Packet
+Filter -- Connection
+Filter -- FilterResult
+Filter -- Packet
+PacketReceiver -- Connection
+PacketReceiver -- Filter
+PacketReceiver -- FilterResult
+PacketReceiver -- Command
+PacketReceiver -- Packet
+PacketReceiver -- PacketHandler
+Error -- ErrorCode
+Error -- Message
+HandshakeReq -- Message
+HandshakeResp -- Message
+LoginReq -- Message
+Message -- Command
+Message -- User
+Packet -- Command
+Packet -- Message
+Packet -- Session
+TextMessage -- Command
+TextMessage -- Message
+AbstractHandler -- Connection
+AbstractHandler -- Message
+AbstractHandler -- Packet
+AbstractHandler -- PacketHandler
+ErrorHandler -- Connection
+ErrorHandler -- Command
+ErrorHandler -- Error
+ErrorHandler -- ErrorCode
+ErrorHandler -- HandshakeResp
+ErrorHandler -- Packet
+ErrorHandler -- AbstractHandler
+HeartBeatHandler -- Connection
+HeartBeatHandler -- Command
+HeartBeatHandler -- Packet
+HeartBeatHandler -- PacketHandler
+PacketHandler -- Connection
+PacketHandler -- Command
+PacketHandler -- Packet
+TextMessageHandler -- Connection
+TextMessageHandler -- Command
+TextMessageHandler -- Message
+TextMessageHandler -- TextMessage
+TextMessageHandler -- AbstractHandler
+MsgPackDecode -- Message
+MsgPackDecode -- Packet
+MsgPackEncode -- Message
+MsgPackEncode -- Packet
+CacheConfiguration -- Connection
+RegController -- ServerNode
+RegController -- IpUtil
+RegController -- Util
+IpUtil -- Client
+IpUtil -- Util
+Client -- Message
+Client -- Packet
+Client -- MsgPackDecode
+Client -- MsgPackEncode
+Client -- ClientInfo
+Client -- ClientProperties
+Client -- ClientConfiguration
+Client -- HeartBeatTasker
+Client -- Session
+ClientHandler -- Connection
+ClientHandler -- PacketReceiver
+ClientHandler -- Command
+ClientHandler -- Message
+ClientHandler -- Packet
+ClientHandler -- TextMessage
+ClientHandler -- Client
+ClientInfo -- Session
+ClientConfiguration -- PacketReceiver
+ClientConfiguration -- Error
+ClientConfiguration -- Packet
+ClientConfiguration -- ErrorHandler
+ClientConfiguration -- ClientHandler
+ClientConfiguration -- HandshakeHandler
+HandshakeHandler -- Connection
+HandshakeHandler -- Command
+HandshakeHandler -- HandshakeReq
+HandshakeHandler -- HandshakeResp
+HandshakeHandler -- Message
+HandshakeHandler -- Packet
+HandshakeHandler -- AbstractHandler
+HandshakeHandler -- Client
+HandshakeHandler -- Util
+HandshakeHandler -- PushSession
+HandshakeHandler -- Session
+HandshakeHandler -- SessionManager
+HandshakeHandler -- SessionUtil
+HeartBeatTasker -- Command
+HeartBeatTasker -- Packet
+Util -- Message
+ClientTest -- Connection
+ClientTest -- Command
+ClientTest -- HandshakeReq
+ClientTest -- Message
+ClientTest -- Packet
+ClientTest -- TextMessage
+ClientTest -- Client
+ClientTest -- ClientProperties
+ClientTest -- HandshakeHandler
+ClientTest -- Util
+ApplicationReadyEventListener -- ApplicationProperties
+ApplicationReadyEventListener -- MgsServer
+KafkaConfiguration -- KafkaConsumer
+ServerConfiguration -- Filter
+ServerConfiguration -- PacketReceiver
+ServerConfiguration -- Command
+ServerConfiguration -- Message
+ServerConfiguration -- Packet
+ServerConfiguration -- TextMessage
+ServerConfiguration -- HeartBeatHandler
+ServerConfiguration -- TextMessageHandler
+ServerConfiguration -- MsgPackDecode
+ServerConfiguration -- MsgPackEncode
+ServerConfiguration -- HandshakeHandler
+ServerConfiguration -- ApplicationProperties
+ServerConfiguration -- AuthFilter
+ServerConfiguration -- ServerHandler
+ServerConfiguration -- MgsServer
+AuthFilter -- Connection
+AuthFilter -- Filter
+AuthFilter -- FilterResult
+AuthFilter -- Command
+AuthFilter -- Error
+AuthFilter -- ErrorCode
+AuthFilter -- Message
+AuthFilter -- Packet
+AuthFilter -- Session
+AuthFilter -- SessionManager
+LoginHandler -- Connection
+LoginHandler -- Command
+LoginHandler -- LoginReq
+LoginHandler -- AbstractHandler
+ClientType -- Client
+KafkaConsumer -- Message
+ServerHandler -- Connection
+ServerHandler -- PacketReceiver
+ServerHandler -- Packet
+MgsServer -- MsgPackDecode
+MgsServer -- MsgPackEncode
+MgsServer -- ServerHandler
+PushSession -- Packet
+PushSession -- Client
+PushSession -- Session
+SessionManager -- PushSession
+SessionManager -- Session
+UserManager -- User
+UserManager -- MgsServer
+SessionUtil -- Message
+SessionUtil -- Util
+SessionUtil -- Session
+TestKafka -- PushServerApp
+TestRedis -- PushServerApp
+TestUser -- User
+TestUser -- PushServerApp
+TestUser -- UserManager
+TestUser -- TestRedis
+@enduml

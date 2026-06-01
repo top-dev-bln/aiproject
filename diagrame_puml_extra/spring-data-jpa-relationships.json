@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, Admin roles. The platform provides capabilities for course, course, course student. Secondary concerns include social functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Content Creator, I want to interact with student course functionality, so that I can accomplish my student course-related tasks.",
+        "services": [
+          "CourseStudentService",
+          "CourseStudentServiceImpl"
+        ],
+        "controllers": [
+          "StudentCourseController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to interact with writer book functionality, so that I can accomplish my writer book-related tasks.",
+        "services": [
+          "WriterService",
+          "WriterServiceImpl"
+        ],
+        "controllers": [
+          "WriterBookController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to interact with reviewer article functionality, so that I can accomplish my reviewer article-related tasks.",
+        "services": [
+          "ReviewerService",
+          "ReviewerServiceImpl"
+        ],
+        "controllers": [
+          "ReviewerArticleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to interact with player weapon functionality, so that I can accomplish my player weapon-related tasks.",
+        "services": [
+          "PlayerService",
+          "PlayerServiceImpl"
+        ],
+        "controllers": [
+          "PlayerWeaponController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to interact with restaurant dish functionality, so that I can accomplish my restaurant dish-related tasks.",
+        "services": [
+          "RestaurantService",
+          "RestaurantServiceImpl"
+        ],
+        "controllers": [
+          "RestaurantDishController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ErrorAttributesConfig[\"ErrorAttributesConfig\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n    end\n    subgraph Data_Access\n        CourseMapper[\"CourseMapper\"]\n        CourseStudentMapper[\"CourseStudentMapper\"]\n        StudentMapper[\"StudentMapper\"]\n        CourseRepository[\"CourseRepository\"]\n        CourseStudentRepository[\"CourseStudentRepository\"]\n        StudentRepository[\"StudentRepository\"]\n        BookMapper[\"BookMapper\"]\n        WriterMapper[\"WriterMapper\"]\n        BookRepository[\"BookRepository\"]\n        WriterRepository[\"WriterRepository\"]\n        ArticleMapper[\"ArticleMapper\"]\n        CommentMapper[\"CommentMapper\"]\n        ReviewerMapper[\"ReviewerMapper\"]\n        ArticleRepository[\"ArticleRepository\"]\n        CommentRepository[\"CommentRepository\"]\n        ReviewerRepository[\"ReviewerRepository\"]\n        PlayerMapper[\"PlayerMapper\"]\n        WeaponMapper[\"WeaponMapper\"]\n        PlayerRepository[\"PlayerRepository\"]\n        WeaponRepository[\"WeaponRepository\"]\n        DishMapper[\"DishMapper\"]\n        RestaurantMapper[\"RestaurantMapper\"]\n        DishRepository[\"DishRepository\"]\n        RestaurantRepository[\"RestaurantRepository\"]\n        PersonMapper[\"PersonMapper\"]\n        PersonRepository[\"PersonRepository\"]\n        TeamMapper[\"TeamMapper\"]\n        TeamRepository[\"TeamRepository\"]\n    end\n    subgraph Controllers\n        StudentCourseController[\"StudentCourseController\"]\n        WriterBookController[\"WriterBookController\"]\n        ReviewerArticleController[\"ReviewerArticleController\"]\n        PlayerWeaponController[\"PlayerWeaponController\"]\n        RestaurantDishController[\"RestaurantDishController\"]\n        PersonDetailController[\"PersonDetailController\"]\n        TeamDetailController[\"TeamDetailController\"]\n    end\n    subgraph Services\n        CourseService[\"CourseService\"]\n        CourseServiceImpl[\"CourseServiceImpl\"]\n        CourseStudentService[\"CourseStudentService\"]\n        CourseStudentServiceImpl[\"CourseStudentServiceImpl\"]\n        StudentService[\"StudentService\"]\n        StudentServiceImpl[\"StudentServiceImpl\"]\n        BookService[\"BookService\"]\n        BookServiceImpl[\"BookServiceImpl\"]\n        WriterService[\"WriterService\"]\n        WriterServiceImpl[\"WriterServiceImpl\"]\n        ArticleService[\"ArticleService\"]\n        ArticleServiceImpl[\"ArticleServiceImpl\"]\n        CommentService[\"CommentService\"]\n        CommentServiceImpl[\"CommentServiceImpl\"]\n        ReviewerService[\"ReviewerService\"]\n        ReviewerServiceImpl[\"ReviewerServiceImpl\"]\n        PlayerService[\"PlayerService\"]\n        PlayerServiceImpl[\"PlayerServiceImpl\"]\n        WeaponService[\"WeaponService\"]\n        WeaponServiceImpl[\"WeaponServiceImpl\"]\n        DishService[\"DishService\"]\n        DishServiceImpl[\"DishServiceImpl\"]\n        RestaurantService[\"RestaurantService\"]\n        RestaurantServiceImpl[\"RestaurantServiceImpl\"]\n        PersonService[\"PersonService\"]\n        PersonServiceImpl[\"PersonServiceImpl\"]\n        TeamService[\"TeamService\"]\n        TeamServiceImpl[\"TeamServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

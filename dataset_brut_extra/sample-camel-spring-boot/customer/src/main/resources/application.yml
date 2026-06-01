@@ -1,0 +1,18 @@
+camel:
+  springboot:
+    name: customer-service
+    main-run-controller: true
+  component:
+    consul:
+      url: http://localhost:8500
+  zipkin:
+    host-name: localhost
+    port: 9411
+    server-service-mappings.direct*: consul-cust-reg
+    client-service-mappings.direct*: consul-cust-reg
+    server-service-mappings.route*: customer-service
+    client-service-mappings.route*: customer-service
+        
+logging:
+  level:
+    org.apache.camel: DEBUG

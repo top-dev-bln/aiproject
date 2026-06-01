@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a search platform that serves Admin, Developer roles. The platform provides capabilities for car, generic csv. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to interact with car functionality, so that I can accomplish my car-related tasks.",
+        "services": [
+          "CarService"
+        ],
+        "controllers": [
+          "CarController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use car capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CarService"
+        ],
+        "controllers": [
+          "CarController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use generic csv capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GenericCsv"
+        ],
+        "controllers": [
+          "CarController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "CarService"
+        ],
+        "controllers": [
+          "CarController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "CarService"
+        ],
+        "controllers": [
+          "CarController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CorsConfig[\"CorsConfig\"]\n        JpaConfiguration[\"JpaConfiguration\"]\n        PagingHeaders[\"PagingHeaders\"]\n        PagingResponse[\"PagingResponse\"]\n        Builder[\"Builder\"]\n    end\n    subgraph Controllers\n        CarController[\"CarController\"]\n    end\n    subgraph Data_Access\n        CarRepository[\"CarRepository\"]\n    end\n    subgraph Services\n        CarService[\"CarService\"]\n        GenericCsv[\"GenericCsv\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves Customer, Admin roles. The platform provides capabilities for inventory, kafka consumer config, message listener shipment. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "MessageListenerShipment"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "MessageListenerShipment",
+          "MessageProducer"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "KafkaConsumerConfig",
+          "KafkaProducerConfig"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to interact with inventory functionality, so that I can accomplish my inventory-related tasks.",
+        "services": [
+          "InventoryService",
+          "InventoryClient"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        InventoryController[\"InventoryController\"]\n        ShipmentController[\"ShipmentController\"]\n        OrderController[\"OrderController\"]\n    end\n    subgraph Infrastructure\n        SwaggerConfig[\"SwaggerConfig\"]\n        KafkaProducerTestConfiguration[\"KafkaProducerTestConfiguration\"]\n    end\n    subgraph Data_Access\n        InventoryRepository[\"InventoryRepository\"]\n        MongoDataFile[\"MongoDataFile\"]\n        MongoSpringExtension[\"MongoSpringExtension\"]\n        OrderShipmentRepository[\"OrderShipmentRepository\"]\n        OrderRepository[\"OrderRepository\"]\n    end\n    subgraph Services\n        InventoryService[\"InventoryService\"]\n        KafkaConsumerConfig[\"KafkaConsumerConfig\"]\n        MessageListenerShipment[\"MessageListenerShipment\"]\n        ShipmentService[\"ShipmentService\"]\n        InventoryClient[\"InventoryClient\"]\n        OrderService[\"OrderService\"]\n        KafkaProducerConfig[\"KafkaProducerConfig\"]\n        KafkaTopicConfig[\"KafkaTopicConfig\"]\n        MessageProducer[\"MessageProducer\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

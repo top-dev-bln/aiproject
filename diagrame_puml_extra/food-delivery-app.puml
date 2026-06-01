@@ -1,0 +1,260 @@
+@startuml
+package demo.controller; {
+class OrderController {
+}
+
+class PaymentController {
+}
+
+class RestaurantInfoController {
+}
+
+}
+
+package demo.domain; {
+class Address {
+}
+
+class DeliveryInfo {
+}
+
+class Item {
+}
+
+class Order {
+}
+
+class OrderRepository {
+}
+
+class OrderStatus {
+}
+
+class CreditCard {
+}
+
+class Payment {
+}
+
+class PaymentRepository {
+}
+
+class PaymentStatus {
+}
+
+class Address {
+}
+
+class DeliveryInfo {
+}
+
+class Item {
+}
+
+class Restaurant {
+}
+
+}
+
+package demo; {
+class OrderServiceApplication {
+}
+
+class PaymentProcessorApp {
+}
+
+class PaymentServiceApplication {
+}
+
+class EurekaServiceApplication {
+}
+
+class HystrixDashboardApplication {
+}
+
+class RestaurantInfoServiceApplication {
+}
+
+}
+
+package demo.service.impl; {
+class OrderServiceImpl {
+}
+
+class PaymentProcessingServiceImpl {
+}
+
+class PaymentServiceImpl {
+}
+
+class RestaurantInfoServiceImpl {
+}
+
+}
+
+package demo.service; {
+class OrderService {
+}
+
+class OrderStatusUpdateMessage {
+}
+
+class AuthorizationRequest {
+}
+
+class AuthorizationResponse {
+}
+
+class PaymentConsumerConfig {
+}
+
+class PaymentProcessingService {
+}
+
+class AuthorizationRequest {
+}
+
+class AuthorizationResponse {
+}
+
+class OrderStatus {
+}
+
+class OrderStatusUpdateMessage {
+}
+
+class PaymentProducerConfig {
+}
+
+class PaymentResponse {
+}
+
+class PaymentService {
+}
+
+class RestaurantInfoService {
+}
+
+}
+
+package demo.model; {
+class CreditCard {
+}
+
+}
+
+package demo.config; {
+class WebConfig {
+}
+
+}
+
+package demo.domain.repository; {
+class RestaurantRepository {
+}
+
+class RestaurantRepositoryCustom {
+}
+
+class RestaurantRepositoryImpl {
+}
+
+}
+
+package com.jiaxu.cs504.fooddeliveryapp; {
+class FoodDeliveryAppApplication {
+}
+
+class FoodDeliveryAppApplicationTests {
+}
+
+}
+
+OrderController -- Order
+OrderController -- OrderStatus
+OrderController -- OrderService
+OrderController -- OrderStatusUpdateMessage
+Order -- DeliveryInfo
+Order -- Item
+Order -- OrderStatus
+OrderRepository -- Order
+OrderServiceApplication -- Order
+OrderServiceApplication -- OrderService
+OrderServiceImpl -- Order
+OrderServiceImpl -- OrderRepository
+OrderServiceImpl -- OrderStatus
+OrderServiceImpl -- OrderService
+OrderServiceImpl -- OrderStatusUpdateMessage
+OrderServiceImpl -- Payment
+OrderService -- Order
+OrderService -- OrderStatus
+OrderService -- OrderStatusUpdateMessage
+OrderStatusUpdateMessage -- Order
+OrderStatusUpdateMessage -- OrderStatus
+OrderStatusUpdateMessage -- Payment
+PaymentProcessorApp -- Payment
+AuthorizationRequest -- CreditCard
+PaymentProcessingServiceImpl -- CreditCard
+PaymentProcessingServiceImpl -- AuthorizationRequest
+PaymentProcessingServiceImpl -- AuthorizationResponse
+PaymentProcessingServiceImpl -- PaymentConsumerConfig
+PaymentProcessingServiceImpl -- PaymentProcessingService
+PaymentProcessingServiceImpl -- Payment
+PaymentConsumerConfig -- Payment
+PaymentProcessingService -- AuthorizationRequest
+PaymentProcessingService -- AuthorizationResponse
+PaymentProcessingService -- Payment
+PaymentController -- Order
+PaymentController -- OrderStatus
+PaymentController -- OrderStatusUpdateMessage
+PaymentController -- AuthorizationResponse
+PaymentController -- Payment
+PaymentController -- PaymentStatus
+PaymentController -- PaymentResponse
+PaymentController -- PaymentService
+Payment -- CreditCard
+Payment -- PaymentStatus
+PaymentRepository -- Order
+PaymentRepository -- Payment
+PaymentServiceApplication -- Payment
+PaymentServiceApplication -- PaymentService
+PaymentServiceImpl -- Order
+PaymentServiceImpl -- OrderStatus
+PaymentServiceImpl -- OrderStatusUpdateMessage
+PaymentServiceImpl -- CreditCard
+PaymentServiceImpl -- AuthorizationRequest
+PaymentServiceImpl -- AuthorizationResponse
+PaymentServiceImpl -- Payment
+PaymentServiceImpl -- PaymentRepository
+PaymentServiceImpl -- PaymentStatus
+PaymentServiceImpl -- PaymentProducerConfig
+PaymentServiceImpl -- PaymentService
+PaymentProducerConfig -- Payment
+PaymentResponse -- Payment
+PaymentService -- Order
+PaymentService -- OrderStatus
+PaymentService -- OrderStatusUpdateMessage
+PaymentService -- AuthorizationResponse
+PaymentService -- Payment
+RestaurantInfoController -- Item
+RestaurantInfoController -- Restaurant
+RestaurantInfoController -- RestaurantInfoService
+RestaurantRepository -- RestaurantRepositoryCustom
+RestaurantRepository -- Restaurant
+RestaurantRepositoryCustom -- Restaurant
+RestaurantRepositoryImpl -- RestaurantRepository
+RestaurantRepositoryImpl -- RestaurantRepositoryCustom
+RestaurantRepositoryImpl -- Restaurant
+Restaurant -- Address
+Restaurant -- DeliveryInfo
+Restaurant -- Item
+RestaurantInfoServiceApplication -- Restaurant
+RestaurantInfoServiceApplication -- RestaurantInfoService
+RestaurantInfoServiceImpl -- Item
+RestaurantInfoServiceImpl -- RestaurantRepository
+RestaurantInfoServiceImpl -- Restaurant
+RestaurantInfoServiceImpl -- RestaurantInfoService
+RestaurantInfoService -- Item
+RestaurantInfoService -- Restaurant
+FoodDeliveryAppApplicationTests -- FoodDeliveryAppApplication
+@enduml

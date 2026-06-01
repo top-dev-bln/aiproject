@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin, Content Creator roles. The platform provides capabilities for configurable multiple event handler, charge point emulators, charge point emulators. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "ConfigurableMultipleEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use charge point emulators capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ChargePointEmulatorsService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use charge point emulators capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ChargePointEmulatorsServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ConfigurableMultipleEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ConfigurableMultipleEventHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ExecutorConfiguration[\"ExecutorConfiguration\"]\n        JacksonConfiguration[\"JacksonConfiguration\"]\n        JettyConfiguration[\"JettyConfiguration\"]\n        ModelConstants[\"ModelConstants\"]\n        PicocliConstants[\"PicocliConstants\"]\n        EnumUtil[\"EnumUtil\"]\n        ThrowReadablyUtil[\"ThrowReadablyUtil\"]\n    end\n    subgraph Security\n        SendAuthorizeAction[\"SendAuthorizeAction\"]\n        AuthorizationStatusEnum[\"AuthorizationStatusEnum\"]\n        AuthorizeCertificateStatusEnum[\"AuthorizeCertificateStatusEnum\"]\n        IdToken[\"IdToken\"]\n        IdTokenEnum[\"IdTokenEnum\"]\n        IdTokenInfo[\"IdTokenInfo\"]\n        AuthorizeRequest[\"AuthorizeRequest\"]\n        AuthorizeResponse[\"AuthorizeResponse\"]\n    end\n    subgraph Services\n        ConfigurableMultipleEventHandler[\"ConfigurableMultipleEventHandler\"]\n        ChargePointEmulatorsService[\"ChargePointEmulatorsService\"]\n        ChargePointEmulatorsServiceImpl[\"ChargePointEmulatorsServiceImpl\"]\n    end\n    Services --> Security\n    Security --> Infrastructure"
+  }
+}

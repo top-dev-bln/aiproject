@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, User roles. It manages core business objects including girl, user, book, account. The platform provides capabilities for girl rep, account, account2. Secondary concerns include file management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to create and manage girl records, so that I can track and organize girl data effectively.",
+        "services": [
+          "GirlRep"
+        ],
+        "controllers": [
+          "GirlController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to create and manage book records, so that I can track and organize book data effectively.",
+        "services": [
+          "GirlRep"
+        ],
+        "controllers": [
+          "BookContrller"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to create and manage account records, so that I can track and organize account data effectively.",
+        "services": [
+          "AccountService",
+          "AccountService2"
+        ],
+        "controllers": [
+          "AccountController",
+          "AccountController2"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        GirlController[\"GirlController\"]\n        BookContrller[\"BookContrller\"]\n        UserController[\"UserController\"]\n        AccountController[\"AccountController\"]\n        FileUploadController[\"FileUploadController\"]\n        AccountController2[\"AccountController2\"]\n        WebController[\"WebController\"]\n        GreetingController[\"GreetingController\"]\n        LucyController[\"LucyController\"]\n        MiyaController[\"MiyaController\"]\n        HomeController[\"HomeController\"]\n        KafkaController[\"KafkaController\"]\n    end\n    subgraph Infrastructure\n        GirlProperties[\"GirlProperties\"]\n        StorageProperties[\"StorageProperties\"]\n    end\n    subgraph Data_Access\n        Girl[\"Girl\"]\n        User[\"User\"]\n        Book[\"Book\"]\n        Account[\"Account\"]\n        Customer[\"Customer\"]\n        PersonForm[\"PersonForm\"]\n        Greeting[\"Greeting\"]\n        AccountMapper[\"AccountMapper\"]\n        CustomerRepository[\"CustomerRepository\"]\n        AccountDao[\"AccountDao\"]\n        AccountMapper2[\"AccountMapper2\"]\n        RedisDao[\"RedisDao\"]\n        IAccountDAO[\"IAccountDAO\"]\n        AccountDaoImpl[\"AccountDaoImpl\"]\n        UserRepository[\"UserRepository\"]\n        BookRepository[\"BookRepository\"]\n        SimpleBookRepository[\"SimpleBookRepository\"]\n    end\n    subgraph Services\n        GirlRep[\"GirlRep\"]\n        AccountService[\"AccountService\"]\n        AccountService2[\"AccountService2\"]\n        GitHubLookupService[\"GitHubLookupService\"]\n        IAccountService[\"IAccountService\"]\n        ServiceConfiguration[\"ServiceConfiguration\"]\n        Service[\"Service\"]\n        ServiceProperties[\"ServiceProperties\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        FileSystemStorageService[\"FileSystemStorageService\"]\n        StorageService[\"StorageService\"]\n        KafkaProducer[\"KafkaProducer\"]\n        kafkaConsumer[\"kafkaConsumer\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

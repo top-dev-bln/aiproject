@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. The platform provides capabilities for account, account, security config. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "OAuth2Config"
+        ],
+        "controllers": [
+          "AuthServer"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "SecurityConfig",
+          "OAuth2Config"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with account functionality, so that I can accomplish my account-related tasks.",
+        "services": [
+          "AccountService",
+          "Account"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use account capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AccountService"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use discovery server capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DiscoveryServer"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AccountService[\"AccountService\"]\n        Account[\"Account\"]\n        SecurityConfig[\"SecurityConfig\"]\n        OAuth2Config[\"OAuth2Config\"]\n        DiscoveryServer[\"DiscoveryServer\"]\n        WebMvcConfig[\"WebMvcConfig\"]\n        GatewayServer[\"GatewayServer\"]\n    end\n    subgraph Controllers\n        AccountController[\"AccountController\"]\n        AuthServer[\"AuthServer\"]\n    end\n    Controllers --> Services"
+  }
+}

@@ -1,0 +1,73 @@
+server:
+  port: 9900
+
+spring:
+  application:
+    name: erwin-sample
+  profiles:
+    active: dev
+
+  mail:
+    host:
+    username:
+    password:
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    encoding: UTF-8 #编码
+    suffix: .html #模板后缀
+    mode: HTML #模板
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.fengwenyi.erwin.sample.business.*.entity
+  global-config:
+    db-config:
+      id-type: assign_id
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+sa-token:
+  token-style: tik
+  timeout: -1
+  active-timeout: -1
+  is-concurrent: false
+  is-share: false
+  token-name: Authorization
+
+#springdoc:
+#  swagger-ui:
+#    path: '/swagger-ui.html'
+#    configUrl: '/v3/api-docs/swagger-config'
+#    disable-swagger-default-url: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+#    configUrl: '/v3/api-docs/swagger-config'
+#    configUrl: '/v3/api-docs'
+    tags-sorter: alpha
+    operations-sorter: alpha
+    disable-swagger-default-url: true
+#  api-docs:
+#    path: /v3/api-docs
+  group-configs:
+    - group: 'sys'
+      paths-to-match: '/**'
+      packages-to-scan: com.fengwenyi.erwin.sample.business.sys.admin.controller
+
+
+erwin:
+  api:
+    exclude:
+      packages:
+        - org.springdoc
+

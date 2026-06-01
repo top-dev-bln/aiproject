@@ -1,0 +1,30 @@
+apply plugin: 'docker-compose'
+
+dependencies {
+    implementation project(':idempotence4j-core')
+    implementation project(':idempotence4j-jdbc')
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'org.springframework:spring-jdbc'
+
+    testImplementation project(':idempotence4j-test')
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	integrationTestImplementation libraries.hikari
+	integrationTestImplementation libraries.flyway
+	integrationTestImplementation libraries.flyway_mysql
+    integrationTestImplementation libraries.mariadb
+    integrationTestImplementation libraries.jackson_datatype
+    integrationTestImplementation libraries.spock_spring
+    integrationTestImplementation libraries.groovy_sql
+}
+
+dockerCompose {
+    useComposeFiles = ["${rootDir}/gradle/docker-compose/docker-compose.yml"]
+    startedServices = ['mariadb']
+    stopContainers = true
+    removeContainers = true
+}
+if(!isRunningOnCI()) {
+    dockerCompose.isRequiredBy(integrationTest)
+}

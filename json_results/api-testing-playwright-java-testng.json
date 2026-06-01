@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves Customer, Admin roles. The platform provides capabilities for request manager. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "RequestManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "RequestManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "RequestManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Developer, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "RequestManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [
+          "RequestManager"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        RequestManager[\"RequestManager\"]\n    end\n    subgraph Security\n        TokenBuilder[\"TokenBuilder\"]\n        Tokencreds[\"Tokencreds\"]\n        TokenData[\"TokenData\"]\n    end\n    Services --> Security"
+  }
+}

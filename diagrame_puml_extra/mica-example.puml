@@ -1,0 +1,132 @@
+@startuml
+package net.dreamlu.demo.captcha; {
+class CaptchaController {
+}
+
+}
+
+package net.dreamlu.demo.ddddocr; {
+class DdddOcrController {
+}
+
+}
+
+package net.dreamlu.demo.example; {
+class TestService {
+}
+
+class TestTask {
+}
+
+class TestValidatorController {
+}
+
+}
+
+package net.dreamlu.demo.form; {
+class UserForm {
+}
+
+}
+
+package net.dreamlu.demo.ip2region; {
+class Ip2RegionController {
+}
+
+}
+
+package net.dreamlu.demo; {
+class MicaExampleApplication {
+}
+
+}
+
+package net.dreamlu.demo.redis.pojo; {
+class OrderDto {
+}
+
+}
+
+package net.dreamlu.demo.redis; {
+class RedisController {
+}
+
+class RedisKeyExpiredListener {
+}
+
+class RedisPubSubController {
+}
+
+class RedisPubSubListener {
+}
+
+class RedisPubSubMessageListener {
+}
+
+class RedisService {
+}
+
+class RedisStreamListener {
+}
+
+}
+
+package net.dreamlu.demo.xss; {
+class XssController {
+}
+
+}
+
+package net.dreamlu; {
+class MicaExampleApplicationTests {
+}
+
+}
+
+package net.dreamlu.test; {
+class User {
+}
+
+class UserCopy1Test {
+}
+
+class UserCopy2Test {
+}
+
+class UserCopy3Test {
+}
+
+class UserCopy4Test {
+}
+
+class UserVo {
+}
+
+}
+
+TestTask -- TestService
+TestValidatorController -- UserForm
+TestValidatorController -- User
+UserForm -- User
+RedisController -- OrderDto
+RedisController -- RedisService
+RedisController -- User
+RedisPubSubController -- OrderDto
+RedisPubSubListener -- OrderDto
+RedisPubSubListener -- User
+RedisService -- User
+RedisStreamListener -- OrderDto
+RedisStreamListener -- User
+XssController -- UserForm
+XssController -- User
+MicaExampleApplicationTests -- MicaExampleApplication
+UserCopy1Test -- User
+UserCopy1Test -- UserVo
+UserCopy2Test -- User
+UserCopy2Test -- UserVo
+UserCopy3Test -- User
+UserCopy3Test -- UserVo
+UserCopy4Test -- User
+UserCopy4Test -- UserVo
+UserVo -- User
+@enduml

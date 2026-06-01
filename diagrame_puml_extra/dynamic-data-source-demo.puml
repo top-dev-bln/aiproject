@@ -1,0 +1,208 @@
+@startuml
+package com.github.trang.dynamic; {
+class Application {
+}
+
+}
+
+package com.github.trang.dynamic.base.mapper; {
+class BaseMapper {
+}
+
+}
+
+package com.github.trang.dynamic.base.mapper.example; {
+class SelectOneByExampleMapper {
+}
+
+class SelectOneByExampleProvider {
+}
+
+}
+
+package com.github.trang.dynamic.base.model; {
+class BaseModel {
+}
+
+}
+
+package com.github.trang.dynamic.base.response; {
+class Message {
+}
+
+class Rst {
+}
+
+}
+
+package com.github.trang.dynamic.base.service; {
+class BaseService {
+}
+
+}
+
+package com.github.trang.dynamic.base.service.impl; {
+class BaseServiceImpl {
+}
+
+}
+
+package com.github.trang.dynamic.config; {
+class DynamicDataSourceConfig {
+}
+
+class SpringBeanConfig {
+}
+
+class SpringMvcConfig {
+}
+
+}
+
+package com.github.trang.dynamic.controller; {
+class BaseCodeController {
+}
+
+}
+
+package com.github.trang.dynamic.domain.enums; {
+class EnumBaseCode {
+}
+
+class EnumRst {
+}
+
+}
+
+package com.github.trang.dynamic.domain.model; {
+class BaseCode {
+}
+
+}
+
+package com.github.trang.dynamic.dynamic; {
+class DynamicDataSource {
+}
+
+class DynamicDataSourceHolder {
+}
+
+}
+
+package com.github.trang.dynamic.exception; {
+class DynamicException {
+}
+
+}
+
+package com.github.trang.dynamic.mapper; {
+class BaseCodeMapper {
+}
+
+}
+
+package com.github.trang.dynamic.plugin; {
+class CacheKeyGenerator {
+}
+
+class DynamicDataSourceTransactionManager {
+}
+
+class GlobalExceptionHandler {
+}
+
+}
+
+package com.github.trang.dynamic.service; {
+class BaseCodeService {
+}
+
+}
+
+package com.github.trang.dynamic.service.impl; {
+class BaseCodeServiceImpl {
+}
+
+}
+
+package com.github.trang.dynamic.util; {
+class MessageHelper {
+}
+
+class PageInfoHelper {
+}
+
+class SpelParser {
+}
+
+}
+
+package com.github.trang.dynamic.test; {
+class DynamicTest {
+}
+
+class MapperTest {
+}
+
+class ReadTest {
+}
+
+class SpringBootBaseTest {
+}
+
+}
+
+BaseMapper -- SelectOneByExampleMapper
+SelectOneByExampleMapper -- SelectOneByExampleProvider
+Message -- Rst
+Message -- EnumRst
+BaseService -- BaseModel
+BaseServiceImpl -- BaseMapper
+BaseServiceImpl -- BaseModel
+BaseServiceImpl -- BaseService
+DynamicDataSourceConfig -- DynamicDataSource
+DynamicDataSourceConfig -- DynamicDataSourceTransactionManager
+BaseCodeController -- Message
+BaseCodeController -- EnumBaseCode
+BaseCodeController -- BaseCode
+BaseCodeController -- DynamicDataSource
+BaseCodeController -- DynamicDataSourceHolder
+BaseCodeController -- BaseCodeService
+EnumBaseCode -- BaseCode
+EnumRst -- Rst
+BaseCode -- BaseModel
+DynamicDataSource -- DynamicDataSourceHolder
+DynamicDataSourceHolder -- DynamicDataSourceConfig
+DynamicException -- Rst
+BaseCodeMapper -- BaseMapper
+BaseCodeMapper -- BaseCode
+DynamicDataSourceTransactionManager -- DynamicDataSource
+DynamicDataSourceTransactionManager -- DynamicDataSourceHolder
+GlobalExceptionHandler -- Message
+GlobalExceptionHandler -- Rst
+GlobalExceptionHandler -- EnumRst
+GlobalExceptionHandler -- DynamicException
+BaseCodeService -- BaseService
+BaseCodeService -- EnumBaseCode
+BaseCodeService -- BaseCode
+BaseCodeServiceImpl -- BaseService
+BaseCodeServiceImpl -- BaseServiceImpl
+BaseCodeServiceImpl -- EnumBaseCode
+BaseCodeServiceImpl -- BaseCode
+BaseCodeServiceImpl -- BaseCodeMapper
+BaseCodeServiceImpl -- BaseCodeService
+MessageHelper -- Message
+DynamicTest -- BaseCode
+DynamicTest -- SpringBootBaseTest
+MapperTest -- BaseCode
+MapperTest -- BaseCodeMapper
+MapperTest -- SpringBootBaseTest
+ReadTest -- EnumBaseCode
+ReadTest -- BaseCode
+ReadTest -- DynamicDataSource
+ReadTest -- DynamicDataSourceHolder
+ReadTest -- SpringBootBaseTest
+SpringBootBaseTest -- Application
+SpringBootBaseTest -- BaseCode
+SpringBootBaseTest -- BaseCodeService
+@enduml

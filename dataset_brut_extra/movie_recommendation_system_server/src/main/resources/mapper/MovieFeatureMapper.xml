@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zjw.mrs.mapper.MovieFeatureMapper">
+
+    <resultMap id="BaseResultMap" type="cn.zjw.mrs.entity.MovieFeature">
+            <id property="mid" column="mid" jdbcType="BIGINT"/>
+            <result property="matrix" column="matrix" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        mid,matrix
+    </sql>
+    <select id="selectAllMovieFeaturesWhereUserNotWatchedAndScoreMoreThanFive"
+            resultType="cn.zjw.mrs.entity.MovieFeature">
+        SELECT f.* FROM movie_feature f
+        JOIN movie m ON m.id = f.mid
+        WHERE m.score >= 5
+        AND m.id NOT IN (SELECT c.mid FROM `comment` c WHERE c.uid = ${uid})
+    </select>
+
+    <select id="selectRecommendedMoviesFeaturesByUserId" resultType="cn.zjw.mrs.entity.MovieFeature">
+        SELECT r.mid, mf.matrix FROM movie_feature mf
+        JOIN recommendation r ON mf.mid = r.mid
+        WHERE r.uid = ${uid}
+        LIMIT ${num}
+    </select>
+
+    <select id="selectWatchedMoviesFeaturesByUserId" resultType="cn.zjw.mrs.entity.MovieFeature">
+        SELECT c.mid, mf.matrix FROM movie_feature mf
+        JOIN comment c ON mf.mid = c.mid
+        WHERE c.uid = ${uid}
+          AND c.mid IN (SELECT mid FROM (SELECT mid FROM `comment` WHERE uid = ${uid} LIMIT ${num}) cc)
+    </select>
+
+</mapper>

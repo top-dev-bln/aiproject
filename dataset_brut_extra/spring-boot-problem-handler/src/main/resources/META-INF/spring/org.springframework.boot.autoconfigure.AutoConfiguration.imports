@@ -1,0 +1,14 @@
+com.ksoot.problem.spring.config.ProblemMessageProviderConfig
+com.ksoot.problem.spring.config.ProblemBeanRegistry
+com.ksoot.problem.spring.boot.autoconfigure.ProblemJacksonConfiguration
+com.ksoot.problem.spring.boot.autoconfigure.ProblemDaoConfiguration
+com.ksoot.problem.spring.boot.autoconfigure.ProblemMicrometerTraceProviderConfig
+com.ksoot.problem.spring.boot.autoconfigure.web.ProblemWebAutoConfiguration
+com.ksoot.problem.spring.boot.autoconfigure.web.WebExceptionHandler
+com.ksoot.problem.spring.boot.autoconfigure.web.WebSecurityExceptionHandler
+com.ksoot.problem.spring.boot.autoconfigure.web.WebDaoExceptionHandler
+com.ksoot.problem.spring.boot.autoconfigure.web.OpenApiValidationExceptionHandler
+com.ksoot.problem.spring.boot.autoconfigure.webflux.ProblemWebfluxAutoConfiguration
+com.ksoot.problem.spring.boot.autoconfigure.webflux.WebFluxExceptionHandler
+com.ksoot.problem.spring.boot.autoconfigure.webflux.WebFluxSecurityExceptionHandler
+com.ksoot.problem.spring.boot.autoconfigure.webflux.WebFluxDaoExceptionHandler

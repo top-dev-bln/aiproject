@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Markers to group TODOs in IDE -->
+	<!-- TODO: 10 -->
+	<!-- TODO: 20 -->
+	<!-- TODO: 30 -->
+	<!-- TODO: 40 -->
+	<!-- TODO: 50 -->
+
+	<artifactId>tactical-ddd-workshop-03-boilerplate</artifactId>
+
+	<name>Tactical DDD Workshop - Boilerplate</name>
+
+	<parent>
+		<groupId>de.odrotbohm.examples</groupId>
+		<artifactId>tactical-ddd-workshop</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jmolecules.integrations</groupId>
+			<artifactId>jmolecules-starter-ddd</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+		<!-- TODO: 20 X - Include additional libraries matching the tech stack
+
+		<dependency>
+			<groupId>org.jmolecules.integrations</groupId>
+			<artifactId>jmolecules-jpa</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jmolecules.integrations</groupId>
+			<artifactId>jmolecules-spring</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		-->
+
+		<!-- TODO: 20 X - Include jMolecules ByteBuddy transformer
+
+		<dependency>
+			<groupId>org.jmolecules.integrations</groupId>
+			<artifactId>jmolecules-bytebuddy-nodep</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		-->
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- TODO: 20 X - Activate ByteBuddy build plugin to apply transformations
+			<plugin>
+				<groupId>net.bytebuddy</groupId>
+				<artifactId>byte-buddy-maven-plugin</artifactId>
+				<version>${bytebuddy.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>transform-extended</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<classPathDiscovery>true</classPathDiscovery>
+				</configuration>
+			</plugin>
+			-->
+
+		</plugins>
+	</build>
+
+</project>

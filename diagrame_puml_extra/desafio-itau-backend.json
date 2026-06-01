@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a data analytics platform that serves Candidate roles. It exposes interfaces for managing estatistica. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Candidate, I want to view reports and analytics, so that I can make informed business decisions.",
+        "services": [],
+        "controllers": [
+          "EstatisticaController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EstatisticaController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EstatisticaController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EstatisticaController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EstatisticaController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        EstatisticaController[\"EstatisticaController\"]\n    end\n    subgraph Data_Access\n        TransacaoRepository[\"TransacaoRepository\"]\n    end\n    Controllers --> Data_Access"
+  }
+}

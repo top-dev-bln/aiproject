@@ -1,0 +1,236 @@
+@startuml
+package io.github.zzlgo.etcd.config.sample; {
+class EtcdConfig {
+}
+
+class EtcdConfigBasic {
+}
+
+class EtcdConfigLoader {
+}
+
+class EtcdConfigSampleApplication {
+}
+
+class EtcdListener {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.annotation; {
+class EnableEtcdConfig {
+}
+
+class EtcdConfigListener {
+}
+
+class EtcdConfigurationProperties {
+}
+
+class EtcdPropertySource {
+}
+
+class EtcdPropertySources {
+}
+
+class EtcdValue {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.autoconfigure; {
+class EtcdConfigAutoConfiguration {
+}
+
+class EtcdConfigProperties {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.component; {
+class EtcdComponent {
+}
+
+class EtcdConfigBeanDefinitionRegistrar {
+}
+
+class EtcdConfigServiceImpl {
+}
+
+}
+
+package io.github.zzlgo.etcd.config; {
+class EtcdConfigService {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.event; {
+class AbstractNotifyUserListener {
+}
+
+class Listener {
+}
+
+class UpdateCacheListener {
+}
+
+class UpdateReferenceListener {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.exception; {
+class EtcdConfigException {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.model; {
+class ConfigType {
+}
+
+class EtcdConfigConstants {
+}
+
+class EtcdConfigPropertySource {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.processor; {
+class EtcdConfigListenerMethodProcessor {
+}
+
+class EtcdConfigurationPropertiesBindingPostProcessor {
+}
+
+class EtcdPropertySourcePostProcessor {
+}
+
+class EtcdValueAnnotationBeanPostProcessor {
+}
+
+}
+
+package io.github.zzlgo.etcd.config.util; {
+class BeanTypeConvertUtil {
+}
+
+class ConfigParseUtil {
+}
+
+class ConfigTypeUtil {
+}
+
+class EtcdConfigPropertiesUtil {
+}
+
+class YamlUtil {
+}
+
+}
+
+EtcdConfig -- EtcdValue
+EtcdConfigBasic -- EtcdConfig
+EtcdConfigBasic -- EtcdConfigurationProperties
+EtcdConfigLoader -- EtcdConfig
+EtcdConfigLoader -- EtcdPropertySource
+EtcdConfigLoader -- ConfigType
+EtcdConfigSampleApplication -- EtcdConfig
+EtcdListener -- EtcdConfig
+EtcdListener -- EtcdConfigListener
+EtcdListener -- Listener
+EnableEtcdConfig -- EtcdConfig
+EnableEtcdConfig -- EtcdConfigBeanDefinitionRegistrar
+EtcdConfigListener -- EtcdConfig
+EtcdConfigListener -- Listener
+EtcdConfigListener -- ConfigType
+EtcdConfigurationProperties -- EtcdConfig
+EtcdPropertySource -- EtcdPropertySources
+EtcdPropertySource -- ConfigType
+EtcdConfigAutoConfiguration -- EtcdConfig
+EtcdConfigAutoConfiguration -- EnableEtcdConfig
+EtcdConfigAutoConfiguration -- EtcdConfigProperties
+EtcdConfigAutoConfiguration -- EtcdConfigConstants
+EtcdConfigProperties -- EtcdConfig
+EtcdConfigProperties -- EtcdConfigConstants
+EtcdComponent -- EtcdConfig
+EtcdComponent -- EtcdConfigProperties
+EtcdComponent -- EtcdConfigPropertiesUtil
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfig
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfigListener
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfigurationProperties
+EtcdConfigBeanDefinitionRegistrar -- EtcdPropertySource
+EtcdConfigBeanDefinitionRegistrar -- EtcdValue
+EtcdConfigBeanDefinitionRegistrar -- EtcdComponent
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfigServiceImpl
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfigService
+EtcdConfigBeanDefinitionRegistrar -- Listener
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfigListenerMethodProcessor
+EtcdConfigBeanDefinitionRegistrar -- EtcdConfigurationPropertiesBindingPostProcessor
+EtcdConfigBeanDefinitionRegistrar -- EtcdPropertySourcePostProcessor
+EtcdConfigBeanDefinitionRegistrar -- EtcdValueAnnotationBeanPostProcessor
+EtcdConfigServiceImpl -- EtcdConfig
+EtcdConfigServiceImpl -- EtcdListener
+EtcdConfigServiceImpl -- EtcdComponent
+EtcdConfigServiceImpl -- EtcdConfigService
+EtcdConfigServiceImpl -- AbstractNotifyUserListener
+EtcdConfigServiceImpl -- Listener
+EtcdConfigServiceImpl -- UpdateCacheListener
+EtcdConfigServiceImpl -- UpdateReferenceListener
+EtcdConfigServiceImpl -- EtcdConfigException
+EtcdConfigService -- EtcdConfig
+EtcdConfigService -- Listener
+EtcdConfigService -- EtcdConfigException
+AbstractNotifyUserListener -- Listener
+UpdateCacheListener -- Listener
+UpdateReferenceListener -- Listener
+EtcdConfigException -- EtcdConfig
+EtcdConfigConstants -- EtcdConfig
+EtcdConfigPropertySource -- EtcdConfig
+EtcdConfigListenerMethodProcessor -- EtcdConfig
+EtcdConfigListenerMethodProcessor -- EtcdConfigListener
+EtcdConfigListenerMethodProcessor -- EtcdConfigServiceImpl
+EtcdConfigListenerMethodProcessor -- EtcdConfigService
+EtcdConfigListenerMethodProcessor -- AbstractNotifyUserListener
+EtcdConfigListenerMethodProcessor -- Listener
+EtcdConfigListenerMethodProcessor -- EtcdConfigException
+EtcdConfigListenerMethodProcessor -- ConfigType
+EtcdConfigListenerMethodProcessor -- ConfigParseUtil
+EtcdConfigListenerMethodProcessor -- ConfigTypeUtil
+EtcdConfigurationPropertiesBindingPostProcessor -- EtcdConfig
+EtcdConfigurationPropertiesBindingPostProcessor -- EtcdConfigurationProperties
+EtcdConfigurationPropertiesBindingPostProcessor -- EtcdValue
+EtcdConfigurationPropertiesBindingPostProcessor -- EtcdConfigServiceImpl
+EtcdConfigurationPropertiesBindingPostProcessor -- EtcdConfigService
+EtcdConfigurationPropertiesBindingPostProcessor -- Listener
+EtcdConfigurationPropertiesBindingPostProcessor -- UpdateReferenceListener
+EtcdPropertySourcePostProcessor -- EtcdConfig
+EtcdPropertySourcePostProcessor -- EtcdPropertySource
+EtcdPropertySourcePostProcessor -- EtcdPropertySources
+EtcdPropertySourcePostProcessor -- EtcdConfigServiceImpl
+EtcdPropertySourcePostProcessor -- EtcdConfigService
+EtcdPropertySourcePostProcessor -- Listener
+EtcdPropertySourcePostProcessor -- UpdateCacheListener
+EtcdPropertySourcePostProcessor -- EtcdConfigException
+EtcdPropertySourcePostProcessor -- ConfigType
+EtcdPropertySourcePostProcessor -- EtcdConfigPropertySource
+EtcdPropertySourcePostProcessor -- ConfigParseUtil
+EtcdPropertySourcePostProcessor -- ConfigTypeUtil
+EtcdValueAnnotationBeanPostProcessor -- EtcdConfig
+EtcdValueAnnotationBeanPostProcessor -- EtcdValue
+EtcdValueAnnotationBeanPostProcessor -- EtcdConfigServiceImpl
+EtcdValueAnnotationBeanPostProcessor -- EtcdConfigService
+EtcdValueAnnotationBeanPostProcessor -- Listener
+EtcdValueAnnotationBeanPostProcessor -- UpdateReferenceListener
+EtcdValueAnnotationBeanPostProcessor -- BeanTypeConvertUtil
+ConfigParseUtil -- EtcdConfig
+ConfigParseUtil -- EtcdConfigException
+ConfigParseUtil -- ConfigType
+ConfigParseUtil -- YamlUtil
+ConfigTypeUtil -- ConfigType
+EtcdConfigPropertiesUtil -- EtcdConfig
+EtcdConfigPropertiesUtil -- EtcdConfigProperties
+EtcdConfigPropertiesUtil -- EtcdConfigConstants
+@enduml

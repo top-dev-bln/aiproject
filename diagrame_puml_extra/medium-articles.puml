@@ -1,0 +1,531 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package io.tbc.spring.ws.article.client; {
+class ArticleClient {
+}
+
+}
+
+package io.tbc.spring.ws.article.config; {
+class SoapClientConfig {
+}
+
+}
+
+package io.tbc.spring.ws.article; {
+class ConsumingSoapWebServiceApplication {
+}
+
+class ConsumingSoapWebServiceApplicationTests {
+}
+
+class ProduceSoapWebServiceApplication {
+}
+
+class ProduceSoapWebServiceApplicationTests {
+}
+
+}
+
+package io.musibs.controller; {
+class ProductController {
+}
+
+}
+
+package io.musibs.entity; {
+class Product {
+}
+
+}
+
+package io.musibs.exception; {
+class AccessDeniedException {
+}
+
+class ProductNotFoundException {
+}
+
+class ServiceException {
+}
+
+}
+
+package io.musibs.interceptors; {
+class LoggingInterceptor {
+}
+
+}
+
+package io.musibs.repository; {
+class ProductRepository {
+}
+
+}
+
+package io.musibs; {
+class SpringRestClientApplication {
+}
+
+class SpringRestClientApplicationTests {
+}
+
+}
+
+package io.tbc.spring.ws.article.configuration; {
+class SoapServerConfiguration {
+}
+
+}
+
+package io.tbc.spring.ws.article.interceptors; {
+class CustomPayloadValidatingInterceptor {
+}
+
+}
+
+package io.tbc.spring.ws.article.server; {
+class ArticleEndpoint {
+}
+
+}
+
+package io.tbc.spring.ws.config; {
+class SoapServerConfiguration {
+}
+
+class SoapClientConfig {
+}
+
+class SoapClientConfig {
+}
+
+}
+
+package io.tbc.spring.ws.exception; {
+class ArticleNotFoundException {
+}
+
+}
+
+package io.tbc.spring.ws.exception.model; {
+class ArticleFault {
+}
+
+}
+
+package io.tbc.spring.ws.exception.resolver; {
+class CustomSoapFaultDefinitionExceptionResolver {
+}
+
+}
+
+package io.tbc.spring.ws; {
+class ProduceSoapWebServiceExceptionsApplication {
+}
+
+class ProduceSoapWebServiceExceptionsApplicationTests {
+}
+
+class SpringSoapDigitalCertificateAuthApplication {
+}
+
+class SpringSoapDigitalCertificateAuthApplicationTests {
+}
+
+class SpringSoapDigitalCertificateAuthClientApplication {
+}
+
+class SpringSoapDigitalCertificateAuthClientApplicationTests {
+}
+
+class SpringSoapUsernamePasswordAuthApplication {
+}
+
+class SpringSoapUsernamePasswordAuthApplicationTests {
+}
+
+class SpringSoapUsernamePasswordAuthClientApplication {
+}
+
+class SpringSoapUsernamePasswordAuthClientApplicationTests {
+}
+
+class SpringSoapWebserviceApplication {
+}
+
+class SpringSoapWebserviceApplicationTests {
+}
+
+}
+
+package io.tbc.spring.ws.server; {
+class ArticleEndpoint {
+}
+
+class ArticleEndpoint {
+}
+
+class ArticleEndpoint {
+}
+
+}
+
+package io.tbd.spring.ws.config; {
+class SoapServerConfiguration {
+}
+
+}
+
+package io.tbd.spring.ws.interceptors; {
+class GlobalEndpointInterceptor {
+}
+
+class LocalEndpointInterceptor {
+}
+
+}
+
+package io.tbd.spring.ws; {
+class ProduceSoapWebServiceInterceptorsApplication {
+}
+
+class ProduceSoapWebServiceInterceptorsApplicationTests {
+}
+
+}
+
+package io.tbd.spring.ws.server; {
+class ArticleEndpoint {
+}
+
+}
+
+package io.tbc.spring.boot; {
+class SpringBootKafkaDemoApplication {
+}
+
+class SpringBootKafkaDemoApplicationTests {
+}
+
+class ServletInitializer {
+}
+
+class SpringBootWildflyDemoApplication {
+}
+
+class SpringBootWildflyDemoApplicationTests {
+}
+
+}
+
+package io.springbytes.controller; {
+class PocketController {
+}
+
+class PocketController {
+}
+
+class PocketController {
+}
+
+class PocketController {
+}
+
+}
+
+package io.springbytes.exception; {
+class InvalidPocketException {
+}
+
+class InvalidPocketException {
+}
+
+class InvalidPocketException {
+}
+
+class InvalidPocketException {
+}
+
+}
+
+package io.springbytes.model; {
+class Pocket {
+}
+
+class Pocket {
+}
+
+class Pocket {
+}
+
+class Pocket {
+}
+
+}
+
+package io.springbytes.repository; {
+class PocketRepository {
+}
+
+class PocketRepository {
+}
+
+class PocketRepository {
+}
+
+class PocketRepository {
+}
+
+}
+
+package io.springbytes; {
+class SpringBookPocketApplication {
+}
+
+class SpringRestBasicAuthApplicationTests {
+}
+
+class SpringBookPocketApplication {
+}
+
+class SpringRestBasicAuthApplicationTests {
+}
+
+class SpringBookPocketApplication {
+}
+
+class SpringRestBasicAuthApplicationTests {
+}
+
+class SpringRestBasicAuthApplication {
+}
+
+class SpringRestBasicAuthApplicationTests {
+}
+
+}
+
+package io.tbc.spring.boot.wildfly; {
+class SpringBootWildflyApplication {
+}
+
+class SpringBootWildflyApplicationTests {
+}
+
+}
+
+package io.tbc.spring.boot.controller; {
+class HomeController {
+}
+
+}
+
+package io.springbytes.security; {
+class SecurityConfiguration {
+}
+
+}
+
+package io.tbc.spring.ws.configuration; {
+class SoapServerConfiguration {
+}
+
+class SoapServerConfiguration {
+}
+
+class SoapWebServiceConfiguration {
+}
+
+}
+
+package io.tbc.spring.ws.client; {
+class ArticleClient {
+}
+
+class ArticleClient {
+}
+
+}
+
+package io.tbc.spring.ws.endpoint; {
+class Calculator {
+}
+
+}
+
+package io.tbc.spring.ws.soapaction.components; {
+class TravelAgent {
+}
+
+class TravelAgentEndpoint {
+}
+
+}
+
+package io.tbc.spring.ws.soapaction; {
+class SpringSoapWsSoapactionApplication {
+}
+
+class SpringSoapWsSoapactionApplicationTests {
+}
+
+}
+
+package com.musibs.domain; {
+class Order {
+}
+
+class OrderStatus {
+}
+
+}
+
+package com.musibs.temporal.activities; {
+class OrderActivities {
+}
+
+class OrderActivitiesImpl {
+}
+
+class OrderProcessingWorker {
+}
+
+class OrderWorkflow {
+}
+
+class OrderWorkflowImpl {
+}
+
+}
+
+package com.musibs; {
+class TemporalDemoApplication {
+}
+
+class TemporalDemoApplicationTests {
+}
+
+}
+
+SoapClientConfig -- ArticleClient
+ConsumingSoapWebServiceApplication -- ArticleClient
+ConsumingSoapWebServiceApplication -- SoapClientConfig
+ConsumingSoapWebServiceApplicationTests -- ConsumingSoapWebServiceApplication
+ProductController -- Product
+ProductController -- ProductRepository
+ProductNotFoundException -- Product
+ProductRepository -- Product
+SpringRestClientApplicationTests -- Product
+SpringRestClientApplicationTests -- AccessDeniedException
+SpringRestClientApplicationTests -- ProductNotFoundException
+SpringRestClientApplicationTests -- ServiceException
+SpringRestClientApplicationTests -- LoggingInterceptor
+SpringRestClientApplicationTests -- ProductRepository
+SpringRestClientApplicationTests -- SpringRestClientApplication
+ProduceSoapWebServiceApplicationTests -- ProduceSoapWebServiceApplication
+ArticleNotFoundException -- ArticleFault
+ArticleFault -- Order
+CustomSoapFaultDefinitionExceptionResolver -- ArticleNotFoundException
+CustomSoapFaultDefinitionExceptionResolver -- ArticleFault
+ProduceSoapWebServiceExceptionsApplication -- ServiceException
+ProduceSoapWebServiceExceptionsApplicationTests -- ServiceException
+ProduceSoapWebServiceExceptionsApplicationTests -- ProduceSoapWebServiceExceptionsApplication
+LocalEndpointInterceptor -- GlobalEndpointInterceptor
+ProduceSoapWebServiceInterceptorsApplicationTests -- ProduceSoapWebServiceInterceptorsApplication
+SpringBootKafkaDemoApplicationTests -- SpringBootKafkaDemoApplication
+PocketController -- InvalidPocketException
+PocketController -- Pocket
+PocketController -- PocketRepository
+InvalidPocketException -- Pocket
+PocketRepository -- Pocket
+SpringBookPocketApplication -- Pocket
+SpringBookPocketApplication -- PocketRepository
+SpringRestBasicAuthApplicationTests -- SpringRestBasicAuthApplication
+SpringBootWildflyApplicationTests -- SpringBootWildflyApplication
+ServletInitializer -- SpringBootWildflyDemoApplication
+SpringBootWildflyDemoApplicationTests -- SpringBootWildflyDemoApplication
+SpringRestBasicAuthApplication -- Pocket
+SpringRestBasicAuthApplication -- PocketRepository
+SpringSoapDigitalCertificateAuthApplicationTests -- SpringSoapDigitalCertificateAuthApplication
+SpringSoapDigitalCertificateAuthClientApplication -- ArticleClient
+SpringSoapDigitalCertificateAuthClientApplication -- SoapClientConfig
+SpringSoapDigitalCertificateAuthClientApplicationTests -- SpringSoapDigitalCertificateAuthClientApplication
+SpringSoapUsernamePasswordAuthApplicationTests -- SpringSoapUsernamePasswordAuthApplication
+SpringSoapUsernamePasswordAuthClientApplication -- ArticleClient
+SpringSoapUsernamePasswordAuthClientApplication -- SoapClientConfig
+SpringSoapUsernamePasswordAuthClientApplicationTests -- SpringSoapUsernamePasswordAuthClientApplication
+SpringSoapWebserviceApplicationTests -- SpringSoapWebserviceApplication
+TravelAgentEndpoint -- TravelAgent
+SpringSoapWsSoapactionApplicationTests -- SpringSoapWsSoapactionApplication
+Order -- Product
+Order -- OrderStatus
+OrderActivities -- Order
+OrderActivitiesImpl -- Order
+OrderActivitiesImpl -- OrderActivities
+OrderProcessingWorker -- Order
+OrderProcessingWorker -- OrderActivities
+OrderProcessingWorker -- OrderActivitiesImpl
+OrderProcessingWorker -- OrderWorkflow
+OrderProcessingWorker -- OrderWorkflowImpl
+OrderWorkflow -- Order
+OrderWorkflow -- OrderStatus
+OrderWorkflowImpl -- Order
+OrderWorkflowImpl -- OrderStatus
+OrderWorkflowImpl -- OrderActivities
+OrderWorkflowImpl -- OrderWorkflow
+TemporalDemoApplicationTests -- TemporalDemoApplication
+@enduml

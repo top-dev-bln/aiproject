@@ -1,0 +1,52 @@
+@startuml
+package utils; {
+class HBaseUtils {
+}
+
+class HBaseUtils {
+}
+
+}
+
+package org.apache.log4j.Logger; {
+class LoggerGenerator {
+}
+
+}
+
+package dao; {
+class CourseClickCountDAO {
+}
+
+}
+
+package domain; {
+class CourseClickCount {
+}
+
+}
+
+package spark; {
+class HelloBoot {
+}
+
+class ImoocStatApp {
+}
+
+}
+
+package java; {
+class WebApplication {
+}
+
+class WebApplicationTests {
+}
+
+}
+
+CourseClickCountDAO -- HBaseUtils
+CourseClickCountDAO -- CourseClickCount
+ImoocStatApp -- CourseClickCountDAO
+ImoocStatApp -- CourseClickCount
+WebApplicationTests -- WebApplication
+@enduml

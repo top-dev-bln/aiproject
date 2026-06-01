@@ -1,0 +1,1016 @@
+@startuml
+package h1r0ku; {
+class ApiGatewayApplication {
+}
+
+class AuthServiceApplication {
+}
+
+class CartServiceApplication {
+}
+
+class CartManagementServiceApplicationTests {
+}
+
+class CatalogServiceApplication {
+}
+
+class CatalogServiceApplicationTests {
+}
+
+class ConfigServiceApplication {
+}
+
+class CustomerServiceApplication {
+}
+
+class CustomerServiceApplicationTests {
+}
+
+class DiscoveryServerApplication {
+}
+
+class ImageServiceApplication {
+}
+
+class OrderServiceApplication {
+}
+
+class OrderServiceApplicationTests {
+}
+
+}
+
+package h1r0ku.config; {
+class OpenAPIConfiguration {
+}
+
+class ApplicationConfig {
+}
+
+}
+
+package h1r0ku.controller; {
+class AuthenticationController {
+}
+
+class CartController {
+}
+
+class CategoryController {
+}
+
+class ProductController {
+}
+
+class ReviewController {
+}
+
+class CustomerController {
+}
+
+class WishlistController {
+}
+
+class ImageController {
+}
+
+class OrderController {
+}
+
+}
+
+package h1r0ku.dto.response; {
+class CustomerResponse {
+}
+
+class ReviewResponse {
+}
+
+class CustomerResponse {
+}
+
+class ShippingAddressResponse {
+}
+
+class WishlistResponse {
+}
+
+class CustomerResponse {
+}
+
+class OrderItemResponse {
+}
+
+class OrderResponse {
+}
+
+}
+
+package h1r0ku.enums; {
+class CustomerRole {
+}
+
+class CustomerRole {
+}
+
+class CustomerRole {
+}
+
+class OrderStatus {
+}
+
+}
+
+package h1r0ku.feign; {
+class CustomerClient {
+}
+
+class OrderClient {
+}
+
+class ProductClient {
+}
+
+class CustomerClient {
+}
+
+class ImageClient {
+}
+
+class AuthClient {
+}
+
+class CartClient {
+}
+
+class ImageClient {
+}
+
+class ProductClient {
+}
+
+class CustomerClient {
+}
+
+class ProductClient {
+}
+
+}
+
+package h1r0ku.filter; {
+class JwtRequestFilter {
+}
+
+}
+
+package h1r0ku.model; {
+class UserDetailsImpl {
+}
+
+}
+
+package h1r0ku.security; {
+class SecurityConfig {
+}
+
+}
+
+package h1r0ku.service; {
+class AuthenticationService {
+}
+
+class JwtService {
+}
+
+class CartService {
+}
+
+class CategoryService {
+}
+
+class ProductService {
+}
+
+class ReviewService {
+}
+
+class CustomerService {
+}
+
+class ShippingAddressService {
+}
+
+class WishlistService {
+}
+
+class ImageService {
+}
+
+class OrderItemService {
+}
+
+class OrderService {
+}
+
+}
+
+package h1r0ku.service.impl; {
+class AuthenticationServiceImpl {
+}
+
+class JwtServiceImpl {
+}
+
+class UserDetailsServiceImpl {
+}
+
+class CartServiceImpl {
+}
+
+class CartServiceImplTest {
+}
+
+class CategoryServiceImpl {
+}
+
+class ProductServiceImpl {
+}
+
+class ReviewServiceImpl {
+}
+
+class CategoryServiceImplTest {
+}
+
+class ProductServiceImplTest {
+}
+
+class ReviewServiceImplTest {
+}
+
+class CustomerServiceImpl {
+}
+
+class ShippingAddressServiceImpl {
+}
+
+class WishlistServiceImpl {
+}
+
+class CustomerServiceImplTest {
+}
+
+class ShippingAddressServiceImplTest {
+}
+
+class WishlistServiceImplTest {
+}
+
+class ImageServiceImpl {
+}
+
+class OrderItemServiceImpl {
+}
+
+class OrderServiceImpl {
+}
+
+class OrderItemServiceImplTest {
+}
+
+class OrderServiceImplTest {
+}
+
+}
+
+package h1r0ku.dto.request; {
+class CartItemRequest {
+}
+
+class CategoryRequest {
+}
+
+class ReviewRequest {
+}
+
+class CustomerRequest {
+}
+
+class ShippingAddressRequest {
+}
+
+class WishlistRequest {
+}
+
+class OrderItemRequest {
+}
+
+class OrderRequest {
+}
+
+}
+
+package h1r0ku.entity; {
+class Cart {
+}
+
+class CartItem {
+}
+
+class Banner {
+}
+
+class Category {
+}
+
+class Product {
+}
+
+class ProductImage {
+}
+
+class Review {
+}
+
+class Customer {
+}
+
+class ShippingAddress {
+}
+
+class Wishlist {
+}
+
+class Order {
+}
+
+class OrderItem {
+}
+
+}
+
+package h1r0ku.mapper; {
+class CartMapper {
+}
+
+class CategoryMapper {
+}
+
+class ProductMapper {
+}
+
+class ReviewMapper {
+}
+
+class BasicMapper {
+}
+
+class CustomerMapper {
+}
+
+class ShippingAddressMapper {
+}
+
+class WishlistMapper {
+}
+
+class OrderItemMapper {
+}
+
+class OrderMapper {
+}
+
+}
+
+package h1r0ku.repository; {
+class CartItemRepository {
+}
+
+class CartRepository {
+}
+
+class BannerRepository {
+}
+
+class CategoryRepository {
+}
+
+class ProductImageRepository {
+}
+
+class ProductRepository {
+}
+
+class ReviewRepository {
+}
+
+class CustomerRepository {
+}
+
+class ShippingAddressServiceRepository {
+}
+
+class WishlistRepository {
+}
+
+class OrderItemRepository {
+}
+
+class OrderRepository {
+}
+
+}
+
+package h1r0ku.configuration; {
+class ApiExceptionHandler {
+}
+
+class ApplicationConfiguration {
+}
+
+class FeignClientConfiguration {
+}
+
+}
+
+package h1r0ku.constants; {
+class FeignConstants {
+}
+
+class PathConstants {
+}
+
+}
+
+package h1r0ku.decoder; {
+class CustomErrorDecoder {
+}
+
+}
+
+package h1r0ku.dto.authentication; {
+class AuthenticationRequest {
+}
+
+class AuthenticationResponse {
+}
+
+}
+
+package h1r0ku.dto.cart; {
+class CartItemResponse {
+}
+
+class CartRequest {
+}
+
+class CartResponse {
+}
+
+}
+
+package h1r0ku.dto.catalog.category; {
+class BannerResponse {
+}
+
+class CategoryResponse {
+}
+
+}
+
+package h1r0ku.dto.catalog.product; {
+class ProductImageResponse {
+}
+
+class ProductRequest {
+}
+
+class ProductResponse {
+}
+
+}
+
+package h1r0ku.exceptions; {
+class AlreadyExistException {
+}
+
+class CategoryLevelException {
+}
+
+class NotFoundException {
+}
+
+class ProductQuantityUnavailableException {
+}
+
+class RestApiException {
+}
+
+}
+
+package h1r0ku.utils; {
+class UpdatingUtil {
+}
+
+}
+
+package h1r0ku.validator.constraint; {
+class PasswordConstraint {
+}
+
+class UsernameConstraint {
+}
+
+}
+
+package h1r0ku.validator; {
+class PasswordValidator {
+}
+
+class UsernameValidator {
+}
+
+}
+
+ApplicationConfig -- CustomerClient
+ApplicationConfig -- UserDetailsImpl
+ApplicationConfig -- Customer
+AuthenticationController -- AuthenticationService
+AuthenticationController -- AuthenticationRequest
+AuthenticationController -- AuthenticationResponse
+AuthenticationController -- Order
+CustomerResponse -- CustomerRole
+CustomerResponse -- Customer
+CustomerRole -- Customer
+CustomerClient -- CustomerResponse
+CustomerClient -- FeignClientConfiguration
+CustomerClient -- FeignConstants
+CustomerClient -- PathConstants
+CustomerClient -- Customer
+JwtRequestFilter -- JwtService
+UserDetailsImpl -- CustomerResponse
+UserDetailsImpl -- Customer
+SecurityConfig -- JwtRequestFilter
+AuthenticationService -- AuthenticationRequest
+AuthenticationService -- AuthenticationResponse
+AuthenticationServiceImpl -- AuthenticationService
+AuthenticationServiceImpl -- JwtService
+AuthenticationServiceImpl -- AuthenticationRequest
+AuthenticationServiceImpl -- AuthenticationResponse
+JwtServiceImpl -- JwtService
+UserDetailsServiceImpl -- CustomerClient
+UserDetailsServiceImpl -- UserDetailsImpl
+UserDetailsServiceImpl -- NotFoundException
+UserDetailsServiceImpl -- Customer
+CartServiceApplication -- Cart
+CartServiceApplication -- CartService
+CartController -- CartItemRequest
+CartController -- Cart
+CartController -- CartItem
+CartController -- CartMapper
+CartController -- Product
+CartController -- CartRequest
+CartController -- CartResponse
+CartController -- Customer
+CartItemRequest -- Cart
+CartItemRequest -- CartItem
+CartItemRequest -- Product
+Cart -- CartItem
+OrderClient -- Cart
+OrderClient -- FeignClientConfiguration
+OrderClient -- FeignConstants
+OrderClient -- PathConstants
+OrderClient -- CartResponse
+OrderClient -- Order
+ProductClient -- Product
+ProductClient -- FeignClientConfiguration
+ProductClient -- FeignConstants
+ProductClient -- PathConstants
+ProductClient -- ProductResponse
+ProductClient -- Order
+CartMapper -- CartItemRequest
+CartMapper -- Cart
+CartMapper -- CartItem
+CartMapper -- CartService
+CartMapper -- CartRequest
+CartMapper -- CartResponse
+CartMapper -- BasicMapper
+CartMapper -- Customer
+CartItemRepository -- Cart
+CartItemRepository -- CartItem
+CartRepository -- Cart
+CartRepository -- Customer
+CartService -- Cart
+CartService -- CartItem
+CartService -- Customer
+CartServiceImpl -- Cart
+CartServiceImpl -- CartItem
+CartServiceImpl -- OrderClient
+CartServiceImpl -- ProductClient
+CartServiceImpl -- CartItemRepository
+CartServiceImpl -- CartRepository
+CartServiceImpl -- CartService
+CartServiceImpl -- Product
+CartServiceImpl -- CartResponse
+CartServiceImpl -- ProductResponse
+CartServiceImpl -- AlreadyExistException
+CartServiceImpl -- NotFoundException
+CartServiceImpl -- BasicMapper
+CartServiceImpl -- Customer
+CartServiceImpl -- Order
+CartManagementServiceApplicationTests -- Cart
+CartServiceImplTest -- Cart
+CartServiceImplTest -- CartItem
+CartServiceImplTest -- OrderClient
+CartServiceImplTest -- ProductClient
+CartServiceImplTest -- CartItemRepository
+CartServiceImplTest -- CartRepository
+CartServiceImplTest -- CartService
+CartServiceImplTest -- CartServiceImpl
+CartServiceImplTest -- Product
+CartServiceImplTest -- BasicMapper
+CartServiceImplTest -- Customer
+CartServiceImplTest -- Order
+CategoryController -- CategoryRequest
+CategoryController -- Banner
+CategoryController -- Category
+CategoryController -- Product
+CategoryController -- CategoryMapper
+CategoryController -- CategoryResponse
+CategoryController -- ProductResponse
+ProductController -- Category
+ProductController -- Product
+ProductController -- ProductMapper
+ProductController -- ProductService
+ProductController -- ProductRequest
+ProductController -- ProductResponse
+ProductController -- Order
+ReviewController -- ReviewRequest
+ReviewController -- ReviewResponse
+ReviewController -- Product
+ReviewController -- Review
+ReviewController -- ReviewMapper
+ReviewController -- Customer
+CategoryRequest -- Category
+ReviewRequest -- Product
+ReviewRequest -- Review
+ReviewRequest -- Customer
+ReviewResponse -- Review
+Banner -- Category
+Category -- Product
+Product -- ProductImage
+Product -- Review
+CategoryMapper -- CategoryRequest
+CategoryMapper -- Banner
+CategoryMapper -- Category
+CategoryMapper -- Product
+CategoryMapper -- CategoryService
+CategoryMapper -- CategoryResponse
+CategoryMapper -- ProductResponse
+CategoryMapper -- BasicMapper
+ProductMapper -- Category
+ProductMapper -- Product
+ProductMapper -- ProductService
+ProductMapper -- ProductRequest
+ProductMapper -- ProductResponse
+ProductMapper -- BasicMapper
+ReviewMapper -- ReviewRequest
+ReviewMapper -- ReviewResponse
+ReviewMapper -- Product
+ReviewMapper -- Review
+ReviewMapper -- ReviewService
+ReviewMapper -- BasicMapper
+ReviewMapper -- Customer
+BannerRepository -- Banner
+CategoryRepository -- Category
+ProductImageRepository -- Product
+ProductImageRepository -- ProductImage
+ProductRepository -- Category
+ProductRepository -- Product
+ProductRepository -- Order
+ReviewRepository -- Product
+ReviewRepository -- Review
+ReviewRepository -- Customer
+CategoryService -- Banner
+CategoryService -- Category
+CategoryService -- Product
+CategoryServiceImpl -- Banner
+CategoryServiceImpl -- Category
+CategoryServiceImpl -- Product
+CategoryServiceImpl -- ProductImage
+CategoryServiceImpl -- BannerRepository
+CategoryServiceImpl -- CategoryRepository
+CategoryServiceImpl -- ProductRepository
+CategoryServiceImpl -- CategoryService
+CategoryServiceImpl -- CategoryLevelException
+CategoryServiceImpl -- ImageClient
+ProductServiceImpl -- Category
+ProductServiceImpl -- Product
+ProductServiceImpl -- ProductImage
+ProductServiceImpl -- Review
+ProductServiceImpl -- ProductImageRepository
+ProductServiceImpl -- ProductRepository
+ProductServiceImpl -- CategoryService
+ProductServiceImpl -- ProductService
+ProductServiceImpl -- NotFoundException
+ProductServiceImpl -- ImageClient
+ProductServiceImpl -- UpdatingUtil
+ProductServiceImpl -- Order
+ReviewServiceImpl -- CustomerClient
+ReviewServiceImpl -- Product
+ReviewServiceImpl -- Review
+ReviewServiceImpl -- ReviewRepository
+ReviewServiceImpl -- ProductService
+ReviewServiceImpl -- ReviewService
+ReviewServiceImpl -- NotFoundException
+ReviewServiceImpl -- UpdatingUtil
+ReviewServiceImpl -- Customer
+ProductService -- Product
+ProductService -- Order
+ReviewService -- Product
+ReviewService -- Review
+ReviewService -- Customer
+CatalogServiceApplicationTests -- CatalogServiceApplication
+CategoryServiceImplTest -- Banner
+CategoryServiceImplTest -- Category
+CategoryServiceImplTest -- Product
+CategoryServiceImplTest -- BannerRepository
+CategoryServiceImplTest -- CategoryRepository
+CategoryServiceImplTest -- ProductRepository
+CategoryServiceImplTest -- CategoryService
+CategoryServiceImplTest -- CategoryServiceImpl
+CategoryServiceImplTest -- CategoryLevelException
+CategoryServiceImplTest -- ImageClient
+ProductServiceImplTest -- Category
+ProductServiceImplTest -- Product
+ProductServiceImplTest -- ProductImage
+ProductServiceImplTest -- Review
+ProductServiceImplTest -- ProductImageRepository
+ProductServiceImplTest -- ProductRepository
+ProductServiceImplTest -- CategoryService
+ProductServiceImplTest -- ProductServiceImpl
+ProductServiceImplTest -- ProductService
+ProductServiceImplTest -- ImageClient
+ProductServiceImplTest -- Order
+ReviewServiceImplTest -- CustomerClient
+ReviewServiceImplTest -- Product
+ReviewServiceImplTest -- Review
+ReviewServiceImplTest -- ReviewRepository
+ReviewServiceImplTest -- ReviewServiceImpl
+ReviewServiceImplTest -- ProductService
+ReviewServiceImplTest -- ReviewService
+ReviewServiceImplTest -- Customer
+ApiExceptionHandler -- Category
+ApiExceptionHandler -- Product
+ApiExceptionHandler -- AlreadyExistException
+ApiExceptionHandler -- CategoryLevelException
+ApiExceptionHandler -- NotFoundException
+ApiExceptionHandler -- ProductQuantityUnavailableException
+ApiExceptionHandler -- RestApiException
+ApplicationConfiguration -- ApplicationConfig
+FeignClientConfiguration -- CustomErrorDecoder
+CustomErrorDecoder -- RestApiException
+CartItemResponse -- Cart
+CartItemResponse -- CartItem
+CartItemResponse -- CartResponse
+CartRequest -- Cart
+CartRequest -- Customer
+CartResponse -- Cart
+CartResponse -- CartItem
+BannerResponse -- Banner
+CategoryResponse -- Banner
+CategoryResponse -- Category
+CategoryResponse -- BannerResponse
+ProductImageResponse -- Product
+ProductImageResponse -- ProductImage
+ProductRequest -- Category
+ProductRequest -- Product
+ProductRequest -- Order
+ProductResponse -- Category
+ProductResponse -- Product
+ProductResponse -- ProductImage
+ProductResponse -- CategoryResponse
+ProductResponse -- ProductImageResponse
+CategoryLevelException -- Category
+ProductQuantityUnavailableException -- Product
+ImageClient -- FeignClientConfiguration
+ImageClient -- FeignConstants
+ImageClient -- PathConstants
+CustomerController -- CustomerResponse
+CustomerController -- CustomerRequest
+CustomerController -- ShippingAddressRequest
+CustomerController -- ShippingAddressResponse
+CustomerController -- Customer
+CustomerController -- ShippingAddress
+CustomerController -- CustomerMapper
+CustomerController -- ShippingAddressMapper
+WishlistController -- CustomerResponse
+WishlistController -- CustomerRequest
+WishlistController -- WishlistRequest
+WishlistController -- WishlistResponse
+WishlistController -- Customer
+WishlistController -- Wishlist
+WishlistController -- WishlistMapper
+CustomerServiceApplication -- Customer
+CustomerServiceApplication -- CustomerService
+CustomerRequest -- CustomerRole
+CustomerRequest -- Customer
+CustomerRequest -- PasswordConstraint
+CustomerRequest -- UsernameConstraint
+ShippingAddressRequest -- ShippingAddress
+WishlistRequest -- Wishlist
+ShippingAddressResponse -- ShippingAddress
+WishlistResponse -- Wishlist
+Customer -- ShippingAddress
+Customer -- Wishlist
+AuthClient -- FeignClientConfiguration
+AuthClient -- FeignConstants
+AuthClient -- PathConstants
+AuthClient -- AuthenticationRequest
+CartClient -- Cart
+CartClient -- FeignClientConfiguration
+CartClient -- FeignConstants
+CartClient -- PathConstants
+CartClient -- CartRequest
+CustomerMapper -- CustomerResponse
+CustomerMapper -- BasicMapper
+CustomerMapper -- CustomerRequest
+CustomerMapper -- Customer
+CustomerMapper -- CustomerService
+ShippingAddressMapper -- BasicMapper
+ShippingAddressMapper -- ShippingAddressRequest
+ShippingAddressMapper -- ShippingAddressResponse
+ShippingAddressMapper -- Customer
+ShippingAddressMapper -- ShippingAddress
+ShippingAddressMapper -- ShippingAddressService
+WishlistMapper -- ProductClient
+WishlistMapper -- Product
+WishlistMapper -- BasicMapper
+WishlistMapper -- WishlistRequest
+WishlistMapper -- WishlistResponse
+WishlistMapper -- Customer
+WishlistMapper -- Wishlist
+WishlistMapper -- WishlistRepository
+WishlistMapper -- CustomerService
+WishlistMapper -- WishlistService
+CustomerRepository -- Customer
+ShippingAddressServiceRepository -- Customer
+ShippingAddressServiceRepository -- ShippingAddress
+ShippingAddressServiceRepository -- ShippingAddressService
+WishlistRepository -- Customer
+WishlistRepository -- Wishlist
+CustomerService -- Customer
+CustomerServiceImpl -- Cart
+CustomerServiceImpl -- AuthenticationRequest
+CustomerServiceImpl -- CartRequest
+CustomerServiceImpl -- AlreadyExistException
+CustomerServiceImpl -- NotFoundException
+CustomerServiceImpl -- ImageClient
+CustomerServiceImpl -- Customer
+CustomerServiceImpl -- AuthClient
+CustomerServiceImpl -- CartClient
+CustomerServiceImpl -- CustomerRepository
+CustomerServiceImpl -- CustomerService
+ShippingAddressServiceImpl -- NotFoundException
+ShippingAddressServiceImpl -- UpdatingUtil
+ShippingAddressServiceImpl -- Customer
+ShippingAddressServiceImpl -- ShippingAddress
+ShippingAddressServiceImpl -- ShippingAddressServiceRepository
+ShippingAddressServiceImpl -- CustomerService
+ShippingAddressServiceImpl -- CustomerServiceImpl
+ShippingAddressServiceImpl -- ShippingAddressService
+WishlistServiceImpl -- ProductClient
+WishlistServiceImpl -- Product
+WishlistServiceImpl -- WishlistRequest
+WishlistServiceImpl -- Customer
+WishlistServiceImpl -- Wishlist
+WishlistServiceImpl -- WishlistRepository
+WishlistServiceImpl -- CustomerService
+WishlistServiceImpl -- WishlistService
+ShippingAddressService -- Customer
+ShippingAddressService -- ShippingAddress
+WishlistService -- WishlistRequest
+WishlistService -- Customer
+WishlistService -- Wishlist
+PasswordConstraint -- PasswordValidator
+UsernameConstraint -- UsernameValidator
+UsernameValidator -- Customer
+UsernameValidator -- CustomerRepository
+CustomerServiceApplicationTests -- CustomerServiceApplication
+CustomerServiceApplicationTests -- Customer
+CustomerServiceApplicationTests -- CustomerService
+CustomerServiceImplTest -- Cart
+CustomerServiceImplTest -- AuthenticationRequest
+CustomerServiceImplTest -- CartRequest
+CustomerServiceImplTest -- AlreadyExistException
+CustomerServiceImplTest -- NotFoundException
+CustomerServiceImplTest -- ImageClient
+CustomerServiceImplTest -- Customer
+CustomerServiceImplTest -- AuthClient
+CustomerServiceImplTest -- CartClient
+CustomerServiceImplTest -- CustomerRepository
+CustomerServiceImplTest -- CustomerService
+CustomerServiceImplTest -- CustomerServiceImpl
+ShippingAddressServiceImplTest -- Customer
+ShippingAddressServiceImplTest -- ShippingAddress
+ShippingAddressServiceImplTest -- ShippingAddressServiceRepository
+ShippingAddressServiceImplTest -- CustomerService
+ShippingAddressServiceImplTest -- CustomerServiceImpl
+ShippingAddressServiceImplTest -- ShippingAddressServiceImpl
+ShippingAddressServiceImplTest -- ShippingAddressService
+WishlistServiceImplTest -- ProductClient
+WishlistServiceImplTest -- Product
+WishlistServiceImplTest -- ProductResponse
+WishlistServiceImplTest -- WishlistRequest
+WishlistServiceImplTest -- Customer
+WishlistServiceImplTest -- Wishlist
+WishlistServiceImplTest -- WishlistRepository
+WishlistServiceImplTest -- CustomerService
+WishlistServiceImplTest -- WishlistServiceImpl
+WishlistServiceImplTest -- WishlistService
+ImageController -- ImageService
+ImageServiceApplication -- ImageService
+ImageServiceImpl -- ImageService
+OrderController -- Customer
+OrderController -- OrderRequest
+OrderController -- OrderItemResponse
+OrderController -- OrderResponse
+OrderController -- Order
+OrderController -- OrderItem
+OrderController -- OrderItemMapper
+OrderController -- OrderMapper
+OrderItemRequest -- Product
+OrderItemRequest -- Order
+OrderItemRequest -- OrderItem
+OrderRequest -- Cart
+OrderRequest -- CartResponse
+OrderRequest -- Order
+OrderRequest -- OrderStatus
+OrderItemResponse -- OrderResponse
+OrderItemResponse -- Order
+OrderItemResponse -- OrderItem
+OrderResponse -- Order
+OrderResponse -- OrderItem
+OrderResponse -- OrderStatus
+Order -- OrderItem
+Order -- OrderStatus
+OrderItemMapper -- Order
+OrderItemMapper -- OrderItem
+OrderItemMapper -- OrderItemService
+OrderMapper -- Cart
+OrderMapper -- CartItem
+OrderMapper -- Product
+OrderMapper -- CartItemResponse
+OrderMapper -- BasicMapper
+OrderMapper -- Customer
+OrderMapper -- OrderRequest
+OrderMapper -- OrderItemResponse
+OrderMapper -- OrderResponse
+OrderMapper -- Order
+OrderMapper -- OrderItem
+OrderMapper -- OrderStatus
+OrderMapper -- OrderItemService
+OrderMapper -- OrderService
+OrderServiceApplication -- Order
+OrderServiceApplication -- OrderService
+OrderItemRepository -- Order
+OrderItemRepository -- OrderItem
+OrderRepository -- Customer
+OrderRepository -- Order
+OrderItemServiceImpl -- ProductClient
+OrderItemServiceImpl -- Product
+OrderItemServiceImpl -- Order
+OrderItemServiceImpl -- OrderItem
+OrderItemServiceImpl -- OrderItemRepository
+OrderItemServiceImpl -- OrderItemService
+OrderServiceImpl -- UpdatingUtil
+OrderServiceImpl -- Customer
+OrderServiceImpl -- Order
+OrderServiceImpl -- OrderItem
+OrderServiceImpl -- OrderItemRepository
+OrderServiceImpl -- OrderRepository
+OrderServiceImpl -- OrderService
+OrderItemService -- Order
+OrderItemService -- OrderItem
+OrderService -- Customer
+OrderService -- Order
+OrderService -- OrderItem
+OrderServiceApplicationTests -- Order
+OrderServiceApplicationTests -- OrderServiceApplication
+OrderServiceApplicationTests -- OrderService
+OrderItemServiceImplTest -- ProductClient
+OrderItemServiceImplTest -- Product
+OrderItemServiceImplTest -- Order
+OrderItemServiceImplTest -- OrderItem
+OrderItemServiceImplTest -- OrderItemRepository
+OrderItemServiceImplTest -- OrderItemServiceImpl
+OrderItemServiceImplTest -- OrderItemService
+OrderServiceImplTest -- Customer
+OrderServiceImplTest -- Order
+OrderServiceImplTest -- OrderItem
+OrderServiceImplTest -- OrderItemRepository
+OrderServiceImplTest -- OrderRepository
+OrderServiceImplTest -- OrderServiceImpl
+OrderServiceImplTest -- OrderService
+@enduml

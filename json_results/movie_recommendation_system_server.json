@@ -1,0 +1,67 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Admin roles. The platform provides capabilities for auth, comment, movie feature. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include social functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "AuthService",
+          "UserLikeRedisService",
+          "UserLikeService"
+        ],
+        "controllers": [
+          "AuthController",
+          "UserController",
+          "UserPreferenceController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [
+          "RecommendationService",
+          "RecommendationServiceImpl"
+        ],
+        "controllers": [
+          "RecommendationController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with comment functionality, so that I can accomplish my comment-related tasks.",
+        "services": [
+          "CommentService",
+          "RecommendationService"
+        ],
+        "controllers": [
+          "CommentController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with movie functionality, so that I can accomplish my movie-related tasks.",
+        "services": [
+          "MovieFeatureService",
+          "MovieRegionService"
+        ],
+        "controllers": [
+          "MovieController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use comment capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CommentService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CorsConfig[\"CorsConfig\"]\n        ExecutorConfig[\"ExecutorConfig\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        MySqlDataModelConfig[\"MySqlDataModelConfig\"]\n        OssClientConfig[\"OssClientConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        Base64DecodedMultipartFile[\"Base64DecodedMultipartFile\"]\n        FastJsonRedisSerializer[\"FastJsonRedisSerializer\"]\n        FileUtil[\"FileUtil\"]\n        MailUtil[\"MailUtil\"]\n        MyDataModel[\"MyDataModel\"]\n        PicUrlUtil[\"PicUrlUtil\"]\n        RecommendationUtil[\"RecommendationUtil\"]\n        RedisCache[\"RedisCache\"]\n        RedisKeyUtil[\"RedisKeyUtil\"]\n        WebUtils[\"WebUtils\"]\n    end\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        AuthenticationEntryPointImpl[\"AuthenticationEntryPointImpl\"]\n        JwtUtil[\"JwtUtil\"]\n    end\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        CommentController[\"CommentController\"]\n        MovieController[\"MovieController\"]\n        RecommendationController[\"RecommendationController\"]\n        UserController[\"UserController\"]\n        UserPreferenceController[\"UserPreferenceController\"]\n    end\n    subgraph Data_Access\n        CommentMapper[\"CommentMapper\"]\n        MovieFeatureMapper[\"MovieFeatureMapper\"]\n        MovieMapper[\"MovieMapper\"]\n        MovieRegionMapper[\"MovieRegionMapper\"]\n        MovieTypeMapper[\"MovieTypeMapper\"]\n        RecommendationMapper[\"RecommendationMapper\"]\n        RegionLikeMapper[\"RegionLikeMapper\"]\n        SameLikesMapper[\"SameLikesMapper\"]\n        TypeLikeMapper[\"TypeLikeMapper\"]\n        UserLikeMapper[\"UserLikeMapper\"]\n        UserMapper[\"UserMapper\"]\n    end\n    subgraph Services\n        AuthService[\"AuthService\"]\n        CommentService[\"CommentService\"]\n        MovieFeatureService[\"MovieFeatureService\"]\n        MovieRegionService[\"MovieRegionService\"]\n        MovieService[\"MovieService\"]\n        MovieTypeService[\"MovieTypeService\"]\n        OssService[\"OssService\"]\n        RecommendationService[\"RecommendationService\"]\n        RegionLikeService[\"RegionLikeService\"]\n        SameLikesService[\"SameLikesService\"]\n        TypeLikeService[\"TypeLikeService\"]\n        UserLikeRedisService[\"UserLikeRedisService\"]\n        UserLikeService[\"UserLikeService\"]\n        UserService[\"UserService\"]\n        AuthServiceImpl[\"AuthServiceImpl\"]\n        CommentServiceImpl[\"CommentServiceImpl\"]\n        MovieFeatureServiceImpl[\"MovieFeatureServiceImpl\"]\n        MovieRegionServiceImpl[\"MovieRegionServiceImpl\"]\n        MovieServiceImpl[\"MovieServiceImpl\"]\n        MovieTypeServiceImpl[\"MovieTypeServiceImpl\"]\n        OssServiceImpl[\"OssServiceImpl\"]\n        RecommendationServiceImpl[\"RecommendationServiceImpl\"]\n        RegionLikeServiceImpl[\"RegionLikeServiceImpl\"]\n        SameLikesServiceImpl[\"SameLikesServiceImpl\"]\n        TypeLikeServiceImpl[\"TypeLikeServiceImpl\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        UserLikeRedisServiceImpl[\"UserLikeRedisServiceImpl\"]\n        UserLikeServiceImpl[\"UserLikeServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

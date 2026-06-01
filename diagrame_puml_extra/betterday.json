@@ -1,0 +1,66 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Admin roles. The platform provides capabilities for event, habit, notice. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserHabitCheckLogService",
+          "UserHabitRecordService",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with event functionality, so that I can accomplish my event-related tasks.",
+        "services": [
+          "EventService",
+          "EventServiceImpl"
+        ],
+        "controllers": [
+          "EventController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with habit functionality, so that I can accomplish my habit-related tasks.",
+        "services": [
+          "HabitService",
+          "UserHabitCheckLogService"
+        ],
+        "controllers": [
+          "HabitController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with notice functionality, so that I can accomplish my notice-related tasks.",
+        "services": [
+          "NoticeService",
+          "NoticeServiceImpl"
+        ],
+        "controllers": [
+          "NoticeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with team functionality, so that I can accomplish my team-related tasks.",
+        "services": [
+          "TeamService",
+          "TeamServiceImpl"
+        ],
+        "controllers": [
+          "TeamController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AccountCredentials[\"AccountCredentials\"]\n        GrantedAuthorityImpl[\"GrantedAuthorityImpl\"]\n        SecurityConfig[\"SecurityConfig\"]\n        JWTAuthenticationFilter[\"JWTAuthenticationFilter\"]\n        JWTLoginFilter[\"JWTLoginFilter\"]\n        CustomAuthenticationProvider[\"CustomAuthenticationProvider\"]\n    end\n    subgraph Infrastructure\n        GlobalCorsConfig[\"GlobalCorsConfig\"]\n        QuartzConfig[\"QuartzConfig\"]\n        RabbitConfig[\"RabbitConfig\"]\n        AliyunOSSClientUtil[\"AliyunOSSClientUtil\"]\n        DateUtil[\"DateUtil\"]\n        QuartzUtils[\"QuartzUtils\"]\n        ResultUtil[\"ResultUtil\"]\n        TransferUtil[\"TransferUtil\"]\n    end\n    subgraph Controllers\n        EventController[\"EventController\"]\n        HabitController[\"HabitController\"]\n        NoticeController[\"NoticeController\"]\n        TeamController[\"TeamController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        AdminMapper[\"AdminMapper\"]\n        EventMapper[\"EventMapper\"]\n        FeedbackMapper[\"FeedbackMapper\"]\n        HabitMapper[\"HabitMapper\"]\n        LogMapper[\"LogMapper\"]\n        NoticeMapper[\"NoticeMapper\"]\n        TeamMapper[\"TeamMapper\"]\n        TimeMapper[\"TimeMapper\"]\n        UserHabitCheckLogMapper[\"UserHabitCheckLogMapper\"]\n        UserHabitRecordMapper[\"UserHabitRecordMapper\"]\n        UserMapper[\"UserMapper\"]\n        IBaseMapper[\"IBaseMapper\"]\n    end\n    subgraph Services\n        EventService[\"EventService\"]\n        HabitService[\"HabitService\"]\n        NoticeService[\"NoticeService\"]\n        TeamService[\"TeamService\"]\n        TimeService[\"TimeService\"]\n        UserHabitCheckLogService[\"UserHabitCheckLogService\"]\n        UserHabitRecordService[\"UserHabitRecordService\"]\n        UserService[\"UserService\"]\n        EventServiceImpl[\"EventServiceImpl\"]\n        HabitServiceImpl[\"HabitServiceImpl\"]\n        NoticeServiceImpl[\"NoticeServiceImpl\"]\n        TeamServiceImpl[\"TeamServiceImpl\"]\n        TimeServiceImpl[\"TimeServiceImpl\"]\n        UserHabitCheckLogServiceImpl[\"UserHabitCheckLogServiceImpl\"]\n        UserHabitRecordServiceImpl[\"UserHabitRecordServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        TokenAuthenticationService[\"TokenAuthenticationService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

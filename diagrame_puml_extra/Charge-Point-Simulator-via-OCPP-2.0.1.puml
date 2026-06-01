@@ -1,0 +1,716 @@
+@startuml
+package com.extrawest.ocpp.emulator.chargepoint.cli.configuration; {
+class ExecutorConfiguration {
+}
+
+class JacksonConfiguration {
+}
+
+class JettyConfiguration {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.constant; {
+class ModelConstants {
+}
+
+class PicocliConstants {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.dto; {
+class ChargePointsEmulationParameters {
+}
+
+class ChargePointsStartMode {
+}
+
+class CreateChargePointParameters {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.emulator.action; {
+class CentralSystemConnectAction {
+}
+
+class SendAuthorizeAction {
+}
+
+class SendBootNotificationAction {
+}
+
+class SendStartTransactionAction {
+}
+
+class SendStopTransactionAction {
+}
+
+class StartHeartbeatingAction {
+}
+
+class StartSendingMeterValuesAction {
+}
+
+class StopHeartbeatingAction {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.emulator; {
+class CentralSystemClient {
+}
+
+class ChargePointEmulator {
+}
+
+class ChargePointEmulatorFactory {
+}
+
+class RequestSender {
+}
+
+class ScheduledHeartbeatsStorage {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.emulator.impl; {
+class CallFactoryRequestSender {
+}
+
+class ChargePointEmulatorFactoryImpl {
+}
+
+class JettyWebsocketClient {
+}
+
+class ScheduledHeartbeatsStorageImpl {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.event; {
+class ConfigurableMultipleEventHandler {
+}
+
+class EmulationEventsListener {
+}
+
+class WebsocketEventListener {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.event.impl; {
+class EmulationEventListenerImpl {
+}
+
+class MultipleEventCounter {
+}
+
+class WebsocketEventListenerImpl {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.exception; {
+class ApplicationException {
+}
+
+class IllegalArgumentApplicationException {
+}
+
+class IllegalStateApplicationException {
+}
+
+class UncheckedApplicationException {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.exception.emulator; {
+class EmulationConnectionException {
+}
+
+class EmulationException {
+}
+
+class EmulationIOException {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.helper; {
+class ThrowingFunction {
+}
+
+class ThrowingRunnable {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.model; {
+class AdditionalInfo {
+}
+
+class AuthorizationStatusEnum {
+}
+
+class AuthorizeCertificateStatusEnum {
+}
+
+class BootReasonEnum {
+}
+
+class ChargingProfile {
+}
+
+class ChargingProfileKindEnum {
+}
+
+class ChargingProfilePurposeEnum {
+}
+
+class ChargingRateUnitEnum {
+}
+
+class ChargingSchedule {
+}
+
+class ChargingSchedulePeriod {
+}
+
+class ChargingStateEnum {
+}
+
+class ChargingStation {
+}
+
+class ConsumptionCost {
+}
+
+class Cost {
+}
+
+class CostKindEnum {
+}
+
+class CustomData {
+}
+
+class EVSE {
+}
+
+class HashAlgorithmEnum {
+}
+
+class IdToken {
+}
+
+class IdTokenEnum {
+}
+
+class IdTokenInfo {
+}
+
+class LocationEnum {
+}
+
+class MeasurandEnum {
+}
+
+class MessageContent {
+}
+
+class MessageFormatEnum {
+}
+
+class MessageType {
+}
+
+class MeterValue {
+}
+
+class Modem {
+}
+
+class OCSPRequestData {
+}
+
+class PhaseEnum {
+}
+
+class ReadingContextEnum {
+}
+
+class ReasonEnum {
+}
+
+class RecurrencyKindEnum {
+}
+
+class RegistrationStatusEnum {
+}
+
+class RelativeTimeInterval {
+}
+
+class RequestStartStopStatusEnum {
+}
+
+class SalesTariff {
+}
+
+class SalesTariffEntry {
+}
+
+class SampledValue {
+}
+
+class SignedMeterValue {
+}
+
+class StatusInfo {
+}
+
+class Transaction {
+}
+
+class TransactionEventEnum {
+}
+
+class TriggerReasonEnum {
+}
+
+class UnitOfMeasure {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.model.call; {
+class Call {
+}
+
+class CallAction {
+}
+
+class CallFactory {
+}
+
+class CallResult {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.model.call.impl; {
+class CallFactoryImpl {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.model.payload; {
+class AuthorizeRequest {
+}
+
+class AuthorizeResponse {
+}
+
+class BootNotificationRequest {
+}
+
+class BootNotificationResponse {
+}
+
+class HeartbeatConfirmation {
+}
+
+class HeartbeatRequest {
+}
+
+class MeterValuesRequest {
+}
+
+class TransactionEventRequest {
+}
+
+class TransactionEventResponse {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli; {
+class OcppChargePointEmulatorCliApplication {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.picocli; {
+class ChargePointsEmulationRunner {
+}
+
+class FooterRenderer {
+}
+
+class StartChargePointsEmulationCommand {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.service; {
+class ChargePointEmulatorsService {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.service.impl; {
+class ChargePointEmulatorsServiceImpl {
+}
+
+}
+
+package com.extrawest.ocpp.emulator.chargepoint.cli.util; {
+class EnumUtil {
+}
+
+class ThrowReadablyUtil {
+}
+
+class EnumUtilTest {
+}
+
+}
+
+JettyConfiguration -- ModelConstants
+ChargePointsEmulationParameters -- ChargePointsStartMode
+ChargePointsEmulationParameters -- Transaction
+CentralSystemConnectAction -- CentralSystemClient
+CentralSystemConnectAction -- ChargePointEmulator
+CentralSystemConnectAction -- WebsocketEventListener
+CentralSystemConnectAction -- EmulationException
+CentralSystemConnectAction -- ThrowReadablyUtil
+SendAuthorizeAction -- CentralSystemClient
+SendAuthorizeAction -- ChargePointEmulator
+SendAuthorizeAction -- RequestSender
+SendAuthorizeAction -- EmulationEventsListener
+SendAuthorizeAction -- ThrowingFunction
+SendAuthorizeAction -- IdToken
+SendAuthorizeAction -- IdTokenEnum
+SendAuthorizeAction -- IdTokenInfo
+SendAuthorizeAction -- AuthorizeRequest
+SendAuthorizeAction -- AuthorizeResponse
+SendAuthorizeAction -- ThrowReadablyUtil
+SendBootNotificationAction -- CentralSystemClient
+SendBootNotificationAction -- ChargePointEmulator
+SendBootNotificationAction -- RequestSender
+SendBootNotificationAction -- EmulationEventsListener
+SendBootNotificationAction -- ThrowingFunction
+SendBootNotificationAction -- BootReasonEnum
+SendBootNotificationAction -- ChargingStation
+SendBootNotificationAction -- Modem
+SendBootNotificationAction -- BootNotificationRequest
+SendBootNotificationAction -- BootNotificationResponse
+SendBootNotificationAction -- ReasonEnum
+SendBootNotificationAction -- ThrowReadablyUtil
+SendStartTransactionAction -- CentralSystemClient
+SendStartTransactionAction -- ChargePointEmulator
+SendStartTransactionAction -- RequestSender
+SendStartTransactionAction -- EmulationEventsListener
+SendStartTransactionAction -- ApplicationException
+SendStartTransactionAction -- EmulationIOException
+SendStartTransactionAction -- IllegalStateApplicationException
+SendStartTransactionAction -- IdToken
+SendStartTransactionAction -- IdTokenInfo
+SendStartTransactionAction -- AuthorizeRequest
+SendStartTransactionAction -- TransactionEventRequest
+SendStartTransactionAction -- ReasonEnum
+SendStartTransactionAction -- Transaction
+SendStartTransactionAction -- TransactionEventEnum
+SendStartTransactionAction -- TriggerReasonEnum
+SendStartTransactionAction -- ThrowReadablyUtil
+SendStopTransactionAction -- CentralSystemClient
+SendStopTransactionAction -- ChargePointEmulator
+SendStopTransactionAction -- RequestSender
+SendStopTransactionAction -- EmulationIOException
+SendStopTransactionAction -- TransactionEventRequest
+SendStopTransactionAction -- ReasonEnum
+SendStopTransactionAction -- Transaction
+SendStopTransactionAction -- TransactionEventEnum
+SendStopTransactionAction -- TriggerReasonEnum
+SendStopTransactionAction -- ThrowReadablyUtil
+StartHeartbeatingAction -- CentralSystemClient
+StartHeartbeatingAction -- ChargePointEmulator
+StartHeartbeatingAction -- RequestSender
+StartHeartbeatingAction -- ScheduledHeartbeatsStorage
+StartHeartbeatingAction -- EmulationEventsListener
+StartHeartbeatingAction -- ThrowingRunnable
+StartHeartbeatingAction -- HeartbeatRequest
+StartHeartbeatingAction -- ThrowReadablyUtil
+StartSendingMeterValuesAction -- CentralSystemClient
+StartSendingMeterValuesAction -- ChargePointEmulator
+StartSendingMeterValuesAction -- RequestSender
+StartSendingMeterValuesAction -- EmulationEventsListener
+StartSendingMeterValuesAction -- ThrowingRunnable
+StartSendingMeterValuesAction -- MeterValue
+StartSendingMeterValuesAction -- TransactionEventRequest
+StartSendingMeterValuesAction -- ReasonEnum
+StartSendingMeterValuesAction -- Transaction
+StartSendingMeterValuesAction -- TransactionEventEnum
+StartSendingMeterValuesAction -- TriggerReasonEnum
+StopHeartbeatingAction -- ChargePointEmulator
+StopHeartbeatingAction -- ScheduledHeartbeatsStorage
+CentralSystemClient -- EmulationConnectionException
+CentralSystemClient -- EmulationIOException
+CentralSystemClient -- Call
+CentralSystemClient -- CallResult
+ChargePointEmulator -- CentralSystemClient
+ChargePointEmulator -- IdToken
+ChargePointEmulator -- IdTokenInfo
+ChargePointEmulator -- MeterValue
+ChargePointEmulator -- Transaction
+ChargePointEmulatorFactory -- CreateChargePointParameters
+ChargePointEmulatorFactory -- ChargePointEmulator
+CallFactoryRequestSender -- CentralSystemClient
+CallFactoryRequestSender -- RequestSender
+CallFactoryRequestSender -- EmulationIOException
+CallFactoryRequestSender -- Call
+CallFactoryRequestSender -- CallFactory
+CallFactoryRequestSender -- CallResult
+CallFactoryRequestSender -- AuthorizeRequest
+CallFactoryRequestSender -- AuthorizeResponse
+CallFactoryRequestSender -- BootNotificationRequest
+CallFactoryRequestSender -- BootNotificationResponse
+CallFactoryRequestSender -- HeartbeatConfirmation
+CallFactoryRequestSender -- HeartbeatRequest
+CallFactoryRequestSender -- TransactionEventRequest
+CallFactoryRequestSender -- TransactionEventResponse
+CallFactoryRequestSender -- Transaction
+CallFactoryRequestSender -- ThrowReadablyUtil
+ChargePointEmulatorFactoryImpl -- CreateChargePointParameters
+ChargePointEmulatorFactoryImpl -- ChargePointEmulator
+ChargePointEmulatorFactoryImpl -- ChargePointEmulatorFactory
+ChargePointEmulatorFactoryImpl -- JettyWebsocketClient
+ChargePointEmulatorFactoryImpl -- WebsocketEventListener
+ChargePointEmulatorFactoryImpl -- MeterValue
+JettyWebsocketClient -- CentralSystemClient
+JettyWebsocketClient -- WebsocketEventListener
+JettyWebsocketClient -- EmulationConnectionException
+JettyWebsocketClient -- Call
+JettyWebsocketClient -- CallResult
+JettyWebsocketClient -- ThrowReadablyUtil
+ScheduledHeartbeatsStorageImpl -- ChargePointEmulator
+ScheduledHeartbeatsStorageImpl -- ScheduledHeartbeatsStorage
+ScheduledHeartbeatsStorageImpl -- ApplicationException
+ScheduledHeartbeatsStorageImpl -- IllegalStateApplicationException
+RequestSender -- CentralSystemClient
+RequestSender -- EmulationIOException
+RequestSender -- AuthorizeRequest
+RequestSender -- AuthorizeResponse
+RequestSender -- BootNotificationRequest
+RequestSender -- BootNotificationResponse
+RequestSender -- HeartbeatConfirmation
+RequestSender -- HeartbeatRequest
+RequestSender -- TransactionEventRequest
+RequestSender -- TransactionEventResponse
+RequestSender -- Transaction
+ScheduledHeartbeatsStorage -- ChargePointEmulator
+EmulationEventsListener -- MeterValue
+EmulationEventsListener -- Transaction
+EmulationEventListenerImpl -- ConfigurableMultipleEventHandler
+EmulationEventListenerImpl -- EmulationEventsListener
+EmulationEventListenerImpl -- MultipleEventCounter
+EmulationEventListenerImpl -- MeterValue
+EmulationEventListenerImpl -- Transaction
+WebsocketEventListenerImpl -- ConfigurableMultipleEventHandler
+WebsocketEventListenerImpl -- MultipleEventCounter
+WebsocketEventListenerImpl -- WebsocketEventListener
+EmulationConnectionException -- EmulationIOException
+EmulationException -- ApplicationException
+EmulationIOException -- EmulationException
+IllegalArgumentApplicationException -- ApplicationException
+IllegalArgumentApplicationException -- UncheckedApplicationException
+IllegalStateApplicationException -- ApplicationException
+IllegalStateApplicationException -- UncheckedApplicationException
+UncheckedApplicationException -- ApplicationException
+ThrowingFunction -- ThrowReadablyUtil
+ThrowingRunnable -- ThrowReadablyUtil
+AdditionalInfo -- CustomData
+AdditionalInfo -- IdToken
+AuthorizationStatusEnum -- EVSE
+AuthorizationStatusEnum -- EnumUtil
+AuthorizeCertificateStatusEnum -- EnumUtil
+BootReasonEnum -- ReasonEnum
+BootReasonEnum -- EnumUtil
+Call -- CallAction
+Call -- MessageType
+CallAction -- Transaction
+CallAction -- EnumUtil
+CallFactory -- Call
+CallFactory -- AuthorizeRequest
+CallFactory -- BootNotificationRequest
+CallFactory -- HeartbeatRequest
+CallFactory -- TransactionEventRequest
+CallFactory -- Transaction
+CallResult -- Call
+CallResult -- MessageType
+CallFactoryImpl -- Call
+CallFactoryImpl -- CallAction
+CallFactoryImpl -- CallFactory
+CallFactoryImpl -- AuthorizeRequest
+CallFactoryImpl -- BootNotificationRequest
+CallFactoryImpl -- HeartbeatRequest
+CallFactoryImpl -- TransactionEventRequest
+CallFactoryImpl -- Transaction
+ChargingProfile -- ChargingProfileKindEnum
+ChargingProfile -- ChargingProfilePurposeEnum
+ChargingProfile -- ChargingSchedule
+ChargingProfile -- CustomData
+ChargingProfile -- RecurrencyKindEnum
+ChargingProfileKindEnum -- EnumUtil
+ChargingProfilePurposeEnum -- ChargingStation
+ChargingProfilePurposeEnum -- EnumUtil
+ChargingRateUnitEnum -- EnumUtil
+ChargingSchedule -- ChargingRateUnitEnum
+ChargingSchedule -- ChargingSchedulePeriod
+ChargingSchedule -- CustomData
+ChargingSchedule -- SalesTariff
+ChargingSchedulePeriod -- CustomData
+ChargingSchedulePeriod -- EVSE
+ChargingStateEnum -- EVSE
+ChargingStateEnum -- Transaction
+ChargingStateEnum -- EnumUtil
+ChargingStation -- CustomData
+ChargingStation -- Modem
+ConsumptionCost -- Cost
+ConsumptionCost -- CustomData
+Cost -- CostKindEnum
+Cost -- CustomData
+CostKindEnum -- EnumUtil
+EVSE -- CustomData
+HashAlgorithmEnum -- EnumUtil
+IdToken -- CustomData
+IdToken -- IdTokenEnum
+IdTokenEnum -- EnumUtil
+IdTokenInfo -- AuthorizationStatusEnum
+IdTokenInfo -- CustomData
+IdTokenInfo -- EVSE
+IdTokenInfo -- IdToken
+IdTokenInfo -- MessageContent
+IdTokenInfo -- TransactionEventResponse
+IdTokenInfo -- Transaction
+LocationEnum -- EnumUtil
+MeasurandEnum -- EnumUtil
+MessageContent -- CustomData
+MessageContent -- MessageFormatEnum
+MessageFormatEnum -- EnumUtil
+MeterValue -- CustomData
+MeterValue -- MeterValuesRequest
+MeterValue -- SampledValue
+MeterValue -- Transaction
+Modem -- CustomData
+OCSPRequestData -- CustomData
+OCSPRequestData -- HashAlgorithmEnum
+AuthorizeRequest -- CustomData
+AuthorizeRequest -- IdToken
+AuthorizeRequest -- OCSPRequestData
+AuthorizeResponse -- AuthorizeCertificateStatusEnum
+AuthorizeResponse -- CustomData
+AuthorizeResponse -- IdToken
+AuthorizeResponse -- IdTokenInfo
+BootNotificationRequest -- BootReasonEnum
+BootNotificationRequest -- ChargingStation
+BootNotificationRequest -- CustomData
+BootNotificationRequest -- ReasonEnum
+BootNotificationResponse -- CustomData
+BootNotificationResponse -- RegistrationStatusEnum
+BootNotificationResponse -- StatusInfo
+MeterValuesRequest -- ApplicationException
+MeterValuesRequest -- IllegalArgumentApplicationException
+TransactionEventRequest -- ModelConstants
+TransactionEventRequest -- CustomData
+TransactionEventRequest -- EVSE
+TransactionEventRequest -- IdToken
+TransactionEventRequest -- MeterValue
+TransactionEventRequest -- ReasonEnum
+TransactionEventRequest -- Transaction
+TransactionEventRequest -- TransactionEventEnum
+TransactionEventRequest -- TriggerReasonEnum
+TransactionEventResponse -- Cost
+TransactionEventResponse -- CustomData
+TransactionEventResponse -- IdToken
+TransactionEventResponse -- MessageContent
+TransactionEventResponse -- Transaction
+PhaseEnum -- EnumUtil
+ReadingContextEnum -- Transaction
+ReadingContextEnum -- EnumUtil
+ReasonEnum -- Transaction
+ReasonEnum -- EnumUtil
+RecurrencyKindEnum -- EnumUtil
+RegistrationStatusEnum -- EnumUtil
+RelativeTimeInterval -- CustomData
+RequestStartStopStatusEnum -- EnumUtil
+SalesTariff -- CustomData
+SalesTariff -- SalesTariffEntry
+SalesTariffEntry -- ConsumptionCost
+SalesTariffEntry -- Cost
+SalesTariffEntry -- CustomData
+SalesTariffEntry -- RelativeTimeInterval
+SampledValue -- CustomData
+SampledValue -- LocationEnum
+SampledValue -- MeasurandEnum
+SampledValue -- PhaseEnum
+SampledValue -- ReadingContextEnum
+SampledValue -- SignedMeterValue
+SampledValue -- UnitOfMeasure
+SignedMeterValue -- CustomData
+SignedMeterValue -- MeterValue
+StatusInfo -- CustomData
+Transaction -- CustomData
+Transaction -- EVSE
+TransactionEventEnum -- Transaction
+TransactionEventEnum -- EnumUtil
+TriggerReasonEnum -- MeterValue
+TriggerReasonEnum -- ReasonEnum
+TriggerReasonEnum -- EnumUtil
+UnitOfMeasure -- CustomData
+OcppChargePointEmulatorCliApplication -- ChargePointEmulator
+ChargePointsEmulationRunner -- FooterRenderer
+ChargePointsEmulationRunner -- StartChargePointsEmulationCommand
+StartChargePointsEmulationCommand -- PicocliConstants
+StartChargePointsEmulationCommand -- ChargePointsEmulationParameters
+StartChargePointsEmulationCommand -- ChargePointsStartMode
+StartChargePointsEmulationCommand -- ChargePointEmulator
+StartChargePointsEmulationCommand -- EmulationConnectionException
+StartChargePointsEmulationCommand -- EmulationException
+StartChargePointsEmulationCommand -- Call
+StartChargePointsEmulationCommand -- Transaction
+StartChargePointsEmulationCommand -- ChargePointEmulatorsService
+ChargePointEmulatorsService -- ChargePointsEmulationParameters
+ChargePointEmulatorsService -- ChargePointEmulator
+ChargePointEmulatorsService -- EmulationException
+ChargePointEmulatorsServiceImpl -- ChargePointsEmulationParameters
+ChargePointEmulatorsServiceImpl -- ChargePointsStartMode
+ChargePointEmulatorsServiceImpl -- CreateChargePointParameters
+ChargePointEmulatorsServiceImpl -- CentralSystemConnectAction
+ChargePointEmulatorsServiceImpl -- SendAuthorizeAction
+ChargePointEmulatorsServiceImpl -- SendBootNotificationAction
+ChargePointEmulatorsServiceImpl -- SendStartTransactionAction
+ChargePointEmulatorsServiceImpl -- StartHeartbeatingAction
+ChargePointEmulatorsServiceImpl -- StartSendingMeterValuesAction
+ChargePointEmulatorsServiceImpl -- StopHeartbeatingAction
+ChargePointEmulatorsServiceImpl -- ChargePointEmulator
+ChargePointEmulatorsServiceImpl -- ChargePointEmulatorFactory
+ChargePointEmulatorsServiceImpl -- ConfigurableMultipleEventHandler
+ChargePointEmulatorsServiceImpl -- MultipleEventCounter
+ChargePointEmulatorsServiceImpl -- EmulationException
+ChargePointEmulatorsServiceImpl -- MeterValue
+ChargePointEmulatorsServiceImpl -- Transaction
+ChargePointEmulatorsServiceImpl -- ChargePointEmulatorsService
+ThrowReadablyUtil -- ChargePointEmulator
+ThrowReadablyUtil -- ApplicationException
+ThrowReadablyUtil -- IllegalStateApplicationException
+ThrowReadablyUtil -- UncheckedApplicationException
+EnumUtilTest -- EnumUtil
+@enduml

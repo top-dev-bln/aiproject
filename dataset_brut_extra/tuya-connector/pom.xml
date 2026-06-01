@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.tuya</groupId>
+    <artifactId>tuya-connector</artifactId>
+    <packaging>pom</packaging>
+    <version>1.5.4</version>
+    <modules>
+        <module>tuya-api</module>
+        <module>tuya-messaging</module>
+        <module>tuya-common</module>
+        <module>tuya-spring-boot-starter</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <connector.version>1.5.0</connector.version>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
+        <lombok.version>1.18.26</lombok.version>
+        <logback.version>1.2.3</logback.version>
+        <fastjson.version>1.2.83</fastjson.version>
+        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <pulsar-client.version>3.0.5</pulsar-client.version>
+        <annotation-api.version>1.3.2</annotation-api.version>
+        <reflections.version>0.9.10</reflections.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>connector-api</artifactId>
+                <version>${connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>connector-messaging</artifactId>
+                <version>${connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>connector-spring-boot-starter</artifactId>
+                <version>${connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>tuya-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>tuya-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>tuya-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>tuya-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tuya</groupId>
+                <artifactId>tuya-ability</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.pulsar</groupId>
+                <artifactId>pulsar-client</artifactId>
+                <version>${pulsar-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>tuya-maven</id>
+            <name>tuya maven release</name>
+            <url>https://maven-other.tuya.com/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>tuya-maven</id>
+            <name>tuya maven snapshot</name>
+            <url>https://maven-other.tuya.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>apache-maven</id>
+            <url>https://repo.maven.apache.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>tuya-maven</id>
+            <url>https://maven-other.tuya.com/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>

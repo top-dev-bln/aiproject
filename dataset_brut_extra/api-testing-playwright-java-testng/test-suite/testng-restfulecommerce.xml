@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Restful ECommerce Test Suite">
+    <test name="Testing Sad Path Scenarios of Restful E-Commerce APIs">
+        <classes>
+            <class name="io.github.mfaisalkhatri.api.restfulecommerce.SadPathTests">
+                <methods>
+                    <include name="testShouldNotCreateOrder_WhenProductIdFieldIsMissing"/>
+                    <include name="testShouldNotCreateOrder_WhenOrderListIsNotArray"/>
+                    <include name="testShouldNotFetchOrder_WhenNoOrderExists"/>
+                    <include name="testShouldNotFetchOrder_WhenNoOrderExistsForOrderId"/>
+                    <include name="testShouldNotFetchOrder_WhenNoOrderExistsForUserId"/>
+                    <include name="testShouldNotFetchOrder_WhenNoOrderExistsForProductId"/>
+                    <include name="testShouldNotUpdateOrder_WhenTokenIsMissing"/>
+                    <include name="testShouldNotUpdateOrder_WhenOrderIdIsNotFound"/>
+                    <include name="testShouldNotUpdateOrderWithInvalidToken"/>
+                    <include name="testShouldNotPartialUpdateOrder_WhenTokenIsMissing"/>
+                    <include name="testShouldNotPartialUpdateOrder_WhenOrderIdIsNotFound"/>
+                    <include name="testShouldNotPartialUpdateOrder_WhenOrderDetailsAreNotProvided"/>
+                    <include name="testShouldNotPartialUpdateOrderWithInvalidToken"/>
+                    <include name="testShouldNotDeleteOrder_WhenTokenIsMissing"/>
+                    <include name="testShouldNotDeleteOrder_WhenOrderIdIsNotFound"/>
+                    <include name="testShouldNotDeleteOrderWithInvalidToken"/>
+                    <include name="testShouldNotGenerateToken_ForInvalidCredentials"/>
+                    <include name="testShouldNotGenerateToken_WhenCredentialsAreMissing"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Testing Happy Path Scenarios of Restful E-Commerce APIs">
+        <classes>
+            <class name="io.github.mfaisalkhatri.api.restfulecommerce.HappyPathTests">
+                <methods>
+                    <include name="testShouldPerformHealthCheckOfServer"/>
+                    <include name="testShouldCreateNewOrders"/>
+                    <include name="testShouldGetAllOrders"/>
+                    <include name="testShouldGetOrderUsingOrderId"/>
+                    <include name="testShouldGetOrdersUsingUserId"/>
+                    <include name="testShouldGetOrdersUsingProductId"/>
+                    <include name="testShouldGetOrdersUsingOrderIdProductIdAndUserId"/>
+                    <include name="testTokenGeneration"/>
+                    <include name="testShouldUpdateTheOrderUsingPut"/>
+                    <include name="testShouldPartialUpdateTheOrderUsingPatch"/>
+                    <include name="testShouldDeleteTheOrder"/>
+                    <include name="testShouldNotRetrieveDeletedOrder"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Testing Sad Path Scenarios of Restful E-Commerce APIs after orders are created">
+        <classes>
+            <class name="io.github.mfaisalkhatri.api.restfulecommerce.SadPathTests">
+                <methods>
+                    <include name="testShouldNotUpdateOrder_WhenOrderDetailsAreNotProvided"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

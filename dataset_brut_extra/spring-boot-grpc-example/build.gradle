@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    ext {
+        springBootVersion = '2.7.14'
+        springBootGrpcVersion = '2.15.0.RELEASE'
+        springCloudVersion = '2021.0.8'
+        grpcVersion = '1.56.1'
+        protobufVersion = '3.23.4'
+        protobufGradlePluginVersion = '0.9.4'
+        braveInstrumentationGrpc='5.6.0'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.springframework.boot' version "${springBootVersion}" apply false
+    id 'io.spring.dependency-management' version '1.1.2'
+    id 'com.google.protobuf' version "${protobufGradlePluginVersion}"
+}
+
+wrapper {
+    gradleVersion = '7.6.2'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: "io.spring.dependency-management"
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            mavenCentral()
+        }
+        dependencyManagement {
+            imports {
+                mavenBom "io.grpc:grpc-bom:${grpcVersion}"
+            }
+        }
+    }
+}

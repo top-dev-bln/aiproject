@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a social platform that serves User, Admin roles. The platform provides capabilities for i abnormala action, i echnicalaspect, i replay. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "IUserService",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "UrlAccessDecisionManager"
+        ],
+        "controllers": [
+          "StockController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with stock functionality, so that I can accomplish my stock-related tasks.",
+        "services": [
+          "IStockBidService",
+          "IStockDayInfoService"
+        ],
+        "controllers": [
+          "StockController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use i abnormala action capabilities, so that I can perform essential business operations.",
+        "services": [
+          "IAbnormalaActionService"
+        ],
+        "controllers": [
+          "StockController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use i echnicalaspect capabilities, so that I can perform essential business operations.",
+        "services": [
+          "IEchnicalaspectService"
+        ],
+        "controllers": [
+          "StockController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        IAbnormalaActionService[\"IAbnormalaActionService\"]\n        IEchnicalaspectService[\"IEchnicalaspectService\"]\n        IReplayService[\"IReplayService\"]\n        IStockBidService[\"IStockBidService\"]\n        IStockDayInfoService[\"IStockDayInfoService\"]\n        IStockDIService[\"IStockDIService\"]\n        IStockMonthInfoService[\"IStockMonthInfoService\"]\n        IStockOptionalService[\"IStockOptionalService\"]\n        IStockTimeInfoService[\"IStockTimeInfoService\"]\n        IStockWeekInfoService[\"IStockWeekInfoService\"]\n        IUserService[\"IUserService\"]\n        JwtAccessDeniedHandler[\"JwtAccessDeniedHandler\"]\n        UrlAccessDecisionManager[\"UrlAccessDecisionManager\"]\n        AbnormalaActionService[\"AbnormalaActionService\"]\n        EchnicalaspectService[\"EchnicalaspectService\"]\n        ReplayService[\"ReplayService\"]\n        StockBidService[\"StockBidService\"]\n        StockDayInfoService[\"StockDayInfoService\"]\n        StockMonthInfoService[\"StockMonthInfoService\"]\n        StockOptionalService[\"StockOptionalService\"]\n        StockService[\"StockService\"]\n        StockTimeInfoService[\"StockTimeInfoService\"]\n        StockWeekInfoService[\"StockWeekInfoService\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Infrastructure\n        HttpRequest[\"HttpRequest\"]\n        HttpsUtils[\"HttpsUtils\"]\n        MiniuiUtil[\"MiniuiUtil\"]\n        ProxyBean[\"ProxyBean\"]\n        ProxyHttpRequest[\"ProxyHttpRequest\"]\n        TableData[\"TableData\"]\n        TableQueryBean[\"TableQueryBean\"]\n        TaskProcess[\"TaskProcess\"]\n        RegisterdClaims[\"RegisterdClaims\"]\n        WebSocketConfig[\"WebSocketConfig\"]\n        ProxyConstant[\"ProxyConstant\"]\n        StockConstant[\"StockConstant\"]\n    end\n    subgraph Security\n        JwtComp[\"JwtComp\"]\n        JwtHeader[\"JwtHeader\"]\n        JwtPayload[\"JwtPayload\"]\n        JwtProperties[\"JwtProperties\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        UrlFilterInvocationSecurityMetadataSource[\"UrlFilterInvocationSecurityMetadataSource\"]\n        SecurityConfig[\"SecurityConfig\"]\n    end\n    subgraph Controllers\n        StockController[\"StockController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        AbnormalaActionMapper[\"AbnormalaActionMapper\"]\n        EchnicalaspectMapper[\"EchnicalaspectMapper\"]\n        ReplayMapper[\"ReplayMapper\"]\n        StockBidMapper[\"StockBidMapper\"]\n        StockMapper[\"StockMapper\"]\n        StockOptionalMapper[\"StockOptionalMapper\"]\n        UserMapper[\"UserMapper\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

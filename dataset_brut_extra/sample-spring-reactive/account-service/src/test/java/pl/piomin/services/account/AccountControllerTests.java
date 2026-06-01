@@ -1,0 +1,59 @@
+package pl.piomin.services.account;
+
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.resttestclient.TestRestTemplate;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureTestRestTemplate;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import pl.piomin.services.account.model.Account;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Testcontainers
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@AutoConfigureTestRestTemplate
+public class AccountControllerTests {
+
+    static String id;
+
+    @Container
+    @ServiceConnection
+    static MongoDBContainer mongodb = new MongoDBContainer("mongo:8.2-noble");
+
+    @Autowired
+    TestRestTemplate restTemplate;
+
+    @Test
+    @Order(1)
+    void add() {
+        Account account = new Account("123456", "1", 10000);
+        account = restTemplate.postForObject("/account", account, Account.class);
+        assertNotNull(account);
+        assertNotNull(account.getId());
+        id = account.getId();
+    }
+
+    @Test
+    @Order(2)
+    void findById() {
+        Account account = restTemplate.getForObject("/account/{id}", Account.class, id);
+        assertNotNull(account);
+        assertNotNull(account.getId());
+        assertEquals(id, account.getId());
+    }
+
+    @Test
+    @Order(2)
+    void findAll() {
+        Account[] accounts = restTemplate.getForObject("/account", Account[].class);
+        assertTrue(accounts.length > 0);
+    }
+}

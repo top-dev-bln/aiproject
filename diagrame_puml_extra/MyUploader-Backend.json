@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a file management platform that serves Candidate, Admin roles. It manages core business objects including file. The platform provides capabilities for file. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to create and manage file records, so that I can track and organize file data effectively.",
+        "services": [
+          "FileService"
+        ],
+        "controllers": [
+          "BigFileUploadController",
+          "FileUploadController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "FileService"
+        ],
+        "controllers": [
+          "BigFileUploadController",
+          "FileUploadController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with test exception functionality, so that I can accomplish my test exception-related tasks.",
+        "services": [
+          "FileService"
+        ],
+        "controllers": [
+          "TestExceptionController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with quick upload functionality, so that I can accomplish my quick upload-related tasks.",
+        "services": [
+          "FileService"
+        ],
+        "controllers": [
+          "QuickUploadController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "FileService"
+        ],
+        "controllers": [
+          "BigFileUploadController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        UploadConfig[\"UploadConfig\"]\n        LogAspect[\"LogAspect\"]\n        FileUtils[\"FileUtils\"]\n        UploadUtils[\"UploadUtils\"]\n        LogUtils[\"LogUtils\"]\n    end\n    subgraph Controllers\n        BigFileUploadController[\"BigFileUploadController\"]\n        TestExceptionController[\"TestExceptionController\"]\n        FileUploadController[\"FileUploadController\"]\n        QuickUploadController[\"QuickUploadController\"]\n    end\n    subgraph Data_Access\n        FileDao[\"FileDao\"]\n        File[\"File\"]\n    end\n    subgraph Services\n        FileService[\"FileService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate roles. The platform provides capabilities for grpc client, grpc server. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with grpc client functionality, so that I can accomplish my grpc client-related tasks.",
+        "services": [
+          "GrpcClientService",
+          "GrpcServerService"
+        ],
+        "controllers": [
+          "GrpcClientController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use grpc client capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GrpcClientService"
+        ],
+        "controllers": [
+          "GrpcClientController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to use grpc server capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GrpcServerService"
+        ],
+        "controllers": [
+          "GrpcClientController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "GrpcClientService"
+        ],
+        "controllers": [
+          "GrpcClientController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "GrpcClientService"
+        ],
+        "controllers": [
+          "GrpcClientController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        GrpcClientController[\"GrpcClientController\"]\n    end\n    subgraph Services\n        GrpcClientService[\"GrpcClientService\"]\n        GrpcServerService[\"GrpcServerService\"]\n    end\n    Controllers --> Services"
+  }
+}

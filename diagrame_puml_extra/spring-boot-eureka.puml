@@ -1,0 +1,31 @@
+@startuml
+package com.thepracticaldeveloper.eurekaclient.controller; {
+class HelloController {
+}
+
+class HolaController {
+}
+
+}
+
+package com.thepracticaldeveloper.eurekaclient; {
+class EurekaClientApplication {
+}
+
+class EurekaClientApplicationTests {
+}
+
+}
+
+package com.thepracticaldeveloper.eurekaserver; {
+class EurekaServerApplication {
+}
+
+class EurekaServerApplicationTests {
+}
+
+}
+
+EurekaClientApplicationTests -- EurekaClientApplication
+EurekaServerApplicationTests -- EurekaServerApplication
+@enduml

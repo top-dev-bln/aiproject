@@ -1,0 +1,112 @@
+@startuml
+package com.github.aksakalli.todo; {
+class Application {
+}
+
+class TodoRestApplicationTests {
+}
+
+}
+
+package com.github.aksakalli.todo.config; {
+class Constants {
+}
+
+class DatabaseConfiguration {
+}
+
+class OAuth2ServerConfiguration {
+}
+
+class SecurityConfiguration {
+}
+
+class SwaggerConfiguration {
+}
+
+}
+
+package com.github.aksakalli.todo.domain; {
+class AbstractEntity {
+}
+
+class Thing {
+}
+
+class User {
+}
+
+}
+
+package com.github.aksakalli.todo.repository; {
+class ThingRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.github.aksakalli.todo.security; {
+class AjaxLogoutSuccessHandler {
+}
+
+class Http401UnauthorizedEntryPoint {
+}
+
+class SecurityUtils {
+}
+
+class SpringSecurityAuditorAware {
+}
+
+class UserDetailsService {
+}
+
+}
+
+package com.github.aksakalli.todo.service; {
+class UserService {
+}
+
+}
+
+package com.github.aksakalli.todo.web.rest; {
+class AccountResource {
+}
+
+class ThingResource {
+}
+
+}
+
+Application -- Constants
+DatabaseConfiguration -- Application
+DatabaseConfiguration -- User
+OAuth2ServerConfiguration -- AjaxLogoutSuccessHandler
+OAuth2ServerConfiguration -- Http401UnauthorizedEntryPoint
+SecurityConfiguration -- User
+SecurityConfiguration -- UserDetailsService
+SwaggerConfiguration -- Constants
+Thing -- AbstractEntity
+User -- AbstractEntity
+ThingRepository -- Thing
+UserRepository -- User
+SecurityUtils -- User
+SpringSecurityAuditorAware -- Constants
+SpringSecurityAuditorAware -- User
+SpringSecurityAuditorAware -- SecurityUtils
+UserDetailsService -- User
+UserDetailsService -- UserRepository
+UserService -- User
+UserService -- UserRepository
+UserService -- SecurityUtils
+AccountResource -- User
+AccountResource -- UserRepository
+AccountResource -- SecurityUtils
+AccountResource -- UserService
+ThingResource -- Thing
+ThingResource -- User
+ThingResource -- ThingRepository
+TodoRestApplicationTests -- Application
+@enduml

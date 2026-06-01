@@ -1,0 +1,61 @@
+ext {
+    lombokVersion = '1.18.32'
+    slf4jVersion = '2.0.17'
+    jacksonVersion = '2.18.2'
+    micrometerVersion = '1.14.5'
+
+    springVersion = findProperty('springBootVersion') ?: '3.5.7'
+
+    groovyVersion = '4.0.29'
+
+    hikariVersion = '6.2.1'
+    flywayVersion = '10.22.0'
+    postgresqlVersion = '42.7.5'
+    mariaDbVersion = '3.5.2'
+    dbSchedulerVersion = '11.0'
+    cronUtilsVersion = '9.1.6'
+    uuidCreatorVersion = '2.7.10'
+
+    jmhVersion = '1.25.2'
+    pgbulkinsertVersion = '7.0.1'
+
+    spockVersion = '2.4-M5-groovy-4.0'
+    junitVersion = '4.12'
+
+    libraries = [
+        lombok: "org.projectlombok:lombok:${lombokVersion}",
+        slf4j: "org.slf4j:slf4j-api:${slf4jVersion}",
+        jackson_datatype: "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}",
+        micrometer: "io.micrometer:micrometer-core:${micrometerVersion}",
+        micrometer_prometheus: "io.micrometer:micrometer-registry-prometheus:${micrometerVersion}",
+
+        spring_boot: "org.springframework.boot:spring-boot-dependencies:${springVersion}",
+        spring_jdbc: "org.springframework:spring-jdbc",
+
+        groovy: "org.apache.groovy:groovy:${groovyVersion}",
+        groovy_json: "org.apache.groovy:groovy-json:${groovyVersion}",
+        groovy_sql: "org.apache.groovy:groovy-sql:${groovyVersion}",
+
+        hikari: "com.zaxxer:HikariCP:${hikariVersion}",
+        flyway: "org.flywaydb:flyway-core:${flywayVersion}",
+        flyway_mysql: "org.flywaydb:flyway-mysql:${flywayVersion}",
+        flyway_postgres: "org.flywaydb:flyway-database-postgresql:${flywayVersion}",
+        postgresql: "org.postgresql:postgresql:${postgresqlVersion}",
+        mariadb: "org.mariadb.jdbc:mariadb-java-client:${mariaDbVersion}",
+
+        dbScheduler: "com.github.kagkarlsson:db-scheduler:${dbSchedulerVersion}",
+        dbSchedulerStarter: "com.github.kagkarlsson:db-scheduler-spring-boot-starter:${dbSchedulerVersion}",
+        cronUtils: "com.cronutils:cron-utils:${cronUtilsVersion}",
+        uuidCreator: "com.github.f4b6a3:uuid-creator:${uuidCreatorVersion}",
+
+        jmhCore: "org.openjdk.jmh:jmh-core:${jmhVersion}",
+        jmhGenerator: "org.openjdk.jmh:jmh-core:${jmhVersion}",
+        pgbulkinsertCore: "org.openjdk.jmh:jmh-core:${pgbulkinsertVersion}",
+        pgbulkinsertWriter: "org.openjdk.jmh:jmh-core:${pgbulkinsertVersion}",
+
+        spock: "org.spockframework:spock-core:${spockVersion}",
+        spock_spring: "org.spockframework:spock-spring:${spockVersion}",
+        junit: "junit:junit:${junitVersion}",
+        junit_platform_launcher: "org.junit.platform:junit-platform-launcher"
+    ]
+}

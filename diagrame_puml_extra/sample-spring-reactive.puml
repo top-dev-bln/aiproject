@@ -1,0 +1,99 @@
+@startuml
+package pl.piomin.services.account; {
+class AccountApplication {
+}
+
+class AccountApplicationTest {
+}
+
+class AccountControllerTests {
+}
+
+class MongoContainerDevMode {
+}
+
+}
+
+package pl.piomin.services.account.controller; {
+class AccountController {
+}
+
+}
+
+package pl.piomin.services.account.model; {
+class Account {
+}
+
+}
+
+package pl.piomin.services.account.repository; {
+class AccountRepository {
+}
+
+}
+
+package pl.piomin.services.common; {
+class Account {
+}
+
+class Customer {
+}
+
+}
+
+package pl.piomin.services.customer.controller; {
+class CustomerController {
+}
+
+}
+
+package pl.piomin.services.customer; {
+class CustomerApplication {
+}
+
+class CustomerApplicationTest {
+}
+
+class CustomerControllerTests {
+}
+
+class MongoContainerDevMode {
+}
+
+}
+
+package pl.piomin.services.customer.model; {
+class Customer {
+}
+
+}
+
+package pl.piomin.services.customer.repository; {
+class CustomerRepository {
+}
+
+}
+
+AccountApplication -- Account
+AccountController -- Account
+AccountController -- AccountRepository
+AccountController -- Customer
+Account -- Customer
+AccountRepository -- Account
+AccountRepository -- Customer
+AccountApplicationTest -- AccountApplication
+AccountApplicationTest -- Account
+AccountApplicationTest -- MongoContainerDevMode
+AccountControllerTests -- AccountController
+AccountControllerTests -- Account
+CustomerController -- Account
+CustomerController -- Customer
+CustomerController -- CustomerRepository
+CustomerApplication -- Customer
+CustomerRepository -- Customer
+CustomerApplicationTest -- MongoContainerDevMode
+CustomerApplicationTest -- Customer
+CustomerApplicationTest -- CustomerApplication
+CustomerControllerTests -- Customer
+CustomerControllerTests -- CustomerController
+@enduml

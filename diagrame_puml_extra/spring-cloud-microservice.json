@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves Candidate, Admin roles. The platform provides capabilities for microsrv eureka consumer application, resource server config, microsrv eureka provider application. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "UserServiceImpl",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "ResourceServerConfig",
+          "ManagerTaskHandler"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "MicrosrvEurekaServiceConsumerApplication"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with expense functionality, so that I can accomplish my expense-related tasks.",
+        "services": [
+          "MicrosrvEurekaServiceConsumerApplication"
+        ],
+        "controllers": [
+          "ExpenseController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "MicrosrvEurekaServiceConsumerApplication"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Config[\"Config\"]\n        FlowableConfig[\"FlowableConfig\"]\n        MessageSourceConfig[\"MessageSourceConfig\"]\n        ResourceServerConfiguration[\"ResourceServerConfiguration\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n        OrderController[\"OrderController\"]\n        ExpenseController[\"ExpenseController\"]\n        HomeController[\"HomeController\"]\n        ZipkinController[\"ZipkinController\"]\n    end\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        AuthorizationServerConfiguration[\"AuthorizationServerConfiguration\"]\n        MvcConfig[\"MvcConfig\"]\n        CustomTokenGranter[\"CustomTokenGranter\"]\n        TokenEnhancerConfiguration[\"TokenEnhancerConfiguration\"]\n        WebMvcConfiguration[\"WebMvcConfiguration\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        JwkSetEndpoint[\"JwkSetEndpoint\"]\n        Users[\"Users\"]\n        BeforeLoginFilter[\"BeforeLoginFilter\"]\n        AuthUtils[\"AuthUtils\"]\n        Constants[\"Constants\"]\n        OAuth2TokenFilter[\"OAuth2TokenFilter\"]\n    end\n    subgraph Services\n        MicrosrvEurekaServiceConsumerApplication[\"MicrosrvEurekaServiceConsumerApplication\"]\n        ResourceServerConfig[\"ResourceServerConfig\"]\n        MicrosrvEurekaServiceProviderApplication[\"MicrosrvEurekaServiceProviderApplication\"]\n        BossTaskHandler[\"BossTaskHandler\"]\n        ManagerTaskHandler[\"ManagerTaskHandler\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Data_Access\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

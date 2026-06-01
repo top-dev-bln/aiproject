@@ -1,0 +1,100 @@
+
+databaseChangeLog:
+
+  - changeSet:
+      id: create-basic-roles
+      author: mahmood
+      changes:
+      - insert:
+          tableName: role
+          columns:
+              - column:
+                  name: org_id
+                  # Braces around the SQL is necessary, liquibase could not generate proper MySQL SQL.
+                  # MySQL expects braces around SELECT query in INSERT VALUES.
+                  valueComputed: "(SELECT id FROM org WHERE org = 'Chumbok')"
+              - column:
+                  name: tenant_id
+                  # Braces around the SQL is necessary, liquibase could not generate proper MySQL SQL.
+                  # MySQL expects braces around SELECT query in INSERT VALUES.
+                  valueComputed: "(SELECT id FROM tenant WHERE tenant = 'Chumbok')"
+              - column:
+                  name: id
+                  value: 0323dc5b-6035-484c-b279-c4c50134b6b3
+              - column:
+                  name: role
+                  value: SUPERADMIN
+              - column:
+                  name: created_by
+                  value: InitDataLiquibase
+              - column:
+                  name: created_at
+                  valueDate: now()
+              - column:
+                  name: updated_by
+                  value: InitDataLiquibase
+              - column:
+                  name: updated_at
+                  valueDate: now()
+      - insert:
+          tableName: role
+          columns:
+              - column:
+                  name: org_id
+                  # Braces around the SQL is necessary, liquibase could not generate proper MySQL SQL.
+                  # MySQL expects braces around SELECT query in INSERT VALUES.
+                  valueComputed: "(SELECT id FROM org WHERE org = 'Chumbok')"
+              - column:
+                  name: tenant_id
+                  # Braces around the SQL is necessary, liquibase could not generate proper MySQL SQL.
+                  # MySQL expects braces around SELECT query in INSERT VALUES.
+                  valueComputed: "(SELECT id FROM tenant WHERE tenant = 'Chumbok')"
+              - column:
+                  name: id
+                  value: a4ce352b-7f79-49aa-8743-30b4ce93151e
+              - column:
+                  name: role
+                  value: ADMIN
+              - column:
+                  name: created_by
+                  value: InitDataLiquibase
+              - column:
+                  name: created_at
+                  valueDate: now()
+              - column:
+                  name: updated_by
+                  value: InitDataLiquibase
+              - column:
+                  name: updated_at
+                  valueDate: now()
+      - insert:
+          tableName: role
+          columns:
+              - column:
+                  name: org_id
+                  # Braces around the SQL is necessary, liquibase could not generate proper MySQL SQL.
+                  # MySQL expects braces around SELECT query in INSERT VALUES.
+                  valueComputed: "(SELECT id FROM org WHERE org = 'Chumbok')"
+              - column:
+                  name: tenant_id
+                  # Braces around the SQL is necessary, liquibase could not generate proper MySQL SQL.
+                  # MySQL expects braces around SELECT query in INSERT VALUES.
+                  valueComputed: "(SELECT id FROM tenant WHERE tenant = 'Chumbok')"
+              - column:
+                  name: id
+                  value: 998183a4-5230-4731-9f9b-0d8417f72151
+              - column:
+                  name: role
+                  value: USER
+              - column:
+                  name: created_by
+                  value: InitDataLiquibase
+              - column:
+                  name: created_at
+                  valueDate: now()
+              - column:
+                  name: updated_by
+                  value: InitDataLiquibase
+              - column:
+                  name: updated_at
+                  valueDate: now()

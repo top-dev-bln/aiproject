@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Candidate, Admin roles. The platform provides capabilities for employee client, department, employee. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with department functionality, so that I can accomplish my department-related tasks.",
+        "services": [
+          "Department",
+          "DepartmentRepository"
+        ],
+        "controllers": [
+          "DepartmentController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with employee functionality, so that I can accomplish my employee-related tasks.",
+        "services": [
+          "EmployeeClient",
+          "Employee"
+        ],
+        "controllers": [
+          "EmployeeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with organization functionality, so that I can accomplish my organization-related tasks.",
+        "services": [
+          "Organization",
+          "OrganizationRepository"
+        ],
+        "controllers": [
+          "OrganizationController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use employee client capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EmployeeClient"
+        ],
+        "controllers": [
+          "DepartmentController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use department capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Department"
+        ],
+        "controllers": [
+          "DepartmentController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        EmployeeClient[\"EmployeeClient\"]\n        Department[\"Department\"]\n        Employee[\"Employee\"]\n        DepartmentRepository[\"DepartmentRepository\"]\n        ErrorCode[\"ErrorCode\"]\n        EmployeeRepository[\"EmployeeRepository\"]\n        DepartmentClient[\"DepartmentClient\"]\n        Organization[\"Organization\"]\n        OrganizationRepository[\"OrganizationRepository\"]\n    end\n    subgraph Controllers\n        DepartmentController[\"DepartmentController\"]\n        EmployeeController[\"EmployeeController\"]\n        OrganizationController[\"OrganizationController\"]\n    end\n    Controllers --> Services"
+  }
+}

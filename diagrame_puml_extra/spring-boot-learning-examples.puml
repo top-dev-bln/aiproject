@@ -1,0 +1,946 @@
+@startuml
+package com.starimmortal.actuator; {
+class ActuatorApplication {
+}
+
+class ActuatorApplicationTests {
+}
+
+}
+
+package com.starimmortal.banner; {
+class BannerApplication {
+}
+
+class BannerApplicationTests {
+}
+
+}
+
+package com.starimmortal.core.advice; {
+class GlobalExceptionAdvice {
+}
+
+class GlobalResponseAdvice {
+}
+
+}
+
+package com.starimmortal.core.annotation; {
+class IgnoreResponseAdvice {
+}
+
+}
+
+package com.starimmortal.core.aop; {
+class ResultAspect {
+}
+
+}
+
+package com.starimmortal.core.configuration; {
+class CodeMessageConfiguration {
+}
+
+}
+
+package com.starimmortal.core.constant; {
+class CacheConstant {
+}
+
+class Constant {
+}
+
+class IdentityConstant {
+}
+
+class PatternConstant {
+}
+
+class StringConstant {
+}
+
+}
+
+package com.starimmortal.core.enumeration; {
+class Code {
+}
+
+}
+
+package com.starimmortal.core.exception; {
+class AuthenticationException {
+}
+
+class AuthorizationException {
+}
+
+class FailedException {
+}
+
+class FileExtensionException {
+}
+
+class FileTooLargeException {
+}
+
+class FileTooManyException {
+}
+
+class ForbiddenException {
+}
+
+class HttpException {
+}
+
+class MethodNotAllowedException {
+}
+
+class NotFoundException {
+}
+
+class ParameterException {
+}
+
+class RequestLimitException {
+}
+
+class ServerErrorException {
+}
+
+class TokenExpiredException {
+}
+
+class TokenInvalidException {
+}
+
+}
+
+package com.starimmortal.core.util; {
+class CommonUtil {
+}
+
+class DateUtil {
+}
+
+class GenericJacksonUtil {
+}
+
+class RequestUtil {
+}
+
+class ResponseUtil {
+}
+
+}
+
+package com.starimmortal.core.vo; {
+class ResponseVO {
+}
+
+}
+
+package com.starimmortal.druid.configuration; {
+class DruidConfiguration {
+}
+
+}
+
+package com.starimmortal.druid; {
+class DruidApplication {
+}
+
+class DruidApplicationTests {
+}
+
+}
+
+package com.starimmortal.excel.annotation; {
+class ExcelMerge {
+}
+
+class ExecutionTime {
+}
+
+}
+
+package com.starimmortal.excel.aop; {
+class ExecutionTimeAspect {
+}
+
+}
+
+package com.starimmortal.excel.base; {
+class CustomBaseMapper {
+}
+
+class CustomSqlInjector {
+}
+
+}
+
+package com.starimmortal.excel.configuration; {
+class Knife4jConfiguration {
+}
+
+class MyBatisPlusConfiguration {
+}
+
+}
+
+package com.starimmortal.excel.controller; {
+class OrderController {
+}
+
+class UserController {
+}
+
+}
+
+package com.starimmortal.excel.converter; {
+class GenderConverter {
+}
+
+class UserConverter {
+}
+
+}
+
+package com.starimmortal.excel.dto; {
+class OrderExcelDTO {
+}
+
+class UserExcelDTO {
+}
+
+}
+
+package com.starimmortal.excel; {
+class EasyExcelApplication {
+}
+
+class EasyExcelApplicationTests {
+}
+
+}
+
+package com.starimmortal.excel.enumeration; {
+class GenderEnum {
+}
+
+}
+
+package com.starimmortal.excel.exception; {
+class ExcelDataValidateException {
+}
+
+}
+
+package com.starimmortal.excel.functional; {
+class PageQuery {
+}
+
+}
+
+package com.starimmortal.excel.handler; {
+class MybatisPlusMetaObjectHandler {
+}
+
+}
+
+package com.starimmortal.excel.listener; {
+class ExcelReadListener {
+}
+
+}
+
+package com.starimmortal.excel.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.starimmortal.excel.pojo; {
+class BaseEntity {
+}
+
+class OrderDO {
+}
+
+class ProductDO {
+}
+
+class UserDO {
+}
+
+}
+
+package com.starimmortal.excel.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.starimmortal.excel.service; {
+class UserService {
+}
+
+}
+
+package com.starimmortal.excel.strategy; {
+class ExcelCellMergeStrategy {
+}
+
+class ExcelMergeStrategy1 {
+}
+
+class ExcelRowMergeStrategy {
+}
+
+}
+
+package com.starimmortal.excel.util; {
+class ExcelUtil {
+}
+
+class JsonUtil {
+}
+
+}
+
+package com.starimmortal.h2; {
+class H2DatabaseApplication {
+}
+
+class H2DatabaseApplicationTests {
+}
+
+}
+
+package com.starimmortal.jasypt; {
+class JasyptApplication {
+}
+
+class JasyptApplicationTests {
+}
+
+}
+
+package com.starimmortal.jwt.annotation; {
+class LoginRequired {
+}
+
+}
+
+package com.starimmortal.jwt.configuration; {
+class InterceptorConfiguration {
+}
+
+class Knife4jConfiguration {
+}
+
+}
+
+package com.starimmortal.jwt.controller; {
+class TokenController {
+}
+
+}
+
+package com.starimmortal.jwt.interceptor; {
+class AuthorizeInterceptor {
+}
+
+}
+
+package com.starimmortal.jwt; {
+class JwtApplication {
+}
+
+class JwtApplicationTests {
+}
+
+}
+
+package com.starimmortal.jwt.vo; {
+class TokenVO {
+}
+
+}
+
+package com.starimmortal.minio.configuration; {
+class Knife4jConfiguration {
+}
+
+class MinioConfiguration {
+}
+
+class MinioProperties {
+}
+
+}
+
+package com.starimmortal.minio.controller; {
+class MinioController {
+}
+
+}
+
+package com.starimmortal.minio; {
+class MinioApplication {
+}
+
+}
+
+package com.starimmortal.minio.util; {
+class FileUtil {
+}
+
+class MinioUtil {
+}
+
+}
+
+package com.starimmortal.quartz.configuration; {
+class Knife4jConfiguration {
+}
+
+class QuartzConfiguration {
+}
+
+}
+
+package com.starimmortal.quartz.controller; {
+class QuartzJobController {
+}
+
+}
+
+package com.starimmortal.quartz.dto; {
+class QuartzJobDTO {
+}
+
+}
+
+package com.starimmortal.quartz.job; {
+class SampleJob {
+}
+
+class TestJob {
+}
+
+}
+
+package com.starimmortal.quartz; {
+class QuartzApplication {
+}
+
+}
+
+package com.starimmortal.quartz.service.impl; {
+class QuartzJobServiceImpl {
+}
+
+}
+
+package com.starimmortal.quartz.service; {
+class QuartzJobService {
+}
+
+}
+
+package com.starimmortal.quartz.vo; {
+class QuartzJobVO {
+}
+
+}
+
+package com.starimmortal.security.advice; {
+class SecurityExceptionAdvice {
+}
+
+}
+
+package com.starimmortal.security.bean; {
+class LoginUser {
+}
+
+}
+
+package com.starimmortal.security.configuration; {
+class CommonSecurityConfiguration {
+}
+
+class JacksonConfiguration {
+}
+
+class Knife4jConfiguration {
+}
+
+class MyBatisPlusConfiguration {
+}
+
+class RedisConfiguration {
+}
+
+class WebConfiguration {
+}
+
+class WebSecurityConfiguration {
+}
+
+}
+
+package com.starimmortal.security.constant; {
+class TokenConstant {
+}
+
+}
+
+package com.starimmortal.security.controller; {
+class HelloController {
+}
+
+class UserController {
+}
+
+}
+
+package com.starimmortal.security.dto; {
+class LoginDTO {
+}
+
+}
+
+package com.starimmortal.security.enumeration; {
+class UserStatusEnum {
+}
+
+}
+
+package com.starimmortal.security.filter; {
+class JwtAuthenticationTokenFilter {
+}
+
+}
+
+package com.starimmortal.security.handler; {
+class LogoutHandler {
+}
+
+class LogoutSuccessHandler {
+}
+
+class MybatisPlusMetaObjectHandler {
+}
+
+class RestAccessDeniedHandler {
+}
+
+class RestAuthenticationEntryPoint {
+}
+
+}
+
+package com.starimmortal.security.mapper; {
+class MenuMapper {
+}
+
+class RoleMapper {
+}
+
+class RoleMenuMapper {
+}
+
+class UserMapper {
+}
+
+class UserRoleMapper {
+}
+
+}
+
+package com.starimmortal.security.pojo; {
+class BaseEntity {
+}
+
+class MenuDO {
+}
+
+class RoleDO {
+}
+
+class RoleMenuDO {
+}
+
+class UserDO {
+}
+
+class UserRoleDO {
+}
+
+}
+
+package com.starimmortal.security.resolver; {
+class SqlFilterArgumentResolver {
+}
+
+}
+
+package com.starimmortal.security; {
+class SecurityApplication {
+}
+
+class SecurityApplicationTests {
+}
+
+}
+
+package com.starimmortal.security.service.impl; {
+class MenuServiceImpl {
+}
+
+class RoleServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+class UserServiceImplTest {
+}
+
+}
+
+package com.starimmortal.security.service; {
+class MenuService {
+}
+
+class RoleService {
+}
+
+class UserService {
+}
+
+}
+
+package com.starimmortal.security.util; {
+class JwtUtil {
+}
+
+class RedisUtil {
+}
+
+class SecurityUtil {
+}
+
+class JwtUtilTest {
+}
+
+}
+
+package com.starimmortal.security.vo; {
+class TokenVO {
+}
+
+}
+
+package com.starimmortal.websocket.configuration; {
+class Knife4jConfiguration {
+}
+
+class WebSocketConfiguration {
+}
+
+class Knife4jConfiguration {
+}
+
+class WebSocketConfiguration {
+}
+
+}
+
+package com.starimmortal.websocket.controller; {
+class WebSocketController {
+}
+
+class WebSocketController {
+}
+
+}
+
+package com.starimmortal.websocket.message; {
+class WebSocket {
+}
+
+class DefaultWebSocketHandler {
+}
+
+class WebSocket {
+}
+
+class WebSocketImpl {
+}
+
+class WebSocketInterceptor {
+}
+
+}
+
+package com.starimmortal.websocket; {
+class WebSocketNativeApplication {
+}
+
+class WebSocketNativeApplicationTests {
+}
+
+class WebSocketSpringApplication {
+}
+
+class WebSocketSpringApplicationTests {
+}
+
+}
+
+package com.starimmortal.websocket.constant; {
+class WebSocketConstant {
+}
+
+}
+
+package com.starimmortal.websocket.pojo; {
+class UserDO {
+}
+
+}
+
+ActuatorApplicationTests -- ActuatorApplication
+BannerApplicationTests -- BannerApplication
+GlobalExceptionAdvice -- CodeMessageConfiguration
+GlobalExceptionAdvice -- Code
+GlobalExceptionAdvice -- HttpException
+GlobalExceptionAdvice -- ParameterException
+GlobalExceptionAdvice -- ResponseVO
+GlobalResponseAdvice -- IgnoreResponseAdvice
+GlobalResponseAdvice -- ResponseVO
+ResultAspect -- CodeMessageConfiguration
+ResultAspect -- Code
+ResultAspect -- ResponseVO
+CodeMessageConfiguration -- Code
+CacheConstant -- Constant
+IdentityConstant -- Constant
+PatternConstant -- Constant
+StringConstant -- Constant
+AuthenticationException -- Code
+AuthenticationException -- HttpException
+AuthorizationException -- Code
+AuthorizationException -- HttpException
+FailedException -- Code
+FailedException -- HttpException
+FileExtensionException -- Code
+FileExtensionException -- HttpException
+FileTooLargeException -- Code
+FileTooLargeException -- HttpException
+FileTooManyException -- Code
+FileTooManyException -- HttpException
+ForbiddenException -- Code
+ForbiddenException -- HttpException
+HttpException -- Code
+MethodNotAllowedException -- Code
+MethodNotAllowedException -- HttpException
+NotFoundException -- Code
+NotFoundException -- HttpException
+ParameterException -- Code
+ParameterException -- HttpException
+RequestLimitException -- Code
+RequestLimitException -- HttpException
+ServerErrorException -- Code
+ServerErrorException -- HttpException
+TokenExpiredException -- Code
+TokenExpiredException -- HttpException
+TokenInvalidException -- Code
+TokenInvalidException -- HttpException
+CommonUtil -- Constant
+CommonUtil -- PatternConstant
+CommonUtil -- StringConstant
+GenericJacksonUtil -- ServerErrorException
+ResponseUtil -- Code
+ResponseUtil -- RequestUtil
+ResponseUtil -- ResponseVO
+ResponseVO -- Code
+ResponseVO -- RequestUtil
+DruidApplicationTests -- DruidApplication
+ExecutionTimeAspect -- ExecutionTime
+Knife4jConfiguration -- WebSocket
+MyBatisPlusConfiguration -- MybatisPlusMetaObjectHandler
+OrderController -- Constant
+OrderController -- StringConstant
+OrderController -- DateUtil
+OrderController -- OrderExcelDTO
+OrderController -- OrderDO
+OrderController -- ProductDO
+OrderController -- UserDO
+OrderController -- ExcelUtil
+OrderController -- JsonUtil
+UserController -- TokenExpiredException
+UserController -- TokenInvalidException
+UserController -- ResponseVO
+UserController -- UserDO
+UserController -- UserService
+UserController -- TokenVO
+UserController -- LoginDTO
+UserController -- JwtUtil
+GenderConverter -- GenderEnum
+UserConverter -- UserExcelDTO
+UserConverter -- UserDO
+OrderExcelDTO -- ExcelMerge
+UserExcelDTO -- GenderConverter
+UserExcelDTO -- UserDO
+MybatisPlusMetaObjectHandler -- LoginUser
+MybatisPlusMetaObjectHandler -- SecurityUtil
+ExcelReadListener -- ExcelDataValidateException
+UserMapper -- UserDO
+OrderDO -- ProductDO
+OrderDO -- UserDO
+UserServiceImpl -- NotFoundException
+UserServiceImpl -- GenericJacksonUtil
+UserServiceImpl -- UserMapper
+UserServiceImpl -- UserDO
+UserServiceImpl -- UserService
+UserServiceImpl -- LoginUser
+UserServiceImpl -- MenuDO
+UserServiceImpl -- MenuService
+UserServiceImpl -- RoleService
+UserServiceImpl -- RedisUtil
+UserService -- UserDO
+UserService -- MenuDO
+ExcelCellMergeStrategy -- ExcelMerge
+ExcelMergeStrategy1 -- ExcelMerge
+ExcelRowMergeStrategy -- ExcelMerge
+ExcelUtil -- ResponseVO
+ExcelUtil -- PageQuery
+ExcelUtil -- ExcelCellMergeStrategy
+ExcelUtil -- JsonUtil
+EasyExcelApplicationTests -- EasyExcelApplication
+EasyExcelApplicationTests -- UserDO
+EasyExcelApplicationTests -- UserService
+H2DatabaseApplicationTests -- H2DatabaseApplication
+JasyptApplicationTests -- JasyptApplication
+InterceptorConfiguration -- AuthorizeInterceptor
+TokenController -- Code
+TokenController -- ResponseVO
+TokenController -- TokenVO
+JwtApplicationTests -- JwtApplication
+MinioConfiguration -- MinioProperties
+MinioController -- ResponseVO
+MinioController -- MinioProperties
+MinioController -- FileUtil
+MinioController -- MinioUtil
+QuartzConfiguration -- SampleJob
+QuartzJobController -- ResponseVO
+QuartzJobController -- QuartzJobDTO
+QuartzJobController -- QuartzJobService
+QuartzJobController -- QuartzJobVO
+QuartzJobServiceImpl -- QuartzJobDTO
+QuartzJobServiceImpl -- QuartzJobService
+QuartzJobServiceImpl -- QuartzJobVO
+QuartzJobService -- QuartzJobDTO
+QuartzJobService -- QuartzJobVO
+SecurityExceptionAdvice -- GlobalExceptionAdvice
+SecurityExceptionAdvice -- Code
+SecurityExceptionAdvice -- ResponseVO
+LoginUser -- Code
+LoginUser -- UserDO
+LoginUser -- UserStatusEnum
+LoginUser -- MenuDO
+CommonSecurityConfiguration -- JwtAuthenticationTokenFilter
+CommonSecurityConfiguration -- LogoutSuccessHandler
+CommonSecurityConfiguration -- RestAccessDeniedHandler
+CommonSecurityConfiguration -- RestAuthenticationEntryPoint
+WebConfiguration -- SqlFilterArgumentResolver
+WebSecurityConfiguration -- JwtAuthenticationTokenFilter
+WebSecurityConfiguration -- LogoutHandler
+WebSecurityConfiguration -- LogoutSuccessHandler
+WebSecurityConfiguration -- RestAccessDeniedHandler
+WebSecurityConfiguration -- RestAuthenticationEntryPoint
+WebSecurityConfiguration -- JwtUtil
+TokenConstant -- Constant
+HelloController -- ResponseVO
+JwtAuthenticationTokenFilter -- Code
+JwtAuthenticationTokenFilter -- TokenExpiredException
+JwtAuthenticationTokenFilter -- JwtUtil
+LogoutHandler -- JwtUtil
+LogoutSuccessHandler -- GenericJacksonUtil
+LogoutSuccessHandler -- ResponseVO
+RestAccessDeniedHandler -- Code
+RestAccessDeniedHandler -- GenericJacksonUtil
+RestAccessDeniedHandler -- ResponseVO
+RestAuthenticationEntryPoint -- Code
+RestAuthenticationEntryPoint -- AuthenticationException
+RestAuthenticationEntryPoint -- GenericJacksonUtil
+RestAuthenticationEntryPoint -- ResponseVO
+MenuMapper -- MenuDO
+RoleMapper -- RoleDO
+RoleMenuMapper -- MenuMapper
+RoleMenuMapper -- MenuDO
+RoleMenuMapper -- RoleMenuDO
+UserRoleMapper -- RoleMapper
+UserRoleMapper -- RoleDO
+UserRoleMapper -- UserRoleDO
+MenuDO -- Code
+MenuDO -- BaseEntity
+RoleDO -- Code
+RoleDO -- BaseEntity
+RoleMenuDO -- MenuDO
+UserRoleDO -- RoleDO
+SecurityApplication -- IgnoreResponseAdvice
+MenuServiceImpl -- MenuMapper
+MenuServiceImpl -- MenuDO
+MenuServiceImpl -- MenuService
+RoleServiceImpl -- RoleMapper
+RoleServiceImpl -- RoleDO
+RoleServiceImpl -- RoleService
+MenuService -- MenuDO
+RoleService -- RoleDO
+JwtUtil -- CacheConstant
+JwtUtil -- Constant
+JwtUtil -- PatternConstant
+JwtUtil -- StringConstant
+JwtUtil -- Code
+JwtUtil -- TokenExpiredException
+JwtUtil -- TokenInvalidException
+JwtUtil -- DateUtil
+JwtUtil -- GenericJacksonUtil
+JwtUtil -- ResponseVO
+JwtUtil -- TokenVO
+JwtUtil -- TokenConstant
+JwtUtil -- RedisUtil
+SecurityUtil -- LoginUser
+SecurityApplicationTests -- SecurityApplication
+UserServiceImplTest -- UserDO
+UserServiceImplTest -- UserServiceImpl
+UserServiceImplTest -- UserService
+JwtUtilTest -- JwtUtil
+WebSocketConfiguration -- WebSocket
+WebSocketConfiguration -- DefaultWebSocketHandler
+WebSocketConfiguration -- WebSocketImpl
+WebSocketConfiguration -- WebSocketInterceptor
+WebSocketController -- ResponseVO
+WebSocketController -- WebSocket
+WebSocketNativeApplication -- WebSocket
+WebSocketNativeApplicationTests -- WebSocket
+WebSocketNativeApplicationTests -- WebSocketNativeApplication
+WebSocketConstant -- Constant
+WebSocketConstant -- WebSocket
+DefaultWebSocketHandler -- WebSocket
+WebSocketImpl -- Constant
+WebSocketImpl -- UserDO
+WebSocketImpl -- WebSocket
+WebSocketImpl -- WebSocketConstant
+WebSocketInterceptor -- Constant
+WebSocketInterceptor -- UserDO
+WebSocketInterceptor -- WebSocket
+WebSocketInterceptor -- WebSocketConstant
+WebSocketSpringApplication -- WebSocket
+WebSocketSpringApplicationTests -- WebSocket
+WebSocketSpringApplicationTests -- WebSocketSpringApplication
+@enduml

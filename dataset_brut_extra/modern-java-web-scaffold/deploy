@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Project root directory
+base_dir=$(pwd)
+export base_dir
+
+# Deploy backend & frontend applications
+function deploy() {
+    ./bin/deploy-backend &
+    ./bin/deploy-frontend &
+}
+
+deploy

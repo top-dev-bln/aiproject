@@ -1,0 +1,622 @@
+@startuml
+package com.haust.common.constant; {
+class MessageConstant {
+}
+
+class MqExchangeConstant {
+}
+
+class MqKeyConstant {
+}
+
+class MqQueueConstant {
+}
+
+class RedisConstant {
+}
+
+class UserConstant {
+}
+
+}
+
+package com.haust.common.context; {
+class BaseContext {
+}
+
+}
+
+package com.haust.common.domain.dto; {
+class AccountDTO {
+}
+
+class CodingSharingDTO {
+}
+
+class CreatePostDTO {
+}
+
+class CreateReplyDTO {
+}
+
+class PageDTO {
+}
+
+class ReplyDTO {
+}
+
+}
+
+package com.haust.common.domain.enumeration; {
+class ContentType {
+}
+
+}
+
+package com.haust.common.domain.po; {
+class CodingSharing {
+}
+
+class Post {
+}
+
+class PostReply {
+}
+
+class User {
+}
+
+}
+
+package com.haust.common.domain.vo; {
+class CodingSharingVo {
+}
+
+class HotReplyVo {
+}
+
+class PageVO {
+}
+
+class PostVO {
+}
+
+class ReplyVO {
+}
+
+class RoleVo {
+}
+
+}
+
+package com.haust.common.exception; {
+class BusinessException {
+}
+
+class MessageException {
+}
+
+class UserException {
+}
+
+}
+
+package com.haust.common.properties; {
+class ApiProperties {
+}
+
+}
+
+package com.haust.common.result; {
+class ResultResponse {
+}
+
+}
+
+package com.haust.common.util; {
+class DifyApiUtil {
+}
+
+class JwtUtil {
+}
+
+class PasswordUtil {
+}
+
+}
+
+package com.haust.forum.configuration; {
+class RabbitMQConfig {
+}
+
+class SwaggerConfig {
+}
+
+class ThreadConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package com.haust.forum.controller; {
+class ForumAdminController {
+}
+
+class PostController {
+}
+
+class RepliesController {
+}
+
+}
+
+package com.haust.forum; {
+class ForumServiceApplication {
+}
+
+}
+
+package com.haust.forum.mapper; {
+class PostMapper {
+}
+
+class PostReplyMapper {
+}
+
+}
+
+package com.haust.forum.mq; {
+class LikeInfoListener {
+}
+
+}
+
+package com.haust.forum.mq.msg; {
+class LikeMsg {
+}
+
+class UserMsg {
+}
+
+}
+
+package com.haust.forum.service; {
+class PostService {
+}
+
+class PostServiceImpl {
+}
+
+class RepliesService {
+}
+
+class RepliesServiceImpl {
+}
+
+}
+
+package com.haust.forum.util; {
+class BatchProcessUtil {
+}
+
+}
+
+package com.haust.gateway.config; {
+class CorsConfig {
+}
+
+}
+
+package com.haust.gateway.filter; {
+class GlobalAuthFilter {
+}
+
+}
+
+package com.haust.gateway; {
+class GatewayApplication {
+}
+
+}
+
+package com.haust.im.config; {
+class WebSocketConfig {
+}
+
+}
+
+package com.haust.im.controller; {
+class ChatController {
+}
+
+}
+
+package com.haust.im.domain; {
+class ChatMessage {
+}
+
+}
+
+package com.haust.im.handler; {
+class WebSocketEventListener {
+}
+
+}
+
+package com.haust.im; {
+class IMServiceApplication {
+}
+
+}
+
+package com.haust.referral.annotation; {
+class SensitiveMonitor {
+}
+
+}
+
+package com.haust.referral.aspect; {
+class SensitiveMonitorAspect {
+}
+
+}
+
+package com.haust.referral.configuration; {
+class SwaggerConfig {
+}
+
+class ThreadConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package com.haust.referral.referral.controller; {
+class ReferralAdminController {
+}
+
+class ReferralController {
+}
+
+}
+
+package com.haust.referral.mapper; {
+class CodingSharingMapper {
+}
+
+}
+
+package com.haust.referral; {
+class ReferralServiceApplication {
+}
+
+}
+
+package com.haust.referral.service; {
+class CodingSharingService {
+}
+
+class CodingSharingServiceImpl {
+}
+
+}
+
+package com.haust.referral.util; {
+class BloomFilterUtil {
+}
+
+class IKAnalyzerUtil {
+}
+
+}
+
+package com.haust.user.annotation; {
+class LoginMonitor {
+}
+
+}
+
+package com.haust.user.aspect; {
+class LoginMonitorAspect {
+}
+
+}
+
+package com.haust.user.configuration; {
+class CorsConfig {
+}
+
+class RabbitMQConfig {
+}
+
+class SwaggerConfig {
+}
+
+class ThreadConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package com.haust.user.controller; {
+class AdminController {
+}
+
+class UserController {
+}
+
+}
+
+package com.haust.user.handler; {
+class GlobalExceptionHandler {
+}
+
+}
+
+package com.haust.user.interceptor; {
+class JwtTokenAdminInterceptor {
+}
+
+class JwtTokenUserInterceptor {
+}
+
+}
+
+package com.haust.user.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.haust.user.mq.msg; {
+class LikeMsg {
+}
+
+class UserMsg {
+}
+
+}
+
+package com.haust.user.mq; {
+class UserInfoListener {
+}
+
+}
+
+package com.haust.user.properties; {
+class ApiProperties {
+}
+
+}
+
+package com.haust.user.service; {
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.haust.user; {
+class UserServiceApplication {
+}
+
+}
+
+UserConstant -- User
+CodingSharingDTO -- CodingSharing
+CreatePostDTO -- Post
+CreateReplyDTO -- ReplyDTO
+CreateReplyDTO -- User
+ReplyDTO -- PageDTO
+PostReply -- Post
+PostReply -- User
+CodingSharingVo -- CodingSharing
+PostVO -- Post
+ReplyVO -- User
+UserException -- User
+DifyApiUtil -- ApiProperties
+JwtUtil -- User
+SwaggerConfig -- Post
+SwaggerConfig -- WebMvcConfig
+WebMvcConfig -- User
+WebMvcConfig -- JwtTokenAdminInterceptor
+WebMvcConfig -- JwtTokenUserInterceptor
+ForumAdminController -- RepliesService
+ForumAdminController -- AdminController
+PostController -- CreatePostDTO
+PostController -- PageDTO
+PostController -- Post
+PostController -- PageVO
+PostController -- PostVO
+PostController -- PostService
+RepliesController -- CreateReplyDTO
+RepliesController -- ReplyDTO
+RepliesController -- Post
+RepliesController -- HotReplyVo
+RepliesController -- PageVO
+RepliesController -- ReplyVO
+RepliesController -- RepliesService
+PostMapper -- Post
+PostMapper -- PostReply
+PostMapper -- PostVO
+PostReplyMapper -- Post
+PostReplyMapper -- PostReply
+PostReplyMapper -- ReplyVO
+PostReplyMapper -- LikeMsg
+LikeInfoListener -- MqExchangeConstant
+LikeInfoListener -- MqKeyConstant
+LikeInfoListener -- MqQueueConstant
+LikeInfoListener -- LikeMsg
+LikeInfoListener -- RepliesService
+LikeInfoListener -- RepliesServiceImpl
+UserMsg -- User
+PostService -- CreatePostDTO
+PostService -- PageDTO
+PostService -- Post
+PostService -- PageVO
+PostService -- PostVO
+PostServiceImpl -- BaseContext
+PostServiceImpl -- CreatePostDTO
+PostServiceImpl -- PageDTO
+PostServiceImpl -- ContentType
+PostServiceImpl -- Post
+PostServiceImpl -- User
+PostServiceImpl -- PageVO
+PostServiceImpl -- PostVO
+PostServiceImpl -- PostMapper
+PostServiceImpl -- PostService
+RepliesService -- CreateReplyDTO
+RepliesService -- ReplyDTO
+RepliesService -- HotReplyVo
+RepliesService -- PageVO
+RepliesService -- ReplyVO
+RepliesService -- LikeMsg
+RepliesServiceImpl -- MqExchangeConstant
+RepliesServiceImpl -- MqKeyConstant
+RepliesServiceImpl -- RedisConstant
+RepliesServiceImpl -- BaseContext
+RepliesServiceImpl -- CreateReplyDTO
+RepliesServiceImpl -- ReplyDTO
+RepliesServiceImpl -- ContentType
+RepliesServiceImpl -- Post
+RepliesServiceImpl -- PostReply
+RepliesServiceImpl -- User
+RepliesServiceImpl -- HotReplyVo
+RepliesServiceImpl -- PageVO
+RepliesServiceImpl -- ReplyVO
+RepliesServiceImpl -- BusinessException
+RepliesServiceImpl -- PostMapper
+RepliesServiceImpl -- PostReplyMapper
+RepliesServiceImpl -- LikeMsg
+RepliesServiceImpl -- RepliesService
+RepliesServiceImpl -- BatchProcessUtil
+BatchProcessUtil -- Post
+BatchProcessUtil -- PostReply
+BatchProcessUtil -- PostReplyMapper
+BatchProcessUtil -- LikeMsg
+WebSocketConfig -- User
+ChatController -- User
+ChatController -- ChatMessage
+WebSocketEventListener -- ChatMessage
+SensitiveMonitor -- ContentType
+SensitiveMonitorAspect -- CodingSharingDTO
+SensitiveMonitorAspect -- CreatePostDTO
+SensitiveMonitorAspect -- CreateReplyDTO
+SensitiveMonitorAspect -- ReplyDTO
+SensitiveMonitorAspect -- ContentType
+SensitiveMonitorAspect -- CodingSharing
+SensitiveMonitorAspect -- Post
+SensitiveMonitorAspect -- BusinessException
+SensitiveMonitorAspect -- SensitiveMonitor
+SensitiveMonitorAspect -- BloomFilterUtil
+SensitiveMonitorAspect -- IKAnalyzerUtil
+ReferralAdminController -- PageDTO
+ReferralAdminController -- CodingSharing
+ReferralAdminController -- CodingSharingVo
+ReferralAdminController -- PageVO
+ReferralAdminController -- CodingSharingService
+ReferralAdminController -- AdminController
+ReferralController -- CodingSharingDTO
+ReferralController -- PageDTO
+ReferralController -- CodingSharing
+ReferralController -- Post
+ReferralController -- CodingSharingVo
+ReferralController -- PageVO
+ReferralController -- CodingSharingService
+CodingSharingMapper -- PageDTO
+CodingSharingMapper -- CodingSharing
+CodingSharingMapper -- CodingSharingVo
+CodingSharingService -- CodingSharingDTO
+CodingSharingService -- PageDTO
+CodingSharingService -- CodingSharing
+CodingSharingService -- CodingSharingVo
+CodingSharingService -- PageVO
+CodingSharingServiceImpl -- BaseContext
+CodingSharingServiceImpl -- CodingSharingDTO
+CodingSharingServiceImpl -- PageDTO
+CodingSharingServiceImpl -- ContentType
+CodingSharingServiceImpl -- CodingSharing
+CodingSharingServiceImpl -- User
+CodingSharingServiceImpl -- CodingSharingVo
+CodingSharingServiceImpl -- PageVO
+CodingSharingServiceImpl -- BusinessException
+CodingSharingServiceImpl -- SensitiveMonitor
+CodingSharingServiceImpl -- CodingSharingMapper
+CodingSharingServiceImpl -- CodingSharingService
+LoginMonitorAspect -- MqExchangeConstant
+LoginMonitorAspect -- MqKeyConstant
+LoginMonitorAspect -- MqQueueConstant
+LoginMonitorAspect -- AccountDTO
+LoginMonitorAspect -- User
+LoginMonitorAspect -- UserMsg
+LoginMonitorAspect -- LoginMonitor
+AdminController -- AccountDTO
+AdminController -- PageDTO
+AdminController -- Post
+AdminController -- User
+AdminController -- PageVO
+AdminController -- RoleVo
+AdminController -- UserMsg
+AdminController -- UserService
+UserController -- AccountDTO
+UserController -- Post
+UserController -- User
+UserController -- RoleVo
+UserController -- UserService
+GlobalExceptionHandler -- BusinessException
+JwtTokenAdminInterceptor -- UserConstant
+JwtTokenAdminInterceptor -- BaseContext
+JwtTokenAdminInterceptor -- ContentType
+JwtTokenAdminInterceptor -- User
+JwtTokenAdminInterceptor -- UserException
+JwtTokenAdminInterceptor -- JwtUtil
+JwtTokenUserInterceptor -- RedisConstant
+JwtTokenUserInterceptor -- UserConstant
+JwtTokenUserInterceptor -- BaseContext
+JwtTokenUserInterceptor -- ContentType
+JwtTokenUserInterceptor -- User
+JwtTokenUserInterceptor -- BusinessException
+JwtTokenUserInterceptor -- ResultResponse
+JwtTokenUserInterceptor -- JwtUtil
+UserMapper -- AccountDTO
+UserMapper -- User
+UserMapper -- UserMsg
+UserInfoListener -- MqExchangeConstant
+UserInfoListener -- MqKeyConstant
+UserInfoListener -- MqQueueConstant
+UserInfoListener -- User
+UserInfoListener -- UserMsg
+UserInfoListener -- UserService
+UserService -- AccountDTO
+UserService -- PageDTO
+UserService -- User
+UserService -- PageVO
+UserService -- RoleVo
+UserService -- UserMsg
+UserServiceImpl -- RedisConstant
+UserServiceImpl -- BaseContext
+UserServiceImpl -- AccountDTO
+UserServiceImpl -- PageDTO
+UserServiceImpl -- User
+UserServiceImpl -- PageVO
+UserServiceImpl -- RoleVo
+UserServiceImpl -- BusinessException
+UserServiceImpl -- DifyApiUtil
+UserServiceImpl -- JwtUtil
+UserServiceImpl -- PasswordUtil
+UserServiceImpl -- UserMsg
+UserServiceImpl -- LoginMonitor
+UserServiceImpl -- UserMapper
+UserServiceImpl -- UserService
+UserServiceApplication -- User
+UserServiceApplication -- ApiProperties
+UserServiceApplication -- UserService
+@enduml

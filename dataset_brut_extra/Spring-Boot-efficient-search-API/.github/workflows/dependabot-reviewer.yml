@@ -1,0 +1,79 @@
+name: Dependabot Reviewer
+
+on: 
+  pull_request_target
+
+permissions:
+  pull-requests: write
+  contents: write
+  checks: write
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+jobs:
+  build:
+    name: Build and Test
+    uses: ./.github/workflows/reusable-build.yml
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    secrets: inherit
+
+  review-dependabot-pr:
+    name: Review Dependabot PR
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+
+    env:
+      PR_URL: ${{ github.event.pull_request.html_url }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Fetch Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v2
+
+      - name: Enable auto-merge for Dependabot PRs
+        if: success()
+        run: |
+          gh pr merge --auto --merge "$PR_URL" || true
+
+      - name: Approve patch and minor updates
+        if: |
+          success() &&
+          (steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' ||
+           steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor')
+        run: |
+          gh pr review "$PR_URL" --approve \
+            -b "✅ Approving ${{ steps.dependabot-metadata.outputs.update-type }} update"
+
+      - name: Approve major updates of development dependencies
+        if: |
+          success() &&
+          steps.dependabot-metadata.outputs.update-type == 'version-update:semver-major' &&
+          steps.dependabot-metadata.outputs.dependency-type == 'direct:development'
+        run: |
+          gh pr review "$PR_URL" --approve \
+            -b "✅ Approving major update of **development-only** dependency"
+
+      - name: Flag major updates of production dependencies
+        if: |
+          success() &&
+          steps.dependabot-metadata.outputs.update-type == 'version-update:semver-major' &&
+          steps.dependabot-metadata.outputs.dependency-type == 'direct:production'
+        run: |
+          gh pr comment "$PR_URL" \
+            --body "⚠️ Major update of **production dependency** - requires manual review and testing"
+          gh pr edit "$PR_URL" --add-label "requires-manual-qa"
+
+      - name: Handle workflow failures
+        if: failure()
+        run: |
+          gh pr comment "$PR_URL" \
+            --body "❌ Build or tests failed - please review before merging"
+          gh pr edit "$PR_URL" --add-label "ci-failed"

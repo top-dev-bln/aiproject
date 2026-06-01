@@ -1,0 +1,226 @@
+@startuml
+package com.fula.component; {
+class AutoCheckInComponent {
+}
+
+class EmailComponent {
+}
+
+class KafkaComponent {
+}
+
+class KafkaProducerForFlink {
+}
+
+class MysqlComponent {
+}
+
+class PropertiesUtil {
+}
+
+class RedisComponent {
+}
+
+class TgBotComponent {
+}
+
+class WXComponent {
+}
+
+class ZookeeperComponent {
+}
+
+}
+
+package com.fula.component.model; {
+class FulaBot {
+}
+
+}
+
+package com.fula.controller; {
+class CustomerController {
+}
+
+class StateController {
+}
+
+}
+
+package com.fula.controller.wx; {
+class PublicMessageController {
+}
+
+}
+
+package com.fula.demo.leetcode; {
+class L1TwoSum {
+}
+
+class L1TwoSumTest {
+}
+
+}
+
+package com.fula.demo.util; {
+class UniqueIdUtil {
+}
+
+class UniqueIdUtilTest {
+}
+
+}
+
+package com.fula; {
+class FULAApplication {
+}
+
+}
+
+package com.fula.handler; {
+class GlobalControllerHandler {
+}
+
+}
+
+package com.fula.interceptor; {
+class MDCInterceptor {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package com.fula.mapper; {
+class CustomerInfoDao {
+}
+
+class CustomerLoginDao {
+}
+
+}
+
+package com.fula.model; {
+class CustomerInfo {
+}
+
+class CustomerLogin {
+}
+
+}
+
+package com.fula.model.dto; {
+class RegisterCustomerInfoDTO {
+}
+
+class SearchCustomerInfoDTO {
+}
+
+}
+
+package com.fula.model.system; {
+class FulaError {
+}
+
+class FulaException {
+}
+
+class ResultBody {
+}
+
+}
+
+package com.fula.scheduler; {
+class Scheduler {
+}
+
+}
+
+package com.fula.service; {
+class CustomerService {
+}
+
+}
+
+package com.fula.service.impl; {
+class CustomerServiceImpl {
+}
+
+}
+
+package com.fula.thymeleaf; {
+class IndexController {
+}
+
+}
+
+package com.fula.util; {
+class HttpClientUtil {
+}
+
+class JsonUtils {
+}
+
+class ProcessExecuteUtil {
+}
+
+class SessionUtil {
+}
+
+class UUIDUtils {
+}
+
+}
+
+package ic class ControllerTest { {
+class ControllerTest {
+}
+
+}
+
+AutoCheckInComponent -- ProcessExecuteUtil
+KafkaComponent -- JsonUtils
+KafkaProducerForFlink -- JsonUtils
+MysqlComponent -- ProcessExecuteUtil
+TgBotComponent -- FulaBot
+CustomerController -- CustomerInfo
+CustomerController -- RegisterCustomerInfoDTO
+CustomerController -- SearchCustomerInfoDTO
+CustomerController -- ResultBody
+CustomerController -- CustomerService
+StateController -- AutoCheckInComponent
+StateController -- MysqlComponent
+StateController -- ResultBody
+PublicMessageController -- WXComponent
+PublicMessageController -- SessionUtil
+GlobalControllerHandler -- FulaError
+GlobalControllerHandler -- FulaException
+GlobalControllerHandler -- ResultBody
+MDCInterceptor -- UUIDUtils
+WebMvcConfig -- MDCInterceptor
+CustomerInfoDao -- CustomerInfo
+CustomerLoginDao -- CustomerLogin
+RegisterCustomerInfoDTO -- CustomerInfo
+SearchCustomerInfoDTO -- CustomerInfo
+FulaException -- FulaError
+ResultBody -- MDCInterceptor
+Scheduler -- AutoCheckInComponent
+Scheduler -- MysqlComponent
+CustomerService -- CustomerInfo
+CustomerService -- RegisterCustomerInfoDTO
+CustomerService -- SearchCustomerInfoDTO
+CustomerServiceImpl -- CustomerInfoDao
+CustomerServiceImpl -- CustomerLoginDao
+CustomerServiceImpl -- CustomerInfo
+CustomerServiceImpl -- CustomerLogin
+CustomerServiceImpl -- RegisterCustomerInfoDTO
+CustomerServiceImpl -- SearchCustomerInfoDTO
+CustomerServiceImpl -- CustomerService
+IndexController -- CustomerInfo
+IndexController -- SearchCustomerInfoDTO
+IndexController -- CustomerService
+ProcessExecuteUtil -- EmailComponent
+L1TwoSumTest -- L1TwoSum
+UniqueIdUtilTest -- UniqueIdUtil
+@enduml

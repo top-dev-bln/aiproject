@@ -1,0 +1,85 @@
+@startuml
+package io.allurx.blur.spring.boot.autoconfigure; {
+class BlurAutoConfiguration {
+}
+
+class BlurMethodInterceptor {
+}
+
+class BlurProperties {
+}
+
+class ResponseEntityTypeParser {
+}
+
+class SpringBootMainApplicationClassRunListener {
+}
+
+}
+
+package Copyright 2024 allurx {
+class module-info {
+}
+
+class module-info {
+}
+
+class module-info {
+}
+
+}
+
+package io.allurx.blur.spring.boot.sample.web; {
+class BlurSpringBootSampleWebApplication {
+}
+
+}
+
+package io.allurx.blur.spring.boot.sample.web.config; {
+class BlurConfig {
+}
+
+}
+
+package io.allurx.blur.spring.boot.sample.web.controller; {
+class CustomizedResponseBlurController {
+}
+
+class ResponseEntityBlurController {
+}
+
+}
+
+package io.allurx.blur.spring.boot.sample.web.model; {
+class CustomizedResponse {
+}
+
+class Person {
+}
+
+}
+
+package io.allurx.blur.spring.boot.sample.web.test; {
+class CustomizedResponseBlurTest {
+}
+
+class ResponseEntityBlurTest {
+}
+
+}
+
+BlurAutoConfiguration -- BlurMethodInterceptor
+BlurAutoConfiguration -- BlurProperties
+BlurAutoConfiguration -- ResponseEntityTypeParser
+SpringBootMainApplicationClassRunListener -- BlurAutoConfiguration
+BlurConfig -- ResponseEntityTypeParser
+BlurConfig -- CustomizedResponse
+CustomizedResponseBlurController -- CustomizedResponse
+CustomizedResponseBlurController -- Person
+ResponseEntityBlurController -- Person
+CustomizedResponseBlurTest -- CustomizedResponseBlurController
+CustomizedResponseBlurTest -- CustomizedResponse
+CustomizedResponseBlurTest -- Person
+ResponseEntityBlurTest -- ResponseEntityBlurController
+ResponseEntityBlurTest -- Person
+@enduml

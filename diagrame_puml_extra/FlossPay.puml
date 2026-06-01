@@ -1,0 +1,179 @@
+@startuml
+package com.openpay.api; {
+class Application {
+}
+
+}
+
+package com.openpay.api.config; {
+class LoggingFilter {
+}
+
+class RedisApiConfig {
+}
+
+class StreamBootstrapConfig {
+}
+
+class WebConfig {
+}
+
+}
+
+package com.openpay.api.controller; {
+class HealthController {
+}
+
+class StatusController {
+}
+
+class TransactionController {
+}
+
+class TransactionControllerTest {
+}
+
+}
+
+package com.openpay.api.filter; {
+class RateLimiterFilter {
+}
+
+}
+
+package com.openpay.api.handler; {
+class GlobalExceptionHandler {
+}
+
+}
+
+package com.openpay.api.security; {
+class HmacAuthService {
+}
+
+}
+
+package com.openpay.api.service; {
+class IdempotencyService {
+}
+
+class IdempotencyServiceImpl {
+}
+
+class TransactionApiProducer {
+}
+
+}
+
+package com.openpay.shared.dto; {
+class PaymentRequest {
+}
+
+class StatusResponse {
+}
+
+}
+
+package com.openpay.shared.exception; {
+class InvalidUpiException {
+}
+
+class OpenPayException {
+}
+
+}
+
+package com.openpay.shared.model; {
+class IdempotencyKeyEntity {
+}
+
+class TransactionEntity {
+}
+
+class TransactionHistoryEntity {
+}
+
+}
+
+package com.openpay.shared.repository; {
+class IdempotencyKeyRepository {
+}
+
+class TransactionHistoryRepository {
+}
+
+class TransactionRepository {
+}
+
+}
+
+package com.openpay.shared.validation; {
+class UpiValidator {
+}
+
+class ValidUpi {
+}
+
+}
+
+package com.openpay.worker.client; {
+class NpciUpiGatewayClient {
+}
+
+}
+
+package com.openpay.worker.config; {
+class RedisWorkerConfig {
+}
+
+}
+
+package com.openpay.worker.processor; {
+class TransactionWorkerConsumer {
+}
+
+}
+
+package com.openpay.worker; {
+class WorkerApplication {
+}
+
+}
+
+WebConfig -- RateLimiterFilter
+StatusController -- StatusResponse
+StatusController -- TransactionEntity
+StatusController -- TransactionRepository
+TransactionController -- HmacAuthService
+TransactionController -- TransactionApiProducer
+TransactionController -- PaymentRequest
+TransactionController -- StatusResponse
+GlobalExceptionHandler -- InvalidUpiException
+GlobalExceptionHandler -- OpenPayException
+IdempotencyServiceImpl -- IdempotencyService
+IdempotencyServiceImpl -- IdempotencyKeyEntity
+IdempotencyServiceImpl -- IdempotencyKeyRepository
+TransactionApiProducer -- IdempotencyService
+TransactionApiProducer -- PaymentRequest
+TransactionApiProducer -- OpenPayException
+TransactionApiProducer -- TransactionEntity
+TransactionApiProducer -- TransactionHistoryEntity
+TransactionApiProducer -- TransactionHistoryRepository
+TransactionApiProducer -- TransactionRepository
+TransactionControllerTest -- TransactionController
+PaymentRequest -- StatusResponse
+PaymentRequest -- ValidUpi
+InvalidUpiException -- OpenPayException
+InvalidUpiException -- UpiValidator
+IdempotencyKeyRepository -- IdempotencyKeyEntity
+TransactionHistoryRepository -- TransactionHistoryEntity
+TransactionRepository -- TransactionEntity
+UpiValidator -- PaymentRequest
+UpiValidator -- ValidUpi
+TransactionWorkerConsumer -- TransactionEntity
+TransactionWorkerConsumer -- TransactionHistoryEntity
+TransactionWorkerConsumer -- TransactionHistoryRepository
+TransactionWorkerConsumer -- TransactionRepository
+TransactionWorkerConsumer -- NpciUpiGatewayClient
+WorkerApplication -- Application
+@enduml

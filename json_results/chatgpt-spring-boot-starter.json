@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin roles. The platform provides capabilities for chatgpt, default chatgpt. Secondary concerns include file management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to use chatgpt capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ChatgptService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use default chatgpt capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DefaultChatgptService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ChatgptService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "ChatgptService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "ChatgptService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ChatgptAutoConfiguration[\"ChatgptAutoConfiguration\"]\n        MultiChatProperties[\"MultiChatProperties\"]\n        ImageProperties[\"ImageProperties\"]\n        ChatgptProperties[\"ChatgptProperties\"]\n    end\n    subgraph Services\n        ChatgptService[\"ChatgptService\"]\n        DefaultChatgptService[\"DefaultChatgptService\"]\n    end\n    Services --> Infrastructure"
+  }
+}

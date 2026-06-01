@@ -1,0 +1,25 @@
+@startuml
+package com.example.swagger; {
+class Application {
+}
+
+class HelloController {
+}
+
+class Person {
+}
+
+class SwaggerConfig {
+}
+
+class WebfluxConfig {
+}
+
+class ApplicationTests {
+}
+
+}
+
+HelloController -- Person
+ApplicationTests -- Application
+@enduml

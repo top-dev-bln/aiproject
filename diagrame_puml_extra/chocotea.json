@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves User roles. The platform provides capabilities for collection processor. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with controller functionality, so that I can accomplish my controller-related tasks.",
+        "services": [
+          "CollectionProcessor"
+        ],
+        "controllers": [
+          "Controller"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with jakarta functionality, so that I can accomplish my jakarta-related tasks.",
+        "services": [
+          "CollectionProcessor"
+        ],
+        "controllers": [
+          "JakartaController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with javax functionality, so that I can accomplish my javax-related tasks.",
+        "services": [
+          "CollectionProcessor"
+        ],
+        "controllers": [
+          "JavaxController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with spring functionality, so that I can accomplish my spring-related tasks.",
+        "services": [
+          "CollectionProcessor"
+        ],
+        "controllers": [
+          "SpringController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use collection processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CollectionProcessor"
+        ],
+        "controllers": [
+          "Controller"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        Auth[\"Auth\"]\n    end\n    subgraph Services\n        CollectionProcessor[\"CollectionProcessor\"]\n    end\n    subgraph Controllers\n        Controller[\"Controller\"]\n        JakartaController[\"JakartaController\"]\n        JavaxController[\"JavaxController\"]\n        SpringController[\"SpringController\"]\n    end\n    subgraph Infrastructure\n        BeanReader[\"BeanReader\"]\n        DefaultClass[\"DefaultClass\"]\n        Properties[\"Properties\"]\n        RandomGenerator[\"RandomGenerator\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

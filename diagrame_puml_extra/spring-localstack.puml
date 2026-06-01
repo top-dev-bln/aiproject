@@ -1,0 +1,141 @@
+@startuml
+package xyz.fabiano.spring.localstack.annotation; {
+class SpringLocalstackProperties {
+}
+
+}
+
+package xyz.fabiano.spring.localstack.autoconfigure; {
+class EveryAwsClientAutoConfiguration {
+}
+
+class LocalstackAutoConfiguration {
+}
+
+class SpecificAwsClientsAutoConfiguration {
+}
+
+}
+
+package xyz.fabiano.spring.localstack.junit; {
+class SpringLocalstackDockerRunner {
+}
+
+class SpringLocalstackDockerRunnerTest {
+}
+
+class SpringTestContext {
+}
+
+}
+
+package xyz.fabiano.spring.localstack.legacy.command; {
+class Command {
+}
+
+class ExecCommand {
+}
+
+class LogCommand {
+}
+
+class PortCommand {
+}
+
+class PullCommand {
+}
+
+class RegexStream {
+}
+
+class RunCommand {
+}
+
+class StopCommand {
+}
+
+}
+
+package xyz.fabiano.spring.localstack.legacy; {
+class Container {
+}
+
+class DockerExe {
+}
+
+class LocalstackDocker {
+}
+
+}
+
+package xyz.fabiano.spring.localstack; {
+class LocalstackDockerBuilder {
+}
+
+class LocalstackService {
+}
+
+}
+
+package xyz.fabiano.spring.localstack.support; {
+class AbstractAmazonDockerClientsHolder {
+}
+
+class AmazonAsyncDockerClientsHolder {
+}
+
+class AmazonClientsHolder {
+}
+
+class AmazonDockerClientsHolder {
+}
+
+}
+
+SpringLocalstackProperties -- LocalstackService
+EveryAwsClientAutoConfiguration -- AmazonClientsHolder
+LocalstackAutoConfiguration -- LocalstackDocker
+LocalstackAutoConfiguration -- LocalstackDockerBuilder
+LocalstackAutoConfiguration -- LocalstackService
+LocalstackAutoConfiguration -- AmazonAsyncDockerClientsHolder
+LocalstackAutoConfiguration -- AmazonClientsHolder
+LocalstackAutoConfiguration -- AmazonDockerClientsHolder
+SpringLocalstackDockerRunner -- SpringLocalstackProperties
+SpringLocalstackDockerRunner -- LocalstackDocker
+SpringLocalstackDockerRunner -- LocalstackDockerBuilder
+Command -- DockerExe
+ExecCommand -- Command
+LogCommand -- Command
+PortCommand -- Command
+PortCommand -- RegexStream
+PullCommand -- Command
+RunCommand -- Command
+StopCommand -- Command
+Container -- Command
+Container -- ExecCommand
+Container -- LogCommand
+Container -- PortCommand
+Container -- PullCommand
+Container -- RunCommand
+Container -- StopCommand
+LocalstackDocker -- Command
+LocalstackDocker -- RegexStream
+LocalstackDocker -- Container
+LocalstackDockerBuilder -- LocalstackDocker
+LocalstackDockerBuilder -- LocalstackService
+AbstractAmazonDockerClientsHolder -- LocalstackDocker
+AbstractAmazonDockerClientsHolder -- AmazonClientsHolder
+AbstractAmazonDockerClientsHolder -- AmazonDockerClientsHolder
+AmazonAsyncDockerClientsHolder -- LocalstackDocker
+AmazonAsyncDockerClientsHolder -- AbstractAmazonDockerClientsHolder
+AmazonAsyncDockerClientsHolder -- AmazonDockerClientsHolder
+AmazonDockerClientsHolder -- LocalstackDocker
+SpringLocalstackDockerRunnerTest -- SpringLocalstackProperties
+SpringLocalstackDockerRunnerTest -- SpringLocalstackDockerRunner
+SpringLocalstackDockerRunnerTest -- LocalstackDocker
+SpringLocalstackDockerRunnerTest -- LocalstackService
+SpringLocalstackDockerRunnerTest -- AmazonDockerClientsHolder
+SpringLocalstackDockerRunnerTest -- SpringTestContext
+SpringTestContext -- LocalstackDocker
+SpringTestContext -- AmazonDockerClientsHolder
+@enduml

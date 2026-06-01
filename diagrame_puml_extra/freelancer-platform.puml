@@ -1,0 +1,259 @@
+@startuml
+package net.vatri.freelanceplatform.cache; {
+class Cache {
+}
+
+class RedisCache {
+}
+
+class RedisCacheTest {
+}
+
+}
+
+package net.vatri.freelanceplatform.controllers; {
+class AbstractController {
+}
+
+class BidController {
+}
+
+class FeedbackController {
+}
+
+class HomeController {
+}
+
+class JobController {
+}
+
+class LoginController {
+}
+
+class MessageController {
+}
+
+class ProfileController {
+}
+
+}
+
+package net.vatri.freelanceplatform; {
+class FreelancePlatformApplication {
+}
+
+class ServletInitializer {
+}
+
+class FreelancePlatformApplicationTests {
+}
+
+}
+
+package net.vatri.freelanceplatform.helpers; {
+class FreelancePlatformHelper {
+}
+
+}
+
+package net.vatri.freelanceplatform.models; {
+class Bid {
+}
+
+class Category {
+}
+
+class Feedback {
+}
+
+class Job {
+}
+
+class JobHistory {
+}
+
+class Message {
+}
+
+class Profile {
+}
+
+class User {
+}
+
+}
+
+package net.vatri.freelanceplatform.repositories; {
+class BidRepository {
+}
+
+class CategoryRepository {
+}
+
+class FeedbackRepository {
+}
+
+class JobRepository {
+}
+
+class MessageRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package net.vatri.freelanceplatform.security; {
+class UserDetailsImpl {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package net.vatri.freelanceplatform.services; {
+class BidService {
+}
+
+class CategoryService {
+}
+
+class FeedbackService {
+}
+
+class JobService {
+}
+
+class MessageService {
+}
+
+class UserDetailServiceImpl {
+}
+
+class UserService {
+}
+
+}
+
+package net.vatri.freelanceplatform.validators; {
+class UserValidator {
+}
+
+}
+
+RedisCache -- Cache
+RedisCache -- Message
+AbstractController -- User
+AbstractController -- UserService
+BidController -- AbstractController
+BidController -- FreelancePlatformHelper
+BidController -- Bid
+BidController -- Job
+BidController -- User
+BidController -- BidService
+BidController -- JobService
+FeedbackController -- AbstractController
+FeedbackController -- Bid
+FeedbackController -- Feedback
+FeedbackController -- Job
+FeedbackController -- User
+FeedbackController -- BidService
+FeedbackController -- FeedbackService
+JobController -- AbstractController
+JobController -- FreelancePlatformHelper
+JobController -- Bid
+JobController -- Category
+JobController -- Feedback
+JobController -- Job
+JobController -- User
+JobController -- BidService
+JobController -- CategoryService
+JobController -- FeedbackService
+JobController -- JobService
+LoginController -- Message
+LoginController -- User
+LoginController -- UserService
+MessageController -- AbstractController
+MessageController -- Bid
+MessageController -- Job
+MessageController -- Message
+MessageController -- User
+MessageController -- BidService
+MessageController -- JobService
+MessageController -- MessageService
+MessageController -- UserService
+ProfileController -- AbstractController
+ProfileController -- Bid
+ProfileController -- Feedback
+ProfileController -- Job
+ProfileController -- JobHistory
+ProfileController -- Profile
+ProfileController -- User
+ProfileController -- BidService
+ProfileController -- FeedbackService
+ProfileController -- JobService
+ProfileController -- UserService
+FreelancePlatformApplication -- Cache
+FreelancePlatformApplication -- RedisCache
+FreelancePlatformApplication -- User
+FreelancePlatformApplication -- UserValidator
+Bid -- Job
+Bid -- User
+Feedback -- Bid
+Job -- Category
+Job -- User
+JobHistory -- Bid
+JobHistory -- Feedback
+JobHistory -- Job
+Message -- Job
+Message -- User
+Profile -- User
+BidRepository -- Bid
+BidRepository -- Job
+BidRepository -- User
+CategoryRepository -- Category
+FeedbackRepository -- Bid
+FeedbackRepository -- Feedback
+FeedbackRepository -- Job
+FeedbackRepository -- User
+JobRepository -- Bid
+JobRepository -- Job
+JobRepository -- User
+MessageRepository -- Job
+MessageRepository -- Message
+MessageRepository -- User
+UserRepository -- User
+UserDetailsImpl -- User
+BidService -- Bid
+BidService -- Job
+BidService -- User
+BidService -- BidRepository
+CategoryService -- Category
+CategoryService -- CategoryRepository
+FeedbackService -- Bid
+FeedbackService -- Feedback
+FeedbackService -- Job
+FeedbackService -- User
+FeedbackService -- FeedbackRepository
+JobService -- Job
+JobService -- User
+JobService -- JobRepository
+MessageService -- Job
+MessageService -- Message
+MessageService -- User
+MessageService -- MessageRepository
+UserDetailServiceImpl -- Cache
+UserDetailServiceImpl -- User
+UserDetailServiceImpl -- UserRepository
+UserDetailServiceImpl -- UserDetailsImpl
+UserService -- User
+UserService -- UserRepository
+ServletInitializer -- FreelancePlatformApplication
+UserValidator -- User
+UserValidator -- UserRepository
+RedisCacheTest -- Cache
+RedisCacheTest -- RedisCache
+FreelancePlatformApplicationTests -- FreelancePlatformApplication
+@enduml

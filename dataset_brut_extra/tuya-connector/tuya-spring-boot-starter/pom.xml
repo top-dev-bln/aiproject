@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>tuya-connector</artifactId>
+        <groupId>com.tuya</groupId>
+        <version>1.5.4</version>
+    </parent>
+
+    <artifactId>tuya-spring-boot-starter</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.tuya</groupId>
+            <artifactId>connector-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tuya</groupId>
+            <artifactId>tuya-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tuya</groupId>
+            <artifactId>tuya-messaging</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>

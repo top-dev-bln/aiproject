@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:include="frontend/partials/head(title=${job.title})">
+</head>
+<!--<div th:include="frontend/partials/head"></div>-->
+<body>
+<div th:replace="frontend/partials/menu"></div>
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <h1 th:text="#{job.view.view_bids}">View bids</h1>
+            
+            <h2 th:text="${job.title}"></h2>
+            
+            <p>
+            	<a th:href="@{'/job/view/' + ${job.id}}" class="btn btn-sm btn-primary" th:text="#{job.view.bids.view_job}">View job</a>
+            </p>
+            
+            <table class="table table-striped">
+                    <tr>
+                        <th th:text="#{job.view.bids.table.user}">User</th>
+                        <th th:text="#{price}">Price</th>
+                        <th  th:text="#{deadline}">Deadline</th>
+                        <th  th:text="#{job.view.bids.table.proposal}">Proposal</th>
+                        <th> </th>
+                    </tr>
+
+                    <tr th:each="bid : ${bids}">
+                        <td><a th:href="@{'/profile/' + ${bid.user.id}}" th:text="${bid.user.name}"></a></td>
+                        <td th:text="${#numbers.formatDecimal(bid.price, 0, 'POINT', 2, 'COMMA')}"></td>
+                        <td th:text="${bid.deadline}"></td>
+                        <td th:text="${bid.proposal}"></td>
+                        <td>
+                        	<a class="btn btn-success" th:href="@{'/message/job_room/' + ${bid.job.id} + '/' + ${bid.user.id} }">
+                        		<i class="glyphicon glyphicon-envelope"> </i>
+                        		<span th:text="#{job.view.bids.table.message}">Message</span>
+                        	</a>
+                        	<a onclick="if( ! confirm('Are you sure?')){ return false; }" th:if="${bid.accepted} == 0" class="btn btn-primary" th:href="@{ '/bid/accept/' + ${bid.id} }">
+                        		<i class="glyphicon glyphicon-ok"> </i>
+                        		<span th:text="#{job.view.bids.table.hire}" >Hire</span>
+                        	</a>
+                        	<span th:if="${bid.accepted} == 1" class="green text-success">
+                        		<i class="glyphicon glyphicon-ok"> </i>
+                        		<span th:text="#{job.view.bids.table.accepted}" >Accepted</span>
+                        	</span>
+                       	</td>
+                    </tr>
+
+                </table>
+
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves Customer, Admin roles. Secondary concerns include distributed transactions functionality. The architecture follows a layered approach separating concerns across presentation, business logic, and data access.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to receive feedback on my actions, so that I know the system processed my request.",
+        "services": [],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        CustomerRepository[\"CustomerRepository\"]\n        OrderRepository[\"OrderRepository\"]\n        InventoryItemRepository[\"InventoryItemRepository\"]\n    end"
+  }
+}

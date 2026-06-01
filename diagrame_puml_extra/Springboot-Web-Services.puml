@@ -1,0 +1,296 @@
+@startuml
+package com.spring.config; {
+class JMSConfiguration {
+}
+
+class SecurityConfiguration {
+}
+
+}
+
+package com.spring.constants; {
+class ResponseCode {
+}
+
+class WebConstants {
+}
+
+}
+
+package com.spring.controller; {
+class AdminController {
+}
+
+class ControllerAdvisor {
+}
+
+class HomeController {
+}
+
+class UserController {
+}
+
+class HomeControllerTest {
+}
+
+}
+
+package com.spring.exception; {
+class AddressCustomException {
+}
+
+class CartCustomException {
+}
+
+class OrderCustomException {
+}
+
+class PlaceOrderCustomException {
+}
+
+class ProductCustomException {
+}
+
+class UserCustomException {
+}
+
+}
+
+package com.spring.filter; {
+class JwtRequestFilter {
+}
+
+}
+
+package com.spring.model; {
+class Address {
+}
+
+class Authorities {
+}
+
+class Bufcart {
+}
+
+class PlaceOrder {
+}
+
+class Product {
+}
+
+class User {
+}
+
+}
+
+package com.spring.repository; {
+class AddressRepository {
+}
+
+class CartRepository {
+}
+
+class OrderRepository {
+}
+
+class ProductRepository {
+}
+
+class UserRepository {
+}
+
+class UserRepositoryTest {
+}
+
+}
+
+package com.spring.response; {
+class CartResponse {
+}
+
+class Order {
+}
+
+class OrderResponse {
+}
+
+class ProductResponse {
+}
+
+class Response {
+}
+
+class ServerResponse {
+}
+
+class UserResponse {
+}
+
+class ViewOrderResponse {
+}
+
+}
+
+package com.spring.service; {
+class MyUserDetails {
+}
+
+class MyUserDetailService {
+}
+
+}
+
+package com.spring; {
+class ShoppingApplication {
+}
+
+class ShoppingApplicationTests {
+}
+
+}
+
+package com.spring.util; {
+class JwtUtil {
+}
+
+class MessageReceiver {
+}
+
+class Validator {
+}
+
+}
+
+SecurityConfiguration -- JwtRequestFilter
+SecurityConfiguration -- User
+ResponseCode -- Order
+ResponseCode -- Response
+WebConstants -- Address
+AdminController -- ResponseCode
+AdminController -- WebConstants
+AdminController -- OrderCustomException
+AdminController -- ProductCustomException
+AdminController -- PlaceOrder
+AdminController -- Product
+AdminController -- CartRepository
+AdminController -- OrderRepository
+AdminController -- ProductRepository
+AdminController -- Order
+AdminController -- OrderResponse
+AdminController -- ProductResponse
+AdminController -- Response
+AdminController -- ServerResponse
+AdminController -- ViewOrderResponse
+AdminController -- Validator
+ControllerAdvisor -- AddressCustomException
+ControllerAdvisor -- CartCustomException
+ControllerAdvisor -- OrderCustomException
+ControllerAdvisor -- PlaceOrderCustomException
+ControllerAdvisor -- ProductCustomException
+ControllerAdvisor -- UserCustomException
+ControllerAdvisor -- Address
+ControllerAdvisor -- PlaceOrder
+ControllerAdvisor -- Product
+ControllerAdvisor -- User
+ControllerAdvisor -- Order
+ControllerAdvisor -- Response
+HomeController -- ResponseCode
+HomeController -- WebConstants
+HomeController -- UserCustomException
+HomeController -- Authorities
+HomeController -- User
+HomeController -- UserRepository
+HomeController -- Response
+HomeController -- ServerResponse
+HomeController -- MyUserDetailService
+HomeController -- JwtUtil
+HomeController -- Validator
+UserController -- ResponseCode
+UserController -- WebConstants
+UserController -- AddressCustomException
+UserController -- CartCustomException
+UserController -- OrderCustomException
+UserController -- PlaceOrderCustomException
+UserController -- ProductCustomException
+UserController -- UserCustomException
+UserController -- Address
+UserController -- Bufcart
+UserController -- PlaceOrder
+UserController -- Product
+UserController -- User
+UserController -- AddressRepository
+UserController -- CartRepository
+UserController -- OrderRepository
+UserController -- ProductRepository
+UserController -- UserRepository
+UserController -- CartResponse
+UserController -- Order
+UserController -- ProductResponse
+UserController -- Response
+UserController -- ServerResponse
+UserController -- UserResponse
+UserController -- Validator
+AddressCustomException -- Address
+OrderCustomException -- Order
+PlaceOrderCustomException -- OrderCustomException
+PlaceOrderCustomException -- PlaceOrder
+PlaceOrderCustomException -- Order
+ProductCustomException -- Product
+UserCustomException -- User
+JwtRequestFilter -- Authorities
+JwtRequestFilter -- User
+JwtRequestFilter -- Response
+JwtRequestFilter -- MyUserDetailService
+JwtRequestFilter -- JwtUtil
+Address -- User
+Authorities -- User
+Bufcart -- Product
+Bufcart -- Order
+PlaceOrder -- Order
+AddressRepository -- Address
+AddressRepository -- User
+CartRepository -- Bufcart
+CartRepository -- Order
+OrderRepository -- PlaceOrder
+OrderRepository -- Order
+ProductRepository -- Product
+UserRepository -- User
+CartResponse -- Bufcart
+CartResponse -- Response
+Order -- Product
+OrderResponse -- Bufcart
+OrderResponse -- Order
+OrderResponse -- Response
+ProductResponse -- Product
+ProductResponse -- Response
+ServerResponse -- User
+ServerResponse -- Response
+UserResponse -- Address
+UserResponse -- User
+UserResponse -- Response
+ViewOrderResponse -- Order
+ViewOrderResponse -- OrderResponse
+ViewOrderResponse -- Response
+MyUserDetails -- Authorities
+MyUserDetails -- User
+MyUserDetailService -- User
+MyUserDetailService -- UserRepository
+MyUserDetailService -- MyUserDetails
+JwtUtil -- User
+MessageReceiver -- Product
+Validator -- Address
+Validator -- Bufcart
+Validator -- PlaceOrder
+Validator -- Product
+Validator -- User
+Validator -- Order
+HomeControllerTest -- HomeController
+HomeControllerTest -- User
+HomeControllerTest -- Response
+HomeControllerTest -- ShoppingApplication
+UserRepositoryTest -- UserCustomException
+UserRepositoryTest -- User
+UserRepositoryTest -- UserRepository
+UserRepositoryTest -- ShoppingApplication
+ShoppingApplicationTests -- ShoppingApplication
+@enduml

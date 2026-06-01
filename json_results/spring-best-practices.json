@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. It manages core business objects including page param, response. The platform provides capabilities for auth, request scoped cache manager, abstract auth handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "AuthService",
+          "AbstractAuthHandler",
+          "UserHelperImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage page param records, so that I can track and organize page param data effectively.",
+        "services": [
+          "AuthService"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage response records, so that I can track and organize response data effectively.",
+        "services": [
+          "AuthService"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "MessageSourceHandler"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "RequestScopedCacheManager"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        AuthObjMapper[\"AuthObjMapper\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        UserHelper[\"UserHelper\"]\n        HistoryMapper[\"HistoryMapper\"]\n        UserMapper[\"UserMapper\"]\n        HistoryPo[\"HistoryPo\"]\n        User[\"User\"]\n        DynamicTableNameUtils[\"DynamicTableNameUtils\"]\n        TableNameParser[\"TableNameParser\"]\n        DynamicTableNameParser[\"DynamicTableNameParser\"]\n        WebObjMapper[\"WebObjMapper\"]\n        PageParam[\"PageParam\"]\n        Response[\"Response\"]\n    end\n    subgraph Services\n        AuthService[\"AuthService\"]\n        RequestScopedCacheManager[\"RequestScopedCacheManager\"]\n        AbstractAuthHandler[\"AbstractAuthHandler\"]\n        RestClientErrorExceptionHandler[\"RestClientErrorExceptionHandler\"]\n        MessageSourceHandler[\"MessageSourceHandler\"]\n        UserHelperImpl[\"UserHelperImpl\"]\n        ITableNameHandler[\"ITableNameHandler\"]\n        SqlExampleService[\"SqlExampleService\"]\n        AopExampleService[\"AopExampleService\"]\n        CacheExampleService[\"CacheExampleService\"]\n    end\n    subgraph Security\n        AuthenticationInterceptor[\"AuthenticationInterceptor\"]\n        SimpleAuthUser[\"SimpleAuthUser\"]\n        AuthUser[\"AuthUser\"]\n        AuthUtil[\"AuthUtil\"]\n        BaseAuthHeaderHttpRequestInterceptor[\"BaseAuthHeaderHttpRequestInterceptor\"]\n        RestTemplateAuthConfig[\"RestTemplateAuthConfig\"]\n        RestTemplateAuthInterceptor[\"RestTemplateAuthInterceptor\"]\n        AuthWebConfig[\"AuthWebConfig\"]\n    end\n    subgraph Infrastructure\n        AutoRepairPageAspect[\"AutoRepairPageAspect\"]\n        MethodLogAspect[\"MethodLogAspect\"]\n        CacheHandlerInterceptor[\"CacheHandlerInterceptor\"]\n        DateFormatType[\"DateFormatType\"]\n        AssertFailExceptionBase[\"AssertFailExceptionBase\"]\n        ExceptionHandlers[\"ExceptionHandlers\"]\n        BaseReqParam[\"BaseReqParam\"]\n        PageResponse[\"PageResponse\"]\n        ResponseUtil[\"ResponseUtil\"]\n        ObjUtil[\"ObjUtil\"]\n        MapUtils[\"MapUtils\"]\n        Assert[\"Assert\"]\n        StreamUtil[\"StreamUtil\"]\n        DataDate[\"DataDate\"]\n        DateTimeUtils[\"DateTimeUtils\"]\n        TraceUtils[\"TraceUtils\"]\n        ExceptionUtils[\"ExceptionUtils\"]\n        JacksonUtil[\"JacksonUtil\"]\n        SimpleRestTemplateUtils[\"SimpleRestTemplateUtils\"]\n        ServerInitConfig[\"ServerInitConfig\"]\n        InitConfig[\"InitConfig\"]\n        CachingConfig[\"CachingConfig\"]\n        AppInitConfig[\"AppInitConfig\"]\n        WebConfig[\"WebConfig\"]\n        AsyncThreadPoolConfig[\"AsyncThreadPoolConfig\"]\n        DemoInit[\"DemoInit\"]\n    end\n    subgraph Controllers\n        DemoController[\"DemoController\"]\n        CacheExampleController[\"CacheExampleController\"]\n        SqlExampleController[\"SqlExampleController\"]\n        HttpController[\"HttpController\"]\n        ServerHealthController[\"ServerHealthController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

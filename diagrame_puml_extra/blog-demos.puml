@@ -1,0 +1,407 @@
+@startuml
+package io.github.gozhuyinglong.designpatterns.factory; {
+class FactoryAbstract {
+}
+
+class FactoryMethod {
+}
+
+class FactorySimple {
+}
+
+}
+
+package io.github.gozhuyinglong.designpatterns.singleton; {
+class SingletonDCL {
+}
+
+class SingletonEager {
+}
+
+class SingletonEnum {
+}
+
+class SingletonInnerClass {
+}
+
+class SingletonLazy {
+}
+
+class SingletonTest {
+}
+
+}
+
+package io.github.gozhuyinglong.designpatterns.strategy.behavior; {
+class Fly {
+}
+
+class FlyNoWay {
+}
+
+class FlyWithWings {
+}
+
+class Quack {
+}
+
+class QuackGuaGua {
+}
+
+class QuackNoWay {
+}
+
+class QuackZhiZhi {
+}
+
+}
+
+package io.github.gozhuyinglong.designpatterns.strategy; {
+class DecoyDuck {
+}
+
+class Duck {
+}
+
+class MallardDuck {
+}
+
+class RedheadDuck {
+}
+
+class RubberDuck {
+}
+
+class Test {
+}
+
+}
+
+package io.github.gozhuyinglong.datastructures.array; {
+class ArrayDemo {
+}
+
+class SparseArrayDemo {
+}
+
+}
+
+package io.github.gozhuyinglong.datastructures.hashtable; {
+class HashTableDemo {
+}
+
+}
+
+package io.github.gozhuyinglong.datastructures.linkedlist; {
+class CircularLinkedListDemo {
+}
+
+class DoublyLinkedListDemo {
+}
+
+class SinglyLinkedListDemo {
+}
+
+}
+
+package io.github.gozhuyinglong.datastructures.queue; {
+class ArrayQueueDemo {
+}
+
+}
+
+package io.github.gozhuyinglong.datastructures.stack; {
+class StackDemo {
+}
+
+class StackDemoBalancedChar {
+}
+
+}
+
+package io.github.gozhuyinglong.datastructures.tree; {
+class AVLTreeDemo {
+}
+
+class BinarySearchTreeDemo {
+}
+
+class BinaryTreeDemo {
+}
+
+class BTreeDemo {
+}
+
+class TreeDemo {
+}
+
+}
+
+package io.github.gozhuyinglong.proxy; {
+class Foo {
+}
+
+class MyInvocationHandler {
+}
+
+class ProxyTest {
+}
+
+class RealFoo {
+}
+
+}
+
+package io.github.gozhuyinglong.reflection; {
+class Person {
+}
+
+class PersonAnnotation {
+}
+
+class PersonEnum {
+}
+
+class PersonInterface {
+}
+
+class PersonParent {
+}
+
+class ReflectionTest {
+}
+
+}
+
+package io.github.gozhuyinglong.utils; {
+class AsymmetricKeyUtil {
+}
+
+class CodeUtil {
+}
+
+class MDUtil {
+}
+
+class SymmetricKeyUtil {
+}
+
+}
+
+package io.github.gozhuyinglong.aio; {
+class AioClient {
+}
+
+class AioServer {
+}
+
+}
+
+package io.github.gozhuyinglong.bio; {
+class BioClient {
+}
+
+class BioServer {
+}
+
+}
+
+package io.github.gozhuyinglong.netty.client; {
+class NettyNioClient {
+}
+
+class NettyNioClientHandler {
+}
+
+}
+
+package io.github.gozhuyinglong.netty.server; {
+class NettyNioServer {
+}
+
+class NettyNioServerHandler {
+}
+
+}
+
+package io.github.gozhuyinglong.nio; {
+class NioClient {
+}
+
+class NioServer {
+}
+
+}
+
+package io.github.gozhuyinglong.importanalysis.config; {
+class Config {
+}
+
+class ConfigA {
+}
+
+class ConfigB {
+}
+
+class ConfigC {
+}
+
+class ConfigD {
+}
+
+class MyImportBeanDefinitionRegistrar {
+}
+
+class MyImportSelector {
+}
+
+}
+
+package io.github.gozhuyinglong.importanalysis; {
+class ImportDemo {
+}
+
+}
+
+package io.github.gozhuyinglong.config; {
+class RedisConfig {
+}
+
+}
+
+package io.github.gozhuyinglong.pojo; {
+class Person {
+}
+
+}
+
+package io.github.gozhuyinglong; {
+class RedisTemplateFastjsonApplication {
+}
+
+class RedisTest {
+}
+
+}
+
+package io.github.gozhuyinglong.wechatdevelop.config; {
+class RestTemplateConfig {
+}
+
+}
+
+package io.github.gozhuyinglong.wechatdevelop.controller; {
+class AuthTestController {
+}
+
+class WechatController {
+}
+
+}
+
+package io.github.gozhuyinglong.wechatdevelop.dto; {
+class TokenDTO {
+}
+
+}
+
+package io.github.gozhuyinglong.wechatdevelop.utils; {
+class JwtUtil {
+}
+
+}
+
+package io.github.gozhuyinglong.wechatdevelop; {
+class WechatDevelopApplication {
+}
+
+class WechatDevelopApplicationTests {
+}
+
+}
+
+SingletonTest -- SingletonDCL
+SingletonTest -- SingletonEager
+SingletonTest -- SingletonEnum
+SingletonTest -- SingletonInnerClass
+SingletonTest -- SingletonLazy
+SingletonTest -- Test
+FlyNoWay -- Fly
+FlyWithWings -- Fly
+QuackGuaGua -- Quack
+QuackNoWay -- Quack
+QuackZhiZhi -- Quack
+DecoyDuck -- Fly
+DecoyDuck -- FlyNoWay
+DecoyDuck -- Quack
+DecoyDuck -- QuackNoWay
+DecoyDuck -- Duck
+Duck -- Fly
+Duck -- Quack
+MallardDuck -- Fly
+MallardDuck -- FlyWithWings
+MallardDuck -- Quack
+MallardDuck -- QuackGuaGua
+MallardDuck -- Duck
+RedheadDuck -- Fly
+RedheadDuck -- FlyWithWings
+RedheadDuck -- Quack
+RedheadDuck -- QuackGuaGua
+RedheadDuck -- Duck
+RubberDuck -- Fly
+RubberDuck -- FlyNoWay
+RubberDuck -- Quack
+RubberDuck -- QuackZhiZhi
+RubberDuck -- Duck
+Test -- Fly
+Test -- Quack
+Test -- DecoyDuck
+Test -- Duck
+Test -- MallardDuck
+SparseArrayDemo -- ArrayDemo
+StackDemoBalancedChar -- StackDemo
+AVLTreeDemo -- TreeDemo
+BinarySearchTreeDemo -- TreeDemo
+BinaryTreeDemo -- TreeDemo
+BTreeDemo -- TreeDemo
+ProxyTest -- Test
+ProxyTest -- Foo
+ProxyTest -- MyInvocationHandler
+ProxyTest -- RealFoo
+RealFoo -- Foo
+PersonAnnotation -- Person
+PersonEnum -- Person
+PersonInterface -- Person
+PersonParent -- Person
+PersonParent -- PersonEnum
+ReflectionTest -- Test
+ReflectionTest -- Person
+ReflectionTest -- PersonAnnotation
+ReflectionTest -- PersonEnum
+NettyNioClient -- NettyNioClientHandler
+NettyNioClient -- NioClient
+NettyNioClientHandler -- NioClient
+NettyNioServer -- NettyNioServerHandler
+NettyNioServer -- NioServer
+NettyNioServerHandler -- NioServer
+Config -- ConfigA
+Config -- ConfigB
+Config -- ConfigC
+Config -- ConfigD
+Config -- MyImportBeanDefinitionRegistrar
+Config -- MyImportSelector
+MyImportBeanDefinitionRegistrar -- ConfigD
+MyImportSelector -- ConfigC
+ImportDemo -- Config
+ImportDemo -- ConfigA
+RedisConfig -- Config
+RedisTest -- Test
+RedisTest -- Person
+RestTemplateConfig -- Config
+AuthTestController -- Test
+AuthTestController -- JwtUtil
+WechatController -- TokenDTO
+WechatController -- JwtUtil
+WechatDevelopApplicationTests -- Test
+WechatDevelopApplicationTests -- WechatDevelopApplication
+@enduml

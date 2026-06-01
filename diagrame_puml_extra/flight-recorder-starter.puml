@@ -1,0 +1,250 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.actuator; {
+class FlightRecorderEndpoint {
+}
+
+class ReactiveFlightRecorderEndpoint {
+}
+
+class FlightRecorderEndpointTest {
+}
+
+class FlightRecorderStarterApplicationTests {
+}
+
+class ReactiveFlightRecorderEndpointTest {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.actuator.model; {
+class FlameGraph {
+}
+
+class FlightRecorderPublicSession {
+}
+
+class FlameGraphTest {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.configuration; {
+class FlightRecorderAutoConfiguration {
+}
+
+class FlightRecorderDynamicConfiguration {
+}
+
+class FlightRecorderPropertiesAutoConfiguration {
+}
+
+class ManagementConfiguration {
+}
+
+class TriggerConfiguration {
+}
+
+class WebFluxFlightRecorderConfiguration {
+}
+
+class WebMvcFlightRecorderConfiguration {
+}
+
+class FlightRecorderAutoConfigurationTest {
+}
+
+class TriggerConfigurationTest {
+}
+
+class WebFluxFlightRecorderConfigurationTest {
+}
+
+class WebMvcFlightRecorderConfigurationTest {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.controller; {
+class FlightRecorderStaticController {
+}
+
+class FlightRecorderStaticControllerHappyPathIntegrationTest {
+}
+
+class FlightRecorderStaticControllerTest {
+}
+
+class FRStaticControllerCustomManagementContextPathIntegrationTest {
+}
+
+class FRStaticControllerCustomManagementPortIntegrationTest {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.core; {
+class FlightRecorder {
+}
+
+class RecordingSession {
+}
+
+class StartRecordingCommand {
+}
+
+class FlightRecorderTest {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.trigger; {
+class MeterQuery {
+}
+
+class MicrometerAdapter {
+}
+
+class Trigger {
+}
+
+class TriggerChecker {
+}
+
+class MicrometerAdapterTest {
+}
+
+class SPELTest {
+}
+
+class TriggerCheckerTest {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter; {
+class DummyTestMainClass {
+}
+
+}
+
+package de.mirkosertic.flightrecorderstarter.fixtures; {
+class FlightRecorderStarterApplication {
+}
+
+}
+
+FlightRecorderEndpoint -- FlightRecorderPublicSession
+FlightRecorderEndpoint -- FlightRecorder
+FlightRecorderEndpoint -- StartRecordingCommand
+FlightRecorderPublicSession -- FlightRecorder
+ReactiveFlightRecorderEndpoint -- FlightRecorderEndpoint
+ReactiveFlightRecorderEndpoint -- FlightRecorderPublicSession
+ReactiveFlightRecorderEndpoint -- FlightRecorder
+ReactiveFlightRecorderEndpoint -- StartRecordingCommand
+FlightRecorderAutoConfiguration -- FlightRecorderDynamicConfiguration
+FlightRecorderAutoConfiguration -- FlightRecorderPropertiesAutoConfiguration
+FlightRecorderAutoConfiguration -- TriggerConfiguration
+FlightRecorderAutoConfiguration -- WebFluxFlightRecorderConfiguration
+FlightRecorderAutoConfiguration -- WebMvcFlightRecorderConfiguration
+FlightRecorderAutoConfiguration -- FlightRecorder
+FlightRecorderAutoConfiguration -- Trigger
+FlightRecorderDynamicConfiguration -- FlightRecorder
+FlightRecorderDynamicConfiguration -- Trigger
+FlightRecorderPropertiesAutoConfiguration -- FlightRecorder
+ManagementConfiguration -- FlightRecorderAutoConfiguration
+ManagementConfiguration -- FlightRecorderStaticController
+ManagementConfiguration -- FlightRecorder
+TriggerConfiguration -- FlightRecorderDynamicConfiguration
+TriggerConfiguration -- FlightRecorder
+TriggerConfiguration -- MicrometerAdapter
+TriggerConfiguration -- Trigger
+TriggerConfiguration -- TriggerChecker
+WebFluxFlightRecorderConfiguration -- FlightRecorderEndpoint
+WebFluxFlightRecorderConfiguration -- ReactiveFlightRecorderEndpoint
+WebFluxFlightRecorderConfiguration -- FlightRecorder
+WebMvcFlightRecorderConfiguration -- FlightRecorderEndpoint
+WebMvcFlightRecorderConfiguration -- FlightRecorder
+FlightRecorderStaticController -- FlameGraph
+FlightRecorderStaticController -- FlightRecorder
+FlightRecorder -- RecordingSession
+FlightRecorder -- StartRecordingCommand
+MicrometerAdapter -- MeterQuery
+Trigger -- StartRecordingCommand
+TriggerChecker -- FlightRecorderDynamicConfiguration
+TriggerChecker -- FlightRecorder
+TriggerChecker -- StartRecordingCommand
+TriggerChecker -- MicrometerAdapter
+TriggerChecker -- Trigger
+FlightRecorderEndpointTest -- FlightRecorderEndpoint
+FlightRecorderEndpointTest -- FlightRecorderPublicSession
+FlightRecorderEndpointTest -- FlightRecorder
+FlightRecorderStarterApplicationTests -- FlightRecorderPublicSession
+FlightRecorderStarterApplicationTests -- FlightRecorder
+FlightRecorderStarterApplicationTests -- FlightRecorderStarterApplication
+FlameGraphTest -- FlameGraph
+ReactiveFlightRecorderEndpointTest -- FlightRecorderEndpoint
+ReactiveFlightRecorderEndpointTest -- FlightRecorderPublicSession
+ReactiveFlightRecorderEndpointTest -- ReactiveFlightRecorderEndpoint
+ReactiveFlightRecorderEndpointTest -- FlightRecorder
+ReactiveFlightRecorderEndpointTest -- FlightRecorderEndpointTest
+FlightRecorderAutoConfigurationTest -- FlightRecorderAutoConfiguration
+FlightRecorderAutoConfigurationTest -- FlightRecorderDynamicConfiguration
+FlightRecorderAutoConfigurationTest -- FlightRecorderPropertiesAutoConfiguration
+FlightRecorderAutoConfigurationTest -- WebFluxFlightRecorderConfiguration
+FlightRecorderAutoConfigurationTest -- WebMvcFlightRecorderConfiguration
+FlightRecorderAutoConfigurationTest -- FlightRecorder
+TriggerConfigurationTest -- FlightRecorderAutoConfiguration
+TriggerConfigurationTest -- TriggerConfiguration
+TriggerConfigurationTest -- FlightRecorder
+TriggerConfigurationTest -- MicrometerAdapter
+TriggerConfigurationTest -- Trigger
+TriggerConfigurationTest -- TriggerChecker
+WebFluxFlightRecorderConfigurationTest -- FlightRecorderEndpoint
+WebFluxFlightRecorderConfigurationTest -- ReactiveFlightRecorderEndpoint
+WebFluxFlightRecorderConfigurationTest -- FlightRecorderAutoConfiguration
+WebFluxFlightRecorderConfigurationTest -- WebFluxFlightRecorderConfiguration
+WebFluxFlightRecorderConfigurationTest -- FlightRecorder
+WebMvcFlightRecorderConfigurationTest -- FlightRecorderEndpoint
+WebMvcFlightRecorderConfigurationTest -- FlightRecorderAutoConfiguration
+WebMvcFlightRecorderConfigurationTest -- WebMvcFlightRecorderConfiguration
+WebMvcFlightRecorderConfigurationTest -- FlightRecorder
+FlightRecorderStaticControllerHappyPathIntegrationTest -- FlightRecorderStaticController
+FlightRecorderStaticControllerHappyPathIntegrationTest -- FlightRecorder
+FlightRecorderStaticControllerHappyPathIntegrationTest -- FlightRecorderStarterApplication
+FlightRecorderStaticControllerTest -- FlightRecorderEndpoint
+FlightRecorderStaticControllerTest -- FlightRecorderStaticController
+FlightRecorderStaticControllerTest -- FlightRecorder
+FRStaticControllerCustomManagementContextPathIntegrationTest -- FlightRecorderStaticController
+FRStaticControllerCustomManagementContextPathIntegrationTest -- FlightRecorder
+FRStaticControllerCustomManagementContextPathIntegrationTest -- FlightRecorderStarterApplication
+FRStaticControllerCustomManagementPortIntegrationTest -- FlightRecorderStaticController
+FRStaticControllerCustomManagementPortIntegrationTest -- FlightRecorder
+FRStaticControllerCustomManagementPortIntegrationTest -- FlightRecorderStarterApplication
+FlightRecorderTest -- FlightRecorderPublicSession
+FlightRecorderTest -- FlightRecorderDynamicConfiguration
+FlightRecorderTest -- FlightRecorder
+FlightRecorderTest -- RecordingSession
+FlightRecorderTest -- StartRecordingCommand
+FlightRecorderStarterApplication -- FlightRecorder
+MicrometerAdapterTest -- FlightRecorder
+MicrometerAdapterTest -- MicrometerAdapter
+MicrometerAdapterTest -- FlightRecorderStarterApplication
+SPELTest -- FlightRecorder
+SPELTest -- MicrometerAdapter
+SPELTest -- FlightRecorderStarterApplication
+TriggerCheckerTest -- FlightRecorderAutoConfiguration
+TriggerCheckerTest -- FlightRecorderDynamicConfiguration
+TriggerCheckerTest -- FlightRecorder
+TriggerCheckerTest -- StartRecordingCommand
+TriggerCheckerTest -- MicrometerAdapter
+TriggerCheckerTest -- Trigger
+TriggerCheckerTest -- TriggerChecker
+TriggerCheckerTest -- FlightRecorderStarterApplication
+@enduml

@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Employer roles. The platform provides capabilities for bid, category, feedback. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailServiceImpl",
+          "UserService"
+        ],
+        "controllers": [
+          "LoginController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "MessageService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [
+          "JobService"
+        ],
+        "controllers": [
+          "JobController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "BidService"
+        ],
+        "controllers": [
+          "ProfileController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with abstract functionality, so that I can accomplish my abstract-related tasks.",
+        "services": [
+          "BidService"
+        ],
+        "controllers": [
+          "AbstractController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AbstractController[\"AbstractController\"]\n        BidController[\"BidController\"]\n        FeedbackController[\"FeedbackController\"]\n        HomeController[\"HomeController\"]\n        JobController[\"JobController\"]\n        LoginController[\"LoginController\"]\n        MessageController[\"MessageController\"]\n        ProfileController[\"ProfileController\"]\n    end\n    subgraph Data_Access\n        BidRepository[\"BidRepository\"]\n        CategoryRepository[\"CategoryRepository\"]\n        FeedbackRepository[\"FeedbackRepository\"]\n        JobRepository[\"JobRepository\"]\n        MessageRepository[\"MessageRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Security\n        UserDetailsImpl[\"UserDetailsImpl\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    subgraph Services\n        BidService[\"BidService\"]\n        CategoryService[\"CategoryService\"]\n        FeedbackService[\"FeedbackService\"]\n        JobService[\"JobService\"]\n        MessageService[\"MessageService\"]\n        UserDetailServiceImpl[\"UserDetailServiceImpl\"]\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

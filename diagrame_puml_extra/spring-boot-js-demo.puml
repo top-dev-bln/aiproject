@@ -1,0 +1,127 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.example.jsdemo; {
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class NpmVersionResolverTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class NpmVersionResolverTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class NpmVersionResolverTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class NpmVersionResolverTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class NpmVersionResolverTests {
+}
+
+class CompositeViewRenderer {
+}
+
+class JsDemoApplication {
+}
+
+class NpmVersionResolver {
+}
+
+class JsDemoApplicationTests {
+}
+
+class NpmVersionResolverTests {
+}
+
+}
+
+JsDemoApplicationTests -- JsDemoApplication
+NpmVersionResolverTests -- NpmVersionResolver
+@enduml

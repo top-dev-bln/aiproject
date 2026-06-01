@@ -1,0 +1,75 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package org.agoncal.quarkus.microservices.book; {
+class Book {
+}
+
+class BookMicroservice {
+}
+
+class BookResource {
+}
+
+class IsbnThirteen {
+}
+
+class NumberProxy {
+}
+
+class BookResourceTest {
+}
+
+class MockNumberProxy {
+}
+
+class NativeBookResourceIT {
+}
+
+}
+
+package org.agoncal.quarkus.microservices.number; {
+class IsbnNumbers {
+}
+
+class NumberMicroservice {
+}
+
+class NumberResource {
+}
+
+class NativeNumberResourceIT {
+}
+
+class NumberResourceTest {
+}
+
+}
+
+BookMicroservice -- Book
+BookResource -- Book
+BookResource -- NumberProxy
+BookResource -- IsbnNumbers
+NumberProxy -- IsbnThirteen
+NumberProxy -- IsbnNumbers
+BookResourceTest -- Book
+BookResourceTest -- BookResource
+MockNumberProxy -- IsbnThirteen
+MockNumberProxy -- NumberProxy
+MockNumberProxy -- IsbnNumbers
+NativeBookResourceIT -- Book
+NativeBookResourceIT -- BookResource
+NativeBookResourceIT -- BookResourceTest
+NumberResource -- IsbnNumbers
+NativeNumberResourceIT -- NumberResource
+NativeNumberResourceIT -- NumberResourceTest
+NumberResourceTest -- IsbnNumbers
+NumberResourceTest -- NumberResource
+@enduml

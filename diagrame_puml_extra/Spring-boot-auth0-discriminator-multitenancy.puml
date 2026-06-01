@@ -1,0 +1,226 @@
+@startuml
+package com.github.mdevloo.multi.tenancy.core; {
+class AppConstants {
+}
+
+class AbstractMockMvcTest {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.core.inventory.domain.inventory; {
+class Inventory {
+}
+
+class InventoryRepository {
+}
+
+class InventoryRepositoryTest {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.core.inventory.domain.vendor; {
+class Vendor {
+}
+
+class VendorRepository {
+}
+
+class VendorRepositoryTest {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.core.inventory.usecase.inventory; {
+class CreateNewInventory {
+}
+
+class FindInventory {
+}
+
+class GetAllInventory {
+}
+
+class InventoryCreationRequest {
+}
+
+class CreateNewInventoryTest {
+}
+
+class FindInventoryTest {
+}
+
+class GetAllInventoryTest {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.core.inventory.usecase.vendor; {
+class FindVendor {
+}
+
+class FindVendorTest {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.core.web.inventory; {
+class CreateInventoryRequestDTO {
+}
+
+class InventoryController {
+}
+
+class InventoryDTO {
+}
+
+class InventoryDTOConverter {
+}
+
+class InventoryControllerApiSecurityIntegrationTest {
+}
+
+class InventoryControllerIntegrationTest {
+}
+
+class InventoryDTOConverterTest {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.fwk.auth0.security; {
+class AudienceValidator {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.fwk; {
+class FlywayConfig {
+}
+
+class ObjectNotFoundException {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy.fwk.multitenancy; {
+class HibernateInterceptorConfiguration {
+}
+
+class HibernateMultiTenancyInterceptorBean {
+}
+
+class MultiTenancyRepository {
+}
+
+class TenantAssistance {
+}
+
+class TenantEntity {
+}
+
+class TenantInterceptor {
+}
+
+class TenantServiceAspect {
+}
+
+class UnknownTenantException {
+}
+
+}
+
+package com.github.mdevloo.multi.tenancy; {
+class MultiTenancyApplication {
+}
+
+class AbstractIntegrationTest {
+}
+
+class TransactionalExecutor {
+}
+
+}
+
+Inventory -- Vendor
+Inventory -- TenantEntity
+InventoryRepository -- Inventory
+Vendor -- TenantEntity
+VendorRepository -- Vendor
+CreateNewInventory -- Inventory
+CreateNewInventory -- InventoryRepository
+CreateNewInventory -- InventoryCreationRequest
+FindInventory -- Inventory
+FindInventory -- InventoryRepository
+FindInventory -- ObjectNotFoundException
+GetAllInventory -- Inventory
+GetAllInventory -- InventoryRepository
+InventoryCreationRequest -- Inventory
+FindVendor -- Vendor
+FindVendor -- VendorRepository
+FindVendor -- ObjectNotFoundException
+CreateInventoryRequestDTO -- Inventory
+InventoryController -- AppConstants
+InventoryController -- Inventory
+InventoryController -- CreateNewInventory
+InventoryController -- FindInventory
+InventoryController -- GetAllInventory
+InventoryController -- InventoryCreationRequest
+InventoryController -- CreateInventoryRequestDTO
+InventoryController -- InventoryDTO
+InventoryDTO -- Inventory
+InventoryDTOConverter -- Inventory
+InventoryDTOConverter -- InventoryDTO
+SecurityConfig -- AppConstants
+SecurityConfig -- AudienceValidator
+HibernateMultiTenancyInterceptorBean -- TenantInterceptor
+TenantAssistance -- UnknownTenantException
+TenantInterceptor -- TenantAssistance
+TenantInterceptor -- TenantEntity
+TenantServiceAspect -- TenantAssistance
+TenantServiceAspect -- TenantEntity
+MultiTenancyApplication -- MultiTenancyRepository
+AbstractIntegrationTest -- MultiTenancyApplication
+AbstractIntegrationTest -- TransactionalExecutor
+AbstractMockMvcTest -- AbstractIntegrationTest
+InventoryRepositoryTest -- Inventory
+InventoryRepositoryTest -- InventoryRepository
+InventoryRepositoryTest -- Vendor
+InventoryRepositoryTest -- AbstractIntegrationTest
+VendorRepositoryTest -- Inventory
+VendorRepositoryTest -- Vendor
+VendorRepositoryTest -- VendorRepository
+VendorRepositoryTest -- AbstractIntegrationTest
+CreateNewInventoryTest -- Inventory
+CreateNewInventoryTest -- CreateNewInventory
+CreateNewInventoryTest -- InventoryCreationRequest
+CreateNewInventoryTest -- AbstractIntegrationTest
+FindInventoryTest -- Inventory
+FindInventoryTest -- FindInventory
+FindInventoryTest -- ObjectNotFoundException
+FindInventoryTest -- AbstractIntegrationTest
+GetAllInventoryTest -- Inventory
+GetAllInventoryTest -- GetAllInventory
+GetAllInventoryTest -- AbstractIntegrationTest
+FindVendorTest -- Vendor
+FindVendorTest -- FindVendor
+FindVendorTest -- ObjectNotFoundException
+FindVendorTest -- AbstractIntegrationTest
+InventoryControllerApiSecurityIntegrationTest -- AppConstants
+InventoryControllerApiSecurityIntegrationTest -- Inventory
+InventoryControllerApiSecurityIntegrationTest -- InventoryController
+InventoryControllerApiSecurityIntegrationTest -- AbstractMockMvcTest
+InventoryControllerIntegrationTest -- AppConstants
+InventoryControllerIntegrationTest -- Inventory
+InventoryControllerIntegrationTest -- CreateInventoryRequestDTO
+InventoryControllerIntegrationTest -- InventoryController
+InventoryControllerIntegrationTest -- ObjectNotFoundException
+InventoryControllerIntegrationTest -- AbstractMockMvcTest
+InventoryDTOConverterTest -- Inventory
+InventoryDTOConverterTest -- InventoryDTO
+InventoryDTOConverterTest -- InventoryDTOConverter
+@enduml

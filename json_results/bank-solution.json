@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Customer roles. The platform provides capabilities for account command handler, i account command handler, i transaction command handler. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "AccountQueryHandler",
+          "IAccountQueryHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with account functionality, so that I can accomplish my account-related tasks.",
+        "services": [
+          "AccountCommandHandler",
+          "IAccountCommandHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with account transaction functionality, so that I can accomplish my account transaction-related tasks.",
+        "services": [
+          "AccountCommandHandler",
+          "IAccountCommandHandler"
+        ],
+        "controllers": [
+          "AccountTransactionController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with customer functionality, so that I can accomplish my customer-related tasks.",
+        "services": [
+          "CustomerService",
+          "ICustomerService"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use account command handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AccountCommandHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AccountCommandHandler[\"AccountCommandHandler\"]\n        IAccountCommandHandler[\"IAccountCommandHandler\"]\n        ITransactionCommandHandler[\"ITransactionCommandHandler\"]\n        TransactionCommandHandler[\"TransactionCommandHandler\"]\n        AccountEventSourcingHandler[\"AccountEventSourcingHandler\"]\n        TransactionEventSourcingHandler[\"TransactionEventSourcingHandler\"]\n        AccountEventHandler[\"AccountEventHandler\"]\n        IAccountEventHandler[\"IAccountEventHandler\"]\n        ITransactionEventHandler[\"ITransactionEventHandler\"]\n        TransactionEventHandler[\"TransactionEventHandler\"]\n        AccountQueryHandler[\"AccountQueryHandler\"]\n        IAccountQueryHandler[\"IAccountQueryHandler\"]\n        ITransactionQueryHandler[\"ITransactionQueryHandler\"]\n        TransactionQueryHandler[\"TransactionQueryHandler\"]\n        EventSourcingHandler[\"EventSourcingHandler\"]\n        CustomerService[\"CustomerService\"]\n        ICustomerService[\"ICustomerService\"]\n    end\n    subgraph Infrastructure\n        JacksonConfig[\"JacksonConfig\"]\n        RabbitMQConfig[\"RabbitMQConfig\"]\n        AccountEventProducer[\"AccountEventProducer\"]\n        AccountEventStore[\"AccountEventStore\"]\n        BaseCommandDispatcher[\"BaseCommandDispatcher\"]\n        TransactionEventProducer[\"TransactionEventProducer\"]\n        TransactionEventStore[\"TransactionEventStore\"]\n        MyBatisConfig[\"MyBatisConfig\"]\n        BaseQueryDispatcher[\"BaseQueryDispatcher\"]\n        AccountEventConsumer[\"AccountEventConsumer\"]\n        IAccountEventConsumer[\"IAccountEventConsumer\"]\n        ITransactionEventConsumer[\"ITransactionEventConsumer\"]\n        TransactionEventConsumer[\"TransactionEventConsumer\"]\n        Constants[\"Constants\"]\n        BaseResponse[\"BaseResponse\"]\n        TransactionDirection[\"TransactionDirection\"]\n        TransactionStatus[\"TransactionStatus\"]\n        AccountBalanceEvent[\"AccountBalanceEvent\"]\n        AccountOpenedEvent[\"AccountOpenedEvent\"]\n        CustomerCreatedEvent[\"CustomerCreatedEvent\"]\n        FundsDepositedEvent[\"FundsDepositedEvent\"]\n        FundsWithDrawnEvent[\"FundsWithDrawnEvent\"]\n        TransactionCreatedEvent[\"TransactionCreatedEvent\"]\n        TransactionFailedEvent[\"TransactionFailedEvent\"]\n        AccountAlreadyExists[\"AccountAlreadyExists\"]\n        GenerateUuidUtils[\"GenerateUuidUtils\"]\n        ValidationHelper[\"ValidationHelper\"]\n        CommandDispatcher[\"CommandDispatcher\"]\n        EventStore[\"EventStore\"]\n        QueryDispatcher[\"QueryDispatcher\"]\n    end\n    subgraph Controllers\n        AccountController[\"AccountController\"]\n        AccountTransactionController[\"AccountTransactionController\"]\n        CustomerController[\"CustomerController\"]\n    end\n    subgraph Data_Access\n        EventStoreRepository[\"EventStoreRepository\"]\n        AccountBalanceMapper[\"AccountBalanceMapper\"]\n        AccountMapper[\"AccountMapper\"]\n        TransactionMapper[\"TransactionMapper\"]\n        ObjectMapperUtils[\"ObjectMapperUtils\"]\n        CustomerMapper[\"CustomerMapper\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

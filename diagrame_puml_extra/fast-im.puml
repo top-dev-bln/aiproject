@@ -1,0 +1,122 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.dpwgc.fastim.config; {
+class IMConfig {
+}
+
+class InterceptorConfig {
+}
+
+class RedisConfig {
+}
+
+class WebSocketConfig {
+}
+
+}
+
+package com.dpwgc.fastim.controller; {
+class GroupController {
+}
+
+class TestController {
+}
+
+class UserController {
+}
+
+}
+
+package com.dpwgc.fastim.dao; {
+class GroupObject {
+}
+
+class MessageList {
+}
+
+class MessageObject {
+}
+
+}
+
+package com.dpwgc.fastim; {
+class FastimApplication {
+}
+
+class FastimApplicationTests {
+}
+
+}
+
+package com.dpwgc.fastim.interceptor; {
+class ApiInterceptor {
+}
+
+}
+
+package com.dpwgc.fastim.server; {
+class GroupChatServer {
+}
+
+class GroupListServer {
+}
+
+class RedisListenServer {
+}
+
+}
+
+package com.dpwgc.fastim.service; {
+class GroupService {
+}
+
+class UserService {
+}
+
+}
+
+package com.dpwgc.fastim.util; {
+class LoginUtil {
+}
+
+class RedisUtil {
+}
+
+class ResultUtil {
+}
+
+}
+
+IMConfig -- GroupChatServer
+InterceptorConfig -- ApiInterceptor
+RedisConfig -- MessageList
+RedisConfig -- RedisListenServer
+GroupController -- GroupService
+GroupController -- ResultUtil
+UserController -- UserService
+UserController -- ResultUtil
+ApiInterceptor -- LoginUtil
+ApiInterceptor -- ResultUtil
+GroupChatServer -- MessageList
+GroupChatServer -- MessageObject
+GroupChatServer -- RedisListenServer
+GroupChatServer -- LoginUtil
+GroupChatServer -- RedisUtil
+GroupListServer -- IMConfig
+GroupListServer -- GroupObject
+GroupListServer -- LoginUtil
+GroupListServer -- RedisUtil
+RedisListenServer -- MessageList
+GroupService -- MessageObject
+GroupService -- RedisUtil
+GroupService -- ResultUtil
+UserService -- RedisUtil
+UserService -- ResultUtil
+LoginUtil -- RedisUtil
+FastimApplicationTests -- FastimApplication
+@enduml

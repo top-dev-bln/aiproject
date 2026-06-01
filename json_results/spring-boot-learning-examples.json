@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Candidate, User roles. The platform provides capabilities for mybatis plus meta object handler, user, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserServiceImpl",
+          "UserService",
+          "MenuServiceImpl"
+        ],
+        "controllers": [
+          "UserController",
+          "TokenController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "MybatisPlusMetaObjectHandler"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [
+          "QuartzJobServiceImpl",
+          "QuartzJobService"
+        ],
+        "controllers": [
+          "QuartzJobController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with minio functionality, so that I can accomplish my minio-related tasks.",
+        "services": [
+          "MybatisPlusMetaObjectHandler"
+        ],
+        "controllers": [
+          "MinioController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with hello functionality, so that I can accomplish my hello-related tasks.",
+        "services": [
+          "MybatisPlusMetaObjectHandler"
+        ],
+        "controllers": [
+          "HelloController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CodeMessageConfiguration[\"CodeMessageConfiguration\"]\n        CacheConstant[\"CacheConstant\"]\n        Constant[\"Constant\"]\n        IdentityConstant[\"IdentityConstant\"]\n        PatternConstant[\"PatternConstant\"]\n        StringConstant[\"StringConstant\"]\n        CommonUtil[\"CommonUtil\"]\n        DateUtil[\"DateUtil\"]\n        GenericJacksonUtil[\"GenericJacksonUtil\"]\n        RequestUtil[\"RequestUtil\"]\n        ResponseUtil[\"ResponseUtil\"]\n        DruidConfiguration[\"DruidConfiguration\"]\n        Knife4jConfiguration[\"Knife4jConfiguration\"]\n        ExcelUtil[\"ExcelUtil\"]\n        JsonUtil[\"JsonUtil\"]\n        InterceptorConfiguration[\"InterceptorConfiguration\"]\n        MinioConfiguration[\"MinioConfiguration\"]\n        MinioProperties[\"MinioProperties\"]\n        FileUtil[\"FileUtil\"]\n        MinioUtil[\"MinioUtil\"]\n        QuartzConfiguration[\"QuartzConfiguration\"]\n        WebSocketConfiguration[\"WebSocketConfiguration\"]\n        WebSocketConstant[\"WebSocketConstant\"]\n    end\n    subgraph Data_Access\n        CustomBaseMapper[\"CustomBaseMapper\"]\n        UserMapper[\"UserMapper\"]\n        MenuMapper[\"MenuMapper\"]\n        RoleMapper[\"RoleMapper\"]\n        RoleMenuMapper[\"RoleMenuMapper\"]\n        UserRoleMapper[\"UserRoleMapper\"]\n    end\n    subgraph Security\n        MyBatisPlusConfiguration[\"MyBatisPlusConfiguration\"]\n        BaseEntity[\"BaseEntity\"]\n        AuthorizeInterceptor[\"AuthorizeInterceptor\"]\n        SecurityExceptionAdvice[\"SecurityExceptionAdvice\"]\n        LoginUser[\"LoginUser\"]\n        CommonSecurityConfiguration[\"CommonSecurityConfiguration\"]\n        JacksonConfiguration[\"JacksonConfiguration\"]\n        RedisConfiguration[\"RedisConfiguration\"]\n        WebConfiguration[\"WebConfiguration\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        TokenConstant[\"TokenConstant\"]\n        UserStatusEnum[\"UserStatusEnum\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        RestAuthenticationEntryPoint[\"RestAuthenticationEntryPoint\"]\n        MenuDO[\"MenuDO\"]\n        RoleDO[\"RoleDO\"]\n        RoleMenuDO[\"RoleMenuDO\"]\n        UserRoleDO[\"UserRoleDO\"]\n        SqlFilterArgumentResolver[\"SqlFilterArgumentResolver\"]\n        JwtUtil[\"JwtUtil\"]\n        RedisUtil[\"RedisUtil\"]\n        SecurityUtil[\"SecurityUtil\"]\n    end\n    subgraph Controllers\n        OrderController[\"OrderController\"]\n        UserController[\"UserController\"]\n        TokenController[\"TokenController\"]\n        MinioController[\"MinioController\"]\n        QuartzJobController[\"QuartzJobController\"]\n        HelloController[\"HelloController\"]\n        WebSocketController[\"WebSocketController\"]\n    end\n    subgraph Services\n        MybatisPlusMetaObjectHandler[\"MybatisPlusMetaObjectHandler\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserService[\"UserService\"]\n        QuartzJobServiceImpl[\"QuartzJobServiceImpl\"]\n        QuartzJobService[\"QuartzJobService\"]\n        LogoutHandler[\"LogoutHandler\"]\n        LogoutSuccessHandler[\"LogoutSuccessHandler\"]\n        RestAccessDeniedHandler[\"RestAccessDeniedHandler\"]\n        MenuServiceImpl[\"MenuServiceImpl\"]\n        RoleServiceImpl[\"RoleServiceImpl\"]\n        MenuService[\"MenuService\"]\n        RoleService[\"RoleService\"]\n        DefaultWebSocketHandler[\"DefaultWebSocketHandler\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

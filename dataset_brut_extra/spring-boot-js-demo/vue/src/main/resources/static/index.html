@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Demo</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width" />
+	<base href="/" />
+	<link rel="stylesheet" type="text/css" href="/npm/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/npm/@springio/utils/style.css" />
+	<script async src="/npm/es-module-shims"></script>
+	<script type="importmap">
+		{
+			"imports": {
+				"bootstrap": "/npm/bootstrap",
+				"@popperjs/core": "/npm/@popperjs/core",
+				"@hotwired/turbo": "/npm/hotwired__turbo",
+				"chart.js": "/npm/chart.js",
+				"vue": "/npm/vue/dist/vue.esm.browser.js",
+				"@springio/utils": "/npm/@springio/utils"
+			}
+		}
+	</script>
+	<script type="module">
+		import 'bootstrap';
+		import '@springio/utils';
+	</script>
+	<script type="module">
+		import * as Turbo from '@hotwired/turbo';
+		Turbo.connectStreamSource(new EventSource("/stream"))
+	</script>
+</head>
+
+<body>
+	<header>
+		<h1>Demo</h1>
+		<nav class="nav nav-tabs">
+			<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#message" href="#">Message</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#stream" href="#">Stream</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#test" href="#">Test</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#docs" href="#">Docs</a>
+			<a class="nav-link" data-bs-toggle="tab" data-bs-target="#chart" href="#">Chart</a>
+		</nav>
+	</header>
+	<main>
+		<br />
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="message" role="tabpanel">
+				<div class="container">
+					<div id="auth">
+						{{user}}
+					</div>
+					<div id="greeting">{{greeting}}</div>
+					<input id="name" name="value" type="text" v-model="name" />
+					<button class="btn btn-primary" v-on:click="greet">Greet</button>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="stream" role="tabpanel">
+				<div class="container">
+					<div id="load"></div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="test" role="tabpanel">
+				<div class="container" id="frame">
+					<div id="hi" v-html="html"></div>
+					<button class="btn btn-primary" v-on:click="hello">Fetch</button>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="docs" role="tabpanel">
+				<div class="container" title="Content">
+					<div class="content primary">
+						<div class="title">One</div>
+						<div class="content">Some content</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Two</div>
+						<div class="content">Secondary</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Three</div>
+						<div class="content">Third option</div>
+					</div>
+				</div>
+				<div class="container" title="Another">
+					<div class="content primary">
+						<div class="title">One</div>
+						<div class="content">Some more content</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Two</div>
+						<div class="content">Secondary stuff</div>
+					</div>
+					<div class="content secondary">
+						<div class="title">Three</div>
+						<div class="content">Third option again</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="chart" role="tabpanel">
+				<div class="container">
+					<canvas id="canvas"></canvas>
+				</div>
+				<div class="container">
+					<button class="btn btn-primary" v-on:click="clear">Clear</button>
+					<button class="btn btn-primary" v-on:click="bar">Bar</button>
+					<button class="btn btn-primary" v-on:click="pie">Pie</button>
+					<button class="btn btn-primary" v-on:click="doughnut">Doughnut</button>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script type="module">
+		import Vue from 'vue';
+
+		import { Chart, BarController, BarElement, PieController, ArcElement, LinearScale, CategoryScale, Title, Legend } from 'chart.js';
+		Chart.register(BarController, BarElement, PieController, ArcElement, LinearScale, CategoryScale, Title, Legend);
+
+		const ChartHandling = {
+			data: {
+				active: null
+			},
+			methods: {
+				pops: function (type, legend) {
+					let chart = this;
+					this.clear();
+					fetch("/pops").then(response => {
+						response.json().then(data => {
+							data.type = type;
+							data.options.plugins.legend.display = legend;
+							chart.active = new Chart(document.getElementById("canvas"), data);
+						});
+					});
+				},
+				clear() {
+					if (this.active) {
+						this.active.destroy();
+					}
+				},
+				bar() {
+					this.pops("bar", false);
+				},
+				pie() {
+					this.pops("pie", true);
+				},
+				doughnut() {
+					this.pops("doughnut", true);
+				}
+			}
+		}
+
+		new Vue(ChartHandling).$mount("#chart");
+	</script>
+	<script type="module">
+		import Vue from 'vue';
+
+		const EventHandling = {
+			data() {
+				return {
+					greeting: '',
+					name: '',
+					user: 'Unauthenticated'
+				}
+			},
+			created: function () {
+				let hello = this;
+				fetch("/user").then(response => {
+					response.json().then(data => {
+						hello.user = `Logged in as: ${data.name}`;
+					});
+				});
+			},
+			methods: {
+				greet() {
+					this.greeting = 'Hello, ' + this.name + '!';
+				},
+			}
+		}
+
+		new Vue(EventHandling).$mount("#message");
+	</script>
+	<script type="module">
+		import Vue from 'vue';
+
+		const HelloHandling = {
+			data: {
+				html: ''
+			},
+			methods: {
+				hello() {
+					const handler = this;
+					fetch("/test").then(response => {
+						response.text().then(data => {
+							handler.html = data;
+						});
+					});
+				},
+			}
+		}
+
+		new Vue(HelloHandling).$mount("#test");
+	</script>
+
+	<script type="module">
+		var events = new EventSource("/stream");
+		events.onmessage = e => {
+			document.getElementById("load").innerHTML = e.data;
+		}
+	</script>
+
+</body>
+
+</html>

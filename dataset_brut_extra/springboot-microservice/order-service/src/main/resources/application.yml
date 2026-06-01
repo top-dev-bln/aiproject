@@ -1,0 +1,85 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ORDER-SERVICE
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST:localhost:5432}/microservice-ecommerce?schema=order_schema
+    username: postgres
+    password: MohammadN@sr13804804
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTHORIZATION_SERVER_URI:http://auth-server:9000}
+      client:
+        registration:
+          client-internal:
+            provider: spring
+            client-id: ecommerce-client
+            client-secret: ecommerce-secret
+            authorization-grant-type: client_credentials
+            scope: internal,read,write
+
+        provider:
+          spring:
+            issuer-uri: ${AUTHORIZATION_SERVER_URI:http://auth-server:9000}
+
+
+  config:
+    import: optional:configserver:${CONFIG_SERVER_URI:http://localhost:8888}
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+        permittedNumberOfCallsInHalfOpenState: 6
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        registerHealthIndicator: true
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        ignoreExceptions:
+          - com.nasr.orderservice.exception.ExternalServiceException
+
+    instances:
+      productService:
+        baseConfig: default
+      orderHandlerService:
+        baseConfig: default
+
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 3s
+        cancelRunningFuture: true
+    instances:
+      productService:
+        baseConfig: default
+      orderHandlerService:
+        baseConfig: default
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 500ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+    instances:
+      productService:
+        baseConfig: default
+
+logging:
+  level:
+    io.r2dbc.postgresql.QUERY: DEBUG
+    io.r2dbc.postgresql.PARAM: DEBUG

@@ -1,0 +1,98 @@
+@startuml
+package examples.spring.project.benchmarks; {
+class JsonPerformance {
+}
+
+}
+
+package examples.spring.project; {
+class Body {
+}
+
+class SpringSecurityJwtExampleApplication {
+}
+
+}
+
+package examples.spring.project.config; {
+class CorsConfig {
+}
+
+class InvalidAuthenticationEntryPoint {
+}
+
+class InvalidJwtAuthenticationException {
+}
+
+class SecurityConfig {
+}
+
+class SecurityUserDetails {
+}
+
+class SecurityUserDetailsService {
+}
+
+}
+
+package examples.spring.project.config.jwt; {
+class JwtTokenOncePerRequestFilter {
+}
+
+class JwtTokenProvider {
+}
+
+}
+
+package examples.spring.project.exception; {
+class CustomExceptionHandler {
+}
+
+}
+
+package examples.spring.project.model1; {
+class Model1Controller {
+}
+
+class Model1Pojo {
+}
+
+}
+
+package examples.spring.project.users; {
+class AuthenticationController {
+}
+
+class UserController {
+}
+
+class UserPojo {
+}
+
+}
+
+package examples.spring.project.passwdtools; {
+class PasswordTools {
+}
+
+}
+
+JsonPerformance -- Body
+JwtTokenOncePerRequestFilter -- JwtTokenProvider
+JwtTokenProvider -- Body
+JwtTokenProvider -- InvalidJwtAuthenticationException
+JwtTokenProvider -- SecurityUserDetails
+SecurityConfig -- InvalidAuthenticationEntryPoint
+SecurityConfig -- JwtTokenOncePerRequestFilter
+SecurityConfig -- JwtTokenProvider
+SecurityUserDetailsService -- SecurityUserDetails
+CustomExceptionHandler -- Body
+CustomExceptionHandler -- InvalidJwtAuthenticationException
+Model1Controller -- Body
+Model1Controller -- Model1Pojo
+AuthenticationController -- Body
+AuthenticationController -- JwtTokenProvider
+AuthenticationController -- SecurityUserDetails
+UserController -- Body
+UserController -- UserPojo
+@enduml

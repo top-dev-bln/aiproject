@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Admin, Candidate roles. The platform provides capabilities for custom client details, custom user details, group. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include file management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "CustomUserDetailsService"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "FileSystemStorageService"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "AbstractStorageService",
+          "StorageService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with customer functionality, so that I can accomplish my customer-related tasks.",
+        "services": [
+          "CustomClientDetailsService",
+          "CustomUserDetailsService"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to interact with hello functionality, so that I can accomplish my hello-related tasks.",
+        "services": [
+          "CustomClientDetailsService"
+        ],
+        "controllers": [
+          "HelloController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AdminAuth[\"AdminAuth\"]\n        Customer[\"Customer\"]\n        Group[\"Group\"]\n        OauthClientDetails[\"OauthClientDetails\"]\n        Permission[\"Permission\"]\n        QueryFilter[\"QueryFilter\"]\n        AuthorizationServerConfig[\"AuthorizationServerConfig\"]\n        CustomAccessTokenConverter[\"CustomAccessTokenConverter\"]\n        CustomJdbcAuthorizationCodeServices[\"CustomJdbcAuthorizationCodeServices\"]\n        CustomPasswordEncoder[\"CustomPasswordEncoder\"]\n        CustomTokenRequest[\"CustomTokenRequest\"]\n        CustomUserAuthenticationProvider[\"CustomUserAuthenticationProvider\"]\n        Encryption[\"Encryption\"]\n        EndPointList[\"EndPointList\"]\n        FixSerialVersionUUID[\"FixSerialVersionUUID\"]\n        ResourceServerConfig[\"ResourceServerConfig\"]\n        ScopeMappingOAuth2RequestFactory[\"ScopeMappingOAuth2RequestFactory\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        RoleChecker[\"RoleChecker\"]\n        PrincipalAdminDetail[\"PrincipalAdminDetail\"]\n    end\n    subgraph Data_Access\n        ICustomer[\"ICustomer\"]\n        IGroup[\"IGroup\"]\n        IOauthClientDetails[\"IOauthClientDetails\"]\n        IdSeqRepository[\"IdSeqRepository\"]\n        ImageFileRepository[\"ImageFileRepository\"]\n    end\n    subgraph Services\n        CustomClientDetailsService[\"CustomClientDetailsService\"]\n        CustomUserDetailsService[\"CustomUserDetailsService\"]\n        GroupService[\"GroupService\"]\n        RestResponsePage[\"RestResponsePage\"]\n        GroupServiceImpl[\"GroupServiceImpl\"]\n        AbstractStorageService[\"AbstractStorageService\"]\n        StorageService[\"StorageService\"]\n        FileSystemStorageService[\"FileSystemStorageService\"]\n    end\n    subgraph Infrastructure\n        AppConfig[\"AppConfig\"]\n        FileBean[\"FileBean\"]\n        FileUtil[\"FileUtil\"]\n        SuffixBean[\"SuffixBean\"]\n    end\n    subgraph Controllers\n        CustomerController[\"CustomerController\"]\n        FileController[\"FileController\"]\n        HelloController[\"HelloController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

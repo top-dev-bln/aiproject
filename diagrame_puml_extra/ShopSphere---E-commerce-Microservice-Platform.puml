@@ -1,0 +1,867 @@
+@startuml
+package com.shopsphere.gateway; {
+class ApiGatewayApplication {
+}
+
+}
+
+package com.shopsphere.gateway.config; {
+class CorsConfig {
+}
+
+class GatewayConfig {
+}
+
+}
+
+package com.shopsphere.gateway.filter; {
+class JwtAuthenticationFilter {
+}
+
+}
+
+package com.shopsphere.cart; {
+class CartServiceApplication {
+}
+
+}
+
+package com.shopsphere.cart.controller; {
+class CartController {
+}
+
+}
+
+package com.shopsphere.cart.dto; {
+class CartDTO {
+}
+
+class CartItemDTO {
+}
+
+}
+
+package com.shopsphere.cart.mapper; {
+class CartMapper {
+}
+
+}
+
+package com.shopsphere.cart.model; {
+class Cart {
+}
+
+class CartItem {
+}
+
+}
+
+package com.shopsphere.cart.repository; {
+class CartRepository {
+}
+
+}
+
+package com.shopsphere.cart.service; {
+class CartService {
+}
+
+}
+
+package com.shopsphere.cart.service.impl; {
+class CartServiceImpl {
+}
+
+}
+
+package com.shopsphere.common.controller; {
+class BaseController {
+}
+
+}
+
+package com.shopsphere.common.exception; {
+class BadRequestException {
+}
+
+class BaseException {
+}
+
+class ErrorResponse {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class UnauthorizedException {
+}
+
+class ValidationErrorResponse {
+}
+
+}
+
+package com.shopsphere.common.model; {
+class BaseEntity {
+}
+
+}
+
+package com.shopsphere.common.repository; {
+class BaseRepository {
+}
+
+}
+
+package com.shopsphere.common.response; {
+class ApiResponse {
+}
+
+}
+
+package com.shopsphere.common.security; {
+class JwtUtil {
+}
+
+}
+
+package com.shopsphere.common.service; {
+class BaseService {
+}
+
+}
+
+package com.shopsphere.common.service.impl; {
+class BaseServiceImpl {
+}
+
+}
+
+package com.shopsphere.notification.controller; {
+class NotificationController {
+}
+
+}
+
+package com.shopsphere.notification.dto; {
+class NotificationDTO {
+}
+
+}
+
+package com.shopsphere.notification.mapper; {
+class NotificationMapper {
+}
+
+}
+
+package com.shopsphere.notification.model; {
+class Notification {
+}
+
+}
+
+package com.shopsphere.notification; {
+class NotificationServiceApplication {
+}
+
+}
+
+package com.shopsphere.notification.repository; {
+class NotificationRepository {
+}
+
+}
+
+package com.shopsphere.notification.service.impl; {
+class NotificationServiceImpl {
+}
+
+}
+
+package com.shopsphere.notification.service; {
+class NotificationService {
+}
+
+}
+
+package com.shopsphere.order.client; {
+class NotificationServiceClient {
+}
+
+class ProductServiceClient {
+}
+
+}
+
+package com.shopsphere.order.config; {
+class OrderServiceConfig {
+}
+
+class RedisConfig {
+}
+
+}
+
+package com.shopsphere.order.controller; {
+class OrderController {
+}
+
+}
+
+package com.shopsphere.order.dto; {
+class OrderDTO {
+}
+
+class OrderItemDTO {
+}
+
+}
+
+package com.shopsphere.order.exception; {
+class ErrorResponse {
+}
+
+class GlobalExceptionHandler {
+}
+
+class OrderNotFoundException {
+}
+
+}
+
+package com.shopsphere.order.mapper; {
+class OrderMapper {
+}
+
+}
+
+package com.shopsphere.order.model; {
+class Order {
+}
+
+class OrderItem {
+}
+
+}
+
+package com.shopsphere.order; {
+class OrderServiceApplication {
+}
+
+}
+
+package com.shopsphere.order.repository; {
+class OrderRepository {
+}
+
+}
+
+package com.shopsphere.order.service.impl; {
+class OrderServiceImpl {
+}
+
+}
+
+package com.shopsphere.order.service; {
+class OrderService {
+}
+
+}
+
+package com.shopsphere.payment.controller; {
+class PaymentController {
+}
+
+}
+
+package com.shopsphere.payment.dto; {
+class PaymentDTO {
+}
+
+}
+
+package com.shopsphere.payment.mapper; {
+class PaymentMapper {
+}
+
+}
+
+package com.shopsphere.payment.model; {
+class Payment {
+}
+
+}
+
+package com.shopsphere.payment; {
+class PaymentServiceApplication {
+}
+
+}
+
+package com.shopsphere.payment.repository; {
+class PaymentRepository {
+}
+
+}
+
+package com.shopsphere.payment.service.impl; {
+class PaymentServiceImpl {
+}
+
+}
+
+package com.shopsphere.payment.service; {
+class PaymentService {
+}
+
+}
+
+package com.shopsphere.product.config; {
+class ProductServiceConfig {
+}
+
+}
+
+package com.shopsphere.product.controller; {
+class ProductController {
+}
+
+}
+
+package com.shopsphere.product.dto; {
+class ProductDTO {
+}
+
+}
+
+package com.shopsphere.product.mapper; {
+class ProductMapper {
+}
+
+}
+
+package com.shopsphere.product.model; {
+class Product {
+}
+
+}
+
+package com.shopsphere.product; {
+class ProductServiceApplication {
+}
+
+}
+
+package com.shopsphere.product.repository.elasticsearch; {
+class ProductElasticsearchRepository {
+}
+
+}
+
+package com.shopsphere.product.repository; {
+class ProductRepository {
+}
+
+}
+
+package com.shopsphere.product.service.impl; {
+class ProductServiceImpl {
+}
+
+}
+
+package com.shopsphere.product.service; {
+class ProductService {
+}
+
+}
+
+package com.shopsphere.review.controller; {
+class ReviewController {
+}
+
+}
+
+package com.shopsphere.review.dto; {
+class ReviewDTO {
+}
+
+}
+
+package com.shopsphere.review.mapper; {
+class ReviewMapper {
+}
+
+}
+
+package com.shopsphere.review.model; {
+class Review {
+}
+
+}
+
+package com.shopsphere.review.repository; {
+class ReviewRepository {
+}
+
+}
+
+package com.shopsphere.review; {
+class ReviewServiceApplication {
+}
+
+}
+
+package com.shopsphere.review.service.impl; {
+class ReviewServiceImpl {
+}
+
+}
+
+package com.shopsphere.review.service; {
+class ReviewService {
+}
+
+class ReviewServiceTest {
+}
+
+}
+
+package com.shopsphere.review.integration; {
+class ReviewIntegrationTest {
+}
+
+}
+
+package com.shopsphere.shipping.controller; {
+class ShipmentController {
+}
+
+}
+
+package com.shopsphere.shipping.dto; {
+class ShipmentDTO {
+}
+
+}
+
+package com.shopsphere.shipping.mapper; {
+class ShipmentMapper {
+}
+
+}
+
+package com.shopsphere.shipping.model; {
+class Shipment {
+}
+
+}
+
+package com.shopsphere.shipping.repository; {
+class ShipmentRepository {
+}
+
+}
+
+package com.shopsphere.shipping.service.impl; {
+class ShipmentServiceImpl {
+}
+
+}
+
+package com.shopsphere.shipping.service; {
+class ShipmentService {
+}
+
+}
+
+package com.shopsphere.shipping; {
+class ShippingServiceApplication {
+}
+
+}
+
+package com.shopsphere.user.config; {
+class JwtAuthFilter {
+}
+
+class PasswordEncoderConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package com.shopsphere.user.controller; {
+class AuthController {
+}
+
+class UserController {
+}
+
+}
+
+package com.shopsphere.user.dto; {
+class AuthResponse {
+}
+
+class LoginRequest {
+}
+
+class RegisterRequest {
+}
+
+class UserDTO {
+}
+
+}
+
+package com.shopsphere.user.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.shopsphere.user.model; {
+class User {
+}
+
+}
+
+package com.shopsphere.user.repository; {
+class UserRepository {
+}
+
+}
+
+package com.shopsphere.user.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.shopsphere.user.service; {
+class UserService {
+}
+
+}
+
+package com.shopsphere.user; {
+class UserServiceApplication {
+}
+
+}
+
+GatewayConfig -- Cart
+GatewayConfig -- Notification
+GatewayConfig -- Order
+GatewayConfig -- Payment
+GatewayConfig -- Product
+GatewayConfig -- Review
+GatewayConfig -- User
+JwtAuthenticationFilter -- Order
+JwtAuthenticationFilter -- User
+CartServiceApplication -- Cart
+CartServiceApplication -- CartService
+CartController -- CartDTO
+CartController -- CartItemDTO
+CartController -- Cart
+CartController -- CartItem
+CartController -- CartService
+CartController -- ApiResponse
+CartController -- User
+CartDTO -- CartItemDTO
+CartDTO -- Cart
+CartDTO -- CartItem
+CartDTO -- User
+CartItemDTO -- Cart
+CartItemDTO -- CartItem
+CartItemDTO -- Product
+CartMapper -- CartDTO
+CartMapper -- Cart
+Cart -- CartItem
+Cart -- BaseEntity
+CartRepository -- Cart
+CartRepository -- BaseRepository
+CartRepository -- User
+CartService -- CartDTO
+CartService -- CartItemDTO
+CartService -- Cart
+CartService -- CartItem
+CartService -- User
+CartServiceImpl -- CartDTO
+CartServiceImpl -- CartItemDTO
+CartServiceImpl -- CartMapper
+CartServiceImpl -- Cart
+CartServiceImpl -- CartItem
+CartServiceImpl -- CartRepository
+CartServiceImpl -- CartService
+CartServiceImpl -- BadRequestException
+CartServiceImpl -- ResourceNotFoundException
+CartServiceImpl -- Product
+CartServiceImpl -- User
+BaseController -- BaseEntity
+BaseController -- ApiResponse
+BaseController -- BaseService
+BadRequestException -- BaseException
+GlobalExceptionHandler -- ErrorResponse
+GlobalExceptionHandler -- OrderNotFoundException
+GlobalExceptionHandler -- Order
+ResourceNotFoundException -- BaseException
+UnauthorizedException -- BaseException
+ValidationErrorResponse -- ErrorResponse
+BaseRepository -- BaseEntity
+JwtUtil -- User
+BaseService -- BaseEntity
+BaseServiceImpl -- ResourceNotFoundException
+BaseServiceImpl -- BaseEntity
+BaseServiceImpl -- BaseRepository
+BaseServiceImpl -- BaseService
+NotificationController -- ApiResponse
+NotificationController -- NotificationDTO
+NotificationController -- Notification
+NotificationController -- NotificationService
+NotificationController -- User
+NotificationDTO -- Notification
+NotificationDTO -- User
+NotificationMapper -- NotificationDTO
+NotificationMapper -- Notification
+Notification -- BaseEntity
+NotificationServiceApplication -- Notification
+NotificationServiceApplication -- NotificationService
+NotificationRepository -- BaseRepository
+NotificationRepository -- Notification
+NotificationRepository -- Order
+NotificationRepository -- User
+NotificationServiceImpl -- ResourceNotFoundException
+NotificationServiceImpl -- NotificationDTO
+NotificationServiceImpl -- NotificationMapper
+NotificationServiceImpl -- Notification
+NotificationServiceImpl -- NotificationRepository
+NotificationServiceImpl -- NotificationService
+NotificationServiceImpl -- Order
+NotificationServiceImpl -- User
+NotificationService -- NotificationDTO
+NotificationService -- Notification
+NotificationService -- User
+NotificationServiceClient -- ApiResponse
+NotificationServiceClient -- Notification
+NotificationServiceClient -- NotificationService
+ProductServiceClient -- ApiResponse
+ProductServiceClient -- Product
+ProductServiceClient -- ProductService
+OrderServiceConfig -- Order
+OrderServiceConfig -- OrderService
+OrderController -- OrderDTO
+OrderController -- Order
+OrderController -- OrderService
+OrderController -- User
+OrderDTO -- OrderItemDTO
+OrderDTO -- Order
+OrderDTO -- OrderItem
+OrderDTO -- Payment
+OrderDTO -- User
+OrderItemDTO -- Order
+OrderItemDTO -- OrderItem
+OrderItemDTO -- Product
+OrderNotFoundException -- Order
+OrderMapper -- OrderDTO
+OrderMapper -- OrderItemDTO
+OrderMapper -- Order
+OrderMapper -- OrderItem
+Order -- OrderItem
+OrderServiceApplication -- OrderServiceConfig
+OrderServiceApplication -- Order
+OrderServiceApplication -- OrderService
+OrderRepository -- Order
+OrderRepository -- User
+OrderServiceImpl -- Notification
+OrderServiceImpl -- NotificationService
+OrderServiceImpl -- NotificationServiceClient
+OrderServiceImpl -- ProductServiceClient
+OrderServiceImpl -- OrderDTO
+OrderServiceImpl -- OrderNotFoundException
+OrderServiceImpl -- OrderMapper
+OrderServiceImpl -- Order
+OrderServiceImpl -- OrderRepository
+OrderServiceImpl -- OrderService
+OrderServiceImpl -- Payment
+OrderServiceImpl -- Product
+OrderServiceImpl -- ProductService
+OrderServiceImpl -- User
+OrderService -- OrderDTO
+OrderService -- Order
+OrderService -- User
+PaymentController -- ApiResponse
+PaymentController -- Order
+PaymentController -- PaymentDTO
+PaymentController -- Payment
+PaymentController -- PaymentService
+PaymentDTO -- Order
+PaymentDTO -- Payment
+PaymentDTO -- User
+PaymentMapper -- PaymentDTO
+PaymentMapper -- Payment
+Payment -- BaseEntity
+PaymentServiceApplication -- Payment
+PaymentServiceApplication -- PaymentService
+PaymentRepository -- BaseRepository
+PaymentRepository -- Order
+PaymentRepository -- Payment
+PaymentServiceImpl -- ResourceNotFoundException
+PaymentServiceImpl -- Order
+PaymentServiceImpl -- PaymentDTO
+PaymentServiceImpl -- PaymentMapper
+PaymentServiceImpl -- Payment
+PaymentServiceImpl -- PaymentRepository
+PaymentServiceImpl -- PaymentService
+PaymentService -- Order
+PaymentService -- PaymentDTO
+PaymentService -- Payment
+ProductServiceConfig -- Product
+ProductServiceConfig -- ProductService
+ProductController -- ApiResponse
+ProductController -- ProductDTO
+ProductController -- Product
+ProductController -- ProductService
+ProductDTO -- Product
+ProductMapper -- ProductDTO
+ProductMapper -- Product
+Product -- BaseEntity
+ProductServiceApplication -- ProductServiceConfig
+ProductServiceApplication -- Product
+ProductServiceApplication -- ProductService
+ProductElasticsearchRepository -- Product
+ProductRepository -- BaseRepository
+ProductRepository -- Product
+ProductServiceImpl -- BadRequestException
+ProductServiceImpl -- ResourceNotFoundException
+ProductServiceImpl -- ProductDTO
+ProductServiceImpl -- ProductMapper
+ProductServiceImpl -- Product
+ProductServiceImpl -- ProductElasticsearchRepository
+ProductServiceImpl -- ProductRepository
+ProductServiceImpl -- ProductService
+ProductService -- ProductDTO
+ProductService -- Product
+ReviewController -- Order
+ReviewController -- OrderItem
+ReviewController -- Product
+ReviewController -- ReviewDTO
+ReviewController -- Review
+ReviewController -- ReviewService
+ReviewController -- User
+ReviewDTO -- Order
+ReviewDTO -- Product
+ReviewDTO -- Review
+ReviewDTO -- User
+ReviewMapper -- ReviewDTO
+ReviewMapper -- Review
+Review -- BaseEntity
+ReviewRepository -- BaseRepository
+ReviewRepository -- Order
+ReviewRepository -- OrderItem
+ReviewRepository -- Product
+ReviewRepository -- Review
+ReviewRepository -- User
+ReviewServiceApplication -- Review
+ReviewServiceApplication -- ReviewService
+ReviewServiceImpl -- ResourceNotFoundException
+ReviewServiceImpl -- Order
+ReviewServiceImpl -- OrderItem
+ReviewServiceImpl -- Product
+ReviewServiceImpl -- ReviewDTO
+ReviewServiceImpl -- ReviewMapper
+ReviewServiceImpl -- Review
+ReviewServiceImpl -- ReviewRepository
+ReviewServiceImpl -- ReviewService
+ReviewServiceImpl -- User
+ReviewService -- Order
+ReviewService -- OrderItem
+ReviewService -- Product
+ReviewService -- ReviewDTO
+ReviewService -- Review
+ReviewService -- User
+ReviewIntegrationTest -- Order
+ReviewIntegrationTest -- OrderItem
+ReviewIntegrationTest -- Product
+ReviewIntegrationTest -- ReviewDTO
+ReviewIntegrationTest -- Review
+ReviewIntegrationTest -- ReviewRepository
+ReviewIntegrationTest -- User
+ReviewServiceTest -- ResourceNotFoundException
+ReviewServiceTest -- Order
+ReviewServiceTest -- OrderItem
+ReviewServiceTest -- Product
+ReviewServiceTest -- ReviewDTO
+ReviewServiceTest -- ReviewMapper
+ReviewServiceTest -- Review
+ReviewServiceTest -- ReviewRepository
+ReviewServiceTest -- ReviewServiceImpl
+ReviewServiceTest -- ReviewService
+ReviewServiceTest -- User
+ShipmentController -- ApiResponse
+ShipmentController -- Order
+ShipmentController -- ShipmentDTO
+ShipmentController -- Shipment
+ShipmentController -- ShipmentService
+ShipmentDTO -- Order
+ShipmentDTO -- Shipment
+ShipmentDTO -- User
+ShipmentMapper -- ShipmentDTO
+ShipmentMapper -- Shipment
+Shipment -- BaseEntity
+ShipmentRepository -- BaseRepository
+ShipmentRepository -- Order
+ShipmentRepository -- Shipment
+ShipmentServiceImpl -- ResourceNotFoundException
+ShipmentServiceImpl -- Order
+ShipmentServiceImpl -- ShipmentDTO
+ShipmentServiceImpl -- ShipmentMapper
+ShipmentServiceImpl -- Shipment
+ShipmentServiceImpl -- ShipmentRepository
+ShipmentServiceImpl -- ShipmentService
+ShipmentService -- Order
+ShipmentService -- ShipmentDTO
+ShipmentService -- Shipment
+JwtAuthFilter -- JwtUtil
+JwtAuthFilter -- User
+SecurityConfig -- JwtAuthFilter
+SecurityConfig -- User
+AuthController -- BadRequestException
+AuthController -- ApiResponse
+AuthController -- JwtUtil
+AuthController -- AuthResponse
+AuthController -- LoginRequest
+AuthController -- RegisterRequest
+AuthController -- User
+AuthController -- UserRepository
+UserController -- ApiResponse
+UserController -- UserDTO
+UserController -- User
+UserController -- UserService
+LoginRequest -- User
+RegisterRequest -- User
+UserDTO -- User
+UserMapper -- UserDTO
+UserMapper -- User
+User -- BaseEntity
+UserRepository -- BaseRepository
+UserRepository -- User
+UserServiceImpl -- BadRequestException
+UserServiceImpl -- ResourceNotFoundException
+UserServiceImpl -- UserDTO
+UserServiceImpl -- UserMapper
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+UserService -- UserDTO
+UserService -- User
+UserServiceApplication -- User
+UserServiceApplication -- UserService
+@enduml

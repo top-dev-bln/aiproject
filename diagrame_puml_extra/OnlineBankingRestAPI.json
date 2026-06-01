@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Customer roles. The platform provides capabilities for acc account activity, acc account, acc account validation. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtUserDetailsService",
+          "AuthenticationService"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "KafkaListenerService"
+        ],
+        "controllers": [
+          "AccAccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "AccAccountActivityService"
+        ],
+        "controllers": [
+          "KafkaMessageController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "LoaLoanPaymentEntityService"
+        ],
+        "controllers": [
+          "AccAccountController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with acc account functionality, so that I can accomplish my acc account-related tasks.",
+        "services": [
+          "AccAccountActivityService",
+          "AccAccountService"
+        ],
+        "controllers": [
+          "AccAccountController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AccAccountController[\"AccAccountController\"]\n        CrdCreditCardController[\"CrdCreditCardController\"]\n        CusCustomerController[\"CusCustomerController\"]\n        KafkaMessageController[\"KafkaMessageController\"]\n        LoaLoanController[\"LoaLoanController\"]\n        AuthenticationController[\"AuthenticationController\"]\n    end\n    subgraph Data_Access\n        AccAccountActivityDao[\"AccAccountActivityDao\"]\n        AccAccountDao[\"AccAccountDao\"]\n        AccMoneyTransferDao[\"AccMoneyTransferDao\"]\n        AccAccountMapper[\"AccAccountMapper\"]\n        CrdCreditCardActivityDao[\"CrdCreditCardActivityDao\"]\n        CrdCreditCardDao[\"CrdCreditCardDao\"]\n        CrdCreditCardMapper[\"CrdCreditCardMapper\"]\n        CusCustomerDao[\"CusCustomerDao\"]\n        CusCustomerMapper[\"CusCustomerMapper\"]\n        LoaLoanDao[\"LoaLoanDao\"]\n        LoaLoanPaymentDao[\"LoaLoanPaymentDao\"]\n        LoaLoanMapper[\"LoaLoanMapper\"]\n        LogDetailsDao[\"LogDetailsDao\"]\n        LogMapper[\"LogMapper\"]\n    end\n    subgraph Services\n        AccAccountActivityService[\"AccAccountActivityService\"]\n        AccAccountService[\"AccAccountService\"]\n        AccAccountValidationService[\"AccAccountValidationService\"]\n        AccMoneyTransferService[\"AccMoneyTransferService\"]\n        AccAccountActivityEntityService[\"AccAccountActivityEntityService\"]\n        AccAccountEntityService[\"AccAccountEntityService\"]\n        AccMoneyTransferEntityService[\"AccMoneyTransferEntityService\"]\n        CrdCreditCardActivityService[\"CrdCreditCardActivityService\"]\n        CrdCreditCardActivityValidationService[\"CrdCreditCardActivityValidationService\"]\n        CrdCreditCardService[\"CrdCreditCardService\"]\n        CrdCreditCardValidationService[\"CrdCreditCardValidationService\"]\n        CrdCreditCardActivityEntityService[\"CrdCreditCardActivityEntityService\"]\n        CrdCreditCardEntityService[\"CrdCreditCardEntityService\"]\n        CusCustomerService[\"CusCustomerService\"]\n        CusCustomerValidationService[\"CusCustomerValidationService\"]\n        CusCustomerEntityService[\"CusCustomerEntityService\"]\n        GenCustomizedResponseEntityExceptionHandler[\"GenCustomizedResponseEntityExceptionHandler\"]\n        BaseEntityService[\"BaseEntityService\"]\n        KafkaListenerService[\"KafkaListenerService\"]\n        LoaLoanEntityService[\"LoaLoanEntityService\"]\n        LoaLoanPaymentEntityService[\"LoaLoanPaymentEntityService\"]\n        LoaLoanService[\"LoaLoanService\"]\n        LoaLoanValidationService[\"LoaLoanValidationService\"]\n        LogDetailEntityService[\"LogDetailEntityService\"]\n        LogService[\"LogService\"]\n        JwtUserDetailsService[\"JwtUserDetailsService\"]\n        AuthenticationService[\"AuthenticationService\"]\n    end\n    subgraph Infrastructure\n        SwaggerConfig[\"SwaggerConfig\"]\n        StringUtil[\"StringUtil\"]\n        KafkaConsumerConfiguration[\"KafkaConsumerConfiguration\"]\n        KafkaProducerConfiguration[\"KafkaProducerConfiguration\"]\n        H2TestProfileJPAConfig[\"H2TestProfileJPAConfig\"]\n    end\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        EnumJwtConstant[\"EnumJwtConstant\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n        JwtTokenGenerator[\"JwtTokenGenerator\"]\n        JwtUserDetails[\"JwtUserDetails\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

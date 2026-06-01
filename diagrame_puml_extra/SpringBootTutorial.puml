@@ -1,0 +1,74 @@
+@startuml
+package com.vincent.demo; {
+class Application {
+}
+
+class CacheTests {
+}
+
+}
+
+package com.vincent.demo.config; {
+class CacheConfig {
+}
+
+}
+
+package com.vincent.demo.log; {
+class QueryHistory {
+}
+
+class QueryHistoryService {
+}
+
+}
+
+package com.vincent.demo.model; {
+class LikePO {
+}
+
+class PostPO {
+}
+
+class PostVO {
+}
+
+class UserPO {
+}
+
+}
+
+package com.vincent.demo.service; {
+class LikeService {
+}
+
+class PostService {
+}
+
+class UserService {
+}
+
+}
+
+QueryHistoryService -- QueryHistory
+PostVO -- PostPO
+LikeService -- QueryHistory
+LikeService -- QueryHistoryService
+LikeService -- LikePO
+LikeService -- UserService
+PostService -- QueryHistory
+PostService -- QueryHistoryService
+PostService -- PostPO
+PostService -- PostVO
+PostService -- LikeService
+PostService -- UserService
+UserService -- QueryHistory
+UserService -- QueryHistoryService
+UserService -- UserPO
+CacheTests -- QueryHistory
+CacheTests -- QueryHistoryService
+CacheTests -- UserPO
+CacheTests -- LikeService
+CacheTests -- PostService
+CacheTests -- UserService
+@enduml

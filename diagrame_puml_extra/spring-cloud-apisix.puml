@@ -1,0 +1,368 @@
+@startuml
+package plus.wcj.apisix.core.api; {
+class ControlApi {
+}
+
+class RouteApi {
+}
+
+class UpstreamApi {
+}
+
+}
+
+package plus.wcj.apisix.core; {
+class ApisixDiscoveryProperties {
+}
+
+class ApisixServiceInstance {
+}
+
+class ConditionalOnApisixDiscoveryEnabled {
+}
+
+class ConditionalOnApisixEnabled {
+}
+
+class SchemeEnum {
+}
+
+class ApisixAutoConfiguration {
+}
+
+class ApisixClient {
+}
+
+class CustomizerAutoConfiguration {
+}
+
+}
+
+package plus.wcj.apisix.core.client; {
+class ApisixApiAutoConfiguration {
+}
+
+class ApisixApiFeignClientConfigurer {
+}
+
+class ApisixTokenRequestInterceptor {
+}
+
+class ControlClient {
+}
+
+class RouteClient {
+}
+
+class UpstreamClient {
+}
+
+}
+
+package plus.wcj.apisix.core.customizer; {
+class RouteCustomizer {
+}
+
+class UpstreamCustomizer {
+}
+
+class SimpleHealthCheckCustomizer {
+}
+
+class SimpleProxyRewriteRouteCustomizer {
+}
+
+class SimpleRouteCustomizer {
+}
+
+class SimpleUpstreamCustomizer {
+}
+
+}
+
+package plus.wcj.apisix.devtools; {
+class ApisixDevtoolsProperties {
+}
+
+}
+
+package plus.wcj.apisix.devtools.health.trigger; {
+class AutoHealthTrigger {
+}
+
+class HealthTriggerAutoConfiguration {
+}
+
+class HealthTriggerClient {
+}
+
+}
+
+package plus.wcj.apisix.devtools.port; {
+class MultiplePortServletWebServerFactoryAutoConfiguration {
+}
+
+class MultiplePortServletWebServerFactoryConfiguration {
+}
+
+class MultiplePortUpstreamCustomizer {
+}
+
+}
+
+package plus.wcj.devtools.example; {
+class ExampleApplication {
+}
+
+class HelloController {
+}
+
+}
+
+package plus.wcj.provider.example; {
+class HelloController {
+}
+
+class ProviderExampleApplication {
+}
+
+}
+
+package plus.wcj.consumer.example; {
+class ConsumerExampleApplication {
+}
+
+class HelloClient {
+}
+
+class HelloController {
+}
+
+}
+
+package plus.wcj.consumer.gateway.example; {
+class ConsumerGatewayExampleApplication {
+}
+
+class HelloClient {
+}
+
+class HelloController {
+}
+
+class RpcConfiguration {
+}
+
+}
+
+package plus.wcj.apisix.discovery; {
+class ApisixDiscoverAutoConfiguration {
+}
+
+class ApisixDiscoveryClient {
+}
+
+}
+
+package plus.wcj.apisix.discovery.reactive; {
+class ApisixReactiveDiscoveryClient {
+}
+
+class ApisixReactiveDiscoveryClientAutoConfiguration {
+}
+
+}
+
+package plus.wcj.apisix.endpoint; {
+class ApisixDiscoveryEndpoint {
+}
+
+class ApisixDiscoveryEndpointAutoConfiguration {
+}
+
+}
+
+package plus.wcj.apisix.serviceregistry; {
+class ApisixAutoServiceRegistration {
+}
+
+class ApisixRegistration {
+}
+
+class ApisixServiceRegistry {
+}
+
+class ApisixServiceRegistryAutoConfiguration {
+}
+
+class ConditionalOnApisixServiceRegistryEnabled {
+}
+
+class ConditionalOnServiceRegistryEnabled {
+}
+
+}
+
+package plus.wcj.apisix.loadbalancer; {
+class ApisixBlockingLoadBalancerClient {
+}
+
+class ApisixGatewayConfig {
+}
+
+class ApisixGatewayLoadbalancerProperties {
+}
+
+class ApisixGatewayServiceInstanceListSupplier {
+}
+
+class ApisixLoadBalancer {
+}
+
+class ApisixLoadBalancerAutoConfiguration {
+}
+
+class ApisixLoadBalancerClientConfiguration {
+}
+
+class ConditionalOnApisixGatewayLoadbalancerEnabled {
+}
+
+class ConditionalOnApisixLoadBalancerEnabled {
+}
+
+class GatewayServiceInstance {
+}
+
+class ServiceInstanceListSupplierConfiguration {
+}
+
+}
+
+ApisixDiscoveryProperties -- SchemeEnum
+ApisixServiceInstance -- SchemeEnum
+ApisixApiAutoConfiguration -- ControlApi
+ApisixApiAutoConfiguration -- RouteApi
+ApisixApiAutoConfiguration -- UpstreamApi
+ApisixApiAutoConfiguration -- ConditionalOnApisixEnabled
+ApisixApiFeignClientConfigurer -- ApisixDiscoveryProperties
+ApisixApiFeignClientConfigurer -- ApisixTokenRequestInterceptor
+ApisixTokenRequestInterceptor -- ApisixDiscoveryProperties
+ControlClient -- ControlApi
+ControlClient -- ApisixApiFeignClientConfigurer
+RouteClient -- RouteApi
+RouteClient -- ApisixApiFeignClientConfigurer
+UpstreamClient -- UpstreamApi
+UpstreamClient -- ApisixApiFeignClientConfigurer
+ConditionalOnApisixDiscoveryEnabled -- ConditionalOnApisixEnabled
+AutoHealthTrigger -- ApisixDevtoolsProperties
+AutoHealthTrigger -- HealthTriggerClient
+HealthTriggerAutoConfiguration -- ConditionalOnApisixDiscoveryEnabled
+HealthTriggerAutoConfiguration -- ApisixDevtoolsProperties
+HealthTriggerAutoConfiguration -- AutoHealthTrigger
+HealthTriggerAutoConfiguration -- HealthTriggerClient
+MultiplePortServletWebServerFactoryAutoConfiguration -- ConditionalOnApisixDiscoveryEnabled
+MultiplePortServletWebServerFactoryAutoConfiguration -- UpstreamCustomizer
+MultiplePortServletWebServerFactoryAutoConfiguration -- ApisixDevtoolsProperties
+MultiplePortServletWebServerFactoryAutoConfiguration -- MultiplePortServletWebServerFactoryConfiguration
+MultiplePortServletWebServerFactoryAutoConfiguration -- MultiplePortUpstreamCustomizer
+MultiplePortServletWebServerFactoryConfiguration -- ApisixDevtoolsProperties
+MultiplePortUpstreamCustomizer -- UpstreamCustomizer
+MultiplePortUpstreamCustomizer -- ApisixDevtoolsProperties
+MultiplePortUpstreamCustomizer -- ApisixRegistration
+HelloController -- HelloClient
+ProviderExampleApplication -- ExampleApplication
+ConsumerExampleApplication -- ExampleApplication
+ConsumerExampleApplication -- HelloClient
+ConsumerGatewayExampleApplication -- ExampleApplication
+ConsumerGatewayExampleApplication -- HelloClient
+ApisixAutoConfiguration -- ControlApi
+ApisixAutoConfiguration -- RouteApi
+ApisixAutoConfiguration -- UpstreamApi
+ApisixAutoConfiguration -- ConditionalOnApisixEnabled
+ApisixAutoConfiguration -- RouteCustomizer
+ApisixAutoConfiguration -- UpstreamCustomizer
+ApisixAutoConfiguration -- ApisixClient
+ApisixAutoConfiguration -- ApisixRegistration
+ApisixClient -- ControlApi
+ApisixClient -- RouteApi
+ApisixClient -- UpstreamApi
+ApisixClient -- RouteCustomizer
+ApisixClient -- UpstreamCustomizer
+ApisixClient -- ApisixRegistration
+SimpleHealthCheckCustomizer -- ApisixDiscoveryProperties
+SimpleHealthCheckCustomizer -- UpstreamCustomizer
+SimpleHealthCheckCustomizer -- ApisixRegistration
+SimpleProxyRewriteRouteCustomizer -- RouteCustomizer
+SimpleProxyRewriteRouteCustomizer -- ApisixRegistration
+SimpleRouteCustomizer -- RouteCustomizer
+SimpleRouteCustomizer -- ApisixRegistration
+SimpleUpstreamCustomizer -- ApisixDiscoveryProperties
+SimpleUpstreamCustomizer -- UpstreamCustomizer
+SimpleUpstreamCustomizer -- ApisixRegistration
+CustomizerAutoConfiguration -- RouteCustomizer
+CustomizerAutoConfiguration -- UpstreamCustomizer
+CustomizerAutoConfiguration -- SimpleHealthCheckCustomizer
+CustomizerAutoConfiguration -- SimpleProxyRewriteRouteCustomizer
+CustomizerAutoConfiguration -- SimpleRouteCustomizer
+CustomizerAutoConfiguration -- SimpleUpstreamCustomizer
+ApisixDiscoverAutoConfiguration -- ApisixDiscoveryProperties
+ApisixDiscoverAutoConfiguration -- ConditionalOnApisixDiscoveryEnabled
+ApisixDiscoverAutoConfiguration -- ApisixClient
+ApisixDiscoverAutoConfiguration -- ApisixDiscoveryClient
+ApisixDiscoveryClient -- ApisixServiceInstance
+ApisixDiscoveryClient -- ApisixClient
+ApisixReactiveDiscoveryClient -- ApisixClient
+ApisixReactiveDiscoveryClient -- ApisixDiscoveryClient
+ApisixReactiveDiscoveryClientAutoConfiguration -- ApisixDiscoveryProperties
+ApisixReactiveDiscoveryClientAutoConfiguration -- ConditionalOnApisixDiscoveryEnabled
+ApisixReactiveDiscoveryClientAutoConfiguration -- ApisixClient
+ApisixReactiveDiscoveryClientAutoConfiguration -- ApisixDiscoverAutoConfiguration
+ApisixReactiveDiscoveryClientAutoConfiguration -- ApisixReactiveDiscoveryClient
+ApisixDiscoveryEndpoint -- ApisixDiscoveryProperties
+ApisixDiscoveryEndpoint -- ApisixClient
+ApisixDiscoveryEndpointAutoConfiguration -- ApisixDiscoveryProperties
+ApisixDiscoveryEndpointAutoConfiguration -- ConditionalOnApisixEnabled
+ApisixDiscoveryEndpointAutoConfiguration -- ApisixClient
+ApisixDiscoveryEndpointAutoConfiguration -- ApisixDiscoveryEndpoint
+ApisixAutoServiceRegistration -- ApisixDiscoveryProperties
+ApisixAutoServiceRegistration -- ApisixRegistration
+ApisixRegistration -- ApisixDiscoveryProperties
+ApisixServiceRegistry -- ApisixDiscoveryProperties
+ApisixServiceRegistry -- ApisixClient
+ApisixServiceRegistry -- ApisixRegistration
+ApisixServiceRegistryAutoConfiguration -- ApisixDiscoveryProperties
+ApisixServiceRegistryAutoConfiguration -- ApisixClient
+ApisixServiceRegistryAutoConfiguration -- ApisixAutoServiceRegistration
+ApisixServiceRegistryAutoConfiguration -- ApisixRegistration
+ApisixServiceRegistryAutoConfiguration -- ApisixServiceRegistry
+ApisixServiceRegistryAutoConfiguration -- ConditionalOnApisixServiceRegistryEnabled
+ConditionalOnApisixServiceRegistryEnabled -- ConditionalOnApisixEnabled
+ConditionalOnApisixServiceRegistryEnabled -- ApisixServiceRegistry
+ConditionalOnApisixServiceRegistryEnabled -- ConditionalOnServiceRegistryEnabled
+ApisixBlockingLoadBalancerClient -- GatewayServiceInstance
+ApisixGatewayConfig -- SchemeEnum
+ApisixGatewayLoadbalancerProperties -- ApisixGatewayConfig
+ApisixGatewayServiceInstanceListSupplier -- ApisixServiceInstance
+ApisixGatewayServiceInstanceListSupplier -- SchemeEnum
+ApisixGatewayServiceInstanceListSupplier -- ApisixGatewayConfig
+ApisixGatewayServiceInstanceListSupplier -- ApisixGatewayLoadbalancerProperties
+ApisixGatewayServiceInstanceListSupplier -- GatewayServiceInstance
+ApisixLoadBalancer -- ApisixServiceInstance
+ApisixLoadBalancerAutoConfiguration -- ApisixBlockingLoadBalancerClient
+ApisixLoadBalancerAutoConfiguration -- ApisixGatewayLoadbalancerProperties
+ApisixLoadBalancerAutoConfiguration -- ApisixLoadBalancer
+ApisixLoadBalancerAutoConfiguration -- ApisixLoadBalancerClientConfiguration
+ApisixLoadBalancerAutoConfiguration -- ServiceInstanceListSupplierConfiguration
+ApisixLoadBalancerClientConfiguration -- ConditionalOnApisixDiscoveryEnabled
+ApisixLoadBalancerClientConfiguration -- ApisixLoadBalancer
+ApisixLoadBalancerClientConfiguration -- ConditionalOnApisixLoadBalancerEnabled
+ConditionalOnApisixLoadBalancerEnabled -- ApisixLoadBalancer
+GatewayServiceInstance -- ApisixServiceInstance
+ServiceInstanceListSupplierConfiguration -- ApisixGatewayLoadbalancerProperties
+ServiceInstanceListSupplierConfiguration -- ApisixGatewayServiceInstanceListSupplier
+ServiceInstanceListSupplierConfiguration -- ApisixLoadBalancer
+ServiceInstanceListSupplierConfiguration -- ConditionalOnApisixGatewayLoadbalancerEnabled
+ServiceInstanceListSupplierConfiguration -- ConditionalOnApisixLoadBalancerEnabled
+ServiceInstanceListSupplierConfiguration -- GatewayServiceInstance
+@enduml

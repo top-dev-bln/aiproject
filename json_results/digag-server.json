@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Content Creator roles. The platform provides capabilities for jwt user details, auth, entry. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtUserDetailsServiceImpl",
+          "AuthService",
+          "UserService"
+        ],
+        "controllers": [
+          "AuthController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with article functionality, so that I can accomplish my article-related tasks.",
+        "services": [
+          "JwtUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "ArticleController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with entry functionality, so that I can accomplish my entry-related tasks.",
+        "services": [
+          "EntryService",
+          "EntryServiceImpl"
+        ],
+        "controllers": [
+          "EntryController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use entry capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EntryService"
+        ],
+        "controllers": [
+          "ArticleController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use auth capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AuthServiceImpl"
+        ],
+        "controllers": [
+          "ArticleController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        RedisCacheConfiguration[\"RedisCacheConfiguration\"]\n        Swagger2[\"Swagger2\"]\n        GenericBuilder[\"GenericBuilder\"]\n        JsonResult[\"JsonResult\"]\n        Util[\"Util\"]\n    end\n    subgraph Security\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthenticationRequest[\"JwtAuthenticationRequest\"]\n        JwtAuthenticationResponse[\"JwtAuthenticationResponse\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n        JwtUser[\"JwtUser\"]\n        JwtUserFactory[\"JwtUserFactory\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    subgraph Services\n        JwtUserDetailsServiceImpl[\"JwtUserDetailsServiceImpl\"]\n        AuthService[\"AuthService\"]\n        EntryService[\"EntryService\"]\n        UserService[\"UserService\"]\n        AuthServiceImpl[\"AuthServiceImpl\"]\n        EntryServiceImpl[\"EntryServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Data_Access\n        ArticleRepository[\"ArticleRepository\"]\n        BrowseLogRepository[\"BrowseLogRepository\"]\n        CollectionRepository[\"CollectionRepository\"]\n        EntryRepository[\"EntryRepository\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Controllers\n        ArticleController[\"ArticleController\"]\n        AuthController[\"AuthController\"]\n        EntryController[\"EntryController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

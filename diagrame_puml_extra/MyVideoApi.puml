@@ -1,0 +1,267 @@
+@startuml
+package com.suda.MyVideoApi.bot; {
+class Telegram {
+}
+
+}
+
+package com.suda.MyVideoApi.conf; {
+class FastJsonRedisSerializer {
+}
+
+class InterceptorConfig {
+}
+
+class RedisConfig {
+}
+
+class ScheduleConfig {
+}
+
+class WebAppConfig {
+}
+
+}
+
+package com.suda.MyVideoApi.constant; {
+class API {
+}
+
+class BizErrorCodeConstants {
+}
+
+class Source {
+}
+
+}
+
+package com.suda.MyVideoApi.controller; {
+class MyExceptionHandler {
+}
+
+class VideoController {
+}
+
+}
+
+package com.suda.MyVideoApi.domian; {
+class BaseDomain {
+}
+
+class BizException {
+}
+
+class DataConverter {
+}
+
+class PageDTO {
+}
+
+class ResultDTO {
+}
+
+}
+
+package com.suda.MyVideoApi.domian.converter; {
+class VideoConverter {
+}
+
+}
+
+package com.suda.MyVideoApi.domian.dos; {
+class VideoDetailDO {
+}
+
+class VideoDO {
+}
+
+class VideoPlayDO {
+}
+
+class VideoSeriesDO {
+}
+
+}
+
+package com.suda.MyVideoApi.domian.dto; {
+class SiteInfoDTO {
+}
+
+class VideoDTO {
+}
+
+class VideoPlayDTO {
+}
+
+class VideoSourceDTO {
+}
+
+}
+
+package com.suda.MyVideoApi.job; {
+class BaseJob {
+}
+
+class CartoonJob {
+}
+
+class DililiJob {
+}
+
+class HJJob {
+}
+
+class LongzhuJob {
+}
+
+class MJWJob {
+}
+
+}
+
+package com.suda.MyVideoApi; {
+class MyVideoApiApplication {
+}
+
+class MyVedioApiApplicationTests {
+}
+
+}
+
+package com.suda.MyVideoApi.service; {
+class BaseVideoService {
+}
+
+class VideoCartoonServiceImpl {
+}
+
+class VideoDiliServiceImpl {
+}
+
+class VideoHJServiceImpl {
+}
+
+class VideoLZServiceImpl {
+}
+
+class VideoMjwServiceImpl {
+}
+
+class VideoService {
+}
+
+}
+
+package com.suda.MyVideoApi.util; {
+class JsoupUtils {
+}
+
+class SuplayerUtil {
+}
+
+}
+
+Telegram -- Source
+Telegram -- VideoDTO
+Telegram -- VideoService
+RedisConfig -- FastJsonRedisSerializer
+WebAppConfig -- InterceptorConfig
+API -- Source
+Source -- VideoSourceDTO
+MyExceptionHandler -- BizErrorCodeConstants
+MyExceptionHandler -- BizException
+MyExceptionHandler -- ResultDTO
+VideoController -- API
+VideoController -- Source
+VideoController -- VideoDetailDO
+VideoController -- SiteInfoDTO
+VideoController -- VideoDTO
+VideoController -- VideoSourceDTO
+VideoController -- ResultDTO
+VideoController -- VideoService
+BizException -- BizErrorCodeConstants
+VideoConverter -- API
+VideoConverter -- Source
+VideoConverter -- DataConverter
+VideoConverter -- VideoDO
+VideoConverter -- VideoDTO
+VideoDetailDO -- VideoSeriesDO
+VideoDO -- BaseDomain
+VideoPlayDO -- BaseDomain
+VideoSeriesDO -- BaseDomain
+SiteInfoDTO -- BaseDomain
+VideoDTO -- BaseDomain
+VideoPlayDTO -- BaseDomain
+BaseJob -- VideoDetailDO
+BaseJob -- VideoSeriesDO
+BaseJob -- VideoDTO
+BaseJob -- BaseVideoService
+BaseJob -- VideoService
+CartoonJob -- BaseJob
+CartoonJob -- VideoCartoonServiceImpl
+CartoonJob -- VideoDiliServiceImpl
+DililiJob -- BaseJob
+DililiJob -- VideoDiliServiceImpl
+HJJob -- BaseJob
+HJJob -- VideoHJServiceImpl
+LongzhuJob -- BaseJob
+LongzhuJob -- VideoLZServiceImpl
+MJWJob -- BaseJob
+MJWJob -- VideoMjwServiceImpl
+BaseVideoService -- API
+BaseVideoService -- Source
+BaseVideoService -- BizException
+BaseVideoService -- VideoConverter
+BaseVideoService -- VideoDetailDO
+BaseVideoService -- VideoDO
+BaseVideoService -- VideoPlayDO
+BaseVideoService -- VideoSeriesDO
+BaseVideoService -- VideoDTO
+BaseVideoService -- VideoPlayDTO
+BaseVideoService -- PageDTO
+BaseVideoService -- VideoService
+BaseVideoService -- JsoupUtils
+VideoCartoonServiceImpl -- API
+VideoCartoonServiceImpl -- BizException
+VideoCartoonServiceImpl -- VideoPlayDO
+VideoCartoonServiceImpl -- VideoSeriesDO
+VideoCartoonServiceImpl -- VideoDTO
+VideoCartoonServiceImpl -- BaseVideoService
+VideoCartoonServiceImpl -- VideoService
+VideoCartoonServiceImpl -- JsoupUtils
+VideoCartoonServiceImpl -- SuplayerUtil
+VideoDiliServiceImpl -- API
+VideoDiliServiceImpl -- VideoPlayDO
+VideoDiliServiceImpl -- BaseVideoService
+VideoDiliServiceImpl -- VideoService
+VideoDiliServiceImpl -- JsoupUtils
+VideoDiliServiceImpl -- SuplayerUtil
+VideoHJServiceImpl -- API
+VideoHJServiceImpl -- VideoPlayDO
+VideoHJServiceImpl -- VideoSeriesDO
+VideoHJServiceImpl -- BaseVideoService
+VideoHJServiceImpl -- VideoService
+VideoHJServiceImpl -- JsoupUtils
+VideoHJServiceImpl -- SuplayerUtil
+VideoLZServiceImpl -- API
+VideoLZServiceImpl -- VideoPlayDO
+VideoLZServiceImpl -- BaseVideoService
+VideoLZServiceImpl -- VideoService
+VideoLZServiceImpl -- JsoupUtils
+VideoLZServiceImpl -- SuplayerUtil
+VideoMjwServiceImpl -- API
+VideoMjwServiceImpl -- VideoPlayDO
+VideoMjwServiceImpl -- BaseVideoService
+VideoMjwServiceImpl -- VideoService
+VideoMjwServiceImpl -- JsoupUtils
+VideoMjwServiceImpl -- SuplayerUtil
+VideoService -- BizException
+VideoService -- VideoDetailDO
+VideoService -- VideoDTO
+VideoService -- VideoPlayDTO
+VideoService -- PageDTO
+JsoupUtils -- BizErrorCodeConstants
+JsoupUtils -- BizException
+SuplayerUtil -- VideoPlayDO
+SuplayerUtil -- JsoupUtils
+@enduml

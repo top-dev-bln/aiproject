@@ -1,0 +1,5 @@
+org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc=\
+org.requirementsascode.spring.behavior.web.BehaviorConfiguration,\
+org.requirementsascode.spring.behavior.web.SerializationConfiguration,\
+org.requirementsascode.spring.behavior.web.BehaviorController,\
+org.requirementsascode.spring.behavior.test.MockBehaviorEndpoint

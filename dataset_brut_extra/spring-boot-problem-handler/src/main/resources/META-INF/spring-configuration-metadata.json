@@ -1,0 +1,108 @@
+{
+  "properties": [
+    {
+      "name": "problem.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Default: true, Whether or not to enable Problem handling."
+    },
+    {
+      "name": "problem.type-url",
+      "type": "java.lang.String",
+      "defaultValue": "http://localhost:8080/problems/help.html",
+      "description": "Default: http://localhost:8080/problems/help.html, Help page base url."
+    },
+    {
+      "name": "problem.debug-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "false",
+      "description": "Default: false, Whether or not to include debug-info such as message codes etc. in error response messages."
+    },
+    {
+      "name": "problem.stacktrace-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "false",
+      "description": "Default: false, Whether or not to include stacktrace in error response messages."
+    },
+    {
+      "name": "problem.cause-chains-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "false",
+      "description": "Default: false, Whether or not to include exception cause in error response messages."
+    },
+    {
+      "name": "problem.jackson-module-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Default: true, Whether or not to Enable Jackson Problem module."
+    },
+    {
+      "name": "problem.dao-advice-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Default: true, Whether or not to Enable DAO exception handling advices."
+    },
+    {
+      "name": "problem.security-advice-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Default: true, Whether or not to Enable Security exception handling advices."
+    },
+    {
+      "name": "problem.open-api.path",
+      "type": "java.lang.String",
+      "defaultValue": "/oas/api.json",
+      "description": "Default: /oas/api.json, Path of API Specification json file."
+    },
+    {
+      "name": "problem.open-api.exclude-patterns",
+      "type": "java.lang.String",
+      "description": "Default: None. List of path patterns in ant-pattern format to exclude from OpenAPI Specification validation."
+    },
+    {
+      "name": "problem.open-api.req-validation-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Default: true, Whether or not to enable Open API request validation.</br>While enabling make sure Problem is also enabled."
+    },
+    {
+      "name": "problem.open-api.res-validation-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "false",
+      "description": "Default: false, Whether or not to enable Open API response validation.</br>While enabling make sure Problem is also enabled."
+    },
+    {
+      "name": "problem.tracing.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "false",
+      "description": "Default: false, Whether to enable Tracing support."
+    },
+    {
+      "name": "problem.tracing.trace-id",
+      "type": "java.lang.String",
+      "defaultValue": "X-trace-id",
+      "description": "Default: X-trace-id, Attribute name in error response body or Header name for Trace Id."
+    },
+    {
+      "name": "problem.tracing.strategy",
+      "type": "java.lang.String",
+      "defaultValue": "HEADER",
+      "description": "Default: HEADER, Whether to add Trace Id in header or body of error response."
+    }
+  ],
+  "hints": [
+    {
+      "name": "problem.tracing.strategy",
+      "values": [
+        {
+          "value": "HEADER",
+          "description": "Adds Trace Id in error response Header."
+        },
+        {
+          "value": "BODY",
+          "description": "Adds Trace Id in error response Body."
+        }
+      ]
+    }
+  ]
+}

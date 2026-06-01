@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Admin roles. It manages core business objects including account do. The platform provides capabilities for my redis cache manager, abstract, service. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "ControllerLogAspect"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage account do records, so that I can track and organize account do data effectively.",
+        "services": [
+          "AccountService",
+          "AccountServiceImpl"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "MyRedisCacheManager"
+        ],
+        "controllers": [
+          "ControllerLogAspect"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "MyRedisCacheManager"
+        ],
+        "controllers": [
+          "UploadController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with controller log aspect functionality, so that I can accomplish my controller log aspect-related tasks.",
+        "services": [
+          "MyRedisCacheManager"
+        ],
+        "controllers": [
+          "ControllerLogAspect"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WithCustomSecurityContextFactory[\"WithCustomSecurityContextFactory\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtUtil[\"JwtUtil\"]\n        JwtConfigurationProperties[\"JwtConfigurationProperties\"]\n        MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n        CorsFilter[\"CorsFilter\"]\n        AuthenticationFilter[\"AuthenticationFilter\"]\n    end\n    subgraph Controllers\n        ControllerLogAspect[\"ControllerLogAspect\"]\n        RoleController[\"RoleController\"]\n        AccountController[\"AccountController\"]\n        UploadController[\"UploadController\"]\n    end\n    subgraph Services\n        MyRedisCacheManager[\"MyRedisCacheManager\"]\n        AbstractService[\"AbstractService\"]\n        Service[\"Service\"]\n        AccountService[\"AccountService\"]\n        RoleService[\"RoleService\"]\n        AccountServiceImpl[\"AccountServiceImpl\"]\n        RoleServiceImpl[\"RoleServiceImpl\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    end\n    subgraph Infrastructure\n        WebMvcConfig[\"WebMvcConfig\"]\n        ValidatorConfig[\"ValidatorConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        YamlPropertySourceFactory[\"YamlPropertySourceFactory\"]\n        Swagger3Config[\"Swagger3Config\"]\n        JasyptConfig[\"JasyptConfig\"]\n        RedisCacheConfig[\"RedisCacheConfig\"]\n        ProjectConstant[\"ProjectConstant\"]\n        RsaConfigurationProperties[\"RsaConfigurationProperties\"]\n        UploadConfigurationProperties[\"UploadConfigurationProperties\"]\n        IdUtils[\"IdUtils\"]\n        FileUtils[\"FileUtils\"]\n        RedisUtils[\"RedisUtils\"]\n        UrlUtils[\"UrlUtils\"]\n        IpUtils[\"IpUtils\"]\n        AssertUtils[\"AssertUtils\"]\n        ContextUtils[\"ContextUtils\"]\n        IdCardUtils[\"IdCardUtils\"]\n        DateUtils[\"DateUtils\"]\n        JsonUtils[\"JsonUtils\"]\n    end\n    subgraph Data_Access\n        MyMapper[\"MyMapper\"]\n        AccountMapper[\"AccountMapper\"]\n        RoleMapper[\"RoleMapper\"]\n        AccountDO[\"AccountDO\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

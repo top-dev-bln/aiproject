@@ -1,0 +1,139 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package org.martynas.blogapp.controller; {
+class CommentController {
+}
+
+class HomeController {
+}
+
+class LoginConroller {
+}
+
+class PostController {
+}
+
+class SignupController {
+}
+
+}
+
+package org.martynas.blogapp.model; {
+class Authority {
+}
+
+class BlogUser {
+}
+
+class Comment {
+}
+
+class Post {
+}
+
+}
+
+package org.martynas.blogapp.repository; {
+class AuthorityRepository {
+}
+
+class BlogUserRepository {
+}
+
+class CommentRepository {
+}
+
+class PostRepository {
+}
+
+}
+
+package org.martynas.blogapp.security; {
+class MethodSecurityConfig {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package org.martynas.blogapp.service; {
+class BlogUserService {
+}
+
+class BlogUserServiceImpl {
+}
+
+class CommentService {
+}
+
+class CommentServiceImpl {
+}
+
+class PostService {
+}
+
+class PostServiceImpl {
+}
+
+}
+
+package org.martynas.blogapp; {
+class ServletInitializer {
+}
+
+class SpringMvcBlogAppApplication {
+}
+
+class SpringMvcBlogAppApplicationTests {
+}
+
+}
+
+CommentController -- BlogUser
+CommentController -- Comment
+CommentController -- Post
+CommentController -- BlogUserService
+CommentController -- CommentService
+CommentController -- PostService
+HomeController -- Post
+HomeController -- PostService
+PostController -- BlogUser
+PostController -- Post
+PostController -- BlogUserService
+PostController -- PostService
+SignupController -- BlogUser
+SignupController -- Post
+SignupController -- BlogUserService
+Authority -- BlogUser
+BlogUser -- Post
+Comment -- BlogUser
+Comment -- Post
+AuthorityRepository -- Authority
+BlogUserRepository -- BlogUser
+CommentRepository -- Comment
+PostRepository -- Post
+MethodSecurityConfig -- Post
+WebSecurityConfig -- Post
+BlogUserService -- BlogUser
+BlogUserServiceImpl -- Authority
+BlogUserServiceImpl -- BlogUser
+BlogUserServiceImpl -- AuthorityRepository
+BlogUserServiceImpl -- BlogUserRepository
+BlogUserServiceImpl -- BlogUserService
+CommentService -- Comment
+CommentServiceImpl -- Comment
+CommentServiceImpl -- CommentRepository
+CommentServiceImpl -- CommentService
+PostService -- Post
+PostServiceImpl -- Post
+PostServiceImpl -- PostRepository
+PostServiceImpl -- PostService
+ServletInitializer -- SpringMvcBlogAppApplication
+SpringMvcBlogAppApplicationTests -- SpringMvcBlogAppApplication
+@enduml

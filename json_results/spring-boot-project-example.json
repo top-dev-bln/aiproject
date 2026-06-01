@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Customer, Developer roles. The platform provides capabilities for global rest exception handler, customer, message utility. Secondary concerns include task management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "MessageUtilityServiceImpl"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to interact with customer functionality, so that I can accomplish my customer-related tasks.",
+        "services": [
+          "CustomerServiceImpl",
+          "ICustomerService"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to interact with customer ref functionality, so that I can accomplish my customer ref-related tasks.",
+        "services": [
+          "CustomerServiceImpl",
+          "ICustomerService"
+        ],
+        "controllers": [
+          "CustomerRefController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to use global rest exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GlobalRestExceptionHandler"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to use customer capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CustomerServiceImpl"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        CustomerController[\"CustomerController\"]\n        CustomerRefController[\"CustomerRefController\"]\n    end\n    subgraph Services\n        GlobalRestExceptionHandler[\"GlobalRestExceptionHandler\"]\n        CustomerServiceImpl[\"CustomerServiceImpl\"]\n        MessageUtilityServiceImpl[\"MessageUtilityServiceImpl\"]\n        ICustomerService[\"ICustomerService\"]\n    end\n    subgraph Data_Access\n        ApiLogMapper[\"ApiLogMapper\"]\n        CustomerMapper[\"CustomerMapper\"]\n        CustomObjectMapper[\"CustomObjectMapper\"]\n        ApiLogRepository[\"ApiLogRepository\"]\n        CustomerRepository[\"CustomerRepository\"]\n    end\n    subgraph Infrastructure\n        CommonConfig[\"CommonConfig\"]\n        OpenApiConfig[\"OpenApiConfig\"]\n        WebConfig[\"WebConfig\"]\n        CommonUtility[\"CommonUtility\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

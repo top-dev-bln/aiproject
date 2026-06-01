@@ -1,0 +1,35 @@
+@startuml
+package com.creactiviti.graffiti; {
+class GraffitiApplication {
+}
+
+}
+
+package com.creactiviti.graffiti.graphql.demo; {
+class AddDirectorMutation {
+}
+
+class AddMovieDirectorMutation {
+}
+
+class AddMovieMutation {
+}
+
+class Director {
+}
+
+class GetAllMoviesQuery {
+}
+
+class Movie {
+}
+
+}
+
+AddDirectorMutation -- Director
+AddMovieDirectorMutation -- Director
+AddMovieDirectorMutation -- Movie
+AddMovieMutation -- Movie
+GetAllMoviesQuery -- Movie
+Movie -- Director
+@enduml

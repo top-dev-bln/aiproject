@@ -1,0 +1,476 @@
+= Cypress Testcontainer
+:toc: macro
+
+image:https://maven-badges.herokuapp.com/maven-central/io.github.wimdeblauwe/testcontainers-cypress/badge.svg["Maven Central", link="https://search.maven.org/search?q=a:testcontainers-cypress"]
+
+toc::[]
+
+== Goal
+
+The goal of this project is to make it easy to start https://www.cypress.io/[Cypress] tests via https://www.testcontainers.org/[Testcontainers].
+
+== Example usage
+
+=== Setup Cypress
+
+. Create `src/test/e2e` directory in your project.
+. Run `npm init` in that directory. This will generate a `package.json` file.
+. Run `npm install cypress@15.10.0 --save-dev` to install Cypress as a development dependency. You can also use a different version of Cypress, just make sure that you provide the same version in the `CypressContainer` constructor to avoid compatibility issues.
+. Run `npx cypress open` to start the Cypress application. It will notice that this is the first startup and add some example tests.
+. Run `npm install cypress-multi-reporters mocha mochawesome --save-dev` to install Mochawesome as a test reporter. Testcontainers-cypress will
+use that to parse the results of the Cypress tests.
+. Update `cypress.config.js` as follows:
++
+[source,js]
+----
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: 'http://localhost:8080/',
+    reporter: 'cypress-multi-reporters',
+    reporterOptions: {
+      configFile: 'reporter-config.json'
+    }
+  }
+})
+----
+. Create a `reporter-config.json` file (next to `cypress.json`) and ensure it contains:
++
+[source,json]
+----
+{
+  "reporterEnabled": "spec, mochawesome",
+  "mochawesomeReporterOptions": {
+    "reportDir": "cypress/reports/mochawesome",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
+}
+----
+
+[TIP]
+====
+Add the following to your `.gitignore` to avoid accidental commits:
+
+[source]
+----
+node_modules
+src/test/e2e/cypress/reports
+src/test/e2e/cypress/videos
+src/test/e2e/cypress/screenshots
+----
+====
+
+=== Add dependency
+
+==== Maven
+
+Use this dependency if you use Maven:
+
+[source,xml]
+----
+<dependency>
+    <groupId>io.github.wimdeblauwe</groupId>
+    <artifactId>testcontainers-cypress</artifactId>
+    <version>${tc-cypress.version}</version>
+    <scope>test</scope>
+</dependency>
+----
+
+Add `src/test/e2e` as a test resource directory:
+
+[source,xml]
+----
+<project>
+    <build>
+        ...
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/e2e</directory>
+                <targetPath>e2e</targetPath>
+            </testResource>
+        </testResources>
+    </build>
+</project>
+----
+
+==== Gradle
+
+For Gradle, use the following dependency:
+
+[source, groovy]
+----
+testImplementation 'io.github.wimdeblauwe:testcontainers-cypress:${tc-cypress.version}'
+----
+
+Process `src/test/e2e` as a test resource directory and copy it into `buid/resources/test/e2e`.
+
+[source, groovy]
+----
+processTestResources {
+    from("src/test/e2e") {
+        exclude 'node_modules'
+        into("e2e")
+    }
+}
+----
+
+The default `GatherTestResultsStrategy` assumes a Maven project and therefore you need to create a custom strategy that fits the Gradle layout.
+
+[source, java]
+----
+MochawesomeGatherTestResultsStrategy gradleTestResultStrategy = new MochawesomeGatherTestResultsStrategy(
+    FileSystems.getDefault().getPath("build", "resources", "test", "e2e", "cypress", "reports", "mochawesome"));
+    
+new CypressContainer()
+     .withGatherTestResultsStrategy(gradleTestResultStrategy)
+----
+
+
+=== Usage with a @SpringBootTest
+
+The library is not tied to Spring Boot, but I will use the example of a `@SpringBootTest`
+to explain how to use it.
+
+Suppose you have a Spring Boot application that has server-side rendered templates using Thymeleaf, and
+you want to write some UI tests using Cypress. We want to drive all this from a JUnit based test, so we do the following:
+
+. Have Spring Boot start the complete application in a test. This is easy using the `@SpringBootTest` annotation on a JUnit test.
+. Expose the web port that was opened towards Testcontainers so that Cypress that is running in a Docker container can access
+our started web application.
+. Start the Docker container to run the Cypress tests.
+. Wait for the tests to be done and report the results to JUnit.
+
+Start by writing the following JUnit test:
+
+[source,java]
+----
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) //<.>
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) //<.>
+public class CypressEndToEndTests {
+
+    @LocalServerPort //<.>
+    private int port;
+
+     @Test
+    void runCypressTests() throws InterruptedException, IOException, TimeoutException {
+
+        Testcontainers.exposeHostPorts(port); //<.>
+
+        try (CypressContainer container = new CypressContainer().withLocalServerPort(port)) { //<.>
+            container.start();
+            CypressTestResults testResults = container.getTestResults(); //<.>
+
+            if (testResults.getNumberOfFailingTests() > 0) {
+                fail("There was a failure running the Cypress tests!\n\n" + testResults); //<.>
+            }
+        }
+    }
+}
+----
+<.> Have Spring Boot start the full application on a random port.
+<.> Tell Spring Boot to _not_ configure a test database,  Because we use a real database (via Testcontainers obviously :-) ).
+<.> Have Spring inject the random port that was used when starting the application.
+<.> Ensures that the container will be able to access the Spring Boot application that is started via @SpringBootTest
+<.> Create the `CypressContainer` and pass in the `port` so the base URL that Cypress will use is correct.
+<.> Wait on the tests and get the results.
+<.> Check if there have been failures in Cypress. If so, fail the test.
+
+=== JUnit 5 dynamic tests
+
+If you are using JUnit 5, then you can use a `@TestFactory` annotated method so that it looks like there is a JUnit test
+for each of the Cypress tests.
+
+[source,java]
+----
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class CypressEndToEndTests {
+
+    @LocalServerPort
+    private int port;
+
+     @TestFactory // <.>
+    List<DynamicContainer> runCypressTests() throws InterruptedException, IOException, TimeoutException {
+
+        Testcontainers.exposeHostPorts(port);
+
+        try (CypressContainer container = new CypressContainer().withLocalServerPort(port)) {
+            container.start();
+            CypressTestResults testResults = container.getTestResults();
+
+             return convertToJUnitDynamicTests(testResults); // <.>
+        }
+    }
+
+    @NotNull
+    private List<DynamicContainer> convertToJUnitDynamicTests(CypressTestResults testResults) {
+        List<DynamicContainer> dynamicContainers = new ArrayList<>();
+        List<CypressTestSuite> suites = testResults.getSuites();
+        for (CypressTestSuite suite : suites) {
+            createContainerFromSuite(dynamicContainers, suite);
+        }
+        return dynamicContainers;
+    }
+
+    private void createContainerFromSuite(List<DynamicContainer> dynamicContainers, CypressTestSuite suite) {
+        List<DynamicTest> dynamicTests = new ArrayList<>();
+        for (CypressTest test : suite.getTests()) {
+            dynamicTests.add(DynamicTest.dynamicTest(test.getDescription(), () -> {
+                if (!test.isSuccess()) {
+                    LOGGER.error(test.getErrorMessage());
+                    LOGGER.error(test.getStackTrace());
+                }
+                assertTrue(test.isSuccess());
+            }));
+        }
+        dynamicContainers.add(DynamicContainer.dynamicContainer(suite.getTitle(), dynamicTests));
+    }
+}
+----
+<.> Use the `@TestFactory` annotated as opposed to the `@Test` method
+<.> Use the `CypressTestResults` to generate `DynamicTest` and `DynamicContainer` instances
+
+If the Cypress tests look like this:
+
+[source,javascript]
+----
+context('Todo tests', () => {
+   it('should show a message if there are no todo items', () => {
+       cy.request('POST', '/api/integration-test/clear-all-todos');
+       cy.visit('/todos');
+       cy.get('h1').contains('TODO list');
+       cy.get('#empty-todos-message').contains('There are no todo items');
+   });
+
+   it('should show all todo items', () => {
+       cy.request('POST', '/api/integration-test/prepare-todo-list-items');
+       cy.visit('/todos');
+       cy.get('h1').contains('TODO list');
+       cy.get('#todo-items-list')
+           .children()
+           .should('have.length', 2)
+           .should('contain', 'Add Cypress tests')
+           .and('contain', 'Write blog post');
+   })
+});
+----
+
+Then running the JUnit test will show this in the IDE:
+
+image::Cypress tests in JUnit with IntelliJ.png[]
+
+This makes it a lot easier to see which Cypress test has failed.
+
+== Configuration options
+
+The `CypressContainer` instance can be customized with the following options:
+
+[cols="m,a,m"]
+|===
+|Method |Description |Default
+
+|CypressContainer(String dockerImageName)
+|Allows to specify the docker image to use
+|cypress/included:4.0.1
+
+|withLocalServerPort(int port)
+|Set the port where the server is running on. It will use http://host.testcontainers.internal as hostname with the given port as the Cypress base URL. For a `@SpringBootTest`, pass the injected `@LocalServerPort` here.
+|8080
+
+|withBaseUrl(String baseUrl)
+|Set the full server url that will be used as base URL for Cypress.
+|http://host.testcontainers.internal:8080
+
+|withBrowser(String browser)
+|Set the browser to use when running the tests (E.g. `electron`, `chrome`, `firefox`)
+|electron
+
+|withSpec(String spec)
+|Sets the test(s) to run. This can be a single test (e.g. `cypress/integration/todos.spec.js`)
+or multiple (e.g. `cypress/integration/login/**`)
+| By default (meaning not calling this method), all tests are run.
+
+|withRecord()
+|Passes the `--record` flag on the command line to record the test results on the https://docs.cypress.io/guides/dashboard/introduction.html[Cypress Dashboard].
+The `CYPRESS_RECORD_KEY` environment variable needs to be set for this to work.
+| Not enabled by default
+
+|withRecord(String recordKey)
+|Passes the `--record` flag on the command line to record the test results on the https://docs.cypress.io/guides/dashboard/introduction.html[Cypress Dashboard] using the given record key.
+| Not enabled by default
+
+|withClasspathResourcePath(String resourcePath)
+|Set the relative path of where the cypress tests are (the path is the location of where the `cypress.json` file is)
+|e2e
+
+|withMaximumTotalTestDuration(Duration duration)
+|Set the maximum timeout for running the Cypress tests.
+|Duration.ofMinutes(10)
+
+|withGatherTestResultsStrategy(GatherTestResultsStrategy strategy)
+|Set the `GatherTestResultsStrategy` object that should be used for gathering information on the Cypress tests results.
+|MochawesomeGatherTestResultsStrategy
+
+|withMochawesomeReportsAt(Path path)
+|Set the path (relative to the root of the project) where the Mochawesome reports are put.
+|FileSystems.getDefault().getPath("target", "test-classes", "e2e", "cypress", "reports", "mochawesome")
+
+|withAutoCleanReports(boolean autoCleanReports)
+|Set if the Cypress test reports should be automatically cleaned before each run or not.
+|true
+
+|withNpmRunArguments(String args)
+|Adds additional arguments to the `npm install` command. For example, you can add `--loglevel silent`.
+|
+|===
+
+== Testcontainers & Cypress versions compatibility
+
+|===
+|Testcontainers-cypress |Testcontainers | Cypress
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.10.0[1.10.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.21.4[1.21.4]
+|https://docs.cypress.io/guides/references/changelog.html#15-10-0[15.10.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.9.1[1.9.1]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.19.8[1.19.8]
+|https://docs.cypress.io/guides/references/changelog.html#13-14-2[13.14.2]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.9.0[1.9.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.19.1[1.19.1]
+|https://docs.cypress.io/guides/references/changelog.html#13-3-0[13.3.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.8.0[1.8.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.17.6[1.17.6]
+|https://docs.cypress.io/guides/references/changelog.html#12-9-0[12.9.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.7.1[1.7.1]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.17.5[1.17.5]
+|https://docs.cypress.io/guides/references/changelog.html#10-11-0[10.11.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.7.0[1.7.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.17.3[1.17.3]
+|https://docs.cypress.io/guides/references/changelog.html#10-7-0[10.7.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.6.3[1.6.3]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.17.3[1.17.3]
+|https://docs.cypress.io/guides/references/changelog.html#9-7-0[9.7.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.6.2[1.6.2]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.16.3[1.16.3]
+|https://docs.cypress.io/guides/references/changelog.html#9-1-0[9.1.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.6.1[1.6.1]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.16.2[1.16.2]
+|https://docs.cypress.io/guides/references/changelog.html#9-1-0[9.1.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.6.0[1.6.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.16.2[1.16.2]
+|https://docs.cypress.io/guides/references/changelog.html#9-1-0[9.1.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.5.0[1.5.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.16.2[1.16.2]
+|https://docs.cypress.io/guides/references/changelog.html#8-7-0[8.7.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.4.0[1.4.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.16.2[1.16.2]
+|https://docs.cypress.io/guides/references/changelog.html#7-7-0[7.7.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.3.0[1.3.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.15.2[1.15.2]
+|https://docs.cypress.io/guides/references/changelog.html#6-8-0[6.8.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.2.1[1.2.1]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.15.1[1.15.1]
+|https://docs.cypress.io/guides/references/changelog.html#5-6-0[5.6.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.2.0[1.2.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.15.0[1.15.0]
+|https://docs.cypress.io/guides/references/changelog.html#5-6-0[5.6.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.1.0[1.1.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.15.0[1.15.0]
+|https://docs.cypress.io/guides/references/changelog.html#5-5-0[5.5.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-1.0.0[1.0.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.14.3[1.14.3]
+|https://docs.cypress.io/guides/references/changelog.html#4-12-1[4.12.1]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.7.0[0.7.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.14.1[1.14.1]
+|https://docs.cypress.io/guides/references/changelog.html#4-5-0[4.5.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.6.0[0.6.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.13.0[1.13.0]
+|https://docs.cypress.io/guides/references/changelog.html#4-3-0[4.3.0]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.5.0[0.5.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.12.5[1.12.5]
+|https://docs.cypress.io/guides/references/changelog.html#4-0-2[4.0.2]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.4.0[0.4.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.12.5[1.12.5]
+|https://docs.cypress.io/guides/references/changelog.html#4-0-1[4.0.1]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.3.0[0.3.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.12.3[1.12.3]
+|https://docs.cypress.io/guides/references/changelog.html#3-8-3[3.8.3]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.2.0[0.2.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.12.3[1.12.3]
+|https://docs.cypress.io/guides/references/changelog.html#3-8-1[3.8.1]
+
+|https://github.com/wimdeblauwe/testcontainers-cypress/releases/tag/testcontainers-cypress-0.1.0[0.1.0]
+|https://github.com/testcontainers/testcontainers-java/releases/tag/1.12.3[1.12.3]
+|https://docs.cypress.io/guides/references/changelog.html#3-8-0[3.8.0]
+|===
+
+== Troubleshooting
+
+When running on a mac with an M1 or M2 chip, only the _electron_ browser is included in the underlying https://hub.docker.com/r/cypress/included/[cypress image] this project uses. For more info please read https://github.com/cypress-io/cypress-docker-images/issues/695[this].
+
+There is a workaround, however, which involves following steps:
+
+1. install rosetta 2: `softwareupdate --install-rosetta`
+2. Enable rosetta emulation in *docker desktop for mac*:
+- General > Use virtualization framework
+- Features in Development > Use rosetta for x86/amd64 simulation on apple silicon
+3. Pull the *platform specific (linux/amd64) image* for the cypress-included which you are using. For example: docker pull --platform linux/amd64 cypress/included:13.3.0
+
+== Links
+
+Links to blog or articles that cover testcontainers-cypress:
+
+https://www.wimdeblauwe.com/blog/2020/2020-02-01-example-usage-of-testcontainers-cypress/[Example usage of testcontainers cypress] :: Good introduction on how to get started.
+https://www.wimdeblauwe.com/blog/2020/2020-02-11-testcontainers-cypress-release-0.4.0/[Testcontainers-cypress release 0.4.0] :: Shows how to run tests on multiple browsers with JUnit
+
+== Development
+
+* Builds are done with GitHub Actions: https://github.com/wimdeblauwe/testcontainers-cypress/actions
+* Code quality is available via SonarQube: https://sonarcloud.io/dashboard?id=io.github.wimdeblauwe%3Atestcontainers-cypress
+
+== Deployment
+
+* SNAPSHOT versions are put on https://oss.sonatype.org/content/repositories/snapshots
+* All releases can be downloaded from https://oss.sonatype.org/content/groups/public
+
+== Release
+
+To release a new version of the project, follow these steps:
+
+1. Update `pom.xml` with the new version (Use `mvn versions:set -DgenerateBackupPoms=false -DnewVersion=<VERSION>`)
+2. Commit the changes locally.
+3. Tag the commit with the version (e.g. `1.0.0`) and push the tag.
+4. Create a new release in GitHub via https://github.com/wimdeblauwe/testcontainers-cypress/releases/new
+- Select the newly pushed tag
+- Update the release notes. This should automatically start
+the [release action](https://github.com/wimdeblauwe/testcontainers-cypress/actions).
+5. Update `pom.xml` again with the next `SNAPSHOT` version.
+6. Close the milestone in the GitHub issue tracker.

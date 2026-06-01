@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves User, Admin roles. The platform provides capabilities for rest response entity exception handler, custom o auth2 user, custom oidc user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "CustomOAuth2UserService",
+          "CustomOidcUserService",
+          "OAuth2AuthenticationFailureHandler"
+        ],
+        "controllers": [
+          "AuthController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to use rest response entity exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RestResponseEntityExceptionHandler"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use o auth2 authentication success handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "OAuth2AuthenticationSuccessHandler"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use local user detail capabilities, so that I can perform essential business operations.",
+        "services": [
+          "LocalUserDetailService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use user capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        AppProperties[\"AppProperties\"]\n        CurrentUser[\"CurrentUser\"]\n        SetupDataLoader[\"SetupDataLoader\"]\n        WebConfig[\"WebConfig\"]\n        CookieUtils[\"CookieUtils\"]\n        GeneralUtils[\"GeneralUtils\"]\n    end\n    subgraph Security\n        RestAuthenticationEntryPoint[\"RestAuthenticationEntryPoint\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtAuthenticationResponse[\"JwtAuthenticationResponse\"]\n        TokenAuthenticationFilter[\"TokenAuthenticationFilter\"]\n        TokenProvider[\"TokenProvider\"]\n        OAuth2AccessTokenResponseConverterWithDefaults[\"OAuth2AccessTokenResponseConverterWithDefaults\"]\n        FacebookOAuth2UserInfo[\"FacebookOAuth2UserInfo\"]\n        GithubOAuth2UserInfo[\"GithubOAuth2UserInfo\"]\n        GoogleOAuth2UserInfo[\"GoogleOAuth2UserInfo\"]\n        LinkedinOAuth2UserInfo[\"LinkedinOAuth2UserInfo\"]\n        OAuth2UserInfo[\"OAuth2UserInfo\"]\n        OAuth2UserInfoFactory[\"OAuth2UserInfoFactory\"]\n    end\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Services\n        RestResponseEntityExceptionHandler[\"RestResponseEntityExceptionHandler\"]\n        CustomOAuth2UserService[\"CustomOAuth2UserService\"]\n        CustomOidcUserService[\"CustomOidcUserService\"]\n        OAuth2AuthenticationFailureHandler[\"OAuth2AuthenticationFailureHandler\"]\n        OAuth2AuthenticationSuccessHandler[\"OAuth2AuthenticationSuccessHandler\"]\n        LocalUserDetailService[\"LocalUserDetailService\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Data_Access\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n        HttpCookieOAuth2AuthorizationRequestRepository[\"HttpCookieOAuth2AuthorizationRequestRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

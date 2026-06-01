@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. The platform provides capabilities for user, lesson, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl",
+          "UserSerivice"
+        ],
+        "controllers": [
+          "UserController",
+          "JwtAuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [
+          "DynamicJobService"
+        ],
+        "controllers": [
+          "JobController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with hello functionality, so that I can accomplish my hello-related tasks.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "HelloController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with test functionality, so that I can accomplish my test-related tasks.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "TestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use lesson capabilities, so that I can perform essential business operations.",
+        "services": [
+          "LessonServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DemoConfig[\"DemoConfig\"]\n        JpaQueryConfig[\"JpaQueryConfig\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        ConfigureQuartz[\"ConfigureQuartz\"]\n        FanoutConfig[\"FanoutConfig\"]\n        QueueConfig[\"QueueConfig\"]\n        TopicConfig[\"TopicConfig\"]\n        RedisCacheConfig[\"RedisCacheConfig\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n        HelloController[\"HelloController\"]\n        JobController[\"JobController\"]\n        JwtAuthController[\"JwtAuthController\"]\n        TestController[\"TestController\"]\n    end\n    subgraph Security\n        AuthInterceptor[\"AuthInterceptor\"]\n        User[\"User\"]\n        Const[\"Const\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtTokenFilter[\"JwtTokenFilter\"]\n        Role[\"Role\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n        LessonServiceImpl[\"LessonServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        LessonService[\"LessonService\"]\n        MailServiceImpl[\"MailServiceImpl\"]\n        MailService[\"MailService\"]\n        DynamicJobService[\"DynamicJobService\"]\n        UserSerivice[\"UserSerivice\"]\n        AuthService[\"AuthService\"]\n        AuthServiceImpl[\"AuthServiceImpl\"]\n    end\n    subgraph Data_Access\n        UserRepository[\"UserRepository\"]\n        LessonRepository[\"LessonRepository\"]\n        UserMapper[\"UserMapper\"]\n        JobEntityRepository[\"JobEntityRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

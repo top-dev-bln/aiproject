@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':idempotence4j-core')
+	api libraries.micrometer
+
+    testImplementation project(':idempotence4j-test')
+}

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Candidate, Admin roles. It exposes interfaces for managing weather backend, weatherclient. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with weather backend functionality, so that I can accomplish my weather backend-related tasks.",
+        "services": [],
+        "controllers": [
+          "WeatherBackendController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with weatherclient functionality, so that I can accomplish my weatherclient-related tasks.",
+        "services": [],
+        "controllers": [
+          "WeatherclientController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "WeatherBackendController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "WeatherBackendController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "WeatherBackendController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        OpenAPIConfig[\"OpenAPIConfig\"]\n        WeatherclientConfiguration[\"WeatherclientConfiguration\"]\n        WeatherBackendAdapterStub[\"WeatherBackendAdapterStub\"]\n        WeatherServiceTestConfiguration[\"WeatherServiceTestConfiguration\"]\n    end\n    subgraph Controllers\n        WeatherBackendController[\"WeatherBackendController\"]\n        WeatherclientController[\"WeatherclientController\"]\n    end\n    subgraph Data_Access\n        GetCityForecastByZIPInMapper[\"GetCityForecastByZIPInMapper\"]\n        GetCityForecastByZIPOutMapper[\"GetCityForecastByZIPOutMapper\"]\n        GetCityWeatherByZIPOutMapper[\"GetCityWeatherByZIPOutMapper\"]\n        GetWeatherInformationOutMapper[\"GetWeatherInformationOutMapper\"]\n    end\n    subgraph Security\n        LoggingFilter[\"LoggingFilter\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,18 @@
+plugins {
+    id "java-library"
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Title": "spring eventbus",
+                   "Implementation-Version":archiveVersion
+    }
+}
+
+dependencies {	
+	implementation project(":eventbus-api")
+	implementation "org.springframework.boot:spring-boot-starter-web:$project.ext.springVersion"
+
+	implementation "org.requirementsascode:spring-behavior-web:" + version		
+	implementation "org.requirementsascode:requirementsascodecore:2.0"
+}

@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is an API gateway platform that serves User, Content Creator roles. The platform provides capabilities for exchange handler, http exchange handler, http handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include search functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with controller path method mapper functionality, so that I can accomplish my controller path method mapper-related tasks.",
+        "services": [
+          "ExchangeHandler"
+        ],
+        "controllers": [
+          "ControllerPathMethodMapper"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with base functionality, so that I can accomplish my base-related tasks.",
+        "services": [
+          "ExchangeHandler"
+        ],
+        "controllers": [
+          "BaseController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with controller callback functionality, so that I can accomplish my controller callback-related tasks.",
+        "services": [
+          "ExchangeHandler"
+        ],
+        "controllers": [
+          "ControllerCallback"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with controller proxy functionality, so that I can accomplish my controller proxy-related tasks.",
+        "services": [
+          "ExchangeHandler"
+        ],
+        "controllers": [
+          "ControllerProxy"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with first functionality, so that I can accomplish my first-related tasks.",
+        "services": [
+          "ExchangeHandler"
+        ],
+        "controllers": [
+          "FirstController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Constants[\"Constants\"]\n        RenderUtils[\"RenderUtils\"]\n    end\n    subgraph Controllers\n        ControllerPathMethodMapper[\"ControllerPathMethodMapper\"]\n        BaseController[\"BaseController\"]\n        ControllerCallback[\"ControllerCallback\"]\n        ControllerProxy[\"ControllerProxy\"]\n        FirstController[\"FirstController\"]\n    end\n    subgraph Services\n        ExchangeHandler[\"ExchangeHandler\"]\n        HttpExchangeHandler[\"HttpExchangeHandler\"]\n        HttpHandler[\"HttpHandler\"]\n    end\n    subgraph Security\n        ValidationFilterAdapter[\"ValidationFilterAdapter\"]\n        CommonCtrlFilterAdapter[\"CommonCtrlFilterAdapter\"]\n        CORSFilter[\"CORSFilter\"]\n        ShowUserAgentFilter[\"ShowUserAgentFilter\"]\n        CtrlFilter[\"CtrlFilter\"]\n        CtrlFilterChain[\"CtrlFilterChain\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

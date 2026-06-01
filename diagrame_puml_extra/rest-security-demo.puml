@@ -1,0 +1,121 @@
+@startuml
+package com.security; {
+class Application {
+}
+
+}
+
+package com.security.config; {
+class WebSecurityConfig {
+}
+
+}
+
+package com.security.domain.entity; {
+class Authority {
+}
+
+class AuthorityName {
+}
+
+class User {
+}
+
+}
+
+package com.security.domain.model; {
+class Person {
+}
+
+}
+
+package com.security.rest; {
+class PersonRestService {
+}
+
+}
+
+package com.security.security.controller; {
+class AuthenticationRestController {
+}
+
+class MethodProtectedRestController {
+}
+
+class UserRestController {
+}
+
+}
+
+package com.security.security; {
+class JwtAuthenticationEntryPoint {
+}
+
+class JwtAuthenticationRequest {
+}
+
+class JwtAuthenticationTokenFilter {
+}
+
+class JwtTokenUtil {
+}
+
+class JwtUser {
+}
+
+class JwtUserFactory {
+}
+
+}
+
+package com.security.security.repository; {
+class UserRepository {
+}
+
+}
+
+package com.security.security.service; {
+class JwtAuthenticationResponse {
+}
+
+class JwtUserDetailsServiceImpl {
+}
+
+}
+
+package org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; {
+class Test {
+}
+
+}
+
+WebSecurityConfig -- User
+WebSecurityConfig -- JwtAuthenticationEntryPoint
+WebSecurityConfig -- JwtAuthenticationTokenFilter
+Authority -- AuthorityName
+Authority -- User
+PersonRestService -- Person
+AuthenticationRestController -- User
+AuthenticationRestController -- JwtAuthenticationRequest
+AuthenticationRestController -- JwtTokenUtil
+AuthenticationRestController -- JwtUser
+AuthenticationRestController -- JwtAuthenticationResponse
+UserRestController -- User
+UserRestController -- JwtTokenUtil
+UserRestController -- JwtUser
+JwtAuthenticationRequest -- User
+JwtAuthenticationTokenFilter -- User
+JwtAuthenticationTokenFilter -- JwtTokenUtil
+JwtTokenUtil -- User
+JwtTokenUtil -- JwtUser
+JwtUser -- Authority
+JwtUser -- User
+JwtUserFactory -- Authority
+JwtUserFactory -- User
+JwtUserFactory -- JwtUser
+UserRepository -- User
+JwtUserDetailsServiceImpl -- User
+JwtUserDetailsServiceImpl -- JwtUser
+JwtUserDetailsServiceImpl -- JwtUserFactory
+JwtUserDetailsServiceImpl -- UserRepository
+@enduml

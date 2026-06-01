@@ -1,0 +1,239 @@
+@startuml
+package com.rimmelasghar.boilerplate.springboot.configuration; {
+class MessageConfiguration {
+}
+
+class PasswordEncoderConfiguration {
+}
+
+class SecurityConfiguration {
+}
+
+class SwaggerConfiguration {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.controller; {
+class BookController {
+}
+
+class HealthController {
+}
+
+class LoginController {
+}
+
+class RegistrationController {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.exceptions; {
+class ApiExceptionResponse {
+}
+
+class LoginControllerAdvice {
+}
+
+class RegistrationControllerAdvice {
+}
+
+class RegistrationException {
+}
+
+class ValidationAdvice {
+}
+
+class ValidationErrorResponse {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.model; {
+class Book {
+}
+
+class User {
+}
+
+class UserRole {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.repository; {
+class BookRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.security.dto; {
+class AuthenticatedUserDto {
+}
+
+class LoginRequest {
+}
+
+class LoginResponse {
+}
+
+class RegistrationRequest {
+}
+
+class RegistrationResponse {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.security.jwt; {
+class JwtAuthenticationEntryPoint {
+}
+
+class JwtAuthenticationFilter {
+}
+
+class JwtProperties {
+}
+
+class JwtTokenManager {
+}
+
+class JwtTokenService {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.security.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.security.service; {
+class UserDetailsServiceImpl {
+}
+
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.security.utils; {
+class SecurityConstants {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.service; {
+class BookService {
+}
+
+class UserValidationService {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.service.Impl; {
+class BookServiceImpl {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot; {
+class SpringBootBoilerplateApplication {
+}
+
+}
+
+package com.rimmelasghar.boilerplate.springboot.utils; {
+class ExceptionMessageAccessor {
+}
+
+class GeneralMessageAccessor {
+}
+
+class ProjectConstants {
+}
+
+}
+
+MessageConfiguration -- ProjectConstants
+SecurityConfiguration -- User
+SecurityConfiguration -- JwtAuthenticationEntryPoint
+SecurityConfiguration -- JwtAuthenticationFilter
+BookController -- Book
+BookController -- BookService
+LoginController -- LoginRequest
+LoginController -- LoginResponse
+LoginController -- JwtTokenService
+RegistrationController -- User
+RegistrationController -- RegistrationRequest
+RegistrationController -- RegistrationResponse
+RegistrationController -- UserService
+LoginControllerAdvice -- LoginController
+LoginControllerAdvice -- ApiExceptionResponse
+LoginControllerAdvice -- RegistrationException
+RegistrationControllerAdvice -- RegistrationController
+RegistrationControllerAdvice -- ApiExceptionResponse
+RegistrationControllerAdvice -- RegistrationException
+ValidationAdvice -- ValidationErrorResponse
+User -- UserRole
+BookRepository -- Book
+UserRepository -- User
+AuthenticatedUserDto -- User
+AuthenticatedUserDto -- UserRole
+JwtAuthenticationFilter -- User
+JwtAuthenticationFilter -- JwtTokenManager
+JwtAuthenticationFilter -- UserDetailsServiceImpl
+JwtAuthenticationFilter -- SecurityConstants
+JwtTokenManager -- User
+JwtTokenManager -- UserRole
+JwtTokenManager -- JwtProperties
+JwtTokenService -- User
+JwtTokenService -- AuthenticatedUserDto
+JwtTokenService -- LoginRequest
+JwtTokenService -- LoginResponse
+JwtTokenService -- JwtTokenManager
+JwtTokenService -- UserMapper
+JwtTokenService -- UserService
+UserMapper -- User
+UserMapper -- AuthenticatedUserDto
+UserMapper -- RegistrationRequest
+UserDetailsServiceImpl -- User
+UserDetailsServiceImpl -- UserRole
+UserDetailsServiceImpl -- AuthenticatedUserDto
+UserDetailsServiceImpl -- UserService
+UserService -- User
+UserService -- AuthenticatedUserDto
+UserService -- RegistrationRequest
+UserService -- RegistrationResponse
+UserServiceImpl -- User
+UserServiceImpl -- UserRole
+UserServiceImpl -- UserRepository
+UserServiceImpl -- AuthenticatedUserDto
+UserServiceImpl -- RegistrationRequest
+UserServiceImpl -- RegistrationResponse
+UserServiceImpl -- UserMapper
+UserServiceImpl -- UserService
+UserServiceImpl -- UserValidationService
+UserServiceImpl -- GeneralMessageAccessor
+SecurityConstants -- User
+BookService -- Book
+BookServiceImpl -- Book
+BookServiceImpl -- BookRepository
+BookServiceImpl -- BookService
+UserValidationService -- RegistrationException
+UserValidationService -- User
+UserValidationService -- UserRepository
+UserValidationService -- RegistrationRequest
+UserValidationService -- ExceptionMessageAccessor
+ExceptionMessageAccessor -- ProjectConstants
+GeneralMessageAccessor -- ProjectConstants
+@enduml

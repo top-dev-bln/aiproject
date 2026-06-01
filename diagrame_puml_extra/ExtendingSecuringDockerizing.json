@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves User, Candidate roles. The platform provides capabilities for explore cali user details, tour rating, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "ExploreCaliUserDetailsService",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with exception handler functionality, so that I can accomplish my exception handler-related tasks.",
+        "services": [
+          "ExploreCaliUserDetailsService"
+        ],
+        "controllers": [
+          "ExceptionHandlerController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with rating functionality, so that I can accomplish my rating-related tasks.",
+        "services": [
+          "TourRatingService"
+        ],
+        "controllers": [
+          "RatingController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with tour rating functionality, so that I can accomplish my tour rating-related tasks.",
+        "services": [
+          "TourRatingService"
+        ],
+        "controllers": [
+          "TourRatingController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use tour rating capabilities, so that I can perform essential business operations.",
+        "services": [
+          "TourRatingService"
+        ],
+        "controllers": [
+          "ExceptionHandlerController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        RoleRepository[\"RoleRepository\"]\n        TourPackageRepository[\"TourPackageRepository\"]\n        TourRatingRepository[\"TourRatingRepository\"]\n        TourRepository[\"TourRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        ExploreCaliUserDetailsService[\"ExploreCaliUserDetailsService\"]\n        TourRatingService[\"TourRatingService\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Security\n        JwtProvider[\"JwtProvider\"]\n        JwtTokenFilter[\"JwtTokenFilter\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        JwtRequestHelper[\"JwtRequestHelper\"]\n    end\n    subgraph Controllers\n        ExceptionHandlerController[\"ExceptionHandlerController\"]\n        RatingController[\"RatingController\"]\n        TourRatingController[\"TourRatingController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves User, Customer roles. The platform provides capabilities for assistant, assistant, authentication. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "AuthenticationService",
+          "UserServiceImpl",
+          "UserService"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController",
+          "UserControllerImpl"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "PaymentService",
+          "ProductShoppingCartService",
+          "ShoppingCartService"
+        ],
+        "controllers": [
+          "PaymentController",
+          "ShoppingCartController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with assistant functionality, so that I can accomplish my assistant-related tasks.",
+        "services": [
+          "AssistantServiceImpl",
+          "AssistantService"
+        ],
+        "controllers": [
+          "AssistantController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with assistant impl functionality, so that I can accomplish my assistant impl-related tasks.",
+        "services": [
+          "AssistantServiceImpl",
+          "AssistantService"
+        ],
+        "controllers": [
+          "AssistantControllerImpl"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with product functionality, so that I can accomplish my product-related tasks.",
+        "services": [
+          "ProductService",
+          "ProductShoppingCartService"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AssistantServiceImpl[\"AssistantServiceImpl\"]\n        AssistantService[\"AssistantService\"]\n        AuthenticationService[\"AuthenticationService\"]\n        JwtService[\"JwtService\"]\n        ApiExceptionHandler[\"ApiExceptionHandler\"]\n        PaymentService[\"PaymentService\"]\n        ProductService[\"ProductService\"]\n        ProductShoppingCartService[\"ProductShoppingCartService\"]\n        ShoppingCartService[\"ShoppingCartService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Controllers\n        AssistantController[\"AssistantController\"]\n        AssistantControllerImpl[\"AssistantControllerImpl\"]\n        AuthenticationController[\"AuthenticationController\"]\n        PaymentController[\"PaymentController\"]\n        ProductController[\"ProductController\"]\n        ProductControllerImpl[\"ProductControllerImpl\"]\n        ProductShoppingController[\"ProductShoppingController\"]\n        ShoppingCartController[\"ShoppingCartController\"]\n        UserController[\"UserController\"]\n        UserControllerImpl[\"UserControllerImpl\"]\n    end\n    subgraph Data_Access\n        SuggestionMapper[\"SuggestionMapper\"]\n        ProductRepository[\"ProductRepository\"]\n        ProductMapper[\"ProductMapper\"]\n        CacheProductRepository[\"CacheProductRepository\"]\n        QueryProductRepository[\"QueryProductRepository\"]\n        PostgresProductRepositoryImpl[\"PostgresProductRepositoryImpl\"]\n        RedisProductRepositoryImpl[\"RedisProductRepositoryImpl\"]\n        ProductShoppingCartDTOMapper[\"ProductShoppingCartDTOMapper\"]\n        ProductShoppingCartRepository[\"ProductShoppingCartRepository\"]\n        ShoppingCartRepository[\"ShoppingCartRepository\"]\n        MySqlShoppingCartRepository[\"MySqlShoppingCartRepository\"]\n        SpringShoppingCartRepository[\"SpringShoppingCartRepository\"]\n        UserRepository[\"UserRepository\"]\n        UserMapper[\"UserMapper\"]\n        MySqlUserRepository[\"MySqlUserRepository\"]\n        SpringUserRepository[\"SpringUserRepository\"]\n    end\n    subgraph Infrastructure\n        OpenAiAssistantImpl[\"OpenAiAssistantImpl\"]\n        PromptLoader[\"PromptLoader\"]\n        ApplicationConfig[\"ApplicationConfig\"]\n        OpenAPIConfig[\"OpenAPIConfig\"]\n        ProductCacheEntity[\"ProductCacheEntity\"]\n        ProductEntity[\"ProductEntity\"]\n        MaskData[\"MaskData\"]\n        ProtectDataSerializer[\"ProtectDataSerializer\"]\n        UserEntity[\"UserEntity\"]\n        FileUploadUtil[\"FileUploadUtil\"]\n    end\n    subgraph Security\n        AuthenticationRequest[\"AuthenticationRequest\"]\n        AuthenticationResponse[\"AuthenticationResponse\"]\n        RegisterRequest[\"RegisterRequest\"]\n        AuthenticationConfig[\"AuthenticationConfig\"]\n        SecurityConfig[\"SecurityConfig\"]\n        JwtAuthFilter[\"JwtAuthFilter\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

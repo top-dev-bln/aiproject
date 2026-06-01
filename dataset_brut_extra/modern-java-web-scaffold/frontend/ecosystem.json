@@ -1,0 +1,39 @@
+{
+  "apps": {
+    "name": "modern-java-web-scaffold",
+    "script": "server.js",
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    }
+  },
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": [
+        "10.116.75.148"
+      ],
+      "ref": "origin/master",
+      "repo": "https://github.com/dolphineor/modern-java-web-scaffold.git",
+      "path": "/var/www/production",
+      "pre-deploy-local": "echo 'This is a local executed command'",
+      "post-deploy": "npm run build && pm2 startOrRestart ecosystem.json --env production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "beta": {
+      "user": "root",
+      "host": "127.0.0.1",
+      "ref": "origin/master",
+      "repo": "https://github.com/dolphineor/modern-java-web-scaffold.git",
+      "path": "/var/www/beta",
+      "post-deploy": "npm run build && pm2 startOrRestart ecosystem.json --env beta",
+      "env": {
+        "NODE_ENV": "beta"
+      }
+    }
+  }
+}

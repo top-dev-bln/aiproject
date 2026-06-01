@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a social platform that serves Admin, User roles. It manages core business objects including message, person, gender, role. The platform provides capabilities for social sign in adapter, user details, avatar. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "ProfileController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage message records, so that I can track and organize message data effectively.",
+        "services": [
+          "MessageService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage person records, so that I can track and organize person data effectively.",
+        "services": [
+          "PersonService"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage gender records, so that I can track and organize gender data effectively.",
+        "services": [
+          "SocialSignInAdapter"
+        ],
+        "controllers": [
+          "ProfileController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to create and manage role records, so that I can track and organize role data effectively.",
+        "services": [
+          "SocialSignInAdapter"
+        ],
+        "controllers": [
+          "ProfileController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n        SocialConfiguration[\"SocialConfiguration\"]\n        WebConfiguration[\"WebConfiguration\"]\n        Constants[\"Constants\"]\n    end\n    subgraph Security\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        SecurityUtils[\"SecurityUtils\"]\n        CurrentProfile[\"CurrentProfile\"]\n    end\n    subgraph Data_Access\n        Message[\"Message\"]\n        Person[\"Person\"]\n        Gender[\"Gender\"]\n        Role[\"Role\"]\n        PersonView[\"PersonView\"]\n        MessageView[\"MessageView\"]\n        ContactInformation[\"ContactInformation\"]\n        SignUp[\"SignUp\"]\n        MessagePost[\"MessagePost\"]\n        MessageRepository[\"MessageRepository\"]\n        RoleRepository[\"RoleRepository\"]\n        PersonRepository[\"PersonRepository\"]\n    end\n    subgraph Services\n        SocialSignInAdapter[\"SocialSignInAdapter\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        AvatarService[\"AvatarService\"]\n        SocialConnectionSignUp[\"SocialConnectionSignUp\"]\n        PersonService[\"PersonService\"]\n        MessageService[\"MessageService\"]\n    end\n    subgraph Controllers\n        ProfileController[\"ProfileController\"]\n        MessageController[\"MessageController\"]\n        PersonController[\"PersonController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

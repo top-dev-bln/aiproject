@@ -1,0 +1,142 @@
+
+services:
+
+  customerdb:
+    platform: linux/x86_64
+    container_name: customerdb
+    image: postgres
+    environment:
+     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+     POSTGRES_USER: ${POSTGRES_USER:-postgres}
+    volumes:
+      - ./customer/postgres_init.sql:/docker-entrypoint-initdb.d/postgres_init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - host
+
+  querydb:
+    platform: linux/x86_64
+    container_name: querydb
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - ./account.query/postgres_init.sql:/docker-entrypoint-initdb.d/postgres_init.sql
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    networks:
+      - host
+
+  rabbitmq:
+    platform: linux/x86_64
+    container_name: "bank_rabbitmq"
+    image: "rabbitmq:3.12-management"
+    hostname: "rabbitmq"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - host
+
+  cmddb:
+    platform: linux/x86_64
+    container_name: "cmddb"
+    image: mongo:4.4.18
+    restart: always
+    ports:
+        - "27017:27017"
+    networks:
+      - host
+
+  customer-service:
+    platform: linux/x86_64
+    image: bank/customer-service-api
+    container_name: customer-service
+    build:
+      context: ./customer
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    depends_on:
+      - customerdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://customerdb:5432/customerdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - host
+
+  account-cmd:
+    platform: linux/x86_64
+    image: bank/account-cmd-service-api
+    container_name: account-cmd-service
+    build:
+      context: ./account.cmd
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+    depends_on:
+      - cmddb
+      - rabbitmq
+    environment:
+      - SPRING_DATA_MONGODB_HOST=cmddb
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=accountcmdb
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=guest
+      - SPRING_RABBITMQ_PASSWORD=guest
+      - SPRING_FEIGN_CUSTOMER_CLIENT=http://customer-service:5001/
+    networks:
+      - host
+
+  account-query:
+    platform: linux/x86_64
+    image: bank/account-query-service-api
+    container_name: account-query-service
+    build:
+      context: ./account.query
+      dockerfile: Dockerfile
+    ports:
+      - "5003:5003"
+    depends_on:
+      - querydb
+      - rabbitmq
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://querydb:5432/accountingdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=guest
+      - SPRING_RABBITMQ_PASSWORD=guest
+    networks:
+      - host
+
+  k6:
+    platform: linux/x86_64
+    container_name: k6_container
+    image: loadimpact/k6:latest
+    volumes:
+      - ./load-testing:/scripts
+    ports:
+      - "6565:6565"
+    networks:
+      - host
+
+networks:
+  host:
+    driver: bridge
+
+volumes:
+  customerdb:
+  cmddb:
+  querydb:

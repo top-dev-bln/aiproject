@@ -1,0 +1,332 @@
+@startuml
+package cn.enilu.elm.api; {
+class ApplicationStart {
+}
+
+class ApiJunitTest {
+}
+
+}
+
+package cn.enilu.elm.api.conf; {
+class CORSConfiguration {
+}
+
+class Swagger2Configuration {
+}
+
+}
+
+package cn.enilu.elm.api.controller; {
+class ActivityController {
+}
+
+class AddressController {
+}
+
+class AdminController {
+}
+
+class BaseController {
+}
+
+class BaseErrorController {
+}
+
+class CaptchaController {
+}
+
+class CartController {
+}
+
+class DeliveryController {
+}
+
+class EntryController {
+}
+
+class FileController {
+}
+
+class FoodController {
+}
+
+class IndexController {
+}
+
+class OrderController {
+}
+
+class PositionController {
+}
+
+class RatingController {
+}
+
+class RestaurantController {
+}
+
+class ShopController {
+}
+
+class UserController {
+}
+
+}
+
+package cn.enilu.elm.api.entity; {
+class Activity {
+}
+
+class Address {
+}
+
+class Admin {
+}
+
+class BaseEntity {
+}
+
+class Delivery {
+}
+
+class Entry {
+}
+
+class Food {
+}
+
+class Ids {
+}
+
+class KeyValue {
+}
+
+class Menu {
+}
+
+class Order {
+}
+
+class Shop {
+}
+
+class SpecFood {
+}
+
+}
+
+package cn.enilu.elm.api.entity.sub; {
+class OrderBasket {
+}
+
+class OrderFee {
+}
+
+class OrderGroup {
+}
+
+class OrderStatusBar {
+}
+
+class OrderTimelineNode {
+}
+
+}
+
+package cn.enilu.elm.api.repository; {
+class BaseDao {
+}
+
+class BaseDaoTest {
+}
+
+class IdsDaoTest {
+}
+
+}
+
+package cn.enilu.elm.api.service; {
+class IdsService {
+}
+
+class PositionService {
+}
+
+class PositionServiceTest {
+}
+
+}
+
+package cn.enilu.elm.api.utils; {
+class AppConfiguration {
+}
+
+class Beans {
+}
+
+class CaptchaCode {
+}
+
+class HttpClients {
+}
+
+class Maps {
+}
+
+class MD5 {
+}
+
+class GsonsTest {
+}
+
+}
+
+package cn.enilu.elm.api.vo; {
+class CityInfo {
+}
+
+class Constants {
+}
+
+class Rets {
+}
+
+}
+
+ActivityController -- BaseController
+ActivityController -- Activity
+ActivityController -- BaseDao
+AddressController -- BaseController
+AddressController -- Address
+AddressController -- Ids
+AddressController -- BaseDao
+AddressController -- IdsService
+AddressController -- Maps
+AddressController -- Rets
+AdminController -- BaseController
+AdminController -- Admin
+AdminController -- Ids
+AdminController -- BaseDao
+AdminController -- IdsService
+AdminController -- PositionService
+AdminController -- AppConfiguration
+AdminController -- Maps
+AdminController -- MD5
+AdminController -- CityInfo
+AdminController -- Constants
+AdminController -- Rets
+CaptchaController -- BaseController
+CaptchaController -- CaptchaCode
+CaptchaController -- Rets
+CartController -- BaseController
+CartController -- Ids
+CartController -- BaseDao
+CartController -- IdsService
+DeliveryController -- BaseController
+DeliveryController -- Delivery
+DeliveryController -- BaseDao
+EntryController -- BaseController
+EntryController -- Entry
+EntryController -- BaseDao
+FileController -- BaseController
+FileController -- AppConfiguration
+FileController -- Rets
+FoodController -- BaseController
+FoodController -- Food
+FoodController -- Ids
+FoodController -- KeyValue
+FoodController -- SpecFood
+FoodController -- BaseDao
+FoodController -- IdsService
+FoodController -- Maps
+FoodController -- Rets
+OrderController -- BaseController
+OrderController -- Order
+OrderController -- BaseDao
+OrderController -- Maps
+OrderController -- Rets
+PositionController -- BaseController
+PositionController -- BaseDao
+PositionController -- PositionService
+PositionController -- CityInfo
+PositionController -- Rets
+RatingController -- BaseController
+RatingController -- BaseDao
+RestaurantController -- BaseController
+ShopController -- BaseController
+ShopController -- Delivery
+ShopController -- Ids
+ShopController -- Menu
+ShopController -- Shop
+ShopController -- BaseDao
+ShopController -- IdsService
+ShopController -- PositionService
+ShopController -- Maps
+ShopController -- CityInfo
+ShopController -- Rets
+UserController -- BaseController
+UserController -- BaseDao
+UserController -- CaptchaCode
+UserController -- Maps
+UserController -- Rets
+Activity -- BaseEntity
+Address -- BaseEntity
+Admin -- BaseEntity
+Delivery -- BaseEntity
+Entry -- BaseEntity
+Food -- Activity
+Food -- BaseEntity
+Food -- SpecFood
+Ids -- Address
+Ids -- Admin
+Ids -- BaseEntity
+Ids -- Food
+Ids -- Order
+Menu -- BaseEntity
+Menu -- Food
+Order -- Address
+Order -- BaseEntity
+Order -- OrderBasket
+Order -- OrderStatusBar
+Order -- OrderTimelineNode
+Shop -- Address
+Shop -- BaseEntity
+Shop -- Delivery
+Shop -- Order
+SpecFood -- KeyValue
+OrderBasket -- OrderFee
+OrderBasket -- OrderGroup
+OrderFee -- Order
+OrderGroup -- Order
+BaseDao -- BaseEntity
+BaseDao -- Entry
+BaseDao -- KeyValue
+IdsService -- Address
+IdsService -- Admin
+IdsService -- Food
+IdsService -- Ids
+IdsService -- Order
+IdsService -- BaseDao
+IdsService -- Beans
+PositionService -- Entry
+PositionService -- BaseDao
+PositionService -- AppConfiguration
+PositionService -- HttpClients
+PositionService -- Maps
+PositionService -- CityInfo
+HttpClients -- Entry
+Maps -- KeyValue
+Rets -- Maps
+ApiJunitTest -- ApplicationStart
+BaseDaoTest -- Address
+BaseDaoTest -- Order
+BaseDaoTest -- BaseDao
+BaseDaoTest -- ApiJunitTest
+IdsDaoTest -- Ids
+IdsDaoTest -- IdsService
+IdsDaoTest -- ApiJunitTest
+PositionServiceTest -- PositionService
+PositionServiceTest -- CityInfo
+PositionServiceTest -- ApiJunitTest
+@enduml

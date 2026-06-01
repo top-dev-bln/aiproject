@@ -1,0 +1,577 @@
+@startuml
+package org.flips.advice; {
+class FlipBeanAdvice {
+}
+
+class FlipFeatureAdvice {
+}
+
+class FlipBeanAdviceIntegrationTest {
+}
+
+class FlipBeanAdviceUnitTest {
+}
+
+class FlipFeatureAdviceIntegrationTest {
+}
+
+class FlipFeatureAdviceUnitTest {
+}
+
+}
+
+package org.flips.annotation; {
+class FlipBean {
+}
+
+class FlipOff {
+}
+
+class FlipOnDateTime {
+}
+
+class FlipOnDaysOfWeek {
+}
+
+class FlipOnEnvironmentProperty {
+}
+
+class FlipOnOff {
+}
+
+class FlipOnProfiles {
+}
+
+class FlipOnSpringExpression {
+}
+
+}
+
+package org.flips.condition; {
+class DateTimeFlipCondition {
+}
+
+class DayOfWeekFlipCondition {
+}
+
+class FlipCondition {
+}
+
+class FlipOffCondition {
+}
+
+class SpringEnvironmentPropertyFlipCondition {
+}
+
+class SpringExpressionFlipCondition {
+}
+
+class SpringProfileFlipCondition {
+}
+
+class DateTimeFlipConditionUnitTest {
+}
+
+class DayOfWeekFlipConditionUnitTest {
+}
+
+class FlipOffConditionUnitTest {
+}
+
+class SpringEnvironmentPropertyFlipConditionUnitTest {
+}
+
+class SpringExpressionFlipConditionUnitTest {
+}
+
+class SpringProfileFlipConditionUnitTest {
+}
+
+}
+
+package org.flips.config; {
+class FlipContextConfiguration {
+}
+
+}
+
+package org.flips.exception; {
+class FeatureNotEnabledException {
+}
+
+class FlipBeanFailedException {
+}
+
+class SpringExpressionEvaluationFailureException {
+}
+
+}
+
+package org.flips.model; {
+class DefaultFlipConditionEvaluator {
+}
+
+class EmptyFlipConditionEvaluator {
+}
+
+class Feature {
+}
+
+class FeatureContext {
+}
+
+class FeatureExpressionContext {
+}
+
+class FlipAnnotationAttributes {
+}
+
+class FlipConditionEvaluator {
+}
+
+class FlipConditionEvaluatorFactory {
+}
+
+class EmptyFlipConditionEvaluatorUnitTest {
+}
+
+class FeatureContextUnitTest {
+}
+
+class FlipAnnotationAttributesUnitTest {
+}
+
+class FlipConditionEvaluatorFactoryUnitTest {
+}
+
+class FlipConditionEvaluatorUnitTest {
+}
+
+}
+
+package org.flips.processor; {
+class FlipAnnotationProcessor {
+}
+
+class FlipAnnotationProcessorUnitTest {
+}
+
+}
+
+package org.flips.store; {
+class FlipAnnotationsStore {
+}
+
+class FlipAnnotationsStoreIntegrationTest {
+}
+
+class FlipAnnotationsStoreUnitTest {
+}
+
+}
+
+package org.flips.utils; {
+class AnnotationUtils {
+}
+
+class DateTimeUtils {
+}
+
+class Utils {
+}
+
+class ValidationUtils {
+}
+
+class AnnotationUtilsUnitTest {
+}
+
+class UtilsUnitTest {
+}
+
+class ValidationUtilsUnitTest {
+}
+
+}
+
+package org.flips.fixture; {
+class TestClientFlipAnnotationsWithAnnotationsOnMethod {
+}
+
+class TestClientFlipAnnotationsWithSpringExpressionAnnotations {
+}
+
+class TestClientFlipBeanSpringComponentSource {
+}
+
+class TestClientFlipBeanSpringComponentTarget {
+}
+
+class TestClientFlipSpringComponent {
+}
+
+class TestClientFlipSpringService {
+}
+
+}
+
+package org.flips.describe.config; {
+class FlipWebContextConfiguration {
+}
+
+}
+
+package org.flips.describe.controller; {
+class FlipDescriptionController {
+}
+
+class FlipDescriptionControllerIntegrationTest {
+}
+
+class FlipDescriptionControllerUnitTest {
+}
+
+}
+
+package org.flips.describe.controlleradvice; {
+class FlipControllerAdvice {
+}
+
+class FlipControllerAdviceIntegrationTest {
+}
+
+class FlipControllerAdviceUnitTest {
+}
+
+}
+
+package org.flips.describe.model; {
+class FeatureNotEnabledErrorResponse {
+}
+
+class FlipDescription {
+}
+
+}
+
+package org.flips.describe.fixture; {
+class TestClientController {
+}
+
+class TestClientControllerOther {
+}
+
+class TestClientFlipAnnotationsDescription {
+}
+
+}
+
+FlipBeanAdvice -- FlipBean
+FlipBeanAdvice -- FeatureNotEnabledException
+FlipBeanAdvice -- FlipBeanFailedException
+FlipBeanAdvice -- Feature
+FlipBeanAdvice -- FlipAnnotationsStore
+FlipBeanAdvice -- AnnotationUtils
+FlipBeanAdvice -- Utils
+FlipFeatureAdvice -- FlipBean
+FlipFeatureAdvice -- FlipOnOff
+FlipFeatureAdvice -- FeatureNotEnabledException
+FlipFeatureAdvice -- Feature
+FlipFeatureAdvice -- FlipAnnotationsStore
+FlipOff -- FlipOnOff
+FlipOff -- FlipOffCondition
+FlipOnDateTime -- FlipOnOff
+FlipOnDateTime -- DateTimeFlipCondition
+FlipOnDateTime -- FlipCondition
+FlipOnDaysOfWeek -- FlipOnOff
+FlipOnDaysOfWeek -- DayOfWeekFlipCondition
+FlipOnDaysOfWeek -- FlipCondition
+FlipOnEnvironmentProperty -- FlipOnOff
+FlipOnEnvironmentProperty -- FlipCondition
+FlipOnEnvironmentProperty -- SpringEnvironmentPropertyFlipCondition
+FlipOnOff -- FlipCondition
+FlipOnProfiles -- FlipOnOff
+FlipOnProfiles -- FlipCondition
+FlipOnProfiles -- SpringProfileFlipCondition
+FlipOnSpringExpression -- FlipOnOff
+FlipOnSpringExpression -- FlipCondition
+FlipOnSpringExpression -- SpringExpressionFlipCondition
+DateTimeFlipCondition -- FlipCondition
+DateTimeFlipCondition -- Feature
+DateTimeFlipCondition -- FeatureContext
+DateTimeFlipCondition -- FlipAnnotationAttributes
+DateTimeFlipCondition -- DateTimeUtils
+DateTimeFlipCondition -- Utils
+DateTimeFlipCondition -- ValidationUtils
+DayOfWeekFlipCondition -- FlipCondition
+DayOfWeekFlipCondition -- Feature
+DayOfWeekFlipCondition -- FeatureContext
+DayOfWeekFlipCondition -- FlipAnnotationAttributes
+DayOfWeekFlipCondition -- DateTimeUtils
+DayOfWeekFlipCondition -- Utils
+DayOfWeekFlipCondition -- ValidationUtils
+FlipCondition -- Feature
+FlipCondition -- FeatureContext
+FlipCondition -- FlipAnnotationAttributes
+FlipOffCondition -- FlipCondition
+FlipOffCondition -- Feature
+FlipOffCondition -- FeatureContext
+FlipOffCondition -- FlipAnnotationAttributes
+SpringEnvironmentPropertyFlipCondition -- FlipCondition
+SpringEnvironmentPropertyFlipCondition -- Feature
+SpringEnvironmentPropertyFlipCondition -- FeatureContext
+SpringEnvironmentPropertyFlipCondition -- FlipAnnotationAttributes
+SpringEnvironmentPropertyFlipCondition -- Utils
+SpringEnvironmentPropertyFlipCondition -- ValidationUtils
+SpringExpressionFlipCondition -- FlipCondition
+SpringExpressionFlipCondition -- SpringExpressionEvaluationFailureException
+SpringExpressionFlipCondition -- Feature
+SpringExpressionFlipCondition -- FeatureContext
+SpringExpressionFlipCondition -- FlipAnnotationAttributes
+SpringExpressionFlipCondition -- Utils
+SpringExpressionFlipCondition -- ValidationUtils
+SpringProfileFlipCondition -- FlipCondition
+SpringProfileFlipCondition -- Feature
+SpringProfileFlipCondition -- FeatureContext
+SpringProfileFlipCondition -- FlipAnnotationAttributes
+SpringProfileFlipCondition -- Utils
+SpringProfileFlipCondition -- ValidationUtils
+FeatureNotEnabledException -- Feature
+FlipBeanFailedException -- FlipBean
+DefaultFlipConditionEvaluator -- FlipOnOff
+DefaultFlipConditionEvaluator -- FlipCondition
+DefaultFlipConditionEvaluator -- Feature
+DefaultFlipConditionEvaluator -- FeatureContext
+DefaultFlipConditionEvaluator -- FlipAnnotationAttributes
+DefaultFlipConditionEvaluator -- FlipConditionEvaluator
+DefaultFlipConditionEvaluator -- AnnotationUtils
+DefaultFlipConditionEvaluator -- Utils
+DefaultFlipConditionEvaluator -- ValidationUtils
+EmptyFlipConditionEvaluator -- FlipCondition
+EmptyFlipConditionEvaluator -- Feature
+EmptyFlipConditionEvaluator -- FeatureContext
+EmptyFlipConditionEvaluator -- FlipConditionEvaluator
+FeatureContext -- Feature
+FeatureContext -- FeatureExpressionContext
+FeatureContext -- Utils
+FeatureExpressionContext -- Feature
+FlipAnnotationAttributes -- Utils
+FlipAnnotationAttributes -- ValidationUtils
+FlipConditionEvaluator -- FlipCondition
+FlipConditionEvaluator -- Feature
+FlipConditionEvaluator -- FeatureContext
+FlipConditionEvaluatorFactory -- FlipCondition
+FlipConditionEvaluatorFactory -- DefaultFlipConditionEvaluator
+FlipConditionEvaluatorFactory -- EmptyFlipConditionEvaluator
+FlipConditionEvaluatorFactory -- Feature
+FlipConditionEvaluatorFactory -- FeatureContext
+FlipConditionEvaluatorFactory -- FlipConditionEvaluator
+FlipAnnotationProcessor -- FlipCondition
+FlipAnnotationProcessor -- FlipConditionEvaluator
+FlipAnnotationProcessor -- FlipConditionEvaluatorFactory
+FlipAnnotationProcessor -- AnnotationUtils
+FlipAnnotationProcessor -- Utils
+FlipAnnotationsStore -- FlipCondition
+FlipAnnotationsStore -- EmptyFlipConditionEvaluator
+FlipAnnotationsStore -- Feature
+FlipAnnotationsStore -- FlipConditionEvaluator
+FlipAnnotationsStore -- FlipConditionEvaluatorFactory
+FlipAnnotationsStore -- FlipAnnotationProcessor
+FlipAnnotationsStore -- Utils
+AnnotationUtils -- FlipAnnotationAttributes
+AnnotationUtils -- Utils
+DateTimeUtils -- Utils
+ValidationUtils -- Utils
+FlipBeanAdviceIntegrationTest -- FlipBeanAdvice
+FlipBeanAdviceIntegrationTest -- FlipBean
+FlipBeanAdviceIntegrationTest -- FlipContextConfiguration
+FlipBeanAdviceIntegrationTest -- FeatureNotEnabledException
+FlipBeanAdviceIntegrationTest -- FlipBeanFailedException
+FlipBeanAdviceIntegrationTest -- Feature
+FlipBeanAdviceIntegrationTest -- TestClientFlipBeanSpringComponentSource
+FlipBeanAdviceUnitTest -- FlipBeanAdvice
+FlipBeanAdviceUnitTest -- FlipBean
+FlipBeanAdviceUnitTest -- FeatureNotEnabledException
+FlipBeanAdviceUnitTest -- FlipBeanFailedException
+FlipBeanAdviceUnitTest -- Feature
+FlipBeanAdviceUnitTest -- FlipAnnotationsStore
+FlipBeanAdviceUnitTest -- AnnotationUtils
+FlipBeanAdviceUnitTest -- Utils
+FlipBeanAdviceUnitTest -- TestClientFlipBeanSpringComponentSource
+FlipBeanAdviceUnitTest -- TestClientFlipBeanSpringComponentTarget
+FlipFeatureAdviceIntegrationTest -- FlipFeatureAdvice
+FlipFeatureAdviceIntegrationTest -- FlipContextConfiguration
+FlipFeatureAdviceIntegrationTest -- FeatureNotEnabledException
+FlipFeatureAdviceIntegrationTest -- Feature
+FlipFeatureAdviceIntegrationTest -- TestClientFlipSpringService
+FlipFeatureAdviceUnitTest -- FlipFeatureAdvice
+FlipFeatureAdviceUnitTest -- FeatureNotEnabledException
+FlipFeatureAdviceUnitTest -- Feature
+FlipFeatureAdviceUnitTest -- FlipAnnotationsStore
+DateTimeFlipConditionUnitTest -- DateTimeFlipCondition
+DateTimeFlipConditionUnitTest -- FlipCondition
+DateTimeFlipConditionUnitTest -- Feature
+DateTimeFlipConditionUnitTest -- FeatureContext
+DateTimeFlipConditionUnitTest -- FlipAnnotationAttributes
+DateTimeFlipConditionUnitTest -- DateTimeUtils
+DateTimeFlipConditionUnitTest -- Utils
+DayOfWeekFlipConditionUnitTest -- DayOfWeekFlipCondition
+DayOfWeekFlipConditionUnitTest -- FlipCondition
+DayOfWeekFlipConditionUnitTest -- Feature
+DayOfWeekFlipConditionUnitTest -- FeatureContext
+DayOfWeekFlipConditionUnitTest -- FlipAnnotationAttributes
+DayOfWeekFlipConditionUnitTest -- DateTimeUtils
+DayOfWeekFlipConditionUnitTest -- Utils
+FlipOffConditionUnitTest -- FlipOff
+FlipOffConditionUnitTest -- FlipOffCondition
+FlipOffConditionUnitTest -- Feature
+FlipOffConditionUnitTest -- FeatureContext
+FlipOffConditionUnitTest -- FlipAnnotationAttributes
+SpringEnvironmentPropertyFlipConditionUnitTest -- FlipCondition
+SpringEnvironmentPropertyFlipConditionUnitTest -- SpringEnvironmentPropertyFlipCondition
+SpringEnvironmentPropertyFlipConditionUnitTest -- Feature
+SpringEnvironmentPropertyFlipConditionUnitTest -- FeatureContext
+SpringEnvironmentPropertyFlipConditionUnitTest -- FlipAnnotationAttributes
+SpringExpressionFlipConditionUnitTest -- FlipCondition
+SpringExpressionFlipConditionUnitTest -- SpringExpressionFlipCondition
+SpringExpressionFlipConditionUnitTest -- SpringExpressionEvaluationFailureException
+SpringExpressionFlipConditionUnitTest -- Feature
+SpringExpressionFlipConditionUnitTest -- FeatureContext
+SpringExpressionFlipConditionUnitTest -- FlipAnnotationAttributes
+SpringProfileFlipConditionUnitTest -- FlipCondition
+SpringProfileFlipConditionUnitTest -- SpringProfileFlipCondition
+SpringProfileFlipConditionUnitTest -- Feature
+SpringProfileFlipConditionUnitTest -- FeatureContext
+SpringProfileFlipConditionUnitTest -- FlipAnnotationAttributes
+SpringProfileFlipConditionUnitTest -- Utils
+TestClientFlipAnnotationsWithAnnotationsOnMethod -- FlipOff
+TestClientFlipAnnotationsWithAnnotationsOnMethod -- FlipOnDateTime
+TestClientFlipAnnotationsWithAnnotationsOnMethod -- FlipOnDaysOfWeek
+TestClientFlipAnnotationsWithAnnotationsOnMethod -- FlipOnEnvironmentProperty
+TestClientFlipAnnotationsWithAnnotationsOnMethod -- FlipOnProfiles
+TestClientFlipAnnotationsWithAnnotationsOnMethod -- Feature
+TestClientFlipAnnotationsWithSpringExpressionAnnotations -- FlipOnSpringExpression
+TestClientFlipBeanSpringComponentSource -- FlipBean
+TestClientFlipBeanSpringComponentSource -- FlipOff
+TestClientFlipBeanSpringComponentSource -- FlipOnEnvironmentProperty
+TestClientFlipBeanSpringComponentSource -- FlipOnProfiles
+TestClientFlipBeanSpringComponentSource -- TestClientFlipBeanSpringComponentTarget
+TestClientFlipBeanSpringComponentTarget -- FlipBean
+TestClientFlipBeanSpringComponentTarget -- FlipOff
+TestClientFlipSpringService -- FlipOff
+TestClientFlipSpringService -- FlipOnSpringExpression
+EmptyFlipConditionEvaluatorUnitTest -- FlipCondition
+EmptyFlipConditionEvaluatorUnitTest -- EmptyFlipConditionEvaluator
+EmptyFlipConditionEvaluatorUnitTest -- Feature
+EmptyFlipConditionEvaluatorUnitTest -- FeatureContext
+EmptyFlipConditionEvaluatorUnitTest -- FlipConditionEvaluator
+EmptyFlipConditionEvaluatorUnitTest -- FlipConditionEvaluatorUnitTest
+FeatureContextUnitTest -- Feature
+FeatureContextUnitTest -- FeatureContext
+FeatureContextUnitTest -- FeatureExpressionContext
+FeatureContextUnitTest -- Utils
+FlipAnnotationAttributesUnitTest -- FlipAnnotationAttributes
+FlipAnnotationAttributesUnitTest -- Utils
+FlipConditionEvaluatorFactoryUnitTest -- FlipOnOff
+FlipConditionEvaluatorFactoryUnitTest -- FlipCondition
+FlipConditionEvaluatorFactoryUnitTest -- DefaultFlipConditionEvaluator
+FlipConditionEvaluatorFactoryUnitTest -- EmptyFlipConditionEvaluator
+FlipConditionEvaluatorFactoryUnitTest -- Feature
+FlipConditionEvaluatorFactoryUnitTest -- FeatureContext
+FlipConditionEvaluatorFactoryUnitTest -- FlipConditionEvaluator
+FlipConditionEvaluatorFactoryUnitTest -- FlipConditionEvaluatorFactory
+FlipConditionEvaluatorFactoryUnitTest -- AnnotationUtils
+FlipConditionEvaluatorFactoryUnitTest -- Utils
+FlipConditionEvaluatorUnitTest -- FlipOnEnvironmentProperty
+FlipConditionEvaluatorUnitTest -- FlipOnOff
+FlipConditionEvaluatorUnitTest -- FlipOnProfiles
+FlipConditionEvaluatorUnitTest -- FlipCondition
+FlipConditionEvaluatorUnitTest -- SpringEnvironmentPropertyFlipCondition
+FlipConditionEvaluatorUnitTest -- SpringProfileFlipCondition
+FlipConditionEvaluatorUnitTest -- DefaultFlipConditionEvaluator
+FlipConditionEvaluatorUnitTest -- Feature
+FlipConditionEvaluatorUnitTest -- FeatureContext
+FlipConditionEvaluatorUnitTest -- FlipAnnotationAttributes
+FlipConditionEvaluatorUnitTest -- FlipConditionEvaluator
+FlipConditionEvaluatorUnitTest -- AnnotationUtils
+FlipConditionEvaluatorUnitTest -- Utils
+FlipAnnotationProcessorUnitTest -- FlipOff
+FlipAnnotationProcessorUnitTest -- FlipCondition
+FlipAnnotationProcessorUnitTest -- Feature
+FlipAnnotationProcessorUnitTest -- FeatureContext
+FlipAnnotationProcessorUnitTest -- FlipConditionEvaluator
+FlipAnnotationProcessorUnitTest -- FlipConditionEvaluatorFactory
+FlipAnnotationProcessorUnitTest -- FlipAnnotationProcessor
+FlipAnnotationProcessorUnitTest -- AnnotationUtils
+FlipAnnotationProcessorUnitTest -- Utils
+FlipAnnotationsStoreIntegrationTest -- FlipOff
+FlipAnnotationsStoreIntegrationTest -- DateTimeFlipCondition
+FlipAnnotationsStoreIntegrationTest -- FlipCondition
+FlipAnnotationsStoreIntegrationTest -- FlipContextConfiguration
+FlipAnnotationsStoreIntegrationTest -- Feature
+FlipAnnotationsStoreIntegrationTest -- FlipAnnotationsStore
+FlipAnnotationsStoreIntegrationTest -- TestClientFlipAnnotationsWithAnnotationsOnMethod
+FlipAnnotationsStoreIntegrationTest -- TestClientFlipAnnotationsWithSpringExpressionAnnotations
+FlipAnnotationsStoreUnitTest -- FlipCondition
+FlipAnnotationsStoreUnitTest -- EmptyFlipConditionEvaluator
+FlipAnnotationsStoreUnitTest -- Feature
+FlipAnnotationsStoreUnitTest -- FlipConditionEvaluator
+FlipAnnotationsStoreUnitTest -- FlipConditionEvaluatorFactory
+FlipAnnotationsStoreUnitTest -- FlipAnnotationProcessor
+FlipAnnotationsStoreUnitTest -- FlipAnnotationsStore
+FlipAnnotationsStoreUnitTest -- Utils
+AnnotationUtilsUnitTest -- FlipBean
+AnnotationUtilsUnitTest -- FlipOff
+AnnotationUtilsUnitTest -- FlipOnOff
+AnnotationUtilsUnitTest -- FlipOnProfiles
+AnnotationUtilsUnitTest -- FlipCondition
+AnnotationUtilsUnitTest -- FlipAnnotationAttributes
+AnnotationUtilsUnitTest -- AnnotationUtils
+AnnotationUtilsUnitTest -- Utils
+AnnotationUtilsUnitTest -- TestClientFlipAnnotationsWithAnnotationsOnMethod
+AnnotationUtilsUnitTest -- TestClientFlipBeanSpringComponentSource
+AnnotationUtilsUnitTest -- UtilsUnitTest
+UtilsUnitTest -- Utils
+ValidationUtilsUnitTest -- Utils
+ValidationUtilsUnitTest -- ValidationUtils
+ValidationUtilsUnitTest -- UtilsUnitTest
+FlipWebContextConfiguration -- FlipContextConfiguration
+FlipDescriptionController -- Feature
+FlipDescriptionController -- FlipAnnotationsStore
+FlipDescriptionController -- Utils
+FlipDescriptionController -- FlipDescription
+FlipControllerAdvice -- FlipBean
+FlipControllerAdvice -- FeatureNotEnabledException
+FlipControllerAdvice -- FlipBeanFailedException
+FlipControllerAdvice -- Feature
+FlipControllerAdvice -- FeatureNotEnabledErrorResponse
+FeatureNotEnabledErrorResponse -- FeatureNotEnabledException
+FeatureNotEnabledErrorResponse -- Feature
+FlipDescription -- Feature
+FlipDescriptionControllerIntegrationTest -- Feature
+FlipDescriptionControllerIntegrationTest -- FlipWebContextConfiguration
+FlipDescriptionControllerIntegrationTest -- FlipDescriptionController
+FlipDescriptionControllerIntegrationTest -- FlipDescription
+FlipDescriptionControllerIntegrationTest -- TestClientFlipAnnotationsDescription
+FlipDescriptionControllerUnitTest -- FlipOff
+FlipDescriptionControllerUnitTest -- Feature
+FlipDescriptionControllerUnitTest -- FlipAnnotationsStore
+FlipDescriptionControllerUnitTest -- FlipDescriptionController
+FlipDescriptionControllerUnitTest -- FlipDescription
+FlipControllerAdviceIntegrationTest -- FlipBean
+FlipControllerAdviceIntegrationTest -- Feature
+FlipControllerAdviceIntegrationTest -- FlipWebContextConfiguration
+FlipControllerAdviceIntegrationTest -- FlipControllerAdvice
+FlipControllerAdviceIntegrationTest -- TestClientController
+FlipControllerAdviceUnitTest -- FlipBean
+FlipControllerAdviceUnitTest -- FeatureNotEnabledException
+FlipControllerAdviceUnitTest -- FlipBeanFailedException
+FlipControllerAdviceUnitTest -- Feature
+FlipControllerAdviceUnitTest -- FlipControllerAdvice
+FlipControllerAdviceUnitTest -- FeatureNotEnabledErrorResponse
+TestClientController -- FlipOff
+TestClientControllerOther -- FlipBean
+TestClientControllerOther -- TestClientController
+TestClientFlipAnnotationsDescription -- FlipOff
+TestClientFlipAnnotationsDescription -- FlipOnDateTime
+@enduml

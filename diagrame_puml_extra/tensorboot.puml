@@ -1,0 +1,125 @@
+@startuml
+package censed to the Apache Software Foundation (ASF) under one {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.algr.tensorboot.classifier; {
+class Classifier {
+}
+
+}
+
+package com.algr.tensorboot.classifier.impl; {
+class AbstractClassifier {
+}
+
+class MobilenetV2Classifier {
+}
+
+class PooledClassifier {
+}
+
+}
+
+package com.algr.tensorboot.config; {
+class ModelConfig {
+}
+
+class MvcConfiguration {
+}
+
+class SwaggerConfig {
+}
+
+}
+
+package com.algr.tensorboot.controller.error; {
+class ServiceError {
+}
+
+class ServiceException {
+}
+
+}
+
+package com.algr.tensorboot.controller; {
+class ImageProcessingService {
+}
+
+class TensorBootController {
+}
+
+class TensorBootRestController {
+}
+
+}
+
+package com.algr.tensorboot.data; {
+class Recognition {
+}
+
+class RecognitionResult {
+}
+
+}
+
+package com.algr.tensorboot.filter; {
+class MDCFilter {
+}
+
+}
+
+package com.algr.tensorboot; {
+class TensorbootApplication {
+}
+
+class TensorbootApplicationTests {
+}
+
+class TensorBootRestControllerIT {
+}
+
+}
+
+package com.algr.tensorboot.util; {
+class ImageUtil {
+}
+
+class ImageUtilTest {
+}
+
+}
+
+AbstractClassifier -- Classifier
+MobilenetV2Classifier -- Classifier
+MobilenetV2Classifier -- AbstractClassifier
+MobilenetV2Classifier -- ModelConfig
+MobilenetV2Classifier -- Recognition
+MobilenetV2Classifier -- ImageUtil
+PooledClassifier -- Classifier
+PooledClassifier -- ServiceException
+MvcConfiguration -- MDCFilter
+ImageProcessingService -- Classifier
+ImageProcessingService -- MobilenetV2Classifier
+ImageProcessingService -- PooledClassifier
+ImageProcessingService -- ServiceException
+ImageProcessingService -- Recognition
+ImageProcessingService -- RecognitionResult
+ImageProcessingService -- ImageUtil
+TensorBootController -- ServiceException
+TensorBootController -- ImageProcessingService
+TensorBootController -- Recognition
+TensorBootController -- RecognitionResult
+TensorBootRestController -- ServiceError
+TensorBootRestController -- ServiceException
+TensorBootRestController -- ImageProcessingService
+TensorBootRestController -- Recognition
+TensorBootRestController -- RecognitionResult
+RecognitionResult -- Recognition
+TensorbootApplicationTests -- TensorbootApplication
+TensorBootRestControllerIT -- TensorBootRestController
+TensorBootRestControllerIT -- MDCFilter
+ImageUtilTest -- ImageUtil
+@enduml

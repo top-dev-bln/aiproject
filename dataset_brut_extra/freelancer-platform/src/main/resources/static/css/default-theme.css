@@ -1,0 +1,47 @@
+
+.bold{ font-weight: bold; }
+
+.navbar-default {
+    border-radius: 0;
+    background: #369;
+}
+
+/* Main, left menu */
+.navbar-default .navbar-nav>li>a
+        ,.navbar-default .navbar-brand
+        ,.navbar-default .navbar-brand:hover {
+    color:white;
+    text-shadow: none;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #fff;
+}
+
+/* Navbar, right menu */
+.nav>li>a , .nav > li > a:hover{ color: white; background: none; }
+.nav li a:hover{
+    text-decoration: underline;
+}
+
+.main-container{ min-height: 800px; }
+
+.job-details-description{
+    border-radius: 7px;
+    background-color: #eee;
+    padding: 10px;
+}
+
+
+.message-box{
+	padding: 7px;
+	background-color: #d2ebf5;
+	margin: 5px;
+	border: 1px solid #ccc;
+}
+.message-box-mine{
+	padding: 7px;
+	background-color: none;
+	margin: 5px;
+	margin-left: 15px;
+    border: 1px solid #eee;
+}

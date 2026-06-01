@@ -1,0 +1,63 @@
+@startuml
+package br.com.feltex.desafio.uol; {
+class DesafioUolApplication {
+}
+
+class DesafioUolApplicationTests {
+}
+
+}
+
+package br.com.feltex.desafio.uol.jogador.controller; {
+class ExceptionManager {
+}
+
+class HomeController {
+}
+
+}
+
+package br.com.feltex.desafio.uol.jogador; {
+class GrupoService {
+}
+
+class JogadorController {
+}
+
+class JogadorRepository {
+}
+
+class JogadorService {
+}
+
+}
+
+package br.com.feltex.desafio.uol.jogador.modelo; {
+class Grupo {
+}
+
+class Jogador {
+}
+
+class JogadorRequest {
+}
+
+}
+
+HomeController -- JogadorService
+HomeController -- Jogador
+GrupoService -- Grupo
+JogadorController -- JogadorService
+JogadorController -- Jogador
+JogadorController -- JogadorRequest
+JogadorRepository -- Jogador
+JogadorService -- GrupoService
+JogadorService -- JogadorRepository
+JogadorService -- Grupo
+JogadorService -- Jogador
+JogadorService -- JogadorRequest
+Jogador -- Grupo
+Jogador -- JogadorRequest
+JogadorRequest -- Grupo
+DesafioUolApplicationTests -- DesafioUolApplication
+@enduml

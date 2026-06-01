@@ -1,0 +1,174 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.webservice.mobile.app.exceptions; {
+class AppExceptionsHandler {
+}
+
+class UserServiceException {
+}
+
+}
+
+package com.webservice.mobile.app.io.entity; {
+class UserEntity {
+}
+
+}
+
+package com.webservice.mobile.app.io.repositories; {
+class UserRepository {
+}
+
+}
+
+package com.webservice.mobile.app; {
+class MobileAppWebServicesApplication {
+}
+
+class SpringApplicationContext {
+}
+
+class SwaggerConfig {
+}
+
+class MobileAppWebServicesApplicationTests {
+}
+
+}
+
+package com.webservice.mobile.app.security; {
+class AppProperties {
+}
+
+class AuthenticationFilter {
+}
+
+class AuthorizationFilter {
+}
+
+class SecurityConstants {
+}
+
+class WebSecurity {
+}
+
+}
+
+package com.webservice.mobile.app.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.webservice.mobile.app.service; {
+class UserService {
+}
+
+}
+
+package com.webservice.mobile.app.shared.dto; {
+class UserDTO {
+}
+
+}
+
+package com.webservice.mobile.app.shared; {
+class Utils {
+}
+
+}
+
+package com.webservice.mobile.app.ui.controller; {
+class AuthenticationController {
+}
+
+class RequestOperationName {
+}
+
+class UserController {
+}
+
+}
+
+package com.webservice.mobile.app.ui.model.request; {
+class LoginRequestModel {
+}
+
+class UserDetailsRequestModel {
+}
+
+class UserLoginRequestModel {
+}
+
+}
+
+package com.webservice.mobile.app.ui.model.response; {
+class ErrorMessage {
+}
+
+class ErrorMessages {
+}
+
+class OperationStatusModel {
+}
+
+class RequestOperationStatus {
+}
+
+class UserRest {
+}
+
+}
+
+AppExceptionsHandler -- UserServiceException
+AppExceptionsHandler -- UserService
+AppExceptionsHandler -- ErrorMessage
+UserServiceException -- UserService
+UserRepository -- UserEntity
+MobileAppWebServicesApplication -- AppProperties
+MobileAppWebServicesApplication -- SpringApplicationContext
+AuthenticationFilter -- SecurityConstants
+AuthenticationFilter -- UserService
+AuthenticationFilter -- UserDTO
+AuthenticationFilter -- SpringApplicationContext
+AuthenticationFilter -- LoginRequestModel
+AuthenticationFilter -- UserLoginRequestModel
+AuthorizationFilter -- AuthenticationFilter
+AuthorizationFilter -- SecurityConstants
+SecurityConstants -- AppProperties
+SecurityConstants -- SpringApplicationContext
+WebSecurity -- AuthenticationFilter
+WebSecurity -- AuthorizationFilter
+WebSecurity -- SecurityConstants
+WebSecurity -- UserService
+UserServiceImpl -- UserServiceException
+UserServiceImpl -- UserEntity
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+UserServiceImpl -- UserDTO
+UserServiceImpl -- Utils
+UserServiceImpl -- ErrorMessage
+UserServiceImpl -- ErrorMessages
+UserService -- UserDTO
+SpringApplicationContext -- AppProperties
+AuthenticationController -- LoginRequestModel
+UserController -- UserServiceException
+UserController -- UserService
+UserController -- UserDTO
+UserController -- Utils
+UserController -- RequestOperationName
+UserController -- UserDetailsRequestModel
+UserController -- ErrorMessage
+UserController -- ErrorMessages
+UserController -- OperationStatusModel
+UserController -- RequestOperationStatus
+UserController -- UserRest
+UserLoginRequestModel -- LoginRequestModel
+ErrorMessages -- ErrorMessage
+MobileAppWebServicesApplicationTests -- MobileAppWebServicesApplication
+@enduml

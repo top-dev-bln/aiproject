@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Customer roles. The platform provides capabilities for order, stock. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "TransactionController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to interact with transaction functionality, so that I can accomplish my transaction-related tasks.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "TransactionController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to use stock capabilities, so that I can perform essential business operations.",
+        "services": [
+          "StockService"
+        ],
+        "controllers": [
+          "TransactionController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "TransactionController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "TransactionController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        OrderService[\"OrderService\"]\n        StockService[\"StockService\"]\n    end\n    subgraph Controllers\n        TransactionController[\"TransactionController\"]\n    end\n    subgraph Data_Access\n        OrderRepository[\"OrderRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access"
+  }
+}

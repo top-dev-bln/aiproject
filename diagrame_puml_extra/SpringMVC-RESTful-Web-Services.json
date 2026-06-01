@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves User, Candidate roles. The platform provides capabilities for app exceptions handler, user entity, user repository. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserEntity",
+          "UserRepository",
+          "AuthenticationFilter"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "AuthenticationFilter",
+          "AuthorizationFilter"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "ErrorMessage",
+          "ErrorMessages"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "SwaggerConfig"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use app exceptions handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AppExceptionsHandler"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AppExceptionsHandler[\"AppExceptionsHandler\"]\n        UserEntity[\"UserEntity\"]\n        UserRepository[\"UserRepository\"]\n        MobileAppWebServicesApplication[\"MobileAppWebServicesApplication\"]\n        SpringApplicationContext[\"SpringApplicationContext\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        AppProperties[\"AppProperties\"]\n        AuthenticationFilter[\"AuthenticationFilter\"]\n        AuthorizationFilter[\"AuthorizationFilter\"]\n        SecurityConstants[\"SecurityConstants\"]\n        WebSecurity[\"WebSecurity\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserService[\"UserService\"]\n        Utils[\"Utils\"]\n        RequestOperationName[\"RequestOperationName\"]\n        LoginRequestModel[\"LoginRequestModel\"]\n        UserDetailsRequestModel[\"UserDetailsRequestModel\"]\n        UserLoginRequestModel[\"UserLoginRequestModel\"]\n        ErrorMessage[\"ErrorMessage\"]\n        ErrorMessages[\"ErrorMessages\"]\n        OperationStatusModel[\"OperationStatusModel\"]\n        RequestOperationStatus[\"RequestOperationStatus\"]\n        UserRest[\"UserRest\"]\n    end\n    subgraph Controllers\n        AuthenticationController[\"AuthenticationController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services"
+  }
+}

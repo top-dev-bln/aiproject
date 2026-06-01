@@ -1,0 +1,335 @@
+@startuml
+package com.xxxtai.express.constant; {
+class City {
+}
+
+class Command {
+}
+
+class Constant {
+}
+
+class NodeFunction {
+}
+
+class Orientation {
+}
+
+class State {
+}
+
+}
+
+package com.xxxtai.express.controller; {
+class Algorithm {
+}
+
+class AStar {
+}
+
+class Dijkstra {
+}
+
+class DispatchingAGV {
+}
+
+class ResolveDeadLock {
+}
+
+class TrafficControl {
+}
+
+class TrafficControlImpl {
+}
+
+}
+
+package com.xxxtai.express.dao; {
+class CacheExecutor {
+}
+
+class EdgeCostDAO {
+}
+
+class SortingDAO {
+}
+
+}
+
+package com.xxxtai.express; {
+class Main {
+}
+
+}
+
+package com.xxxtai.express.model; {
+class AGVCar {
+}
+
+class Base {
+}
+
+class Car {
+}
+
+class ComGraph {
+}
+
+class Edge {
+}
+
+class EdgeCost {
+}
+
+class Entrance {
+}
+
+class ExeCommandTask {
+}
+
+class Exit {
+}
+
+class Graph {
+}
+
+class Node {
+}
+
+class Path {
+}
+
+class Sorting {
+}
+
+}
+
+package com.xxxtai.express.netty; {
+class AcceptorIdleStateTrigger {
+}
+
+class CommWithAGVHandler {
+}
+
+class NettyServerBootstrap {
+}
+
+}
+
+package com.xxxtai.express.toolKit; {
+class Absolute2Relative {
+}
+
+class Common {
+}
+
+class MyTextField {
+}
+
+class ReaderWriter {
+}
+
+}
+
+package com.xxxtai.express.view; {
+class DrawingGraph {
+}
+
+class DrawingGui {
+}
+
+class FileNameDialog {
+}
+
+class FileNameDialogListener {
+}
+
+class RoundButton {
+}
+
+class SchedulingGui {
+}
+
+class SettingGui {
+}
+
+}
+
+Command -- Constant
+Command -- Common
+NodeFunction -- Node
+Algorithm -- Edge
+Algorithm -- Path
+AStar -- Algorithm
+AStar -- ComGraph
+AStar -- Edge
+AStar -- Entrance
+AStar -- Graph
+AStar -- Node
+AStar -- Path
+AStar -- Common
+Dijkstra -- NodeFunction
+Dijkstra -- Algorithm
+Dijkstra -- Car
+Dijkstra -- ComGraph
+Dijkstra -- Edge
+Dijkstra -- Entrance
+Dijkstra -- Graph
+Dijkstra -- Node
+Dijkstra -- Path
+DispatchingAGV -- City
+DispatchingAGV -- Algorithm
+DispatchingAGV -- AStar
+DispatchingAGV -- SortingDAO
+DispatchingAGV -- Main
+DispatchingAGV -- AGVCar
+DispatchingAGV -- Car
+DispatchingAGV -- Edge
+DispatchingAGV -- Entrance
+DispatchingAGV -- Exit
+DispatchingAGV -- Graph
+DispatchingAGV -- Node
+DispatchingAGV -- Path
+DispatchingAGV -- Sorting
+DispatchingAGV -- Absolute2Relative
+DispatchingAGV -- Common
+DispatchingAGV -- SchedulingGui
+ResolveDeadLock -- City
+ResolveDeadLock -- Algorithm
+ResolveDeadLock -- AStar
+ResolveDeadLock -- TrafficControl
+ResolveDeadLock -- Car
+ResolveDeadLock -- Edge
+ResolveDeadLock -- Entrance
+ResolveDeadLock -- Exit
+ResolveDeadLock -- Graph
+ResolveDeadLock -- Node
+ResolveDeadLock -- Path
+ResolveDeadLock -- Absolute2Relative
+TrafficControl -- Car
+TrafficControl -- Edge
+TrafficControl -- Node
+TrafficControlImpl -- City
+TrafficControlImpl -- Command
+TrafficControlImpl -- NodeFunction
+TrafficControlImpl -- ResolveDeadLock
+TrafficControlImpl -- TrafficControl
+TrafficControlImpl -- CacheExecutor
+TrafficControlImpl -- Car
+TrafficControlImpl -- Edge
+TrafficControlImpl -- EdgeCost
+TrafficControlImpl -- Entrance
+TrafficControlImpl -- Graph
+TrafficControlImpl -- Node
+TrafficControlImpl -- Common
+CacheExecutor -- Constant
+CacheExecutor -- EdgeCostDAO
+CacheExecutor -- Edge
+CacheExecutor -- EdgeCost
+EdgeCostDAO -- Edge
+EdgeCostDAO -- EdgeCost
+SortingDAO -- Sorting
+Main -- Command
+Main -- Constant
+Main -- State
+Main -- ResolveDeadLock
+Main -- Car
+Main -- ExeCommandTask
+Main -- Graph
+Main -- Path
+Main -- Sorting
+Main -- NettyServerBootstrap
+Main -- DrawingGui
+Main -- SchedulingGui
+Main -- SettingGui
+AGVCar -- Command
+AGVCar -- NodeFunction
+AGVCar -- Orientation
+AGVCar -- State
+AGVCar -- TrafficControl
+AGVCar -- Car
+AGVCar -- Edge
+AGVCar -- Entrance
+AGVCar -- Graph
+AGVCar -- Node
+AGVCar -- Common
+Car -- Command
+Car -- Orientation
+Car -- State
+Car -- Edge
+Car -- Entrance
+Car -- Node
+ComGraph -- NodeFunction
+ComGraph -- Edge
+ComGraph -- Entrance
+ComGraph -- Exit
+ComGraph -- Graph
+ComGraph -- Node
+ComGraph -- Path
+Edge -- Node
+EdgeCost -- City
+EdgeCost -- Base
+EdgeCost -- Edge
+EdgeCost -- Node
+ExeCommandTask -- Command
+ExeCommandTask -- State
+ExeCommandTask -- Car
+Exit -- Car
+Exit -- Node
+Graph -- Car
+Graph -- Edge
+Graph -- Entrance
+Graph -- Exit
+Graph -- Node
+Path -- Node
+Sorting -- Base
+AcceptorIdleStateTrigger -- State
+CommWithAGVHandler -- Constant
+CommWithAGVHandler -- State
+CommWithAGVHandler -- Main
+CommWithAGVHandler -- AGVCar
+CommWithAGVHandler -- Car
+CommWithAGVHandler -- Edge
+CommWithAGVHandler -- Graph
+CommWithAGVHandler -- Node
+NettyServerBootstrap -- State
+NettyServerBootstrap -- AcceptorIdleStateTrigger
+NettyServerBootstrap -- CommWithAGVHandler
+Absolute2Relative -- Command
+Absolute2Relative -- Constant
+Absolute2Relative -- Car
+Absolute2Relative -- Edge
+Absolute2Relative -- Graph
+Absolute2Relative -- Node
+Absolute2Relative -- Path
+Absolute2Relative -- Common
+Common -- Edge
+Common -- Graph
+Common -- Node
+MyTextField -- Exit
+DrawingGraph -- Orientation
+DrawingGraph -- Car
+DrawingGraph -- Edge
+DrawingGraph -- Graph
+DrawingGraph -- Node
+DrawingGui -- Graph
+DrawingGui -- Common
+DrawingGui -- MyTextField
+DrawingGui -- RoundButton
+FileNameDialog -- City
+FileNameDialog -- MyTextField
+FileNameDialog -- FileNameDialogListener
+FileNameDialog -- RoundButton
+FileNameDialogListener -- State
+RoundButton -- Graph
+SchedulingGui -- State
+SchedulingGui -- Car
+SchedulingGui -- Graph
+SchedulingGui -- Common
+SchedulingGui -- DrawingGraph
+SchedulingGui -- RoundButton
+SettingGui -- Dijkstra
+SettingGui -- Common
+SettingGui -- MyTextField
+SettingGui -- RoundButton
+@enduml

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a API gateway platform that serves Admin, Candidate roles. The platform provides capabilities for route19 function handler, route20 stream handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to use route19 function handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Route19FunctionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use route20 stream handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Route20StreamHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "Route19FunctionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "Route19FunctionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "Route19FunctionHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        Route07AddRequestHeaderFilter[\"Route07AddRequestHeaderFilter\"]\n        Route08SetPathFilter[\"Route08SetPathFilter\"]\n        Route09AddResponseHeaderFilter[\"Route09AddResponseHeaderFilter\"]\n        Route10SetStatusFilter[\"Route10SetStatusFilter\"]\n        Route11LoadBalancerFilter[\"Route11LoadBalancerFilter\"]\n        Route12Bucket4jFilter[\"Route12Bucket4jFilter\"]\n        Route13CircuitBreakerFilter[\"Route13CircuitBreakerFilter\"]\n        Route14RetryFilter[\"Route14RetryFilter\"]\n    end\n    subgraph Services\n        Route19FunctionHandler[\"Route19FunctionHandler\"]\n        Route20StreamHandler[\"Route20StreamHandler\"]\n    end\n    subgraph Infrastructure\n        HttpbinConfiguration[\"HttpbinConfiguration\"]\n        RabbitMQConfiguration[\"RabbitMQConfiguration\"]\n    end\n    Services --> Security\n    Security --> Infrastructure"
+  }
+}

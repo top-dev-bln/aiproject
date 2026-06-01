@@ -1,0 +1,50 @@
+#
+# Twitter Backend - Moo: Twitter Clone Application Backend by Scaler
+# Copyright © 2021-2023 Subhrodip Mohanta (hello@subho.xyz)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+#
+# Twitter Backend - Moo: Full Stack (API + Dependencies)
+#
+
+include:
+  - docker-compose.base.yml
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        JAR_FILE: target/*.jar
+    container_name: moo-api
+    ports:
+      - "${HOST_PORT:-8082}:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-prod}
+      - MYSQL_DB_HOST=${DB_HOST:-db}
+      - MYSQL_DB_PORT=${DB_PORT:-3306}
+      - MYSQL_DB_UNAME=${DB_USER:-moouser}
+      - MYSQL_DB_PASSWD=${DB_PASS:-moopass}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION=${JWT_EXPIRATION}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512M

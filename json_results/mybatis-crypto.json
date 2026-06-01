@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Admin roles. It exposes interfaces for managing address, user. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with address functionality, so that I can accomplish my address-related tasks.",
+        "services": [],
+        "controllers": [
+          "AddressController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "AddressController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "AddressController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "AddressController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        EncryptedParamConfig[\"EncryptedParamConfig\"]\n        MybatisCryptoConfig[\"MybatisCryptoConfig\"]\n        MyBatisCryptoAutoConfiguration[\"MyBatisCryptoAutoConfiguration\"]\n        MybatisCryptoProperties[\"MybatisCryptoProperties\"]\n    end\n    subgraph Controllers\n        AddressController[\"AddressController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        AddressMapper[\"AddressMapper\"]\n        UserMapper[\"UserMapper\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

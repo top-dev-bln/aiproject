@@ -1,0 +1,109 @@
+@startuml
+package com.user.mngmnt; {
+class Application {
+}
+
+class InitialSetup {
+}
+
+class ServletInitializer {
+}
+
+class ApplicationTests {
+}
+
+}
+
+package com.user.mngmnt.configuration; {
+class SecurityConfiguration {
+}
+
+class WebMvcConfiguration {
+}
+
+}
+
+package com.user.mngmnt.constants; {
+class AppConstant {
+}
+
+}
+
+package com.user.mngmnt.controller; {
+class UserController {
+}
+
+}
+
+package com.user.mngmnt.dto; {
+class LoginDTO {
+}
+
+class Response {
+}
+
+class SearchDTO {
+}
+
+}
+
+package com.user.mngmnt.exception; {
+class GenericControllerAdvice {
+}
+
+}
+
+package com.user.mngmnt.model; {
+class RoleNames {
+}
+
+class User {
+}
+
+class UserAdapter {
+}
+
+}
+
+package com.user.mngmnt.repository; {
+class UserRepository {
+}
+
+}
+
+package com.user.mngmnt.service; {
+class CustomUserDetailsService {
+}
+
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+Application -- ServletInitializer
+SecurityConfiguration -- RoleNames
+SecurityConfiguration -- User
+SecurityConfiguration -- CustomUserDetailsService
+UserController -- AppConstant
+UserController -- Response
+UserController -- SearchDTO
+UserController -- RoleNames
+UserController -- User
+UserController -- UserService
+InitialSetup -- RoleNames
+InitialSetup -- User
+InitialSetup -- UserService
+UserAdapter -- User
+UserRepository -- User
+CustomUserDetailsService -- User
+CustomUserDetailsService -- UserAdapter
+CustomUserDetailsService -- UserRepository
+UserService -- User
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+ApplicationTests -- Application
+@enduml

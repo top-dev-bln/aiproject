@@ -1,0 +1,229 @@
+@startuml
+package com.kvark900.api.configuration.dataLoaders; {
+class TopicsAuthorsBooksLoader {
+}
+
+class UsersLoader {
+}
+
+}
+
+package com.kvark900.api.configuration.security; {
+class AuthenticationRequest {
+}
+
+class AuthenticationResponse {
+}
+
+class JWTTokenFilter {
+}
+
+class JwtUser {
+}
+
+class JwtUserDetailsService {
+}
+
+class JwtUserFactory {
+}
+
+class JWTUtil {
+}
+
+class WebSecurityConfiguration {
+}
+
+}
+
+package com.kvark900.api.configuration.security.controller; {
+class AuthenticationController {
+}
+
+class UserController {
+}
+
+}
+
+package com.kvark900.api.configuration.security.user; {
+class Role {
+}
+
+class RoleName {
+}
+
+class RoleRepository {
+}
+
+class RoleService {
+}
+
+class User {
+}
+
+class UserRepository {
+}
+
+class UserService {
+}
+
+}
+
+package com.kvark900.api.controller; {
+class AuthorController {
+}
+
+class BookController {
+}
+
+class TopicController {
+}
+
+}
+
+package com.kvark900.api.exceptions; {
+class BindingErrorsResponse {
+}
+
+class Error {
+}
+
+class GlobalControllerExceptionHandler {
+}
+
+}
+
+package com.kvark900.api.model; {
+class Author {
+}
+
+class Book {
+}
+
+class Topic {
+}
+
+}
+
+package com.kvark900.api.repository; {
+class AuthorRepository {
+}
+
+class BookRepository {
+}
+
+class TopicRepository {
+}
+
+}
+
+package com.kvark900.api.service; {
+class AuthorService {
+}
+
+class BookService {
+}
+
+class TopicService {
+}
+
+}
+
+package com.kvark900; {
+class BootifulApplication {
+}
+
+class BootifulApplicationTests {
+}
+
+class TestAuthorController {
+}
+
+}
+
+TopicsAuthorsBooksLoader -- Author
+TopicsAuthorsBooksLoader -- Book
+TopicsAuthorsBooksLoader -- Topic
+TopicsAuthorsBooksLoader -- AuthorService
+TopicsAuthorsBooksLoader -- BookService
+TopicsAuthorsBooksLoader -- TopicService
+UsersLoader -- Role
+UsersLoader -- RoleName
+UsersLoader -- RoleService
+UsersLoader -- User
+UsersLoader -- UserService
+AuthenticationRequest -- User
+AuthenticationController -- AuthenticationRequest
+AuthenticationController -- AuthenticationResponse
+AuthenticationController -- JwtUser
+AuthenticationController -- JWTUtil
+AuthenticationController -- User
+UserController -- JwtUser
+UserController -- JWTUtil
+UserController -- User
+JWTTokenFilter -- JWTUtil
+JWTTokenFilter -- User
+JWTTokenFilter -- Error
+JWTTokenFilter -- Author
+JwtUser -- User
+JwtUser -- Author
+JwtUserDetailsService -- JwtUser
+JwtUserDetailsService -- JwtUserFactory
+JwtUserDetailsService -- User
+JwtUserDetailsService -- UserService
+JwtUserFactory -- JwtUser
+JwtUserFactory -- Role
+JwtUserFactory -- User
+JwtUserFactory -- Author
+JWTUtil -- JwtUser
+JWTUtil -- User
+Role -- RoleName
+Role -- User
+RoleRepository -- Role
+RoleRepository -- RoleName
+RoleService -- Role
+RoleService -- RoleName
+RoleService -- RoleRepository
+UserRepository -- User
+UserService -- User
+UserService -- UserRepository
+WebSecurityConfiguration -- JWTTokenFilter
+WebSecurityConfiguration -- JwtUser
+WebSecurityConfiguration -- JwtUserDetailsService
+WebSecurityConfiguration -- JWTUtil
+WebSecurityConfiguration -- User
+AuthorController -- BindingErrorsResponse
+AuthorController -- Error
+AuthorController -- Author
+AuthorController -- AuthorService
+BookController -- BindingErrorsResponse
+BookController -- Error
+BookController -- Author
+BookController -- Book
+BookController -- Topic
+BookController -- BookService
+TopicController -- BindingErrorsResponse
+TopicController -- Error
+TopicController -- Topic
+TopicController -- TopicService
+BindingErrorsResponse -- Error
+GlobalControllerExceptionHandler -- Error
+Author -- Book
+Book -- Topic
+AuthorRepository -- Author
+BookRepository -- Author
+BookRepository -- Book
+BookRepository -- Topic
+TopicRepository -- Topic
+AuthorService -- Author
+AuthorService -- AuthorRepository
+BookService -- Author
+BookService -- Book
+BookService -- Topic
+BookService -- BookRepository
+TopicService -- Topic
+TopicService -- TopicRepository
+BootifulApplicationTests -- BootifulApplication
+TestAuthorController -- AuthorController
+TestAuthorController -- Author
+TestAuthorController -- AuthorService
+@enduml

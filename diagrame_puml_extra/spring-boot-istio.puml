@@ -1,0 +1,115 @@
+@startuml
+package com.github.piomin.springboot.istio.annotation; {
+class EnableIstio {
+}
+
+class Fault {
+}
+
+class FaultType {
+}
+
+class Match {
+}
+
+class MatchMode {
+}
+
+class MatchType {
+}
+
+}
+
+package com.github.piomin.springboot.istio.config; {
+class IstioProperties {
+}
+
+class SpringBootIstioAutoConfiguration {
+}
+
+}
+
+package com.github.piomin.springboot.istio.processor; {
+class ApplicationStartupListener {
+}
+
+class EnableIstioAnnotationProcessor {
+}
+
+}
+
+package com.github.piomin.springboot.istio.service; {
+class IstioService {
+}
+
+}
+
+package com.github.piomin.springboot.istio; {
+class EnableIstioAnnotationProcessorTests {
+}
+
+class IstioPropertiesTests {
+}
+
+class IstioServiceIT {
+}
+
+class IstioServiceTests {
+}
+
+class SampleAppWithIstio {
+}
+
+}
+
+EnableIstio -- Fault
+EnableIstio -- Match
+Fault -- FaultType
+Match -- MatchMode
+Match -- MatchType
+IstioProperties -- Fault
+IstioProperties -- FaultType
+IstioProperties -- Match
+IstioProperties -- MatchMode
+IstioProperties -- MatchType
+SpringBootIstioAutoConfiguration -- EnableIstio
+SpringBootIstioAutoConfiguration -- IstioProperties
+SpringBootIstioAutoConfiguration -- ApplicationStartupListener
+SpringBootIstioAutoConfiguration -- EnableIstioAnnotationProcessor
+SpringBootIstioAutoConfiguration -- IstioService
+ApplicationStartupListener -- EnableIstio
+ApplicationStartupListener -- EnableIstioAnnotationProcessor
+EnableIstioAnnotationProcessor -- EnableIstio
+EnableIstioAnnotationProcessor -- Fault
+EnableIstioAnnotationProcessor -- Match
+EnableIstioAnnotationProcessor -- IstioService
+IstioService -- EnableIstio
+IstioService -- Fault
+IstioService -- FaultType
+IstioService -- Match
+IstioService -- MatchMode
+IstioService -- MatchType
+IstioService -- IstioProperties
+EnableIstioAnnotationProcessorTests -- EnableIstio
+EnableIstioAnnotationProcessorTests -- Fault
+EnableIstioAnnotationProcessorTests -- Match
+EnableIstioAnnotationProcessorTests -- EnableIstioAnnotationProcessor
+EnableIstioAnnotationProcessorTests -- IstioService
+IstioPropertiesTests -- EnableIstio
+IstioPropertiesTests -- Fault
+IstioPropertiesTests -- Match
+IstioPropertiesTests -- IstioProperties
+IstioPropertiesTests -- IstioService
+IstioServiceIT -- IstioService
+IstioServiceTests -- EnableIstio
+IstioServiceTests -- Fault
+IstioServiceTests -- FaultType
+IstioServiceTests -- Match
+IstioServiceTests -- MatchMode
+IstioServiceTests -- MatchType
+IstioServiceTests -- IstioService
+SampleAppWithIstio -- EnableIstio
+SampleAppWithIstio -- Fault
+SampleAppWithIstio -- FaultType
+SampleAppWithIstio -- Match
+@enduml

@@ -1,0 +1,392 @@
+@startuml
+package uk.co.caeldev.springsecuritymongo.config; {
+class EnableSecurityMongo {
+}
+
+class MongoConfiguration {
+}
+
+class MongoSettings {
+}
+
+class ApplicationConfiguration {
+}
+
+class MongoClientConfiguration {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo.domain; {
+class MongoApproval {
+}
+
+class MongoClientDetails {
+}
+
+class MongoOAuth2AccessToken {
+}
+
+class MongoOAuth2ClientToken {
+}
+
+class MongoOAuth2RefreshToken {
+}
+
+class User {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo; {
+class MongoApprovalStore {
+}
+
+class MongoClientDetailsService {
+}
+
+class MongoClientTokenServices {
+}
+
+class MongoTokenStore {
+}
+
+class MongoUserDetailsManager {
+}
+
+class MongoApprovalStoreTest {
+}
+
+class MongoClientDetailsServiceIntegrationTest {
+}
+
+class MongoClientDetailsServiceTest {
+}
+
+class MongoClientTokenServicesTest {
+}
+
+class MongoTokenStoreTest {
+}
+
+class MongoUserDetailsManagerTest {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo.repositories; {
+class MongoApprovalRepository {
+}
+
+class MongoApprovalRepositoryBase {
+}
+
+class MongoApprovalRepositoryImpl {
+}
+
+class MongoClientDetailsRepository {
+}
+
+class MongoClientDetailsRepositoryBase {
+}
+
+class MongoClientDetailsRepositoryImpl {
+}
+
+class MongoOAuth2AccessTokenRepository {
+}
+
+class MongoOAuth2AccessTokenRepositoryBase {
+}
+
+class MongoOAuth2AccessTokenRepositoryImpl {
+}
+
+class MongoOAuth2ClientTokenRepository {
+}
+
+class MongoOAuth2ClientTokenRepositoryBase {
+}
+
+class MongoOAuth2ClientTokenRepositoryImpl {
+}
+
+class MongoOAuth2RefreshTokenRepository {
+}
+
+class MongoOAuth2RefreshTokenRepositoryBase {
+}
+
+class MongoOAuth2RefreshTokenRepositoryImpl {
+}
+
+class UserRepository {
+}
+
+class UserRepositoryBase {
+}
+
+class UserRepositoryImpl {
+}
+
+class AbstractRepositoryIntegrationTest {
+}
+
+class MongoApprovalRepositoryIntegrationTest {
+}
+
+class MongoClientDetailsRepositoryIntegrationTest {
+}
+
+class MongoOAuth2AccessTokenRepositoryIntegrationTest {
+}
+
+class MongoOAuth2ClientTokenRepositoryIntegrationTest {
+}
+
+class MongoOAuth2RefreshTokenRepositoryIntegrationTest {
+}
+
+class UserRepositoryIntegrationTest {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo.services; {
+class SecurityContextService {
+}
+
+class SecurityContextServiceTest {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo.util; {
+class LocalDateTimeUtil {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo.builders; {
+class ApprovalBuilder {
+}
+
+class ClientDetailsBuilder {
+}
+
+class MongoApprovalBuilder {
+}
+
+class MongoClientDetailsBuilder {
+}
+
+class MongoOAuth2AccessTokenBuilder {
+}
+
+class MongoOAuth2ClientTokenBuilder {
+}
+
+class MongoOAuth2RefreshTokenBuilder {
+}
+
+class OAuth2AccessTokenBuilder {
+}
+
+class OAuth2AuthenticationBuilder {
+}
+
+class OAuth2ProtectedResourceDetailsBuilder {
+}
+
+class OAuth2RefreshTokenBuilder {
+}
+
+class OAuth2RequestBuilder {
+}
+
+class UserBuilder {
+}
+
+}
+
+package uk.co.caeldev.springsecuritymongo.commons; {
+class SecurityRDG {
+}
+
+}
+
+EnableSecurityMongo -- MongoConfiguration
+MongoConfiguration -- MongoSettings
+MongoConfiguration -- User
+MongoConfiguration -- SecurityContextService
+MongoConfiguration -- MongoClientConfiguration
+MongoSettings -- User
+MongoApproval -- User
+MongoOAuth2AccessToken -- User
+MongoOAuth2ClientToken -- User
+MongoApprovalStore -- MongoApproval
+MongoApprovalStore -- User
+MongoApprovalStore -- MongoApprovalRepository
+MongoApprovalStore -- LocalDateTimeUtil
+MongoClientDetailsService -- MongoClientDetails
+MongoClientDetailsService -- MongoClientDetailsRepository
+MongoClientTokenServices -- MongoOAuth2ClientToken
+MongoClientTokenServices -- MongoOAuth2ClientTokenRepository
+MongoTokenStore -- MongoOAuth2AccessToken
+MongoTokenStore -- MongoOAuth2RefreshToken
+MongoTokenStore -- User
+MongoTokenStore -- MongoOAuth2AccessTokenRepository
+MongoTokenStore -- MongoOAuth2RefreshTokenRepository
+MongoUserDetailsManager -- User
+MongoUserDetailsManager -- UserRepository
+MongoUserDetailsManager -- SecurityContextService
+MongoApprovalRepository -- MongoApproval
+MongoApprovalRepository -- MongoApprovalRepositoryBase
+MongoApprovalRepositoryBase -- MongoApproval
+MongoApprovalRepositoryBase -- User
+MongoApprovalRepositoryImpl -- MongoApproval
+MongoApprovalRepositoryImpl -- User
+MongoApprovalRepositoryImpl -- MongoApprovalRepository
+MongoApprovalRepositoryImpl -- MongoApprovalRepositoryBase
+MongoClientDetailsRepository -- MongoClientDetails
+MongoClientDetailsRepository -- MongoClientDetailsRepositoryBase
+MongoClientDetailsRepositoryBase -- MongoClientDetails
+MongoClientDetailsRepositoryImpl -- MongoClientDetails
+MongoClientDetailsRepositoryImpl -- MongoClientDetailsRepository
+MongoClientDetailsRepositoryImpl -- MongoClientDetailsRepositoryBase
+MongoOAuth2AccessTokenRepository -- MongoOAuth2AccessToken
+MongoOAuth2AccessTokenRepository -- MongoOAuth2AccessTokenRepositoryBase
+MongoOAuth2AccessTokenRepositoryBase -- MongoOAuth2AccessToken
+MongoOAuth2AccessTokenRepositoryBase -- User
+MongoOAuth2AccessTokenRepositoryImpl -- MongoOAuth2AccessToken
+MongoOAuth2AccessTokenRepositoryImpl -- User
+MongoOAuth2AccessTokenRepositoryImpl -- MongoOAuth2AccessTokenRepository
+MongoOAuth2AccessTokenRepositoryImpl -- MongoOAuth2AccessTokenRepositoryBase
+MongoOAuth2ClientTokenRepository -- MongoOAuth2ClientToken
+MongoOAuth2ClientTokenRepository -- MongoOAuth2ClientTokenRepositoryBase
+MongoOAuth2ClientTokenRepositoryBase -- MongoOAuth2ClientToken
+MongoOAuth2ClientTokenRepositoryImpl -- MongoOAuth2ClientToken
+MongoOAuth2ClientTokenRepositoryImpl -- MongoOAuth2ClientTokenRepository
+MongoOAuth2ClientTokenRepositoryImpl -- MongoOAuth2ClientTokenRepositoryBase
+MongoOAuth2RefreshTokenRepository -- MongoOAuth2RefreshToken
+MongoOAuth2RefreshTokenRepository -- MongoOAuth2RefreshTokenRepositoryBase
+MongoOAuth2RefreshTokenRepositoryBase -- MongoOAuth2RefreshToken
+MongoOAuth2RefreshTokenRepositoryImpl -- MongoOAuth2RefreshToken
+MongoOAuth2RefreshTokenRepositoryImpl -- MongoOAuth2RefreshTokenRepository
+MongoOAuth2RefreshTokenRepositoryImpl -- MongoOAuth2RefreshTokenRepositoryBase
+UserRepository -- User
+UserRepository -- UserRepositoryBase
+UserRepositoryBase -- User
+UserRepositoryImpl -- User
+UserRepositoryImpl -- UserRepository
+UserRepositoryImpl -- UserRepositoryBase
+ApprovalBuilder -- SecurityRDG
+ClientDetailsBuilder -- SecurityRDG
+MongoApprovalBuilder -- MongoApproval
+MongoApprovalBuilder -- ApprovalBuilder
+MongoApprovalBuilder -- SecurityRDG
+MongoClientDetailsBuilder -- MongoClientDetails
+MongoClientDetailsBuilder -- ClientDetailsBuilder
+MongoClientDetailsBuilder -- SecurityRDG
+MongoOAuth2AccessTokenBuilder -- MongoOAuth2AccessToken
+MongoOAuth2AccessTokenBuilder -- OAuth2AccessTokenBuilder
+MongoOAuth2AccessTokenBuilder -- OAuth2AuthenticationBuilder
+MongoOAuth2AccessTokenBuilder -- SecurityRDG
+MongoOAuth2ClientTokenBuilder -- MongoOAuth2ClientToken
+MongoOAuth2ClientTokenBuilder -- OAuth2AccessTokenBuilder
+MongoOAuth2ClientTokenBuilder -- SecurityRDG
+MongoOAuth2RefreshTokenBuilder -- MongoOAuth2RefreshToken
+MongoOAuth2RefreshTokenBuilder -- OAuth2RefreshTokenBuilder
+MongoOAuth2RefreshTokenBuilder -- SecurityRDG
+OAuth2AccessTokenBuilder -- LocalDateTimeUtil
+OAuth2AccessTokenBuilder -- OAuth2RefreshTokenBuilder
+OAuth2AccessTokenBuilder -- SecurityRDG
+OAuth2AuthenticationBuilder -- User
+OAuth2AuthenticationBuilder -- OAuth2RequestBuilder
+OAuth2AuthenticationBuilder -- UserBuilder
+OAuth2AuthenticationBuilder -- SecurityRDG
+OAuth2RefreshTokenBuilder -- SecurityRDG
+OAuth2RequestBuilder -- SecurityRDG
+UserBuilder -- User
+UserBuilder -- SecurityRDG
+SecurityRDG -- MongoApproval
+SecurityRDG -- MongoOAuth2AccessToken
+ApplicationConfiguration -- EnableSecurityMongo
+MongoClientConfiguration -- MongoSettings
+MongoApprovalStoreTest -- MongoApproval
+MongoApprovalStoreTest -- User
+MongoApprovalStoreTest -- MongoApprovalStore
+MongoApprovalStoreTest -- MongoApprovalRepository
+MongoApprovalStoreTest -- SecurityRDG
+MongoClientDetailsServiceIntegrationTest -- MongoClientDetails
+MongoClientDetailsServiceIntegrationTest -- MongoClientDetailsService
+MongoClientDetailsServiceIntegrationTest -- MongoClientDetailsRepository
+MongoClientDetailsServiceIntegrationTest -- ClientDetailsBuilder
+MongoClientDetailsServiceIntegrationTest -- MongoClientDetailsBuilder
+MongoClientDetailsServiceIntegrationTest -- ApplicationConfiguration
+MongoClientDetailsServiceTest -- MongoClientDetails
+MongoClientDetailsServiceTest -- MongoClientDetailsService
+MongoClientDetailsServiceTest -- MongoClientDetailsRepository
+MongoClientDetailsServiceTest -- ClientDetailsBuilder
+MongoClientDetailsServiceTest -- MongoClientDetailsBuilder
+MongoClientDetailsServiceTest -- SecurityRDG
+MongoClientTokenServicesTest -- MongoOAuth2ClientToken
+MongoClientTokenServicesTest -- User
+MongoClientTokenServicesTest -- MongoClientTokenServices
+MongoClientTokenServicesTest -- MongoOAuth2ClientTokenRepository
+MongoClientTokenServicesTest -- MongoOAuth2ClientTokenBuilder
+MongoClientTokenServicesTest -- OAuth2AccessTokenBuilder
+MongoClientTokenServicesTest -- OAuth2ProtectedResourceDetailsBuilder
+MongoClientTokenServicesTest -- UserBuilder
+MongoClientTokenServicesTest -- SecurityRDG
+MongoTokenStoreTest -- MongoOAuth2AccessToken
+MongoTokenStoreTest -- MongoOAuth2RefreshToken
+MongoTokenStoreTest -- User
+MongoTokenStoreTest -- MongoTokenStore
+MongoTokenStoreTest -- MongoOAuth2AccessTokenRepository
+MongoTokenStoreTest -- MongoOAuth2RefreshTokenRepository
+MongoTokenStoreTest -- MongoOAuth2AccessTokenBuilder
+MongoTokenStoreTest -- MongoOAuth2RefreshTokenBuilder
+MongoTokenStoreTest -- OAuth2AccessTokenBuilder
+MongoTokenStoreTest -- OAuth2AuthenticationBuilder
+MongoTokenStoreTest -- OAuth2RefreshTokenBuilder
+MongoTokenStoreTest -- SecurityRDG
+MongoUserDetailsManagerTest -- User
+MongoUserDetailsManagerTest -- MongoUserDetailsManager
+MongoUserDetailsManagerTest -- UserRepository
+MongoUserDetailsManagerTest -- SecurityContextService
+MongoUserDetailsManagerTest -- UserBuilder
+MongoUserDetailsManagerTest -- SecurityRDG
+AbstractRepositoryIntegrationTest -- ApplicationConfiguration
+MongoApprovalRepositoryIntegrationTest -- MongoApproval
+MongoApprovalRepositoryIntegrationTest -- User
+MongoApprovalRepositoryIntegrationTest -- MongoApprovalRepository
+MongoApprovalRepositoryIntegrationTest -- ApprovalBuilder
+MongoApprovalRepositoryIntegrationTest -- MongoApprovalBuilder
+MongoApprovalRepositoryIntegrationTest -- AbstractRepositoryIntegrationTest
+MongoClientDetailsRepositoryIntegrationTest -- MongoClientDetails
+MongoClientDetailsRepositoryIntegrationTest -- MongoClientDetailsRepository
+MongoClientDetailsRepositoryIntegrationTest -- ClientDetailsBuilder
+MongoClientDetailsRepositoryIntegrationTest -- MongoClientDetailsBuilder
+MongoClientDetailsRepositoryIntegrationTest -- AbstractRepositoryIntegrationTest
+MongoOAuth2AccessTokenRepositoryIntegrationTest -- MongoOAuth2AccessToken
+MongoOAuth2AccessTokenRepositoryIntegrationTest -- User
+MongoOAuth2AccessTokenRepositoryIntegrationTest -- MongoOAuth2AccessTokenRepository
+MongoOAuth2AccessTokenRepositoryIntegrationTest -- MongoOAuth2AccessTokenBuilder
+MongoOAuth2AccessTokenRepositoryIntegrationTest -- OAuth2AccessTokenBuilder
+MongoOAuth2AccessTokenRepositoryIntegrationTest -- AbstractRepositoryIntegrationTest
+MongoOAuth2ClientTokenRepositoryIntegrationTest -- MongoOAuth2ClientToken
+MongoOAuth2ClientTokenRepositoryIntegrationTest -- MongoOAuth2ClientTokenRepository
+MongoOAuth2ClientTokenRepositoryIntegrationTest -- MongoOAuth2ClientTokenBuilder
+MongoOAuth2ClientTokenRepositoryIntegrationTest -- AbstractRepositoryIntegrationTest
+MongoOAuth2RefreshTokenRepositoryIntegrationTest -- MongoOAuth2RefreshToken
+MongoOAuth2RefreshTokenRepositoryIntegrationTest -- MongoOAuth2RefreshTokenRepository
+MongoOAuth2RefreshTokenRepositoryIntegrationTest -- MongoOAuth2RefreshTokenBuilder
+MongoOAuth2RefreshTokenRepositoryIntegrationTest -- OAuth2RefreshTokenBuilder
+MongoOAuth2RefreshTokenRepositoryIntegrationTest -- AbstractRepositoryIntegrationTest
+UserRepositoryIntegrationTest -- User
+UserRepositoryIntegrationTest -- UserRepository
+UserRepositoryIntegrationTest -- UserBuilder
+UserRepositoryIntegrationTest -- AbstractRepositoryIntegrationTest
+SecurityContextServiceTest -- SecurityContextService
+@enduml

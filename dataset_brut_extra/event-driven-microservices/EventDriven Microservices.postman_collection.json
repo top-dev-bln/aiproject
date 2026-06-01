@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "8880ced5-e7b8-4455-b4b5-edd1fb291358",
+		"name": "EventDriven Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1599575"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "createCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Madan Reddy\",\n    \"email\": \"tutor@eazybytes\",\n    \"mobileNumber\": \"3254537623\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/customer/api/create",
+							"path": [
+								"eazybank",
+								"customer",
+								"api",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchCustomer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/customer/api/fetch?mobileNumber=3254537623",
+							"path": [
+								"eazybank",
+								"customer",
+								"api",
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537623"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"5828deba-26d2-4c67-9f39-7622e1925c8c\",\n    \"name\": \"Madan Mohan Reddy\",\n    \"email\": \"tutor7@eazybytes\",\n    \"mobileNumber\": \"3254537623\",\n    \"activeSw\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/customer/api/update",
+							"path": [
+								"eazybank",
+								"customer",
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/customer/api/delete?customerId=1255aa07-98de-4b7e-8eda-fc65ea34bddd",
+							"path": [
+								"eazybank",
+								"customer",
+								"api",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1255aa07-98de-4b7e-8eda-fc65ea34bddd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choreography-mobile-number",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentMobileNumber\": \"3254537670\",\n    \"newMobileNumber\": \"3254537671\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/customer/api/mobile-number",
+							"path": [
+								"eazybank",
+								"customer",
+								"api",
+								"mobile-number"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orchestration-mobile-number",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"3d75ecbd-1b41-4836-802e-4039ee91abe2\",\n    \"accountNumber\": 1767181735,\n    \"loanNumber\": 1873248198,\n    \"cardNumber\": 1517535813,\n    \"currentMobileNumber\": \"3254537622\",\n    \"newMobileNumber\": \"3254537623\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/customer/api/mobile-number",
+							"path": [
+								"eazybank",
+								"customer",
+								"api",
+								"mobile-number"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "CreateAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/accounts/api/create?mobileNumber=3254537620",
+							"path": [
+								"eazybank",
+								"accounts",
+								"api",
+								"create"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537620"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchAccount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/accounts/api/fetch?mobileNumber=3254537670",
+							"path": [
+								"eazybank",
+								"accounts",
+								"api",
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537670"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateAccount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accountNumber\": 1859385213,\n    \"mobileNumber\": \"3254537679\",\n    \"accountType\": \"Savings\",\n    \"branchAddress\": \"1234 Main Street, New York\",\n    \"activeSw\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/accounts/api/update",
+							"path": [
+								"eazybank",
+								"accounts",
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAccount",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/accounts/api/delete?accountNumber=1180947196",
+							"path": [
+								"eazybank",
+								"accounts",
+								"api",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "1180947196"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "loans",
+			"item": [
+				{
+					"name": "CreateLoan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/loans/api/create?mobileNumber=3254537620",
+							"path": [
+								"eazybank",
+								"loans",
+								"api",
+								"create"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537620"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchLoan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/loans/api/fetch?mobileNumber=3254537671",
+							"path": [
+								"eazybank",
+								"loans",
+								"api",
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537671"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateLoan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loanNumber\": 1147354947,\n    \"mobileNumber\": \"3254537674\",\n    \"loanType\": \"Home Loan\",\n    \"totalLoan\": 100000,\n    \"amountPaid\": 10000,\n    \"outstandingAmount\": 90000,\n    \"activeSw\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/loans/api/update",
+							"path": [
+								"eazybank",
+								"loans",
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteLoan",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/loans/api/delete?loanNumber=1162395702",
+							"path": [
+								"eazybank",
+								"loans",
+								"api",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "loanNumber",
+									"value": "1162395702"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cards",
+			"item": [
+				{
+					"name": "CreateCard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/cards/api/create?mobileNumber=3254537620",
+							"path": [
+								"eazybank",
+								"cards",
+								"api",
+								"create"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537620"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchCard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/cards/api/fetch?mobileNumber=3254537670",
+							"path": [
+								"eazybank",
+								"cards",
+								"api",
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537670"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCard",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\": 1440642192,\n    \"mobileNumber\": \"3254537674\",\n    \"cardType\": \"Credit Card\",\n    \"totalLimit\": 100000,\n    \"amountUsed\": 10000,\n    \"availableAmount\": 90000,\n    \"activeSw\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/eazybank/cards/api/update",
+							"path": [
+								"eazybank",
+								"cards",
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCard",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/cards/api/delete?cardNumber=1346004052",
+							"path": [
+								"eazybank",
+								"cards",
+								"api",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "cardNumber",
+									"value": "1346004052"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gatewayserver",
+			"item": [
+				{
+					"name": "fetchCustomerSummary",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/composite/fetchCustomerSummary?mobileNumber=3254537622",
+							"path": [
+								"api",
+								"composite",
+								"fetchCustomerSummary"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537622"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "fetchProfile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/eazybank/profile/api/profile?mobileNumber=3254537675",
+							"path": [
+								"eazybank",
+								"profile",
+								"api",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "3254537675"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.request.url.protocol=\"http\";",
+					"pm.request.url.host=\"localhost\";",
+					"pm.request.url.port=\"8072\";"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

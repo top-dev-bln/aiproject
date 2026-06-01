@@ -1,0 +1,546 @@
+@startuml
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.hardik.plutocracy.configuration; {
+class OpenApiConfiguration {
+}
+
+}
+
+package com.hardik.plutocracy.configuration.properties; {
+class OpenApiConfigurationProperties {
+}
+
+}
+
+package com.hardik.plutocracy.constant; {
+class ApiPathExclusion {
+}
+
+class BalanceModeType {
+}
+
+class ContextType {
+}
+
+class TicketType {
+}
+
+}
+
+package com.hardik.plutocracy.controller; {
+class AuthenticationController {
+}
+
+class BalanceModeController {
+}
+
+class CompletedTicketController {
+}
+
+class FutureTicketController {
+}
+
+class GoalController {
+}
+
+class MasterController {
+}
+
+class MonthlySpendingThresholdController {
+}
+
+class NoteController {
+}
+
+class TagController {
+}
+
+class UserController {
+}
+
+}
+
+package com.hardik.plutocracy.dto.request; {
+class BalanceModeCreationRequestDto {
+}
+
+class BalanceModeUpdationRequestDto {
+}
+
+class CompletedTicketCreationRequestDto {
+}
+
+class FutureTicketCreationRequestDto {
+}
+
+class GoalCreationRequestDto {
+}
+
+class GoalUpdationRequestDto {
+}
+
+class MonthlySpendingThresholdLimitRequestDto {
+}
+
+class NoteCreationRequestDto {
+}
+
+class NoteUpdationRequestDto {
+}
+
+class TagCreationRequestDto {
+}
+
+class UserCreationRequestDto {
+}
+
+class UserDetailUpdationRequestDto {
+}
+
+class UserLoginRequestDto {
+}
+
+class UserPasswordUpdationRequestDto {
+}
+
+}
+
+package com.hardik.plutocracy.dto.response; {
+class BalanceModeDto {
+}
+
+class GoalDto {
+}
+
+class NoteDto {
+}
+
+class SpendingThresholdRecordDto {
+}
+
+class TagRetreivalRequestDto {
+}
+
+class TicketDto {
+}
+
+class UserDetailsDto {
+}
+
+}
+
+package com.hardik.plutocracy.entity; {
+class BalanceMode {
+}
+
+class CompletedTicket {
+}
+
+class CurrentMonthlySpendingThresholdLimit {
+}
+
+class FutureTicket {
+}
+
+class Goal {
+}
+
+class Note {
+}
+
+class NoteTagMapping {
+}
+
+class SpendingThresholdRecord {
+}
+
+class Tag {
+}
+
+class TicketTagMapping {
+}
+
+class TotalBalance {
+}
+
+class User {
+}
+
+}
+
+package com.hardik.plutocracy; {
+class PersonalFinanceManagementSystemApplication {
+}
+
+class PersonalFinanceManagementSystemApplicationTests {
+}
+
+}
+
+package com.hardik.plutocracy.repository; {
+class BalanceModeRepository {
+}
+
+class CompletedTicketRepository {
+}
+
+class CurrentMonthlySpendingThresholdLimitRepository {
+}
+
+class FutureTicketRepository {
+}
+
+class GoalRepository {
+}
+
+class NoteRepository {
+}
+
+class NoteTagMappingRepository {
+}
+
+class SpendingThresholdRecordRepository {
+}
+
+class TagRepository {
+}
+
+class TicketTagMappingRepository {
+}
+
+class TotalBalanceRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.hardik.plutocracy.scheduler; {
+class MonthlySpendingRecordCalculationScheduler {
+}
+
+}
+
+package com.hardik.plutocracy.security.configuration.properties; {
+class JwtConfiguration {
+}
+
+}
+
+package com.hardik.plutocracy.security.configuration; {
+class SecurityConfiguration {
+}
+
+}
+
+package com.hardik.plutocracy.security; {
+class CustomUserDetailService {
+}
+
+}
+
+package com.hardik.plutocracy.security.filter; {
+class CORSFilter {
+}
+
+class JwtAuthenticationFilter {
+}
+
+}
+
+package com.hardik.plutocracy.security.utility; {
+class JwtUtils {
+}
+
+class SecurityUtils {
+}
+
+}
+
+package com.hardik.plutocracy.service; {
+class BalanceModeService {
+}
+
+class CompletedTicketService {
+}
+
+class CurrentMonthlySpendingThresholdLimitService {
+}
+
+class FutureTicketService {
+}
+
+class GoalService {
+}
+
+class NoteService {
+}
+
+class NoteTagMappingService {
+}
+
+class SpendingThresholdRecordService {
+}
+
+class TagService {
+}
+
+class TicketTagMappingService {
+}
+
+class TotalBalanceService {
+}
+
+class UserService {
+}
+
+}
+
+package com.hardik.plutocracy.utils; {
+class ResponseUtils {
+}
+
+}
+
+OpenApiConfiguration -- OpenApiConfigurationProperties
+BalanceModeType -- BalanceMode
+ContextType -- Note
+AuthenticationController -- UserCreationRequestDto
+AuthenticationController -- UserLoginRequestDto
+AuthenticationController -- UserPasswordUpdationRequestDto
+AuthenticationController -- User
+AuthenticationController -- UserService
+BalanceModeController -- BalanceModeCreationRequestDto
+BalanceModeController -- BalanceModeUpdationRequestDto
+BalanceModeController -- BalanceMode
+BalanceModeController -- BalanceModeService
+CompletedTicketController -- CompletedTicketCreationRequestDto
+CompletedTicketController -- CompletedTicket
+CompletedTicketController -- CompletedTicketService
+FutureTicketController -- FutureTicketCreationRequestDto
+FutureTicketController -- FutureTicket
+FutureTicketController -- FutureTicketService
+GoalController -- GoalCreationRequestDto
+GoalController -- GoalUpdationRequestDto
+GoalController -- Goal
+GoalController -- GoalService
+MasterController -- Tag
+MasterController -- TagService
+MasterController -- ResponseUtils
+MonthlySpendingThresholdController -- MonthlySpendingThresholdLimitRequestDto
+MonthlySpendingThresholdController -- SpendingThresholdRecordDto
+MonthlySpendingThresholdController -- CurrentMonthlySpendingThresholdLimit
+MonthlySpendingThresholdController -- SpendingThresholdRecord
+MonthlySpendingThresholdController -- CurrentMonthlySpendingThresholdLimitService
+MonthlySpendingThresholdController -- SpendingThresholdRecordService
+NoteController -- NoteCreationRequestDto
+NoteController -- NoteUpdationRequestDto
+NoteController -- Note
+NoteController -- NoteService
+TagController -- TagRetreivalRequestDto
+TagController -- Tag
+TagController -- TagService
+UserController -- UserDetailUpdationRequestDto
+UserController -- User
+UserController -- UserService
+BalanceModeCreationRequestDto -- BalanceMode
+BalanceModeUpdationRequestDto -- BalanceMode
+CompletedTicketCreationRequestDto -- TagCreationRequestDto
+CompletedTicketCreationRequestDto -- CompletedTicket
+CompletedTicketCreationRequestDto -- Tag
+FutureTicketCreationRequestDto -- TagCreationRequestDto
+FutureTicketCreationRequestDto -- FutureTicket
+FutureTicketCreationRequestDto -- Tag
+GoalCreationRequestDto -- Goal
+GoalUpdationRequestDto -- Goal
+NoteCreationRequestDto -- TagCreationRequestDto
+NoteCreationRequestDto -- Note
+NoteCreationRequestDto -- Tag
+NoteUpdationRequestDto -- TagCreationRequestDto
+NoteUpdationRequestDto -- Note
+NoteUpdationRequestDto -- Tag
+TagCreationRequestDto -- Tag
+UserCreationRequestDto -- User
+UserDetailUpdationRequestDto -- User
+UserLoginRequestDto -- User
+UserPasswordUpdationRequestDto -- User
+BalanceModeDto -- BalanceMode
+GoalDto -- Goal
+NoteDto -- Note
+SpendingThresholdRecordDto -- SpendingThresholdRecord
+TagRetreivalRequestDto -- Tag
+TicketDto -- BalanceModeDto
+TicketDto -- BalanceMode
+UserDetailsDto -- User
+BalanceMode -- CompletedTicket
+BalanceMode -- FutureTicket
+BalanceMode -- TotalBalance
+CompletedTicket -- User
+CurrentMonthlySpendingThresholdLimit -- User
+FutureTicket -- User
+Goal -- User
+Note -- NoteTagMapping
+Note -- Tag
+Note -- User
+NoteTagMapping -- Tag
+SpendingThresholdRecord -- User
+Tag -- TicketTagMapping
+TotalBalance -- User
+BalanceModeRepository -- BalanceMode
+CompletedTicketRepository -- CompletedTicket
+CompletedTicketRepository -- User
+CurrentMonthlySpendingThresholdLimitRepository -- CurrentMonthlySpendingThresholdLimit
+CurrentMonthlySpendingThresholdLimitRepository -- User
+FutureTicketRepository -- FutureTicket
+GoalRepository -- Goal
+NoteRepository -- Note
+NoteTagMappingRepository -- Note
+NoteTagMappingRepository -- NoteTagMapping
+NoteTagMappingRepository -- Tag
+SpendingThresholdRecordRepository -- SpendingThresholdRecord
+SpendingThresholdRecordRepository -- User
+TagRepository -- Tag
+TicketTagMappingRepository -- Tag
+TicketTagMappingRepository -- TicketTagMapping
+TotalBalanceRepository -- TotalBalance
+TotalBalanceRepository -- User
+UserRepository -- User
+MonthlySpendingRecordCalculationScheduler -- SpendingThresholdRecord
+MonthlySpendingRecordCalculationScheduler -- SpendingThresholdRecordService
+SecurityConfiguration -- ApiPathExclusion
+SecurityConfiguration -- User
+SecurityConfiguration -- CustomUserDetailService
+SecurityConfiguration -- JwtAuthenticationFilter
+CustomUserDetailService -- User
+CustomUserDetailService -- UserRepository
+CustomUserDetailService -- SecurityUtils
+JwtAuthenticationFilter -- User
+JwtAuthenticationFilter -- CustomUserDetailService
+JwtAuthenticationFilter -- JwtUtils
+JwtUtils -- TotalBalance
+JwtUtils -- User
+JwtUtils -- JwtConfiguration
+SecurityUtils -- User
+BalanceModeService -- BalanceModeCreationRequestDto
+BalanceModeService -- BalanceModeUpdationRequestDto
+BalanceModeService -- BalanceModeDto
+BalanceModeService -- BalanceMode
+BalanceModeService -- TotalBalance
+BalanceModeService -- BalanceModeRepository
+BalanceModeService -- TotalBalanceRepository
+BalanceModeService -- JwtUtils
+BalanceModeService -- ResponseUtils
+CompletedTicketService -- TicketType
+CompletedTicketService -- CompletedTicketCreationRequestDto
+CompletedTicketService -- BalanceModeDto
+CompletedTicketService -- TicketDto
+CompletedTicketService -- BalanceMode
+CompletedTicketService -- CompletedTicket
+CompletedTicketService -- Tag
+CompletedTicketService -- TicketTagMapping
+CompletedTicketService -- User
+CompletedTicketService -- CompletedTicketRepository
+CompletedTicketService -- TagRepository
+CompletedTicketService -- TicketTagMappingRepository
+CompletedTicketService -- UserRepository
+CompletedTicketService -- JwtUtils
+CompletedTicketService -- ResponseUtils
+CurrentMonthlySpendingThresholdLimitService -- MonthlySpendingThresholdLimitRequestDto
+CurrentMonthlySpendingThresholdLimitService -- CurrentMonthlySpendingThresholdLimit
+CurrentMonthlySpendingThresholdLimitService -- User
+CurrentMonthlySpendingThresholdLimitService -- CurrentMonthlySpendingThresholdLimitRepository
+CurrentMonthlySpendingThresholdLimitService -- JwtUtils
+CurrentMonthlySpendingThresholdLimitService -- ResponseUtils
+FutureTicketService -- TicketType
+FutureTicketService -- FutureTicketCreationRequestDto
+FutureTicketService -- BalanceModeDto
+FutureTicketService -- TicketDto
+FutureTicketService -- BalanceMode
+FutureTicketService -- FutureTicket
+FutureTicketService -- Tag
+FutureTicketService -- TicketTagMapping
+FutureTicketService -- User
+FutureTicketService -- FutureTicketRepository
+FutureTicketService -- TagRepository
+FutureTicketService -- TicketTagMappingRepository
+FutureTicketService -- UserRepository
+FutureTicketService -- JwtUtils
+FutureTicketService -- ResponseUtils
+GoalService -- GoalCreationRequestDto
+GoalService -- GoalUpdationRequestDto
+GoalService -- GoalDto
+GoalService -- Goal
+GoalService -- User
+GoalService -- GoalRepository
+GoalService -- UserRepository
+GoalService -- JwtUtils
+GoalService -- ResponseUtils
+NoteService -- NoteCreationRequestDto
+NoteService -- NoteUpdationRequestDto
+NoteService -- NoteDto
+NoteService -- Note
+NoteService -- NoteTagMapping
+NoteService -- Tag
+NoteService -- User
+NoteService -- NoteRepository
+NoteService -- NoteTagMappingRepository
+NoteService -- TagRepository
+NoteService -- UserRepository
+NoteService -- JwtUtils
+NoteService -- ResponseUtils
+NoteTagMappingService -- Note
+NoteTagMappingService -- NoteTagMapping
+NoteTagMappingService -- Tag
+NoteTagMappingService -- NoteTagMappingRepository
+SpendingThresholdRecordService -- TicketType
+SpendingThresholdRecordService -- SpendingThresholdRecordDto
+SpendingThresholdRecordService -- CompletedTicket
+SpendingThresholdRecordService -- CurrentMonthlySpendingThresholdLimit
+SpendingThresholdRecordService -- SpendingThresholdRecord
+SpendingThresholdRecordService -- User
+SpendingThresholdRecordService -- CompletedTicketRepository
+SpendingThresholdRecordService -- CurrentMonthlySpendingThresholdLimitRepository
+SpendingThresholdRecordService -- SpendingThresholdRecordRepository
+SpendingThresholdRecordService -- UserRepository
+SpendingThresholdRecordService -- JwtUtils
+TagService -- ContextType
+TagService -- TagRetreivalRequestDto
+TagService -- Note
+TagService -- NoteTagMapping
+TagService -- Tag
+TagService -- TicketTagMapping
+TagService -- NoteTagMappingRepository
+TagService -- TagRepository
+TagService -- TicketTagMappingRepository
+TicketTagMappingService -- Tag
+TicketTagMappingService -- TicketTagMapping
+TicketTagMappingService -- TicketTagMappingRepository
+TotalBalanceService -- TotalBalance
+TotalBalanceService -- TotalBalanceRepository
+UserService -- UserCreationRequestDto
+UserService -- UserDetailUpdationRequestDto
+UserService -- UserLoginRequestDto
+UserService -- UserPasswordUpdationRequestDto
+UserService -- UserDetailsDto
+UserService -- CurrentMonthlySpendingThresholdLimit
+UserService -- TotalBalance
+UserService -- User
+UserService -- CurrentMonthlySpendingThresholdLimitRepository
+UserService -- TotalBalanceRepository
+UserService -- UserRepository
+UserService -- JwtUtils
+UserService -- ResponseUtils
+ResponseUtils -- BalanceModeType
+ResponseUtils -- ContextType
+ResponseUtils -- TicketType
+ResponseUtils -- BalanceMode
+ResponseUtils -- Goal
+ResponseUtils -- Note
+PersonalFinanceManagementSystemApplicationTests -- PersonalFinanceManagementSystemApplication
+@enduml

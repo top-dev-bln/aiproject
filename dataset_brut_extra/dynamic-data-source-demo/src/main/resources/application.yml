@@ -1,0 +1,129 @@
+server:
+  port: 9300
+
+debug: false
+
+spring:
+  application:
+    name: dynamic-datasource-demo
+  profiles:
+    active: default
+#    active: mysql
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  output:
+    ansi:
+      enabled: detect
+  datasource:
+    schema: classpath:sql/dynamic_init.sql
+    druid:
+      data-sources:
+        master:
+          url: jdbc:h2:mem:master
+        slave:
+          url: jdbc:h2:mem:slave
+      username: root
+      password: 123456
+      initialSize: 1
+      minIdle: 1
+      maxActive: 10
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat:
+        log-slow-sql: true
+        slow-sql-millis: 1000
+      slf4j:
+        enabled: true
+        data-source-log-enabled: true
+        connection-log-enabled: false
+        connection-log-error-enabled: true
+        statement-log-enabled: true
+        statement-log-error-enabled: true
+        statement-sql-format-option:
+          upp-case: true
+          pretty-format: false
+        statement-sql-pretty-format: false
+        statement-parameter-set-log-enabled: false
+        statement-prepare-after-log-enabled: false
+        statement-close-after-log-enabled: false
+        statement-executable-sql-log-enable: true
+        result-set-log-enabled: false
+        result-set-log-error-enabled: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: true
+  transaction:
+    rollback-on-commit-failure: true
+  aop:
+    auto: true
+    proxy-target-class: true
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: utf-8
+    converters:
+      preferred-json-mapper: jackson
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      indent_output: true
+      write_null_map_values: true
+      write_dates_as_timestamps: false
+    deserialization:
+      fail_on_unknown_properties: false
+    parser:
+      allow_unquoted_control_chars: true
+      allow_single_quotes: true
+  mvc:
+    servlet:
+      load-on-startup: 1
+
+mybatis:
+  type-aliases-package: com.github.trang.dynamic.domain
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    cache-enabled: false
+    sql-format: true
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+mapper:
+  mappers:
+    - com.github.trang.dynamic.base.mapper.BaseMapper
+  identity: MYSQL
+  not-empty: true
+  use-simple-type: false
+  check-example-entity-class: true
+
+pagehelper:
+  helper-dialect: mysql
+  offset-as-page-num: true
+  row-bounds-with-count: false
+  page-size-zero: false
+  reasonable: false
+  support-methods-arguments: false
+  auto-runtime-dialect: false
+
+---
+
+spring:
+  profiles: mysql
+  datasource:
+    schema: classpath:sql/dynamic_init.sql
+    druid:
+      data-sources:
+        master:
+          url: jdbc:mysql://10.33.106.239:3306/dynamic_master?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+        slave:
+          url: jdbc:mysql://10.33.106.239:3306/dynamic_slave?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+  h2:
+    console:
+      enabled: false

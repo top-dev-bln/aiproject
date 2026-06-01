@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Developer roles. It manages core business objects including demo info. The platform provides capabilities for loc kafka consumer error handler, loc kafka environment post processor, kafka consumer listener. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to create and manage demo info records, so that I can track and organize demo info data effectively.",
+        "services": [
+          "LocKafkaConsumerErrorHandler"
+        ],
+        "controllers": [
+          "ClientController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "KafkaConsumerListener"
+        ],
+        "controllers": [
+          "ClientController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with client functionality, so that I can accomplish my client-related tasks.",
+        "services": [
+          "LocKafkaConsumerErrorHandler"
+        ],
+        "controllers": [
+          "ClientController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with server functionality, so that I can accomplish my server-related tasks.",
+        "services": [
+          "RedisService"
+        ],
+        "controllers": [
+          "ServerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to interact with hello world functionality, so that I can accomplish my hello world-related tasks.",
+        "services": [
+          "LocKafkaConsumerErrorHandler"
+        ],
+        "controllers": [
+          "HelloWorldController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        PrefixPropertyCondition[\"PrefixPropertyCondition\"]\n        ConditionalOnPrefixProperty[\"ConditionalOnPrefixProperty\"]\n        LocBaseAutoConfiguration[\"LocBaseAutoConfiguration\"]\n        BaseResult[\"BaseResult\"]\n        LocConstants[\"LocConstants\"]\n        BaseResultCode[\"BaseResultCode\"]\n        LocFeignEncoderConfig[\"LocFeignEncoderConfig\"]\n        LocFeignRetryProperties[\"LocFeignRetryProperties\"]\n        LocFeignRetryAutoConfiguration[\"LocFeignRetryAutoConfiguration\"]\n        JdbcPoolProperties[\"JdbcPoolProperties\"]\n        JdbcProperties[\"JdbcProperties\"]\n        LocDsProperties[\"LocDsProperties\"]\n        LocDataSourceAutoConfiguration[\"LocDataSourceAutoConfiguration\"]\n        LocJpaConfiguration[\"LocJpaConfiguration\"]\n        LocKafkaAutoConfiguration[\"LocKafkaAutoConfiguration\"]\n        LocLoggingProducerListener[\"LocLoggingProducerListener\"]\n        LocKafkaProducer[\"LocKafkaProducer\"]\n        KafkaUtils[\"KafkaUtils\"]\n        DistributeLock[\"DistributeLock\"]\n        LocMetricsAutoConfigure[\"LocMetricsAutoConfigure\"]\n        MybatisProperties[\"MybatisProperties\"]\n        PageHelperProperties[\"PageHelperProperties\"]\n        PageHelperAutoConfiguration[\"PageHelperAutoConfiguration\"]\n        LocMybatisProperties[\"LocMybatisProperties\"]\n        LocSpringBootVFS[\"LocSpringBootVFS\"]\n        OkHttpAutoConfiguration[\"OkHttpAutoConfiguration\"]\n        OkHttpClientBuilder[\"OkHttpClientBuilder\"]\n        OkHttpClientProperties[\"OkHttpClientProperties\"]\n        LocOkHttpClient[\"LocOkHttpClient\"]\n        LocCacheProperties[\"LocCacheProperties\"]\n        RedisCacheAutoConfiguration[\"RedisCacheAutoConfiguration\"]\n        LocCustomCacheProperties[\"LocCustomCacheProperties\"]\n        CustomRedisCacheWriter[\"CustomRedisCacheWriter\"]\n        TomcatGracefulShutdownAutoConfiguration[\"TomcatGracefulShutdownAutoConfiguration\"]\n        TomcatGracefulShutdownProperties[\"TomcatGracefulShutdownProperties\"]\n        OkHttp3SleuthConfiguration[\"OkHttp3SleuthConfiguration\"]\n        LocSpringMvcCorsProperties[\"LocSpringMvcCorsProperties\"]\n        LocSpringMvcAutoConfiguration[\"LocSpringMvcAutoConfiguration\"]\n        LocAdviceErrorAutoConfiguration[\"LocAdviceErrorAutoConfiguration\"]\n        HostUtil[\"HostUtil\"]\n        ProblemUtil[\"ProblemUtil\"]\n        WxMiniAppInRedisTemplateConfig[\"WxMiniAppInRedisTemplateConfig\"]\n        WxMpInRedisTemplateConfigStorage[\"WxMpInRedisTemplateConfigStorage\"]\n        WechatMiniAppConfiguration[\"WechatMiniAppConfiguration\"]\n        WechatMiniAppProperties[\"WechatMiniAppProperties\"]\n        WechatMpConfiguration[\"WechatMpConfiguration\"]\n        WechatMpProperties[\"WechatMpProperties\"]\n    end\n    subgraph Services\n        LocKafkaConsumerErrorHandler[\"LocKafkaConsumerErrorHandler\"]\n        LocKafkaEnvironmentPostProcessor[\"LocKafkaEnvironmentPostProcessor\"]\n        KafkaConsumerListener[\"KafkaConsumerListener\"]\n        RedisService[\"RedisService\"]\n    end\n    subgraph Controllers\n        ClientController[\"ClientController\"]\n        ServerController[\"ServerController\"]\n        HelloWorldController[\"HelloWorldController\"]\n        MybatisAnnotationController[\"MybatisAnnotationController\"]\n        MybatisPlusController[\"MybatisPlusController\"]\n        MybatisXmlController[\"MybatisXmlController\"]\n        ProblemController[\"ProblemController\"]\n    end\n    subgraph Data_Access\n        DemoInfoRead[\"DemoInfoRead\"]\n        DemoInfoWrite[\"DemoInfoWrite\"]\n        DemoInfo[\"DemoInfo\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

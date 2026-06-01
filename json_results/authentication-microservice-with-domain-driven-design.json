@@ -1,0 +1,67 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including oauth 2principal, user registration, password recovered, user registration requested. The platform provides capabilities for mc authentication event handler, base login command handler, email login command handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "McAuthenticationEventHandler",
+          "BaseLoginCommandHandler",
+          "EmailLoginCommandHandler"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage oauth 2principal records, so that I can track and organize oauth 2principal data effectively.",
+        "services": [
+          "OAuth2Service",
+          "FacebookOAuth2Authentication"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage user registration records, so that I can track and organize user registration data effectively.",
+        "services": [
+          "GetUserRegistrationWithRecoveryCodeQueryHandler",
+          "ConfirmUserRegistrationCommandHandler"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage password recovered records, so that I can track and organize password recovered data effectively.",
+        "services": [
+          "UpdatePasswordWithRecoveryCodeCommandHandler",
+          "CreatePasswordRecoveryCodeCommandHandler"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage user registration requested records, so that I can track and organize user registration requested data effectively.",
+        "services": [
+          "GetUserRegistrationWithRecoveryCodeQueryHandler",
+          "ConfirmUserRegistrationCommandHandler"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        McAuthenticationEventHandler[\"McAuthenticationEventHandler\"]\n        BaseLoginCommandHandler[\"BaseLoginCommandHandler\"]\n        EmailLoginCommandHandler[\"EmailLoginCommandHandler\"]\n        FacebookLoginCommandHandler[\"FacebookLoginCommandHandler\"]\n        LogoutCommandHandler[\"LogoutCommandHandler\"]\n        SessionAuthenticationCommandHandler[\"SessionAuthenticationCommandHandler\"]\n        GoogleLoginCommandHandler[\"GoogleLoginCommandHandler\"]\n        AbstractVoidyCommandHandler[\"AbstractVoidyCommandHandler\"]\n        RequestHandler[\"RequestHandler\"]\n        QueryHandler[\"QueryHandler\"]\n        CommandHandler[\"CommandHandler\"]\n        UpdatePasswordWithRecoveryCodeCommandHandler[\"UpdatePasswordWithRecoveryCodeCommandHandler\"]\n        CreatePasswordRecoveryCodeCommandHandler[\"CreatePasswordRecoveryCodeCommandHandler\"]\n        GetUserRegistrationWithRecoveryCodeQueryHandler[\"GetUserRegistrationWithRecoveryCodeQueryHandler\"]\n        PasswordRecoveryCodeCreatedEventHandler[\"PasswordRecoveryCodeCreatedEventHandler\"]\n        SendPasswordRecoveryEmailCommandHandler[\"SendPasswordRecoveryEmailCommandHandler\"]\n        ConfirmUserRegistrationCommandHandler[\"ConfirmUserRegistrationCommandHandler\"]\n        GetUserRegistrationQueryHandler[\"GetUserRegistrationQueryHandler\"]\n        NewUserRegisteredEventHandler[\"NewUserRegisteredEventHandler\"]\n        RegisterNewUserCommandHandler[\"RegisterNewUserCommandHandler\"]\n        SendRegistrationConfirmationEmailCommandHandler[\"SendRegistrationConfirmationEmailCommandHandler\"]\n        ChangePasswordCommandHandler[\"ChangePasswordCommandHandler\"]\n        GetUserQueryHandler[\"GetUserQueryHandler\"]\n        ChangeUserDetailsCommandHandler[\"ChangeUserDetailsCommandHandler\"]\n        EncryptionService[\"EncryptionService\"]\n        OAuth2Service[\"OAuth2Service\"]\n        EmailAuthenticationService[\"EmailAuthenticationService\"]\n        PasswordService[\"PasswordService\"]\n        SessionAuthenticationService[\"SessionAuthenticationService\"]\n        JwtTokenProvider[\"JwtTokenProvider\"]\n        FacebookOAuth2Authentication[\"FacebookOAuth2Authentication\"]\n        GoogleOAuth2Authentication[\"GoogleOAuth2Authentication\"]\n        CustomOAuth2UserService[\"CustomOAuth2UserService\"]\n        MD5EncryptionService[\"MD5EncryptionService\"]\n        OAuth2AuthenticationSuccessHandler[\"OAuth2AuthenticationSuccessHandler\"]\n        OAuth2AuthenticationFailureHandler[\"OAuth2AuthenticationFailureHandler\"]\n    end\n    subgraph Data_Access\n        BaseMapper[\"BaseMapper\"]\n        UserRegistrationRepository[\"UserRegistrationRepository\"]\n        SessionRepository[\"SessionRepository\"]\n        UserRepository[\"UserRepository\"]\n        SessionRepositoryJpaAdapter[\"SessionRepositoryJpaAdapter\"]\n        UserRegistrationJpaRepositoryAdapter[\"UserRegistrationJpaRepositoryAdapter\"]\n        SessionJpaRepository[\"SessionJpaRepository\"]\n        UserRepositoryJpaAdapter[\"UserRepositoryJpaAdapter\"]\n        UserRegistrationJpaRepository[\"UserRegistrationJpaRepository\"]\n        UserJpaRepository[\"UserJpaRepository\"]\n        OAuth2Principal[\"OAuth2Principal\"]\n        UserRegistration[\"UserRegistration\"]\n        PasswordRecovered[\"PasswordRecovered\"]\n        UserRegistrationRequested[\"UserRegistrationRequested\"]\n        UserRegistrationConfirmed[\"UserRegistrationConfirmed\"]\n        PasswordRecoveryCodeCreated[\"PasswordRecoveryCodeCreated\"]\n        Session[\"Session\"]\n        User[\"User\"]\n    end\n    subgraph Security\n        BaseLoginCommand[\"BaseLoginCommand\"]\n        FacebookLoginCommand[\"FacebookLoginCommand\"]\n        EmailLoginCommand[\"EmailLoginCommand\"]\n        LogoutCommand[\"LogoutCommand\"]\n        GoogleLoginCommand[\"GoogleLoginCommand\"]\n        SessionAuthenticationCommand[\"SessionAuthenticationCommand\"]\n        Identifiable[\"Identifiable\"]\n        Response[\"Response\"]\n        BaseQuery[\"BaseQuery\"]\n        Command[\"Command\"]\n        BaseCommand[\"BaseCommand\"]\n        Query[\"Query\"]\n        McAuthenticationModule[\"McAuthenticationModule\"]\n        Voidy[\"Voidy\"]\n        BaseRequest[\"BaseRequest\"]\n        Request[\"Request\"]\n        AbstractAuthenticateRequest[\"AbstractAuthenticateRequest\"]\n        AbstractAuthenticateQuery[\"AbstractAuthenticateQuery\"]\n        AbstractAuthorizeQuery[\"AbstractAuthorizeQuery\"]\n        AbstractAuthorizeCommand[\"AbstractAuthorizeCommand\"]\n        AbstractAuthenticateCommand[\"AbstractAuthenticateCommand\"]\n        AbstractAuthorizeRequest[\"AbstractAuthorizeRequest\"]\n        Authorize[\"Authorize\"]\n        Authenticate[\"Authenticate\"]\n        CreatePasswordRecoveryCodeCommand[\"CreatePasswordRecoveryCodeCommand\"]\n        UpdatePasswordWithRecoveryCodeCommand[\"UpdatePasswordWithRecoveryCodeCommand\"]\n        SendPasswordRecoveryEmailCommand[\"SendPasswordRecoveryEmailCommand\"]\n        GetUserRegistrationWithRecoveryCodeQuery[\"GetUserRegistrationWithRecoveryCodeQuery\"]\n        RegisterNewUserCommand[\"RegisterNewUserCommand\"]\n        ConfirmUserRegistrationCommand[\"ConfirmUserRegistrationCommand\"]\n        ChangePasswordCommand[\"ChangePasswordCommand\"]\n        SendRegistrationConfirmationEmailCommand[\"SendRegistrationConfirmationEmailCommand\"]\n        GetUserRegistrationQuery[\"GetUserRegistrationQuery\"]\n        ChangeUserDetailsCommand[\"ChangeUserDetailsCommand\"]\n        GetUserQuery[\"GetUserQuery\"]\n        DomainRegistry[\"DomainRegistry\"]\n        OAuth2Authentication[\"OAuth2Authentication\"]\n        UserRegistrationStatus[\"UserRegistrationStatus\"]\n        UserRegistrationId[\"UserRegistrationId\"]\n        UsersCounter[\"UsersCounter\"]\n        PasswordChanged[\"PasswordChanged\"]\n        UserRegistrationMustBeUnique[\"UserRegistrationMustBeUnique\"]\n        PasswordRecoveryCodeShouldBeExpiredOrNull[\"PasswordRecoveryCodeShouldBeExpiredOrNull\"]\n        PasswordRecoveryCodeShouldNotExpired[\"PasswordRecoveryCodeShouldNotExpired\"]\n        PasswordsMustMatch[\"PasswordsMustMatch\"]\n        UserRegistrationMustBeConfirmed[\"UserRegistrationMustBeConfirmed\"]\n        UserRegistrationCannotBeConfirmedMoreThanOnce[\"UserRegistrationCannotBeConfirmedMoreThanOnce\"]\n        RecoveryCodeMustMatch[\"RecoveryCodeMustMatch\"]\n        UserRegistrationCannotBeConfirmedAfterExpiration[\"UserRegistrationCannotBeConfirmedAfterExpiration\"]\n        SessionId[\"SessionId\"]\n        TokenProvider[\"TokenProvider\"]\n        SessionCreated[\"SessionCreated\"]\n        SessionCannotBeExpiredWhenRefreshTokenIsMissing[\"SessionCannotBeExpiredWhenRefreshTokenIsMissing\"]\n        EmailLogin[\"EmailLogin\"]\n        UserId[\"UserId\"]\n        UserNameChanged[\"UserNameChanged\"]\n        UserCreated[\"UserCreated\"]\n        UserEmailMustBeUnique[\"UserEmailMustBeUnique\"]\n        McAuthenticationModuleExecutor[\"McAuthenticationModuleExecutor\"]\n        AbstractOAuth2Authentication[\"AbstractOAuth2Authentication\"]\n        OAuth2UserInfoFactory[\"OAuth2UserInfoFactory\"]\n        FacebookOAuth2UserInfo[\"FacebookOAuth2UserInfo\"]\n        GoogleOAuth2UserInfo[\"GoogleOAuth2UserInfo\"]\n        OAuth2UserInfo[\"OAuth2UserInfo\"]\n        BaseJpaAdapter[\"BaseJpaAdapter\"]\n        LoggingQueryHandlerDecorator[\"LoggingQueryHandlerDecorator\"]\n        PipelineBuilder[\"PipelineBuilder\"]\n        LoggingCommandHandlerDecorator[\"LoggingCommandHandlerDecorator\"]\n        ErrorCommandHandlerDecorator[\"ErrorCommandHandlerDecorator\"]\n        CommandHandlerPipelineBuilder[\"CommandHandlerPipelineBuilder\"]\n        QueryHandlerPipelineBuilder[\"QueryHandlerPipelineBuilder\"]\n        AbstractPipelineBuilder[\"AbstractPipelineBuilder\"]\n        SecurityConfig[\"SecurityConfig\"]\n        AppProperties[\"AppProperties\"]\n        MessageProperties[\"MessageProperties\"]\n        GUIProperties[\"GUIProperties\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        SwaggerUiWebMvcConfigurer[\"SwaggerUiWebMvcConfigurer\"]\n        AppConfig[\"AppConfig\"]\n        RestApiRoutes[\"RestApiRoutes\"]\n        TokenAuthenticationFilter[\"TokenAuthenticationFilter\"]\n        CurrentUser[\"CurrentUser\"]\n        UserAuthToken[\"UserAuthToken\"]\n        UserAuthPrincipal[\"UserAuthPrincipal\"]\n        CookieUtils[\"CookieUtils\"]\n        CommandObjectMother[\"CommandObjectMother\"]\n        StaticFields[\"StaticFields\"]\n    end\n    subgraph Controllers\n        AuthenticationController[\"AuthenticationController\"]\n        AbstractController[\"AbstractController\"]\n        RegistrationController[\"RegistrationController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

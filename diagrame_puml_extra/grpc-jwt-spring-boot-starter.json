@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves Candidate, Admin roles. The platform provides capabilities for jwt data, jwt metadata, jwt token. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtToken"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use jwt data capabilities, so that I can perform essential business operations.",
+        "services": [
+          "JwtData"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to use jwt metadata capabilities, so that I can perform essential business operations.",
+        "services": [
+          "JwtMetadata"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use grpc role capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GrpcRole"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use jwt capabilities, so that I can perform essential business operations.",
+        "services": [
+          "JwtService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        GrpcJwtContext[\"GrpcJwtContext\"]\n        JwtContextData[\"JwtContextData\"]\n        GrpcJwtAutoConfiguration[\"GrpcJwtAutoConfiguration\"]\n        GrpcJwtProperties[\"GrpcJwtProperties\"]\n        AuthClientInterceptor[\"AuthClientInterceptor\"]\n        AuthServerInterceptor[\"AuthServerInterceptor\"]\n    end\n    subgraph Services\n        JwtData[\"JwtData\"]\n        JwtMetadata[\"JwtMetadata\"]\n        JwtToken[\"JwtToken\"]\n        GrpcRole[\"GrpcRole\"]\n        JwtService[\"JwtService\"]\n    end\n    Services --> Security"
+  }
+}

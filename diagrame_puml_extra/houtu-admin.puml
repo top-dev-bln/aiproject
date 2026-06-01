@@ -1,0 +1,1039 @@
+@startuml
+package com.xx.mp.aspect; {
+class OperateLog {
+}
+
+class OperateLogAspect {
+}
+
+}
+
+package com.xx.mp.config; {
+class KaptchaConfig {
+}
+
+class MybatisConfig {
+}
+
+class SecurityProperties {
+}
+
+class SpringSecurityConfig {
+}
+
+}
+
+package com.xx.mp.config.security; {
+class BizCaptchaAuthenticationFilter {
+}
+
+class BizMethodSecurityExpressionHandler {
+}
+
+class BizSecurityContextRepository {
+}
+
+class MFAAuthorizationManager {
+}
+
+class SecuritySupport {
+}
+
+class SimpleUser {
+}
+
+}
+
+package com.xx.mp.module.base.controller; {
+class KaptchaController {
+}
+
+class MenuController {
+}
+
+class MFAController {
+}
+
+class UserController {
+}
+
+}
+
+package com.xx.mp.module.base.mfa; {
+class MFAProcessor {
+}
+
+class MFASelector {
+}
+
+}
+
+package com.xx.mp.module.base.mfa.provider; {
+class EmailVerifyProcessor {
+}
+
+class GoogleOTPVerifyProcessor {
+}
+
+class WorkWeiXinVerifyProcessor {
+}
+
+}
+
+package com.xx.mp.module.base.request; {
+class MFASendRequest {
+}
+
+class MFAVerifyRequest {
+}
+
+class UserInfoUpdateRequest {
+}
+
+class UserUpdateMyselfPasswordRequest {
+}
+
+}
+
+package com.xx.mp.module.base.service.impl; {
+class LoginLogServiceImpl {
+}
+
+class MenuServiceImpl {
+}
+
+class UserDetailServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.xx.mp.module.base.service; {
+class LoginLogService {
+}
+
+class MenuService {
+}
+
+class UserService {
+}
+
+}
+
+package com.xx.mp.module.base.vo; {
+class MFAStateVO {
+}
+
+class ShowMenuVO {
+}
+
+class UserInfoVO {
+}
+
+}
+
+package com.xx.mp.module.sys.controller; {
+class SysDicDatatController {
+}
+
+class SysDictController {
+}
+
+class SysLoginLogController {
+}
+
+class SysMenuController {
+}
+
+class SysOperateLogController {
+}
+
+class SysOrgController {
+}
+
+class SysParamsController {
+}
+
+class SysPostController {
+}
+
+class SysRoleController {
+}
+
+class SysUserController {
+}
+
+}
+
+package com.xx.mp.module.sys.dao; {
+class SysDictDao {
+}
+
+class SysDictDataDao {
+}
+
+class SysLoginLogDao {
+}
+
+class SysMenuDao {
+}
+
+class SysOperateLogDao {
+}
+
+class SysOrgDao {
+}
+
+class SysOrgRoleDao {
+}
+
+class SysParamsDao {
+}
+
+class SysPostDao {
+}
+
+class SysPostRoleDao {
+}
+
+class SysRoleDao {
+}
+
+class SysRoleMenuDao {
+}
+
+class SysUserDao {
+}
+
+class SysUserOrgDao {
+}
+
+class SysUserPostDao {
+}
+
+class SysUserRoleDao {
+}
+
+}
+
+package com.xx.mp.module.sys.entity; {
+class SysDictDataEntity {
+}
+
+class SysDictEntity {
+}
+
+class SysLoginLogEntity {
+}
+
+class SysMenuEntity {
+}
+
+class SysOperateLogEntity {
+}
+
+class SysOrgEntity {
+}
+
+class SysOrgRoleEntity {
+}
+
+class SysParamsEntity {
+}
+
+class SysPostEntity {
+}
+
+class SysPostRoleEntity {
+}
+
+class SysRoleEntity {
+}
+
+class SysRoleMenuEntity {
+}
+
+class SysUserEntity {
+}
+
+class SysUserOrgEntity {
+}
+
+class SysUserPostEntity {
+}
+
+class SysUserRoleEntity {
+}
+
+}
+
+package com.xx.mp.module.sys.request; {
+class SysDictAddRequest {
+}
+
+class SysDictDataAddRequest {
+}
+
+class SysDictDataDeleteRequest {
+}
+
+class SysDictDataQueryRequest {
+}
+
+class SysDictDataUpdateRequest {
+}
+
+class SysDictDeleteRequest {
+}
+
+class SysDictQueryRequest {
+}
+
+class SysDictUpdateRequest {
+}
+
+class SysLoginQueryRequest {
+}
+
+class SysMenuAddRequest {
+}
+
+class SysMenuQueryRequest {
+}
+
+class SysMenuUpdateRequest {
+}
+
+class SysOperateQueryRequest {
+}
+
+class SysOrgAddRequest {
+}
+
+class SysOrgAuthorizeRequest {
+}
+
+class SysOrgQueryRequest {
+}
+
+class SysOrgUpdateRequest {
+}
+
+class SysParamsAddRequest {
+}
+
+class SysParamsDeleteRequest {
+}
+
+class SysParamsQueryRequest {
+}
+
+class SysParamsUpdateRequest {
+}
+
+class SysPostAddRequest {
+}
+
+class SysPostAuthorizeRequest {
+}
+
+class SysPostDeleteRequest {
+}
+
+class SysPostQueryRequest {
+}
+
+class SysPostUpdateRequest {
+}
+
+class SysRoleAddRequest {
+}
+
+class SysRoleDeleteRequest {
+}
+
+class SysRoleQueryRequest {
+}
+
+class SysRoleUpdateRequest {
+}
+
+class SysUserAddRequest {
+}
+
+class SysUserAuthorizeRequest {
+}
+
+class SysUserQueryRequest {
+}
+
+class SysUserResetSecretRequest {
+}
+
+class SysUserUpdateRequest {
+}
+
+}
+
+package com.xx.mp.module.sys.service.impl; {
+class SysDictDataServiceImpl {
+}
+
+class SysDictServiceImpl {
+}
+
+class SysLoginLogServiceImpl {
+}
+
+class SysMenuServiceImpl {
+}
+
+class SysOperateLogServiceImpl {
+}
+
+class SysOrgRoleServiceImpl {
+}
+
+class SysOrgServiceImpl {
+}
+
+class SysParamsServiceImpl {
+}
+
+class SysPostRoleServiceImpl {
+}
+
+class SysPostServiceImpl {
+}
+
+class SysRoleMenuServiceImpl {
+}
+
+class SysRoleServiceImpl {
+}
+
+class SysUserOrgServiceImpl {
+}
+
+class SysUserPostServiceImpl {
+}
+
+class SysUserRoleServiceImpl {
+}
+
+class SysUserServiceImpl {
+}
+
+}
+
+package com.xx.mp.module.sys.service; {
+class SysDictDataService {
+}
+
+class SysDictService {
+}
+
+class SysLoginLogService {
+}
+
+class SysMenuService {
+}
+
+class SysOperateLogService {
+}
+
+class SysOrgRoleService {
+}
+
+class SysOrgService {
+}
+
+class SysParamsService {
+}
+
+class SysPostRoleService {
+}
+
+class SysPostService {
+}
+
+class SysRoleMenuService {
+}
+
+class SysRoleService {
+}
+
+class SysUserOrgService {
+}
+
+class SysUserPostService {
+}
+
+class SysUserRoleService {
+}
+
+class SysUserService {
+}
+
+}
+
+package com.xx.mp.module.sys.vo; {
+class SysDictDataQueryVO {
+}
+
+class SysDictDataSimpleVO {
+}
+
+class SysDictQueryVO {
+}
+
+class SysDictSimpleVO {
+}
+
+class SysLoginLogQueryVO {
+}
+
+class SysMenuQueryBaseVO {
+}
+
+class SysMenuQueryVO {
+}
+
+class SysMenuSimpleVO {
+}
+
+class SysOperateLogQueryVO {
+}
+
+class SysOrgQueryBaseVO {
+}
+
+class SysOrgQueryVO {
+}
+
+class SysParamsQueryVO {
+}
+
+class SysPostQueryBaseVO {
+}
+
+class SysPostQueryVO {
+}
+
+class SysRoleQueryUserOperableVO {
+}
+
+class SysRoleQueryVO {
+}
+
+class SysUserQueryVO {
+}
+
+class SysUserSecretVO {
+}
+
+}
+
+package com.xx.mp; {
+class MPApplication {
+}
+
+class UserTests {
+}
+
+}
+
+package com.xx.mp.support; {
+class SessionContext {
+}
+
+}
+
+package com.xx.mp.support.type; {
+class CommonStatus {
+}
+
+class LoginType {
+}
+
+class MenuIconType {
+}
+
+class MenuPathType {
+}
+
+class MenuType {
+}
+
+class ModuleType {
+}
+
+class OperateType {
+}
+
+}
+
+package com.xx.mp.util; {
+class OTPUtils {
+}
+
+class ResponseUtils {
+}
+
+}
+
+OperateLog -- ModuleType
+OperateLog -- OperateType
+OperateLogAspect -- OperateLog
+OperateLogAspect -- SimpleUser
+OperateLogAspect -- SysOperateLogEntity
+OperateLogAspect -- SysOperateLogService
+OperateLogAspect -- SessionContext
+OperateLogAspect -- OperateType
+BizCaptchaAuthenticationFilter -- ResponseUtils
+BizMethodSecurityExpressionHandler -- SimpleUser
+MFAAuthorizationManager -- SimpleUser
+SpringSecurityConfig -- BizCaptchaAuthenticationFilter
+SpringSecurityConfig -- MFAAuthorizationManager
+SpringSecurityConfig -- SimpleUser
+SpringSecurityConfig -- SecurityProperties
+SpringSecurityConfig -- LoginLogService
+SpringSecurityConfig -- LoginType
+SpringSecurityConfig -- ResponseUtils
+KaptchaController -- BizCaptchaAuthenticationFilter
+MenuController -- MenuService
+MenuController -- ShowMenuVO
+MFAController -- OperateLog
+MFAController -- SimpleUser
+MFAController -- SecurityProperties
+MFAController -- MFAProcessor
+MFAController -- MFASelector
+MFAController -- GoogleOTPVerifyProcessor
+MFAController -- MFASendRequest
+MFAController -- MFAVerifyRequest
+MFAController -- LoginLogService
+MFAController -- UserService
+MFAController -- MFAStateVO
+MFAController -- SessionContext
+MFAController -- LoginType
+MFAController -- ModuleType
+MFAController -- OperateType
+UserController -- OperateLog
+UserController -- UserInfoUpdateRequest
+UserController -- UserUpdateMyselfPasswordRequest
+UserController -- UserService
+UserController -- UserInfoVO
+UserController -- ModuleType
+UserController -- OperateType
+MFAProcessor -- SysUserEntity
+MFASelector -- MFAProcessor
+EmailVerifyProcessor -- SimpleUser
+EmailVerifyProcessor -- MFAProcessor
+EmailVerifyProcessor -- SysUserEntity
+EmailVerifyProcessor -- SessionContext
+GoogleOTPVerifyProcessor -- MFAProcessor
+GoogleOTPVerifyProcessor -- SysUserEntity
+GoogleOTPVerifyProcessor -- OTPUtils
+WorkWeiXinVerifyProcessor -- SimpleUser
+WorkWeiXinVerifyProcessor -- MFAProcessor
+WorkWeiXinVerifyProcessor -- SysUserEntity
+WorkWeiXinVerifyProcessor -- SessionContext
+LoginLogServiceImpl -- SimpleUser
+LoginLogServiceImpl -- LoginLogService
+LoginLogServiceImpl -- SysLoginLogDao
+LoginLogServiceImpl -- SysLoginLogEntity
+LoginLogServiceImpl -- SessionContext
+LoginLogServiceImpl -- LoginType
+MenuServiceImpl -- SimpleUser
+MenuServiceImpl -- MenuService
+MenuServiceImpl -- ShowMenuVO
+MenuServiceImpl -- SysMenuDao
+MenuServiceImpl -- SysRoleDao
+MenuServiceImpl -- SysMenuEntity
+MenuServiceImpl -- SysRoleEntity
+MenuServiceImpl -- SessionContext
+MenuServiceImpl -- MenuType
+UserDetailServiceImpl -- SecuritySupport
+UserDetailServiceImpl -- SimpleUser
+UserDetailServiceImpl -- UserService
+UserDetailServiceImpl -- SysMenuDao
+UserDetailServiceImpl -- SysRoleDao
+UserDetailServiceImpl -- SysMenuEntity
+UserDetailServiceImpl -- SysRoleEntity
+UserDetailServiceImpl -- SysUserEntity
+UserDetailServiceImpl -- SysUserService
+UserDetailServiceImpl -- CommonStatus
+UserServiceImpl -- SimpleUser
+UserServiceImpl -- MFAProcessor
+UserServiceImpl -- MFASelector
+UserServiceImpl -- MFASendRequest
+UserServiceImpl -- MFAVerifyRequest
+UserServiceImpl -- UserInfoUpdateRequest
+UserServiceImpl -- UserUpdateMyselfPasswordRequest
+UserServiceImpl -- LoginLogService
+UserServiceImpl -- UserService
+UserServiceImpl -- UserInfoVO
+UserServiceImpl -- SysUserDao
+UserServiceImpl -- SysUserOrgDao
+UserServiceImpl -- SysUserPostDao
+UserServiceImpl -- SysUserRoleDao
+UserServiceImpl -- SysUserEntity
+UserServiceImpl -- SysUserServiceImpl
+UserServiceImpl -- SysUserService
+UserServiceImpl -- SessionContext
+UserServiceImpl -- OTPUtils
+LoginLogService -- LoginType
+MenuService -- ShowMenuVO
+UserService -- MFASendRequest
+UserService -- MFAVerifyRequest
+UserService -- UserInfoUpdateRequest
+UserService -- UserUpdateMyselfPasswordRequest
+UserService -- UserInfoVO
+SysDicDatatController -- OperateLog
+SysDicDatatController -- SysDictDataAddRequest
+SysDicDatatController -- SysDictDataDeleteRequest
+SysDicDatatController -- SysDictDataQueryRequest
+SysDicDatatController -- SysDictDataUpdateRequest
+SysDicDatatController -- SysDictDataService
+SysDicDatatController -- SysDictDataQueryVO
+SysDicDatatController -- ModuleType
+SysDicDatatController -- OperateType
+SysDictController -- OperateLog
+SysDictController -- SysDictAddRequest
+SysDictController -- SysDictDeleteRequest
+SysDictController -- SysDictQueryRequest
+SysDictController -- SysDictUpdateRequest
+SysDictController -- SysDictService
+SysDictController -- SysDictQueryVO
+SysDictController -- SysDictSimpleVO
+SysDictController -- ModuleType
+SysDictController -- OperateType
+SysLoginLogController -- LoginLogService
+SysLoginLogController -- SysLoginQueryRequest
+SysLoginLogController -- SysLoginLogService
+SysLoginLogController -- SysLoginLogQueryVO
+SysMenuController -- OperateLog
+SysMenuController -- MenuController
+SysMenuController -- MenuService
+SysMenuController -- SysMenuAddRequest
+SysMenuController -- SysMenuQueryRequest
+SysMenuController -- SysMenuUpdateRequest
+SysMenuController -- SysMenuService
+SysMenuController -- SysMenuQueryVO
+SysMenuController -- ModuleType
+SysMenuController -- OperateType
+SysOperateLogController -- OperateLog
+SysOperateLogController -- SysOperateQueryRequest
+SysOperateLogController -- SysOperateLogService
+SysOperateLogController -- SysOperateLogQueryVO
+SysOrgController -- OperateLog
+SysOrgController -- SysOrgAddRequest
+SysOrgController -- SysOrgAuthorizeRequest
+SysOrgController -- SysOrgQueryRequest
+SysOrgController -- SysOrgUpdateRequest
+SysOrgController -- SysOrgService
+SysOrgController -- SysOrgQueryVO
+SysOrgController -- ModuleType
+SysOrgController -- OperateType
+SysParamsController -- OperateLog
+SysParamsController -- SysParamsAddRequest
+SysParamsController -- SysParamsDeleteRequest
+SysParamsController -- SysParamsQueryRequest
+SysParamsController -- SysParamsUpdateRequest
+SysParamsController -- SysParamsService
+SysParamsController -- SysParamsQueryVO
+SysParamsController -- ModuleType
+SysParamsController -- OperateType
+SysPostController -- OperateLog
+SysPostController -- SysPostAddRequest
+SysPostController -- SysPostAuthorizeRequest
+SysPostController -- SysPostDeleteRequest
+SysPostController -- SysPostQueryRequest
+SysPostController -- SysPostUpdateRequest
+SysPostController -- SysPostService
+SysPostController -- SysPostQueryVO
+SysPostController -- ModuleType
+SysPostController -- OperateType
+SysRoleController -- OperateLog
+SysRoleController -- SecuritySupport
+SysRoleController -- MenuService
+SysRoleController -- SysRoleAddRequest
+SysRoleController -- SysRoleDeleteRequest
+SysRoleController -- SysRoleQueryRequest
+SysRoleController -- SysRoleUpdateRequest
+SysRoleController -- SysMenuService
+SysRoleController -- SysRoleService
+SysRoleController -- SysMenuQueryBaseVO
+SysRoleController -- SysRoleQueryVO
+SysRoleController -- ModuleType
+SysRoleController -- OperateType
+SysUserController -- OperateLog
+SysUserController -- UserController
+SysUserController -- UserService
+SysUserController -- SysOrgQueryRequest
+SysUserController -- SysPostQueryRequest
+SysUserController -- SysUserAddRequest
+SysUserController -- SysUserAuthorizeRequest
+SysUserController -- SysUserQueryRequest
+SysUserController -- SysUserResetSecretRequest
+SysUserController -- SysUserUpdateRequest
+SysUserController -- SysOrgService
+SysUserController -- SysPostService
+SysUserController -- SysRoleService
+SysUserController -- SysUserService
+SysUserController -- SysOrgQueryBaseVO
+SysUserController -- SysPostQueryBaseVO
+SysUserController -- SysRoleQueryUserOperableVO
+SysUserController -- SysUserQueryVO
+SysUserController -- SysUserSecretVO
+SysUserController -- SessionContext
+SysUserController -- ModuleType
+SysUserController -- OperateType
+SysDictDao -- SysDictEntity
+SysDictDataDao -- SysDictDataEntity
+SysLoginLogDao -- SysLoginLogEntity
+SysMenuDao -- SysMenuEntity
+SysOperateLogDao -- OperateLog
+SysOperateLogDao -- SysOperateLogEntity
+SysOrgDao -- SysOrgEntity
+SysOrgRoleDao -- SysOrgRoleEntity
+SysParamsDao -- SysParamsEntity
+SysPostDao -- SysPostEntity
+SysPostRoleDao -- SysPostRoleEntity
+SysRoleDao -- SysRoleEntity
+SysRoleMenuDao -- SysRoleMenuEntity
+SysUserDao -- SysUserEntity
+SysUserOrgDao -- SysUserOrgEntity
+SysUserPostDao -- SysUserPostEntity
+SysUserRoleDao -- SysUserRoleEntity
+SysOperateLogEntity -- OperateLog
+SysDictDataServiceImpl -- SysDictDao
+SysDictDataServiceImpl -- SysDictDataDao
+SysDictDataServiceImpl -- SysDictDataEntity
+SysDictDataServiceImpl -- SysDictDataAddRequest
+SysDictDataServiceImpl -- SysDictDataQueryRequest
+SysDictDataServiceImpl -- SysDictDataUpdateRequest
+SysDictDataServiceImpl -- SysDictDataService
+SysDictDataServiceImpl -- SysDictDataQueryVO
+SysDictDataServiceImpl -- SessionContext
+SysDictServiceImpl -- SysDictDao
+SysDictServiceImpl -- SysDictDataDao
+SysDictServiceImpl -- SysDictDataEntity
+SysDictServiceImpl -- SysDictEntity
+SysDictServiceImpl -- SysDictAddRequest
+SysDictServiceImpl -- SysDictQueryRequest
+SysDictServiceImpl -- SysDictUpdateRequest
+SysDictServiceImpl -- SysDictService
+SysDictServiceImpl -- SysDictDataSimpleVO
+SysDictServiceImpl -- SysDictQueryVO
+SysDictServiceImpl -- SysDictSimpleVO
+SysDictServiceImpl -- SessionContext
+SysDictServiceImpl -- CommonStatus
+SysLoginLogServiceImpl -- SimpleUser
+SysLoginLogServiceImpl -- LoginLogServiceImpl
+SysLoginLogServiceImpl -- LoginLogService
+SysLoginLogServiceImpl -- SysLoginLogDao
+SysLoginLogServiceImpl -- SysUserDao
+SysLoginLogServiceImpl -- SysLoginLogEntity
+SysLoginLogServiceImpl -- SysLoginQueryRequest
+SysLoginLogServiceImpl -- SysLoginLogService
+SysLoginLogServiceImpl -- SysLoginLogQueryVO
+SysLoginLogServiceImpl -- SessionContext
+SysMenuServiceImpl -- SimpleUser
+SysMenuServiceImpl -- MenuServiceImpl
+SysMenuServiceImpl -- MenuService
+SysMenuServiceImpl -- SysMenuDao
+SysMenuServiceImpl -- SysRoleDao
+SysMenuServiceImpl -- SysMenuEntity
+SysMenuServiceImpl -- SysRoleEntity
+SysMenuServiceImpl -- SysMenuAddRequest
+SysMenuServiceImpl -- SysMenuQueryRequest
+SysMenuServiceImpl -- SysMenuUpdateRequest
+SysMenuServiceImpl -- SysMenuService
+SysMenuServiceImpl -- SysMenuQueryBaseVO
+SysMenuServiceImpl -- SysMenuQueryVO
+SysMenuServiceImpl -- SessionContext
+SysMenuServiceImpl -- CommonStatus
+SysMenuServiceImpl -- MenuIconType
+SysMenuServiceImpl -- MenuPathType
+SysMenuServiceImpl -- MenuType
+SysOperateLogServiceImpl -- OperateLog
+SysOperateLogServiceImpl -- SimpleUser
+SysOperateLogServiceImpl -- SysOperateLogDao
+SysOperateLogServiceImpl -- SysOperateLogEntity
+SysOperateLogServiceImpl -- SysOperateQueryRequest
+SysOperateLogServiceImpl -- SysOperateLogService
+SysOperateLogServiceImpl -- SysOperateLogQueryVO
+SysOperateLogServiceImpl -- SessionContext
+SysOrgRoleServiceImpl -- SysOrgRoleDao
+SysOrgRoleServiceImpl -- SysOrgRoleEntity
+SysOrgRoleServiceImpl -- SysOrgRoleService
+SysOrgServiceImpl -- SysOrgDao
+SysOrgServiceImpl -- SysOrgRoleDao
+SysOrgServiceImpl -- SysOrgEntity
+SysOrgServiceImpl -- SysOrgRoleEntity
+SysOrgServiceImpl -- SysOrgAddRequest
+SysOrgServiceImpl -- SysOrgAuthorizeRequest
+SysOrgServiceImpl -- SysOrgQueryRequest
+SysOrgServiceImpl -- SysOrgUpdateRequest
+SysOrgServiceImpl -- SysOrgService
+SysOrgServiceImpl -- SysOrgQueryBaseVO
+SysOrgServiceImpl -- SysOrgQueryVO
+SysOrgServiceImpl -- SessionContext
+SysParamsServiceImpl -- SysParamsDao
+SysParamsServiceImpl -- SysParamsEntity
+SysParamsServiceImpl -- SysParamsAddRequest
+SysParamsServiceImpl -- SysParamsQueryRequest
+SysParamsServiceImpl -- SysParamsUpdateRequest
+SysParamsServiceImpl -- SysParamsService
+SysParamsServiceImpl -- SysParamsQueryVO
+SysParamsServiceImpl -- SessionContext
+SysPostRoleServiceImpl -- SysPostRoleDao
+SysPostRoleServiceImpl -- SysPostRoleEntity
+SysPostRoleServiceImpl -- SysPostRoleService
+SysPostServiceImpl -- SysPostDao
+SysPostServiceImpl -- SysPostRoleDao
+SysPostServiceImpl -- SysPostEntity
+SysPostServiceImpl -- SysPostRoleEntity
+SysPostServiceImpl -- SysPostAddRequest
+SysPostServiceImpl -- SysPostAuthorizeRequest
+SysPostServiceImpl -- SysPostQueryRequest
+SysPostServiceImpl -- SysPostUpdateRequest
+SysPostServiceImpl -- SysPostService
+SysPostServiceImpl -- SysPostQueryBaseVO
+SysPostServiceImpl -- SysPostQueryVO
+SysPostServiceImpl -- SessionContext
+SysRoleMenuServiceImpl -- MenuServiceImpl
+SysRoleMenuServiceImpl -- MenuService
+SysRoleMenuServiceImpl -- SysRoleMenuDao
+SysRoleMenuServiceImpl -- SysRoleMenuEntity
+SysRoleMenuServiceImpl -- SysRoleMenuService
+SysRoleServiceImpl -- SecuritySupport
+SysRoleServiceImpl -- SimpleUser
+SysRoleServiceImpl -- SysOrgRoleDao
+SysRoleServiceImpl -- SysPostRoleDao
+SysRoleServiceImpl -- SysRoleDao
+SysRoleServiceImpl -- SysRoleMenuDao
+SysRoleServiceImpl -- SysUserRoleDao
+SysRoleServiceImpl -- SysOrgRoleEntity
+SysRoleServiceImpl -- SysPostRoleEntity
+SysRoleServiceImpl -- SysRoleEntity
+SysRoleServiceImpl -- SysRoleMenuEntity
+SysRoleServiceImpl -- SysUserRoleEntity
+SysRoleServiceImpl -- SysRoleAddRequest
+SysRoleServiceImpl -- SysRoleQueryRequest
+SysRoleServiceImpl -- SysRoleUpdateRequest
+SysRoleServiceImpl -- SysRoleService
+SysRoleServiceImpl -- SysRoleQueryUserOperableVO
+SysRoleServiceImpl -- SysRoleQueryVO
+SysRoleServiceImpl -- SessionContext
+SysRoleServiceImpl -- CommonStatus
+SysUserOrgServiceImpl -- SysUserOrgDao
+SysUserOrgServiceImpl -- SysUserOrgEntity
+SysUserOrgServiceImpl -- SysUserOrgService
+SysUserPostServiceImpl -- SysUserPostDao
+SysUserPostServiceImpl -- SysUserPostEntity
+SysUserPostServiceImpl -- SysUserPostService
+SysUserRoleServiceImpl -- SysUserRoleDao
+SysUserRoleServiceImpl -- SysUserRoleEntity
+SysUserRoleServiceImpl -- SysUserRoleService
+SysUserServiceImpl -- SecuritySupport
+SysUserServiceImpl -- SecurityProperties
+SysUserServiceImpl -- UserService
+SysUserServiceImpl -- SysRoleDao
+SysUserServiceImpl -- SysUserDao
+SysUserServiceImpl -- SysUserOrgDao
+SysUserServiceImpl -- SysUserPostDao
+SysUserServiceImpl -- SysUserRoleDao
+SysUserServiceImpl -- SysRoleEntity
+SysUserServiceImpl -- SysUserEntity
+SysUserServiceImpl -- SysUserOrgEntity
+SysUserServiceImpl -- SysUserPostEntity
+SysUserServiceImpl -- SysUserRoleEntity
+SysUserServiceImpl -- SysUserAddRequest
+SysUserServiceImpl -- SysUserAuthorizeRequest
+SysUserServiceImpl -- SysUserQueryRequest
+SysUserServiceImpl -- SysUserUpdateRequest
+SysUserServiceImpl -- SysUserService
+SysUserServiceImpl -- SysUserQueryVO
+SysUserServiceImpl -- SysUserSecretVO
+SysUserServiceImpl -- SessionContext
+SysUserServiceImpl -- OTPUtils
+SysDictDataService -- SysDictDataEntity
+SysDictDataService -- SysDictDataAddRequest
+SysDictDataService -- SysDictDataQueryRequest
+SysDictDataService -- SysDictDataUpdateRequest
+SysDictDataService -- SysDictDataQueryVO
+SysDictService -- SysDictEntity
+SysDictService -- SysDictAddRequest
+SysDictService -- SysDictQueryRequest
+SysDictService -- SysDictUpdateRequest
+SysDictService -- SysDictQueryVO
+SysDictService -- SysDictSimpleVO
+SysLoginLogService -- LoginLogService
+SysLoginLogService -- SysLoginLogEntity
+SysLoginLogService -- SysLoginQueryRequest
+SysLoginLogService -- SysLoginLogQueryVO
+SysMenuService -- MenuService
+SysMenuService -- SysMenuEntity
+SysMenuService -- SysMenuAddRequest
+SysMenuService -- SysMenuQueryRequest
+SysMenuService -- SysMenuUpdateRequest
+SysMenuService -- SysMenuQueryBaseVO
+SysMenuService -- SysMenuQueryVO
+SysOperateLogService -- OperateLog
+SysOperateLogService -- SysOperateLogEntity
+SysOperateLogService -- SysOperateQueryRequest
+SysOperateLogService -- SysOperateLogQueryVO
+SysOrgRoleService -- SysOrgRoleEntity
+SysOrgService -- SysOrgEntity
+SysOrgService -- SysOrgAddRequest
+SysOrgService -- SysOrgAuthorizeRequest
+SysOrgService -- SysOrgQueryRequest
+SysOrgService -- SysOrgUpdateRequest
+SysOrgService -- SysOrgQueryBaseVO
+SysOrgService -- SysOrgQueryVO
+SysParamsService -- SysParamsEntity
+SysParamsService -- SysParamsAddRequest
+SysParamsService -- SysParamsQueryRequest
+SysParamsService -- SysParamsUpdateRequest
+SysParamsService -- SysParamsQueryVO
+SysPostRoleService -- SysPostRoleEntity
+SysPostService -- SysPostEntity
+SysPostService -- SysPostAddRequest
+SysPostService -- SysPostAuthorizeRequest
+SysPostService -- SysPostQueryRequest
+SysPostService -- SysPostUpdateRequest
+SysPostService -- SysPostQueryBaseVO
+SysPostService -- SysPostQueryVO
+SysRoleMenuService -- MenuService
+SysRoleMenuService -- SysRoleMenuEntity
+SysRoleService -- SysRoleEntity
+SysRoleService -- SysRoleAddRequest
+SysRoleService -- SysRoleQueryRequest
+SysRoleService -- SysRoleUpdateRequest
+SysRoleService -- SysRoleQueryUserOperableVO
+SysRoleService -- SysRoleQueryVO
+SysUserOrgService -- SysUserOrgEntity
+SysUserPostService -- SysUserPostEntity
+SysUserRoleService -- SysUserRoleEntity
+SysUserService -- UserService
+SysUserService -- SysUserEntity
+SysUserService -- SysUserAddRequest
+SysUserService -- SysUserAuthorizeRequest
+SysUserService -- SysUserQueryRequest
+SysUserService -- SysUserUpdateRequest
+SysUserService -- SysUserQueryVO
+SysUserService -- SysUserSecretVO
+SysDictSimpleVO -- SysDictDataSimpleVO
+SysMenuQueryVO -- SysMenuQueryBaseVO
+SysMenuSimpleVO -- SysMenuQueryBaseVO
+SysOperateLogQueryVO -- OperateLog
+SysOrgQueryVO -- SysOrgQueryBaseVO
+SysPostQueryVO -- SysPostQueryBaseVO
+SessionContext -- SimpleUser
+UserTests -- SysUserDao
+UserTests -- SysUserEntity
+@enduml

@@ -1,0 +1,1113 @@
+@startuml
+package com.cbarkinozer.onlinebankingrestapi.app.acc.controller; {
+class AccAccountController {
+}
+
+class AccAccountControllerIntegrationTest {
+}
+
+class AccAccountControllerTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.dao; {
+class AccAccountActivityDao {
+}
+
+class AccAccountDao {
+}
+
+class AccMoneyTransferDao {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.dto; {
+class AccAccountActivityDto {
+}
+
+class AccAccountDto {
+}
+
+class AccAccountSaveDto {
+}
+
+class AccMoneyActivityDto {
+}
+
+class AccMoneyActivityRequestDto {
+}
+
+class AccMoneyTransferDto {
+}
+
+class AccMoneyTransferSaveDto {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.entity; {
+class AccAccount {
+}
+
+class AccAccountActivity {
+}
+
+class AccMoneyTransfer {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.enums; {
+class AccAccountActivityType {
+}
+
+class AccAccountType {
+}
+
+class AccCurrencyType {
+}
+
+class AccErrorMessage {
+}
+
+class AccMoneyTransferType {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.mapper; {
+class AccAccountMapper {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.service; {
+class AccAccountActivityService {
+}
+
+class AccAccountService {
+}
+
+class AccAccountValidationService {
+}
+
+class AccMoneyTransferService {
+}
+
+class AccAccountActivityServiceTest {
+}
+
+class AccAccountServiceTest {
+}
+
+class AccMoneyTransferServiceTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice; {
+class AccAccountActivityEntityService {
+}
+
+class AccAccountEntityService {
+}
+
+class AccMoneyTransferEntityService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.controller; {
+class CrdCreditCardController {
+}
+
+class CrdCreditCardControllerIntegrationTest {
+}
+
+class CrdCreditCardControllerTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.dao; {
+class CrdCreditCardActivityDao {
+}
+
+class CrdCreditCardDao {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.dto; {
+class CrdCreditCardActivityAnalysisDto {
+}
+
+class CrdCreditCardActivityDto {
+}
+
+class CrdCreditCardDetailsDto {
+}
+
+class CrdCreditCardDto {
+}
+
+class CrdCreditCardPaymentDto {
+}
+
+class CrdCreditCardSaveDto {
+}
+
+class CrdCreditCardSpendDto {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.entity; {
+class CrdCreditCard {
+}
+
+class CrdCreditCardActivity {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.enums; {
+class CrdCreditCardActivityType {
+}
+
+class CrdErrorMessage {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.mapper; {
+class CrdCreditCardMapper {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.service; {
+class CrdCreditCardActivityService {
+}
+
+class CrdCreditCardActivityValidationService {
+}
+
+class CrdCreditCardService {
+}
+
+class CrdCreditCardValidationService {
+}
+
+class CrdCreditCardActivityServiceTest {
+}
+
+class CrdCreditCardServiceTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.crd.service.entityservice; {
+class CrdCreditCardActivityEntityService {
+}
+
+class CrdCreditCardEntityService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.controller; {
+class CusCustomerController {
+}
+
+class CusCustomerControllerIntegrationTest {
+}
+
+class CusCustomerControllerTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.dao; {
+class CusCustomerDao {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.dto; {
+class CusCustomerDto {
+}
+
+class CusCustomerSaveDto {
+}
+
+class CusCustomerUpdateDto {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.entity; {
+class CusCustomer {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.enums; {
+class CusErrorMessage {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.mapper; {
+class CusCustomerMapper {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.service; {
+class CusCustomerService {
+}
+
+class CusCustomerValidationService {
+}
+
+class CusCustomerServiceTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.cus.service.entityservice; {
+class CusCustomerEntityService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.config; {
+class SwaggerConfig {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.dto; {
+class RestResponse {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.entity; {
+class BaseAdditionalFields {
+}
+
+class BaseEntity {
+}
+
+class BaseModel {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.enums; {
+class BaseErrorMessage {
+}
+
+class GenErrorMessage {
+}
+
+class GenStatusType {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.exception; {
+class GenCustomizedResponseEntityExceptionHandler {
+}
+
+class GenExceptionResponse {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions; {
+class GenBusinessException {
+}
+
+class IllegalFieldException {
+}
+
+class ItemNotFoundException {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.service; {
+class BaseEntityService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen.util; {
+class StringUtil {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.kafka.consumer; {
+class KafkaConsumerConfiguration {
+}
+
+class KafkaListenerService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.kafka.dto; {
+class LogMessage {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.kafka.producer; {
+class KafkaMessageController {
+}
+
+class KafkaProducerConfiguration {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.controller; {
+class LoaLoanController {
+}
+
+class LoaLoanControllerIntegrationTest {
+}
+
+class LoaLoanControllerTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.dao; {
+class LoaLoanDao {
+}
+
+class LoaLoanPaymentDao {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.dto; {
+class LoaApplyLoanDto {
+}
+
+class LoaCalculateLateFeeResponseDto {
+}
+
+class LoaCalculateLoanResponseDto {
+}
+
+class LoaLoanDto {
+}
+
+class LoaPayInstallmentResponseDto {
+}
+
+class LoaPayLoanOffResponseDto {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.entity; {
+class LoaLoan {
+}
+
+class LoaLoanPayment {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.enums; {
+class LoaErrorMessage {
+}
+
+class LoaLoanStatusType {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.mapper; {
+class LoaLoanMapper {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.service.entityservice; {
+class LoaLoanEntityService {
+}
+
+class LoaLoanPaymentEntityService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.loa.service; {
+class LoaLoanService {
+}
+
+class LoaLoanValidationService {
+}
+
+class LoaLoanServiceTest {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.log.dao; {
+class LogDetailsDao {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.log.entity; {
+class LogDetail {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.log.mapper; {
+class LogMapper {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.log.service.entityservice; {
+class LogDetailEntityService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.log.service; {
+class LogService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.sec.config; {
+class SecurityConfig {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.sec.controller; {
+class AuthenticationController {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.sec.dto; {
+class SecLoginRequestDto {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.sec.enums; {
+class EnumJwtConstant {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.sec.security; {
+class JwtAuthenticationEntryPoint {
+}
+
+class JwtAuthenticationFilter {
+}
+
+class JwtTokenGenerator {
+}
+
+class JwtUserDetails {
+}
+
+class JwtUserDetailsService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.sec.service; {
+class AuthenticationService {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi; {
+class OnlinebankingrestapiApplication {
+}
+
+class OnlinebankingrestapiApplicationTests {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.config; {
+class H2TestProfileJPAConfig {
+}
+
+}
+
+package com.cbarkinozer.onlinebankingrestapi.app.gen; {
+class BaseTest {
+}
+
+}
+
+AccAccountController -- AccAccountActivityDto
+AccAccountController -- AccAccountDto
+AccAccountController -- AccAccountSaveDto
+AccAccountController -- AccMoneyActivityRequestDto
+AccAccountController -- AccMoneyTransferDto
+AccAccountController -- AccMoneyTransferSaveDto
+AccAccountController -- AccAccount
+AccAccountController -- AccAccountActivity
+AccAccountController -- AccMoneyTransfer
+AccAccountController -- AccAccountActivityService
+AccAccountController -- AccAccountService
+AccAccountController -- AccMoneyTransferService
+AccAccountController -- RestResponse
+AccAccountActivityDao -- AccAccount
+AccAccountActivityDao -- AccAccountActivity
+AccAccountDao -- AccAccount
+AccAccountDao -- GenStatusType
+AccMoneyTransferDao -- AccMoneyTransfer
+AccAccountActivityDto -- AccAccount
+AccAccountActivityDto -- AccAccountActivity
+AccAccountActivityDto -- AccAccountActivityType
+AccAccountDto -- AccAccount
+AccAccountDto -- AccAccountType
+AccAccountDto -- AccCurrencyType
+AccAccountDto -- GenStatusType
+AccAccountSaveDto -- AccAccount
+AccAccountSaveDto -- AccAccountType
+AccAccountSaveDto -- AccCurrencyType
+AccMoneyActivityDto -- AccAccount
+AccMoneyActivityDto -- AccAccountActivity
+AccMoneyActivityDto -- AccAccountActivityType
+AccMoneyTransferDto -- AccMoneyTransfer
+AccMoneyTransferDto -- AccMoneyTransferType
+AccMoneyTransferSaveDto -- AccMoneyTransfer
+AccMoneyTransferSaveDto -- AccMoneyTransferType
+AccAccount -- AccAccountType
+AccAccount -- AccCurrencyType
+AccAccount -- BaseEntity
+AccAccount -- GenStatusType
+AccAccountActivity -- AccAccount
+AccAccountActivity -- AccAccountActivityType
+AccAccountActivity -- BaseEntity
+AccMoneyTransfer -- AccMoneyTransferType
+AccMoneyTransfer -- BaseEntity
+AccAccountActivityType -- AccAccount
+AccErrorMessage -- BaseErrorMessage
+AccAccountMapper -- AccAccountActivityDto
+AccAccountMapper -- AccAccountDto
+AccAccountMapper -- AccAccountSaveDto
+AccAccountMapper -- AccMoneyTransferDto
+AccAccountMapper -- AccMoneyTransferSaveDto
+AccAccountMapper -- AccAccount
+AccAccountMapper -- AccAccountActivity
+AccAccountMapper -- AccMoneyTransfer
+AccAccountActivityService -- AccAccountActivityDto
+AccAccountActivityService -- AccMoneyActivityDto
+AccAccountActivityService -- AccMoneyActivityRequestDto
+AccAccountActivityService -- AccAccount
+AccAccountActivityService -- AccAccountActivity
+AccAccountActivityService -- AccAccountActivityType
+AccAccountActivityService -- AccAccountMapper
+AccAccountActivityService -- AccAccountValidationService
+AccAccountActivityService -- AccAccountActivityEntityService
+AccAccountActivityService -- AccAccountEntityService
+AccAccountService -- AccAccountDto
+AccAccountService -- AccAccountSaveDto
+AccAccountService -- AccAccount
+AccAccountService -- AccAccountMapper
+AccAccountService -- AccAccountValidationService
+AccAccountService -- AccAccountEntityService
+AccAccountService -- GenStatusType
+AccAccountService -- StringUtil
+AccAccountValidationService -- AccMoneyActivityDto
+AccAccountValidationService -- AccMoneyActivityRequestDto
+AccAccountValidationService -- AccMoneyTransferSaveDto
+AccAccountValidationService -- AccAccount
+AccAccountValidationService -- AccMoneyTransfer
+AccAccountValidationService -- AccErrorMessage
+AccAccountValidationService -- AccAccountEntityService
+AccAccountValidationService -- CusCustomer
+AccAccountValidationService -- CusErrorMessage
+AccAccountValidationService -- CusCustomerEntityService
+AccAccountValidationService -- GenErrorMessage
+AccAccountValidationService -- GenBusinessException
+AccAccountValidationService -- IllegalFieldException
+AccMoneyTransferService -- AccMoneyActivityDto
+AccMoneyTransferService -- AccMoneyTransferDto
+AccMoneyTransferService -- AccMoneyTransferSaveDto
+AccMoneyTransferService -- AccAccount
+AccMoneyTransferService -- AccAccountActivity
+AccMoneyTransferService -- AccMoneyTransfer
+AccMoneyTransferService -- AccAccountActivityType
+AccMoneyTransferService -- AccAccountMapper
+AccMoneyTransferService -- AccAccountActivityService
+AccMoneyTransferService -- AccAccountValidationService
+AccMoneyTransferService -- AccMoneyTransferEntityService
+AccAccountActivityEntityService -- AccAccountActivityDao
+AccAccountActivityEntityService -- AccAccount
+AccAccountActivityEntityService -- AccAccountActivity
+AccAccountActivityEntityService -- BaseEntity
+AccAccountActivityEntityService -- BaseEntityService
+AccAccountEntityService -- AccAccountDao
+AccAccountEntityService -- AccAccount
+AccAccountEntityService -- AccErrorMessage
+AccAccountEntityService -- BaseEntity
+AccAccountEntityService -- GenStatusType
+AccAccountEntityService -- ItemNotFoundException
+AccAccountEntityService -- BaseEntityService
+AccMoneyTransferEntityService -- AccMoneyTransferDao
+AccMoneyTransferEntityService -- AccMoneyTransfer
+AccMoneyTransferEntityService -- BaseEntity
+AccMoneyTransferEntityService -- BaseEntityService
+CrdCreditCardController -- CrdCreditCardActivityAnalysisDto
+CrdCreditCardController -- CrdCreditCardActivityDto
+CrdCreditCardController -- CrdCreditCardDetailsDto
+CrdCreditCardController -- CrdCreditCardDto
+CrdCreditCardController -- CrdCreditCardPaymentDto
+CrdCreditCardController -- CrdCreditCardSaveDto
+CrdCreditCardController -- CrdCreditCardSpendDto
+CrdCreditCardController -- CrdCreditCard
+CrdCreditCardController -- CrdCreditCardActivity
+CrdCreditCardController -- CrdCreditCardActivityService
+CrdCreditCardController -- CrdCreditCardService
+CrdCreditCardController -- RestResponse
+CrdCreditCardActivityDao -- CrdCreditCardActivityAnalysisDto
+CrdCreditCardActivityDao -- CrdCreditCard
+CrdCreditCardActivityDao -- CrdCreditCardActivity
+CrdCreditCardDao -- CrdCreditCardDetailsDto
+CrdCreditCardDao -- CrdCreditCard
+CrdCreditCardDao -- CusCustomer
+CrdCreditCardDao -- GenStatusType
+CrdCreditCardActivityAnalysisDto -- CrdCreditCard
+CrdCreditCardActivityAnalysisDto -- CrdCreditCardActivity
+CrdCreditCardActivityAnalysisDto -- CrdCreditCardActivityType
+CrdCreditCardActivityDto -- CrdCreditCard
+CrdCreditCardActivityDto -- CrdCreditCardActivity
+CrdCreditCardActivityDto -- CrdCreditCardActivityType
+CrdCreditCardDetailsDto -- CrdCreditCardActivityDto
+CrdCreditCardDetailsDto -- CrdCreditCard
+CrdCreditCardDetailsDto -- CrdCreditCardActivity
+CrdCreditCardDto -- CrdCreditCard
+CrdCreditCardPaymentDto -- CrdCreditCard
+CrdCreditCardSaveDto -- CrdCreditCard
+CrdCreditCardSpendDto -- CrdCreditCard
+CrdCreditCard -- BaseEntity
+CrdCreditCard -- GenStatusType
+CrdCreditCardActivity -- CrdCreditCard
+CrdCreditCardActivity -- CrdCreditCardActivityType
+CrdCreditCardActivity -- BaseEntity
+CrdCreditCardActivityType -- CrdCreditCard
+CrdErrorMessage -- BaseErrorMessage
+CrdCreditCardMapper -- CrdCreditCardActivityDto
+CrdCreditCardMapper -- CrdCreditCardDto
+CrdCreditCardMapper -- CrdCreditCard
+CrdCreditCardMapper -- CrdCreditCardActivity
+CrdCreditCardActivityService -- CrdCreditCardActivityAnalysisDto
+CrdCreditCardActivityService -- CrdCreditCardActivityDto
+CrdCreditCardActivityService -- CrdCreditCardDto
+CrdCreditCardActivityService -- CrdCreditCard
+CrdCreditCardActivityService -- CrdCreditCardActivity
+CrdCreditCardActivityService -- CrdCreditCardMapper
+CrdCreditCardActivityService -- CrdCreditCardActivityValidationService
+CrdCreditCardActivityService -- CrdCreditCardActivityEntityService
+CrdCreditCardActivityValidationService -- CrdCreditCard
+CrdCreditCardActivityValidationService -- CrdCreditCardActivity
+CrdCreditCardActivityValidationService -- CrdErrorMessage
+CrdCreditCardActivityValidationService -- CrdCreditCardEntityService
+CrdCreditCardActivityValidationService -- IllegalFieldException
+CrdCreditCardActivityValidationService -- ItemNotFoundException
+CrdCreditCardService -- CrdCreditCardActivityDto
+CrdCreditCardService -- CrdCreditCardDetailsDto
+CrdCreditCardService -- CrdCreditCardDto
+CrdCreditCardService -- CrdCreditCardPaymentDto
+CrdCreditCardService -- CrdCreditCardSaveDto
+CrdCreditCardService -- CrdCreditCardSpendDto
+CrdCreditCardService -- CrdCreditCard
+CrdCreditCardService -- CrdCreditCardActivity
+CrdCreditCardService -- CrdCreditCardActivityType
+CrdCreditCardService -- CrdCreditCardMapper
+CrdCreditCardService -- CrdCreditCardValidationService
+CrdCreditCardService -- CrdCreditCardActivityEntityService
+CrdCreditCardService -- CrdCreditCardEntityService
+CrdCreditCardService -- CusCustomer
+CrdCreditCardService -- GenStatusType
+CrdCreditCardService -- StringUtil
+CrdCreditCardValidationService -- CrdCreditCardSpendDto
+CrdCreditCardValidationService -- CrdCreditCard
+CrdCreditCardValidationService -- CrdErrorMessage
+CrdCreditCardValidationService -- CrdCreditCardEntityService
+CrdCreditCardValidationService -- GenStatusType
+CrdCreditCardValidationService -- GenBusinessException
+CrdCreditCardValidationService -- IllegalFieldException
+CrdCreditCardActivityEntityService -- CrdCreditCardActivityDao
+CrdCreditCardActivityEntityService -- CrdCreditCardActivityAnalysisDto
+CrdCreditCardActivityEntityService -- CrdCreditCard
+CrdCreditCardActivityEntityService -- CrdCreditCardActivity
+CrdCreditCardActivityEntityService -- BaseEntity
+CrdCreditCardActivityEntityService -- BaseEntityService
+CrdCreditCardEntityService -- CrdCreditCardDao
+CrdCreditCardEntityService -- CrdCreditCardDetailsDto
+CrdCreditCardEntityService -- CrdCreditCard
+CrdCreditCardEntityService -- BaseEntity
+CrdCreditCardEntityService -- GenStatusType
+CrdCreditCardEntityService -- BaseEntityService
+CusCustomerController -- CusCustomerDto
+CusCustomerController -- CusCustomerSaveDto
+CusCustomerController -- CusCustomerUpdateDto
+CusCustomerController -- CusCustomer
+CusCustomerController -- CusCustomerService
+CusCustomerController -- RestResponse
+CusCustomerDao -- CusCustomer
+CusCustomerDto -- CusCustomer
+CusCustomerSaveDto -- CusCustomer
+CusCustomerUpdateDto -- CusCustomer
+CusCustomer -- BaseEntity
+CusErrorMessage -- BaseErrorMessage
+CusCustomerMapper -- CusCustomerDto
+CusCustomerMapper -- CusCustomerSaveDto
+CusCustomerMapper -- CusCustomerUpdateDto
+CusCustomerMapper -- CusCustomer
+CusCustomerService -- CusCustomerDto
+CusCustomerService -- CusCustomerSaveDto
+CusCustomerService -- CusCustomerUpdateDto
+CusCustomerService -- CusCustomer
+CusCustomerService -- CusCustomerMapper
+CusCustomerService -- CusCustomerValidationService
+CusCustomerService -- CusCustomerEntityService
+CusCustomerValidationService -- CusCustomer
+CusCustomerValidationService -- CusErrorMessage
+CusCustomerValidationService -- CusCustomerEntityService
+CusCustomerValidationService -- IllegalFieldException
+CusCustomerValidationService -- ItemNotFoundException
+CusCustomerEntityService -- CusCustomerDao
+CusCustomerEntityService -- CusCustomer
+CusCustomerEntityService -- CusErrorMessage
+CusCustomerEntityService -- BaseEntity
+CusCustomerEntityService -- ItemNotFoundException
+CusCustomerEntityService -- BaseEntityService
+SwaggerConfig -- StringUtil
+BaseEntity -- BaseAdditionalFields
+BaseEntity -- BaseModel
+GenErrorMessage -- BaseErrorMessage
+GenCustomizedResponseEntityExceptionHandler -- RestResponse
+GenCustomizedResponseEntityExceptionHandler -- BaseErrorMessage
+GenCustomizedResponseEntityExceptionHandler -- GenExceptionResponse
+GenCustomizedResponseEntityExceptionHandler -- GenBusinessException
+GenCustomizedResponseEntityExceptionHandler -- IllegalFieldException
+GenCustomizedResponseEntityExceptionHandler -- ItemNotFoundException
+GenBusinessException -- BaseErrorMessage
+IllegalFieldException -- BaseErrorMessage
+IllegalFieldException -- GenBusinessException
+ItemNotFoundException -- BaseErrorMessage
+ItemNotFoundException -- GenBusinessException
+BaseEntityService -- BaseAdditionalFields
+BaseEntityService -- BaseEntity
+BaseEntityService -- GenErrorMessage
+BaseEntityService -- ItemNotFoundException
+BaseEntityService -- AuthenticationService
+StringUtil -- GenErrorMessage
+StringUtil -- GenBusinessException
+KafkaConsumerConfiguration -- LogMessage
+KafkaListenerService -- LogMessage
+KafkaListenerService -- LogDetail
+KafkaListenerService -- LogMapper
+KafkaListenerService -- LogDetailEntityService
+KafkaMessageController -- LogMessage
+KafkaMessageController -- LogService
+KafkaProducerConfiguration -- LogMessage
+LoaLoanController -- RestResponse
+LoaLoanController -- LoaApplyLoanDto
+LoaLoanController -- LoaCalculateLateFeeResponseDto
+LoaLoanController -- LoaCalculateLoanResponseDto
+LoaLoanController -- LoaLoanDto
+LoaLoanController -- LoaPayInstallmentResponseDto
+LoaLoanController -- LoaPayLoanOffResponseDto
+LoaLoanController -- LoaLoan
+LoaLoanController -- LoaLoanService
+LoaLoanDao -- LoaLoan
+LoaLoanPaymentDao -- LoaLoan
+LoaLoanPaymentDao -- LoaLoanPayment
+LoaLoanDto -- LoaLoan
+LoaLoanDto -- LoaLoanStatusType
+LoaPayLoanOffResponseDto -- LoaLoan
+LoaPayLoanOffResponseDto -- LoaLoanStatusType
+LoaLoan -- BaseEntity
+LoaLoan -- LoaLoanStatusType
+LoaLoanPayment -- BaseEntity
+LoaLoanPayment -- LoaLoan
+LoaErrorMessage -- BaseErrorMessage
+LoaLoanMapper -- LoaApplyLoanDto
+LoaLoanMapper -- LoaLoanDto
+LoaLoanMapper -- LoaPayLoanOffResponseDto
+LoaLoanMapper -- LoaLoan
+LoaLoanMapper -- LoaLoanPayment
+LoaLoanEntityService -- BaseEntity
+LoaLoanEntityService -- BaseEntityService
+LoaLoanEntityService -- LoaLoanDao
+LoaLoanEntityService -- LoaLoan
+LoaLoanPaymentEntityService -- BaseEntity
+LoaLoanPaymentEntityService -- BaseEntityService
+LoaLoanPaymentEntityService -- LoaLoanDao
+LoaLoanPaymentEntityService -- LoaLoanPaymentDao
+LoaLoanPaymentEntityService -- LoaLoan
+LoaLoanPaymentEntityService -- LoaLoanPayment
+LoaLoanService -- LoaApplyLoanDto
+LoaLoanService -- LoaCalculateLateFeeResponseDto
+LoaLoanService -- LoaCalculateLoanResponseDto
+LoaLoanService -- LoaLoanDto
+LoaLoanService -- LoaPayInstallmentResponseDto
+LoaLoanService -- LoaPayLoanOffResponseDto
+LoaLoanService -- LoaLoan
+LoaLoanService -- LoaLoanPayment
+LoaLoanService -- LoaLoanStatusType
+LoaLoanService -- LoaLoanMapper
+LoaLoanService -- LoaLoanEntityService
+LoaLoanService -- LoaLoanPaymentEntityService
+LoaLoanService -- LoaLoanValidationService
+LoaLoanValidationService -- CusCustomer
+LoaLoanValidationService -- CusCustomerEntityService
+LoaLoanValidationService -- IllegalFieldException
+LoaLoanValidationService -- ItemNotFoundException
+LoaLoanValidationService -- LoaApplyLoanDto
+LoaLoanValidationService -- LoaLoan
+LoaLoanValidationService -- LoaErrorMessage
+LoaLoanValidationService -- LoaLoanStatusType
+LogDetailsDao -- LogDetail
+LogDetail -- BaseEntity
+LogMapper -- LogMessage
+LogMapper -- LogDetail
+LogDetailEntityService -- BaseEntity
+LogDetailEntityService -- BaseEntityService
+LogDetailEntityService -- LogDetailsDao
+LogDetailEntityService -- LogDetail
+LogService -- LogMessage
+SecurityConfig -- JwtAuthenticationEntryPoint
+SecurityConfig -- JwtAuthenticationFilter
+AuthenticationController -- CusCustomerDto
+AuthenticationController -- CusCustomerSaveDto
+AuthenticationController -- CusCustomer
+AuthenticationController -- RestResponse
+AuthenticationController -- SecLoginRequestDto
+AuthenticationController -- AuthenticationService
+JwtAuthenticationFilter -- StringUtil
+JwtAuthenticationFilter -- EnumJwtConstant
+JwtAuthenticationFilter -- JwtTokenGenerator
+JwtAuthenticationFilter -- JwtUserDetails
+JwtAuthenticationFilter -- JwtUserDetailsService
+JwtTokenGenerator -- JwtUserDetails
+JwtUserDetails -- CusCustomer
+JwtUserDetailsService -- CusCustomer
+JwtUserDetailsService -- CusCustomerEntityService
+JwtUserDetailsService -- JwtUserDetails
+AuthenticationService -- CusCustomerDto
+AuthenticationService -- CusCustomerSaveDto
+AuthenticationService -- CusCustomer
+AuthenticationService -- CusCustomerService
+AuthenticationService -- CusCustomerEntityService
+AuthenticationService -- SecLoginRequestDto
+AuthenticationService -- EnumJwtConstant
+AuthenticationService -- JwtTokenGenerator
+AuthenticationService -- JwtUserDetails
+AccAccountControllerIntegrationTest -- AccAccountController
+AccAccountControllerIntegrationTest -- AccAccountSaveDto
+AccAccountControllerIntegrationTest -- AccMoneyActivityRequestDto
+AccAccountControllerIntegrationTest -- AccMoneyTransferSaveDto
+AccAccountControllerIntegrationTest -- AccAccount
+AccAccountControllerIntegrationTest -- AccMoneyTransfer
+AccAccountControllerIntegrationTest -- AccAccountType
+AccAccountControllerIntegrationTest -- AccCurrencyType
+AccAccountControllerIntegrationTest -- AccMoneyTransferType
+AccAccountControllerIntegrationTest -- OnlinebankingrestapiApplication
+AccAccountControllerIntegrationTest -- H2TestProfileJPAConfig
+AccAccountControllerIntegrationTest -- BaseTest
+AccAccountControllerTest -- AccAccountController
+AccAccountControllerTest -- AccAccountActivityDto
+AccAccountControllerTest -- AccAccountDto
+AccAccountControllerTest -- AccAccountSaveDto
+AccAccountControllerTest -- AccMoneyActivityRequestDto
+AccAccountControllerTest -- AccMoneyTransferDto
+AccAccountControllerTest -- AccMoneyTransferSaveDto
+AccAccountControllerTest -- AccAccount
+AccAccountControllerTest -- AccAccountActivity
+AccAccountControllerTest -- AccMoneyTransfer
+AccAccountControllerTest -- AccAccountActivityType
+AccAccountControllerTest -- AccAccountType
+AccAccountControllerTest -- AccCurrencyType
+AccAccountControllerTest -- AccErrorMessage
+AccAccountControllerTest -- AccMoneyTransferType
+AccAccountControllerTest -- AccAccountActivityService
+AccAccountControllerTest -- AccAccountService
+AccAccountControllerTest -- AccMoneyTransferService
+AccAccountControllerTest -- CusCustomer
+AccAccountControllerTest -- RestResponse
+AccAccountControllerTest -- BaseErrorMessage
+AccAccountControllerTest -- GenErrorMessage
+AccAccountControllerTest -- GenStatusType
+AccAccountControllerTest -- GenBusinessException
+AccAccountControllerTest -- IllegalFieldException
+AccAccountControllerTest -- ItemNotFoundException
+AccAccountActivityServiceTest -- AccAccountActivityDto
+AccAccountActivityServiceTest -- AccMoneyActivityRequestDto
+AccAccountActivityServiceTest -- AccAccount
+AccAccountActivityServiceTest -- AccAccountActivity
+AccAccountActivityServiceTest -- AccErrorMessage
+AccAccountActivityServiceTest -- AccAccountActivityService
+AccAccountActivityServiceTest -- AccAccountValidationService
+AccAccountActivityServiceTest -- AccAccountActivityEntityService
+AccAccountActivityServiceTest -- AccAccountEntityService
+AccAccountActivityServiceTest -- BaseErrorMessage
+AccAccountActivityServiceTest -- GenErrorMessage
+AccAccountActivityServiceTest -- GenBusinessException
+AccAccountActivityServiceTest -- IllegalFieldException
+AccAccountServiceTest -- AccAccountDto
+AccAccountServiceTest -- AccAccountSaveDto
+AccAccountServiceTest -- AccAccount
+AccAccountServiceTest -- AccAccountService
+AccAccountServiceTest -- AccAccountValidationService
+AccAccountServiceTest -- AccAccountEntityService
+AccAccountServiceTest -- IllegalFieldException
+AccAccountServiceTest -- ItemNotFoundException
+AccMoneyTransferServiceTest -- AccAccountActivityDto
+AccMoneyTransferServiceTest -- AccMoneyActivityRequestDto
+AccMoneyTransferServiceTest -- AccMoneyTransferDto
+AccMoneyTransferServiceTest -- AccMoneyTransferSaveDto
+AccMoneyTransferServiceTest -- AccAccount
+AccMoneyTransferServiceTest -- AccAccountActivity
+AccMoneyTransferServiceTest -- AccMoneyTransfer
+AccMoneyTransferServiceTest -- AccErrorMessage
+AccMoneyTransferServiceTest -- AccAccountActivityService
+AccMoneyTransferServiceTest -- AccAccountValidationService
+AccMoneyTransferServiceTest -- AccMoneyTransferService
+AccMoneyTransferServiceTest -- AccMoneyTransferEntityService
+AccMoneyTransferServiceTest -- BaseErrorMessage
+AccMoneyTransferServiceTest -- GenErrorMessage
+AccMoneyTransferServiceTest -- GenBusinessException
+AccMoneyTransferServiceTest -- IllegalFieldException
+CrdCreditCardControllerIntegrationTest -- CrdCreditCardController
+CrdCreditCardControllerIntegrationTest -- CrdCreditCardPaymentDto
+CrdCreditCardControllerIntegrationTest -- CrdCreditCardSaveDto
+CrdCreditCardControllerIntegrationTest -- CrdCreditCardSpendDto
+CrdCreditCardControllerIntegrationTest -- CrdCreditCard
+CrdCreditCardControllerIntegrationTest -- OnlinebankingrestapiApplication
+CrdCreditCardControllerIntegrationTest -- H2TestProfileJPAConfig
+CrdCreditCardControllerIntegrationTest -- BaseTest
+CrdCreditCardControllerTest -- CrdCreditCardController
+CrdCreditCardControllerTest -- CrdCreditCardActivityDto
+CrdCreditCardControllerTest -- CrdCreditCardDetailsDto
+CrdCreditCardControllerTest -- CrdCreditCardDto
+CrdCreditCardControllerTest -- CrdCreditCardPaymentDto
+CrdCreditCardControllerTest -- CrdCreditCardSaveDto
+CrdCreditCardControllerTest -- CrdCreditCardSpendDto
+CrdCreditCardControllerTest -- CrdCreditCard
+CrdCreditCardControllerTest -- CrdCreditCardActivity
+CrdCreditCardControllerTest -- CrdCreditCardActivityType
+CrdCreditCardControllerTest -- CrdCreditCardActivityService
+CrdCreditCardControllerTest -- CrdCreditCardService
+CrdCreditCardControllerTest -- CusCustomer
+CrdCreditCardControllerTest -- RestResponse
+CrdCreditCardActivityServiceTest -- CrdCreditCardActivityAnalysisDto
+CrdCreditCardActivityServiceTest -- CrdCreditCardActivityDto
+CrdCreditCardActivityServiceTest -- CrdCreditCard
+CrdCreditCardActivityServiceTest -- CrdCreditCardActivity
+CrdCreditCardActivityServiceTest -- CrdCreditCardActivityType
+CrdCreditCardActivityServiceTest -- CrdCreditCardActivityService
+CrdCreditCardActivityServiceTest -- CrdCreditCardActivityEntityService
+CrdCreditCardActivityServiceTest -- CrdCreditCardEntityService
+CrdCreditCardServiceTest -- AccAccountActivityDto
+CrdCreditCardServiceTest -- AccAccountDto
+CrdCreditCardServiceTest -- AccAccountSaveDto
+CrdCreditCardServiceTest -- AccMoneyActivityRequestDto
+CrdCreditCardServiceTest -- AccAccount
+CrdCreditCardServiceTest -- AccAccountActivity
+CrdCreditCardServiceTest -- CrdCreditCardActivityDto
+CrdCreditCardServiceTest -- CrdCreditCardDetailsDto
+CrdCreditCardServiceTest -- CrdCreditCardDto
+CrdCreditCardServiceTest -- CrdCreditCardPaymentDto
+CrdCreditCardServiceTest -- CrdCreditCardSaveDto
+CrdCreditCardServiceTest -- CrdCreditCardSpendDto
+CrdCreditCardServiceTest -- CrdCreditCard
+CrdCreditCardServiceTest -- CrdCreditCardActivity
+CrdCreditCardServiceTest -- CrdCreditCardService
+CrdCreditCardServiceTest -- CrdCreditCardValidationService
+CrdCreditCardServiceTest -- CrdCreditCardActivityEntityService
+CrdCreditCardServiceTest -- CrdCreditCardEntityService
+CusCustomerControllerIntegrationTest -- CusCustomerController
+CusCustomerControllerIntegrationTest -- CusCustomerSaveDto
+CusCustomerControllerIntegrationTest -- CusCustomerUpdateDto
+CusCustomerControllerIntegrationTest -- CusCustomer
+CusCustomerControllerIntegrationTest -- OnlinebankingrestapiApplication
+CusCustomerControllerIntegrationTest -- H2TestProfileJPAConfig
+CusCustomerControllerIntegrationTest -- BaseTest
+CusCustomerControllerTest -- CusCustomerController
+CusCustomerControllerTest -- CusCustomerDto
+CusCustomerControllerTest -- CusCustomerSaveDto
+CusCustomerControllerTest -- CusCustomerUpdateDto
+CusCustomerControllerTest -- CusCustomer
+CusCustomerControllerTest -- CusErrorMessage
+CusCustomerControllerTest -- CusCustomerService
+CusCustomerControllerTest -- RestResponse
+CusCustomerControllerTest -- BaseErrorMessage
+CusCustomerControllerTest -- GenErrorMessage
+CusCustomerControllerTest -- IllegalFieldException
+CusCustomerControllerTest -- ItemNotFoundException
+CusCustomerControllerTest -- BaseTest
+CusCustomerServiceTest -- CusCustomerDto
+CusCustomerServiceTest -- CusCustomerSaveDto
+CusCustomerServiceTest -- CusCustomerUpdateDto
+CusCustomerServiceTest -- CusCustomer
+CusCustomerServiceTest -- CusErrorMessage
+CusCustomerServiceTest -- CusCustomerService
+CusCustomerServiceTest -- CusCustomerValidationService
+CusCustomerServiceTest -- CusCustomerEntityService
+CusCustomerServiceTest -- BaseErrorMessage
+CusCustomerServiceTest -- GenErrorMessage
+CusCustomerServiceTest -- IllegalFieldException
+CusCustomerServiceTest -- ItemNotFoundException
+BaseTest -- RestResponse
+LoaLoanControllerIntegrationTest -- AccAccountSaveDto
+LoaLoanControllerIntegrationTest -- AccAccount
+LoaLoanControllerIntegrationTest -- AccAccountType
+LoaLoanControllerIntegrationTest -- AccCurrencyType
+LoaLoanControllerIntegrationTest -- LoaLoanController
+LoaLoanControllerIntegrationTest -- LoaApplyLoanDto
+LoaLoanControllerIntegrationTest -- LoaLoan
+LoaLoanControllerIntegrationTest -- OnlinebankingrestapiApplication
+LoaLoanControllerIntegrationTest -- H2TestProfileJPAConfig
+LoaLoanControllerIntegrationTest -- BaseTest
+LoaLoanControllerTest -- RestResponse
+LoaLoanControllerTest -- LoaLoanController
+LoaLoanControllerTest -- LoaApplyLoanDto
+LoaLoanControllerTest -- LoaCalculateLateFeeResponseDto
+LoaLoanControllerTest -- LoaCalculateLoanResponseDto
+LoaLoanControllerTest -- LoaLoanDto
+LoaLoanControllerTest -- LoaPayInstallmentResponseDto
+LoaLoanControllerTest -- LoaPayLoanOffResponseDto
+LoaLoanControllerTest -- LoaLoan
+LoaLoanControllerTest -- LoaLoanStatusType
+LoaLoanControllerTest -- LoaLoanService
+LoaLoanServiceTest -- LoaCalculateLateFeeResponseDto
+LoaLoanServiceTest -- LoaCalculateLoanResponseDto
+LoaLoanServiceTest -- LoaLoanDto
+LoaLoanServiceTest -- LoaLoan
+LoaLoanServiceTest -- LoaLoanPayment
+LoaLoanServiceTest -- LoaLoanEntityService
+LoaLoanServiceTest -- LoaLoanPaymentEntityService
+LoaLoanServiceTest -- LoaLoanService
+OnlinebankingrestapiApplicationTests -- OnlinebankingrestapiApplication
+@enduml

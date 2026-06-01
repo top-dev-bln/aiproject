@@ -1,0 +1,232 @@
+@startuml
+package com.digag.config; {
+class RedisCacheConfiguration {
+}
+
+class Swagger2 {
+}
+
+}
+
+package com.digag.config.security; {
+class JwtAuthenticationEntryPoint {
+}
+
+class JwtAuthenticationRequest {
+}
+
+class JwtAuthenticationResponse {
+}
+
+class JwtAuthenticationTokenFilter {
+}
+
+class JwtTokenUtil {
+}
+
+class JwtUser {
+}
+
+class JwtUserDetailsServiceImpl {
+}
+
+class JwtUserFactory {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.digag; {
+class DigagServerApplication {
+}
+
+class DigagServerApplicationTests {
+}
+
+}
+
+package com.digag.domain; {
+class Article {
+}
+
+class BrowseLog {
+}
+
+class Collection {
+}
+
+class Entry {
+}
+
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.digag.domain.Repository; {
+class ArticleRepository {
+}
+
+class BrowseLogRepository {
+}
+
+class CollectionRepository {
+}
+
+class EntryRepository {
+}
+
+class RoleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.digag.service; {
+class AuthService {
+}
+
+class EntryService {
+}
+
+class UserService {
+}
+
+}
+
+package com.digag.service.Impl; {
+class AuthServiceImpl {
+}
+
+class EntryServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.digag.util; {
+class GenericBuilder {
+}
+
+class JsonResult {
+}
+
+class Util {
+}
+
+}
+
+package com.digag.web; {
+class ArticleController {
+}
+
+class AuthController {
+}
+
+class EntryController {
+}
+
+class UserController {
+}
+
+}
+
+JwtAuthenticationEntryPoint -- Entry
+JwtAuthenticationTokenFilter -- JwtTokenUtil
+JwtAuthenticationTokenFilter -- User
+JwtAuthenticationTokenFilter -- Util
+JwtTokenUtil -- JwtUser
+JwtTokenUtil -- User
+JwtTokenUtil -- Util
+JwtUser -- Collection
+JwtUser -- User
+JwtUserDetailsServiceImpl -- JwtUser
+JwtUserDetailsServiceImpl -- JwtUserFactory
+JwtUserDetailsServiceImpl -- UserRepository
+JwtUserDetailsServiceImpl -- User
+JwtUserFactory -- JwtUser
+JwtUserFactory -- Role
+JwtUserFactory -- User
+WebSecurityConfig -- JwtAuthenticationEntryPoint
+WebSecurityConfig -- JwtAuthenticationTokenFilter
+WebSecurityConfig -- JwtUser
+WebSecurityConfig -- JwtUserDetailsServiceImpl
+WebSecurityConfig -- Entry
+WebSecurityConfig -- User
+Article -- Entry
+Entry -- Collection
+ArticleRepository -- Article
+BrowseLogRepository -- BrowseLog
+CollectionRepository -- Collection
+EntryRepository -- Entry
+RoleRepository -- Role
+UserRepository -- User
+Role -- User
+AuthService -- User
+AuthService -- JsonResult
+EntryService -- Collection
+EntryService -- Entry
+EntryService -- User
+EntryService -- JsonResult
+AuthServiceImpl -- JwtTokenUtil
+AuthServiceImpl -- JwtUser
+AuthServiceImpl -- Collection
+AuthServiceImpl -- RoleRepository
+AuthServiceImpl -- UserRepository
+AuthServiceImpl -- Role
+AuthServiceImpl -- User
+AuthServiceImpl -- AuthService
+AuthServiceImpl -- JsonResult
+AuthServiceImpl -- Util
+EntryServiceImpl -- JwtTokenUtil
+EntryServiceImpl -- BrowseLog
+EntryServiceImpl -- Collection
+EntryServiceImpl -- Entry
+EntryServiceImpl -- BrowseLogRepository
+EntryServiceImpl -- CollectionRepository
+EntryServiceImpl -- EntryRepository
+EntryServiceImpl -- UserRepository
+EntryServiceImpl -- User
+EntryServiceImpl -- EntryService
+EntryServiceImpl -- JsonResult
+EntryServiceImpl -- Util
+UserServiceImpl -- JwtTokenUtil
+UserServiceImpl -- UserRepository
+UserServiceImpl -- User
+UserServiceImpl -- UserService
+UserServiceImpl -- JsonResult
+UserServiceImpl -- Util
+UserService -- User
+UserService -- JsonResult
+ArticleController -- Article
+ArticleController -- ArticleRepository
+ArticleController -- Role
+ArticleController -- JsonResult
+AuthController -- JwtAuthenticationRequest
+AuthController -- JwtAuthenticationResponse
+AuthController -- User
+AuthController -- AuthService
+AuthController -- JsonResult
+EntryController -- Collection
+EntryController -- Entry
+EntryController -- EntryRepository
+EntryController -- Role
+EntryController -- User
+EntryController -- EntryService
+EntryController -- JsonResult
+UserController -- UserRepository
+UserController -- Role
+UserController -- User
+UserController -- UserService
+UserController -- JsonResult
+DigagServerApplicationTests -- DigagServerApplication
+@enduml

@@ -1,0 +1,669 @@
+@startuml
+package tk.springboot.simple; {
+class Application {
+}
+
+}
+
+package tk.springboot.simple.conf; {
+class GeneralConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package tk.springboot.simple.controller; {
+class AccountController {
+}
+
+class CostController {
+}
+
+class DeliveryManInfoController {
+}
+
+class FundsAppController {
+}
+
+class FundsStatisticsController {
+}
+
+class GlobalController {
+}
+
+class LoginController {
+}
+
+class OrderController {
+}
+
+class PermissionController {
+}
+
+class PersonalInfoController {
+}
+
+class RoleController {
+}
+
+class SendInfoController {
+}
+
+class UploadResultController {
+}
+
+class UserController {
+}
+
+}
+
+package tk.springboot.simple.exceptions; {
+class BizException {
+}
+
+}
+
+package tk.springboot.simple.interceptors; {
+class GeneralInterceptor {
+}
+
+}
+
+package tk.springboot.simple.mapper; {
+class AccountMapper {
+}
+
+class CityMapper {
+}
+
+class CostInfoMapper {
+}
+
+class CountryMapper {
+}
+
+class DeliveryManInfoMapper {
+}
+
+class FundsStatisticsInfoMapper {
+}
+
+class OrderMapper {
+}
+
+class PermissionMapper {
+}
+
+class PersonalInfoMapper {
+}
+
+class RoleMapper {
+}
+
+class RolePermissionMapper {
+}
+
+class SendInfoMapper {
+}
+
+class UploadResultMapper {
+}
+
+class UserMapper {
+}
+
+class UserRoleMapper {
+}
+
+class MyBatis331Mapper {
+}
+
+class MyBatis331Test {
+}
+
+}
+
+package tk.springboot.simple.model; {
+class Account {
+}
+
+class BaseEntity {
+}
+
+class City {
+}
+
+class Country {
+}
+
+class DeliveryManInfo {
+}
+
+class FundsStatisticsInfo {
+}
+
+class OrderInfo {
+}
+
+class Permission {
+}
+
+class PersonalInfo {
+}
+
+class RespInfo {
+}
+
+class Role {
+}
+
+class RolePermission {
+}
+
+class SendInfo {
+}
+
+class UploadResult {
+}
+
+class User {
+}
+
+class UserRole {
+}
+
+class City2 {
+}
+
+}
+
+package tk.springboot.simple.model;// {
+class CostInfo {
+}
+
+}
+
+package tk.springboot.simple.model.enums; {
+class AccountStatus {
+}
+
+class CostStatus {
+}
+
+class PermissionType {
+}
+
+class Status {
+}
+
+class UploadType {
+}
+
+}
+
+package tk.springboot.simple.model.view; {
+class DispatchView {
+}
+
+}
+
+package tk.springboot.simple.service; {
+class AccountService {
+}
+
+class BaseService {
+}
+
+class CityService {
+}
+
+class CostInfoService {
+}
+
+class DeliveryManInfoService {
+}
+
+class FundsStatisticsInfoService {
+}
+
+class OrderService {
+}
+
+class PermissionService {
+}
+
+class PersonalInfoService {
+}
+
+class RolePermissionService {
+}
+
+class RoleService {
+}
+
+class SendInfoService {
+}
+
+class UploadResultService {
+}
+
+class UserRoleService {
+}
+
+class UserService {
+}
+
+}
+
+package tk.springboot.simple.util; {
+class CacheUtil {
+}
+
+class Consts {
+}
+
+class MyMapper {
+}
+
+class UploadExcelRules {
+}
+
+}
+
+package tk.springboot.simple.test; {
+class BeanUtil {
+}
+
+class PermissionTest {
+}
+
+class RoleTest {
+}
+
+class UserTest {
+}
+
+}
+
+package tk.comm.exception; {
+class AppBizException {
+}
+
+class BaseSupportException {
+}
+
+class BizInvokeException {
+}
+
+}
+
+package tk.comm.model; {
+class CellBean {
+}
+
+class MailAuthentication {
+}
+
+class MailInfo {
+}
+
+class SheetBean {
+}
+
+class UploadFile {
+}
+
+}
+
+package tk.comm.utils; {
+class CsvUtil {
+}
+
+class DownUploadUtil {
+}
+
+class ExcelUtil {
+}
+
+class MailUtil {
+}
+
+class MD5Util {
+}
+
+}
+
+package tk.common.test; {
+class ExcelTest {
+}
+
+class MailTest {
+}
+
+}
+
+Application -- WebMvcConfig
+Application -- MyMapper
+WebMvcConfig -- GeneralInterceptor
+AccountController -- GlobalController
+AccountController -- BizException
+AccountController -- Account
+AccountController -- AccountStatus
+AccountController -- Status
+AccountController -- RespInfo
+AccountController -- AccountService
+AccountController -- Consts
+CostController -- GlobalController
+CostController -- CostInfo
+CostController -- RespInfo
+CostController -- CostInfoService
+CostController -- Consts
+DeliveryManInfoController -- GlobalController
+DeliveryManInfoController -- BizException
+DeliveryManInfoController -- DeliveryManInfo
+DeliveryManInfoController -- Status
+DeliveryManInfoController -- UploadType
+DeliveryManInfoController -- RespInfo
+DeliveryManInfoController -- UploadResult
+DeliveryManInfoController -- DeliveryManInfoService
+DeliveryManInfoController -- UploadResultService
+DeliveryManInfoController -- Consts
+DeliveryManInfoController -- UploadExcelRules
+DeliveryManInfoController -- SheetBean
+DeliveryManInfoController -- UploadFile
+DeliveryManInfoController -- DownUploadUtil
+DeliveryManInfoController -- ExcelUtil
+FundsAppController -- BizException
+FundsAppController -- CostInfo
+FundsAppController -- CostStatus
+FundsAppController -- Status
+FundsAppController -- FundsStatisticsInfo
+FundsAppController -- RespInfo
+FundsAppController -- CostInfoService
+FundsAppController -- FundsStatisticsInfoService
+FundsAppController -- Consts
+FundsStatisticsController -- GlobalController
+FundsStatisticsController -- FundsStatisticsInfo
+FundsStatisticsController -- RespInfo
+FundsStatisticsController -- FundsStatisticsInfoService
+FundsStatisticsController -- Consts
+GlobalController -- BizException
+GlobalController -- RespInfo
+GlobalController -- UploadResult
+GlobalController -- Consts
+LoginController -- GlobalController
+LoginController -- Permission
+LoginController -- RespInfo
+LoginController -- User
+LoginController -- UserService
+LoginController -- CacheUtil
+LoginController -- Consts
+OrderController -- GlobalController
+OrderController -- BizException
+OrderController -- Status
+OrderController -- UploadType
+OrderController -- OrderInfo
+OrderController -- RespInfo
+OrderController -- SendInfo
+OrderController -- UploadResult
+OrderController -- OrderService
+OrderController -- SendInfoService
+OrderController -- UploadResultService
+OrderController -- Consts
+OrderController -- UploadExcelRules
+OrderController -- SheetBean
+OrderController -- UploadFile
+OrderController -- DownUploadUtil
+OrderController -- ExcelUtil
+PermissionController -- GlobalController
+PermissionController -- Permission
+PermissionController -- RespInfo
+PermissionController -- PermissionService
+PermissionController -- Consts
+PersonalInfoController -- GlobalController
+PersonalInfoController -- BizException
+PersonalInfoController -- Status
+PersonalInfoController -- UploadType
+PersonalInfoController -- PersonalInfo
+PersonalInfoController -- RespInfo
+PersonalInfoController -- UploadResult
+PersonalInfoController -- PersonalInfoService
+PersonalInfoController -- UploadResultService
+PersonalInfoController -- Consts
+PersonalInfoController -- UploadExcelRules
+PersonalInfoController -- SheetBean
+PersonalInfoController -- UploadFile
+PersonalInfoController -- DownUploadUtil
+PersonalInfoController -- ExcelUtil
+RoleController -- GlobalController
+RoleController -- Status
+RoleController -- Permission
+RoleController -- RespInfo
+RoleController -- Role
+RoleController -- RolePermission
+RoleController -- DispatchView
+RoleController -- PermissionService
+RoleController -- RolePermissionService
+RoleController -- RoleService
+RoleController -- Consts
+SendInfoController -- GlobalController
+SendInfoController -- BizException
+SendInfoController -- Status
+SendInfoController -- UploadType
+SendInfoController -- RespInfo
+SendInfoController -- SendInfo
+SendInfoController -- UploadResult
+SendInfoController -- SendInfoService
+SendInfoController -- UploadResultService
+SendInfoController -- Consts
+SendInfoController -- UploadExcelRules
+SendInfoController -- SheetBean
+SendInfoController -- UploadFile
+SendInfoController -- DownUploadUtil
+SendInfoController -- ExcelUtil
+UploadResultController -- GlobalController
+UploadResultController -- UploadType
+UploadResultController -- UploadResult
+UploadResultController -- UploadResultService
+UploadResultController -- Consts
+UserController -- GlobalController
+UserController -- Status
+UserController -- RespInfo
+UserController -- Role
+UserController -- User
+UserController -- UserRole
+UserController -- DispatchView
+UserController -- RoleService
+UserController -- UserRoleService
+UserController -- UserService
+UserController -- Consts
+GeneralInterceptor -- Permission
+GeneralInterceptor -- User
+GeneralInterceptor -- CacheUtil
+AccountMapper -- Account
+AccountMapper -- MyMapper
+CityMapper -- City
+CityMapper -- MyMapper
+CostInfoMapper -- CostInfo
+CostInfoMapper -- MyMapper
+CountryMapper -- Country
+CountryMapper -- MyMapper
+DeliveryManInfoMapper -- DeliveryManInfo
+DeliveryManInfoMapper -- MyMapper
+FundsStatisticsInfoMapper -- FundsStatisticsInfo
+FundsStatisticsInfoMapper -- MyMapper
+OrderMapper -- OrderInfo
+OrderMapper -- MyMapper
+PermissionMapper -- Permission
+PermissionMapper -- MyMapper
+PersonalInfoMapper -- PersonalInfo
+PersonalInfoMapper -- MyMapper
+RoleMapper -- Status
+RoleMapper -- Role
+RoleMapper -- MyMapper
+RolePermissionMapper -- PermissionMapper
+RolePermissionMapper -- Permission
+RolePermissionMapper -- Role
+RolePermissionMapper -- RolePermission
+RolePermissionMapper -- MyMapper
+SendInfoMapper -- SendInfo
+SendInfoMapper -- MyMapper
+UploadResultMapper -- UploadResult
+UploadResultMapper -- MyMapper
+UserMapper -- Status
+UserMapper -- Permission
+UserMapper -- User
+UserMapper -- MyMapper
+UserRoleMapper -- RoleMapper
+UserRoleMapper -- Role
+UserRoleMapper -- User
+UserRoleMapper -- UserRole
+UserRoleMapper -- MyMapper
+Account -- BaseEntity
+Account -- AccountStatus
+Account -- Status
+BaseEntity -- Permission
+City -- BaseEntity
+City -- Permission
+CostInfo -- BaseEntity
+CostInfo -- CostStatus
+CostInfo -- Status
+Country -- BaseEntity
+Country -- Permission
+DeliveryManInfo -- BaseEntity
+DeliveryManInfo -- City
+AccountStatus -- Status
+CostStatus -- Status
+PermissionType -- Permission
+FundsStatisticsInfo -- BaseEntity
+OrderInfo -- BaseEntity
+OrderInfo -- City
+PersonalInfo -- BaseEntity
+RespInfo -- Status
+Role -- BaseEntity
+Role -- Status
+RolePermission -- Permission
+RolePermission -- Role
+SendInfo -- Account
+SendInfo -- BaseEntity
+UploadResult -- BaseEntity
+UploadResult -- UploadType
+User -- BaseEntity
+User -- Status
+UserRole -- Role
+UserRole -- User
+AccountService -- BizException
+AccountService -- AccountMapper
+AccountService -- Account
+AccountService -- AccountStatus
+AccountService -- Status
+AccountService -- OrderInfo
+AccountService -- BaseService
+AccountService -- OrderService
+CityService -- CityMapper
+CityService -- City
+CityService -- Permission
+CostInfoService -- BizException
+CostInfoService -- CostInfoMapper
+CostInfoService -- CostInfo
+CostInfoService -- CostStatus
+CostInfoService -- Status
+CostInfoService -- OrderInfo
+CostInfoService -- BaseService
+CostInfoService -- OrderService
+DeliveryManInfoService -- DeliveryManInfoMapper
+DeliveryManInfoService -- DeliveryManInfo
+DeliveryManInfoService -- BaseService
+FundsStatisticsInfoService -- FundsStatisticsInfoMapper
+FundsStatisticsInfoService -- FundsStatisticsInfo
+FundsStatisticsInfoService -- BaseService
+FundsStatisticsInfoService -- OrderService
+OrderService -- OrderMapper
+OrderService -- OrderInfo
+OrderService -- BaseService
+PermissionService -- PermissionMapper
+PermissionService -- Permission
+PersonalInfoService -- PersonalInfoMapper
+PersonalInfoService -- PersonalInfo
+PersonalInfoService -- BaseService
+RolePermissionService -- PermissionMapper
+RolePermissionService -- RolePermissionMapper
+RolePermissionService -- Permission
+RolePermissionService -- Role
+RolePermissionService -- RolePermission
+RolePermissionService -- PermissionService
+RoleService -- RoleMapper
+RoleService -- Status
+RoleService -- Role
+SendInfoService -- SendInfoMapper
+SendInfoService -- SendInfo
+SendInfoService -- BaseService
+UploadResultService -- UploadResultMapper
+UploadResultService -- UploadType
+UploadResultService -- UploadResult
+UploadResultService -- BaseService
+UserRoleService -- RoleMapper
+UserRoleService -- UserRoleMapper
+UserRoleService -- Role
+UserRoleService -- User
+UserRoleService -- UserRole
+UserRoleService -- RoleService
+UserService -- UserMapper
+UserService -- Status
+UserService -- Permission
+UserService -- User
+UploadExcelRules -- Account
+UploadExcelRules -- City
+UploadExcelRules -- DeliveryManInfo
+UploadExcelRules -- OrderInfo
+UploadExcelRules -- PersonalInfo
+UploadExcelRules -- SendInfo
+UploadExcelRules -- CellBean
+UploadExcelRules -- SheetBean
+MyBatis331Mapper -- City
+MyBatis331Mapper -- Permission
+MyBatis331Mapper -- City2
+MyBatis331Test -- Application
+MyBatis331Test -- City
+MyBatis331Test -- Permission
+MyBatis331Test -- MyBatis331Mapper
+MyBatis331Test -- City2
+City2 -- City
+City2 -- Status
+City2 -- Permission
+BeanUtil -- Account
+PermissionTest -- Application
+PermissionTest -- PermissionType
+PermissionTest -- Permission
+PermissionTest -- PermissionService
+RoleTest -- Application
+RoleTest -- Status
+RoleTest -- Role
+RoleTest -- RoleService
+UserTest -- Application
+UserTest -- Status
+UserTest -- User
+UserTest -- UserService
+AppBizException -- BizException
+MailAuthentication -- Account
+SheetBean -- CellBean
+DownUploadUtil -- BaseSupportException
+DownUploadUtil -- UploadFile
+ExcelUtil -- CellBean
+ExcelUtil -- SheetBean
+MailUtil -- Account
+MailUtil -- MailAuthentication
+MailUtil -- MailInfo
+MD5Util -- Account
+MD5Util -- City
+MD5Util -- Country
+ExcelTest -- CellBean
+ExcelTest -- SheetBean
+ExcelTest -- ExcelUtil
+MailTest -- Account
+MailTest -- MailAuthentication
+MailTest -- MailInfo
+MailTest -- MailUtil
+@enduml

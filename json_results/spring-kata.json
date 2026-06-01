@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Developer roles. It manages core business objects including todo, status, todo collection response, metadata. The platform provides capabilities for notification, notification, todo. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to create and manage todo records, so that I can track and organize todo data effectively.",
+        "services": [
+          "TodoServiceImpl",
+          "TodoService"
+        ],
+        "controllers": [
+          "TodoAPIContractImpl"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage status records, so that I can track and organize status data effectively.",
+        "services": [
+          "NotificationServiceImpl"
+        ],
+        "controllers": [
+          "NotificationAPIContractImpl"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage todo collection response records, so that I can track and organize todo collection response data effectively.",
+        "services": [
+          "TodoServiceImpl",
+          "TodoService"
+        ],
+        "controllers": [
+          "TodoAPIContractImpl"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage metadata records, so that I can track and organize metadata data effectively.",
+        "services": [
+          "NotificationServiceImpl"
+        ],
+        "controllers": [
+          "NotificationAPIContractImpl"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to create and manage todo success response records, so that I can track and organize todo success response data effectively.",
+        "services": [
+          "TodoServiceImpl",
+          "TodoService"
+        ],
+        "controllers": [
+          "TodoAPIContractImpl"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        SecurityConfiguration[\"SecurityConfiguration\"]\n    end\n    subgraph Controllers\n        NotificationAPIContractImpl[\"NotificationAPIContractImpl\"]\n        TodoAPIContractImpl[\"TodoAPIContractImpl\"]\n        ColoredShapeController[\"ColoredShapeController\"]\n    end\n    subgraph Data_Access\n        Todo[\"Todo\"]\n        Status[\"Status\"]\n        TodoCollectionResponse[\"TodoCollectionResponse\"]\n        Metadata[\"Metadata\"]\n        TodoSuccessResponse[\"TodoSuccessResponse\"]\n        TodoErrorResponse[\"TodoErrorResponse\"]\n        Issue[\"Issue\"]\n        ColoredShape[\"ColoredShape\"]\n        ConstructorAnnotatedWithQualifierBulkVehicleOrder[\"ConstructorAnnotatedWithQualifierBulkVehicleOrder\"]\n        SetterAnnotatedBulkVehicleOrder[\"SetterAnnotatedBulkVehicleOrder\"]\n        ConstructorAnnotatedBulkVehicleOrder[\"ConstructorAnnotatedBulkVehicleOrder\"]\n        Vehicle[\"Vehicle\"]\n        AutowiredColoredShapeHolder[\"AutowiredColoredShapeHolder\"]\n        ColoredShapeHolder[\"ColoredShapeHolder\"]\n        ConstructorAnnotatedQualifiedColoredShapeHolder[\"ConstructorAnnotatedQualifiedColoredShapeHolder\"]\n        ConstructorAnnotatedColoredShapeHolder[\"ConstructorAnnotatedColoredShapeHolder\"]\n        SetterAnnotatedColoredShapeHolder[\"SetterAnnotatedColoredShapeHolder\"]\n        BulkVehicleOrder[\"BulkVehicleOrder\"]\n        VehicleFactory[\"VehicleFactory\"]\n        TodoRepository[\"TodoRepository\"]\n        ColoredShapeDaoImpl[\"ColoredShapeDaoImpl\"]\n        ColoredShapeDao[\"ColoredShapeDao\"]\n        ColoredShapeDaoImplEx02[\"ColoredShapeDaoImplEx02\"]\n        ColoredShapeDaoImplEx01[\"ColoredShapeDaoImplEx01\"]\n    end\n    subgraph Services\n        NotificationServiceImpl[\"NotificationServiceImpl\"]\n        NotificationService[\"NotificationService\"]\n        TodoServiceImpl[\"TodoServiceImpl\"]\n        TodoService[\"TodoService\"]\n        ColoredShapeServiceImpl[\"ColoredShapeServiceImpl\"]\n        ColoredShapeService[\"ColoredShapeService\"]\n    end\n    subgraph Infrastructure\n        TodoConstants[\"TodoConstants\"]\n        TodoDefaultServiceSwaggerConfig[\"TodoDefaultServiceSwaggerConfig\"]\n        TodoProductionServiceSwaggerConfig[\"TodoProductionServiceSwaggerConfig\"]\n        ProfileConfigurationProperties[\"ProfileConfigurationProperties\"]\n        TodoDevelopmentServiceSwaggerConfig[\"TodoDevelopmentServiceSwaggerConfig\"]\n        Ex02_CustomXMLContextConfiguration[\"Ex02_CustomXMLContextConfiguration\"]\n        Ex03_JavaContextConfiguration[\"Ex03_JavaContextConfiguration\"]\n        Ex01_DefaultXMLContextConfiguration[\"Ex01_DefaultXMLContextConfiguration\"]\n        ColoredShapeConfig[\"ColoredShapeConfig\"]\n        HibernateSessionConfig[\"HibernateSessionConfig\"]\n        HibernateJPAConfig[\"HibernateJPAConfig\"]\n        Ex09_DIThroughJavaConfiguration[\"Ex09_DIThroughJavaConfiguration\"]\n        DIConfiguration[\"DIConfiguration\"]\n        DBConfiguration[\"DBConfiguration\"]\n        Lab03DIConfiguration[\"Lab03DIConfiguration\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

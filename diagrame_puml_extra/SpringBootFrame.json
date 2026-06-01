@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. The platform provides capabilities for r r exception handler, abstract, service. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include social functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "RRExceptionHandler"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use r r exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RRExceptionHandler"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use abstract capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AbstractService"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use service capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Service"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AuthIgnore[\"AuthIgnore\"]\n        SQLFilter[\"SQLFilter\"]\n        MyCredentialsMatcher[\"MyCredentialsMatcher\"]\n    end\n    subgraph Services\n        RRExceptionHandler[\"RRExceptionHandler\"]\n        AbstractService[\"AbstractService\"]\n        Service[\"Service\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Infrastructure\n        Common[\"Common\"]\n        DateUtil[\"DateUtil\"]\n        HttpContextUtils[\"HttpContextUtils\"]\n        IPUtils[\"IPUtils\"]\n        MD5Util[\"MD5Util\"]\n        PageUitls[\"PageUitls\"]\n        RedisUtil[\"RedisUtil\"]\n        ShiroUtils[\"ShiroUtils\"]\n        URLConnectionUtil[\"URLConnectionUtil\"]\n        Assert[\"Assert\"]\n        ValidatorUtil[\"ValidatorUtil\"]\n        AddGroup[\"AddGroup\"]\n        Group[\"Group\"]\n        UpdateGroup[\"UpdateGroup\"]\n        DruidConfig[\"DruidConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        ShiroConfig[\"ShiroConfig\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        WebMvcConfig[\"WebMvcConfig\"]\n    end\n    subgraph Data_Access\n        MyMapper[\"MyMapper\"]\n        UserMapper[\"UserMapper\"]\n    end\n    subgraph Controllers\n        IndexController[\"IndexController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

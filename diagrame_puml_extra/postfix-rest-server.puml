@@ -1,0 +1,505 @@
+@startuml
+package com.lyubenblagoev.postfixrest; {
+class Application {
+}
+
+class BadRequestException {
+}
+
+class FileUtils {
+}
+
+class NotFoundException {
+}
+
+class ApplicationTest {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.configuration; {
+class CorsConfiguration {
+}
+
+class MailServerConfiguration {
+}
+
+class PersistenceConfiguration {
+}
+
+class RequestLoggingFilterConfig {
+}
+
+class SecurityConfiguration {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.controller; {
+class AccountController {
+}
+
+class AliasController {
+}
+
+class ApiErrorResponse {
+}
+
+class AuthController {
+}
+
+class BccController {
+}
+
+class ControllerUtils {
+}
+
+class DeviceInformationConverter {
+}
+
+class DomainController {
+}
+
+class ExceptionHandlerAdvice {
+}
+
+class UserController {
+}
+
+class DomainControllerIntegrationTest {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.controller.model; {
+class LogoutRequest {
+}
+
+class UserUpdateRequest {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.entity; {
+class Account {
+}
+
+class Alias {
+}
+
+class BaseEntity {
+}
+
+class Bcc {
+}
+
+class Device {
+}
+
+class Domain {
+}
+
+class IncomingBcc {
+}
+
+class OutgoingBcc {
+}
+
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.repository; {
+class AccountRepository {
+}
+
+class AliasRepository {
+}
+
+class BccRepository {
+}
+
+class DomainRepository {
+}
+
+class IncomingBccRepository {
+}
+
+class OutgoingBccRepository {
+}
+
+class RoleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.security; {
+class CustomUserDetailsPasswordService {
+}
+
+class CustomUserDetailsService {
+}
+
+class DefaultAdminUserInitializer {
+}
+
+class JwtAuthenticationConverter {
+}
+
+class JwtAuthenticationFilter {
+}
+
+class JwtAuthenticationProvider {
+}
+
+class JwtAuthenticationToken {
+}
+
+class JwtTokenProvider {
+}
+
+class RefreshTokenProvider {
+}
+
+class UserPrincipal {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.service; {
+class AbstractBccServiceImpl {
+}
+
+class AccountService {
+}
+
+class AccountServiceImpl {
+}
+
+class AliasService {
+}
+
+class AliasServiceImpl {
+}
+
+class AuthService {
+}
+
+class AuthServiceImpl {
+}
+
+class BccService {
+}
+
+class BccServiceImpl {
+}
+
+class DomainService {
+}
+
+class DomainServiceImpl {
+}
+
+class EntityExistsException {
+}
+
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.service.model; {
+class AccountChangeRequest {
+}
+
+class AccountResource {
+}
+
+class AliasChangeRequest {
+}
+
+class AliasResource {
+}
+
+class AuthResponse {
+}
+
+class BccResource {
+}
+
+class DeviceInformation {
+}
+
+class DomainResource {
+}
+
+class LoginRequest {
+}
+
+class PasswordConfirmable {
+}
+
+class RefreshTokenRequest {
+}
+
+class UserChangeRequest {
+}
+
+}
+
+package com.lyubenblagoev.postfixrest.service.model.validation; {
+class PasswordEqualsValidator {
+}
+
+class PasswordsMatches {
+}
+
+}
+
+Application -- MailServerConfiguration
+SecurityConfiguration -- User
+SecurityConfiguration -- CustomUserDetailsPasswordService
+SecurityConfiguration -- CustomUserDetailsService
+SecurityConfiguration -- JwtAuthenticationFilter
+AccountController -- BadRequestException
+AccountController -- ControllerUtils
+AccountController -- Account
+AccountController -- Domain
+AccountController -- NotFoundException
+AccountController -- AccountService
+AccountController -- DomainService
+AccountController -- AccountChangeRequest
+AccountController -- AccountResource
+AliasController -- BadRequestException
+AliasController -- ControllerUtils
+AliasController -- Alias
+AliasController -- Domain
+AliasController -- NotFoundException
+AliasController -- AliasService
+AliasController -- DomainService
+AliasController -- AliasChangeRequest
+AliasController -- AliasResource
+AuthController -- DeviceInformationConverter
+AuthController -- LogoutRequest
+AuthController -- Device
+AuthController -- User
+AuthController -- AuthService
+AuthController -- AuthResponse
+AuthController -- DeviceInformation
+AuthController -- LoginRequest
+AuthController -- RefreshTokenRequest
+AuthController -- UserService
+BccController -- BadRequestException
+BccController -- ControllerUtils
+BccController -- Account
+BccController -- Bcc
+BccController -- Domain
+BccController -- IncomingBcc
+BccController -- OutgoingBcc
+BccController -- NotFoundException
+BccController -- AccountService
+BccController -- BccService
+BccController -- AccountResource
+BccController -- BccResource
+DeviceInformationConverter -- Device
+DeviceInformationConverter -- User
+DeviceInformationConverter -- DeviceInformation
+DomainController -- BadRequestException
+DomainController -- ControllerUtils
+DomainController -- Domain
+DomainController -- User
+DomainController -- NotFoundException
+DomainController -- UserPrincipal
+DomainController -- DomainService
+DomainController -- DomainResource
+ExceptionHandlerAdvice -- BadRequestException
+ExceptionHandlerAdvice -- ApiErrorResponse
+ExceptionHandlerAdvice -- NotFoundException
+ExceptionHandlerAdvice -- EntityExistsException
+UserUpdateRequest -- User
+UserUpdateRequest -- PasswordConfirmable
+UserUpdateRequest -- PasswordsMatches
+UserController -- UserUpdateRequest
+UserController -- User
+UserController -- NotFoundException
+UserController -- UserChangeRequest
+UserController -- UserService
+Account -- BaseEntity
+Account -- Domain
+Account -- User
+Alias -- BaseEntity
+Alias -- Domain
+Bcc -- Account
+Bcc -- BaseEntity
+Device -- BaseEntity
+Device -- User
+Domain -- BaseEntity
+IncomingBcc -- Bcc
+OutgoingBcc -- Bcc
+Role -- BaseEntity
+Role -- User
+User -- BaseEntity
+AccountRepository -- Account
+AccountRepository -- Domain
+AccountRepository -- User
+AliasRepository -- Alias
+AliasRepository -- Domain
+BccRepository -- Account
+BccRepository -- Bcc
+BccRepository -- Domain
+BccRepository -- User
+DomainRepository -- Domain
+IncomingBccRepository -- Account
+IncomingBccRepository -- Bcc
+IncomingBccRepository -- IncomingBcc
+IncomingBccRepository -- BccRepository
+OutgoingBccRepository -- Account
+OutgoingBccRepository -- Bcc
+OutgoingBccRepository -- OutgoingBcc
+OutgoingBccRepository -- BccRepository
+RoleRepository -- Role
+UserRepository -- User
+CustomUserDetailsPasswordService -- User
+CustomUserDetailsPasswordService -- NotFoundException
+CustomUserDetailsPasswordService -- UserRepository
+CustomUserDetailsPasswordService -- CustomUserDetailsService
+CustomUserDetailsService -- User
+CustomUserDetailsService -- NotFoundException
+CustomUserDetailsService -- UserRepository
+CustomUserDetailsService -- UserPrincipal
+DefaultAdminUserInitializer -- Role
+DefaultAdminUserInitializer -- User
+DefaultAdminUserInitializer -- RoleRepository
+DefaultAdminUserInitializer -- UserRepository
+JwtAuthenticationConverter -- JwtAuthenticationToken
+JwtAuthenticationFilter -- JwtAuthenticationConverter
+JwtAuthenticationFilter -- JwtAuthenticationProvider
+JwtAuthenticationFilter -- JwtAuthenticationToken
+JwtAuthenticationProvider -- User
+JwtAuthenticationProvider -- CustomUserDetailsService
+JwtAuthenticationProvider -- JwtAuthenticationToken
+JwtAuthenticationProvider -- JwtTokenProvider
+JwtTokenProvider -- User
+UserPrincipal -- Account
+UserPrincipal -- Role
+UserPrincipal -- User
+AbstractBccServiceImpl -- BadRequestException
+AbstractBccServiceImpl -- Account
+AbstractBccServiceImpl -- Bcc
+AbstractBccServiceImpl -- Domain
+AbstractBccServiceImpl -- User
+AbstractBccServiceImpl -- AccountRepository
+AbstractBccServiceImpl -- BccRepository
+AbstractBccServiceImpl -- BccService
+AbstractBccServiceImpl -- BccServiceImpl
+AbstractBccServiceImpl -- BccResource
+AccountService -- Account
+AccountService -- Domain
+AccountService -- AccountChangeRequest
+AccountService -- AccountResource
+AccountServiceImpl -- MailServerConfiguration
+AccountServiceImpl -- Account
+AccountServiceImpl -- Domain
+AccountServiceImpl -- User
+AccountServiceImpl -- FileUtils
+AccountServiceImpl -- AccountRepository
+AccountServiceImpl -- DomainRepository
+AccountServiceImpl -- AccountService
+AccountServiceImpl -- EntityExistsException
+AccountServiceImpl -- AccountChangeRequest
+AccountServiceImpl -- AccountResource
+AliasService -- Alias
+AliasService -- Domain
+AliasService -- AliasChangeRequest
+AliasService -- AliasResource
+AliasServiceImpl -- Alias
+AliasServiceImpl -- Domain
+AliasServiceImpl -- NotFoundException
+AliasServiceImpl -- AliasRepository
+AliasServiceImpl -- DomainRepository
+AliasServiceImpl -- AliasService
+AliasServiceImpl -- EntityExistsException
+AliasServiceImpl -- AliasChangeRequest
+AliasServiceImpl -- AliasResource
+AuthService -- AuthResponse
+AuthServiceImpl -- User
+AuthServiceImpl -- NotFoundException
+AuthServiceImpl -- JwtTokenProvider
+AuthServiceImpl -- RefreshTokenProvider
+AuthServiceImpl -- UserPrincipal
+AuthServiceImpl -- AuthService
+AuthServiceImpl -- AuthResponse
+AuthServiceImpl -- UserService
+BccService -- Bcc
+BccService -- IncomingBcc
+BccService -- OutgoingBcc
+BccService -- BccResource
+BccServiceImpl -- BadRequestException
+BccServiceImpl -- Account
+BccServiceImpl -- Bcc
+BccServiceImpl -- IncomingBcc
+BccServiceImpl -- OutgoingBcc
+BccServiceImpl -- AccountRepository
+BccServiceImpl -- BccRepository
+BccServiceImpl -- IncomingBccRepository
+BccServiceImpl -- OutgoingBccRepository
+BccServiceImpl -- BccService
+BccServiceImpl -- BccResource
+DomainService -- Domain
+DomainService -- DomainResource
+DomainServiceImpl -- MailServerConfiguration
+DomainServiceImpl -- Domain
+DomainServiceImpl -- FileUtils
+DomainServiceImpl -- DomainRepository
+DomainServiceImpl -- DomainService
+DomainServiceImpl -- EntityExistsException
+DomainServiceImpl -- DomainResource
+AccountChangeRequest -- Account
+AccountChangeRequest -- Domain
+AccountChangeRequest -- User
+AccountChangeRequest -- PasswordConfirmable
+AccountChangeRequest -- PasswordsMatches
+AccountResource -- Account
+AccountResource -- Domain
+AccountResource -- User
+AliasChangeRequest -- Alias
+AliasChangeRequest -- Domain
+AliasResource -- Alias
+BccResource -- Account
+BccResource -- Bcc
+DeviceInformation -- Device
+DomainResource -- Domain
+UserChangeRequest -- User
+UserChangeRequest -- PasswordConfirmable
+UserChangeRequest -- PasswordsMatches
+PasswordEqualsValidator -- Account
+PasswordEqualsValidator -- AccountChangeRequest
+PasswordEqualsValidator -- PasswordConfirmable
+PasswordEqualsValidator -- PasswordsMatches
+UserService -- Device
+UserService -- User
+UserService -- DeviceInformation
+UserService -- UserChangeRequest
+UserServiceImpl -- Device
+UserServiceImpl -- User
+UserServiceImpl -- NotFoundException
+UserServiceImpl -- UserRepository
+UserServiceImpl -- EntityExistsException
+UserServiceImpl -- DeviceInformation
+UserServiceImpl -- UserChangeRequest
+UserServiceImpl -- UserService
+ApplicationTest -- Application
+DomainControllerIntegrationTest -- DomainController
+DomainControllerIntegrationTest -- Domain
+DomainControllerIntegrationTest -- JwtTokenProvider
+@enduml

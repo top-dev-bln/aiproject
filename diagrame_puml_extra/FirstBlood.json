@@ -1,0 +1,67 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Admin roles. The platform provides capabilities for my meta object handler, item, item type. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "MenuServiceImpl",
+          "RoleMenuServiceImpl",
+          "UserRoleServiceImpl"
+        ],
+        "controllers": [
+          "userController",
+          "userRoleController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with item functionality, so that I can accomplish my item-related tasks.",
+        "services": [
+          "ItemServiceImpl",
+          "ItemTypeServiceImpl"
+        ],
+        "controllers": [
+          "itemController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with item type functionality, so that I can accomplish my item type-related tasks.",
+        "services": [
+          "ItemServiceImpl",
+          "ItemTypeServiceImpl"
+        ],
+        "controllers": [
+          "itemTypeController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with menu functionality, so that I can accomplish my menu-related tasks.",
+        "services": [
+          "MenuServiceImpl",
+          "RoleMenuServiceImpl"
+        ],
+        "controllers": [
+          "menuController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with record functionality, so that I can accomplish my record-related tasks.",
+        "services": [
+          "RecordServiceImpl",
+          "RecordService"
+        ],
+        "controllers": [
+          "RecordController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CorsConfig[\"CorsConfig\"]\n        InterceptorConfig[\"InterceptorConfig\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        MD5Utils[\"MD5Utils\"]\n        RequestInfoUtils[\"RequestInfoUtils\"]\n    end\n    subgraph Security\n        JWTInterceptor[\"JWTInterceptor\"]\n        JWTUtils[\"JWTUtils\"]\n    end\n    subgraph Services\n        MyMetaObjectHandler[\"MyMetaObjectHandler\"]\n        ItemServiceImpl[\"ItemServiceImpl\"]\n        ItemTypeServiceImpl[\"ItemTypeServiceImpl\"]\n        MenuServiceImpl[\"MenuServiceImpl\"]\n        RecordServiceImpl[\"RecordServiceImpl\"]\n        RoleMenuServiceImpl[\"RoleMenuServiceImpl\"]\n        UserRoleServiceImpl[\"UserRoleServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        ItemService[\"ItemService\"]\n        ItemTypeService[\"ItemTypeService\"]\n        MenuService[\"MenuService\"]\n        RecordService[\"RecordService\"]\n        RoleMenuService[\"RoleMenuService\"]\n        UserRoleService[\"UserRoleService\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Controllers\n        itemController[\"itemController\"]\n        itemTypeController[\"itemTypeController\"]\n        menuController[\"menuController\"]\n        RecordController[\"RecordController\"]\n        userController[\"userController\"]\n        userRoleController[\"userRoleController\"]\n    end\n    subgraph Data_Access\n        ItemMapper[\"ItemMapper\"]\n        ItemTypeMapper[\"ItemTypeMapper\"]\n        MenuMapper[\"MenuMapper\"]\n        RecordMapper[\"RecordMapper\"]\n        RoleMenuMapper[\"RoleMenuMapper\"]\n        UserMapper[\"UserMapper\"]\n        UserRoleMapper[\"UserRoleMapper\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

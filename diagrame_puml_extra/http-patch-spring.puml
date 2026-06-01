@@ -1,0 +1,195 @@
+@startuml
+package com.cassiomolin.patch.config; {
+class JacksonConfig {
+}
+
+}
+
+package com.cassiomolin.patch.domain; {
+class Contact {
+}
+
+class Email {
+}
+
+class Phone {
+}
+
+class Work {
+}
+
+}
+
+package com.cassiomolin.patch; {
+class PatchApplication {
+}
+
+class PatchTest {
+}
+
+}
+
+package com.cassiomolin.patch.service; {
+class ContactService {
+}
+
+}
+
+package com.cassiomolin.patch.service.impl; {
+class DefaultContactService {
+}
+
+}
+
+package com.cassiomolin.patch.web.controller; {
+class ContactController {
+}
+
+class ContactControllerTest {
+}
+
+}
+
+package com.cassiomolin.patch.web.converter; {
+class JsonMergePatchHttpMessageConverter {
+}
+
+class JsonPatchHttpMessageConverter {
+}
+
+}
+
+package com.cassiomolin.patch.web.exception; {
+class ResourceNotFoundException {
+}
+
+class UnprocessableEntityException {
+}
+
+class WebApiExceptionHandler {
+}
+
+}
+
+package com.cassiomolin.patch.web.mapper; {
+class ContactMapper {
+}
+
+}
+
+package com.cassiomolin.patch.web; {
+class PatchMediaType {
+}
+
+}
+
+package com.cassiomolin.patch.web.resource.error; {
+class ApiError {
+}
+
+class ApiResourcePropertyError {
+}
+
+}
+
+package com.cassiomolin.patch.web.resource.input; {
+class ContactResourceInput {
+}
+
+class EmailResourceInput {
+}
+
+class PhoneResourceInput {
+}
+
+class WorkResourceInput {
+}
+
+}
+
+package com.cassiomolin.patch.web.resource.output; {
+class ContactResourceOutput {
+}
+
+class EmailResourceOutput {
+}
+
+class PhoneResourceOutput {
+}
+
+class WorkResourceOutput {
+}
+
+}
+
+package com.cassiomolin.patch.web.util; {
+class PatchHelper {
+}
+
+class PatchHelperTest {
+}
+
+}
+
+Contact -- Email
+Contact -- Phone
+Contact -- Work
+ContactService -- Contact
+DefaultContactService -- Contact
+DefaultContactService -- ContactService
+ContactController -- Contact
+ContactController -- ContactService
+ContactController -- ResourceNotFoundException
+ContactController -- ContactMapper
+ContactController -- PatchMediaType
+ContactController -- ContactResourceInput
+ContactController -- ContactResourceOutput
+ContactController -- PatchHelper
+JsonMergePatchHttpMessageConverter -- PatchMediaType
+JsonPatchHttpMessageConverter -- PatchMediaType
+WebApiExceptionHandler -- ApiError
+WebApiExceptionHandler -- ApiResourcePropertyError
+ContactMapper -- Contact
+ContactMapper -- ContactResourceInput
+ContactMapper -- ContactResourceOutput
+ContactResourceInput -- Contact
+ContactResourceInput -- Email
+ContactResourceInput -- Phone
+ContactResourceInput -- Work
+ContactResourceInput -- EmailResourceInput
+ContactResourceInput -- PhoneResourceInput
+ContactResourceInput -- WorkResourceInput
+EmailResourceInput -- Email
+PhoneResourceInput -- Phone
+WorkResourceInput -- Work
+ContactResourceOutput -- Contact
+ContactResourceOutput -- Email
+ContactResourceOutput -- Phone
+ContactResourceOutput -- Work
+ContactResourceOutput -- EmailResourceOutput
+ContactResourceOutput -- PhoneResourceOutput
+ContactResourceOutput -- WorkResourceOutput
+EmailResourceOutput -- Email
+PhoneResourceOutput -- Phone
+WorkResourceOutput -- Work
+PatchHelper -- UnprocessableEntityException
+PatchTest -- Contact
+PatchTest -- Phone
+PatchTest -- Work
+PatchTest -- ContactService
+PatchTest -- PatchMediaType
+ContactControllerTest -- JacksonConfig
+ContactControllerTest -- Contact
+ContactControllerTest -- ContactService
+ContactControllerTest -- ContactController
+ContactControllerTest -- WebApiExceptionHandler
+ContactControllerTest -- ContactMapper
+ContactControllerTest -- PatchMediaType
+ContactControllerTest -- ContactResourceInput
+ContactControllerTest -- PatchHelper
+PatchHelperTest -- JacksonConfig
+PatchHelperTest -- Contact
+PatchHelperTest -- Phone
+PatchHelperTest -- Work
+PatchHelperTest -- PatchHelper
+@enduml

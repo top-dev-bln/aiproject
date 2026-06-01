@@ -1,0 +1,110 @@
+@startuml
+package pl.piomin.samples.kafka.order.model; {
+class Order {
+}
+
+class OrderType {
+}
+
+class Transaction {
+}
+
+}
+
+package pl.piomin.samples.kafka.order; {
+class OrderService {
+}
+
+class KafkaContainerDevMode {
+}
+
+class OrderServiceAppTest {
+}
+
+class TestOrderService {
+}
+
+}
+
+package pl.piomin.samples.kafka.stock.controller; {
+class TransactionController {
+}
+
+}
+
+package pl.piomin.samples.kafka.stock.logic; {
+class OrderLogic {
+}
+
+}
+
+package pl.piomin.samples.kafka.stock.model; {
+class Order {
+}
+
+class OrdersSellBuy {
+}
+
+class OrderType {
+}
+
+class Transaction {
+}
+
+class TransactionTotal {
+}
+
+class TransactionTotalWithProduct {
+}
+
+}
+
+package pl.piomin.samples.kafka.stock.repository; {
+class OrderRepository {
+}
+
+}
+
+package pl.piomin.samples.kafka.stock; {
+class StockService {
+}
+
+class KafkaContainerDevMode {
+}
+
+class StockServiceAppTest {
+}
+
+class TestStockService {
+}
+
+}
+
+Order -- OrderType
+Transaction -- Order
+OrderService -- Order
+OrderService -- OrderType
+OrderServiceAppTest -- Order
+OrderServiceAppTest -- OrderService
+TestOrderService -- Order
+TestOrderService -- OrderService
+TestOrderService -- KafkaContainerDevMode
+TransactionController -- Transaction
+TransactionController -- TransactionTotal
+OrderLogic -- Order
+OrderLogic -- Transaction
+OrderLogic -- OrderRepository
+OrdersSellBuy -- Order
+TransactionTotal -- Transaction
+TransactionTotalWithProduct -- Transaction
+TransactionTotalWithProduct -- TransactionTotal
+OrderRepository -- Order
+StockService -- Order
+StockService -- Transaction
+StockService -- OrderLogic
+StockService -- TransactionTotal
+StockService -- TransactionTotalWithProduct
+StockServiceAppTest -- StockService
+TestStockService -- KafkaContainerDevMode
+TestStockService -- StockService
+@enduml

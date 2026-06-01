@@ -1,0 +1,75 @@
+@startuml
+package net.devh.grpc; {
+class CloudGrpcClientApplication {
+}
+
+class GrpcClientController {
+}
+
+class GrpcClientService {
+}
+
+class LogGrpcInterceptor {
+}
+
+class CloudGrpcServerApplication {
+}
+
+class GrpcServerService {
+}
+
+class LogGrpcInterceptor {
+}
+
+class CloudGrpcClientApplication {
+}
+
+class GrpcClientController {
+}
+
+class GrpcClientService {
+}
+
+class LogGrpcInterceptor {
+}
+
+class CloudGrpcServerApplication {
+}
+
+class GrpcServerService {
+}
+
+class LogGrpcInterceptor {
+}
+
+class GrpcClientController {
+}
+
+class GrpcClientService {
+}
+
+class LocalGrpcClientApplication {
+}
+
+class LogGrpcInterceptor {
+}
+
+class GrpcServerService {
+}
+
+class LocalGrpcServerApplication {
+}
+
+class LogGrpcInterceptor {
+}
+
+}
+
+package net.devh; {
+class CloudEurekaServeApplication {
+}
+
+}
+
+GrpcClientController -- GrpcClientService
+@enduml

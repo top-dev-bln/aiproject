@@ -1,0 +1,347 @@
+@startuml
+package com.cbwleft.sms.dao.config; {
+class MybatisConfig {
+}
+
+class RedisConfig {
+}
+
+}
+
+package com.cbwleft.sms.dao.constant; {
+class Columns {
+}
+
+class RedisKeys {
+}
+
+}
+
+package com.cbwleft.sms.dao.mapper; {
+class AppMapper {
+}
+
+class BatchMessageMapper {
+}
+
+class MessageMapper {
+}
+
+class TemplateMapper {
+}
+
+}
+
+package com.cbwleft.sms.dao.model; {
+class App {
+}
+
+class BatchMessage {
+}
+
+class Message {
+}
+
+class Template {
+}
+
+}
+
+package com.cbwleft.sms.config; {
+class AliSMSConfig {
+}
+
+class ChannelConfig {
+}
+
+class LinkSMSConfig {
+}
+
+class SMSHealthConfig {
+}
+
+}
+
+package com.cbwleft.sms.constant; {
+class BaseResultEnum {
+}
+
+class Channels {
+}
+
+}
+
+package com.cbwleft.sms.controller; {
+class BaseController {
+}
+
+class MessageController {
+}
+
+}
+
+package com.cbwleft.sms.exception; {
+class AmountNotEnoughException {
+}
+
+class BaseException {
+}
+
+class ChannelException {
+}
+
+}
+
+package com.cbwleft.sms.health; {
+class SMSHealthIndicator {
+}
+
+}
+
+package com.cbwleft.sms.model.dto; {
+class BatchMessageDTO {
+}
+
+class MessageDTO {
+}
+
+class QuerySendResult {
+}
+
+class SendMessageResult {
+}
+
+class ValidateCodeDTO {
+}
+
+}
+
+package com.cbwleft.sms.model.validation; {
+class AppId {
+}
+
+class Content {
+}
+
+class Mobile {
+}
+
+class TemplateId {
+}
+
+class ValidateCode {
+}
+
+}
+
+package com.cbwleft.sms.model.vo; {
+class BaseResult {
+}
+
+}
+
+package com.cbwleft.sms.service; {
+class IBatchQueryable {
+}
+
+class IChannelSMSService {
+}
+
+class IMessageService {
+}
+
+class IMessageServiceTest {
+}
+
+}
+
+package com.cbwleft.sms.service.impl; {
+class AliSMSServiceImpl {
+}
+
+class ChannelSMSServices {
+}
+
+class LinkSMSServiceImpl {
+}
+
+class MessageServiceImpl {
+}
+
+}
+
+package com.cbwleft.sms; {
+class SmsApplication {
+}
+
+class SmsApplicationTests {
+}
+
+}
+
+package com.cbwleft.sms.task; {
+class QuerySendTask {
+}
+
+}
+
+RedisConfig -- Template
+RedisKeys -- Message
+AppMapper -- App
+BatchMessageMapper -- MessageMapper
+BatchMessageMapper -- BatchMessage
+BatchMessageMapper -- Message
+MessageMapper -- Message
+TemplateMapper -- Template
+App -- ValidateCode
+BatchMessage -- App
+BatchMessage -- Message
+BatchMessage -- AppId
+BatchMessage -- Content
+Message -- Template
+Message -- Mobile
+Message -- TemplateId
+Message -- ValidateCode
+Template -- App
+Template -- AppId
+Template -- ValidateCode
+LinkSMSConfig -- Message
+LinkSMSConfig -- Template
+LinkSMSConfig -- Content
+BaseResultEnum -- BaseResult
+BaseController -- Message
+BaseController -- BaseResultEnum
+BaseController -- BaseException
+BaseController -- BaseResult
+MessageController -- BatchMessage
+MessageController -- Message
+MessageController -- BaseResultEnum
+MessageController -- BaseController
+MessageController -- BatchMessageDTO
+MessageController -- MessageDTO
+MessageController -- SendMessageResult
+MessageController -- ValidateCodeDTO
+MessageController -- ValidateCode
+MessageController -- BaseResult
+MessageController -- IMessageService
+AmountNotEnoughException -- ChannelException
+BaseException -- Message
+BaseException -- BaseResultEnum
+BaseException -- BaseResult
+SMSHealthIndicator -- Columns
+SMSHealthIndicator -- Message
+SMSHealthIndicator -- SMSHealthConfig
+BatchMessageDTO -- App
+BatchMessageDTO -- BatchMessage
+BatchMessageDTO -- Message
+BatchMessageDTO -- MessageDTO
+BatchMessageDTO -- AppId
+BatchMessageDTO -- Content
+BatchMessageDTO -- Mobile
+MessageDTO -- Message
+MessageDTO -- Template
+MessageDTO -- Mobile
+MessageDTO -- TemplateId
+QuerySendResult -- Content
+SendMessageResult -- Message
+ValidateCodeDTO -- Template
+ValidateCodeDTO -- Mobile
+ValidateCodeDTO -- TemplateId
+ValidateCodeDTO -- ValidateCode
+AppId -- App
+TemplateId -- Template
+BaseResult -- Message
+IBatchQueryable -- IChannelSMSService
+IChannelSMSService -- App
+IChannelSMSService -- Message
+IChannelSMSService -- Template
+IChannelSMSService -- ChannelException
+IChannelSMSService -- MessageDTO
+IChannelSMSService -- QuerySendResult
+IChannelSMSService -- SendMessageResult
+IMessageService -- BatchMessage
+IMessageService -- Message
+IMessageService -- Template
+IMessageService -- BatchMessageDTO
+IMessageService -- MessageDTO
+IMessageService -- QuerySendResult
+IMessageService -- SendMessageResult
+IMessageService -- ValidateCodeDTO
+IMessageService -- ValidateCode
+IMessageService -- IChannelSMSService
+AliSMSServiceImpl -- Columns
+AliSMSServiceImpl -- App
+AliSMSServiceImpl -- Message
+AliSMSServiceImpl -- Template
+AliSMSServiceImpl -- BaseResultEnum
+AliSMSServiceImpl -- Channels
+AliSMSServiceImpl -- AmountNotEnoughException
+AliSMSServiceImpl -- BaseException
+AliSMSServiceImpl -- ChannelException
+AliSMSServiceImpl -- MessageDTO
+AliSMSServiceImpl -- QuerySendResult
+AliSMSServiceImpl -- SendMessageResult
+AliSMSServiceImpl -- Content
+AliSMSServiceImpl -- Mobile
+AliSMSServiceImpl -- BaseResult
+AliSMSServiceImpl -- IChannelSMSService
+ChannelSMSServices -- App
+ChannelSMSServices -- ChannelConfig
+ChannelSMSServices -- IChannelSMSService
+LinkSMSServiceImpl -- Columns
+LinkSMSServiceImpl -- RedisKeys
+LinkSMSServiceImpl -- App
+LinkSMSServiceImpl -- BatchMessage
+LinkSMSServiceImpl -- Message
+LinkSMSServiceImpl -- Template
+LinkSMSServiceImpl -- LinkSMSConfig
+LinkSMSServiceImpl -- Channels
+LinkSMSServiceImpl -- AmountNotEnoughException
+LinkSMSServiceImpl -- ChannelException
+LinkSMSServiceImpl -- MessageDTO
+LinkSMSServiceImpl -- QuerySendResult
+LinkSMSServiceImpl -- SendMessageResult
+LinkSMSServiceImpl -- Content
+LinkSMSServiceImpl -- Mobile
+LinkSMSServiceImpl -- IBatchQueryable
+LinkSMSServiceImpl -- IMessageService
+MessageServiceImpl -- Columns
+MessageServiceImpl -- RedisKeys
+MessageServiceImpl -- AppMapper
+MessageServiceImpl -- BatchMessageMapper
+MessageServiceImpl -- MessageMapper
+MessageServiceImpl -- TemplateMapper
+MessageServiceImpl -- App
+MessageServiceImpl -- BatchMessage
+MessageServiceImpl -- Message
+MessageServiceImpl -- Template
+MessageServiceImpl -- BaseResultEnum
+MessageServiceImpl -- BaseException
+MessageServiceImpl -- ChannelException
+MessageServiceImpl -- SMSHealthIndicator
+MessageServiceImpl -- BatchMessageDTO
+MessageServiceImpl -- MessageDTO
+MessageServiceImpl -- QuerySendResult
+MessageServiceImpl -- SendMessageResult
+MessageServiceImpl -- ValidateCodeDTO
+MessageServiceImpl -- AppId
+MessageServiceImpl -- Content
+MessageServiceImpl -- Mobile
+MessageServiceImpl -- TemplateId
+MessageServiceImpl -- ValidateCode
+MessageServiceImpl -- BaseResult
+MessageServiceImpl -- IChannelSMSService
+MessageServiceImpl -- IMessageService
+MessageServiceImpl -- ChannelSMSServices
+SmsApplication -- App
+QuerySendTask -- Message
+QuerySendTask -- IBatchQueryable
+QuerySendTask -- IChannelSMSService
+QuerySendTask -- IMessageService
+QuerySendTask -- ChannelSMSServices
+IMessageServiceTest -- MessageMapper
+IMessageServiceTest -- Message
+IMessageServiceTest -- IMessageService
+SmsApplicationTests -- App
+SmsApplicationTests -- SmsApplication
+@enduml

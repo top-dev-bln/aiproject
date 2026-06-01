@@ -1,0 +1,39 @@
+@startuml
+package springboot.apikey.example; {
+class Application {
+}
+
+}
+
+package springboot.apikey.example.auth; {
+class ApiKeyAuthFilter {
+}
+
+class ApiKeyAuthManager {
+}
+
+class AuthConfiguration {
+}
+
+}
+
+package springboot.apikey.example.controller; {
+class NonSecureController {
+}
+
+class SecureController {
+}
+
+}
+
+package springboot.apikey.example.util; {
+class UUIDUtil {
+}
+
+}
+
+ApiKeyAuthManager -- UUIDUtil
+AuthConfiguration -- ApiKeyAuthFilter
+AuthConfiguration -- ApiKeyAuthManager
+NonSecureController -- SecureController
+@enduml

@@ -1,0 +1,150 @@
+@startuml
+package example.rest; {
+class ExampleRestController {
+}
+
+}
+
+package example; {
+class SpringBootApp {
+}
+
+}
+
+package com.github.valb3r.letsencrypthelper.jetty; {
+class JettyWellKnownLetsEncryptChallengeEndpointConfig {
+}
+
+class DisableJettySniConfig {
+}
+
+class JettyExpiredKeyPebbleTest {
+}
+
+class JettyNoKeystorePebbleTest {
+}
+
+class JettyNotExpiredKeystorePebbleTest {
+}
+
+class DisableJettySniConfig {
+}
+
+class JettyExpiredKeyPebbleTest {
+}
+
+class JettyNoKeystorePebbleTest {
+}
+
+class JettyNotExpiredKeystorePebbleTest {
+}
+
+class DisableJettySniConfig {
+}
+
+class JettyExpiredKeyPebbleTest {
+}
+
+class JettyNoKeystorePebbleTest {
+}
+
+class JettyNotExpiredKeystorePebbleTest {
+}
+
+}
+
+package com.github.valb3r.letsencrypthelper.jetty.dummyapp; {
+class DummyApp {
+}
+
+class DummyApp {
+}
+
+class DummyApp {
+}
+
+}
+
+package com.github.valb3r.letsencrypthelper; {
+class BaseTest {
+}
+
+class ExpiredKeyPebbleTest {
+}
+
+class HttpUtil {
+}
+
+class NoKeystorePebbleTest {
+}
+
+class NotExpiredKeystorePebbleTest {
+}
+
+}
+
+package com.github.valb3r.letsencrypthelper.tomcat.dummyapp; {
+class DummyRest {
+}
+
+class DummyApp {
+}
+
+class DummyApp {
+}
+
+class DummyApp {
+}
+
+}
+
+package com.github.valb3r.letsencrypthelper.tomcat; {
+class TomcatWellKnownLetsEncryptChallengeEndpointConfig {
+}
+
+class TomcatExpiredKeyPebbleTest {
+}
+
+class TomcatNoKeystorePebbleTest {
+}
+
+class TomcatNotExpiredKeystorePebbleTest {
+}
+
+class TomcatExpiredKeyPebbleTest {
+}
+
+class TomcatNoKeystorePebbleTest {
+}
+
+class TomcatNotExpiredKeystorePebbleTest {
+}
+
+class TomcatExpiredKeyPebbleTest {
+}
+
+class TomcatNoKeystorePebbleTest {
+}
+
+class TomcatNotExpiredKeystorePebbleTest {
+}
+
+}
+
+SpringBootApp -- TomcatWellKnownLetsEncryptChallengeEndpointConfig
+DummyApp -- SpringBootApp
+DummyApp -- TomcatWellKnownLetsEncryptChallengeEndpointConfig
+JettyExpiredKeyPebbleTest -- DisableJettySniConfig
+JettyExpiredKeyPebbleTest -- ExpiredKeyPebbleTest
+JettyNoKeystorePebbleTest -- DisableJettySniConfig
+JettyNoKeystorePebbleTest -- NoKeystorePebbleTest
+JettyNotExpiredKeystorePebbleTest -- DisableJettySniConfig
+JettyNotExpiredKeystorePebbleTest -- NotExpiredKeystorePebbleTest
+BaseTest -- HttpUtil
+ExpiredKeyPebbleTest -- BaseTest
+NoKeystorePebbleTest -- BaseTest
+NotExpiredKeystorePebbleTest -- BaseTest
+TomcatExpiredKeyPebbleTest -- ExpiredKeyPebbleTest
+TomcatNoKeystorePebbleTest -- NoKeystorePebbleTest
+TomcatNotExpiredKeystorePebbleTest -- NotExpiredKeystorePebbleTest
+@enduml

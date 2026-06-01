@@ -1,0 +1,40 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin roles. The architecture follows a layered approach separating concerns across presentation, business logic, and data access.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        MybatisSqlCompletePrintInterceptor[\"MybatisSqlCompletePrintInterceptor\"]\n        MybatisSqlPrintAutoConfiguration[\"MybatisSqlPrintAutoConfiguration\"]\n    end"
+  }
+}

@@ -1,0 +1,74 @@
+@startuml
+package es.leanmind.demo.inertia; {
+class Inertia {
+}
+
+class InertiaPage {
+}
+
+class InertiaView {
+}
+
+class InertiaViewConfigurer {
+}
+
+class InertiaApplicationTests {
+}
+
+}
+
+package es.leanmind.demo; {
+class InertiaApplication {
+}
+
+}
+
+package es.leanmind.demo.sections.home; {
+class HomeController {
+}
+
+class HomeViewModel {
+}
+
+}
+
+package es.leanmind.demo.sections.products; {
+class Product {
+}
+
+class ProductService {
+}
+
+class ShowProductController {
+}
+
+class ShowProductViewModel {
+}
+
+}
+
+InertiaPage -- Inertia
+InertiaView -- Inertia
+InertiaView -- InertiaPage
+InertiaViewConfigurer -- Inertia
+InertiaViewConfigurer -- InertiaView
+InertiaApplication -- Inertia
+HomeController -- Inertia
+HomeController -- HomeViewModel
+HomeController -- Product
+HomeController -- ProductService
+HomeViewModel -- Product
+ProductService -- Product
+ShowProductController -- Inertia
+ShowProductController -- Product
+ShowProductController -- ProductService
+ShowProductController -- ShowProductViewModel
+ShowProductViewModel -- Product
+InertiaApplicationTests -- Inertia
+InertiaApplicationTests -- InertiaPage
+InertiaApplicationTests -- InertiaView
+InertiaApplicationTests -- InertiaApplication
+InertiaApplicationTests -- HomeViewModel
+InertiaApplicationTests -- Product
+InertiaApplicationTests -- ProductService
+@enduml

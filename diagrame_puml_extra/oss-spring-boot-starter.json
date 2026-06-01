@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Developer roles. The platform provides capabilities for oss template. Secondary concerns include search functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to interact with oss endpoint functionality, so that I can accomplish my oss endpoint-related tasks.",
+        "services": [
+          "OssTemplate"
+        ],
+        "controllers": [
+          "OssEndpoint"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use oss template capabilities, so that I can perform essential business operations.",
+        "services": [
+          "OssTemplate"
+        ],
+        "controllers": [
+          "OssEndpoint"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "OssTemplate"
+        ],
+        "controllers": [
+          "OssEndpoint"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "OssTemplate"
+        ],
+        "controllers": [
+          "OssEndpoint"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "OssTemplate"
+        ],
+        "controllers": [
+          "OssEndpoint"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        OssAutoConfiguration[\"OssAutoConfiguration\"]\n        OssProperties[\"OssProperties\"]\n    end\n    subgraph Controllers\n        OssEndpoint[\"OssEndpoint\"]\n    end\n    subgraph Services\n        OssTemplate[\"OssTemplate\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Candidate roles. It exposes interfaces for managing hello, hola. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with hello functionality, so that I can accomplish my hello-related tasks.",
+        "services": [],
+        "controllers": [
+          "HelloController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with hola functionality, so that I can accomplish my hola-related tasks.",
+        "services": [],
+        "controllers": [
+          "HolaController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "HelloController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "HelloController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        HolaController[\"HolaController\"]\n    end"
+  }
+}

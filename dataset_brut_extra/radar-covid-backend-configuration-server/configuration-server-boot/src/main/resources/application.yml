@@ -1,0 +1,117 @@
+server:
+  port: ${SERVER_PORT:8080}
+  compression:
+    enabled: true
+    mime-types:
+      - application/json
+      - application/xml
+      - text/xml
+      - text/css
+      - text/plain
+  http2:
+    enabled: true
+  servlet:
+    context-path: ${CONTEXT_PATH:}
+  shutdown: graceful
+
+management:
+  endpoint.health.probes.enabled: true
+  endpoints.enabled-by-default: ${MANAGEMENT_ENDPOINTS_ENABLED:true}
+  server.port: ${MANAGEMENT_PORT:-1}
+  metrics:
+    enable:
+      all: false
+    export:
+      cloudwatch:
+        enabled: ${AWS_METRICS_ENABLED:false}
+        namespace: configuration
+        batch-size: 20
+        step: ${AWS_METRICS_STEP:5m}
+
+spring:
+  application:
+    name: configuration
+  lifecycle:
+    timeout-per-shutdown-phase: ${LIFECYCLE_TIMEOUT_PER_SHUTDOWN_PHASE:20s}
+  datasource:
+    initialization-mode: never
+    continue-on-error: false
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/RADARCOVID?schema=configuration}
+    username: ${DATABASE_USER:radarcovid}
+    password: ${DATABASE_PSW:radarcovid}
+    hikari:
+      minimum-idle: ${DATABASE_MIN_IDLE:5}
+      maximum-pool-size: ${DATABASE_MAX_IDLE:20}
+      connection-timeout: ${DATABASE_CONNECTION_TIMEOUT:20000}
+  jpa:
+    hibernate:
+      ddl-auto: none
+      generate-ddl: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        generate_statistics: ${HIBERNATE_GENERATE_STATISTICS:false}
+        jdbc.lob.non_contextual_creation: true
+        default_schema: ${DATABASE_SCHEMA:configuration}
+        jdbc.batch_size: ${HIBERNATE_BATCH_SIZE:10}
+        order_inserts: ${HIBERNATE_ORDER_INSERTS:true}
+  sleuth:
+    log.slf4j.enabled: true
+  security:
+    user:
+      name: ${SECURITY_USER_NAME:radar}
+      password: ${SECURITY_USER_PASSWORD}
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY_ID:}
+      secret-key: ${AWS_SECRET_KEY:}
+    region:
+      auto: ${CLOUD.AWS.REGION.AUTO:false}
+      static: ${CLOUD.AWS.REGION.STATIC:eu-west-1}
+    stack:
+      auto: ${CLOUD.AWS.STACK.AUTO:false}
+
+contentful:
+  url: ${SERVICES.CONTENTFUL.URL:https://preview.contentful.com/}
+  space: ${SERVICES.CONTENTFUL.SPACE:}
+  token: ${SERVICES.CONTENTFUL.TOKEN:}
+  environment: ${SERVICES.CONTENTFUL.ENVIRONMENT:}
+  locales: ${SERVICES.CONTENTFUL.LOCALES:}
+  ccaa: ${SERVICES.CONTENTFUL.CCAA:}
+  applications: ${SERVICES.CONTENTFUL.APPLICATIONS:}
+  alias:
+    enabled: ${SERVICES.CONTENTFUL.ALIAS.ENABLED:false}
+
+springdoc:
+  api-docs:
+    path: /openapi/api-docs
+    enabled: ${OPENAPI_ENABLED:true}
+  swagger-ui:
+    path: /openapi/ui
+    enabled: ${OPENAPI_ENABLED:true}
+
+application:
+  log:
+    enabled: ${LOGGABLE_ENABLED:true}
+  openapi:
+    title: '@project.name@'
+    description: '@project.description@'
+    version: '@project.version@'
+    terms-of-service: https://radarcovid.covid19.gob.es/terms-of-service/use-conditions.html
+  cache:
+    master-data:
+      locales: ${CACHE_MASTERDATA_LOCALES:1}
+      ccaa: ${CACHE_MASTERDATA_CCAA:1}
+      countries: ${CACHE_MASTERDATA_COUNTRIES:1}
+    texts: ${CACHE_TEXTS:1}
+  platform.web: ${PLATFORM_WEB:Web}
+
+logging:
+  pattern:
+    console: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} - [%X{X-B3-TraceId}] - %msg%n'
+  level:
+    root: info
+    es.gob.radarcovid: debug
+    com.amazonaws: error

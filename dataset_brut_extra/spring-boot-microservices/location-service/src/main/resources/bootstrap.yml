@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: location-service
+server:
+  port: 8088
+#  cloud:
+#    config:
+#      uri: http://localhost:8081
+#  profiles:
+#    active: dev

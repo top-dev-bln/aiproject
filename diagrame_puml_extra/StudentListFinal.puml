@@ -1,0 +1,81 @@
+@startuml
+package fi.haagahelia.course; {
+class CrudbootApplication {
+}
+
+class WebSecurityConfig {
+}
+
+class CrudbootApplicationTests {
+}
+
+}
+
+package fi.haagahelia.course.domain; {
+class Course {
+}
+
+class CourseRepository {
+}
+
+class SignupForm {
+}
+
+class Student {
+}
+
+class StudentRepository {
+}
+
+class User {
+}
+
+class UserRepository {
+}
+
+}
+
+package fi.haagahelia.course.service; {
+class UserDetailServiceImpl {
+}
+
+}
+
+package fi.haagahelia.course.web; {
+class StudentController {
+}
+
+class UserController {
+}
+
+}
+
+CrudbootApplication -- Course
+CrudbootApplication -- CourseRepository
+CrudbootApplication -- Student
+CrudbootApplication -- StudentRepository
+CrudbootApplication -- User
+CrudbootApplication -- UserRepository
+Course -- Student
+CourseRepository -- Course
+SignupForm -- User
+StudentRepository -- Student
+UserRepository -- User
+UserDetailServiceImpl -- User
+UserDetailServiceImpl -- UserRepository
+StudentController -- Course
+StudentController -- CourseRepository
+StudentController -- Student
+StudentController -- StudentRepository
+UserController -- SignupForm
+UserController -- Student
+UserController -- User
+UserController -- UserRepository
+WebSecurityConfig -- User
+WebSecurityConfig -- UserDetailServiceImpl
+CrudbootApplicationTests -- CrudbootApplication
+CrudbootApplicationTests -- Student
+CrudbootApplicationTests -- StudentRepository
+CrudbootApplicationTests -- User
+CrudbootApplicationTests -- UserRepository
+@enduml

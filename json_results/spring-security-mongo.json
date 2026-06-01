@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. The platform provides capabilities for mongo client details, mongo user details manager, security context. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "MongoUserDetailsManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "MongoUserDetailsManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use mongo client details capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MongoClientDetailsService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use security context capabilities, so that I can perform essential business operations.",
+        "services": [
+          "SecurityContextService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "MongoClientDetailsService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        EnableSecurityMongo[\"EnableSecurityMongo\"]\n        MongoConfiguration[\"MongoConfiguration\"]\n        MongoSettings[\"MongoSettings\"]\n        ApplicationConfiguration[\"ApplicationConfiguration\"]\n        MongoClientConfiguration[\"MongoClientConfiguration\"]\n        MongoApproval[\"MongoApproval\"]\n        MongoClientDetails[\"MongoClientDetails\"]\n        MongoOAuth2AccessToken[\"MongoOAuth2AccessToken\"]\n        MongoOAuth2ClientToken[\"MongoOAuth2ClientToken\"]\n        MongoOAuth2RefreshToken[\"MongoOAuth2RefreshToken\"]\n        User[\"User\"]\n        MongoApprovalStore[\"MongoApprovalStore\"]\n        MongoClientTokenServices[\"MongoClientTokenServices\"]\n        MongoTokenStore[\"MongoTokenStore\"]\n        LocalDateTimeUtil[\"LocalDateTimeUtil\"]\n        ApprovalBuilder[\"ApprovalBuilder\"]\n        ClientDetailsBuilder[\"ClientDetailsBuilder\"]\n        MongoApprovalBuilder[\"MongoApprovalBuilder\"]\n        MongoClientDetailsBuilder[\"MongoClientDetailsBuilder\"]\n        MongoOAuth2AccessTokenBuilder[\"MongoOAuth2AccessTokenBuilder\"]\n        MongoOAuth2ClientTokenBuilder[\"MongoOAuth2ClientTokenBuilder\"]\n        MongoOAuth2RefreshTokenBuilder[\"MongoOAuth2RefreshTokenBuilder\"]\n        OAuth2AccessTokenBuilder[\"OAuth2AccessTokenBuilder\"]\n        OAuth2AuthenticationBuilder[\"OAuth2AuthenticationBuilder\"]\n        OAuth2ProtectedResourceDetailsBuilder[\"OAuth2ProtectedResourceDetailsBuilder\"]\n        OAuth2RefreshTokenBuilder[\"OAuth2RefreshTokenBuilder\"]\n        OAuth2RequestBuilder[\"OAuth2RequestBuilder\"]\n        UserBuilder[\"UserBuilder\"]\n        SecurityRDG[\"SecurityRDG\"]\n    end\n    subgraph Services\n        MongoClientDetailsService[\"MongoClientDetailsService\"]\n        MongoUserDetailsManager[\"MongoUserDetailsManager\"]\n        SecurityContextService[\"SecurityContextService\"]\n    end\n    subgraph Data_Access\n        MongoApprovalRepository[\"MongoApprovalRepository\"]\n        MongoApprovalRepositoryBase[\"MongoApprovalRepositoryBase\"]\n        MongoApprovalRepositoryImpl[\"MongoApprovalRepositoryImpl\"]\n        MongoClientDetailsRepository[\"MongoClientDetailsRepository\"]\n        MongoClientDetailsRepositoryBase[\"MongoClientDetailsRepositoryBase\"]\n        MongoClientDetailsRepositoryImpl[\"MongoClientDetailsRepositoryImpl\"]\n        MongoOAuth2AccessTokenRepository[\"MongoOAuth2AccessTokenRepository\"]\n        MongoOAuth2AccessTokenRepositoryBase[\"MongoOAuth2AccessTokenRepositoryBase\"]\n        MongoOAuth2AccessTokenRepositoryImpl[\"MongoOAuth2AccessTokenRepositoryImpl\"]\n        MongoOAuth2ClientTokenRepository[\"MongoOAuth2ClientTokenRepository\"]\n        MongoOAuth2ClientTokenRepositoryBase[\"MongoOAuth2ClientTokenRepositoryBase\"]\n        MongoOAuth2ClientTokenRepositoryImpl[\"MongoOAuth2ClientTokenRepositoryImpl\"]\n        MongoOAuth2RefreshTokenRepository[\"MongoOAuth2RefreshTokenRepository\"]\n        MongoOAuth2RefreshTokenRepositoryBase[\"MongoOAuth2RefreshTokenRepositoryBase\"]\n        MongoOAuth2RefreshTokenRepositoryImpl[\"MongoOAuth2RefreshTokenRepositoryImpl\"]\n        UserRepository[\"UserRepository\"]\n        UserRepositoryBase[\"UserRepositoryBase\"]\n        UserRepositoryImpl[\"UserRepositoryImpl\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Security"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Customer roles. The platform provides capabilities for global exception handler, i accounts, accounts. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "AccountsQueryHandler",
+          "CardQueryHandler"
+        ],
+        "controllers": [
+          "AccountsQueryController",
+          "CardQueryController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "ProfileQueryHandler",
+          "ProfileServiceImpl"
+        ],
+        "controllers": [
+          "ProfileQueryController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with accounts functionality, so that I can accomplish my accounts-related tasks.",
+        "services": [
+          "IAccountsService",
+          "AccountsServiceImpl"
+        ],
+        "controllers": [
+          "AccountsController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with cards functionality, so that I can accomplish my cards-related tasks.",
+        "services": [
+          "ICardsService",
+          "CardsServiceImpl"
+        ],
+        "controllers": [
+          "CardsController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with customer functionality, so that I can accomplish my customer-related tasks.",
+        "services": [
+          "ICustomerService",
+          "CustomerServiceImpl"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        AccountsConstants[\"AccountsConstants\"]\n        CardsConstants[\"CardsConstants\"]\n        CustomerConstants[\"CustomerConstants\"]\n        LoansConstants[\"LoansConstants\"]\n        ClientConfig[\"ClientConfig\"]\n        AxonConfig[\"AxonConfig\"]\n        AccountDataChangedEvent[\"AccountDataChangedEvent\"]\n        CardDataChangedEvent[\"CardDataChangedEvent\"]\n        CustomerDataChangedEvent[\"CustomerDataChangedEvent\"]\n        LoanDataChangedEvent[\"LoanDataChangedEvent\"]\n        AccntMobileNumUpdatedEvent[\"AccntMobileNumUpdatedEvent\"]\n        AccntMobNumRollbackedEvent[\"AccntMobNumRollbackedEvent\"]\n        CardMobileNumUpdatedEvent[\"CardMobileNumUpdatedEvent\"]\n        CardMobNumRollbackedEvent[\"CardMobNumRollbackedEvent\"]\n        CusMobNumRollbackedEvent[\"CusMobNumRollbackedEvent\"]\n        CusMobNumUpdatedEvent[\"CusMobNumUpdatedEvent\"]\n        LoanMobileNumUpdatedEvent[\"LoanMobileNumUpdatedEvent\"]\n        ProfileConstants[\"ProfileConstants\"]\n        RollbackAccntMobNumCommand[\"RollbackAccntMobNumCommand\"]\n        RollbackCardMobNumCommand[\"RollbackCardMobNumCommand\"]\n        RollbackCusMobNumCommand[\"RollbackCusMobNumCommand\"]\n        UpdateAccntMobileNumCommand[\"UpdateAccntMobileNumCommand\"]\n        UpdateCardMobileNumCommand[\"UpdateCardMobileNumCommand\"]\n        UpdateCusMobNumCommand[\"UpdateCusMobNumCommand\"]\n        UpdateLoanMobileNumCommand[\"UpdateLoanMobileNumCommand\"]\n    end\n    subgraph Controllers\n        AccountsController[\"AccountsController\"]\n        CardsController[\"CardsController\"]\n        CustomerController[\"CustomerController\"]\n        LoansController[\"LoansController\"]\n        AccountsCommandController[\"AccountsCommandController\"]\n        AccountsQueryController[\"AccountsQueryController\"]\n        CardCommandController[\"CardCommandController\"]\n        CardQueryController[\"CardQueryController\"]\n        CustomerCommandController[\"CustomerCommandController\"]\n        CustomerQueryController[\"CustomerQueryController\"]\n        LoanCommandController[\"LoanCommandController\"]\n        LoanQueryController[\"LoanQueryController\"]\n        ProfileQueryController[\"ProfileQueryController\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        IAccountsService[\"IAccountsService\"]\n        AccountsServiceImpl[\"AccountsServiceImpl\"]\n        ICardsService[\"ICardsService\"]\n        CardsServiceImpl[\"CardsServiceImpl\"]\n        ICustomerService[\"ICustomerService\"]\n        CustomerServiceImpl[\"CustomerServiceImpl\"]\n        ILoansService[\"ILoansService\"]\n        LoansServiceImpl[\"LoansServiceImpl\"]\n        CustomerCompositeHandler[\"CustomerCompositeHandler\"]\n        CustomerSummaryClient[\"CustomerSummaryClient\"]\n        AccountsQueryHandler[\"AccountsQueryHandler\"]\n        CardQueryHandler[\"CardQueryHandler\"]\n        CustomerQueryHandler[\"CustomerQueryHandler\"]\n        LoanQueryHandler[\"LoanQueryHandler\"]\n        ProfileQueryHandler[\"ProfileQueryHandler\"]\n        ProfileServiceImpl[\"ProfileServiceImpl\"]\n        IProfileService[\"IProfileService\"]\n    end\n    subgraph Data_Access\n        AccountsMapper[\"AccountsMapper\"]\n        AccountsRepository[\"AccountsRepository\"]\n        CardsMapper[\"CardsMapper\"]\n        CardsRepository[\"CardsRepository\"]\n        CustomerMapper[\"CustomerMapper\"]\n        CustomerRepository[\"CustomerRepository\"]\n        LoansMapper[\"LoansMapper\"]\n        LoansRepository[\"LoansRepository\"]\n        ProfileMapper[\"ProfileMapper\"]\n        ProfileRepository[\"ProfileRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

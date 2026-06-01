@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. The platform provides capabilities for foo. Secondary concerns include data analytics functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with startup events functionality, so that I can accomplish my startup events-related tasks.",
+        "services": [
+          "FooService"
+        ],
+        "controllers": [
+          "StartupEventsController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use foo capabilities, so that I can perform essential business operations.",
+        "services": [
+          "FooService"
+        ],
+        "controllers": [
+          "StartupEventsController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "FooService"
+        ],
+        "controllers": [
+          "StartupEventsController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "FooService"
+        ],
+        "controllers": [
+          "StartupEventsController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "FooService"
+        ],
+        "controllers": [
+          "StartupEventsController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        FooService[\"FooService\"]\n    end\n    subgraph Controllers\n        StartupEventsController[\"StartupEventsController\"]\n    end\n    subgraph Infrastructure\n        StartupEventsAutoConfiguration[\"StartupEventsAutoConfiguration\"]\n    end\n    subgraph Data_Access\n        ReportRenderer[\"ReportRenderer\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

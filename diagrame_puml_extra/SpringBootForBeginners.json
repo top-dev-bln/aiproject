@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. It manages core business objects including user, survey, question, todo. The platform provides capabilities for user d a o, data, sort algorithm. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDAOService"
+        ],
+        "controllers": [
+          "WelcomeController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserDAOService"
+        ],
+        "controllers": [
+          "WelcomeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to create and manage survey records, so that I can track and organize survey data effectively.",
+        "services": [
+          "SurveyService"
+        ],
+        "controllers": [
+          "SurveyController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to create and manage question records, so that I can track and organize question data effectively.",
+        "services": [
+          "UserDAOService"
+        ],
+        "controllers": [
+          "WelcomeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to create and manage todo records, so that I can track and organize todo data effectively.",
+        "services": [
+          "TodoService"
+        ],
+        "controllers": [
+          "TodoController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        UserDaoServiceCommandLineRunner[\"UserDaoServiceCommandLineRunner\"]\n        UserRepositoryCommandLineRunner[\"UserRepositoryCommandLineRunner\"]\n        UserRepository[\"UserRepository\"]\n        UserRestRepository[\"UserRestRepository\"]\n        User[\"User\"]\n        Survey[\"Survey\"]\n        Question[\"Question\"]\n        Todo[\"Todo\"]\n    end\n    subgraph Services\n        UserDAOService[\"UserDAOService\"]\n        DataService[\"DataService\"]\n        SortAlgorithm[\"SortAlgorithm\"]\n        WelcomeService[\"WelcomeService\"]\n        SurveyService[\"SurveyService\"]\n        TodoService[\"TodoService\"]\n    end\n    subgraph Controllers\n        WelcomeController[\"WelcomeController\"]\n        BooksController[\"BooksController\"]\n        SurveyController[\"SurveyController\"]\n        TodoController[\"TodoController\"]\n        ErrorController[\"ErrorController\"]\n        LogoutController[\"LogoutController\"]\n    end\n    subgraph Infrastructure\n        BasicConfiguration[\"BasicConfiguration\"]\n    end\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

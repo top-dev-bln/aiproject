@@ -1,0 +1,282 @@
+@startuml
+package com.neueda.kgs; {
+class Application {
+}
+
+}
+
+package com.neueda.kgs.aspect; {
+class DuplicateKeyExceptionAspect {
+}
+
+class LoggingAspect {
+}
+
+class Retry {
+}
+
+}
+
+package com.neueda.kgs.config; {
+class AspectsConfig {
+}
+
+class CacheConfig {
+}
+
+}
+
+package com.neueda.kgs.controller.dto; {
+class BaseResponse {
+}
+
+class MonthlyVisitsReport {
+}
+
+class NewLinkDto {
+}
+
+class ResolveLinkDto {
+}
+
+class VisitStateDto {
+}
+
+}
+
+package com.neueda.kgs.controller; {
+class ShortUrlController {
+}
+
+}
+
+package com.neueda.kgs.exception; {
+class ApplicationExceptionHandler {
+}
+
+class InvalidAddressException {
+}
+
+class KeyNotFoundException {
+}
+
+class KeyOverFlowException {
+}
+
+class WorkerNotFoundException {
+}
+
+}
+
+package com.neueda.kgs.model; {
+class AllocatedRangePartitionStatus {
+}
+
+class ShortUrl {
+}
+
+class WorkerStatus {
+}
+
+}
+
+package com.neueda.kgs.model.embedded; {
+class AllocatedCounter {
+}
+
+class BrowserStats {
+}
+
+class DateStat {
+}
+
+class OsStat {
+}
+
+class Stats {
+}
+
+}
+
+package com.neueda.kgs.repository; {
+class AllocatedRangePartitionStatusRepository {
+}
+
+class ShortUrlRepository {
+}
+
+class WorkerStatusRepository {
+}
+
+}
+
+package com.neueda.kgs.service; {
+class AllocatedRangePartitionStatusService {
+}
+
+class ShortUrlService {
+}
+
+class WorkerStatusService {
+}
+
+class AllocatedRangePartitionStatusServiceTest {
+}
+
+class ShortUrlControllerTest {
+}
+
+class ShortUrlServiceTest {
+}
+
+class WorkerStatusServiceTest {
+}
+
+}
+
+package com.neueda.kgs.service.impl; {
+class AllocatedRangePartitionStatusServiceImpl {
+}
+
+class ShortUrlServiceImpl {
+}
+
+class WorkerStatusServiceImpl {
+}
+
+}
+
+package com.neueda.kgs.util; {
+class Base58 {
+}
+
+class GlobalConstants {
+}
+
+class ResponseUtil {
+}
+
+class Utility {
+}
+
+}
+
+DuplicateKeyExceptionAspect -- Retry
+AspectsConfig -- DuplicateKeyExceptionAspect
+AspectsConfig -- LoggingAspect
+ResolveLinkDto -- ShortUrl
+VisitStateDto -- BaseResponse
+VisitStateDto -- BrowserStats
+VisitStateDto -- OsStat
+VisitStateDto -- Stats
+ShortUrlController -- BaseResponse
+ShortUrlController -- NewLinkDto
+ShortUrlController -- ResolveLinkDto
+ShortUrlController -- VisitStateDto
+ShortUrlController -- InvalidAddressException
+ShortUrlController -- KeyNotFoundException
+ShortUrlController -- KeyOverFlowException
+ShortUrlController -- Stats
+ShortUrlController -- ShortUrl
+ShortUrlController -- ShortUrlService
+ShortUrlController -- Utility
+ApplicationExceptionHandler -- Application
+ApplicationExceptionHandler -- BaseResponse
+ApplicationExceptionHandler -- InvalidAddressException
+ApplicationExceptionHandler -- KeyNotFoundException
+ApplicationExceptionHandler -- KeyOverFlowException
+ApplicationExceptionHandler -- WorkerNotFoundException
+BrowserStats -- Stats
+Stats -- DateStat
+Stats -- OsStat
+ShortUrl -- Stats
+WorkerStatus -- AllocatedCounter
+AllocatedRangePartitionStatusRepository -- AllocatedRangePartitionStatus
+ShortUrlRepository -- CacheConfig
+ShortUrlRepository -- ShortUrl
+WorkerStatusRepository -- WorkerStatus
+AllocatedRangePartitionStatusService -- AllocatedRangePartitionStatus
+AllocatedRangePartitionStatusServiceImpl -- Retry
+AllocatedRangePartitionStatusServiceImpl -- AllocatedRangePartitionStatus
+AllocatedRangePartitionStatusServiceImpl -- AllocatedRangePartitionStatusRepository
+AllocatedRangePartitionStatusServiceImpl -- AllocatedRangePartitionStatusService
+ShortUrlServiceImpl -- BaseResponse
+ShortUrlServiceImpl -- NewLinkDto
+ShortUrlServiceImpl -- ResolveLinkDto
+ShortUrlServiceImpl -- VisitStateDto
+ShortUrlServiceImpl -- InvalidAddressException
+ShortUrlServiceImpl -- KeyNotFoundException
+ShortUrlServiceImpl -- KeyOverFlowException
+ShortUrlServiceImpl -- BrowserStats
+ShortUrlServiceImpl -- DateStat
+ShortUrlServiceImpl -- OsStat
+ShortUrlServiceImpl -- Stats
+ShortUrlServiceImpl -- ShortUrl
+ShortUrlServiceImpl -- WorkerStatus
+ShortUrlServiceImpl -- ShortUrlRepository
+ShortUrlServiceImpl -- ShortUrlService
+ShortUrlServiceImpl -- WorkerStatusService
+ShortUrlServiceImpl -- Base58
+ShortUrlServiceImpl -- Utility
+WorkerStatusServiceImpl -- Retry
+WorkerStatusServiceImpl -- KeyOverFlowException
+WorkerStatusServiceImpl -- AllocatedRangePartitionStatus
+WorkerStatusServiceImpl -- AllocatedCounter
+WorkerStatusServiceImpl -- WorkerStatus
+WorkerStatusServiceImpl -- WorkerStatusRepository
+WorkerStatusServiceImpl -- AllocatedRangePartitionStatusService
+WorkerStatusServiceImpl -- WorkerStatusService
+WorkerStatusServiceImpl -- GlobalConstants
+ShortUrlService -- NewLinkDto
+ShortUrlService -- ResolveLinkDto
+ShortUrlService -- VisitStateDto
+ShortUrlService -- InvalidAddressException
+ShortUrlService -- KeyNotFoundException
+ShortUrlService -- KeyOverFlowException
+ShortUrlService -- WorkerNotFoundException
+ShortUrlService -- ShortUrl
+WorkerStatusService -- KeyOverFlowException
+WorkerStatusService -- WorkerNotFoundException
+WorkerStatusService -- WorkerStatus
+AllocatedRangePartitionStatusServiceTest -- AllocatedRangePartitionStatus
+AllocatedRangePartitionStatusServiceTest -- AllocatedRangePartitionStatusRepository
+AllocatedRangePartitionStatusServiceTest -- AllocatedRangePartitionStatusService
+AllocatedRangePartitionStatusServiceTest -- AllocatedRangePartitionStatusServiceImpl
+ShortUrlControllerTest -- BaseResponse
+ShortUrlControllerTest -- NewLinkDto
+ShortUrlControllerTest -- ResolveLinkDto
+ShortUrlControllerTest -- VisitStateDto
+ShortUrlControllerTest -- ShortUrlController
+ShortUrlControllerTest -- BrowserStats
+ShortUrlControllerTest -- DateStat
+ShortUrlControllerTest -- OsStat
+ShortUrlControllerTest -- Stats
+ShortUrlControllerTest -- ShortUrl
+ShortUrlControllerTest -- ShortUrlService
+ShortUrlServiceTest -- BaseResponse
+ShortUrlServiceTest -- NewLinkDto
+ShortUrlServiceTest -- ResolveLinkDto
+ShortUrlServiceTest -- VisitStateDto
+ShortUrlServiceTest -- InvalidAddressException
+ShortUrlServiceTest -- KeyNotFoundException
+ShortUrlServiceTest -- KeyOverFlowException
+ShortUrlServiceTest -- BrowserStats
+ShortUrlServiceTest -- DateStat
+ShortUrlServiceTest -- OsStat
+ShortUrlServiceTest -- Stats
+ShortUrlServiceTest -- ShortUrl
+ShortUrlServiceTest -- WorkerStatus
+ShortUrlServiceTest -- ShortUrlRepository
+ShortUrlServiceTest -- ShortUrlServiceImpl
+ShortUrlServiceTest -- ShortUrlService
+ShortUrlServiceTest -- WorkerStatusService
+ShortUrlServiceTest -- Base58
+WorkerStatusServiceTest -- KeyOverFlowException
+WorkerStatusServiceTest -- AllocatedRangePartitionStatus
+WorkerStatusServiceTest -- AllocatedCounter
+WorkerStatusServiceTest -- WorkerStatus
+WorkerStatusServiceTest -- WorkerStatusRepository
+WorkerStatusServiceTest -- AllocatedRangePartitionStatusService
+WorkerStatusServiceTest -- WorkerStatusServiceImpl
+WorkerStatusServiceTest -- WorkerStatusService
+@enduml

@@ -1,0 +1,3062 @@
+@startuml
+package com.eazybytes.accounts; {
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class AccountsApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+}
+
+package com.eazybytes.accounts.audit; {
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+}
+
+package com.eazybytes.accounts.constants; {
+class AccountsConstants {
+}
+
+class AccountsConstants {
+}
+
+class AccountsConstants {
+}
+
+class AccountsConstants {
+}
+
+class AccountsConstants {
+}
+
+class AccountsConstants {
+}
+
+class AccountsConstants {
+}
+
+}
+
+package com.eazybytes.accounts.controller; {
+class AccountsController {
+}
+
+class AccountsController {
+}
+
+class AccountsController {
+}
+
+}
+
+package com.eazybytes.accounts.dto; {
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+class AccountsDto {
+}
+
+class ResponseDto {
+}
+
+}
+
+package com.eazybytes.accounts.entity; {
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+class Accounts {
+}
+
+class BaseEntity {
+}
+
+}
+
+package com.eazybytes.accounts.exception; {
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class AccountAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.eazybytes.accounts.mapper; {
+class AccountsMapper {
+}
+
+class AccountsMapper {
+}
+
+class AccountsMapper {
+}
+
+class AccountsMapper {
+}
+
+class AccountsMapper {
+}
+
+class AccountsMapper {
+}
+
+class AccountsMapper {
+}
+
+}
+
+package com.eazybytes.accounts.repository; {
+class AccountsRepository {
+}
+
+class AccountsRepository {
+}
+
+class AccountsRepository {
+}
+
+class AccountsRepository {
+}
+
+class AccountsRepository {
+}
+
+class AccountsRepository {
+}
+
+class AccountsRepository {
+}
+
+}
+
+package com.eazybytes.accounts.service; {
+class IAccountsService {
+}
+
+class IAccountsService {
+}
+
+class IAccountsService {
+}
+
+class IAccountsService {
+}
+
+class IAccountsService {
+}
+
+class IAccountsService {
+}
+
+class IAccountsService {
+}
+
+}
+
+package com.eazybytes.accounts.service.impl; {
+class AccountsServiceImpl {
+}
+
+class AccountsServiceImpl {
+}
+
+class AccountsServiceImpl {
+}
+
+class AccountsServiceImpl {
+}
+
+class AccountsServiceImpl {
+}
+
+class AccountsServiceImpl {
+}
+
+class AccountsServiceImpl {
+}
+
+}
+
+package com.eazybytes.cards.audit; {
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+}
+
+package com.eazybytes.cards; {
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+class CardsApplication {
+}
+
+class CardsApplicationTests {
+}
+
+}
+
+package com.eazybytes.cards.constants; {
+class CardsConstants {
+}
+
+class CardsConstants {
+}
+
+class CardsConstants {
+}
+
+class CardsConstants {
+}
+
+class CardsConstants {
+}
+
+class CardsConstants {
+}
+
+class CardsConstants {
+}
+
+}
+
+package com.eazybytes.cards.controller; {
+class CardsController {
+}
+
+class CardsController {
+}
+
+class CardsController {
+}
+
+}
+
+package com.eazybytes.cards.dto; {
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+class CardsDto {
+}
+
+class ResponseDto {
+}
+
+}
+
+package com.eazybytes.cards.entity; {
+class BaseEntity {
+}
+
+class Cards {
+}
+
+class BaseEntity {
+}
+
+class Cards {
+}
+
+class BaseEntity {
+}
+
+class Cards {
+}
+
+class BaseEntity {
+}
+
+class Cards {
+}
+
+class BaseEntity {
+}
+
+class Cards {
+}
+
+class BaseEntity {
+}
+
+class Cards {
+}
+
+class BaseEntity {
+}
+
+class Cards {
+}
+
+}
+
+package com.eazybytes.cards.exception; {
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CardAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.eazybytes.cards.mapper; {
+class CardsMapper {
+}
+
+class CardsMapper {
+}
+
+class CardsMapper {
+}
+
+class CardsMapper {
+}
+
+class CardsMapper {
+}
+
+class CardsMapper {
+}
+
+class CardsMapper {
+}
+
+}
+
+package com.eazybytes.cards.repository; {
+class CardsRepository {
+}
+
+class CardsRepository {
+}
+
+class CardsRepository {
+}
+
+class CardsRepository {
+}
+
+class CardsRepository {
+}
+
+class CardsRepository {
+}
+
+class CardsRepository {
+}
+
+}
+
+package com.eazybytes.cards.service; {
+class ICardsService {
+}
+
+class ICardsService {
+}
+
+class ICardsService {
+}
+
+class ICardsService {
+}
+
+class ICardsService {
+}
+
+class ICardsService {
+}
+
+class ICardsService {
+}
+
+}
+
+package com.eazybytes.cards.service.impl; {
+class CardsServiceImpl {
+}
+
+class CardsServiceImpl {
+}
+
+class CardsServiceImpl {
+}
+
+class CardsServiceImpl {
+}
+
+class CardsServiceImpl {
+}
+
+class CardsServiceImpl {
+}
+
+class CardsServiceImpl {
+}
+
+}
+
+package com.eazybytes.customer.audit; {
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+}
+
+package com.eazybytes.customer.constants; {
+class CustomerConstants {
+}
+
+class CustomerConstants {
+}
+
+class CustomerConstants {
+}
+
+class CustomerConstants {
+}
+
+class CustomerConstants {
+}
+
+class CustomerConstants {
+}
+
+class CustomerConstants {
+}
+
+}
+
+package com.eazybytes.customer.controller; {
+class CustomerController {
+}
+
+class CustomerController {
+}
+
+class CustomerController {
+}
+
+}
+
+package com.eazybytes.customer; {
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+class CustomersApplication {
+}
+
+class AccountsApplicationTests {
+}
+
+}
+
+package com.eazybytes.customer.dto; {
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+class CustomerDto {
+}
+
+class ResponseDto {
+}
+
+}
+
+package com.eazybytes.customer.entity; {
+class BaseEntity {
+}
+
+class Customer {
+}
+
+class BaseEntity {
+}
+
+class Customer {
+}
+
+class BaseEntity {
+}
+
+class Customer {
+}
+
+class BaseEntity {
+}
+
+class Customer {
+}
+
+class BaseEntity {
+}
+
+class Customer {
+}
+
+class BaseEntity {
+}
+
+class Customer {
+}
+
+class BaseEntity {
+}
+
+class Customer {
+}
+
+}
+
+package com.eazybytes.customer.exception; {
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.eazybytes.customer.mapper; {
+class CustomerMapper {
+}
+
+class CustomerMapper {
+}
+
+class CustomerMapper {
+}
+
+class CustomerMapper {
+}
+
+class CustomerMapper {
+}
+
+class CustomerMapper {
+}
+
+class CustomerMapper {
+}
+
+}
+
+package com.eazybytes.customer.repository; {
+class CustomerRepository {
+}
+
+class CustomerRepository {
+}
+
+class CustomerRepository {
+}
+
+class CustomerRepository {
+}
+
+class CustomerRepository {
+}
+
+class CustomerRepository {
+}
+
+class CustomerRepository {
+}
+
+}
+
+package com.eazybytes.customer.service; {
+class ICustomerService {
+}
+
+class ICustomerService {
+}
+
+class ICustomerService {
+}
+
+class ICustomerService {
+}
+
+class ICustomerService {
+}
+
+class ICustomerService {
+}
+
+class ICustomerService {
+}
+
+}
+
+package com.eazybytes.customer.service.impl; {
+class CustomerServiceImpl {
+}
+
+class CustomerServiceImpl {
+}
+
+class CustomerServiceImpl {
+}
+
+class CustomerServiceImpl {
+}
+
+class CustomerServiceImpl {
+}
+
+class CustomerServiceImpl {
+}
+
+class CustomerServiceImpl {
+}
+
+}
+
+package com.eazybytes.common.dto; {
+class ErrorResponseDto {
+}
+
+class ErrorResponseDto {
+}
+
+class ErrorResponseDto {
+}
+
+class ErrorResponseDto {
+}
+
+class ErrorResponseDto {
+}
+
+class MobileNumberUpdateDto {
+}
+
+class ErrorResponseDto {
+}
+
+class MobileNumberUpdateDto {
+}
+
+class ErrorResponseDto {
+}
+
+}
+
+package com.eazybytes.common; {
+class CommonApplicationTests {
+}
+
+class CommonApplicationTests {
+}
+
+class CommonApplicationTests {
+}
+
+class CommonApplicationTests {
+}
+
+class CommonApplicationTests {
+}
+
+class CommonApplicationTests {
+}
+
+class CommonApplicationTests {
+}
+
+}
+
+package com.eazybytes.eurekaserver; {
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+class EurekaserverApplication {
+}
+
+class EurekaserverApplicationTests {
+}
+
+}
+
+package com.eazybytes.gatewayserver; {
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+class GatewayserverApplication {
+}
+
+class GatewayserverApplicationTests {
+}
+
+}
+
+package com.eazybytes.loans.audit; {
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+class AuditAwareImpl {
+}
+
+}
+
+package com.eazybytes.loans.constants; {
+class LoansConstants {
+}
+
+class LoansConstants {
+}
+
+class LoansConstants {
+}
+
+class LoansConstants {
+}
+
+class LoansConstants {
+}
+
+class LoansConstants {
+}
+
+class LoansConstants {
+}
+
+}
+
+package com.eazybytes.loans.controller; {
+class LoansController {
+}
+
+class LoansController {
+}
+
+class LoansController {
+}
+
+}
+
+package com.eazybytes.loans.dto; {
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+class LoansDto {
+}
+
+class ResponseDto {
+}
+
+}
+
+package com.eazybytes.loans.entity; {
+class BaseEntity {
+}
+
+class Loans {
+}
+
+class BaseEntity {
+}
+
+class Loans {
+}
+
+class BaseEntity {
+}
+
+class Loans {
+}
+
+class BaseEntity {
+}
+
+class Loans {
+}
+
+class BaseEntity {
+}
+
+class Loans {
+}
+
+class BaseEntity {
+}
+
+class Loans {
+}
+
+class BaseEntity {
+}
+
+class Loans {
+}
+
+}
+
+package com.eazybytes.loans.exception; {
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class LoanAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.eazybytes.loans; {
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+class LoansApplication {
+}
+
+class LoansApplicationTests {
+}
+
+}
+
+package com.eazybytes.loans.mapper; {
+class LoansMapper {
+}
+
+class LoansMapper {
+}
+
+class LoansMapper {
+}
+
+class LoansMapper {
+}
+
+class LoansMapper {
+}
+
+class LoansMapper {
+}
+
+class LoansMapper {
+}
+
+}
+
+package com.eazybytes.loans.repository; {
+class LoansRepository {
+}
+
+class LoansRepository {
+}
+
+class LoansRepository {
+}
+
+class LoansRepository {
+}
+
+class LoansRepository {
+}
+
+class LoansRepository {
+}
+
+class LoansRepository {
+}
+
+}
+
+package com.eazybytes.loans.service; {
+class ILoansService {
+}
+
+class ILoansService {
+}
+
+class ILoansService {
+}
+
+class ILoansService {
+}
+
+class ILoansService {
+}
+
+class ILoansService {
+}
+
+class ILoansService {
+}
+
+}
+
+package com.eazybytes.loans.service.impl; {
+class LoansServiceImpl {
+}
+
+class LoansServiceImpl {
+}
+
+class LoansServiceImpl {
+}
+
+class LoansServiceImpl {
+}
+
+class LoansServiceImpl {
+}
+
+class LoansServiceImpl {
+}
+
+class LoansServiceImpl {
+}
+
+}
+
+package com.eazybytes.gatewayserver.config; {
+class ClientConfig {
+}
+
+class ClientConfig {
+}
+
+class ClientConfig {
+}
+
+class ClientConfig {
+}
+
+class ClientConfig {
+}
+
+class ClientConfig {
+}
+
+}
+
+package com.eazybytes.gatewayserver.dto; {
+class AccountsDto {
+}
+
+class CardsDto {
+}
+
+class CustomerDto {
+}
+
+class CustomerSummaryDto {
+}
+
+class LoansDto {
+}
+
+class AccountsDto {
+}
+
+class CardsDto {
+}
+
+class CustomerDto {
+}
+
+class CustomerSummaryDto {
+}
+
+class LoansDto {
+}
+
+class AccountsDto {
+}
+
+class CardsDto {
+}
+
+class CustomerDto {
+}
+
+class CustomerSummaryDto {
+}
+
+class LoansDto {
+}
+
+class AccountsDto {
+}
+
+class CardsDto {
+}
+
+class CustomerDto {
+}
+
+class CustomerSummaryDto {
+}
+
+class LoansDto {
+}
+
+class AccountsDto {
+}
+
+class CardsDto {
+}
+
+class CustomerDto {
+}
+
+class CustomerSummaryDto {
+}
+
+class LoansDto {
+}
+
+class AccountsDto {
+}
+
+class CardsDto {
+}
+
+class CustomerDto {
+}
+
+class CustomerSummaryDto {
+}
+
+class LoansDto {
+}
+
+}
+
+package com.eazybytes.gatewayserver.handler; {
+class CustomerCompositeHandler {
+}
+
+class CustomerCompositeHandler {
+}
+
+class CustomerCompositeHandler {
+}
+
+class CustomerCompositeHandler {
+}
+
+class CustomerCompositeHandler {
+}
+
+class CustomerCompositeHandler {
+}
+
+}
+
+package com.eazybytes.gatewayserver.router; {
+class CustomerCompositeRouter {
+}
+
+class CustomerCompositeRouter {
+}
+
+class CustomerCompositeRouter {
+}
+
+class CustomerCompositeRouter {
+}
+
+class CustomerCompositeRouter {
+}
+
+class CustomerCompositeRouter {
+}
+
+}
+
+package com.eazybytes.gatewayserver.service.client; {
+class CustomerSummaryClient {
+}
+
+class CustomerSummaryClient {
+}
+
+class CustomerSummaryClient {
+}
+
+class CustomerSummaryClient {
+}
+
+class CustomerSummaryClient {
+}
+
+class CustomerSummaryClient {
+}
+
+}
+
+package com.eazybytes.accounts.command.aggregate; {
+class AccountsAggregate {
+}
+
+class AccountsAggregate {
+}
+
+class AccountsAggregate {
+}
+
+class AccountsAggregate {
+}
+
+}
+
+package com.eazybytes.accounts.command.controller; {
+class AccountsCommandController {
+}
+
+class AccountsCommandController {
+}
+
+class AccountsCommandController {
+}
+
+class AccountsCommandController {
+}
+
+}
+
+package com.eazybytes.accounts.command; {
+class CreateAccountCommand {
+}
+
+class DeleteAccountCommand {
+}
+
+class UpdateAccountCommand {
+}
+
+class CreateAccountCommand {
+}
+
+class DeleteAccountCommand {
+}
+
+class UpdateAccountCommand {
+}
+
+class CreateAccountCommand {
+}
+
+class DeleteAccountCommand {
+}
+
+class UpdateAccountCommand {
+}
+
+class CreateAccountCommand {
+}
+
+class DeleteAccountCommand {
+}
+
+class UpdateAccountCommand {
+}
+
+}
+
+package com.eazybytes.accounts.command.event; {
+class AccountCreatedEvent {
+}
+
+class AccountDeletedEvent {
+}
+
+class AccountUpdatedEvent {
+}
+
+class AccountCreatedEvent {
+}
+
+class AccountDeletedEvent {
+}
+
+class AccountUpdatedEvent {
+}
+
+class AccountCreatedEvent {
+}
+
+class AccountDeletedEvent {
+}
+
+class AccountUpdatedEvent {
+}
+
+class AccountCreatedEvent {
+}
+
+class AccountDeletedEvent {
+}
+
+class AccountUpdatedEvent {
+}
+
+}
+
+package com.eazybytes.accounts.command.interceptor; {
+class AccountsCommandInterceptor {
+}
+
+class AccountsCommandInterceptor {
+}
+
+class AccountsCommandInterceptor {
+}
+
+class AccountsCommandInterceptor {
+}
+
+}
+
+package com.eazybytes.accounts.query.controller; {
+class AccountsQueryController {
+}
+
+class AccountsQueryController {
+}
+
+class AccountsQueryController {
+}
+
+class AccountsQueryController {
+}
+
+}
+
+package com.eazybytes.accounts.query; {
+class FindAccountQuery {
+}
+
+class FindAccountQuery {
+}
+
+class FindAccountQuery {
+}
+
+class FindAccountQuery {
+}
+
+}
+
+package com.eazybytes.accounts.query.handler; {
+class AccountsQueryHandler {
+}
+
+class AccountsQueryHandler {
+}
+
+class AccountsQueryHandler {
+}
+
+class AccountsQueryHandler {
+}
+
+}
+
+package com.eazybytes.accounts.query.projection; {
+class AccountProjection {
+}
+
+class AccountProjection {
+}
+
+class AccountProjection {
+}
+
+class AccountProjection {
+}
+
+}
+
+package com.eazybytes.cards.command.aggregate; {
+class CardAggregate {
+}
+
+class CardAggregate {
+}
+
+class CardAggregate {
+}
+
+class CardAggregate {
+}
+
+}
+
+package com.eazybytes.cards.command.controller; {
+class CardCommandController {
+}
+
+class CardCommandController {
+}
+
+class CardCommandController {
+}
+
+class CardCommandController {
+}
+
+}
+
+package com.eazybytes.cards.command; {
+class CreateCardCommand {
+}
+
+class DeleteCardCommand {
+}
+
+class UpdateCardCommand {
+}
+
+class CreateCardCommand {
+}
+
+class DeleteCardCommand {
+}
+
+class UpdateCardCommand {
+}
+
+class CreateCardCommand {
+}
+
+class DeleteCardCommand {
+}
+
+class UpdateCardCommand {
+}
+
+class CreateCardCommand {
+}
+
+class DeleteCardCommand {
+}
+
+class UpdateCardCommand {
+}
+
+}
+
+package com.eazybytes.cards.command.event; {
+class CardCreatedEvent {
+}
+
+class CardDeletedEvent {
+}
+
+class CardUpdatedEvent {
+}
+
+class CardCreatedEvent {
+}
+
+class CardDeletedEvent {
+}
+
+class CardUpdatedEvent {
+}
+
+class CardCreatedEvent {
+}
+
+class CardDeletedEvent {
+}
+
+class CardUpdatedEvent {
+}
+
+class CardCreatedEvent {
+}
+
+class CardDeletedEvent {
+}
+
+class CardUpdatedEvent {
+}
+
+}
+
+package com.eazybytes.cards.command.interceptor; {
+class CardCommandInterceptor {
+}
+
+class CardCommandInterceptor {
+}
+
+class CardCommandInterceptor {
+}
+
+class CardCommandInterceptor {
+}
+
+}
+
+package com.eazybytes.cards.query.controller; {
+class CardQueryController {
+}
+
+class CardQueryController {
+}
+
+class CardQueryController {
+}
+
+class CardQueryController {
+}
+
+}
+
+package com.eazybytes.cards.query; {
+class FindCardQuery {
+}
+
+class FindCardQuery {
+}
+
+class FindCardQuery {
+}
+
+class FindCardQuery {
+}
+
+}
+
+package com.eazybytes.cards.query.handlers; {
+class CardQueryHandler {
+}
+
+class CardQueryHandler {
+}
+
+class CardQueryHandler {
+}
+
+class CardQueryHandler {
+}
+
+}
+
+package com.eazybytes.cards.query.projection; {
+class CardProjection {
+}
+
+class CardProjection {
+}
+
+class CardProjection {
+}
+
+class CardProjection {
+}
+
+}
+
+package com.eazybytes.customer.command.aggregate; {
+class CustomerAggregate {
+}
+
+class CustomerAggregate {
+}
+
+class CustomerAggregate {
+}
+
+class CustomerAggregate {
+}
+
+}
+
+package com.eazybytes.customer.command.controller; {
+class CustomerCommandController {
+}
+
+class CustomerCommandController {
+}
+
+class CustomerCommandController {
+}
+
+class CustomerCommandController {
+}
+
+}
+
+package com.eazybytes.customer.command; {
+class CreateCustomerCommand {
+}
+
+class DeleteCustomerCommand {
+}
+
+class UpdateCustomerCommand {
+}
+
+class CreateCustomerCommand {
+}
+
+class DeleteCustomerCommand {
+}
+
+class UpdateCustomerCommand {
+}
+
+class CreateCustomerCommand {
+}
+
+class DeleteCustomerCommand {
+}
+
+class UpdateCustomerCommand {
+}
+
+class CreateCustomerCommand {
+}
+
+class DeleteCustomerCommand {
+}
+
+class UpdateCustomerCommand {
+}
+
+}
+
+package com.eazybytes.customer.command.event; {
+class CustomerCreatedEvent {
+}
+
+class CustomerDeletedEvent {
+}
+
+class CustomerUpdatedEvent {
+}
+
+class CustomerCreatedEvent {
+}
+
+class CustomerDeletedEvent {
+}
+
+class CustomerUpdatedEvent {
+}
+
+class CustomerCreatedEvent {
+}
+
+class CustomerDeletedEvent {
+}
+
+class CustomerUpdatedEvent {
+}
+
+class CustomerCreatedEvent {
+}
+
+class CustomerDeletedEvent {
+}
+
+class CustomerUpdatedEvent {
+}
+
+}
+
+package com.eazybytes.customer.command.interceptor; {
+class CustomerCommandInterceptor {
+}
+
+class CustomerCommandInterceptor {
+}
+
+class CustomerCommandInterceptor {
+}
+
+class CustomerCommandInterceptor {
+}
+
+}
+
+package com.eazybytes.customer.query.controller; {
+class CustomerQueryController {
+}
+
+class CustomerQueryController {
+}
+
+class CustomerQueryController {
+}
+
+class CustomerQueryController {
+}
+
+}
+
+package com.eazybytes.customer.query; {
+class FindCustomerQuery {
+}
+
+class FindCustomerQuery {
+}
+
+class FindCustomerQuery {
+}
+
+class FindUpdateMobileSagaQuery {
+}
+
+class FindCustomerQuery {
+}
+
+}
+
+package com.eazybytes.customer.query.handler; {
+class CustomerQueryHandler {
+}
+
+class CustomerQueryHandler {
+}
+
+class CustomerQueryHandler {
+}
+
+class CustomerQueryHandler {
+}
+
+}
+
+package com.eazybytes.customer.query.projection; {
+class CustomerProjection {
+}
+
+class CustomerProjection {
+}
+
+class CustomerProjection {
+}
+
+class CustomerProjection {
+}
+
+}
+
+package com.eazybytes.loans.command.aggregate; {
+class LoanAggregate {
+}
+
+class LoanAggregate {
+}
+
+class LoanAggregate {
+}
+
+class LoanAggregate {
+}
+
+}
+
+package com.eazybytes.loans.command.controller; {
+class LoanCommandController {
+}
+
+class LoanCommandController {
+}
+
+class LoanCommandController {
+}
+
+class LoanCommandController {
+}
+
+}
+
+package com.eazybytes.loans.command; {
+class CreateLoanCommand {
+}
+
+class DeleteLoanCommand {
+}
+
+class UpdateLoanCommand {
+}
+
+class CreateLoanCommand {
+}
+
+class DeleteLoanCommand {
+}
+
+class UpdateLoanCommand {
+}
+
+class CreateLoanCommand {
+}
+
+class DeleteLoanCommand {
+}
+
+class UpdateLoanCommand {
+}
+
+class CreateLoanCommand {
+}
+
+class DeleteLoanCommand {
+}
+
+class UpdateLoanCommand {
+}
+
+}
+
+package com.eazybytes.loans.command.event; {
+class LoanCreatedEvent {
+}
+
+class LoanDeletedEvent {
+}
+
+class LoanUpdatedEvent {
+}
+
+class LoanCreatedEvent {
+}
+
+class LoanDeletedEvent {
+}
+
+class LoanUpdatedEvent {
+}
+
+class LoanCreatedEvent {
+}
+
+class LoanDeletedEvent {
+}
+
+class LoanUpdatedEvent {
+}
+
+class LoanCreatedEvent {
+}
+
+class LoanDeletedEvent {
+}
+
+class LoanUpdatedEvent {
+}
+
+}
+
+package com.eazybytes.loans.command.interceptor; {
+class LoanCommandInterceptor {
+}
+
+class LoanCommandInterceptor {
+}
+
+class LoanCommandInterceptor {
+}
+
+class LoanCommandInterceptor {
+}
+
+}
+
+package com.eazybytes.loans.query.controller; {
+class LoanQueryController {
+}
+
+class LoanQueryController {
+}
+
+class LoanQueryController {
+}
+
+class LoanQueryController {
+}
+
+}
+
+package com.eazybytes.loans.query; {
+class FindLoanQuery {
+}
+
+class FindLoanQuery {
+}
+
+class FindLoanQuery {
+}
+
+class FindLoanQuery {
+}
+
+}
+
+package com.eazybytes.loans.query.handler; {
+class LoanQueryHandler {
+}
+
+class LoanQueryHandler {
+}
+
+class LoanQueryHandler {
+}
+
+class LoanQueryHandler {
+}
+
+}
+
+package com.eazybytes.loans.query.projection; {
+class LoanProjection {
+}
+
+class LoanProjection {
+}
+
+class LoanProjection {
+}
+
+class LoanProjection {
+}
+
+}
+
+package com.eazybytes.common.config; {
+class AxonConfig {
+}
+
+class AxonConfig {
+}
+
+}
+
+package com.eazybytes.common.event; {
+class AccountDataChangedEvent {
+}
+
+class CardDataChangedEvent {
+}
+
+class CustomerDataChangedEvent {
+}
+
+class LoanDataChangedEvent {
+}
+
+class AccntMobileNumUpdatedEvent {
+}
+
+class AccntMobNumRollbackedEvent {
+}
+
+class CardMobileNumUpdatedEvent {
+}
+
+class CardMobNumRollbackedEvent {
+}
+
+class CusMobNumRollbackedEvent {
+}
+
+class CusMobNumUpdatedEvent {
+}
+
+class LoanMobileNumUpdatedEvent {
+}
+
+}
+
+package com.eazybytes.profile.audit; {
+class AuditAwareImpl {
+}
+
+}
+
+package com.eazybytes.profile.constants; {
+class ProfileConstants {
+}
+
+}
+
+package com.eazybytes.profile.dto; {
+class ProfileDto {
+}
+
+class ResponseDto {
+}
+
+}
+
+package com.eazybytes.profile.entity; {
+class BaseEntity {
+}
+
+class Profile {
+}
+
+}
+
+package com.eazybytes.profile.exception; {
+class CustomerAlreadyExistsException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.eazybytes.profile.mapper; {
+class ProfileMapper {
+}
+
+}
+
+package com.eazybytes.profile; {
+class ProfileApplication {
+}
+
+class ProfileApplicationTests {
+}
+
+}
+
+package com.eazybytes.profile.query.controller; {
+class ProfileQueryController {
+}
+
+}
+
+package com.eazybytes.profile.query; {
+class FindProfileQuery {
+}
+
+}
+
+package com.eazybytes.profile.query.handler; {
+class ProfileQueryHandler {
+}
+
+}
+
+package com.eazybytes.profile.query.projection; {
+class ProfileProjection {
+}
+
+}
+
+package com.eazybytes.profile.repository; {
+class ProfileRepository {
+}
+
+}
+
+package com.eazybytes.profile.service.impl; {
+class ProfileServiceImpl {
+}
+
+}
+
+package com.eazybytes.profile.service; {
+class IProfileService {
+}
+
+}
+
+package com.eazybytes.accounts.function; {
+class AccountFunctions {
+}
+
+}
+
+package com.eazybytes.cards.function; {
+class CardFunctions {
+}
+
+}
+
+package com.eazybytes.customer.function; {
+class CustomerFunctions {
+}
+
+}
+
+package com.eazybytes.loans.function; {
+class LoanFunctions {
+}
+
+}
+
+package com.eazybytes.customer.saga; {
+class UpdateMobileNumberSaga {
+}
+
+}
+
+package com.eazybytes.common.command; {
+class RollbackAccntMobNumCommand {
+}
+
+class RollbackCardMobNumCommand {
+}
+
+class RollbackCusMobNumCommand {
+}
+
+class UpdateAccntMobileNumCommand {
+}
+
+class UpdateCardMobileNumCommand {
+}
+
+class UpdateCusMobNumCommand {
+}
+
+class UpdateLoanMobileNumCommand {
+}
+
+}
+
+AccountsApplication -- Accounts
+AccountsApplication -- Customer
+AccountsApplication -- AccountsCommandInterceptor
+AccountsApplication -- CustomerCommandInterceptor
+AccountsConstants -- Accounts
+AccountsController -- AccountsConstants
+AccountsController -- AccountsDto
+AccountsController -- ResponseDto
+AccountsController -- Accounts
+AccountsController -- IAccountsService
+AccountsDto -- Accounts
+Accounts -- BaseEntity
+GlobalExceptionHandler -- ResponseDto
+GlobalExceptionHandler -- ResourceNotFoundException
+GlobalExceptionHandler -- ErrorResponseDto
+GlobalExceptionHandler -- LoanAlreadyExistsException
+AccountsMapper -- AccountsDto
+AccountsMapper -- Accounts
+AccountsMapper -- AccountUpdatedEvent
+AccountsRepository -- Accounts
+IAccountsService -- AccountsDto
+IAccountsService -- Accounts
+IAccountsService -- AccountUpdatedEvent
+AccountsServiceImpl -- AccountsConstants
+AccountsServiceImpl -- AccountsDto
+AccountsServiceImpl -- Accounts
+AccountsServiceImpl -- AccountAlreadyExistsException
+AccountsServiceImpl -- ResourceNotFoundException
+AccountsServiceImpl -- AccountsMapper
+AccountsServiceImpl -- AccountsRepository
+AccountsServiceImpl -- IAccountsService
+AccountsServiceImpl -- AccountUpdatedEvent
+AccountsApplicationTests -- Customer
+CardsApplication -- Cards
+CardsApplication -- Customer
+CardsApplication -- CardCommandInterceptor
+CardsApplication -- CustomerCommandInterceptor
+CardsConstants -- Cards
+CardsController -- ResponseDto
+CardsController -- CardsConstants
+CardsController -- CardsDto
+CardsController -- Cards
+CardsController -- ICardsService
+CardsDto -- Cards
+Cards -- BaseEntity
+CardsMapper -- CardsDto
+CardsMapper -- Cards
+CardsMapper -- CardUpdatedEvent
+CardsRepository -- Cards
+ICardsService -- CardsDto
+ICardsService -- Cards
+ICardsService -- CardUpdatedEvent
+CardsServiceImpl -- ResourceNotFoundException
+CardsServiceImpl -- CardsConstants
+CardsServiceImpl -- CardsDto
+CardsServiceImpl -- Cards
+CardsServiceImpl -- CardAlreadyExistsException
+CardsServiceImpl -- CardsMapper
+CardsServiceImpl -- CardsRepository
+CardsServiceImpl -- ICardsService
+CardsServiceImpl -- CardUpdatedEvent
+CardsApplicationTests -- CardsApplication
+CardsApplicationTests -- Cards
+CustomerConstants -- Customer
+CustomerController -- ResponseDto
+CustomerController -- CustomerConstants
+CustomerController -- CustomerDto
+CustomerController -- Customer
+CustomerController -- ICustomerService
+CustomerController -- MobileNumberUpdateDto
+CustomersApplication -- Customer
+CustomersApplication -- CustomerCommandInterceptor
+CustomerDto -- Customer
+Customer -- BaseEntity
+CustomerAlreadyExistsException -- Customer
+CustomerMapper -- CustomerDto
+CustomerMapper -- Customer
+CustomerMapper -- CustomerUpdatedEvent
+CustomerRepository -- Customer
+ICustomerService -- Accounts
+ICustomerService -- CustomerDto
+ICustomerService -- Customer
+ICustomerService -- CustomerUpdatedEvent
+CustomerServiceImpl -- ResourceNotFoundException
+CustomerServiceImpl -- CustomerConstants
+CustomerServiceImpl -- CustomerDto
+CustomerServiceImpl -- Customer
+CustomerServiceImpl -- CustomerAlreadyExistsException
+CustomerServiceImpl -- CustomerMapper
+CustomerServiceImpl -- CustomerRepository
+CustomerServiceImpl -- ICustomerService
+CustomerServiceImpl -- CustomerUpdatedEvent
+ErrorResponseDto -- ResponseDto
+EurekaserverApplicationTests -- EurekaserverApplication
+GatewayserverApplicationTests -- GatewayserverApplication
+LoansConstants -- Loans
+LoansController -- ResponseDto
+LoansController -- LoansConstants
+LoansController -- LoansDto
+LoansController -- Loans
+LoansController -- ILoansService
+LoansDto -- Loans
+Loans -- BaseEntity
+LoansApplication -- Customer
+LoansApplication -- Loans
+LoansApplication -- CustomerCommandInterceptor
+LoansApplication -- LoanCommandInterceptor
+LoansMapper -- LoansDto
+LoansMapper -- Loans
+LoansMapper -- LoanUpdatedEvent
+LoansRepository -- Loans
+ILoansService -- LoansDto
+ILoansService -- Loans
+ILoansService -- LoanUpdatedEvent
+LoansServiceImpl -- ResourceNotFoundException
+LoansServiceImpl -- LoansConstants
+LoansServiceImpl -- LoansDto
+LoansServiceImpl -- Loans
+LoansServiceImpl -- LoanAlreadyExistsException
+LoansServiceImpl -- LoansMapper
+LoansServiceImpl -- LoansRepository
+LoansServiceImpl -- ILoansService
+LoansServiceImpl -- LoanUpdatedEvent
+LoansApplicationTests -- Loans
+LoansApplicationTests -- LoansApplication
+ClientConfig -- Customer
+ClientConfig -- CustomerSummaryClient
+CustomerSummaryDto -- AccountsDto
+CustomerSummaryDto -- Accounts
+CustomerSummaryDto -- CardsDto
+CustomerSummaryDto -- Cards
+CustomerSummaryDto -- CustomerDto
+CustomerSummaryDto -- Customer
+CustomerSummaryDto -- LoansDto
+CustomerSummaryDto -- Loans
+CustomerCompositeHandler -- AccountsDto
+CustomerCompositeHandler -- Accounts
+CustomerCompositeHandler -- CardsDto
+CustomerCompositeHandler -- Cards
+CustomerCompositeHandler -- CustomerDto
+CustomerCompositeHandler -- Customer
+CustomerCompositeHandler -- LoansDto
+CustomerCompositeHandler -- Loans
+CustomerCompositeHandler -- CustomerSummaryDto
+CustomerCompositeHandler -- CustomerSummaryClient
+CustomerCompositeRouter -- Customer
+CustomerCompositeRouter -- CustomerCompositeHandler
+CustomerSummaryClient -- AccountsDto
+CustomerSummaryClient -- Accounts
+CustomerSummaryClient -- CardsDto
+CustomerSummaryClient -- Cards
+CustomerSummaryClient -- CustomerDto
+CustomerSummaryClient -- Customer
+CustomerSummaryClient -- LoansDto
+CustomerSummaryClient -- Loans
+AccountsAggregate -- Accounts
+AccountsAggregate -- CreateAccountCommand
+AccountsAggregate -- DeleteAccountCommand
+AccountsAggregate -- AccountCreatedEvent
+AccountsAggregate -- AccountDeletedEvent
+AccountsAggregate -- AccountUpdatedEvent
+AccountsAggregate -- UpdateAccountCommand
+AccountsCommandController -- AccountsConstants
+AccountsCommandController -- AccountsDto
+AccountsCommandController -- ResponseDto
+AccountsCommandController -- Accounts
+AccountsCommandController -- IAccountsService
+AccountsCommandController -- CreateAccountCommand
+AccountsCommandController -- DeleteAccountCommand
+AccountsCommandController -- UpdateAccountCommand
+AccountsCommandInterceptor -- AccountsConstants
+AccountsCommandInterceptor -- Accounts
+AccountsCommandInterceptor -- AccountAlreadyExistsException
+AccountsCommandInterceptor -- ResourceNotFoundException
+AccountsCommandInterceptor -- AccountsRepository
+AccountsCommandInterceptor -- CreateAccountCommand
+AccountsCommandInterceptor -- DeleteAccountCommand
+AccountsCommandInterceptor -- UpdateAccountCommand
+AccountsQueryController -- AccountsDto
+AccountsQueryController -- Accounts
+AccountsQueryController -- FindAccountQuery
+AccountsQueryHandler -- AccountsDto
+AccountsQueryHandler -- Accounts
+AccountsQueryHandler -- IAccountsService
+AccountsQueryHandler -- FindAccountQuery
+AccountProjection -- Accounts
+AccountProjection -- IAccountsService
+AccountProjection -- AccountCreatedEvent
+AccountProjection -- AccountDeletedEvent
+AccountProjection -- AccountUpdatedEvent
+CardAggregate -- CreateCardCommand
+CardAggregate -- DeleteCardCommand
+CardAggregate -- CardCreatedEvent
+CardAggregate -- CardDeletedEvent
+CardAggregate -- CardUpdatedEvent
+CardAggregate -- UpdateCardCommand
+CardCommandController -- ResponseDto
+CardCommandController -- CardsConstants
+CardCommandController -- CardsDto
+CardCommandController -- Cards
+CardCommandController -- CreateCardCommand
+CardCommandController -- DeleteCardCommand
+CardCommandController -- UpdateCardCommand
+CardCommandInterceptor -- ResourceNotFoundException
+CardCommandInterceptor -- CardsConstants
+CardCommandInterceptor -- Cards
+CardCommandInterceptor -- CardAlreadyExistsException
+CardCommandInterceptor -- CardsRepository
+CardCommandInterceptor -- CreateCardCommand
+CardCommandInterceptor -- DeleteCardCommand
+CardCommandInterceptor -- UpdateCardCommand
+CardQueryController -- CardsDto
+CardQueryController -- Cards
+CardQueryController -- FindCardQuery
+CardQueryHandler -- CardsDto
+CardQueryHandler -- Cards
+CardQueryHandler -- ICardsService
+CardQueryHandler -- FindCardQuery
+CardProjection -- Cards
+CardProjection -- ICardsService
+CardProjection -- CardCreatedEvent
+CardProjection -- CardDeletedEvent
+CardProjection -- CardUpdatedEvent
+CustomerAggregate -- ResourceNotFoundException
+CustomerAggregate -- Customer
+CustomerAggregate -- CustomerAlreadyExistsException
+CustomerAggregate -- CustomerRepository
+CustomerAggregate -- CreateCustomerCommand
+CustomerAggregate -- DeleteCustomerCommand
+CustomerAggregate -- CustomerCreatedEvent
+CustomerAggregate -- CustomerDeletedEvent
+CustomerAggregate -- CustomerUpdatedEvent
+CustomerAggregate -- UpdateCustomerCommand
+CustomerCommandController -- ResponseDto
+CustomerCommandController -- CustomerConstants
+CustomerCommandController -- CustomerDto
+CustomerCommandController -- Customer
+CustomerCommandController -- CreateCustomerCommand
+CustomerCommandController -- DeleteCustomerCommand
+CustomerCommandController -- UpdateCustomerCommand
+CreateCustomerCommand -- Customer
+DeleteCustomerCommand -- Customer
+CustomerCreatedEvent -- Customer
+CustomerDeletedEvent -- Customer
+CustomerUpdatedEvent -- Customer
+CustomerCommandInterceptor -- ResourceNotFoundException
+CustomerCommandInterceptor -- CustomerConstants
+CustomerCommandInterceptor -- Customer
+CustomerCommandInterceptor -- CustomerAlreadyExistsException
+CustomerCommandInterceptor -- CustomerRepository
+CustomerCommandInterceptor -- CreateCustomerCommand
+CustomerCommandInterceptor -- DeleteCustomerCommand
+CustomerCommandInterceptor -- UpdateCustomerCommand
+UpdateCustomerCommand -- Customer
+CustomerQueryController -- CustomerDto
+CustomerQueryController -- Customer
+CustomerQueryController -- ICustomerService
+CustomerQueryController -- FindCustomerQuery
+FindCustomerQuery -- Customer
+CustomerQueryHandler -- CustomerDto
+CustomerQueryHandler -- Customer
+CustomerQueryHandler -- ICustomerService
+CustomerQueryHandler -- FindCustomerQuery
+CustomerProjection -- Customer
+CustomerProjection -- ICustomerService
+CustomerProjection -- CustomerCreatedEvent
+CustomerProjection -- CustomerDeletedEvent
+CustomerProjection -- CustomerUpdatedEvent
+LoanAggregate -- CreateLoanCommand
+LoanAggregate -- DeleteLoanCommand
+LoanAggregate -- LoanCreatedEvent
+LoanAggregate -- LoanDeletedEvent
+LoanAggregate -- LoanUpdatedEvent
+LoanAggregate -- UpdateLoanCommand
+LoanCommandController -- ResponseDto
+LoanCommandController -- LoansConstants
+LoanCommandController -- LoansDto
+LoanCommandController -- Loans
+LoanCommandController -- ILoansService
+LoanCommandController -- CreateLoanCommand
+LoanCommandController -- DeleteLoanCommand
+LoanCommandController -- UpdateLoanCommand
+LoanCommandInterceptor -- ResourceNotFoundException
+LoanCommandInterceptor -- LoansConstants
+LoanCommandInterceptor -- Loans
+LoanCommandInterceptor -- LoanAlreadyExistsException
+LoanCommandInterceptor -- LoansRepository
+LoanCommandInterceptor -- CreateLoanCommand
+LoanCommandInterceptor -- DeleteLoanCommand
+LoanCommandInterceptor -- UpdateLoanCommand
+LoanQueryController -- LoansDto
+LoanQueryController -- Loans
+LoanQueryController -- FindLoanQuery
+LoanQueryHandler -- LoansDto
+LoanQueryHandler -- Loans
+LoanQueryHandler -- ILoansService
+LoanQueryHandler -- FindLoanQuery
+LoanProjection -- Loans
+LoanProjection -- ILoansService
+LoanProjection -- LoanCreatedEvent
+LoanProjection -- LoanDeletedEvent
+LoanProjection -- LoanUpdatedEvent
+CustomerDataChangedEvent -- Customer
+ProfileConstants -- Profile
+ProfileDto -- Profile
+Profile -- BaseEntity
+ProfileMapper -- ProfileDto
+ProfileMapper -- Profile
+ProfileApplication -- AxonConfig
+ProfileApplication -- Profile
+ProfileQueryController -- ProfileDto
+ProfileQueryController -- Profile
+ProfileQueryController -- FindProfileQuery
+FindProfileQuery -- Profile
+ProfileQueryHandler -- ProfileDto
+ProfileQueryHandler -- Profile
+ProfileQueryHandler -- FindProfileQuery
+ProfileQueryHandler -- IProfileService
+ProfileProjection -- Customer
+ProfileProjection -- AccountDataChangedEvent
+ProfileProjection -- CardDataChangedEvent
+ProfileProjection -- CustomerDataChangedEvent
+ProfileProjection -- LoanDataChangedEvent
+ProfileProjection -- Profile
+ProfileProjection -- IProfileService
+ProfileRepository -- Profile
+ProfileServiceImpl -- ResourceNotFoundException
+ProfileServiceImpl -- Customer
+ProfileServiceImpl -- AccountDataChangedEvent
+ProfileServiceImpl -- CardDataChangedEvent
+ProfileServiceImpl -- CustomerDataChangedEvent
+ProfileServiceImpl -- LoanDataChangedEvent
+ProfileServiceImpl -- ProfileConstants
+ProfileServiceImpl -- ProfileDto
+ProfileServiceImpl -- Profile
+ProfileServiceImpl -- ProfileMapper
+ProfileServiceImpl -- ProfileRepository
+ProfileServiceImpl -- IProfileService
+IProfileService -- Customer
+IProfileService -- AccountDataChangedEvent
+IProfileService -- CardDataChangedEvent
+IProfileService -- CustomerDataChangedEvent
+IProfileService -- LoanDataChangedEvent
+IProfileService -- ProfileDto
+IProfileService -- Profile
+ProfileApplicationTests -- Profile
+ProfileApplicationTests -- ProfileApplication
+AccountFunctions -- Accounts
+AccountFunctions -- IAccountsService
+AccountFunctions -- MobileNumberUpdateDto
+CardFunctions -- Cards
+CardFunctions -- ICardsService
+CardFunctions -- MobileNumberUpdateDto
+CustomerFunctions -- Customer
+CustomerFunctions -- ICustomerService
+CustomerFunctions -- MobileNumberUpdateDto
+MobileNumberUpdateDto -- Customer
+LoanFunctions -- Loans
+LoanFunctions -- ILoansService
+LoanFunctions -- MobileNumberUpdateDto
+UpdateMobileNumberSaga -- ResponseDto
+UpdateMobileNumberSaga -- CustomerConstants
+UpdateMobileNumberSaga -- Customer
+UpdateMobileNumberSaga -- FindCustomerQuery
+UpdateMobileNumberSaga -- FindUpdateMobileSagaQuery
+UpdateMobileNumberSaga -- RollbackAccntMobNumCommand
+UpdateMobileNumberSaga -- RollbackCardMobNumCommand
+UpdateMobileNumberSaga -- RollbackCusMobNumCommand
+UpdateMobileNumberSaga -- UpdateAccntMobileNumCommand
+UpdateMobileNumberSaga -- UpdateCardMobileNumCommand
+UpdateMobileNumberSaga -- UpdateLoanMobileNumCommand
+UpdateMobileNumberSaga -- AccntMobileNumUpdatedEvent
+UpdateMobileNumberSaga -- AccntMobNumRollbackedEvent
+UpdateMobileNumberSaga -- CardMobileNumUpdatedEvent
+UpdateMobileNumberSaga -- CardMobNumRollbackedEvent
+UpdateMobileNumberSaga -- CusMobNumRollbackedEvent
+UpdateMobileNumberSaga -- CusMobNumUpdatedEvent
+UpdateMobileNumberSaga -- LoanMobileNumUpdatedEvent
+@enduml

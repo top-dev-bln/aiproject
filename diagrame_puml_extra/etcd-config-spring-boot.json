@@ -1,0 +1,51 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Content Creator roles. The platform provides capabilities for etcd config, etcd config, etcd config listener method processor. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "EtcdConfigListenerMethodProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "EtcdConfigServiceImpl",
+          "EtcdConfigService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use etcd configuration properties binding post processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EtcdConfigurationPropertiesBindingPostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use etcd property source post processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EtcdPropertySourcePostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use etcd value annotation bean post processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EtcdValueAnnotationBeanPostProcessor"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        EtcdConfig[\"EtcdConfig\"]\n        EtcdConfigBasic[\"EtcdConfigBasic\"]\n        EtcdConfigLoader[\"EtcdConfigLoader\"]\n        EtcdListener[\"EtcdListener\"]\n        EnableEtcdConfig[\"EnableEtcdConfig\"]\n        EtcdConfigListener[\"EtcdConfigListener\"]\n        EtcdConfigurationProperties[\"EtcdConfigurationProperties\"]\n        EtcdPropertySource[\"EtcdPropertySource\"]\n        EtcdPropertySources[\"EtcdPropertySources\"]\n        EtcdValue[\"EtcdValue\"]\n        EtcdConfigAutoConfiguration[\"EtcdConfigAutoConfiguration\"]\n        EtcdConfigProperties[\"EtcdConfigProperties\"]\n        EtcdComponent[\"EtcdComponent\"]\n        EtcdConfigBeanDefinitionRegistrar[\"EtcdConfigBeanDefinitionRegistrar\"]\n        AbstractNotifyUserListener[\"AbstractNotifyUserListener\"]\n        Listener[\"Listener\"]\n        UpdateCacheListener[\"UpdateCacheListener\"]\n        UpdateReferenceListener[\"UpdateReferenceListener\"]\n        ConfigType[\"ConfigType\"]\n        EtcdConfigConstants[\"EtcdConfigConstants\"]\n        EtcdConfigPropertySource[\"EtcdConfigPropertySource\"]\n        BeanTypeConvertUtil[\"BeanTypeConvertUtil\"]\n        ConfigParseUtil[\"ConfigParseUtil\"]\n        ConfigTypeUtil[\"ConfigTypeUtil\"]\n        EtcdConfigPropertiesUtil[\"EtcdConfigPropertiesUtil\"]\n        YamlUtil[\"YamlUtil\"]\n    end\n    subgraph Services\n        EtcdConfigServiceImpl[\"EtcdConfigServiceImpl\"]\n        EtcdConfigService[\"EtcdConfigService\"]\n        EtcdConfigListenerMethodProcessor[\"EtcdConfigListenerMethodProcessor\"]\n        EtcdConfigurationPropertiesBindingPostProcessor[\"EtcdConfigurationPropertiesBindingPostProcessor\"]\n        EtcdPropertySourcePostProcessor[\"EtcdPropertySourcePostProcessor\"]\n        EtcdValueAnnotationBeanPostProcessor[\"EtcdValueAnnotationBeanPostProcessor\"]\n    end\n    Services --> Infrastructure"
+  }
+}

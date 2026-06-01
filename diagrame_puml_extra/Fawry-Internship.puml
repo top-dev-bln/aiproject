@@ -1,0 +1,203 @@
+@startuml
+package class Bicycle extends Product { {
+class Bicycle {
+}
+
+}
+
+package class Car extends Product { {
+class Car {
+}
+
+}
+
+package class Fridge extends Product { {
+class Fridge {
+}
+
+}
+
+package java.util.Arrays; {
+class Main {
+}
+
+}
+
+package class MotorBike extends Product { {
+class MotorBike {
+}
+
+}
+
+package class Product { {
+class Product {
+}
+
+}
+
+package java.util.List; {
+class Shop {
+}
+
+}
+
+package class Tv extends Product { {
+class Tv {
+}
+
+}
+
+package org.example.account; {
+class AccountManager {
+}
+
+class AccountManagerImpl {
+}
+
+class Customer {
+}
+
+class AccountManagerImplMockitoTest {
+}
+
+class AccountManagerImplTest {
+}
+
+}
+
+package org.example; {
+class Main {
+}
+
+class Main {
+}
+
+class AssignMethodToVar {
+}
+
+class FunctionAsReturnType {
+}
+
+class Main {
+}
+
+class MethodAsParameter {
+}
+
+}
+
+package org.example.store; {
+class Product {
+}
+
+class Store {
+}
+
+class StoreImpl {
+}
+
+class StoreImplMockitoTest {
+}
+
+class StoreImplTest {
+}
+
+}
+
+package org.example.Models; {
+class Product {
+}
+
+class Statistics {
+}
+
+class User {
+}
+
+}
+
+package org.example.Repository; {
+class ProductRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package org.example.Servlet; {
+class AddProductServlet {
+}
+
+class AuthFilter {
+}
+
+class HomeServlet {
+}
+
+class LoginServlet {
+}
+
+class MyProductsServlet {
+}
+
+class ProductServlet {
+}
+
+class StatsServlet {
+}
+
+}
+
+Bicycle -- Product
+Car -- Product
+Fridge -- Product
+MotorBike -- Product
+Shop -- Bicycle
+Shop -- Car
+Shop -- MotorBike
+Shop -- Product
+Tv -- Product
+AccountManager -- Customer
+AccountManagerImpl -- AccountManager
+AccountManagerImpl -- Customer
+Store -- Product
+Store -- Customer
+StoreImpl -- Product
+StoreImpl -- AccountManager
+StoreImpl -- Customer
+StoreImpl -- Store
+AccountManagerImplMockitoTest -- AccountManager
+AccountManagerImplMockitoTest -- AccountManagerImpl
+AccountManagerImplMockitoTest -- Customer
+AccountManagerImplTest -- AccountManager
+AccountManagerImplTest -- AccountManagerImpl
+AccountManagerImplTest -- Customer
+StoreImplMockitoTest -- Product
+StoreImplMockitoTest -- AccountManager
+StoreImplMockitoTest -- Customer
+StoreImplMockitoTest -- Store
+StoreImplMockitoTest -- StoreImpl
+StoreImplTest -- Product
+StoreImplTest -- AccountManager
+StoreImplTest -- Customer
+StoreImplTest -- Store
+StoreImplTest -- StoreImpl
+Statistics -- Product
+ProductRepository -- Product
+ProductRepository -- Statistics
+ProductRepository -- User
+UserRepository -- User
+AddProductServlet -- Product
+AddProductServlet -- ProductServlet
+LoginServlet -- User
+LoginServlet -- UserRepository
+MyProductsServlet -- Product
+MyProductsServlet -- User
+MyProductsServlet -- ProductRepository
+ProductServlet -- Product
+ProductServlet -- ProductRepository
+StatsServlet -- Product
+StatsServlet -- Statistics
+StatsServlet -- ProductRepository
+@enduml

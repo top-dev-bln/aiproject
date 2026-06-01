@@ -1,0 +1,52 @@
+{
+  "input": {
+    "free_text_description": "This system is an IoT platform that serves Content Creator, User roles. The platform provides capabilities for sub listener, default auto, channel. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "BaseAuthService",
+          "ClientSessionService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "SubListener",
+          "MyListener"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "MessageHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to use default auto capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DefaultAutoService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to use channel capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ChannelService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        SubListener[\"SubListener\"]\n        DefaultAutoService[\"DefaultAutoService\"]\n        ChannelService[\"ChannelService\"]\n        ScheduledPool[\"ScheduledPool\"]\n        BaseAuthService[\"BaseAuthService\"]\n        MqttHandlerServiceService[\"MqttHandlerServiceService\"]\n        MqttHandlerService[\"MqttHandlerService\"]\n        WillService[\"WillService\"]\n        ClientSessionService[\"ClientSessionService\"]\n        MqttChannelService[\"MqttChannelService\"]\n        AbstractChannelService[\"AbstractChannelService\"]\n        DefaultMqttHandler[\"DefaultMqttHandler\"]\n        MessageHandler[\"MessageHandler\"]\n        MyListener[\"MyListener\"]\n        ServerMqttHandlerService[\"ServerMqttHandlerService\"]\n        ClientMqttHandlerService[\"ClientMqttHandlerService\"]\n    end\n    subgraph Infrastructure\n        RemotingUtil[\"RemotingUtil\"]\n        IdWorker[\"IdWorker\"]\n        MessageId[\"MessageId\"]\n        SpringBeanUtils[\"SpringBeanUtils\"]\n        ByteBufUtil[\"ByteBufUtil\"]\n    end\n    Services --> Infrastructure"
+  }
+}

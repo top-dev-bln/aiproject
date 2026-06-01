@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate roles. It manages core business objects including note. It exposes interfaces for managing note, index. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to create and manage note records, so that I can track and organize note data effectively.",
+        "services": [],
+        "controllers": [
+          "NoteController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "NoteController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "NoteController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "NoteController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        NoteController[\"NoteController\"]\n        IndexController[\"IndexController\"]\n    end\n    subgraph Data_Access\n        Note[\"Note\"]\n        NoteRepository[\"NoteRepository\"]\n    end\n    Controllers --> Data_Access"
+  }
+}

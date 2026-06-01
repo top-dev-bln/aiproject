@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Candidate, User roles. The platform provides capabilities for config application, eureka application, file application. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "User",
+          "UserFeignClient",
+          "UserServiceApplication"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "PreRequestLogFilter"
+        ],
+        "controllers": [
+          "ConfigClientController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "ConfigServiceApplication",
+          "FeignLogConfiguration"
+        ],
+        "controllers": [
+          "ConfigClientController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "FileServiceApplication"
+        ],
+        "controllers": [
+          "FileUploadController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with movie functionality, so that I can accomplish my movie-related tasks.",
+        "services": [
+          "MovieServiceApplication"
+        ],
+        "controllers": [
+          "MovieController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        ConfigClientController[\"ConfigClientController\"]\n        FileUploadController[\"FileUploadController\"]\n        MovieController[\"MovieController\"]\n        UserController[\"UserController\"]\n        AggregationController[\"AggregationController\"]\n    end\n    subgraph Services\n        ConfigServiceApplication[\"ConfigServiceApplication\"]\n        EurekaServiceApplication[\"EurekaServiceApplication\"]\n        FileServiceApplication[\"FileServiceApplication\"]\n        MovieServiceApplication[\"MovieServiceApplication\"]\n        User[\"User\"]\n        UserFeignClient[\"UserFeignClient\"]\n        FeignLogConfiguration[\"FeignLogConfiguration\"]\n        FeignConfiguration[\"FeignConfiguration\"]\n        UserServiceApplication[\"UserServiceApplication\"]\n        UserRepository[\"UserRepository\"]\n        ZipkinServiceApplication[\"ZipkinServiceApplication\"]\n        ZuulServiceApplication[\"ZuulServiceApplication\"]\n        UserFallbackProvider[\"UserFallbackProvider\"]\n        PreRequestLogFilter[\"PreRequestLogFilter\"]\n        AggregationService[\"AggregationService\"]\n    end\n    Controllers --> Services"
+  }
+}

@@ -1,0 +1,13 @@
+netty:
+  servers:
+    - name: server1
+      host: localhost
+      port: 40000
+      options:
+        soReuseAddr: true
+
+    - name: server1
+      host: localhost
+      port: 40001
+      options:
+        soReuseAddr: true

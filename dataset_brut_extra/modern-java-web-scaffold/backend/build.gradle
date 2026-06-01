@@ -1,0 +1,224 @@
+group 'org.lavenderx'
+version rootProject.version
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE'
+        classpath 'org.flywaydb:flyway-gradle-plugin:4.1.2'
+        classpath 'com.bmuschko:gradle-docker-plugin:3.0.6'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'org.flywaydb.flyway'
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+String profile = 'dev'
+def serverPort = 'server.port'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+configurations {
+    provided
+
+    // Use logback-slf4j instead of the Spring's commons-logging
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+
+    mybatisGenerator
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+        runtimeClasspath += configurations.provided
+    }
+    test {
+        compileClasspath += configurations.provided
+        runtimeClasspath += configurations.provided
+    }
+}
+
+ext {
+
+    def props = new Properties()
+    file("src/main/resources/${profile}.properties").withInputStream {
+        props.load(it)
+    }
+    props.each {
+        project.extensions.add("$it.key", it.value)
+    }
+
+    props = new Properties()
+    file('src/main/resources/common-config.properties').withInputStream {
+        props.load(it)
+    }
+    props.each {
+        if ("$serverPort" == "$it.key") {
+            serverPort = it.value
+        }
+    }
+
+    logbackVersion = '1.1.7'
+    lombokVersion = '1.16.12'
+    jacksonVersion = '2.8.1'
+    aspectjVersion = '1.8.9'
+    springbootVersion = '1.4.3.RELEASE'
+    mysqlDriverVersion = '6.0.3'
+    mybatisVersion = '3.4.1'
+    mybatisSpringVersion = '1.3.0'
+    mybatisMapperVersion = '3.3.8'
+    mybatisGeneratorVersion = '1.3.3'
+}
+
+//flyway {
+//    url = project['jdbc.url']
+//    user = project['jdbc.username']
+//    password = project['jdbc.password']
+//    locations = ["filesystem:db/migration"]
+//}
+
+bootRun {
+    // ex: gradle bootRun -PjvmArgs="-Dspring.profiles.active=dev"
+    if (project.hasProperty('jvmArgs')) {
+        jvmArgs = project.jvmArgs.split("\\s+") as List
+    }
+
+    addResources = true
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'modern-java-web-scaffold-backend',
+                'Implementation-Version': project.version.toString().replaceFirst("-(?i)SNAPSHOT", ""),
+                'Main-Class': 'org.springframework.boot.loader.JarLauncher',
+                'Start-Class': 'org.lavenderx.WebAppBoot'
+    }
+
+    baseName = rootProject.name + '-' + project.name
+    zip64 = true
+}
+
+docker {
+    url = 'http://localhost:2375'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "ch.qos.logback:logback-classic:$logbackVersion"
+    compile "org.projectlombok:lombok:$lombokVersion"
+    compile("org.springframework.boot:spring-boot-starter-web:$springbootVersion") {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    compile "org.springframework.boot:spring-boot-starter-undertow:$springbootVersion"
+//    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springbootVersion"
+    compile "org.springframework.boot:spring-boot-devtools:$springbootVersion"
+
+    compile "org.mybatis:mybatis:$mybatisVersion"
+    compile "org.mybatis:mybatis-spring:$mybatisSpringVersion"
+    compile "tk.mybatis:mapper:$mybatisMapperVersion"   // MyBatis3 Mapper(http://www.mybatis.tk/)
+    compile "mysql:mysql-connector-java:$mysqlDriverVersion"
+    compile 'com.zaxxer:HikariCP:2.6.0'
+    compile 'com.google.guava:guava:21.0'
+    compile 'io.jsonwebtoken:jjwt:0.6.0'
+
+    // For Spring Dependencies
+    compile 'org.slf4j:jcl-over-slf4j:1.7.21'
+    compile "org.aspectj:aspectjrt:$aspectjVersion"
+    compile "org.aspectj:aspectjweaver:$aspectjVersion"
+    compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    compile 'commons-fileupload:commons-fileupload:1.3.1'
+
+    provided 'javax.servlet:javax.servlet-api:3.1.0'
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springbootVersion"
+
+    mybatisGenerator "mysql:mysql-connector-java:$mysqlDriverVersion"
+    mybatisGenerator "org.mybatis.generator:mybatis-generator-core:$mybatisGeneratorVersion"
+    mybatisGenerator "tk.mybatis:mapper:$mybatisMapperVersion"
+}
+
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+
+task copyDistFiles(type: Copy) {
+    dependsOn build
+
+    from("build/libs/$rootProject.name-$project.name-$project.version" + ".jar") {
+        rename { String fileName ->
+            fileName.replace("-$project.version", "")
+        }
+    }
+    from 'src/main/docker'
+    into 'build/docker'
+
+    includeEmptyDirs = false
+}
+
+task createDockerfile(type: Dockerfile) {
+    dependsOn copyDistFiles
+
+    destFile = project.file('build/docker/Dockerfile')
+
+    from 'java:8-jre'
+    maintainer 'Zongzhi Bai "dolphineor@gmail.com"'
+    copyFile 'modern-java-web-scaffold-backend.jar', '/opt'
+    copyFile 'startup', '/'
+    runCommand 'chmod +x /startup'
+    exposePort "$serverPort".toInteger()
+    entryPoint '/startup'
+}
+
+task buildImage(type: DockerBuildImage) {
+    dependsOn createDockerfile
+
+    inputDir = createDockerfile.destFile.parentFile
+    tag = "lavenderx/$rootProject.name-$project.name:" + project.version.toString().replaceFirst("-(?i)SNAPSHOT", "")
+}
+
+task mybatisGenerate << {
+    ant.properties['targetProject'] = projectDir.path
+    ant.properties['driverClass'] = project['jdbc.driverClassName']
+    ant.properties['connectionURL'] = project['jdbc.url']
+    ant.properties['userId'] = project['jdbc.user']
+    ant.properties['password'] = project['jdbc.pass']
+    ant.properties['src_main_java'] = sourceSets.main.java.srcDirs[0].path
+    ant.properties['src_main_resources'] = sourceSets.main.resources.srcDirs[0].path
+    ant.properties['modelPackage'] = this.modelPackage
+    ant.properties['mapperPackage'] = this.mapperPackage
+    ant.properties['sqlMapperPackage'] = this.sqlMapperPackage
+
+    ant.taskdef(
+            name: 'mbgenerator',
+            classname: 'org.mybatis.generator.ant.GeneratorAntTask',
+            classpath: configurations.mybatisGenerator.asPath
+    )
+    ant.mbgenerator(overwrite: true, configfile: 'db/generatorConfig.xml', verbose: true) {
+        propertyset {
+            propertyref(name: 'targetProject')
+            propertyref(name: 'userId')
+            propertyref(name: 'driverClass')
+            propertyref(name: 'connectionURL')
+            propertyref(name: 'password')
+            propertyref(name: 'src_main_java')
+            propertyref(name: 'src_main_resources')
+            propertyref(name: 'modelPackage')
+            propertyref(name: 'mapperPackage')
+            propertyref(name: 'sqlMapperPackage')
+        }
+    }
+}

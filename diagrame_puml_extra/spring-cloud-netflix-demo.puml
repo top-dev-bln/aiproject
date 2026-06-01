@@ -1,0 +1,66 @@
+@startuml
+package de.codecentric.cloud.backend; {
+class BackendApplication {
+}
+
+class CalculationRestController {
+}
+
+class BackendApplicationTests {
+}
+
+}
+
+package de.codecentric.cloud.configserver; {
+class ConfigserverApplication {
+}
+
+class ConfigserverApplicationTests {
+}
+
+}
+
+package de.codecentric.cloud.edgeservice; {
+class EdgeserviceApplication {
+}
+
+class SleuthResponseFilter {
+}
+
+class EdgeserviceApplicationTests {
+}
+
+}
+
+package de.codecentric.cloud.eureka; {
+class EurekaApplication {
+}
+
+class EurekaApplicationTests {
+}
+
+}
+
+package de.codecentric.cloud.frontend; {
+class Calculation {
+}
+
+class FrontendApplication {
+}
+
+class FrontendRestController {
+}
+
+class FrontendApplicationTests {
+}
+
+}
+
+CalculationRestController -- Calculation
+BackendApplicationTests -- BackendApplication
+ConfigserverApplicationTests -- ConfigserverApplication
+EdgeserviceApplicationTests -- EdgeserviceApplication
+EurekaApplicationTests -- EurekaApplication
+FrontendRestController -- Calculation
+FrontendApplicationTests -- FrontendApplication
+@enduml

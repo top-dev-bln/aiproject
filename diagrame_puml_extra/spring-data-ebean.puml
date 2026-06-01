@@ -1,0 +1,399 @@
+@startuml
+package org.springframework.data.ebean.annotation; {
+class ExprParam {
+}
+
+class IncludeFields {
+}
+
+class Modifying {
+}
+
+class package-info {
+}
+
+class Query {
+}
+
+}
+
+package org.springframework.data.ebean.domain; {
+class AbstractAggregateRoot {
+}
+
+class AbstractEntity {
+}
+
+class DomainEvent {
+}
+
+class DomainService {
+}
+
+class package-info {
+}
+
+}
+
+package org.springframework.data.ebean.querychannel; {
+class EbeanQueryChannelService {
+}
+
+class ExprType {
+}
+
+class package-info {
+}
+
+class QueryChannelService {
+}
+
+class EbeanQueryChannelServiceIntegrationTest {
+}
+
+class UserDTO {
+}
+
+class UserQuery {
+}
+
+}
+
+package org.springframework.data.ebean.repository.config; {
+class EbeanRepositoriesRegistrar {
+}
+
+class EbeanRepositoryConfigExtension {
+}
+
+class EbeanRepositoryNameSpaceHandler {
+}
+
+class EnableEbeanRepositories {
+}
+
+class package-info {
+}
+
+}
+
+package org.springframework.data.ebean.repository; {
+class EbeanRepository {
+}
+
+class package-info {
+}
+
+class UserRepositoryIntegrationTest {
+}
+
+}
+
+package org.springframework.data.ebean.repository.query; {
+class AbstractEbeanQuery {
+}
+
+class AbstractEbeanQueryExecution {
+}
+
+class AbstractStringBasedEbeanQuery {
+}
+
+class EbeanQueryCreator {
+}
+
+class EbeanQueryFactory {
+}
+
+class EbeanQueryLookupStrategy {
+}
+
+class EbeanQueryMethod {
+}
+
+class EbeanQueryWrapper {
+}
+
+class ExpressionBasedStringQuery {
+}
+
+class InvalidEbeanQueryMethodException {
+}
+
+class NamedEbeanQuery {
+}
+
+class NativeEbeanQuery {
+}
+
+class NativeEbeanUpdate {
+}
+
+class OrmEbeanQuery {
+}
+
+class OrmEbeanUpdate {
+}
+
+class package-info {
+}
+
+class ParameterBinder {
+}
+
+class ParameterMetadataProvider {
+}
+
+class PartTreeEbeanQuery {
+}
+
+class SpelExpressionStringQueryParameterBinder {
+}
+
+class StringQuery {
+}
+
+class StringQueryParameterBinder {
+}
+
+}
+
+package org.springframework.data.ebean.repository.support; {
+class EbeanEntityInformation {
+}
+
+class EbeanRepositoryFactory {
+}
+
+class EbeanRepositoryFactoryBean {
+}
+
+class package-info {
+}
+
+class SimpleEbeanRepository {
+}
+
+}
+
+package org.springframework.data.ebean.util; {
+class Converters {
+}
+
+class ExampleExpressionBuilder {
+}
+
+class package-info {
+}
+
+}
+
+package org.springframework.data.ebean.sample.config; {
+class SampleConfig {
+}
+
+}
+
+package org.springframework.data.ebean.sample.domain; {
+class Address {
+}
+
+class FullName {
+}
+
+class Role {
+}
+
+class User {
+}
+
+class UserDomainService {
+}
+
+class UserEmailChangedEvent {
+}
+
+class UserInfo {
+}
+
+class UserRepository {
+}
+
+}
+
+ExprParam -- Query
+ExprParam -- ExprType
+IncludeFields -- Query
+Modifying -- Query
+AbstractAggregateRoot -- AbstractEntity
+AbstractAggregateRoot -- DomainEvent
+AbstractEntity -- User
+EbeanQueryChannelService -- ExprParam
+EbeanQueryChannelService -- IncludeFields
+EbeanQueryChannelService -- Query
+EbeanQueryChannelService -- ExprType
+EbeanQueryChannelService -- QueryChannelService
+EbeanQueryChannelService -- Converters
+QueryChannelService -- Query
+EbeanRepositoriesRegistrar -- EbeanRepositoryConfigExtension
+EbeanRepositoriesRegistrar -- EnableEbeanRepositories
+EbeanRepositoriesRegistrar -- EbeanRepository
+EbeanRepositoryConfigExtension -- EnableEbeanRepositories
+EbeanRepositoryConfigExtension -- EbeanRepository
+EbeanRepositoryConfigExtension -- EbeanRepositoryFactory
+EbeanRepositoryConfigExtension -- EbeanRepositoryFactoryBean
+EbeanRepositoryNameSpaceHandler -- EbeanRepositoryConfigExtension
+EbeanRepositoryNameSpaceHandler -- EbeanRepository
+EnableEbeanRepositories -- Query
+EnableEbeanRepositories -- EbeanRepository
+EnableEbeanRepositories -- EbeanRepositoryFactory
+EnableEbeanRepositories -- EbeanRepositoryFactoryBean
+EbeanRepository -- Query
+AbstractEbeanQuery -- Modifying
+AbstractEbeanQuery -- Query
+AbstractEbeanQuery -- AbstractEbeanQueryExecution
+AbstractEbeanQuery -- EbeanQueryMethod
+AbstractEbeanQuery -- EbeanQueryWrapper
+AbstractEbeanQuery -- ParameterBinder
+AbstractEbeanQueryExecution -- Modifying
+AbstractEbeanQueryExecution -- Query
+AbstractEbeanQueryExecution -- AbstractStringBasedEbeanQuery
+AbstractEbeanQueryExecution -- EbeanQueryMethod
+AbstractEbeanQueryExecution -- EbeanQueryWrapper
+AbstractEbeanQueryExecution -- ParameterBinder
+AbstractStringBasedEbeanQuery -- Query
+AbstractStringBasedEbeanQuery -- AbstractEbeanQuery
+AbstractStringBasedEbeanQuery -- EbeanQueryMethod
+AbstractStringBasedEbeanQuery -- EbeanQueryWrapper
+AbstractStringBasedEbeanQuery -- ExpressionBasedStringQuery
+AbstractStringBasedEbeanQuery -- ParameterBinder
+AbstractStringBasedEbeanQuery -- SpelExpressionStringQueryParameterBinder
+AbstractStringBasedEbeanQuery -- StringQuery
+AbstractStringBasedEbeanQuery -- StringQueryParameterBinder
+EbeanQueryCreator -- Query
+EbeanQueryCreator -- EbeanQueryWrapper
+EbeanQueryCreator -- ParameterMetadataProvider
+EbeanQueryFactory -- Modifying
+EbeanQueryFactory -- Query
+EbeanQueryFactory -- AbstractEbeanQuery
+EbeanQueryFactory -- EbeanQueryMethod
+EbeanQueryFactory -- NativeEbeanQuery
+EbeanQueryFactory -- NativeEbeanUpdate
+EbeanQueryFactory -- OrmEbeanQuery
+EbeanQueryFactory -- OrmEbeanUpdate
+EbeanQueryLookupStrategy -- Query
+EbeanQueryLookupStrategy -- EbeanQueryFactory
+EbeanQueryLookupStrategy -- EbeanQueryMethod
+EbeanQueryLookupStrategy -- EbeanQueryWrapper
+EbeanQueryLookupStrategy -- NamedEbeanQuery
+EbeanQueryLookupStrategy -- PartTreeEbeanQuery
+EbeanQueryMethod -- Modifying
+EbeanQueryMethod -- Query
+EbeanQueryWrapper -- Query
+ExpressionBasedStringQuery -- Query
+ExpressionBasedStringQuery -- StringQuery
+InvalidEbeanQueryMethodException -- Query
+InvalidEbeanQueryMethodException -- EbeanQueryMethod
+NamedEbeanQuery -- Query
+NamedEbeanQuery -- AbstractEbeanQuery
+NamedEbeanQuery -- EbeanQueryMethod
+NamedEbeanQuery -- EbeanQueryWrapper
+NativeEbeanQuery -- Query
+NativeEbeanQuery -- AbstractStringBasedEbeanQuery
+NativeEbeanQuery -- EbeanQueryMethod
+NativeEbeanQuery -- EbeanQueryWrapper
+NativeEbeanQuery -- InvalidEbeanQueryMethodException
+NativeEbeanUpdate -- Query
+NativeEbeanUpdate -- AbstractStringBasedEbeanQuery
+NativeEbeanUpdate -- EbeanQueryMethod
+NativeEbeanUpdate -- EbeanQueryWrapper
+NativeEbeanUpdate -- InvalidEbeanQueryMethodException
+OrmEbeanQuery -- Query
+OrmEbeanQuery -- AbstractStringBasedEbeanQuery
+OrmEbeanQuery -- EbeanQueryMethod
+OrmEbeanUpdate -- Query
+OrmEbeanUpdate -- AbstractStringBasedEbeanQuery
+OrmEbeanUpdate -- EbeanQueryMethod
+OrmEbeanUpdate -- EbeanQueryWrapper
+ParameterBinder -- Query
+ParameterBinder -- EbeanQueryWrapper
+PartTreeEbeanQuery -- Query
+PartTreeEbeanQuery -- AbstractEbeanQuery
+PartTreeEbeanQuery -- AbstractEbeanQueryExecution
+PartTreeEbeanQuery -- EbeanQueryCreator
+PartTreeEbeanQuery -- EbeanQueryMethod
+PartTreeEbeanQuery -- EbeanQueryWrapper
+PartTreeEbeanQuery -- ParameterBinder
+PartTreeEbeanQuery -- ParameterMetadataProvider
+SpelExpressionStringQueryParameterBinder -- Query
+SpelExpressionStringQueryParameterBinder -- EbeanQueryWrapper
+SpelExpressionStringQueryParameterBinder -- ParameterBinder
+SpelExpressionStringQueryParameterBinder -- StringQuery
+SpelExpressionStringQueryParameterBinder -- StringQueryParameterBinder
+StringQuery -- Query
+StringQuery -- EbeanQueryWrapper
+StringQueryParameterBinder -- Query
+StringQueryParameterBinder -- EbeanQueryWrapper
+StringQueryParameterBinder -- ParameterBinder
+StringQueryParameterBinder -- StringQuery
+EbeanRepositoryFactory -- Query
+EbeanRepositoryFactory -- EbeanRepository
+EbeanRepositoryFactory -- EbeanQueryLookupStrategy
+EbeanRepositoryFactory -- EbeanEntityInformation
+EbeanRepositoryFactory -- SimpleEbeanRepository
+EbeanRepositoryFactoryBean -- EbeanRepository
+EbeanRepositoryFactoryBean -- EbeanRepositoryFactory
+SimpleEbeanRepository -- Query
+SimpleEbeanRepository -- EbeanRepository
+SimpleEbeanRepository -- Converters
+SimpleEbeanRepository -- ExampleExpressionBuilder
+EbeanQueryChannelServiceIntegrationTest -- Query
+EbeanQueryChannelServiceIntegrationTest -- EbeanQueryChannelService
+EbeanQueryChannelServiceIntegrationTest -- QueryChannelService
+EbeanQueryChannelServiceIntegrationTest -- UserDTO
+EbeanQueryChannelServiceIntegrationTest -- UserQuery
+EbeanQueryChannelServiceIntegrationTest -- SampleConfig
+EbeanQueryChannelServiceIntegrationTest -- Address
+EbeanQueryChannelServiceIntegrationTest -- User
+EbeanQueryChannelServiceIntegrationTest -- UserInfo
+EbeanQueryChannelServiceIntegrationTest -- UserRepository
+UserDTO -- Address
+UserDTO -- User
+UserQuery -- ExprParam
+UserQuery -- IncludeFields
+UserQuery -- Query
+UserQuery -- ExprType
+UserQuery -- Address
+UserQuery -- User
+UserRepositoryIntegrationTest -- Query
+UserRepositoryIntegrationTest -- DomainEvent
+UserRepositoryIntegrationTest -- SampleConfig
+UserRepositoryIntegrationTest -- Address
+UserRepositoryIntegrationTest -- FullName
+UserRepositoryIntegrationTest -- User
+UserRepositoryIntegrationTest -- UserRepository
+SampleConfig -- Query
+SampleConfig -- DomainService
+SampleConfig -- EbeanQueryChannelService
+SampleConfig -- QueryChannelService
+SampleConfig -- EnableEbeanRepositories
+SampleConfig -- User
+SampleConfig -- UserDomainService
+User -- AbstractAggregateRoot
+User -- Address
+User -- FullName
+User -- Role
+User -- UserEmailChangedEvent
+UserDomainService -- DomainService
+UserDomainService -- User
+UserDomainService -- UserEmailChangedEvent
+UserEmailChangedEvent -- DomainEvent
+UserInfo -- Address
+UserInfo -- User
+UserRepository -- Modifying
+UserRepository -- Query
+UserRepository -- EbeanRepository
+UserRepository -- Address
+UserRepository -- FullName
+UserRepository -- User
+@enduml

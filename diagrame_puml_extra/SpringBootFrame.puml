@@ -1,0 +1,210 @@
+@startuml
+package com.tuling; {
+class Application {
+}
+
+class ApplicationTests {
+}
+
+class ProtoBufTest {
+}
+
+}
+
+package com.tuling.common.annotaion; {
+class AuthIgnore {
+}
+
+}
+
+package com.tuling.common.exception; {
+class RRException {
+}
+
+class RRExceptionHandler {
+}
+
+}
+
+package com.tuling.common.utils; {
+class Common {
+}
+
+class DateUtil {
+}
+
+class HttpContextUtils {
+}
+
+class IPUtils {
+}
+
+class MD5Util {
+}
+
+class MyMapper {
+}
+
+class PageUitls {
+}
+
+class RedisUtil {
+}
+
+class ShiroUtils {
+}
+
+class SQLFilter {
+}
+
+class URLConnectionUtil {
+}
+
+}
+
+package com.tuling.common.validator; {
+class Assert {
+}
+
+class ValidatorUtil {
+}
+
+}
+
+package com.tuling.common.validator.group; {
+class AddGroup {
+}
+
+class Group {
+}
+
+class UpdateGroup {
+}
+
+}
+
+package com.tuling.config; {
+class DruidConfig {
+}
+
+class RedisConfig {
+}
+
+class ShiroConfig {
+}
+
+class SwaggerConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package com.tuling.controller; {
+class IndexController {
+}
+
+class UserController {
+}
+
+}
+
+package com.tuling.interceptor; {
+class MyInterceptor {
+}
+
+}
+
+package com.tuling.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.tuling.modal; {
+class Demo {
+}
+
+class User {
+}
+
+}
+
+package com.tuling.service; {
+class AbstractService {
+}
+
+class Service {
+}
+
+class UserService {
+}
+
+}
+
+package com.tuling.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.tuling.shiro; {
+class MyCredentialsMatcher {
+}
+
+class MyShiroRealm {
+}
+
+}
+
+RRExceptionHandler -- RRException
+Common -- RRException
+Common -- DateUtil
+Common -- SQLFilter
+Common -- Service
+DateUtil -- RRException
+SQLFilter -- RRException
+Assert -- RRException
+AddGroup -- Group
+Group -- UpdateGroup
+ValidatorUtil -- RRException
+DruidConfig -- User
+ShiroConfig -- MyCredentialsMatcher
+ShiroConfig -- MyShiroRealm
+SwaggerConfig -- Service
+WebMvcConfig -- MyInterceptor
+UserController -- PageUitls
+UserController -- Assert
+UserController -- AddGroup
+UserController -- Group
+UserController -- ValidatorUtil
+UserController -- User
+UserController -- Service
+UserController -- UserService
+UserMapper -- MyMapper
+UserMapper -- User
+Demo -- User
+User -- AddGroup
+User -- Group
+AbstractService -- MyMapper
+AbstractService -- Service
+UserServiceImpl -- Common
+UserServiceImpl -- MD5Util
+UserServiceImpl -- RedisUtil
+UserServiceImpl -- UserMapper
+UserServiceImpl -- User
+UserServiceImpl -- AbstractService
+UserServiceImpl -- Service
+UserServiceImpl -- UserService
+UserService -- User
+UserService -- Service
+MyCredentialsMatcher -- MD5Util
+MyCredentialsMatcher -- User
+MyShiroRealm -- User
+MyShiroRealm -- Service
+MyShiroRealm -- UserService
+ApplicationTests -- Application
+ProtoBufTest -- Demo
+ProtoBufTest -- User
+@enduml

@@ -1,0 +1,545 @@
+@startuml
+package cn.jianwoo.chatgpt.api.annotation; {
+class IpLimit {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.aspect; {
+class ExceptionAOPHandler {
+}
+
+class IPLimitAspect {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.autotask; {
+class AsyncTaskExec {
+}
+
+class ImgFileCleanJob {
+}
+
+class Job {
+}
+
+class QueryBillingJob {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.base; {
+class BaseAuthReqBO {
+}
+
+class BaseController {
+}
+
+class BaseRequestDto {
+}
+
+class BaseResponseDto {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.bo; {
+class ChatGptAskReqBO {
+}
+
+class ConversationDetResBO {
+}
+
+class ConversationResBO {
+}
+
+class ConversationsReqBO {
+}
+
+class ConversationsResBO {
+}
+
+class CreditGrantsResBO {
+}
+
+class FreeDemoApiKeyBO {
+}
+
+class GenTitleReqBO {
+}
+
+class ModerationsReqBO {
+}
+
+class ModerationsResBO {
+}
+
+class ProxyBO {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.config; {
+class AppCfg {
+}
+
+class CORSConfig {
+}
+
+class ThreadPoolTaskConfig {
+}
+
+class UrlFilterConfig {
+}
+
+class WebConfig {
+}
+
+class WebsocketConfig {
+}
+
+class WebSocketConfigurator {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.constants; {
+class CacheKey {
+}
+
+class ChatGptServiceBean {
+}
+
+class Constants {
+}
+
+class ExceptionConstants {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.controller; {
+class AuthApiController {
+}
+
+class ChatGptApiController {
+}
+
+class IndexController {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.dto.req; {
+class AuthRequest {
+}
+
+class CacheRequest {
+}
+
+class ConversationRequest {
+}
+
+class GenTitleRequest {
+}
+
+class ModerationsRequest {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.dto.res; {
+class AnnouncementResponse {
+}
+
+class AuthResponse {
+}
+
+class ConversationDetResponse {
+}
+
+class ConversationResponse {
+}
+
+class ConversationsResponse {
+}
+
+class GenTitleResponse {
+}
+
+class ModerationsResponse {
+}
+
+class StatusResponse {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.dto.vo; {
+class ConversationsVO {
+}
+
+class MessageVO {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.exception; {
+class ControllerBizException {
+}
+
+class JwBlogException {
+}
+
+class ValidationException {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.filter; {
+class StatusControlFilter {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.interceptor; {
+class LoginHandleInterceptor {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api; {
+class OpenAiAuthApiApplication {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.service; {
+class ChatGptService {
+}
+
+class LoadingCacheIpService {
+}
+
+class OpenAiAuthService {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.service.impl; {
+class BaixingGptApiServiceImpl {
+}
+
+class ChatGptApiServiceImpl {
+}
+
+class ChatGptTokenServiceImpl {
+}
+
+class DemoFreeGptApiServiceImpl {
+}
+
+class LoadingCacheIpServiceImpl {
+}
+
+class OpenAiAuthServiceImpl {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.stream; {
+class Callback {
+}
+
+class HttpAsyncClientUtil {
+}
+
+class RealEventSourceEx {
+}
+
+class ServerSentEventReaderEx {
+}
+
+class SSLSocketClient {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.util; {
+class ApplicationConfigUtil {
+}
+
+class JwUtil {
+}
+
+class MarkdownToHtmlUtils {
+}
+
+class NotifiyUtil {
+}
+
+class WebsocketUtil {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.validation; {
+class BizValidation {
+}
+
+}
+
+package cn.jianwoo.chatgpt.api.websocket; {
+class Client {
+}
+
+class WebsocketServer {
+}
+
+}
+
+ExceptionAOPHandler -- JwBlogException
+ExceptionAOPHandler -- ApplicationConfigUtil
+ExceptionAOPHandler -- NotifiyUtil
+IPLimitAspect -- IpLimit
+IPLimitAspect -- BaseResponseDto
+IPLimitAspect -- Constants
+IPLimitAspect -- ExceptionConstants
+IPLimitAspect -- LoadingCacheIpService
+IPLimitAspect -- JwUtil
+AsyncTaskExec -- Callback
+ImgFileCleanJob -- Job
+ImgFileCleanJob -- Constants
+ImgFileCleanJob -- JwBlogException
+ImgFileCleanJob -- ApplicationConfigUtil
+Job -- JwBlogException
+QueryBillingJob -- AsyncTaskExec
+QueryBillingJob -- Job
+QueryBillingJob -- CreditGrantsResBO
+QueryBillingJob -- CacheKey
+QueryBillingJob -- ChatGptServiceBean
+QueryBillingJob -- JwBlogException
+QueryBillingJob -- ChatGptService
+QueryBillingJob -- ApplicationConfigUtil
+QueryBillingJob -- NotifiyUtil
+BaseController -- BaseResponseDto
+BaseController -- ControllerBizException
+BaseController -- JwBlogException
+BaseController -- ValidationException
+BaseController -- JwUtil
+ChatGptAskReqBO -- BaseAuthReqBO
+ConversationsReqBO -- BaseAuthReqBO
+FreeDemoApiKeyBO -- BaseAuthReqBO
+GenTitleReqBO -- BaseAuthReqBO
+ModerationsReqBO -- BaseAuthReqBO
+ModerationsResBO -- BaseAuthReqBO
+AppCfg -- ProxyBO
+AppCfg -- CacheKey
+AppCfg -- Constants
+AppCfg -- ApplicationConfigUtil
+ThreadPoolTaskConfig -- AsyncTaskExec
+UrlFilterConfig -- StatusControlFilter
+WebConfig -- Constants
+WebConfig -- LoginHandleInterceptor
+WebConfig -- ApplicationConfigUtil
+ChatGptServiceBean -- ChatGptService
+ExceptionConstants -- Constants
+AuthApiController -- IpLimit
+AuthApiController -- BaseController
+AuthApiController -- BaseResponseDto
+AuthApiController -- ChatGptServiceBean
+AuthApiController -- AuthRequest
+AuthApiController -- AuthResponse
+AuthApiController -- ChatGptService
+AuthApiController -- OpenAiAuthService
+AuthApiController -- BizValidation
+ChatGptApiController -- BaseController
+ChatGptApiController -- BaseRequestDto
+ChatGptApiController -- ConversationDetResBO
+ChatGptApiController -- ConversationsReqBO
+ChatGptApiController -- ConversationsResBO
+ChatGptApiController -- GenTitleReqBO
+ChatGptApiController -- ModerationsReqBO
+ChatGptApiController -- ModerationsResBO
+ChatGptApiController -- ChatGptServiceBean
+ChatGptApiController -- GenTitleRequest
+ChatGptApiController -- ModerationsRequest
+ChatGptApiController -- AuthResponse
+ChatGptApiController -- ConversationDetResponse
+ChatGptApiController -- ConversationsResponse
+ChatGptApiController -- GenTitleResponse
+ChatGptApiController -- ModerationsResponse
+ChatGptApiController -- ConversationsVO
+ChatGptApiController -- MessageVO
+ChatGptApiController -- ChatGptService
+ChatGptApiController -- BizValidation
+IndexController -- IpLimit
+IndexController -- BaseController
+IndexController -- BaseResponseDto
+IndexController -- CacheKey
+IndexController -- Constants
+IndexController -- AnnouncementResponse
+IndexController -- ConversationDetResponse
+IndexController -- ConversationResponse
+IndexController -- StatusResponse
+IndexController -- MessageVO
+AuthRequest -- BaseRequestDto
+CacheRequest -- BaseRequestDto
+ConversationRequest -- BaseRequestDto
+ConversationRequest -- ChatGptAskReqBO
+GenTitleRequest -- BaseRequestDto
+ModerationsRequest -- BaseRequestDto
+AnnouncementResponse -- BaseResponseDto
+AuthResponse -- BaseResponseDto
+ConversationDetResponse -- BaseResponseDto
+ConversationDetResponse -- MessageVO
+ConversationResponse -- BaseResponseDto
+ConversationsResponse -- BaseResponseDto
+ConversationsResponse -- ConversationsVO
+GenTitleResponse -- BaseResponseDto
+ModerationsResponse -- BaseResponseDto
+ModerationsResponse -- ConversationsVO
+StatusResponse -- BaseResponseDto
+ControllerBizException -- Constants
+ControllerBizException -- ExceptionConstants
+ControllerBizException -- JwBlogException
+JwBlogException -- Constants
+JwBlogException -- ExceptionConstants
+ValidationException -- Constants
+ValidationException -- ExceptionConstants
+ValidationException -- JwBlogException
+StatusControlFilter -- BaseResponseDto
+StatusControlFilter -- CacheKey
+StatusControlFilter -- Constants
+StatusControlFilter -- ExceptionConstants
+LoginHandleInterceptor -- BaseResponseDto
+LoginHandleInterceptor -- Constants
+LoginHandleInterceptor -- ExceptionConstants
+ChatGptService -- ChatGptAskReqBO
+ChatGptService -- ConversationDetResBO
+ChatGptService -- ConversationResBO
+ChatGptService -- ConversationsReqBO
+ChatGptService -- ConversationsResBO
+ChatGptService -- CreditGrantsResBO
+ChatGptService -- GenTitleReqBO
+ChatGptService -- ModerationsReqBO
+ChatGptService -- ModerationsResBO
+ChatGptService -- JwBlogException
+ChatGptService -- Callback
+BaixingGptApiServiceImpl -- ChatGptAskReqBO
+BaixingGptApiServiceImpl -- ConversationDetResBO
+BaixingGptApiServiceImpl -- ConversationResBO
+BaixingGptApiServiceImpl -- ConversationsReqBO
+BaixingGptApiServiceImpl -- ConversationsResBO
+BaixingGptApiServiceImpl -- CreditGrantsResBO
+BaixingGptApiServiceImpl -- GenTitleReqBO
+BaixingGptApiServiceImpl -- ModerationsReqBO
+BaixingGptApiServiceImpl -- ModerationsResBO
+BaixingGptApiServiceImpl -- ProxyBO
+BaixingGptApiServiceImpl -- JwBlogException
+BaixingGptApiServiceImpl -- ChatGptService
+BaixingGptApiServiceImpl -- Callback
+BaixingGptApiServiceImpl -- ApplicationConfigUtil
+BaixingGptApiServiceImpl -- JwUtil
+ChatGptApiServiceImpl -- AsyncTaskExec
+ChatGptApiServiceImpl -- ChatGptAskReqBO
+ChatGptApiServiceImpl -- ConversationDetResBO
+ChatGptApiServiceImpl -- ConversationResBO
+ChatGptApiServiceImpl -- ConversationsReqBO
+ChatGptApiServiceImpl -- ConversationsResBO
+ChatGptApiServiceImpl -- CreditGrantsResBO
+ChatGptApiServiceImpl -- GenTitleReqBO
+ChatGptApiServiceImpl -- ModerationsReqBO
+ChatGptApiServiceImpl -- ModerationsResBO
+ChatGptApiServiceImpl -- ProxyBO
+ChatGptApiServiceImpl -- JwBlogException
+ChatGptApiServiceImpl -- ChatGptService
+ChatGptApiServiceImpl -- Callback
+ChatGptApiServiceImpl -- HttpAsyncClientUtil
+ChatGptApiServiceImpl -- ApplicationConfigUtil
+ChatGptApiServiceImpl -- MarkdownToHtmlUtils
+ChatGptApiServiceImpl -- NotifiyUtil
+ChatGptApiServiceImpl -- Client
+ChatGptTokenServiceImpl -- AsyncTaskExec
+ChatGptTokenServiceImpl -- ChatGptAskReqBO
+ChatGptTokenServiceImpl -- ConversationDetResBO
+ChatGptTokenServiceImpl -- ConversationResBO
+ChatGptTokenServiceImpl -- ConversationsReqBO
+ChatGptTokenServiceImpl -- ConversationsResBO
+ChatGptTokenServiceImpl -- CreditGrantsResBO
+ChatGptTokenServiceImpl -- GenTitleReqBO
+ChatGptTokenServiceImpl -- ModerationsReqBO
+ChatGptTokenServiceImpl -- ModerationsResBO
+ChatGptTokenServiceImpl -- ProxyBO
+ChatGptTokenServiceImpl -- CacheKey
+ChatGptTokenServiceImpl -- JwBlogException
+ChatGptTokenServiceImpl -- ChatGptService
+ChatGptTokenServiceImpl -- Callback
+ChatGptTokenServiceImpl -- HttpAsyncClientUtil
+ChatGptTokenServiceImpl -- ApplicationConfigUtil
+ChatGptTokenServiceImpl -- MarkdownToHtmlUtils
+ChatGptTokenServiceImpl -- NotifiyUtil
+ChatGptTokenServiceImpl -- Client
+DemoFreeGptApiServiceImpl -- AsyncTaskExec
+DemoFreeGptApiServiceImpl -- ChatGptAskReqBO
+DemoFreeGptApiServiceImpl -- ConversationDetResBO
+DemoFreeGptApiServiceImpl -- ConversationResBO
+DemoFreeGptApiServiceImpl -- ConversationsReqBO
+DemoFreeGptApiServiceImpl -- ConversationsResBO
+DemoFreeGptApiServiceImpl -- GenTitleReqBO
+DemoFreeGptApiServiceImpl -- ModerationsReqBO
+DemoFreeGptApiServiceImpl -- ModerationsResBO
+DemoFreeGptApiServiceImpl -- ProxyBO
+DemoFreeGptApiServiceImpl -- CacheKey
+DemoFreeGptApiServiceImpl -- JwBlogException
+DemoFreeGptApiServiceImpl -- ChatGptService
+DemoFreeGptApiServiceImpl -- ChatGptApiServiceImpl
+DemoFreeGptApiServiceImpl -- Callback
+DemoFreeGptApiServiceImpl -- ApplicationConfigUtil
+DemoFreeGptApiServiceImpl -- NotifiyUtil
+LoadingCacheIpServiceImpl -- IpLimit
+LoadingCacheIpServiceImpl -- LoadingCacheIpService
+LoadingCacheIpServiceImpl -- ApplicationConfigUtil
+OpenAiAuthServiceImpl -- ProxyBO
+OpenAiAuthServiceImpl -- JwBlogException
+OpenAiAuthServiceImpl -- OpenAiAuthService
+LoadingCacheIpService -- IpLimit
+OpenAiAuthService -- JwBlogException
+HttpAsyncClientUtil -- Callback
+HttpAsyncClientUtil -- RealEventSourceEx
+HttpAsyncClientUtil -- SSLSocketClient
+HttpAsyncClientUtil -- Client
+RealEventSourceEx -- Callback
+RealEventSourceEx -- ServerSentEventReaderEx
+RealEventSourceEx -- Client
+ServerSentEventReaderEx -- Callback
+SSLSocketClient -- Client
+ApplicationConfigUtil -- IpLimit
+JwUtil -- Constants
+JwUtil -- ApplicationConfigUtil
+JwUtil -- Client
+NotifiyUtil -- JwBlogException
+NotifiyUtil -- ApplicationConfigUtil
+WebsocketUtil -- IpLimit
+WebsocketUtil -- LoadingCacheIpServiceImpl
+WebsocketUtil -- LoadingCacheIpService
+BizValidation -- Constants
+BizValidation -- ExceptionConstants
+BizValidation -- ValidationException
+WebsocketServer -- BaseResponseDto
+WebsocketServer -- ChatGptAskReqBO
+WebsocketServer -- ConversationResBO
+WebsocketServer -- WebSocketConfigurator
+WebsocketServer -- CacheKey
+WebsocketServer -- ChatGptServiceBean
+WebsocketServer -- Constants
+WebsocketServer -- ExceptionConstants
+WebsocketServer -- ConversationRequest
+WebsocketServer -- ControllerBizException
+WebsocketServer -- ChatGptService
+WebsocketServer -- ApplicationConfigUtil
+WebsocketServer -- JwUtil
+WebsocketServer -- WebsocketUtil
+WebsocketServer -- BizValidation
+@enduml

@@ -1,0 +1,193 @@
+@startuml
+package pl.piomin.services.account; {
+class AccountApplication {
+}
+
+class OrderReceiverTest {
+}
+
+}
+
+package pl.piomin.services.account.config; {
+class AccountConfig {
+}
+
+}
+
+package pl.piomin.services.account.controller; {
+class AccountController {
+}
+
+}
+
+package pl.piomin.services.account.messaging; {
+class OrderSender {
+}
+
+}
+
+package pl.piomin.services.account.model; {
+class Account {
+}
+
+class Product {
+}
+
+}
+
+package pl.piomin.services.account.repository; {
+class AccountRepository {
+}
+
+}
+
+package pl.piomin.services.account.service; {
+class AccountService {
+}
+
+}
+
+package pl.piomin.services.messaging; {
+class Order {
+}
+
+class OrderStatus {
+}
+
+}
+
+package pl.piomin.services.order.config; {
+class OrderConfig {
+}
+
+}
+
+package pl.piomin.services.order.controller; {
+class OrderController {
+}
+
+}
+
+package pl.piomin.services.order.messaging; {
+class OrderSender {
+}
+
+}
+
+package pl.piomin.services.order; {
+class OrderApplication {
+}
+
+class OrderControllerTest {
+}
+
+}
+
+package pl.piomin.services.order.repository; {
+class OrderRepository {
+}
+
+}
+
+package pl.piomin.services.order.service; {
+class OrderService {
+}
+
+}
+
+package pl.piomin.services.product.config; {
+class ProductConfig {
+}
+
+}
+
+package pl.piomin.services.product.controller; {
+class ProductController {
+}
+
+}
+
+package pl.piomin.services.product.messaging; {
+class OrderSender {
+}
+
+}
+
+package pl.piomin.services.product.model; {
+class Product {
+}
+
+}
+
+package pl.piomin.services.product; {
+class ProductApplication {
+}
+
+class OrderReceiverTest {
+}
+
+}
+
+package pl.piomin.services.product.repository; {
+class ProductRepository {
+}
+
+}
+
+package pl.piomin.services.product.service; {
+class ProductService {
+}
+
+}
+
+AccountApplication -- Account
+AccountApplication -- AccountService
+AccountApplication -- Order
+AccountConfig -- Account
+AccountConfig -- AccountRepository
+AccountController -- Account
+AccountController -- AccountRepository
+OrderSender -- Order
+AccountRepository -- Account
+AccountService -- OrderSender
+AccountService -- Account
+AccountService -- AccountRepository
+AccountService -- Order
+AccountService -- OrderStatus
+OrderReceiverTest -- Account
+OrderReceiverTest -- Product
+OrderReceiverTest -- Order
+OrderReceiverTest -- OrderStatus
+Order -- Account
+Order -- Product
+Order -- OrderStatus
+OrderConfig -- Order
+OrderConfig -- OrderRepository
+OrderController -- OrderSender
+OrderController -- Order
+OrderController -- OrderStatus
+OrderController -- OrderRepository
+OrderApplication -- Order
+OrderApplication -- OrderService
+OrderRepository -- Order
+OrderService -- Order
+OrderService -- OrderStatus
+OrderService -- OrderRepository
+OrderControllerTest -- Product
+OrderControllerTest -- Order
+OrderControllerTest -- OrderStatus
+OrderControllerTest -- OrderController
+ProductConfig -- Product
+ProductConfig -- ProductRepository
+ProductController -- Product
+ProductController -- ProductRepository
+ProductApplication -- Product
+ProductApplication -- Order
+ProductApplication -- ProductService
+ProductRepository -- Product
+ProductService -- OrderSender
+ProductService -- Product
+ProductService -- Order
+ProductService -- OrderStatus
+ProductService -- ProductRepository
+@enduml

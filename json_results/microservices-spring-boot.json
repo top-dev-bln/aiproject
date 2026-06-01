@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. The platform provides capabilities for user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        SecurityCredentialsConfig[\"SecurityCredentialsConfig\"]\n        JwtUsernameAndPasswordAuthenticationFilter[\"JwtUsernameAndPasswordAuthenticationFilter\"]\n        UserRole[\"UserRole\"]\n        JwtConfig[\"JwtConfig\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtTokenAuthenticationFilter[\"JwtTokenAuthenticationFilter\"]\n        SecurityTokenConfig[\"SecurityTokenConfig\"]\n    end\n    subgraph Services\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    end\n    subgraph Controllers\n        HomeController[\"HomeController\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Controllers"
+  }
+}

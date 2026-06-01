@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: ${DATASOURCE_URL}
+    password: ${DATASOURCE_PASSWORD}
+    username: ${DATASOURCE_USERNAME}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 10
+  sql:
+    init:
+      mode: never
+
+idempotence4j:
+  retention:
+    enabled: true
+    period: P0Y0M20D
+    purge:
+      schedule: "* */15 * * * ?"
+      batchSize: 1000
+
+DATASOURCE_URL: jdbc:postgresql://localhost:5432/idempotence4j_db
+DATASOURCE_USERNAME: username
+DATASOURCE_PASSWORD: password

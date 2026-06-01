@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves User, Candidate roles. The platform provides capabilities for employee client, department bean producer, department lifecycle. Secondary concerns include IoT functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "DisableExternalProfile"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to use employee client capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EmployeeClient"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use department bean producer capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DepartmentBeanProducer"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use department lifecycle capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DepartmentLifecycle"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use department capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Department"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        EmployeeClient[\"EmployeeClient\"]\n        DepartmentBeanProducer[\"DepartmentBeanProducer\"]\n        DepartmentLifecycle[\"DepartmentLifecycle\"]\n        Department[\"Department\"]\n        Employee[\"Employee\"]\n        DepartmentRepository[\"DepartmentRepository\"]\n        DepartmentResource[\"DepartmentResource\"]\n        ConsulResource[\"ConsulResource\"]\n        DisableExternalProfile[\"DisableExternalProfile\"]\n        EmployeeBeanProducer[\"EmployeeBeanProducer\"]\n        EmployeeLifecycle[\"EmployeeLifecycle\"]\n        EmployeeRepository[\"EmployeeRepository\"]\n        EmployeeResource[\"EmployeeResource\"]\n        DepartmentClient[\"DepartmentClient\"]\n        OrganizationBeanProducer[\"OrganizationBeanProducer\"]\n        OrganizationLifecycle[\"OrganizationLifecycle\"]\n        Organization[\"Organization\"]\n        OrganizationRepository[\"OrganizationRepository\"]\n        OrganizationResource[\"OrganizationResource\"]\n    end"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin, Developer roles. The platform provides capabilities for exception aop handler, chat gpt, loading cache ip. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "OpenAiAuthService",
+          "ChatGptTokenServiceImpl",
+          "OpenAiAuthServiceImpl"
+        ],
+        "controllers": [
+          "AuthApiController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with base functionality, so that I can accomplish my base-related tasks.",
+        "services": [
+          "ExceptionAOPHandler"
+        ],
+        "controllers": [
+          "BaseController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with chat gpt api functionality, so that I can accomplish my chat gpt api-related tasks.",
+        "services": [
+          "ChatGptService",
+          "ChatGptApiServiceImpl"
+        ],
+        "controllers": [
+          "ChatGptApiController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "ExceptionAOPHandler"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use exception aop handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ExceptionAOPHandler"
+        ],
+        "controllers": [
+          "BaseController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        ExceptionAOPHandler[\"ExceptionAOPHandler\"]\n        ChatGptService[\"ChatGptService\"]\n        LoadingCacheIpService[\"LoadingCacheIpService\"]\n        OpenAiAuthService[\"OpenAiAuthService\"]\n        BaixingGptApiServiceImpl[\"BaixingGptApiServiceImpl\"]\n        ChatGptApiServiceImpl[\"ChatGptApiServiceImpl\"]\n        ChatGptTokenServiceImpl[\"ChatGptTokenServiceImpl\"]\n        DemoFreeGptApiServiceImpl[\"DemoFreeGptApiServiceImpl\"]\n        LoadingCacheIpServiceImpl[\"LoadingCacheIpServiceImpl\"]\n        OpenAiAuthServiceImpl[\"OpenAiAuthServiceImpl\"]\n    end\n    subgraph Security\n        BaseAuthReqBO[\"BaseAuthReqBO\"]\n        UrlFilterConfig[\"UrlFilterConfig\"]\n        AuthRequest[\"AuthRequest\"]\n        AuthResponse[\"AuthResponse\"]\n        StatusControlFilter[\"StatusControlFilter\"]\n    end\n    subgraph Controllers\n        BaseController[\"BaseController\"]\n        AuthApiController[\"AuthApiController\"]\n        ChatGptApiController[\"ChatGptApiController\"]\n        IndexController[\"IndexController\"]\n    end\n    subgraph Infrastructure\n        AppCfg[\"AppCfg\"]\n        CORSConfig[\"CORSConfig\"]\n        ThreadPoolTaskConfig[\"ThreadPoolTaskConfig\"]\n        WebConfig[\"WebConfig\"]\n        WebsocketConfig[\"WebsocketConfig\"]\n        WebSocketConfigurator[\"WebSocketConfigurator\"]\n        Constants[\"Constants\"]\n        ExceptionConstants[\"ExceptionConstants\"]\n        ApplicationConfigUtil[\"ApplicationConfigUtil\"]\n        JwUtil[\"JwUtil\"]\n        MarkdownToHtmlUtils[\"MarkdownToHtmlUtils\"]\n        NotifiyUtil[\"NotifiyUtil\"]\n        WebsocketUtil[\"WebsocketUtil\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

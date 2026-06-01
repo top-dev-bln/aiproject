@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves Customer, User roles. The platform provides capabilities for my user details, my user detail. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "MyUserDetails",
+          "MyUserDetailService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "MyUserDetails"
+        ],
+        "controllers": [
+          "AdminController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to interact with controller advisor functionality, so that I can accomplish my controller advisor-related tasks.",
+        "services": [
+          "MyUserDetails"
+        ],
+        "controllers": [
+          "ControllerAdvisor"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "MyUserDetails"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "MyUserDetails"
+        ],
+        "controllers": [
+          "AdminController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        JMSConfiguration[\"JMSConfiguration\"]\n        WebConstants[\"WebConstants\"]\n        MessageReceiver[\"MessageReceiver\"]\n        Validator[\"Validator\"]\n    end\n    subgraph Security\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        JwtRequestFilter[\"JwtRequestFilter\"]\n        Authorities[\"Authorities\"]\n        JwtUtil[\"JwtUtil\"]\n    end\n    subgraph Controllers\n        AdminController[\"AdminController\"]\n        ControllerAdvisor[\"ControllerAdvisor\"]\n        HomeController[\"HomeController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        AddressRepository[\"AddressRepository\"]\n        CartRepository[\"CartRepository\"]\n        OrderRepository[\"OrderRepository\"]\n        ProductRepository[\"ProductRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        MyUserDetails[\"MyUserDetails\"]\n        MyUserDetailService[\"MyUserDetailService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

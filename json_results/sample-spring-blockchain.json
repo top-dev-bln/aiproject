@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin roles. The platform provides capabilities for web3j auto configuration, web3j properties, blockchain transaction. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "Web3jAutoConfiguration"
+        ],
+        "controllers": [
+          "BlockchainController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with blockchain functionality, so that I can accomplish my blockchain-related tasks.",
+        "services": [
+          "BlockchainTransaction",
+          "BlockchainService"
+        ],
+        "controllers": [
+          "BlockchainController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use web3j properties capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Web3jProperties"
+        ],
+        "controllers": [
+          "BlockchainController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use blockchain transaction capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BlockchainTransaction"
+        ],
+        "controllers": [
+          "BlockchainController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use blockchain capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BlockchainService"
+        ],
+        "controllers": [
+          "BlockchainController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        Web3jAutoConfiguration[\"Web3jAutoConfiguration\"]\n        Web3jProperties[\"Web3jProperties\"]\n        BlockchainTransaction[\"BlockchainTransaction\"]\n        BlockchainService[\"BlockchainService\"]\n    end\n    subgraph Controllers\n        BlockchainController[\"BlockchainController\"]\n    end\n    Controllers --> Services"
+  }
+}

@@ -1,0 +1,1098 @@
+@startuml
+package org.example; {
+class ConcurrentHashMapExample {
+}
+
+class CopyOnWriteArrayListExample {
+}
+
+class BusinessCar {
+}
+
+class Car {
+}
+
+class Main {
+}
+
+class Vehicle {
+}
+
+class Counter {
+}
+
+class ReentrantLockCounter {
+}
+
+class SynchronizedBlockCounter {
+}
+
+class SynchronizedBlockWithTwoCounterAndTwoLock {
+}
+
+class SynchronizedMethodCounter {
+}
+
+class SynchronizedMethodWithTwoCounter {
+}
+
+}
+
+package com.medium.githubactions.controller; {
+class GreetingController {
+}
+
+}
+
+package com.medium.githubactions; {
+class GithubActionsApplication {
+}
+
+class GithubActionsApplicationTests {
+}
+
+}
+
+package com.example.grpcclient.client; {
+class HelloGrpcClient {
+}
+
+}
+
+package com.example.grpcclient.controller; {
+class HelloController {
+}
+
+}
+
+package com.example.grpcclient; {
+class GrpcClientApplication {
+}
+
+class GrpcClientApplicationTests {
+}
+
+}
+
+package com.example.consumer.config; {
+class TopicConfig {
+}
+
+}
+
+package com.example.consumer.consumer; {
+class OrderConsumer {
+}
+
+}
+
+package com.example.consumer; {
+class ConsumerApplication {
+}
+
+class ConsumerApplicationTests {
+}
+
+class OrderServiceApplicationTests {
+}
+
+}
+
+package com.example.consumer.model; {
+class Order {
+}
+
+}
+
+package com.example.producer.controller; {
+class PublishOrderController {
+}
+
+}
+
+package com.example.producer.model; {
+class Order {
+}
+
+}
+
+package com.example.producer.producer; {
+class OrderProducer {
+}
+
+}
+
+package com.example.producer; {
+class ProducerApplication {
+}
+
+class ProducerApplicationTests {
+}
+
+class PaymentServiceApplicationTests {
+}
+
+class StockServiceApplicationTests {
+}
+
+}
+
+package com.test.kafka.config; {
+class KafkaConsumerConfig {
+}
+
+}
+
+package com.test.kafka.consumer; {
+class KafkaConsumer {
+}
+
+}
+
+package com.test.kafka.controller; {
+class TodoController {
+}
+
+}
+
+package com.test.kafka; {
+class KafkaApplication {
+}
+
+class KafkaApplicationTests {
+}
+
+}
+
+package com.test.kafka.model; {
+class Todo {
+}
+
+}
+
+package com.test.kafka.producer; {
+class KafkaProducer {
+}
+
+}
+
+package com.example.springargocdapp; {
+class HelloController {
+}
+
+class SpringArgoCdApplication {
+}
+
+class SpringArgoCdApplicationTests {
+}
+
+}
+
+package com.example.springawsdynamodb; {
+class Address {
+}
+
+class DynamoDbConfig {
+}
+
+class SpringAwsDynamodbApplication {
+}
+
+class User {
+}
+
+class UserRepository {
+}
+
+class SpringAwsDynamodbApplicationTests {
+}
+
+}
+
+package com.example.springawss3; {
+class S3Config {
+}
+
+class S3Controller {
+}
+
+class S3Service {
+}
+
+class SpringAwsS3Application {
+}
+
+class SpringAwsS3ApplicationTests {
+}
+
+}
+
+package com.example.springawssqs; {
+class Consumer {
+}
+
+class Message {
+}
+
+class Publisher {
+}
+
+class SpringAwsSqsApplication {
+}
+
+class SqsConfig {
+}
+
+class SpringAwsSqsApplicationTests {
+}
+
+}
+
+package com.example.rediscluster.config; {
+class RedisClusterConfig {
+}
+
+}
+
+package com.example.rediscluster.controller; {
+class CacheController {
+}
+
+}
+
+package com.example.rediscluster.model; {
+class User {
+}
+
+}
+
+package com.example.rediscluster; {
+class RedisclusterApplication {
+}
+
+class RedisclusterApplicationTests {
+}
+
+}
+
+package com.example.rediscluster.service; {
+class CacheService {
+}
+
+}
+
+package com.example.retryable.controller; {
+class TodoController {
+}
+
+}
+
+package com.example.retryable.domain; {
+class Todo {
+}
+
+}
+
+package com.example.retryable.exception; {
+class SaveTodoException {
+}
+
+}
+
+package com.example.retryable; {
+class RetryableApplication {
+}
+
+class RetryableApplicationTests {
+}
+
+}
+
+package com.example.retryable.service; {
+class TodoService {
+}
+
+}
+
+package com.example.javaflags; {
+class Controller {
+}
+
+class JavaFlagsApplication {
+}
+
+class MemoryStats {
+}
+
+class JavaFlagsApplicationTests {
+}
+
+}
+
+package com.example.hikaricp.config; {
+class SpanAspectConfig {
+}
+
+}
+
+package com.example.hikaricp.controller; {
+class UserController {
+}
+
+}
+
+package com.example.hikaricp; {
+class HikaricpApplication {
+}
+
+class HikaricpApplicationTests {
+}
+
+}
+
+package com.example.hikaricp.model; {
+class User {
+}
+
+}
+
+package com.example.hikaricp.repository; {
+class UserRepository {
+}
+
+}
+
+package com.example.hikaricp.service; {
+class UserService {
+}
+
+}
+
+package com.example.orderservice.config; {
+class TopicConfig {
+}
+
+}
+
+package com.example.orderservice.controller; {
+class OrderController {
+}
+
+}
+
+package com.example.orderservice.model; {
+class Order {
+}
+
+}
+
+package com.example.orderservice; {
+class OrderServiceApplication {
+}
+
+}
+
+package com.example.orderservice.producer; {
+class OrderCreatedEventProducer {
+}
+
+}
+
+package com.example.paymentservice.consumer; {
+class OrderCreatedEventConsumer {
+}
+
+}
+
+package com.example.paymentservice.model; {
+class Order {
+}
+
+}
+
+package com.example.paymentservice; {
+class PaymentServiceApplication {
+}
+
+}
+
+package com.example.stockservice.consumer; {
+class OrderCreatedEventConsumer {
+}
+
+}
+
+package com.example.stockservice.model; {
+class Order {
+}
+
+}
+
+package com.example.stockservice; {
+class StockServiceApplication {
+}
+
+}
+
+package com.example.commentservice; {
+class CommentServiceApplication {
+}
+
+class CommentServiceApplicationTests {
+}
+
+class CommentServiceApplication {
+}
+
+class CommentServiceApplicationTests {
+}
+
+}
+
+package com.example.commentservice.config; {
+class SpanAspectConfig {
+}
+
+class SpanAspectConfig {
+}
+
+}
+
+package com.example.commentservice.controller; {
+class CommentController {
+}
+
+class CommentController {
+}
+
+}
+
+package com.example.commentservice.model; {
+class Comment {
+}
+
+class Comment {
+}
+
+}
+
+package com.example.commentservice.service; {
+class CommentService {
+}
+
+class CommentService {
+}
+
+}
+
+package com.example.postservice.config; {
+class ErrorDecoderBean {
+}
+
+class RestTemplateBean {
+}
+
+class SpanAspectConfig {
+}
+
+class ErrorDecoderBean {
+}
+
+class RestTemplateBean {
+}
+
+class SpanAspectConfig {
+}
+
+class SpanAspectConfig {
+}
+
+}
+
+package com.example.postservice.controller; {
+class PostController {
+}
+
+class PostController {
+}
+
+class PostController {
+}
+
+}
+
+package com.example.postservice.domain; {
+class Post {
+}
+
+class Post {
+}
+
+}
+
+package com.example.postservice.feign; {
+class CommentFeignClient {
+}
+
+class ExceptionMessage {
+}
+
+class MessageErrorDecoder {
+}
+
+class CommentFeignClient {
+}
+
+class ExceptionMessage {
+}
+
+class MessageErrorDecoder {
+}
+
+class CommentFeignClient {
+}
+
+}
+
+package com.example.postservice.model; {
+class CommentResponseModel {
+}
+
+class CommentResponseModel {
+}
+
+class Comment {
+}
+
+class Post {
+}
+
+}
+
+package com.example.postservice; {
+class PostServiceApplication {
+}
+
+class PostServiceApplicationTests {
+}
+
+class PostServiceApplication {
+}
+
+class PostServiceApplicationTests {
+}
+
+class PostServiceApplication {
+}
+
+class PostServiceApplicationTests {
+}
+
+class VThreadServiceApplicationTests {
+}
+
+}
+
+package com.example.postservice.service; {
+class PostService {
+}
+
+class PostService {
+}
+
+class PostService {
+}
+
+}
+
+package com.example.pessimisticlock.controller; {
+class BalanceController {
+}
+
+}
+
+package com.example.pessimisticlock.domain; {
+class Balance {
+}
+
+}
+
+package com.example.pessimisticlock.repository; {
+class BalanceRepository {
+}
+
+}
+
+package com.example.pessimisticlock.service; {
+class BalanceService {
+}
+
+}
+
+package com.example.pessimisticlock; {
+class SpringPessimisticLockApplication {
+}
+
+}
+
+package com.example.optimisticlock; {
+class SpringPessimisticLockApplicationTests {
+}
+
+}
+
+package com.example.comment; {
+class CommentServiceApplication {
+}
+
+}
+
+package com.example.comment.config; {
+class SpanAspectConfig {
+}
+
+}
+
+package com.example.comment.controller; {
+class CommentController {
+}
+
+}
+
+package com.example.comment.model; {
+class Comment {
+}
+
+}
+
+package com.example.comment.service; {
+class CommentService {
+}
+
+}
+
+package com.example.zipkin; {
+class CommentServiceApplicationTests {
+}
+
+}
+
+package com.example.springreactiveredis.config; {
+class ReactiveRedisConfig {
+}
+
+}
+
+package com.example.springreactiveredis.controller; {
+class UserController {
+}
+
+}
+
+package com.example.springreactiveredis.domin; {
+class User {
+}
+
+}
+
+package com.example.springreactiveredis.repository; {
+class UserRepository {
+}
+
+}
+
+package com.example.springreactiveredis; {
+class SpringReactiveRedisApplication {
+}
+
+class SpringReactiveRedisApplicationTests {
+}
+
+}
+
+package com.example.springredisdistributedlock.config; {
+class RedisConfig {
+}
+
+}
+
+package com.example.springredisdistributedlock; {
+class CronService {
+}
+
+class LockController {
+}
+
+class LockService {
+}
+
+class RedisDistributedLock {
+}
+
+class SpringRedisDistributedLockApplication {
+}
+
+class SpringRedisDistributedLockApplicationTests {
+}
+
+}
+
+package com.example.redisom.config; {
+class MyKeyspaceConfiguration {
+}
+
+}
+
+package com.example.redisom.controller; {
+class PostController {
+}
+
+}
+
+package com.example.redisom.models; {
+class Author {
+}
+
+class Comment {
+}
+
+class Post {
+}
+
+}
+
+package com.example.redisom.repositories; {
+class PostRepository {
+}
+
+}
+
+package com.example.redisom; {
+class SpringRedisOm {
+}
+
+class SkeletonApplicationTests {
+}
+
+}
+
+package com.example.springtestcontainers.controller; {
+class UserController {
+}
+
+}
+
+package com.example.springtestcontainers.domain; {
+class User {
+}
+
+}
+
+package com.example.springtestcontainers.repository; {
+class UserRepository {
+}
+
+}
+
+package com.example.springtestcontainers.service; {
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.example.springtestcontainers; {
+class SpringTestContainersApplication {
+}
+
+class UserControllerTest {
+}
+
+class UserRepositoryTest {
+}
+
+}
+
+package com.example.vthreadservice.config; {
+class SpanAspectConfig {
+}
+
+class ThreadExecutorConfig {
+}
+
+}
+
+package com.example.vthreadservice.controller; {
+class ThreadController {
+}
+
+}
+
+package com.example.vthreadservice; {
+class VThreadServiceApplication {
+}
+
+}
+
+package com.example.webflux.controller; {
+class TodoController {
+}
+
+}
+
+package com.example.webflux.domain; {
+class Todo {
+}
+
+}
+
+package com.example.webflux.exception; {
+class GlobalExceptionHandler {
+}
+
+class TodoNotFoundException {
+}
+
+}
+
+package com.example.webflux.repository; {
+class TodoRepository {
+}
+
+}
+
+package com.example.webflux.response; {
+class ErrorResponse {
+}
+
+class Response {
+}
+
+class SuccessDataResponse {
+}
+
+}
+
+package com.example.webflux.service; {
+class TodoService {
+}
+
+class TodoServiceImpl {
+}
+
+}
+
+package com.example.webflux; {
+class WebfluxApplication {
+}
+
+class TodoControllerUnitTest {
+}
+
+class WebfluxApplicationTests {
+}
+
+}
+
+GreetingController -- Controller
+GreetingController -- Response
+GithubActionsApplicationTests -- GithubActionsApplication
+HelloGrpcClient -- Address
+HelloGrpcClient -- Message
+HelloController -- Controller
+GrpcClientApplicationTests -- GrpcClientApplication
+BusinessCar -- Car
+Car -- Vehicle
+Main -- BusinessCar
+Main -- Car
+Main -- Vehicle
+OrderConsumer -- Order
+OrderConsumer -- Consumer
+ConsumerApplication -- Consumer
+ConsumerApplicationTests -- ConsumerApplication
+ConsumerApplicationTests -- Consumer
+PublishOrderController -- Order
+PublishOrderController -- OrderProducer
+PublishOrderController -- Controller
+PublishOrderController -- OrderController
+OrderProducer -- Order
+ProducerApplicationTests -- ProducerApplication
+KafkaConsumerConfig -- KafkaConsumer
+KafkaConsumerConfig -- Consumer
+KafkaConsumerConfig -- Message
+KafkaConsumer -- Todo
+KafkaConsumer -- Consumer
+TodoController -- Todo
+TodoController -- TodoService
+TodoController -- Controller
+TodoController -- Post
+TodoController -- TodoNotFoundException
+TodoController -- Response
+TodoController -- SuccessDataResponse
+KafkaApplication -- Todo
+KafkaApplication -- KafkaProducer
+KafkaProducer -- Todo
+KafkaProducer -- Message
+KafkaApplicationTests -- KafkaApplication
+SpringArgoCdApplicationTests -- SpringArgoCdApplication
+SpringAwsDynamodbApplication -- Address
+SpringAwsDynamodbApplication -- User
+SpringAwsDynamodbApplication -- UserRepository
+UserRepository -- User
+SpringAwsDynamodbApplicationTests -- SpringAwsDynamodbApplication
+S3Controller -- S3Service
+S3Controller -- Controller
+S3Controller -- Post
+S3Controller -- Response
+SpringAwsS3Application -- S3Service
+SpringAwsS3Application -- Message
+SpringAwsS3ApplicationTests -- SpringAwsS3Application
+Consumer -- Message
+Publisher -- Message
+SpringAwsSqsApplication -- Message
+SpringAwsSqsApplication -- Publisher
+SpringAwsSqsApplicationTests -- SpringAwsSqsApplication
+CacheController -- User
+CacheController -- CacheService
+CacheController -- Controller
+CacheController -- Post
+CacheService -- User
+RedisclusterApplicationTests -- RedisclusterApplication
+SaveTodoException -- Todo
+TodoService -- Todo
+TodoService -- TodoNotFoundException
+RetryableApplicationTests -- RetryableApplication
+Controller -- MemoryStats
+JavaFlagsApplicationTests -- JavaFlagsApplication
+UserController -- User
+UserController -- Controller
+UserController -- UserService
+UserController -- Post
+UserController -- Response
+UserService -- User
+HikaricpApplicationTests -- HikaricpApplication
+OrderController -- Order
+OrderController -- Controller
+OrderController -- OrderCreatedEventProducer
+OrderServiceApplication -- Order
+OrderCreatedEventProducer -- Order
+OrderServiceApplicationTests -- Order
+OrderServiceApplicationTests -- OrderServiceApplication
+OrderCreatedEventConsumer -- Order
+OrderCreatedEventConsumer -- Consumer
+PaymentServiceApplicationTests -- PaymentServiceApplication
+StockServiceApplicationTests -- StockServiceApplication
+CommentServiceApplication -- Comment
+CommentServiceApplication -- CommentService
+CommentController -- Controller
+CommentController -- Comment
+CommentController -- CommentService
+CommentController -- Post
+CommentService -- Comment
+CommentService -- Post
+CommentServiceApplicationTests -- CommentServiceApplication
+CommentServiceApplicationTests -- Comment
+CommentServiceApplicationTests -- CommentService
+ErrorDecoderBean -- Message
+ErrorDecoderBean -- MessageErrorDecoder
+PostController -- Controller
+PostController -- Post
+PostController -- PostRepository
+Post -- Comment
+Post -- Author
+CommentFeignClient -- Comment
+CommentFeignClient -- Post
+ExceptionMessage -- Message
+MessageErrorDecoder -- Message
+MessageErrorDecoder -- ExceptionMessage
+MessageErrorDecoder -- Response
+CommentResponseModel -- Comment
+CommentResponseModel -- Post
+CommentResponseModel -- Response
+PostServiceApplication -- Post
+PostServiceApplication -- PostService
+PostService -- Comment
+PostService -- Post
+PostService -- CommentFeignClient
+PostServiceApplicationTests -- Post
+PostServiceApplicationTests -- PostServiceApplication
+PostServiceApplicationTests -- PostService
+BalanceController -- Controller
+BalanceController -- Balance
+BalanceController -- BalanceService
+BalanceRepository -- Balance
+BalanceService -- Balance
+BalanceService -- BalanceRepository
+SpringPessimisticLockApplication -- Balance
+SpringPessimisticLockApplication -- BalanceRepository
+SpringPessimisticLockApplicationTests -- Balance
+SpringPessimisticLockApplicationTests -- BalanceService
+SpringPessimisticLockApplicationTests -- SpringPessimisticLockApplication
+ReactiveRedisConfig -- User
+ReactiveRedisConfig -- UserRepository
+ReactiveRedisConfig -- Message
+ReactiveRedisConfig -- RedisConfig
+SpringReactiveRedisApplicationTests -- SpringReactiveRedisApplication
+CronService -- RedisDistributedLock
+LockController -- Controller
+LockController -- LockService
+LockService -- RedisDistributedLock
+SpringRedisDistributedLockApplication -- RedisDistributedLock
+SpringRedisDistributedLockApplicationTests -- RedisDistributedLock
+SpringRedisDistributedLockApplicationTests -- SpringRedisDistributedLockApplication
+PostRepository -- Comment
+PostRepository -- Post
+PostRepository -- Author
+SpringRedisOm -- Comment
+SpringRedisOm -- Post
+SpringRedisOm -- MyKeyspaceConfiguration
+SpringRedisOm -- Author
+SpringRedisOm -- PostRepository
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- UserService
+UserControllerTest -- Order
+UserControllerTest -- User
+UserControllerTest -- UserRepository
+UserControllerTest -- Controller
+UserControllerTest -- UserController
+UserControllerTest -- Post
+UserControllerTest -- Response
+UserRepositoryTest -- Order
+UserRepositoryTest -- User
+UserRepositoryTest -- UserRepository
+UserRepositoryTest -- Post
+ThreadController -- Controller
+VThreadServiceApplicationTests -- VThreadServiceApplication
+ReentrantLockCounter -- Message
+ReentrantLockCounter -- Counter
+SynchronizedBlockCounter -- Counter
+SynchronizedBlockWithTwoCounterAndTwoLock -- Counter
+SynchronizedMethodCounter -- Counter
+SynchronizedMethodWithTwoCounter -- Counter
+GlobalExceptionHandler -- Todo
+GlobalExceptionHandler -- Message
+GlobalExceptionHandler -- Controller
+GlobalExceptionHandler -- TodoNotFoundException
+GlobalExceptionHandler -- ErrorResponse
+GlobalExceptionHandler -- Response
+TodoNotFoundException -- Todo
+TodoRepository -- Todo
+ErrorResponse -- Response
+SuccessDataResponse -- Response
+TodoServiceImpl -- Todo
+TodoServiceImpl -- TodoService
+TodoServiceImpl -- TodoNotFoundException
+TodoServiceImpl -- TodoRepository
+TodoControllerUnitTest -- TodoController
+TodoControllerUnitTest -- Todo
+TodoControllerUnitTest -- Message
+TodoControllerUnitTest -- TodoService
+TodoControllerUnitTest -- Controller
+TodoControllerUnitTest -- TodoNotFoundException
+TodoControllerUnitTest -- ErrorResponse
+TodoControllerUnitTest -- Response
+WebfluxApplicationTests -- WebfluxApplication
+@enduml

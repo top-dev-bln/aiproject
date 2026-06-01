@@ -1,0 +1,7 @@
+
+eureka:
+  instance:
+    hostname: localhost # override with environment variable
+  client:
+    register-with-eureka: false
+    fetch-registry: false

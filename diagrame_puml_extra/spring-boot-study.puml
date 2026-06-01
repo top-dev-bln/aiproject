@@ -1,0 +1,94 @@
+@startuml
+package com.itmuch.actuator.prometheus.demo; {
+class PrometheusApplication {
+}
+
+class TestController {
+}
+
+}
+
+package com.itmuch.boot; {
+class BannerApplication {
+}
+
+}
+
+package com.itmuch.dubbo; {
+class ConsumerApplication {
+}
+
+class ProviderApplication {
+}
+
+class DemoService {
+}
+
+}
+
+package com.itmuch.dubbo.service; {
+class DemoServiceImpl {
+}
+
+}
+
+package com.itmuch.lock; {
+class RedisLockConfiguration {
+}
+
+class SpringBootLockApplication {
+}
+
+}
+
+package com.itmuch.logging; {
+class LogbackApplication {
+}
+
+class TestController {
+}
+
+}
+
+package com.itmuch.email; {
+class MailController {
+}
+
+class SpringBootEmailApplication {
+}
+
+}
+
+package com.itmuch.mybatis.controller; {
+class UserController {
+}
+
+}
+
+package com.itmuch.mybatis.entity; {
+class User {
+}
+
+}
+
+package com.itmuch.mybatis.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.itmuch.mybatis; {
+class MybatisApplication {
+}
+
+}
+
+ConsumerApplication -- DemoService
+DemoServiceImpl -- DemoService
+MailController -- User
+UserController -- User
+UserController -- UserMapper
+UserMapper -- User
+MybatisApplication -- User
+MybatisApplication -- UserMapper
+@enduml

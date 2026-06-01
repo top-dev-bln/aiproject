@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="frontend/partials/head(title=#{home.page_title})">
+</head>
+<!--<div th:include="frontend/partials/head"></div>-->
+<body>
+
+    <div th:include="frontend/partials/menu"></div>
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 th:text="#{home.headline}"></h1>
+                <p th:utext="#{home.intro_text_1('/job')}"></p>
+
+                <p th:utext="#{home.intro_text_2('/job/create')}"></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

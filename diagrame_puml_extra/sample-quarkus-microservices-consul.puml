@@ -1,0 +1,198 @@
+@startuml
+package pl.piomin.services.quarkus.department.client; {
+class EmployeeClient {
+}
+
+}
+
+package pl.piomin.services.quarkus.department.config; {
+class DepartmentBeanProducer {
+}
+
+}
+
+package pl.piomin.services.quarkus.department.lifecycle; {
+class DepartmentLifecycle {
+}
+
+}
+
+package pl.piomin.services.quarkus.department.model; {
+class Department {
+}
+
+class Employee {
+}
+
+}
+
+package pl.piomin.services.quarkus.department.repository; {
+class DepartmentRepository {
+}
+
+}
+
+package pl.piomin.services.quarkus.department.resource; {
+class DepartmentResource {
+}
+
+}
+
+package pl.piomin.services.quarkus.department; {
+class ConsulResource {
+}
+
+class DepartmentResourceConsulTests {
+}
+
+class DepartmentResourceTests {
+}
+
+class DisableExternalProfile {
+}
+
+}
+
+package pl.piomin.services.quarkus.employee.config; {
+class EmployeeBeanProducer {
+}
+
+}
+
+package pl.piomin.services.quarkus.employee.lifecycle; {
+class EmployeeLifecycle {
+}
+
+}
+
+package pl.piomin.services.quarkus.employee.model; {
+class Employee {
+}
+
+}
+
+package pl.piomin.services.quarkus.employee.repository; {
+class EmployeeRepository {
+}
+
+}
+
+package pl.piomin.services.quarkus.employee.resource; {
+class EmployeeResource {
+}
+
+}
+
+package pl.piomin.services.quarkus.employee; {
+class DisableExternalProfile {
+}
+
+class EmployeeResourceTests {
+}
+
+}
+
+package pl.piomin.services.gateway; {
+class GatewayApplication {
+}
+
+}
+
+package pl.piomin.services.quarkus.organization.client; {
+class DepartmentClient {
+}
+
+class EmployeeClient {
+}
+
+}
+
+package pl.piomin.services.quarkus.organization.config; {
+class OrganizationBeanProducer {
+}
+
+}
+
+package pl.piomin.services.quarkus.organization.lifecycle; {
+class OrganizationLifecycle {
+}
+
+}
+
+package pl.piomin.services.quarkus.organization.model; {
+class Department {
+}
+
+class Employee {
+}
+
+class Organization {
+}
+
+}
+
+package pl.piomin.services.quarkus.organization.repository; {
+class OrganizationRepository {
+}
+
+}
+
+package pl.piomin.services.quarkus.organization.resource; {
+class OrganizationResource {
+}
+
+}
+
+EmployeeClient -- Employee
+EmployeeClient -- Organization
+DepartmentBeanProducer -- Department
+DepartmentLifecycle -- Department
+Department -- Employee
+DepartmentRepository -- Department
+DepartmentRepository -- Organization
+DepartmentResource -- EmployeeClient
+DepartmentResource -- Department
+DepartmentResource -- Employee
+DepartmentResource -- DepartmentRepository
+DepartmentResource -- Organization
+DepartmentResourceConsulTests -- Department
+DepartmentResourceConsulTests -- DepartmentResource
+DepartmentResourceConsulTests -- ConsulResource
+DepartmentResourceConsulTests -- Organization
+DepartmentResourceTests -- Department
+DepartmentResourceTests -- DepartmentResource
+DepartmentResourceTests -- DisableExternalProfile
+DepartmentResourceTests -- Organization
+EmployeeBeanProducer -- Employee
+EmployeeLifecycle -- Employee
+EmployeeRepository -- Department
+EmployeeRepository -- Employee
+EmployeeRepository -- Organization
+EmployeeResource -- Department
+EmployeeResource -- Employee
+EmployeeResource -- EmployeeRepository
+EmployeeResource -- Organization
+EmployeeResourceTests -- Department
+EmployeeResourceTests -- Employee
+EmployeeResourceTests -- DisableExternalProfile
+EmployeeResourceTests -- EmployeeResource
+EmployeeResourceTests -- Organization
+DepartmentClient -- Department
+DepartmentClient -- Employee
+DepartmentClient -- Organization
+OrganizationBeanProducer -- EmployeeClient
+OrganizationBeanProducer -- Department
+OrganizationBeanProducer -- Employee
+OrganizationBeanProducer -- DepartmentClient
+OrganizationBeanProducer -- Organization
+OrganizationLifecycle -- Organization
+Organization -- Department
+Organization -- Employee
+OrganizationRepository -- Organization
+OrganizationResource -- EmployeeClient
+OrganizationResource -- Department
+OrganizationResource -- Employee
+OrganizationResource -- DepartmentClient
+OrganizationResource -- Organization
+OrganizationResource -- OrganizationRepository
+@enduml

@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Customer, User roles. The platform provides capabilities for global exception handler. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to interact with account functionality, so that I can accomplish my account-related tasks.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to interact with customer functionality, so that I can accomplish my customer-related tasks.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to use global exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AccountController[\"AccountController\"]\n        CustomerController[\"CustomerController\"]\n    end\n    subgraph Data_Access\n        AccountMapper[\"AccountMapper\"]\n        InboundCustomerMapper[\"InboundCustomerMapper\"]\n        OutboundCustomerMapper[\"OutboundCustomerMapper\"]\n        JpaAccountRepository[\"JpaAccountRepository\"]\n        JpaAccountRepositoryAdapter[\"JpaAccountRepositoryAdapter\"]\n        JpaCustomerRepository[\"JpaCustomerRepository\"]\n        JpaCustomerRepositoryAdapter[\"JpaCustomerRepositoryAdapter\"]\n        AccountRepository[\"AccountRepository\"]\n        CustomerRepository[\"CustomerRepository\"]\n        ErrorMapper[\"ErrorMapper\"]\n        AccountRepositoryConfig[\"AccountRepositoryConfig\"]\n        CustomerRepositoryConfig[\"CustomerRepositoryConfig\"]\n    end\n    subgraph Infrastructure\n        AccountFactoryConfig[\"AccountFactoryConfig\"]\n        AccountPolicyConfig[\"AccountPolicyConfig\"]\n        AccountUseCaseConfig[\"AccountUseCaseConfig\"]\n        CustomerFactoryConfig[\"CustomerFactoryConfig\"]\n        CustomerPolicyConfig[\"CustomerPolicyConfig\"]\n        CustomerUseCaseConfig[\"CustomerUseCaseConfig\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

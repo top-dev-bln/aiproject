@@ -1,0 +1,51 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. The platform provides capabilities for ajax logout success handler, user details, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsService",
+          "UserService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to use ajax logout success handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AjaxLogoutSuccessHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AjaxLogoutSuccessHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "AjaxLogoutSuccessHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "AjaxLogoutSuccessHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Constants[\"Constants\"]\n        DatabaseConfiguration[\"DatabaseConfiguration\"]\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n    end\n    subgraph Security\n        OAuth2ServerConfiguration[\"OAuth2ServerConfiguration\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        Http401UnauthorizedEntryPoint[\"Http401UnauthorizedEntryPoint\"]\n        SecurityUtils[\"SecurityUtils\"]\n        SpringSecurityAuditorAware[\"SpringSecurityAuditorAware\"]\n    end\n    subgraph Data_Access\n        ThingRepository[\"ThingRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        AjaxLogoutSuccessHandler[\"AjaxLogoutSuccessHandler\"]\n        UserDetailsService[\"UserDetailsService\"]\n        UserService[\"UserService\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure"
+  }
+}

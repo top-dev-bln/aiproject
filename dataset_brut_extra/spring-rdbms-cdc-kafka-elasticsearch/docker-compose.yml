@@ -1,0 +1,166 @@
+#
+#  Copyright (C) 2018 Joumen Harzli
+#
+#  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+#  in compliance with the License. You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software distributed under the License
+#  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+#  or implied. See the License for the specific language governing permissions and limitations under
+#  the License.
+#
+
+version: '3.6'
+services:
+
+  user-command:
+    build: command
+    hostname: user-command
+    container_name: user-command
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    networks:
+      - cdcrx
+    environment:
+      JAVA_ARGS: "-Xmx512M -Xms256M"
+
+  user-denormalizer:
+    build: denormalizer
+    hostname: user-denormalizer
+    container_name: user-denormalizer
+    ports:
+      - "8084:8084"
+    depends_on:
+      - kafka
+      - elasticsearch
+    links:
+      - kafka
+      - elasticsearch
+    networks:
+      - cdcrx
+    environment:
+      JAVA_ARGS: "-Xmx512M -Xms256M"
+
+  user-query:
+    build: query
+    hostname: user-query
+    container_name: user-query
+    ports:
+      - "8082:8082"
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    networks:
+      - cdcrx
+    environment:
+      JAVA_ARGS: "-Xmx512M -Xms256M"
+
+  mysql:
+    build: mysql
+    hostname: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - cdcrx
+    environment:
+      - MYSQL_DATABASE=cdc
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=cdc_user
+      - MYSQL_PASSWORD=cdc_pass
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.9
+    hostname: elasticsearch
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - cdcrx
+    environment:
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "32181:32181"
+    networks:
+      - cdcrx
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 32181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    hostname: kafka
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+    links:
+      - zookeeper
+    networks:
+      - cdcrx
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:32181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  
+  kafka-connect:
+    build: connect
+    hostname: kafka-connect
+    container_name: kafka-connect
+    links:
+      - zookeeper
+      - kafka
+      - mysql
+    ports:
+      - '8083:8083'
+    networks:
+      - cdcrx
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: 'kafka:29092'
+      CONNECT_ZOOKEEPER_CONNECT: 'zookeeper:32181'
+      CONNECT_GROUP_ID: compose-connect-group
+      CONNECT_CONFIG_STORAGE_TOPIC: kafka-connect-configs
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_FLUSH_INTERVAL_MS: 10000
+      CONNECT_OFFSET_STORAGE_TOPIC: kafka-connect-offsets
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_TOPIC: kafka-connect-status
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_INTERNAL_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_PLUGIN_PATH: /usr/share/java
+      CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
+      CONNECT_PLUGIN_PATH: '/usr/share/java,/usr/local/share/jars'
+      CONNECT_REST_HOST_NAME: 0.0.0.0
+      CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
+      CONNECT_REST_PORT: 8083
+
+
+networks:
+  cdcrx:
+    driver: "bridge"

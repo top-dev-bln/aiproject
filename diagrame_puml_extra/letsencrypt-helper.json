@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Admin, Developer roles. It exposes interfaces for managing example rest. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to interact with example functionality, so that I can accomplish my example-related tasks.",
+        "services": [],
+        "controllers": [
+          "ExampleRestController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "ExampleRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "ExampleRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "ExampleRestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "ExampleRestController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        ExampleRestController[\"ExampleRestController\"]\n    end\n    subgraph Infrastructure\n        JettyWellKnownLetsEncryptChallengeEndpointConfig[\"JettyWellKnownLetsEncryptChallengeEndpointConfig\"]\n        DisableJettySniConfig[\"DisableJettySniConfig\"]\n        TomcatWellKnownLetsEncryptChallengeEndpointConfig[\"TomcatWellKnownLetsEncryptChallengeEndpointConfig\"]\n    end\n    Controllers --> Infrastructure"
+  }
+}

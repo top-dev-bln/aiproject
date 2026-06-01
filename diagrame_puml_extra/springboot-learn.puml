@@ -1,0 +1,518 @@
+@startuml
+package com.github.cuifuan.alipay.config; {
+class AlipayConfig {
+}
+
+class MyConfig {
+}
+
+}
+
+package com.github.cuifuan.alipay.controller; {
+class AlipayController {
+}
+
+}
+
+package com.github.cuifuan.alipay; {
+class SpringbootAlipaySandboxSpringboot {
+}
+
+}
+
+package Copyright 2007-present the original author or authors. {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package store.zabbix.bran.springbootaop.aop; {
+class TestAspectJ {
+}
+
+}
+
+package store.zabbix.bran.springbootaop.controller; {
+class TestController {
+}
+
+}
+
+package store.zabbix.bran.springbootaop; {
+class SpringbootAopApplication {
+}
+
+class SpringbootAopApplicationTests {
+}
+
+}
+
+package com.bran.admin.common.bean; {
+class ResultBean {
+}
+
+}
+
+package com.bran.admin.config; {
+class MybatisPlusConfig {
+}
+
+class WebSecurityConfig {
+}
+
+}
+
+package com.bran.admin.controller; {
+class UserController {
+}
+
+}
+
+package com.bran.admin.exception; {
+class CheckException {
+}
+
+class GlobalExceptionHandler {
+}
+
+class JwtAuthException {
+}
+
+}
+
+package com.bran.admin.filter; {
+class JwtAuthenticationTokenFilter {
+}
+
+}
+
+package com.bran.admin.mapper; {
+class AdminUserMapper {
+}
+
+}
+
+package com.bran.admin.model; {
+class AdminUser {
+}
+
+}
+
+package com.bran.admin.service; {
+class AdminUserService {
+}
+
+}
+
+package com.bran.admin; {
+class SpringbootAdminApplication {
+}
+
+}
+
+package com.bran.admin.utils; {
+class DateUtil {
+}
+
+class JwtTokenUtils {
+}
+
+class NumUtil {
+}
+
+}
+
+package com.github.cuifuan.common; {
+class SprigbootCommonApplication {
+}
+
+}
+
+package com.github.cuifuan.common.test; {
+class TestUtil {
+}
+
+}
+
+package com.github.cuifuan.common.util; {
+class DateUtil {
+}
+
+}
+
+package com.github.cuifuan.mail.controller; {
+class MailController {
+}
+
+}
+
+package com.github.cuifuan.mail.model; {
+class MailVO {
+}
+
+class Weather {
+}
+
+class Whours {
+}
+
+}
+
+package com.github.cuifuan.mail.service; {
+class EmailService {
+}
+
+}
+
+package com.github.cuifuan.mail.service.impl; {
+class EmailServiceImpl {
+}
+
+}
+
+package com.github.cuifuan.mail; {
+class SpringbootEmailApplication {
+}
+
+class SpringbootEmailApplicationTests {
+}
+
+}
+
+package com.github.cuifuan.excel.controller; {
+class ExcelController {
+}
+
+}
+
+package com.github.cuifuan.excel.service; {
+class ExcelService {
+}
+
+}
+
+package com.github.cuifuan.excel; {
+class SpringbootExcelApplication {
+}
+
+}
+
+package com.github.cuifuan.excel.utils; {
+class ExcelUtil {
+}
+
+}
+
+package store.zabbix.initdb.model; {
+class UserInfo {
+}
+
+}
+
+package store.zabbix.initdb; {
+class SpringbootInitDbApplication {
+}
+
+class SpringbootInitDbApplicationTests {
+}
+
+}
+
+package store.zabbix.jpa.controller; {
+class UserController {
+}
+
+}
+
+package store.zabbix.jpa.model; {
+class SysUser {
+}
+
+}
+
+package store.zabbix.jpa.repository; {
+class UserRepository {
+}
+
+}
+
+package store.zabbix.jpa; {
+class SpringbootJpaApplication {
+}
+
+}
+
+package com.example.springbootkafka; {
+class Consumer {
+}
+
+class Producer {
+}
+
+class SpringbootKafkaApplication {
+}
+
+class SpringbootKafkaApplicationTests {
+}
+
+}
+
+package com.example.springbootkafka.singleton; {
+class DclSingleton {
+}
+
+class EnumSingleton {
+}
+
+class LazySingleton {
+}
+
+class SingletonEager {
+}
+
+class Solution {
+}
+
+}
+
+package store.zabbix.mongodb.controller; {
+class DepartmentController {
+}
+
+}
+
+package store.zabbix.mongodb.model; {
+class Department {
+}
+
+class Employee {
+}
+
+}
+
+package store.zabbix.mongodb.repository; {
+class DepartmentRepository {
+}
+
+class DeptRepository {
+}
+
+class EmpRepository {
+}
+
+}
+
+package com.github.cuifuan.mp.controller; {
+class TestController {
+}
+
+class UserInfoController {
+}
+
+}
+
+package com.github.cuifuan.mp.domain; {
+class MybatisTest {
+}
+
+class User {
+}
+
+class UserInfo {
+}
+
+}
+
+package com.github.cuifuan.mp.mapper; {
+class TestMapper {
+}
+
+class UserInfoMapper {
+}
+
+}
+
+package com.github.cuifuan.mp.service.impl; {
+class TestServiceImpl {
+}
+
+}
+
+package com.github.cuifuan.mp.service; {
+class TestService {
+}
+
+class UserInfoService {
+}
+
+}
+
+package com.github.cuifuan.mp.singleton; {
+class LazyInitializedSingleton {
+}
+
+class StaticBlockSingleton {
+}
+
+class ThreadSafeSingleton {
+}
+
+}
+
+package com.github.cuifuan.mp; {
+class SpringBootMybatisApplication {
+}
+
+}
+
+package com.github.cuifuan.mp.test; {
+class UserTest {
+}
+
+}
+
+package com.github.cuifuan.mp.util; {
+class ObjUtil {
+}
+
+}
+
+package com.github.cuifuan.redis.controller; {
+class UserController {
+}
+
+}
+
+package com.github.cuifuan.redis.dao; {
+class UserRepository {
+}
+
+}
+
+package com.github.cuifuan.redis.model; {
+class User {
+}
+
+}
+
+package com.github.cuifuan.redis; {
+class SpringBootRedisApplication {
+}
+
+}
+
+package store.zabbix.springbootupfile.controller; {
+class UploadController {
+}
+
+}
+
+package store.zabbix.springbootupfile.service.impl; {
+class UploadServiceImpl {
+}
+
+}
+
+package store.zabbix.springbootupfile.service; {
+class UploadService {
+}
+
+}
+
+package store.zabbix.springbootupfile; {
+class SpringbootUpfileApplication {
+}
+
+class SpringbootUpfileApplicationTests {
+}
+
+}
+
+package com.github.cuifuan.main; {
+class JacksonToMap {
+}
+
+}
+
+AlipayController -- AlipayConfig
+TestController -- MybatisTest
+TestController -- TestService
+SpringbootAopApplicationTests -- SpringbootAopApplication
+WebSecurityConfig -- JwtAuthException
+WebSecurityConfig -- JwtAuthenticationTokenFilter
+WebSecurityConfig -- AdminUser
+WebSecurityConfig -- AdminUserService
+WebSecurityConfig -- User
+UserController -- UserRepository
+UserController -- User
+GlobalExceptionHandler -- ResultBean
+GlobalExceptionHandler -- CheckException
+JwtAuthException -- ResultBean
+JwtAuthenticationTokenFilter -- JwtTokenUtils
+JwtAuthenticationTokenFilter -- User
+AdminUserMapper -- AdminUser
+AdminUserMapper -- User
+AdminUser -- User
+AdminUserService -- CheckException
+AdminUserService -- AdminUserMapper
+AdminUserService -- AdminUser
+AdminUserService -- JwtTokenUtils
+AdminUserService -- User
+JwtTokenUtils -- User
+TestUtil -- DateUtil
+MailController -- Weather
+MailController -- EmailService
+Weather -- Whours
+EmailService -- Weather
+EmailServiceImpl -- Weather
+EmailServiceImpl -- EmailService
+SpringbootEmailApplicationTests -- SpringbootEmailApplication
+ExcelController -- ExcelService
+ExcelController -- ExcelUtil
+ExcelService -- ExcelUtil
+ExcelUtil -- DateUtil
+UserInfo -- User
+SpringbootInitDbApplicationTests -- SpringbootInitDbApplication
+SysUser -- User
+UserRepository -- User
+SpringbootKafkaApplicationTests -- SpringbootKafkaApplication
+DepartmentController -- Department
+DepartmentController -- Employee
+DepartmentController -- DepartmentRepository
+DepartmentController -- DeptRepository
+DepartmentController -- EmpRepository
+Department -- Employee
+DepartmentRepository -- Department
+DepartmentRepository -- Employee
+DeptRepository -- Department
+EmpRepository -- Employee
+UserInfoController -- UserInfo
+UserInfoController -- User
+UserInfoController -- UserInfoService
+TestMapper -- MybatisTest
+UserInfoMapper -- UserInfo
+UserInfoMapper -- User
+TestServiceImpl -- MybatisTest
+TestServiceImpl -- TestMapper
+TestServiceImpl -- TestService
+TestService -- MybatisTest
+UserInfoService -- UserInfo
+UserInfoService -- User
+UserInfoService -- UserInfoMapper
+UserTest -- User
+UserTest -- ObjUtil
+SpringBootRedisApplication -- UserRepository
+SpringBootRedisApplication -- User
+UploadController -- UploadService
+UploadServiceImpl -- UploadService
+SpringbootUpfileApplicationTests -- SpringbootUpfileApplication
+@enduml

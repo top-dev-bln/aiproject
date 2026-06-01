@@ -1,0 +1,129 @@
+@startuml
+package pl.piomin.services.employee.api; {
+class EmployeeController {
+}
+
+}
+
+package pl.piomin.services.employee.data; {
+class EmployeeRepository {
+}
+
+}
+
+package pl.piomin.services.employee; {
+class EmployeeApplication {
+}
+
+}
+
+package pl.piomin.services.employee.model; {
+class Employee {
+}
+
+}
+
+package pl.piomin.services.datagrid.employee.api; {
+class EmployeeController {
+}
+
+}
+
+package pl.piomin.services.datagrid.employee.data; {
+class EmployeeRepository {
+}
+
+class EmployeeSerializer {
+}
+
+class AddEmployeeRepositoryTest {
+}
+
+}
+
+package pl.piomin.services.datagrid.employee; {
+class EmployeeApplication {
+}
+
+class EmployeeApplicationTest {
+}
+
+class MysqlContainerDevMode {
+}
+
+}
+
+package pl.piomin.services.datagrid.employee.model; {
+class Employee {
+}
+
+}
+
+package pl.piomin.services.datagrid.employee.service; {
+class EmployeeService {
+}
+
+}
+
+package pl.piomin.services.datagrid.person.api; {
+class PersonController {
+}
+
+}
+
+package pl.piomin.services.datagrid.person.data; {
+class PersonRepository {
+}
+
+class AddPersonRepositoryTest {
+}
+
+}
+
+package pl.piomin.services.datagrid.person.model; {
+class Person {
+}
+
+}
+
+package pl.piomin.services.datagrid.person; {
+class PersonApplication {
+}
+
+class MysqlAndHazelcastContainersDevMode {
+}
+
+class PersonDevModeApplication {
+}
+
+}
+
+EmployeeController -- Employee
+EmployeeController -- EmployeeService
+EmployeeController -- Person
+EmployeeRepository -- Employee
+EmployeeRepository -- Person
+EmployeeApplication -- Employee
+EmployeeApplication -- EmployeeSerializer
+Employee -- Person
+EmployeeSerializer -- Employee
+EmployeeSerializer -- Person
+EmployeeService -- EmployeeRepository
+EmployeeService -- Employee
+EmployeeService -- Person
+AddEmployeeRepositoryTest -- EmployeeRepository
+AddEmployeeRepositoryTest -- Employee
+AddEmployeeRepositoryTest -- Person
+EmployeeApplicationTest -- EmployeeApplication
+EmployeeApplicationTest -- Employee
+EmployeeApplicationTest -- MysqlContainerDevMode
+PersonController -- PersonRepository
+PersonController -- Person
+PersonRepository -- Person
+PersonApplication -- Person
+AddPersonRepositoryTest -- PersonRepository
+AddPersonRepositoryTest -- Person
+PersonDevModeApplication -- Person
+PersonDevModeApplication -- PersonApplication
+PersonDevModeApplication -- MysqlAndHazelcastContainersDevMode
+@enduml

@@ -1,0 +1,70 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves Admin, User roles. It manages core business objects including github, outlook, outlook log, user. The platform provides capabilities for security authentication handler, url invocation security metadata source, url access decision manager. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "SecurityAuthenticationHandler",
+          "IUserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "Auth",
+          "AuthController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage github records, so that I can track and organize github data effectively.",
+        "services": [
+          "IGithubService",
+          "GithubServiceImpl"
+        ],
+        "controllers": [
+          "GithubController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage outlook records, so that I can track and organize outlook data effectively.",
+        "services": [
+          "IOutlookService",
+          "OutlookServiceImpl"
+        ],
+        "controllers": [
+          "OutlookController",
+          "OutlookLogController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage outlook log records, so that I can track and organize outlook log data effectively.",
+        "services": [
+          "IOutlookService",
+          "OutlookServiceImpl"
+        ],
+        "controllers": [
+          "OutlookController",
+          "OutlookLogController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "IUserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Start[\"Start\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        ResultCode[\"ResultCode\"]\n        APiCode[\"APiCode\"]\n        InfluxdbConfig[\"InfluxdbConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        ResultUtil[\"ResultUtil\"]\n        VerifyCode[\"VerifyCode\"]\n        NumConvertUtil[\"NumConvertUtil\"]\n        StringUtil[\"StringUtil\"]\n        DateUtil[\"DateUtil\"]\n        SpringUtil[\"SpringUtil\"]\n        EncryptUtil[\"EncryptUtil\"]\n        OkHttpClientUtil[\"OkHttpClientUtil\"]\n        SSLSocketClientUtil[\"SSLSocketClientUtil\"]\n        OkHttpRequestUtils[\"OkHttpRequestUtils\"]\n        RedisUtil[\"RedisUtil\"]\n    end\n    subgraph Controllers\n        ExceptionControllerAdvice[\"ExceptionControllerAdvice\"]\n        AdminController[\"AdminController\"]\n        Auth[\"Auth\"]\n        WebController[\"WebController\"]\n        GithubController[\"GithubController\"]\n        OutlookController[\"OutlookController\"]\n        AuthController[\"AuthController\"]\n        OutlookLogController[\"OutlookLogController\"]\n        RoleController[\"RoleController\"]\n        UserController[\"UserController\"]\n        PermissionController[\"PermissionController\"]\n    end\n    subgraph Services\n        SecurityAuthenticationHandler[\"SecurityAuthenticationHandler\"]\n        UrlInvocationSecurityMetadataSourceService[\"UrlInvocationSecurityMetadataSourceService\"]\n        UrlAccessDecisionManager[\"UrlAccessDecisionManager\"]\n        IGithubService[\"IGithubService\"]\n        GithubServiceImpl[\"GithubServiceImpl\"]\n        IOutlookService[\"IOutlookService\"]\n        OutlookServiceImpl[\"OutlookServiceImpl\"]\n        IOutlookLogService[\"IOutlookLogService\"]\n        OutlookLogServiceImpl[\"OutlookLogServiceImpl\"]\n        ITask[\"ITask\"]\n        TaskImpl[\"TaskImpl\"]\n        IUserService[\"IUserService\"]\n        IPermissionService[\"IPermissionService\"]\n        IRoleService[\"IRoleService\"]\n        RoleServiceImpl[\"RoleServiceImpl\"]\n        PermissionServiceImpl[\"PermissionServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Security\n        UsernamePasswordAuthenticationProvider[\"UsernamePasswordAuthenticationProvider\"]\n        SecurityConfig[\"SecurityConfig\"]\n        UsernamePasswordAuthenticationToken[\"UsernamePasswordAuthenticationToken\"]\n        GithubAuth2AuthenticationConfig[\"GithubAuth2AuthenticationConfig\"]\n        CollectionBean[\"CollectionBean\"]\n        GithubLoginAuthenticationFilter[\"GithubLoginAuthenticationFilter\"]\n        LinkTokenAuthenticationFilter[\"LinkTokenAuthenticationFilter\"]\n    end\n    subgraph Data_Access\n        Github[\"Github\"]\n        Outlook[\"Outlook\"]\n        OutlookLog[\"OutlookLog\"]\n        User[\"User\"]\n        Permission[\"Permission\"]\n        Role[\"Role\"]\n        GithubMapper[\"GithubMapper\"]\n        OutlookMapper[\"OutlookMapper\"]\n        PermissionMapper[\"PermissionMapper\"]\n        UserMapper[\"UserMapper\"]\n        RoleMapper[\"RoleMapper\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

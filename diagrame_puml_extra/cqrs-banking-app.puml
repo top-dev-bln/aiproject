@@ -1,0 +1,667 @@
+@startuml
+package com.example.common.domain.aggregate; {
+class Aggregate {
+}
+
+}
+
+package com.example.common.domain.exception; {
+class ResourceAlreadyExistsException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.example.common.domain.model; {
+class Account {
+}
+
+class Card {
+}
+
+class Client {
+}
+
+class ObjectConverter {
+}
+
+class Transaction {
+}
+
+}
+
+package com.example.common.events; {
+class AbstractEvent {
+}
+
+class AccountCreateEvent {
+}
+
+class CardCreateEvent {
+}
+
+class ClientCreateEvent {
+}
+
+class Event {
+}
+
+class EventType {
+}
+
+class TransactionCreateEvent {
+}
+
+}
+
+package com.example.common.repository; {
+class AccountRepository {
+}
+
+class CardRepository {
+}
+
+class ClientRepository {
+}
+
+class EventRepository {
+}
+
+class TransactionRepository {
+}
+
+}
+
+package com.example.common.service.account; {
+class AccountQueryService {
+}
+
+class AccountQueryServiceImpl {
+}
+
+}
+
+package com.example.common.service.card; {
+class CardQueryService {
+}
+
+class CardQueryServiceImpl {
+}
+
+}
+
+package com.example.common.service.client; {
+class ClientQueryService {
+}
+
+class ClientQueryServiceImpl {
+}
+
+}
+
+package com.example.common.service; {
+class QueryService {
+}
+
+}
+
+package com.example.common.service.transaction; {
+class TransactionQueryService {
+}
+
+class TransactionQueryServiceImpl {
+}
+
+}
+
+package com.example.core; {
+class Application {
+}
+
+}
+
+package com.example.core.service.account; {
+class AccountCommandService {
+}
+
+class AccountCommandServiceImpl {
+}
+
+class AccountService {
+}
+
+class AccountServiceImpl {
+}
+
+}
+
+package com.example.core.service.auth; {
+class AuthService {
+}
+
+class AuthServiceImpl {
+}
+
+}
+
+package com.example.core.service.card; {
+class CardCommandService {
+}
+
+class CardCommandServiceImpl {
+}
+
+class CardService {
+}
+
+class CardServiceImpl {
+}
+
+}
+
+package com.example.core.service.client; {
+class ClientCommandService {
+}
+
+class ClientCommandServiceImpl {
+}
+
+class ClientService {
+}
+
+class ClientServiceImpl {
+}
+
+}
+
+package com.example.core.service; {
+class CommandService {
+}
+
+}
+
+package com.example.core.service.event; {
+class EventService {
+}
+
+class EventServiceImpl {
+}
+
+}
+
+package com.example.core.service.transaction; {
+class TransactionCommandService {
+}
+
+class TransactionCommandServiceImpl {
+}
+
+class TransactionService {
+}
+
+class TransactionServiceImpl {
+}
+
+}
+
+package com.example.core.web.controller; {
+class AuthController {
+}
+
+class CardController {
+}
+
+class ClientController {
+}
+
+class ControllerAdvice {
+}
+
+class TransactionController {
+}
+
+}
+
+package com.example.core.web.dto; {
+class AccountDto {
+}
+
+class CardDto {
+}
+
+class ClientDto {
+}
+
+class LoginRequestDto {
+}
+
+class LoginResponseDto {
+}
+
+class MessageDto {
+}
+
+class OnCreate {
+}
+
+class OnTransactionFrom {
+}
+
+class OnTransactionTo {
+}
+
+class OnUpdate {
+}
+
+class TransactionDto {
+}
+
+}
+
+package com.example.core.web.dto.mapper; {
+class AccountMapper {
+}
+
+class CardMapper {
+}
+
+class ClientMapper {
+}
+
+class Mappable {
+}
+
+class TransactionMapper {
+}
+
+}
+
+package com.example.core.web.security.jwt; {
+class JwtProperties {
+}
+
+class JwtTokenFilter {
+}
+
+class TokenType {
+}
+
+}
+
+package com.example.core.web.security; {
+class SecurityConfig {
+}
+
+class SecurityUser {
+}
+
+class SecurityUserService {
+}
+
+}
+
+package com.example.core.web.security.service; {
+class SecurityService {
+}
+
+class SecurityServiceImpl {
+}
+
+}
+
+package com.example.eventhandler; {
+class Application {
+}
+
+}
+
+package com.example.eventhandler.config; {
+class GsonConfig {
+}
+
+class LocalDateTimeDeserializer {
+}
+
+}
+
+package com.example.eventhandler.handler; {
+class AccountCreateEventHandler {
+}
+
+class CardCreateEventHandler {
+}
+
+class ClientCreateEventHandler {
+}
+
+class EventHandler {
+}
+
+class TransactionCreateEventHandler {
+}
+
+}
+
+package com.example.eventhandler.service.account; {
+class AccountService {
+}
+
+class AccountServiceImpl {
+}
+
+}
+
+package com.example.eventhandler.service.card; {
+class CardService {
+}
+
+class CardServiceImpl {
+}
+
+}
+
+package com.example.eventhandler.service; {
+class CDCEventConsumer {
+}
+
+class DebeziumEventConsumer {
+}
+
+}
+
+package com.example.eventhandler.service.client; {
+class ClientService {
+}
+
+class ClientServiceImpl {
+}
+
+}
+
+package com.example.eventhandler.service.transaction; {
+class TransactionService {
+}
+
+class TransactionServiceImpl {
+}
+
+}
+
+Card -- Account
+Card -- Transaction
+Client -- Account
+Client -- Card
+AbstractEvent -- ObjectConverter
+AbstractEvent -- Event
+AbstractEvent -- EventType
+AccountCreateEvent -- Aggregate
+AccountCreateEvent -- Account
+AccountCreateEvent -- AbstractEvent
+AccountCreateEvent -- Event
+AccountCreateEvent -- EventType
+CardCreateEvent -- Aggregate
+CardCreateEvent -- Card
+CardCreateEvent -- AbstractEvent
+CardCreateEvent -- Event
+CardCreateEvent -- EventType
+ClientCreateEvent -- Aggregate
+ClientCreateEvent -- Client
+ClientCreateEvent -- AbstractEvent
+ClientCreateEvent -- Event
+ClientCreateEvent -- EventType
+Event -- Aggregate
+EventType -- Event
+TransactionCreateEvent -- Aggregate
+TransactionCreateEvent -- Transaction
+TransactionCreateEvent -- AbstractEvent
+TransactionCreateEvent -- Event
+TransactionCreateEvent -- EventType
+AccountRepository -- Account
+CardRepository -- Card
+CardRepository -- Transaction
+ClientRepository -- Account
+ClientRepository -- Card
+ClientRepository -- Client
+EventRepository -- AbstractEvent
+EventRepository -- Event
+TransactionRepository -- Transaction
+AccountQueryService -- Account
+AccountQueryService -- QueryService
+AccountQueryServiceImpl -- ResourceNotFoundException
+AccountQueryServiceImpl -- Account
+AccountQueryServiceImpl -- AccountRepository
+AccountQueryServiceImpl -- AccountQueryService
+AccountQueryServiceImpl -- QueryService
+CardQueryService -- Card
+CardQueryService -- QueryService
+CardQueryServiceImpl -- ResourceNotFoundException
+CardQueryServiceImpl -- Card
+CardQueryServiceImpl -- CardRepository
+CardQueryServiceImpl -- CardQueryService
+CardQueryServiceImpl -- QueryService
+ClientQueryService -- Account
+ClientQueryService -- Client
+ClientQueryService -- QueryService
+ClientQueryServiceImpl -- ResourceNotFoundException
+ClientQueryServiceImpl -- Account
+ClientQueryServiceImpl -- Client
+ClientQueryServiceImpl -- ClientRepository
+ClientQueryServiceImpl -- ClientQueryService
+ClientQueryServiceImpl -- QueryService
+TransactionQueryService -- Transaction
+TransactionQueryService -- QueryService
+TransactionQueryServiceImpl -- ResourceNotFoundException
+TransactionQueryServiceImpl -- Transaction
+TransactionQueryServiceImpl -- TransactionRepository
+TransactionQueryServiceImpl -- QueryService
+TransactionQueryServiceImpl -- TransactionQueryService
+Application -- Transaction
+AccountCommandService -- Account
+AccountCommandService -- CommandService
+AccountCommandServiceImpl -- Account
+AccountCommandServiceImpl -- AccountCreateEvent
+AccountCommandServiceImpl -- Event
+AccountCommandServiceImpl -- AccountCommandService
+AccountCommandServiceImpl -- CommandService
+AccountCommandServiceImpl -- EventService
+AccountService -- Account
+AccountServiceImpl -- Account
+AccountServiceImpl -- AccountRepository
+AccountServiceImpl -- AccountService
+AuthService -- Client
+AuthService -- LoginRequestDto
+AuthService -- LoginResponseDto
+AuthServiceImpl -- ResourceAlreadyExistsException
+AuthServiceImpl -- Client
+AuthServiceImpl -- AuthService
+AuthServiceImpl -- ClientService
+AuthServiceImpl -- LoginRequestDto
+AuthServiceImpl -- LoginResponseDto
+AuthServiceImpl -- JwtProperties
+AuthServiceImpl -- TokenType
+CardCommandService -- Card
+CardCommandService -- CommandService
+CardCommandServiceImpl -- Card
+CardCommandServiceImpl -- Transaction
+CardCommandServiceImpl -- CardCreateEvent
+CardCommandServiceImpl -- Event
+CardCommandServiceImpl -- CardCommandService
+CardCommandServiceImpl -- CommandService
+CardCommandServiceImpl -- EventService
+CardService -- Card
+CardService -- Transaction
+CardServiceImpl -- ResourceNotFoundException
+CardServiceImpl -- Account
+CardServiceImpl -- Card
+CardServiceImpl -- Client
+CardServiceImpl -- Transaction
+CardServiceImpl -- CardRepository
+CardServiceImpl -- ClientQueryService
+CardServiceImpl -- QueryService
+CardServiceImpl -- CardService
+CardServiceImpl -- ClientService
+ClientCommandService -- Client
+ClientCommandService -- CommandService
+ClientCommandServiceImpl -- Client
+ClientCommandServiceImpl -- Transaction
+ClientCommandServiceImpl -- ClientCreateEvent
+ClientCommandServiceImpl -- Event
+ClientCommandServiceImpl -- ClientCommandService
+ClientCommandServiceImpl -- CommandService
+ClientCommandServiceImpl -- EventService
+ClientService -- Card
+ClientService -- Client
+ClientServiceImpl -- Account
+ClientServiceImpl -- Card
+ClientServiceImpl -- Client
+ClientServiceImpl -- Transaction
+ClientServiceImpl -- ClientRepository
+ClientServiceImpl -- AccountService
+ClientServiceImpl -- ClientService
+EventService -- AbstractEvent
+EventService -- Event
+EventServiceImpl -- AbstractEvent
+EventServiceImpl -- Event
+EventServiceImpl -- EventRepository
+EventServiceImpl -- EventService
+TransactionCommandService -- Transaction
+TransactionCommandService -- CommandService
+TransactionCommandServiceImpl -- Card
+TransactionCommandServiceImpl -- Transaction
+TransactionCommandServiceImpl -- Event
+TransactionCommandServiceImpl -- TransactionCreateEvent
+TransactionCommandServiceImpl -- CardService
+TransactionCommandServiceImpl -- CommandService
+TransactionCommandServiceImpl -- EventService
+TransactionCommandServiceImpl -- TransactionCommandService
+TransactionService -- Transaction
+TransactionServiceImpl -- Account
+TransactionServiceImpl -- Card
+TransactionServiceImpl -- Transaction
+TransactionServiceImpl -- TransactionRepository
+TransactionServiceImpl -- CardService
+TransactionServiceImpl -- TransactionService
+AuthController -- Client
+AuthController -- AuthService
+AuthController -- ClientDto
+AuthController -- LoginRequestDto
+AuthController -- LoginResponseDto
+AuthController -- ClientMapper
+AuthController -- OnCreate
+CardController -- Card
+CardController -- Client
+CardController -- Transaction
+CardController -- CardService
+CardController -- CardDto
+CardController -- CardMapper
+CardController -- TransactionMapper
+CardController -- TransactionDto
+CardController -- SecurityUser
+CardController -- SecurityService
+ClientController -- Account
+ClientController -- Card
+ClientController -- Client
+ClientController -- ClientService
+ClientController -- AccountDto
+ClientController -- CardDto
+ClientController -- ClientDto
+ClientController -- AccountMapper
+ClientController -- CardMapper
+ClientController -- ClientMapper
+ControllerAdvice -- ResourceAlreadyExistsException
+ControllerAdvice -- ResourceNotFoundException
+ControllerAdvice -- MessageDto
+TransactionController -- Card
+TransactionController -- Transaction
+TransactionController -- CardService
+TransactionController -- TransactionService
+TransactionController -- TransactionMapper
+TransactionController -- OnCreate
+TransactionController -- TransactionDto
+AccountDto -- Account
+AccountDto -- OnCreate
+AccountDto -- OnUpdate
+CardDto -- Card
+CardDto -- Transaction
+CardDto -- OnCreate
+CardDto -- OnTransactionFrom
+CardDto -- OnTransactionTo
+CardDto -- OnUpdate
+ClientDto -- Client
+ClientDto -- OnCreate
+ClientDto -- OnUpdate
+AccountMapper -- Account
+AccountMapper -- AccountDto
+AccountMapper -- Mappable
+CardMapper -- Card
+CardMapper -- CardDto
+CardMapper -- Mappable
+ClientMapper -- Client
+ClientMapper -- ClientDto
+ClientMapper -- Mappable
+TransactionMapper -- Card
+TransactionMapper -- Transaction
+TransactionMapper -- CardMapper
+TransactionMapper -- Mappable
+TransactionMapper -- TransactionDto
+OnTransactionFrom -- Transaction
+OnTransactionTo -- Transaction
+TransactionDto -- Card
+TransactionDto -- Transaction
+TransactionDto -- CardDto
+TransactionDto -- OnCreate
+TransactionDto -- OnTransactionFrom
+TransactionDto -- OnTransactionTo
+TransactionDto -- OnUpdate
+JwtTokenFilter -- TokenType
+SecurityConfig -- JwtProperties
+SecurityConfig -- JwtTokenFilter
+SecurityUser -- Account
+SecurityUser -- Client
+SecurityUserService -- Client
+SecurityUserService -- ClientService
+SecurityUserService -- SecurityUser
+SecurityService -- Card
+SecurityService -- Client
+SecurityService -- Transaction
+SecurityService -- CardDto
+SecurityService -- SecurityUser
+SecurityServiceImpl -- ResourceNotFoundException
+SecurityServiceImpl -- Card
+SecurityServiceImpl -- Client
+SecurityServiceImpl -- Transaction
+SecurityServiceImpl -- CardService
+SecurityServiceImpl -- ClientService
+SecurityServiceImpl -- TransactionService
+SecurityServiceImpl -- CardDto
+SecurityServiceImpl -- SecurityUser
+SecurityServiceImpl -- SecurityService
+GsonConfig -- LocalDateTimeDeserializer
+AccountCreateEventHandler -- Account
+AccountCreateEventHandler -- AccountCreateEvent
+AccountCreateEventHandler -- Event
+AccountCreateEventHandler -- AccountService
+AccountCreateEventHandler -- EventHandler
+CardCreateEventHandler -- Card
+CardCreateEventHandler -- CardCreateEvent
+CardCreateEventHandler -- Event
+CardCreateEventHandler -- CardService
+CardCreateEventHandler -- EventHandler
+ClientCreateEventHandler -- Client
+ClientCreateEventHandler -- ClientCreateEvent
+ClientCreateEventHandler -- Event
+ClientCreateEventHandler -- ClientService
+ClientCreateEventHandler -- EventHandler
+EventHandler -- Event
+TransactionCreateEventHandler -- Transaction
+TransactionCreateEventHandler -- Event
+TransactionCreateEventHandler -- TransactionCreateEvent
+TransactionCreateEventHandler -- TransactionService
+TransactionCreateEventHandler -- EventHandler
+CDCEventConsumer -- Event
+DebeziumEventConsumer -- Event
+DebeziumEventConsumer -- EventHandler
+DebeziumEventConsumer -- CDCEventConsumer
+@enduml

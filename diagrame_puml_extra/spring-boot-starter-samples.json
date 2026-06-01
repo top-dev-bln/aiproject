@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Candidate, Admin roles. The platform provides capabilities for email disruptor handler, sms disruptor handler, i uuid. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "IAuthzLoginService",
+          "AuthzLoginServiceImpl",
+          "AuthzPrincipalRepositoryImpl"
+        ],
+        "controllers": [
+          "AuthzLoginController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "EmailDisruptorHandler"
+        ],
+        "controllers": [
+          "HelloWorldController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with hello world functionality, so that I can accomplish my hello world-related tasks.",
+        "services": [
+          "EmailDisruptorHandler"
+        ],
+        "controllers": [
+          "HelloWorldController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with demo functionality, so that I can accomplish my demo-related tasks.",
+        "services": [
+          "IDemoService",
+          "DemoServiceImpl"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "EmailDisruptorHandler"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DisruptorConfig[\"DisruptorConfig\"]\n        BootWebMvcConfig[\"BootWebMvcConfig\"]\n        DataSourceConfig[\"DataSourceConfig\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        ShiroConfig[\"ShiroConfig\"]\n        LogConstant[\"LogConstant\"]\n        Constant[\"Constant\"]\n        SocketioConfig[\"SocketioConfig\"]\n        HttpStatus[\"HttpStatus\"]\n        DefaultWebSocketBrokerConfig[\"DefaultWebSocketBrokerConfig\"]\n        DefaultWebSocketConfig[\"DefaultWebSocketConfig\"]\n        WebSocketConfig[\"WebSocketConfig\"]\n    end\n    subgraph Services\n        EmailDisruptorHandler[\"EmailDisruptorHandler\"]\n        SmsDisruptorHandler[\"SmsDisruptorHandler\"]\n        IUuidServiceImpl[\"IUuidServiceImpl\"]\n        IUuidService[\"IUuidService\"]\n        IAuthzLoginService[\"IAuthzLoginService\"]\n        IDemoService[\"IDemoService\"]\n        AuthzLoginServiceImpl[\"AuthzLoginServiceImpl\"]\n        AuthzPrincipalRepositoryImpl[\"AuthzPrincipalRepositoryImpl\"]\n        DemoServiceImpl[\"DemoServiceImpl\"]\n        RocketmqDataInDbHandler[\"RocketmqDataInDbHandler\"]\n        RocketmqDataSmsHandler[\"RocketmqDataSmsHandler\"]\n        SocketEventHandler[\"SocketEventHandler\"]\n        ChatWebSocketHandler[\"ChatWebSocketHandler\"]\n    end\n    subgraph Data_Access\n        IUuidDao[\"IUuidDao\"]\n        UuidDaoImpl[\"UuidDaoImpl\"]\n        AuthzLoginModel[\"AuthzLoginModel\"]\n        DemoModel[\"DemoModel\"]\n        IAuthzLoginDao[\"IAuthzLoginDao\"]\n        IDemoDao[\"IDemoDao\"]\n        Result[\"Result\"]\n    end\n    subgraph Controllers\n        HelloWorldController[\"HelloWorldController\"]\n        AuthzLoginController[\"AuthzLoginController\"]\n        DemoController[\"DemoController\"]\n        IndexController[\"IndexController\"]\n        ProducerController[\"ProducerController\"]\n        RocketMQController[\"RocketMQController\"]\n        UserController[\"UserController\"]\n        SocketioIndeController[\"SocketioIndeController\"]\n    end\n    subgraph Security\n        LoginAuthorizingRealm[\"LoginAuthorizingRealm\"]\n        AuthcExtensionPoint[\"AuthcExtensionPoint\"]\n        AuthcExtensionPointAdepter[\"AuthcExtensionPointAdepter\"]\n        AuthcPluginImpl1[\"AuthcPluginImpl1\"]\n        AuthcPluginImpl2[\"AuthcPluginImpl2\"]\n        AuthcExtensionPointImpl1[\"AuthcExtensionPointImpl1\"]\n        AuthcExtensionPointImpl2[\"AuthcExtensionPointImpl2\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

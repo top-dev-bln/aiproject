@@ -1,0 +1,66 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including tag, user oauth 2client, category, user. The platform provides capabilities for jwt auth, oauth 2service, default user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtAuthService",
+          "OAuth2Service",
+          "DefaultUserDetailsService"
+        ],
+        "controllers": [
+          "UserController",
+          "OAuth2Controller",
+          "JwtAuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage tag records, so that I can track and organize tag data effectively.",
+        "services": [
+          "JwtAuthService"
+        ],
+        "controllers": [
+          "BaseController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage user oauth 2client records, so that I can track and organize user oauth 2client data effectively.",
+        "services": [
+          "DefaultUserDetailsService",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage category records, so that I can track and organize category data effectively.",
+        "services": [
+          "CategoryService"
+        ],
+        "controllers": [
+          "CategoryController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "DefaultUserDetailsService",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        BaseController[\"BaseController\"]\n        TagController[\"TagController\"]\n        DashboardController[\"DashboardController\"]\n        CategoryController[\"CategoryController\"]\n        NotesController[\"NotesController\"]\n        UserController[\"UserController\"]\n        OAuth2Controller[\"OAuth2Controller\"]\n        JwtAuthController[\"JwtAuthController\"]\n    end\n    subgraph Infrastructure\n        RestTemplateConfig[\"RestTemplateConfig\"]\n        ThreadPoolConfig[\"ThreadPoolConfig\"]\n        CustomExceptionType[\"CustomExceptionType\"]\n        ResultUtil[\"ResultUtil\"]\n        HttpCodeEnum[\"HttpCodeEnum\"]\n        Result[\"Result\"]\n        RestUtil[\"RestUtil\"]\n        DateUtil[\"DateUtil\"]\n    end\n    subgraph Data_Access\n        Tag[\"Tag\"]\n        UserOAuth2Client[\"UserOAuth2Client\"]\n        Category[\"Category\"]\n        User[\"User\"]\n        Notes[\"Notes\"]\n        UserInfo[\"UserInfo\"]\n        OAuth2AccountInfo[\"OAuth2AccountInfo\"]\n        OAuth2AccessToken[\"OAuth2AccessToken\"]\n        WeiboCodeResult[\"WeiboCodeResult\"]\n        GithubCodeResult[\"GithubCodeResult\"]\n        LoginUserBean[\"LoginUserBean\"]\n        TagRepository[\"TagRepository\"]\n        NotesRepository[\"NotesRepository\"]\n        CategoryRepository[\"CategoryRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        OAuth2ClientProperties[\"OAuth2ClientProperties\"]\n        DefaultPasswordEncoder[\"DefaultPasswordEncoder\"]\n        AuthenticationEntryPointConfig[\"AuthenticationEntryPointConfig\"]\n        AuthenticationBean[\"AuthenticationBean\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        CustomAuthenticationFilter[\"CustomAuthenticationFilter\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n    end\n    subgraph Services\n        JwtAuthService[\"JwtAuthService\"]\n        OAuth2Service[\"OAuth2Service\"]\n        DefaultUserDetailsService[\"DefaultUserDetailsService\"]\n        AccountInfoStrategy[\"AccountInfoStrategy\"]\n        AccountInfoStrategyWeibo[\"AccountInfoStrategyWeibo\"]\n        AccountInfoStrategyGithub[\"AccountInfoStrategyGithub\"]\n        AccountInfoStrategyQQ[\"AccountInfoStrategyQQ\"]\n        TagService[\"TagService\"]\n        UserService[\"UserService\"]\n        InitNotesDataService[\"InitNotesDataService\"]\n        OAuth2ClientService[\"OAuth2ClientService\"]\n        NotesService[\"NotesService\"]\n        DashboardService[\"DashboardService\"]\n        CategoryService[\"CategoryService\"]\n        TagTask[\"TagTask\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, User roles. It manages core business objects including post, refresh token, vote, user. The platform provides capabilities for jwt provider, vote, mail. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "AuthService",
+          "RefreshTokenService",
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to create and manage post records, so that I can track and organize post data effectively.",
+        "services": [
+          "PostService"
+        ],
+        "controllers": [
+          "PostController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to create and manage refresh token records, so that I can track and organize refresh token data effectively.",
+        "services": [
+          "RefreshTokenService"
+        ],
+        "controllers": [
+          "VoteController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to create and manage vote records, so that I can track and organize vote data effectively.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "VoteController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "VoteController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        AuthenticationResponse[\"AuthenticationResponse\"]\n        RefreshTokenRequest[\"RefreshTokenRequest\"]\n    end\n    subgraph Infrastructure\n        WebConfig[\"WebConfig\"]\n        OpenAPIConfiguration[\"OpenAPIConfiguration\"]\n    end\n    subgraph Controllers\n        VoteController[\"VoteController\"]\n        AuthController[\"AuthController\"]\n        PostController[\"PostController\"]\n        CommentsController[\"CommentsController\"]\n        SubredditController[\"SubredditController\"]\n    end\n    subgraph Data_Access\n        CommentMapper[\"CommentMapper\"]\n        PostMapper[\"PostMapper\"]\n        SubredditMapper[\"SubredditMapper\"]\n        CommentRepository[\"CommentRepository\"]\n        VoteRepository[\"VoteRepository\"]\n        RefreshTokenRepository[\"RefreshTokenRepository\"]\n        PostRepository[\"PostRepository\"]\n        UserRepository[\"UserRepository\"]\n        VerificationTokenRepository[\"VerificationTokenRepository\"]\n        SubredditRepository[\"SubredditRepository\"]\n        Post[\"Post\"]\n        RefreshToken[\"RefreshToken\"]\n        Vote[\"Vote\"]\n        User[\"User\"]\n        NotificationEmail[\"NotificationEmail\"]\n        VerificationToken[\"VerificationToken\"]\n        Comment[\"Comment\"]\n        Subreddit[\"Subreddit\"]\n        VoteType[\"VoteType\"]\n    end\n    subgraph Services\n        JwtProvider[\"JwtProvider\"]\n        VoteService[\"VoteService\"]\n        MailService[\"MailService\"]\n        CommentService[\"CommentService\"]\n        SubredditService[\"SubredditService\"]\n        AuthService[\"AuthService\"]\n        RefreshTokenService[\"RefreshTokenService\"]\n        MailContentBuilder[\"MailContentBuilder\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        PostService[\"PostService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

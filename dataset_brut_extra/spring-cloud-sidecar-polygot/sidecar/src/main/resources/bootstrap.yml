@@ -1,0 +1,20 @@
+
+server:
+  port: 9004   
+spring:
+  application:
+    name: sidecar
+#  Enable/Disable profiles when required/ to override application properties
+#  profiles:
+#    active:
+#      - local # dev/test/prod
+  cloud:
+    config:
+      uri:
+        - ${vcap.services.config-client.credentials.uri:http://localhost:9500}
+      username: ${vcap.services.config-client.credentials.username:configuser}
+      password: ${vcap.services.config-client.credentials.password:configpassword}
+
+
+       
+     

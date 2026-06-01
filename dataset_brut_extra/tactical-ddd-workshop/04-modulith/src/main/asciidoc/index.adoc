@@ -1,0 +1,16 @@
+= Sample documentation
+:generated-docs: ../../../target/spring-modulith-docs
+
+== Overview
+plantuml::{generated-docs}/components.puml[,,format=svg]
+
+== Catalog
+include::{generated-docs}/module-catalog.adoc[]
+
+== Order
+plantuml::{generated-docs}/module-orders.puml[,,format=svg]
+include::{generated-docs}/module-orders.adoc[]
+
+== Inventory
+plantuml::{generated-docs}/module-inventory.puml[,,format=svg]
+include::{generated-docs}/module-inventory.adoc[]

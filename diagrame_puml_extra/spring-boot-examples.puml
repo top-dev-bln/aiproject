@@ -1,0 +1,924 @@
+@startuml
+package com.geekdigging.demo.config; {
+class DemoConfig {
+}
+
+}
+
+package com.geekdigging.demo.controller; {
+class UserController {
+}
+
+}
+
+package com.geekdigging.demo.interceptor; {
+class ActionInterceptor {
+}
+
+class AuthInterceptor {
+}
+
+class ServiceInterceptor {
+}
+
+}
+
+package com.geekdigging.demo.model.base; {
+class BaseUser {
+}
+
+}
+
+package com.geekdigging.demo.model; {
+class User {
+}
+
+class _MappingKit {
+}
+
+}
+
+package com.geekdigging.demo.service; {
+class UserService {
+}
+
+}
+
+package com.geekdigging.demo; {
+class _JFinalDemoGenerator {
+}
+
+}
+
+package censed to the Apache Software Foundation (ASF) under one {
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+class MavenWrapperDownloader {
+}
+
+}
+
+package com.springboot.springbootactuator.controller; {
+class HelloController {
+}
+
+}
+
+package com.springboot.springbootactuator; {
+class SpringBootActuatorApplication {
+}
+
+class SpringBootActuatorApplicationTests {
+}
+
+}
+
+package com.springboot.springbootadminclient.controller; {
+class HelloController {
+}
+
+}
+
+package com.springboot.springbootadminclient; {
+class SpringBootAdminClientApplication {
+}
+
+class SpringBootAdminClientApplicationTests {
+}
+
+}
+
+package com.springboot.springbootadminclienta.controller; {
+class HelloController {
+}
+
+}
+
+package com.springboot.springbootadminclienta; {
+class SpringBootAdminClientaApplication {
+}
+
+class SpringBootAdminClientaApplicationTests {
+}
+
+}
+
+package com.springboot.springbootadminserver; {
+class SpringBootAdminServerApplication {
+}
+
+class SpringBootAdminServerApplicationTests {
+}
+
+}
+
+package com.springboot.springbooteurekaserver; {
+class SpringBootEurekaServerApplication {
+}
+
+class SpringBootEurekaServerApplicationTests {
+}
+
+}
+
+package com.springboot.springbootmvclatency.controller; {
+class HelloController {
+}
+
+}
+
+package com.springboot.springbootmvclatency; {
+class SpringBootMvcLatencyApplication {
+}
+
+class SpringBootMvcLatencyApplicationTests {
+}
+
+}
+
+package com.springboot.springbootwebfluxlatency.controller; {
+class HelloController {
+}
+
+}
+
+package com.springboot.springbootwebfluxlatency; {
+class SpringBootWebfluxLatencyApplication {
+}
+
+class SpringBootWebfluxLatencyApplicationTests {
+}
+
+}
+
+package com.springcloud.springbootjpadruid.controller; {
+class UserController {
+}
+
+}
+
+package com.springcloud.springbootjpadruid.model; {
+class UserModel {
+}
+
+}
+
+package com.springcloud.springbootjpadruid.repository; {
+class UserRepository {
+}
+
+}
+
+package com.springcloud.springbootjpadruid; {
+class SpringBootJpaDruidApplication {
+}
+
+class SpringBootJpaDruidApplicationTests {
+}
+
+}
+
+package com.springboot.springbootjpahikari.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootjpahikari.model; {
+class UserModel {
+}
+
+}
+
+package com.springboot.springbootjpahikari.repository; {
+class UserRepository {
+}
+
+}
+
+package com.springboot.springbootjpahikari; {
+class SpringBootJpaHikariApplication {
+}
+
+class SpringBootJpaHikariApplicationTests {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.config; {
+class JpaQueryConfig {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.dto; {
+class UserDTO {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.model; {
+class LessonModel {
+}
+
+class UserModel {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.repository; {
+class LessonRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.service.impl; {
+class LessonServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl.service; {
+class LessonService {
+}
+
+class UserService {
+}
+
+}
+
+package com.springboot.springbootjpaquerydsl; {
+class SpringBootJpaQuerydslApplication {
+}
+
+class SpringBootJpaQuerydslApplicationTests {
+}
+
+}
+
+package com.springboot.springbootmail.service.impl; {
+class MailServiceImpl {
+}
+
+}
+
+package com.springboot.springbootmail.service; {
+class MailService {
+}
+
+}
+
+package com.springboot.springbootmail; {
+class SpringBootMailApplication {
+}
+
+class SpringBootMailApplicationTests {
+}
+
+}
+
+package com.springboot.springbootmybatisannotation.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootmybatisannotation.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.springboot.springbootmybatisannotation.model; {
+class User {
+}
+
+}
+
+package com.springboot.springbootmybatisannotation; {
+class SpringBootMybatisAnnotationApplication {
+}
+
+class SpringBootMybatisAnnotationApplicationTests {
+}
+
+}
+
+package com.springboot.springbootmybatisxml.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootmybatisxml.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.springboot.springbootmybatisxml.model; {
+class User {
+}
+
+}
+
+package com.springboot.springbootmybatisxml; {
+class SpringBootMybatisXmlApplication {
+}
+
+class SpringBootMybatisXmlApplicationTests {
+}
+
+}
+
+package com.springboot.springbootmybatisplus.config; {
+class MybatisPlusConfig {
+}
+
+}
+
+package com.springboot.springbootmybatisplus.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootmybatisplus.mapper; {
+class UserMapper {
+}
+
+}
+
+package com.springboot.springbootmybatisplus.model; {
+class User {
+}
+
+}
+
+package com.springboot.springbootmybatisplus.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.springboot.springbootmybatisplus.service; {
+class UserService {
+}
+
+}
+
+package com.springboot.springbootmybatisplus; {
+class SpringBootMybatisPlusApplication {
+}
+
+class SpringBootMybatisPlusApplicationTests {
+}
+
+}
+
+package com.springboot.springbootquartz.config; {
+class ConfigureQuartz {
+}
+
+}
+
+package com.springboot.springbootquartz.controller; {
+class JobController {
+}
+
+}
+
+package com.springboot.springbootquartz.dto; {
+class ModifyCronDTO {
+}
+
+}
+
+package com.springboot.springbootquartz.entity; {
+class JobEntity {
+}
+
+}
+
+package com.springboot.springbootquartz.job; {
+class DynamicJob {
+}
+
+}
+
+package com.springboot.springbootquartz.repository; {
+class JobEntityRepository {
+}
+
+}
+
+package com.springboot.springbootquartz.service; {
+class DynamicJobService {
+}
+
+}
+
+package com.springboot.springbootquartz; {
+class SpringBootQuartzApplication {
+}
+
+class SpringBootQuartzApplicationTests {
+}
+
+}
+
+package com.springboot.springbootquickstart.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootquickstart.model; {
+class UserModel {
+}
+
+}
+
+package com.springboot.springbootquickstart; {
+class SpringBootQuickStartApplication {
+}
+
+class SpringBootQuickStartApplicationTests {
+}
+
+}
+
+package com.springboot.springbootrabbitmq.config; {
+class FanoutConfig {
+}
+
+class QueueConfig {
+}
+
+class TopicConfig {
+}
+
+}
+
+package com.springboot.springbootrabbitmq; {
+class DemoApplication {
+}
+
+class DemoApplicationTests {
+}
+
+}
+
+package com.springboot.springbootrabbitmq.fanout; {
+class FanoutReceiveA {
+}
+
+class FanoutReceiveB {
+}
+
+class FanoutReceiveC {
+}
+
+class FanoutSend {
+}
+
+}
+
+package com.springboot.springbootrabbitmq.many; {
+class SimpleManyReceive {
+}
+
+class SimpleManyReceive1 {
+}
+
+class SimpleManySend {
+}
+
+class SimpleManySend1 {
+}
+
+}
+
+package com.springboot.springbootrabbitmq.simple; {
+class SimpleReceive {
+}
+
+class SimpleSend {
+}
+
+}
+
+package com.springboot.springbootrabbitmq.topic; {
+class TopicReceive {
+}
+
+class TopicReceive1 {
+}
+
+class TopicSend {
+}
+
+}
+
+package com.springboot.springbootredis.config; {
+class RedisCacheConfig {
+}
+
+}
+
+package com.springboot.springbootredis.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootredis.model; {
+class User {
+}
+
+}
+
+package com.springboot.springbootredis.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.springboot.springbootredis.service; {
+class UserService {
+}
+
+}
+
+package com.springboot.springbootredis; {
+class SpringBootRedisApplication {
+}
+
+class SpringBootRedisApplicationTests {
+}
+
+}
+
+package com.springboot.springbootscheduler; {
+class SpringBootSchedulerApplication {
+}
+
+class SpringBootSchedulerApplicationTests {
+}
+
+}
+
+package com.springboot.springbootscheduler.task; {
+class Task {
+}
+
+}
+
+package com.springboot.springbootswagger.config; {
+class SwaggerConfig {
+}
+
+}
+
+package com.springboot.springbootswagger.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootswagger.model; {
+class User {
+}
+
+}
+
+package com.springboot.springbootswagger.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.springboot.springbootswagger.service; {
+class UserService {
+}
+
+}
+
+package com.springboot.springbootswagger; {
+class SpringBootSwaggerApplication {
+}
+
+class SpringBootSwaggerApplicationTests {
+}
+
+}
+
+package com.springboot.springbootthymeleaf.controller; {
+class HelloController {
+}
+
+}
+
+package com.springboot.springbootthymeleaf.model; {
+class CourseModel {
+}
+
+class UserModel {
+}
+
+}
+
+package com.springboot.springbootthymeleaf; {
+class SpringBootThymeleafApplication {
+}
+
+class SpringBootThymeleafApplicationTests {
+}
+
+}
+
+package com.springboot.springbootwebflux.controller; {
+class UserController {
+}
+
+}
+
+package com.springboot.springbootwebflux.model; {
+class User {
+}
+
+}
+
+package com.springboot.springbootwebflux.service.impl; {
+class UserServiceImpl {
+}
+
+}
+
+package com.springboot.springbootwebflux.service; {
+class UserSerivice {
+}
+
+}
+
+package com.springboot.springbootwebflux; {
+class SpringBootWebfluxApplication {
+}
+
+class SpringBootWebfluxApplicationTests {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.common; {
+class Const {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.config; {
+class WebSecurityConfig {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.controller; {
+class JwtAuthController {
+}
+
+class TestController {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.filter; {
+class JwtTokenFilter {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.model.entity; {
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.repository; {
+class UserRepository {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.service; {
+class AuthService {
+}
+
+class UserService {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.service.impl; {
+class AuthServiceImpl {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt; {
+class SpringbootSecurityJwtApplication {
+}
+
+class SpringbootSecurityJwtApplicationTests {
+}
+
+}
+
+package com.geekdigging.springbootsecurityjwt.utils; {
+class JwtTokenUtil {
+}
+
+}
+
+DemoConfig -- UserController
+DemoConfig -- ActionInterceptor
+DemoConfig -- AuthInterceptor
+DemoConfig -- ServiceInterceptor
+DemoConfig -- User
+DemoConfig -- Const
+UserController -- User
+UserController -- UserSerivice
+ActionInterceptor -- User
+AuthInterceptor -- User
+ServiceInterceptor -- User
+BaseUser -- User
+User -- Role
+_MappingKit -- User
+UserService -- User
+UserService -- UserRepository
+_JFinalDemoGenerator -- DemoConfig
+_JFinalDemoGenerator -- User
+HelloController -- User
+HelloController -- UserModel
+HelloController -- CourseModel
+SpringBootActuatorApplicationTests -- SpringBootActuatorApplication
+SpringBootAdminClientApplicationTests -- SpringBootAdminClientApplication
+SpringBootAdminClientaApplicationTests -- SpringBootAdminClientaApplication
+SpringBootAdminServerApplicationTests -- SpringBootAdminServerApplication
+SpringBootEurekaServerApplicationTests -- SpringBootEurekaServerApplication
+SpringBootMvcLatencyApplicationTests -- SpringBootMvcLatencyApplication
+SpringBootWebfluxLatencyApplicationTests -- SpringBootWebfluxLatencyApplication
+UserModel -- User
+UserRepository -- User
+SpringBootJpaDruidApplicationTests -- SpringBootJpaDruidApplication
+SpringBootJpaHikariApplicationTests -- SpringBootJpaHikariApplication
+UserDTO -- User
+UserDTO -- LessonModel
+LessonRepository -- LessonModel
+LessonServiceImpl -- LessonModel
+LessonServiceImpl -- LessonService
+UserServiceImpl -- User
+UserServiceImpl -- UserService
+UserServiceImpl -- UserSerivice
+LessonService -- LessonModel
+SpringBootJpaQuerydslApplicationTests -- SpringBootJpaQuerydslApplication
+MailServiceImpl -- MailService
+SpringBootMailApplicationTests -- User
+SpringBootMailApplicationTests -- MailService
+SpringBootMailApplicationTests -- SpringBootMailApplication
+UserMapper -- User
+SpringBootMybatisAnnotationApplicationTests -- SpringBootMybatisAnnotationApplication
+SpringBootMybatisXmlApplicationTests -- SpringBootMybatisXmlApplication
+SpringBootMybatisPlusApplicationTests -- SpringBootMybatisPlusApplication
+JobController -- ModifyCronDTO
+JobController -- JobEntity
+JobController -- DynamicJob
+JobController -- JobEntityRepository
+JobController -- DynamicJobService
+JobController -- Const
+ModifyCronDTO -- Const
+JobEntity -- Const
+JobEntityRepository -- JobEntity
+DynamicJobService -- JobEntity
+DynamicJobService -- DynamicJob
+DynamicJobService -- JobEntityRepository
+SpringBootQuartzApplicationTests -- SpringBootQuartzApplication
+SpringBootQuickStartApplicationTests -- UserController
+SpringBootQuickStartApplicationTests -- User
+SpringBootQuickStartApplicationTests -- SpringBootQuickStartApplication
+SimpleManyReceive1 -- SimpleManyReceive
+SimpleManySend -- SimpleManySend1
+TopicReceive1 -- TopicReceive
+DemoApplicationTests -- DemoApplication
+DemoApplicationTests -- FanoutSend
+DemoApplicationTests -- SimpleManySend
+DemoApplicationTests -- SimpleManySend1
+DemoApplicationTests -- SimpleSend
+DemoApplicationTests -- TopicSend
+SpringBootRedisApplicationTests -- SpringBootRedisApplication
+SpringBootSchedulerApplicationTests -- SpringBootSchedulerApplication
+SpringBootSwaggerApplicationTests -- SpringBootSwaggerApplication
+SpringBootThymeleafApplicationTests -- SpringBootThymeleafApplication
+UserSerivice -- User
+SpringBootWebfluxApplicationTests -- SpringBootWebfluxApplication
+WebSecurityConfig -- User
+WebSecurityConfig -- UserService
+WebSecurityConfig -- JwtTokenFilter
+JwtAuthController -- User
+JwtAuthController -- AuthService
+JwtTokenFilter -- User
+JwtTokenFilter -- Const
+JwtTokenFilter -- JwtTokenUtil
+AuthService -- User
+AuthServiceImpl -- User
+AuthServiceImpl -- UserRepository
+AuthServiceImpl -- AuthService
+AuthServiceImpl -- JwtTokenUtil
+JwtTokenUtil -- User
+JwtTokenUtil -- Const
+SpringbootSecurityJwtApplicationTests -- SpringbootSecurityJwtApplication
+@enduml

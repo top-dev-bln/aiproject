@@ -1,0 +1,66 @@
+@startuml
+package pl.piomin.samples.springboot.kubernetes.controller; {
+class PersonController {
+}
+
+}
+
+package pl.piomin.samples.springboot.kubernetes.domain; {
+class Gender {
+}
+
+class Person {
+}
+
+class PersonV2 {
+}
+
+}
+
+package pl.piomin.samples.springboot.kubernetes.repository; {
+class PersonRepository {
+}
+
+}
+
+package pl.piomin.samples.springboot.kubernetes.service; {
+class PersonService {
+}
+
+}
+
+package pl.piomin.samples.springboot.kubernetes; {
+class SpringBootOnKubernetesApp {
+}
+
+class MongoDBContainerDevMode {
+}
+
+class PersonControllerTest {
+}
+
+class SpringBootOnKubernetesAppTest {
+}
+
+}
+
+PersonController -- Gender
+PersonController -- Person
+PersonController -- PersonV2
+PersonController -- PersonRepository
+PersonController -- PersonService
+Person -- Gender
+PersonV2 -- Gender
+PersonV2 -- Person
+PersonRepository -- Person
+PersonService -- Person
+PersonService -- PersonRepository
+SpringBootOnKubernetesApp -- Gender
+SpringBootOnKubernetesApp -- Person
+SpringBootOnKubernetesApp -- PersonRepository
+PersonControllerTest -- PersonController
+PersonControllerTest -- Gender
+PersonControllerTest -- Person
+SpringBootOnKubernetesAppTest -- SpringBootOnKubernetesApp
+SpringBootOnKubernetesAppTest -- MongoDBContainerDevMode
+@enduml

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="frontend/partials/head(title=${user.name})"></head>
+<body>
+<div th:replace="frontend/partials/menu"></div>
+
+
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 th:text="${user.name}"></h1>
+            <div th:if="${canEdit}" class="text-right">
+                <a th:href="@{/profile/edit}" class="btn btn-primary" th:text="#{profile.edit.title}">Edit profile</a>
+            </div>
+
+            <div th:if="${profile != null}">
+				<p th:if="${ !profile.location.isEmpty() }">
+					<i class="glyphicon glyphicon-map-marker"> </i>
+					<span th:text="${profile.location}"></span>
+				</p>
+				<p th:if="${ !profile.linkedin.isEmpty() }">
+					Linkedin: <a th:href="${profile.linkedin}" th:text="${profile.linkedin}"></a>
+				</p>
+				<p class="job-details-description" th:utext="${profile.biography}"></p>
+            </div>
+
+            <p th:if="${profile == null}" th:text="#{profile.view_client.no_profile_msg}">
+                This user hasn't created profile yet.
+            </p>
+        </div>
+    </div>
+    
+    <div class="row" th:if="${canEdit}" id="bids">
+        <div class="col-md-8">
+            <h1 th:text="#{menu.my_bids}">My Bids</h1>
+            
+            <p th:each="bid : ${myBids}">
+                <a th:href="@{'/job/' + ${bid.job.id}}" th:text="${bid.job.title}"></a>
+            </p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            
+            <h1 th:text="#{job_history}">Job history</h1>
+            
+            <div th:each="feedback : ${my_feedbacks}">
+                
+                <p>
+	                <a th:href="@{'/job/' + ${feedback.bid.job.id}}" th:text="${feedback.bid.job.title}"></a>
+                </p>
+                <i class="glyphicon glyphicon-star"></i>
+                <i th:if="${feedback.contractorRate &gt; 1}" class="glyphicon glyphicon-star"></i>
+                <i th:if="${feedback.contractorRate &gt; 2}" class="glyphicon glyphicon-star"></i>
+                <i th:if="${feedback.contractorRate &gt; 3}" class="glyphicon glyphicon-star"></i>
+                <i th:if="${feedback.contractorRate &gt; 4}" class="glyphicon glyphicon-star"></i>
+                <p>
+	                <span th:text="${feedback.contractorFeedback}"></span>
+                </p>
+                <hr />
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+</body>
+</html>

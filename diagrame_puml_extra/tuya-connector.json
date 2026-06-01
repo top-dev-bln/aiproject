@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Operator, User roles. The platform provides capabilities for tuya context manager, token invalid error processor, tuya header processor. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include IoT functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "TokenInvalidErrorProcessor",
+          "TuyaTokenManager"
+        ],
+        "controllers": [
+          "DeviceController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Operator, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "DynamicMessageManager"
+        ],
+        "controllers": [
+          "DeviceController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "TuyaContextManager",
+          "TuyaTokenManager"
+        ],
+        "controllers": [
+          "DeviceController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As an Operator, I want to view real-time device data and monitor system health, so that I can detect and respond to anomalies quickly.",
+        "services": [
+          "DeviceService"
+        ],
+        "controllers": [
+          "DeviceController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Operator, I want to interact with s i functionality, so that I can accomplish my s i-related tasks.",
+        "services": [
+          "TuyaContextManager"
+        ],
+        "controllers": [
+          "SIController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        TuyaRegionConfig[\"TuyaRegionConfig\"]\n        EnvConstant[\"EnvConstant\"]\n        TuyaRegion[\"TuyaRegion\"]\n        Sha256Util[\"Sha256Util\"]\n        EnableDynamicMessaging[\"EnableDynamicMessaging\"]\n        EnableMessaging[\"EnableMessaging\"]\n        MessageAutoConfiguration[\"MessageAutoConfiguration\"]\n        MessageProperties[\"MessageProperties\"]\n        MessageScanRegister[\"MessageScanRegister\"]\n        TuyaMessageDataSource[\"TuyaMessageDataSource\"]\n        TuyaAutoConfiguration[\"TuyaAutoConfiguration\"]\n        DeviceProperties[\"DeviceProperties\"]\n        CustomOkHttpClient[\"CustomOkHttpClient\"]\n    end\n    subgraph Services\n        TuyaContextManager[\"TuyaContextManager\"]\n        TokenInvalidErrorProcessor[\"TokenInvalidErrorProcessor\"]\n        TuyaHeaderProcessor[\"TuyaHeaderProcessor\"]\n        TuyaTokenManager[\"TuyaTokenManager\"]\n        DynamicMessageManager[\"DynamicMessageManager\"]\n        DeviceService[\"DeviceService\"]\n        SIService[\"SIService\"]\n    end\n    subgraph Security\n        TokenConnector[\"TokenConnector\"]\n        TuyaToken[\"TuyaToken\"]\n        SecurityInfo[\"SecurityInfo\"]\n    end\n    subgraph Data_Access\n        StatusReportMessage[\"StatusReportMessage\"]\n    end\n    subgraph Controllers\n        DeviceController[\"DeviceController\"]\n        SIController[\"SIController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

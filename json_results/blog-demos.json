@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. The platform provides capabilities for my invocation handler, netty nio client handler, netty nio server handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "MyInvocationHandler"
+        ],
+        "controllers": [
+          "AuthTestController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with wechat functionality, so that I can accomplish my wechat-related tasks.",
+        "services": [
+          "MyInvocationHandler"
+        ],
+        "controllers": [
+          "WechatController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use my invocation handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyInvocationHandler"
+        ],
+        "controllers": [
+          "AuthTestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use netty nio client handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "NettyNioClientHandler"
+        ],
+        "controllers": [
+          "AuthTestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use netty nio server handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "NettyNioServerHandler"
+        ],
+        "controllers": [
+          "AuthTestController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        MyInvocationHandler[\"MyInvocationHandler\"]\n        NettyNioClientHandler[\"NettyNioClientHandler\"]\n        NettyNioServerHandler[\"NettyNioServerHandler\"]\n    end\n    subgraph Infrastructure\n        AsymmetricKeyUtil[\"AsymmetricKeyUtil\"]\n        CodeUtil[\"CodeUtil\"]\n        MDUtil[\"MDUtil\"]\n        SymmetricKeyUtil[\"SymmetricKeyUtil\"]\n        Config[\"Config\"]\n        ConfigA[\"ConfigA\"]\n        ConfigB[\"ConfigB\"]\n        ConfigC[\"ConfigC\"]\n        ConfigD[\"ConfigD\"]\n        MyImportBeanDefinitionRegistrar[\"MyImportBeanDefinitionRegistrar\"]\n        MyImportSelector[\"MyImportSelector\"]\n        RedisConfig[\"RedisConfig\"]\n        RestTemplateConfig[\"RestTemplateConfig\"]\n    end\n    subgraph Controllers\n        AuthTestController[\"AuthTestController\"]\n        WechatController[\"WechatController\"]\n    end\n    subgraph Security\n        JwtUtil[\"JwtUtil\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

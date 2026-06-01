@@ -1,0 +1,144 @@
+@startuml
+package com.cajuncoding.apachefop.serverless.apachefop; {
+class ApacheFopEventListener {
+}
+
+class ApacheFopJavaResourcesFileResolver {
+}
+
+class ApacheFopRenderer {
+}
+
+class ApacheFopRenderResult {
+}
+
+}
+
+package com.cajuncoding.apachefop.serverless; {
+class ApacheFopFunction {
+}
+
+class ApacheFopGzipFunction {
+}
+
+class KeepWarmFunction {
+}
+
+}
+
+package com.cajuncoding.apachefop.serverless.config; {
+class ApacheFopServerlessConfig {
+}
+
+class ApacheFopServerlessConstants {
+}
+
+class ApacheFopServerlessHeaders {
+}
+
+class ApacheFopServerlessQueryParams {
+}
+
+}
+
+package com.cajuncoding.apachefop.serverless.http; {
+class HttpContentTypes {
+}
+
+class HttpEncodings {
+}
+
+class HttpHeaders {
+}
+
+}
+
+package com.cajuncoding.apachefop.serverless.utils; {
+class AzureFunctionUtils {
+}
+
+class GzipUtils {
+}
+
+class ResourceUtils {
+}
+
+class TextUtils {
+}
+
+class XmlFactoryUtils {
+}
+
+class XmlSecurityFeatures {
+}
+
+class XPathUtils {
+}
+
+}
+
+package com.cajuncoding.apachefop.serverless.web; {
+class ApacheFopServerlessFunctionExecutor {
+}
+
+class ApacheFopServerlessResponseBuilder {
+}
+
+class SafeHeader {
+}
+
+}
+
+package com.cajuncoding; {
+class FunctionTest {
+}
+
+class HttpResponseMessageMock {
+}
+
+}
+
+ApacheFopJavaResourcesFileResolver -- ResourceUtils
+ApacheFopRenderer -- ApacheFopEventListener
+ApacheFopRenderer -- ApacheFopJavaResourcesFileResolver
+ApacheFopRenderer -- ApacheFopRenderResult
+ApacheFopRenderer -- ApacheFopServerlessConfig
+ApacheFopRenderer -- ApacheFopServerlessConstants
+ApacheFopRenderer -- ResourceUtils
+ApacheFopRenderer -- XmlFactoryUtils
+ApacheFopRenderer -- XPathUtils
+ApacheFopRenderResult -- ApacheFopEventListener
+ApacheFopRenderResult -- TextUtils
+ApacheFopFunction -- ApacheFopServerlessFunctionExecutor
+ApacheFopFunction -- ApacheFopServerlessResponseBuilder
+ApacheFopGzipFunction -- ApacheFopServerlessFunctionExecutor
+ApacheFopGzipFunction -- ApacheFopServerlessResponseBuilder
+ApacheFopServerlessConfig -- ApacheFopServerlessHeaders
+ApacheFopServerlessConfig -- ApacheFopServerlessQueryParams
+ApacheFopServerlessConfig -- HttpEncodings
+ApacheFopServerlessConfig -- HttpHeaders
+KeepWarmFunction -- ApacheFopRenderer
+KeepWarmFunction -- ApacheFopServerlessConfig
+KeepWarmFunction -- ApacheFopServerlessConstants
+KeepWarmFunction -- ResourceUtils
+KeepWarmFunction -- TextUtils
+AzureFunctionUtils -- ApacheFopServerlessConfig
+AzureFunctionUtils -- GzipUtils
+XmlFactoryUtils -- XmlSecurityFeatures
+XPathUtils -- XmlFactoryUtils
+ApacheFopServerlessFunctionExecutor -- ApacheFopRenderer
+ApacheFopServerlessFunctionExecutor -- ApacheFopServerlessConfig
+ApacheFopServerlessFunctionExecutor -- AzureFunctionUtils
+ApacheFopServerlessFunctionExecutor -- ApacheFopServerlessResponseBuilder
+ApacheFopServerlessResponseBuilder -- ApacheFopRenderResult
+ApacheFopServerlessResponseBuilder -- ApacheFopServerlessConfig
+ApacheFopServerlessResponseBuilder -- ApacheFopServerlessHeaders
+ApacheFopServerlessResponseBuilder -- HttpContentTypes
+ApacheFopServerlessResponseBuilder -- HttpEncodings
+ApacheFopServerlessResponseBuilder -- HttpHeaders
+ApacheFopServerlessResponseBuilder -- GzipUtils
+ApacheFopServerlessResponseBuilder -- TextUtils
+ApacheFopServerlessResponseBuilder -- SafeHeader
+SafeHeader -- HttpEncodings
+FunctionTest -- HttpResponseMessageMock
+@enduml

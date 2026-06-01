@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Content Creator roles. The platform provides capabilities for my4, my5, my3. Secondary concerns include API gateway functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to use my4 capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyService4Impl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use my5 capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyService5Impl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to use my3 capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyService3"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use my3 capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyService3Impl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use my6 capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyService6Impl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        MatrixConstant[\"MatrixConstant\"]\n        ProxyConstant[\"ProxyConstant\"]\n        ProxyUtil[\"ProxyUtil\"]\n        MyConfigurationExtension[\"MyConfigurationExtension\"]\n        MyConfiguration[\"MyConfiguration\"]\n        MyAutoConfiguration[\"MyAutoConfiguration\"]\n    end\n    subgraph Services\n        MyService4Impl[\"MyService4Impl\"]\n        MyService5Impl[\"MyService5Impl\"]\n        MyService3[\"MyService3\"]\n        MyService3Impl[\"MyService3Impl\"]\n        MyService6Impl[\"MyService6Impl\"]\n        MyService2Impl[\"MyService2Impl\"]\n        MyService1Impl[\"MyService1Impl\"]\n        MyService1[\"MyService1\"]\n        MyBeanPostProcessor[\"MyBeanPostProcessor\"]\n        MyService2[\"MyService2\"]\n    end\n    Services --> Infrastructure"
+  }
+}

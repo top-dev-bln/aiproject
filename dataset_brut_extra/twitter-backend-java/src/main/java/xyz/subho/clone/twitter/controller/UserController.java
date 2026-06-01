@@ -1,0 +1,122 @@
+/*
+ * Twitter Backend - Moo: Twitter Clone Application Backend by Scaler
+ * Copyright © 2021-2023 Subhrodip Mohanta (hello@subho.xyz)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package xyz.subho.clone.twitter.controller;
+
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
+import jakarta.validation.Valid;
+import java.security.Principal;
+import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import xyz.subho.clone.twitter.constant.UserV1Constants;
+import xyz.subho.clone.twitter.model.UserModel;
+import xyz.subho.clone.twitter.service.UserService;
+import xyz.subho.clone.twitter.utility.Utility;
+
+@RestController
+@RequestMapping(UserV1Constants.BASE_PATH)
+@Timed(value = "moo.users.timer", description = "Time taken to process user requests")
+public class UserController {
+
+  private static final Logger log = LoggerFactory.getLogger(UserController.class);
+
+  private final UserService userService;
+  private final Utility utility;
+
+  public UserController(UserService userService, Utility utility) {
+    this.userService = userService;
+    this.utility = utility;
+  }
+
+  @GetMapping(UserV1Constants.USER_ID_OR_NAME)
+  public ResponseEntity<UserModel> getUserByUserIdOrUserName(
+      @PathVariable("userNameOrUserId") String userNameOrUserId) {
+
+    UserModel userResponse;
+
+    if (userNameOrUserId.startsWith("@")) {
+      log.info("input resource is a username");
+      var username = userNameOrUserId.substring(1);
+      userResponse = userService.getUserByUserName(username);
+      return new ResponseEntity<>(userResponse, HttpStatus.OK);
+    }
+
+    log.info("input resource is a UUID");
+    var userId = utility.converStringToUUID(userNameOrUserId);
+    userResponse = userService.getUserByUserId(userId);
+    return new ResponseEntity<>(userResponse, HttpStatus.OK);
+  }
+
+  @PostMapping
+  @Counted(value = "moo.users.signup", description = "Number of user signups")
+  public ResponseEntity<UserModel> createUser(@Valid @RequestBody UserModel userResponse) {
+    var user = userService.addUser(userResponse);
+    return new ResponseEntity<>(user, HttpStatus.CREATED);
+  }
+
+  @PatchMapping
+  @Timed(value = "moo.users.update", description = "Time taken to update user profile")
+  public UserModel updateUser(@Valid @RequestBody UserModel userResponse, Principal principal) {
+    return userService.editUser(userResponse);
+  }
+
+  @PutMapping(UserV1Constants.FOLLOW)
+  @Counted(value = "moo.users.follow", description = "Number of follow actions")
+  public ResponseEntity<HttpStatus> addFollower(@PathVariable UUID userId, Principal principal) {
+    var follower = userService.getUserByUserName(principal.getName());
+    if (follower != null) {
+      userService.addFollower(follower.id(), userId);
+    }
+    return new ResponseEntity<>(HttpStatus.CREATED);
+  }
+
+  @DeleteMapping(UserV1Constants.FOLLOW)
+  public ResponseEntity<HttpStatus> removeFollower(
+      @PathVariable("userId") UUID userId, Principal principal) {
+    var follower = userService.getUserByUserName(principal.getName());
+    if (follower != null) {
+      userService.removeFollower(follower.id(), userId);
+    }
+    return new ResponseEntity<>(HttpStatus.CREATED);
+  }
+
+  @GetMapping(UserV1Constants.FOLLOWERS)
+  public Page<UserModel> getFollowers(@PathVariable("userId") UUID userId, Pageable pageable) {
+    return userService.getFollowers(userId, pageable);
+  }
+
+  @GetMapping(UserV1Constants.FOLLOWINGS)
+  public Page<UserModel> getFollowings(@PathVariable("userId") UUID userId, Pageable pageable) {
+    return userService.getFollowings(userId, pageable);
+  }
+}

@@ -1,0 +1,83 @@
+@startuml
+package io.spring.deepdive; {
+class Application {
+}
+
+class DatabaseInitializer {
+}
+
+class MarkdownConverter {
+}
+
+class Utils {
+}
+
+class ArticleJsonApiTests {
+}
+
+class HtmlTests {
+}
+
+class UserJsonApiTests {
+}
+
+}
+
+package io.spring.deepdive.model; {
+class Article {
+}
+
+class User {
+}
+
+}
+
+package io.spring.deepdive.repository; {
+class ArticleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package io.spring.deepdive.web; {
+class ArticleController {
+}
+
+class HtmlController {
+}
+
+class PostDto {
+}
+
+class UserController {
+}
+
+}
+
+DatabaseInitializer -- Article
+DatabaseInitializer -- User
+DatabaseInitializer -- ArticleRepository
+DatabaseInitializer -- UserRepository
+DatabaseInitializer -- Utils
+Article -- User
+ArticleRepository -- Article
+UserRepository -- User
+ArticleController -- MarkdownConverter
+ArticleController -- Article
+ArticleController -- ArticleRepository
+HtmlController -- MarkdownConverter
+HtmlController -- Article
+HtmlController -- ArticleRepository
+HtmlController -- PostDto
+PostDto -- MarkdownConverter
+PostDto -- Article
+PostDto -- User
+PostDto -- Utils
+UserController -- User
+UserController -- UserRepository
+ArticleJsonApiTests -- MarkdownConverter
+ArticleJsonApiTests -- Article
+UserJsonApiTests -- User
+@enduml

@@ -1,0 +1,35 @@
+# Common app properties:
+#    https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+spring.datasource.url= jdbc:mysql://localhost:3306/freelance?useUnicode=true&characterEncoding=UTF-8
+spring.datasource.username=root
+spring.datasource.password=
+
+# FlyWay 
+#spring.jpa.hibernate.ddl-auto=validate < causes the bug due to missmatch between DB tables and Java Entities!
+#spring.datasource.validationQuery=SELECT 1
+spring.jpa.properties.hibernate.show_sql=false
+flyway.baselineOnMigrate=true
+
+spring.jpa.properties.hibernate.cache.use_query_cache = false
+spring.jpa.properties.hibernate.cache.use_second_level_cache = false
+spring.jpa.properties.hibernate.use_second_level_cache = false
+
+spring.http.multipart.max-file-size=1500KB
+spring.http.multipart.max-request-size=1500KB
+
+spring.thymeleaf.cache=false
+
+redis.host = 
+redis.port = 
+redis.password = 
+
+#spring.jpa.properties.*= # Additional native properties to set on the JPA provider.
+
+# Freelancer can see others' quotes
+freelancer.job.page_size = 5
+freelancer.message_room.page_size = 500
+freelancer.see-other-quotes = false
+freelancer.freelancer-can-see-freelancers = true
+freelancer.client-can-see-jobs = true
+freelancer.locale.default = rs_SR

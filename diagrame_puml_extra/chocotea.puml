@@ -1,0 +1,285 @@
+@startuml
+package io.chocotea.bean; {
+class HTTPVerbs {
+}
+
+}
+
+package io.chocotea.bean.postman; {
+class Auth {
+}
+
+class Body {
+}
+
+class Collection {
+}
+
+class DynamicVariables {
+}
+
+class Environment {
+}
+
+class Event {
+}
+
+class Header {
+}
+
+class Info {
+}
+
+class Item {
+}
+
+class Language {
+}
+
+class Modes {
+}
+
+class Options {
+}
+
+class Query {
+}
+
+class Raw {
+}
+
+class Request {
+}
+
+class Script {
+}
+
+class Url {
+}
+
+}
+
+package io.chocotea.core.annotations; {
+class ChocoCurrencyTest {
+}
+
+class ChocoDuplicateTest {
+}
+
+class ChocoExpect {
+}
+
+class ChocoRandom {
+}
+
+class JakartaCollection {
+}
+
+class JakartaRequest {
+}
+
+class JavaxCollection {
+}
+
+class JavaxRequest {
+}
+
+class SpringCollection {
+}
+
+class SpringRequest {
+}
+
+}
+
+package io.chocotea.core; {
+class Collection {
+}
+
+class CollectionProcessor {
+}
+
+class Controller {
+}
+
+class Factory {
+}
+
+class JakartaController {
+}
+
+class JavaxController {
+}
+
+class SpringController {
+}
+
+}
+
+package io.chocotea.core.tests; {
+class BodyTests {
+}
+
+class TestGenerator {
+}
+
+}
+
+package com.chocotea.tests; {
+class CurrencyTest {
+}
+
+}
+
+package io.chocotea.utility; {
+class BeanReader {
+}
+
+class DefaultClass {
+}
+
+class Properties {
+}
+
+class RandomGenerator {
+}
+
+}
+
+Body -- Auth
+Body -- Options
+Collection -- Auth
+Collection -- Body
+Collection -- Header
+Collection -- Item
+Collection -- Language
+Collection -- Options
+Collection -- Query
+Collection -- Raw
+Collection -- Request
+Collection -- Url
+Collection -- JakartaRequest
+Collection -- JavaxRequest
+Collection -- SpringRequest
+Collection -- Factory
+Collection -- TestGenerator
+Collection -- BeanReader
+Collection -- DefaultClass
+DynamicVariables -- Url
+Event -- Script
+Header -- Auth
+Item -- Event
+Item -- Request
+Options -- Raw
+Request -- HTTPVerbs
+Request -- Body
+Request -- Header
+Request -- Url
+Url -- Query
+ChocoCurrencyTest -- CurrencyTest
+ChocoRandom -- DynamicVariables
+JakartaCollection -- Collection
+JakartaCollection -- Url
+JakartaRequest -- Auth
+JakartaRequest -- Language
+JakartaRequest -- Modes
+JakartaRequest -- Request
+JakartaRequest -- DefaultClass
+JavaxCollection -- Collection
+JavaxCollection -- Url
+JavaxRequest -- Auth
+JavaxRequest -- Language
+JavaxRequest -- Modes
+JavaxRequest -- Request
+JavaxRequest -- DefaultClass
+SpringCollection -- Collection
+SpringCollection -- Url
+SpringRequest -- Auth
+SpringRequest -- Language
+SpringRequest -- Modes
+SpringRequest -- Request
+SpringRequest -- DefaultClass
+CollectionProcessor -- Auth
+CollectionProcessor -- Collection
+CollectionProcessor -- Environment
+CollectionProcessor -- Item
+CollectionProcessor -- Language
+CollectionProcessor -- Request
+CollectionProcessor -- Url
+CollectionProcessor -- JakartaCollection
+CollectionProcessor -- JakartaRequest
+CollectionProcessor -- JavaxCollection
+CollectionProcessor -- JavaxRequest
+CollectionProcessor -- SpringCollection
+CollectionProcessor -- SpringRequest
+Controller -- Header
+Controller -- Item
+Controller -- Query
+Controller -- Url
+Factory -- Request
+Factory -- JakartaRequest
+Factory -- JavaxRequest
+Factory -- SpringRequest
+Factory -- Controller
+Factory -- JakartaController
+Factory -- JavaxController
+Factory -- SpringController
+JakartaController -- HTTPVerbs
+JakartaController -- Auth
+JakartaController -- Body
+JakartaController -- Header
+JakartaController -- Item
+JakartaController -- Query
+JakartaController -- Raw
+JakartaController -- Request
+JakartaController -- Url
+JakartaController -- ChocoRandom
+JakartaController -- Controller
+JakartaController -- RandomGenerator
+JavaxController -- HTTPVerbs
+JavaxController -- Auth
+JavaxController -- Body
+JavaxController -- Header
+JavaxController -- Item
+JavaxController -- Query
+JavaxController -- Raw
+JavaxController -- Request
+JavaxController -- Url
+JavaxController -- ChocoRandom
+JavaxController -- Controller
+JavaxController -- RandomGenerator
+SpringController -- HTTPVerbs
+SpringController -- Header
+SpringController -- Item
+SpringController -- Query
+SpringController -- Raw
+SpringController -- Request
+SpringController -- Url
+SpringController -- ChocoRandom
+SpringController -- Controller
+SpringController -- RandomGenerator
+BodyTests -- HTTPVerbs
+BodyTests -- Body
+BodyTests -- Event
+BodyTests -- Item
+BodyTests -- Raw
+BodyTests -- Request
+BodyTests -- ChocoExpect
+BodyTests -- TestGenerator
+CurrencyTest -- Body
+CurrencyTest -- Event
+CurrencyTest -- Item
+CurrencyTest -- Raw
+CurrencyTest -- Request
+TestGenerator -- Body
+TestGenerator -- Event
+TestGenerator -- Header
+TestGenerator -- Item
+TestGenerator -- Raw
+TestGenerator -- Request
+TestGenerator -- Url
+BeanReader -- DynamicVariables
+BeanReader -- ChocoRandom
+BeanReader -- RandomGenerator
+RandomGenerator -- DynamicVariables
+@enduml

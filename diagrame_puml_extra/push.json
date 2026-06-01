@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin, User roles. The platform provides capabilities for abstract handler, error handler, heart beat handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "LoginHandler",
+          "UserManager",
+          "SessionManager"
+        ],
+        "controllers": [
+          "RegController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "TextMessageHandler"
+        ],
+        "controllers": [
+          "RegController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "UserManager",
+          "SessionManager"
+        ],
+        "controllers": [
+          "RegController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with reg functionality, so that I can accomplish my reg-related tasks.",
+        "services": [
+          "AbstractHandler"
+        ],
+        "controllers": [
+          "RegController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use abstract handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AbstractHandler"
+        ],
+        "controllers": [
+          "RegController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        Filter[\"Filter\"]\n        FilterResult[\"FilterResult\"]\n        AuthFilter[\"AuthFilter\"]\n    end\n    subgraph Services\n        AbstractHandler[\"AbstractHandler\"]\n        ErrorHandler[\"ErrorHandler\"]\n        HeartBeatHandler[\"HeartBeatHandler\"]\n        PacketHandler[\"PacketHandler\"]\n        TextMessageHandler[\"TextMessageHandler\"]\n        ClientHandler[\"ClientHandler\"]\n        HandshakeHandler[\"HandshakeHandler\"]\n        LoginHandler[\"LoginHandler\"]\n        ServerHandler[\"ServerHandler\"]\n        UserManager[\"UserManager\"]\n        MgsServer[\"MgsServer\"]\n        SessionManager[\"SessionManager\"]\n    end\n    subgraph Infrastructure\n        MsgPackDecode[\"MsgPackDecode\"]\n        MsgPackEncode[\"MsgPackEncode\"]\n        CacheConfiguration[\"CacheConfiguration\"]\n        IpUtil[\"IpUtil\"]\n        ClientProperties[\"ClientProperties\"]\n        ClientConfiguration[\"ClientConfiguration\"]\n        ApplicationProperties[\"ApplicationProperties\"]\n        KafkaConfiguration[\"KafkaConfiguration\"]\n        ServerConfiguration[\"ServerConfiguration\"]\n        SessionUtil[\"SessionUtil\"]\n    end\n    subgraph Controllers\n        RegController[\"RegController\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

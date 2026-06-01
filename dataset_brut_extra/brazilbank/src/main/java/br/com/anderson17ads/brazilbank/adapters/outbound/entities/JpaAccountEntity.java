@@ -1,0 +1,45 @@
+package br.com.anderson17ads.brazilbank.adapters.outbound.entities;
+
+import br.com.anderson17ads.brazilbank.domain.account.Account;
+import br.com.anderson17ads.brazilbank.domain.account.AccountType;
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Entity
+@Table(name = "accounts")
+@Setter
+@Getter
+@NoArgsConstructor
+public class JpaAccountEntity {
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    private String number;
+    private BigDecimal balance;
+    private UUID customerId;
+    private AccountType type;
+    private LocalDate birthDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime deletedAt;
+
+    public JpaAccountEntity(Account account) {
+        this.id = account.getId();
+        this.number = account.getNumber();
+        this.balance = account.getBalance();
+        this.customerId = account.getCustomerId();
+        this.type = account.getType();
+        this.createdAt = account.getCreatedAt();
+        this.updatedAt = account.getUpdatedAt();
+        this.deletedAt = account.getDeletedAt();
+    }
+}

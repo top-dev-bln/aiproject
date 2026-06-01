@@ -1,0 +1,361 @@
+@startuml
+package Twitter Backend - Moo: Twitter Clone Application Backend by Scaler {
+class MavenWrapperDownloader {
+}
+
+}
+
+package xyz.subho.clone.twitter.config; {
+class ApplicationErrorAttributes {
+}
+
+class ApplicationErrorController {
+}
+
+class JpaConfig {
+}
+
+class MicrometerConfig {
+}
+
+}
+
+package xyz.subho.clone.twitter.constant; {
+class ApiVersion {
+}
+
+class AuthV1Constants {
+}
+
+class HashtagV1Constants {
+}
+
+class PostV1Constants {
+}
+
+class UserV1Constants {
+}
+
+}
+
+package xyz.subho.clone.twitter.controller; {
+class AuthenticationController {
+}
+
+class FaultyRestController {
+}
+
+class HashtagController {
+}
+
+class PostController {
+}
+
+class UserController {
+}
+
+}
+
+package xyz.subho.clone.twitter.entity; {
+class Auditable {
+}
+
+class Follow {
+}
+
+class HashtagPosts {
+}
+
+class Hashtags {
+}
+
+class Likes {
+}
+
+class Posts {
+}
+
+class RefreshToken {
+}
+
+class Users {
+}
+
+}
+
+package xyz.subho.clone.twitter.exception; {
+class BadRequestException {
+}
+
+class ControllerExceptionHandler {
+}
+
+class ErrorSavingEntityToDatabaseException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package xyz.subho.clone.twitter.model; {
+class AuthenticationRequest {
+}
+
+class AuthenticationResponse {
+}
+
+class ErrorResponse {
+}
+
+class HashtagModel {
+}
+
+class HashtagPostModel {
+}
+
+class LikeModel {
+}
+
+class PostModel {
+}
+
+class TokenRefreshRequest {
+}
+
+class UserModel {
+}
+
+}
+
+package xyz.subho.clone.twitter.repository; {
+class FollowRepository {
+}
+
+class HashtagPostsRepository {
+}
+
+class HashtagsRepository {
+}
+
+class LikesRepository {
+}
+
+class PostsRepository {
+}
+
+class RefreshTokenRepository {
+}
+
+class UsersRepository {
+}
+
+}
+
+package xyz.subho.clone.twitter.security; {
+class JwtRequestFilter {
+}
+
+class JwtUtil {
+}
+
+class SecurityConfig {
+}
+
+class UserDetailsServiceImpl {
+}
+
+}
+
+package xyz.subho.clone.twitter.service; {
+class HashtagService {
+}
+
+class PostService {
+}
+
+class RefreshTokenService {
+}
+
+class UserService {
+}
+
+}
+
+package xyz.subho.clone.twitter.service.impl; {
+class HashtagServiceImpl {
+}
+
+class PostServiceImpl {
+}
+
+class RefreshTokenServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+}
+
+package xyz.subho.clone.twitter; {
+class TwitterBackendApplication {
+}
+
+class TwitterBackendApplicationTests {
+}
+
+}
+
+package xyz.subho.clone.twitter.utility; {
+class HashtagMapper {
+}
+
+class PostMapper {
+}
+
+class UserMapper {
+}
+
+class Utility {
+}
+
+}
+
+AuthV1Constants -- ApiVersion
+HashtagV1Constants -- ApiVersion
+PostV1Constants -- ApiVersion
+UserV1Constants -- ApiVersion
+AuthenticationController -- AuthV1Constants
+AuthenticationController -- RefreshToken
+AuthenticationController -- Users
+AuthenticationController -- BadRequestException
+AuthenticationController -- AuthenticationRequest
+AuthenticationController -- AuthenticationResponse
+AuthenticationController -- TokenRefreshRequest
+AuthenticationController -- JwtUtil
+AuthenticationController -- UserDetailsServiceImpl
+AuthenticationController -- RefreshTokenService
+AuthenticationController -- UserService
+HashtagController -- HashtagV1Constants
+HashtagController -- Hashtags
+HashtagController -- Posts
+HashtagController -- HashtagModel
+HashtagController -- PostModel
+HashtagController -- HashtagService
+PostController -- PostV1Constants
+PostController -- Posts
+PostController -- PostModel
+PostController -- PostService
+PostController -- UserService
+UserController -- UserV1Constants
+UserController -- Follow
+UserController -- UserModel
+UserController -- UserService
+UserController -- Utility
+Follow -- Auditable
+Follow -- Users
+HashtagPosts -- Auditable
+HashtagPosts -- Hashtags
+HashtagPosts -- Posts
+Hashtags -- Auditable
+Hashtags -- Posts
+Likes -- Auditable
+Likes -- Posts
+Likes -- Users
+Posts -- Auditable
+Posts -- Users
+RefreshToken -- Auditable
+RefreshToken -- Users
+Users -- Auditable
+ControllerExceptionHandler -- BadRequestException
+ControllerExceptionHandler -- ResourceNotFoundException
+ControllerExceptionHandler -- ErrorResponse
+HashtagPostModel -- HashtagModel
+HashtagPostModel -- PostModel
+LikeModel -- PostModel
+LikeModel -- UserModel
+FollowRepository -- Follow
+FollowRepository -- Users
+HashtagPostsRepository -- HashtagPosts
+HashtagPostsRepository -- Hashtags
+HashtagPostsRepository -- Posts
+HashtagPostsRepository -- PostsRepository
+HashtagsRepository -- Hashtags
+LikesRepository -- Likes
+LikesRepository -- Posts
+LikesRepository -- Users
+PostsRepository -- Posts
+RefreshTokenRepository -- RefreshToken
+RefreshTokenRepository -- Users
+UsersRepository -- Users
+JwtRequestFilter -- JwtUtil
+JwtRequestFilter -- UserDetailsServiceImpl
+SecurityConfig -- AuthV1Constants
+SecurityConfig -- UserV1Constants
+SecurityConfig -- JwtRequestFilter
+UserDetailsServiceImpl -- Users
+UserDetailsServiceImpl -- UsersRepository
+HashtagService -- Hashtags
+HashtagService -- Posts
+HashtagService -- HashtagModel
+HashtagService -- PostModel
+HashtagServiceImpl -- HashtagPosts
+HashtagServiceImpl -- Hashtags
+HashtagServiceImpl -- Posts
+HashtagServiceImpl -- HashtagModel
+HashtagServiceImpl -- PostModel
+HashtagServiceImpl -- HashtagPostsRepository
+HashtagServiceImpl -- HashtagsRepository
+HashtagServiceImpl -- PostsRepository
+HashtagServiceImpl -- HashtagService
+HashtagServiceImpl -- HashtagMapper
+HashtagServiceImpl -- PostMapper
+PostServiceImpl -- HashtagPosts
+PostServiceImpl -- Hashtags
+PostServiceImpl -- Likes
+PostServiceImpl -- Posts
+PostServiceImpl -- Users
+PostServiceImpl -- ErrorSavingEntityToDatabaseException
+PostServiceImpl -- ResourceNotFoundException
+PostServiceImpl -- PostModel
+PostServiceImpl -- HashtagPostsRepository
+PostServiceImpl -- LikesRepository
+PostServiceImpl -- PostsRepository
+PostServiceImpl -- UsersRepository
+PostServiceImpl -- HashtagService
+PostServiceImpl -- PostService
+PostServiceImpl -- UserService
+PostServiceImpl -- PostMapper
+PostServiceImpl -- UserMapper
+RefreshTokenServiceImpl -- RefreshToken
+RefreshTokenServiceImpl -- Users
+RefreshTokenServiceImpl -- BadRequestException
+RefreshTokenServiceImpl -- RefreshTokenRepository
+RefreshTokenServiceImpl -- UsersRepository
+RefreshTokenServiceImpl -- RefreshTokenService
+UserServiceImpl -- Follow
+UserServiceImpl -- Users
+UserServiceImpl -- UserModel
+UserServiceImpl -- FollowRepository
+UserServiceImpl -- UsersRepository
+UserServiceImpl -- UserService
+UserServiceImpl -- UserMapper
+PostService -- Posts
+PostService -- PostModel
+RefreshTokenService -- RefreshToken
+UserService -- Follow
+UserService -- Users
+UserService -- UserModel
+HashtagMapper -- Hashtags
+HashtagMapper -- Posts
+HashtagMapper -- HashtagModel
+PostMapper -- Hashtags
+PostMapper -- Likes
+PostMapper -- Posts
+PostMapper -- PostModel
+UserMapper -- Likes
+UserMapper -- Posts
+UserMapper -- Users
+UserMapper -- UserModel
+TwitterBackendApplicationTests -- TwitterBackendApplication
+@enduml

@@ -1,0 +1,111 @@
+@startuml
+package tech.buildrun.springsecurity.config; {
+class AdminUserConfig {
+}
+
+class SecurityConfig {
+}
+
+}
+
+package tech.buildrun.springsecurity.controller.dto; {
+class CreateTweetDto {
+}
+
+class CreateUserDto {
+}
+
+class FeedDto {
+}
+
+class FeedItemDto {
+}
+
+class LoginRequest {
+}
+
+class LoginResponse {
+}
+
+}
+
+package tech.buildrun.springsecurity.controller; {
+class TokenController {
+}
+
+class TweetController {
+}
+
+class UserController {
+}
+
+}
+
+package tech.buildrun.springsecurity.entities; {
+class Role {
+}
+
+class Tweet {
+}
+
+class User {
+}
+
+}
+
+package tech.buildrun.springsecurity.repository; {
+class RoleRepository {
+}
+
+class TweetRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package tech.buildrun.springsecurity; {
+class SpringsecurityApplication {
+}
+
+class SpringsecurityApplicationTests {
+}
+
+}
+
+AdminUserConfig -- Role
+AdminUserConfig -- User
+AdminUserConfig -- RoleRepository
+AdminUserConfig -- UserRepository
+CreateTweetDto -- Tweet
+CreateUserDto -- User
+FeedDto -- FeedItemDto
+TokenController -- LoginRequest
+TokenController -- LoginResponse
+TokenController -- Role
+TokenController -- User
+TokenController -- UserRepository
+TweetController -- CreateTweetDto
+TweetController -- FeedDto
+TweetController -- FeedItemDto
+TweetController -- Role
+TweetController -- Tweet
+TweetController -- User
+TweetController -- TweetRepository
+TweetController -- UserRepository
+UserController -- CreateUserDto
+UserController -- Role
+UserController -- User
+UserController -- RoleRepository
+UserController -- UserRepository
+Tweet -- User
+User -- LoginRequest
+User -- Role
+RoleRepository -- Role
+RoleRepository -- User
+TweetRepository -- Role
+TweetRepository -- Tweet
+UserRepository -- User
+SpringsecurityApplicationTests -- SpringsecurityApplication
+@enduml

@@ -1,0 +1,139 @@
+@startuml
+package com.tay.demo1; {
+class Demo1Application {
+}
+
+class DemoController {
+}
+
+class MyCheckFailureListener {
+}
+
+class Demo1ApplicationTests {
+}
+
+}
+
+package com.tay.redislimiter.core; {
+class RateCheckTaskRunner {
+}
+
+class RedisRateLimiter {
+}
+
+class RedisRateLimiterFactory {
+}
+
+}
+
+package com.tay.redislimiter.dynamic; {
+class DynamicRateLimiter {
+}
+
+class LimiterConfig {
+}
+
+class LimiterConfigResource {
+}
+
+class RedisLimiterConfigProcessor {
+}
+
+}
+
+package com.tay.redislimiter.event; {
+class DefaultRateCheckFailureListener {
+}
+
+class DefaultRateExceedingListener {
+}
+
+class RateCheckFailureEvent {
+}
+
+class RateCheckFailureListener {
+}
+
+class RateExceedingEvent {
+}
+
+class RateExceedingListener {
+}
+
+}
+
+package com.tay.redislimiter; {
+class RateLimiter {
+}
+
+class RedisLimiterConfiguration {
+}
+
+class RedisLimiterProperties {
+}
+
+class RedislimiterSpringBootStarterApplicationTests {
+}
+
+}
+
+package com.tay.redislimiter.web; {
+class RateCheckInterceptor {
+}
+
+class RateLimiterWebMvcConfigurer {
+}
+
+}
+
+DemoController -- DynamicRateLimiter
+DemoController -- RateLimiter
+MyCheckFailureListener -- RateCheckFailureEvent
+MyCheckFailureListener -- RateCheckFailureListener
+Demo1ApplicationTests -- Demo1Application
+RateCheckTaskRunner -- RedisRateLimiter
+RateCheckTaskRunner -- RedisRateLimiterFactory
+RateCheckTaskRunner -- RateCheckFailureEvent
+RateCheckTaskRunner -- RateLimiter
+RateCheckTaskRunner -- RedisLimiterProperties
+RedisRateLimiter -- RateLimiter
+RedisRateLimiterFactory -- RedisRateLimiter
+RedisRateLimiterFactory -- RateLimiter
+DynamicRateLimiter -- RateLimiter
+LimiterConfigResource -- LimiterConfig
+LimiterConfigResource -- RedisLimiterConfigProcessor
+LimiterConfigResource -- RedisLimiterProperties
+RedisLimiterConfigProcessor -- DynamicRateLimiter
+RedisLimiterConfigProcessor -- LimiterConfig
+RedisLimiterConfigProcessor -- RateLimiter
+RedisLimiterConfigProcessor -- RedisLimiterProperties
+DefaultRateCheckFailureListener -- RateCheckFailureEvent
+DefaultRateCheckFailureListener -- RateCheckFailureListener
+DefaultRateExceedingListener -- RateExceedingEvent
+DefaultRateExceedingListener -- RateExceedingListener
+RateCheckFailureListener -- RateCheckFailureEvent
+RateExceedingListener -- RateExceedingEvent
+RedisLimiterConfiguration -- RateCheckTaskRunner
+RedisLimiterConfiguration -- RedisRateLimiter
+RedisLimiterConfiguration -- RedisRateLimiterFactory
+RedisLimiterConfiguration -- LimiterConfig
+RedisLimiterConfiguration -- LimiterConfigResource
+RedisLimiterConfiguration -- RedisLimiterConfigProcessor
+RedisLimiterConfiguration -- DefaultRateCheckFailureListener
+RedisLimiterConfiguration -- DefaultRateExceedingListener
+RedisLimiterConfiguration -- RateCheckFailureListener
+RedisLimiterConfiguration -- RateExceedingListener
+RedisLimiterConfiguration -- RateLimiter
+RedisLimiterConfiguration -- RedisLimiterProperties
+RedisLimiterConfiguration -- RateCheckInterceptor
+RedisLimiterConfiguration -- RateLimiterWebMvcConfigurer
+RateCheckInterceptor -- RateCheckTaskRunner
+RateCheckInterceptor -- DynamicRateLimiter
+RateCheckInterceptor -- LimiterConfig
+RateCheckInterceptor -- RedisLimiterConfigProcessor
+RateCheckInterceptor -- RateExceedingEvent
+RateCheckInterceptor -- RateLimiter
+RateCheckInterceptor -- RedisLimiterProperties
+RateLimiterWebMvcConfigurer -- RateLimiter
+RateLimiterWebMvcConfigurer -- RateCheckInterceptor
+@enduml

@@ -1,0 +1,708 @@
+@startuml
+package com.lmax.disruptor.spring.boot.config; {
+class DisruptorConfig {
+}
+
+}
+
+package com.lmax.disruptor.spring.boot; {
+class DisruptorApplication {
+}
+
+class DisruptorApplicationTests {
+}
+
+}
+
+package com.lmax.disruptor.spring.boot.handlers; {
+class EmailDisruptorHandler {
+}
+
+class SmsDisruptorHandler {
+}
+
+}
+
+package com.alibaba.druid.spring.boot.dao.daointerface; {
+class IUuidDao {
+}
+
+}
+
+package com.alibaba.druid.spring.boot.dao.impl; {
+class UuidDaoImpl {
+}
+
+}
+
+package com.alibaba.druid.spring.boot; {
+class DruidApplication {
+}
+
+class DruidApplicationTests {
+}
+
+}
+
+package com.alibaba.druid.spring.boot.service.impl; {
+class IUuidServiceImpl {
+}
+
+}
+
+package com.alibaba.druid.spring.boot.service.svcinterface; {
+class IUuidService {
+}
+
+}
+
+package com.alibaba.druid.spring.boot.web.controller; {
+class HelloWorldController {
+}
+
+}
+
+package net.jeebiz.boot.demo.dao.entities; {
+class AuthzLoginModel {
+}
+
+class DemoModel {
+}
+
+class AuthzLoginModel {
+}
+
+class DemoModel {
+}
+
+}
+
+package net.jeebiz.boot.demo.dao; {
+class IAuthzLoginDao {
+}
+
+class IDemoDao {
+}
+
+class IAuthzLoginDao {
+}
+
+class IDemoDao {
+}
+
+}
+
+package net.jeebiz.boot.demo; {
+class DemoApplication {
+}
+
+class DemoApplication {
+}
+
+}
+
+package net.jeebiz.boot.demo.service; {
+class IAuthzLoginService {
+}
+
+class IDemoService {
+}
+
+class IAuthzLoginService {
+}
+
+class IDemoService {
+}
+
+}
+
+package net.jeebiz.boot.demo.service.impl; {
+class AuthzLoginServiceImpl {
+}
+
+class AuthzPrincipalRepositoryImpl {
+}
+
+class DemoServiceImpl {
+}
+
+class AuthzLoginServiceImpl {
+}
+
+class AuthzPrincipalRepositoryImpl {
+}
+
+class DemoServiceImpl {
+}
+
+}
+
+package net.jeebiz.boot.demo.setup.config; {
+class BootWebMvcConfig {
+}
+
+class DataSourceConfig {
+}
+
+class MybatisPlusConfig {
+}
+
+class ShiroConfig {
+}
+
+class BootWebMvcConfig {
+}
+
+class DataSourceConfig {
+}
+
+class MybatisPlusConfig {
+}
+
+class ShiroConfig {
+}
+
+}
+
+package net.jeebiz.boot.demo.setup.data; {
+class LogConstant {
+}
+
+class LogConstant {
+}
+
+}
+
+package net.jeebiz.boot.demo.setup.shiro; {
+class LoginAuthorizingRealm {
+}
+
+class LoginAuthorizingRealm {
+}
+
+}
+
+package net.jeebiz.boot.demo.web.mvc; {
+class AuthzLoginController {
+}
+
+class DemoController {
+}
+
+class IndexController {
+}
+
+class AuthzLoginController {
+}
+
+class DemoController {
+}
+
+class IndexController {
+}
+
+}
+
+package net.jeebiz.boot.demo.web.vo; {
+class DemoVo {
+}
+
+class DemoVo {
+}
+
+}
+
+package org.ehcache.spring.boot; {
+class Ehcache3Application {
+}
+
+}
+
+package org.mybatis.spring.boot.dao.daointerface; {
+class IUuidDao {
+}
+
+}
+
+package org.mybatis.spring.boot; {
+class MybatisApplication {
+}
+
+class MybatisApplicationTests {
+}
+
+}
+
+package org.mybatis.spring.boot.service.impl; {
+class IUuidServiceImpl {
+}
+
+}
+
+package org.mybatis.spring.boot.service.svcinterface; {
+class IUuidService {
+}
+
+}
+
+package org.mybatis.spring.boot.web.controller; {
+class HelloWorldController {
+}
+
+}
+
+package com.zaxxer.hikari.spring.boot; {
+class HikariCPApplication {
+}
+
+}
+
+package com.google.code.kaptcha.spring.boot; {
+class KaptchaApplication {
+}
+
+}
+
+package org.apache.logging.log4j.spring.boot; {
+class Log4j2Application {
+}
+
+}
+
+package pf4j.plugin.api.annotation; {
+class ApiExtensionMapping {
+}
+
+class ExtensionMapping {
+}
+
+class PluginMapping {
+}
+
+}
+
+package pf4j.plugin.api; {
+class AuthcExtensionPoint {
+}
+
+class AuthcExtensionPointAdepter {
+}
+
+}
+
+package pf4j.plugin.api.exception; {
+class PluginInvokeException {
+}
+
+}
+
+package pf4j.plugin.impl; {
+class AuthcPluginImpl1 {
+}
+
+class AuthcPluginImpl2 {
+}
+
+}
+
+package pf4j.plugin.impl.extensions; {
+class AuthcExtensionPointImpl1 {
+}
+
+class AuthcExtensionPointImpl2 {
+}
+
+}
+
+package pf4j.plugin.impl.utils; {
+class Constant {
+}
+
+class Constant {
+}
+
+}
+
+package pf4j.plugin.test; {
+class AuthcPluginTest {
+}
+
+}
+
+package ro.fortsoft.pf4j.spring.boot; {
+class Pf4jApplication {
+}
+
+}
+
+package pf4j2.plugin.api.annotation; {
+class ApiExtensionMapping {
+}
+
+class ExtensionMapping {
+}
+
+class PluginMapping {
+}
+
+}
+
+package pf4j2.plugin.api; {
+class AuthcExtensionPoint {
+}
+
+class AuthcExtensionPointAdepter {
+}
+
+}
+
+package pf4j2.plugin.api.exception; {
+class PluginInvokeException {
+}
+
+}
+
+package pf4j2.plugin.impl; {
+class AuthcPluginImpl1 {
+}
+
+class AuthcPluginImpl2 {
+}
+
+}
+
+package pf4j2.plugin.impl.extensions; {
+class AuthcExtensionPointImpl1 {
+}
+
+class AuthcExtensionPointImpl2 {
+}
+
+}
+
+package pf4j2.plugin.impl.utils; {
+class Constant {
+}
+
+class Constant {
+}
+
+}
+
+package pf4j2.plugin.test; {
+class AuthcPluginTest {
+}
+
+}
+
+package org.pf4j.spring.boot; {
+class Pf4jApplication {
+}
+
+}
+
+package org.apache.rocketmq.spring.boot.consumer.pull; {
+class PullMessageQueueListener {
+}
+
+class PullTaskCallbackImpl {
+}
+
+}
+
+package org.apache.rocketmq.spring.boot.event.listener; {
+class ConsumerListen {
+}
+
+}
+
+package org.apache.rocketmq.spring.boot; {
+class RocketmqApplication {
+}
+
+class RocketmqApplicationTests {
+}
+
+}
+
+package org.apache.rocketmq.spring.boot.setup; {
+class LogProducer {
+}
+
+class Producer {
+}
+
+class QueueName {
+}
+
+class RocketmqDataInDbHandler {
+}
+
+class RocketmqDataSmsHandler {
+}
+
+}
+
+package org.apache.rocketmq.spring.boot.web.controller; {
+class ProducerController {
+}
+
+class RocketMQController {
+}
+
+class UserController {
+}
+
+}
+
+package org.apache.rocketmq.spring.boot.org; {
+class BatchProducer {
+}
+
+class BroadcastConsumer {
+}
+
+class BroadcastProducer {
+}
+
+class ListSplitter {
+}
+
+class OrderedConsumer {
+}
+
+class OrderedProducer {
+}
+
+class ScheduledMessageConsumer {
+}
+
+class ScheduledMessageProducer {
+}
+
+class SimpleAsyncProducer {
+}
+
+class SimpleOnewayProducer {
+}
+
+class SimpleSyncProducer {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot.config; {
+class SocketioConfig {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot.handler; {
+class MessageInfo {
+}
+
+class SocketEventHandler {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot.listener; {
+class SocketConnectListener {
+}
+
+class SocketDataListener {
+}
+
+class SocketDisconnectListener {
+}
+
+class SocketExceptionListener {
+}
+
+class SocketPingListener {
+}
+
+}
+
+package com.corundumstudio.socketio.spring.boot; {
+class SocketioApplication {
+}
+
+class SocketioIndeController {
+}
+
+}
+
+package io.swagger2.spring.boot.dao; {
+class Result {
+}
+
+class UserDto {
+}
+
+}
+
+package io.swagger2.spring.boot.setup.config; {
+class HttpStatus {
+}
+
+}
+
+package io.swagger2.spring.boot; {
+class SwaggerApplication {
+}
+
+}
+
+package io.swagger2.spring.boot.web.controller; {
+class HelloWorldController {
+}
+
+class UserController {
+}
+
+}
+
+package swagger2.spring.boot; {
+class DemoApplicationTests {
+}
+
+}
+
+package io.github.hiwepy.websocket.config; {
+class DefaultWebSocketBrokerConfig {
+}
+
+class DefaultWebSocketConfig {
+}
+
+class WebSocketConfig {
+}
+
+}
+
+package io.github.hiwepy.websocket.handler; {
+class ChatWebSocketHandler {
+}
+
+class WebsocketEndPoint {
+}
+
+}
+
+package io.github.hiwepy.websocket; {
+class HandshakeInterceptor {
+}
+
+class Monitor {
+}
+
+class sd {
+}
+
+class WebSocketConfig {
+}
+
+class WebSocketHandshakeInterceptor {
+}
+
+class WebSocketTest {
+}
+
+}
+
+DisruptorApplicationTests -- DisruptorApplication
+UuidDaoImpl -- IUuidDao
+IUuidServiceImpl -- IUuidDao
+IUuidServiceImpl -- IUuidService
+DruidApplicationTests -- DruidApplication
+DruidApplicationTests -- IUuidService
+IAuthzLoginDao -- AuthzLoginModel
+IDemoDao -- DemoModel
+IAuthzLoginService -- AuthzLoginModel
+IDemoService -- DemoModel
+AuthzLoginServiceImpl -- AuthzLoginModel
+AuthzLoginServiceImpl -- IAuthzLoginDao
+AuthzLoginServiceImpl -- IAuthzLoginService
+AuthzPrincipalRepositoryImpl -- AuthzLoginModel
+AuthzPrincipalRepositoryImpl -- IAuthzLoginDao
+DemoServiceImpl -- DemoModel
+DemoServiceImpl -- IDemoDao
+DemoServiceImpl -- IDemoService
+ShiroConfig -- LoginAuthorizingRealm
+LogConstant -- Constant
+AuthzLoginController -- AuthzLoginModel
+AuthzLoginController -- IAuthzLoginService
+AuthzLoginController -- Constant
+AuthzLoginController -- Result
+AuthzLoginController -- sd
+DemoController -- DemoModel
+DemoController -- IDemoService
+DemoController -- LogConstant
+DemoController -- DemoVo
+DemoController -- Constant
+DemoController -- Result
+DemoController -- HttpStatus
+MybatisApplicationTests -- IUuidService
+MybatisApplicationTests -- MybatisApplication
+ApiExtensionMapping -- ExtensionMapping
+AuthcExtensionPoint -- Result
+AuthcExtensionPointAdepter -- AuthcExtensionPoint
+AuthcExtensionPointAdepter -- Result
+AuthcPluginImpl1 -- PluginMapping
+AuthcExtensionPointImpl1 -- ExtensionMapping
+AuthcExtensionPointImpl1 -- AuthcExtensionPoint
+AuthcExtensionPointImpl1 -- AuthcExtensionPointAdepter
+AuthcExtensionPointImpl1 -- Constant
+AuthcExtensionPointImpl1 -- sd
+AuthcPluginImpl2 -- PluginMapping
+AuthcPluginImpl2 -- AuthcPluginImpl1
+AuthcExtensionPointImpl2 -- ExtensionMapping
+AuthcExtensionPointImpl2 -- AuthcExtensionPoint
+AuthcExtensionPointImpl2 -- AuthcExtensionPointAdepter
+AuthcExtensionPointImpl2 -- Constant
+AuthcExtensionPointImpl2 -- sd
+AuthcPluginTest -- ExtensionMapping
+AuthcPluginTest -- AuthcExtensionPoint
+PullTaskCallbackImpl -- Result
+LogProducer -- Producer
+LogProducer -- Result
+Producer -- Result
+ProducerController -- Producer
+ProducerController -- Result
+RocketMQController -- LogProducer
+RocketMQController -- Producer
+UserController -- UserDto
+UserController -- HttpStatus
+BatchProducer -- Producer
+BatchProducer -- ListSplitter
+BroadcastProducer -- Producer
+BroadcastProducer -- Result
+OrderedProducer -- Producer
+OrderedProducer -- Result
+ScheduledMessageProducer -- Producer
+SimpleAsyncProducer -- Producer
+SimpleAsyncProducer -- Result
+SimpleOnewayProducer -- Producer
+SimpleSyncProducer -- Producer
+SimpleSyncProducer -- Result
+RocketmqApplicationTests -- RocketmqApplication
+RocketmqApplicationTests -- Producer
+RocketmqApplicationTests -- Result
+SocketioConfig -- SocketExceptionListener
+SocketEventHandler -- MessageInfo
+SocketDataListener -- MessageInfo
+SocketioApplication -- MessageInfo
+SocketioApplication -- SocketConnectListener
+SocketioApplication -- SocketDataListener
+SocketioApplication -- SocketDisconnectListener
+SocketioApplication -- SocketPingListener
+DemoApplicationTests -- DemoApplication
+DemoApplicationTests -- sd
+DefaultWebSocketConfig -- WebSocketConfig
+WebSocketConfig -- ChatWebSocketHandler
+WebSocketConfig -- HandshakeInterceptor
+WebSocketConfig -- WebSocketHandshakeInterceptor
+Monitor -- WebSocketTest
+WebSocketHandshakeInterceptor -- HandshakeInterceptor
+@enduml

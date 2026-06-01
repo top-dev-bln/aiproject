@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Employer, Candidate roles. The platform provides capabilities for schedule job, sample. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [
+          "ScheduleJobService"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Employer, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "ScheduleJobService"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Employer, I want to interact with restful functionality, so that I can accomplish my restful-related tasks.",
+        "services": [
+          "ScheduleJobService"
+        ],
+        "controllers": [
+          "RestfulController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Employer, I want to use sample capabilities, so that I can perform essential business operations.",
+        "services": [
+          "SampleService"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Employer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ScheduleJobService"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Message[\"Message\"]\n        SchedulerConfig[\"SchedulerConfig\"]\n        RabbitConfig[\"RabbitConfig\"]\n    end\n    subgraph Controllers\n        IndexController[\"IndexController\"]\n        RestfulController[\"RestfulController\"]\n    end\n    subgraph Services\n        ScheduleJobService[\"ScheduleJobService\"]\n        SampleService[\"SampleService\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

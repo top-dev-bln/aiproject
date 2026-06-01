@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, Admin roles. It exposes interfaces for managing main. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include search functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Content Creator, I want to interact with main functionality, so that I can accomplish my main-related tasks.",
+        "services": [],
+        "controllers": [
+          "MainController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "MainController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "MainController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "MainController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [],
+        "controllers": [
+          "MainController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        MainController[\"MainController\"]\n    end\n    subgraph Infrastructure\n        RestClientSetHeaderInterceptor[\"RestClientSetHeaderInterceptor\"]\n        RestTemplateSetHeaderInterceptor[\"RestTemplateSetHeaderInterceptor\"]\n        UniqueIDGenerator[\"UniqueIDGenerator\"]\n        SpringResponseWrapper[\"SpringResponseWrapper\"]\n        ServletOutputStreamWrapper[\"ServletOutputStreamWrapper\"]\n        SpringRequestWrapper[\"SpringRequestWrapper\"]\n        SpringLoggingAutoConfiguration[\"SpringLoggingAutoConfiguration\"]\n        ReactiveSpringLoggingAutoConfiguration[\"ReactiveSpringLoggingAutoConfiguration\"]\n    end\n    subgraph Security\n        SpringLoggingFilter[\"SpringLoggingFilter\"]\n        ReactiveSpringLoggingFilter[\"ReactiveSpringLoggingFilter\"]\n    end\n    Controllers --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

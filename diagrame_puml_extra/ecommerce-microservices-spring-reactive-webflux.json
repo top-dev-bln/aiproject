@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Admin, Customer roles. It manages core business objects including user, client details info, shopping cart item, shopping cart. The platform provides capabilities for client details, user, order. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage client details info records, so that I can track and organize client details info data effectively.",
+        "services": [
+          "ClientDetailsServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage shopping cart item records, so that I can track and organize shopping cart item data effectively.",
+        "services": [
+          "ClientDetailsServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to create and manage shopping cart records, so that I can track and organize shopping cart data effectively.",
+        "services": [
+          "ClientDetailsServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        DataBaseConfig[\"DataBaseConfig\"]\n        ResourceServerConfig[\"ResourceServerConfig\"]\n        AuthorizationServerConfig[\"AuthorizationServerConfig\"]\n        JWTKeyEndPoint[\"JWTKeyEndPoint\"]\n        EmailAlreadyExists[\"EmailAlreadyExists\"]\n        SecurityConfig[\"SecurityConfig\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n        OrderController[\"OrderController\"]\n        ProductController[\"ProductController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        ClientDetailsInfo[\"ClientDetailsInfo\"]\n        ShoppingCartItem[\"ShoppingCartItem\"]\n        ShoppingCart[\"ShoppingCart\"]\n        Product[\"Product\"]\n        UserRepository[\"UserRepository\"]\n        ShoppingCartRepository[\"ShoppingCartRepository\"]\n        ShoppingCartItemRepository[\"ShoppingCartItemRepository\"]\n        ProductRepository[\"ProductRepository\"]\n    end\n    subgraph Services\n        ClientDetailsServiceImpl[\"ClientDetailsServiceImpl\"]\n        UserService[\"UserService\"]\n        OrderService[\"OrderService\"]\n        ProductService[\"ProductService\"]\n    end\n    subgraph Infrastructure\n        DatabaseConfig[\"DatabaseConfig\"]\n        Count[\"Count\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

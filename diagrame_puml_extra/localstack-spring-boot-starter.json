@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. The platform provides capabilities for dynamo d b, s3, s n s. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to use dynamo d b capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DynamoDBService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use s3 capabilities, so that I can perform essential business operations.",
+        "services": [
+          "S3Service"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use s n s capabilities, so that I can perform essential business operations.",
+        "services": [
+          "SNSService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use s q s capabilities, so that I can perform essential business operations.",
+        "services": [
+          "SQSService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use conditional on local stack capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ConditionalOnLocalStackService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        DynamoDBService[\"DynamoDBService\"]\n        S3Service[\"S3Service\"]\n        SNSService[\"SNSService\"]\n        SQSService[\"SQSService\"]\n        ConditionalOnLocalStackService[\"ConditionalOnLocalStackService\"]\n    end\n    subgraph Infrastructure\n        AbstractAmazonClient[\"AbstractAmazonClient\"]\n        AmazonCloudWatchConfiguration[\"AmazonCloudWatchConfiguration\"]\n        AmazonDynamoDBConfiguration[\"AmazonDynamoDBConfiguration\"]\n        AmazonDynamoDBStreamsConfiguration[\"AmazonDynamoDBStreamsConfiguration\"]\n        AmazonIAMConfiguration[\"AmazonIAMConfiguration\"]\n        AmazonKinesisConfiguration[\"AmazonKinesisConfiguration\"]\n        AmazonS3Configuration[\"AmazonS3Configuration\"]\n        AmazonSNSConfiguration[\"AmazonSNSConfiguration\"]\n        AmazonSQSConfiguration[\"AmazonSQSConfiguration\"]\n        AWSLambdaConfiguration[\"AWSLambdaConfiguration\"]\n        AWSSecretsManagerConfiguration[\"AWSSecretsManagerConfiguration\"]\n        LocalStackContainerConfiguration[\"LocalStackContainerConfiguration\"]\n        LocalStackAutoConfiguration[\"LocalStackAutoConfiguration\"]\n        LocalStackProperties[\"LocalStackProperties\"]\n    end\n    Services --> Infrastructure"
+  }
+}

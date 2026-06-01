@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. The platform provides capabilities for application exception handler, allocated range partition status, short url. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to interact with short url functionality, so that I can accomplish my short url-related tasks.",
+        "services": [
+          "ShortUrlService",
+          "ShortUrlServiceImpl"
+        ],
+        "controllers": [
+          "ShortUrlController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use application exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ApplicationExceptionHandler"
+        ],
+        "controllers": [
+          "ShortUrlController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use allocated range partition status capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AllocatedRangePartitionStatusService"
+        ],
+        "controllers": [
+          "ShortUrlController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use short url capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ShortUrlService"
+        ],
+        "controllers": [
+          "ShortUrlController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use worker status capabilities, so that I can perform essential business operations.",
+        "services": [
+          "WorkerStatusService"
+        ],
+        "controllers": [
+          "ShortUrlController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        AspectsConfig[\"AspectsConfig\"]\n        CacheConfig[\"CacheConfig\"]\n        Base58[\"Base58\"]\n        GlobalConstants[\"GlobalConstants\"]\n        ResponseUtil[\"ResponseUtil\"]\n        Utility[\"Utility\"]\n    end\n    subgraph Data_Access\n        MonthlyVisitsReport[\"MonthlyVisitsReport\"]\n        AllocatedRangePartitionStatusRepository[\"AllocatedRangePartitionStatusRepository\"]\n        ShortUrlRepository[\"ShortUrlRepository\"]\n        WorkerStatusRepository[\"WorkerStatusRepository\"]\n    end\n    subgraph Controllers\n        ShortUrlController[\"ShortUrlController\"]\n    end\n    subgraph Services\n        ApplicationExceptionHandler[\"ApplicationExceptionHandler\"]\n        AllocatedRangePartitionStatusService[\"AllocatedRangePartitionStatusService\"]\n        ShortUrlService[\"ShortUrlService\"]\n        WorkerStatusService[\"WorkerStatusService\"]\n        AllocatedRangePartitionStatusServiceImpl[\"AllocatedRangePartitionStatusServiceImpl\"]\n        ShortUrlServiceImpl[\"ShortUrlServiceImpl\"]\n        WorkerStatusServiceImpl[\"WorkerStatusServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

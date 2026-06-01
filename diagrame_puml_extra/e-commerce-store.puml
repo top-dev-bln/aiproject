@@ -1,0 +1,907 @@
+@startuml
+package com.example.apigateway; {
+class ApiGatewayApplication {
+}
+
+}
+
+package com.example.apigateway.config; {
+class WebClientConfig {
+}
+
+}
+
+package com.example.apigateway.filters; {
+class AuthenticationPrefilter {
+}
+
+class CorrelationIdFilter {
+}
+
+class SwaggerFilter {
+}
+
+}
+
+package com.example.authservice; {
+class AuthServiceApplication {
+}
+
+}
+
+package com.example.authservice.config; {
+class ContextData {
+}
+
+class ContextHolder {
+}
+
+class OpenApiConfig {
+}
+
+class OpenTelemetryConfig {
+}
+
+class OtelMetricsConfiguration {
+}
+
+class PerRequestFilter {
+}
+
+class RestTemplateConfig {
+}
+
+class RestTemplateInterceptor {
+}
+
+}
+
+package com.example.authservice.controller; {
+class AuthController {
+}
+
+class AuthControllerErrorHandling {
+}
+
+class AuthException {
+}
+
+}
+
+package com.example.authservice.dtos; {
+class LoginDto {
+}
+
+class UserDto {
+}
+
+class UserHeader {
+}
+
+}
+
+package com.example.authservice.jwt; {
+class JWTHelper {
+}
+
+}
+
+package com.example.authservice.service; {
+class AuthService {
+}
+
+class IAuthService {
+}
+
+class IUserServiceClient {
+}
+
+class UserServiceClient {
+}
+
+}
+
+package com.example.eurekaservice; {
+class EurekaServiceApplication {
+}
+
+}
+
+package com.example.inventoryservice.config; {
+class AuthenticationAspect {
+}
+
+class ContextData {
+}
+
+class ContextHolder {
+}
+
+class OpenApiConfig {
+}
+
+class OpenTelemetryConfig {
+}
+
+class OtelMetricsConfiguration {
+}
+
+class PerRequestFilter {
+}
+
+class RequiresAuthentication {
+}
+
+class RestTemplateConfig {
+}
+
+class RestTemplateInterceptor {
+}
+
+}
+
+package com.example.inventoryservice.controllers; {
+class AuthException {
+}
+
+class ProductController {
+}
+
+class ProductControllerErrorHandling {
+}
+
+class ProductException {
+}
+
+class ProductControllerTest {
+}
+
+}
+
+package com.example.inventoryservice.dtos; {
+class IProductMapper {
+}
+
+class ProductCreateDto {
+}
+
+class ProductDto {
+}
+
+class ProductStockQuantityDto {
+}
+
+}
+
+package com.example.inventoryservice; {
+class InventoryServiceApplication {
+}
+
+}
+
+package com.example.inventoryservice.models; {
+class Product {
+}
+
+}
+
+package com.example.inventoryservice.repository; {
+class IProductRepository {
+}
+
+}
+
+package com.example.inventoryservice.services; {
+class IProductService {
+}
+
+class ProductService {
+}
+
+class ProductServiceTest {
+}
+
+}
+
+package com.example.config; {
+class TestsConfig {
+}
+
+}
+
+package com.example.notificationservice.config; {
+class OpenTelemetryConfig {
+}
+
+class OtelMetricsConfiguration {
+}
+
+}
+
+package com.example.notificationservice.kafka; {
+class OrderConsumer {
+}
+
+}
+
+package com.example.notificationservice; {
+class NotificationServiceApplication {
+}
+
+}
+
+package com.example.orderservice.config; {
+class AuthenticationAspect {
+}
+
+class ContextData {
+}
+
+class ContextHolder {
+}
+
+class OpenApiConfig {
+}
+
+class OpenTelemetryConfig {
+}
+
+class OtelMetricsConfiguration {
+}
+
+class PerRequestFilter {
+}
+
+class RequiresAuthentication {
+}
+
+class RestTemplateConfig {
+}
+
+class RestTemplateInterceptor {
+}
+
+}
+
+package com.example.orderservice.controllers; {
+class AuthException {
+}
+
+class OrderController {
+}
+
+class OrderControllerErrorHandling {
+}
+
+class OrderException {
+}
+
+}
+
+package com.example.orderservice.dtos; {
+class IOrderMapper {
+}
+
+class OrderCreateDto {
+}
+
+class OrderDto {
+}
+
+class OrderProductCreateDto {
+}
+
+class OrderProductDto {
+}
+
+class ProductDto {
+}
+
+}
+
+package com.example.orderservice.kafka; {
+class IOrderEventProducer {
+}
+
+class OrderEventProducer {
+}
+
+}
+
+package com.example.orderservice.models; {
+class Order {
+}
+
+class OrderProduct {
+}
+
+}
+
+package com.example.orderservice; {
+class OrderServiceApplication {
+}
+
+}
+
+package com.example.orderservice.repository; {
+class IOrderRepository {
+}
+
+}
+
+package com.example.orderservice.services; {
+class IOrderService {
+}
+
+class IProductServiceClient {
+}
+
+class OrderService {
+}
+
+class ProductServiceClient {
+}
+
+class OrderServiceTest {
+}
+
+}
+
+package com.example.reviewsservice.config; {
+class AuthenticationAspect {
+}
+
+class ContextData {
+}
+
+class ContextHolder {
+}
+
+class OpenApiConfig {
+}
+
+class OpenTelemetryConfig {
+}
+
+class OtelMetricsConfiguration {
+}
+
+class PerRequestFilter {
+}
+
+class RequiresAuthentication {
+}
+
+class RestTemplateConfig {
+}
+
+class RestTemplateInterceptor {
+}
+
+}
+
+package com.example.reviewsservice.controllers; {
+class AuthException {
+}
+
+class ReviewController {
+}
+
+class ReviewControllerErrorHandler {
+}
+
+class ReviewException {
+}
+
+}
+
+package com.example.reviewsservice.dtos; {
+class IReviewMapper {
+}
+
+class OrderDto {
+}
+
+class OrderProductDto {
+}
+
+class ProductAvgRatDto {
+}
+
+class ProductDto {
+}
+
+class ReviewCreateDto {
+}
+
+class ReviewDto {
+}
+
+class UserDto {
+}
+
+}
+
+package com.example.reviewsservice.models; {
+class Review {
+}
+
+}
+
+package com.example.reviewsservice.repository; {
+class IReviewRepository {
+}
+
+}
+
+package com.example.reviewsservice; {
+class ReviewsServiceApplication {
+}
+
+}
+
+package com.example.reviewsservice.services; {
+class IOrderServiceClient {
+}
+
+class IReviewService {
+}
+
+class OrderServiceClient {
+}
+
+class ReviewService {
+}
+
+class ReviewServiceTest {
+}
+
+}
+
+package com.example.userservice.config; {
+class AuthenticationAspect {
+}
+
+class ContextData {
+}
+
+class ContextHolder {
+}
+
+class OpenApiConfig {
+}
+
+class OpenTelemetryConfig {
+}
+
+class OtelMetricsConfiguration {
+}
+
+class PerRequestFilter {
+}
+
+class RequiresAuthentication {
+}
+
+class RestTemplateConfig {
+}
+
+class RestTemplateInterceptor {
+}
+
+}
+
+package com.example.userservice.controler; {
+class AuthException {
+}
+
+class UserController {
+}
+
+class UserControllerErrorHandling {
+}
+
+class UserException {
+}
+
+}
+
+package com.example.userservice.dto; {
+class IUserMapper {
+}
+
+class LoginDto {
+}
+
+class UserCreateDto {
+}
+
+class UserDto {
+}
+
+class UserEditDto {
+}
+
+}
+
+package com.example.userservice.models; {
+class User {
+}
+
+}
+
+package com.example.userservice.repository; {
+class IUserRepository {
+}
+
+}
+
+package com.example.userservice.service; {
+class IUserService {
+}
+
+class UserService {
+}
+
+class UserServiceTest {
+}
+
+}
+
+package com.example.userservice; {
+class UserServiceApplication {
+}
+
+}
+
+package com.example.userservice.utils; {
+class HashUtils {
+}
+
+}
+
+ApiGatewayApplication -- AuthenticationPrefilter
+ApiGatewayApplication -- SwaggerFilter
+AuthenticationPrefilter -- CorrelationIdFilter
+CorrelationIdFilter -- Order
+AuthServiceApplication -- AuthService
+ContextHolder -- ContextData
+ContextHolder -- User
+OpenApiConfig -- User
+PerRequestFilter -- ContextData
+PerRequestFilter -- ContextHolder
+PerRequestFilter -- User
+RestTemplateConfig -- ContextHolder
+RestTemplateConfig -- RestTemplateInterceptor
+RestTemplateInterceptor -- ContextHolder
+RestTemplateInterceptor -- User
+AuthController -- ContextHolder
+AuthController -- LoginDto
+AuthController -- AuthService
+AuthController -- IAuthService
+AuthController -- User
+AuthControllerErrorHandling -- AuthController
+AuthControllerErrorHandling -- AuthException
+UserDto -- User
+UserHeader -- User
+JWTHelper -- UserDto
+JWTHelper -- UserHeader
+JWTHelper -- User
+AuthService -- AuthException
+AuthService -- LoginDto
+AuthService -- UserHeader
+AuthService -- JWTHelper
+AuthService -- IAuthService
+AuthService -- IUserServiceClient
+AuthService -- UserServiceClient
+AuthService -- User
+AuthService -- IUserService
+AuthService -- UserService
+IAuthService -- LoginDto
+IAuthService -- UserHeader
+IAuthService -- User
+IUserServiceClient -- LoginDto
+IUserServiceClient -- UserDto
+IUserServiceClient -- UserServiceClient
+IUserServiceClient -- User
+IUserServiceClient -- IUserService
+IUserServiceClient -- UserService
+UserServiceClient -- AuthException
+UserServiceClient -- LoginDto
+UserServiceClient -- UserDto
+UserServiceClient -- User
+UserServiceClient -- IUserService
+UserServiceClient -- UserService
+AuthenticationAspect -- ContextHolder
+AuthenticationAspect -- AuthException
+AuthenticationAspect -- RequiresAuthentication
+AuthenticationAspect -- User
+ProductController -- ContextHolder
+ProductController -- ProductCreateDto
+ProductController -- ProductDto
+ProductController -- ProductStockQuantityDto
+ProductController -- Product
+ProductController -- IProductService
+ProductController -- ProductService
+ProductController -- User
+ProductControllerErrorHandling -- AuthException
+ProductControllerErrorHandling -- ProductController
+ProductControllerErrorHandling -- ProductException
+ProductControllerErrorHandling -- Product
+ProductException -- Product
+IProductMapper -- ProductCreateDto
+IProductMapper -- ProductDto
+IProductMapper -- ProductStockQuantityDto
+IProductMapper -- Product
+ProductCreateDto -- Product
+ProductDto -- Product
+ProductStockQuantityDto -- Product
+IProductRepository -- Product
+IProductService -- ProductCreateDto
+IProductService -- ProductDto
+IProductService -- ProductStockQuantityDto
+IProductService -- Product
+IProductService -- ProductService
+ProductService -- ProductException
+ProductService -- IProductMapper
+ProductService -- ProductCreateDto
+ProductService -- ProductDto
+ProductService -- ProductStockQuantityDto
+ProductService -- Product
+ProductService -- IProductRepository
+ProductControllerTest -- ContextHolder
+ProductControllerTest -- ProductController
+ProductControllerTest -- ProductCreateDto
+ProductControllerTest -- ProductStockQuantityDto
+ProductControllerTest -- Product
+ProductControllerTest -- TestsConfig
+ProductControllerTest -- User
+ProductServiceTest -- ProductException
+ProductServiceTest -- IProductMapper
+ProductServiceTest -- ProductCreateDto
+ProductServiceTest -- ProductDto
+ProductServiceTest -- ProductStockQuantityDto
+ProductServiceTest -- Product
+ProductServiceTest -- IProductRepository
+ProductServiceTest -- ProductService
+OrderConsumer -- Order
+OrderController -- ContextHolder
+OrderController -- RequiresAuthentication
+OrderController -- OrderCreateDto
+OrderController -- OrderDto
+OrderController -- Order
+OrderController -- IOrderService
+OrderController -- OrderService
+OrderController -- User
+OrderControllerErrorHandling -- AuthException
+OrderControllerErrorHandling -- OrderController
+OrderControllerErrorHandling -- OrderException
+OrderControllerErrorHandling -- Order
+OrderException -- Product
+OrderException -- Order
+IOrderMapper -- OrderCreateDto
+IOrderMapper -- OrderDto
+IOrderMapper -- Order
+OrderCreateDto -- ProductCreateDto
+OrderCreateDto -- Product
+OrderCreateDto -- OrderProductCreateDto
+OrderCreateDto -- Order
+OrderCreateDto -- OrderProduct
+OrderDto -- ProductDto
+OrderDto -- Product
+OrderDto -- OrderProductDto
+OrderDto -- Order
+OrderDto -- OrderProduct
+OrderProductCreateDto -- ProductCreateDto
+OrderProductCreateDto -- Product
+OrderProductCreateDto -- Order
+OrderProductCreateDto -- OrderProduct
+OrderProductDto -- ProductDto
+OrderProductDto -- Product
+OrderProductDto -- Order
+OrderProductDto -- OrderProduct
+IOrderEventProducer -- OrderDto
+IOrderEventProducer -- OrderEventProducer
+IOrderEventProducer -- Order
+OrderEventProducer -- OrderException
+OrderEventProducer -- OrderDto
+OrderEventProducer -- Order
+Order -- Product
+Order -- OrderProduct
+OrderProduct -- Product
+OrderServiceApplication -- Order
+OrderServiceApplication -- OrderService
+IOrderRepository -- Order
+IOrderService -- OrderCreateDto
+IOrderService -- OrderDto
+IOrderService -- Order
+IOrderService -- OrderService
+IProductServiceClient -- ProductCreateDto
+IProductServiceClient -- ProductDto
+IProductServiceClient -- Product
+IProductServiceClient -- IProductService
+IProductServiceClient -- ProductService
+IProductServiceClient -- OrderProductCreateDto
+IProductServiceClient -- Order
+IProductServiceClient -- OrderProduct
+IProductServiceClient -- ProductServiceClient
+OrderService -- ContextHolder
+OrderService -- ProductCreateDto
+OrderService -- ProductDto
+OrderService -- Product
+OrderService -- IProductService
+OrderService -- ProductService
+OrderService -- OrderException
+OrderService -- IOrderMapper
+OrderService -- OrderCreateDto
+OrderService -- OrderDto
+OrderService -- OrderProductCreateDto
+OrderService -- IOrderEventProducer
+OrderService -- OrderEventProducer
+OrderService -- Order
+OrderService -- OrderProduct
+OrderService -- IOrderRepository
+OrderService -- IProductServiceClient
+OrderService -- ProductServiceClient
+OrderService -- User
+ProductServiceClient -- ProductCreateDto
+ProductServiceClient -- ProductDto
+ProductServiceClient -- Product
+ProductServiceClient -- IProductService
+ProductServiceClient -- ProductService
+ProductServiceClient -- OrderProductCreateDto
+ProductServiceClient -- Order
+ProductServiceClient -- OrderProduct
+OrderServiceTest -- ContextHolder
+OrderServiceTest -- ProductCreateDto
+OrderServiceTest -- ProductDto
+OrderServiceTest -- Product
+OrderServiceTest -- IProductService
+OrderServiceTest -- ProductService
+OrderServiceTest -- OrderException
+OrderServiceTest -- IOrderMapper
+OrderServiceTest -- OrderCreateDto
+OrderServiceTest -- OrderDto
+OrderServiceTest -- OrderProductCreateDto
+OrderServiceTest -- IOrderEventProducer
+OrderServiceTest -- OrderEventProducer
+OrderServiceTest -- Order
+OrderServiceTest -- OrderProduct
+OrderServiceTest -- IOrderRepository
+OrderServiceTest -- IProductServiceClient
+OrderServiceTest -- OrderService
+OrderServiceTest -- ProductServiceClient
+OrderServiceTest -- User
+ReviewController -- ContextHolder
+ReviewController -- RequiresAuthentication
+ReviewController -- Product
+ReviewController -- ProductAvgRatDto
+ReviewController -- ReviewCreateDto
+ReviewController -- ReviewDto
+ReviewController -- Review
+ReviewController -- IReviewService
+ReviewController -- ReviewService
+ReviewController -- User
+ReviewControllerErrorHandler -- AuthException
+ReviewControllerErrorHandler -- ReviewController
+ReviewControllerErrorHandler -- ReviewException
+ReviewControllerErrorHandler -- Review
+ReviewException -- Product
+ReviewException -- Order
+ReviewException -- Review
+IReviewMapper -- ReviewCreateDto
+IReviewMapper -- ReviewDto
+IReviewMapper -- Review
+ProductAvgRatDto -- Product
+ReviewCreateDto -- Review
+ReviewDto -- Review
+IReviewRepository -- Product
+IReviewRepository -- Order
+IReviewRepository -- Review
+IReviewRepository -- User
+ReviewsServiceApplication -- Review
+IOrderServiceClient -- OrderDto
+IOrderServiceClient -- Order
+IOrderServiceClient -- IOrderService
+IOrderServiceClient -- OrderService
+IOrderServiceClient -- OrderServiceClient
+IReviewService -- Product
+IReviewService -- ProductAvgRatDto
+IReviewService -- ReviewCreateDto
+IReviewService -- ReviewDto
+IReviewService -- Review
+IReviewService -- ReviewService
+IReviewService -- User
+OrderServiceClient -- OrderDto
+OrderServiceClient -- Order
+OrderServiceClient -- IOrderService
+OrderServiceClient -- OrderService
+OrderServiceClient -- ReviewException
+OrderServiceClient -- Review
+ReviewService -- ContextHolder
+ReviewService -- ProductDto
+ReviewService -- Product
+ReviewService -- OrderDto
+ReviewService -- Order
+ReviewService -- IOrderService
+ReviewService -- OrderService
+ReviewService -- ReviewException
+ReviewService -- IReviewMapper
+ReviewService -- ProductAvgRatDto
+ReviewService -- ReviewCreateDto
+ReviewService -- ReviewDto
+ReviewService -- Review
+ReviewService -- IReviewRepository
+ReviewService -- IOrderServiceClient
+ReviewService -- OrderServiceClient
+ReviewService -- User
+ReviewServiceTest -- ContextHolder
+ReviewServiceTest -- ProductDto
+ReviewServiceTest -- Product
+ReviewServiceTest -- OrderDto
+ReviewServiceTest -- OrderProductDto
+ReviewServiceTest -- Order
+ReviewServiceTest -- OrderProduct
+ReviewServiceTest -- IOrderService
+ReviewServiceTest -- OrderService
+ReviewServiceTest -- ReviewException
+ReviewServiceTest -- IReviewMapper
+ReviewServiceTest -- ProductAvgRatDto
+ReviewServiceTest -- ReviewCreateDto
+ReviewServiceTest -- ReviewDto
+ReviewServiceTest -- Review
+ReviewServiceTest -- IReviewRepository
+ReviewServiceTest -- IOrderServiceClient
+ReviewServiceTest -- OrderServiceClient
+ReviewServiceTest -- ReviewService
+ReviewServiceTest -- User
+UserController -- ContextHolder
+UserController -- LoginDto
+UserController -- UserDto
+UserController -- RequiresAuthentication
+UserController -- UserCreateDto
+UserController -- User
+UserController -- IUserService
+UserController -- UserService
+UserControllerErrorHandling -- AuthException
+UserControllerErrorHandling -- UserController
+UserControllerErrorHandling -- UserException
+UserControllerErrorHandling -- User
+UserException -- User
+IUserMapper -- UserDto
+IUserMapper -- UserCreateDto
+IUserMapper -- UserEditDto
+IUserMapper -- User
+UserCreateDto -- User
+UserEditDto -- User
+IUserRepository -- User
+IUserService -- LoginDto
+IUserService -- UserDto
+IUserService -- UserCreateDto
+IUserService -- UserEditDto
+IUserService -- User
+IUserService -- UserService
+UserService -- ContextHolder
+UserService -- LoginDto
+UserService -- UserDto
+UserService -- UserException
+UserService -- IUserMapper
+UserService -- UserCreateDto
+UserService -- UserEditDto
+UserService -- User
+UserService -- IUserRepository
+UserService -- HashUtils
+UserServiceApplication -- User
+UserServiceApplication -- UserService
+UserServiceTest -- ContextHolder
+UserServiceTest -- LoginDto
+UserServiceTest -- UserDto
+UserServiceTest -- UserException
+UserServiceTest -- IUserMapper
+UserServiceTest -- UserCreateDto
+UserServiceTest -- UserEditDto
+UserServiceTest -- User
+UserServiceTest -- IUserRepository
+UserServiceTest -- UserService
+UserServiceTest -- HashUtils
+@enduml

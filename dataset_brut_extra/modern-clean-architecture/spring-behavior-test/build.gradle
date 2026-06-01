@@ -1,0 +1,15 @@
+plugins {
+    id "java-library"
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Title": "spring behavior test",
+                   "Implementation-Version":archiveVersion
+    }
+}
+
+dependencies {	
+	implementation "org.springframework.boot:spring-boot-starter-web:$project.ext.springVersion"
+	implementation "org.springframework.boot:spring-boot-starter-test:$project.ext.springVersion"
+}

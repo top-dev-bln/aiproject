@@ -1,0 +1,27 @@
+@startuml
+package com.example; {
+class DemoApplication {
+}
+
+class HelloFunction {
+}
+
+class HelloFunctionTest {
+}
+
+}
+
+package com.example.model; {
+class Greeting {
+}
+
+class User {
+}
+
+}
+
+HelloFunction -- Greeting
+HelloFunctionTest -- HelloFunction
+HelloFunctionTest -- Greeting
+HelloFunctionTest -- User
+@enduml

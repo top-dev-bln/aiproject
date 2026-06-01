@@ -1,0 +1,17 @@
+.pagination-container {
+    text-align: right;
+    padding-right: 0;
+}
+
+.page-select {
+    padding-left: 0;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.pointer-disabled {
+    pointer-events: none;
+}

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Employer, Candidate roles. It exposes interfaces for managing email job scheduler. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Employer, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [],
+        "controllers": [
+          "EmailJobSchedulerController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [],
+        "controllers": [
+          "EmailJobSchedulerController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Employer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EmailJobSchedulerController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Employer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EmailJobSchedulerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Employer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "EmailJobSchedulerController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        EmailJobSchedulerController[\"EmailJobSchedulerController\"]\n    end"
+  }
+}

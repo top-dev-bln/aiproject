@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. It manages core business objects including paginated result, custom user details, book store, user. The platform provides capabilities for user, book store, book. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage paginated result records, so that I can track and organize paginated result data effectively.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage custom user details records, so that I can track and organize custom user details data effectively.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage book store records, so that I can track and organize book store data effectively.",
+        "services": [
+          "BookStoreService",
+          "BookService"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        PageConstant[\"PageConstant\"]\n        ResourceNameConstant[\"ResourceNameConstant\"]\n        PageUtil[\"PageUtil\"]\n    end\n    subgraph Data_Access\n        PaginatedResult[\"PaginatedResult\"]\n        CustomUserDetails[\"CustomUserDetails\"]\n        BookStore[\"BookStore\"]\n        User[\"User\"]\n        Book[\"Book\"]\n        BookRepository[\"BookRepository\"]\n        UserRepository[\"UserRepository\"]\n        BookStoreRepository[\"BookStoreRepository\"]\n        BookStoreMapper[\"BookStoreMapper\"]\n        UserMapper[\"UserMapper\"]\n        BookMapper[\"BookMapper\"]\n    end\n    subgraph Security\n        ResourceServerConfiguration[\"ResourceServerConfiguration\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        AuthorizationServerConfiguration[\"AuthorizationServerConfiguration\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n        BookStoreService[\"BookStoreService\"]\n        BookService[\"BookService\"]\n        BookServiceImpl[\"BookServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        BookStoreServiceImpl[\"BookStoreServiceImpl\"]\n    end\n    subgraph Controllers\n        BookController[\"BookController\"]\n        ExceptionHandlerControllerAdvice[\"ExceptionHandlerControllerAdvice\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

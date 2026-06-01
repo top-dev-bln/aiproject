@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, User roles. It manages core business objects including message entity, recruit entity, base entity, company entity. The platform provides capabilities for consumer, message, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "QiNiuService",
+          "UserInfoService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to create and manage message entity records, so that I can track and organize message entity data effectively.",
+        "services": [
+          "MessageService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to create and manage recruit entity records, so that I can track and organize recruit entity data effectively.",
+        "services": [
+          "RecruitService"
+        ],
+        "controllers": [
+          "RecruitController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to create and manage base entity records, so that I can track and organize base entity data effectively.",
+        "services": [
+          "BaseService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to create and manage company entity records, so that I can track and organize company entity data effectively.",
+        "services": [
+          "Consumer"
+        ],
+        "controllers": [
+          "CompanyController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        FeignConfig[\"FeignConfig\"]\n        Constant[\"Constant\"]\n        CorsConfig[\"CorsConfig\"]\n        UserUtil[\"UserUtil\"]\n        PrefixRedisSerializer[\"PrefixRedisSerializer\"]\n        CacheConfig[\"CacheConfig\"]\n        WebSocketConfig[\"WebSocketConfig\"]\n        RecruitUtil[\"RecruitUtil\"]\n        MongoEventListener[\"MongoEventListener\"]\n        IdUtil[\"IdUtil\"]\n        WebConfig[\"WebConfig\"]\n    end\n    subgraph Services\n        Consumer[\"Consumer\"]\n        MessageService[\"MessageService\"]\n        UserService[\"UserService\"]\n        QiNiuService[\"QiNiuService\"]\n        MailService[\"MailService\"]\n        SmsService[\"SmsService\"]\n        WebSocketService[\"WebSocketService\"]\n        RecruitService[\"RecruitService\"]\n        ResumeService[\"ResumeService\"]\n        BaseService[\"BaseService\"]\n        ClientService[\"ClientService\"]\n        UserInfoService[\"UserInfoService\"]\n    end\n    subgraph Security\n        AuthFilter[\"AuthFilter\"]\n    end\n    subgraph Controllers\n        MessageController[\"MessageController\"]\n        OutsideController[\"OutsideController\"]\n        FacadeController[\"FacadeController\"]\n        CompanyController[\"CompanyController\"]\n        RecruitController[\"RecruitController\"]\n        ResumeController[\"ResumeController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        MessageEntity[\"MessageEntity\"]\n        RecruitEntity[\"RecruitEntity\"]\n        BaseEntity[\"BaseEntity\"]\n        CompanyEntity[\"CompanyEntity\"]\n        Skill[\"Skill\"]\n        Resume[\"Resume\"]\n        SeqInfo[\"SeqInfo\"]\n        UserInfoEntity[\"UserInfoEntity\"]\n        UserEs[\"UserEs\"]\n        MessageRepo[\"MessageRepo\"]\n        BaseRepo[\"BaseRepo\"]\n        CompanyRepo[\"CompanyRepo\"]\n        RecruitRepo[\"RecruitRepo\"]\n        ResumeRepo[\"ResumeRepo\"]\n        SkillRepo[\"SkillRepo\"]\n        UserEsRepo[\"UserEsRepo\"]\n        UserInfoRepo[\"UserInfoRepo\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

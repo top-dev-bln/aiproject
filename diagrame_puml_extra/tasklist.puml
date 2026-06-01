@@ -1,0 +1,439 @@
+@startuml
+package com.example.tasklist.config; {
+class ApplicationConfig {
+}
+
+class GraphqlConfig {
+}
+
+class LocalDateTimeCoercing {
+}
+
+class TestConfig {
+}
+
+}
+
+package com.example.tasklist.domain.exception; {
+class AccessDeniedException {
+}
+
+class ExceptionBody {
+}
+
+class ImageUploadException {
+}
+
+class ResourceNotFoundException {
+}
+
+}
+
+package com.example.tasklist.domain; {
+class MailType {
+}
+
+}
+
+package com.example.tasklist.domain.task; {
+class Status {
+}
+
+class Task {
+}
+
+class TaskImage {
+}
+
+}
+
+package com.example.tasklist.domain.user; {
+class Role {
+}
+
+class User {
+}
+
+}
+
+package com.example.tasklist.repository; {
+class TaskRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.example.tasklist.service; {
+class AuthService {
+}
+
+class ImageService {
+}
+
+class MailService {
+}
+
+class Reminder {
+}
+
+class TaskService {
+}
+
+class UserService {
+}
+
+}
+
+package com.example.tasklist.service.impl; {
+class AuthServiceImpl {
+}
+
+class ImageServiceImpl {
+}
+
+class MailServiceImpl {
+}
+
+class ReminderImpl {
+}
+
+class TaskServiceImpl {
+}
+
+class UserServiceImpl {
+}
+
+class AuthServiceImplTest {
+}
+
+class MailServiceImplTest {
+}
+
+class TaskServiceImplTest {
+}
+
+class UserServiceImplTest {
+}
+
+}
+
+package com.example.tasklist.service.props; {
+class JwtProperties {
+}
+
+class MinioProperties {
+}
+
+}
+
+package com.example.tasklist; {
+class TasklistApplication {
+}
+
+}
+
+package com.example.tasklist.web.controller; {
+class AuthController {
+}
+
+class ControllerAdvice {
+}
+
+class TaskController {
+}
+
+class UserController {
+}
+
+}
+
+package com.example.tasklist.web.dto.auth; {
+class JwtRequest {
+}
+
+class JwtResponse {
+}
+
+}
+
+package com.example.tasklist.web.dto.task; {
+class TaskDto {
+}
+
+class TaskImageDto {
+}
+
+}
+
+package com.example.tasklist.web.dto.user; {
+class UserDto {
+}
+
+}
+
+package com.example.tasklist.web.dto.validation; {
+class OnCreate {
+}
+
+class OnUpdate {
+}
+
+}
+
+package com.example.tasklist.web.mappers; {
+class Mappable {
+}
+
+class TaskImageMapper {
+}
+
+class TaskMapper {
+}
+
+class UserMapper {
+}
+
+}
+
+package com.example.tasklist.web.security.expression; {
+class CustomMethodSecurityExpressionRoot {
+}
+
+class CustomSecurityExceptionHandler {
+}
+
+class CustomSecurityExpression {
+}
+
+}
+
+package com.example.tasklist.web.security; {
+class JwtEntity {
+}
+
+class JwtEntityFactory {
+}
+
+class JwtTokenFilter {
+}
+
+class JwtTokenProvider {
+}
+
+class JwtUserDetailsService {
+}
+
+}
+
+ApplicationConfig -- Status
+ApplicationConfig -- Task
+ApplicationConfig -- User
+ApplicationConfig -- MinioProperties
+ApplicationConfig -- CustomSecurityExceptionHandler
+ApplicationConfig -- JwtTokenFilter
+ApplicationConfig -- JwtTokenProvider
+GraphqlConfig -- LocalDateTimeCoercing
+Task -- Status
+TaskImage -- Task
+User -- Task
+User -- Role
+TaskRepository -- Task
+TaskRepository -- User
+UserRepository -- Task
+UserRepository -- User
+AuthService -- JwtRequest
+AuthService -- JwtResponse
+ImageService -- Task
+ImageService -- TaskImage
+AuthServiceImpl -- Role
+AuthServiceImpl -- User
+AuthServiceImpl -- AuthService
+AuthServiceImpl -- UserService
+AuthServiceImpl -- JwtRequest
+AuthServiceImpl -- JwtResponse
+AuthServiceImpl -- JwtTokenProvider
+ImageServiceImpl -- ImageUploadException
+ImageServiceImpl -- Task
+ImageServiceImpl -- TaskImage
+ImageServiceImpl -- ImageService
+ImageServiceImpl -- MinioProperties
+MailServiceImpl -- MailType
+MailServiceImpl -- User
+MailServiceImpl -- MailService
+MailServiceImpl -- Reminder
+ReminderImpl -- MailType
+ReminderImpl -- Task
+ReminderImpl -- User
+ReminderImpl -- MailService
+ReminderImpl -- Reminder
+ReminderImpl -- TaskService
+ReminderImpl -- UserService
+TaskServiceImpl -- ResourceNotFoundException
+TaskServiceImpl -- Status
+TaskServiceImpl -- Task
+TaskServiceImpl -- TaskImage
+TaskServiceImpl -- User
+TaskServiceImpl -- TaskRepository
+TaskServiceImpl -- ImageService
+TaskServiceImpl -- TaskService
+UserServiceImpl -- ResourceNotFoundException
+UserServiceImpl -- MailType
+UserServiceImpl -- Task
+UserServiceImpl -- Role
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserServiceImpl -- MailService
+UserServiceImpl -- UserService
+MailService -- MailType
+MailService -- User
+Reminder -- Task
+TaskService -- Task
+TaskService -- TaskImage
+TaskService -- User
+UserService -- Task
+UserService -- User
+TasklistApplication -- Task
+AuthController -- User
+AuthController -- AuthService
+AuthController -- UserService
+AuthController -- JwtRequest
+AuthController -- JwtResponse
+AuthController -- UserDto
+AuthController -- OnCreate
+AuthController -- UserMapper
+ControllerAdvice -- AccessDeniedException
+ControllerAdvice -- ExceptionBody
+ControllerAdvice -- ImageUploadException
+ControllerAdvice -- ResourceNotFoundException
+ControllerAdvice -- Status
+TaskController -- Task
+TaskController -- TaskImage
+TaskController -- TaskService
+TaskController -- TaskDto
+TaskController -- TaskImageDto
+TaskController -- OnUpdate
+TaskController -- TaskImageMapper
+TaskController -- TaskMapper
+UserController -- Task
+UserController -- User
+UserController -- TaskService
+UserController -- UserService
+UserController -- TaskDto
+UserController -- UserDto
+UserController -- OnCreate
+UserController -- OnUpdate
+UserController -- TaskMapper
+UserController -- UserMapper
+JwtRequest -- User
+TaskDto -- Status
+TaskDto -- Task
+TaskDto -- OnCreate
+TaskDto -- OnUpdate
+TaskImageDto -- Task
+TaskImageDto -- TaskImage
+UserDto -- User
+UserDto -- OnCreate
+UserDto -- OnUpdate
+TaskImageMapper -- Task
+TaskImageMapper -- TaskImage
+TaskImageMapper -- TaskImageDto
+TaskImageMapper -- Mappable
+TaskMapper -- Task
+TaskMapper -- TaskDto
+TaskMapper -- Mappable
+UserMapper -- User
+UserMapper -- UserDto
+UserMapper -- Mappable
+CustomMethodSecurityExpressionRoot -- Task
+CustomMethodSecurityExpressionRoot -- Role
+CustomMethodSecurityExpressionRoot -- User
+CustomMethodSecurityExpressionRoot -- UserService
+CustomMethodSecurityExpressionRoot -- JwtEntity
+CustomSecurityExceptionHandler -- Role
+CustomSecurityExceptionHandler -- User
+CustomSecurityExceptionHandler -- UserService
+CustomSecurityExceptionHandler -- CustomMethodSecurityExpressionRoot
+CustomSecurityExpression -- Task
+CustomSecurityExpression -- Role
+CustomSecurityExpression -- User
+CustomSecurityExpression -- UserService
+CustomSecurityExpression -- JwtEntity
+JwtEntity -- User
+JwtEntityFactory -- Role
+JwtEntityFactory -- User
+JwtEntityFactory -- JwtEntity
+JwtTokenFilter -- JwtTokenProvider
+JwtTokenProvider -- AccessDeniedException
+JwtTokenProvider -- Role
+JwtTokenProvider -- User
+JwtTokenProvider -- JwtProperties
+JwtTokenProvider -- UserService
+JwtTokenProvider -- JwtResponse
+JwtUserDetailsService -- User
+JwtUserDetailsService -- UserService
+JwtUserDetailsService -- JwtEntity
+JwtUserDetailsService -- JwtEntityFactory
+TestConfig -- Task
+TestConfig -- User
+TestConfig -- TaskRepository
+TestConfig -- UserRepository
+TestConfig -- AuthService
+TestConfig -- ImageService
+TestConfig -- AuthServiceImpl
+TestConfig -- ImageServiceImpl
+TestConfig -- MailServiceImpl
+TestConfig -- TaskServiceImpl
+TestConfig -- UserServiceImpl
+TestConfig -- MailService
+TestConfig -- JwtProperties
+TestConfig -- MinioProperties
+TestConfig -- TaskService
+TestConfig -- UserService
+TestConfig -- JwtTokenProvider
+TestConfig -- JwtUserDetailsService
+AuthServiceImplTest -- ResourceNotFoundException
+AuthServiceImplTest -- Task
+AuthServiceImplTest -- Role
+AuthServiceImplTest -- User
+AuthServiceImplTest -- TaskRepository
+AuthServiceImplTest -- UserRepository
+AuthServiceImplTest -- AuthService
+AuthServiceImplTest -- AuthServiceImpl
+AuthServiceImplTest -- UserServiceImpl
+AuthServiceImplTest -- UserService
+AuthServiceImplTest -- JwtRequest
+AuthServiceImplTest -- JwtResponse
+AuthServiceImplTest -- JwtTokenProvider
+AuthServiceImplTest -- TestConfig
+MailServiceImplTest -- MailType
+MailServiceImplTest -- Task
+MailServiceImplTest -- User
+MailServiceImplTest -- TaskRepository
+MailServiceImplTest -- UserRepository
+MailServiceImplTest -- MailServiceImpl
+MailServiceImplTest -- MailService
+MailServiceImplTest -- TestConfig
+TaskServiceImplTest -- ResourceNotFoundException
+TaskServiceImplTest -- Status
+TaskServiceImplTest -- Task
+TaskServiceImplTest -- TaskImage
+TaskServiceImplTest -- User
+TaskServiceImplTest -- TaskRepository
+TaskServiceImplTest -- ImageService
+TaskServiceImplTest -- TaskServiceImpl
+TaskServiceImplTest -- TaskService
+TaskServiceImplTest -- TestConfig
+UserServiceImplTest -- ResourceNotFoundException
+UserServiceImplTest -- MailType
+UserServiceImplTest -- Task
+UserServiceImplTest -- Role
+UserServiceImplTest -- User
+UserServiceImplTest -- UserRepository
+UserServiceImplTest -- MailServiceImpl
+UserServiceImplTest -- UserServiceImpl
+UserServiceImplTest -- MailService
+UserServiceImplTest -- UserService
+UserServiceImplTest -- TestConfig
+@enduml

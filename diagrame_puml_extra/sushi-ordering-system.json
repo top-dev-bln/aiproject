@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Customer, User roles. The platform provides capabilities for global exception handler, token, auth. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "TokenService",
+          "AuthService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to interact with category functionality, so that I can accomplish my category-related tasks.",
+        "services": [
+          "CategoryService"
+        ],
+        "controllers": [
+          "CategoryController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to interact with customer functionality, so that I can accomplish my customer-related tasks.",
+        "services": [
+          "CustomerService"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to interact with employee functionality, so that I can accomplish my employee-related tasks.",
+        "services": [
+          "EmployeeService"
+        ],
+        "controllers": [
+          "EmployeeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        WebConfig[\"WebConfig\"]\n        CategoryConstants[\"CategoryConstants\"]\n        CustomerConstants[\"CustomerConstants\"]\n        EmployeeConstants[\"EmployeeConstants\"]\n        OrderConstants[\"OrderConstants\"]\n        ProductConstants[\"ProductConstants\"]\n    end\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        CategoryController[\"CategoryController\"]\n        CustomerController[\"CustomerController\"]\n        EmployeeController[\"EmployeeController\"]\n        OrderController[\"OrderController\"]\n        ProductController[\"ProductController\"]\n        CustomerControllerConstants[\"CustomerControllerConstants\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        TokenService[\"TokenService\"]\n        AuthService[\"AuthService\"]\n        CategoryService[\"CategoryService\"]\n        CustomerService[\"CustomerService\"]\n        EmployeeService[\"EmployeeService\"]\n        OrderService[\"OrderService\"]\n        ProductService[\"ProductService\"]\n    end\n    subgraph Data_Access\n        AddressRepository[\"AddressRepository\"]\n        CategoryRepository[\"CategoryRepository\"]\n        CustomerRepository[\"CustomerRepository\"]\n        EmployeeRepository[\"EmployeeRepository\"]\n        OrderItemRepository[\"OrderItemRepository\"]\n        OrderRepository[\"OrderRepository\"]\n        ProductRepository[\"ProductRepository\"]\n    end\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        SecurityFilter[\"SecurityFilter\"]\n        AuthConstants[\"AuthConstants\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}
