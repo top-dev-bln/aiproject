@@ -1,12 +1,14 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, social media domain. It serves API Consumer, User as its primary actors. The main business capabilities include auth, comments, post. Core business data revolves around Comment, Post, RefreshToken, Subreddit.",
+    "free_text_description": "This system is a content management platform that serves Content Creator, User roles. It manages core business objects including post, refresh token, vote, user. The platform provides capabilities for jwt provider, vote, mail. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "AuthService"
+          "AuthService",
+          "RefreshTokenService",
+          "UserDetailsServiceImpl"
         ],
         "controllers": [
           "AuthController"
@@ -14,15 +16,7 @@
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to comment on posts, so that I can participate in discussions and provide feedback.",
-        "services": [],
-        "controllers": [
-          "CommentsController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to create and browse posts, so that I can share content and discover what others have published.",
+        "story": "As a Content Creator, I want to create and manage post records, so that I can track and organize post data effectively.",
         "services": [
           "PostService"
         ],
@@ -31,20 +25,30 @@
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to create and join communities, so that content is organized by topic and interest.",
+        "id": 3,
+        "story": "As a Content Creator, I want to create and manage refresh token records, so that I can track and organize refresh token data effectively.",
         "services": [
-          "SubredditService"
+          "RefreshTokenService"
         ],
         "controllers": [
-          "SubredditController"
+          "VoteController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to create and manage vote records, so that I can track and organize vote data effectively.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "VoteController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to upvote or downvote content, so that the best content rises to the top of the feed.",
+        "story": "As a Content Creator, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
-          "VoteService"
+          "UserDetailsServiceImpl"
         ],
         "controllers": [
           "VoteController"
@@ -53,6 +57,6 @@
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthController[\"AuthController\"]\n    CommentsController[\"CommentsController\"]\n    PostController[\"PostController\"]\n    SubredditController[\"SubredditController\"]\n    VoteController[\"VoteController\"]\n  end\n  subgraph Services\n    AuthService[\"AuthService\"]\n    CommentService[\"CommentService\"]\n    JwtProvider[\"JwtProvider\"]\n    MailContentBuilder[\"MailContentBuilder\"]\n    MailService[\"MailService\"]\n    PostService[\"PostService\"]\n    RefreshTokenService[\"RefreshTokenService\"]\n    SubredditService[\"SubredditService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    VoteService[\"VoteService\"]\n  end\n  subgraph Data_Access\n    Comment[\"Comment\"]\n    CommentRepository[\"CommentRepository\"]\n    Post[\"Post\"]\n    PostRepository[\"PostRepository\"]\n    RefreshToken[\"RefreshToken\"]\n    RefreshTokenRepository[\"RefreshTokenRepository\"]\n    Subreddit[\"Subreddit\"]\n    SubredditRepository[\"SubredditRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n    VerificationToken[\"VerificationToken\"]\n    VerificationTokenRepository[\"VerificationTokenRepository\"]\n    Vote[\"Vote\"]\n    VoteRepository[\"VoteRepository\"]\n  end\n  subgraph Infrastructure\n    OpenAPIConfiguration[\"OpenAPIConfiguration\"]\n    SecurityConfig[\"SecurityConfig\"]\n    WebConfig[\"WebConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        AuthenticationResponse[\"AuthenticationResponse\"]\n        RefreshTokenRequest[\"RefreshTokenRequest\"]\n    end\n    subgraph Infrastructure\n        WebConfig[\"WebConfig\"]\n        OpenAPIConfiguration[\"OpenAPIConfiguration\"]\n    end\n    subgraph Controllers\n        VoteController[\"VoteController\"]\n        AuthController[\"AuthController\"]\n        PostController[\"PostController\"]\n        CommentsController[\"CommentsController\"]\n        SubredditController[\"SubredditController\"]\n    end\n    subgraph Data_Access\n        CommentMapper[\"CommentMapper\"]\n        PostMapper[\"PostMapper\"]\n        SubredditMapper[\"SubredditMapper\"]\n        CommentRepository[\"CommentRepository\"]\n        VoteRepository[\"VoteRepository\"]\n        RefreshTokenRepository[\"RefreshTokenRepository\"]\n        PostRepository[\"PostRepository\"]\n        UserRepository[\"UserRepository\"]\n        VerificationTokenRepository[\"VerificationTokenRepository\"]\n        SubredditRepository[\"SubredditRepository\"]\n        Post[\"Post\"]\n        RefreshToken[\"RefreshToken\"]\n        Vote[\"Vote\"]\n        User[\"User\"]\n        NotificationEmail[\"NotificationEmail\"]\n        VerificationToken[\"VerificationToken\"]\n        Comment[\"Comment\"]\n        Subreddit[\"Subreddit\"]\n        VoteType[\"VoteType\"]\n    end\n    subgraph Services\n        JwtProvider[\"JwtProvider\"]\n        VoteService[\"VoteService\"]\n        MailService[\"MailService\"]\n        CommentService[\"CommentService\"]\n        SubredditService[\"SubredditService\"]\n        AuthService[\"AuthService\"]\n        RefreshTokenService[\"RefreshTokenService\"]\n        MailContentBuilder[\"MailContentBuilder\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        PostService[\"PostService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

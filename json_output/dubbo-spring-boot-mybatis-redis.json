@@ -1,52 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include parking spot data trans, security service, infrastruct deal. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. It manages core business objects including parking basic data sync response, error response. The platform provides capabilities for security, security, infrastruct deal. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include content management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage parking spot data trans operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage parking basic data sync response records, so that I can track and organize parking basic data sync response data effectively.",
+        "services": [
+          "ParkingBasicDataSync"
+        ],
         "controllers": [
           "ParkingSpotDataTrans"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage security service operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to create and manage error response records, so that I can track and organize error response data effectively.",
         "services": [
-          "SecurityServiceImpl"
+          "SecurityService"
         ],
         "controllers": [
-          "SecurityService"
+          "ParkingSpotDataTrans"
         ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to interact with infrastruct deal functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use security capabilities, so that I can perform essential business operations.",
         "services": [
-          "InfrastructDeal"
+          "SecurityService"
         ],
-        "controllers": []
+        "controllers": [
+          "ParkingSpotDataTrans"
+        ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to interact with parking basic data sync functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use infrastruct deal capabilities, so that I can perform essential business operations.",
         "services": [
-          "ParkingBasicDataSync"
+          "InfrastructDeal"
         ],
-        "controllers": []
+        "controllers": [
+          "ParkingSpotDataTrans"
+        ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with security impl functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
-          "SecurityServiceImpl"
+          "SecurityService"
         ],
-        "controllers": []
+        "controllers": [
+          "ParkingSpotDataTrans"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ParkingSpotDataTrans[\"ParkingSpotDataTrans\"]\n    SecurityService[\"SecurityService\"]\n  end\n  subgraph Services\n    InfrastructDeal[\"InfrastructDeal\"]\n    ParkingBasicDataSync[\"ParkingBasicDataSync\"]\n    SecurityServiceImpl[\"SecurityServiceImpl\"]\n  end\n  subgraph Security\n    UserSecurityInterceptor[\"UserSecurityInterceptor\"]\n  end\n  subgraph Infrastructure\n    HttpSessionConfig[\"HttpSessionConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        SecurityService[\"SecurityService\"]\n        SecurityServiceImpl[\"SecurityServiceImpl\"]\n        InfrastructDeal[\"InfrastructDeal\"]\n        ParkingBasicDataSync[\"ParkingBasicDataSync\"]\n    end\n    subgraph Data_Access\n        SecurityMapper[\"SecurityMapper\"]\n        ParkingBasicDataSyncResponse[\"ParkingBasicDataSyncResponse\"]\n        ErrorResponse[\"ErrorResponse\"]\n    end\n    subgraph Security\n        Security[\"Security\"]\n        UserSecurityInterceptor[\"UserSecurityInterceptor\"]\n    end\n    subgraph Controllers\n        ParkingSpotDataTrans[\"ParkingSpotDataTrans\"]\n    end\n    subgraph Infrastructure\n        HttpSessionConfig[\"HttpSessionConfig\"]\n        JsonUtil[\"JsonUtil\"]\n        ReturnCode[\"ReturnCode\"]\n        RandomUtil[\"RandomUtil\"]\n        Constants[\"Constants\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

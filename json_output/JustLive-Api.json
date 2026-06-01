@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, content management domain. It serves API Consumer, User as its primary actors. The main business capabilities include live room crl, user info crl, area info index. Core business data revolves around ActiveUsers, Result, UpdateInfo, UrlQuality. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a microservices platform that serves User, Admin roles. It manages core business objects including update info, banner info, url quality, live room info. The platform provides capabilities for area type index, area, user. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
           "UserInfoCrl"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage live room crl operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage update info records, so that I can track and organize update info data effectively.",
+        "services": [
+          "AreaTypeIndexService"
+        ],
         "controllers": [
           "LiveRoomCrl"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage user info crl operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage banner info records, so that I can track and organize banner info data effectively.",
+        "services": [
+          "AreaTypeIndexService"
+        ],
         "controllers": [
-          "UserInfoCrl"
+          "LiveRoomCrl"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to interact with area info index functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to create and manage url quality records, so that I can track and organize url quality data effectively.",
         "services": [
-          "AreaInfoIndexService"
+          "AreaTypeIndexService"
         ],
-        "controllers": []
+        "controllers": [
+          "LiveRoomCrl"
+        ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to interact with area info functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to create and manage live room info records, so that I can track and organize live room info data effectively.",
         "services": [
-          "AreaInfoService"
+          "LiveRoomService"
         ],
-        "controllers": []
+        "controllers": [
+          "LiveRoomCrl"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    LiveRoomCrl[\"LiveRoomCrl\"]\n    UserInfoCrl[\"UserInfoCrl\"]\n  end\n  subgraph Services\n    AreaInfoIndexService[\"AreaInfoIndexService\"]\n    AreaInfoService[\"AreaInfoService\"]\n    AreaService[\"AreaService\"]\n    AreaTypeIndexService[\"AreaTypeIndexService\"]\n    AsyncService[\"AsyncService\"]\n    AsyncServiceImpl[\"AsyncServiceImpl\"]\n    BasePlatform[\"BasePlatform\"]\n    Douyin[\"Douyin\"]\n    LiveRoomService[\"LiveRoomService\"]\n    RedisService[\"RedisService\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    ActiveUsers[\"ActiveUsers\"]\n    Result[\"Result\"]\n    UpdateInfo[\"UpdateInfo\"]\n    UrlQuality[\"UrlQuality\"]\n  end\n  subgraph Security\n    FangshuaInterceptor[\"FangshuaInterceptor\"]\n  end\n  subgraph Infrastructure\n    CORSConfig[\"CORSConfig\"]\n    ExecutorConfig[\"ExecutorConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    TomcatConfig[\"TomcatConfig\"]\n    WebConfig[\"WebConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ExecutorConfig[\"ExecutorConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        WebConfig[\"WebConfig\"]\n        TomcatConfig[\"TomcatConfig\"]\n        AfterServiceStarted[\"AfterServiceStarted\"]\n        CORSConfig[\"CORSConfig\"]\n        UrlUtil[\"UrlUtil\"]\n        DouYuOpenApi[\"DouYuOpenApi\"]\n        Global[\"Global\"]\n        HttpUtil[\"HttpUtil\"]\n        RedisUtils[\"RedisUtils\"]\n        FixHuya[\"FixHuya\"]\n        AccessLimit[\"AccessLimit\"]\n        HttpMethod[\"HttpMethod\"]\n        HttpContentType[\"HttpContentType\"]\n        HttpRequest[\"HttpRequest\"]\n        HttpResponse[\"HttpResponse\"]\n        FangshuaInterceptor[\"FangshuaInterceptor\"]\n    end\n    subgraph Controllers\n        LiveRoomCrl[\"LiveRoomCrl\"]\n        UserInfoCrl[\"UserInfoCrl\"]\n    end\n    subgraph Data_Access\n        RoomMapper[\"RoomMapper\"]\n        AreaInfoIndexMapper[\"AreaInfoIndexMapper\"]\n        UserMapper[\"UserMapper\"]\n        AreaTypeIndexMapper[\"AreaTypeIndexMapper\"]\n        AreaInfoMapper[\"AreaInfoMapper\"]\n        UserMailMapper[\"UserMailMapper\"]\n        UpdateInfo[\"UpdateInfo\"]\n        BannerInfo[\"BannerInfo\"]\n        UrlQuality[\"UrlQuality\"]\n        LiveRoomInfo[\"LiveRoomInfo\"]\n        SimpleRoomInfo[\"SimpleRoomInfo\"]\n        BanInfo[\"BanInfo\"]\n        Owner[\"Owner\"]\n        AreaSimple[\"AreaSimple\"]\n        AreaInfo[\"AreaInfo\"]\n        AreaTypeIndex[\"AreaTypeIndex\"]\n        AreaInfoIndex[\"AreaInfoIndex\"]\n        Result[\"Result\"]\n        GetAllSupportPlatformsResponse[\"GetAllSupportPlatformsResponse\"]\n        ActiveUsers[\"ActiveUsers\"]\n        UserInfo[\"UserInfo\"]\n    end\n    subgraph Services\n        AreaTypeIndexService[\"AreaTypeIndexService\"]\n        AreaService[\"AreaService\"]\n        UserService[\"UserService\"]\n        AsyncServiceImpl[\"AsyncServiceImpl\"]\n        LiveRoomService[\"LiveRoomService\"]\n        RedisService[\"RedisService\"]\n        AreaInfoIndexService[\"AreaInfoIndexService\"]\n        AreaInfoService[\"AreaInfoService\"]\n        BasePlatform[\"BasePlatform\"]\n        Douyin[\"Douyin\"]\n        Huya[\"Huya\"]\n        CC[\"CC\"]\n        Douyu[\"Douyu\"]\n        Bilibili[\"Bilibili\"]\n        AsyncService[\"AsyncService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

@@ -1,12 +1,54 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves User as its primary actors. The main business capabilities include message. Core business data revolves around FormattedMessage. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Candidate roles. It manages core business objects including formatted message. The platform provides capabilities for basic authentication success handler, bearer token reactive authentication manager, jwt token. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "BasicAuthenticationSuccessHandler",
+          "BearerTokenReactiveAuthenticationManager",
+          "JWTTokenService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage formatted message records, so that I can track and organize formatted message data effectively.",
+        "services": [
+          "BasicAuthenticationSuccessHandler"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
         "services": [
           "MessageService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "BearerTokenReactiveAuthenticationManager"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "BasicAuthenticationSuccessHandler"
         ],
         "controllers": [
           "MessageController"
@@ -15,6 +57,6 @@
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    MessageController[\"MessageController\"]\n  end\n  subgraph Services\n    MessageService[\"MessageService\"]\n  end\n  subgraph Data_Access\n    FormattedMessage[\"FormattedMessage\"]\n  end\n  subgraph Security\n    BasicAuthenticationSuccessHandler[\"BasicAuthenticationSuccessHandler\"]\n    JWTTokenService[\"JWTTokenService\"]\n    ServerHttpBearerAuthenticationConverter[\"ServerHttpBearerAuthenticationConverter\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        MessageController[\"MessageController\"]\n    end\n    subgraph Services\n        BasicAuthenticationSuccessHandler[\"BasicAuthenticationSuccessHandler\"]\n        BearerTokenReactiveAuthenticationManager[\"BearerTokenReactiveAuthenticationManager\"]\n        JWTTokenService[\"JWTTokenService\"]\n        MessageService[\"MessageService\"]\n    end\n    subgraph Security\n        ServerHttpBearerAuthenticationConverter[\"ServerHttpBearerAuthenticationConverter\"]\n        JWTSecrets[\"JWTSecrets\"]\n        JWTCustomVerifier[\"JWTCustomVerifier\"]\n        JWTCustomSigner[\"JWTCustomSigner\"]\n        AuthorizationHeaderPayload[\"AuthorizationHeaderPayload\"]\n        UsernamePasswordAuthenticationBearer[\"UsernamePasswordAuthenticationBearer\"]\n    end\n    subgraph Data_Access\n        FormattedMessage[\"FormattedMessage\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
   }
 }

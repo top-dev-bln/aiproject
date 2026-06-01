@@ -1,50 +1,61 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, content management domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include account rest, note, note rest. Core business data revolves around Account, AccountDao, FakeAccountDao, InMemoryAccountDao.",
+    "free_text_description": "This system is a microservices platform that serves User, Admin roles. It manages core business objects including account, note. The platform provides capabilities for trimmed, account. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
-        "services": [],
+        "story": "As a User, I want to create and manage account records, so that I can track and organize account data effectively.",
+        "services": [
+          "AccountService"
+        ],
         "controllers": [
           "AccountRestController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage account rest operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage note records, so that I can track and organize note data effectively.",
+        "services": [
+          "TrimmedService"
+        ],
         "controllers": [
-          "AccountRestController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage note operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
+          "NoteRestController",
           "NoteController"
         ]
       },
       {
+        "id": 3,
+        "story": "As a User, I want to interact with welcome functionality, so that I can accomplish my welcome-related tasks.",
+        "services": [
+          "TrimmedService"
+        ],
+        "controllers": [
+          "WelcomeController"
+        ]
+      },
+      {
         "id": 4,
-        "story": "As a API Consumer, I want to manage note rest operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to use trimmed capabilities, so that I can perform essential business operations.",
+        "services": [
+          "TrimmedService"
+        ],
         "controllers": [
           "NoteRestController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage welcome operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "TrimmedService"
+        ],
         "controllers": [
-          "WelcomeController"
+          "NoteRestController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountRestController[\"AccountRestController\"]\n    NoteController[\"NoteController\"]\n    NoteRestController[\"NoteRestController\"]\n    WelcomeController[\"WelcomeController\"]\n  end\n  subgraph Services\n    AccountService[\"AccountService\"]\n    TrimmedService[\"TrimmedService\"]\n  end\n  subgraph Data_Access\n    Account[\"Account\"]\n    AccountDao[\"AccountDao\"]\n    FakeAccountDao[\"FakeAccountDao\"]\n    InMemoryAccountDao[\"InMemoryAccountDao\"]\n    Note[\"Note\"]\n  end\n  subgraph Infrastructure\n    ApplicationConfig[\"ApplicationConfig\"]\n    RootConfig[\"RootConfig\"]\n    TrimmingEnabledConfig[\"TrimmingEnabledConfig\"]\n    TrimmingNotEnabledConfig[\"TrimmingNotEnabledConfig\"]\n    WebConfig[\"WebConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        RootConfig[\"RootConfig\"]\n        WebConfig[\"WebConfig\"]\n        TrimmingEnabledConfig[\"TrimmingEnabledConfig\"]\n        TrimmingNotEnabledConfig[\"TrimmingNotEnabledConfig\"]\n        ApplicationConfig[\"ApplicationConfig\"]\n    end\n    subgraph Data_Access\n        AccountDao[\"AccountDao\"]\n        FakeAccountDao[\"FakeAccountDao\"]\n        InMemoryAccountDao[\"InMemoryAccountDao\"]\n        Account[\"Account\"]\n        Note[\"Note\"]\n    end\n    subgraph Controllers\n        NoteRestController[\"NoteRestController\"]\n        NoteController[\"NoteController\"]\n        AccountRestController[\"AccountRestController\"]\n        WelcomeController[\"WelcomeController\"]\n    end\n    subgraph Services\n        TrimmedService[\"TrimmedService\"]\n        AccountService[\"AccountService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

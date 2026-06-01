@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the file management, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include test complex report, test csv and excel export, test ftp server. Core business data revolves around ComplexExcelReportUtil, FtpDownloadParam.",
+    "free_text_description": "This system is a file management platform that serves User, Admin roles. It manages core business objects including user, ftp download param, ftp upload param. The platform provides capabilities for user. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to generate and view reports, so that I can make data-driven decisions based on current metrics.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserServiceImpl"
+        ],
         "controllers": [
           "TestComplexReportController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
           "UserServiceImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "TestComplexReportController"
+        ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage test complex report operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage ftp download param records, so that I can track and organize ftp download param data effectively.",
+        "services": [
+          "UserServiceImpl"
+        ],
         "controllers": [
           "TestComplexReportController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage test csv and excel export operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage ftp upload param records, so that I can track and organize ftp upload param data effectively.",
+        "services": [
+          "UserServiceImpl"
+        ],
         "controllers": [
-          "TestCsvAndExcelExportController"
+          "TestComplexReportController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to manage test ftp server operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As an Admin, I want to view reports and analytics, so that I can make informed business decisions.",
+        "services": [
+          "UserServiceImpl"
+        ],
         "controllers": [
-          "TestFtpServerController"
+          "TestComplexReportController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    TestComplexReportController[\"TestComplexReportController\"]\n    TestCsvAndExcelExportController[\"TestCsvAndExcelExportController\"]\n    TestFtpServerController[\"TestFtpServerController\"]\n    TestSeaweedFsController[\"TestSeaweedFsController\"]\n  end\n  subgraph Services\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    ComplexExcelReportUtil[\"ComplexExcelReportUtil\"]\n    FtpDownloadParam[\"FtpDownloadParam\"]\n  end\n  subgraph Infrastructure\n    FtpConfig[\"FtpConfig\"]\n    SeaweedFsConfig[\"SeaweedFsConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        FtpConfig[\"FtpConfig\"]\n        SeaweedFsConfig[\"SeaweedFsConfig\"]\n        ExportConstant[\"ExportConstant\"]\n        ImportConstant[\"ImportConstant\"]\n        CommonConstant[\"CommonConstant\"]\n        ImportCommonConstant[\"ImportCommonConstant\"]\n        BrowserAdapterUtil[\"BrowserAdapterUtil\"]\n        CsvExportUtil[\"CsvExportUtil\"]\n        CsvImportUtil[\"CsvImportUtil\"]\n        ExcelExportUtil[\"ExcelExportUtil\"]\n        ExcelImportCommonListener[\"ExcelImportCommonListener\"]\n        ExcelImportUtil[\"ExcelImportUtil\"]\n        SeaweedFsUtil[\"SeaweedFsUtil\"]\n        FtpUtil[\"FtpUtil\"]\n    end\n    subgraph Controllers\n        TestComplexReportController[\"TestComplexReportController\"]\n        TestFtpServerController[\"TestFtpServerController\"]\n        TestSeaweedFsController[\"TestSeaweedFsController\"]\n        TestCsvAndExcelExportController[\"TestCsvAndExcelExportController\"]\n    end\n    subgraph Data_Access\n        UserMapper[\"UserMapper\"]\n        ComplexExcelReportUtil[\"ComplexExcelReportUtil\"]\n        User[\"User\"]\n        FtpDownloadParam[\"FtpDownloadParam\"]\n        FtpUploadParam[\"FtpUploadParam\"]\n    end\n    subgraph Services\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

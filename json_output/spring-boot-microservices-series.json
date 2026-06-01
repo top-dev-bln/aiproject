@@ -1,12 +1,14 @@
 {
   "input": {
-    "free_text_description": "The system operates in the e-commerce, authentication domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include inventory, order, product. Core business data revolves around InventoryItem, Order, OrderItem, Product. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an e-commerce platform that serves Candidate, Admin roles. The platform provides capabilities for catalog application, product, product repository. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
         "services": [
-          "OrderRepository"
+          "OrderServiceApplication",
+          "Order",
+          "OrderItem"
         ],
         "controllers": [
           "OrderController"
@@ -14,10 +16,10 @@
       },
       {
         "id": 2,
-        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "story": "As a Candidate, I want to interact with product functionality, so that I can accomplish my product-related tasks.",
         "services": [
-          "ProductRepository",
-          "ProductService"
+          "Product",
+          "ProductRepository"
         ],
         "controllers": [
           "ProductController"
@@ -25,11 +27,10 @@
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage inventory operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Candidate, I want to interact with inventory functionality, so that I can accomplish my inventory-related tasks.",
         "services": [
-          "InventoryItemRepository",
-          "InventoryServiceClient",
-          "InventoryServiceFeignClient"
+          "InventoryServiceFeignClient",
+          "InventoryServiceClient"
         ],
         "controllers": [
           "InventoryController"
@@ -37,23 +38,27 @@
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to interact with context copy hystrix concurrency strategy functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use catalog application capabilities, so that I can perform essential business operations.",
         "services": [
-          "ContextCopyHystrixConcurrencyStrategy"
+          "CatalogServiceApplication"
         ],
-        "controllers": []
+        "controllers": [
+          "ProductController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to interact with inventory item repository functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use product capabilities, so that I can perform essential business operations.",
         "services": [
-          "InventoryItemRepository"
+          "Product"
         ],
-        "controllers": []
+        "controllers": [
+          "ProductController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    InventoryController[\"InventoryController\"]\n    OrderController[\"OrderController\"]\n    ProductController[\"ProductController\"]\n  end\n  subgraph Services\n    ContextCopyHystrixConcurrencyStrategy[\"ContextCopyHystrixConcurrencyStrategy\"]\n    InventoryItemRepository[\"InventoryItemRepository\"]\n    InventoryServiceClient[\"InventoryServiceClient\"]\n    InventoryServiceFeignClient[\"InventoryServiceFeignClient\"]\n    OrderRepository[\"OrderRepository\"]\n    ProductRepository[\"ProductRepository\"]\n    ProductService[\"ProductService\"]\n  end\n  subgraph Data_Access\n    InventoryItem[\"InventoryItem\"]\n    Order[\"Order\"]\n    OrderItem[\"OrderItem\"]\n    Product[\"Product\"]\n  end\n  subgraph Security\n    AuthHeaderFilter[\"AuthHeaderFilter\"]\n  end\n  subgraph Infrastructure\n    OAuth2Config[\"OAuth2Config\"]\n    WebMvcConfig[\"WebMvcConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        CatalogServiceApplication[\"CatalogServiceApplication\"]\n        Product[\"Product\"]\n        ProductRepository[\"ProductRepository\"]\n        InventoryServiceFeignClient[\"InventoryServiceFeignClient\"]\n        ProductService[\"ProductService\"]\n        InventoryServiceClient[\"InventoryServiceClient\"]\n        ContextCopyHystrixConcurrencyStrategy[\"ContextCopyHystrixConcurrencyStrategy\"]\n        MyThreadLocalsHolder[\"MyThreadLocalsHolder\"]\n        ProductInventoryResponse[\"ProductInventoryResponse\"]\n        InventoryServiceApplication[\"InventoryServiceApplication\"]\n        InventoryItem[\"InventoryItem\"]\n        InventoryItemRepository[\"InventoryItemRepository\"]\n        OrderServiceApplication[\"OrderServiceApplication\"]\n        Order[\"Order\"]\n        OrderItem[\"OrderItem\"]\n        OrderRepository[\"OrderRepository\"]\n        ServiceRegistryApplication[\"ServiceRegistryApplication\"]\n    end\n    subgraph Controllers\n        ProductController[\"ProductController\"]\n        InventoryController[\"InventoryController\"]\n        OrderController[\"OrderController\"]\n    end\n    subgraph Security\n        WebMvcConfig[\"WebMvcConfig\"]\n        WebSecurityConfigurer[\"WebSecurityConfigurer\"]\n        OAuth2Config[\"OAuth2Config\"]\n        AuthHeaderFilter[\"AuthHeaderFilter\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Controllers"
   }
 }

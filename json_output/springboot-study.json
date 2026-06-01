@@ -1,18 +1,20 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves User as its primary actors. The main business capabilities include ehcache, hello, logger. Core business data revolves around BlackListDao, User, UserDao. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. It manages core business objects including user, error info, black list. The platform provides capabilities for user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include task management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to create and manage tasks, so that I can organize and track my work effectively.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "TaskController"
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
           "UserService"
         ],
@@ -22,31 +24,37 @@
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage ehcache operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage error info records, so that I can track and organize error info data effectively.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "EhcacheController"
+          "URLController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage hello operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage black list records, so that I can track and organize black list data effectively.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "HelloController"
+          "URLController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to manage logger operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to interact with url functionality, so that I can accomplish my url-related tasks.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "LoggerController"
+          "URLController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    EhcacheController[\"EhcacheController\"]\n    HelloController[\"HelloController\"]\n    LoggerController[\"LoggerController\"]\n    RedisController[\"RedisController\"]\n    TaskController[\"TaskController\"]\n    TestController[\"TestController\"]\n    URLController[\"URLController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    BlackListDao[\"BlackListDao\"]\n    User[\"User\"]\n    UserDao[\"UserDao\"]\n  end\n  subgraph Security\n    DruidStatFilter[\"DruidStatFilter\"]\n    URLInterceptor[\"URLInterceptor\"]\n  end\n  subgraph Infrastructure\n    CookieConfig[\"CookieConfig\"]\n    DruidDBConfig[\"DruidDBConfig\"]\n    HttpSessionConfig[\"HttpSessionConfig\"]\n    RedisConfig[\"RedisConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        TokenContract[\"TokenContract\"]\n        Token[\"Token\"]\n        DruidStatFilter[\"DruidStatFilter\"]\n    end\n    subgraph Infrastructure\n        DruidDBConfig[\"DruidDBConfig\"]\n        DruidStatViewServlet[\"DruidStatViewServlet\"]\n        MyWebAppConfigurer[\"MyWebAppConfigurer\"]\n        ScheduledTasks[\"ScheduledTasks\"]\n        IPAddressUtil[\"IPAddressUtil\"]\n        Logger[\"Logger\"]\n        RedisConfig[\"RedisConfig\"]\n        CookieConfig[\"CookieConfig\"]\n        HttpSessionConfig[\"HttpSessionConfig\"]\n    end\n    subgraph Data_Access\n        BlackListDao[\"BlackListDao\"]\n        UserDao[\"UserDao\"]\n        User[\"User\"]\n        ErrorInfo[\"ErrorInfo\"]\n        BlackList[\"BlackList\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n    end\n    subgraph Controllers\n        URLController[\"URLController\"]\n        HelloController[\"HelloController\"]\n        LoggerController[\"LoggerController\"]\n        EhcacheController[\"EhcacheController\"]\n        TaskController[\"TaskController\"]\n        TestController[\"TestController\"]\n        UserController[\"UserController\"]\n        RedisController[\"RedisController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

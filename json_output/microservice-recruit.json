@@ -1,10 +1,22 @@
 {
   "input": {
-    "free_text_description": "The system operates in the recruitment, messaging domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include company, facade, message. Core business data revolves around BaseEntity, BaseRepo, CompanyEntity, CompanyRepo. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, User roles. It manages core business objects including message entity, recruit entity, base entity, company entity. The platform provides capabilities for consumer, message, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "QiNiuService",
+          "UserInfoService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to create and manage message entity records, so that I can track and organize message entity data effectively.",
         "services": [
           "MessageService"
         ],
@@ -13,43 +25,38 @@
         ]
       },
       {
-        "id": 2,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "id": 3,
+        "story": "As a Candidate, I want to create and manage recruit entity records, so that I can track and organize recruit entity data effectively.",
         "services": [
-          "UserInfoService",
-          "UserService"
+          "RecruitService"
         ],
         "controllers": [
-          "UserController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage company operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "CompanyController"
+          "RecruitController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage facade operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to create and manage base entity records, so that I can track and organize base entity data effectively.",
+        "services": [
+          "BaseService"
+        ],
         "controllers": [
-          "FacadeController"
+          "MessageController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage outside operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to create and manage company entity records, so that I can track and organize company entity data effectively.",
+        "services": [
+          "Consumer"
+        ],
         "controllers": [
-          "OutsideController"
+          "CompanyController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CompanyController[\"CompanyController\"]\n    FacadeController[\"FacadeController\"]\n    MessageController[\"MessageController\"]\n    OutsideController[\"OutsideController\"]\n    RecruitController[\"RecruitController\"]\n    ResumeController[\"ResumeController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    BaseService[\"BaseService\"]\n    ClientService[\"ClientService\"]\n    Consumer[\"Consumer\"]\n    MailService[\"MailService\"]\n    MessageService[\"MessageService\"]\n    QiNiuService[\"QiNiuService\"]\n    RecruitService[\"RecruitService\"]\n    ResumeService[\"ResumeService\"]\n    SmsService[\"SmsService\"]\n    UserInfoService[\"UserInfoService\"]\n    UserService[\"UserService\"]\n    WebSocketService[\"WebSocketService\"]\n  end\n  subgraph Data_Access\n    BaseEntity[\"BaseEntity\"]\n    BaseRepo[\"BaseRepo\"]\n    CompanyEntity[\"CompanyEntity\"]\n    CompanyRepo[\"CompanyRepo\"]\n    MessageEntity[\"MessageEntity\"]\n    MessageRepo[\"MessageRepo\"]\n    RecruitEntity[\"RecruitEntity\"]\n    RecruitRepo[\"RecruitRepo\"]\n    ResumeRepo[\"ResumeRepo\"]\n    Skill[\"Skill\"]\n    SkillRepo[\"SkillRepo\"]\n    UserEsRepo[\"UserEsRepo\"]\n    UserInfoEntity[\"UserInfoEntity\"]\n    UserInfoRepo[\"UserInfoRepo\"]\n  end\n  subgraph Security\n    AuthFilter[\"AuthFilter\"]\n    LoginInterceptor[\"LoginInterceptor\"]\n  end\n  subgraph Infrastructure\n    CacheConfig[\"CacheConfig\"]\n    CorsConfig[\"CorsConfig\"]\n    FeignConfig[\"FeignConfig\"]\n    PrefixRedisSerializer[\"PrefixRedisSerializer\"]\n    WebConfig[\"WebConfig\"]\n    WebSocketConfig[\"WebSocketConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        FeignConfig[\"FeignConfig\"]\n        Constant[\"Constant\"]\n        CorsConfig[\"CorsConfig\"]\n        UserUtil[\"UserUtil\"]\n        PrefixRedisSerializer[\"PrefixRedisSerializer\"]\n        CacheConfig[\"CacheConfig\"]\n        WebSocketConfig[\"WebSocketConfig\"]\n        RecruitUtil[\"RecruitUtil\"]\n        MongoEventListener[\"MongoEventListener\"]\n        IdUtil[\"IdUtil\"]\n        WebConfig[\"WebConfig\"]\n    end\n    subgraph Services\n        Consumer[\"Consumer\"]\n        MessageService[\"MessageService\"]\n        UserService[\"UserService\"]\n        QiNiuService[\"QiNiuService\"]\n        MailService[\"MailService\"]\n        SmsService[\"SmsService\"]\n        WebSocketService[\"WebSocketService\"]\n        RecruitService[\"RecruitService\"]\n        ResumeService[\"ResumeService\"]\n        BaseService[\"BaseService\"]\n        ClientService[\"ClientService\"]\n        UserInfoService[\"UserInfoService\"]\n    end\n    subgraph Security\n        AuthFilter[\"AuthFilter\"]\n    end\n    subgraph Controllers\n        MessageController[\"MessageController\"]\n        OutsideController[\"OutsideController\"]\n        FacadeController[\"FacadeController\"]\n        CompanyController[\"CompanyController\"]\n        RecruitController[\"RecruitController\"]\n        ResumeController[\"ResumeController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        MessageEntity[\"MessageEntity\"]\n        RecruitEntity[\"RecruitEntity\"]\n        BaseEntity[\"BaseEntity\"]\n        CompanyEntity[\"CompanyEntity\"]\n        Skill[\"Skill\"]\n        Resume[\"Resume\"]\n        SeqInfo[\"SeqInfo\"]\n        UserInfoEntity[\"UserInfoEntity\"]\n        UserEs[\"UserEs\"]\n        MessageRepo[\"MessageRepo\"]\n        BaseRepo[\"BaseRepo\"]\n        CompanyRepo[\"CompanyRepo\"]\n        RecruitRepo[\"RecruitRepo\"]\n        ResumeRepo[\"ResumeRepo\"]\n        SkillRepo[\"SkillRepo\"]\n        UserEsRepo[\"UserEsRepo\"]\n        UserInfoRepo[\"UserInfoRepo\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

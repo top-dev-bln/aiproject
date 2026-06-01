@@ -1,52 +1,325 @@
 @startuml
-
-package com.marcuseisele.springboot_microservices.configservice {
-  class ConfigserviceApplicationTests {
-    +contextLoads() : void
-  }
-  class ConfigserviceApplication {
-    +main() : void
-  }
+package com.hnj.contactservice; {
+class ContactServiceApplication {
 }
 
-package com.marcuseisele.springboot_microservices.counterservice {
-  class CounterserviceApplicationTests {
-    +contextLoads() : void
-  }
-  class CounterserviceApplication {
-    +main() : void
-  }
+class ContactServiceApplicationTests {
 }
 
-package com.marcuseisele.springboot_microservices.counterservice.api {
-  class CounterController <<Controller>> {
-    -count : AtomicLong
-    -prefixMessage : String
-    +getCount() : String
-  }
 }
 
-package com.marcuseisele.springboot_microservices.gateway {
-  class GatewayApplicationTests {
-    +contextLoads() : void
-  }
-  class SecurityConfig {
-    +userDetailsService() : UserDetailsService
-  }
-  class GatewayApplication {
-    +main() : void
-  }
+package com.hnj.contactservice.controller; {
+class Contact {
 }
 
-package com.marcuseisele.springboot_microservices.registryservice {
-  class RegistryserviceApplicationTests {
-    +contextLoads() : void
-  }
-  class RegistryserviceApplication {
-    +main() : void
-  }
+class HomeController {
 }
 
-' --- Relatii ---
+}
 
+package com.hnj.contactservice.Repository; {
+class IContact {
+}
+
+}
+
+package com.hnj.eurekanamingserver; {
+class EurekaNamingServerApplication {
+}
+
+class EurekaNamingServerApplicationTests {
+}
+
+}
+
+package com.hnj.locationservice.controller; {
+class Configuration {
+}
+
+class LocationController {
+}
+
+}
+
+package com.hnj.locationservice.entities; {
+class IpLocation {
+}
+
+class Location {
+}
+
+}
+
+package com.hnj.locationservice; {
+class LocationServiceApplication {
+}
+
+class LocationServiceApplicationTests {
+}
+
+}
+
+package com.hnj.smsservice.controller; {
+class IContactServiceProxy {
+}
+
+class SmsController {
+}
+
+}
+
+package com.hnj.smsservice.entities; {
+class Sms {
+}
+
+}
+
+package com.hnj.smsservice.repositories; {
+class ISmsRepository {
+}
+
+}
+
+package com.hnj.smsservice; {
+class SmsServiceApplication {
+}
+
+class SmsServiceApplicationTests {
+}
+
+}
+
+package com.hnj.springcloudconfigserver; {
+class SpringCloudConfigServerApplication {
+}
+
+class SpringCloudConfigServerApplicationTests {
+}
+
+}
+
+package com.example.demo.controllers; {
+class UserController {
+}
+
+}
+
+package com.example.demo; {
+class CrudbootangApplication {
+}
+
+class CrudbootangApplicationTests {
+}
+
+}
+
+package com.example.demo.entities; {
+class Nid {
+}
+
+class Passport {
+}
+
+class User {
+}
+
+}
+
+package com.example.demo.repositories; {
+class Inid {
+}
+
+class Ipassport {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.hnj.userauthentication.controller; {
+class AuthRestAPIs {
+}
+
+class TestRestAPIs {
+}
+
+}
+
+package com.hnj.userauthentication.message.request; {
+class LoginForm {
+}
+
+class SignUpForm {
+}
+
+}
+
+package com.hnj.userauthentication.message.response; {
+class JwtResponse {
+}
+
+class ResponseMessage {
+}
+
+}
+
+package com.hnj.userauthentication.model; {
+class Role {
+}
+
+class RoleName {
+}
+
+class User {
+}
+
+}
+
+package com.hnj.userauthentication.repository; {
+class RoleRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package com.hnj.userauthentication.security.jwt; {
+class JwtAuthEntryPoint {
+}
+
+class JwtAuthTokenFilter {
+}
+
+class JwtProvider {
+}
+
+}
+
+package com.hnj.userauthentication.security.services; {
+class UserDetailsServiceImpl {
+}
+
+class UserPrinciple {
+}
+
+}
+
+package com.hnj.userauthentication.security; {
+class WebSecurityConfig {
+}
+
+}
+
+package com.hnj.userauthentication; {
+class UserAuthenticationApplication {
+}
+
+class UserAuthenticationApplicationTests {
+}
+
+}
+
+package com.hnj.zuulgateway; {
+class ZuulGatewayApplication {
+}
+
+class ZuulGatewayApplicationTests {
+}
+
+}
+
+ContactServiceApplication -- Contact
+ContactServiceApplication -- IContact
+HomeController -- Contact
+HomeController -- IContact
+IContact -- Contact
+ContactServiceApplicationTests -- ContactServiceApplication
+ContactServiceApplicationTests -- Contact
+EurekaNamingServerApplicationTests -- EurekaNamingServerApplication
+LocationController -- Configuration
+LocationController -- IpLocation
+LocationController -- Location
+LocationController -- Sms
+LocationController -- User
+IpLocation -- Location
+LocationServiceApplication -- Location
+LocationServiceApplicationTests -- Location
+LocationServiceApplicationTests -- LocationServiceApplication
+IContactServiceProxy -- Contact
+IContactServiceProxy -- IContact
+IContactServiceProxy -- Sms
+IContactServiceProxy -- User
+SmsController -- Contact
+SmsController -- IContact
+SmsController -- IContactServiceProxy
+SmsController -- Sms
+SmsController -- ISmsRepository
+SmsController -- User
+Sms -- Contact
+ISmsRepository -- Sms
+SmsServiceApplication -- Sms
+SmsServiceApplication -- ISmsRepository
+SmsServiceApplicationTests -- Sms
+SmsServiceApplicationTests -- SmsServiceApplication
+SpringCloudConfigServerApplication -- Configuration
+SpringCloudConfigServerApplicationTests -- SpringCloudConfigServerApplication
+UserController -- Nid
+UserController -- Passport
+UserController -- User
+UserController -- Inid
+UserController -- Ipassport
+UserController -- UserRepository
+CrudbootangApplication -- Nid
+CrudbootangApplication -- Passport
+CrudbootangApplication -- User
+CrudbootangApplication -- Inid
+CrudbootangApplication -- Ipassport
+CrudbootangApplication -- UserRepository
+Passport -- Nid
+User -- Role
+Inid -- Nid
+Ipassport -- Nid
+Ipassport -- Passport
+UserRepository -- User
+CrudbootangApplicationTests -- CrudbootangApplication
+AuthRestAPIs -- User
+AuthRestAPIs -- UserRepository
+AuthRestAPIs -- LoginForm
+AuthRestAPIs -- SignUpForm
+AuthRestAPIs -- JwtResponse
+AuthRestAPIs -- ResponseMessage
+AuthRestAPIs -- Role
+AuthRestAPIs -- RoleName
+AuthRestAPIs -- RoleRepository
+AuthRestAPIs -- JwtProvider
+TestRestAPIs -- User
+TestRestAPIs -- Role
+LoginForm -- User
+SignUpForm -- User
+SignUpForm -- Role
+JwtResponse -- User
+Role -- RoleName
+RoleRepository -- Role
+RoleRepository -- RoleName
+JwtAuthTokenFilter -- User
+JwtAuthTokenFilter -- JwtProvider
+JwtAuthTokenFilter -- UserDetailsServiceImpl
+JwtProvider -- User
+JwtProvider -- UserPrinciple
+UserDetailsServiceImpl -- User
+UserDetailsServiceImpl -- UserRepository
+UserDetailsServiceImpl -- UserPrinciple
+UserPrinciple -- User
+UserPrinciple -- Role
+WebSecurityConfig -- Configuration
+WebSecurityConfig -- User
+WebSecurityConfig -- JwtAuthEntryPoint
+WebSecurityConfig -- JwtAuthTokenFilter
+WebSecurityConfig -- UserDetailsServiceImpl
+UserAuthenticationApplication -- User
+UserAuthenticationApplicationTests -- User
+UserAuthenticationApplicationTests -- UserAuthenticationApplication
+ZuulGatewayApplicationTests -- ZuulGatewayApplication
 @enduml

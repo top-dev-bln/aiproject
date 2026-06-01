@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include guestbook ui, hello impl, my business. Core business data revolves around GuestbookEntryDomain. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Admin roles. It manages core business objects including guestbook entry domain. The platform provides capabilities for my business, my message, hello. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "story": "As a Candidate, I want to create and manage guestbook entry domain records, so that I can track and organize guestbook entry domain data effectively.",
         "services": [
-          "MyMessageService"
+          "MyBusinessService"
         ],
-        "controllers": []
+        "controllers": [
+          "GuestbookUiController"
+        ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage guestbook ui operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "MyMessageService"
+        ],
         "controllers": [
           "GuestbookUiController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to interact with hello impl functionality, so that the system fulfills my needs.",
-        "services": [
-          "HelloServiceImpl"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 4,
-        "story": "As a API Consumer, I want to interact with my business functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use my business capabilities, so that I can perform essential business operations.",
         "services": [
           "MyBusinessService"
         ],
-        "controllers": []
+        "controllers": [
+          "GuestbookUiController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use hello capabilities, so that I can perform essential business operations.",
+        "services": [
+          "HelloServiceImpl"
+        ],
+        "controllers": [
+          "GuestbookUiController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to interact with my message functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
-          "MyMessageService"
+          "MyBusinessService"
         ],
-        "controllers": []
+        "controllers": [
+          "GuestbookUiController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GuestbookUiController[\"GuestbookUiController\"]\n  end\n  subgraph Services\n    HelloServiceImpl[\"HelloServiceImpl\"]\n    MyBusinessService[\"MyBusinessService\"]\n    MyMessageService[\"MyMessageService\"]\n  end\n  subgraph Data_Access\n    GuestbookEntryDomain[\"GuestbookEntryDomain\"]\n    GuestbookRepository[\"GuestbookRepository\"]\n    MyDataRepository[\"MyDataRepository\"]\n  end\n  subgraph Security\n    JwtClientInterceptor[\"JwtClientInterceptor\"]\n    JwtServerInterceptor[\"JwtServerInterceptor\"]\n    TraceIdClientInterceptor[\"TraceIdClientInterceptor\"]\n    TraceIdServerInterceptor[\"TraceIdServerInterceptor\"]\n    UnknownStatusDescriptionInterceptor[\"UnknownStatusDescriptionInterceptor\"]\n  end\n  subgraph Infrastructure\n    ApplicationConfig[\"ApplicationConfig\"]\n    EurekaServer[\"EurekaServer\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        MyBusinessService[\"MyBusinessService\"]\n        MyMessageService[\"MyMessageService\"]\n        HelloServiceImpl[\"HelloServiceImpl\"]\n    end\n    subgraph Data_Access\n        MyDataRepository[\"MyDataRepository\"]\n        GuestbookRepository[\"GuestbookRepository\"]\n        GuestbookEntryDomain[\"GuestbookEntryDomain\"]\n    end\n    subgraph Infrastructure\n        Constant[\"Constant\"]\n        ApplicationConfig[\"ApplicationConfig\"]\n    end\n    subgraph Security\n        AuthClient[\"AuthClient\"]\n        JwtCallCredential[\"JwtCallCredential\"]\n        JwtClientInterceptor[\"JwtClientInterceptor\"]\n        JwtServerInterceptor[\"JwtServerInterceptor\"]\n    end\n    subgraph Controllers\n        GuestbookUiController[\"GuestbookUiController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

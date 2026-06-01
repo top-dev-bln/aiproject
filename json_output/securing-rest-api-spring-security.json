@@ -1,52 +1,65 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include public users, secured users, token service. Core business data revolves around User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user. The platform provides capabilities for user authentication, joda date, date. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserAuthenticationService",
+          "TokenService",
+          "JWTTokenService"
+        ],
         "controllers": [
-          "PublicUsersController"
+          "PublicUsersController",
+          "SecuredUsersController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserAuthenticationService",
+          "UserCrudService"
+        ],
         "controllers": [
-          "UserAuthenticationService"
+          "PublicUsersController",
+          "SecuredUsersController"
         ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage public users operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "DateServiceConfig"
+        ],
         "controllers": [
           "PublicUsersController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage secured users operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to use joda date capabilities, so that I can perform essential business operations.",
+        "services": [
+          "JodaDateService"
+        ],
         "controllers": [
-          "SecuredUsersController"
+          "PublicUsersController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to manage token service operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to use date capabilities, so that I can perform essential business operations.",
         "services": [
-          "JWTTokenService"
+          "DateService"
         ],
         "controllers": [
-          "TokenService"
+          "PublicUsersController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    PublicUsersController[\"PublicUsersController\"]\n    SecuredUsersController[\"SecuredUsersController\"]\n    TokenService[\"TokenService\"]\n    UserAuthenticationService[\"UserAuthenticationService\"]\n    UserCrudService[\"UserCrudService\"]\n  end\n  subgraph Services\n    DateService[\"DateService\"]\n    InMemoryUsers[\"InMemoryUsers\"]\n    JWTTokenService[\"JWTTokenService\"]\n    JodaDateService[\"JodaDateService\"]\n    TokenAuthenticationService[\"TokenAuthenticationService\"]\n    UUIDAuthenticationService[\"UUIDAuthenticationService\"]\n  end\n  subgraph Data_Access\n    User[\"User\"]\n  end\n  subgraph Security\n    SecurityConfig[\"SecurityConfig\"]\n    TokenAuthenticationFilter[\"TokenAuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    DateServiceConfig[\"DateServiceConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        UserAuthenticationService[\"UserAuthenticationService\"]\n        JodaDateService[\"JodaDateService\"]\n        DateService[\"DateService\"]\n        DateServiceConfig[\"DateServiceConfig\"]\n        TokenService[\"TokenService\"]\n        JWTTokenService[\"JWTTokenService\"]\n        TokenAuthenticationService[\"TokenAuthenticationService\"]\n        UUIDAuthenticationService[\"UUIDAuthenticationService\"]\n        UserCrudService[\"UserCrudService\"]\n        InMemoryUsers[\"InMemoryUsers\"]\n    end\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        TokenAuthenticationFilter[\"TokenAuthenticationFilter\"]\n        NoRedirectStrategy[\"NoRedirectStrategy\"]\n        TokenAuthenticationProvider[\"TokenAuthenticationProvider\"]\n    end\n    subgraph Controllers\n        PublicUsersController[\"PublicUsersController\"]\n        SecuredUsersController[\"SecuredUsersController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
   }
 }

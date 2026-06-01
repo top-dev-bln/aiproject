@@ -1,50 +1,63 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include auth check, cos manager, daily check in. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an user management platform that serves User, Admin roles. It manages core business objects including ali pay async response, invoke request, request params field, response params field. The platform provides capabilities for global exception handler, cos manager, daily check in. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include e-commerce functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl",
+          "UserInterfaceInvokeServiceImpl"
+        ],
         "controllers": [
-          "AuthCheck"
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to browse and apply for job postings, so that I can find employment opportunities matching my skills.",
-        "services": [],
+        "story": "As a User, I want to create and manage ali pay async response records, so that I can track and organize ali pay async response data effectively.",
+        "services": [
+          "AlipayOrderServiceImpl"
+        ],
         "controllers": [
-          "DailyCheckInJob"
+          "OrderController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
-        "services": [],
+        "story": "As a User, I want to create and manage invoke request records, so that I can track and organize invoke request data effectively.",
+        "services": [
+          "UserInterfaceInvokeServiceImpl",
+          "InnerUserInterfaceInvokeService"
+        ],
         "controllers": [
-          "FileController"
+          "OrderController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
+        "story": "As a User, I want to create and manage request params field records, so that I can track and organize request params field data effectively.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
         "controllers": [
-          "InnerUserInterfaceInvokeService"
+          "OrderController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
-        "services": [],
+        "story": "As a User, I want to create and manage response params field records, so that I can track and organize response params field data effectively.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
         "controllers": [
-          "Knife4jConfig"
+          "OrderController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthCheck[\"AuthCheck\"]\n    CosManager[\"CosManager\"]\n    DailyCheckIn[\"DailyCheckIn\"]\n    DailyCheckInController[\"DailyCheckInController\"]\n    DailyCheckInJob[\"DailyCheckInJob\"]\n    ErrorCode[\"ErrorCode\"]\n    FileController[\"FileController\"]\n    GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n    InnerUserInterfaceInvokeService[\"InnerUserInterfaceInvokeService\"]\n    InterfaceInfoController[\"InterfaceInfoController\"]\n    Knife4jConfig[\"Knife4jConfig\"]\n    LogInterceptor[\"LogInterceptor\"]\n    NetUtils[\"NetUtils\"]\n    OrderController[\"OrderController\"]\n    ProductInfoController[\"ProductInfoController\"]\n    RedissonConfig[\"RedissonConfig\"]\n    RequestParamsField[\"RequestParamsField\"]\n    ResponseUtils[\"ResponseUtils\"]\n    ServiceController[\"ServiceController\"]\n    User[\"User\"]\n    UserController[\"UserController\"]\n    UserInterfaceInvokeServiceImpl[\"UserInterfaceInvokeServiceImpl\"]\n    WxPayUtil[\"WxPayUtil\"]\n  end\n  subgraph Services\n    AlipayOrderServiceImpl[\"AlipayOrderServiceImpl\"]\n    DailyCheckInService[\"DailyCheckInService\"]\n    DailyCheckInServiceImpl[\"DailyCheckInServiceImpl\"]\n    InnerInterfaceInfoService[\"InnerInterfaceInfoService\"]\n    InnerInterfaceInfoServiceImpl[\"InnerInterfaceInfoServiceImpl\"]\n    InnerUserService[\"InnerUserService\"]\n    InnerUserServiceImpl[\"InnerUserServiceImpl\"]\n    InterfaceInfoService[\"InterfaceInfoService\"]\n    InterfaceInfoServiceImpl[\"InterfaceInfoServiceImpl\"]\n    OrderService[\"OrderService\"]\n    OrderServiceImpl[\"OrderServiceImpl\"]\n    PaymentInfoService[\"PaymentInfoService\"]\n    PaymentInfoServiceImpl[\"PaymentInfoServiceImpl\"]\n    ProductInfoService[\"ProductInfoService\"]\n    ProductInfoServiceImpl[\"ProductInfoServiceImpl\"]\n    ProductOrderService[\"ProductOrderService\"]\n    RechargeActivityService[\"RechargeActivityService\"]\n    RechargeActivityServiceImpl[\"RechargeActivityServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n    WxOrderServiceImpl[\"WxOrderServiceImpl\"]\n  end\n  subgraph Security\n    AuthInterceptor[\"AuthInterceptor\"]\n    CacheBodyGatewayFilter[\"CacheBodyGatewayFilter\"]\n    GatewayGlobalFilter[\"GatewayGlobalFilter\"]\n  end\n  subgraph Infrastructure\n    AliPayAccountConfig[\"AliPayAccountConfig\"]\n    CorsConfig[\"CorsConfig\"]\n    CosClientConfig[\"CosClientConfig\"]\n    EmailConfig[\"EmailConfig\"]\n    JsonConfig[\"JsonConfig\"]\n    MyBatisPlusConfig[\"MyBatisPlusConfig\"]\n    PayConfiguration[\"PayConfiguration\"]\n    RedisTemplateConfig[\"RedisTemplateConfig\"]\n    WxPayAccountConfig[\"WxPayAccountConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AuthCheck[\"AuthCheck\"]\n        AuthInterceptor[\"AuthInterceptor\"]\n        GatewayGlobalFilter[\"GatewayGlobalFilter\"]\n        CacheBodyGatewayFilter[\"CacheBodyGatewayFilter\"]\n    end\n    subgraph Infrastructure\n        ErrorCode[\"ErrorCode\"]\n        ResultUtils[\"ResultUtils\"]\n        PageRequest[\"PageRequest\"]\n        DeleteRequest[\"DeleteRequest\"]\n        BaseResponse[\"BaseResponse\"]\n        IdRequest[\"IdRequest\"]\n        Knife4jConfig[\"Knife4jConfig\"]\n        EmailConfig[\"EmailConfig\"]\n        JsonConfig[\"JsonConfig\"]\n        WxPayAccountConfig[\"WxPayAccountConfig\"]\n        PayConfiguration[\"PayConfiguration\"]\n        RedisTemplateConfig[\"RedisTemplateConfig\"]\n        AliPayAccountConfig[\"AliPayAccountConfig\"]\n        MyBatisPlusConfig[\"MyBatisPlusConfig\"]\n        CosClientConfig[\"CosClientConfig\"]\n        RedissonConfig[\"RedissonConfig\"]\n        CorsConfig[\"CorsConfig\"]\n        PayConstant[\"PayConstant\"]\n        EmailConstant[\"EmailConstant\"]\n        UserConstant[\"UserConstant\"]\n        CommonConstant[\"CommonConstant\"]\n        WxPayUtil[\"WxPayUtil\"]\n        RedissonLockUtil[\"RedissonLockUtil\"]\n        EmailUtil[\"EmailUtil\"]\n        NetUtils[\"NetUtils\"]\n        ResponseUtils[\"ResponseUtils\"]\n        RequestUtils[\"RequestUtils\"]\n    end\n    subgraph Controllers\n        OrderController[\"OrderController\"]\n        DailyCheckInController[\"DailyCheckInController\"]\n        FileController[\"FileController\"]\n        ProductInfoController[\"ProductInfoController\"]\n        InterfaceInfoController[\"InterfaceInfoController\"]\n        UserController[\"UserController\"]\n        ServiceController[\"ServiceController\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        CosManager[\"CosManager\"]\n        DailyCheckInService[\"DailyCheckInService\"]\n        UserService[\"UserService\"]\n        InterfaceInfoService[\"InterfaceInfoService\"]\n        OrderService[\"OrderService\"]\n        ProductOrderService[\"ProductOrderService\"]\n        ProductInfoService[\"ProductInfoService\"]\n        RechargeActivityService[\"RechargeActivityService\"]\n        PaymentInfoService[\"PaymentInfoService\"]\n        OrderServiceImpl[\"OrderServiceImpl\"]\n        DailyCheckInServiceImpl[\"DailyCheckInServiceImpl\"]\n        ProductInfoServiceImpl[\"ProductInfoServiceImpl\"]\n        RechargeActivityServiceImpl[\"RechargeActivityServiceImpl\"]\n        PaymentInfoServiceImpl[\"PaymentInfoServiceImpl\"]\n        WxOrderServiceImpl[\"WxOrderServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        InterfaceInfoServiceImpl[\"InterfaceInfoServiceImpl\"]\n        AlipayOrderServiceImpl[\"AlipayOrderServiceImpl\"]\n        UserInterfaceInvokeServiceImpl[\"UserInterfaceInvokeServiceImpl\"]\n        InnerInterfaceInfoServiceImpl[\"InnerInterfaceInfoServiceImpl\"]\n        InnerUserServiceImpl[\"InnerUserServiceImpl\"]\n        InnerUserInterfaceInvokeService[\"InnerUserInterfaceInvokeService\"]\n        InnerInterfaceInfoService[\"InnerInterfaceInfoService\"]\n        InnerUserService[\"InnerUserService\"]\n    end\n    subgraph Data_Access\n        ProductInfoMapper[\"ProductInfoMapper\"]\n        RechargeActivityMapper[\"RechargeActivityMapper\"]\n        UserInterfaceInvokeMapper[\"UserInterfaceInvokeMapper\"]\n        UserMapper[\"UserMapper\"]\n        InterfaceInfoMapper[\"InterfaceInfoMapper\"]\n        ProductOrderMapper[\"ProductOrderMapper\"]\n        DailyCheckInMapper[\"DailyCheckInMapper\"]\n        PaymentInfoMapper[\"PaymentInfoMapper\"]\n        AliPayAsyncResponse[\"AliPayAsyncResponse\"]\n        InvokeRequest[\"InvokeRequest\"]\n        RequestParamsField[\"RequestParamsField\"]\n        ResponseParamsField[\"ResponseParamsField\"]\n        InterfaceInfoUpdateAvatarRequest[\"InterfaceInfoUpdateAvatarRequest\"]\n        InterfaceInfoQueryRequest[\"InterfaceInfoQueryRequest\"]\n        InterfaceInfoUpdateRequest[\"InterfaceInfoUpdateRequest\"]\n        InterfaceInfoAddRequest[\"InterfaceInfoAddRequest\"]\n        PayCreateRequest[\"PayCreateRequest\"]\n        ProductInfoQueryRequest[\"ProductInfoQueryRequest\"]\n        ProductInfoUpdateRequest[\"ProductInfoUpdateRequest\"]\n        ProductInfoAddRequest[\"ProductInfoAddRequest\"]\n        ProductOrderAddRequest[\"ProductOrderAddRequest\"]\n        ProductOrderQueryRequest[\"ProductOrderQueryRequest\"]\n        UserBindEmailRequest[\"UserBindEmailRequest\"]\n        UserEmailRegisterRequest[\"UserEmailRegisterRequest\"]\n        UserQueryRequest[\"UserQueryRequest\"]\n        UserEmailLoginRequest[\"UserEmailLoginRequest\"]\n        UserAddRequest[\"UserAddRequest\"]\n        UserUnBindEmailRequest[\"UserUnBindEmailRequest\"]\n        UserLoginRequest[\"UserLoginRequest\"]\n        UserUpdateRequest[\"UserUpdateRequest\"]\n        UserRegisterRequest[\"UserRegisterRequest\"]\n        DailyCheckIn[\"DailyCheckIn\"]\n        ProductOrder[\"ProductOrder\"]\n        PaymentInfo[\"PaymentInfo\"]\n        User[\"User\"]\n        RechargeActivity[\"RechargeActivity\"]\n        UserInterfaceInvoke[\"UserInterfaceInvoke\"]\n        ProductInfo[\"ProductInfo\"]\n        ImageStatusEnum[\"ImageStatusEnum\"]\n        PayTypeStatusEnum[\"PayTypeStatusEnum\"]\n        UserAccountStatusEnum[\"UserAccountStatusEnum\"]\n        FileUploadBizEnum[\"FileUploadBizEnum\"]\n        PaymentStatusEnum[\"PaymentStatusEnum\"]\n        ProductTypeStatusEnum[\"ProductTypeStatusEnum\"]\n        InterfaceStatusEnum[\"InterfaceStatusEnum\"]\n        ProductInfoStatusEnum[\"ProductInfoStatusEnum\"]\n        InterfaceInfo[\"InterfaceInfo\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

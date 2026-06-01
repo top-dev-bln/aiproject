@@ -1,21 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the file management, authentication domain. It serves Admin, System, User as its primary actors. The main business capabilities include admin, article, del note. Core business data revolves around ArticleDo, DelNoteDo, EditorConfigReq, NotePreviewInfo. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a file management platform that serves User, Content Creator roles. It manages core business objects including del note do, article do, user do, user note key. The platform provides capabilities for global exception handler, i user, i admin. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include content management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Admin, I want to upload and manage files, so that I can store and retrieve documents as needed.",
-        "services": [
-          "IFileService",
-          "LocalFileServiceImpl"
-        ],
-        "controllers": [
-          "FileController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
           "IUserService",
           "UserServiceImpl"
@@ -25,38 +14,51 @@
         ]
       },
       {
-        "id": 3,
-        "story": "As a Admin, I want to manage admin operations, so that the relevant business process is handled efficiently.",
+        "id": 2,
+        "story": "As a User, I want to create and manage del note do records, so that I can track and organize del note do data effectively.",
         "services": [
-          "AdminServiceImpl",
-          "IAdminService"
+          "GlobalExceptionHandler"
         ],
         "controllers": [
-          "AdminController"
+          "DelNoteController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a Admin, I want to manage article operations, so that the relevant business process is handled efficiently.",
+        "id": 3,
+        "story": "As a User, I want to create and manage article do records, so that I can track and organize article do data effectively.",
         "services": [
-          "ArticleService",
-          "IArticleService"
+          "IArticleService",
+          "ArticleService"
         ],
         "controllers": [
           "ArticleController"
         ]
       },
       {
-        "id": 5,
-        "story": "As a Admin, I want to manage del note operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 4,
+        "story": "As a User, I want to create and manage user do records, so that I can track and organize user do data effectively.",
+        "services": [
+          "IUserService",
+          "UserServiceImpl"
+        ],
         "controllers": [
-          "DelNoteController"
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage user note key records, so that I can track and organize user note key data effectively.",
+        "services": [
+          "IUserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminController[\"AdminController\"]\n    ArticleController[\"ArticleController\"]\n    DelNoteController[\"DelNoteController\"]\n    FileController[\"FileController\"]\n    HistoryController[\"HistoryController\"]\n    NoteController[\"NoteController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AdminServiceImpl[\"AdminServiceImpl\"]\n    ArticleService[\"ArticleService\"]\n    IAdminService[\"IAdminService\"]\n    IArticleService[\"IArticleService\"]\n    IFileService[\"IFileService\"]\n    INoteService[\"INoteService\"]\n    IUserService[\"IUserService\"]\n    LocalFileServiceImpl[\"LocalFileServiceImpl\"]\n    NoteServiceImpl[\"NoteServiceImpl\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    ArticleDo[\"ArticleDo\"]\n    ArticleRepository[\"ArticleRepository\"]\n    DelNoteDo[\"DelNoteDo\"]\n    DelNoteRepository[\"DelNoteRepository\"]\n    EditorConfigReq[\"EditorConfigReq\"]\n    NotePreviewInfo[\"NotePreviewInfo\"]\n    UserDo[\"UserDo\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AdminUserInterceptor[\"AdminUserInterceptor\"]\n    AuthorityInterceptor[\"AuthorityInterceptor\"]\n    CorsFilter[\"CorsFilter\"]\n    HttpRequestInterceptor[\"HttpRequestInterceptor\"]\n  end\n  subgraph Infrastructure\n    CacheConfig[\"CacheConfig\"]\n    InterceptorConfig[\"InterceptorConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        UserConstant[\"UserConstant\"]\n        RegisterConstant[\"RegisterConstant\"]\n        InterceptorConfig[\"InterceptorConfig\"]\n        CacheConfig[\"CacheConfig\"]\n        ContextPropertyLoader[\"ContextPropertyLoader\"]\n        JsonUtil[\"JsonUtil\"]\n        GitUtil[\"GitUtil\"]\n        SshUtil[\"SshUtil\"]\n        FileUtil[\"FileUtil\"]\n        MD5Util[\"MD5Util\"]\n        DateTimeUtil[\"DateTimeUtil\"]\n        ThreadLocalUtil[\"ThreadLocalUtil\"]\n    end\n    subgraph Security\n        CorsFilter[\"CorsFilter\"]\n        AuthorityInterceptor[\"AuthorityInterceptor\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        IUserService[\"IUserService\"]\n        IAdminService[\"IAdminService\"]\n        IFileService[\"IFileService\"]\n        IArticleService[\"IArticleService\"]\n        INoteService[\"INoteService\"]\n        LocalFileServiceImpl[\"LocalFileServiceImpl\"]\n        ArticleService[\"ArticleService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        NoteServiceImpl[\"NoteServiceImpl\"]\n        AdminServiceImpl[\"AdminServiceImpl\"]\n    end\n    subgraph Controllers\n        AdminController[\"AdminController\"]\n        NoteController[\"NoteController\"]\n        ArticleController[\"ArticleController\"]\n        DelNoteController[\"DelNoteController\"]\n        FileController[\"FileController\"]\n        HistoryController[\"HistoryController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        ArticleRepository[\"ArticleRepository\"]\n        DelNoteRepository[\"DelNoteRepository\"]\n        UserRepository[\"UserRepository\"]\n        RemoteRepoRequest[\"RemoteRepoRequest\"]\n        DelNoteDo[\"DelNoteDo\"]\n        ArticleDo[\"ArticleDo\"]\n        UserDo[\"UserDo\"]\n        UserNoteKey[\"UserNoteKey\"]\n        QueryHistoryContentReq[\"QueryHistoryContentReq\"]\n        UserRequest[\"UserRequest\"]\n        NoteRequest[\"NoteRequest\"]\n        ServerResponse[\"ServerResponse\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

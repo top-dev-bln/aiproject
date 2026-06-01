@@ -1,18 +1,50 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, authentication domain. It serves User as its primary actors. The main business capabilities include server.",
+    "free_text_description": "This system is a messaging platform that serves Developer, Admin roles. The platform provides capabilities for http server handler, web socket server handler. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage server operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "ServerEndpoint"
-        ]
+        "story": "As a Developer, I want to use http server handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "HttpServerHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Developer, I want to use web socket server handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "WebSocketServerHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Developer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "HttpServerHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "HttpServerHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "HttpServerHandler"
+        ],
+        "controllers": []
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ServerEndpoint[\"ServerEndpoint\"]\n  end\n  subgraph Infrastructure\n    NettyWebSocketAutoConfigure[\"NettyWebSocketAutoConfigure\"]\n    ServerEndpointConfig[\"ServerEndpointConfig\"]\n  end"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        NettyWebSocketAutoConfigure[\"NettyWebSocketAutoConfigure\"]\n        ServerEndpointConfig[\"ServerEndpointConfig\"]\n        SslUtils[\"SslUtils\"]\n    end\n    subgraph Services\n        HttpServerHandler[\"HttpServerHandler\"]\n        WebSocketServerHandler[\"WebSocketServerHandler\"]\n    end\n    Services --> Infrastructure"
   }
 }

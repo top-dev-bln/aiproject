@@ -1,52 +1,61 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include article, demo, feign. Core business data revolves around Item, JwtUser, Role, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a microservices platform that serves Candidate, Admin roles. It manages core business objects including jwt user, jwt request, email, user role. The platform provides capabilities for global default exception handler, my web socket handler, chinese proverb server handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtUserDetailsService"
+        ],
         "controllers": [
-          "JwtAuthenticationController"
+          "JwtAuthenticationController",
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a Candidate, I want to create and manage jwt user records, so that I can track and organize jwt user data effectively.",
+        "services": [
+          "JwtUserDetailsService"
+        ],
+        "controllers": [
+          "ParamsController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to create and manage jwt request records, so that I can track and organize jwt request data effectively.",
+        "services": [
+          "GlobalDefaultExceptionHandler"
+        ],
+        "controllers": [
+          "ParamsController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to create and manage email records, so that I can track and organize email data effectively.",
+        "services": [
+          "GlobalDefaultExceptionHandler"
+        ],
+        "controllers": [
+          "ParamsController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to create and manage user role records, so that I can track and organize user role data effectively.",
         "services": [
           "JwtUserDetailsService"
         ],
         "controllers": [
           "UserController"
         ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage article operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "ArticleController"
-        ]
-      },
-      {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage demo operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "DemoController"
-        ]
-      },
-      {
-        "id": 5,
-        "story": "As a API Consumer, I want to manage feign operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "FeignController"
-        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ArticleController[\"ArticleController\"]\n    DemoController[\"DemoController\"]\n    FeignController[\"FeignController\"]\n    IndexController[\"IndexController\"]\n    JwtAuthenticationController[\"JwtAuthenticationController\"]\n    ParamsController[\"ParamsController\"]\n    PoiController[\"PoiController\"]\n    RedisController[\"RedisController\"]\n    TaxiController[\"TaxiController\"]\n    TestController[\"TestController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    JwtUserDetailsService[\"JwtUserDetailsService\"]\n    TaxiFareCalculatorService[\"TaxiFareCalculatorService\"]\n  end\n  subgraph Data_Access\n    ArticleRepository[\"ArticleRepository\"]\n    Item[\"Item\"]\n    JwtUser[\"JwtUser\"]\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n    UserRole[\"UserRole\"]\n    UserRoleList[\"UserRoleList\"]\n    UserRoleRepository[\"UserRoleRepository\"]\n    WsMessage[\"WsMessage\"]\n    WsMessageRepository[\"WsMessageRepository\"]\n    WsSite[\"WsSite\"]\n    WsSiteRepository[\"WsSiteRepository\"]\n  end\n  subgraph Security\n    ConfigurationFilter[\"ConfigurationFilter\"]\n    CorsFilter[\"CorsFilter\"]\n    CustomFromLoginFilter[\"CustomFromLoginFilter\"]\n    JwtRequestFilter[\"JwtRequestFilter\"]\n    WebSocketFilter[\"WebSocketFilter\"]\n  end\n  subgraph Infrastructure\n    AspectConfig[\"AspectConfig\"]\n    DruidConfiguration[\"DruidConfiguration\"]\n    GateWayCorsConfig[\"GateWayCorsConfig\"]\n    JmsConfig[\"JmsConfig\"]\n    MybatisPlusConfig[\"MybatisPlusConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n    TaxiFareConfiguration[\"TaxiFareConfiguration\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n    WebSocketConfig[\"WebSocketConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        ParamsController[\"ParamsController\"]\n        PoiController[\"PoiController\"]\n        DemoController[\"DemoController\"]\n        JwtAuthenticationController[\"JwtAuthenticationController\"]\n        UserController[\"UserController\"]\n        TestController[\"TestController\"]\n        IndexController[\"IndexController\"]\n        TaxiController[\"TaxiController\"]\n        ArticleController[\"ArticleController\"]\n        FeignController[\"FeignController\"]\n        RedisController[\"RedisController\"]\n    end\n    subgraph Security\n        ConfigurationFilter[\"ConfigurationFilter\"]\n        CorsFilter[\"CorsFilter\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtRequestFilter[\"JwtRequestFilter\"]\n        CustomFromLoginFilter[\"CustomFromLoginFilter\"]\n        JwtResponse[\"JwtResponse\"]\n        WebSocketFilter[\"WebSocketFilter\"]\n    end\n    subgraph Infrastructure\n        FastjsonConverter[\"FastjsonConverter\"]\n        WebSocketConfig[\"WebSocketConfig\"]\n        WebSocketServer[\"WebSocketServer\"]\n        JmsConfig[\"JmsConfig\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        DruidConfiguration[\"DruidConfiguration\"]\n        TaxiFareConfiguration[\"TaxiFareConfiguration\"]\n        AspectConfig[\"AspectConfig\"]\n        ApiReturnUtil[\"ApiReturnUtil\"]\n        BasePath[\"BasePath\"]\n        ApiReturnObject[\"ApiReturnObject\"]\n        SerializeUtil[\"SerializeUtil\"]\n        SpringUtils[\"SpringUtils\"]\n        RedisConfig[\"RedisConfig\"]\n        GateWayCorsConfig[\"GateWayCorsConfig\"]\n    end\n    subgraph Services\n        GlobalDefaultExceptionHandler[\"GlobalDefaultExceptionHandler\"]\n        MyWebSocketHandler[\"MyWebSocketHandler\"]\n        ChineseProverbServerHandler[\"ChineseProverbServerHandler\"]\n        ChineseProverClientHandler[\"ChineseProverClientHandler\"]\n        JwtUserDetailsService[\"JwtUserDetailsService\"]\n        TaxiFareCalculatorService[\"TaxiFareCalculatorService\"]\n        DemoRemoteClient[\"DemoRemoteClient\"]\n    end\n    subgraph Data_Access\n        JwtUser[\"JwtUser\"]\n        JwtRequest[\"JwtRequest\"]\n        Email[\"Email\"]\n        UserRole[\"UserRole\"]\n        User[\"User\"]\n        Role[\"Role\"]\n        Article[\"Article\"]\n        WsSite[\"WsSite\"]\n        WsMessage[\"WsMessage\"]\n        UserRoleListJson[\"UserRoleListJson\"]\n        Item[\"Item\"]\n        UserMapper[\"UserMapper\"]\n        ArticleRepository[\"ArticleRepository\"]\n        WsSiteRepository[\"WsSiteRepository\"]\n        WsMessageRepository[\"WsMessageRepository\"]\n        UserRoleRepository[\"UserRoleRepository\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

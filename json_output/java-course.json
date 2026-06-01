@@ -1,14 +1,12 @@
 {
   "input": {
-    "free_text_description": "The system operates in the blockchain, banking domain. It serves User as its primary actors. The main business capabilities include dog, dogs, db dog. Core business data revolves around DogDao, HibernateDogDao, InMemoryDogDao, JdbcDogDao.",
+    "free_text_description": "This system is a distributed transactions platform that serves Developer roles. It manages core business objects including dog. The platform provides capabilities for dog, transactional dog, db dog. Data is persisted through a structured data access layer.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage dog operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Developer, I want to create and manage dog records, so that I can track and organize dog data effectively.",
         "services": [
-          "DbDogService",
-          "DogService",
-          "TransactionalDogService"
+          "DogService"
         ],
         "controllers": [
           "DogEndpoint"
@@ -16,31 +14,47 @@
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage dogs operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Developer, I want to interact with dog endpoint functionality, so that I can accomplish my dog endpoint-related tasks.",
+        "services": [
+          "DogService"
+        ],
         "controllers": [
-          "DogEndpoints"
+          "DogEndpoint"
         ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to interact with db dog functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to use dog capabilities, so that I can perform essential business operations.",
         "services": [
-          "DbDogService"
+          "DogService"
         ],
-        "controllers": []
+        "controllers": [
+          "DogEndpoint"
+        ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to interact with transactional dog functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to use transactional dog capabilities, so that I can perform essential business operations.",
         "services": [
           "TransactionalDogService"
         ],
-        "controllers": []
+        "controllers": [
+          "DogEndpoint"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to use db dog capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DbDogService"
+        ],
+        "controllers": [
+          "DogEndpoint"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DogEndpoint[\"DogEndpoint\"]\n    DogEndpoints[\"DogEndpoints\"]\n  end\n  subgraph Services\n    DbDogService[\"DbDogService\"]\n    DogService[\"DogService\"]\n    TransactionalDogService[\"TransactionalDogService\"]\n  end\n  subgraph Data_Access\n    DogDao[\"DogDao\"]\n    HibernateDogDao[\"HibernateDogDao\"]\n    InMemoryDogDao[\"InMemoryDogDao\"]\n    JdbcDogDao[\"JdbcDogDao\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        DogEndpoint[\"DogEndpoint\"]\n    end\n    subgraph Data_Access\n        JdbcDogDao[\"JdbcDogDao\"]\n        JdbcConnectionHolder[\"JdbcConnectionHolder\"]\n        DogDao[\"DogDao\"]\n        InMemoryDogDao[\"InMemoryDogDao\"]\n        HibernateDogDao[\"HibernateDogDao\"]\n        Dog[\"Dog\"]\n    end\n    subgraph Services\n        DogService[\"DogService\"]\n        TransactionalDogService[\"TransactionalDogService\"]\n        DbDogService[\"DbDogService\"]\n    end\n    subgraph Infrastructure\n        Past[\"Past\"]\n        PastValidator[\"PastValidator\"]\n        NotBlankSizedValidator[\"NotBlankSizedValidator\"]\n        DateUtil[\"DateUtil\"]\n        NotBlankSized[\"NotBlankSized\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

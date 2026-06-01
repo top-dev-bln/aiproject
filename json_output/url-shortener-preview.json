@@ -1,9 +1,50 @@
 {
   "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, recruitment domain. It serves User as its primary actors. Core business data revolves around Url.",
-    "user_stories": []
+    "free_text_description": "This system is a microservices platform that serves Candidate, Admin roles. It manages core business objects including url. The platform provides capabilities for rest exception handler. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to create and manage url records, so that I can track and organize url data effectively.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use rest exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": []
+      }
+    ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Data_Access\n    Url[\"Url\"]\n    UrlRepository[\"UrlRepository\"]\n  end\n  subgraph Infrastructure\n    Swagger3Config[\"Swagger3Config\"]\n  end"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Swagger3Config[\"Swagger3Config\"]\n    end\n    subgraph Services\n        RestExceptionHandler[\"RestExceptionHandler\"]\n    end\n    subgraph Data_Access\n        Url[\"Url\"]\n        UrlRepository[\"UrlRepository\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

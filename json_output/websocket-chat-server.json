@@ -1,55 +1,64 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves User as its primary actors. The main business capabilities include chat, chat room, index. Core business data revolves around ChatRoom.",
+    "free_text_description": "This system is a messaging platform that serves Admin, User roles. It manages core business objects including chat room, chat message. The platform provides capabilities for stomp handler, redis subscriber, chat room repository. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage chat operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "ChatRoomRepository",
-          "ChatService"
-        ],
-        "controllers": [
-          "ChatController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a User, I want to manage chat room operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "ChatRoomRepository"
+          "JwtTokenProvider"
         ],
         "controllers": [
           "ChatRoomController"
         ]
       },
       {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage chat room records, so that I can track and organize chat room data effectively.",
+        "services": [
+          "ChatRoomRepository",
+          "ChatService"
+        ],
+        "controllers": [
+          "ChatRoomController",
+          "ChatController"
+        ]
+      },
+      {
         "id": 3,
-        "story": "As a User, I want to manage index operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage chat message records, so that I can track and organize chat message data effectively.",
+        "services": [
+          "ChatRoomRepository",
+          "ChatService"
+        ],
+        "controllers": [
+          "ChatRoomController",
+          "ChatController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "StompHandler"
+        ],
         "controllers": [
           "IndexController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a User, I want to interact with chat room repository functionality, so that the system fulfills my needs.",
-        "services": [
-          "ChatRoomRepository"
-        ],
-        "controllers": []
-      },
-      {
         "id": 5,
-        "story": "As a User, I want to interact with redis subscriber functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use stomp handler capabilities, so that I can perform essential business operations.",
         "services": [
-          "RedisSubscriber"
+          "StompHandler"
         ],
-        "controllers": []
+        "controllers": [
+          "ChatRoomController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ChatController[\"ChatController\"]\n    ChatRoomController[\"ChatRoomController\"]\n    IndexController[\"IndexController\"]\n  end\n  subgraph Services\n    ChatRoomRepository[\"ChatRoomRepository\"]\n    ChatService[\"ChatService\"]\n    RedisSubscriber[\"RedisSubscriber\"]\n  end\n  subgraph Data_Access\n    ChatRoom[\"ChatRoom\"]\n  end\n  subgraph Infrastructure\n    EmbeddedRedisConfig[\"EmbeddedRedisConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    StompHandler[\"StompHandler\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n    WebSockConfig[\"WebSockConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    subgraph Infrastructure\n        RedisConfig[\"RedisConfig\"]\n        EmbeddedRedisConfig[\"EmbeddedRedisConfig\"]\n        WebSockConfig[\"WebSockConfig\"]\n    end\n    subgraph Services\n        StompHandler[\"StompHandler\"]\n        RedisSubscriber[\"RedisSubscriber\"]\n        ChatRoomRepository[\"ChatRoomRepository\"]\n        ChatService[\"ChatService\"]\n        JwtTokenProvider[\"JwtTokenProvider\"]\n    end\n    subgraph Controllers\n        ChatRoomController[\"ChatRoomController\"]\n        IndexController[\"IndexController\"]\n        ChatController[\"ChatController\"]\n    end\n    subgraph Data_Access\n        ChatRoom[\"ChatRoom\"]\n        ChatMessage[\"ChatMessage\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

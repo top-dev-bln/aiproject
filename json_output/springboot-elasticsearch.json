@@ -1,10 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the search, authentication domain. It serves Customer, User as its primary actors. The main business capabilities include bulk processor, bulk processor impl, elastic search. Core business data revolves around Order.",
+    "free_text_description": "This system is a search platform that serves Admin, Customer roles. It manages core business objects including order. The platform provides capabilities for elastic search, query, bulk processor. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to search across available content, so that I can quickly find what I am looking for.",
+        "story": "As a Admin, I want to create and manage order records, so that I can track and organize order data effectively.",
         "services": [
           "ElasticSearchService"
         ],
@@ -12,39 +12,40 @@
       },
       {
         "id": 2,
-        "story": "As a Customer, I want to interact with bulk processor functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "ElasticSearchService",
+          "QueryService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use bulk processor capabilities, so that I can perform essential business operations.",
         "services": [
           "BulkProcessorService"
         ],
         "controllers": []
       },
       {
-        "id": 3,
-        "story": "As a Customer, I want to interact with bulk processor impl functionality, so that the system fulfills my needs.",
-        "services": [
-          "BulkProcessorServiceImpl"
-        ],
-        "controllers": []
-      },
-      {
         "id": 4,
-        "story": "As a Customer, I want to interact with elastic search functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use elastic search capabilities, so that I can perform essential business operations.",
         "services": [
-          "ElasticSearchService"
+          "ElasticSearchServiceImpl"
         ],
         "controllers": []
       },
       {
         "id": 5,
-        "story": "As a Customer, I want to interact with elastic search impl functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use query capabilities, so that I can perform essential business operations.",
         "services": [
-          "ElasticSearchServiceImpl"
+          "QueryServiceImpl"
         ],
         "controllers": []
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Services\n    BulkProcessorService[\"BulkProcessorService\"]\n    BulkProcessorServiceImpl[\"BulkProcessorServiceImpl\"]\n    ElasticSearchService[\"ElasticSearchService\"]\n    ElasticSearchServiceImpl[\"ElasticSearchServiceImpl\"]\n    QueryService[\"QueryService\"]\n    QueryServiceImpl[\"QueryServiceImpl\"]\n  end\n  subgraph Data_Access\n    Order[\"Order\"]\n  end\n  subgraph Infrastructure\n    ElasticSearchConfig[\"ElasticSearchConfig\"]\n  end\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        Order[\"Order\"]\n    end\n    subgraph Infrastructure\n        ElasticSearchConfig[\"ElasticSearchConfig\"]\n        EmptyUtils[\"EmptyUtils\"]\n    end\n    subgraph Services\n        ElasticSearchService[\"ElasticSearchService\"]\n        QueryService[\"QueryService\"]\n        BulkProcessorService[\"BulkProcessorService\"]\n        BulkProcessorServiceImpl[\"BulkProcessorServiceImpl\"]\n        ElasticSearchServiceImpl[\"ElasticSearchServiceImpl\"]\n        QueryServiceImpl[\"QueryServiceImpl\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

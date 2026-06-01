@@ -1,71 +1,68 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, content management domain. It serves API Consumer, Customer, System, User as its primary actors. The main business capabilities include example, user, user mng. Core business data revolves around Address, DDDEntity, ExampleAddress, ExampleDetail. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a distributed transactions platform that serves User, Admin roles. It manages core business objects including example address, example entity, user entity, address. The platform provides capabilities for example query, example command, example query. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "UserCommandService",
-          "UserCommandServiceImpl",
-          "UserMngCommandService",
-          "UserMngCommandServiceImpl",
-          "UserMngQueryService",
-          "UserMngQueryServiceImpl",
           "UserMsQueryService",
-          "UserMsQueryServiceImpl",
-          "UserQueryService",
-          "UserQueryServiceImpl"
+          "UserCommandService",
+          "UserQueryService"
         ],
         "controllers": [
+          "UserMsController",
+          "UserMngController",
           "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "story": "As a User, I want to create and manage example address records, so that I can track and organize example address data effectively.",
         "services": [
-          "EventPublishingConfigService"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 3,
-        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
-        "services": [
-          "OrderItem"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage example operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "ExampleCommandService",
-          "ExampleCommandServiceImpl",
           "ExampleQueryService",
-          "ExampleQueryServiceImpl"
+          "ExampleCommandService"
         ],
         "controllers": [
           "ExampleController"
         ]
       },
       {
-        "id": 5,
-        "story": "As a API Consumer, I want to manage user mng operations, so that the relevant business process is handled efficiently.",
+        "id": 3,
+        "story": "As a User, I want to create and manage example entity records, so that I can track and organize example entity data effectively.",
         "services": [
-          "UserMngCommandService",
-          "UserMngCommandServiceImpl",
-          "UserMngQueryService",
-          "UserMngQueryServiceImpl"
+          "ExampleQueryService",
+          "ExampleCommandService"
         ],
         "controllers": [
+          "ExampleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage user entity records, so that I can track and organize user entity data effectively.",
+        "services": [
+          "UserMsQueryService",
+          "UserCommandService"
+        ],
+        "controllers": [
+          "UserMsController",
           "UserMngController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage address records, so that I can track and organize address data effectively.",
+        "services": [
+          "ExampleQueryService"
+        ],
+        "controllers": [
+          "ExampleController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ExampleController[\"ExampleController\"]\n    UserController[\"UserController\"]\n    UserMngController[\"UserMngController\"]\n    UserMsController[\"UserMsController\"]\n    WorkspaceMsController[\"WorkspaceMsController\"]\n  end\n  subgraph Services\n    DDDQueryService[\"DDDQueryService\"]\n    DDDQueryServiceImpl[\"DDDQueryServiceImpl\"]\n    DelegatingNamingMaintainService[\"DelegatingNamingMaintainService\"]\n    DelegatingNamingService[\"DelegatingNamingService\"]\n    EventPublishingConfigService[\"EventPublishingConfigService\"]\n    ExampleCommandService[\"ExampleCommandService\"]\n    ExampleCommandServiceImpl[\"ExampleCommandServiceImpl\"]\n    ExampleQueryService[\"ExampleQueryService\"]\n    ExampleQueryServiceImpl[\"ExampleQueryServiceImpl\"]\n    MicroServiceAutoConfiguration[\"MicroServiceAutoConfiguration\"]\n    OrderItem[\"OrderItem\"]\n    UserCommandService[\"UserCommandService\"]\n    UserCommandServiceImpl[\"UserCommandServiceImpl\"]\n    UserMngCommandService[\"UserMngCommandService\"]\n    UserMngCommandServiceImpl[\"UserMngCommandServiceImpl\"]\n    UserMngQueryService[\"UserMngQueryService\"]\n    UserMngQueryServiceImpl[\"UserMngQueryServiceImpl\"]\n    UserMsQueryService[\"UserMsQueryService\"]\n    UserMsQueryServiceImpl[\"UserMsQueryServiceImpl\"]\n    UserQueryService[\"UserQueryService\"]\n    UserQueryServiceImpl[\"UserQueryServiceImpl\"]\n    Workspace[\"Workspace\"]\n    WorkspaceMicroservice[\"WorkspaceMicroservice\"]\n    WorkspaceMsCommandService[\"WorkspaceMsCommandService\"]\n    WorkspaceMsCommandServiceImpl[\"WorkspaceMsCommandServiceImpl\"]\n  end\n  subgraph Data_Access\n    Address[\"Address\"]\n    DDDEntity[\"DDDEntity\"]\n    DDDRepository[\"DDDRepository\"]\n    ExampleAddress[\"ExampleAddress\"]\n    ExampleDetail[\"ExampleDetail\"]\n    ExampleDomainService[\"ExampleDomainService\"]\n    ExampleEntity[\"ExampleEntity\"]\n    ExampleLocationRepository[\"ExampleLocationRepository\"]\n    ExampleRepository[\"ExampleRepository\"]\n    ExampleSecurityRepository[\"ExampleSecurityRepository\"]\n    ExampleSecurityRepositoryImpl[\"ExampleSecurityRepositoryImpl\"]\n    LocationRepository[\"LocationRepository\"]\n    LocationRepositoryImpl[\"LocationRepositoryImpl\"]\n    SecurityRepository[\"SecurityRepository\"]\n    User[\"User\"]\n    UserDomainService[\"UserDomainService\"]\n    UserEntity[\"UserEntity\"]\n    UserProfilePageCondition[\"UserProfilePageCondition\"]\n    UserRepository[\"UserRepository\"]\n    WorkspaceEntity[\"WorkspaceEntity\"]\n    WorkspaceRepository[\"WorkspaceRepository\"]\n  end\n  subgraph Security\n    CryptoUtil[\"CryptoUtil\"]\n    WorkspaceSecurityInterceptor[\"WorkspaceSecurityInterceptor\"]\n  end\n  subgraph Infrastructure\n    AppConfig[\"AppConfig\"]\n    CellStyleConfig[\"CellStyleConfig\"]\n    CustomMybatisAutoConfiguration[\"CustomMybatisAutoConfiguration\"]\n    CustomWebAutoConfiguration[\"CustomWebAutoConfiguration\"]\n    DataCellConfig[\"DataCellConfig\"]\n    DefaultNacosConfigConverter[\"DefaultNacosConfigConverter\"]\n    EnableNacosConfig[\"EnableNacosConfig\"]\n    EnableNacosDiscovery[\"EnableNacosDiscovery\"]\n    ExampleDataObjectHandler[\"ExampleDataObjectHandler\"]\n    GlobalNacosPropertiesBeanDefinitionParser[\"GlobalNacosPropertiesBeanDefinitionParser\"]\n    HeaderCellConfig[\"HeaderCellConfig\"]\n    LogAutoFreshProcess[\"LogAutoFreshProcess\"]\n    MicroserviceProperties[\"MicroserviceProperties\"]\n    MicroserviceSecurityInterceptor[\"MicroserviceSecurityInterceptor\"]\n    MultiProfilesYamlConfigParseSupport[\"MultiProfilesYamlConfigParseSupport\"]\n    NacosBootConfigurationPropertiesBinder[\"NacosBootConfigurationPropertiesBinder\"]\n    NacosCharSequenceEditor[\"NacosCharSequenceEditor\"]\n    NacosConfigAutoConfiguration[\"NacosConfigAutoConfiguration\"]\n    NacosConfigLoader[\"NacosConfigLoader\"]\n    NacosConfigProperties[\"NacosConfigProperties\"]\n    NacosConfigPropertiesUtils[\"NacosConfigPropertiesUtils\"]\n    NacosConfigRemovedEvent[\"NacosConfigRemovedEvent\"]\n    NacosConfigurationPropertiesBinder[\"NacosConfigurationPropertiesBinder\"]\n    NacosLoggingListener[\"NacosLoggingListener\"]\n    NacosValueTarget[\"NacosValueTarget\"]\n    OpenFeignAutoConfiguration[\"OpenFeignAutoConfiguration\"]\n    OpenFeignProperties[\"OpenFeignProperties\"]\n    SheetConfig[\"SheetConfig\"]\n    WorkbookConfig[\"WorkbookConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        ExampleController[\"ExampleController\"]\n        UserMsController[\"UserMsController\"]\n        UserMngController[\"UserMngController\"]\n        UserController[\"UserController\"]\n        WorkspaceMsController[\"WorkspaceMsController\"]\n    end\n    subgraph Services\n        ExampleQueryService[\"ExampleQueryService\"]\n        ExampleCommandService[\"ExampleCommandService\"]\n        ExampleQueryServiceImpl[\"ExampleQueryServiceImpl\"]\n        ExampleCommandServiceImpl[\"ExampleCommandServiceImpl\"]\n        ExampleDataObjectHandler[\"ExampleDataObjectHandler\"]\n        ExampleDomainService[\"ExampleDomainService\"]\n        XlsSheetProcessor[\"XlsSheetProcessor\"]\n        XlsxSheetHandler[\"XlsxSheetHandler\"]\n        MicroServiceAutoConfiguration[\"MicroServiceAutoConfiguration\"]\n        OrderItem[\"OrderItem\"]\n        IDataObject[\"IDataObject\"]\n        DDDConvertor[\"DDDConvertor\"]\n        DDDQueryServiceImpl[\"DDDQueryServiceImpl\"]\n        DataObject[\"DataObject\"]\n        QuerySortable[\"QuerySortable\"]\n        PageQuery[\"PageQuery\"]\n        ConditionOperator[\"ConditionOperator\"]\n        QueryCondition[\"QueryCondition\"]\n        DDDRepositoryImpl[\"DDDRepositoryImpl\"]\n        DDDRepository[\"DDDRepository\"]\n        DDDQueryService[\"DDDQueryService\"]\n        SortableQuery[\"SortableQuery\"]\n        OrderType[\"OrderType\"]\n        ListQuery[\"ListQuery\"]\n        DDDEntity[\"DDDEntity\"]\n        NacosConfigEnvironmentProcessor[\"NacosConfigEnvironmentProcessor\"]\n        AnnotationNacosInjectedBeanPostProcessor[\"AnnotationNacosInjectedBeanPostProcessor\"]\n        NacosConfigListenerMethodProcessor[\"NacosConfigListenerMethodProcessor\"]\n        NacosNamespaceHandler[\"NacosNamespaceHandler\"]\n        AnnotationListenerMethodProcessor[\"AnnotationListenerMethodProcessor\"]\n        EventPublishingConfigService[\"EventPublishingConfigService\"]\n        NacosConfigurationPropertiesBindingPostProcessor[\"NacosConfigurationPropertiesBindingPostProcessor\"]\n        DelegatingNamingService[\"DelegatingNamingService\"]\n        DelegatingNamingMaintainService[\"DelegatingNamingMaintainService\"]\n        CustomWebExceptionHandler[\"CustomWebExceptionHandler\"]\n        UserMsQueryService[\"UserMsQueryService\"]\n        UserCommandService[\"UserCommandService\"]\n        UserQueryService[\"UserQueryService\"]\n        UserMngQueryService[\"UserMngQueryService\"]\n        UserMngCommandService[\"UserMngCommandService\"]\n        UserMngQueryServiceImpl[\"UserMngQueryServiceImpl\"]\n        UserCommandServiceImpl[\"UserCommandServiceImpl\"]\n        UserQueryServiceImpl[\"UserQueryServiceImpl\"]\n        UserMngCommandServiceImpl[\"UserMngCommandServiceImpl\"]\n        UserMsQueryServiceImpl[\"UserMsQueryServiceImpl\"]\n        UserDomainService[\"UserDomainService\"]\n        DataObjectHandler[\"DataObjectHandler\"]\n        WorkspaceMicroservice[\"WorkspaceMicroservice\"]\n        WorkspaceSecurityInterceptor[\"WorkspaceSecurityInterceptor\"]\n        WorkspaceCreateRequest[\"WorkspaceCreateRequest\"]\n        Workspace[\"Workspace\"]\n        WorkspaceMsCommandService[\"WorkspaceMsCommandService\"]\n        WorkspaceMsCommandServiceImpl[\"WorkspaceMsCommandServiceImpl\"]\n    end\n    subgraph Data_Access\n        ExampleSecurityRepositoryImpl[\"ExampleSecurityRepositoryImpl\"]\n        ExampleRepositoryImpl[\"ExampleRepositoryImpl\"]\n        ExampleLocationRepositoryImpl[\"ExampleLocationRepositoryImpl\"]\n        ExampleDetailMapper[\"ExampleDetailMapper\"]\n        ExampleMapper[\"ExampleMapper\"]\n        ExampleDetail[\"ExampleDetail\"]\n        Example[\"Example\"]\n        ExampleSecurityRepository[\"ExampleSecurityRepository\"]\n        ExampleRepository[\"ExampleRepository\"]\n        ExampleLocationRepository[\"ExampleLocationRepository\"]\n        BeanMapper[\"BeanMapper\"]\n        XmlMapper[\"XmlMapper\"]\n        JsonMapper[\"JsonMapper\"]\n        WorkspaceRepository[\"WorkspaceRepository\"]\n        LocationRepository[\"LocationRepository\"]\n        SecurityRepository[\"SecurityRepository\"]\n        UserRepository[\"UserRepository\"]\n        LocationRepositoryImpl[\"LocationRepositoryImpl\"]\n        WorkspaceRepositoryImpl[\"WorkspaceRepositoryImpl\"]\n        UserRepositoryImpl[\"UserRepositoryImpl\"]\n        SecurityRepositoryImpl[\"SecurityRepositoryImpl\"]\n        UserDetailMapper[\"UserDetailMapper\"]\n        UserMapper[\"UserMapper\"]\n        UserProfilePageCondition[\"UserProfilePageCondition\"]\n        User[\"User\"]\n        UserDetail[\"UserDetail\"]\n        ExampleAddress[\"ExampleAddress\"]\n        ExampleEntity[\"ExampleEntity\"]\n        UserEntity[\"UserEntity\"]\n        Address[\"Address\"]\n    end\n    subgraph Infrastructure\n        ExampleConvertor[\"ExampleConvertor\"]\n        ExampleBizCode[\"ExampleBizCode\"]\n        CellStyleConfig[\"CellStyleConfig\"]\n        SheetConfig[\"SheetConfig\"]\n        DataCellConfig[\"DataCellConfig\"]\n        WorkbookConfig[\"WorkbookConfig\"]\n        HeaderCellConfig[\"HeaderCellConfig\"]\n        ExcelXmlConstants[\"ExcelXmlConstants\"]\n        CustomMybatisAutoConfiguration[\"CustomMybatisAutoConfiguration\"]\n        NacosConfigConstants[\"NacosConfigConstants\"]\n        NacosConfigBootBeanDefinitionRegistrar[\"NacosConfigBootBeanDefinitionRegistrar\"]\n        NacosConfigAutoConfiguration[\"NacosConfigAutoConfiguration\"]\n        NacosBootConfigurationPropertiesBinder[\"NacosBootConfigurationPropertiesBinder\"]\n        NacosLoggingListener[\"NacosLoggingListener\"]\n        NacosConfigProperties[\"NacosConfigProperties\"]\n        MultiProfilesYamlConfigParseSupport[\"MultiProfilesYamlConfigParseSupport\"]\n        NacosConfigPropertiesUtils[\"NacosConfigPropertiesUtils\"]\n        NacosPropertiesBuilder[\"NacosPropertiesBuilder\"]\n        AttributeExtractTask[\"AttributeExtractTask\"]\n        NacosConfigLoaderFactory[\"NacosConfigLoaderFactory\"]\n        NacosConfigLoader[\"NacosConfigLoader\"]\n        NacosCharSequenceEditor[\"NacosCharSequenceEditor\"]\n        NacosEnumEditor[\"NacosEnumEditor\"]\n        NacosCustomBooleanEditor[\"NacosCustomBooleanEditor\"]\n        LogAutoFreshProcess[\"LogAutoFreshProcess\"]\n        DefaultNacosConfigConverter[\"DefaultNacosConfigConverter\"]\n        NacosValueTarget[\"NacosValueTarget\"]\n        EnableNacosConfig[\"EnableNacosConfig\"]\n        NacosConfigBeanDefinitionRegistrar[\"NacosConfigBeanDefinitionRegistrar\"]\n        NacosPropertySourceBuilder[\"NacosPropertySourceBuilder\"]\n        NacosPropertySources[\"NacosPropertySources\"]\n        GlobalNacosPropertiesBeanDefinitionParser[\"GlobalNacosPropertiesBeanDefinitionParser\"]\n        NacosAnnotationDrivenBeanDefinitionParser[\"NacosAnnotationDrivenBeanDefinitionParser\"]\n        NacosPropertySourceXmlBeanDefinition[\"NacosPropertySourceXmlBeanDefinition\"]\n        NacosPropertySourceBeanDefinitionParser[\"NacosPropertySourceBeanDefinitionParser\"]\n        NacosConstants[\"NacosConstants\"]\n        NacosConfigRemovedEvent[\"NacosConfigRemovedEvent\"]\n        NacosConfigurationPropertiesBeanBoundEvent[\"NacosConfigurationPropertiesBeanBoundEvent\"]\n        NacosConfigTimeoutEvent[\"NacosConfigTimeoutEvent\"]\n        DelegatingEventPublishingListener[\"DelegatingEventPublishingListener\"]\n        NacosConfigReceivedEvent[\"NacosConfigReceivedEvent\"]\n        NacosConfigEvent[\"NacosConfigEvent\"]\n        NacosConfigListenerRegisteredEvent[\"NacosConfigListenerRegisteredEvent\"]\n        NacosConfigPublishedEvent[\"NacosConfigPublishedEvent\"]\n        NacosConfigMetadataEvent[\"NacosConfigMetadataEvent\"]\n        TimeoutNacosConfigListener[\"TimeoutNacosConfigListener\"]\n        NacosConfigurationPropertiesBinder[\"NacosConfigurationPropertiesBinder\"]\n        PropertiesPlaceholderResolver[\"PropertiesPlaceholderResolver\"]\n        AbstractConfigParse[\"AbstractConfigParse\"]\n        Tuple[\"Tuple\"]\n        GlobalNacosPropertiesSource[\"GlobalNacosPropertiesSource\"]\n        NacosBeanUtils[\"NacosBeanUtils\"]\n        BeanUtils[\"BeanUtils\"]\n        ConfigParse[\"ConfigParse\"]\n        ObjectUtils[\"ObjectUtils\"]\n        AnnotationUtils[\"AnnotationUtils\"]\n        NacosUtils[\"NacosUtils\"]\n        ConfigParseUtils[\"ConfigParseUtils\"]\n        DefaultXmlConfigParse[\"DefaultXmlConfigParse\"]\n        DefaultPropertiesConfigParse[\"DefaultPropertiesConfigParse\"]\n        DefaultJsonConfigParse[\"DefaultJsonConfigParse\"]\n        DefaultYamlConfigParse[\"DefaultYamlConfigParse\"]\n        OpenFeignProperties[\"OpenFeignProperties\"]\n        OpenFeignAutoConfiguration[\"OpenFeignAutoConfiguration\"]\n        CustomWebAutoConfiguration[\"CustomWebAutoConfiguration\"]\n        BizCode[\"BizCode\"]\n        MicroserviceProperties[\"MicroserviceProperties\"]\n        UserConvertor[\"UserConvertor\"]\n        AppConfig[\"AppConfig\"]\n        WorkspaceConvertor[\"WorkspaceConvertor\"]\n    end\n    subgraph Security\n        CryptoUtil[\"CryptoUtil\"]\n        MicroserviceSecurityInterceptor[\"MicroserviceSecurityInterceptor\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

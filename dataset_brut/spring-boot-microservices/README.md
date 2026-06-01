@@ -1,31 +1,157 @@
-# spring-boot-microservices
+# sping-boot-microservices
+A microservice application with User authentication, sms service, contact service, location service,
+National Id and Passport service and some other service are under processing like payment service etc.
+All of the services are separate application which can be operated in a single page
+Angular UI. All the services can be reused to any other application.
 
-This repository contains the coding part of 'Microservices with Mo'.
-A tutorial series about creating an microservice architecture with Spring Boot.
+## Features:
+- RESTful Microservices
+- JWT authentication
+- Cross-Origin Resource Sharing
+- Spring Boot, Spring cloud, Spring Data JPA, Spring Security
+- Eureka Naming Server
+- Zuul API Gateway
+- Angular
+- Java 8 (recommended), 10
+- Docker
 
-Here are the links to all parts of the series:
-* [Intro](https://medium.com/@marcus.eisele/implementing-a-microservice-architecture-with-spring-boot-intro-cdb6ad16806c "Implementing a microservice architecture with Spring Boot — Intro")
-* [Part 1: Setting up docker](https://medium.com/@marcus.eisele/implementing-a-microservice-architecture-with-spring-boot-part-one-the-environment-cbc032473ab8 "Setting up docker")
-* [Part 2: The architecture](https://medium.com/@marcus.eisele/microservices-with-mo-part-two-the-architecture-3845b5228ddb "Microservices with Mo - Part Two: The architecture")
-* [Part 3: The counter microservice](https://medium.com/@marcus.eisele/microservices-with-mo-part-three-the-counter-microservice-5fa34af2dcdc "Microservices with Mo — Part Three: The Counter Microservice")
-* [Part 4: The configuration microservice](https://medium.com/@marcus.eisele/microservices-with-mo-part-four-the-configuration-service-7d9a5b1b4f72 "Microservices with Mo — Part Four: The Configuration Service")
-* [Part 5: The registry microservice](https://medium.com/@marcus.eisele/microservices-with-mo-part-five-the-registry-service-netflix-eureka-96f0de083252 "Microservices with Mo — Part Five: The Registry Service (Netflix Eureka)")
-* [Part 6: The gateway microservice](https://medium.com/@marcus.eisele/spring-boot-microservices-part-six-the-gateway-service-netflix-zuul-55f8d97b731d "Microservices with Mo — Part Six: The Gateway Service (Netflix Zuul)")
+## Technology
 
+### API Gateway
+It itself a service for facing clients. Just like the entry point to get any service.
+Receive all the request and delegates the request to the appropriate service.
+Like a gatekeeper.
+- Zuul
 
-The architecture consists / will consist of following services:
-* counterservice
-* configservice
-* servicediscovery
-* adminservice
-* gatewayservice
+### Service Registry and Service Discovery
+All microservice instances will register with a naming server for service registraton. When a service wants 
+to use another service, it will ask to naming server what instances are currently running. Server will check
+the instances and pass the request to the instance. This is called service discovery.
+The advantage is s service registry always updates itself, if one instance goes down, 
+it removes it from its registry.
+- Eureka
+- Zookeeper
+- Consul
 
-## How to run
+### Client Side Load Balancing
+Multiple instances of a services will be distriduted to calling services.
+if one microservice wants to communicate with another microservice, 
+it generally ask the service registry which returns all the instances of the 
+called microservice to the calling service. Then it is calling service headache 
+which instance it will call. This is the process of client side load balancing.
+- Ribbon
 
+### Intra Communication among Microservices
+Invoking other microservices via http proxy request.
+- REST Templete
+- Feign
+  - Developers don’t have to bother about REST internal details. Encoding request and 
+Decoding reponse are automatically maintained by Feign.
+
+### Distributed Tracing
+Simply the centralized log for all services to tracing complete chain of what happened 
+in a specific request. Centralized information container for all the services.
+- Spring cloud sleuth 
+  - Tracing every request by assigning an unique id to every request so that the request can be identified
+inside every services.
+- RabbitMQ 
+  - The Advanced Message Queuing Protocol (AMQP) which put all services log in one message queue 
+and send it to tracing server like Zipkin. All services are connected with RabbitMQ.
+- Zipkin
+  - The server application for visualizing what happens on the specific request.
+
+## Services:
+ 
+ - [User Authentication service](https://github.com/hnjaman/sping-boot-microservices/tree/master/user-authentication)
+  
+ - [SMS service](https://github.com/hnjaman/sping-boot-microservices/tree/master/sms-service)
+ 
+ - [Contacts service](https://github.com/hnjaman/spring-boot-microservices/tree/master/contact-service)
+  
+ - [Location service](https://github.com/hnjaman/sping-boot-microservices/tree/master/location-service)
+ 
+ - NID and Passport service
+ 
+ - Payment service (Coming)
+  
+##  How to run?
+
+Set the mysql database first 
 ```
-git clone https://github.com/eiselems/spring-boot-microservices.git && cd spring-boot-microservices
-mvn clean package -DskipTests && docker-compose up --build
+mysql -u root -p
+create user 'cfbd'@'localhost' identified by '1234';
+grant all privileges on *.* to 'cfbd'@'localhost';
+create database if not exists user_db;
 ```
+Initially tables and data will be created automatically by Java Persistence API. New operation can be happened from UI.
 
-Access http://localhost:9999/api/cs/count and refresh a few times to see the counter increase.
-You also can access the counterservice itself directly at http://localhost:8080/count.
+
+Run Eureka naming server to register your services  
+```
+mvn clean install
+mvn spring-boot:run
+```
+Go to http://localhost:8761
+
+Check "Instances currently registered with Eureka". Nothing will be shown because you didn't start any services.
+Its Eureka dashboard, where we can inspecting the registered instances later. 
+In the microservices world, Service Registry and Discovery play role since we most likely run multiple instances of services
+and we need a mechanism to call other services without hardcoding their hostnames or port numbers. 
+In Cloud environments service instances may come up and go down anytime. So we need some automatic service registration and discovery mechanism. Spring Cloud provides Service Registry and Discovery features, as usual, with multiple options.
+
+
+Build and run user authentication services  
+```
+mvn spring-boot:run
+```
+It will start on http://localhost:8777//api/auth .
+To signup -> http://localhost:8777/api/auth/signup .
+
+Refresh Eureka (http://localhost:8761) .
+Check again "Instances currently registered with Eureka" you will see user-authentication is UP and running.
+If you stop this services then it will be DOWN.
+
+When Eureka server didn’t get received any notification from a service. Then the service will be unregistered 
+from the Eureka server automatically.
+
+
+Run Contact service
+```
+cd contact-service
+mvn spring-boot:run
+```
+It will start on http://localhost:8555/ and insert 2 dummy contacts info in contact table with name, contact number and address.
+Get all Contacts -> http://localhost:8555/contacts/all .
+
+Search by name -> http://localhost:8555/contacts/name/hnjaman here "hnjaman" is the name you searching in your contacts.
+It will send all contacts containing "hnjaman"
+
+
+Run sms service
+```
+cd sms-service
+mvn spring-boot:run
+```
+It will start on http://localhost:8999/sms .
+
+To check message for "hnjaman" -> http://localhost:8999/contacts/name/hnjaman/sms .
+It will get name and contact number from contact service and generate a custom message for "hnjaman" by RESTTemplete.
+Refresh and check Eureka
+
+
+Welcome you succesfully started all services use them on Angular UI.
+Run Angular User Application
+```
+cd microservice-ui
+```
+Istall node package manager (just for first time)
+```
+npm install
+ng s --open
+```
+It will open automatically in http://localhost:4200/home
+
+
+## Copyright & License
+
+MIT License, see the link: [LICENSE](https://github.com/hnjaman/sping-boot-microservices/blob/master/LICENSE) file for details.

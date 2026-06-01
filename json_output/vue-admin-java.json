@@ -1,57 +1,69 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, Admin, User as its primary actors. The main business capabilities include ad dao, ad save form2 ad converter, ad service. Core business data revolves around AdSiteDao, AuthAdminDao, AuthPermissionDao, AuthPermissionRuleDao. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. It manages core business objects including ad site, ad, auth permission rule, auth role admin. The platform provides capabilities for global exception handler, ad, ad site. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "AuthAdminService",
-          "AuthAdminServiceImpl"
+          "AuthLoginService",
+          "AuthRoleAdminService",
+          "AuthPermissionRuleService"
         ],
         "controllers": [
-          "AuthAdminController"
+          "AuthAdminController",
+          "AuthPermissionRuleController",
+          "AuthRoleController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to log into the system, so that I can access my personalized dashboard and features.",
+        "story": "As a Admin, I want to create and manage ad site records, so that I can track and organize ad site data effectively.",
         "services": [
-          "AuthLoginServiceImpl"
+          "AdSiteService",
+          "AdSiteServiceImpl"
         ],
         "controllers": [
-          "AuthLoginService"
+          "AdSiteController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage ad dao operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage ad records, so that I can track and organize ad data effectively.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
         "controllers": [
-          "AdDao"
+          "HelloController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage ad save form2 ad converter operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage auth permission rule records, so that I can track and organize auth permission rule data effectively.",
+        "services": [
+          "AuthLoginService",
+          "AuthRoleAdminService"
+        ],
         "controllers": [
-          "AdSaveForm2AdConverter"
+          "AuthAdminController",
+          "AuthPermissionRuleController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage ad service operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to create and manage auth role admin records, so that I can track and organize auth role admin data effectively.",
         "services": [
-          "AdServiceImpl"
+          "AuthLoginService",
+          "AuthRoleAdminService"
         ],
         "controllers": [
-          "AdService"
+          "AuthAdminController",
+          "AuthPermissionRuleController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdController[\"AdController\"]\n    AdDao[\"AdDao\"]\n    AdSaveForm2AdConverter[\"AdSaveForm2AdConverter\"]\n    AdService[\"AdService\"]\n    AdSite[\"AdSite\"]\n    AdSiteController[\"AdSiteController\"]\n    AuthAdminController[\"AuthAdminController\"]\n    AuthLoginService[\"AuthLoginService\"]\n    AuthPermissionRule[\"AuthPermissionRule\"]\n    AuthPermissionRuleController[\"AuthPermissionRuleController\"]\n    AuthRoleController[\"AuthRoleController\"]\n    AuthRoleDao[\"AuthRoleDao\"]\n    AuthRuleAnnotation[\"AuthRuleAnnotation\"]\n    AuthorizeAspect[\"AuthorizeAspect\"]\n    Date2LongSerializer[\"Date2LongSerializer\"]\n    DruidStatFilter[\"DruidStatFilter\"]\n    GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n    HelloController[\"HelloController\"]\n    LoginController[\"LoginController\"]\n    LongList2StringConverter[\"LongList2StringConverter\"]\n    UploadController[\"UploadController\"]\n  end\n  subgraph Services\n    AdServiceImpl[\"AdServiceImpl\"]\n    AdSiteService[\"AdSiteService\"]\n    AdSiteServiceImpl[\"AdSiteServiceImpl\"]\n    AuthAdminService[\"AuthAdminService\"]\n    AuthAdminServiceImpl[\"AuthAdminServiceImpl\"]\n    AuthLoginServiceImpl[\"AuthLoginServiceImpl\"]\n    AuthPermissionRuleService[\"AuthPermissionRuleService\"]\n    AuthPermissionRuleServiceImpl[\"AuthPermissionRuleServiceImpl\"]\n    AuthPermissionService[\"AuthPermissionService\"]\n    AuthPermissionServiceImpl[\"AuthPermissionServiceImpl\"]\n    AuthRoleAdminService[\"AuthRoleAdminService\"]\n    AuthRoleAdminServiceImpl[\"AuthRoleAdminServiceImpl\"]\n    AuthRoleService[\"AuthRoleService\"]\n    AuthRoleServiceImpl[\"AuthRoleServiceImpl\"]\n  end\n  subgraph Data_Access\n    AdSiteDao[\"AdSiteDao\"]\n    AuthAdminDao[\"AuthAdminDao\"]\n    AuthPermissionDao[\"AuthPermissionDao\"]\n    AuthPermissionRuleDao[\"AuthPermissionRuleDao\"]\n    AuthRoleAdminDao[\"AuthRoleAdminDao\"]\n  end\n  subgraph Security\n    CorsFilter[\"CorsFilter\"]\n  end\n  subgraph Infrastructure\n    CorsConfig[\"CorsConfig\"]\n    PageHelperConfig[\"PageHelperConfig\"]\n    PublicFileUrlConfig[\"PublicFileUrlConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AuthRuleAnnotation[\"AuthRuleAnnotation\"]\n        AuthorizeAspect[\"AuthorizeAspect\"]\n        DruidStatFilter[\"DruidStatFilter\"]\n        CorsFilter[\"CorsFilter\"]\n        UpdatePasswordRequest[\"UpdatePasswordRequest\"]\n        AuthAdminQueryRequest[\"AuthAdminQueryRequest\"]\n        AuthAdminSaveRequest[\"AuthAdminSaveRequest\"]\n        AuthRoleQueryRequest[\"AuthRoleQueryRequest\"]\n        AuthRoleSaveRequest[\"AuthRoleSaveRequest\"]\n        LoginRequest[\"LoginRequest\"]\n        AuthRoleAuthRequest[\"AuthRoleAuthRequest\"]\n        AuthPermissionRuleSaveRequest[\"AuthPermissionRuleSaveRequest\"]\n        LoginUserInfoResponse[\"LoginUserInfoResponse\"]\n        AuthAdminResponse[\"AuthAdminResponse\"]\n        AuthPermissionRuleMergeResponse[\"AuthPermissionRuleMergeResponse\"]\n        AuthRoleResponse[\"AuthRoleResponse\"]\n        AuthAdminRoleResponse[\"AuthAdminRoleResponse\"]\n        JwtUtils[\"JwtUtils\"]\n    end\n    subgraph Infrastructure\n        PageHelperConfig[\"PageHelperConfig\"]\n        DruidStatViewServlet[\"DruidStatViewServlet\"]\n        PublicFileUrlConfig[\"PublicFileUrlConfig\"]\n        CorsConfig[\"CorsConfig\"]\n        CookieConstant[\"CookieConstant\"]\n        CacheUtils[\"CacheUtils\"]\n        TreeUtils[\"TreeUtils\"]\n        PublicFileUtils[\"PublicFileUtils\"]\n        IpUtils[\"IpUtils\"]\n        PermissionRuleTreeUtils[\"PermissionRuleTreeUtils\"]\n        PasswordUtils[\"PasswordUtils\"]\n        Date2LongSerializer[\"Date2LongSerializer\"]\n        CacheConstant[\"CacheConstant\"]\n        LongList2StringConverter[\"LongList2StringConverter\"]\n        String2LongListConverter[\"String2LongListConverter\"]\n        String2StringListConverter[\"String2StringListConverter\"]\n        ResultEnum[\"ResultEnum\"]\n        BaseLimitRequest[\"BaseLimitRequest\"]\n        BaseRequest[\"BaseRequest\"]\n        BaseResponse[\"BaseResponse\"]\n        ResultVOUtils[\"ResultVOUtils\"]\n    end\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        AdSiteController[\"AdSiteController\"]\n        AdController[\"AdController\"]\n        AuthAdminController[\"AuthAdminController\"]\n        AuthPermissionRuleController[\"AuthPermissionRuleController\"]\n        AuthRoleController[\"AuthRoleController\"]\n        LoginController[\"LoginController\"]\n        UploadController[\"UploadController\"]\n    end\n    subgraph Data_Access\n        AdDao[\"AdDao\"]\n        AdSiteDao[\"AdSiteDao\"]\n        AuthRoleDao[\"AuthRoleDao\"]\n        AuthPermissionDao[\"AuthPermissionDao\"]\n        AuthRoleAdminDao[\"AuthRoleAdminDao\"]\n        AuthAdminDao[\"AuthAdminDao\"]\n        AuthPermissionRuleDao[\"AuthPermissionRuleDao\"]\n        AdSite[\"AdSite\"]\n        Ad[\"Ad\"]\n        AuthPermissionRule[\"AuthPermissionRule\"]\n        AuthRoleAdmin[\"AuthRoleAdmin\"]\n        AuthRole[\"AuthRole\"]\n        AuthAdmin[\"AuthAdmin\"]\n        AuthPermission[\"AuthPermission\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        AdService[\"AdService\"]\n        AdSiteService[\"AdSiteService\"]\n        AdServiceImpl[\"AdServiceImpl\"]\n        AdSiteServiceImpl[\"AdSiteServiceImpl\"]\n        AuthLoginService[\"AuthLoginService\"]\n        AuthRoleAdminService[\"AuthRoleAdminService\"]\n        AuthPermissionRuleService[\"AuthPermissionRuleService\"]\n        AuthPermissionService[\"AuthPermissionService\"]\n        AuthAdminService[\"AuthAdminService\"]\n        AuthRoleService[\"AuthRoleService\"]\n        AuthPermissionRuleServiceImpl[\"AuthPermissionRuleServiceImpl\"]\n        AuthLoginServiceImpl[\"AuthLoginServiceImpl\"]\n        AuthPermissionServiceImpl[\"AuthPermissionServiceImpl\"]\n        AuthRoleAdminServiceImpl[\"AuthRoleAdminServiceImpl\"]\n        AuthRoleServiceImpl[\"AuthRoleServiceImpl\"]\n        AuthAdminServiceImpl[\"AuthAdminServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

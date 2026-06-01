@@ -1,42 +1,62 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include auth, test, user details impl. Core business data revolves around Role, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user, role. The platform provides capabilities for user details, user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include content management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "UserDetailsImpl"
+        ],
         "controllers": [
           "AuthController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
-          "UserDetailsServiceImpl"
+          "UserDetailsServiceImpl",
+          "UserDetailsImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "AuthController"
+        ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage test operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage role records, so that I can track and organize role data effectively.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with test functionality, so that I can accomplish my test-related tasks.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
         "controllers": [
           "TestController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a User, I want to interact with user details impl functionality, so that the system fulfills my needs.",
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
           "UserDetailsServiceImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "AuthController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthController[\"AuthController\"]\n    TestController[\"TestController\"]\n  end\n  subgraph Services\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n  end\n  subgraph Data_Access\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthTokenFilter[\"AuthTokenFilter\"]\n    JwtUtils[\"JwtUtils\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        TestController[\"TestController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Role[\"Role\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Security\n        ERole[\"ERole\"]\n        SignupRequest[\"SignupRequest\"]\n        LoginRequest[\"LoginRequest\"]\n        MessageResponse[\"MessageResponse\"]\n        JwtResponse[\"JwtResponse\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtUtils[\"JwtUtils\"]\n        AuthEntryPointJwt[\"AuthEntryPointJwt\"]\n        AuthTokenFilter[\"AuthTokenFilter\"]\n    end\n    subgraph Services\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        UserDetailsImpl[\"UserDetailsImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
   }
 }

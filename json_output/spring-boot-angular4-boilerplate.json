@@ -1,50 +1,63 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include auth, base, index. Core business data revolves around Role, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user, role. The platform provides capabilities for user, jwt user details, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "JwtUserDetailsServiceImpl",
+          "UserServiceImpl"
+        ],
         "controllers": [
           "AuthController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
+          "UserService",
           "JwtUserDetailsServiceImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "IndexController"
+        ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage base operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage role records, so that I can track and organize role data effectively.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "BaseController"
+          "IndexController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage index operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
           "IndexController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with jwt user details impl functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to interact with base functionality, so that I can accomplish my base-related tasks.",
         "services": [
-          "JwtUserDetailsServiceImpl"
+          "UserService"
         ],
-        "controllers": []
+        "controllers": [
+          "BaseController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthController[\"AuthController\"]\n    BaseController[\"BaseController\"]\n    IndexController[\"IndexController\"]\n  end\n  subgraph Services\n    JwtUserDetailsServiceImpl[\"JwtUserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Role[\"Role\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n    JwtUtil[\"JwtUtil\"]\n  end\n  subgraph Infrastructure\n    RestConfiguration[\"RestConfiguration\"]\n    WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        RestConfiguration[\"RestConfiguration\"]\n        DummyDataGenerator[\"DummyDataGenerator\"]\n    end\n    subgraph Security\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        JwtUtil[\"JwtUtil\"]\n        JwtAuthenticationRequest[\"JwtAuthenticationRequest\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtUser[\"JwtUser\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        JwtUserFactory[\"JwtUserFactory\"]\n        JwtAuthenticationResponse[\"JwtAuthenticationResponse\"]\n    end\n    subgraph Controllers\n        IndexController[\"IndexController\"]\n        AuthController[\"AuthController\"]\n        BaseController[\"BaseController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Role[\"Role\"]\n        UserRepository[\"UserRepository\"]\n        JsonMapper[\"JsonMapper\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n        JwtUserDetailsServiceImpl[\"JwtUserDetailsServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

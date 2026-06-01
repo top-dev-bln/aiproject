@@ -1,34 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, e-commerce domain. It serves Customer, User as its primary actors. The main business capabilities include example, user service. Core business data revolves around CodelessDao, User.",
+    "free_text_description": "This system is a microservices platform that serves User, Candidate roles. It manages core business objects including user. The platform provides capabilities for json handler method return value handler, user. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
-        "controllers": [
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
           "UserService"
+        ],
+        "controllers": [
+          "CodelessControllerMethodFactory"
         ]
       },
       {
         "id": 2,
-        "story": "As a Customer, I want to manage example operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "ExampleController"
+          "CodelessControllerMethodFactory"
         ]
       },
       {
         "id": 3,
-        "story": "As a Customer, I want to manage user service operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to interact with codeless method factory functionality, so that I can accomplish my codeless method factory-related tasks.",
+        "services": [
+          "JsonHandlerMethodReturnValueHandler"
+        ],
         "controllers": [
-          "UserService"
+          "CodelessControllerMethodFactory"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with codeless proxy functionality, so that I can accomplish my codeless proxy-related tasks.",
+        "services": [
+          "JsonHandlerMethodReturnValueHandler"
+        ],
+        "controllers": [
+          "CodelessControllerProxy"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with example functionality, so that I can accomplish my example-related tasks.",
+        "services": [
+          "JsonHandlerMethodReturnValueHandler"
+        ],
+        "controllers": [
+          "ExampleController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ExampleController[\"ExampleController\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    CodelessDao[\"CodelessDao\"]\n    User[\"User\"]\n  end\n  subgraph Infrastructure\n    CodelessPageResult[\"CodelessPageResult\"]\n    CodelessWebAutoConfiguration[\"CodelessWebAutoConfiguration\"]\n    EnableCodeless[\"EnableCodeless\"]\n  end"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CodelessPageResult[\"CodelessPageResult\"]\n        CodelessAutoGenerateHandlerMapping[\"CodelessAutoGenerateHandlerMapping\"]\n        CodelessEntityMetadata[\"CodelessEntityMetadata\"]\n        CodelessServiceProxy[\"CodelessServiceProxy\"]\n        EnableCodeless[\"EnableCodeless\"]\n        CodelessScannerRegistrar[\"CodelessScannerRegistrar\"]\n        CodelessScan[\"CodelessScan\"]\n        StringUtils[\"StringUtils\"]\n        JsonUtils[\"JsonUtils\"]\n        DefaultMessagesProperties[\"DefaultMessagesProperties\"]\n        CodelessWebAutoConfiguration[\"CodelessWebAutoConfiguration\"]\n    end\n    subgraph Controllers\n        CodelessControllerMethodFactory[\"CodelessControllerMethodFactory\"]\n        CodelessControllerProxy[\"CodelessControllerProxy\"]\n        ExampleController[\"ExampleController\"]\n    end\n    subgraph Data_Access\n        CodelessDaoProxy[\"CodelessDaoProxy\"]\n        CodelessDaoFactoryBean[\"CodelessDaoFactoryBean\"]\n        CodelessDao[\"CodelessDao\"]\n        User[\"User\"]\n    end\n    subgraph Services\n        JsonHandlerMethodReturnValueHandler[\"JsonHandlerMethodReturnValueHandler\"]\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

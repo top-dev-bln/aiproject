@@ -1,27 +1,56 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include security, testing, validation. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. The platform provides capabilities for login failures clearing handler, in memory login failures manager, login failures counting handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage security operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "LoginFailuresClearingHandler",
+          "InMemoryLoginFailuresManager",
+          "LoginFailuresCountingHandler"
+        ],
         "controllers": [
           "SecurityController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage testing operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "InMemoryLoginFailuresManager",
+          "LoginFailuresManager"
+        ],
+        "controllers": [
+          "SecurityController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with security functionality, so that I can accomplish my security-related tasks.",
+        "services": [
+          "LoginFailuresClearingHandler"
+        ],
+        "controllers": [
+          "SecurityController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with testing functionality, so that I can accomplish my testing-related tasks.",
+        "services": [
+          "LoginFailuresClearingHandler"
+        ],
         "controllers": [
           "TestingController"
         ]
       },
       {
-        "id": 3,
-        "story": "As a User, I want to manage validation operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 5,
+        "story": "As a User, I want to interact with validation functionality, so that I can accomplish my validation-related tasks.",
+        "services": [
+          "LoginFailuresClearingHandler"
+        ],
         "controllers": [
           "ValidationController"
         ]
@@ -29,6 +58,6 @@
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SecurityController[\"SecurityController\"]\n    TestingController[\"TestingController\"]\n    ValidationController[\"ValidationController\"]\n  end\n  subgraph Security\n    AccessConfiguration[\"AccessConfiguration\"]\n    LoginFailuresClearingHandler[\"LoginFailuresClearingHandler\"]\n    RecaptchaAuthenticationFilter[\"RecaptchaAuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    SecurityConfiguration[\"SecurityConfiguration\"]\n    TestingConfiguration[\"TestingConfiguration\"]\n    ValidationConfiguration[\"ValidationConfiguration\"]\n  end\n  Controllers --> Security\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        RecaptchaProperties[\"RecaptchaProperties\"]\n        ValidationConfiguration[\"ValidationConfiguration\"]\n    end\n    subgraph Security\n        AccessConfiguration[\"AccessConfiguration\"]\n        ResponseData[\"ResponseData\"]\n        RecaptchaAuthenticationFilter[\"RecaptchaAuthenticationFilter\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        RecaptchaAwareRedirectStrategy[\"RecaptchaAwareRedirectStrategy\"]\n        FormLoginConfigurerEnhancer[\"FormLoginConfigurerEnhancer\"]\n    end\n    subgraph Controllers\n        SecurityController[\"SecurityController\"]\n        TestingController[\"TestingController\"]\n        ValidationController[\"ValidationController\"]\n    end\n    subgraph Services\n        LoginFailuresClearingHandler[\"LoginFailuresClearingHandler\"]\n        InMemoryLoginFailuresManager[\"InMemoryLoginFailuresManager\"]\n        LoginFailuresCountingHandler[\"LoginFailuresCountingHandler\"]\n        LoginFailuresManager[\"LoginFailuresManager\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

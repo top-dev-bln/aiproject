@@ -1,54 +1,72 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include cache utils, check login annotation, cors filter. Core business data revolves around Group, GroupMsgDao, GroupUserDao, UserFriendAskDao.",
+    "free_text_description": "This system is an user management platform that serves User, Admin roles. It manages core business objects including group, group user, group msg, user qq. The platform provides capabilities for global exception handler, group user, group. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include social functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to log into the system, so that I can access my personalized dashboard and features.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "GroupUserService",
+          "GroupUserServiceImpl",
+          "QqWebAuthService"
+        ],
         "controllers": [
-          "CheckLoginAnnotation"
+          "GroupUserController",
+          "UserLoginController",
+          "UserFriendMsgController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage group records, so that I can track and organize group data effectively.",
         "services": [
-          "GroupUserServiceImpl"
+          "GroupUserService",
+          "GroupService"
         ],
         "controllers": [
+          "GroupMsgController",
           "GroupUserController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "story": "As a User, I want to create and manage group user records, so that I can track and organize group user data effectively.",
         "services": [
-          "QqWebAuthServiceImpl"
+          "GroupUserService",
+          "GroupService"
         ],
         "controllers": [
-          "QqWebAuthService"
+          "GroupMsgController",
+          "GroupUserController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "story": "As a User, I want to create and manage group msg records, so that I can track and organize group msg data effectively.",
         "services": [
-          "UserProfileService"
+          "GroupUserService",
+          "GroupService"
         ],
-        "controllers": []
+        "controllers": [
+          "GroupMsgController",
+          "GroupUserController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage cache utils operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage user qq records, so that I can track and organize user qq data effectively.",
+        "services": [
+          "GroupUserService",
+          "GroupUserServiceImpl"
+        ],
         "controllers": [
-          "CacheUtils"
+          "GroupUserController",
+          "UserLoginController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CacheUtils[\"CacheUtils\"]\n    CheckLoginAnnotation[\"CheckLoginAnnotation\"]\n    CorsFilter[\"CorsFilter\"]\n    DruidStatFilter[\"DruidStatFilter\"]\n    GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n    GroupDao[\"GroupDao\"]\n    GroupIndexController[\"GroupIndexController\"]\n    GroupMsgController[\"GroupMsgController\"]\n    GroupUserController[\"GroupUserController\"]\n    GroupUserService[\"GroupUserService\"]\n    HelloController[\"HelloController\"]\n    QqWebAuthService[\"QqWebAuthService\"]\n    UserDao[\"UserDao\"]\n    UserFriendAskController[\"UserFriendAskController\"]\n    UserFriendController[\"UserFriendController\"]\n    UserFriendMsgController[\"UserFriendMsgController\"]\n    UserIndexController[\"UserIndexController\"]\n    UserLoginController[\"UserLoginController\"]\n    UserService[\"UserService\"]\n    WSSocketHolder[\"WSSocketHolder\"]\n  end\n  subgraph Services\n    GroupMsgService[\"GroupMsgService\"]\n    GroupMsgServiceImpl[\"GroupMsgServiceImpl\"]\n    GroupService[\"GroupService\"]\n    GroupServiceImpl[\"GroupServiceImpl\"]\n    GroupUserServiceImpl[\"GroupUserServiceImpl\"]\n    QqWebAuthServiceImpl[\"QqWebAuthServiceImpl\"]\n    UserFriendAskService[\"UserFriendAskService\"]\n    UserFriendAskServiceImpl[\"UserFriendAskServiceImpl\"]\n    UserFriendMsgService[\"UserFriendMsgService\"]\n    UserFriendMsgServiceImpl[\"UserFriendMsgServiceImpl\"]\n    UserFriendService[\"UserFriendService\"]\n    UserFriendServiceImpl[\"UserFriendServiceImpl\"]\n    UserProfileService[\"UserProfileService\"]\n    UserProfileServiceImpl[\"UserProfileServiceImpl\"]\n    UserQqService[\"UserQqService\"]\n    UserQqServiceImpl[\"UserQqServiceImpl\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Group[\"Group\"]\n    GroupMsgDao[\"GroupMsgDao\"]\n    GroupUserDao[\"GroupUserDao\"]\n    UserFriendAskDao[\"UserFriendAskDao\"]\n    UserFriendDao[\"UserFriendDao\"]\n    UserFriendMsgDao[\"UserFriendMsgDao\"]\n    UserProfileDao[\"UserProfileDao\"]\n    UserQq[\"UserQq\"]\n    UserQqDao[\"UserQqDao\"]\n  end\n  subgraph Infrastructure\n    CorsConfig[\"CorsConfig\"]\n    OkHttpConfig[\"OkHttpConfig\"]\n    PublicFileUrlConfig[\"PublicFileUrlConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        DruidStatFilter[\"DruidStatFilter\"]\n        CorsFilter[\"CorsFilter\"]\n        JwtUtils[\"JwtUtils\"]\n    end\n    subgraph Infrastructure\n        OkHttpConfig[\"OkHttpConfig\"]\n        DruidStatViewServlet[\"DruidStatViewServlet\"]\n        PublicFileUrlConfig[\"PublicFileUrlConfig\"]\n        CorsConfig[\"CorsConfig\"]\n        WSMsgTypeConstant[\"WSMsgTypeConstant\"]\n        WSReqTypeConstant[\"WSReqTypeConstant\"]\n        WSResTypeConstant[\"WSResTypeConstant\"]\n        CacheUtils[\"CacheUtils\"]\n        UserLoginUtils[\"UserLoginUtils\"]\n        PublicFileUtils[\"PublicFileUtils\"]\n        GroupUserUtils[\"GroupUserUtils\"]\n        WSBaseReqUtils[\"WSBaseReqUtils\"]\n        SpringBeanFactoryUtils[\"SpringBeanFactoryUtils\"]\n        PageUtils[\"PageUtils\"]\n        UserFriendUtils[\"UserFriendUtils\"]\n        OkHttpUtil[\"OkHttpUtil\"]\n        PasswordUtils[\"PasswordUtils\"]\n        CookieConstant[\"CookieConstant\"]\n        RedisConstant[\"RedisConstant\"]\n        OrderForm2OrderDTOConverter[\"OrderForm2OrderDTOConverter\"]\n        ResultEnum[\"ResultEnum\"]\n        WSBaseReqProtoOuterClass[\"WSBaseReqProtoOuterClass\"]\n        WSBaseResProtoOuterClass[\"WSBaseResProtoOuterClass\"]\n        WSMessageResProtoOuterClass[\"WSMessageResProtoOuterClass\"]\n        WSUserResProtoOuterClass[\"WSUserResProtoOuterClass\"]\n        ResultVOUtils[\"ResultVOUtils\"]\n    end\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        GroupMsgController[\"GroupMsgController\"]\n        GroupUserController[\"GroupUserController\"]\n        GroupIndexController[\"GroupIndexController\"]\n        UserLoginController[\"UserLoginController\"]\n        UserFriendMsgController[\"UserFriendMsgController\"]\n        UserIndexController[\"UserIndexController\"]\n        UserFriendAskController[\"UserFriendAskController\"]\n        UserFriendController[\"UserFriendController\"]\n    end\n    subgraph Data_Access\n        GroupDao[\"GroupDao\"]\n        GroupMsgDao[\"GroupMsgDao\"]\n        GroupUserDao[\"GroupUserDao\"]\n        UserDao[\"UserDao\"]\n        UserFriendAskDao[\"UserFriendAskDao\"]\n        UserProfileDao[\"UserProfileDao\"]\n        UserFriendDao[\"UserFriendDao\"]\n        UserQqDao[\"UserQqDao\"]\n        UserFriendMsgDao[\"UserFriendMsgDao\"]\n        Group[\"Group\"]\n        GroupUser[\"GroupUser\"]\n        GroupMsg[\"GroupMsg\"]\n        UserQq[\"UserQq\"]\n        User[\"User\"]\n        UserFriendAsk[\"UserFriendAsk\"]\n        UserProfile[\"UserProfile\"]\n        UserFriendMsg[\"UserFriendMsg\"]\n        UserFriend[\"UserFriend\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        GroupUserService[\"GroupUserService\"]\n        GroupService[\"GroupService\"]\n        GroupMsgService[\"GroupMsgService\"]\n        GroupServiceImpl[\"GroupServiceImpl\"]\n        GroupUserServiceImpl[\"GroupUserServiceImpl\"]\n        GroupMsgServiceImpl[\"GroupMsgServiceImpl\"]\n        QqWebAuthService[\"QqWebAuthService\"]\n        QqWebAuthServiceImpl[\"QqWebAuthServiceImpl\"]\n        UserService[\"UserService\"]\n        UserFriendAskService[\"UserFriendAskService\"]\n        UserFriendMsgService[\"UserFriendMsgService\"]\n        UserFriendService[\"UserFriendService\"]\n        UserQqService[\"UserQqService\"]\n        UserProfileService[\"UserProfileService\"]\n        UserQqServiceImpl[\"UserQqServiceImpl\"]\n        UserFriendServiceImpl[\"UserFriendServiceImpl\"]\n        UserProfileServiceImpl[\"UserProfileServiceImpl\"]\n        UserFriendMsgServiceImpl[\"UserFriendMsgServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserFriendAskServiceImpl[\"UserFriendAskServiceImpl\"]\n        WSServerHandler[\"WSServerHandler\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

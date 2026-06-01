@@ -1,34 +1,34 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, social media domain. It serves User as its primary actors. The main business capabilities include my1 impl, my2, my2 impl. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Content Creator roles. The platform provides capabilities for my4impl, my5impl, my3. Secondary concerns include API gateway functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to interact with my1 impl functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use my4impl capabilities, so that I can perform essential business operations.",
         "services": [
-          "MyService1Impl"
+          "MyService4Impl"
         ],
         "controllers": []
       },
       {
         "id": 2,
-        "story": "As a User, I want to interact with my2 functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use my5impl capabilities, so that I can perform essential business operations.",
         "services": [
-          "MyService2"
+          "MyService5Impl"
         ],
         "controllers": []
       },
       {
         "id": 3,
-        "story": "As a User, I want to interact with my2 impl functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use my3 capabilities, so that I can perform essential business operations.",
         "services": [
-          "MyService2Impl"
+          "MyService3"
         ],
         "controllers": []
       },
       {
         "id": 4,
-        "story": "As a User, I want to interact with my3 impl functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use my3impl capabilities, so that I can perform essential business operations.",
         "services": [
           "MyService3Impl"
         ],
@@ -36,15 +36,15 @@
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with my4 impl functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to use my6impl capabilities, so that I can perform essential business operations.",
         "services": [
-          "MyService4Impl"
+          "MyService6Impl"
         ],
         "controllers": []
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Services\n    MyService1Impl[\"MyService1Impl\"]\n    MyService2[\"MyService2\"]\n    MyService2Impl[\"MyService2Impl\"]\n    MyService3Impl[\"MyService3Impl\"]\n    MyService4Impl[\"MyService4Impl\"]\n    MyService5Impl[\"MyService5Impl\"]\n    MyService6Impl[\"MyService6Impl\"]\n  end\n  subgraph Security\n    AbstractInterceptor[\"AbstractInterceptor\"]\n    AbstractRegistrarInterceptor[\"AbstractRegistrarInterceptor\"]\n    MyInterceptor[\"MyInterceptor\"]\n  end\n  subgraph Infrastructure\n    MyAutoConfiguration[\"MyAutoConfiguration\"]\n    MyConfiguration[\"MyConfiguration\"]\n    MyConfigurationExtension[\"MyConfigurationExtension\"]\n  end\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        MatrixConstant[\"MatrixConstant\"]\n        ProxyConstant[\"ProxyConstant\"]\n        ProxyUtil[\"ProxyUtil\"]\n        MyConfigurationExtension[\"MyConfigurationExtension\"]\n        MyConfiguration[\"MyConfiguration\"]\n        MyAutoConfiguration[\"MyAutoConfiguration\"]\n    end\n    subgraph Services\n        MyService4Impl[\"MyService4Impl\"]\n        MyService5Impl[\"MyService5Impl\"]\n        MyService3[\"MyService3\"]\n        MyService3Impl[\"MyService3Impl\"]\n        MyService6Impl[\"MyService6Impl\"]\n        MyService2Impl[\"MyService2Impl\"]\n        MyService1Impl[\"MyService1Impl\"]\n        MyService1[\"MyService1\"]\n        MyBeanPostProcessor[\"MyBeanPostProcessor\"]\n        MyService2[\"MyService2\"]\n    end\n    Services --> Infrastructure"
   }
 }

@@ -1,9 +1,40 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, search domain. It serves User as its primary actors. Core business data revolves around Author, Book.",
-    "user_stories": []
+    "free_text_description": "This system is a distributed transactions platform that serves Content Creator, Candidate roles. It manages core business objects including author, book. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Content Creator, I want to create and manage author records, so that I can track and organize author data effectively.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to create and manage book records, so that I can track and organize book data effectively.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": []
+      }
+    ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Data_Access\n    Author[\"Author\"]\n    AuthorRepository[\"AuthorRepository\"]\n    Book[\"Book\"]\n    BookRepository[\"BookRepository\"]\n  end"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        MyProperties[\"MyProperties\"]\n    end\n    subgraph Data_Access\n        Author[\"Author\"]\n        Book[\"Book\"]\n        AuthorRepository[\"AuthorRepository\"]\n        BookRepository[\"BookRepository\"]\n    end\n    Data_Access --> Infrastructure"
   }
 }

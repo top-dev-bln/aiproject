@@ -1,10 +1,20 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include account, role, upload. Core business data revolves around AccountDO. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an user management platform that serves User, Admin roles. It manages core business objects including account do. The platform provides capabilities for my redis cache manager, abstract, service. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "ControllerLogAspect"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage account do records, so that I can track and organize account do data effectively.",
         "services": [
           "AccountService",
           "AccountServiceImpl"
@@ -14,43 +24,38 @@
         ]
       },
       {
-        "id": 2,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [
-          "UserDetailsServiceImpl"
-        ],
-        "controllers": []
-      },
-      {
         "id": 3,
-        "story": "As a User, I want to manage role operations, so that the relevant business process is handled efficiently.",
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
         "services": [
-          "RoleService",
-          "RoleServiceImpl"
+          "MyRedisCacheManager"
         ],
         "controllers": [
-          "RoleController"
+          "ControllerLogAspect"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage upload operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "MyRedisCacheManager"
+        ],
         "controllers": [
           "UploadController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with abstract functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to interact with controller log aspect functionality, so that I can accomplish my controller log aspect-related tasks.",
         "services": [
-          "AbstractService"
+          "MyRedisCacheManager"
         ],
-        "controllers": []
+        "controllers": [
+          "ControllerLogAspect"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountController[\"AccountController\"]\n    RoleController[\"RoleController\"]\n    UploadController[\"UploadController\"]\n  end\n  subgraph Services\n    AbstractService[\"AbstractService\"]\n    AccountService[\"AccountService\"]\n    AccountServiceImpl[\"AccountServiceImpl\"]\n    RoleService[\"RoleService\"]\n    RoleServiceImpl[\"RoleServiceImpl\"]\n    Service[\"Service\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n  end\n  subgraph Data_Access\n    AccountDO[\"AccountDO\"]\n  end\n  subgraph Security\n    AuthenticationFilter[\"AuthenticationFilter\"]\n    CorsFilter[\"CorsFilter\"]\n    MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n  end\n  subgraph Infrastructure\n    JasyptConfig[\"JasyptConfig\"]\n    RedisCacheConfig[\"RedisCacheConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    Swagger3Config[\"Swagger3Config\"]\n    ValidatorConfig[\"ValidatorConfig\"]\n    WebMvcConfig[\"WebMvcConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WithCustomSecurityContextFactory[\"WithCustomSecurityContextFactory\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtUtil[\"JwtUtil\"]\n        JwtConfigurationProperties[\"JwtConfigurationProperties\"]\n        MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n        CorsFilter[\"CorsFilter\"]\n        AuthenticationFilter[\"AuthenticationFilter\"]\n    end\n    subgraph Controllers\n        ControllerLogAspect[\"ControllerLogAspect\"]\n        RoleController[\"RoleController\"]\n        AccountController[\"AccountController\"]\n        UploadController[\"UploadController\"]\n    end\n    subgraph Services\n        MyRedisCacheManager[\"MyRedisCacheManager\"]\n        AbstractService[\"AbstractService\"]\n        Service[\"Service\"]\n        AccountService[\"AccountService\"]\n        RoleService[\"RoleService\"]\n        AccountServiceImpl[\"AccountServiceImpl\"]\n        RoleServiceImpl[\"RoleServiceImpl\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    end\n    subgraph Infrastructure\n        WebMvcConfig[\"WebMvcConfig\"]\n        ValidatorConfig[\"ValidatorConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        YamlPropertySourceFactory[\"YamlPropertySourceFactory\"]\n        Swagger3Config[\"Swagger3Config\"]\n        JasyptConfig[\"JasyptConfig\"]\n        RedisCacheConfig[\"RedisCacheConfig\"]\n        ProjectConstant[\"ProjectConstant\"]\n        RsaConfigurationProperties[\"RsaConfigurationProperties\"]\n        UploadConfigurationProperties[\"UploadConfigurationProperties\"]\n        IdUtils[\"IdUtils\"]\n        FileUtils[\"FileUtils\"]\n        RedisUtils[\"RedisUtils\"]\n        UrlUtils[\"UrlUtils\"]\n        IpUtils[\"IpUtils\"]\n        AssertUtils[\"AssertUtils\"]\n        ContextUtils[\"ContextUtils\"]\n        IdCardUtils[\"IdCardUtils\"]\n        DateUtils[\"DateUtils\"]\n        JsonUtils[\"JsonUtils\"]\n    end\n    subgraph Data_Access\n        MyMapper[\"MyMapper\"]\n        AccountMapper[\"AccountMapper\"]\n        RoleMapper[\"RoleMapper\"]\n        AccountDO[\"AccountDO\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

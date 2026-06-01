@@ -1,50 +1,64 @@
 {
   "input": {
-    "free_text_description": "The system operates in the e-commerce, microservices infrastructure domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include order service, order service impl, product service. Core business data revolves around Order, OrderReposity, Product, ProductReposity. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an e-commerce platform that serves User, Candidate roles. It manages core business objects including order, product, score, user. The platform provides capabilities for order, product, tcc score. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "OrderService"
+          "UserController",
+          "UserServiceImpl"
         ]
       },
       {
         "id": 2,
-        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
-        "services": [],
+        "story": "As a User, I want to create and manage order records, so that I can track and organize order data effectively.",
+        "services": [
+          "OrderService"
+        ],
         "controllers": [
-          "ProductService"
+          "OrderServiceImpl"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
+        "story": "As a User, I want to create and manage product records, so that I can track and organize product data effectively.",
+        "services": [
+          "ProductService"
+        ],
         "controllers": [
-          "UserController"
+          "ProductServiceImpl"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage order service operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage score records, so that I can track and organize score data effectively.",
+        "services": [
+          "TCCScoreService",
+          "ScoreService"
+        ],
         "controllers": [
-          "OrderService"
+          "ScoreServiceImpl",
+          "TCCScoreServiceImpl"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage order service impl operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "OrderServiceImpl"
+          "UserController",
+          "UserServiceImpl"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    OrderService[\"OrderService\"]\n    OrderServiceImpl[\"OrderServiceImpl\"]\n    ProductService[\"ProductService\"]\n    ProductServiceImpl[\"ProductServiceImpl\"]\n    ScoreServiceImpl[\"ScoreServiceImpl\"]\n    TCCScoreService[\"TCCScoreService\"]\n    TCCScoreServiceImpl[\"TCCScoreServiceImpl\"]\n    UserController[\"UserController\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Services\n    ScoreService[\"ScoreService\"]\n  end\n  subgraph Data_Access\n    Order[\"Order\"]\n    OrderReposity[\"OrderReposity\"]\n    Product[\"Product\"]\n    ProductReposity[\"ProductReposity\"]\n    Score[\"Score\"]\n    ScoreReposity[\"ScoreReposity\"]\n    User[\"User\"]\n    UserReposity[\"UserReposity\"]\n  end\n  subgraph Security\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    H2ServerConfiguration[\"H2ServerConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        UserController[\"UserController\"]\n        OrderServiceImpl[\"OrderServiceImpl\"]\n        ProductServiceImpl[\"ProductServiceImpl\"]\n        ScoreServiceImpl[\"ScoreServiceImpl\"]\n        TCCScoreServiceImpl[\"TCCScoreServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Infrastructure\n        H2ServerConfiguration[\"H2ServerConfiguration\"]\n        Beans[\"Beans\"]\n    end\n    subgraph Services\n        OrderService[\"OrderService\"]\n        ProductService[\"ProductService\"]\n        TCCScoreService[\"TCCScoreService\"]\n        ScoreService[\"ScoreService\"]\n        UserService[\"UserService\"]\n        MyHealthCheckHandler[\"MyHealthCheckHandler\"]\n    end\n    subgraph Data_Access\n        Order[\"Order\"]\n        Product[\"Product\"]\n        Score[\"Score\"]\n        User[\"User\"]\n        OrderReposity[\"OrderReposity\"]\n        ProductReposity[\"ProductReposity\"]\n        ScoreReposity[\"ScoreReposity\"]\n        UserReposity[\"UserReposity\"]\n    end\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

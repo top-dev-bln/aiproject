@@ -1,21 +1,23 @@
 {
   "input": {
-    "free_text_description": "The system operates in the blockchain, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include blockchain, blockchain transaction, web3j auto configuration.",
+    "free_text_description": "This system is a microservices platform that serves Admin roles. The platform provides capabilities for web3j auto configuration, web3j properties, blockchain transaction. Secondary concerns include distributed transactions functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
         "services": [
           "Web3jAutoConfiguration"
         ],
-        "controllers": []
+        "controllers": [
+          "BlockchainController"
+        ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage blockchain operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to interact with blockchain functionality, so that I can accomplish my blockchain-related tasks.",
         "services": [
-          "BlockchainService",
-          "BlockchainTransaction"
+          "BlockchainTransaction",
+          "BlockchainService"
         ],
         "controllers": [
           "BlockchainController"
@@ -23,23 +25,37 @@
       },
       {
         "id": 3,
-        "story": "As a User, I want to interact with blockchain transaction functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use web3j properties capabilities, so that I can perform essential business operations.",
         "services": [
-          "BlockchainTransaction"
+          "Web3jProperties"
         ],
-        "controllers": []
+        "controllers": [
+          "BlockchainController"
+        ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to interact with web3j auto configuration functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use blockchain transaction capabilities, so that I can perform essential business operations.",
         "services": [
-          "Web3jAutoConfiguration"
+          "BlockchainTransaction"
         ],
-        "controllers": []
+        "controllers": [
+          "BlockchainController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use blockchain capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BlockchainService"
+        ],
+        "controllers": [
+          "BlockchainController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    BlockchainController[\"BlockchainController\"]\n  end\n  subgraph Services\n    BlockchainService[\"BlockchainService\"]\n    BlockchainTransaction[\"BlockchainTransaction\"]\n    Web3jAutoConfiguration[\"Web3jAutoConfiguration\"]\n  end\n  Controllers --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        Web3jAutoConfiguration[\"Web3jAutoConfiguration\"]\n        Web3jProperties[\"Web3jProperties\"]\n        BlockchainTransaction[\"BlockchainTransaction\"]\n        BlockchainService[\"BlockchainService\"]\n    end\n    subgraph Controllers\n        BlockchainController[\"BlockchainController\"]\n    end\n    Controllers --> Services"
   }
 }

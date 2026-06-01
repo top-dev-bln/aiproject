@@ -1,26 +1,50 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, social media domain. It serves API Consumer, User as its primary actors. The main business capabilities include http, web socket.",
+    "free_text_description": "This system is an authentication platform that serves Developer, Content Creator roles. The platform provides capabilities for http server handler, i request parameter, web socket. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to interact with http functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to use http server handler capabilities, so that I can perform essential business operations.",
         "services": [
-          "HttpService"
+          "HttpServerHandler"
         ],
         "controllers": []
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to interact with web socket functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to use i request parameter capabilities, so that I can perform essential business operations.",
+        "services": [
+          "IRequestParameter"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Developer, I want to use web socket capabilities, so that I can perform essential business operations.",
         "services": [
           "WebSocketService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Developer, I want to use response post processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ResponsePostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to use request preprocessor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RequestPreprocessor"
         ],
         "controllers": []
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Services\n    HttpService[\"HttpService\"]\n    Service[\"Service\"]\n    WebSocketService[\"WebSocketService\"]\n  end"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        HttpServerHandler[\"HttpServerHandler\"]\n        IRequestParameter[\"IRequestParameter\"]\n        WebSocketService[\"WebSocketService\"]\n        ResponsePostProcessor[\"ResponsePostProcessor\"]\n        RequestPreprocessor[\"RequestPreprocessor\"]\n        HaProxyBackendServerHandler[\"HaProxyBackendServerHandler\"]\n        JsonParametrizedRequestHandler[\"JsonParametrizedRequestHandler\"]\n        HttpServiceProcessor[\"HttpServiceProcessor\"]\n        Service[\"Service\"]\n        HttpService[\"HttpService\"]\n        ParameterProcessor[\"ParameterProcessor\"]\n        JsonBeanRequestHandler[\"JsonBeanRequestHandler\"]\n        HttpRequestHandler[\"HttpRequestHandler\"]\n    end\n    subgraph Security\n        AuthorizationScope[\"AuthorizationScope\"]\n        Authorization[\"Authorization\"]\n    end\n    subgraph Infrastructure\n        Lambda[\"Lambda\"]\n    end\n    Services --> Security\n    Security --> Infrastructure"
   }
 }

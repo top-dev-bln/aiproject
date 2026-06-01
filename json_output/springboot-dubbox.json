@@ -1,52 +1,65 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, file management domain. It serves API Consumer, Admin, Customer, System, User as its primary actors. The main business capabilities include authentication, base, base entity. Core business data revolves around AbstractAuthUser, AuthUserFactory, CrudDao, DataEntity. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. It manages core business objects including auth user, sys role, trip user, sys user. The platform provides capabilities for user details, base dao, crud dao. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "ITripUserService",
+          "TripUserService"
+        ],
         "controllers": [
-          "AuthenticationController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
-        "controllers": [
+          "AuthenticationController",
+          "TripUserController",
           "SysUserController"
         ]
       },
       {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 2,
+        "story": "As a Admin, I want to create and manage auth user records, so that I can track and organize auth user data effectively.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
         "controllers": [
           "AuthenticationController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage base operations, so that the relevant business process is handled efficiently.",
+        "id": 3,
+        "story": "As a Admin, I want to create and manage sys role records, so that I can track and organize sys role data effectively.",
         "services": [
-          "BaseDao"
+          "UserDetailsServiceImpl"
         ],
         "controllers": [
-          "BaseController"
+          "SysRoleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage trip user records, so that I can track and organize trip user data effectively.",
+        "services": [
+          "ITripUserService",
+          "TripUserService"
+        ],
+        "controllers": [
+          "TripUserController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage base entity operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage sys user records, so that I can track and organize sys user data effectively.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
         "controllers": [
-          "BaseEntity"
+          "SysUserController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    BaseController[\"BaseController\"]\n    BaseEntity[\"BaseEntity\"]\n    CurrencyRateController[\"CurrencyRateController\"]\n    CustomErrorController[\"CustomErrorController\"]\n    DashboardController[\"DashboardController\"]\n    ICaptchaService[\"ICaptchaService\"]\n    ShortMsgController[\"ShortMsgController\"]\n    SysMenuController[\"SysMenuController\"]\n    SysRole[\"SysRole\"]\n    SysRoleController[\"SysRoleController\"]\n    SysUserController[\"SysUserController\"]\n    TripUserController[\"TripUserController\"]\n    UserController[\"UserController\"]\n    YahooRateBean[\"YahooRateBean\"]\n  end\n  subgraph Services\n    BaseDao[\"BaseDao\"]\n    CaptchaService[\"CaptchaService\"]\n    CrudService[\"CrudService\"]\n    CurrencyRateService[\"CurrencyRateService\"]\n    DynamicDataSourceTransactionManager[\"DynamicDataSourceTransactionManager\"]\n    ICurrencyRateService[\"ICurrencyRateService\"]\n    ISystemService[\"ISystemService\"]\n    ITripUserService[\"ITripUserService\"]\n    SystemService[\"SystemService\"]\n    TripUserService[\"TripUserService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    YahooRateService[\"YahooRateService\"]\n  end\n  subgraph Data_Access\n    AbstractAuthUser[\"AbstractAuthUser\"]\n    AuthUserFactory[\"AuthUserFactory\"]\n    CrudDao[\"CrudDao\"]\n    DataEntity[\"DataEntity\"]\n    RedisRepository[\"RedisRepository\"]\n    YoupuPipeline[\"YoupuPipeline\"]\n  end\n  subgraph Security\n    AuthenticationTokenFilter[\"AuthenticationTokenFilter\"]\n    MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n    TokenUtil[\"TokenUtil\"]\n  end\n  subgraph Infrastructure\n    AbstractWebSecurityConfig[\"AbstractWebSecurityConfig\"]\n    CacheConfig[\"CacheConfig\"]\n    DatasourceConfig[\"DatasourceConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n    UploadConfig[\"UploadConfig\"]\n    WebConfig[\"WebConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        AuthUserFactory[\"AuthUserFactory\"]\n        TokenUtil[\"TokenUtil\"]\n        AbstractWebSecurityConfig[\"AbstractWebSecurityConfig\"]\n        MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n        AbstractTokenUtil[\"AbstractTokenUtil\"]\n        AuthenticationTokenFilter[\"AuthenticationTokenFilter\"]\n        AbstractAuthUser[\"AbstractAuthUser\"]\n    end\n    subgraph Controllers\n        BaseController[\"BaseController\"]\n        AuthenticationController[\"AuthenticationController\"]\n        DashboardController[\"DashboardController\"]\n        TripUserController[\"TripUserController\"]\n        SysUserController[\"SysUserController\"]\n        SysMenuController[\"SysMenuController\"]\n        SysRoleController[\"SysRoleController\"]\n        CustomErrorController[\"CustomErrorController\"]\n        ShortMsgController[\"ShortMsgController\"]\n        UserController[\"UserController\"]\n        CurrencyRateController[\"CurrencyRateController\"]\n    end\n    subgraph Services\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        BaseDao[\"BaseDao\"]\n        CrudDao[\"CrudDao\"]\n        DynamicDataSourceTransactionManager[\"DynamicDataSourceTransactionManager\"]\n        DynamicDataSourceHolder[\"DynamicDataSourceHolder\"]\n        DynamicDataSourceGlobal[\"DynamicDataSourceGlobal\"]\n        DynamicDataSource[\"DynamicDataSource\"]\n        DynamicPlugin[\"DynamicPlugin\"]\n        CrudService[\"CrudService\"]\n        FileManager[\"FileManager\"]\n        ICaptchaService[\"ICaptchaService\"]\n        ICurrencyRateService[\"ICurrencyRateService\"]\n        ISystemService[\"ISystemService\"]\n        ITripUserService[\"ITripUserService\"]\n        YoupuProcessor[\"YoupuProcessor\"]\n        CaptchaService[\"CaptchaService\"]\n        TripUserService[\"TripUserService\"]\n        CurrencyRateService[\"CurrencyRateService\"]\n        SystemService[\"SystemService\"]\n        YahooRateService[\"YahooRateService\"]\n    end\n    subgraph Data_Access\n        AuthUser[\"AuthUser\"]\n        SysRole[\"SysRole\"]\n        TripUser[\"TripUser\"]\n        SysUser[\"SysUser\"]\n        SysMenu[\"SysMenu\"]\n        RedisRepository[\"RedisRepository\"]\n        JsonMapper[\"JsonMapper\"]\n        YoupuPipeline[\"YoupuPipeline\"]\n        TripUserMapper[\"TripUserMapper\"]\n        SysMenuMapper[\"SysMenuMapper\"]\n        SysRoleMapper[\"SysRoleMapper\"]\n        SysUserMapper[\"SysUserMapper\"]\n    end\n    subgraph Infrastructure\n        BaseEntity[\"BaseEntity\"]\n        Paging[\"Paging\"]\n        DataEntity[\"DataEntity\"]\n        RedisConfig[\"RedisConfig\"]\n        DiskFileOperator[\"DiskFileOperator\"]\n        FileOperator[\"FileOperator\"]\n        AbstractFileOperator[\"AbstractFileOperator\"]\n        OssFileOperator[\"OssFileOperator\"]\n        FileIndex[\"FileIndex\"]\n        WebHelper[\"WebHelper\"]\n        FileHelper[\"FileHelper\"]\n        Reflections[\"Reflections\"]\n        Collections3[\"Collections3\"]\n        DateHelper[\"DateHelper\"]\n        RandomHelper[\"RandomHelper\"]\n        ZxingHelper[\"ZxingHelper\"]\n        BeanValidators[\"BeanValidators\"]\n        StringHelper[\"StringHelper\"]\n        PinyinUtil[\"PinyinUtil\"]\n        NumberHelper[\"NumberHelper\"]\n        UploadConfig[\"UploadConfig\"]\n        WebConfig[\"WebConfig\"]\n        ContainerAccessLogCustomizer[\"ContainerAccessLogCustomizer\"]\n        StringEditor[\"StringEditor\"]\n        DateEditor[\"DateEditor\"]\n        WebUtils[\"WebUtils\"]\n        RequestLimitContract[\"RequestLimitContract\"]\n        RequestLimit[\"RequestLimit\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        CacheConfig[\"CacheConfig\"]\n        DruidStatViewServlet[\"DruidStatViewServlet\"]\n        DatasourceConfig[\"DatasourceConfig\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

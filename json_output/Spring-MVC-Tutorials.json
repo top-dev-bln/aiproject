@@ -1,30 +1,23 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, file management domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include basic, book, custom error. Core business data revolves around Book, Department, Employee, EmployeeDAO. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. It manages core business objects including user, book, employee, department. The platform provides capabilities for rest exception handler, book repository, employee. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "FileService"
+          "UserService",
+          "UserServiceImpl",
+          "CustomUserDetailsService"
         ],
         "controllers": [
-          "FileController"
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to send and receive messages, so that I can communicate with other users in real time.",
-        "services": [],
-        "controllers": [
-          "MessagePublisher"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a Candidate, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
-          "CustomUserDetailsService",
           "UserService",
           "UserServiceImpl"
         ],
@@ -33,26 +26,38 @@
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage basic operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "BasicController"
-        ]
-      },
-      {
-        "id": 5,
-        "story": "As a API Consumer, I want to manage book operations, so that the relevant business process is handled efficiently.",
+        "id": 3,
+        "story": "As a Candidate, I want to create and manage book records, so that I can track and organize book data effectively.",
         "services": [
           "BookRepository"
         ],
         "controllers": [
           "BookController"
         ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to create and manage employee records, so that I can track and organize employee data effectively.",
+        "services": [
+          "EmployeeService"
+        ],
+        "controllers": [
+          "EmployeeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to create and manage department records, so that I can track and organize department data effectively.",
+        "services": [
+          "DepartmentServiceApplication"
+        ],
+        "controllers": [
+          "DepartmentController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    BasicController[\"BasicController\"]\n    BookController[\"BookController\"]\n    CustomErrorController[\"CustomErrorController\"]\n    DemoController[\"DemoController\"]\n    DepartmentController[\"DepartmentController\"]\n    EmployeeController[\"EmployeeController\"]\n    FileController[\"FileController\"]\n    FilterExampleController[\"FilterExampleController\"]\n    GreetingController[\"GreetingController\"]\n    HelloController[\"HelloController\"]\n    HomeController[\"HomeController\"]\n    MainController[\"MainController\"]\n    MessagePublisher[\"MessagePublisher\"]\n    MyController[\"MyController\"]\n    SNSController[\"SNSController\"]\n    SQSController[\"SQSController\"]\n    SimpleController[\"SimpleController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    BookRepository[\"BookRepository\"]\n    CustomUserDetailsService[\"CustomUserDetailsService\"]\n    EmailSenderService[\"EmailSenderService\"]\n    EmployeeService[\"EmployeeService\"]\n    FileService[\"FileService\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Book[\"Book\"]\n    Department[\"Department\"]\n    DepartmentRepository[\"DepartmentRepository\"]\n    Employee[\"Employee\"]\n    EmployeeDAO[\"EmployeeDAO\"]\n    EmployeeDAOImpl[\"EmployeeDAOImpl\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    User[\"User\"]\n    UserDao[\"UserDao\"]\n    UserDaoImpl[\"UserDaoImpl\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    CustomFilter[\"CustomFilter\"]\n    JwtFilter[\"JwtFilter\"]\n    MyCustomFilter[\"MyCustomFilter\"]\n  end\n  subgraph Infrastructure\n    ActuatorEndPointSecurityConfig[\"ActuatorEndPointSecurityConfig\"]\n    AmazonSNSConfiguration[\"AmazonSNSConfiguration\"]\n    AmazonSQSConfiguration[\"AmazonSQSConfiguration\"]\n    ApplicationConfig[\"ApplicationConfig\"]\n    CustomContextPath[\"CustomContextPath\"]\n    DynamoDbConfiguration[\"DynamoDbConfiguration\"]\n    GlobalApplicationProperties[\"GlobalApplicationProperties\"]\n    KafkaConfig[\"KafkaConfig\"]\n    MQConfig[\"MQConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    ReleaseNotesEndpoint[\"ReleaseNotesEndpoint\"]\n    SecurityConfig[\"SecurityConfig\"]\n    SecurityConfiguration[\"SecurityConfiguration\"]\n    WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n    WebSocketConfiguration[\"WebSocketConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        User[\"User\"]\n        Book[\"Book\"]\n        Employee[\"Employee\"]\n        Department[\"Department\"]\n        UserRepository[\"UserRepository\"]\n        EmployeeDAOImpl[\"EmployeeDAOImpl\"]\n        EmployeeDAO[\"EmployeeDAO\"]\n        EmployeeRepository[\"EmployeeRepository\"]\n        UserDao[\"UserDao\"]\n        UserDaoImpl[\"UserDaoImpl\"]\n        DepartmentRepository[\"DepartmentRepository\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n        HomeController[\"HomeController\"]\n        BasicController[\"BasicController\"]\n        SimpleController[\"SimpleController\"]\n        BookController[\"BookController\"]\n        SQSController[\"SQSController\"]\n        EmployeeController[\"EmployeeController\"]\n        HelloController[\"HelloController\"]\n        DepartmentController[\"DepartmentController\"]\n        CustomErrorController[\"CustomErrorController\"]\n        MyController[\"MyController\"]\n        FileController[\"FileController\"]\n        DemoController[\"DemoController\"]\n        MessagePublisher[\"MessagePublisher\"]\n        MainController[\"MainController\"]\n        SNSController[\"SNSController\"]\n        GreetingController[\"GreetingController\"]\n        FilterExampleController[\"FilterExampleController\"]\n    end\n    subgraph Services\n        RestExceptionHandler[\"RestExceptionHandler\"]\n        BookRepository[\"BookRepository\"]\n        EmployeeService[\"EmployeeService\"]\n        DepartmentServiceApplication[\"DepartmentServiceApplication\"]\n        FileService[\"FileService\"]\n        CustomExceptionHandler[\"CustomExceptionHandler\"]\n        CustomExceptioHandler[\"CustomExceptioHandler\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        EmailSenderService[\"EmailSenderService\"]\n        CustomUserDetailsService[\"CustomUserDetailsService\"]\n    end\n    subgraph Infrastructure\n        RedisConfig[\"RedisConfig\"]\n        DynamoDbConfiguration[\"DynamoDbConfiguration\"]\n        AmazonSQSConfiguration[\"AmazonSQSConfiguration\"]\n        ApplicationConfig[\"ApplicationConfig\"]\n        GlobalApplicationProperties[\"GlobalApplicationProperties\"]\n        BeanConfigProperties[\"BeanConfigProperties\"]\n        ApplicationProperties[\"ApplicationProperties\"]\n        GenericConfigProperties[\"GenericConfigProperties\"]\n        GenericProperties[\"GenericProperties\"]\n        PropertyConversion[\"PropertyConversion\"]\n        NestedProperties[\"NestedProperties\"]\n        BookConverter[\"BookConverter\"]\n        ReleaseNotesEndpoint[\"ReleaseNotesEndpoint\"]\n        MyHealthIndicator[\"MyHealthIndicator\"]\n        CustomContextPath[\"CustomContextPath\"]\n        KafkaConfig[\"KafkaConfig\"]\n        MQConfig[\"MQConfig\"]\n        AmazonSNSConfiguration[\"AmazonSNSConfiguration\"]\n        WebSocketConfiguration[\"WebSocketConfiguration\"]\n    end\n    subgraph Security\n        Credential[\"Credential\"]\n        SecurityConfig[\"SecurityConfig\"]\n        ActuatorEndPointSecurityConfig[\"ActuatorEndPointSecurityConfig\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        JwtFilter[\"JwtFilter\"]\n        JwtRequest[\"JwtRequest\"]\n        JwtResponse[\"JwtResponse\"]\n        JWTUtility[\"JWTUtility\"]\n        CustomUserDetails[\"CustomUserDetails\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        CustomFilter[\"CustomFilter\"]\n        MyCustomFilter[\"MyCustomFilter\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

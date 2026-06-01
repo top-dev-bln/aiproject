@@ -1,10 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the file management, recruitment domain. It serves User as its primary actors. The main business capabilities include file, file storage.",
+    "free_text_description": "This system is a file management platform that serves Candidate roles. The platform provides capabilities for file storage. Secondary concerns include distributed transactions functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "story": "As a Candidate, I want to upload and manage files, so that I can store and retrieve documents when needed.",
         "services": [
           "FileStorageService"
         ],
@@ -14,15 +14,47 @@
       },
       {
         "id": 2,
-        "story": "As a User, I want to interact with file storage functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
           "FileStorageService"
         ],
-        "controllers": []
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "FileStorageService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "FileStorageService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [
+          "FileStorageService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    FileController[\"FileController\"]\n  end\n  subgraph Services\n    FileStorageService[\"FileStorageService\"]\n  end\n  Controllers --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        FileController[\"FileController\"]\n    end\n    subgraph Infrastructure\n        FileStorageProperties[\"FileStorageProperties\"]\n    end\n    subgraph Services\n        FileStorageService[\"FileStorageService\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
   }
 }

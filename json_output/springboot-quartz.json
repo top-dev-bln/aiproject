@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the scheduling, messaging domain. It serves System as its primary actors. The main business capabilities include index, restful, sample.",
+    "free_text_description": "This system is a job/recommendation platform that serves Employer, Candidate roles. The platform provides capabilities for schedule job, sample. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a System, I want to browse and apply for job postings, so that I can find employment opportunities matching my skills.",
+        "story": "As a Candidate, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
         "services": [
           "ScheduleJobService"
         ],
-        "controllers": []
+        "controllers": [
+          "IndexController"
+        ]
       },
       {
         "id": 2,
-        "story": "As a System, I want to manage index operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Employer, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "ScheduleJobService"
+        ],
         "controllers": [
           "IndexController"
         ]
       },
       {
         "id": 3,
-        "story": "As a System, I want to manage restful operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Employer, I want to interact with restful functionality, so that I can accomplish my restful-related tasks.",
+        "services": [
+          "ScheduleJobService"
+        ],
         "controllers": [
           "RestfulController"
         ]
       },
       {
         "id": 4,
-        "story": "As a System, I want to interact with sample functionality, so that the system fulfills my needs.",
+        "story": "As a Employer, I want to use sample capabilities, so that I can perform essential business operations.",
         "services": [
           "SampleService"
         ],
-        "controllers": []
+        "controllers": [
+          "IndexController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a System, I want to interact with schedule job functionality, so that the system fulfills my needs.",
+        "story": "As a Employer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
           "ScheduleJobService"
         ],
-        "controllers": []
+        "controllers": [
+          "IndexController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    IndexController[\"IndexController\"]\n    RestfulController[\"RestfulController\"]\n  end\n  subgraph Services\n    SampleService[\"SampleService\"]\n    ScheduleJobService[\"ScheduleJobService\"]\n  end\n  subgraph Infrastructure\n    RabbitConfig[\"RabbitConfig\"]\n    SchedulerConfig[\"SchedulerConfig\"]\n  end\n  Controllers --> Services\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Message[\"Message\"]\n        SchedulerConfig[\"SchedulerConfig\"]\n        RabbitConfig[\"RabbitConfig\"]\n    end\n    subgraph Controllers\n        IndexController[\"IndexController\"]\n        RestfulController[\"RestfulController\"]\n    end\n    subgraph Services\n        ScheduleJobService[\"ScheduleJobService\"]\n        SampleService[\"SampleService\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
   }
 }

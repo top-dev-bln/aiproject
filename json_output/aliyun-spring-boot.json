@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the scheduling, file management domain. It serves API Consumer, Customer, System, User as its primary actors. The main business capabilities include abstract redis, compileflow, compileflow. Core business data revolves around ParallelAccountInfo, ReceiveMessageEntity, SmsReportMessageListener.",
+    "free_text_description": "This system is a messaging platform that serves Developer, Admin roles. It manages core business objects including parallel account info, order info, record, account info. The platform provides capabilities for ktv, abstract sms, sms. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include distributed transactions functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
-        "services": [],
+        "story": "As a Developer, I want to create and manage parallel account info records, so that I can track and organize parallel account info data effectively.",
+        "services": [
+          "KtvService"
+        ],
         "controllers": [
-          "RedisDescribeAccountsEndpoint"
+          "CompileflowController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage abstract redis operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Developer, I want to create and manage order info records, so that I can track and organize order info data effectively.",
+        "services": [
+          "KtvService"
+        ],
         "controllers": [
-          "AbstractRedisEndpoint"
+          "CompileflowController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage compileflow operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Developer, I want to create and manage record records, so that I can track and organize record data effectively.",
+        "services": [
+          "KtvService"
+        ],
         "controllers": [
           "CompileflowController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage conditional on ali cloud operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Developer, I want to create and manage account info records, so that I can track and organize account info data effectively.",
+        "services": [
+          "KtvService"
+        ],
         "controllers": [
-          "ConditionalOnAliCloudEndpoint"
+          "CompileflowController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage dummy oss client operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Developer, I want to create and manage page task records, so that I can track and organize page task data effectively.",
+        "services": [
+          "KtvService"
+        ],
         "controllers": [
-          "DummyOssClient"
+          "CompileflowController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AbstractRedisEndpoint[\"AbstractRedisEndpoint\"]\n    CompileflowController[\"CompileflowController\"]\n    CompileflowEndpoint[\"CompileflowEndpoint\"]\n    ConditionalOnAliCloudEndpoint[\"ConditionalOnAliCloudEndpoint\"]\n    DummyOssClient[\"DummyOssClient\"]\n    OssController[\"OssController\"]\n    OssEndpoint[\"OssEndpoint\"]\n    OssStorageResource[\"OssStorageResource\"]\n    RdsController[\"RdsController\"]\n    RdsErrorEndpoint[\"RdsErrorEndpoint\"]\n    RdsInstancesEndpoint[\"RdsInstancesEndpoint\"]\n    RdsPerformanceEndpoint[\"RdsPerformanceEndpoint\"]\n    RdsSlowEndpoint[\"RdsSlowEndpoint\"]\n    RedisController[\"RedisController\"]\n    RedisDescribeAccountsEndpoint[\"RedisDescribeAccountsEndpoint\"]\n    RedisDescribeAvailableResourceEndpoint[\"RedisDescribeAvailableResourceEndpoint\"]\n    RedisDescribeInstancesEndpoint[\"RedisDescribeInstancesEndpoint\"]\n    SmsController[\"SmsController\"]\n    SmsEndpoint[\"SmsEndpoint\"]\n  end\n  subgraph Services\n    AbstractSmsService[\"AbstractSmsService\"]\n    ISmsService[\"ISmsService\"]\n    KtvService[\"KtvService\"]\n    SmsServiceImpl[\"SmsServiceImpl\"]\n  end\n  subgraph Data_Access\n    ParallelAccountInfo[\"ParallelAccountInfo\"]\n    ReceiveMessageEntity[\"ReceiveMessageEntity\"]\n    SmsReportMessageListener[\"SmsReportMessageListener\"]\n  end\n  subgraph Infrastructure\n    AliCloudContextAutoConfiguration[\"AliCloudContextAutoConfiguration\"]\n    CompileflowAutoConfiguration[\"CompileflowAutoConfiguration\"]\n    CompileflowEndpointAutoConfiguration[\"CompileflowEndpointAutoConfiguration\"]\n    CompileflowProperties[\"CompileflowProperties\"]\n    EdasContextAutoConfiguration[\"EdasContextAutoConfiguration\"]\n    EdasProperties[\"EdasProperties\"]\n    FCMain[\"FCMain\"]\n    MockJavaClazz[\"MockJavaClazz\"]\n    OnAliCloudEndpointCondition[\"OnAliCloudEndpointCondition\"]\n    Order[\"Order\"]\n    OssApplicationListener[\"OssApplicationListener\"]\n    OssAutoConfiguration[\"OssAutoConfiguration\"]\n    OssContextAutoConfiguration[\"OssContextAutoConfiguration\"]\n    OssEndpointAutoConfiguration[\"OssEndpointAutoConfiguration\"]\n    OssProperties[\"OssProperties\"]\n    RdsAutoConfiguration[\"RdsAutoConfiguration\"]\n    RdsEndpointAutoConfiguration[\"RdsEndpointAutoConfiguration\"]\n    RdsProperties[\"RdsProperties\"]\n    RedisAutoConfiguration[\"RedisAutoConfiguration\"]\n    RedisEndpointAutoConfiguration[\"RedisEndpointAutoConfiguration\"]\n    RedisProperties[\"RedisProperties\"]\n    ShardingJob[\"ShardingJob\"]\n    SmsAutoConfiguration[\"SmsAutoConfiguration\"]\n    SmsContextAutoConfiguration[\"SmsContextAutoConfiguration\"]\n    SmsEndpointAutoConfiguration[\"SmsEndpointAutoConfiguration\"]\n    SmsMessageListener[\"SmsMessageListener\"]\n    SmsProperties[\"SmsProperties\"]\n    TestMain[\"TestMain\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        ParallelAccountInfo[\"ParallelAccountInfo\"]\n        OrderInfo[\"OrderInfo\"]\n        Record[\"Record\"]\n        AccountInfo[\"AccountInfo\"]\n        PageTask[\"PageTask\"]\n        SmsReportMessageListener[\"SmsReportMessageListener\"]\n    end\n    subgraph Infrastructure\n        CompileflowEndpointAutoConfiguration[\"CompileflowEndpointAutoConfiguration\"]\n        CompileflowAutoConfiguration[\"CompileflowAutoConfiguration\"]\n        CompileflowProperties[\"CompileflowProperties\"]\n        AliCloudContextAutoConfiguration[\"AliCloudContextAutoConfiguration\"]\n        EdasContextAutoConfiguration[\"EdasContextAutoConfiguration\"]\n        ConditionalOnRequiredProperties[\"ConditionalOnRequiredProperties\"]\n        EdasProperties[\"EdasProperties\"]\n        AliCloudProperties[\"AliCloudProperties\"]\n        RdsAutoConfiguration[\"RdsAutoConfiguration\"]\n        OssConstants[\"OssConstants\"]\n        OssEndpointAutoConfiguration[\"OssEndpointAutoConfiguration\"]\n        OssAutoConfiguration[\"OssAutoConfiguration\"]\n        OssContextAutoConfiguration[\"OssContextAutoConfiguration\"]\n        OssProperties[\"OssProperties\"]\n        RdsEndpointAutoConfiguration[\"RdsEndpointAutoConfiguration\"]\n        RdsProperties[\"RdsProperties\"]\n        RDSConstants[\"RDSConstants\"]\n        RedisEndpointAutoConfiguration[\"RedisEndpointAutoConfiguration\"]\n        RedisAutoConfiguration[\"RedisAutoConfiguration\"]\n        RedisProperties[\"RedisProperties\"]\n        SmsEndpointAutoConfiguration[\"SmsEndpointAutoConfiguration\"]\n        SmsContextAutoConfiguration[\"SmsContextAutoConfiguration\"]\n        SmsAutoConfiguration[\"SmsAutoConfiguration\"]\n        SmsProperties[\"SmsProperties\"]\n    end\n    subgraph Controllers\n        CompileflowController[\"CompileflowController\"]\n        OssController[\"OssController\"]\n        RdsController[\"RdsController\"]\n        RedisController[\"RedisController\"]\n        SmsController[\"SmsController\"]\n    end\n    subgraph Services\n        KtvService[\"KtvService\"]\n        AbstractSmsService[\"AbstractSmsService\"]\n        SmsServiceImpl[\"SmsServiceImpl\"]\n        ISmsService[\"ISmsService\"]\n        EndpointManager[\"EndpointManager\"]\n    end\n    subgraph Security\n        QueryTokenForMnsQueueResponse[\"QueryTokenForMnsQueueResponse\"]\n        QueryTokenForMnsQueueResponseUnmarshaller[\"QueryTokenForMnsQueueResponseUnmarshaller\"]\n        QueryTokenForMnsQueueRequest[\"QueryTokenForMnsQueueRequest\"]\n        TokenForAlicom[\"TokenForAlicom\"]\n        TokenGetterForAlicom[\"TokenGetterForAlicom\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

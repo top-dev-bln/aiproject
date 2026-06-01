@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, content management domain. It serves API Consumer, User as its primary actors. The main business capabilities include api, file, index. Core business data revolves around RoncooUserDao, RoncooUserDaoImpl, RoncooUserLog, RoncooUserLogCacheImpl. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, User roles. It manages core business objects including roncoo user log. The platform provides capabilities for user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
-        "services": [],
-        "controllers": [
-          "FileController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
           "UserService"
         ],
-        "controllers": []
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage api operations, so that the relevant business process is handled efficiently.",
-        "services": [],
         "controllers": [
           "ApiController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage index operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 2,
+        "story": "As a Candidate, I want to create and manage roncoo user log records, so that I can track and organize roncoo user log data effectively.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "IndexController"
+          "RestRoncooController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with api functionality, so that I can accomplish my api-related tasks.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "ApiController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage rest roncoo operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "UserService"
+        ],
         "controllers": [
-          "RestRoncooController"
+          "IndexController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ApiController[\"ApiController\"]\n    FileController[\"FileController\"]\n    IndexController[\"IndexController\"]\n    RestRoncooController[\"RestRoncooController\"]\n    WebController[\"WebController\"]\n  end\n  subgraph Services\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    RoncooUserDao[\"RoncooUserDao\"]\n    RoncooUserDaoImpl[\"RoncooUserDaoImpl\"]\n    RoncooUserLog[\"RoncooUserLog\"]\n    RoncooUserLogCacheImpl[\"RoncooUserLogCacheImpl\"]\n    RoncooUserLogDao[\"RoncooUserLogDao\"]\n    RoncooUserLogMongoDao[\"RoncooUserLogMongoDao\"]\n  end\n  subgraph Security\n    CustomFilter[\"CustomFilter\"]\n    DruidWebStatFilter[\"DruidWebStatFilter\"]\n  end\n  subgraph Infrastructure\n    AmqpConfiguration[\"AmqpConfiguration\"]\n    CustomCorsConfiguration[\"CustomCorsConfiguration\"]\n    DruidConfiguration[\"DruidConfiguration\"]\n    JmsConfiguration[\"JmsConfiguration\"]\n    RedisCacheConfiguration[\"RedisCacheConfiguration\"]\n    Swagger2Configuration[\"Swagger2Configuration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        RoncooUserLog[\"RoncooUserLog\"]\n        RoncooUserMapper[\"RoncooUserMapper\"]\n        RoncooUserLogMapper[\"RoncooUserLogMapper\"]\n        RoncooUserLogCacheImpl[\"RoncooUserLogCacheImpl\"]\n        RoncooUserLogDao[\"RoncooUserLogDao\"]\n        RoncooUserDao[\"RoncooUserDao\"]\n        RoncooUserLogMongoDao[\"RoncooUserLogMongoDao\"]\n        RoncooUserDaoImpl[\"RoncooUserDaoImpl\"]\n        JdbcDaoImpl[\"JdbcDaoImpl\"]\n    end\n    subgraph Controllers\n        ApiController[\"ApiController\"]\n        IndexController[\"IndexController\"]\n        WebController[\"WebController\"]\n        FileController[\"FileController\"]\n        RestRoncooController[\"RestRoncooController\"]\n    end\n    subgraph Infrastructure\n        Swagger2Configuration[\"Swagger2Configuration\"]\n        DruidConfiguration[\"DruidConfiguration\"]\n        DruidStatViewServlet[\"DruidStatViewServlet\"]\n        Page[\"Page\"]\n        Sql[\"Sql\"]\n        CustomCorsConfiguration2[\"CustomCorsConfiguration2\"]\n        CustomCorsConfiguration[\"CustomCorsConfiguration\"]\n        RoncooJavaMailSenderImpl[\"RoncooJavaMailSenderImpl\"]\n        RedisCacheConfiguration[\"RedisCacheConfiguration\"]\n        AmqpConfiguration[\"AmqpConfiguration\"]\n        JmsConfiguration[\"JmsConfiguration\"]\n        CustomListener[\"CustomListener\"]\n        CustomServlet[\"CustomServlet\"]\n    end\n    subgraph Security\n        DruidWebStatFilter[\"DruidWebStatFilter\"]\n        CustomFilter[\"CustomFilter\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

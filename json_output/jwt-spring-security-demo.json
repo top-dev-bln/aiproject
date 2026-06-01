@@ -1,43 +1,56 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves Admin, User as its primary actors. The main business capabilities include admin protected rest, authentication rest, person rest. Core business data revolves around Authority, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user, authority. The platform provides capabilities for user model details, jwt access denied handler, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Admin, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserModelDetailsService",
+          "UserService"
+        ],
         "controllers": [
+          "UserRestController",
           "AuthenticationRestController"
         ]
       },
       {
         "id": 2,
-        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserModelDetailsService",
+          "UserService"
+        ],
         "controllers": [
           "UserRestController"
         ]
       },
       {
         "id": 3,
-        "story": "As a Admin, I want to manage admin protected rest operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "AdminProtectedRestController"
-        ]
-      },
-      {
-        "id": 4,
-        "story": "As a Admin, I want to manage authentication rest operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage authority records, so that I can track and organize authority data effectively.",
+        "services": [
+          "UserModelDetailsService"
+        ],
         "controllers": [
           "AuthenticationRestController"
         ]
       },
       {
+        "id": 4,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "UserModelDetailsService"
+        ],
+        "controllers": [
+          "AdminProtectedRestController"
+        ]
+      },
+      {
         "id": 5,
-        "story": "As a Admin, I want to manage person rest operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to interact with person functionality, so that I can accomplish my person-related tasks.",
+        "services": [
+          "UserModelDetailsService"
+        ],
         "controllers": [
           "PersonRestController"
         ]
@@ -45,6 +58,6 @@
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminProtectedRestController[\"AdminProtectedRestController\"]\n    AuthenticationRestController[\"AuthenticationRestController\"]\n    PersonRestController[\"PersonRestController\"]\n    UserRestController[\"UserRestController\"]\n  end\n  subgraph Services\n    UserModelDetailsService[\"UserModelDetailsService\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    Authority[\"Authority\"]\n    AuthorityRepository[\"AuthorityRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JWTConfigurer[\"JWTConfigurer\"]\n    JWTFilter[\"JWTFilter\"]\n  end\n  subgraph Infrastructure\n    CorsConfig[\"CorsConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        SecurityUtils[\"SecurityUtils\"]\n        JWTConfigurer[\"JWTConfigurer\"]\n        JWTFilter[\"JWTFilter\"]\n        TokenProvider[\"TokenProvider\"]\n    end\n    subgraph Infrastructure\n        CorsConfig[\"CorsConfig\"]\n        LogInUtils[\"LogInUtils\"]\n    end\n    subgraph Controllers\n        PersonRestController[\"PersonRestController\"]\n        AdminProtectedRestController[\"AdminProtectedRestController\"]\n        UserRestController[\"UserRestController\"]\n        AuthenticationRestController[\"AuthenticationRestController\"]\n    end\n    subgraph Services\n        UserModelDetailsService[\"UserModelDetailsService\"]\n        JwtAccessDeniedHandler[\"JwtAccessDeniedHandler\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Authority[\"Authority\"]\n        AuthorityRepository[\"AuthorityRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

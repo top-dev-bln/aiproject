@@ -1,10 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer, System, User as its primary actors. The main business capabilities include deep seek local, ollama local. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a messaging platform that serves Content Creator, Admin roles. It manages core business objects including models response, model. It exposes interfaces for managing deep seek local, ollama local. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include search functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage deep seek local operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Content Creator, I want to create and manage models response records, so that I can track and organize models response data effectively.",
         "services": [],
         "controllers": [
           "DeepSeekLocalController"
@@ -12,15 +12,39 @@
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage ollama local operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Content Creator, I want to create and manage model records, so that I can track and organize model data effectively.",
+        "services": [],
+        "controllers": [
+          "DeepSeekLocalController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to interact with deep seek local functionality, so that I can accomplish my deep seek local-related tasks.",
+        "services": [],
+        "controllers": [
+          "DeepSeekLocalController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to interact with ollama local functionality, so that I can accomplish my ollama local-related tasks.",
         "services": [],
         "controllers": [
           "OllamaLocalController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "DeepSeekLocalController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DeepSeekLocalController[\"DeepSeekLocalController\"]\n    OllamaLocalController[\"OllamaLocalController\"]\n  end\n  subgraph Security\n    RequestLoggingInterceptor[\"RequestLoggingInterceptor\"]\n    ResponseLoggingInterceptor[\"ResponseLoggingInterceptor\"]\n  end\n  subgraph Infrastructure\n    CorsConfig[\"CorsConfig\"]\n    DeepSeekAutoConfiguration[\"DeepSeekAutoConfiguration\"]\n    DeepSeekConfig[\"DeepSeekConfig\"]\n  end\n  Controllers --> Security\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DeepSeekProperties[\"DeepSeekProperties\"]\n        EmbeddingProperties[\"EmbeddingProperties\"]\n        DeepSeekAutoConfiguration[\"DeepSeekAutoConfiguration\"]\n        DeepSeekConfig[\"DeepSeekConfig\"]\n        CorsConfig[\"CorsConfig\"]\n    end\n    subgraph Security\n        AuthorizationHeaderInjector[\"AuthorizationHeaderInjector\"]\n        PromptTokensDetails[\"PromptTokensDetails\"]\n        CompletionTokensDetails[\"CompletionTokensDetails\"]\n    end\n    subgraph Data_Access\n        ModelsResponse[\"ModelsResponse\"]\n        Model[\"Model\"]\n    end\n    subgraph Controllers\n        DeepSeekLocalController[\"DeepSeekLocalController\"]\n        OllamaLocalController[\"OllamaLocalController\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

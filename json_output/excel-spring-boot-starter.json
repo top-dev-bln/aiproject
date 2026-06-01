@@ -1,26 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the data processing, authentication domain. It serves User as its primary actors. The main business capabilities include demo, dict data provider impl.",
+    "free_text_description": "This system is a search platform that serves Admin, Content Creator roles. The platform provides capabilities for response excel return value handler, dict data provider, many sheet write handler. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage demo operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to interact with demo functionality, so that I can accomplish my demo-related tasks.",
+        "services": [
+          "ResponseExcelReturnValueHandler"
+        ],
         "controllers": [
           "DemoController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to interact with dict data provider impl functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use response excel return value handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ResponseExcelReturnValueHandler"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use dict data provider capabilities, so that I can perform essential business operations.",
         "services": [
           "DictDataProviderImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use many sheet write handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ManySheetWriteHandler"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use sheet write handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "SheetWriteHandler"
+        ],
+        "controllers": [
+          "DemoController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DemoController[\"DemoController\"]\n  end\n  subgraph Services\n    DictDataProviderImpl[\"DictDataProviderImpl\"]\n  end\n  subgraph Infrastructure\n    Config[\"Config\"]\n    DictTypeProperty[\"DictTypeProperty\"]\n    ExcelConfigProperties[\"ExcelConfigProperties\"]\n    ExcelHandlerConfiguration[\"ExcelHandlerConfiguration\"]\n    HeadMeta[\"HeadMeta\"]\n    IndexOrNameDataListener1[\"IndexOrNameDataListener1\"]\n    ListAnalysisEventListener[\"ListAnalysisEventListener\"]\n    NameProcessor[\"NameProcessor\"]\n    RequestExcelArgumentResolver[\"RequestExcelArgumentResolver\"]\n    ResponseExcelAutoConfiguration[\"ResponseExcelAutoConfiguration\"]\n    WriterBuilderEnhancer[\"WriterBuilderEnhancer\"]\n  end\n  Controllers --> Services\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Config[\"Config\"]\n        ResponseExcelAutoConfiguration[\"ResponseExcelAutoConfiguration\"]\n        ExcelHandlerConfiguration[\"ExcelHandlerConfiguration\"]\n        ExcelConfigProperties[\"ExcelConfigProperties\"]\n    end\n    subgraph Services\n        ResponseExcelReturnValueHandler[\"ResponseExcelReturnValueHandler\"]\n        DictDataProviderImpl[\"DictDataProviderImpl\"]\n        ManySheetWriteHandler[\"ManySheetWriteHandler\"]\n        SheetWriteHandler[\"SheetWriteHandler\"]\n        DictCacheClearSheetWriteHandler[\"DictCacheClearSheetWriteHandler\"]\n        SingleSheetWriteHandler[\"SingleSheetWriteHandler\"]\n        AbstractSheetWriteHandler[\"AbstractSheetWriteHandler\"]\n        I18nHeaderCellWriteHandler[\"I18nHeaderCellWriteHandler\"]\n        NameProcessor[\"NameProcessor\"]\n        NameSpelExpressionProcessor[\"NameSpelExpressionProcessor\"]\n        DictEnum[\"DictEnum\"]\n    end\n    subgraph Controllers\n        DemoController[\"DemoController\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
   }
 }

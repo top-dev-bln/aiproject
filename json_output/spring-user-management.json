@@ -1,22 +1,36 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves Admin, User as its primary actors. The main business capabilities include admin, auth, permission. Core business data revolves around BaseModel, PermissionLoadMode. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including base model, user, role, user account. The platform provides capabilities for global exception handler, permission loader, user account. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Admin, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserAccountServiceImpl",
+          "UserServiceImpl",
+          "UserService"
+        ],
         "controllers": [
-          "AuthController"
+          "TokenController",
+          "AuthController",
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage base model records, so that I can track and organize base model data effectively.",
         "services": [
-          "UserAccountService",
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "AdminController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
           "UserAccountServiceImpl",
-          "UserService",
           "UserServiceImpl"
         ],
         "controllers": [
@@ -24,32 +38,30 @@
         ]
       },
       {
-        "id": 3,
-        "story": "As a Admin, I want to upload and manage files, so that I can store and retrieve documents as needed.",
-        "services": [
-          "FileStorageServiceImpl"
-        ],
-        "controllers": []
-      },
-      {
         "id": 4,
-        "story": "As a Admin, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "story": "As a User, I want to create and manage role records, so that I can track and organize role data effectively.",
         "services": [
-          "UserAccountService"
+          "RoleServiceImpl",
+          "RoleService"
         ],
-        "controllers": []
+        "controllers": [
+          "RoleController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a Admin, I want to manage admin operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage user account records, so that I can track and organize user account data effectively.",
+        "services": [
+          "UserAccountServiceImpl",
+          "UserServiceImpl"
+        ],
         "controllers": [
-          "AdminController"
+          "UserController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminController[\"AdminController\"]\n    AuthController[\"AuthController\"]\n    PermissionController[\"PermissionController\"]\n    ResetPasswordController[\"ResetPasswordController\"]\n    RoleController[\"RoleController\"]\n    TokenController[\"TokenController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    FileStorageServiceImpl[\"FileStorageServiceImpl\"]\n    PermissionLoaderImpl[\"PermissionLoaderImpl\"]\n    PermissionService[\"PermissionService\"]\n    PermissionServiceImpl[\"PermissionServiceImpl\"]\n    RoleService[\"RoleService\"]\n    RoleServiceImpl[\"RoleServiceImpl\"]\n    UserAccountService[\"UserAccountService\"]\n    UserAccountServiceImpl[\"UserAccountServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    BaseModel[\"BaseModel\"]\n    PermissionLoadMode[\"PermissionLoadMode\"]\n    PermissionRepository[\"PermissionRepository\"]\n    RefreshTokenRepository[\"RefreshTokenRepository\"]\n    RoleRepository[\"RoleRepository\"]\n    UserAccountRepository[\"UserAccountRepository\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthenticationFilter[\"AuthenticationFilter\"]\n    CORSFilter[\"CORSFilter\"]\n    DataSeeder[\"DataSeeder\"]\n    Exists[\"Exists\"]\n    FieldMatchValidator[\"FieldMatchValidator\"]\n    JwtTokenUtil[\"JwtTokenUtil\"]\n    ModelUpdateListener[\"ModelUpdateListener\"]\n    OnRegistrationCompleteEvent[\"OnRegistrationCompleteEvent\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    RedisConfiguration[\"RedisConfiguration\"]\n    ResourceWebConfig[\"ResourceWebConfig\"]\n    SwaggerConfiguration[\"SwaggerConfiguration\"]\n    TemplateEngineConfig[\"TemplateEngineConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        DataSeeder[\"DataSeeder\"]\n        MongoEnsureIndexes[\"MongoEnsureIndexes\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        ResourceWebConfig[\"ResourceWebConfig\"]\n        RedisConfiguration[\"RedisConfiguration\"]\n        TemplateEngineConfig[\"TemplateEngineConfig\"]\n        SwaggerProperties[\"SwaggerProperties\"]\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n        CORSFilter[\"CORSFilter\"]\n        AuthEntryPoint[\"AuthEntryPoint\"]\n        AuthenticationFilter[\"AuthenticationFilter\"]\n        Exists[\"Exists\"]\n        FieldMatch[\"FieldMatch\"]\n        IsUnique[\"IsUnique\"]\n        FieldMatchValidator[\"FieldMatchValidator\"]\n        IsUniqueValidator[\"IsUniqueValidator\"]\n        ExistsValidator[\"ExistsValidator\"]\n        OnRegistrationCompleteEvent[\"OnRegistrationCompleteEvent\"]\n        OnResetPasswordEvent[\"OnResetPasswordEvent\"]\n        ModelUpdateListener[\"ModelUpdateListener\"]\n        RegistrationListener[\"RegistrationListener\"]\n        ResetPasswordListener[\"ResetPasswordListener\"]\n        RefreshToken[\"RefreshToken\"]\n        Coordinates[\"Coordinates\"]\n        Permission[\"Permission\"]\n        PermissionLoadMode[\"PermissionLoadMode\"]\n        InvalidDataResponse[\"InvalidDataResponse\"]\n        UserListResponse[\"UserListResponse\"]\n        UserResponse[\"UserResponse\"]\n        RoleResponse[\"RoleResponse\"]\n        RoleListResponse[\"RoleListResponse\"]\n        SuccessResponse[\"SuccessResponse\"]\n        PermissionListResponse[\"PermissionListResponse\"]\n        BadRequestResponse[\"BadRequestResponse\"]\n        GenericResponse[\"GenericResponse\"]\n        PermissionResponse[\"PermissionResponse\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n        Helpers[\"Helpers\"]\n        Constants[\"Constants\"]\n    end\n    subgraph Controllers\n        AdminController[\"AdminController\"]\n        TokenController[\"TokenController\"]\n        AuthController[\"AuthController\"]\n        RoleController[\"RoleController\"]\n        ResetPasswordController[\"ResetPasswordController\"]\n        UserController[\"UserController\"]\n        PermissionController[\"PermissionController\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        PermissionLoaderImpl[\"PermissionLoaderImpl\"]\n        UserAccountServiceImpl[\"UserAccountServiceImpl\"]\n        RoleServiceImpl[\"RoleServiceImpl\"]\n        PermissionServiceImpl[\"PermissionServiceImpl\"]\n        FileStorageServiceImpl[\"FileStorageServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserService[\"UserService\"]\n        PermissionLoader[\"PermissionLoader\"]\n        RoleService[\"RoleService\"]\n        UserAccountService[\"UserAccountService\"]\n        PermissionService[\"PermissionService\"]\n    end\n    subgraph Data_Access\n        BaseModel[\"BaseModel\"]\n        User[\"User\"]\n        Role[\"Role\"]\n        UserAccount[\"UserAccount\"]\n        AuthTokenResponse[\"AuthTokenResponse\"]\n        UserAccountRepository[\"UserAccountRepository\"]\n        RefreshTokenRepository[\"RefreshTokenRepository\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n        PermissionRepository[\"PermissionRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
   }
 }

@@ -1,24 +1,25 @@
 {
   "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, file management domain. It serves User as its primary actors. The main business capabilities include user cache, user, i user cache. Core business data revolves around UserDao, UserEntity.",
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. The platform provides capabilities for i user, i user cache, user cache. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
+          "IUserService",
           "IUserCacheService",
           "UserCacheServiceImpl"
         ],
         "controllers": [
-          "UserCacheController"
+          "UserCacheController",
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage user cache operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to use user capabilities, so that I can perform essential business operations.",
         "services": [
-          "IUserCacheService",
-          "UserCacheServiceImpl"
+          "UserServiceImpl"
         ],
         "controllers": [
           "UserCacheController"
@@ -26,31 +27,37 @@
       },
       {
         "id": 3,
-        "story": "As a User, I want to interact with i user cache functionality, so that the system fulfills my needs.",
-        "services": [
-          "IUserCacheService"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 4,
-        "story": "As a User, I want to interact with i user functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
           "IUserService"
         ],
-        "controllers": []
+        "controllers": [
+          "UserCacheController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "IUserService"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with user cache impl functionality, so that the system fulfills my needs.",
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
         "services": [
-          "UserCacheServiceImpl"
+          "IUserService"
         ],
-        "controllers": []
+        "controllers": [
+          "UserCacheController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    UserCacheController[\"UserCacheController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    IUserCacheService[\"IUserCacheService\"]\n    IUserService[\"IUserService\"]\n    UserCacheServiceImpl[\"UserCacheServiceImpl\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    UserDao[\"UserDao\"]\n    UserEntity[\"UserEntity\"]\n  end\n  subgraph Infrastructure\n    DemoConfig[\"DemoConfig\"]\n    DruidConfig[\"DruidConfig\"]\n    MyBatisConfig[\"MyBatisConfig\"]\n    MyBatisScannerConfig[\"MyBatisScannerConfig\"]\n    PackageConfig[\"PackageConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    TimeTaskConfig[\"TimeTaskConfig\"]\n    TransactionConfig[\"TransactionConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DruidConfig[\"DruidConfig\"]\n        TimeTaskConfig[\"TimeTaskConfig\"]\n        PackageConfig[\"PackageConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        TransactionConfig[\"TransactionConfig\"]\n        MyBatisScannerConfig[\"MyBatisScannerConfig\"]\n        MyBatisConfig[\"MyBatisConfig\"]\n        DemoConfig[\"DemoConfig\"]\n        ProtostuffSerializer[\"ProtostuffSerializer\"]\n        FileHandleUtil[\"FileHandleUtil\"]\n        CacheUserDb[\"CacheUserDb\"]\n        LogUtil[\"LogUtil\"]\n        RedisUtil[\"RedisUtil\"]\n        KryoRedisSerializer[\"KryoRedisSerializer\"]\n    end\n    subgraph Controllers\n        UserCacheController[\"UserCacheController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        UserDao[\"UserDao\"]\n    end\n    subgraph Services\n        IUserService[\"IUserService\"]\n        IUserCacheService[\"IUserCacheService\"]\n        UserCacheServiceImpl[\"UserCacheServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

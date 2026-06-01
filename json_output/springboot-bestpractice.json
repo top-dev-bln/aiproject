@@ -1,50 +1,68 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves User as its primary actors. The main business capabilities include advice, auth component, auth. Core business data revolves around MongoUserEntity.",
+    "free_text_description": "This system is an authentication platform that serves User, Content Creator roles. It manages core business objects including auth component, request info component, info request, user response. The platform provides capabilities for info, user, info. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "AuthService",
+          "UserServiceImpl"
+        ],
         "controllers": [
-          "AuthComponent"
+          "AuthController",
+          "UserController",
+          "AuthorizationController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
+        "story": "As a User, I want to create and manage auth component records, so that I can track and organize auth component data effectively.",
+        "services": [
+          "AuthService",
+          "AuthServiceImpl"
+        ],
         "controllers": [
-          "MongoUserPersistentRepository"
+          "AuthController",
+          "AuthorizationController"
         ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage advice operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage request info component records, so that I can track and organize request info component data effectively.",
+        "services": [
+          "InfoServiceImpl"
+        ],
         "controllers": [
-          "AdviceController"
+          "InterceptorController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage auth component operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage info request records, so that I can track and organize info request data effectively.",
+        "services": [
+          "InfoServiceImpl",
+          "InfoService"
+        ],
         "controllers": [
-          "AuthComponent"
+          "InterceptorController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to manage authorization operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage user response records, so that I can track and organize user response data effectively.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
         "controllers": [
-          "AuthorizationController"
+          "UserController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdviceController[\"AdviceController\"]\n    AuthComponent[\"AuthComponent\"]\n    AuthController[\"AuthController\"]\n    AuthorizationController[\"AuthorizationController\"]\n    CacheRepository[\"CacheRepository\"]\n    CassandraInfoPersistentRepository[\"CassandraInfoPersistentRepository\"]\n    CassandraProperty[\"CassandraProperty\"]\n    CredentialProperty[\"CredentialProperty\"]\n    DomainBean[\"DomainBean\"]\n    HelloController[\"HelloController\"]\n    InfrastructureBean[\"InfrastructureBean\"]\n    InterceptorController[\"InterceptorController\"]\n    LocalCacheRepository[\"LocalCacheRepository\"]\n    LocalInfoPersistentRepository[\"LocalInfoPersistentRepository\"]\n    MongoInfoEntity[\"MongoInfoEntity\"]\n    MongoProperty[\"MongoProperty\"]\n    MongoUserPersistentRepository[\"MongoUserPersistentRepository\"]\n    RdbmsController[\"RdbmsController\"]\n    RdbmsInfoPersistentRepository[\"RdbmsInfoPersistentRepository\"]\n    RedisCacheRepository[\"RedisCacheRepository\"]\n    ServiceUnavailable[\"ServiceUnavailable\"]\n    SharedData[\"SharedData\"]\n    UserController[\"UserController\"]\n    UserPersistentRepository[\"UserPersistentRepository\"]\n    Util[\"Util\"]\n  end\n  subgraph Services\n    AuthService[\"AuthService\"]\n    AuthServiceImpl[\"AuthServiceImpl\"]\n    InfoService[\"InfoService\"]\n    InfoServiceImpl[\"InfoServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    CassandraUserPersistentRepository[\"CassandraUserPersistentRepository\"]\n    InfoPersistentRepository[\"InfoPersistentRepository\"]\n    LocalUserPersistentRepository[\"LocalUserPersistentRepository\"]\n    MongoInfoPersistentRepository[\"MongoInfoPersistentRepository\"]\n    MongoUserEntity[\"MongoUserEntity\"]\n    RdbmsUserPersistentRepository[\"RdbmsUserPersistentRepository\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        InterceptorController[\"InterceptorController\"]\n        AdviceController[\"AdviceController\"]\n        HelloController[\"HelloController\"]\n        AuthController[\"AuthController\"]\n        RdbmsController[\"RdbmsController\"]\n        UserController[\"UserController\"]\n        AuthorizationController[\"AuthorizationController\"]\n    end\n    subgraph Infrastructure\n        ServiceUnavailable[\"ServiceUnavailable\"]\n        BadRequest[\"BadRequest\"]\n        Conflict[\"Conflict\"]\n        NotFound[\"NotFound\"]\n        RequestTimeout[\"RequestTimeout\"]\n        Forbidden[\"Forbidden\"]\n        Util[\"Util\"]\n        InfrastructureBean[\"InfrastructureBean\"]\n        RedisProperty[\"RedisProperty\"]\n        CassandraProperty[\"CassandraProperty\"]\n        MongoProperty[\"MongoProperty\"]\n    end\n    subgraph Security\n        UnAuthorized[\"UnAuthorized\"]\n        CredentialProperty[\"CredentialProperty\"]\n    end\n    subgraph Data_Access\n        AuthComponent[\"AuthComponent\"]\n        RequestInfoComponent[\"RequestInfoComponent\"]\n        InfoRequest[\"InfoRequest\"]\n        UserResponse[\"UserResponse\"]\n        UserRequest[\"UserRequest\"]\n        InfoResponse[\"InfoResponse\"]\n        AuthResponse[\"AuthResponse\"]\n        AuthByEmailRequest[\"AuthByEmailRequest\"]\n        Credential[\"Credential\"]\n        AuthByRefreshTokenRequest[\"AuthByRefreshTokenRequest\"]\n        ErrorResponse[\"ErrorResponse\"]\n        SharedData[\"SharedData\"]\n        Info[\"Info\"]\n        User[\"User\"]\n        MongoInfoEntity[\"MongoInfoEntity\"]\n        MongoUserEntity[\"MongoUserEntity\"]\n        CacheRepository[\"CacheRepository\"]\n        LocalCacheRepository[\"LocalCacheRepository\"]\n        RedisCacheRepository[\"RedisCacheRepository\"]\n        UserPersistentRepository[\"UserPersistentRepository\"]\n        InfoPersistentRepository[\"InfoPersistentRepository\"]\n        CassandraInfoPersistentRepository[\"CassandraInfoPersistentRepository\"]\n        CassandraUserPersistentRepository[\"CassandraUserPersistentRepository\"]\n        LocalInfoPersistentRepository[\"LocalInfoPersistentRepository\"]\n        LocalUserPersistentRepository[\"LocalUserPersistentRepository\"]\n        MongoUserPersistentRepository[\"MongoUserPersistentRepository\"]\n        MongoInfoPersistentRepository[\"MongoInfoPersistentRepository\"]\n        RdbmsInfoPersistentRepository[\"RdbmsInfoPersistentRepository\"]\n        RdbmsUserPersistentRepository[\"RdbmsUserPersistentRepository\"]\n    end\n    subgraph Services\n        InfoServiceImpl[\"InfoServiceImpl\"]\n        UserService[\"UserService\"]\n        InfoService[\"InfoService\"]\n        AuthService[\"AuthService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        AuthServiceImpl[\"AuthServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

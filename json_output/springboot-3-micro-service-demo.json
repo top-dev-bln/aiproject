@@ -1,10 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, recruitment domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include school, student. Core business data revolves around School, Student.",
+    "free_text_description": "This system is a microservices platform that serves Candidate, Admin roles. It manages core business objects including school, student. The platform provides capabilities for school, student. Secondary concerns include job/recommendation functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage school operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Candidate, I want to create and manage school records, so that I can track and organize school data effectively.",
         "services": [
           "SchoolService"
         ],
@@ -14,17 +14,47 @@
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage student operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Candidate, I want to create and manage student records, so that I can track and organize student data effectively.",
         "services": [
           "StudentService"
         ],
         "controllers": [
           "StudentController"
         ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SchoolService"
+        ],
+        "controllers": [
+          "SchoolController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "SchoolService"
+        ],
+        "controllers": [
+          "SchoolController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "SchoolService"
+        ],
+        "controllers": [
+          "SchoolController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SchoolController[\"SchoolController\"]\n    StudentController[\"StudentController\"]\n  end\n  subgraph Services\n    SchoolService[\"SchoolService\"]\n    StudentService[\"StudentService\"]\n  end\n  subgraph Data_Access\n    School[\"School\"]\n    SchoolRepository[\"SchoolRepository\"]\n    Student[\"Student\"]\n    StudentRepository[\"StudentRepository\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        School[\"School\"]\n        Student[\"Student\"]\n        SchoolRepository[\"SchoolRepository\"]\n        StudentRepository[\"StudentRepository\"]\n    end\n    subgraph Controllers\n        SchoolController[\"SchoolController\"]\n        StudentController[\"StudentController\"]\n    end\n    subgraph Services\n        SchoolService[\"SchoolService\"]\n        StudentService[\"StudentService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access"
   }
 }

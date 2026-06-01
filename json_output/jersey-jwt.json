@@ -1,50 +1,54 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves API Consumer, User as its primary actors. The main business capabilities include api error details, authenticated user details, authentication. Core business data revolves around Authority, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including api error details, authentication token, user credentials, query user result. The platform provides capabilities for greeting, username password validator, authentication token issuer. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include distributed transactions functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
-        "controllers": [
-          "AuthenticatedUserDetails"
-        ]
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UsernamePasswordValidator",
+          "AuthenticationTokenIssuer",
+          "AuthenticationTokenService"
+        ],
+        "controllers": []
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
-        "services": [],
-        "controllers": [
-          "JerseyConfig"
-        ]
+        "story": "As a User, I want to create and manage api error details records, so that I can track and organize api error details data effectively.",
+        "services": [
+          "GreetingService"
+        ],
+        "controllers": []
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
-        "controllers": [
-          "QueryUserResult"
-        ]
+        "story": "As a User, I want to create and manage authentication token records, so that I can track and organize authentication token data effectively.",
+        "services": [
+          "AuthenticationTokenIssuer",
+          "AuthenticationTokenService"
+        ],
+        "controllers": []
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage api error details operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "ApiErrorDetails"
-        ]
+        "story": "As a User, I want to create and manage user credentials records, so that I can track and organize user credentials data effectively.",
+        "services": [
+          "UsernamePasswordValidator",
+          "UserService"
+        ],
+        "controllers": []
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage authenticated user details operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "AuthenticatedUserDetails"
-        ]
+        "story": "As a User, I want to create and manage query user result records, so that I can track and organize query user result data effectively.",
+        "services": [
+          "GreetingService"
+        ],
+        "controllers": []
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ApiErrorDetails[\"ApiErrorDetails\"]\n    AuthenticatedUserDetails[\"AuthenticatedUserDetails\"]\n    AuthenticationResource[\"AuthenticationResource\"]\n    AuthenticationToken[\"AuthenticationToken\"]\n    AuthorizationFilter[\"AuthorizationFilter\"]\n    GreetingResource[\"GreetingResource\"]\n    JerseyConfig[\"JerseyConfig\"]\n    ObjectMapperProvider[\"ObjectMapperProvider\"]\n    QueryUserResult[\"QueryUserResult\"]\n    UserResource[\"UserResource\"]\n  end\n  subgraph Services\n    AuthenticationTokenService[\"AuthenticationTokenService\"]\n    GreetingService[\"GreetingService\"]\n    UserService[\"UserService\"]\n    UsernamePasswordValidator[\"UsernamePasswordValidator\"]\n  end\n  subgraph Data_Access\n    Authority[\"Authority\"]\n    User[\"User\"]\n  end\n  subgraph Security\n    AuthenticationFilter[\"AuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    ConfigurationProducer[\"ConfigurationProducer\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        JerseyConfig[\"JerseyConfig\"]\n        ConfigurationProducer[\"ConfigurationProducer\"]\n        Configurable[\"Configurable\"]\n        EntityManagerProducer[\"EntityManagerProducer\"]\n    end\n    subgraph Data_Access\n        ApiErrorDetails[\"ApiErrorDetails\"]\n        AuthenticationToken[\"AuthenticationToken\"]\n        UserCredentials[\"UserCredentials\"]\n        QueryUserResult[\"QueryUserResult\"]\n        User[\"User\"]\n        ObjectMapperProvider[\"ObjectMapperProvider\"]\n        AuthenticationExceptionMapper[\"AuthenticationExceptionMapper\"]\n        AuthenticationTokenRefreshmentExceptionMapper[\"AuthenticationTokenRefreshmentExceptionMapper\"]\n        AccessDeniedExceptionMapper[\"AccessDeniedExceptionMapper\"]\n    end\n    subgraph Services\n        GreetingService[\"GreetingService\"]\n        UsernamePasswordValidator[\"UsernamePasswordValidator\"]\n        AuthenticationTokenIssuer[\"AuthenticationTokenIssuer\"]\n        PasswordEncoder[\"PasswordEncoder\"]\n        AuthenticationTokenService[\"AuthenticationTokenService\"]\n        AuthenticationTokenParser[\"AuthenticationTokenParser\"]\n        AuthenticationTokenSettings[\"AuthenticationTokenSettings\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Security\n        AuthenticatedUserDetails[\"AuthenticatedUserDetails\"]\n        TokenBasedSecurityContext[\"TokenBasedSecurityContext\"]\n        AuthenticationTokenDetails[\"AuthenticationTokenDetails\"]\n        AuthorizationFilter[\"AuthorizationFilter\"]\n        AuthenticationFilter[\"AuthenticationFilter\"]\n        AuthenticationResource[\"AuthenticationResource\"]\n        Authority[\"Authority\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure"
   }
 }

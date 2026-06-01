@@ -1,34 +1,43 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include document chat, instrument, simple chat. Core business data revolves around Instrument.",
+    "free_text_description": "This system is a messaging platform that serves Candidate, Admin roles. The platform provides capabilities for chat application, document chat, tenant context holder. Secondary concerns include job/recommendation functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "story": "As a Candidate, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "DataConfig"
+          "TenantAuthenticationEntryPoint",
+          "TenantAuthenticationManagerResolver"
         ],
-        "controllers": []
+        "controllers": [
+          "DocumentChatController"
+        ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "story": "As a Candidate, I want to search and filter records, so that I can quickly find relevant information.",
         "services": [
-          "TenantAuthenticationEntryPoint"
+          "TenantContextFilter",
+          "TenantGatewayFilterFactory"
         ],
-        "controllers": []
+        "controllers": [
+          "DocumentChatController"
+        ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to access services through a unified entry point, so that routing and load balancing are handled transparently.",
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
         "services": [
-          "TenantGatewayFilterFactory"
+          "SecurityConfig",
+          "DataConfig"
         ],
-        "controllers": []
+        "controllers": [
+          "DocumentChatController"
+        ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage document chat operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Candidate, I want to upload and manage files, so that I can store and retrieve documents when needed.",
         "services": [
           "DocumentChatService"
         ],
@@ -38,17 +47,17 @@
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage instrument operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Candidate, I want to interact with simple chat functionality, so that I can accomplish my simple chat-related tasks.",
         "services": [
-          "InstrumentRepository"
+          "ChatServiceApplication"
         ],
         "controllers": [
-          "InstrumentController"
+          "SimpleChatController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DocumentChatController[\"DocumentChatController\"]\n    InstrumentController[\"InstrumentController\"]\n    SimpleChatController[\"SimpleChatController\"]\n  end\n  subgraph Services\n    ConnectionProvider[\"ConnectionProvider\"]\n    DataConfig[\"DataConfig\"]\n    DocumentChatService[\"DocumentChatService\"]\n    HttpHeaderTenantResolver[\"HttpHeaderTenantResolver\"]\n    InstrumentRepository[\"InstrumentRepository\"]\n    PropertiesTenantDetailsService[\"PropertiesTenantDetailsService\"]\n    SecurityConfig[\"SecurityConfig\"]\n    TenantAuthenticationEntryPoint[\"TenantAuthenticationEntryPoint\"]\n    TenantAuthenticationManagerResolver[\"TenantAuthenticationManagerResolver\"]\n    TenantContextFilter[\"TenantContextFilter\"]\n    TenantContextHolder[\"TenantContextHolder\"]\n    TenantDetailsService[\"TenantDetailsService\"]\n    TenantGatewayFilterFactory[\"TenantGatewayFilterFactory\"]\n    TenantKeyGenerator[\"TenantKeyGenerator\"]\n  end\n  subgraph Data_Access\n    Instrument[\"Instrument\"]\n    TenantClientRegistrationRepository[\"TenantClientRegistrationRepository\"]\n  end\n  subgraph Infrastructure\n    PathConfig[\"PathConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        ChatServiceApplication[\"ChatServiceApplication\"]\n        DocumentChatService[\"DocumentChatService\"]\n        TenantContextHolder[\"TenantContextHolder\"]\n        HttpHeaderTenantResolver[\"HttpHeaderTenantResolver\"]\n        TenantResolver[\"TenantResolver\"]\n        TenantDetailsService[\"TenantDetailsService\"]\n        PropertiesTenantDetailsService[\"PropertiesTenantDetailsService\"]\n        TenantContextFilter[\"TenantContextFilter\"]\n        EdgeServiceApplication[\"EdgeServiceApplication\"]\n        SecurityConfig[\"SecurityConfig\"]\n        TenantGatewayFilterFactory[\"TenantGatewayFilterFactory\"]\n        TenantAuthenticationEntryPoint[\"TenantAuthenticationEntryPoint\"]\n        TenantClientRegistrationRepository[\"TenantClientRegistrationRepository\"]\n        InstrumentServiceApplication[\"InstrumentServiceApplication\"]\n        DataConfig[\"DataConfig\"]\n        PathConfig[\"PathConfig\"]\n        InstrumentRepository[\"InstrumentRepository\"]\n        Instrument[\"Instrument\"]\n        TenantKeyGenerator[\"TenantKeyGenerator\"]\n        ConnectionProvider[\"ConnectionProvider\"]\n        TenantIdentifierResolver[\"TenantIdentifierResolver\"]\n        TenantAuthenticationManagerResolver[\"TenantAuthenticationManagerResolver\"]\n    end\n    subgraph Controllers\n        DocumentChatController[\"DocumentChatController\"]\n        SimpleChatController[\"SimpleChatController\"]\n        InstrumentController[\"InstrumentController\"]\n    end\n    Controllers --> Services"
   }
 }

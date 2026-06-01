@@ -1,26 +1,27 @@
 {
   "input": {
-    "free_text_description": "The system operates in the data processing, e-commerce domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include test pay rule, mobile payment info, mobile payment info impl. Core business data revolves around PhoneNoBlackObject.",
+    "free_text_description": "This system is an e-commerce platform that serves Developer, Admin roles. It manages core business objects including phone no black object, mobile payment info, defeat map reduce object, mobile payment request. The platform provides capabilities for mobile payment info, mobile payment info, mobile payment rule. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to make payments securely, so that transactions are processed reliably.",
+        "story": "As a Developer, I want to create and manage phone no black object records, so that I can track and organize phone no black object data effectively.",
         "services": [
-          "MobilePaymentInfoService"
+          "PhoneNoBlacklistService"
         ],
         "controllers": []
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage test pay rule operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "TestPayRule"
-        ]
+        "story": "As a Developer, I want to create and manage mobile payment info records, so that I can track and organize mobile payment info data effectively.",
+        "services": [
+          "MobilePaymentInfoService",
+          "MobilePaymentInfoServiceImpl"
+        ],
+        "controllers": []
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to interact with mobile payment info functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to create and manage defeat map reduce object records, so that I can track and organize defeat map reduce object data effectively.",
         "services": [
           "MobilePaymentInfoService"
         ],
@@ -28,23 +29,24 @@
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to interact with mobile payment info impl functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to create and manage mobile payment request records, so that I can track and organize mobile payment request data effectively.",
         "services": [
+          "MobilePaymentInfoService",
           "MobilePaymentInfoServiceImpl"
         ],
         "controllers": []
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to interact with mobile payment rule functionality, so that the system fulfills my needs.",
+        "story": "As a Developer, I want to create and manage base request records, so that I can track and organize base request data effectively.",
         "services": [
-          "MobilePaymentRuleService"
+          "MobilePaymentInfoService"
         ],
         "controllers": []
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    TestPayRule[\"TestPayRule\"]\n  end\n  subgraph Services\n    MobilePaymentInfoService[\"MobilePaymentInfoService\"]\n    MobilePaymentInfoServiceImpl[\"MobilePaymentInfoServiceImpl\"]\n    MobilePaymentRuleService[\"MobilePaymentRuleService\"]\n    PhoneNoBlacklistService[\"PhoneNoBlacklistService\"]\n    TestRuleService[\"TestRuleService\"]\n  end\n  subgraph Data_Access\n    PhoneNoBlackObject[\"PhoneNoBlackObject\"]\n  end\n  subgraph Infrastructure\n    MobilePaymentInfoConfig[\"MobilePaymentInfoConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SpringMongoConfig[\"SpringMongoConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        PhoneNoBlackObject[\"PhoneNoBlackObject\"]\n        MobilePaymentInfo[\"MobilePaymentInfo\"]\n        DefeatMapReduceObject[\"DefeatMapReduceObject\"]\n        MobilePaymentRequest[\"MobilePaymentRequest\"]\n        BaseRequest[\"BaseRequest\"]\n        RuleResponse[\"RuleResponse\"]\n    end\n    subgraph Infrastructure\n        MobilePaymentInfoConfig[\"MobilePaymentInfoConfig\"]\n        SpringMongoConfig[\"SpringMongoConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        DateUtil[\"DateUtil\"]\n        UserConsumerAmountPerMinute[\"UserConsumerAmountPerMinute\"]\n        Message[\"Message\"]\n        TransTypeInfo[\"TransTypeInfo\"]\n        ConstantKafka[\"ConstantKafka\"]\n        MessageDeserializationSchema[\"MessageDeserializationSchema\"]\n        TradeCountMinuteResult[\"TradeCountMinuteResult\"]\n    end\n    subgraph Services\n        MobilePaymentInfoService[\"MobilePaymentInfoService\"]\n        MobilePaymentInfoServiceImpl[\"MobilePaymentInfoServiceImpl\"]\n        MobilePaymentRuleService[\"MobilePaymentRuleService\"]\n        PhoneNoBlacklistService[\"PhoneNoBlacklistService\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

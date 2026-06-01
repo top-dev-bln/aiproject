@@ -1,42 +1,50 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves API Consumer, Admin, Customer, User as its primary actors. The main business capabilities include admin, bar, bar. Core business data revolves around Product, User.",
+    "free_text_description": "This system is a social platform that serves Admin, Candidate roles. It manages core business objects including user, product. The platform provides capabilities for user client, item. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserClient"
+        ],
         "controllers": [
-          "ProductController"
+          "AdminController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage admin operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserClient"
+        ],
         "controllers": [
           "AdminController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage bar operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage product records, so that I can track and organize product data effectively.",
+        "services": [
+          "UserClient"
+        ],
         "controllers": [
-          "BarController"
+          "ProductController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage foo operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "UserClient"
+        ],
         "controllers": [
-          "FooController"
+          "AdminController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage item operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to interact with item functionality, so that I can accomplish my item-related tasks.",
         "services": [
           "ItemService"
         ],
@@ -47,6 +55,6 @@
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminController[\"AdminController\"]\n    BarController[\"BarController\"]\n    BarResource[\"BarResource\"]\n    FooController[\"FooController\"]\n    FooResource[\"FooResource\"]\n    ItemController[\"ItemController\"]\n    ProductController[\"ProductController\"]\n  end\n  subgraph Services\n    ItemService[\"ItemService\"]\n  end\n  subgraph Data_Access\n    Product[\"Product\"]\n    ProductRepository[\"ProductRepository\"]\n    User[\"User\"]\n  end\n  subgraph Infrastructure\n    FriendlyIdAutoConfiguration[\"FriendlyIdAutoConfiguration\"]\n    FriendlyIdConfig[\"FriendlyIdConfig\"]\n    FriendlyIdConfiguration[\"FriendlyIdConfiguration\"]\n    ObjectMapperConfiguration[\"ObjectMapperConfiguration\"]\n    SecurityConfig[\"SecurityConfig\"]\n    WebConfig[\"WebConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        FriendlyIdAutoConfiguration[\"FriendlyIdAutoConfiguration\"]\n        FriendlyIdConfig[\"FriendlyIdConfig\"]\n        WebConfig[\"WebConfig\"]\n        FriendlyIdConfiguration[\"FriendlyIdConfiguration\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Product[\"Product\"]\n        ProductRepository[\"ProductRepository\"]\n        ObjectMapperConfiguration[\"ObjectMapperConfiguration\"]\n    end\n    subgraph Services\n        UserClient[\"UserClient\"]\n        ItemService[\"ItemService\"]\n    end\n    subgraph Security\n        AuthenticatedContractBase[\"AuthenticatedContractBase\"]\n        SecurityConfig[\"SecurityConfig\"]\n    end\n    subgraph Controllers\n        AdminController[\"AdminController\"]\n        ItemController[\"ItemController\"]\n        BarController[\"BarController\"]\n        FooController[\"FooController\"]\n        ProductController[\"ProductController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

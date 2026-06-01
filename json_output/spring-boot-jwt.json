@@ -1,10 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, User as its primary actors. The main business capabilities include global exception handler, user, my user details. Core business data revolves around AppUser. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including app user, app user role. The platform provides capabilities for my user details, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
           "MyUserDetails",
           "UserService"
@@ -15,23 +15,47 @@
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage global exception handler operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage app user records, so that I can track and organize app user data effectively.",
+        "services": [
+          "MyUserDetails"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage app user role records, so that I can track and organize app user role data effectively.",
+        "services": [
+          "MyUserDetails"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with global exception handler functionality, so that I can accomplish my global exception handler-related tasks.",
+        "services": [
+          "MyUserDetails"
+        ],
         "controllers": [
           "GlobalExceptionHandlerController"
         ]
       },
       {
-        "id": 3,
-        "story": "As a API Consumer, I want to interact with my user details functionality, so that the system fulfills my needs.",
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
           "MyUserDetails"
         ],
-        "controllers": []
+        "controllers": [
+          "UserController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GlobalExceptionHandlerController[\"GlobalExceptionHandlerController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    MyUserDetails[\"MyUserDetails\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    AppUser[\"AppUser\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JwtTokenFilter[\"JwtTokenFilter\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    OpenApiConfig[\"OpenApiConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        JwtAuthServiceApp[\"JwtAuthServiceApp\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        JwtTokenFilter[\"JwtTokenFilter\"]\n        JwtTokenProvider[\"JwtTokenProvider\"]\n    end\n    subgraph Infrastructure\n        OpenApiConfig[\"OpenApiConfig\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n        GlobalExceptionHandlerController[\"GlobalExceptionHandlerController\"]\n    end\n    subgraph Data_Access\n        AppUser[\"AppUser\"]\n        AppUserRole[\"AppUserRole\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        MyUserDetails[\"MyUserDetails\"]\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

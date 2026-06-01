@@ -1,62 +1,66 @@
 {
   "input": {
-    "free_text_description": "The system operates in the e-commerce, microservices infrastructure domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include inventory, order, product. Core business data revolves around Inventory, Order.",
+    "free_text_description": "This system is an e-commerce platform that serves Customer, Candidate roles. The platform provides capabilities for security config, routes, inventory application. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
+        "story": "As a Customer, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
         "services": [
-          "OrderRepository",
-          "OrderService"
+          "NotificationServiceApplication",
+          "NotificationService"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "SecurityConfig",
+          "OpenAPIConfig"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderServiceApplication",
+          "Order",
+          "OrderRepository"
         ],
         "controllers": [
           "OrderController"
         ]
       },
       {
-        "id": 2,
-        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
-        "services": [
-          "Product",
-          "ProductRepository",
-          "ProductService"
-        ],
-        "controllers": [
-          "ProductController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to receive notifications about relevant activity, so that I stay informed about updates that matter to me.",
-        "services": [
-          "NotificationService"
-        ],
-        "controllers": []
-      },
-      {
         "id": 4,
-        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "story": "As a Customer, I want to interact with inventory functionality, so that I can accomplish my inventory-related tasks.",
         "services": [
-          "OpenAPIConfig"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 5,
-        "story": "As a API Consumer, I want to manage inventory operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "InventoryClient",
-          "InventoryClientStub",
-          "InventoryRepository",
-          "InventoryService"
+          "InventoryServiceApplication",
+          "Inventory"
         ],
         "controllers": [
           "InventoryController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to interact with product functionality, so that I can accomplish my product-related tasks.",
+        "services": [
+          "ProductServiceApplication",
+          "Product"
+        ],
+        "controllers": [
+          "ProductController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    InventoryController[\"InventoryController\"]\n    OrderController[\"OrderController\"]\n    ProductController[\"ProductController\"]\n  end\n  subgraph Services\n    InventoryClient[\"InventoryClient\"]\n    InventoryClientStub[\"InventoryClientStub\"]\n    InventoryRepository[\"InventoryRepository\"]\n    InventoryService[\"InventoryService\"]\n    NotificationService[\"NotificationService\"]\n    OpenAPIConfig[\"OpenAPIConfig\"]\n    OrderRepository[\"OrderRepository\"]\n    OrderService[\"OrderService\"]\n    Product[\"Product\"]\n    ProductRepository[\"ProductRepository\"]\n    ProductService[\"ProductService\"]\n    Routes[\"Routes\"]\n    SecurityConfig[\"SecurityConfig\"]\n  end\n  subgraph Data_Access\n    Inventory[\"Inventory\"]\n    Order[\"Order\"]\n  end\n  subgraph Infrastructure\n    ObservabilityConfig[\"ObservabilityConfig\"]\n    ObservationConfig[\"ObservationConfig\"]\n    RestClientConfig[\"RestClientConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        SecurityConfig[\"SecurityConfig\"]\n        Routes[\"Routes\"]\n        InventoryServiceApplication[\"InventoryServiceApplication\"]\n        OpenAPIConfig[\"OpenAPIConfig\"]\n        ObservabilityConfig[\"ObservabilityConfig\"]\n        Inventory[\"Inventory\"]\n        InventoryRepository[\"InventoryRepository\"]\n        InventoryService[\"InventoryService\"]\n        NotificationServiceApplication[\"NotificationServiceApplication\"]\n        NotificationService[\"NotificationService\"]\n        OrderServiceApplication[\"OrderServiceApplication\"]\n        InventoryClient[\"InventoryClient\"]\n        RestClientConfig[\"RestClientConfig\"]\n        Order[\"Order\"]\n        OrderRepository[\"OrderRepository\"]\n        OrderService[\"OrderService\"]\n        InventoryClientStub[\"InventoryClientStub\"]\n        ProductServiceApplication[\"ProductServiceApplication\"]\n        ObservationConfig[\"ObservationConfig\"]\n        Product[\"Product\"]\n        ProductRepository[\"ProductRepository\"]\n        ProductService[\"ProductService\"]\n    end\n    subgraph Controllers\n        InventoryController[\"InventoryController\"]\n        OrderController[\"OrderController\"]\n        ProductController[\"ProductController\"]\n    end\n    Controllers --> Services"
   }
 }

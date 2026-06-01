@@ -1,50 +1,61 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves API Consumer, User as its primary actors. The main business capabilities include authentication, protected, security. Core business data revolves around CerberusUser, CerberusUserFactory, DomainBase, ModelBase. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Content Creator roles. It manages core business objects including user, authentication request, authentication response, cerberus user. The platform provides capabilities for entry point unauthorized handler, security, security. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "EntryPointUnauthorizedHandler",
+          "UserDetailsServiceImpl"
+        ],
         "controllers": [
           "AuthenticationController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
           "UserDetailsServiceImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "AuthenticationController"
+        ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage authentication request records, so that I can track and organize authentication request data effectively.",
+        "services": [
+          "EntryPointUnauthorizedHandler"
+        ],
         "controllers": [
           "AuthenticationController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage protected operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to create and manage authentication response records, so that I can track and organize authentication response data effectively.",
+        "services": [
+          "EntryPointUnauthorizedHandler"
+        ],
         "controllers": [
-          "ProtectedController"
+          "AuthenticationController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to interact with security functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to create and manage cerberus user records, so that I can track and organize cerberus user data effectively.",
         "services": [
-          "SecurityService"
+          "EntryPointUnauthorizedHandler"
         ],
-        "controllers": []
+        "controllers": [
+          "AuthenticationController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    ProtectedController[\"ProtectedController\"]\n  end\n  subgraph Services\n    SecurityService[\"SecurityService\"]\n    SecurityServiceImpl[\"SecurityServiceImpl\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n  end\n  subgraph Data_Access\n    CerberusUser[\"CerberusUser\"]\n    CerberusUserFactory[\"CerberusUserFactory\"]\n    DomainBase[\"DomainBase\"]\n    ModelBase[\"ModelBase\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthenticationTokenFilter[\"AuthenticationTokenFilter\"]\n    EntryPointUnauthorizedHandler[\"EntryPointUnauthorizedHandler\"]\n  end\n  subgraph Infrastructure\n    CorsFilter[\"CorsFilter\"]\n    TestApiConfig[\"TestApiConfig\"]\n    TestContext[\"TestContext\"]\n    WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        CorsFilter[\"CorsFilter\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        AuthenticationTokenFilter[\"AuthenticationTokenFilter\"]\n        TokenUtils[\"TokenUtils\"]\n    end\n    subgraph Controllers\n        AuthenticationController[\"AuthenticationController\"]\n        ProtectedController[\"ProtectedController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        AuthenticationRequest[\"AuthenticationRequest\"]\n        AuthenticationResponse[\"AuthenticationResponse\"]\n        CerberusUser[\"CerberusUser\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Infrastructure\n        RequestEntityBuilder[\"RequestEntityBuilder\"]\n    end\n    subgraph Services\n        EntryPointUnauthorizedHandler[\"EntryPointUnauthorizedHandler\"]\n        SecurityService[\"SecurityService\"]\n        SecurityServiceImpl[\"SecurityServiceImpl\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

@@ -1,60 +1,68 @@
 {
   "input": {
-    "free_text_description": "The system operates in the user management, microservices infrastructure domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include handler, role user, tx manager consuming. Core business data revolves around ChannelInfo, RoleEntity, UserEntity, UserRole. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a distributed transactions platform that serves Admin, User roles. It manages core business objects including transaction msg, transaction msg adapter, user role, role entity. The platform provides capabilities for message codec, hessian codec, kryo codec. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
           "RoleUserService",
-          "RoleUserServiceImpl"
+          "RoleUserServiceImpl",
+          "RoleUserMapper"
         ],
         "controllers": [
-          "RoleUserController"
+          "RoleUserController",
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "story": "As a Admin, I want to create and manage transaction msg records, so that I can track and organize transaction msg data effectively.",
         "services": [
-          "MessageCodecService"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage handler operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "InitStreamHandler",
-          "StartTxTransactionHandler",
-          "TxTransactionHandler"
-        ],
-        "controllers": [
-          "HandlerController"
-        ]
-      },
-      {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage role user operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "RoleUserService",
-          "RoleUserServiceImpl"
+          "TxTransactionHandler",
+          "AspectTransactionService"
         ],
         "controllers": [
           "RoleUserController"
         ]
       },
       {
-        "id": 5,
-        "story": "As a API Consumer, I want to manage tx manager consuming operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 3,
+        "story": "As a Admin, I want to create and manage transaction msg adapter records, so that I can track and organize transaction msg adapter data effectively.",
+        "services": [
+          "TxTransactionHandler",
+          "AspectTransactionService"
+        ],
         "controllers": [
-          "TxManagerConsumingController"
+          "RoleUserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to create and manage user role records, so that I can track and organize user role data effectively.",
+        "services": [
+          "RoleUserService",
+          "RoleUserServiceImpl"
+        ],
+        "controllers": [
+          "RoleUserController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to create and manage role entity records, so that I can track and organize role entity data effectively.",
+        "services": [
+          "RoleUserService",
+          "RoleUserServiceImpl"
+        ],
+        "controllers": [
+          "RoleUserController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    HandlerController[\"HandlerController\"]\n    RoleUserController[\"RoleUserController\"]\n    TxManagerConsumingController[\"TxManagerConsumingController\"]\n    TxManagerController[\"TxManagerController\"]\n    TxManagerMsgController[\"TxManagerMsgController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AspectTransactionService[\"AspectTransactionService\"]\n    AspectTransactionServiceImpl[\"AspectTransactionServiceImpl\"]\n    BaseItemService[\"BaseItemService\"]\n    BaseItemServiceImpl[\"BaseItemServiceImpl\"]\n    DiscoveryService[\"DiscoveryService\"]\n    ExternalNettyService[\"ExternalNettyService\"]\n    ExternalNettyServiceImpl[\"ExternalNettyServiceImpl\"]\n    HessianCodecServiceImpl[\"HessianCodecServiceImpl\"]\n    InitService[\"InitService\"]\n    InitServiceImpl[\"InitServiceImpl\"]\n    InitStreamHandler[\"InitStreamHandler\"]\n    KryoCodecServiceImpl[\"KryoCodecServiceImpl\"]\n    MessageCodecService[\"MessageCodecService\"]\n    ModelNameService[\"ModelNameService\"]\n    NettyClientService[\"NettyClientService\"]\n    NettyClientServiceImpl[\"NettyClientServiceImpl\"]\n    NettyMessageServiceImpl[\"NettyMessageServiceImpl\"]\n    NettyServerServiceImpl[\"NettyServerServiceImpl\"]\n    NettyService[\"NettyService\"]\n    OutputFactoryService[\"OutputFactoryService\"]\n    OutputFactoryServiceImpl[\"OutputFactoryServiceImpl\"]\n    ProtostuffCodecServiceImpl[\"ProtostuffCodecServiceImpl\"]\n    RoleUserService[\"RoleUserService\"]\n    RoleUserServiceImpl[\"RoleUserServiceImpl\"]\n    SpringCloudModelNameServiceImpl[\"SpringCloudModelNameServiceImpl\"]\n    StartTxTransactionHandler[\"StartTxTransactionHandler\"]\n    TxManagerInfoService[\"TxManagerInfoService\"]\n    TxManagerInfoServiceImpl[\"TxManagerInfoServiceImpl\"]\n    TxManagerMessageService[\"TxManagerMessageService\"]\n    TxManagerService[\"TxManagerService\"]\n    TxManagerServiceImpl[\"TxManagerServiceImpl\"]\n    TxOperateService[\"TxOperateService\"]\n    TxOperateServiceImpl[\"TxOperateServiceImpl\"]\n    TxTransactionFactoryService[\"TxTransactionFactoryService\"]\n    TxTransactionFactoryServiceImpl[\"TxTransactionFactoryServiceImpl\"]\n    TxTransactionHandler[\"TxTransactionHandler\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    ChannelInfo[\"ChannelInfo\"]\n    MongoTransactionMsgRepository[\"MongoTransactionMsgRepository\"]\n    MongoTransactionOperateRepository[\"MongoTransactionOperateRepository\"]\n    RedisTransactionMsgRepository[\"RedisTransactionMsgRepository\"]\n    RedisTransactionOperateRepository[\"RedisTransactionOperateRepository\"]\n    RoleEntity[\"RoleEntity\"]\n    TransactionMsgRepository[\"TransactionMsgRepository\"]\n    TransactionOperateRepository[\"TransactionOperateRepository\"]\n    UserEntity[\"UserEntity\"]\n    UserRole[\"UserRole\"]\n  end\n  subgraph Security\n    SpringCloudTxTransactionInterceptor[\"SpringCloudTxTransactionInterceptor\"]\n    TestSink[\"TestSink\"]\n    TxTransactionInterceptor[\"TxTransactionInterceptor\"]\n  end\n  subgraph Infrastructure\n    NettyConfig[\"NettyConfig\"]\n    SpringCloudAutoConfiguration[\"SpringCloudAutoConfiguration\"]\n    TransactionCoreAutoConfiguration[\"TransactionCoreAutoConfiguration\"]\n    TxConfig[\"TxConfig\"]\n    TxManagerConfiguration[\"TxManagerConfiguration\"]\n    TxMongoConfig[\"TxMongoConfig\"]\n    TxRedisConfig[\"TxRedisConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        test[\"test\"]\n        TransactionInvocation[\"TransactionInvocation\"]\n        TransactionRecover[\"TransactionRecover\"]\n        TxTransactionInfo[\"TxTransactionInfo\"]\n        TransactionRecoverAdapter[\"TransactionRecoverAdapter\"]\n        MongoAdapter[\"MongoAdapter\"]\n        BlockTaskHelper[\"BlockTaskHelper\"]\n        BlockTask[\"BlockTask\"]\n        AsyncCall[\"AsyncCall\"]\n        TxTransactionTaskLocal[\"TxTransactionTaskLocal\"]\n        TxTransactionLocal[\"TxTransactionLocal\"]\n        CompensationLocal[\"CompensationLocal\"]\n        TxTransactionThreadFactory[\"TxTransactionThreadFactory\"]\n        TransactionThreadPool[\"TransactionThreadPool\"]\n        FixedThreadPoolHelper[\"FixedThreadPoolHelper\"]\n        RejectedRunnable[\"RejectedRunnable\"]\n        RejectedPolicy[\"RejectedPolicy\"]\n        DiscardedPolicy[\"DiscardedPolicy\"]\n        BlockingPolicy[\"BlockingPolicy\"]\n        TxRedisConfig[\"TxRedisConfig\"]\n        TxMongoConfig[\"TxMongoConfig\"]\n        TxConfig[\"TxConfig\"]\n        CommonConstant[\"CommonConstant\"]\n        TxManagerServer[\"TxManagerServer\"]\n        RejectedPolicyTypeEnum[\"RejectedPolicyTypeEnum\"]\n        SerializeProtocolEnum[\"SerializeProtocolEnum\"]\n        CompensationCacheTypeEnum[\"CompensationCacheTypeEnum\"]\n        BlockingQueueTypeEnum[\"BlockingQueueTypeEnum\"]\n        TransactionRoleEnum[\"TransactionRoleEnum\"]\n        ConsumedStatus[\"ConsumedStatus\"]\n        OperationEnum[\"OperationEnum\"]\n        NettyMessageActionEnum[\"NettyMessageActionEnum\"]\n        TransactionTypeEnum[\"TransactionTypeEnum\"]\n        ServiceNameEnum[\"ServiceNameEnum\"]\n        TransactionStatusEnum[\"TransactionStatusEnum\"]\n        CompensationActionEnum[\"CompensationActionEnum\"]\n        MethodNameEnum[\"MethodNameEnum\"]\n        NettyResultEnum[\"NettyResultEnum\"]\n        ByteUtils[\"ByteUtils\"]\n        TransactionMsgHelper[\"TransactionMsgHelper\"]\n        SpringBeanUtils[\"SpringBeanUtils\"]\n        SqlHelper[\"SqlHelper\"]\n        JedisCallback[\"JedisCallback\"]\n        RedisHelper[\"RedisHelper\"]\n        ConfigUtils[\"ConfigUtils\"]\n        ServiceBootstrap[\"ServiceBootstrap\"]\n        Assert[\"Assert\"]\n        DbTypeUtils[\"DbTypeUtils\"]\n        LogUtil[\"LogUtil\"]\n        BeanMapUtils[\"BeanMapUtils\"]\n        IdWorkerUtils[\"IdWorkerUtils\"]\n        DateUtils[\"DateUtils\"]\n        RedisKeyUtils[\"RedisKeyUtils\"]\n        ConfigHelper[\"ConfigHelper\"]\n        TransactionRecoverUtils[\"TransactionRecoverUtils\"]\n        JedisClientSingle[\"JedisClientSingle\"]\n        JedisClientCluster[\"JedisClientCluster\"]\n        JedisClient[\"JedisClient\"]\n        NettyTransferSerialize[\"NettyTransferSerialize\"]\n        NettyPipelineInit[\"NettyPipelineInit\"]\n        TxTransactionGroup[\"TxTransactionGroup\"]\n        LottorRequest[\"LottorRequest\"]\n        BaseItem[\"BaseItem\"]\n        LottorBean[\"LottorBean\"]\n        TxTransactionItem[\"TxTransactionItem\"]\n        AbstractMessageEncoder[\"AbstractMessageEncoder\"]\n        AbstractMessageDecoder[\"AbstractMessageDecoder\"]\n        HessianSerialize[\"HessianSerialize\"]\n        HessianDecoder[\"HessianDecoder\"]\n        HessianSerializeFactory[\"HessianSerializeFactory\"]\n        HessianSerializePool[\"HessianSerializePool\"]\n        HessianEncoder[\"HessianEncoder\"]\n        KryoEncoder[\"KryoEncoder\"]\n        KryoSerialize[\"KryoSerialize\"]\n        KryoDecoder[\"KryoDecoder\"]\n        KryoPoolFactory[\"KryoPoolFactory\"]\n        LottorEncoder[\"LottorEncoder\"]\n        LottorDecoder[\"LottorDecoder\"]\n        ProtostuffSerializePool[\"ProtostuffSerializePool\"]\n        ProtostuffDecoder[\"ProtostuffDecoder\"]\n        ProtostuffSerialize[\"ProtostuffSerialize\"]\n        ProtostuffSerializeFactory[\"ProtostuffSerializeFactory\"]\n        ProtostuffEncoder[\"ProtostuffEncoder\"]\n        SchemaCache[\"SchemaCache\"]\n        ProtostuffSerializer[\"ProtostuffSerializer\"]\n        KryoSerializer[\"KryoSerializer\"]\n        JavaSerializer[\"JavaSerializer\"]\n        ObjectSerializer[\"ObjectSerializer\"]\n        HessianSerializer[\"HessianSerializer\"]\n        TransactionCoreAutoConfiguration[\"TransactionCoreAutoConfiguration\"]\n        RoleEnum[\"RoleEnum\"]\n        SpringCloudAutoConfiguration[\"SpringCloudAutoConfiguration\"]\n        Constant[\"Constant\"]\n        ExecutorMessageTool[\"ExecutorMessageTool\"]\n        Address[\"Address\"]\n        NettyConfig[\"NettyConfig\"]\n        ChannelSender[\"ChannelSender\"]\n        TxManagerConfiguration[\"TxManagerConfiguration\"]\n        SocketUtils[\"SocketUtils\"]\n    end\n    subgraph Data_Access\n        TransactionMsg[\"TransactionMsg\"]\n        TransactionMsgAdapter[\"TransactionMsgAdapter\"]\n        UserRole[\"UserRole\"]\n        RoleEntity[\"RoleEntity\"]\n        RolePermission[\"RolePermission\"]\n        Permission[\"Permission\"]\n        UserEntity[\"UserEntity\"]\n        StateEnum[\"StateEnum\"]\n        ChannelInfo[\"ChannelInfo\"]\n        SentMsgDetails[\"SentMsgDetails\"]\n        TxTransactionItemAdapter[\"TxTransactionItemAdapter\"]\n        TxManagerInfo[\"TxManagerInfo\"]\n        CollectionNameEnum[\"CollectionNameEnum\"]\n        ConsumeMsgDetails[\"ConsumeMsgDetails\"]\n        RepositoryPathUtils[\"RepositoryPathUtils\"]\n        TransactionMsgRepository[\"TransactionMsgRepository\"]\n        TransactionOperateRepository[\"TransactionOperateRepository\"]\n        MongoTransactionMsgRepository[\"MongoTransactionMsgRepository\"]\n        RedisTransactionMsgRepository[\"RedisTransactionMsgRepository\"]\n        RedisTransactionOperateRepository[\"RedisTransactionOperateRepository\"]\n        MongoTransactionOperateRepository[\"MongoTransactionOperateRepository\"]\n    end\n    subgraph Services\n        MessageCodecService[\"MessageCodecService\"]\n        HessianCodecServiceImpl[\"HessianCodecServiceImpl\"]\n        KryoCodecServiceImpl[\"KryoCodecServiceImpl\"]\n        ProtostuffCodecServiceImpl[\"ProtostuffCodecServiceImpl\"]\n        TxOperateService[\"TxOperateService\"]\n        TxOperateServiceImpl[\"TxOperateServiceImpl\"]\n        NettyClientService[\"NettyClientService\"]\n        NettyClientMessageHandler[\"NettyClientMessageHandler\"]\n        NettyClientServiceImpl[\"NettyClientServiceImpl\"]\n        TxTransactionHandler[\"TxTransactionHandler\"]\n        AspectTransactionService[\"AspectTransactionService\"]\n        InitService[\"InitService\"]\n        ExternalNettyService[\"ExternalNettyService\"]\n        TxManagerMessageService[\"TxManagerMessageService\"]\n        TxTransactionFactoryService[\"TxTransactionFactoryService\"]\n        ModelNameService[\"ModelNameService\"]\n        StartTxTransactionHandler[\"StartTxTransactionHandler\"]\n        ConsumedTransactionHandler[\"ConsumedTransactionHandler\"]\n        ConfirmTxTransactionHandler[\"ConfirmTxTransactionHandler\"]\n        InitServiceImpl[\"InitServiceImpl\"]\n        ExternalNettyServiceImpl[\"ExternalNettyServiceImpl\"]\n        TxTransactionFactoryServiceImpl[\"TxTransactionFactoryServiceImpl\"]\n        AspectTransactionServiceImpl[\"AspectTransactionServiceImpl\"]\n        NettyMessageServiceImpl[\"NettyMessageServiceImpl\"]\n        RoleUserService[\"RoleUserService\"]\n        RoleUserServiceImpl[\"RoleUserServiceImpl\"]\n        PermissionMapper[\"PermissionMapper\"]\n        RolePermissionMapper[\"RolePermissionMapper\"]\n        RoleUserMapper[\"RoleUserMapper\"]\n        RoleMapper[\"RoleMapper\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserMapper[\"UserMapper\"]\n        InitStreamHandler[\"InitStreamHandler\"]\n        SpringCloudModelNameServiceImpl[\"SpringCloudModelNameServiceImpl\"]\n        DiscoveryService[\"DiscoveryService\"]\n        EchoClientHandler[\"EchoClientHandler\"]\n        EchoServerHandler[\"EchoServerHandler\"]\n        NettyService[\"NettyService\"]\n        NettyServerMessageHandler[\"NettyServerMessageHandler\"]\n        NettyServerServiceImpl[\"NettyServerServiceImpl\"]\n        TxManagerService[\"TxManagerService\"]\n        TxManagerInfoService[\"TxManagerInfoService\"]\n        OutputFactoryService[\"OutputFactoryService\"]\n        BaseItemService[\"BaseItemService\"]\n        BaseItemServiceImpl[\"BaseItemServiceImpl\"]\n        TxManagerServiceImpl[\"TxManagerServiceImpl\"]\n        OutputFactoryServiceImpl[\"OutputFactoryServiceImpl\"]\n        TxManagerInfoServiceImpl[\"TxManagerInfoServiceImpl\"]\n        SocketManager[\"SocketManager\"]\n    end\n    subgraph Security\n        ListenerStream[\"ListenerStream\"]\n    end\n    subgraph Controllers\n        RoleUserController[\"RoleUserController\"]\n        UserController[\"UserController\"]\n        TxManagerController[\"TxManagerController\"]\n        TxManagerConsumingController[\"TxManagerConsumingController\"]\n        TxManagerMsgController[\"TxManagerMsgController\"]\n        HandlerController[\"HandlerController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

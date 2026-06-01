@@ -1,53 +1,65 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, authentication domain. It serves System, User as its primary actors. The main business capabilities include authentication, chat, chat room. Core business data revolves around InstantMessageBuilder, NewUserValidator, Role, User.",
+    "free_text_description": "This system is a messaging platform that serves Admin, User roles. It manages core business objects including user, role, instant message builder, instant message. The platform provides capabilities for user, default user, user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a System, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "DefaultUserService",
+          "UserDetailsServiceImpl"
+        ],
         "controllers": [
           "AuthenticationController"
         ]
       },
       {
         "id": 2,
-        "story": "As a System, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
-          "CassandraInstantMessageService"
+          "UserService",
+          "DefaultUserService"
         ],
-        "controllers": []
+        "controllers": [
+          "AuthenticationController"
+        ]
       },
       {
         "id": 3,
-        "story": "As a System, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a Admin, I want to create and manage role records, so that I can track and organize role data effectively.",
         "services": [
-          "DefaultUserService"
+          "UserService"
         ],
-        "controllers": []
+        "controllers": [
+          "AuthenticationController"
+        ]
       },
       {
         "id": 4,
-        "story": "As a System, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage instant message builder records, so that I can track and organize instant message builder data effectively.",
+        "services": [
+          "CassandraInstantMessageService",
+          "InstantMessageService"
+        ],
         "controllers": [
           "AuthenticationController"
         ]
       },
       {
         "id": 5,
-        "story": "As a System, I want to manage chat operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to create and manage instant message records, so that I can track and organize instant message data effectively.",
         "services": [
-          "ChatRoomService",
-          "RedisChatRoomService"
+          "CassandraInstantMessageService",
+          "InstantMessageService"
         ],
         "controllers": [
-          "ChatController"
+          "AuthenticationController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    ChatController[\"ChatController\"]\n    ChatRoomController[\"ChatRoomController\"]\n  end\n  subgraph Services\n    CassandraInstantMessageService[\"CassandraInstantMessageService\"]\n    ChatRoomService[\"ChatRoomService\"]\n    DefaultUserService[\"DefaultUserService\"]\n    InstantMessageService[\"InstantMessageService\"]\n    RedisChatRoomService[\"RedisChatRoomService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    ChatRoomRepository[\"ChatRoomRepository\"]\n    InstantMessageBuilder[\"InstantMessageBuilder\"]\n    InstantMessageRepository[\"InstantMessageRepository\"]\n    NewUserValidator[\"NewUserValidator\"]\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Infrastructure\n    CassandraConfig[\"CassandraConfig\"]\n    WebConfig[\"WebConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AuthenticationController[\"AuthenticationController\"]\n        ChatController[\"ChatController\"]\n        ChatRoomController[\"ChatRoomController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Role[\"Role\"]\n        InstantMessageBuilder[\"InstantMessageBuilder\"]\n        InstantMessage[\"InstantMessage\"]\n        ChatRoomUser[\"ChatRoomUser\"]\n        ChatRoom[\"ChatRoom\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n        InstantMessageRepository[\"InstantMessageRepository\"]\n        ChatRoomRepository[\"ChatRoomRepository\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n        DefaultUserService[\"DefaultUserService\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        RedisChatRoomService[\"RedisChatRoomService\"]\n        ChatRoomService[\"ChatRoomService\"]\n        CassandraInstantMessageService[\"CassandraInstantMessageService\"]\n        InstantMessageService[\"InstantMessageService\"]\n    end\n    subgraph Security\n        NewUserValidator[\"NewUserValidator\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    subgraph Infrastructure\n        CassandraConfig[\"CassandraConfig\"]\n        WebConfig[\"WebConfig\"]\n        WebSocketConfigSpringSession[\"WebSocketConfigSpringSession\"]\n        Destinations[\"Destinations\"]\n        SystemMessages[\"SystemMessages\"]\n        SystemUsers[\"SystemUsers\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

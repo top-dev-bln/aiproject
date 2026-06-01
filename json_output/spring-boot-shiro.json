@@ -1,10 +1,42 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, User as its primary actors. The main business capabilities include sample api. Core business data revolves around User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a microservices platform that serves User, Admin roles. It manages core business objects including user. It exposes interfaces for managing sample api. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage sample api operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [],
+        "controllers": [
+          "SampleApi"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with sample api functionality, so that I can accomplish my sample api-related tasks.",
+        "services": [],
+        "controllers": [
+          "SampleApi"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "SampleApi"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "SampleApi"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to update my preferences and settings, so that the system adapts to my needs.",
         "services": [],
         "controllers": [
           "SampleApi"
@@ -13,6 +45,6 @@
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SampleApi[\"SampleApi\"]\n  end\n  subgraph Data_Access\n    User[\"User\"]\n  end\n  subgraph Security\n    FormSignInFilter[\"FormSignInFilter\"]\n    MyFilter[\"MyFilter\"]\n  end\n  subgraph Infrastructure\n    SessionUserArgumentResolver[\"SessionUserArgumentResolver\"]\n    ShiroAutoConfiguration[\"ShiroAutoConfiguration\"]\n    ShiroConfiguration[\"ShiroConfiguration\"]\n    ShiroJdbcRealmProperties[\"ShiroJdbcRealmProperties\"]\n  end\n  Controllers --> Security\n  Security --> Data_Access\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ShiroJdbcRealmProperties[\"ShiroJdbcRealmProperties\"]\n        ShiroSessionProperties[\"ShiroSessionProperties\"]\n        JdbcPermissionDefinitionsLoader[\"JdbcPermissionDefinitionsLoader\"]\n        ShiroCookieProperties[\"ShiroCookieProperties\"]\n        ShiroWebMvcConfigurerAdapter[\"ShiroWebMvcConfigurerAdapter\"]\n        ShiroAutoConfiguration[\"ShiroAutoConfiguration\"]\n        ShiroSignInProperties[\"ShiroSignInProperties\"]\n        ShiroConfiguration[\"ShiroConfiguration\"]\n        ShiroProperties[\"ShiroProperties\"]\n        SessionUserArgumentResolver[\"SessionUserArgumentResolver\"]\n        EnableShiroWebSupport[\"EnableShiroWebSupport\"]\n        SessionUser[\"SessionUser\"]\n    end\n    subgraph Security\n        FormSignInFilter[\"FormSignInFilter\"]\n        ShiroFilterCustomizer[\"ShiroFilterCustomizer\"]\n        RetryLimitHashedCredentialsMatcher[\"RetryLimitHashedCredentialsMatcher\"]\n        MyFilter[\"MyFilter\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n    end\n    subgraph Controllers\n        SampleApi[\"SampleApi\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

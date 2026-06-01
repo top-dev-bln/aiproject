@@ -1,10 +1,32 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves Customer, User as its primary actors. The main business capabilities include user, token, token impl. Core business data revolves around Result, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including result, user. The platform provides capabilities for token, token, exceptions handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "TokenService",
+          "TokenServiceImpl",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage result records, so that I can track and organize result data effectively.",
+        "services": [
+          "TokenService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
           "UserService",
           "UserServiceImpl"
@@ -14,32 +36,28 @@
         ]
       },
       {
-        "id": 2,
-        "story": "As a Customer, I want to interact with token functionality, so that the system fulfills my needs.",
-        "services": [
-          "TokenService"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 3,
-        "story": "As a Customer, I want to interact with token impl functionality, so that the system fulfills my needs.",
-        "services": [
-          "TokenServiceImpl"
-        ],
-        "controllers": []
-      },
-      {
         "id": 4,
-        "story": "As a Customer, I want to interact with user impl functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to use exceptions handler capabilities, so that I can perform essential business operations.",
         "services": [
-          "UserServiceImpl"
+          "ExceptionsHandler"
         ],
-        "controllers": []
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use my meta object handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyMetaObjectHandler"
+        ],
+        "controllers": [
+          "UserController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    TokenService[\"TokenService\"]\n    TokenServiceImpl[\"TokenServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Result[\"Result\"]\n    User[\"User\"]\n  end\n  subgraph Security\n    Auth[\"Auth\"]\n    AuthMethodArgumentResolver[\"AuthMethodArgumentResolver\"]\n    TokenSubject[\"TokenSubject\"]\n    WebMvcConfigFromAuth[\"WebMvcConfigFromAuth\"]\n  end\n  subgraph Infrastructure\n    WebMvcConfig[\"WebMvcConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        Auth[\"Auth\"]\n        AuthMethodArgumentResolver[\"AuthMethodArgumentResolver\"]\n        WebMvcConfigFromAuth[\"WebMvcConfigFromAuth\"]\n        TokenSubject[\"TokenSubject\"]\n    end\n    subgraph Services\n        TokenService[\"TokenService\"]\n        TokenServiceImpl[\"TokenServiceImpl\"]\n        ExceptionsHandler[\"ExceptionsHandler\"]\n        MyMetaObjectHandler[\"MyMetaObjectHandler\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Infrastructure\n        WebMvcConfig[\"WebMvcConfig\"]\n    end\n    subgraph Data_Access\n        Result[\"Result\"]\n        User[\"User\"]\n        UserMapper[\"UserMapper\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

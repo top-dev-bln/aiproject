@@ -1,50 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves API Consumer, Admin, Customer, System, User as its primary actors. The main business capabilities include s security bootstrap, hello world, hello world rest. Core business data revolves around AutowiredBeanHolder, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. It manages core business objects including user. The platform provides capabilities for extend property sources environment post processor, user mx bean, calculating. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage s security bootstrap operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserMXBean"
+        ],
         "controllers": [
-          "EndpointsSecurityBootstrap"
+          "HelloWorldRestController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage hello world operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserMXBean"
+        ],
         "controllers": [
-          "HelloWorldController"
+          "HelloWorldRestController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage hello world rest operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to interact with hello world functionality, so that I can accomplish my hello world-related tasks.",
+        "services": [
+          "ExtendPropertySourcesEnvironmentPostProcessor"
+        ],
         "controllers": [
           "HelloWorldRestController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage management contexts bootstrap operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to use extend property sources environment post processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ExtendPropertySourcesEnvironmentPostProcessor"
+        ],
         "controllers": [
-          "ManagementContextEndpointsBootstrap"
+          "HelloWorldRestController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage spring boot15 web application bootstrap operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to use calculating capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CalculatingService"
+        ],
         "controllers": [
-          "SpringBoot15WebApplicationBootstrap"
+          "HelloWorldRestController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    EndpointsSecurityBootstrap[\"EndpointsSecurityBootstrap\"]\n    HelloWorldController[\"HelloWorldController\"]\n    HelloWorldRestController[\"HelloWorldRestController\"]\n    ManagementContextEndpointsBootstrap[\"ManagementContextEndpointsBootstrap\"]\n    SpringBoot15WebApplicationBootstrap[\"SpringBoot15WebApplicationBootstrap\"]\n  end\n  subgraph Services\n    CalculatingService[\"CalculatingService\"]\n    IterationCalculatingService[\"IterationCalculatingService\"]\n    LambdaCalculatingService[\"LambdaCalculatingService\"]\n    TransactionalService[\"TransactionalService\"]\n  end\n  subgraph Data_Access\n    AutowiredBeanHolder[\"AutowiredBeanHolder\"]\n    FirstLevelRepository[\"FirstLevelRepository\"]\n    MyFirstLevelRepository[\"MyFirstLevelRepository\"]\n    MySecondLevelRepository[\"MySecondLevelRepository\"]\n    NameRepository[\"NameRepository\"]\n    SecondLevelRepository[\"SecondLevelRepository\"]\n    StringRepository[\"StringRepository\"]\n    User[\"User\"]\n  end\n  subgraph Security\n    AnnotationTypeFilter[\"AnnotationTypeFilter\"]\n    JspFilter[\"JspFilter\"]\n    WebEndpointsSecurityRiskBootstrap[\"WebEndpointsSecurityRiskBootstrap\"]\n  end\n  subgraph Infrastructure\n    AnnotationIndexedConfiguration[\"AnnotationIndexedConfiguration\"]\n    AutoConfigurationBootstrap[\"AutoConfigurationBootstrap\"]\n    Common[\"Common\"]\n    ConditionalMessageConfiguration[\"ConditionalMessageConfiguration\"]\n    ConditionalOnProperties[\"ConditionalOnProperties\"]\n    CustomizedManagementContextConfiguration[\"CustomizedManagementContextConfiguration\"]\n    DefaultAutoConfigurationImportListener[\"DefaultAutoConfigurationImportListener\"]\n    ExtendPropertySourcesEnvironmentPostProcessor[\"ExtendPropertySourcesEnvironmentPostProcessor\"]\n    ExtendPropertySourcesRunListener[\"ExtendPropertySourcesRunListener\"]\n    ExternalizedConfigurationWebApplicationBootstrap[\"ExternalizedConfigurationWebApplicationBootstrap\"]\n    FormatterAutoConfiguration[\"FormatterAutoConfiguration\"]\n    HelloWorldConfiguration[\"HelloWorldConfiguration\"]\n    LocalDateEditor[\"LocalDateEditor\"]\n    LocalDatePropertyEditorRegistrar[\"LocalDatePropertyEditorRegistrar\"]\n    PropertySourceUtils[\"PropertySourceUtils\"]\n    PropertySourcesConfiguration[\"PropertySourcesConfiguration\"]\n    RelaxedNamesBootstrap[\"RelaxedNamesBootstrap\"]\n    RepeatablePropertySourceConfiguration[\"RepeatablePropertySourceConfiguration\"]\n    ServletRegistrationAutoConfiguration[\"ServletRegistrationAutoConfiguration\"]\n    SpringApplicationConfiguration[\"SpringApplicationConfiguration\"]\n    SpringContextConfiguration[\"SpringContextConfiguration\"]\n    SpringWebMvcConfiguration[\"SpringWebMvcConfiguration\"]\n    StringToLocalDateGenericConverter[\"StringToLocalDateGenericConverter\"]\n    UserCityNameNotEmptyValidator[\"UserCityNameNotEmptyValidator\"]\n    UserContextConfiguration[\"UserContextConfiguration\"]\n    WebAutoConfiguration[\"WebAutoConfiguration\"]\n    WebConfiguration[\"WebConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AnnotationTypeFilter[\"AnnotationTypeFilter\"]\n        JspFilter[\"JspFilter\"]\n    end\n    subgraph Infrastructure\n        WebAutoConfiguration[\"WebAutoConfiguration\"]\n        WebConfiguration[\"WebConfiguration\"]\n        ServletRegistrationAutoConfiguration[\"ServletRegistrationAutoConfiguration\"]\n        DefaultAutoConfigurationImportListener[\"DefaultAutoConfigurationImportListener\"]\n        DefaultFormatter[\"DefaultFormatter\"]\n        Formatter[\"Formatter\"]\n        JsonFormatter[\"JsonFormatter\"]\n        FormatterAutoConfiguration[\"FormatterAutoConfiguration\"]\n        LocalDatePropertyEditorRegistrar[\"LocalDatePropertyEditorRegistrar\"]\n        LocalDateEditor[\"LocalDateEditor\"]\n        ConditionalOnProperties[\"ConditionalOnProperties\"]\n        UserContextConfiguration[\"UserContextConfiguration\"]\n        StringToLocalDateGenericConverter[\"StringToLocalDateGenericConverter\"]\n        StringToLocalDateConverter[\"StringToLocalDateConverter\"]\n        ExtendPropertySourcesRunListener[\"ExtendPropertySourcesRunListener\"]\n        ExtendPropertySourcesApplicationListener[\"ExtendPropertySourcesApplicationListener\"]\n        PropertySourceUtils[\"PropertySourceUtils\"]\n        UserCityNameNotEmptyValidator[\"UserCityNameNotEmptyValidator\"]\n        Common[\"Common\"]\n        CustomizedManagementContextConfiguration[\"CustomizedManagementContextConfiguration\"]\n        SpringApplicationConfiguration[\"SpringApplicationConfiguration\"]\n        SpringContextConfiguration[\"SpringContextConfiguration\"]\n        HelloWorldConfiguration[\"HelloWorldConfiguration\"]\n        SpringWebMvcConfiguration[\"SpringWebMvcConfiguration\"]\n        PropertySourcesConfiguration[\"PropertySourcesConfiguration\"]\n        ConditionalMessageConfiguration[\"ConditionalMessageConfiguration\"]\n        RepeatablePropertySourceConfiguration[\"RepeatablePropertySourceConfiguration\"]\n        AnnotationIndexedConfiguration[\"AnnotationIndexedConfiguration\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        ConsoleFailureAnalysisReporter[\"ConsoleFailureAnalysisReporter\"]\n        StringRepository[\"StringRepository\"]\n        AutowiredBeanHolder[\"AutowiredBeanHolder\"]\n        NameRepository[\"NameRepository\"]\n        SecondLevelRepository[\"SecondLevelRepository\"]\n        FirstLevelRepository[\"FirstLevelRepository\"]\n        MySecondLevelRepository[\"MySecondLevelRepository\"]\n        MyFirstLevelRepository[\"MyFirstLevelRepository\"]\n    end\n    subgraph Controllers\n        HelloWorldRestController[\"HelloWorldRestController\"]\n        HelloWorldController[\"HelloWorldController\"]\n    end\n    subgraph Services\n        ExtendPropertySourcesEnvironmentPostProcessor[\"ExtendPropertySourcesEnvironmentPostProcessor\"]\n        UserMXBean[\"UserMXBean\"]\n        CalculatingService[\"CalculatingService\"]\n        LambdaCalculatingService[\"LambdaCalculatingService\"]\n        IterationCalculatingService[\"IterationCalculatingService\"]\n        TransactionalService[\"TransactionalService\"]\n        CustomizedProcessor[\"CustomizedProcessor\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

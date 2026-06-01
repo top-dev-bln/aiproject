@@ -1,30 +1,33 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, banking domain. It serves API Consumer, User as its primary actors. The main business capabilities include authentication, deposit account, identity verification. Core business data revolves around DepositAccount, ResidentialAddress, Transaction, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including residential address, user, deposit account, transaction. The platform provides capabilities for exception response handler, user, token revocation. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
+          "UserService",
+          "TokenRevocationService",
           "AuthenticationService"
         ],
         "controllers": [
-          "AuthenticationController"
+          "AuthenticationController",
+          "UserController"
         ]
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "story": "As a User, I want to create and manage residential address records, so that I can track and organize residential address data effectively.",
         "services": [
-          "DepositAccountService"
+          "ExceptionResponseHandler"
         ],
         "controllers": [
-          "DepositAccountController"
+          "IdentityVerificationController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
           "UserService"
         ],
@@ -34,27 +37,27 @@
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "AuthenticationService"
-        ],
-        "controllers": [
-          "AuthenticationController"
-        ]
-      },
-      {
-        "id": 5,
-        "story": "As a API Consumer, I want to manage deposit account operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to create and manage deposit account records, so that I can track and organize deposit account data effectively.",
         "services": [
           "DepositAccountService"
         ],
         "controllers": [
           "DepositAccountController"
         ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage transaction records, so that I can track and organize transaction data effectively.",
+        "services": [
+          "ExceptionResponseHandler"
+        ],
+        "controllers": [
+          "IdentityVerificationController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    DepositAccountController[\"DepositAccountController\"]\n    IdentityVerificationController[\"IdentityVerificationController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AuthenticationService[\"AuthenticationService\"]\n    DepositAccountService[\"DepositAccountService\"]\n    IdentityVerificationService[\"IdentityVerificationService\"]\n    TokenRevocationService[\"TokenRevocationService\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    DepositAccount[\"DepositAccount\"]\n    DepositAccountRepository[\"DepositAccountRepository\"]\n    ResidentialAddress[\"ResidentialAddress\"]\n    ResidentialAddressRepository[\"ResidentialAddressRepository\"]\n    Transaction[\"Transaction\"]\n    TransactionRepository[\"TransactionRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    OpenApiConfiguration[\"OpenApiConfiguration\"]\n    PublicEndpoint[\"PublicEndpoint\"]\n    RedisConfiguration[\"RedisConfiguration\"]\n    SecurityConfiguration[\"SecurityConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        PublicEndpoint[\"PublicEndpoint\"]\n        RedisConfiguration[\"RedisConfiguration\"]\n        OpenApiConfigurationProperties[\"OpenApiConfigurationProperties\"]\n        OpenApiConfiguration[\"OpenApiConfiguration\"]\n    end\n    subgraph Security\n        CustomAuthenticationEntryPoint[\"CustomAuthenticationEntryPoint\"]\n        TokenConfigurationProperties[\"TokenConfigurationProperties\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n        RefreshTokenHeaderProvider[\"RefreshTokenHeaderProvider\"]\n        ApiEndpointSecurityInspector[\"ApiEndpointSecurityInspector\"]\n        AuthenticatedUserIdProvider[\"AuthenticatedUserIdProvider\"]\n        JwtUtility[\"JwtUtility\"]\n        RefreshTokenGenerator[\"RefreshTokenGenerator\"]\n    end\n    subgraph Controllers\n        IdentityVerificationController[\"IdentityVerificationController\"]\n        AuthenticationController[\"AuthenticationController\"]\n        DepositAccountController[\"DepositAccountController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        ResidentialAddress[\"ResidentialAddress\"]\n        User[\"User\"]\n        DepositAccount[\"DepositAccount\"]\n        Transaction[\"Transaction\"]\n        DepositAccountRepository[\"DepositAccountRepository\"]\n        TransactionRepository[\"TransactionRepository\"]\n        UserRepository[\"UserRepository\"]\n        ResidentialAddressRepository[\"ResidentialAddressRepository\"]\n    end\n    subgraph Services\n        ExceptionResponseHandler[\"ExceptionResponseHandler\"]\n        UserService[\"UserService\"]\n        TokenRevocationService[\"TokenRevocationService\"]\n        AuthenticationService[\"AuthenticationService\"]\n        DepositAccountService[\"DepositAccountService\"]\n        IdentityVerificationService[\"IdentityVerificationService\"]\n        CacheManager[\"CacheManager\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

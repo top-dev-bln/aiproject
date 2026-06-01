@@ -1,10 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the file management, user management domain. It serves User as its primary actors. The main business capabilities include class for name, class loader, fast json.",
+    "free_text_description": "This system is a file management platform that serves User, Candidate roles. It exposes interfaces for managing hello, index, list file. Secondary concerns include search functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
         "services": [],
         "controllers": [
           "ListFileController"
@@ -12,39 +12,40 @@
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage class for name operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
         "services": [],
         "controllers": [
-          "ClassForNameController"
+          "ListFileController",
+          "UploadController"
         ]
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage class loader operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to interact with hello functionality, so that I can accomplish my hello-related tasks.",
         "services": [],
         "controllers": [
-          "ClassLoaderController"
+          "HelloController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to manage fast json operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
         "services": [],
         "controllers": [
-          "FastJsonController"
+          "IndexController"
         ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to manage hello operations, so that the relevant business process is handled efficiently.",
+        "story": "As a User, I want to interact with fast json functionality, so that I can accomplish my fast json-related tasks.",
         "services": [],
         "controllers": [
-          "HelloController"
+          "FastJsonController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ClassForNameController[\"ClassForNameController\"]\n    ClassLoaderController[\"ClassLoaderController\"]\n    FastJsonController[\"FastJsonController\"]\n    HelloController[\"HelloController\"]\n    IndexController[\"IndexController\"]\n    JackSonController[\"JackSonController\"]\n    JdbcController[\"JdbcController\"]\n    ListFileController[\"ListFileController\"]\n    UploadController[\"UploadController\"]\n  end"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        IndexController[\"IndexController\"]\n        ListFileController[\"ListFileController\"]\n        FastJsonController[\"FastJsonController\"]\n        JdbcController[\"JdbcController\"]\n        ClassForNameController[\"ClassForNameController\"]\n        UploadController[\"UploadController\"]\n        JackSonController[\"JackSonController\"]\n        ClassLoaderController[\"ClassLoaderController\"]\n    end"
   }
 }

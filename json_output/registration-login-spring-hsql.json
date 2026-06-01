@@ -1,12 +1,23 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include user, security, security impl. Core business data revolves around Role, User. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user, role. The platform provides capabilities for user, security, security. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "UserDetailsServiceImpl",
+          "UserService",
+          "UserServiceImpl",
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
           "UserService",
           "UserServiceImpl"
         ],
@@ -15,40 +26,38 @@
         ]
       },
       {
-        "id": 2,
-        "story": "As a User, I want to interact with security functionality, so that the system fulfills my needs.",
-        "services": [
-          "SecurityService"
-        ],
-        "controllers": []
-      },
-      {
         "id": 3,
-        "story": "As a User, I want to interact with security impl functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to create and manage role records, so that I can track and organize role data effectively.",
         "services": [
-          "SecurityServiceImpl"
+          "UserService"
         ],
-        "controllers": []
+        "controllers": [
+          "UserController"
+        ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to interact with user details impl functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to use security capabilities, so that I can perform essential business operations.",
         "services": [
-          "UserDetailsServiceImpl"
+          "SecurityService"
         ],
-        "controllers": []
+        "controllers": [
+          "UserController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with user impl functionality, so that the system fulfills my needs.",
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
-          "UserServiceImpl"
+          "UserService"
         ],
-        "controllers": []
+        "controllers": [
+          "UserController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    SecurityService[\"SecurityService\"]\n    SecurityServiceImpl[\"SecurityServiceImpl\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    UserValidator[\"UserValidator\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        UserValidator[\"UserValidator\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Role[\"Role\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n        SecurityService[\"SecurityService\"]\n        SecurityServiceImpl[\"SecurityServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
   }
 }

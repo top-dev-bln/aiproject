@@ -1,10 +1,54 @@
 {
   "input": {
-    "free_text_description": "The system operates in the e-commerce, authentication domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include cart, category, category page. Core business data revolves around Cart, OrderMain, ProductCategory, ProductInOrder. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an e-commerce platform that serves Customer, User roles. It manages core business objects including order main, user, product in order, cart. The platform provides capabilities for user, cart, product. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a Customer, I want to add items to a shopping cart and check out, so that I can conveniently collect items before purchasing.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to create and manage order main records, so that I can track and organize order main data effectively.",
+        "services": [
+          "OrderService",
+          "ProductInOrderService"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to create and manage product in order records, so that I can track and organize product in order data effectively.",
+        "services": [
+          "ProductService",
+          "ProductInOrderService"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to create and manage cart records, so that I can track and organize cart data effectively.",
         "services": [
           "CartService",
           "CartServiceImpl"
@@ -12,55 +56,10 @@
         "controllers": [
           "CartController"
         ]
-      },
-      {
-        "id": 2,
-        "story": "As a API Consumer, I want to organize items into categories, so that users can easily navigate and filter available items.",
-        "services": [
-          "CategoryService",
-          "CategoryServiceImpl"
-        ],
-        "controllers": [
-          "CategoryController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to log into the system, so that I can access my personalized dashboard and features.",
-        "services": [],
-        "controllers": [
-          "LoginForm"
-        ]
-      },
-      {
-        "id": 4,
-        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
-        "services": [
-          "OrderService",
-          "OrderServiceImpl",
-          "ProductInOrderService",
-          "ProductInOrderServiceImpl"
-        ],
-        "controllers": [
-          "OrderController"
-        ]
-      },
-      {
-        "id": 5,
-        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
-        "services": [
-          "ProductInOrderService",
-          "ProductInOrderServiceImpl",
-          "ProductService",
-          "ProductServiceImpl"
-        ],
-        "controllers": [
-          "ProductController"
-        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CartController[\"CartController\"]\n    CategoryController[\"CategoryController\"]\n    CategoryPage[\"CategoryPage\"]\n    ItemForm[\"ItemForm\"]\n    JwtEntryPoint[\"JwtEntryPoint\"]\n    LoginForm[\"LoginForm\"]\n    OrderController[\"OrderController\"]\n    OrderRepository[\"OrderRepository\"]\n    ProductController[\"ProductController\"]\n    SpringSecurityConfig[\"SpringSecurityConfig\"]\n    UserController[\"UserController\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Services\n    CartService[\"CartService\"]\n    CartServiceImpl[\"CartServiceImpl\"]\n    CategoryService[\"CategoryService\"]\n    CategoryServiceImpl[\"CategoryServiceImpl\"]\n    OrderService[\"OrderService\"]\n    OrderServiceImpl[\"OrderServiceImpl\"]\n    ProductInOrderService[\"ProductInOrderService\"]\n    ProductInOrderServiceImpl[\"ProductInOrderServiceImpl\"]\n    ProductService[\"ProductService\"]\n    ProductServiceImpl[\"ProductServiceImpl\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Cart[\"Cart\"]\n    CartRepository[\"CartRepository\"]\n    OrderMain[\"OrderMain\"]\n    ProductCategory[\"ProductCategory\"]\n    ProductCategoryRepository[\"ProductCategoryRepository\"]\n    ProductInOrder[\"ProductInOrder\"]\n    ProductInOrderRepository[\"ProductInOrderRepository\"]\n    ProductInfo[\"ProductInfo\"]\n    ProductInfoRepository[\"ProductInfoRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JwtFilter[\"JwtFilter\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        ProductController[\"ProductController\"]\n        OrderController[\"OrderController\"]\n        CartController[\"CartController\"]\n        CategoryController[\"CategoryController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        OrderMain[\"OrderMain\"]\n        User[\"User\"]\n        ProductInOrder[\"ProductInOrder\"]\n        Cart[\"Cart\"]\n        ProductCategory[\"ProductCategory\"]\n        ProductInfo[\"ProductInfo\"]\n        OrderRepository[\"OrderRepository\"]\n        ProductCategoryRepository[\"ProductCategoryRepository\"]\n        CartRepository[\"CartRepository\"]\n        ProductInfoRepository[\"ProductInfoRepository\"]\n        ProductInOrderRepository[\"ProductInOrderRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Security\n        SpringSecurityConfig[\"SpringSecurityConfig\"]\n        JwtEntryPoint[\"JwtEntryPoint\"]\n        JwtFilter[\"JwtFilter\"]\n        JwtProvider[\"JwtProvider\"]\n        JwtResponse[\"JwtResponse\"]\n    end\n    subgraph Services\n        UserService[\"UserService\"]\n        CartService[\"CartService\"]\n        ProductService[\"ProductService\"]\n        OrderService[\"OrderService\"]\n        ProductInOrderService[\"ProductInOrderService\"]\n        CategoryService[\"CategoryService\"]\n        OrderServiceImpl[\"OrderServiceImpl\"]\n        CartServiceImpl[\"CartServiceImpl\"]\n        ProductInOrderServiceImpl[\"ProductInOrderServiceImpl\"]\n        CategoryServiceImpl[\"CategoryServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        ProductServiceImpl[\"ProductServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
   }
 }

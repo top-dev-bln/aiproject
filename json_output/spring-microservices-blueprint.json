@@ -1,57 +1,65 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include async test, auth, home. Core business data revolves around ErrorCode, Product, ProductRepo, Role. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user, product, role. The platform provides capabilities for common exception handler, custom access denied handler, user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "AuthService"
+          "UserDetailsServiceImpl",
+          "UserDetailsImpl",
+          "UserService"
         ],
         "controllers": [
+          "UserController",
           "AuthController"
         ]
       },
       {
         "id": 2,
-        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
-        "services": [
-          "ProductService"
-        ],
-        "controllers": [
-          "ProductController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
         "services": [
           "UserDetailsServiceImpl",
-          "UserService"
+          "UserDetailsImpl"
         ],
         "controllers": [
           "UserController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage async test operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 3,
+        "story": "As a User, I want to create and manage product records, so that I can track and organize product data effectively.",
+        "services": [
+          "ProductService"
+        ],
         "controllers": [
-          "AsyncTestController"
+          "ProductController",
+          "ProductEventController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage role records, so that I can track and organize role data effectively.",
+        "services": [
+          "CommonExceptionHandler"
+        ],
+        "controllers": [
+          "ProductController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage home operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a User, I want to interact with async test functionality, so that I can accomplish my async test-related tasks.",
+        "services": [
+          "AsyncExampleService"
+        ],
         "controllers": [
-          "HomeController"
+          "AsyncTestController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AsyncTestController[\"AsyncTestController\"]\n    AuthController[\"AuthController\"]\n    HomeController[\"HomeController\"]\n    ProductController[\"ProductController\"]\n    ProductEventController[\"ProductEventController\"]\n    TestController[\"TestController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AsyncExampleService[\"AsyncExampleService\"]\n    AuthService[\"AuthService\"]\n    ProductService[\"ProductService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    ErrorCode[\"ErrorCode\"]\n    Product[\"Product\"]\n    ProductRepo[\"ProductRepo\"]\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthTokenFilter[\"AuthTokenFilter\"]\n    CORSFilter[\"CORSFilter\"]\n    CorrelationLoggingFilter[\"CorrelationLoggingFilter\"]\n    JwtUtils[\"JwtUtils\"]\n    KafkaProducerInterceptor[\"KafkaProducerInterceptor\"]\n    KafkaRecordInterceptor[\"KafkaRecordInterceptor\"]\n    OpenFeignRequestInterceptor[\"OpenFeignRequestInterceptor\"]\n  end\n  subgraph Infrastructure\n    CommonContextTaskDecorator[\"CommonContextTaskDecorator\"]\n    CommonOpenFeignConfig[\"CommonOpenFeignConfig\"]\n    CommonOpenFeignErrorDecoder[\"CommonOpenFeignErrorDecoder\"]\n    KafkaConfig[\"KafkaConfig\"]\n    OpenApiConfig[\"OpenApiConfig\"]\n    ProductKafkaProducer[\"ProductKafkaProducer\"]\n    ThreadAsyncConfig[\"ThreadAsyncConfig\"]\n    WebConfiguration[\"WebConfiguration\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        OpenApiConfig[\"OpenApiConfig\"]\n        CommonOpenFeignErrorDecoder[\"CommonOpenFeignErrorDecoder\"]\n        CommonOpenFeignConfig[\"CommonOpenFeignConfig\"]\n        CommonContextTaskDecorator[\"CommonContextTaskDecorator\"]\n        DefaultCommonContext[\"DefaultCommonContext\"]\n        CommonContext[\"CommonContext\"]\n        ThreadAsyncConfig[\"ThreadAsyncConfig\"]\n        CorrelationConstants[\"CorrelationConstants\"]\n        KafkaConfig[\"KafkaConfig\"]\n        ProductKafkaProducer[\"ProductKafkaProducer\"]\n        UserKafkaProducer[\"UserKafkaProducer\"]\n        StringToDateConverter[\"StringToDateConverter\"]\n        AsyncUtils[\"AsyncUtils\"]\n        CorrelationUtils[\"CorrelationUtils\"]\n    end\n    subgraph Controllers\n        ProductController[\"ProductController\"]\n        AsyncTestController[\"AsyncTestController\"]\n        HomeController[\"HomeController\"]\n        UserController[\"UserController\"]\n        ProductEventController[\"ProductEventController\"]\n        AuthController[\"AuthController\"]\n        TestController[\"TestController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Product[\"Product\"]\n        Role[\"Role\"]\n        ProductRepo[\"ProductRepo\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        CommonExceptionHandler[\"CommonExceptionHandler\"]\n        CustomAccessDeniedHandler[\"CustomAccessDeniedHandler\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        UserDetailsImpl[\"UserDetailsImpl\"]\n        ProductService[\"ProductService\"]\n        UserService[\"UserService\"]\n        AuthService[\"AuthService\"]\n        AsyncExampleService[\"AsyncExampleService\"]\n    end\n    subgraph Security\n        CorrelationLoggingFilter[\"CorrelationLoggingFilter\"]\n        JwtResponse[\"JwtResponse\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        CustomAuthenticationEntryPoint[\"CustomAuthenticationEntryPoint\"]\n        CORSFilter[\"CORSFilter\"]\n        WebConfiguration[\"WebConfiguration\"]\n        JwtUtils[\"JwtUtils\"]\n        AuthEntryPointJwt[\"AuthEntryPointJwt\"]\n        AuthTokenFilter[\"AuthTokenFilter\"]\n        AuthUtils[\"AuthUtils\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

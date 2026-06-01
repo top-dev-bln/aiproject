@@ -1,53 +1,65 @@
 {
   "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, authentication domain. It serves API Consumer, User as its primary actors. The main business capabilities include category, category create request model, i user jpa repository. Core business data revolves around CategoryEntity, MovieEntity. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is an user management platform that serves Candidate, User roles. The platform provides capabilities for microservice config application, web security, authorization filter. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to organize items into categories, so that users can easily navigate and filter available items.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "CategoryServiceImpl",
-          "ICategoryService"
+          "AuthorizationFilter",
+          "UserMicroserviceApplication",
+          "UserEntity"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "AuthorizationFilter",
+          "AuthenticationFilter"
         ],
         "controllers": [
           "CategoryController"
         ]
       },
       {
-        "id": 2,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
-        "services": [],
-        "controllers": [
-          "IUserJpaRepository"
-        ]
-      },
-      {
         "id": 3,
-        "story": "As a API Consumer, I want to manage category create request model operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "MicroserviceConfigApplication"
+        ],
         "controllers": [
-          "CategoryCreateRequestModel"
+          "CategoryController"
         ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to manage i user jpa repository operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to interact with category functionality, so that I can accomplish my category-related tasks.",
+        "services": [
+          "CategoryMicroserviceApplication",
+          "CategoryCreateRequestModel"
+        ],
         "controllers": [
-          "IUserJpaRepository"
+          "CategoryController"
         ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage i user service operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to interact with movie functionality, so that I can accomplish my movie-related tasks.",
+        "services": [
+          "MovieEntity",
+          "MovieMicroserviceApplication"
+        ],
         "controllers": [
-          "IUserService"
+          "MovieController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CategoryController[\"CategoryController\"]\n    CategoryCreateRequestModel[\"CategoryCreateRequestModel\"]\n    IUserJpaRepository[\"IUserJpaRepository\"]\n    IUserService[\"IUserService\"]\n    MovieController[\"MovieController\"]\n    MovieUpdateRequestModel[\"MovieUpdateRequestModel\"]\n    UserController[\"UserController\"]\n    UserCreateRequestModel[\"UserCreateRequestModel\"]\n    UserEntity[\"UserEntity\"]\n    WebSecurity[\"WebSecurity\"]\n    for[\"for\"]\n  end\n  subgraph Services\n    CategoryServiceImpl[\"CategoryServiceImpl\"]\n    ICategoryService[\"ICategoryService\"]\n    IMovieService[\"IMovieService\"]\n    MovieServiceImpl[\"MovieServiceImpl\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    CategoryEntity[\"CategoryEntity\"]\n    MovieEntity[\"MovieEntity\"]\n  end\n  subgraph Security\n    AuthenticationFilter[\"AuthenticationFilter\"]\n    AuthorizationFilter[\"AuthorizationFilter\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        MicroserviceConfigApplication[\"MicroserviceConfigApplication\"]\n        WebSecurity[\"WebSecurity\"]\n        AuthorizationFilter[\"AuthorizationFilter\"]\n        CategoryMicroserviceApplication[\"CategoryMicroserviceApplication\"]\n        for[\"for\"]\n        CategoryCreateRequestModel[\"CategoryCreateRequestModel\"]\n        CategoryUpdateRequestModel[\"CategoryUpdateRequestModel\"]\n        CategoryServiceImpl[\"CategoryServiceImpl\"]\n        ICategoryService[\"ICategoryService\"]\n        MovieEntity[\"MovieEntity\"]\n        CategoryEntity[\"CategoryEntity\"]\n        EurekaServiceDiscoveryApplication[\"EurekaServiceDiscoveryApplication\"]\n        MovieMicroserviceApplication[\"MovieMicroserviceApplication\"]\n        MovieUpdateRequestModel[\"MovieUpdateRequestModel\"]\n        MovieCreateRequestModel[\"MovieCreateRequestModel\"]\n        IMovieService[\"IMovieService\"]\n        MovieServiceImpl[\"MovieServiceImpl\"]\n        UserMicroserviceApplication[\"UserMicroserviceApplication\"]\n        UserEntity[\"UserEntity\"]\n        UserCreateRequestModel[\"UserCreateRequestModel\"]\n        LoginRequestModel[\"LoginRequestModel\"]\n        IUserJpaRepository[\"IUserJpaRepository\"]\n        AuthenticationFilter[\"AuthenticationFilter\"]\n        IUserService[\"IUserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Controllers\n        CategoryController[\"CategoryController\"]\n        MovieController[\"MovieController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services"
   }
 }

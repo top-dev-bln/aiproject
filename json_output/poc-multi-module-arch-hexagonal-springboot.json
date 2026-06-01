@@ -1,20 +1,23 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, content management domain. It serves User as its primary actors. The main business capabilities include global default exception handler, person, person service port. Core business data revolves around PersonEntity.",
+    "free_text_description": "This system is a messaging platform that serves Admin, Candidate roles. It manages core business objects including person domain, person entity. The platform provides capabilities for global default exception handler, person port, kafka person producer. Secondary concerns include microservices functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage global default exception handler operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to create and manage person domain records, so that I can track and organize person domain data effectively.",
+        "services": [
+          "PersonServicePortImpl",
+          "KafkaPersonProducer"
+        ],
         "controllers": [
-          "GlobalDefaultExceptionHandler"
+          "PersonController"
         ]
       },
       {
         "id": 2,
-        "story": "As a User, I want to manage person operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Admin, I want to create and manage person entity records, so that I can track and organize person entity data effectively.",
         "services": [
-          "KafkaPersonConsumer",
+          "PersonServicePortImpl",
           "KafkaPersonProducer"
         ],
         "controllers": [
@@ -23,31 +26,37 @@
       },
       {
         "id": 3,
-        "story": "As a User, I want to manage person service port operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Admin, I want to use global default exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GlobalDefaultExceptionHandler"
+        ],
         "controllers": [
-          "PersonServicePort"
+          "PersonController"
         ]
       },
       {
         "id": 4,
-        "story": "As a User, I want to interact with kafka person consumer functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use kafka person consumer capabilities, so that I can perform essential business operations.",
         "services": [
           "KafkaPersonConsumer"
         ],
-        "controllers": []
+        "controllers": [
+          "PersonController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a User, I want to interact with kafka person producer functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
         "services": [
-          "KafkaPersonProducer"
+          "GlobalDefaultExceptionHandler"
         ],
-        "controllers": []
+        "controllers": [
+          "PersonController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GlobalDefaultExceptionHandler[\"GlobalDefaultExceptionHandler\"]\n    PersonController[\"PersonController\"]\n    PersonServicePort[\"PersonServicePort\"]\n  end\n  subgraph Services\n    KafkaPersonConsumer[\"KafkaPersonConsumer\"]\n    KafkaPersonProducer[\"KafkaPersonProducer\"]\n  end\n  subgraph Data_Access\n    PersonEntity[\"PersonEntity\"]\n    PersonRepository[\"PersonRepository\"]\n  end\n  subgraph Infrastructure\n    AppBeansConfig[\"AppBeansConfig\"]\n    JaegerConfig[\"JaegerConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        GlobalDefaultExceptionHandler[\"GlobalDefaultExceptionHandler\"]\n        PersonServicePortImpl[\"PersonServicePortImpl\"]\n        KafkaPersonProducer[\"KafkaPersonProducer\"]\n        KafkaPersonConsumer[\"KafkaPersonConsumer\"]\n    end\n    subgraph Controllers\n        PersonController[\"PersonController\"]\n    end\n    subgraph Data_Access\n        PersonHttpMapper[\"PersonHttpMapper\"]\n        PersonMapper[\"PersonMapper\"]\n        PersonRepository[\"PersonRepository\"]\n        PersonDomain[\"PersonDomain\"]\n        PersonEntity[\"PersonEntity\"]\n    end\n    subgraph Infrastructure\n        JaegerConfig[\"JaegerConfig\"]\n        AppBeansConfig[\"AppBeansConfig\"]\n        CustomKafkaAvroSerializer[\"CustomKafkaAvroSerializer\"]\n        CustomKafkaAvroDeserializer[\"CustomKafkaAvroDeserializer\"]\n        PageableResponse[\"PageableResponse\"]\n        GetterAndSetterTester[\"GetterAndSetterTester\"]\n        PersonRequestTemplateLoader[\"PersonRequestTemplateLoader\"]\n        PersonDomainTemplateLoader[\"PersonDomainTemplateLoader\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

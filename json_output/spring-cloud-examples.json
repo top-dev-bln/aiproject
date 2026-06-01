@@ -1,42 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, authentication domain. It serves API Consumer, Admin, Customer as its primary actors. The main business capabilities include call hello, consumer, hello. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a microservices platform that serves Candidate, Admin roles. The platform provides capabilities for hello remote. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage call hello operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "CallHelloController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a API Consumer, I want to manage consumer operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "ConsumerController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage hello operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to interact with hello functionality, so that I can accomplish my hello-related tasks.",
+        "services": [
+          "HelloRemote"
+        ],
         "controllers": [
           "HelloController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage service operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "id": 2,
+        "story": "As a Candidate, I want to interact with call hello functionality, so that I can accomplish my call hello-related tasks.",
+        "services": [
+          "HelloRemote"
+        ],
+        "controllers": [
+          "CallHelloController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with service functionality, so that I can accomplish my service-related tasks.",
+        "services": [
+          "HelloRemote"
+        ],
         "controllers": [
           "ServiceController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with consumer functionality, so that I can accomplish my consumer-related tasks.",
+        "services": [
+          "HelloRemote"
+        ],
+        "controllers": [
+          "ConsumerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use hello remote capabilities, so that I can perform essential business operations.",
+        "services": [
+          "HelloRemote"
+        ],
+        "controllers": [
+          "HelloController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CallHelloController[\"CallHelloController\"]\n    ConsumerController[\"ConsumerController\"]\n    HelloController[\"HelloController\"]\n    ServiceController[\"ServiceController\"]\n  end\n  subgraph Security\n    TokenFilter[\"TokenFilter\"]\n  end\n  subgraph Infrastructure\n    Config[\"Config\"]\n  end\n  Controllers --> Security\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Config[\"Config\"]\n    end\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        CallHelloController[\"CallHelloController\"]\n        ServiceController[\"ServiceController\"]\n        ConsumerController[\"ConsumerController\"]\n    end\n    subgraph Security\n        TokenFilter[\"TokenFilter\"]\n    end\n    subgraph Services\n        HelloRemote[\"HelloRemote\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
   }
 }

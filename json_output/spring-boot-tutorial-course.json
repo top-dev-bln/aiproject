@@ -1,29 +1,10 @@
 {
   "input": {
-    "free_text_description": "The system operates in the file management, recruitment domain. It serves System as its primary actors. The main business capabilities include employee, hello world, student. Core business data revolves around Employee, Student.",
+    "free_text_description": "This system is a messaging platform that serves Candidate, Admin roles. It manages core business objects including student, employee. The platform provides capabilities for student, student, employee. Secondary concerns include job/recommendation functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a System, I want to manage employee operations, so that the relevant business process is handled efficiently.",
-        "services": [
-          "EmployeeService",
-          "EmployeeServiceImpl"
-        ],
-        "controllers": [
-          "EmployeeController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a System, I want to manage hello world operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "HelloWorldController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a System, I want to manage student operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Candidate, I want to create and manage student records, so that I can track and organize student data effectively.",
         "services": [
           "StudentService",
           "StudentServiceImpl"
@@ -33,24 +14,49 @@
         ]
       },
       {
-        "id": 4,
-        "story": "As a System, I want to interact with employee impl functionality, so that the system fulfills my needs.",
+        "id": 2,
+        "story": "As a Candidate, I want to create and manage employee records, so that I can track and organize employee data effectively.",
         "services": [
+          "EmployeeService",
           "EmployeeServiceImpl"
         ],
-        "controllers": []
+        "controllers": [
+          "EmployeeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with hello world functionality, so that I can accomplish my hello world-related tasks.",
+        "services": [
+          "StudentService"
+        ],
+        "controllers": [
+          "HelloWorldController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "StudentService"
+        ],
+        "controllers": [
+          "StudentController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a System, I want to interact with student impl functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
         "services": [
-          "StudentServiceImpl"
+          "StudentService"
         ],
-        "controllers": []
+        "controllers": [
+          "StudentController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    EmployeeController[\"EmployeeController\"]\n    HelloWorldController[\"HelloWorldController\"]\n    StudentController[\"StudentController\"]\n  end\n  subgraph Services\n    EmployeeService[\"EmployeeService\"]\n    EmployeeServiceImpl[\"EmployeeServiceImpl\"]\n    StudentService[\"StudentService\"]\n    StudentServiceImpl[\"StudentServiceImpl\"]\n  end\n  subgraph Data_Access\n    Employee[\"Employee\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    Student[\"Student\"]\n    StudentRepository[\"StudentRepository\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        StudentController[\"StudentController\"]\n        HelloWorldController[\"HelloWorldController\"]\n        EmployeeController[\"EmployeeController\"]\n    end\n    subgraph Data_Access\n        Student[\"Student\"]\n        Employee[\"Employee\"]\n        StudentRepository[\"StudentRepository\"]\n        EmployeeRepository[\"EmployeeRepository\"]\n    end\n    subgraph Services\n        StudentService[\"StudentService\"]\n        StudentServiceImpl[\"StudentServiceImpl\"]\n        EmployeeService[\"EmployeeService\"]\n        EmployeeServiceImpl[\"EmployeeServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access"
   }
 }

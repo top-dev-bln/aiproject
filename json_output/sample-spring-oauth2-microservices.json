@@ -1,12 +1,43 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include account, auth server, discovery server.",
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. The platform provides capabilities for account, account, security config. Secondary concerns include authentication functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a User, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "Account",
+          "OAuth2Config"
+        ],
+        "controllers": [
+          "AuthServer"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "SecurityConfig",
+          "OAuth2Config"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with account functionality, so that I can accomplish my account-related tasks.",
+        "services": [
+          "AccountService",
+          "Account"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use account capabilities, so that I can perform essential business operations.",
+        "services": [
           "AccountService"
         ],
         "controllers": [
@@ -14,40 +45,18 @@
         ]
       },
       {
-        "id": 2,
-        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
-        "controllers": [
-          "AuthServer"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a User, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
-        "services": [
-          "WebMvcConfig"
-        ],
-        "controllers": []
-      },
-      {
-        "id": 4,
-        "story": "As a User, I want to manage auth server operations, so that the relevant business process is handled efficiently.",
-        "services": [],
-        "controllers": [
-          "AuthServer"
-        ]
-      },
-      {
         "id": 5,
-        "story": "As a User, I want to interact with discovery server functionality, so that the system fulfills my needs.",
+        "story": "As a Admin, I want to use discovery server capabilities, so that I can perform essential business operations.",
         "services": [
           "DiscoveryServer"
         ],
-        "controllers": []
+        "controllers": [
+          "AccountController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountController[\"AccountController\"]\n    AuthServer[\"AuthServer\"]\n  end\n  subgraph Services\n    Account[\"Account\"]\n    AccountService[\"AccountService\"]\n    DiscoveryServer[\"DiscoveryServer\"]\n    WebMvcConfig[\"WebMvcConfig\"]\n  end\n  subgraph Infrastructure\n    OAuth2Config[\"OAuth2Config\"]\n    SecurityConfig[\"SecurityConfig\"]\n  end\n  Controllers --> Services\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AccountService[\"AccountService\"]\n        Account[\"Account\"]\n        SecurityConfig[\"SecurityConfig\"]\n        OAuth2Config[\"OAuth2Config\"]\n        DiscoveryServer[\"DiscoveryServer\"]\n        WebMvcConfig[\"WebMvcConfig\"]\n        GatewayServer[\"GatewayServer\"]\n    end\n    subgraph Controllers\n        AccountController[\"AccountController\"]\n        AuthServer[\"AuthServer\"]\n    end\n    Controllers --> Services"
   }
 }

@@ -1,13 +1,13 @@
 {
   "input": {
-    "free_text_description": "The system operates in the messaging, authentication domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include client, data source, bin log rotate event handler. Core business data revolves around BinLogCommand, BinLogCommandType, ClientInfo.",
+    "free_text_description": "This system is a task management platform that serves Content Creator, Admin roles. It manages core business objects including bin log command, service status, bin log command type, client info. The platform provides capabilities for client, distributor abstract, distributor. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to manage client operations, so that the relevant business process is handled efficiently.",
+        "story": "As a Content Creator, I want to create and manage bin log command records, so that I can track and organize bin log command data effectively.",
         "services": [
-          "ClientService",
-          "ClientServiceRedisImpl"
+          "BinLogRotateEventHandler",
+          "BinLogWriteEventHandler"
         ],
         "controllers": [
           "ClientController"
@@ -15,39 +15,51 @@
       },
       {
         "id": 2,
-        "story": "As a API Consumer, I want to manage data source operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Content Creator, I want to create and manage service status records, so that I can track and organize service status data effectively.",
+        "services": [
+          "ClientService",
+          "DistributorServiceAbstract"
+        ],
         "controllers": [
-          "DataSourceController"
+          "ClientController"
         ]
       },
       {
         "id": 3,
-        "story": "As a API Consumer, I want to interact with bin log rotate event handler functionality, so that the system fulfills my needs.",
+        "story": "As a Content Creator, I want to create and manage bin log command type records, so that I can track and organize bin log command type data effectively.",
         "services": [
-          "BinLogRotateEventHandler"
+          "BinLogRotateEventHandler",
+          "BinLogWriteEventHandler"
         ],
-        "controllers": []
+        "controllers": [
+          "ClientController"
+        ]
       },
       {
         "id": 4,
-        "story": "As a API Consumer, I want to interact with client redis impl functionality, so that the system fulfills my needs.",
+        "story": "As a Content Creator, I want to create and manage client info records, so that I can track and organize client info data effectively.",
         "services": [
-          "ClientServiceRedisImpl"
+          "ClientService",
+          "BinLogClientFactory"
         ],
-        "controllers": []
+        "controllers": [
+          "ClientController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to interact with data subscriber functionality, so that the system fulfills my needs.",
+        "story": "As a Content Creator, I want to create and manage update row records, so that I can track and organize update row data effectively.",
         "services": [
-          "DataSubscriber"
+          "BinLogUpdateEventHandler",
+          "OpLogUpdateEventHandler"
         ],
-        "controllers": []
+        "controllers": [
+          "ClientController"
+        ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ClientController[\"ClientController\"]\n    DataSourceController[\"DataSourceController\"]\n  end\n  subgraph Services\n    BinLogRotateEventHandler[\"BinLogRotateEventHandler\"]\n    ClientService[\"ClientService\"]\n    ClientServiceRedisImpl[\"ClientServiceRedisImpl\"]\n    DataSubscriber[\"DataSubscriber\"]\n    DatabaseEventHandler[\"DatabaseEventHandler\"]\n    DistributorService[\"DistributorService\"]\n    EtcdService[\"EtcdService\"]\n    EtcdServiceImpl[\"EtcdServiceImpl\"]\n    ExampleDataEventHadler[\"ExampleDataEventHadler\"]\n    ExampleDataEventHandler[\"ExampleDataEventHandler\"]\n    ExampleDataEventHandler2[\"ExampleDataEventHandler2\"]\n    KafkaService[\"KafkaService\"]\n    KafkaServiceImpl[\"KafkaServiceImpl\"]\n    MongoDBDistributorServiceImpl[\"MongoDBDistributorServiceImpl\"]\n    MysqlDistributorServiceImpl[\"MysqlDistributorServiceImpl\"]\n    OpLogWriteEventHandler[\"OpLogWriteEventHandler\"]\n    RabbitMQService[\"RabbitMQService\"]\n    RabbitMQServiceImpl[\"RabbitMQServiceImpl\"]\n  end\n  subgraph Data_Access\n    BinLogCommand[\"BinLogCommand\"]\n    BinLogCommandType[\"BinLogCommandType\"]\n    ClientInfo[\"ClientInfo\"]\n  end\n  subgraph Infrastructure\n    BeanConfig[\"BeanConfig\"]\n    BinaryLogConfig[\"BinaryLogConfig\"]\n    EtcdConfig[\"EtcdConfig\"]\n    KafkaConfig[\"KafkaConfig\"]\n    RabbitMQConfig[\"RabbitMQConfig\"]\n    RedissonConfig[\"RedissonConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        KafkaConfig[\"KafkaConfig\"]\n        RabbitMQConfig[\"RabbitMQConfig\"]\n        BinaryLogConfigContainer[\"BinaryLogConfigContainer\"]\n        BinaryLogConfig[\"BinaryLogConfig\"]\n        EtcdConfig[\"EtcdConfig\"]\n        BeanConfig[\"BeanConfig\"]\n        RedissonConfig[\"RedissonConfig\"]\n        NetUtils[\"NetUtils\"]\n        RabbitMQHttpClient[\"RabbitMQHttpClient\"]\n        EtcdKeyPrefixUtil[\"EtcdKeyPrefixUtil\"]\n        Result[\"Result\"]\n        LeaderSelectorListener[\"LeaderSelectorListener\"]\n        LeaderSelector[\"LeaderSelector\"]\n        BinlogLeaderSelectorListener[\"BinlogLeaderSelectorListener\"]\n        OplogLeaderSelectorListener[\"OplogLeaderSelectorListener\"]\n        Constants[\"Constants\"]\n    end\n    subgraph Data_Access\n        BinLogCommand[\"BinLogCommand\"]\n        ServiceStatus[\"ServiceStatus\"]\n        BinLogCommandType[\"BinLogCommandType\"]\n        ClientInfo[\"ClientInfo\"]\n        UpdateRow[\"UpdateRow\"]\n    end\n    subgraph Services\n        ClientService[\"ClientService\"]\n        DistributorServiceAbstract[\"DistributorServiceAbstract\"]\n        DistributorService[\"DistributorService\"]\n        EtcdService[\"EtcdService\"]\n        KafkaService[\"KafkaService\"]\n        RabbitMQService[\"RabbitMQService\"]\n        BinLogRotateEventHandler[\"BinLogRotateEventHandler\"]\n        BinLogWriteEventHandler[\"BinLogWriteEventHandler\"]\n        BinLogDeleteEventHandler[\"BinLogDeleteEventHandler\"]\n        BinLogEventHandler[\"BinLogEventHandler\"]\n        BinLogDefaultEventHandler[\"BinLogDefaultEventHandler\"]\n        BinLogEventHandlerFactory[\"BinLogEventHandlerFactory\"]\n        BinLogTableMapEventHandler[\"BinLogTableMapEventHandler\"]\n        BinLogEventContext[\"BinLogEventContext\"]\n        BinLogUpdateEventHandler[\"BinLogUpdateEventHandler\"]\n        BinLogDDLEventHandler[\"BinLogDDLEventHandler\"]\n        BinLogClientFactory[\"BinLogClientFactory\"]\n        MysqlDistributorServiceImpl[\"MysqlDistributorServiceImpl\"]\n        EtcdServiceImpl[\"EtcdServiceImpl\"]\n        RabbitMQServiceImpl[\"RabbitMQServiceImpl\"]\n        ClientServiceRedisImpl[\"ClientServiceRedisImpl\"]\n        KafkaServiceImpl[\"KafkaServiceImpl\"]\n        OpLogWriteEventHandler[\"OpLogWriteEventHandler\"]\n        OpLogDeleteEventHandler[\"OpLogDeleteEventHandler\"]\n        OpLogClientFactory[\"OpLogClientFactory\"]\n        MongoDBDistributorServiceImpl[\"MongoDBDistributorServiceImpl\"]\n        OpLogEventHandlerFactory[\"OpLogEventHandlerFactory\"]\n        OpLogDefaultEventHandler[\"OpLogDefaultEventHandler\"]\n        OpLogEventContext[\"OpLogEventContext\"]\n        OpLogUpdateEventHandler[\"OpLogUpdateEventHandler\"]\n        OplogClient[\"OplogClient\"]\n        OpLogEventHandler[\"OpLogEventHandler\"]\n        DataHandler[\"DataHandler\"]\n        DatabaseEventHandler[\"DatabaseEventHandler\"]\n        DataSubscriber[\"DataSubscriber\"]\n        ExampleDataEventHadler[\"ExampleDataEventHadler\"]\n        ExampleDataEventHandler2[\"ExampleDataEventHandler2\"]\n        ExampleDataEventHandler[\"ExampleDataEventHandler\"]\n    end\n    subgraph Controllers\n        ClientController[\"ClientController\"]\n        DataSourceController[\"DataSourceController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }

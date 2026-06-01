@@ -1,54 +1,60 @@
 {
   "input": {
-    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer, System, User as its primary actors. The main business capabilities include custom error, file, hello. Core business data revolves around Blog, DemoTestDO, DemoTestDao, UserDO. The system enforces access control and identity verification for protected operations.",
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, User roles. The platform provides capabilities for demo, demo. Secondary concerns include messaging functionality.",
     "user_stories": [
       {
         "id": 1,
-        "story": "As a API Consumer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
-        "services": [],
-        "controllers": [
-          "FileController"
-        ]
-      },
-      {
-        "id": 2,
-        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
-        "services": [],
-        "controllers": [
-          "JwtAuthenticationController"
-        ]
-      },
-      {
-        "id": 3,
-        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
         "services": [
-          "JwtUserDetailsService",
-          "UserService",
-          "UserServiceImpl"
+          "DemoService"
         ],
         "controllers": [
           "UserController"
         ]
       },
       {
-        "id": 4,
-        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "id": 2,
+        "story": "As a Candidate, I want to interact with test functionality, so that I can accomplish my test-related tasks.",
         "services": [
-          "CxfWebServiceConfig"
+          "DemoService"
         ],
-        "controllers": []
+        "controllers": [
+          "TestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with mail functionality, so that I can accomplish my mail-related tasks.",
+        "services": [
+          "DemoService"
+        ],
+        "controllers": [
+          "MailController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use demo capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DemoService"
+        ],
+        "controllers": [
+          "TestController"
+        ]
       },
       {
         "id": 5,
-        "story": "As a API Consumer, I want to manage custom error operations, so that the relevant business process is handled efficiently.",
-        "services": [],
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "DemoService"
+        ],
         "controllers": [
-          "CustomErrorController"
+          "TestController"
         ]
       }
     ]
   },
   "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CustomErrorController[\"CustomErrorController\"]\n    FileController[\"FileController\"]\n    HelloController[\"HelloController\"]\n    HelloWorldController[\"HelloWorldController\"]\n    HomeController[\"HomeController\"]\n    IndexController[\"IndexController\"]\n    IndexRestController[\"IndexRestController\"]\n    JwtAuthenticationController[\"JwtAuthenticationController\"]\n    KafkaDemoController[\"KafkaDemoController\"]\n    MailController[\"MailController\"]\n    MyExceptionController[\"MyExceptionController\"]\n    MyRestExceptionController[\"MyRestExceptionController\"]\n    RedisController[\"RedisController\"]\n    UserController[\"UserController\"]\n    UserRestController[\"UserRestController\"]\n  end\n  subgraph Services\n    CxfWebServiceConfig[\"CxfWebServiceConfig\"]\n    DemoTestService[\"DemoTestService\"]\n    DemoTestServiceImpl[\"DemoTestServiceImpl\"]\n    DynamicDataSourceTestService[\"DynamicDataSourceTestService\"]\n    JwtUserDetailsService[\"JwtUserDetailsService\"]\n    KafkaSendService[\"KafkaSendService\"]\n    MyService[\"MyService\"]\n    Update[\"Update\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n    WsConst[\"WsConst\"]\n  end\n  subgraph Data_Access\n    Blog[\"Blog\"]\n    DemoTestDO[\"DemoTestDO\"]\n    DemoTestDao[\"DemoTestDao\"]\n    UserDO[\"UserDO\"]\n    UserDao[\"UserDao\"]\n    UserRepository[\"UserRepository\"]\n    UserRoleDO[\"UserRoleDO\"]\n  end\n  subgraph Security\n    JwtRequestFilter[\"JwtRequestFilter\"]\n    JwtTokenUtil[\"JwtTokenUtil\"]\n    MobileValueFilter[\"MobileValueFilter\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    CustomMqttGateway[\"CustomMqttGateway\"]\n    DynamicContextHolder[\"DynamicContextHolder\"]\n    DynamicDataSourceConfig[\"DynamicDataSourceConfig\"]\n    GsonConfig[\"GsonConfig\"]\n    KafkaInitialConfiguration[\"KafkaInitialConfiguration\"]\n    MemcacheConfig[\"MemcacheConfig\"]\n    MqttSenderConfig[\"MqttSenderConfig\"]\n    MvcConfig[\"MvcConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    RedisSessionConfig[\"RedisSessionConfig\"]\n    ShiroConfig[\"ShiroConfig\"]\n    Swagger2Config[\"Swagger2Config\"]\n    UserRealm[\"UserRealm\"]\n    WebSocketConfig[\"WebSocketConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        TestController[\"TestController\"]\n        MailController[\"MailController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Services\n        DemoService[\"DemoService\"]\n        DemoServiceImpl[\"DemoServiceImpl\"]\n    end\n    subgraph Infrastructure\n        RedisLockConfiguration[\"RedisLockConfiguration\"]\n    end\n    subgraph Data_Access\n        UserMapper[\"UserMapper\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
   }
 }
