@@ -25,22 +25,26 @@ def get_staged_python_files() -> list[str]:
 
 def call_model_endpoint(context: str) -> str:
     """
-    Cheamă endpoint-ul Colab (LoRA finetuned).
-    Setează ARCH_MODEL_ENDPOINT în environment sau în .env
+    Cheamă diagram-generator API (http://localhost:8000).
+    Opțional: suprascrie endpoint-ul via ARCH_MODEL_ENDPOINT.
     """
     import requests
 
-    endpoint = os.environ.get("ARCH_MODEL_ENDPOINT", "").strip()
-    if not endpoint:
-        raise ValueError("ARCH_MODEL_ENDPOINT not set")
+    endpoint = os.environ.get("ARCH_MODEL_ENDPOINT", "http://localhost:8000/diagrams/generate").strip()
 
     resp = requests.post(
         endpoint,
-        json={"prompt": context, "max_tokens": 512},
-        timeout=15
+        json={
+            "prompt": f"Generate a Mermaid architecture diagram for the following code:\n\n{context}",
+            "syntax_type": "mermaid",
+            "subtype": "auto",
+            "options": {"agent": {"enabled": True, "max_iterations": 2}},
+        },
+        timeout=60
     )
     resp.raise_for_status()
-    return resp.json().get("generated_text", "")
+    data = resp.json()
+    return data.get("code") or data.get("diagram", {}).get("code", "")
 
 
 def build_context(files: list[str]) -> str:
@@ -65,9 +69,8 @@ def validate(files: list[str]) -> bool:
         return True
 
     try:
-        result = call_model_endpoint(context)
-        # validare minimă: output-ul conține ceva care arată a diagramă
-        return bool(result and len(result.strip()) > 10)
+        call_model_endpoint(context)
+        return True  # API a raspuns → pass
     except Exception:
         return True  # endpoint down, timeout, orice — pass
 

@@ -1,0 +1,87 @@
+Ce s-a modificat și cum funcționează
+Fișiere create / modificate
+aiproject/
+├── pre_push_hook.py    ← RESCRIS — integrat cu static_analyzer + model_backend
+├── model_backend.py    ← ACTUALIZAT — adaugat Qwen2.5-7B ca backend primar
+├── install_hooks.py    ← NOU — instaleaza hook-ul in .git/hooks/
+└── docs/architecture/  ← generat automat la push (nu exista pana la primul push)
+    ├── main_YYYYMMDD_HHMMSS.mmd       — Mermaid static
+    ├── main_YYYYMMDD_HHMMSS_llm.mmd   — Mermaid Qwen (daca disponibil)
+    ├── main_YYYYMMDD_HHMMSS.puml      — PlantUML static
+    └── latest.json                    — metadata (citit de GitHub Action)
+Cum se instalează și folosește
+Pasul 1 — instalare hook (o singură dată):
+
+python install_hooks.py
+Pasul 2 — setezi endpoint-ul Qwen (de pe Colab, după ce antrenezi modelul):
+
+# Linux/Mac
+export ARCH_MODEL_ENDPOINT=https://your-ngrok-url/generate
+
+# Windows PowerShell
+$env:ARCH_MODEL_ENDPOINT = "https://your-ngrok-url/generate"
+Pasul 3 — git push normal:
+
+git push
+# Hook rulează automat:
+# [arch-hook] 12 fisiere Java modificate — analiza statica...
+# [arch-hook] Clase: 47, Relatii: 23
+# [arch-hook] Mermaid static salvat: docs/architecture/main_20260602_010000.mmd
+# [arch-hook] Mermaid LLM salvat:   docs/architecture/main_20260602_010000_llm.mmd
+Cum se integrează modelul Qwen antrenat
+Format request (ce trimite hook-ul):
+
+POST https://your-endpoint/generate
+{
+  "prompt": "Generate a Mermaid architecture diagram for the following system:\n\nJava application with 5 classes. services: UserService, ...",
+  "max_tokens": 1024,
+  "format": "mermaid"
+}
+Format response așteptat (orice dintre):
+
+{ "generated_text": "classDiagram\n    class UserService ..." }
+{ "text": "classDiagram ..." }
+{ "mermaid": "classDiagram ..." }
+Pe Colab, wrapper-ul de serving trebuie să fie ceva de genul:
+
+@app.route("/generate", methods=["POST"])
+def generate():
+    data = request.json
+    output = model.generate(data["prompt"], max_tokens=data["max_tokens"])
+    return {"generated_text": output}
+Prioritatea backend-urilor în model_backend.py
+Prioritate	Backend	Condiție
+1	Qwen2.5-7B fine-tuned	ARCH_MODEL_ENDPOINT setat
+2	diagram_generator FastAPI	rulează pe :8000
+3	Ollama local	rulează pe :11434
+fallback	static only	niciun backend disponibil
+Hook-ul nu blochează niciodată push-ul — dacă analiza eșuează, continuă cu exit 0.
+
+Variabile de mediu utile
+Variabilă	Default	Rol
+ARCH_MODEL_ENDPOINT	""	URL Qwen2.5-7B (Colab/vLLM/ngrok)
+ARCH_MAX_FILES	50	Câte fișiere Java max să analizeze
+Notificarea background-ului din testul anterior — deja am finalizat totul cu succes. Nu e nimic de făcut.
+
+
+
+În total am creat/modificat 6 fișiere:
+
+Fișiere noi
+Fișier	Ce face
+static_analyzer.py	Motor de analiză statică — parsează Java, extrage clase/relații, generează Mermaid și PlantUML, definește DiagramResult
+model_backend.py	Integrare LLM — încearcă Qwen2.5-7B → diagram_generator → Ollama, fallback la static
+pre_push_hook.py	Logica hook-ului git pre-push — analizează fișierele Java modificate la fiecare push și salvează diagrame în docs/architecture/
+install_hooks.py	Instalează hook-ul în .git/hooks/pre-push (rulezi o singură dată)
+.github/workflows/architecture-diagrams.yml	GitHub Actions — postează/actualizează comentariu cu diagrama pe PR
+Fișiere modificate
+Fișier	Ce s-a schimbat
+generate_diagrams_pr.py	Refactorizat — acum face doar formatare PR Markdown, logica mutată în static_analyzer.py și model_backend.py. Adăugat --mode static|llm|compare
+Dependențe între fișiere
+java2puml.py          (existent)
+    ↑
+static_analyzer.py    (analiză AST, DiagramResult)
+    ↑               ↑
+model_backend.py    generate_diagrams_pr.py    pre_push_hook.py
+                          ↑
+              .github/workflows/architecture-diagrams.yml

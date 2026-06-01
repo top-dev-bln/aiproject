@@ -16,7 +16,7 @@ from datetime import datetime
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "arch_hooks"))
 
 DOCS_DIR = Path("docs/architecture")
-ENDPOINT = os.environ.get("ARCH_MODEL_ENDPOINT", "").strip()
+ENDPOINT = os.environ.get("ARCH_MODEL_ENDPOINT", "http://localhost:8000/diagrams/generate").strip()
 
 
 def get_changed_files_vs_main() -> list[str]:
@@ -50,23 +50,24 @@ def build_context(files: list[str]) -> str:
 
 def call_model(context: str, fmt: str = "mermaid") -> str:
     """
-    Cheamă endpoint-ul Colab pentru generare diagramă.
+    Cheamă diagram-generator API pentru generare diagramă.
     fmt: 'mermaid' sau 'plantuml'
     """
     import requests
 
-    if not ENDPOINT:
-        raise ValueError("ARCH_MODEL_ENDPOINT not set")
-
-    prompt = f"Generate a {fmt} architecture diagram for the following Python code:\n\n{context}"
-
     resp = requests.post(
         ENDPOINT,
-        json={"prompt": prompt, "max_tokens": 1024, "format": fmt},
-        timeout=30
+        json={
+            "prompt": f"Generate a {fmt} architecture diagram for the following code:\n\n{context}",
+            "syntax_type": fmt,
+            "subtype": "auto",
+            "options": {"agent": {"enabled": True, "max_iterations": 2}},
+        },
+        timeout=60
     )
     resp.raise_for_status()
-    return resp.json().get("generated_text", "")
+    data = resp.json()
+    return data.get("code") or data.get("diagram", {}).get("code", "")
 
 
 def save_diagrams(mermaid: str, plantuml: str, branch: str):
