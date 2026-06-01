@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.alibaba.cloud.spring.boot.context.autoconfigure.AliCloudContextAutoConfiguration,\
-com.alibaba.cloud.spring.boot.context.autoconfigure.EdasContextAutoConfiguration

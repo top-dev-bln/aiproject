@@ -1,4 +1,0 @@
-dependencies {
-    compile project(":spring-thrift-starter")
-    compile project(":examples:test-protocol")
-}

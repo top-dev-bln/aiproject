@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the recruitment, authentication domain. It serves API Consumer, Customer as its primary actors. Core business data revolves around Extraction.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Data_Access\n    Extraction[\"Extraction\"]\n  end\n  subgraph Infrastructure\n    ApplicationConfig[\"ApplicationConfig\"]\n  end"
-  }
-}

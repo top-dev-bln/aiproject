@@ -1,6 +1,0 @@
-# Context Customizer Factories
-org.springframework.test.context.ContextCustomizerFactory=\
-org.grpcmock.springboot.GrpcMockContextCustomizerFactory
-# Test Execution Listeners
-org.springframework.test.context.TestExecutionListener=\
-org.grpcmock.springboot.GrpcMockTestExecutionListener

@@ -1,7 +1,0 @@
-server.port: 8081
-
-jobs.cron:  0/1 * * * * ?
-
-loc.elasticjob:
-  serverList: 127.0.0.1:2181
-  namespace: loc_job_sample

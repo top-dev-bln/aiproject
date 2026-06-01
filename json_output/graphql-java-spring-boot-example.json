@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the authentication, search domain. It serves User as its primary actors. Core business data revolves around Author, Book.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Data_Access\n    Author[\"Author\"]\n    AuthorRepository[\"AuthorRepository\"]\n    Book[\"Book\"]\n    BookRepository[\"BookRepository\"]\n  end"
-  }
-}

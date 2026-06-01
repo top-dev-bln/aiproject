@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the microservices infrastructure, recruitment domain. It serves User as its primary actors. Core business data revolves around Url.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Data_Access\n    Url[\"Url\"]\n    UrlRepository[\"UrlRepository\"]\n  end\n  subgraph Infrastructure\n    Swagger3Config[\"Swagger3Config\"]\n  end"
-  }
-}

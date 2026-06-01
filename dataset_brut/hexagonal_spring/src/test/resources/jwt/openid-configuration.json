@@ -1,4 +1,0 @@
-{
-  "issuer": "<binding>",
-  "jwks_uri": "<binding>/protocol/openid-connect/certs"
-}

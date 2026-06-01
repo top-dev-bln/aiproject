@@ -1,6 +1,0 @@
-news-services:
-  services:
-    - host: ${NEW_SERIVICE_1_HOST}
-      apikey: ${NEW_SERIVICE_1_APIKEY}
-    - host: ${NEW_SERIVICE_2_HOST}
-      apikey: ${NEW_SERIVICE_2_APIKEY}

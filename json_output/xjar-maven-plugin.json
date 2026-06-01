@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the general purpose application domain. It serves User as its primary actors. The system enforces access control and identity verification for protected operations.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Security\n    XAntEntryFilter[\"XAntEntryFilter\"]\n    XExcludeAntEntryFilter[\"XExcludeAntEntryFilter\"]\n    XIncludeAntEntryFilter[\"XIncludeAntEntryFilter\"]\n  end"
-  }
-}

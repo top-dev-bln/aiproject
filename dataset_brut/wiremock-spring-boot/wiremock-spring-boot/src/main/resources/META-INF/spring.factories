@@ -1,2 +1,0 @@
-org.springframework.test.context.ContextCustomizerFactory=org.wiremock.spring.internal.WireMockContextCustomizerFactory
-org.springframework.test.context.TestExecutionListener=org.wiremock.spring.internal.WireMockTestExecutionListener

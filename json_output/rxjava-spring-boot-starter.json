@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the microservices infrastructure domain. It serves User as its primary actors. It exposes its functionality through a set of 0 API endpoints backed by 0 business services.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Infrastructure\n    RxJavaMvcAutoConfiguration[\"RxJavaMvcAutoConfiguration\"]\n  end"
-  }
-}

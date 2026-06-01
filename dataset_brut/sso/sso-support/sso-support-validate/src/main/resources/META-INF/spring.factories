@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.carl.sso.support.validate.config.SSOValidateConfiguration,com.carl.sso.support.validate.config.SSOMailValidateConfiguration

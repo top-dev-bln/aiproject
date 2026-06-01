@@ -1,4 +1,0 @@
-com.blueskykong.lottor.common.serializer.KryoSerializer
-com.blueskykong.lottor.common.serializer.ProtostuffSerializer
-com.blueskykong.lottor.common.serializer.HessianSerializer
-com.blueskykong.lottor.common.serializer.JavaSerializer

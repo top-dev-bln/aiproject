@@ -1,5 +1,0 @@
-
-*
-!target/*.jar
-!src/test/resources/jwt
-!src/test/java/httpServer.java

@@ -1,3 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.chensheng.dddboot.web.config.CustomWebAutoConfiguration

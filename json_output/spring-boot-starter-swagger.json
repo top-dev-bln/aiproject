@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the authentication, social media domain. It serves User as its primary actors. It exposes its functionality through a set of 0 API endpoints backed by 0 business services.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Infrastructure\n    DocketConfiguration[\"DocketConfiguration\"]\n    SwaggerAuthorizationConfiguration[\"SwaggerAuthorizationConfiguration\"]\n    SwaggerAutoConfiguration[\"SwaggerAutoConfiguration\"]\n    SwaggerUiConfiguration[\"SwaggerUiConfiguration\"]\n  end"
-  }
-}

@@ -1,9 +1,0 @@
-server.context-parameters.paramA: a
-server.context-parameters.paramB: b
-server:
-  session:
-    timeout: 1000
-  error:
-    path: /errerr
-#    whitelabel:
-#      enabled: false

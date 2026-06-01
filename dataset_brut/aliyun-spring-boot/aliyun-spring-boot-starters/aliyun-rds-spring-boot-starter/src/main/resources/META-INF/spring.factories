@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.alibaba.cloud.spring.boot.ds.autocofigure.RdsAutoConfiguration,\
-  com.alibaba.cloud.spring.boot.rds.actuate.autoconfigure.RdsEndpointAutoConfiguration

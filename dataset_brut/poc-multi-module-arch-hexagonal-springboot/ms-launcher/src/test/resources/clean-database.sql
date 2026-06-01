@@ -1,3 +1,0 @@
-DELETE FROM tb_person;
-
-ALTER TABLE tb_person AUTO_INCREMENT = 1;

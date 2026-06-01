@@ -1,1 +1,0 @@
-如果有服务需要引用需要单独配置`application.yml`

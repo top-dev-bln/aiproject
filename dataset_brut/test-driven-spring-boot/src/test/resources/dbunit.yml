@@ -1,6 +1,0 @@
-cacheConnection: false
-leakHunter: false
-caseInsensitiveStrategy: LOWERCASE
-mergeDataSets: true
-properties:
-  caseSensitiveTableNames: false

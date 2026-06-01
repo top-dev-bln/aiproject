@@ -1,9 +1,0 @@
-{
-  "input": {
-    "free_text_description": "The system operates in the e-commerce, microservices infrastructure domain. It serves Customer, User as its primary actors. Core business data revolves around ShoppingOrder.",
-    "user_stories": []
-  },
-  "output": {
-    "mermaid_diagram": "graph TB\n  subgraph Data_Access\n    ShoppingOrder[\"ShoppingOrder\"]\n  end"
-  }
-}

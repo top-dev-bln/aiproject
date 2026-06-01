@@ -1,6 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.AopLogProcessor,\
-  com.github.LogDataAspect,\
-  com.github.AopLogAutoConfiguration
-
