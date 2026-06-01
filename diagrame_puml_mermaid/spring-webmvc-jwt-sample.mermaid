@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    UserinfoController
+    VehicleController
+  end
+  subgraph Data_Access
+    User
+    UserRepository
+    Vehicle
+    VehicleRepository
+  end
+  subgraph Security
+    JwtProperties
+    JwtTokenAuthenticationFilter
+    JwtTokenProvider
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    AppConfig
+    DataJpaConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Security --> Data_Access

@@ -1,0 +1,82 @@
+graph TB
+  subgraph Controllers
+    CategoryController
+    ContactController
+    FileStorageController
+    LoggedInUserInfoController
+    LoginController
+    LogoutController
+    NotificationController
+    OrgController
+    PingController
+    PingControllerIT
+    PostController
+    PublicUserController
+    SiteController
+    TagController
+    TenantController
+    TenantUserController
+    UserController
+    VersionController
+    VersionControllerIT
+  end
+  subgraph Services
+    CategoryService
+    CategoryServiceImpl
+    ContactService
+    FileSystemStorageService
+    GoogleDriveStorageService
+    MultiTenantUserDetailsService
+    NotificationService
+    OrgService
+    PostService
+    PostServiceImpl
+    SiteService
+    SiteServiceImpl
+    StorageService
+    TagService
+    TagServiceImpl
+    TenantService
+    UserPreferenceService
+    UserService
+  end
+  subgraph Data_Access
+    CategoryRepository
+    ContactRepository
+    DraftPostRepository
+    FileRepository
+    NotificationRepository
+    NotificationRepositoryIT
+    OrgRepository
+    PublishedPostRepository
+    RoleRepository
+    SiteRepository
+    TagRepository
+    TenantRepository
+    UserRepository
+    UserRepositoryIT
+  end
+  subgraph Security
+    AuthJwtProperties
+    AuthTokenBuilder
+    AuthenticationHandler
+    ChumbokSecurityProperties
+    CorsConfig
+    DefaultAuthenticationHandler
+    RefreshTokenController
+    SecurityConfig
+    WebSecurityConfigIT
+  end
+  subgraph Infrastructure
+    AppConfig
+    EurekaClientConfig
+    JpaAuditConfig
+    MappingConfig
+    ModelMappingConfig
+    MultiTenantJpaConfig
+    StorageServiceConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

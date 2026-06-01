@@ -1,0 +1,35 @@
+graph TB
+  subgraph Controllers
+    DeviceController
+    SIController
+  end
+  subgraph Services
+    DeviceService
+    DynamicMessageManager
+    SIService
+    TuyaContextManager
+  end
+  subgraph Data_Access
+    StatusReportMessage
+  end
+  subgraph Security
+    SecurityInfo
+    TokenConnector
+    TokenInvalidErrorProcessor
+    TuyaToken
+    TuyaTokenManager
+  end
+  subgraph Infrastructure
+    DeviceProperties
+    EnableDynamicMessaging
+    EnableMessaging
+    MessageAutoConfiguration
+    MessageProperties
+    TuyaAutoConfiguration
+    TuyaMessageListener
+    TuyaRegionConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

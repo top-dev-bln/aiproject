@@ -1,0 +1,42 @@
+graph TB
+  subgraph Controllers
+    AccountsCommandController
+    AccountsController
+    AccountsQueryController
+    CardCommandController
+    CardQueryController
+    CardsController
+    CustomerCommandController
+    CustomerController
+    CustomerQueryController
+    LoanCommandController
+    LoanQueryController
+    LoansController
+    ProfileQueryController
+  end
+  subgraph Services
+    AccountsServiceImpl
+    CardsServiceImpl
+    CustomerServiceImpl
+    IAccountsService
+    ICardsService
+    ICustomerService
+    ILoansService
+    IProfileService
+    LoansServiceImpl
+    ProfileServiceImpl
+  end
+  subgraph Data_Access
+    AccountsRepository
+    CardsRepository
+    CustomerRepository
+    LoansRepository
+    ProfileRepository
+  end
+  subgraph Infrastructure
+    AxonConfig
+    ClientConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

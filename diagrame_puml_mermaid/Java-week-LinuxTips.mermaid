@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    CursoController
+  end
+  subgraph Services
+    CursoService
+  end
+  subgraph Data_Access
+    Curso
+    CursoRepository
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

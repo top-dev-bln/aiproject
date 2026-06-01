@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    WeatherServiceController
+    WeatherServiceEndpoint
+  end
+  subgraph Security
+    LogCorrelationFilter
+  end
+  subgraph Infrastructure
+    ApplicationConfiguration
+    SimpleBootCxfConfiguration
+    WebServiceConfiguration
+  end
+  Infrastructure --> Controllers

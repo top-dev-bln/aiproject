@@ -1,0 +1,23 @@
+graph TB
+  subgraph Services
+    DomainService
+    EbeanQueryChannelService
+    QueryChannelService
+    UserDomainService
+  end
+  subgraph Data_Access
+    EbeanRepositoriesRegistrar
+    EbeanRepository
+    EbeanRepositoryFactory
+    EbeanRepositoryFactoryBean
+    EbeanRepositoryNameSpaceHandler
+    EnableEbeanRepositories
+    SimpleEbeanRepository
+    UserRepository
+  end
+  subgraph Infrastructure
+    EbeanRepositoryConfigExtension
+    SampleConfig
+  end
+  Infrastructure --> Services
+  Services --> Data_Access

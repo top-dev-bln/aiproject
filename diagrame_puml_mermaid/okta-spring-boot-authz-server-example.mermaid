@@ -1,0 +1,10 @@
+graph TB
+  subgraph Controllers
+    UserController
+    WebController
+  end
+  subgraph Security
+    AuthServerConfig
+    SecurityConfiguration
+  end
+  Security --> Controllers

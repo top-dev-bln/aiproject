@@ -1,0 +1,37 @@
+graph TB
+  subgraph Services
+    DistributedLockManager
+    RedisDistributedLockManager
+  end
+  subgraph Security
+    AbstractAuthInterceptor
+    DefaultSecurityContext
+    JwtAuthInterceptor
+    JwtUserPrincipal
+    OptionalAuth
+    RequiredAuth
+    SecurityContext
+    SecurityContextHolder
+    TracingFilter
+    UnsafeAccess
+  end
+  subgraph Infrastructure
+    AmazonS3AutoConfiguration
+    AmazonS3ConfigProperties
+    DistributedLockAutoConfiguration
+    DynamicThreadPoolAutoConfigure
+    FtpClientConfigProperties
+    FtpTemplateAutoConfiguration
+    IPLogConfig
+    LockInvokeConfig
+    QueueType
+    RateLimiterAutoConfiguration
+    RateLimiterConfig
+    RateLimiterConfigProperties
+    ResizableCapacityLinkedBlockingQueue
+    RestTemplateAutoConfiguration
+    RestTemplateConfigProperties
+    TracingAutoConfiguration
+    TracingInterceptProperties
+  end
+  Infrastructure --> Services

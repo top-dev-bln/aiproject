@@ -1,0 +1,42 @@
+graph TB
+  subgraph Controllers
+    CustomerController
+    EndPointList
+    FileController
+    HelloController
+  end
+  subgraph Services
+    AbstractStorageService
+    CustomClientDetailsService
+    CustomUserDetailsService
+    FileSystemStorageService
+    GroupService
+    GroupServiceImpl
+    StorageService
+  end
+  subgraph Data_Access
+    IdSeqRepository
+    ImageFileRepository
+  end
+  subgraph Security
+    AdminAuth
+    AuthorizationServerConfig
+    CustomAccessTokenConverter
+    CustomJdbcAuthorizationCodeServices
+    CustomPasswordEncoder
+    CustomUserAuthenticationProvider
+    IOauthClientDetails
+    OauthClientDetails
+    Permission
+    QueryFilter
+    ScopeMappingOAuth2RequestFactory
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    AppConfig
+    ResourceServerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

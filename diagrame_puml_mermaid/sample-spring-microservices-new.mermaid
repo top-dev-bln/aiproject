@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    DepartmentController
+    EmployeeController
+    OrganizationController
+  end
+  subgraph Data_Access
+    DepartmentRepository
+    EmployeeRepository
+    OrganizationRepository
+  end
+  Controllers --> Data_Access

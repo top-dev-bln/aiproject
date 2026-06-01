@@ -1,0 +1,61 @@
+graph TB
+  subgraph Controllers
+    DefaultWebhookController
+    WebhookController
+  end
+  subgraph Services
+    DefaultMasterManager
+    MasterManager
+  end
+  subgraph Data_Access
+    ReportingMasterAwareTelegramBotExecutor
+  end
+  subgraph Security
+    FilterMessageReactionUpdateInterceptor
+    WebhookSecretTokenFilter
+  end
+  subgraph Infrastructure
+    ClientApiProperties
+    ClientProperties
+    ClientRetryProperties
+    CustomMissingIngressConfiguration
+    DeliveryConfiguration
+    DeliveryProperties
+    DispatcherConfiguration
+    DurationFailoverProperties
+    ExceptionHandlerConfiguration
+    ExceptionHandlerProperties
+    FailoverProperties
+    LongPollingIngressConfiguration
+    LongPollingMasterConfiguration
+    LongPollingMissingIngressConfiguration
+    LongPollingProperties
+    NoIngressModeConfiguration
+    NoMatchStrategyConfiguration
+    NoMatchStrategyProperties
+    OkHttpClientProperties
+    OkHttpTelegramClientConfiguration
+    ProxyInterfaces
+    RoutingConfiguration
+    RoutingProperties
+    SpringTelegramClientConfiguration
+    TelegramBotAutoConfiguration
+    TelegramBotConfig
+    TelegramBotDiagnosticsConfiguration
+    TelegramBotLongPollingAutoConfiguration
+    TelegramBotObservabilityAutoConfiguration
+    TelegramBotObservabilityBeanPostProcessorConfiguration
+    TelegramBotObservabilityMetricsConfiguration
+    TelegramBotObservabilityProperties
+    TelegramBotProperties
+    TelegramBotWebhookAutoConfiguration
+    TelegramClientConfiguration
+    TelegramClientCoreConfiguration
+    TelegramClientRetryConfiguration
+    WebhookMissingIngressConfiguration
+    WebhookProperties
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

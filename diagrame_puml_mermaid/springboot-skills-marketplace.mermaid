@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    controller
+  end
+  subgraph Services
+    service
+  end
+  subgraph Data_Access
+    repository
+  end
+  Controllers --> Services
+  Services --> Data_Access

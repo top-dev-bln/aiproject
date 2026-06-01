@@ -1,0 +1,50 @@
+graph TB
+  subgraph Services
+    MongoClientDetailsService
+    MongoUserDetailsManager
+  end
+  subgraph Data_Access
+    MongoApprovalRepository
+    MongoApprovalRepositoryBase
+    MongoApprovalRepositoryImpl
+    MongoClientDetailsRepository
+    MongoClientDetailsRepositoryBase
+    MongoClientDetailsRepositoryImpl
+    UserRepository
+    UserRepositoryBase
+    UserRepositoryImpl
+  end
+  subgraph Security
+    EnableSecurityMongo
+    MongoClientTokenServices
+    MongoOAuth2AccessToken
+    MongoOAuth2AccessTokenBuilder
+    MongoOAuth2AccessTokenRepository
+    MongoOAuth2AccessTokenRepositoryBase
+    MongoOAuth2AccessTokenRepositoryImpl
+    MongoOAuth2ClientToken
+    MongoOAuth2ClientTokenBuilder
+    MongoOAuth2ClientTokenRepository
+    MongoOAuth2ClientTokenRepositoryBase
+    MongoOAuth2ClientTokenRepositoryImpl
+    MongoOAuth2RefreshToken
+    MongoOAuth2RefreshTokenBuilder
+    MongoOAuth2RefreshTokenRepository
+    MongoOAuth2RefreshTokenRepositoryBase
+    MongoOAuth2RefreshTokenRepositoryImpl
+    MongoTokenStore
+    OAuth2AccessTokenBuilder
+    OAuth2AuthenticationBuilder
+    OAuth2ProtectedResourceDetailsBuilder
+    OAuth2RefreshTokenBuilder
+    OAuth2RequestBuilder
+    SecurityContextService
+    SecurityRDG
+  end
+  subgraph Infrastructure
+    ApplicationConfiguration
+    MongoClientConfiguration
+    MongoConfiguration
+  end
+  Infrastructure --> Services
+  Services --> Data_Access

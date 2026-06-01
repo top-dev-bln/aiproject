@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    ExceptionHandlerController
+    RatingController
+    TourRatingController
+    UserController
+  end
+  subgraph Services
+    ExploreCaliUserDetailsService
+    TourRatingService
+    UserService
+  end
+  subgraph Data_Access
+    RoleRepository
+    TourPackageRepository
+    TourRatingRepository
+    TourRepository
+    UserRepository
+  end
+  subgraph Security
+    JwtProvider
+    JwtTokenFilter
+    WebSecurityConfiguration
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

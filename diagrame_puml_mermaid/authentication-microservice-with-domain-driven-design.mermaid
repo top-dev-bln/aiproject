@@ -1,0 +1,98 @@
+graph TB
+  subgraph Controllers
+    AbstractController
+    AuthenticationController
+    RegistrationController
+    UserController
+  end
+  subgraph Services
+    ChangePasswordCommandHandler
+    ChangeUserDetailsCommandHandler
+    CreatePasswordRecoveryCodeCommandHandler
+    CustomOAuth2UserService
+    EmailAuthenticationService
+    EncryptionService
+    FacebookOAuth2Authentication
+    GoogleOAuth2Authentication
+    JwtTokenProvider
+    LogoutCommandHandler
+    MD5EncryptionService
+    SessionAuthenticationCommandHandler
+    SessionAuthenticationService
+    UpdatePasswordWithRecoveryCodeCommandHandler
+  end
+  subgraph Data_Access
+    Session
+    SessionJpaRepository
+    SessionRepository
+    SessionRepositoryJpaAdapter
+    User
+    UserJpaRepository
+    UserRegistration
+    UserRegistrationJpaRepository
+    UserRegistrationJpaRepositoryAdapter
+    UserRegistrationRepository
+    UserRepository
+    UserRepositoryJpaAdapter
+  end
+  subgraph Security
+    AbstractAuthenticateCommand
+    AbstractAuthenticateQuery
+    AbstractAuthorizeCommand
+    AbstractAuthorizeQuery
+    AbstractOAuth2Authentication
+    Authenticate
+    Authorize
+    ChangePasswordCommand
+    CreatePasswordRecoveryCodeCommand
+    FacebookOAuth2UserInfo
+    GoogleOAuth2UserInfo
+    McAuthenticationEventHandler
+    McAuthenticationModule
+    McAuthenticationModuleExecutor
+    OAuth2Authentication
+    OAuth2AuthenticationFailureHandler
+    OAuth2AuthenticationSuccessHandler
+    OAuth2Principal
+    OAuth2Service
+    OAuth2UserInfo
+    OAuth2UserInfoFactory
+    PasswordChanged
+    PasswordRecovered
+    PasswordRecoveryCodeCreated
+    PasswordRecoveryCodeCreatedEventHandler
+    PasswordRecoveryCodeShouldBeExpiredOrNull
+    PasswordRecoveryCodeShouldNotExpired
+    PasswordService
+    PasswordsMustMatch
+    SecurityConfig
+    SendPasswordRecoveryEmailCommand
+    SendPasswordRecoveryEmailCommandHandler
+    SessionAuthenticationCommand
+    SessionCannotBeExpiredWhenRefreshTokenIsMissing
+    TokenAuthenticationFilter
+    TokenProvider
+    UpdatePasswordWithRecoveryCodeCommand
+    UserAuthPrincipal
+    UserAuthToken
+  end
+  subgraph Infrastructure
+    AppConfig
+    AppProperties
+    GUIProperties
+    MessageProperties
+    SwaggerConfig
+    SwaggerUiWebMvcConfigurer
+  end
+  Controllers --> Data_Access
+  Controllers --> Infrastructure
+  Controllers --> Security
+  Data_Access --> Security
+  Infrastructure --> Data_Access
+  Infrastructure --> Security
+  Infrastructure --> Services
+  Security --> Data_Access
+  Security --> Infrastructure
+  Services --> Data_Access
+  Services --> Infrastructure
+  Services --> Security

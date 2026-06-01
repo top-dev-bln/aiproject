@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    GatewayManagement
+  end
+  subgraph Services
+    DepartmentManagement
+    EmployeeManagement
+    OrganizationManagement
+  end
+  subgraph Data_Access
+    Department
+    DepartmentRepository
+    Employee
+    EmployeeRepository
+    Organization
+    OrganizationRepository
+  end
+  Services --> Data_Access

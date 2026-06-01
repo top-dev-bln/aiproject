@@ -1,0 +1,30 @@
+graph TB
+  subgraph Controllers
+    AnotherController
+    HomeController
+    MainController
+    UserController
+  end
+  subgraph Services
+    NotificationService
+  end
+  subgraph Data_Access
+    Company
+    CompanyRepository
+    Person
+    PersonRepository
+    User
+    UserBaseRepository
+    UserDao
+    UserRepository
+    UserSearch
+  end
+  subgraph Security
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    DatabaseConfig
+    WebSocketConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services

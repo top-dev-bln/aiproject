@@ -1,0 +1,64 @@
+graph TB
+  subgraph Controllers
+    OrderController
+    OrderFallbackController
+    OrderPlacedHandlerController
+    PaymentController
+    PaymentFallbackController
+    ProductController
+    ProductFallbackController
+    UserController
+  end
+  subgraph Services
+    BaseService
+    BaseServiceImpl
+    CustomUserDetailService
+    ExternalUserService
+    ExternalUserServiceImpl
+    OrderDetailService
+    OrderDetailServiceImpl
+    OrderPlacedHandlerService
+    OrderService
+    OrderServiceImpl
+    PaymentService
+    ProductService
+    ProductServiceImpl
+    RoleService
+    RoleServiceImpl
+    StripePaymentServiceImpl
+    TransactionService
+    TransactionServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    OrderDetailRepository
+    OrderRepository
+    ProductRepository
+    RoleRepository
+    TransactionRepository
+    UserRepository
+  end
+  subgraph Security
+    AccessTokenAuthenticationFilter
+    AccessTokenDecoderConfig
+    AuthorizationServerConfig
+    CustomAuthenticationProvider
+    Oauth2LoginConfig
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    CircuitBreakerConfig
+    GatewayLoginController
+    KeyPairConfig
+    OpenApiConfig
+    ProjectConfig
+    ResourceServerConfig
+    SchedulerConfig
+    SchemaConfig
+    WebclientConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

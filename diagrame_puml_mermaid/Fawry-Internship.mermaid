@@ -1,0 +1,13 @@
+graph TB
+  subgraph Services
+    AccountManager
+    AccountManagerImpl
+  end
+  subgraph Data_Access
+    ProductRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthFilter
+  end
+  Services --> Data_Access

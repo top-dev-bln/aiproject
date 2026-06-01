@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    AdminSysMenuController
+    AdminSysRoleController
+    AdminSysUserController
+    SignInUserController
+    UserController
+  end
+  subgraph Services
+    AdminRoleServiceImpl
+    AdminSysMenuServiceImpl
+    AdminUserServiceImpl
+    IAdminSysMenuService
+    IAdminSysRoleService
+    IAdminSysUserService
+    ILoginUserService
+    IMailService
+    IMpMenuService
+    IMpRoleMenuService
+    IMpRoleService
+    IMpTripartiteUserService
+    IMpUserRoleService
+    IMpUserService
+    IRedisService
+    IUserService
+    LoginUserServiceImpl
+    MailServiceImpl
+    MpMenuServiceImpl
+    MpRoleMenuServiceImpl
+    MpRoleServiceImpl
+    MpTripartiteUserServiceImpl
+    MpUserRoleServiceImpl
+    MpUserServiceImpl
+    RedisServiceImpl
+    UserServiceImpl
+  end
+  subgraph Security
+    AdminSysPermissionController
+    AuthController
+    AuthTypeEnum
+    PasswordLoginStrategyImpl
+    SaTokenConfigure
+  end
+  subgraph Infrastructure
+    ErwinConfigProperties
+    MyBatisPlusConfig
+    OpenApiConfig
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

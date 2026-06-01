@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    ApiControllerAdvice
+    ExampleController
+    HealthController
+  end
+  subgraph Services
+    ExampleService
+  end
+  subgraph Data_Access
+    ExampleEntity
+    ExampleRepository
+    ExampleRepositoryIT
+  end
+  subgraph Infrastructure
+    AsyncConfig
+    CoreDataSourceConfig
+    CoreJpaConfig
+    ExampleConfig
+  end
+  Controllers --> Services

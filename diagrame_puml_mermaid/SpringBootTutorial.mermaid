@@ -1,0 +1,11 @@
+graph TB
+  subgraph Services
+    LikeService
+    PostService
+    QueryHistoryService
+    UserService
+  end
+  subgraph Infrastructure
+    CacheConfig
+  end
+  Infrastructure --> Services

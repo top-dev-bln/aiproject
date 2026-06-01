@@ -1,0 +1,56 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    AuthenticationController
+    StatisticController
+    TravelController
+    UserAccountController
+    UserController
+  end
+  subgraph Services
+    APIUsagePlansService
+    APIUsagePlansServiceImpl
+    AccountService
+    AccountServiceImpl
+    JwtUserDetailsServiceImpl
+    StatisticService
+    StatisticServiceImpl
+    TravelService
+    TravelServiceImpl
+    UserAccountService
+    UserAccountServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Account
+    AccountRepository
+    Statistic
+    StatisticRepository
+    Travel
+    TravelRepository
+    User
+    UserAccount
+    UserAccountRepository
+    UserRepository
+  end
+  subgraph Security
+    JwtAuthenticationEntryPointFilter
+    JwtAuthenticationTokenFilter
+    JwtUser
+    JwtUserFactory
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    CacheConfiguration
+    CacheEventLogger
+    PageableConfiguration
+    RateLimitingConfiguration
+    SwaggerConfiguration
+    TravelsApiConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Security --> Data_Access
+  Services --> Data_Access
+  Services --> Security

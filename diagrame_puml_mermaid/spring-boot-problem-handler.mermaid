@@ -1,0 +1,30 @@
+graph TB
+  subgraph Security
+    AccessDeniedExceptionAdviceTrait
+    AuthenticationExceptionAdviceTrait
+    InsufficientAuthenticationAdviceTrait
+    PathConfigurableOpenApiValidationFilter
+    ProblemAccessDeniedHandler
+    ProblemAuthenticationEntryPoint
+    ProblemServerAccessDeniedHandler
+    ProblemServerAuthenticationEntryPoint
+    ProblemTracingWebFilter
+    ProblemTracingWebFluxFilter
+    SecurityAdviceEnabled
+    SecurityAdviceTraits
+    WebFluxSecurityExceptionHandler
+    WebSecurityExceptionHandler
+  end
+  subgraph Infrastructure
+    OpenAPIValidationAdviceEnabled
+    OpenApiConfigsEnabled
+    OpenApiValidationAdviceTrait
+    OpenApiValidationExceptionHandler
+    ProblemDaoConfiguration
+    ProblemJacksonConfiguration
+    ProblemMessageProviderConfig
+    ProblemMicrometerTraceProviderConfig
+    ProblemProperties
+    ProblemWebAutoConfiguration
+    ProblemWebfluxAutoConfiguration
+  end

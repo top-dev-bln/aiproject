@@ -1,0 +1,66 @@
+graph TB
+  subgraph Controllers
+    CardController
+    ClientController
+    ControllerAdvice
+    TransactionController
+  end
+  subgraph Services
+    AccountCommandService
+    AccountCommandServiceImpl
+    AccountQueryService
+    AccountQueryServiceImpl
+    AccountService
+    AccountServiceImpl
+    CardCommandService
+    CardCommandServiceImpl
+    CardQueryService
+    CardQueryServiceImpl
+    CardService
+    CardServiceImpl
+    ClientCommandService
+    ClientCommandServiceImpl
+    ClientQueryService
+    ClientQueryServiceImpl
+    ClientService
+    ClientServiceImpl
+    CommandService
+    EventService
+    EventServiceImpl
+    QueryService
+    TransactionCommandService
+    TransactionCommandServiceImpl
+    TransactionQueryService
+    TransactionQueryServiceImpl
+    TransactionService
+    TransactionServiceImpl
+  end
+  subgraph Data_Access
+    AccountRepository
+    CardRepository
+    ClientRepository
+    EventRepository
+    TransactionRepository
+  end
+  subgraph Security
+    AuthController
+    AuthService
+    AuthServiceImpl
+    JwtProperties
+    JwtTokenFilter
+    SecurityConfig
+    SecurityService
+    SecurityServiceImpl
+    SecurityUser
+    SecurityUserService
+    TokenType
+  end
+  subgraph Infrastructure
+    CDCEventConsumer
+    DebeziumEventConsumer
+    GsonConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

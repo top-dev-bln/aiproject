@@ -1,0 +1,43 @@
+graph TB
+  subgraph Controllers
+    ChargingStationDetailController
+    ChargingStationMapIndexerController
+    ChargingStationProviderController
+    ChargingStationSearchController
+    IndicesSettingsController
+    ResourceFileContentReader
+    ResourceFileContentReaderImpl
+  end
+  subgraph Services
+    EPDKChargingStationDetailService
+    ElasticSearchIndicesService
+    ElasticSearchIndicesServiceImpl
+    ElasticSearchIndicesSettingsService
+    ElasticSearchIndicesSettingsServiceImpl
+    ElasticSearchService
+    ElasticSearchServiceImpl
+    MethodExecutionTimeService
+    MethodExecutionTimeServiceImpl
+    SearchService
+    SearchServiceImpl
+    ShouldProvideIndividualServiceProvidersCondition
+  end
+  subgraph Data_Access
+    MethodExecutionTimeRepository
+  end
+  subgraph Security
+    AccessLog
+    AccessLogFilter
+    AccessLogRepository
+    AccessLogService
+    AccessLogServiceImpl
+    FilterConfiguration
+  end
+  subgraph Infrastructure
+    CachingConfig
+    WebConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

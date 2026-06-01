@@ -1,0 +1,37 @@
+graph TB
+  subgraph Controllers
+    AdminController
+    AuthenticationController
+    BookController
+    DemoController
+    ManagementController
+    UserController
+  end
+  subgraph Services
+    AuthenticationService
+    BookService
+    JwtService
+    LogoutService
+    UserService
+  end
+  subgraph Data_Access
+    Book
+    BookRepository
+    Token
+    User
+    UserRepository
+  end
+  subgraph Security
+    JwtAuthenticationFilter
+    Permission
+    SecurityConfiguration
+    TokenRepository
+    TokenType
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+    OpenApiConfig
+  end
+  Infrastructure --> Data_Access
+  Services --> Data_Access
+  Services --> Security

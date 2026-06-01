@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    BookController
+    ExceptionHandlerControllerAdvice
+  end
+  subgraph Services
+    BookService
+    BookServiceImpl
+    BookStoreService
+    BookStoreServiceImpl
+    ServiceMonitor
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    BookRepository
+    BookStoreRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthorizationServerConfiguration
+    WebSecurityConfiguration
+  end
+  subgraph Infrastructure
+    ResourceServerConfiguration
+  end
+  Controllers --> Services
+  Security --> Services
+  Services --> Data_Access

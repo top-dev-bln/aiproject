@@ -1,0 +1,91 @@
+graph TB
+  subgraph Controllers
+    HandlerController
+    RoleUserController
+    TxManagerConsumingController
+    TxManagerController
+    TxManagerMsgController
+    UserController
+  end
+  subgraph Services
+    AspectTransactionService
+    AspectTransactionServiceImpl
+    BaseItemService
+    BaseItemServiceImpl
+    DiscoveryService
+    ExternalNettyService
+    ExternalNettyServiceImpl
+    HessianCodecServiceImpl
+    InitService
+    InitServiceImpl
+    KryoCodecServiceImpl
+    ManagerClient
+    MessageCodecService
+    ModelNameService
+    NettyClientService
+    NettyClientServiceImpl
+    NettyMessageServiceImpl
+    NettyServerServiceImpl
+    NettyService
+    OutputFactoryService
+    OutputFactoryServiceImpl
+    ProtostuffCodecServiceImpl
+    RoleUserService
+    RoleUserServiceImpl
+    ServiceNameEnum
+    SocketManager
+    SpringCloudModelNameServiceImpl
+    TxManagerInfo
+    TxManagerInfoService
+    TxManagerInfoServiceImpl
+    TxManagerMessageService
+    TxManagerServer
+    TxManagerService
+    TxManagerServiceImpl
+    TxOperateService
+    TxOperateServiceImpl
+    TxTransactionFactoryService
+    TxTransactionFactoryServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    MongoTransactionMsgRepository
+    MongoTransactionOperateRepository
+    RedisTransactionMsgRepository
+    RedisTransactionOperateRepository
+    TransactionMsgRepository
+    TransactionOperateRepository
+  end
+  subgraph Security
+    AbstractMessageEncoder
+    HessianEncoder
+    KryoEncoder
+    LottorEncoder
+    Permission
+    PermissionMapper
+    ProtostuffEncoder
+    RolePermission
+    RolePermissionMapper
+  end
+  subgraph Infrastructure
+    ApplicationStartListener
+    BlockingQueueTypeEnum
+    CompensationCacheTypeEnum
+    ListenerStream
+    NettyConfig
+    SchemaCache
+    SpringCloudAutoConfiguration
+    TransactionCoreAutoConfiguration
+    TxConfig
+    TxManagerConfiguration
+    TxMongoConfig
+    TxRedisConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Data_Access --> Infrastructure
+  Infrastructure --> Services
+  Security --> Services
+  Services --> Data_Access
+  Services --> Infrastructure

@@ -1,0 +1,36 @@
+graph TB
+  subgraph Controllers
+    ReportRestController
+    RestControllerExceptionHandler
+    UserRestController
+    UserRestControllerDocumentation
+  end
+  subgraph Services
+    KeycloakAdminClientFacade
+    ReportService
+    UserService
+  end
+  subgraph Data_Access
+    CreateReportRequestValidator
+    Report
+    ReportDescriptionValidator
+    ReportId
+    ReportRepository
+    ReportRepositoryCustom
+    ReportRepositoryImpl
+    User
+    UserRepository
+    UserRepositoryCustom
+    UserRepositoryImpl
+    ValidReportDescription
+  end
+  subgraph Security
+    AuthServerIdAttributeConverter
+    WebSecurityConfiguration
+  end
+  subgraph Infrastructure
+    CopsbootApplicationConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services

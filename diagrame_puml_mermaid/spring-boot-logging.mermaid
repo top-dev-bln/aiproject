@@ -1,0 +1,13 @@
+graph TB
+  subgraph Controllers
+    MainController
+  end
+  subgraph Security
+    ReactiveSpringLoggingFilter
+    SpringLoggingFilter
+  end
+  subgraph Infrastructure
+    ReactiveSpringLoggingAutoConfiguration
+    SpringLoggingAutoConfiguration
+  end
+  Infrastructure --> Security

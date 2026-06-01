@@ -1,0 +1,43 @@
+graph TB
+  subgraph Controllers
+    OrderController
+    PositionController
+    RibbonHystrixController
+  end
+  subgraph Services
+    ErrorAction
+    FsmService
+    InnerService
+    IntentionService
+    LockService
+    OrderService
+    PositionApi
+    PositionService
+    RedisLockService
+    SequenceFactory
+    UserRibbonHystrixApi
+  end
+  subgraph Data_Access
+    Candidate
+    CandidateRepository
+    DriverStatus
+    DriverStatusRepo
+    Intention
+    IntentionRepository
+    Order
+    OrderRepository
+    Poi
+    PoiRepository
+    Position
+    PositionRepository
+    User
+    UserRepository
+  end
+  subgraph Infrastructure
+    RabbitConfig
+    SpringAsyncConfig
+    ZuulGateway
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

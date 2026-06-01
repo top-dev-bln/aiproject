@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    DeepSeekLocalController
+    OllamaLocalController
+  end
+  subgraph Security
+    AuthorizationHeaderInjector
+    CompletionTokensDetails
+    CorsConfig
+    PromptTokensDetails
+    SyncOrAsyncOrStreaming
+  end
+  subgraph Infrastructure
+    DeepSeekAutoConfiguration
+    DeepSeekConfig
+    DeepSeekProperties
+    EmbeddingProperties
+  end
+  Controllers --> Infrastructure
+  Controllers --> Security

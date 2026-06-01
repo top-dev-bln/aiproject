@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    CommentController
+    PostController
+  end
+  subgraph Data_Access
+    Comment
+    CommentRepository
+    Employee
+    EmployeeRepository
+    Post
+    PostRepository
+    Tag
+    TagRepository
+    User
+    UserProfile
+    UserProfileRepository
+    UserRepository
+  end
+  Controllers --> Data_Access

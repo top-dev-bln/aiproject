@@ -1,0 +1,60 @@
+graph TB
+  subgraph Controllers
+    DailyCheckInController
+    FileController
+    InterfaceInfoController
+    OrderController
+    ProductInfoController
+    ServiceController
+    UserController
+  end
+  subgraph Services
+    AlipayOrderServiceImpl
+    CosManager
+    DailyCheckInService
+    DailyCheckInServiceImpl
+    InnerInterfaceInfoService
+    InnerInterfaceInfoServiceImpl
+    InnerUserInterfaceInvokeService
+    InnerUserService
+    InnerUserServiceImpl
+    InterfaceInfoService
+    InterfaceInfoServiceImpl
+    OrderService
+    OrderServiceImpl
+    PaymentInfoService
+    PaymentInfoServiceImpl
+    ProductInfoService
+    ProductInfoServiceImpl
+    ProductOrderService
+    RechargeActivityService
+    RechargeActivityServiceImpl
+    UserInterfaceInvokeServiceImpl
+    UserService
+    UserServiceImpl
+    WxOrderServiceImpl
+  end
+  subgraph Security
+    AuthCheck
+    AuthInterceptor
+    CacheBodyGatewayFilter
+    CorsConfig
+    GatewayGlobalFilter
+  end
+  subgraph Infrastructure
+    AliPayAccountConfig
+    CosClientConfig
+    EmailConfig
+    JsonConfig
+    Knife4jConfig
+    MyBatisPlusConfig
+    PayConfiguration
+    RedisTemplateConfig
+    RedissonConfig
+    WxPayAccountConfig
+  end
+  Controllers --> Infrastructure
+  Controllers --> Security
+  Controllers --> Services
+  Security --> Services
+  Services --> Infrastructure

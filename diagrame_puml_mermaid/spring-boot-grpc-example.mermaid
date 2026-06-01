@@ -1,0 +1,9 @@
+graph TB
+  subgraph Controllers
+    GrpcClientController
+  end
+  subgraph Services
+    GrpcClientService
+    GrpcServerService
+  end
+  Controllers --> Services

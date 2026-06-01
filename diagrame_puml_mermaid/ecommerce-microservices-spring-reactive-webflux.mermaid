@@ -1,0 +1,31 @@
+graph TB
+  subgraph Controllers
+    OrderController
+    ProductController
+    UserController
+  end
+  subgraph Services
+    ClientDetailsServiceImpl
+    OrderService
+    ProductService
+    UserService
+  end
+  subgraph Data_Access
+    ProductRepository
+    ShoppingCartItemRepository
+    ShoppingCartRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthorizationServerConfig
+    JWTKeyEndPoint
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    DataBaseConfig
+    DatabaseConfig
+    ResourceServerConfig
+  end
+  Controllers --> Services
+  Security --> Services
+  Services --> Data_Access

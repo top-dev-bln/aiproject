@@ -1,0 +1,36 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    ChatGptApiController
+    IndexController
+  end
+  subgraph Services
+    BaixingGptApiServiceImpl
+    ChatGptApiServiceImpl
+    ChatGptService
+    ChatGptServiceBean
+    DemoFreeGptApiServiceImpl
+  end
+  subgraph Security
+    AuthApiController
+    BaseAuthReqBO
+    CORSConfig
+    ChatGptTokenServiceImpl
+    OpenAiAuthService
+    OpenAiAuthServiceImpl
+    StatusControlFilter
+    UrlFilterConfig
+  end
+  subgraph Infrastructure
+    CacheKey
+    LoadingCacheIpService
+    LoadingCacheIpServiceImpl
+    ProxyBO
+    ThreadPoolTaskConfig
+    WebConfig
+    WebSocketConfigurator
+    WebsocketConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

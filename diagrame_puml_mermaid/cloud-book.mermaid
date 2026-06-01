@@ -1,0 +1,59 @@
+graph TB
+  subgraph Controllers
+    AmqpOutboundEndpoint
+    AskController
+    BusEventController
+    FeignClientController
+    FeignServiceController
+    InstanceController
+    MainController
+    OrderController
+    ResourceController
+    RocketMQResourceManager
+    SayHelloController
+    ServiceAController
+    ServiceBController
+    ServiceInstanceRestController
+  end
+  subgraph Services
+    FeignServiceClient
+    InstanceService
+    OrderService
+    ServiceAClient
+    ServiceBClient
+    VotingService
+  end
+  subgraph Security
+    AuthorizationServerConfig
+    EnableLogFilter
+    EnableLogFilterImportSelector
+    LogFilter
+    LogFilterAutoConfiguration
+    LogFilterRegistrationBean
+    RateLimitByIpGatewayFilter
+    SecurityConfig
+    ThrottleGatewayFilterFactory
+  end
+  subgraph Infrastructure
+    BusConfiguration
+    Listener
+    ResourceServerConfig
+    RibbonConfiguration
+    RocketBlockingQueueConsumer
+    RocketCommonProperties
+    RocketConsumerProperties
+    RocketExchangeQueueProvisioner
+    RocketMQBinderConfigurationProperties
+    RocketMQBindingProperties
+    RocketMQExtendedBindingProperties
+    RocketMessageChannelBinderConfiguration
+    RocketMessagePropertiesConverter
+    RocketProducerProperties
+    RocketServiceAutoConfiguration
+    RouteConfiguration
+    SMSConfiguration
+    SimpleRocketMessageListenerContainer
+  end
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Infrastructure --> Security

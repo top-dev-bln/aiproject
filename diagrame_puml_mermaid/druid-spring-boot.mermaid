@@ -1,0 +1,24 @@
+graph TB
+  subgraph Controllers
+    CityController
+    DruidDataSourceEndpoint
+    DruidDataSourceMvcEndpoint
+  end
+  subgraph Data_Access
+    City
+    CityRepository
+  end
+  subgraph Infrastructure
+    DruidAutoConfiguration
+    DruidDataSourceActuatorAutoConfiguration
+    DruidDataSourceConfiguration
+    DruidDataSourceEndpointConfiguration
+    DruidDataSourceInitializerAutoConfiguration
+    DruidDataSourceMetadataProviderConfiguration
+    DruidDataSourceProperties
+    DruidServletConfiguration
+    DruidStatConfiguration
+    SpringDataSourceConfig
+  end
+  Controllers --> Data_Access
+  Infrastructure --> Controllers

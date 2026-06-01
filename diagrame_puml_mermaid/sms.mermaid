@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    MessageController
+  end
+  subgraph Services
+    AliSMSServiceImpl
+    ChannelSMSServices
+    IChannelSMSService
+    IMessageService
+    LinkSMSServiceImpl
+    MessageServiceImpl
+  end
+  subgraph Infrastructure
+    AliSMSConfig
+    ChannelConfig
+    LinkSMSConfig
+    MybatisConfig
+    RedisConfig
+    SMSHealthConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

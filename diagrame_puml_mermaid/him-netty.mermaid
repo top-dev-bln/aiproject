@@ -1,0 +1,46 @@
+graph TB
+  subgraph Controllers
+    GroupIndexController
+    GroupMsgController
+    GroupUserController
+    HelloController
+    UserFriendAskController
+    UserFriendController
+    UserFriendMsgController
+    UserIndexController
+    UserLoginController
+  end
+  subgraph Services
+    GroupMsgService
+    GroupMsgServiceImpl
+    GroupService
+    GroupServiceImpl
+    GroupUserService
+    GroupUserServiceImpl
+    QqWebAuthServiceImpl
+    UserFriendAskService
+    UserFriendAskServiceImpl
+    UserFriendMsgService
+    UserFriendMsgServiceImpl
+    UserFriendService
+    UserFriendServiceImpl
+    UserProfileService
+    UserProfileServiceImpl
+    UserQqService
+    UserQqServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    CorsConfig
+    CorsFilter
+    DruidStatFilter
+    QqWebAuthService
+  end
+  subgraph Infrastructure
+    OkHttpConfig
+    PublicFileUrlConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Services --> Security

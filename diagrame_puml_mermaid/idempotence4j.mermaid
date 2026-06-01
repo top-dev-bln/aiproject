@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    OperationController
+  end
+  subgraph Services
+    DefaultIdempotenceService
+    IdempotenceService
+    RetentionService
+  end
+  subgraph Data_Access
+    ActionRepository
+    JdbcMariaDbActionRepository
+    JdbcOperationRepository
+    JdbcPostgresActionRepository
+    OperationRepository
+  end
+  subgraph Infrastructure
+    Idempotence4jAutoConfiguration
+    RepositoryConfiguration
+    RetentionProperties
+    ServiceConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

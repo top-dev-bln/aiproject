@@ -1,0 +1,40 @@
+graph TB
+  subgraph Controllers
+    ConditionResourceBean
+    ExceptionControllerAdvice
+    SimpleController
+  end
+  subgraph Services
+    EmbeddedService
+    ISimpleService
+    ImportService
+    NotHandleService
+    SimpleService
+    SimpleServiceForDestroy
+    SimpleServiceForMerged
+    SimpleServiceForSmart
+    SimpleServiceImpl
+    SimpleServiceInImportService
+    SimpleServiceInXml
+  end
+  subgraph Infrastructure
+    ConfigurationBean
+    Consumer
+    ConsumerRegistrar
+    ConsumerWithComponentAnnotation
+    ConsumerWithConsumerAnnotation
+    ConsumerWithInterface
+    ConsumerWithNothing
+    CustomWebListener
+    EnableConsumer
+    IConsumer
+    IProducer
+    LogAutoConfiguration
+    LogProperties
+    MyApplicationListener
+    ProducerWithInterface
+    SimpleApplicationListener
+    SimpleBeanInListener
+  end
+  Controllers --> Services
+  Infrastructure --> Services

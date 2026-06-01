@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    DepositAccountController
+    IdentityVerificationController
+    PublicEndpoint
+    UserController
+  end
+  subgraph Services
+    AuthenticationService
+    DepositAccountService
+    IdentityVerificationService
+    TokenRevocationService
+    UserService
+  end
+  subgraph Data_Access
+    DepositAccount
+    DepositAccountRepository
+    ResidentialAddress
+    ResidentialAddressRepository
+    Transaction
+    TransactionRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    ApiEndpointSecurityInspector
+    AuthenticatedUserIdProvider
+    CustomAuthenticationEntryPoint
+    JwtAuthenticationFilter
+    JwtUtility
+    RefreshTokenGenerator
+    RefreshTokenHeaderProvider
+    SecurityConfiguration
+    TokenConfigurationProperties
+  end
+  subgraph Infrastructure
+    CacheManager
+    OpenApiConfiguration
+    OpenApiConfigurationProperties
+    RedisConfiguration
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Security
+  Security --> Controllers
+  Security --> Data_Access
+  Security --> Infrastructure
+  Security --> Services
+  Services --> Data_Access
+  Services --> Infrastructure
+  Services --> Security

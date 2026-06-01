@@ -1,0 +1,13 @@
+graph TB
+  subgraph Services
+    BulkProcessorService
+    BulkProcessorServiceImpl
+    ElasticSearchService
+    ElasticSearchServiceImpl
+    QueryService
+    QueryServiceImpl
+  end
+  subgraph Infrastructure
+    ElasticSearchConfig
+  end
+  Infrastructure --> Services

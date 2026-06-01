@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    AddOfferEndpoint
+    BaseEndpoint
+    CancelOfferEndpoint
+    GetOfferByIdEndpoint
+    GetOffersEndpoint
+  end
+  subgraph Data_Access
+    OfferData
+    OfferRepository
+  end
+  subgraph Infrastructure
+    ApplicationConfiguration
+    InMemoryOfferGateway
+    JpaOfferGateway
+    OfferGateway
+    SwaggerConfiguration
+  end
+  Infrastructure --> Data_Access

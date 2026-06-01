@@ -1,0 +1,79 @@
+graph TB
+  subgraph Controllers
+    AnimalController
+    ArticleController
+    BitMapController
+    EventController
+    FreemarkerController
+    HyperController
+    JPushController
+    LoggerController
+    PoiController
+    RedisController
+    RedissonController
+    ScheduleController
+    SendMessageController
+    SseEmitterController
+    SysLogController
+    UserController
+    WebSocketController
+  end
+  subgraph Services
+    AnimalService
+    BirdService
+    FishService
+    JPushService
+    MyService
+    QuartzService
+    RedisService
+    ScheduleJobLogService
+    ScheduleJobService
+  end
+  subgraph Data_Access
+    CustomAuditEventRepository
+    ScheduleJobLogRepository
+    ScheduleJobRepository
+  end
+  subgraph Security
+    AccessAuthorityService
+    AccessDecisionService
+    AuthorizationTokenFilter
+    CustomAccessDecisionManager
+    CustomAccessDeniedHandler
+    CustomAuthenticationEntryPoint
+    CustomAuthenticationFailureHandler
+    CustomAuthenticationProvider
+    CustomAuthenticationSuccessHandler
+    CustomUsernamePasswordAuthenticationFilter
+    PermissionAspect
+    PermissionController
+    SecurityConfig
+    SecurityController
+    SecurityUserDetails
+    SecurityUserService
+    VisitPermission
+  end
+  subgraph Infrastructure
+    AnimalAutoConfiguration
+    AnimalProperties
+    AsyncConfig
+    DirectRabbitConfig
+    DruidConfiguration
+    FanoutRabbitConfig
+    JPushAutoConfiguration
+    JPushProperties
+    MessageAckListener
+    MessageListenerConfig
+    NoticeListener
+    QuartzConfig
+    RabbitConfig
+    RedisConfig
+    RedissonConfig
+    ScheduleRunnable
+    TopicRabbitConfig
+    WebSocketConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

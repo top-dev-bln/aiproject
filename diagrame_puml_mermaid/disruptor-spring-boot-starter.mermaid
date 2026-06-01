@@ -1,0 +1,11 @@
+graph TB
+  subgraph Services
+    DefaultHandlerChainManager
+    HandlerChainManager
+  end
+  subgraph Infrastructure
+    DisruptorAutoConfiguration
+    DisruptorProperties
+    RingBufferAutoConfiguration
+  end
+  Infrastructure --> Services

@@ -1,0 +1,24 @@
+graph TB
+  subgraph Controllers
+    UserController
+  end
+  subgraph Services
+    SecurityServiceImpl
+    UserDetailsServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Role
+    RoleRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    SecurityService
+    WebSecurityConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Services --> Data_Access

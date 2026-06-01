@@ -1,0 +1,13 @@
+graph TB
+  subgraph Services
+    ChatgptService
+    DefaultChatgptService
+  end
+  subgraph Infrastructure
+    ChatgptAutoConfiguration
+    ChatgptProperties
+    ImageProperties
+    MultiChatProperties
+  end
+  Infrastructure --> Services
+  Services --> Infrastructure

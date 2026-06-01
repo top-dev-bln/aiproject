@@ -1,0 +1,132 @@
+graph TB
+  subgraph Controllers
+    ExampleController
+    UserController
+    UserMngController
+    UserMsController
+    WorkspaceMsController
+  end
+  subgraph Services
+    AbstractNacosServiceBeanBuilder
+    DDDQueryService
+    DDDQueryServiceImpl
+    DelegatingNamingMaintainService
+    DelegatingNamingService
+    ExampleCommandService
+    ExampleCommandServiceImpl
+    ExampleDomainService
+    ExampleQueryService
+    ExampleQueryServiceImpl
+    NacosServiceFactory
+    NacosServiceMetaData
+    NamingMaintainServiceBeanBuilder
+    NamingServiceBeanBuilder
+    UserCommandService
+    UserCommandServiceImpl
+    UserDomainService
+    UserMngCommandService
+    UserMngCommandServiceImpl
+    UserMngQueryService
+    UserMngQueryServiceImpl
+    UserMsQueryService
+    UserMsQueryServiceImpl
+    UserQueryService
+    UserQueryServiceImpl
+    WorkspaceMicroservice
+    WorkspaceMsCommandService
+    WorkspaceMsCommandServiceImpl
+  end
+  subgraph Data_Access
+    DDDRepository
+    DDDRepositoryImpl
+    ExampleLocationRepository
+    ExampleLocationRepositoryImpl
+    ExampleRepository
+    ExampleRepositoryImpl
+    LocationRepository
+    LocationRepositoryImpl
+    UserRepository
+    UserRepositoryImpl
+    WorkspaceRepository
+    WorkspaceRepositoryImpl
+  end
+  subgraph Security
+    DefaultFormEncoder
+    DefaultJacksonEncoder
+    ExampleModifyPasswordCommand
+    ExampleSecurityRepository
+    ExampleSecurityRepositoryImpl
+    ExampleUpdatePasswordCommand
+    MicroserviceSecurityInterceptor
+    ModifyPasswordCommand
+    SecurityRepository
+    SecurityRepositoryImpl
+    WorkspaceSecurityInterceptor
+  end
+  subgraph Infrastructure
+    AbstractConfigParse
+    AnnotationListenerMethodProcessor
+    AppConfig
+    CacheableEventPublishingNacosServiceFactory
+    CellStyleConfig
+    ConfigParse
+    ConfigServiceBeanBuilder
+    ControllableQueue
+    CustomMybatisAutoConfiguration
+    CustomWebAutoConfiguration
+    DataCellConfig
+    DefaultJsonConfigParse
+    DefaultNacosConfigConverter
+    DefaultPropertiesConfigParse
+    DefaultXmlConfigParse
+    DefaultYamlConfigParse
+    DelegatingEventPublishingListener
+    EnableNacosConfig
+    EventPublishingConfigService
+    GlobalNacosPropertiesBeanDefinitionParser
+    GlobalNacosPropertiesSource
+    HeaderCellConfig
+    LoggingNacosConfigMetadataEventListener
+    MicroServiceAutoConfiguration
+    MicroserviceProperties
+    MoreQueues
+    MultiProfilesYamlConfigParseSupport
+    NacosBootConfigurationPropertiesBinder
+    NacosConfigAutoConfiguration
+    NacosConfigBeanDefinitionRegistrar
+    NacosConfigBootBeanDefinitionRegistrar
+    NacosConfigEnvironmentProcessor
+    NacosConfigEvent
+    NacosConfigListenerMethodProcessor
+    NacosConfigListenerRegisteredEvent
+    NacosConfigLoader
+    NacosConfigLoaderFactory
+    NacosConfigMetadataEvent
+    NacosConfigProperties
+    NacosConfigPublishedEvent
+    NacosConfigReceivedEvent
+    NacosConfigRemovedEvent
+    NacosConfigTimeoutEvent
+    NacosConfigurationPropertiesBeanBoundEvent
+    NacosConfigurationPropertiesBinder
+    NacosConfigurationPropertiesBindingPostProcessor
+    NacosLoggingListener
+    NacosPropertiesBuilder
+    OpenFeignAutoConfiguration
+    OpenFeignProperties
+    PropertiesPlaceholderResolver
+    RowReadingListener
+    RowWritingListener
+    SheetConfig
+    TimeoutNacosConfigListener
+    WorkbookConfig
+    WorkbookConfigResolver
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Data_Access --> Services
+  Infrastructure --> Services
+  Security --> Infrastructure
+  Services --> Data_Access
+  Services --> Infrastructure
+  Services --> Security

@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    BookController
+    BookRestController
+    ExpertRestController
+  end
+  subgraph Services
+    BookService
+    BookServiceImpl
+    ExpertService
+    ExpertServiceImpl
+  end
+  subgraph Data_Access
+    ApiReports
+    Book
+    ExpertEntity
+  end
+  subgraph Security
+    ActuatorBasicSecurityConfig
+  end
+  subgraph Infrastructure
+    ApiConfig
+    LogstashLogbookConfig
+    OpenApi
+  end
+  Controllers --> Services
+  Services --> Data_Access

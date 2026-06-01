@@ -1,0 +1,49 @@
+graph TB
+  subgraph Controllers
+    AlphaController
+    CommentController
+    DataController
+    DatabaseEndpoint
+    DiscussPostController
+    FollowController
+    HomeController
+    LikeController
+    LoginController
+    MessageController
+    SearchController
+    UserController
+  end
+  subgraph Services
+    AlphaService
+    CommentService
+    DataService
+    DiscussPostService
+    ElasticSearchService
+    FollowService
+    LikeService
+    MessageService
+    ServiceLogAspect
+    UserService
+  end
+  subgraph Data_Access
+    DiscussPostRepository
+  end
+  subgraph Security
+    SecurityConfig
+    SensitiveFilter
+  end
+  subgraph Infrastructure
+    AlphaConfig
+    EsConfig
+    EventConsumer
+    EventProducer
+    KaptchaConfig
+    QuartzConfig
+    RedisConfig
+    ThreadPoolConfig
+    WebMvcConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

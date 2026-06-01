@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    CategoryController
+    CategoryControllerImpl
+  end
+  subgraph Services
+    CategoryServiceImpl
+  end
+  subgraph Data_Access
+    CategoryEntity
+    CategoryRepository
+    CategoryRepositoryConverter
+    CategoryRepositoryService
+    RepositoryConverter
+  end
+  subgraph Infrastructure
+    CategoryConfiguration
+    SwaggerConfig
+    UpdateCategoryInFilmsEventsGateway
+  end
+  Infrastructure --> Data_Access
+  Infrastructure --> Services
+  Services --> Data_Access

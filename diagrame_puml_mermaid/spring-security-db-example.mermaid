@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    HelloResource
+  end
+  subgraph Services
+    CustomUserDetailsService
+  end
+  subgraph Data_Access
+    Role
+    Users
+    UsersRepository
+  end
+  subgraph Security
+    SecurityConfiguration
+  end
+  Security --> Data_Access
+  Security --> Services
+  Services --> Data_Access

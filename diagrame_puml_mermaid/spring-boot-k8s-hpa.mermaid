@@ -1,0 +1,9 @@
+graph TB
+  subgraph Controllers
+    HelloController
+  end
+  subgraph Infrastructure
+    QueueConfig
+    QueueService
+  end
+  Controllers --> Infrastructure

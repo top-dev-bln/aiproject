@@ -1,0 +1,37 @@
+graph TB
+  subgraph Controllers
+    RecordController
+    itemController
+    itemTypeController
+    menuController
+    userController
+    userRoleController
+  end
+  subgraph Services
+    ItemService
+    ItemServiceImpl
+    ItemTypeService
+    ItemTypeServiceImpl
+    MenuService
+    MenuServiceImpl
+    RecordService
+    RecordServiceImpl
+    RoleMenuService
+    RoleMenuServiceImpl
+    UserRoleService
+    UserRoleServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    CorsConfig
+    JWTInterceptor
+    UserPassword
+  end
+  subgraph Infrastructure
+    InterceptorConfig
+    MybatisPlusConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

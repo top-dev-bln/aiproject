@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    CaptchaController
+    DdddOcrController
+    Ip2RegionController
+    RedisController
+    RedisPubSubController
+    XssController
+  end
+  subgraph Services
+    RedisService
+  end
+  subgraph Infrastructure
+    RedisKeyExpiredListener
+    RedisPubSubListener
+    RedisPubSubMessageListener
+    RedisStreamListener
+  end
+  Controllers --> Services
+  Infrastructure --> Services

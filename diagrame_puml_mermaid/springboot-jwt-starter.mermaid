@@ -1,0 +1,30 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    UserController
+  end
+  subgraph Services
+    CustomUserDetailsService
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Authority
+    User
+    UserRepository
+  end
+  subgraph Security
+    RestAuthenticationEntryPoint
+    TokenAuthenticationFilter
+    TokenBasedAuthentication
+    UserTokenState
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    CryptoConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Security --> Services
+  Services --> Data_Access

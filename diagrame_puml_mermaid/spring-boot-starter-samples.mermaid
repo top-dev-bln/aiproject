@@ -1,0 +1,66 @@
+graph TB
+  subgraph Controllers
+    DemoController
+    HelloWorldController
+    IndexController
+    RocketMQController
+    SocketioIndeController
+    UserController
+    WebsocketEndPoint
+  end
+  subgraph Services
+    DemoServiceImpl
+    IDemoService
+    IUuidService
+    IUuidServiceImpl
+  end
+  subgraph Security
+    AuthcExtensionPoint
+    AuthcExtensionPointAdepter
+    AuthcExtensionPointImpl1
+    AuthcExtensionPointImpl2
+    AuthcPluginImpl1
+    AuthcPluginImpl2
+    AuthzLoginController
+    AuthzLoginModel
+    AuthzLoginServiceImpl
+    AuthzPrincipalRepositoryImpl
+    IAuthzLoginDao
+    IAuthzLoginService
+    LoginAuthorizingRealm
+  end
+  subgraph Infrastructure
+    BatchProducer
+    BootWebMvcConfig
+    BroadcastConsumer
+    BroadcastProducer
+    ConsumerListen
+    DataSourceConfig
+    DefaultWebSocketBrokerConfig
+    DefaultWebSocketConfig
+    DisruptorConfig
+    LogProducer
+    MybatisPlusConfig
+    OrderedConsumer
+    OrderedProducer
+    Producer
+    ProducerController
+    PullMessageQueueListener
+    QueueName
+    ScheduledMessageConsumer
+    ScheduledMessageProducer
+    ShiroConfig
+    SimpleAsyncProducer
+    SimpleOnewayProducer
+    SimpleSyncProducer
+    SocketConnectListener
+    SocketDataListener
+    SocketDisconnectListener
+    SocketExceptionListener
+    SocketPingListener
+    SocketioConfig
+    WebSocketConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

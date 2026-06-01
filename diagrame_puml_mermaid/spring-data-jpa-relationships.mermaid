@@ -1,0 +1,63 @@
+graph TB
+  subgraph Controllers
+    PersonDetailController
+    PlayerWeaponController
+    RestaurantDishController
+    ReviewerArticleController
+    StudentCourseController
+    TeamDetailController
+    WriterBookController
+  end
+  subgraph Services
+    ArticleService
+    ArticleServiceImpl
+    BookService
+    BookServiceImpl
+    CommentService
+    CommentServiceImpl
+    CourseService
+    CourseServiceImpl
+    CourseStudentService
+    CourseStudentServiceImpl
+    DishService
+    DishServiceImpl
+    PersonService
+    PersonServiceImpl
+    PlayerService
+    PlayerServiceImpl
+    RestaurantService
+    RestaurantServiceImpl
+    ReviewerService
+    ReviewerServiceImpl
+    StudentService
+    StudentServiceImpl
+    TeamService
+    TeamServiceImpl
+    WeaponService
+    WeaponServiceImpl
+    WriterService
+    WriterServiceImpl
+  end
+  subgraph Data_Access
+    ArticleRepository
+    BookRepository
+    CommentRepository
+    CourseRepository
+    CourseStudentRepository
+    DishRepository
+    PersonRepository
+    PlayerRepository
+    RestaurantRepository
+    ReviewerRepository
+    StudentRepository
+    TeamRepository
+    WeaponRepository
+    WriterRepository
+  end
+  subgraph Infrastructure
+    ErrorAttributesConfig
+    SwaggerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    IndexController
+    RestfulController
+  end
+  subgraph Services
+    SampleService
+    ScheduleJobService
+  end
+  subgraph Infrastructure
+    RabbitConfig
+    SchedulerConfig
+  end
+  Controllers --> Services

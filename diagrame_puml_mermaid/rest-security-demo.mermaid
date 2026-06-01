@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    MethodProtectedRestController
+    UserRestController
+  end
+  subgraph Services
+    PersonRestService
+  end
+  subgraph Data_Access
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationRestController
+    Authority
+    AuthorityName
+    JwtAuthenticationEntryPoint
+    JwtAuthenticationTokenFilter
+    JwtUser
+    JwtUserDetailsServiceImpl
+    JwtUserFactory
+    WebSecurityConfig
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

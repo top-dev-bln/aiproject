@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    HomeController
+  end
+  subgraph Services
+    UserDetailsServiceImpl
+  end
+  subgraph Security
+    JwtAuthenticationEntryPoint
+    JwtConfig
+    JwtTokenAuthenticationFilter
+    JwtUsernameAndPasswordAuthenticationFilter
+    SecurityCredentialsConfig
+    SecurityTokenConfig
+  end
+  Controllers --> Services
+  Security --> Controllers

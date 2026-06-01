@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    ClientsController
+    NativeResourceHints
+    PersonController
+    TipController
+  end
+  subgraph Services
+    PersonService
+    TipService
+  end
+  subgraph Data_Access
+    PersonRepository
+    TipRepository
+  end
+  subgraph Infrastructure
+    ApplicationStartupListener
+    TipsAppProperties
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

@@ -1,0 +1,40 @@
+graph TB
+  subgraph Controllers
+    DownloadedResource
+    FileDownloadController
+    FileUploadController
+    GreetingController
+    MVCAsyncController
+    MVCSyncController
+    PersonController
+    SongController
+    WebFluxController
+  end
+  subgraph Services
+    AsyncRestTemplateApacheApplicationRunner
+    LoggingService
+    LoggingServiceImpl
+    S3StorageService
+    StorageService
+  end
+  subgraph Data_Access
+    NonReactiveRepository
+    ReactiveRepository
+  end
+  subgraph Infrastructure
+    AsyncRestTemplateApacheConfig
+    AwsConfiguration
+    BatchConfiguration
+    DatasourceConfiguration
+    MainJobConfiguration
+    MainJobExecutionListener
+    MvcConfig
+    RequestsHandlerInterceptorAdapterConfig
+    S3ClientConfiguration
+    Step1Configuration
+    Step2Configuration
+    WebConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Controllers

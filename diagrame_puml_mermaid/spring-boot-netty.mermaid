@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    CustomResolversController
+    NettyController
+    OnConnectController
+    OnDisconnectController
+    OnMessageController
+    OnMessageNoHandlerController
+    TransactionalOnConnectController
+    TransactionalOnDisconnectController
+    TransactionalOnMessageController
+    WrongController
+  end
+  subgraph Security
+    AroundResponderFilter
+    Encoder
+    ExceptionHandlerFilter
+    ExceptionHandlerFilter1
+    ExceptionHandlerFilter2
+    LongEncoder
+    NettyFilter
+  end
+  subgraph Infrastructure
+    SpringChannelFutureListener
+    SpringNettyConfiguration
+    SpringNettyConfigurationProperties
+    TcpServerProperties
+  end
+  Security --> Controllers

@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    CategoryController
+    MovieController
+    UserController
+  end
+  subgraph Services
+    CategoryServiceImpl
+    ICategoryService
+    IMovieService
+    IUserService
+    MovieServiceImpl
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    CategoryEntity
+    IUserJpaRepository
+    MovieEntity
+  end
+  subgraph Security
+    AuthenticationFilter
+    AuthorizationFilter
+    WebSecurity
+  end
+  Controllers --> Services
+  Security --> Services
+  Services --> Data_Access

@@ -1,0 +1,51 @@
+graph TB
+  subgraph Controllers
+    AdminController
+    Auth
+    AuthController
+    ExceptionControllerAdvice
+    GithubController
+    OutlookController
+    OutlookLogController
+    PermissionController
+    RoleController
+    UserController
+    WebController
+  end
+  subgraph Services
+    GithubServiceImpl
+    IGithubService
+    IOutlookLogService
+    IOutlookService
+    IRoleService
+    IUserService
+    OutlookLogServiceImpl
+    OutlookServiceImpl
+    PermissionServiceImpl
+    RoleServiceImpl
+    TaskImpl
+    UrlAccessDecisionManager
+    UrlInvocationSecurityMetadataSourceService
+    UserServiceImpl
+  end
+  subgraph Security
+    GithubAuth2AuthenticationConfig
+    GithubLoginAuthenticationFilter
+    IPermissionService
+    LinkTokenAuthenticationFilter
+    Permission
+    PermissionMapper
+    SecurityAuthenticationHandler
+    SecurityConfig
+    UsernamePasswordAuthenticationProvider
+    UsernamePasswordAuthenticationToken
+  end
+  subgraph Infrastructure
+    InfluxdbConfig
+    MybatisPlusConfig
+    RedisConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Security --> Services
+  Services --> Security

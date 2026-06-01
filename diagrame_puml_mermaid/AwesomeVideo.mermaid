@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    BgmController
+    RegisterLoginController
+    UserController
+    VideoController
+  end
+  subgraph Services
+    BgmService
+    BgmServiceImpl
+    UserService
+    UserServiceImpl
+    VideoService
+    VideoServiceImpl
+  end
+  subgraph Data_Access
+    UserReport
+    UserReportMapper
+  end
+  subgraph Infrastructure
+    CacheConfig
+    SidConfig
+    Swagger2Config
+    WebMvcConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

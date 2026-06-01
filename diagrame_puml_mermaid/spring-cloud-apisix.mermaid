@@ -1,0 +1,43 @@
+graph TB
+  subgraph Controllers
+    ApisixDiscoveryEndpoint
+    HelloController
+  end
+  subgraph Services
+    ApisixAutoServiceRegistration
+    ApisixServiceInstance
+    ApisixServiceRegistry
+    ConditionalOnApisixServiceRegistryEnabled
+    ConditionalOnServiceRegistryEnabled
+  end
+  subgraph Security
+    ApisixTokenRequestInterceptor
+  end
+  subgraph Infrastructure
+    ApisixApiAutoConfiguration
+    ApisixApiFeignClientConfigurer
+    ApisixAutoConfiguration
+    ApisixDevtoolsProperties
+    ApisixDiscoverAutoConfiguration
+    ApisixDiscoveryEndpointAutoConfiguration
+    ApisixDiscoveryProperties
+    ApisixGatewayConfig
+    ApisixGatewayLoadbalancerProperties
+    ApisixGatewayServiceInstanceListSupplier
+    ApisixLoadBalancerAutoConfiguration
+    ApisixLoadBalancerClientConfiguration
+    ApisixReactiveDiscoveryClientAutoConfiguration
+    ApisixServiceRegistryAutoConfiguration
+    ConditionalOnApisixGatewayLoadbalancerEnabled
+    CustomizerAutoConfiguration
+    GatewayServiceInstance
+    HealthTriggerAutoConfiguration
+    MultiplePortServletWebServerFactoryAutoConfiguration
+    MultiplePortServletWebServerFactoryConfiguration
+    RpcConfiguration
+    ServiceInstanceListSupplierConfiguration
+    SimpleProxyRewriteRouteCustomizer
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

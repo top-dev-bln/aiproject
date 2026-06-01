@@ -1,0 +1,38 @@
+graph TB
+  subgraph Controllers
+    CategoryController
+    CustomerController
+    EmployeeController
+    OrderController
+    ProductController
+  end
+  subgraph Services
+    CategoryService
+    CustomerService
+    EmployeeService
+    OrderService
+    ProductService
+  end
+  subgraph Data_Access
+    AddressRepository
+    CategoryRepository
+    CustomerRepository
+    EmployeeRepository
+    OrderItemRepository
+    OrderRepository
+    ProductRepository
+  end
+  subgraph Security
+    AuthController
+    AuthService
+    SecurityConfig
+    SecurityFilter
+    TokenService
+  end
+  subgraph Infrastructure
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

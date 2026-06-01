@@ -1,0 +1,45 @@
+graph TB
+  subgraph Controllers
+    ProductController
+    ShelfController
+    StockClerkController
+    StockController
+    WareTransactionController
+    WareTransactionDetailController
+    WarehouseController
+  end
+  subgraph Services
+    ProductService
+    ProductServiceImpl
+    ShelfService
+    ShelfServiceImpl
+    StockClerkService
+    StockClerkServiceImpl
+    StockService
+    StockServiceImpl
+    WareTransactionDetailService
+    WareTransactionDetailServiceImpl
+    WareTransactionService
+    WareTransactionServiceImpl
+    WarehouseService
+    WarehouseServiceImpl
+  end
+  subgraph Data_Access
+    ProductRepository
+    ProductRepositoryCustom
+    ProductRepositoryImpl
+    ShelfRepository
+    StockClerkRepository
+    StockRepository
+    StockRepositoryCustom
+    StockRepositoryImpl
+    WareTransactionDetailRepository
+    WareTransactionRepository
+    WarehouseRepository
+  end
+  subgraph Infrastructure
+    SwaggerConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

@@ -1,0 +1,10 @@
+graph TB
+  subgraph Services
+    AbstractService
+    Service
+  end
+  subgraph Infrastructure
+    MybatisConfigurer
+    WebMvcConfigurer
+  end
+  Infrastructure --> Services

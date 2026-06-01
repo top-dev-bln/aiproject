@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    UserController
+  end
+  subgraph Services
+    UserService
+    UserServiceBean
+  end
+  subgraph Data_Access
+    UserRepository
+  end
+  subgraph Security
+    CORSFilter
+    SecurityConfig
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

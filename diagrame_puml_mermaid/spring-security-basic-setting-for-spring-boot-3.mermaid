@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    StatusCheckController
+    ViewController
+  end
+  subgraph Services
+    MemberService
+    MyUserDetailService
+    RegisterMemberService
+  end
+  subgraph Data_Access
+    MemberRepository
+  end
+  subgraph Security
+    AdminAuthorize
+    AuthorizationController
+    SpringSecurityConfig
+    UserAuthorize
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

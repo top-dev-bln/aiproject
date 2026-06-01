@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    Controller
+    JakartaController
+    JavaxController
+    SpringController
+  end
+  subgraph Security
+    Auth
+  end
+  subgraph Infrastructure
+    Properties
+  end
+  Security --> Controllers

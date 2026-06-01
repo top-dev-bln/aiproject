@@ -1,0 +1,19 @@
+graph TB
+  subgraph Controllers
+    CodelessControllerMethodFactory
+    ExampleController
+  end
+  subgraph Services
+    UserService
+  end
+  subgraph Data_Access
+    User
+  end
+  subgraph Infrastructure
+    CodelessControllerProxy
+    CodelessDaoProxy
+    CodelessServiceProxy
+    CodelessWebAutoConfiguration
+    DefaultMessagesProperties
+  end
+  Controllers --> Services

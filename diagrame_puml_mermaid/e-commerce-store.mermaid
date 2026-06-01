@@ -1,0 +1,59 @@
+graph TB
+  subgraph Controllers
+    OrderController
+    OrderControllerErrorHandling
+    ProductController
+    ProductControllerErrorHandling
+    ReviewController
+    ReviewControllerErrorHandler
+    UserController
+    UserControllerErrorHandling
+  end
+  subgraph Services
+    IOrderService
+    IOrderServiceClient
+    IProductService
+    IProductServiceClient
+    IReviewService
+    IUserService
+    IUserServiceClient
+    OrderService
+    OrderServiceClient
+    ProductService
+    ProductServiceClient
+    ReviewService
+    UserService
+    UserServiceClient
+  end
+  subgraph Data_Access
+    IOrderRepository
+    IProductRepository
+    IReviewRepository
+    IUserRepository
+  end
+  subgraph Security
+    AuthController
+    AuthControllerErrorHandling
+    AuthService
+    AuthenticationAspect
+    AuthenticationPrefilter
+    CorrelationIdFilter
+    IAuthService
+    PerRequestFilter
+    RequiresAuthentication
+    SwaggerFilter
+  end
+  subgraph Infrastructure
+    IOrderEventProducer
+    OpenApiConfig
+    OpenTelemetryConfig
+    OrderConsumer
+    OrderEventProducer
+    OtelMetricsConfiguration
+    RestTemplateConfig
+    WebClientConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

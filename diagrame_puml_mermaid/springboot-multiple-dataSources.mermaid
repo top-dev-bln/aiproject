@@ -1,0 +1,13 @@
+graph TB
+  subgraph Controllers
+    WelcomeController
+  end
+  subgraph Services
+    CommonService
+    CommonServiceImpl
+  end
+  subgraph Infrastructure
+    MyBatisConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

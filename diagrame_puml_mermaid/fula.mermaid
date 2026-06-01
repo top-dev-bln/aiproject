@@ -1,0 +1,19 @@
+graph TB
+  subgraph Controllers
+    CustomerController
+    GlobalControllerHandler
+    IndexController
+    PublicMessageController
+    StateController
+  end
+  subgraph Services
+    CustomerService
+    CustomerServiceImpl
+  end
+  subgraph Infrastructure
+    KafkaProducerForFlink
+    Scheduler
+    WebMvcConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

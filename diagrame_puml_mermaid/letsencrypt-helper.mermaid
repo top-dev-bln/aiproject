@@ -1,0 +1,9 @@
+graph TB
+  subgraph Controllers
+    ExampleRestController
+  end
+  subgraph Infrastructure
+    DisableJettySniConfig
+    JettyWellKnownLetsEncryptChallengeEndpointConfig
+    TomcatWellKnownLetsEncryptChallengeEndpointConfig
+  end

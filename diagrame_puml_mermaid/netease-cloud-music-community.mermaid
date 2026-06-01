@@ -1,0 +1,77 @@
+graph TB
+  subgraph Controllers
+    ActivityController
+    CollectController
+    CommentController
+    DiscoverController
+    FollowController
+    IndexController
+    LikeController
+    LoginController
+    MomentController
+    NotificationController
+    OssController
+    RepostController
+    SettingController
+    ShareController
+    SquareController
+    TagController
+    TopicController
+    UserController
+    VideoController
+  end
+  subgraph Services
+    ActivityService
+    ActivityServiceImpl
+    CollectService
+    CollectServiceImpl
+    CommentService
+    CommentServiceImpl
+    FollowService
+    FollowServiceImpl
+    IndexService
+    IndexServiceImpl
+    LikeService
+    LikeServiceImpl
+    LoginService
+    LoginServiceImpl
+    MomentService
+    MomentServiceImpl
+    NotificationService
+    NotificationServiceImpl
+    OssService
+    OssServiceImpl
+    RepostServiceImpl
+    SettingService
+    SettingServiceImpl
+    ShareService
+    ShareServiceImpl
+    TagService
+    TagServiceImpl
+    TopicService
+    TopicServiceImpl
+    UserService
+    UserServiceImpl
+    VideoService
+    VideoServiceImpl
+  end
+  subgraph Data_Access
+    RepostDBO
+    RepostMapper
+    RepostQueryMapper
+    RepostService
+  end
+  subgraph Security
+    CorsConfig
+  end
+  subgraph Infrastructure
+    LoginInterceptorConfig
+    MySQLConfig
+    OssConfig
+    RedisConfig
+    SwaggerConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access
+  Services --> Infrastructure

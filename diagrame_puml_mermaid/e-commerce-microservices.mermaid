@@ -1,0 +1,53 @@
+graph TB
+  subgraph Controllers
+    AdminProductController
+    CartController
+    OrderController
+    ProductController
+    RecommendationController
+    RegisterController
+    UserController
+  end
+  subgraph Services
+    CartService
+    CartServiceImpl
+    HeaderGenerator
+    OrderService
+    OrderServiceImpl
+    ProductService
+    ProductServiceImpl
+    RecommendationService
+    RecommendationServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    CartRedisRepository
+    CartRedisRepositoryImpl
+    Item
+    ItemRepository
+    Order
+    OrderRepository
+    Product
+    ProductRepository
+    Recommendation
+    RecommendationRepository
+    User
+    UserDetails
+    UserDetailsRepository
+    UserRepository
+    UserRole
+    UserRoleRepository
+  end
+  subgraph Security
+    SessionFilter
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    ApiConfig
+    RedisConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Infrastructure --> Security
+  Services --> Data_Access

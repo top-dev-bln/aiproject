@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    MailController
+    UserController
+  end
+  subgraph Services
+    DemoService
+    DemoServiceImpl
+  end
+  subgraph Infrastructure
+    RedisLockConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services

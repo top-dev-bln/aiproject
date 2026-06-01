@@ -1,0 +1,16 @@
+graph TB
+  subgraph Security
+    Route07AddRequestHeaderFilter
+    Route08SetPathFilter
+    Route09AddResponseHeaderFilter
+    Route10SetStatusFilter
+    Route11LoadBalancerFilter
+    Route12Bucket4jFilter
+    Route13CircuitBreakerFilter
+    Route14RetryFilter
+  end
+  subgraph Infrastructure
+    HttpbinConfiguration
+    RabbitMQConfiguration
+    Route15ConfigRefresh
+  end

@@ -1,0 +1,9 @@
+graph TB
+  subgraph Controllers
+    TutorialController
+  end
+  subgraph Data_Access
+    Tutorial
+    TutorialRepository
+  end
+  Controllers --> Data_Access

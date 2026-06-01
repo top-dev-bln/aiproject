@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    MessageController
+    MessageControllerIT
+  end
+  subgraph Services
+    DownstreamNewsService
+    DownstreamService
+    NewsAggregatorService
+  end
+  subgraph Infrastructure
+    DownstreamServiceConfig
+    DownstreamServiceProperties
+    NewsServicesConfig
+    NewsServicesProperties
+    NextSingleRequestProxyResponseBuilderStep
+    NextStreamRequestProxyResponseBuilderStep
+    ResponseProxyImpl
+    SingleRequestProxyResponseBuilderStep
+    StreamRequestProxyResponseBuilderStep
+  end
+  Controllers --> Services
+  Infrastructure --> Services

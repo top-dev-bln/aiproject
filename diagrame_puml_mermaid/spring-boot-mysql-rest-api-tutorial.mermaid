@@ -1,0 +1,10 @@
+graph TB
+  subgraph Controllers
+    IndexController
+    NoteController
+  end
+  subgraph Data_Access
+    Note
+    NoteRepository
+  end
+  Controllers --> Data_Access

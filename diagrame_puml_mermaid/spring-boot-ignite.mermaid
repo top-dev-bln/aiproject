@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    AlertsController
+  end
+  subgraph Services
+    AlertManagerApplicationIT
+    AlertsService
+    CleanExpiredAlertsService
+    ComputeService
+    DataLoaderService
+    MailService
+  end
+  subgraph Infrastructure
+    AlertConfigEntry
+    AlertManagerConfiguration
+    AlertsConfigStore
+    AlertsConfiguration
+    CacheNames
+    IgniteAlertConfigStore
+    SwaggerConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services

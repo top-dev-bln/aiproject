@@ -1,0 +1,51 @@
+graph TB
+  subgraph Controllers
+    CartController
+    CoreController
+    GroupController
+    GroupResource
+    OrderController
+    OrderResource
+    ProductController
+    ProductResource
+  end
+  subgraph Services
+    CartService
+    CartServiceImpl
+    EcommerceService
+    FileSystemStorageService
+    StorageService
+    UserDetailServiceImpl
+  end
+  subgraph Data_Access
+    GroupRepository
+    GroupVariant
+    Order
+    OrderItem
+    OrderRepository
+    Product
+    ProductGroup
+    ProductImage
+    ProductRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    AnonAuthentication
+    AuthenticationFailureHandler
+    AuthenticationSuccessHandler
+    TokenAuthenticationFilter
+    TokenBasedAuthentication
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    Cache
+    MySwaggerConfig
+    RedisCache
+    StorageProperties
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Security --> Data_Access
+  Services --> Data_Access
+  Services --> Infrastructure

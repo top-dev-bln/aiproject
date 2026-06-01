@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    ApacheFopJavaResourcesFileResolver
+  end
+  subgraph Security
+    XmlSecurityFeatures
+  end
+  subgraph Infrastructure
+    ApacheFopEventListener
+    ApacheFopServerlessConfig
+  end
+  Security --> Controllers

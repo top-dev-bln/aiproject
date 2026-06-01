@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    ThriftController
+  end
+  subgraph Services
+    AsyncGreetingService
+    GreetingMessageService
+    GreetingService
+    TGreetingService
+    ThriftClientBeanPostProcessorService
+  end
+  subgraph Infrastructure
+    DiscoveryClientAutoConfiguration
+    PoolConfiguration
+    ThriftAutoConfiguration
+  end
+  Infrastructure --> Controllers

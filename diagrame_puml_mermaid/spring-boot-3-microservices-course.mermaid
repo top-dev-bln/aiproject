@@ -1,0 +1,30 @@
+graph TB
+  subgraph Controllers
+    InventoryController
+    OrderController
+    ProductController
+  end
+  subgraph Services
+    InventoryService
+    NotificationService
+    OrderService
+    ProductService
+  end
+  subgraph Data_Access
+    Inventory
+    InventoryRepository
+    Order
+    OrderRepository
+    ProductRepository
+  end
+  subgraph Security
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    ObservabilityConfig
+    ObservationConfig
+    OpenAPIConfig
+    RestClientConfig
+  end
+  Controllers --> Services
+  Services --> Data_Access

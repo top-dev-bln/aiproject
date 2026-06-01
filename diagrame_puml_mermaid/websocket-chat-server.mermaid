@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    ChatController
+    ChatRoomController
+    IndexController
+  end
+  subgraph Services
+    ChatRoomRepository
+    ChatService
+    RedisSubscriber
+  end
+  subgraph Security
+    JwtTokenProvider
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    EmbeddedRedisConfig
+    RedisConfig
+    WebSockConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Services

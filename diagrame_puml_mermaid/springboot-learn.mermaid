@@ -1,0 +1,40 @@
+graph TB
+  subgraph Controllers
+    AlipayController
+    DepartmentController
+    ExcelController
+    MailController
+    UploadController
+    UserController
+    UserInfoController
+  end
+  subgraph Services
+    AdminUserService
+    EmailService
+    EmailServiceImpl
+    ExcelService
+    UploadService
+    UploadServiceImpl
+    UserInfoService
+  end
+  subgraph Data_Access
+    DepartmentRepository
+    DeptRepository
+    EmpRepository
+    UserRepository
+  end
+  subgraph Security
+    JwtAuthenticationTokenFilter
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    AlipayConfig
+    Consumer
+    MyConfig
+    MybatisPlusConfig
+    Producer
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

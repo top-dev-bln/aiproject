@@ -1,0 +1,64 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    CartController
+    NotificationController
+    OrderController
+    PaymentController
+    ProductController
+    ReviewController
+    ShipmentController
+    UserController
+  end
+  subgraph Services
+    BaseService
+    BaseServiceImpl
+    CartService
+    CartServiceImpl
+    NotificationService
+    NotificationServiceClient
+    NotificationServiceImpl
+    OrderService
+    OrderServiceImpl
+    PaymentService
+    PaymentServiceImpl
+    ProductService
+    ProductServiceClient
+    ProductServiceImpl
+    ReviewService
+    ReviewServiceImpl
+    ShipmentService
+    ShipmentServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    BaseRepository
+    CartRepository
+    NotificationRepository
+    OrderRepository
+    PaymentRepository
+    ProductElasticsearchRepository
+    ProductRepository
+    ReviewRepository
+    ShipmentRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthController
+    CorsConfig
+    JwtAuthFilter
+    JwtAuthenticationFilter
+    PasswordEncoderConfig
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    GatewayConfig
+    OrderServiceConfig
+    ProductServiceConfig
+    RedisConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

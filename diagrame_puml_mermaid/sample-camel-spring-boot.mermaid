@@ -1,0 +1,12 @@
+graph TB
+  subgraph Services
+    AccountService
+    CamelAccountService
+    CamelCustomerService
+    CustomerService
+  end
+  subgraph Infrastructure
+    CamelGateway
+    RouteGateway
+  end
+  Infrastructure --> Services

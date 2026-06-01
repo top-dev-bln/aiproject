@@ -1,0 +1,24 @@
+graph TB
+  subgraph Controllers
+    ApiBaseController
+    ApiController
+    ErrorController
+    UserBaseController
+    UserController
+  end
+  subgraph Services
+    IUserService
+    UserServiceImpl
+  end
+  subgraph Security
+    CsrfInterceptor
+    FilterConfig
+    XSSFilter
+  end
+  subgraph Infrastructure
+    DataSourceConfig
+    InterceptorConfig
+    SwaggerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Security

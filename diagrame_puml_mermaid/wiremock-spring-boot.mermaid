@@ -1,0 +1,9 @@
+graph TB
+  subgraph Services
+    ExampleService
+  end
+  subgraph Infrastructure
+    CucumberSpringConfiguration
+    StandaloneConfigureNamedSuperClass
+  end
+  Infrastructure --> Services

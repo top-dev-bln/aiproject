@@ -1,0 +1,11 @@
+graph TB
+  subgraph Controllers
+    DogEndpoint
+    DogEndpoints
+  end
+  subgraph Services
+    DbDogService
+    DogService
+    TransactionalDogService
+  end
+  Controllers --> Services

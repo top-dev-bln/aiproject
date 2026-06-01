@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    AccountRestController
+    NoteController
+    NoteRestController
+    WelcomeController
+  end
+  subgraph Services
+    AccountService
+    TrimmedService
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+    RootConfig
+    TrimmingEnabledConfig
+    TrimmingNotEnabledConfig
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

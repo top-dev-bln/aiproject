@@ -1,0 +1,54 @@
+graph TB
+  subgraph Controllers
+    AppController
+    CookieController
+    FileController
+    IndexController
+    PaymentController
+    ProjectController
+    UploadController
+    UserController
+  end
+  subgraph Services
+    FileSystemStorageService
+    HelloService
+    RestService
+    StorageService
+    StripeService
+    UserService
+    XMLService
+  end
+  subgraph Data_Access
+    Account
+    AccountRepository
+    Address
+    AddressRepository
+    Book
+    BookRepository
+    Course
+    CourseRepository
+    Employee
+    EmployeeRepository
+    Movie
+    MovieRepository
+    Note
+    NoteRepository
+    Page
+    PageRepository
+    Person
+    PersonRepository
+    Student
+    StudentRepository
+    Todo
+    TodoRepository
+    User
+    UserRepository
+  end
+  subgraph Infrastructure
+    AuditConfiguration
+    SchedulerConfig
+    StorageProperties
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

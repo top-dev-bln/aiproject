@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    GroupController
+    UserController
+  end
+  subgraph Services
+    GroupService
+    UserService
+  end
+  subgraph Infrastructure
+    IMConfig
+    InterceptorConfig
+    RedisConfig
+    WebSocketConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

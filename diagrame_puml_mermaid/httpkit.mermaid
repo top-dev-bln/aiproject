@@ -1,0 +1,24 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    ControllerCallback
+    ControllerPathMethodMapper
+    FirstController
+  end
+  subgraph Services
+    HttpServiceSummary
+  end
+  subgraph Security
+    CORSFilter
+    CommonCtrlFilterAdapter
+    CtrlFilter
+    CtrlFilterChain
+    ShowUserAgentFilter
+    ValidationFilterAdapter
+  end
+  subgraph Infrastructure
+    ControllerProxy
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

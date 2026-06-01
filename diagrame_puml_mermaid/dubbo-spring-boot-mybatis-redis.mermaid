@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    ParkingSpotDataTrans
+  end
+  subgraph Services
+    SecurityServiceImpl
+  end
+  subgraph Security
+    Security
+    SecurityMapper
+    SecurityService
+    UserSecurityInterceptor
+  end
+  subgraph Infrastructure
+    HttpSessionConfig
+  end
+  Controllers --> Security
+  Services --> Security

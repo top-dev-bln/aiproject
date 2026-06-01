@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    ProblemController
+    ProjectController
+    RestControllerAspect
+    subProblemController
+  end
+  subgraph Services
+    ProblemService
+    ProblemServiceImpl
+    ProjectService
+    ProjectServiceImpl
+    subProblemService
+    subProblemServiceImpl
+  end
+  subgraph Data_Access
+    ProblemRepository
+    ProjectRepository
+    subProblemRepository
+  end
+  subgraph Infrastructure
+    JpaConfiguration
+    SwaggerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

@@ -1,0 +1,57 @@
+graph TB
+  subgraph Controllers
+    BalanceModeController
+    CompletedTicketController
+    FutureTicketController
+    GoalController
+    MasterController
+    MonthlySpendingThresholdController
+    NoteController
+    TagController
+    UserController
+  end
+  subgraph Services
+    BalanceModeService
+    CompletedTicketService
+    CurrentMonthlySpendingThresholdLimitService
+    CustomUserDetailService
+    FutureTicketService
+    GoalService
+    NoteService
+    NoteTagMappingService
+    SpendingThresholdRecordService
+    TagService
+    TicketTagMappingService
+    TotalBalanceService
+    UserService
+  end
+  subgraph Data_Access
+    BalanceModeRepository
+    CompletedTicketRepository
+    CurrentMonthlySpendingThresholdLimitRepository
+    FutureTicketRepository
+    GoalRepository
+    NoteRepository
+    NoteTagMappingRepository
+    SpendingThresholdRecordRepository
+    TagRepository
+    TicketTagMappingRepository
+    TotalBalanceRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationController
+    CORSFilter
+    JwtAuthenticationFilter
+    JwtConfiguration
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    MonthlySpendingRecordCalculationScheduler
+    OpenApiConfiguration
+    OpenApiConfigurationProperties
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    CarController
+  end
+  subgraph Services
+    CarService
+  end
+  subgraph Data_Access
+    CarRepository
+  end
+  subgraph Security
+    CorsConfig
+  end
+  subgraph Infrastructure
+    JpaConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

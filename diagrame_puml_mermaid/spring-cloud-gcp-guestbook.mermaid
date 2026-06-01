@@ -1,0 +1,10 @@
+graph TB
+  subgraph Controllers
+    FrontendController
+  end
+  subgraph Data_Access
+    GuestbookMessageRepository
+  end
+  subgraph Infrastructure
+    OutboundGateway
+  end

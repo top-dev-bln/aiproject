@@ -1,0 +1,13 @@
+graph TB
+  subgraph Data_Access
+    Author
+    Book
+    BookRepository
+  end
+  subgraph Security
+    AuthorRepository
+  end
+  subgraph Infrastructure
+    MyProperties
+  end
+  Security --> Data_Access

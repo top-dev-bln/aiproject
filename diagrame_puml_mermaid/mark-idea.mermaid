@@ -1,0 +1,47 @@
+graph TB
+  subgraph Controllers
+    AdminController
+    ArticleController
+    DelNoteController
+    FileController
+    HistoryController
+    NoteController
+    UserController
+  end
+  subgraph Services
+    AdminServiceImpl
+    ArticleService
+    IAdminService
+    IArticleService
+    IFileService
+    INoteService
+    IUserService
+    LocalFileServiceImpl
+    NoteServiceImpl
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    ArticleDo
+    ArticleRepository
+    DelNoteDo
+    DelNoteRepository
+    UserDo
+    UserRepository
+  end
+  subgraph Security
+    AuthorityInterceptor
+    CorsFilter
+  end
+  subgraph Infrastructure
+    CacheConfig
+    EditorConfigReq
+    InterceptorConfig
+    WebsiteConfigReq
+  end
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Infrastructure --> Data_Access
+  Infrastructure --> Services
+  Security --> Services
+  Services --> Data_Access
+  Services --> Infrastructure

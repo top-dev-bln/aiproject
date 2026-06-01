@@ -1,0 +1,44 @@
+graph TB
+  subgraph Controllers
+    HelloController
+    JobController
+    UserController
+  end
+  subgraph Services
+    DynamicJobService
+    LessonService
+    LessonServiceImpl
+    MailService
+    MailServiceImpl
+    ServiceInterceptor
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    JobEntityRepository
+    LessonRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthInterceptor
+    AuthService
+    AuthServiceImpl
+    JwtAuthController
+    JwtTokenFilter
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    ConfigureQuartz
+    DemoConfig
+    FanoutConfig
+    JpaQueryConfig
+    MybatisPlusConfig
+    QueueConfig
+    RedisCacheConfig
+    SwaggerConfig
+    TopicConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    CategoryController
+    DashboardController
+    JwtAuthController
+    NotesController
+    OAuth2Controller
+    TagController
+    UserController
+  end
+  subgraph Services
+    AccountInfoStrategyGithub
+    AccountInfoStrategyQQ
+    AccountInfoStrategyWeibo
+    CategoryService
+    DashboardService
+    DefaultUserDetailsService
+    InitNotesDataService
+    JwtAuthService
+    NotesService
+    OAuth2ClientService
+    OAuth2Service
+    TagService
+    UserService
+  end
+  subgraph Data_Access
+    CategoryRepository
+    NotesRepository
+    TagRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationBean
+    AuthenticationEntryPointConfig
+    CustomAuthenticationFilter
+    DefaultPasswordEncoder
+    JwtAuthenticationTokenFilter
+    OAuth2AccessToken
+    OAuth2AccountInfo
+    OAuth2ClientProperties
+    UserOAuth2Client
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    RestTemplateConfig
+    ThreadPoolConfig
+  end
+  Controllers --> Services
+  Security --> Services
+  Services --> Data_Access
+  Services --> Security

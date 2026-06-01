@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    ApiRestController
+    RootRestController
+  end
+  subgraph Services
+    HttpConnectionService
+    ResultadoService
+    SSLHttpConnectionService
+  end
+  subgraph Data_Access
+    ResultadoRepository
+  end
+  subgraph Infrastructure
+    Consumer
+    ScheduledConsumer
+    SwaggerConfig
+    WebConfiguration
+  end
+  Controllers --> Services
+  Services --> Data_Access

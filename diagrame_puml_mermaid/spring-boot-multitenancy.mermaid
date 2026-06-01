@@ -1,0 +1,31 @@
+graph TB
+  subgraph Controllers
+    DocumentChatController
+    InstrumentController
+    SimpleChatController
+  end
+  subgraph Services
+    DocumentChatService
+    PropertiesTenantDetailsService
+    TenantDetailsService
+  end
+  subgraph Data_Access
+    Instrument
+    InstrumentRepository
+    TenantClientRegistrationRepository
+  end
+  subgraph Security
+    SecurityConfig
+    TenantAuthenticationEntryPoint
+    TenantAuthenticationManagerResolver
+    TenantContextFilter
+    TenantGatewayFilterFactory
+  end
+  subgraph Infrastructure
+    DataConfig
+    PathConfig
+  end
+  Data_Access --> Services
+  Infrastructure --> Data_Access
+  Security --> Data_Access
+  Security --> Services

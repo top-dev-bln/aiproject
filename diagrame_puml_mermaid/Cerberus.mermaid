@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    ProtectedController
+  end
+  subgraph Services
+    SecurityServiceImpl
+    UserDetailsServiceImpl
+  end
+  subgraph Data_Access
+    User
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationTokenFilter
+    CorsFilter
+    EntryPointUnauthorizedHandler
+    SecurityService
+    WebSecurityConfiguration
+  end
+  Services --> Data_Access
+  Services --> Security

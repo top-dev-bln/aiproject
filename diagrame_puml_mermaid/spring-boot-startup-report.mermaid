@@ -1,0 +1,16 @@
+graph TB
+  subgraph Controllers
+    StartupEventsController
+  end
+  subgraph Services
+    FooService
+  end
+  subgraph Data_Access
+    ReportRenderer
+  end
+  subgraph Infrastructure
+    StartupEventsAutoConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

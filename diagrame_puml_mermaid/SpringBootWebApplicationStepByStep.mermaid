@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    ErrorController
+    LogoutController
+    TodoController
+    WelcomeController
+  end
+  subgraph Services
+    TodoService
+  end
+  subgraph Security
+    SecurityConfiguration
+  end
+  Controllers --> Services

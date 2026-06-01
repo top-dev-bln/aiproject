@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    CustomerController
+  end
+  subgraph Services
+    CustomerService
+  end
+  subgraph Data_Access
+    CustomerRepository
+  end
+  subgraph Infrastructure
+    MongoConfiguration
+    SwaggerConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

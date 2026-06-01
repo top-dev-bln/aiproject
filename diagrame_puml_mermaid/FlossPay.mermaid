@@ -1,0 +1,33 @@
+graph TB
+  subgraph Controllers
+    HealthController
+    StatusController
+    TransactionController
+  end
+  subgraph Services
+    IdempotencyService
+    IdempotencyServiceImpl
+  end
+  subgraph Data_Access
+    IdempotencyKeyRepository
+    TransactionHistoryRepository
+    TransactionRepository
+  end
+  subgraph Security
+    HmacAuthService
+    LoggingFilter
+    RateLimiterFilter
+  end
+  subgraph Infrastructure
+    NpciUpiGatewayClient
+    RedisApiConfig
+    RedisWorkerConfig
+    StreamBootstrapConfig
+    TransactionApiProducer
+    TransactionWorkerConsumer
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    CustomerController
+  end
+  subgraph Data_Access
+    AccountRepository
+    CustomerRepository
+    JpaAccountRepository
+    JpaAccountRepositoryAdapter
+    JpaCustomerRepository
+    JpaCustomerRepositoryAdapter
+  end
+  subgraph Infrastructure
+    AccountFactoryConfig
+    AccountPolicyConfig
+    AccountRepositoryConfig
+    AccountUseCaseConfig
+    CustomerFactoryConfig
+    CustomerPolicyConfig
+    CustomerRepositoryConfig
+    CustomerUseCaseConfig
+  end

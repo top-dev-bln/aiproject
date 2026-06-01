@@ -1,0 +1,13 @@
+graph TB
+  subgraph Controllers
+    HomeController
+    ShowProductController
+  end
+  subgraph Services
+    ProductService
+  end
+  subgraph Infrastructure
+    InertiaViewConfigurer
+  end
+  Controllers --> Services
+  Infrastructure --> Services

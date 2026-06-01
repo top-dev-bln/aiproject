@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    EndpointClassPathScanner
+    PojoEndpointServer
+    ServerEndpoint
+    ServerEndpointExporter
+  end
+  subgraph Infrastructure
+    NettyWebSocketAutoConfigure
+    ServerEndpointConfig
+  end
+  Controllers --> Infrastructure

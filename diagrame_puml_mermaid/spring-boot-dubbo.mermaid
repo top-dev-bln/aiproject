@@ -1,0 +1,32 @@
+graph TB
+  subgraph Controllers
+    DubboEndpoint
+    DubboOperationEndpoint
+    PortalController
+  end
+  subgraph Services
+    AccountManager
+    AccountManagerImpl
+  end
+  subgraph Security
+    ConsumerInvokeStaticsFilter
+    ProviderInvokeStaticsFilter
+    StaticsFilter
+  end
+  subgraph Infrastructure
+    ConsumerSubscribeListener
+    DubboAutoConfiguration
+    DubboBasedAutoConfiguration
+    DubboConsumerAutoConfiguration
+    DubboConsumerBuilder
+    DubboProperties
+    DubboProviderAutoConfiguration
+    EnableDubboConfiguration
+    ProviderExportListener
+    UicDemoAutoconfiguration
+    UicProperties
+  end
+  Controllers --> Infrastructure
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Services

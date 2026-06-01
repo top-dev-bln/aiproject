@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    CustomerController
+    ProductController
+    TransferController
+  end
+  subgraph Data_Access
+    AccountRepository
+    CustomerRepository
+    ProductRepository
+    TransferRepository
+  end
+  subgraph Infrastructure
+    AccountContainersConfiguration
+  end
+  Controllers --> Data_Access

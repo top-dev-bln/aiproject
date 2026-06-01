@@ -1,0 +1,72 @@
+graph TB
+  subgraph Controllers
+    ApiController
+    CollectionController
+    OafController
+    SchemaController
+    StaccatoControllerAdvice
+    StatsController
+    TransactionController
+  end
+  subgraph Services
+    AggregationService
+    ApiService
+    CatalogService
+    CollectionService
+    DefaultOafService
+    DefaultSchemaService
+    ElasticStatsService
+    ElasticTransactionService
+    ElasticsearchApiService
+    ElasticsearchCatalogService
+    ElasticsearchCollectionService
+    GrpcApiService
+    GrpcCatalogService
+    GrpcCollectionsService
+    GrpcTransactionService
+    SchemaService
+    TransactionService
+  end
+  subgraph Data_Access
+    ElasticsearchRepository
+  end
+  subgraph Security
+    CentroidBuilderFilter
+    CentroidExclusionFilter
+    ItemIndexFilter
+    ItemSearchFilter
+    ItemUpdateFilter
+    ItemsFilterProcessor
+    LinkBuilderFilter
+    PropertiesExclusionFilter
+    SelfLinkExclusionFilter
+    VersionFilter
+  end
+  subgraph Infrastructure
+    CoreProperties
+    ElasticsearchConfig
+    ElasticsearchConfigProps
+    ExtensionConfig
+    GrpcAutoConfig
+    GrpcConfigProps
+    IndexAliasConfigProps
+    ItemProperties
+    KafkaAutoConfig
+    KafkaConfigProps
+    KafkaItemListener
+    Landsat8AutoConfig
+    Landsat8ItemProperties
+    LinksConfigProps
+    MicrometerConfig
+    PlanetAutoConfig
+    PlanetItemProperties
+    PropertiesVisitor
+    RootCatalogConfig
+    StacConfigProps
+    StacConfiguration
+    SubcatalogPropertiesService
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

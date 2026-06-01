@@ -1,0 +1,24 @@
+graph TB
+  subgraph Services
+    ConditionalOnLocalStackService
+    DynamoDBService
+    S3Service
+    SNSService
+    SQSService
+  end
+  subgraph Infrastructure
+    AWSLambdaConfiguration
+    AWSSecretsManagerConfiguration
+    AmazonCloudWatchConfiguration
+    AmazonDynamoDBConfiguration
+    AmazonDynamoDBStreamsConfiguration
+    AmazonIAMConfiguration
+    AmazonKinesisConfiguration
+    AmazonS3Configuration
+    AmazonSNSConfiguration
+    AmazonSQSConfiguration
+    LocalStackAutoConfiguration
+    LocalStackContainerConfiguration
+    LocalStackProperties
+  end
+  Infrastructure --> Services

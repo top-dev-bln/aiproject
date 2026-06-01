@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    AgeController
+    DateController
+  end
+  subgraph Services
+    AgeService
+    DateService
+  end
+  subgraph Infrastructure
+    Consumer
+    ConsumerConfiguration
+    ConsumerDateInfo
+    DateProducerController
+    Producer
+    ProducerConfiguration
+    ProducerDateInfo
+  end
+  Controllers --> Services
+  Infrastructure --> Services

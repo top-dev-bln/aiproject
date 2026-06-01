@@ -1,0 +1,18 @@
+graph TB
+  subgraph Security
+    OnsTraceDataEncoder
+  end
+  subgraph Infrastructure
+    AbstractMQConsumer
+    AbstractMQProducer
+    AbstractMQPushConsumer
+    AbstractMQTransactionProducer
+    EnableMQConfiguration
+    MQBaseAutoConfiguration
+    MQConsumer
+    MQConsumerAutoConfiguration
+    MQProducer
+    MQProducerAutoConfiguration
+    MQProperties
+    MQTransactionProducer
+  end

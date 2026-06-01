@@ -1,0 +1,19 @@
+graph TB
+  subgraph Controllers
+    StudentController
+    UserController
+  end
+  subgraph Services
+    UserDetailServiceImpl
+  end
+  subgraph Data_Access
+    CourseRepository
+    StudentRepository
+    UserRepository
+  end
+  subgraph Security
+    WebSecurityConfig
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

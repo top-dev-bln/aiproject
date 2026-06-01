@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    UserController
+  end
+  subgraph Services
+    BaseServiceImpl
+    IBaseService
+    IUserService
+    UserRealm
+    UserServiceImpl
+  end
+  subgraph Security
+    JwtFilter
+    JwtToken
+    OriginFilter
+    Permission
+    PermissionMapper
+    RolePermission
+    RolePermissionMapper
+  end
+  subgraph Infrastructure
+    CustomCache
+    CustomCacheManager
+    JedisConfig
+    ShiroConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Security
+  Services --> Security

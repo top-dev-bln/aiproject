@@ -1,0 +1,31 @@
+graph TB
+  subgraph Controllers
+    AdminProtectedRestController
+    AuthenticationRestController
+    PersonRestController
+    UserRestController
+  end
+  subgraph Services
+    UserModelDetailsService
+    UserService
+  end
+  subgraph Data_Access
+    Authority
+    User
+    UserRepository
+  end
+  subgraph Security
+    AuthorityRepository
+    CorsConfig
+    JWTConfigurer
+    JWTFilter
+    JwtAccessDeniedHandler
+    JwtAuthenticationEntryPoint
+    TokenProvider
+    WebSecurityConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Security --> Data_Access
+  Services --> Data_Access

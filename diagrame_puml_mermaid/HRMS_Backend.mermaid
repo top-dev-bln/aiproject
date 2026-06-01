@@ -1,0 +1,38 @@
+graph TB
+  subgraph Controllers
+    ActivationPanelController
+    CityController
+    EmployerController
+    ImagesController
+    JobController
+    JobPositionsController
+    JobSeekersController
+    WorkPlacesController
+    WorkTimesController
+  end
+  subgraph Services
+    ActivationPanelManager
+    ActivationPanelService
+    CityManager
+    CityService
+    CloudinaryImageServiceAdapter
+    EmailServiceAdapterService
+    EmailVerificationService
+    EmployerManager
+    EmployerService
+    ImageManager
+    ImageService
+    JobManager
+    JobPositionManager
+    JobPositionService
+    JobSeekerCheckService
+    JobSeekerManager
+    JobSeekerService
+    JobService
+    MernisServiceAdapter
+    WorkPlaceManager
+    WorkPlaceService
+    WorkTimeManager
+    WorkTimeService
+  end
+  Controllers --> Services

@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    CustomerController
+    CustomerRefController
+  end
+  subgraph Services
+    CustomerServiceImpl
+    ICustomerService
+    MessageUtilityServiceImpl
+  end
+  subgraph Data_Access
+    ApiLogRepository
+    CustomerRepository
+  end
+  subgraph Infrastructure
+    CommonConfig
+    OpenApiConfig
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

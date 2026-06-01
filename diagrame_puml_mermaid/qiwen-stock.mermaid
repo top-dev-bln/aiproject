@@ -1,0 +1,50 @@
+graph TB
+  subgraph Controllers
+    StockController
+    UserController
+  end
+  subgraph Services
+    AbnormalaActionService
+    EchnicalaspectService
+    IAbnormalaActionService
+    IEchnicalaspectService
+    IReplayService
+    IStockBidService
+    IStockDIService
+    IStockDayInfoService
+    IStockMonthInfoService
+    IStockOptionalService
+    IStockTimeInfoService
+    IStockWeekInfoService
+    IUserService
+    ReplayService
+    StockBidService
+    StockDayInfoService
+    StockMonthInfoService
+    StockOptionalService
+    StockService
+    StockTimeInfoService
+    StockWeekInfoService
+    UserService
+  end
+  subgraph Security
+    JwtAccessDeniedHandler
+    JwtAuthenticationEntryPoint
+    JwtAuthenticationTokenFilter
+    JwtComp
+    JwtHeader
+    JwtProperties
+    Permission
+    RolePermission
+    SecurityConfig
+    UrlAccessDecisionManager
+    UrlFilterInvocationSecurityMetadataSource
+  end
+  subgraph Infrastructure
+    IndicatorProxy
+    ProxyBean
+    WebSocketConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    AuthenticationREST
+    ResourceREST
+  end
+  subgraph Services
+    UserService
+  end
+  subgraph Security
+    AuthenticationManager
+    CORSFilter
+    PBKDF2Encoder
+    SecurityContextRepository
+    WebSecurityConfig
+  end
+  Controllers --> Security
+  Controllers --> Services

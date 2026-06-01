@@ -1,0 +1,31 @@
+graph TB
+  subgraph Controllers
+    CustomErrorController
+    HomeController
+    LoginController
+    RegistrationController
+    ShoppingCartController
+  end
+  subgraph Services
+    ProductService
+    ProductServiceImpl
+    ShoppingCartService
+    ShoppingCartServiceImpl
+    UserService
+    UserServiceImp
+  end
+  subgraph Data_Access
+    Product
+    ProductRepository
+    Role
+    RoleRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    MyAccessDeniedHandler
+    SpringSecurityConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

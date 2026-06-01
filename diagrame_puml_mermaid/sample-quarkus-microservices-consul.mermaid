@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    ConsulResource
+    DepartmentResource
+    EmployeeResource
+    OrganizationResource
+  end
+  subgraph Data_Access
+    DepartmentRepository
+    EmployeeRepository
+    OrganizationRepository
+  end
+  subgraph Infrastructure
+    DepartmentBeanProducer
+    EmployeeBeanProducer
+    OrganizationBeanProducer
+  end

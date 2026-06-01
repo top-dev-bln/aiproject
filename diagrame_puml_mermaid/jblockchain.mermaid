@@ -1,0 +1,19 @@
+graph TB
+  subgraph Controllers
+    AddressController
+    BlockController
+    NodeController
+    TransactionController
+  end
+  subgraph Services
+    AddressService
+    BlockService
+    MiningService
+    NodeService
+    TransactionService
+  end
+  subgraph Infrastructure
+    Config
+  end
+  Controllers --> Services
+  Infrastructure --> Services

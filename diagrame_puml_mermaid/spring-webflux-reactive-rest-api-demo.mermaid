@@ -1,0 +1,8 @@
+graph TB
+  subgraph Controllers
+    TweetController
+  end
+  subgraph Data_Access
+    TweetRepository
+  end
+  Controllers --> Data_Access

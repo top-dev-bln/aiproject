@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    HelloController
+    TokenController
+  end
+  subgraph Security
+    JwtAuthenticationEntryPoint
+    JwtAuthenticationProvider
+    JwtAuthenticationToken
+    JwtAuthenticationTokenFilter
+    JwtGenerator
+    JwtSecurityConfig
+    JwtSuccessHandler
+    JwtUser
+    JwtUserDetails
+    JwtValidator
+  end
+  Controllers --> Security

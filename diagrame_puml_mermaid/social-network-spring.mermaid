@@ -1,0 +1,37 @@
+graph TB
+  subgraph Controllers
+    MessageController
+    PersonController
+    ProfileController
+  end
+  subgraph Services
+    AvatarService
+    MessageService
+    PersonService
+    SocialConnectionSignUp
+    SocialSignInAdapter
+    UserDetailsServiceImpl
+  end
+  subgraph Data_Access
+    Message
+    MessageRepository
+    Person
+    PersonRepository
+    Role
+    RoleRepository
+  end
+  subgraph Security
+    ChangePassword
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    SocialConfiguration
+    SwaggerConfiguration
+    WebConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Services
+  Services --> Data_Access

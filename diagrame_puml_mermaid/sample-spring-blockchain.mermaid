@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    BlockchainController
+  end
+  subgraph Services
+    BlockchainService
+  end
+  subgraph Infrastructure
+    Web3jAutoConfiguration
+    Web3jProperties
+  end
+  Controllers --> Services

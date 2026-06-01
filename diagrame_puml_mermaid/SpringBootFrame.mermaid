@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    IndexController
+    UserController
+  end
+  subgraph Services
+    AbstractService
+    Service
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    AuthIgnore
+    SQLFilter
+  end
+  subgraph Infrastructure
+    DruidConfig
+    RedisConfig
+    ShiroConfig
+    SwaggerConfig
+    WebMvcConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

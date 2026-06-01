@@ -1,0 +1,56 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    BaseController
+    CurrencyRateController
+    CustomErrorController
+    DashboardController
+    ShortMsgController
+    SysMenuController
+    SysRoleController
+    SysUserController
+    TripUserController
+    UserController
+  end
+  subgraph Services
+    CaptchaService
+    CrudService
+    CurrencyRateService
+    DynamicDataSourceTransactionManager
+    FileManager
+    ICaptchaService
+    ICurrencyRateService
+    ISystemService
+    ITripUserService
+    SystemService
+    TripUserService
+    UserDetailsServiceImpl
+    YahooRateService
+  end
+  subgraph Data_Access
+    RedisRepository
+    YoupuPipeline
+  end
+  subgraph Security
+    AbstractAuthUser
+    AbstractWebSecurityConfig
+    AuthUser
+    AuthUserFactory
+    AuthenticationTokenFilter
+    ContainerAccessLogCustomizer
+    MyAuthenticationEntryPoint
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    CacheConfig
+    DatasourceConfig
+    RedisConfig
+    SwaggerConfig
+    UploadConfig
+    WebConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access
+  Services --> Security

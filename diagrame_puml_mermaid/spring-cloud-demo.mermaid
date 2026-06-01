@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    ApiUserController
+    FeignApiUserController
+    FeignUserController
+    UserController
+  end
+  subgraph Services
+    UserService
+  end
+  subgraph Security
+    CustomPreFilter
+  end
+  subgraph Infrastructure
+    Provider2Configuration
+    ProviderConfiguration
+    RandomRuleConfig
+    RcFeignConfiguration
+    RoundRobinRuleConfig
+  end
+  Controllers --> Services

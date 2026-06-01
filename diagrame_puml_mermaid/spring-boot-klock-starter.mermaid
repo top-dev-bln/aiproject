@@ -1,0 +1,10 @@
+graph TB
+  subgraph Services
+    TimeoutService
+  end
+  subgraph Infrastructure
+    KlockAutoConfiguration
+    KlockConfig
+    KlockConfiguration
+  end
+  Infrastructure --> Services

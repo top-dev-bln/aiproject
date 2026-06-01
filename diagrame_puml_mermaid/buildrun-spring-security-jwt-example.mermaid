@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    TweetController
+    UserController
+  end
+  subgraph Data_Access
+    RoleRepository
+    TweetRepository
+    UserRepository
+  end
+  subgraph Security
+    SecurityConfig
+    TokenController
+  end
+  subgraph Infrastructure
+    AdminUserConfig
+  end
+  Security --> Controllers

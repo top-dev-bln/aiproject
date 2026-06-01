@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    AccountTransactionController
+    CustomerController
+  end
+  subgraph Services
+    CustomerService
+    CustomerServiceClient
+    ICustomerService
+  end
+  subgraph Data_Access
+    EventStoreRepository
+  end
+  subgraph Infrastructure
+    AccountEventConsumer
+    AccountEventProducer
+    EventProducer
+    IAccountEventConsumer
+    ITransactionEventConsumer
+    JacksonConfig
+    MyBatisConfig
+    RabbitMQConfig
+    TransactionEventConsumer
+    TransactionEventProducer
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

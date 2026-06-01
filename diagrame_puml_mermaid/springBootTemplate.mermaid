@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    UserCacheController
+    UserController
+  end
+  subgraph Services
+    IUserService
+    UserCacheServiceImpl
+    UserServiceImpl
+  end
+  subgraph Infrastructure
+    CacheUserDb
+    DemoConfig
+    DruidConfig
+    IUserCacheService
+    MyBatisConfig
+    MyBatisScannerConfig
+    PackageConfig
+    RedisConfig
+    TimeTaskConfig
+    TransactionConfig
+  end
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Services --> Infrastructure

@@ -1,0 +1,11 @@
+graph TB
+  subgraph Services
+    LocalstackService
+  end
+  subgraph Infrastructure
+    EveryAwsClientAutoConfiguration
+    LocalstackAutoConfiguration
+    SpecificAwsClientsAutoConfiguration
+    SpringLocalstackProperties
+  end
+  Infrastructure --> Services

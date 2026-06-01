@@ -1,0 +1,41 @@
+graph TB
+  subgraph Controllers
+    AdminController
+    ChatController
+    ForumAdminController
+    PostController
+    ReferralAdminController
+    ReferralController
+    RepliesController
+    UserController
+  end
+  subgraph Services
+    CodingSharingService
+    CodingSharingServiceImpl
+    PostService
+    PostServiceImpl
+    RepliesService
+    RepliesServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    CorsConfig
+    GlobalAuthFilter
+    JwtTokenAdminInterceptor
+    JwtTokenUserInterceptor
+  end
+  subgraph Infrastructure
+    ApiProperties
+    LikeInfoListener
+    RabbitMQConfig
+    SwaggerConfig
+    ThreadConfig
+    UserInfoListener
+    WebMvcConfig
+    WebSocketConfig
+    WebSocketEventListener
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

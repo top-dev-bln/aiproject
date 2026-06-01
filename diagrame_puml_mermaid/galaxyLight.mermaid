@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    ComputeControllerComaP
+    ComputeControllera
+    ComputeControllers
+    ComputeControllersBEH
+  end
+  subgraph Services
+    ComputeServiceApplications
+    HredoService
+    Sendservice
+  end
+  subgraph Infrastructure
+    AmqpConfig
+    RedisConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

@@ -1,0 +1,35 @@
+graph TB
+  subgraph Controllers
+    ActivityController
+    AddressController
+    AdminController
+    BaseController
+    BaseErrorController
+    CaptchaController
+    CartController
+    DeliveryController
+    EntryController
+    FileController
+    FoodController
+    IndexController
+    OrderController
+    PositionController
+    RatingController
+    RestaurantController
+    ShopController
+    UserController
+  end
+  subgraph Services
+    IdsService
+    PositionService
+  end
+  subgraph Security
+    CORSConfiguration
+  end
+  subgraph Infrastructure
+    AppConfiguration
+    Swagger2Configuration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

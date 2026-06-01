@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    PersonController
+  end
+  subgraph Data_Access
+    CityRepository
+    CountryRepository
+    StudentRepository
+    UniversityRepository
+  end
+  subgraph Security
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    HibernateJacksonConfig
+    RoutesConfiguration
+  end
+  Security --> Controllers

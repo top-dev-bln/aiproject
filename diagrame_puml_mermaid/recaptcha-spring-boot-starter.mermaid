@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    SecurityController
+    ValidationController
+  end
+  subgraph Services
+    InMemoryLoginFailuresManager
+    LoginFailuresManager
+  end
+  subgraph Security
+    AccessConfiguration
+    RecaptchaAuthenticationFilter
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    FormLoginConfigurerEnhancer
+    RecaptchaProperties
+    ValidationConfiguration
+  end
+  Infrastructure --> Security
+  Security --> Infrastructure
+  Security --> Services
+  Services --> Infrastructure

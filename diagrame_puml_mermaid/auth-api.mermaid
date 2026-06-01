@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    ProductController
+  end
+  subgraph Services
+    AuthorizationService
+    TokenService
+  end
+  subgraph Data_Access
+    Product
+    ProductRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    SecurityConfigurations
+    SecurityFilter
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Security --> Data_Access
+  Services --> Data_Access

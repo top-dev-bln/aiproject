@@ -1,0 +1,11 @@
+graph TB
+  subgraph Controllers
+    CustomizedResponseBlurController
+    ResponseEntityBlurController
+  end
+  subgraph Infrastructure
+    BlurAutoConfiguration
+    BlurConfig
+    BlurProperties
+    SpringBootMainApplicationClassRunListener
+  end

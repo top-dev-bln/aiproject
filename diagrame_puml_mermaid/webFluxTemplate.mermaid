@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    AuthRestController
+    UserRestController
+  end
+  subgraph Services
+    CustomReactiveUserDetailsService
+    UserServiceExceptionHandler
+  end
+  subgraph Data_Access
+    UserReactiveCrudRepository
+  end
+  subgraph Security
+    CustomPasswordEncoder
+    CustomReactiveAuthenticationManager
+    JwtAuthenticationConverter
+    JwtAuthenticationToken
+    JwtAuthenticationWebFilter
+    JwtPreAuthenticationToken
+    SecurityConfiguration
+    UnauthorizedAuthenticationEntryPoint
+  end
+  subgraph Infrastructure
+    MongoConfiguration
+    WebConfig
+  end
+  Controllers --> Data_Access
+  Security --> Services
+  Services --> Data_Access

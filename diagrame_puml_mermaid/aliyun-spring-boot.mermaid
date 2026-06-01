@@ -1,0 +1,71 @@
+graph TB
+  subgraph Controllers
+    AbstractRedisEndpoint
+    CompileflowController
+    CompileflowEndpoint
+    ConditionalOnAliCloudEndpoint
+    EndpointManager
+    OnAliCloudEndpointCondition
+    OssController
+    OssEndpoint
+    OssStorageResource
+    RdsController
+    RdsErrorEndpoint
+    RdsInstancesEndpoint
+    RdsPerformanceEndpoint
+    RdsSlowEndpoint
+    RedisController
+    RedisDescribeAccountsEndpoint
+    RedisDescribeAvailableResourceEndpoint
+    RedisDescribeInstancesEndpoint
+    SmsController
+    SmsEndpoint
+  end
+  subgraph Services
+    AbstractSmsService
+    ISmsService
+    KtvService
+    SmsServiceImpl
+  end
+  subgraph Security
+    QueryTokenForMnsQueueResponseUnmarshaller
+    TokenForAlicom
+    TokenGetterForAlicom
+  end
+  subgraph Infrastructure
+    AliCloudContextAutoConfiguration
+    AliCloudProperties
+    CompileflowAutoConfiguration
+    CompileflowEndpointAutoConfiguration
+    CompileflowProperties
+    ConditionalOnRequiredProperties
+    EdasContextAutoConfiguration
+    EdasProperties
+    MessageListener
+    OnRequiredPropertiesCondition
+    OssApplicationListener
+    OssAutoConfiguration
+    OssContextAutoConfiguration
+    OssEndpointAutoConfiguration
+    OssProperties
+    RdsAutoConfiguration
+    RdsEndpointAutoConfiguration
+    RdsProperties
+    RedisAutoConfiguration
+    RedisEndpointAutoConfiguration
+    RedisProperties
+    SmsAutoConfiguration
+    SmsContextAutoConfiguration
+    SmsEndpointAutoConfiguration
+    SmsInitializerEventListener
+    SmsMessageListener
+    SmsProperties
+    SmsReportMessageListener
+    SmsUpMessageListener
+  end
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Infrastructure --> Controllers
+  Infrastructure --> Services
+  Services --> Controllers
+  Services --> Infrastructure

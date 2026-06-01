@@ -1,0 +1,19 @@
+graph TB
+  subgraph Controllers
+    BaseCodeController
+  end
+  subgraph Services
+    BaseCodeService
+    BaseCodeServiceImpl
+    BaseService
+    BaseServiceImpl
+    DynamicDataSourceTransactionManager
+  end
+  subgraph Infrastructure
+    CacheKeyGenerator
+    DynamicDataSourceConfig
+    SpringBeanConfig
+    SpringMvcConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

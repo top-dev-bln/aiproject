@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    UserController
+  end
+  subgraph Services
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationController
+    AuthenticationFilter
+    AuthorizationFilter
+    WebSecurity
+  end
+  subgraph Infrastructure
+    AppProperties
+    SwaggerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

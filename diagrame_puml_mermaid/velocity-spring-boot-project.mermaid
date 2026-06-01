@@ -1,0 +1,20 @@
+graph TB
+  subgraph Controllers
+    BaseController
+    IndexController
+    VelocityLayoutController
+  end
+  subgraph Data_Access
+    VelocityToolsRepository
+  end
+  subgraph Infrastructure
+    EmbeddedVelocityViewResolverApplicationListener
+    FactoryConfigurationLoader
+    VelocityAutoConfiguration
+    VelocityLayoutAutoConfiguration
+    VelocityLayoutProperties
+    VelocityProperties
+    VelocityToolsAutoConfiguration
+  end
+  Controllers --> Infrastructure
+  Infrastructure --> Data_Access

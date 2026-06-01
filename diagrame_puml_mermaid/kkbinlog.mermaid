@@ -1,0 +1,40 @@
+graph TB
+  subgraph Controllers
+    ClientController
+    DataSourceController
+  end
+  subgraph Services
+    ClientService
+    ClientServiceRedisImpl
+    DistributorService
+    DistributorServiceAbstract
+    EtcdService
+    EtcdServiceImpl
+    ExampleDataEventHadler
+    ExampleDataEventHandler
+    ExampleDataEventHandler2
+    KafkaService
+    KafkaServiceImpl
+    MongoDBDistributorServiceImpl
+    MysqlDistributorServiceImpl
+    RabbitMQService
+    RabbitMQServiceImpl
+    ServiceStatus
+  end
+  subgraph Infrastructure
+    BeanConfig
+    BinaryLogConfig
+    BinaryLogConfigContainer
+    BinlogLeaderSelectorListener
+    EtcdConfig
+    ExampleEventListener
+    KafkaConfig
+    LeaderSelectorListener
+    OplogLeaderSelectorListener
+    RabbitMQConfig
+    RedissonConfig
+  end
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Infrastructure

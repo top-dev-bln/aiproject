@@ -1,0 +1,63 @@
+graph TB
+  subgraph Controllers
+    BalanceController
+    CommentController
+    Controller
+    GreetingController
+    HelloController
+    LockController
+    OrderController
+    PostController
+    PublishOrderController
+    S3Controller
+    ThreadController
+    TodoController
+    UserController
+  end
+  subgraph Services
+    BalanceService
+    CommentService
+    CronService
+    LockService
+    PostService
+    S3Service
+    TodoService
+    TodoServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    BalanceRepository
+    PostRepository
+    TodoRepository
+    UserRepository
+  end
+  subgraph Security
+    Author
+  end
+  subgraph Infrastructure
+    CacheController
+    CacheService
+    Consumer
+    DynamoDbConfig
+    KafkaConsumer
+    KafkaConsumerConfig
+    KafkaProducer
+    MyKeyspaceConfiguration
+    OrderConsumer
+    OrderCreatedEventConsumer
+    OrderCreatedEventProducer
+    OrderProducer
+    ReactiveRedisConfig
+    RedisClusterConfig
+    RedisConfig
+    S3Config
+    SpanAspectConfig
+    SqsConfig
+    ThreadExecutorConfig
+    TopicConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    GlobalExceptionHandlerController
+    UserController
+  end
+  subgraph Services
+    MyUserDetails
+    UserService
+  end
+  subgraph Data_Access
+    AppUser
+    UserRepository
+  end
+  subgraph Security
+    JwtTokenFilter
+    JwtTokenProvider
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    OpenApiConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access
+  Services --> Security

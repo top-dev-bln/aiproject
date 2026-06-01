@@ -1,0 +1,15 @@
+graph TB
+  subgraph Controllers
+    MovieController
+    ReviewController
+  end
+  subgraph Services
+    MovieService
+    ReviewService
+  end
+  subgraph Data_Access
+    MovieRepository
+    ReviewRepository
+  end
+  Controllers --> Services
+  Services --> Data_Access

@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    DemoController
+  end
+  subgraph Services
+    DictDataProviderImpl
+  end
+  subgraph Infrastructure
+    Config
+    DefaultAnalysisEventListener
+    DictCacheClearAnalysisEventListener
+    DictCacheClearSheetWriteHandler
+    ExcelConfigProperties
+    ExcelHandlerConfiguration
+    IndexOrNameDataListener
+    IndexOrNameDataListener1
+    ListAnalysisEventListener
+    ResponseExcelAutoConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services

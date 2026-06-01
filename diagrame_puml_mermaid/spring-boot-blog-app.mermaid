@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    CommentController
+    HomeController
+    PostController
+    SignupController
+  end
+  subgraph Services
+    BlogUserService
+    BlogUserServiceImpl
+    CommentService
+    CommentServiceImpl
+    PostService
+    PostServiceImpl
+  end
+  subgraph Data_Access
+    BlogUserRepository
+    CommentRepository
+    PostRepository
+  end
+  subgraph Security
+    Authority
+    AuthorityRepository
+    MethodSecurityConfig
+    WebSecurityConfig
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

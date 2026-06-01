@@ -1,0 +1,13 @@
+graph TB
+  subgraph Controllers
+    PersonController
+  end
+  subgraph Services
+    PersonService
+    PersonServiceImpl
+  end
+  subgraph Data_Access
+    PersonRepository
+  end
+  Controllers --> Services
+  Services --> Data_Access

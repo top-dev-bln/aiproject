@@ -1,0 +1,11 @@
+graph TB
+  subgraph Controllers
+    GraphQlController
+    GraphQlControllerImpl
+  end
+  subgraph Infrastructure
+    GraphQlAutoConfiguration
+    GraphQlExecutorProperties
+    GraphQlProperties
+  end
+  Infrastructure --> Controllers

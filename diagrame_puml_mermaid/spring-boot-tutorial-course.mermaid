@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    EmployeeController
+    HelloWorldController
+    StudentController
+  end
+  subgraph Services
+    EmployeeService
+    EmployeeServiceImpl
+    StudentService
+    StudentServiceImpl
+  end
+  subgraph Data_Access
+    Employee
+    EmployeeRepository
+    Student
+    StudentRepository
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

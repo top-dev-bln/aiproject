@@ -1,0 +1,46 @@
+graph TB
+  subgraph Controllers
+    GreetingResource
+    UserResource
+  end
+  subgraph Services
+    GreetingService
+    UserService
+  end
+  subgraph Data_Access
+    User
+  end
+  subgraph Security
+    AccessDeniedExceptionMapper
+    AuthenticatedUserDetails
+    AuthenticationExceptionMapper
+    AuthenticationFilter
+    AuthenticationResource
+    AuthenticationToken
+    AuthenticationTokenDetails
+    AuthenticationTokenIssuer
+    AuthenticationTokenParser
+    AuthenticationTokenRefreshmentExceptionMapper
+    AuthenticationTokenService
+    AuthenticationTokenSettings
+    Authority
+    AuthorizationFilter
+    PasswordEncoder
+    TokenBasedSecurityContext
+    UsernamePasswordValidator
+  end
+  subgraph Infrastructure
+    Configurable
+    ConfigurationProducer
+    EntityManagerProducer
+    JerseyConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Data_Access --> Security
+  Infrastructure --> Controllers
+  Infrastructure --> Security
+  Security --> Data_Access
+  Security --> Infrastructure
+  Security --> Services
+  Services --> Data_Access

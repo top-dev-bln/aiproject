@@ -1,0 +1,58 @@
+graph TB
+  subgraph Controllers
+    AdminController
+    AuthController
+    PermissionController
+    ResetPasswordController
+    RoleController
+    TokenController
+    UserController
+  end
+  subgraph Services
+    FileStorageServiceImpl
+    PermissionLoaderImpl
+    PermissionServiceImpl
+    RoleService
+    RoleServiceImpl
+    UserAccountService
+    UserAccountServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    PermissionRepository
+    RefreshTokenRepository
+    RoleRepository
+    UserAccountRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthEntryPoint
+    AuthenticationFilter
+    CORSFilter
+    OnResetPasswordEvent
+    Permission
+    PermissionLoadMode
+    PermissionLoader
+    PermissionService
+    RefreshToken
+    ResetPasswordListener
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    ModelUpdateListener
+    RedisConfiguration
+    RegistrationListener
+    ResourceWebConfig
+    SwaggerConfiguration
+    SwaggerProperties
+    TemplateEngineConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Data_Access --> Security
+  Infrastructure --> Services
+  Security --> Services
+  Services --> Data_Access
+  Services --> Security

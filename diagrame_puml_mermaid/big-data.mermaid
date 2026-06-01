@@ -1,0 +1,15 @@
+graph TB
+  subgraph Services
+    MobilePaymentInfoService
+    MobilePaymentInfoServiceImpl
+    MobilePaymentRuleService
+    PhoneNoBlacklistService
+  end
+  subgraph Infrastructure
+    MobilePaymentInfoConfig
+    MobilePaymentInfoListener
+    RedisConfig
+    SpringMongoConfig
+    UserConsumerAmountPerMinute
+  end
+  Infrastructure --> Services

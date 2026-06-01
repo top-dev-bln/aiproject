@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    AccountApi
+    HystrixController
+    TicketApi
+  end
+  subgraph Services
+    AccountService
+    AccountServiceClient
+    NotificationDistributionService
+    NotificationService
+    TicketNotificationService
+    TicketNotificationServiceImpl
+    TicketService
+    TicketServiceImpl
+  end
+  subgraph Data_Access
+    AccountRepository
+    Ticket
+    TicketElasticRepository
+    TicketRepository
+  end
+  subgraph Infrastructure
+    CassandraConfiguration
+    FeignConfig
+    TicketConfiguration
+  end
+  Controllers --> Services
+  Services --> Data_Access

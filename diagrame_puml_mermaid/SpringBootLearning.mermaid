@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    AccountController2
+    BookContrller
+    FileUploadController
+    GirlController
+    GreetingController
+    HelloController
+    HelloControllerIT
+    HomeController
+    KafkaController
+    LucyController
+    MiyaController
+    UserController
+    WebController
+  end
+  subgraph Services
+    AccountService
+    AccountService2
+    FileSystemStorageService
+    GitHubLookupService
+    IAccountService
+    Service
+    StorageService
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Account
+    AccountDaoImpl
+    BookRepository
+    CustomerRepository
+    Girl
+    RedisDao
+    SimpleBookRepository
+    UserRepository
+  end
+  subgraph Infrastructure
+    ConfigBean
+    GirlProperties
+    KafkaProducer
+    ServiceConfiguration
+    ServiceProperties
+    StorageProperties
+    Swagger2
+    kafkaConsumer
+  end
+  Controllers --> Data_Access
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Services --> Data_Access

@@ -1,0 +1,58 @@
+graph TB
+  subgraph Controllers
+    ArticleController
+    DemoController
+    FeignController
+    IndexController
+    JwtAuthenticationController
+    ParamsController
+    PoiController
+    RedisController
+    TaxiController
+    UserController
+  end
+  subgraph Services
+    JwtUserDetailsService
+    TaxiFareCalculatorService
+  end
+  subgraph Data_Access
+    ArticleRepository
+    Role
+    RoleRepository
+    User
+    UserMapper
+    UserRepository
+    UserRole
+    UserRoleRepository
+    WsMessage
+    WsMessageRepository
+    WsSite
+    WsSiteRepository
+  end
+  subgraph Security
+    ConfigurationFilter
+    CorsFilter
+    CustomFromLoginFilter
+    GateWayCorsConfig
+    JwtAuthenticationEntryPoint
+    JwtRequestFilter
+    JwtUser
+    WebSecurityConfig
+    WebSocketFilter
+  end
+  subgraph Infrastructure
+    AspectConfig
+    DruidConfiguration
+    JmsConfig
+    MybatisPlusConfig
+    RedisConfig
+    SwaggerConfig
+    TaxiFareConfiguration
+    WebSocketConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Security --> Services
+  Services --> Data_Access
+  Services --> Security

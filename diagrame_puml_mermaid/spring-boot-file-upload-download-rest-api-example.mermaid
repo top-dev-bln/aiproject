@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    FileController
+  end
+  subgraph Services
+    FileStorageService
+  end
+  subgraph Infrastructure
+    FileStorageProperties
+  end
+  Controllers --> Services
+  Services --> Infrastructure

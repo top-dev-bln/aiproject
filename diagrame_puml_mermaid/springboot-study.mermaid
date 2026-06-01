@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    EhcacheController
+    HelloController
+    LoggerController
+    RedisController
+    TaskController
+    URLController
+    UserController
+  end
+  subgraph Services
+    UserService
+  end
+  subgraph Security
+    DruidStatFilter
+    Token
+    TokenContract
+  end
+  subgraph Infrastructure
+    CookieConfig
+    DruidDBConfig
+    HttpSessionConfig
+    MyWebAppConfigurer
+    RedisConfig
+  end
+  Controllers --> Security
+  Controllers --> Services

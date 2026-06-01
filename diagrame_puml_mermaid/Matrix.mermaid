@@ -1,0 +1,24 @@
+graph TB
+  subgraph Services
+    MyService1
+    MyService1Impl
+    MyService2
+    MyService2Impl
+    MyService3
+    MyService3Impl
+    MyService4Impl
+    MyService5Impl
+    MyService6Impl
+  end
+  subgraph Infrastructure
+    AbstractAutoScanProxy
+    DefaultAutoScanProxy
+    MyAutoConfiguration
+    MyAutoScanProxy
+    MyAutoScanProxyForClass
+    MyAutoScanProxyForMethod
+    MyConfiguration
+    MyConfigurationExtension
+    ProxyMode
+  end
+  Infrastructure --> Services

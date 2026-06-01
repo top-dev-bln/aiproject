@@ -1,0 +1,38 @@
+graph TB
+  subgraph Services
+    BaseSenderConnectionManager
+    BaseSenderManager
+    ConnectionManager
+    ConnectionManagerFactory
+    ReceiverConnectionManager
+    RoundRobinApplicationService
+    SenderManager
+    StrategySenderManager
+    TransceiverConnectionManager
+    TransmitterConnectionManager
+  end
+  subgraph Data_Access
+    DeliveryReport
+  end
+  subgraph Security
+    FlashSubmitSmEncoder
+    SilentSubmitSmEncoder
+    SimpleSubmitSmEncoder
+    SubmitSmEncoder
+    SubmitSmEncoderFactory
+  end
+  subgraph Infrastructure
+    BaseSmppSessionConfiguration
+    CustomHandlerConfiguration
+    DeliveryReportConsumer
+    NullDeliveryReportConsumer
+    ReceiverConfiguration
+    RoundRobinApplicationConfiguration
+    SmppAutoConfiguration
+    SmppProperties
+    SmppSessionListenerImpl
+    TransceiverConfiguration
+    TransmitterConfiguration
+  end
+  Infrastructure --> Services
+  Services --> Data_Access

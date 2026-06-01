@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    AppResourceLoader
+    AppiumResourceLoader
+    Html5ResourceLoader
+    WebResourceLoader
+  end
+  subgraph Services
+    AppPageFacade
+    Html5PageFacade
+    WebPageFacade
+  end
+  subgraph Data_Access
+    DefaultReporter
+  end
+  subgraph Infrastructure
+    ScreenShotListener
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    MessageController
+  end
+  subgraph Services
+    MessageService
+  end
+  subgraph Security
+    BasicAuthenticationSuccessHandler
+    BearerTokenReactiveAuthenticationManager
+    JWTCustomSigner
+    JWTCustomVerifier
+    JWTSecrets
+    JWTTokenService
+    ServerHttpBearerAuthenticationConverter
+    UsernamePasswordAuthenticationBearer
+  end
+  Controllers --> Services

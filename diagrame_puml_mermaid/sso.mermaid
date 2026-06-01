@@ -1,0 +1,45 @@
+graph TB
+  subgraph Controllers
+    AccessTokenController
+    BindController
+    CageCaptchaController
+    CaptchaController
+    IndexController
+    NotBindExceptionController
+    UserController
+  end
+  subgraph Services
+    DefaultValidateService
+    IUserIdObtainService
+    IValidateService
+    TriggerLogoutService
+    UserIdObtainServiceImpl
+  end
+  subgraph Security
+    CageStringTokenGenerator
+    CustomAuthenticationEventExecutionPlanConfiguration
+    CustomerAuthWebflowConfiguration
+    ITokenGenerator
+    StringTokenGenerator
+    UsernamePasswordSysCredential
+    UsernamePasswordSystemAuthenticationHandler
+  end
+  subgraph Infrastructure
+    CaptchaConfiguration
+    ClientConfiguration
+    CustomWebflowConfigurer
+    GithubProperties
+    MailProperties
+    RealmConfiguration
+    SSOMailValidateConfiguration
+    SSOValidateConfiguration
+    SSOValidateConfigurationProperties
+    ShiroConfiguration
+    SingleLogoutTriggerConfiguration
+    TGTCreateEventListener
+    ValidateWebflowConfiguation
+    ValidateWebflowConfigurer
+  end
+  Infrastructure --> Controllers
+  Infrastructure --> Services
+  Security --> Infrastructure

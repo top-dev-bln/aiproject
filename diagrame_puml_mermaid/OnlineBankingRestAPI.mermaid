@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    AccAccountController
+    CrdCreditCardController
+    CusCustomerController
+    KafkaMessageController
+    LoaLoanController
+  end
+  subgraph Services
+    AccAccountActivityEntityService
+    AccAccountActivityService
+    AccAccountEntityService
+    AccAccountService
+    AccAccountValidationService
+    AccMoneyTransferEntityService
+    AccMoneyTransferService
+    BaseEntityService
+    CrdCreditCardActivityEntityService
+    CrdCreditCardActivityService
+    CrdCreditCardActivityValidationService
+    CrdCreditCardEntityService
+    CrdCreditCardService
+    CrdCreditCardValidationService
+    CusCustomerEntityService
+    CusCustomerService
+    CusCustomerValidationService
+    LoaLoanEntityService
+    LoaLoanPaymentEntityService
+    LoaLoanService
+    LoaLoanValidationService
+    LogDetailEntityService
+    LogService
+  end
+  subgraph Security
+    AuthenticationController
+    AuthenticationService
+    JwtAuthenticationEntryPoint
+    JwtAuthenticationFilter
+    JwtTokenGenerator
+    JwtUserDetails
+    JwtUserDetailsService
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    KafkaConsumerConfiguration
+    KafkaListenerService
+    KafkaProducerConfiguration
+    SwaggerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

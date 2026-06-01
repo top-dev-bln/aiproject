@@ -1,0 +1,18 @@
+graph TB
+  subgraph Services
+    TrafficDataService
+  end
+  subgraph Data_Access
+    POITrafficDataRepository
+    TotalTrafficDataRepository
+    WindowTrafficDataRepository
+  end
+  subgraph Security
+    IoTDataEncoder
+  end
+  subgraph Infrastructure
+    CassandraConfig
+    IoTDataProducer
+    WebSocketConfig
+  end
+  Services --> Data_Access

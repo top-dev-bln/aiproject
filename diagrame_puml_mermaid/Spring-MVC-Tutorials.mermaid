@@ -1,0 +1,77 @@
+graph TB
+  subgraph Controllers
+    BasicController
+    BookController
+    CustomErrorController
+    DemoController
+    DepartmentController
+    EmployeeController
+    FileController
+    FilterExampleController
+    GreetingController
+    HelloController
+    HomeController
+    MainController
+    MessagePublisher
+    MyController
+    ReleaseNotesEndpoint
+    SNSController
+    SQSController
+    SimpleController
+    UserController
+  end
+  subgraph Services
+    BookRepository
+    CustomUserDetailsService
+    EmailSenderService
+    EmployeeService
+    FileService
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Book
+    Department
+    DepartmentRepository
+    Employee
+    EmployeeDAOImpl
+    EmployeeRepository
+    User
+    UserDaoImpl
+    UserRepository
+  end
+  subgraph Security
+    ActuatorEndPointSecurityConfig
+    CustomFilter
+    JWTUtility
+    JwtFilter
+    MyCustomFilter
+    SecurityConfig
+    SecurityConfiguration
+    WebSecurityConfiguration
+  end
+  subgraph Infrastructure
+    AmazonSNSConfiguration
+    AmazonSQSConfiguration
+    ApplicationConfig
+    ApplicationProperties
+    BeanConfigProperties
+    DynamoDbConfiguration
+    GenericConfigProperties
+    GenericProperties
+    GlobalApplicationProperties
+    KafkaConfig
+    KafkaConsumer
+    MQConfig
+    MessageListener
+    NestedProperties
+    RedisConfig
+    WebSocketConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Data_Access
+  Infrastructure --> Security
+  Security --> Services
+  Services --> Data_Access

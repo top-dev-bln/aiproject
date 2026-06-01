@@ -1,0 +1,46 @@
+graph TB
+  subgraph Controllers
+    AdminController
+    FlowController
+    LeaveController
+    UserController
+  end
+  subgraph Services
+    DeptManager
+    FlowApiServiceImpl
+    FlowDefinitionNodeServiceImpl
+    FlowDefinitionServiceImpl
+    FlowInstanceNodeServiceImpl
+    FlowInstanceServiceImpl
+    FlowServiceImpl
+    FlowVariableServiceImpl
+    GeneralManager
+    HrManager
+    IFlowApiService
+    IFlowBaseService
+    IFlowDefinitionNodeService
+    IFlowDefinitionService
+    IFlowInstanceNodeService
+    IFlowInstanceService
+    IFlowService
+    IFlowVariableService
+    ILeaveApplyService
+    ILeaveEmployeeService
+    ILeaveService
+    ISysUserService
+    LeaveApplyServiceImpl
+    LeaveEmployeeServiceImpl
+    LeaveServiceImpl
+    SysUserServiceImpl
+  end
+  subgraph Infrastructure
+    CacheConfig
+    CacheConsts
+    InterceptorConfig
+    MybatisPlusConfig
+    ScriptEngineConfig
+    SwaggerConfig
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

@@ -1,0 +1,13 @@
+graph TB
+  subgraph Controllers
+    BankController
+  end
+  subgraph Services
+    BankInformationPublisherService
+    BankService
+    HttpFetchService
+    PrinterService
+    SaverService
+    ScraperFactoryService
+  end
+  Controllers --> Services

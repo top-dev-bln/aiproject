@@ -1,0 +1,16 @@
+graph TB
+  subgraph Controllers
+    IndexPageController
+    PollController
+  end
+  subgraph Services
+    VoteService
+  end
+  subgraph Infrastructure
+    PollProperties
+    RedisConfiguration
+    StreamConsumer
+    StreamProducer
+  end
+  Controllers --> Services
+  Infrastructure --> Services

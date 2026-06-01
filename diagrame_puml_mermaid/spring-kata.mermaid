@@ -1,0 +1,46 @@
+graph TB
+  subgraph Controllers
+    ColoredShapeController
+    NotificationAPIContractImpl
+    TodoAPIContractImpl
+  end
+  subgraph Services
+    ColoredShapeService
+    ColoredShapeServiceImpl
+    NotificationService
+    NotificationServiceImpl
+    TodoService
+    TodoServiceImpl
+  end
+  subgraph Data_Access
+    ColoredShape
+    ColoredShapeDaoImpl
+    ColoredShapeDaoImplEx02
+    Todo
+    TodoRepository
+  end
+  subgraph Security
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    ColoredShapeConfig
+    DBConfiguration
+    DIConfiguration
+    Ex01_DB_XMLConfigured
+    Ex01_DefaultXMLContextConfiguration
+    Ex02_CustomXMLContextConfiguration
+    Ex02_DB_JavaConfigured
+    Ex03_JavaContextConfiguration
+    Ex09_DIThroughJavaConfiguration
+    HibernateJPAConfig
+    HibernateSessionConfig
+    Lab03DIConfiguration
+    ProfileConfigurationProperties
+    TodoDefaultServiceSwaggerConfig
+    TodoDevelopmentServiceSwaggerConfig
+    TodoProductionServiceSwaggerConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Infrastructure --> Data_Access
+  Services --> Data_Access

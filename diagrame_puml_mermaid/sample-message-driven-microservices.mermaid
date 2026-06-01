@@ -1,0 +1,24 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    OrderController
+    ProductController
+  end
+  subgraph Services
+    AccountService
+    OrderService
+    ProductService
+  end
+  subgraph Data_Access
+    AccountRepository
+    OrderRepository
+    ProductRepository
+  end
+  subgraph Infrastructure
+    AccountConfig
+    OrderConfig
+    ProductConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

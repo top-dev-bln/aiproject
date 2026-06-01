@@ -1,0 +1,11 @@
+graph TB
+  subgraph Services
+    UserServiceImpl
+  end
+  subgraph Infrastructure
+    ExcelImportCommonListener
+    FtpConfig
+    SeaweedFsConfig
+    ThrowingConsumer
+  end
+  Infrastructure --> Services

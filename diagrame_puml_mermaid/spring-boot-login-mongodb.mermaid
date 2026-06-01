@@ -1,0 +1,15 @@
+graph TB
+  subgraph Services
+    UserDetailsServiceImpl
+  end
+  subgraph Data_Access
+    RoleRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthController
+    AuthEntryPointJwt
+    AuthTokenFilter
+    WebSecurityConfig
+  end
+  Services --> Data_Access

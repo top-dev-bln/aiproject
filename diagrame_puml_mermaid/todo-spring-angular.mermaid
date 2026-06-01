@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    AccountResource
+    ThingResource
+  end
+  subgraph Services
+    UserDetailsService
+    UserService
+  end
+  subgraph Data_Access
+    ThingRepository
+    UserRepository
+  end
+  subgraph Security
+    Http401UnauthorizedEntryPoint
+    OAuth2ServerConfiguration
+    SecurityConfiguration
+    SpringSecurityAuditorAware
+  end
+  subgraph Infrastructure
+    DatabaseConfiguration
+    SwaggerConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

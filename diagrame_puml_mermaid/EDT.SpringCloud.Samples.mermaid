@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    AggregationController
+    ConfigClientController
+    FileUploadController
+    MovieController
+    UserController
+  end
+  subgraph Services
+    AggregationService
+  end
+  subgraph Data_Access
+    User
+    UserRepository
+  end
+  subgraph Security
+    PreRequestLogFilter
+  end
+  subgraph Infrastructure
+    FeignConfiguration
+    FeignLogConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

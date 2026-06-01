@@ -1,0 +1,15 @@
+graph TB
+  subgraph Controllers
+    CallHelloController
+    ConsumerController
+    HelloController
+    ServiceController
+  end
+  subgraph Security
+    TokenFilter
+  end
+  subgraph Infrastructure
+    Config
+    ProducerFallback
+  end
+  Security --> Controllers

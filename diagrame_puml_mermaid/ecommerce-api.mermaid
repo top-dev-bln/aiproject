@@ -1,0 +1,53 @@
+graph TB
+  subgraph Controllers
+    AssistantController
+    AssistantControllerImpl
+    PaymentController
+    ProductController
+    ProductControllerImpl
+    ProductShoppingController
+    ShoppingCartController
+    UserController
+    UserControllerImpl
+  end
+  subgraph Services
+    AssistantService
+    AssistantServiceImpl
+    PaymentService
+    ProductService
+    ProductShoppingCartService
+    ShoppingCartService
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    MySqlShoppingCartRepository
+    MySqlUserRepository
+    PostgresProductRepositoryImpl
+    ProductRepository
+    ProductShoppingCartRepository
+    QueryProductRepository
+    RedisProductRepositoryImpl
+    ShoppingCartRepository
+    SpringShoppingCartRepository
+    SpringUserRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationConfig
+    AuthenticationController
+    AuthenticationService
+    JwtAuthFilter
+    JwtService
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+    CacheProductRepository
+    OpenAPIConfig
+    ProductCacheEntity
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

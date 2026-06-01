@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    BigFileUploadController
+    FileUploadController
+    QuickUploadController
+  end
+  subgraph Services
+    FileService
+  end
+  subgraph Infrastructure
+    UploadConfig
+  end
+  Controllers --> Services
+  Services --> Infrastructure

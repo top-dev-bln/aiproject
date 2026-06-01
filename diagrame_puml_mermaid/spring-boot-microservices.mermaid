@@ -1,0 +1,30 @@
+graph TB
+  subgraph Controllers
+    HomeController
+    LocationController
+    SmsController
+    UserController
+  end
+  subgraph Services
+    UserDetailsServiceImpl
+  end
+  subgraph Data_Access
+    ISmsRepository
+    RoleRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthRestAPIs
+    JwtAuthEntryPoint
+    JwtAuthTokenFilter
+    JwtProvider
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    Configuration
+    IContactServiceProxy
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

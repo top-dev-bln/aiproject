@@ -1,0 +1,26 @@
+graph TB
+  subgraph Controllers
+    GuestbookUiController
+  end
+  subgraph Services
+    HelloServiceImpl
+    MyBusinessService
+    MyMessageService
+  end
+  subgraph Data_Access
+    GuestbookRepository
+    MyDataRepository
+  end
+  subgraph Security
+    AuthClient
+    JwtCallCredential
+    JwtClientInterceptor
+    JwtServerInterceptor
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

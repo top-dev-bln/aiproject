@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    LoadController
+  end
+  subgraph Data_Access
+    User
+    UserRepository
+  end
+  subgraph Infrastructure
+    SpringBatchConfig
+  end
+  Infrastructure --> Data_Access

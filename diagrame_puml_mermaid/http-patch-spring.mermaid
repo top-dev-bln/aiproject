@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    ContactController
+    ContactResourceInput
+    ContactResourceOutput
+    EmailResourceInput
+    EmailResourceOutput
+    PhoneResourceInput
+    PhoneResourceOutput
+    WorkResourceInput
+    WorkResourceOutput
+  end
+  subgraph Services
+    ContactService
+    DefaultContactService
+  end
+  subgraph Infrastructure
+    JacksonConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

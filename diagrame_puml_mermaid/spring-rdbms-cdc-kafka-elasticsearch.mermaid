@@ -1,0 +1,19 @@
+graph TB
+  subgraph Controllers
+    UserResource
+  end
+  subgraph Services
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    UserRepository
+  end
+  subgraph Infrastructure
+    ElasticsearchConfiguration
+    KafkaConfiguration
+    LocalizationConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

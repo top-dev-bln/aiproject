@@ -1,0 +1,16 @@
+graph TB
+  subgraph Services
+    HttpService
+    HttpServiceProcessor
+    Service
+    WebSocketService
+  end
+  subgraph Security
+    Authorization
+    AuthorizationScope
+  end
+  subgraph Infrastructure
+    HaProxyBackendServerHandler
+    SwaggerReader
+  end
+  Infrastructure --> Security

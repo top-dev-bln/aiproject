@@ -1,0 +1,33 @@
+graph TB
+  subgraph Security
+    CasAuthenticationFilterConfigurer
+    CasAuthenticationProviderSecurityBuilder
+    CasAuthorizationInterceptor
+    CasHttpSecurityConfigurer
+    CasSecurityAutoConfiguration
+    CasSecurityCondition
+    CasSecurityConfigurer
+    CasSecurityConfigurerAdapter
+    CasSecurityProperties
+    CasSecuritySpringBootSampleApplicationIT
+    CasSecuritySpringBootSampleApplicationWithCustomLogoutProfileIT
+    CasSingleSignOutFilterConfigurer
+    DefaultProxyCallbackAndServiceAuthenticationDetails
+    DynamicProxyCallbackUrlCasAuthenticationProvider
+    GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService
+    ProxyCallbackAndServiceAuthenticationDetails
+    ProxyCallbackAndServiceAuthenticationDetailsSource
+    RequestAwareCasAuthenticationEntryPoint
+    SecurityContextHolderAssertionProvider
+    SpringBoot1CasHttpSecurityConfigurerAdapter
+  end
+  subgraph Infrastructure
+    AttributePrincipalProxyTicketProvider
+    CasAssertionUserDetailsServiceConfiguration
+    CasTicketValidatorConfiguration
+    LaxServiceProperties
+    ProxyCallbackUrlAwareTicketValidator
+    ProxyTicketProvider
+  end
+  Infrastructure --> Security
+  Security --> Infrastructure

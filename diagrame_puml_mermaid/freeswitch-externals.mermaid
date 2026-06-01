@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    DemoController
+  end
+  subgraph Services
+    InboundClientService
+    ServerConnectionListenerImpl
+  end
+  subgraph Infrastructure
+    ChannelEventListener
+    EnableFreeswitchEslAutoConfiguration
+    EventListener
+    FreeswitchEslAutoConfiguration
+    IEslEventListener
+    IEslEventListenerTemplate
+    InboundClientProperties
+    ServerConnectionListener
+    ServerConnectionListenerTemplate
+    ServerOptionListener
+    ServerProperties
+  end
+  Services --> Infrastructure

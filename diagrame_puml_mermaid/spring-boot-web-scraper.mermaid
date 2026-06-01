@@ -1,0 +1,30 @@
+graph TB
+  subgraph Controllers
+    CustomErrorController
+    HomeController
+    LinkController
+    LinksController
+    LoginController
+    RegistrationController
+  end
+  subgraph Services
+    LinkService
+    LinkServiceImp
+    TagService
+    TagServiceImp
+    UserService
+    UserServiceImp
+  end
+  subgraph Data_Access
+    LinkRepository
+    RoleRepository
+    TagRepository
+    UserRepository
+  end
+  subgraph Security
+    MyAccessDeniedHandler
+    SpringSecurityConfig
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

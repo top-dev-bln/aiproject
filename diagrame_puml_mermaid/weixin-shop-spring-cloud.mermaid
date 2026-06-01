@@ -1,0 +1,85 @@
+graph TB
+  subgraph Controllers
+    CartServiceImpl
+    CommentServiceImpl
+    Controller
+    CouponServiceImpl
+    IndexController
+    OrderServiceImpl
+    PictureResource
+    PictureResourceType
+    ProductServiceImpl
+    RabbitSmsServiceImpl
+    SystemServiceImpl
+    UserServiceImpl
+  end
+  subgraph Services
+    CartService
+    CommentService
+    CouponService
+    HttpClientService
+    OrderService
+    ProductService
+    RabbitSmsService
+    RedisService
+    RefactorCartService
+    RefactorSystemService
+    RefactorUserService
+    SmsService
+    SmsServiceImpl
+    SysIndexService
+    SystemService
+    UserService
+  end
+  subgraph Data_Access
+    AccountLevelDaoMapper
+    AccountUpgradeHistoryDaoMapper
+    AdDaoMapper
+    AdJoinPositionDaoMapper
+    AdPositionDaoMapper
+    ArayacakAddressDaoMapper
+    ArayacakDeliveryTimeDaoMapper
+    BehaviorDaoMapper
+    BonusPointRecordDaoMapper
+    CashRecordDaoMapper
+    CityDaoMapper
+    CommentDaoMapper
+    CountryDaoMapper
+    CouponCodeDaoMapper
+    CouponDaoMapper
+    CouponHistoryDaoMapper
+    CouponRecordDaoMapper
+    DeliveryAddressDaoMapper
+    DeliveryTimeDaoMapper
+    EmailTemplateDaoMapper
+    FlowStatusDaoMapper
+    MemberDaoMapper
+    NoticeDaoMapper
+    NoticeTypeDaoMapper
+    OrderInfoDaoMapper
+    OrderProductDetailDaoMapper
+    OrderReturnDaoMapper
+    OrderReturnDetailDaoMapper
+    PayDaoMapper
+    PictureDaoMapper
+    ProductDaoMapper
+    ProductFocusDaoMapper
+    ProductTypeDaoMapper
+    ProvinceDaoMapper
+    RefundTypeDaoMapper
+    ReturnReasonDaoMapper
+    ReturnStatusDaoMapper
+    SmsHistoryDaoMapper
+    SmsTemplateDaoMapper
+    SystemParamDaoMapper
+    TownDaoMapper
+    VillageDaoMapper
+  end
+  subgraph Infrastructure
+    QueueName
+    RabbitConfig
+    RedisConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

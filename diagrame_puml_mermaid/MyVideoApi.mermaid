@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    VideoController
+  end
+  subgraph Services
+    BaseVideoService
+    VideoCartoonServiceImpl
+    VideoDiliServiceImpl
+    VideoHJServiceImpl
+    VideoLZServiceImpl
+    VideoMjwServiceImpl
+    VideoService
+  end
+  subgraph Infrastructure
+    InterceptorConfig
+    RedisConfig
+    ScheduleConfig
+    WebAppConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services

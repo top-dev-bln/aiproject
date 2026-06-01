@@ -1,0 +1,40 @@
+graph TB
+  subgraph Controllers
+    ExpenseController
+    HomeController
+    JwkSetEndpoint
+    OrderController
+    UserController
+    ZipkinController
+  end
+  subgraph Services
+    ManagerTaskHandler
+    UserDetailsServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    UserRepository
+  end
+  subgraph Security
+    AuthorizationServerConfiguration
+    BeforeLoginFilter
+    CustomTokenGranter
+    OAuth2TokenFilter
+    TokenEnhancerConfiguration
+    WebSecurityConfig
+    WebSecurityConfiguration
+  end
+  subgraph Infrastructure
+    Config
+    FlowableConfig
+    MessageSourceConfig
+    MvcConfig
+    ResourceServerConfig
+    ResourceServerConfiguration
+    WebMvcConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

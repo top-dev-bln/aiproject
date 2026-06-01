@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    AppointmentsController
+    BaseController
+    UsersController
+  end
+  subgraph Services
+    AppointmentsService
+  end
+  subgraph Data_Access
+    AppointmentsRepository
+    JdbcTemplateAppointmentsRepository
+    JdbcTemplateUsersRepository
+    UsersRepository
+  end
+  subgraph Security
+    JwtTokenManager
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    ApplicationConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Data_Access
+  Infrastructure --> Services

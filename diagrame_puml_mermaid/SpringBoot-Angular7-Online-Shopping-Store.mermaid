@@ -1,0 +1,47 @@
+graph TB
+  subgraph Controllers
+    CartController
+    CategoryController
+    OrderController
+    ProductController
+    UserController
+  end
+  subgraph Services
+    CartService
+    CartServiceImpl
+    CategoryService
+    CategoryServiceImpl
+    OrderService
+    OrderServiceImpl
+    ProductInOrderService
+    ProductInOrderServiceImpl
+    ProductService
+    ProductServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Cart
+    CartRepository
+    OrderRepository
+    ProductCategory
+    ProductCategoryRepository
+    ProductInOrder
+    ProductInOrderRepository
+    ProductInfo
+    ProductInfoRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    JwtEntryPoint
+    JwtFilter
+    JwtProvider
+    SpringSecurityConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Security --> Data_Access
+  Security --> Services
+  Services --> Data_Access

@@ -1,0 +1,23 @@
+graph TB
+  subgraph Services
+    ChargePointEmulatorsService
+    ChargePointEmulatorsServiceImpl
+  end
+  subgraph Security
+    AuthorizationStatusEnum
+    IdToken
+    IdTokenEnum
+    IdTokenInfo
+    SendAuthorizeAction
+  end
+  subgraph Infrastructure
+    ConfigurableMultipleEventHandler
+    EmulationEventListenerImpl
+    EmulationEventsListener
+    ExecutorConfiguration
+    JacksonConfiguration
+    JettyConfiguration
+    WebsocketEventListener
+    WebsocketEventListenerImpl
+  end
+  Infrastructure --> Services

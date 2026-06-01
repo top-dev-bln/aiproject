@@ -1,0 +1,42 @@
+graph TB
+  subgraph Controllers
+    EventController
+    HabitController
+    NoticeController
+    TeamController
+    UserController
+  end
+  subgraph Services
+    EventService
+    EventServiceImpl
+    HabitService
+    HabitServiceImpl
+    NoticeService
+    NoticeServiceImpl
+    TeamService
+    TeamServiceImpl
+    TimeService
+    TimeServiceImpl
+    UserHabitCheckLogService
+    UserHabitCheckLogServiceImpl
+    UserHabitRecordService
+    UserHabitRecordServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    CustomAuthenticationProvider
+    GlobalCorsConfig
+    GrantedAuthorityImpl
+    JWTAuthenticationFilter
+    JWTLoginFilter
+    SecurityConfig
+    TokenAuthenticationService
+  end
+  subgraph Infrastructure
+    QuartzConfig
+    RabbitConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

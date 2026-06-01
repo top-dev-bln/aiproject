@@ -1,0 +1,43 @@
+graph TB
+  subgraph Controllers
+    ControllerAdvice
+    TaskController
+    UserController
+  end
+  subgraph Services
+    ImageService
+    ImageServiceImpl
+    MailService
+    MailServiceImpl
+    TaskService
+    TaskServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    TaskRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthController
+    AuthService
+    AuthServiceImpl
+    CustomMethodSecurityExpressionRoot
+    CustomSecurityExceptionHandler
+    CustomSecurityExpression
+    JwtEntity
+    JwtEntityFactory
+    JwtProperties
+    JwtTokenFilter
+    JwtTokenProvider
+    JwtUserDetailsService
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+    GraphqlConfig
+    MinioProperties
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

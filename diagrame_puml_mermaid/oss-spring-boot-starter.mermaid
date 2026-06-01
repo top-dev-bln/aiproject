@@ -1,0 +1,9 @@
+graph TB
+  subgraph Controllers
+    OssEndpoint
+  end
+  subgraph Infrastructure
+    OssAutoConfiguration
+    OssProperties
+  end
+  Infrastructure --> Controllers

@@ -1,0 +1,38 @@
+graph TB
+  subgraph Controllers
+    AuthenticationController
+    RunningState
+    UserResource
+  end
+  subgraph Services
+    EmailService
+    OtpGenerator
+    OtpService
+    UserService
+  end
+  subgraph Data_Access
+    Authority
+    Role
+    User
+    UserRepository
+  end
+  subgraph Security
+    AuthorityName
+    Http401UnauthorizedEntryPoint
+    JWTConfigurer
+    JWTFilter
+    JWTToken
+    SecurityConfiguration
+    TokenProvider
+  end
+  subgraph Infrastructure
+    EmailConfiguration
+    ProviderConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Security
+  Controllers --> Services
+  Data_Access --> Security
+  Security --> Data_Access
+  Security --> Services
+  Services --> Data_Access

@@ -1,0 +1,15 @@
+graph TB
+  subgraph Controllers
+    FlightRecorderEndpoint
+    FlightRecorderStaticController
+    ReactiveFlightRecorderEndpoint
+  end
+  subgraph Infrastructure
+    FlightRecorderAutoConfiguration
+    FlightRecorderDynamicConfiguration
+    FlightRecorderPropertiesAutoConfiguration
+    ManagementConfiguration
+    TriggerConfiguration
+    WebFluxFlightRecorderConfiguration
+    WebMvcFlightRecorderConfiguration
+  end

@@ -1,0 +1,45 @@
+graph TB
+  subgraph Controllers
+    BookController
+    HelloController
+    HttpsController
+    JdbcController
+    PersonController
+    ProductController
+    UserController
+  end
+  subgraph Services
+    BookService
+    BookServiceImpl
+    HelloService
+    MailService
+    PersonService
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    BookMapper
+    User
+    UserMapper
+    UserRepository
+  end
+  subgraph Security
+    MyFilter
+    SecuritySecureConfig
+  end
+  subgraph Infrastructure
+    DruidConfig
+    HelloProperties
+    HelloServiceAutoConfiguration
+    MyListener
+    PrimaryDataSourceConfig
+    SecondDataSourceConfig
+    ServiceConfig
+    SwaggerConfig
+    WebCoreConfig
+    WebMvcConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

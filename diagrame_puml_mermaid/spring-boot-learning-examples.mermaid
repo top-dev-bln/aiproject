@@ -1,0 +1,48 @@
+graph TB
+  subgraph Controllers
+    HelloController
+    MinioController
+    OrderController
+    QuartzJobController
+    UserController
+    WebSocketController
+  end
+  subgraph Services
+    MenuService
+    MenuServiceImpl
+    QuartzJobService
+    QuartzJobServiceImpl
+    RoleService
+    RoleServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    AuthorizeInterceptor
+    CommonSecurityConfiguration
+    JwtAuthenticationTokenFilter
+    RestAccessDeniedHandler
+    RestAuthenticationEntryPoint
+    SecurityExceptionAdvice
+    SqlFilterArgumentResolver
+    TokenController
+    WebSecurityConfiguration
+  end
+  subgraph Infrastructure
+    CodeMessageConfiguration
+    DruidConfiguration
+    ExcelReadListener
+    InterceptorConfiguration
+    JacksonConfiguration
+    Knife4jConfiguration
+    MinioConfiguration
+    MinioProperties
+    MyBatisPlusConfiguration
+    QuartzConfiguration
+    RedisConfiguration
+    WebConfiguration
+    WebSocketConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

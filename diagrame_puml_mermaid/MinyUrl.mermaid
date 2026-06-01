@@ -1,0 +1,25 @@
+graph TB
+  subgraph Controllers
+    ShortUrlController
+  end
+  subgraph Services
+    AllocatedRangePartitionStatusService
+    AllocatedRangePartitionStatusServiceImpl
+    ShortUrlService
+    ShortUrlServiceImpl
+    WorkerStatusService
+    WorkerStatusServiceImpl
+  end
+  subgraph Data_Access
+    AllocatedRangePartitionStatusRepository
+    MonthlyVisitsReport
+    ShortUrlRepository
+    WorkerStatusRepository
+  end
+  subgraph Infrastructure
+    AspectsConfig
+    CacheConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

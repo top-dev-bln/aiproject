@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    SchoolController
+    StudentController
+  end
+  subgraph Services
+    SchoolService
+    StudentService
+  end
+  subgraph Data_Access
+    School
+    SchoolRepository
+    Student
+    StudentRepository
+  end
+  Controllers --> Services
+  Services --> Data_Access

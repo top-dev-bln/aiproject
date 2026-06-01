@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    SuperHeroController
+  end
+  subgraph Data_Access
+    SuperHeroRepository
+    SuperHeroRepositoryImpl
+  end
+  subgraph Security
+    SuperHeroFilter
+  end
+  Controllers --> Data_Access

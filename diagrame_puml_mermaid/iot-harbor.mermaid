@@ -1,0 +1,25 @@
+graph TB
+  subgraph Services
+    MemoryChannelManager
+    MemoryTopicManager
+    RsocketChannelManager
+    RsocketTopicManager
+    TopicManager
+  end
+  subgraph Security
+    AuthencationSession
+    ByteBufToWebSocketFrameEncoder
+    MqttAuthencation
+  end
+  subgraph Infrastructure
+    IotConfig
+    IotConfiguration
+    OnCloseListener
+    Producer_1
+    Producer_2
+    Producer_3
+    RsocketClientConfig
+    RsocketConfiguration
+    RsocketServerConfig
+  end
+  Infrastructure --> Services

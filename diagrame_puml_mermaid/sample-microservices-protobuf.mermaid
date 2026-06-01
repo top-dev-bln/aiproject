@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    CustomerController
+  end
+  subgraph Services
+    AccountsService
+    CustomersService
+    DiscoveryService
+    StaticServiceInstance
+    StaticServiceInstanceListSupplier
+  end
+  subgraph Data_Access
+    AccountRepository
+    CustomerRepository
+  end
+  subgraph Infrastructure
+    LoadBalancerConfigurationProperties
+    ServiceConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

@@ -1,0 +1,12 @@
+graph TB
+  subgraph Controllers
+    AnswerController
+    QuestionController
+  end
+  subgraph Data_Access
+    Answer
+    AnswerRepository
+    Question
+    QuestionRepository
+  end
+  Controllers --> Data_Access

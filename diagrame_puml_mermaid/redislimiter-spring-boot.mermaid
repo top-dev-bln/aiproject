@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    DemoController
+  end
+  subgraph Infrastructure
+    DefaultRateCheckFailureListener
+    DefaultRateExceedingListener
+    LimiterConfig
+    LimiterConfigResource
+    MyCheckFailureListener
+    RateCheckFailureListener
+    RateExceedingListener
+    RateLimiterWebMvcConfigurer
+    RedisLimiterConfigProcessor
+    RedisLimiterConfiguration
+    RedisLimiterProperties
+  end

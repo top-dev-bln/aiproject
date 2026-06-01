@@ -1,0 +1,57 @@
+graph TB
+  subgraph Controllers
+    ClientController
+    HelloWorldController
+    MybatisAnnotationController
+    MybatisPlusController
+    MybatisXmlController
+    ProblemController
+    ServerController
+  end
+  subgraph Services
+    KafkaConsumerListener
+    RedisService
+  end
+  subgraph Security
+    LocFeignEncoderConfig
+    LocSpringMvcCorsProperties
+  end
+  subgraph Infrastructure
+    CustomRedisCacheWriter
+    JdbcPoolProperties
+    JdbcProperties
+    LocAdviceErrorAutoConfiguration
+    LocBaseAutoConfiguration
+    LocCacheProperties
+    LocCustomCacheProperties
+    LocDataSourceAutoConfiguration
+    LocDsProperties
+    LocFeignRetryAutoConfiguration
+    LocFeignRetryProperties
+    LocJpaConfiguration
+    LocKafkaAutoConfiguration
+    LocKafkaConsumerErrorHandler
+    LocKafkaProducer
+    LocLoggingProducerListener
+    LocMetricsAutoConfigure
+    LocMybatisProperties
+    LocSpringMvcAutoConfiguration
+    MybatisProperties
+    OkHttp3SleuthConfiguration
+    OkHttpAutoConfiguration
+    OkHttpClientProperties
+    PageHelperAutoConfiguration
+    PageHelperProperties
+    RedisCacheAutoConfiguration
+    TomcatGracefulShutdownAutoConfiguration
+    TomcatGracefulShutdownProperties
+    WechatMiniAppConfiguration
+    WechatMiniAppProperties
+    WechatMpConfiguration
+    WechatMpProperties
+    WxMiniAppInRedisTemplateConfig
+    WxMpInRedisTemplateConfigStorage
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

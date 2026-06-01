@@ -1,0 +1,11 @@
+graph TB
+  subgraph Services
+    IstioService
+    IstioServiceIT
+  end
+  subgraph Infrastructure
+    ApplicationStartupListener
+    IstioProperties
+    SpringBootIstioAutoConfiguration
+  end
+  Infrastructure --> Services

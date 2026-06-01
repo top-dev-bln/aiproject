@@ -1,0 +1,17 @@
+graph TB
+  subgraph Controllers
+    Model1Controller
+    UserController
+  end
+  subgraph Security
+    AuthenticationController
+    CorsConfig
+    InvalidAuthenticationEntryPoint
+    JwtTokenOncePerRequestFilter
+    JwtTokenProvider
+    PasswordTools
+    SecurityConfig
+    SecurityUserDetails
+    SecurityUserDetailsService
+  end
+  Security --> Controllers

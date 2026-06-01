@@ -1,0 +1,11 @@
+graph TB
+  subgraph Controllers
+    NonSecureController
+    SecureController
+  end
+  subgraph Security
+    ApiKeyAuthFilter
+    ApiKeyAuthManager
+    AuthConfiguration
+  end
+  Security --> Controllers

@@ -1,0 +1,40 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    ControllerLogAspect
+    RoleController
+    UploadController
+  end
+  subgraph Services
+    AbstractService
+    AccountService
+    AccountServiceImpl
+    RoleService
+    RoleServiceImpl
+    Service
+    UserDetailsServiceImpl
+  end
+  subgraph Security
+    AuthenticationFilter
+    CorsFilter
+    JwtConfigurationProperties
+    MyAuthenticationEntryPoint
+    PasswordEncryptor
+    WebSecurityConfig
+    WithCustomSecurityContextFactory
+  end
+  subgraph Infrastructure
+    CacheExpire
+    JasyptConfig
+    MyRedisCacheManager
+    RedisCacheConfig
+    RedisConfig
+    RsaConfigurationProperties
+    Swagger3Config
+    UploadConfigurationProperties
+    ValidatorConfig
+    WebMvcConfig
+  end
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Security --> Services

@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    AuthController
+  end
+  subgraph Services
+    UserDetailsServiceImpl
+  end
+  subgraph Data_Access
+    Role
+    RoleRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    AuthEntryPointJwt
+    AuthTokenFilter
+    WebSecurityConfig
+  end
+  Controllers --> Data_Access
+  Security --> Services
+  Services --> Data_Access

@@ -1,0 +1,9 @@
+graph TB
+  subgraph Controllers
+    CalculationRestController
+    FrontendRestController
+  end
+  subgraph Security
+    SleuthResponseFilter
+  end
+  Security --> Controllers

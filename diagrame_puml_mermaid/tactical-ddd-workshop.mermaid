@@ -1,0 +1,9 @@
+graph TB
+  subgraph Data_Access
+    CustomerRepository
+    InventoryItemRepository
+    OrderRepository
+  end
+  subgraph Infrastructure
+    InventoryListener
+  end

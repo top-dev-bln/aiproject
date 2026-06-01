@@ -1,0 +1,13 @@
+graph TB
+  subgraph Controllers
+    CaptchaEndpoint
+  end
+  subgraph Security
+    Encoder
+    GifEncoder
+  end
+  subgraph Infrastructure
+    CaptchaAutoConfiguration
+    CaptchaProperties
+  end
+  Infrastructure --> Controllers

@@ -1,0 +1,39 @@
+graph TB
+  subgraph Controllers
+    LiveRoomCrl
+    UserInfoCrl
+  end
+  subgraph Services
+    AfterServiceStarted
+    AreaInfoIndexService
+    AreaInfoService
+    AreaService
+    AreaTypeIndexService
+    AsyncService
+    AsyncServiceImpl
+    Douyin
+    LiveRoomService
+    RedisService
+    UserService
+  end
+  subgraph Data_Access
+    AreaInfoIndexMapper
+    AreaInfoMapper
+    AreaTypeIndexMapper
+    RoomMapper
+    UserMapper
+  end
+  subgraph Security
+    AccessLimit
+    CORSConfig
+  end
+  subgraph Infrastructure
+    DouYuOpenApi
+    ExecutorConfig
+    RedisConfig
+    TomcatConfig
+    WebConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Services --> Data_Access

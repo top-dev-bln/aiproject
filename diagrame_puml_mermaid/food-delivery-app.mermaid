@@ -1,0 +1,31 @@
+graph TB
+  subgraph Controllers
+    OrderController
+    PaymentController
+    RestaurantInfoController
+  end
+  subgraph Services
+    OrderService
+    OrderServiceImpl
+    PaymentProcessingService
+    PaymentProcessingServiceImpl
+    PaymentService
+    PaymentServiceImpl
+    RestaurantInfoService
+    RestaurantInfoServiceImpl
+  end
+  subgraph Data_Access
+    OrderRepository
+    PaymentRepository
+    RestaurantRepository
+    RestaurantRepositoryCustom
+    RestaurantRepositoryImpl
+  end
+  subgraph Infrastructure
+    PaymentConsumerConfig
+    PaymentProducerConfig
+    WebConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

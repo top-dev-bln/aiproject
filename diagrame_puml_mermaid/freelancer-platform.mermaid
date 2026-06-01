@@ -1,0 +1,39 @@
+graph TB
+  subgraph Controllers
+    AbstractController
+    BidController
+    FeedbackController
+    HomeController
+    JobController
+    LoginController
+    MessageController
+    ProfileController
+  end
+  subgraph Services
+    BidService
+    CategoryService
+    FeedbackService
+    JobService
+    MessageService
+    UserDetailServiceImpl
+    UserService
+  end
+  subgraph Data_Access
+    BidRepository
+    CategoryRepository
+    FeedbackRepository
+    JobRepository
+    MessageRepository
+    UserRepository
+  end
+  subgraph Security
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    Cache
+    RedisCache
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

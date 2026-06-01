@@ -1,0 +1,53 @@
+graph TB
+  subgraph Controllers
+    CompanyController
+    FacadeController
+    MessageController
+    OutsideController
+    RecruitController
+    ResumeController
+    UserController
+  end
+  subgraph Services
+    BaseService
+    ClientService
+    Consumer
+    MailService
+    MessageService
+    QiNiuService
+    RecruitService
+    ResumeService
+    SmsService
+    UserInfoService
+    UserService
+    WebSocketService
+  end
+  subgraph Data_Access
+    BaseRepo
+    CompanyEntity
+    CompanyRepo
+    MessageEntity
+    MessageRepo
+    RecruitEntity
+    RecruitRepo
+    ResumeRepo
+    SkillRepo
+    UserEsRepo
+    UserInfoEntity
+    UserInfoRepo
+  end
+  subgraph Security
+    AuthFilter
+    CorsConfig
+  end
+  subgraph Infrastructure
+    CacheConfig
+    FeignConfig
+    MongoEventListener
+    WebConfig
+    WebSocketConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

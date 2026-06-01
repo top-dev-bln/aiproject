@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    SampleApi
+  end
+  subgraph Security
+    FormSignInFilter
+    JdbcPermissionDefinitionsLoader
+    MyFilter
+    ShiroFilterCustomizer
+  end
+  subgraph Infrastructure
+    ShiroAutoConfiguration
+    ShiroConfiguration
+    ShiroCookieProperties
+    ShiroJdbcRealmProperties
+    ShiroProperties
+    ShiroSessionProperties
+    ShiroSignInProperties
+    ShiroWebMvcConfigurerAdapter
+  end
+  Security --> Controllers

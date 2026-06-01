@@ -1,0 +1,23 @@
+graph TB
+  subgraph Controllers
+    ArticleEndpoint
+    GlobalEndpointInterceptor
+    HomeController
+    LocalEndpointInterceptor
+    PocketController
+    ProductController
+    TravelAgentEndpoint
+  end
+  subgraph Data_Access
+    PocketRepository
+    ProductRepository
+  end
+  subgraph Security
+    SecurityConfiguration
+  end
+  subgraph Infrastructure
+    SoapClientConfig
+    SoapServerConfiguration
+    SoapWebServiceConfiguration
+  end
+  Security --> Controllers

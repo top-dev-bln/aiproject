@@ -1,0 +1,15 @@
+graph TB
+  subgraph Controllers
+    HomeController
+    JogadorController
+  end
+  subgraph Services
+    ExceptionManager
+    GrupoService
+    JogadorService
+  end
+  subgraph Data_Access
+    JogadorRepository
+  end
+  Controllers --> Services
+  Services --> Data_Access

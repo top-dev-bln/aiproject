@@ -1,0 +1,49 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    FundTransferController
+    ResourceConflict
+    ResourceNotFound
+    SequenceController
+    TransactionController
+    UserController
+  end
+  subgraph Services
+    AccountService
+    AccountServiceImpl
+    FundTransferService
+    FundTransferServiceImpl
+    KeyCloakManager
+    KeycloakService
+    KeycloakServiceImpl
+    SequenceService
+    SequenceServiceImpl
+    TransactionService
+    TransactionServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Account
+    AccountRepository
+    FundTransfer
+    FundTransferRepository
+    Sequence
+    SequenceRepository
+    Transaction
+    TransactionRepository
+    User
+    UserProfile
+    UserRepository
+  end
+  subgraph Security
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    Configurations
+    KeyCloakProperties
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Controllers
+  Services --> Data_Access

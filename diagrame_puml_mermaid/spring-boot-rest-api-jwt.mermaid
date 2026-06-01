@@ -1,0 +1,35 @@
+graph TB
+  subgraph Controllers
+    BookController
+    GlobalControllerExceptionHandler
+    TopicController
+    UserController
+  end
+  subgraph Services
+    BookService
+    RoleService
+    TopicService
+    UserService
+  end
+  subgraph Data_Access
+    BookRepository
+    RoleRepository
+    TopicRepository
+    UserRepository
+  end
+  subgraph Security
+    AuthenticationController
+    Author
+    AuthorController
+    AuthorRepository
+    AuthorService
+    JWTTokenFilter
+    JwtUser
+    JwtUserDetailsService
+    JwtUserFactory
+    TopicsAuthorsBooksLoader
+    WebSecurityConfiguration
+  end
+  Controllers --> Services
+  Security --> Controllers
+  Services --> Data_Access

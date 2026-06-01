@@ -1,0 +1,37 @@
+graph TB
+  subgraph Services
+    AbstractChannelService
+    ChannelService
+    ClientMqttHandlerService
+    ClientSessionService
+    DefaultAutoService
+    MqttChannelService
+    MqttHandlerService
+    MqttHandlerServiceService
+    MyListener
+    ScheduledPool
+    SecureSokcetTrustManagerFactory
+    ServerMqttHandlerService
+    SubListener
+    WillService
+  end
+  subgraph Security
+    BaseAuthService
+    ByteBufToWebSocketFrameEncoder
+  end
+  subgraph Infrastructure
+    AbsMqttProducer
+    Cache
+    CacheMap
+    ExecutorQueue
+    MqttListener
+    MqttMessageListener
+    MqttProducer
+    MqttProducerConfigure
+    Producer
+    ServerAutoConfigure
+    ZkStateListener
+  end
+  Infrastructure --> Services
+  Services --> Infrastructure
+  Services --> Security

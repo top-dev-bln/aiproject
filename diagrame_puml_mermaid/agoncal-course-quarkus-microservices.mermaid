@@ -1,0 +1,16 @@
+graph TB
+  subgraph Controllers
+    BookResource
+    NativeBookResourceIT
+    NativeNumberResourceIT
+    NumberResource
+  end
+  subgraph Services
+    BookMicroservice
+    NumberMicroservice
+  end
+  subgraph Infrastructure
+    NumberProxy
+  end
+  Controllers --> Services
+  Infrastructure --> Services

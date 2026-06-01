@@ -1,0 +1,49 @@
+graph TB
+  subgraph Controllers
+    AccountController
+    CostController
+    DeliveryManInfoController
+    FundsAppController
+    FundsStatisticsController
+    GlobalController
+    LoginController
+    OrderController
+    PersonalInfoController
+    RoleController
+    SendInfoController
+    UploadResultController
+    UserController
+  end
+  subgraph Services
+    AccountService
+    BaseService
+    CityService
+    CostInfoService
+    DeliveryManInfoService
+    FundsStatisticsInfoService
+    OrderService
+    PersonalInfoService
+    RoleService
+    SendInfoService
+    UploadResultService
+    UserRoleService
+    UserService
+  end
+  subgraph Security
+    MailAuthentication
+    Permission
+    PermissionController
+    PermissionMapper
+    PermissionService
+    PermissionType
+    RolePermission
+    RolePermissionMapper
+    RolePermissionService
+  end
+  subgraph Infrastructure
+    GeneralConfig
+    WebMvcConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers

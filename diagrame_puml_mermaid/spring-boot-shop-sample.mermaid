@@ -1,0 +1,39 @@
+graph TB
+  subgraph Controllers
+    CartController
+    HomeController
+    LoginController
+    ProductController
+    RegisterController
+    UserController
+  end
+  subgraph Services
+    CategoryService
+    CategoryServiceImpl
+    ProductService
+    ProductServiceImpl
+    ShoppingCartService
+    ShoppingCartServiceImpl
+    UserDetailsServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Data_Access
+    Category
+    CategoryRepository
+    Product
+    ProductRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    WebMvcConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Security --> Data_Access
+  Security --> Services
+  Services --> Data_Access

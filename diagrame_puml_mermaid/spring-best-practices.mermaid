@@ -1,0 +1,42 @@
+graph TB
+  subgraph Controllers
+    CacheExampleController
+    DemoController
+    HttpController
+    ServerHealthController
+    SqlExampleController
+    UserController
+  end
+  subgraph Services
+    AopExampleService
+    AuthService
+    CacheExampleService
+    SqlExampleService
+    UserHelperImpl
+  end
+  subgraph Security
+    AbstractAuthHandler
+    AuthObjMapper
+    AuthUser
+    AuthWebConfig
+    AuthenticationInterceptor
+    BaseAuthHeaderHttpRequestInterceptor
+    RestTemplateAuthConfig
+    RestTemplateAuthInterceptor
+    SimpleAuthUser
+  end
+  subgraph Infrastructure
+    AppInitConfig
+    AsyncThreadPoolConfig
+    CacheHandlerInterceptor
+    CachingConfig
+    InitConfig
+    MybatisPlusConfig
+    RequestScopedCacheManager
+    ServerInitConfig
+    WebConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Infrastructure --> Security
+  Services --> Controllers

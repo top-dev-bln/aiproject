@@ -1,0 +1,27 @@
+graph TB
+  subgraph Controllers
+    PublicUsersController
+    SecuredUsersController
+  end
+  subgraph Services
+    DateService
+    InMemoryUsers
+    JWTTokenService
+    JodaDateService
+    TokenAuthenticationService
+    UUIDAuthenticationService
+    UserCrudService
+  end
+  subgraph Security
+    SecurityConfig
+    TokenAuthenticationFilter
+    TokenAuthenticationProvider
+    TokenService
+    UserAuthenticationService
+  end
+  subgraph Infrastructure
+    DateServiceConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Services --> Security

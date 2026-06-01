@@ -1,0 +1,18 @@
+graph TB
+  subgraph Controllers
+    HelloworldUiController
+  end
+  subgraph Services
+    GuestbookService
+    HelloworldService
+    MessageService
+  end
+  subgraph Data_Access
+    Message
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

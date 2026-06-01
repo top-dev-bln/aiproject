@@ -1,0 +1,29 @@
+graph TB
+  subgraph Controllers
+    AdvertisementController
+    UserController
+  end
+  subgraph Services
+    AdvertisementService
+    AdvertisementServiceImpl
+    UserService
+  end
+  subgraph Data_Access
+    AdvertisementRepository
+    Reports
+    ReportsRepository
+    ReportsService
+    UserRepository
+  end
+  subgraph Security
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    ModelMapperConfig
+    RabbitConfig
+    SpringFoxConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

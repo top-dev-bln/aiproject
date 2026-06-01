@@ -1,0 +1,36 @@
+graph TB
+  subgraph Controllers
+    ApiController
+    FileController
+    IndexController
+    RestRoncooController
+    WebController
+  end
+  subgraph Services
+    UserService
+  end
+  subgraph Data_Access
+    RoncooUserDaoImpl
+    RoncooUserLog
+    RoncooUserLogCacheImpl
+  end
+  subgraph Security
+    CustomCorsConfiguration
+    CustomCorsConfiguration2
+    CustomFilter
+    DruidWebStatFilter
+  end
+  subgraph Infrastructure
+    AmqpConfiguration
+    CustomListener
+    DruidConfiguration
+    JmsConfiguration
+    RedisCacheConfiguration
+    RoncooUserLogCache
+    Swagger2Configuration
+  end
+  Controllers --> Data_Access
+  Controllers --> Infrastructure
+  Data_Access --> Infrastructure
+  Infrastructure --> Data_Access
+  Services --> Data_Access

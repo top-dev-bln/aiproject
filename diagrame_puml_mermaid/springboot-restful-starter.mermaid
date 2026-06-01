@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    UserController
+  end
+  subgraph Services
+    TokenServiceImpl
+    UserService
+    UserServiceImpl
+  end
+  subgraph Security
+    Auth
+    AuthMethodArgumentResolver
+    TokenService
+    TokenSubject
+    WebMvcConfigFromAuth
+  end
+  subgraph Infrastructure
+    WebMvcConfig
+  end
+  Controllers --> Security
+  Controllers --> Services
+  Services --> Security

@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    AuthController
+    HomeController
+    ProductController
+    ProductEventController
+    UserController
+  end
+  subgraph Services
+    AsyncExampleService
+    AuthService
+    ProductService
+    UserDetailsServiceImpl
+    UserService
+  end
+  subgraph Data_Access
+    Product
+    ProductRepo
+    Role
+    RoleRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    AuthEntryPointJwt
+    AuthTokenFilter
+    CORSFilter
+    CorrelationLoggingFilter
+    CustomAccessDeniedHandler
+    CustomAuthenticationEntryPoint
+    WebSecurityConfig
+  end
+  subgraph Infrastructure
+    CommonOpenFeignConfig
+    KafkaConfig
+    KafkaProducerInterceptor
+    KafkaUserConsumer
+    OpenApiConfig
+    ProductEventConsumer
+    ProductKafkaProducer
+    ThreadAsyncConfig
+    UserKafkaProducer
+    WebConfiguration
+  end
+  Controllers --> Data_Access
+  Controllers --> Infrastructure
+  Controllers --> Services
+  Infrastructure --> Data_Access
+  Infrastructure --> Services
+  Security --> Services
+  Services --> Data_Access
+  Services --> Infrastructure

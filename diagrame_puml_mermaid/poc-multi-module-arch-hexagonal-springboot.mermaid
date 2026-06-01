@@ -1,0 +1,21 @@
+graph TB
+  subgraph Controllers
+    PersonController
+  end
+  subgraph Services
+    KafkaPersonConsumer
+    KafkaPersonProducer
+    PersonServicePort
+    PersonServicePortImpl
+  end
+  subgraph Data_Access
+    PersonEntity
+    PersonRepository
+  end
+  subgraph Infrastructure
+    AppBeansConfig
+    JaegerConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Data_Access
+  Infrastructure --> Services

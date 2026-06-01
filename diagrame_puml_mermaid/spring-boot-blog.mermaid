@@ -1,0 +1,35 @@
+graph TB
+  subgraph Controllers
+    BlogController
+    BlogErrorController
+    CommentController
+    HomeController
+    LoginController
+    PostController
+    RegistrationController
+  end
+  subgraph Services
+    CommentService
+    CommentServiceImp
+    PostService
+    PostServiceImp
+    UserService
+    UserServiceImp
+  end
+  subgraph Data_Access
+    Comment
+    CommentRepository
+    Post
+    PostRepository
+    Role
+    RoleRepository
+    User
+    UserRepository
+  end
+  subgraph Security
+    MyAccessDeniedHandler
+    SpringSecurityConfig
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

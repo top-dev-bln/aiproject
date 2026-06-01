@@ -1,0 +1,16 @@
+graph TB
+  subgraph Controllers
+    BehaviorController
+  end
+  subgraph Security
+    EntityAccess
+    FilterTasks
+  end
+  subgraph Infrastructure
+    BehaviorConfiguration
+    EventBusConfiguration
+    EventListeners
+    SerializationConfiguration
+    TodoListConfiguration
+  end
+  Security --> Controllers

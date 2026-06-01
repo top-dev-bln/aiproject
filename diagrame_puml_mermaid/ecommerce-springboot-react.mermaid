@@ -1,0 +1,70 @@
+graph TB
+  subgraph Controllers
+    CartController
+    CategoryController
+    CustomerController
+    ImageController
+    OrderController
+    ProductController
+    ReviewController
+    WishlistController
+  end
+  subgraph Services
+    CartService
+    CartServiceImpl
+    CategoryService
+    CategoryServiceImpl
+    CustomerService
+    CustomerServiceImpl
+    ImageService
+    ImageServiceImpl
+    OrderItemService
+    OrderItemServiceImpl
+    OrderService
+    OrderServiceImpl
+    ProductService
+    ProductServiceImpl
+    ReviewService
+    ReviewServiceImpl
+    ShippingAddressService
+    ShippingAddressServiceImpl
+    UserDetailsServiceImpl
+    WishlistService
+    WishlistServiceImpl
+  end
+  subgraph Data_Access
+    BannerRepository
+    CartItemRepository
+    CartRepository
+    CategoryRepository
+    CustomerRepository
+    OrderItemRepository
+    OrderRepository
+    ProductImageRepository
+    ProductRepository
+    ReviewRepository
+    ShippingAddressServiceRepository
+    WishlistRepository
+  end
+  subgraph Security
+    AuthClient
+    AuthenticationController
+    AuthenticationService
+    AuthenticationServiceImpl
+    JwtRequestFilter
+    JwtService
+    JwtServiceImpl
+    PasswordConstraint
+    PasswordValidator
+    SecurityConfig
+  end
+  subgraph Infrastructure
+    ApplicationConfig
+    ApplicationConfiguration
+    FeignClientConfiguration
+    OpenAPIConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access

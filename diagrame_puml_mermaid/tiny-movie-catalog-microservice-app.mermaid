@@ -1,0 +1,22 @@
+graph TB
+  subgraph Controllers
+    DirectorResource
+    MovieResource
+  end
+  subgraph Services
+    DirectorService
+    DirectorServiceImpl
+    MovieService
+    MovieServiceImpl
+  end
+  subgraph Data_Access
+    DirectorRepository
+    MovieRepository
+  end
+  subgraph Infrastructure
+    CommandLineRunnerConfig
+    RestTemplateConfig
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Services --> Data_Access

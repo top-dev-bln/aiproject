@@ -1,0 +1,14 @@
+graph TB
+  subgraph Controllers
+    HelloController
+  end
+  subgraph Services
+    StudentService
+  end
+  subgraph Data_Access
+    Student
+    TenantInfo
+  end
+  Controllers --> Data_Access
+  Controllers --> Services
+  Services --> Data_Access

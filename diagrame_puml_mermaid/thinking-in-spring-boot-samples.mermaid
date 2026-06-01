@@ -1,0 +1,52 @@
+graph TB
+  subgraph Controllers
+    HelloWorldController
+    HelloWorldRestController
+  end
+  subgraph Services
+    CalculatingService
+    IterationCalculatingService
+    LambdaCalculatingService
+    TransactionalService
+    TransactionalServiceBean
+  end
+  subgraph Data_Access
+    ConsoleFailureAnalysisReporter
+    FirstLevelRepository
+    MyFirstLevelRepository
+    MySecondLevelRepository
+    NameRepository
+    SecondLevelRepository
+    StringRepository
+  end
+  subgraph Security
+    AnnotationTypeFilter
+    JspFilter
+  end
+  subgraph Infrastructure
+    AnnotationIndexedConfiguration
+    ApplicationPreparedEventListener
+    ConditionalMessageConfiguration
+    ConditionalOnProperties
+    ContextRefreshedEventListener
+    CustomizedManagementContextConfiguration
+    DefaultAutoConfigurationImportListener
+    ExtendPropertySourcesApplicationListener
+    ExtendPropertySourcesRunListener
+    FormatterAutoConfiguration
+    HelloWorldConfiguration
+    MultipleSpringBootEventsListener
+    PropertySourcesConfiguration
+    RepeatablePropertySourceConfiguration
+    ServletRegistrationAutoConfiguration
+    SpringApplicationConfiguration
+    SpringContextConfiguration
+    SpringWebMvcConfiguration
+    UserContextConfiguration
+    WebAutoConfiguration
+    WebConfiguration
+  end
+  Controllers --> Services
+  Infrastructure --> Services
+  Security --> Controllers
+  Services --> Data_Access
