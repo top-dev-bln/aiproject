@@ -1,0 +1,10 @@
+metric,static_avg
+Node Precision,0.9320
+Node Recall,0.7134
+Node F1,0.7880
+Layer Accuracy,0.8902
+Edge Precision,0.4575
+Edge Recall,0.3865
+Edge F1,0.3961
+Jaccard Nodes,0.6773
+Jaccard Edges,0.2920
