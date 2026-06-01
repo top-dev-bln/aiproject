@@ -1,0 +1,688 @@
+@startuml
+
+package qg.fangrui.boot {
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class EmailTest {
+    -mailSender : JavaMailSender
+    -Sender : String
+    -freeMarkerConfig : FreeMarkerConfig
+    +sendSimpleMail() : void
+    +sendHtmlMail() : void
+    +sendTemplateMail() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTest {
+    -mvc : MockMvc
+    +setUp() : void
+    +getHello() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package qg.fangrui.boot.aop {
+  class TokenContract {
+    -logger : Logger
+    -joinPoint : JoinPoint
+    +testToken() : void
+  }
+  interface Token {
+  }
+  class RequestLimitContract {
+    -logger : Logger
+    -joinPoint : JoinPoint
+    -key : String
+    +requestLimit() : void
+    +run() : void
+  }
+  interface RequestLimit {
+  }
+  class TokenContract {
+    -logger : Logger
+    -joinPoint : JoinPoint
+    +testToken() : void
+  }
+  interface Token {
+  }
+  class RequestLimitContract {
+    -logger : Logger
+    -joinPoint : JoinPoint
+    -key : String
+    +requestLimit() : void
+    +run() : void
+  }
+  interface RequestLimit {
+  }
+  class TokenContract {
+    -logger : Logger
+    -joinPoint : JoinPoint
+    +testToken() : void
+  }
+  interface Token {
+  }
+  class RequestLimitContract {
+    -logger : Logger
+    -joinPoint : JoinPoint
+    -key : String
+    +requestLimit() : void
+    +run() : void
+  }
+  interface RequestLimit {
+  }
+  class URLInterceptor {
+    -logger : Logger
+    -key : String
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+    +urlHandle() : void
+    +run() : void
+  }
+}
+
+package qg.fangrui.boot.config {
+  class DruidStatFilter {
+  }
+  class DruidDBConfig {
+    -dbUrl : String
+    -username : String
+    -password : String
+    -driverClassName : String
+    -initialSize : int
+    -minIdle : int
+    -maxActive : int
+    -maxWait : int
+    -timeBetweenEvictionRunsMillis : int
+    -minEvictableIdleTimeMillis : int
+    +dataSource() : DataSource
+  }
+  class DruidStatViewServlet {
+    -serialVersionUID : long
+  }
+  class DruidStatFilter {
+  }
+  class DruidDBConfig {
+    -dbUrl : String
+    -username : String
+    -password : String
+    -driverClassName : String
+    -initialSize : int
+    -minIdle : int
+    -maxActive : int
+    -maxWait : int
+    -timeBetweenEvictionRunsMillis : int
+    -minEvictableIdleTimeMillis : int
+    +dataSource() : DataSource
+  }
+  class DruidStatViewServlet {
+    -serialVersionUID : long
+  }
+  class DruidStatFilter {
+  }
+  class DruidDBConfig {
+    -logger : Logger
+    -dbUrl : String
+    -username : String
+    -password : String
+    -driverClassName : String
+    -initialSize : int
+    -minIdle : int
+    -maxActive : int
+    -maxWait : int
+    -timeBetweenEvictionRunsMillis : int
+    +dataSource() : DataSource
+  }
+  class DruidStatViewServlet {
+    -serialVersionUID : long
+  }
+  class DruidStatFilter {
+  }
+  class DruidDBConfig {
+    -dbUrl : String
+    -username : String
+    -password : String
+    -driverClassName : String
+    -initialSize : int
+    -minIdle : int
+    -maxActive : int
+    -maxWait : int
+    -timeBetweenEvictionRunsMillis : int
+    -minEvictableIdleTimeMillis : int
+    +dataSource() : DataSource
+  }
+  class DruidStatViewServlet {
+    -serialVersionUID : long
+  }
+  class MyWebAppConfigurer {
+    +getMyInterceptor() : HandlerInterceptor
+    +addInterceptors() : void
+  }
+}
+
+package qg.fangrui.boot.dao {
+  interface BlackListDao {
+  }
+  interface UserDao {
+  }
+  interface UserDao {
+  }
+  interface UserDao {
+  }
+  interface BlackListDao {
+  }
+  interface UserDao {
+  }
+}
+
+package qg.fangrui.boot.enums {
+  enum Level {
+  }
+}
+
+package qg.fangrui.boot.exception {
+  class FormRepeatException {
+  }
+  class RequestLimitException {
+    -serialVersionUID : long
+  }
+  class FormRepeatException {
+  }
+  class RequestLimitException {
+    -serialVersionUID : long
+  }
+  class HttpServletException {
+  }
+  class FormRepeatException {
+  }
+  class CacheException {
+  }
+  class RequestLimitException {
+    -serialVersionUID : long
+  }
+  class JdbcException {
+  }
+  class HttpServletException {
+  }
+  class FormRepeatException {
+  }
+  class RequestLimitException {
+    -serialVersionUID : long
+  }
+  class HttpServletException {
+  }
+  class FormRepeatException {
+  }
+  class RequestLimitException {
+    -serialVersionUID : long
+  }
+  class HttpServletException {
+  }
+}
+
+package qg.fangrui.boot.model {
+  class User {
+    -id : long
+    -name : String
+    -age : Integer
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+  class User {
+    -id : long
+    -uuid : String
+    -name : String
+    -age : Integer
+    +getId() : long
+    +setId() : void
+    +getUuid() : String
+    +setUuid() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+  class User {
+    -id : long
+    -name : String
+    -age : Integer
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+  class ErrorInfo {
+    -OK : Integer
+    -ERROR : Integer
+    -code : Integer
+    -message : String
+    -url : String
+    -data : T
+    +getOK() : Integer
+    +getERROR() : Integer
+    +getCode() : Integer
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getUrl() : String
+    +setUrl() : void
+  }
+  class User {
+    -id : long
+    -name : String
+    -age : Integer
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+  class ErrorInfo {
+    -OK : Integer
+    -ERROR : Integer
+    -code : Integer
+    -message : String
+    -url : String
+    -data : T
+    +getOK() : Integer
+    +getERROR() : Integer
+    +getCode() : Integer
+    +setCode() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getUrl() : String
+    +setUrl() : void
+  }
+  class BlackList {
+    -id : int
+    -ip : String
+    -iptime : Date
+    +getId() : int
+    +setId() : void
+    +getIp() : String
+    +setIp() : void
+    +getIptime() : Date
+    +setIptime() : void
+  }
+  class User {
+    -id : long
+    -name : String
+    -age : Integer
+    +getId() : long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+}
+
+package qg.fangrui.boot.service {
+  class UserService <<Service>> {
+    -CACHE_KEY : String
+    -DEMO_CACHE_NAME : String
+    -userDao : UserDao
+    +delete() : void
+    +update() : User
+    +findByUuid() : User
+    +save() : int
+  }
+  class UserService <<Service>> {
+    -userMapper : UserDao
+    +add() : int
+  }
+  class UserService <<Service>> {
+    -userMapper : UserDao
+    +add() : int
+  }
+  class UserService <<Service>> {
+    -userMapper : UserDao
+    +add() : int
+  }
+}
+
+package qg.fangrui.boot.task {
+  class Task {
+    -random : Random
+    +doTaskOne() : void
+    +doTaskTwo() : void
+    +doTaaskThree() : void
+  }
+}
+
+package qg.fangrui.boot.util {
+  class ScheduledTasks {
+    -format : SimpleDateFormat
+    +firstScheduledTasks() : void
+  }
+  class ScheduledTasks {
+    -format : SimpleDateFormat
+    +firstScheduledTasks() : void
+  }
+  class IPAddressUtil {
+    +getClientIpAddress() : String
+  }
+  class Logger {
+    -FQCN : String
+    -className : String
+    -className : String
+    -msg : String
+    -msg : String
+    -msg : String
+    -msg : String
+    -msg : String
+    -level : Level
+    -msg : String
+    +getLogger() : Logger
+    +getLogger() : Logger
+    +error() : void
+    +warn() : void
+    +info() : void
+    +debug() : void
+    +trace() : void
+    +log() : void
+  }
+  class IPAddressUtil {
+    +getClientIpAddress() : String
+  }
+}
+
+package qg.fangrui.boot.web {
+  class URLController <<Controller>> {
+    +getToken() : String
+    +removeToken() : String
+  }
+  class HelloController <<Controller>> {
+    +hello() : String
+  }
+  class HelloController <<Controller>> {
+    +hello() : String
+    +index() : String
+  }
+  class LoggerController <<Controller>> {
+    -logger : Logger
+    +index() : String
+  }
+  class EhcacheController <<Controller>> {
+    -logger : Logger
+    -userService : UserService
+    +EhcacheTest() : String
+  }
+  class HelloController <<Controller>> {
+    +hello() : String
+  }
+  class TaskController <<Controller>> {
+    -TASK : Task
+    +task() : String
+  }
+  class URLController <<Controller>> {
+    +test() : String
+    +getToken() : String
+    +removeToken() : String
+  }
+  class LoggerController <<Controller>> {
+    -logger : Logger
+    +index() : String
+  }
+  class TestController <<Controller>> {
+    -userService : UserService
+    +add() : String
+  }
+  class UserController <<Controller>> {
+    +getUserList() : List<User>
+    +postUser() : String
+    +getUser() : User
+    +putUser() : String
+    +deleteUser() : String
+  }
+  class HelloController <<Controller>> {
+    +hello() : String
+    +index() : String
+  }
+  class TestController <<Controller>> {
+    -userService : UserService
+    +add() : String
+  }
+  class UserController <<Controller>> {
+    +getUserList() : List<User>
+    +postUser() : String
+    +getUser() : User
+    +putUser() : String
+    +deleteUser() : String
+  }
+  class URLController <<Controller>> {
+    +test() : String
+    +getToken() : String
+    +removeToken() : String
+    +URLtest() : String
+  }
+  class UserController <<Controller>> {
+    +getUserList() : List<User>
+    +postUser() : String
+    +getUser() : User
+    +putUser() : String
+    +deleteUser() : String
+  }
+}
+
+package qg.fangrui.springboot {
+  class RedisApplication {
+    +main() : void
+  }
+}
+
+package qg.fangrui.springboot.config {
+  class RedisConfig {
+    -host : String
+    -port : int
+    -timeout : int
+    +wiselyKeyGenerator() : KeyGenerator
+    +generate() : Object
+    +redisConnectionFactory() : JedisConnectionFactory
+    +cacheManager() : CacheManager
+  }
+  class CookieConfig {
+    +customizer() : EmbeddedServletContainerCustomizer
+    +customize() : void
+    +customize() : void
+  }
+  class HttpSessionConfig {
+  }
+}
+
+package qg.fangrui.springboot.dao {
+  interface UserDao {
+  }
+}
+
+package qg.fangrui.springboot.exception {
+  class CacheException {
+  }
+}
+
+package qg.fangrui.springboot.model {
+  class User {
+    -uuid : String
+    -name : String
+    -age : Integer
+    +getUuid() : String
+    +setUuid() : void
+    +getName() : String
+    +setName() : void
+    +getAge() : Integer
+    +setAge() : void
+  }
+}
+
+package qg.fangrui.springboot.service {
+  class UserService <<Service>> {
+    -userDao : UserDao
+    +save() : int
+    +update() : User
+    +findByUuid() : User
+    +delete() : void
+  }
+}
+
+package qg.fangrui.springboot.web {
+  class RedisController <<Controller>> {
+    -userService : UserService
+    +getSession() : Object
+    +redisTest() : String
+  }
+}
+
+' --- Relatii ---
+ApplicationTest --> HelloController
+URLController --> RequestLimit
+URLController --> Token
+TokenContract --> Logger
+TokenContract --> FormRepeatException
+ApplicationTest --> HelloController
+ApplicationTest --> HelloController
+HelloController --> RequestLimit
+RequestLimitContract --> Logger
+RequestLimitContract --> HttpServletException
+RequestLimitContract --> RequestLimitException
+RequestLimitContract --> IPAddressUtil
+ApplicationTest --> HelloController
+LoggerController --> Logger
+RedisController --> User
+RedisController --> UserService
+UserDao --> User
+UserService --> UserDao
+UserService --> CacheException
+UserService --> User
+ApplicationTest --> HelloController
+EhcacheController --> Logger
+EhcacheController --> CacheException
+EhcacheController --> JdbcException
+EhcacheController --> User
+EhcacheController --> UserService
+BlackListDao --> BlackList
+UserDao --> User
+UserService --> UserDao
+UserService --> CacheException
+UserService --> User
+ApplicationTest --> HelloController
+HelloController --> RequestLimit
+TaskController --> Task
+URLController --> RequestLimit
+URLController --> Token
+LoggerController --> Logger
+TestController --> User
+TestController --> UserService
+UserController --> User
+UserDao --> User
+TokenContract --> Logger
+TokenContract --> FormRepeatException
+TokenContract --> HttpServletException
+RequestLimitContract --> Logger
+RequestLimitContract --> HttpServletException
+RequestLimitContract --> RequestLimitException
+RequestLimitContract --> IPAddressUtil
+UserService --> UserDao
+UserService --> User
+ApplicationTest --> HelloController
+Logger --> Level
+DruidDBConfig --> Level
+DruidDBConfig --> Logger
+TestController --> User
+TestController --> UserService
+UserController --> User
+UserDao --> User
+UserService --> UserDao
+UserService --> User
+ApplicationTest --> HelloController
+ApplicationTest --> HelloController
+MyWebAppConfigurer --> URLInterceptor
+URLController --> RequestLimit
+URLController --> Token
+UserController --> User
+BlackListDao --> BlackList
+UserDao --> User
+TokenContract --> Logger
+TokenContract --> FormRepeatException
+TokenContract --> HttpServletException
+RequestLimitContract --> Logger
+RequestLimitContract --> HttpServletException
+RequestLimitContract --> RequestLimitException
+RequestLimitContract --> IPAddressUtil
+URLInterceptor --> Logger
+URLInterceptor --> BlackListDao
+URLInterceptor --> RequestLimitException
+URLInterceptor --> BlackList
+URLInterceptor --> IPAddressUtil
+UserService --> UserDao
+UserService --> User
+
+@enduml

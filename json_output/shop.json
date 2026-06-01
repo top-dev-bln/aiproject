@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the e-commerce, microservices infrastructure domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include order service, order service impl, product service. Core business data revolves around Order, OrderReposity, Product, ProductReposity. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
+        "services": [],
+        "controllers": [
+          "OrderService"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [],
+        "controllers": [
+          "ProductService"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage order service operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "OrderService"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage order service impl operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "OrderServiceImpl"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    OrderService[\"OrderService\"]\n    OrderServiceImpl[\"OrderServiceImpl\"]\n    ProductService[\"ProductService\"]\n    ProductServiceImpl[\"ProductServiceImpl\"]\n    ScoreServiceImpl[\"ScoreServiceImpl\"]\n    TCCScoreService[\"TCCScoreService\"]\n    TCCScoreServiceImpl[\"TCCScoreServiceImpl\"]\n    UserController[\"UserController\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Services\n    ScoreService[\"ScoreService\"]\n  end\n  subgraph Data_Access\n    Order[\"Order\"]\n    OrderReposity[\"OrderReposity\"]\n    Product[\"Product\"]\n    ProductReposity[\"ProductReposity\"]\n    Score[\"Score\"]\n    ScoreReposity[\"ScoreReposity\"]\n    User[\"User\"]\n    UserReposity[\"UserReposity\"]\n  end\n  subgraph Security\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    H2ServerConfiguration[\"H2ServerConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

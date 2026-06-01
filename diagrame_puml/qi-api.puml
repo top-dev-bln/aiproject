@@ -1,0 +1,1292 @@
+@startuml
+
+package com.qimu.qiapibackend {
+  class QiApiBackendApplication {
+    +main() : void
+  }
+}
+
+package com.qimu.qiapibackend.annotation {
+  interface AuthCheck {
+  }
+}
+
+package com.qimu.qiapibackend.aop {
+  class LogInterceptor {
+    +doInterceptor() : Object
+  }
+  class AuthInterceptor {
+    -userService : UserService
+    +doInterceptor() : Object
+  }
+}
+
+package com.qimu.qiapibackend.common {
+  enum ErrorCode {
+    -code : int
+    -message : String
+    +getCode() : int
+    +getMessage() : String
+  }
+  class ResultUtils {
+  }
+  class PageRequest {
+    -current : long
+    -pageSize : long
+    -sortField : String
+    -sortOrder : String
+  }
+  class DeleteRequest {
+    -serialVersionUID : long
+    -id : Long
+  }
+  class BaseResponse {
+    -serialVersionUID : long
+    -code : int
+    -data : T
+    -message : String
+  }
+  class IdRequest {
+    -serialVersionUID : long
+    -id : Long
+  }
+}
+
+package com.qimu.qiapibackend.config {
+  class Knife4jConfig {
+    +defaultApi2() : Docket
+  }
+  class EmailConfig {
+    -emailFrom : String
+  }
+  class JsonConfig {
+    +jacksonObjectMapper() : ObjectMapper
+  }
+  class WxPayAccountConfig {
+    -appId : String
+    -mchId : String
+    -apiV3Key : String
+    -privateKeyPath : String
+    -privateCertPath : String
+    -notifyUrl : String
+    -sandbox : boolean
+  }
+  class PayConfiguration {
+    -properties : WxPayAccountConfig
+    -aliPayAccountConfig : AliPayAccountConfig
+    +wxService() : WxPayService
+    +aliPayApi() : void
+  }
+  class RedisTemplateConfig {
+  }
+  class AliPayAccountConfig {
+    -appId : String
+    -privateKey : String
+    -aliPayPublicKey : String
+    -notifyUrl : String
+    -returnUrl : String
+    -sandbox : Boolean
+    -sellerId : String
+  }
+  class MyBatisPlusConfig {
+    +mybatisPlusInterceptor() : MybatisPlusInterceptor
+  }
+  class CosClientConfig {
+    -accessKey : String
+    -secretKey : String
+    -region : String
+    -bucket : String
+    -cosHost : String
+    +cosClient() : COSClient
+  }
+  class RedissonConfig {
+    -host : String
+    -port : String
+    +redissonClient() : RedissonClient
+  }
+  class CorsConfig {
+    +addCorsMappings() : void
+  }
+}
+
+package com.qimu.qiapibackend.constant {
+  interface PayConstant {
+  }
+  interface EmailConstant {
+  }
+  interface UserConstant {
+  }
+  interface CommonConstant {
+  }
+}
+
+package com.qimu.qiapibackend.controller {
+  class OrderController <<Controller>> {
+    -userService : UserService
+    -productOrderService : ProductOrderService
+    -orderService : OrderService
+    +closedProductOrder() : BaseResponse<Boolean>
+    +deleteProductOrder() : BaseResponse<Boolean>
+    +getProductOrderById() : BaseResponse<ProductOrderVo>
+    +listProductOrderByPage() : BaseResponse<OrderVo>
+    +createOrder() : BaseResponse<ProductOrderVo>
+    +queryOrderStatus() : BaseResponse<Boolean>
+    +parseOrderNotifyResult() : String
+  }
+  class DailyCheckInController <<Controller>> {
+    -dailyCheckInService : DailyCheckInService
+    -userService : UserService
+    -redissonLockUtil : RedissonLockUtil
+    +doDailyCheckIn() : BaseResponse<Boolean>
+  }
+  class FileController <<Controller>> {
+    -ONE_M : long
+    -userService : UserService
+    -cosManager : CosManager
+    -cosClientConfig : CosClientConfig
+    +uploadFile() : BaseResponse<ImageVo>
+  }
+  class ProductInfoController <<Controller>> {
+    -productInfoService : ProductInfoService
+    -userService : UserService
+    +addProductInfo() : BaseResponse<Long>
+    +deleteProductInfo() : BaseResponse<Boolean>
+    +updateProductInfo() : BaseResponse<Boolean>
+    +getProductInfoById() : BaseResponse<ProductInfo>
+    +listProductInfo() : BaseResponse<List<ProductInfo>>
+    +listProductInfoByPage() : BaseResponse<Page<ProductInfo>>
+    +listProductInfoBySearchTextPage() : BaseResponse<Page<ProductInfo>>
+    +onlineProductInfo() : BaseResponse<Boolean>
+  }
+  class InterfaceInfoController <<Controller>> {
+    -interfaceInfoService : InterfaceInfoService
+    -userService : UserService
+    -apiService : ApiService
+    -gson : Gson
+    +addInterfaceInfo() : BaseResponse<Long>
+    +deleteInterfaceInfo() : BaseResponse<Boolean>
+    +updateInterfaceInfoAvatarUrl() : BaseResponse<Boolean>
+    +updateInterfaceInfo() : BaseResponse<Boolean>
+    +getInterfaceInfoById() : BaseResponse<InterfaceInfo>
+    +listInterfaceInfo() : BaseResponse<Page<InterfaceInfo>>
+    +listInterfaceInfoByPage() : BaseResponse<Page<InterfaceInfo>>
+    +listInterfaceInfoBySearchTextPage() : BaseResponse<Page<InterfaceInfo>>
+  }
+  class UserController <<Controller>> {
+    -emailConfig : EmailConfig
+    -userService : UserService
+    -mailSender : JavaMailSender
+    +userRegister() : BaseResponse<Long>
+    +userLogin() : BaseResponse<UserVO>
+    +userEmailLogin() : BaseResponse<UserVO>
+    +userBindEmail() : BaseResponse<UserVO>
+    +userUnBindEmail() : BaseResponse<UserVO>
+    +userEmailRegister() : BaseResponse<Long>
+    +getCaptcha() : BaseResponse<Boolean>
+    +userLogout() : BaseResponse<Boolean>
+  }
+}
+
+package com.qimu.qiapibackend.exception {
+  class GlobalExceptionHandler {
+  }
+  class BusinessException {
+    -serialVersionUID : long
+    -code : int
+    +getCode() : int
+  }
+}
+
+package com.qimu.qiapibackend.job {
+  class DailyCheckInJob {
+    -dailyCheckInService : DailyCheckInService
+    -redissonLockUtil : RedissonLockUtil
+    +clearCheckInList() : void
+  }
+  class PayJob {
+    -productOrderService : ProductOrderService
+    -orderService : OrderService
+    -redissonLockUtil : RedissonLockUtil
+    +wxOrderConfirm() : void
+    +aliPayOrderConfirm() : void
+    +clearOverdueOrders() : void
+  }
+}
+
+package com.qimu.qiapibackend.manager {
+  class CosManager {
+    -cosClientConfig : CosClientConfig
+    -cosClient : COSClient
+    +putObject() : PutObjectResult
+    +putObject() : PutObjectResult
+  }
+}
+
+package com.qimu.qiapibackend.mapper {
+  interface ProductInfoMapper {
+  }
+  interface RechargeActivityMapper {
+  }
+  interface UserInterfaceInvokeMapper {
+  }
+  interface UserMapper {
+  }
+  interface InterfaceInfoMapper {
+  }
+  interface ProductOrderMapper {
+  }
+  interface DailyCheckInMapper {
+  }
+  interface PaymentInfoMapper {
+  }
+}
+
+package com.qimu.qiapibackend.model.alipay {
+  class AliPayAsyncResponse {
+    -serialVersionUID : long
+    -notifyTime : String
+    -notifyType : String
+    -notifyId : String
+    -sellerId : String
+    -buyerId : String
+    -charset : String
+    -version : String
+    -authAppId : String
+    -tradeNo : String
+  }
+}
+
+package com.qimu.qiapibackend.model.dto.interfaceinfo {
+  class InvokeRequest {
+    -serialVersionUID : long
+    -id : Long
+    -requestParams : List<Field>
+    -userRequestParams : String
+    -fieldName : String
+    -value : String
+  }
+  class InterfaceInfoSearchTextRequest {
+    -serialVersionUID : long
+    -searchText : String
+  }
+  class RequestParamsField {
+    -id : String
+    -fieldName : String
+    -type : String
+    -desc : String
+    -required : String
+    -value : String
+  }
+  class ResponseParamsField {
+    -id : String
+    -fieldName : String
+    -type : String
+    -desc : String
+  }
+  class InterfaceInfoUpdateAvatarRequest {
+    -serialVersionUID : long
+    -id : long
+    -avatarUrl : String
+  }
+  class InterfaceInfoQueryRequest {
+    -serialVersionUID : long
+    -name : String
+    -returnFormat : String
+    -url : String
+    -responseParams : List<ResponseParamsField>
+    -userId : Long
+    -reduceScore : Integer
+    -method : String
+    -description : String
+    -status : Integer
+  }
+  class InterfaceInfoUpdateRequest {
+    -serialVersionUID : long
+    -id : long
+    -name : String
+    -returnFormat : String
+    -responseParams : List<ResponseParamsField>
+    -url : String
+    -method : String
+    -reduceScore : Integer
+    -avatarUrl : String
+    -description : String
+  }
+  class InterfaceInfoAddRequest {
+    -serialVersionUID : long
+    -name : String
+    -returnFormat : String
+    -url : String
+    -responseParams : List<ResponseParamsField>
+    -method : String
+    -reduceScore : Integer
+    -requestParams : List<RequestParamsField>
+    -description : String
+    -requestExample : String
+  }
+}
+
+package com.qimu.qiapibackend.model.dto.pay {
+  class PayCreateRequest {
+    -serialVersionUID : long
+    -productId : String
+    -payType : String
+  }
+}
+
+package com.qimu.qiapibackend.model.dto.productinfo {
+  class ProductInfoQueryRequest {
+    -serialVersionUID : long
+    -name : String
+    -addPoints : Integer
+    -description : String
+    -total : Integer
+    -productType : String
+  }
+  class ProductInfoSearchTextRequest {
+    -serialVersionUID : long
+    -searchText : String
+  }
+  class ProductInfoUpdateRequest {
+    -serialVersionUID : long
+    -id : long
+    -name : String
+    -description : String
+    -total : Integer
+    -addPoints : Integer
+    -productType : String
+    -expirationTime : Date
+  }
+  class ProductInfoAddRequest {
+    -serialVersionUID : long
+    -name : String
+    -description : String
+    -total : Integer
+    -addPoints : Integer
+    -productType : String
+    -expirationTime : Date
+  }
+}
+
+package com.qimu.qiapibackend.model.dto.productorder {
+  class ProductOrderAddRequest {
+    -serialVersionUID : long
+    -productId : String
+    -payType : String
+    -orderNo : String
+  }
+  class ProductOrderQueryRequest {
+    -serialVersionUID : long
+    -orderName : String
+    -orderNo : String
+    -total : Integer
+    -status : String
+    -payType : String
+    -productInfo : String
+    -addPoints : Integer
+  }
+}
+
+package com.qimu.qiapibackend.model.dto.user {
+  class UserBindEmailRequest {
+    -serialVersionUID : long
+    -emailAccount : String
+    -captcha : String
+  }
+  class UserEmailRegisterRequest {
+    -serialVersionUID : long
+    -emailAccount : String
+    -captcha : String
+    -userName : String
+    -invitationCode : String
+    -agreeToAnAgreement : String
+  }
+  class UserQueryRequest {
+    -serialVersionUID : long
+    -id : Long
+    -userName : String
+    -userAccount : String
+    -gender : String
+    -userRole : String
+  }
+  class UserEmailLoginRequest {
+    -serialVersionUID : long
+    -emailAccount : String
+    -captcha : String
+  }
+  class UserAddRequest {
+    -serialVersionUID : long
+    -userName : String
+    -userAccount : String
+    -userAvatar : String
+    -gender : String
+    -userRole : String
+    -userPassword : String
+    -balance : Integer
+  }
+  class UserUnBindEmailRequest {
+    -serialVersionUID : long
+    -emailAccount : String
+    -captcha : String
+  }
+  class UserLoginRequest {
+    -serialVersionUID : long
+    -userAccount : String
+    -userPassword : String
+  }
+  class UserUpdateRequest {
+    -serialVersionUID : long
+    -id : Long
+    -userName : String
+    -userAccount : String
+    -userAvatar : String
+    -gender : String
+    -userRole : String
+    -status : Integer
+    -userPassword : String
+    -balance : Integer
+  }
+  class UserRegisterRequest {
+    -serialVersionUID : long
+    -userAccount : String
+    -userPassword : String
+    -userName : String
+    -checkPassword : String
+    -invitationCode : String
+    -agreeToAnAgreement : String
+  }
+}
+
+package com.qimu.qiapibackend.model.entity {
+  class DailyCheckIn {
+    -serialVersionUID : long
+    -id : Long
+    -userId : Long
+    -description : String
+    -addPoints : Integer
+    -createTime : Date
+    -updateTime : Date
+  }
+  class ProductOrder {
+    -serialVersionUID : long
+    -id : Long
+    -orderNo : String
+    -payType : String
+    -expirationTime : Date
+    -orderName : String
+    -codeUrl : String
+    -productInfo : String
+    -total : Integer
+    -productId : Long
+  }
+  class PaymentInfo {
+    -serialVersionUID : long
+    -id : Long
+    -orderNo : String
+    -transactionId : String
+    -tradeType : String
+    -tradeState : String
+    -tradeStateDesc : String
+    -openid : String
+    -payerTotal : Integer
+    -currency : String
+  }
+  class User {
+    -serialVersionUID : long
+    -id : Long
+    -userName : String
+    -email : String
+    -userAccount : String
+    -status : Integer
+    -invitationCode : String
+    -accessKey : String
+    -balance : Integer
+    -secretKey : String
+  }
+  class RechargeActivity {
+    -serialVersionUID : long
+    -id : Long
+    -orderNo : String
+    -userId : Long
+    -productId : Long
+    -createTime : Date
+    -updateTime : Date
+    -isDelete : Integer
+  }
+  class UserInterfaceInvoke {
+    -serialVersionUID : long
+    -id : Long
+    -userId : Long
+    -interfaceId : Long
+    -totalInvokes : Long
+    -status : Integer
+    -createTime : Date
+    -updateTime : Date
+    -isDelete : Integer
+  }
+  class ProductInfo {
+    -serialVersionUID : long
+    -id : Long
+    -name : String
+    -status : Integer
+    -addPoints : Integer
+    -description : String
+    -userId : Long
+    -total : Integer
+    -productType : String
+    -expirationTime : Date
+  }
+}
+
+package com.qimu.qiapibackend.model.enums {
+  enum ImageStatusEnum {
+    -status : String
+    -value : String
+    +getStatus() : String
+    +getValue() : String
+  }
+  enum PayTypeStatusEnum {
+    -text : String
+    -value : String
+    +getValues() : List<String>
+    +getValue() : String
+    +getText() : String
+  }
+  enum UserAccountStatusEnum {
+    -text : String
+    -value : int
+    +getValues() : List<Integer>
+    +getValue() : int
+    +getText() : String
+  }
+  enum FileUploadBizEnum {
+    -text : String
+    -value : String
+    +getValues() : List<String>
+    +getEnumByValue() : FileUploadBizEnum
+    +getValue() : String
+    +getText() : String
+  }
+  enum PaymentStatusEnum {
+    -text : String
+    -value : String
+    +getValues() : List<String>
+    +getValue() : String
+    +getText() : String
+  }
+  enum ProductTypeStatusEnum {
+    -text : String
+    -value : String
+    +getValues() : List<String>
+    +getValue() : String
+    +getText() : String
+  }
+  enum InterfaceStatusEnum {
+    -text : String
+    -value : int
+    +getValues() : List<Integer>
+    +getValue() : int
+    +getText() : String
+  }
+  enum ProductInfoStatusEnum {
+    -text : String
+    -value : int
+    +getValues() : List<Integer>
+    +getValue() : int
+    +getText() : String
+  }
+  enum AlipayTradeStatusEnum {
+    -paymentStatusEnum : PaymentStatusEnum
+    +findByName() : AlipayTradeStatusEnum
+  }
+}
+
+package com.qimu.qiapibackend.model.file {
+  class UploadFileRequest {
+    -serialVersionUID : long
+    -biz : String
+  }
+}
+
+package com.qimu.qiapibackend.model.vo {
+  class UserVO {
+    -serialVersionUID : long
+    -id : Long
+    -userName : String
+    -email : String
+    -invitationCode : String
+    -status : Integer
+    -balance : Integer
+    -userAccount : String
+    -userAvatar : String
+    -accessKey : String
+  }
+  class OrderVo {
+    -serialVersionUID : long
+    -records : List<ProductOrderVo>
+    -total : long
+    -size : long
+    -current : long
+    -orders : List<OrderItem>
+    -optimizeCountSql : boolean
+    -searchCount : boolean
+    -optimizeJoinOfCountSql : boolean
+    -countId : String
+  }
+  class ProductOrderVo {
+    -serialVersionUID : long
+    -id : Long
+    -orderNo : String
+    -payType : String
+    -expirationTime : Date
+    -orderName : String
+    -codeUrl : String
+    -productId : Long
+    -total : String
+    -status : String
+  }
+  class InterfaceInfoVo {
+    -serialVersionUID : long
+    -records : List<InterfaceInfo>
+    -total : long
+    -size : long
+    -current : long
+    -orders : List<OrderItem>
+    -optimizeCountSql : boolean
+    -searchCount : boolean
+    -optimizeJoinOfCountSql : boolean
+    -countId : String
+  }
+  class ImageVo {
+    -serialVersionUID : long
+    -uid : String
+    -name : String
+    -status : String
+    -url : String
+  }
+  class PaymentInfoVo {
+    -serialVersionUID : long
+    -appid : String
+    -mchid : String
+    -outTradeNo : String
+    -transactionId : String
+    -tradeType : String
+    -tradeState : String
+    -tradeStateDesc : String
+    -bankType : String
+    -attach : String
+  }
+}
+
+package com.qimu.qiapibackend.service {
+  class UserServiceTest {
+    -Secret : String
+    -merchantId : String
+    -privateKeyPath : String
+    -merchantSerialNumber : String
+    -apiV3Key : String
+    -wxPayService : WxPayService
+    -userService : UserService
+    -interfaceInfoService : InterfaceInfoService
+    -innerUserInterfaceInvokeService : InnerUserInterfaceInvokeService
+  }
+  interface DailyCheckInService {
+  }
+  interface UserService {
+  }
+  interface InterfaceInfoService {
+  }
+  interface OrderService {
+  }
+  interface ProductOrderService {
+  }
+  interface ProductInfoService {
+  }
+  interface RechargeActivityService {
+  }
+  interface PaymentInfoService {
+  }
+}
+
+package com.qimu.qiapibackend.service.alipay {
+  class AliPayTest {
+    -productOrderService : ProductOrderService
+  }
+}
+
+package com.qimu.qiapibackend.service.impl {
+  class OrderServiceImpl <<Service>> {
+    -productOrderService : ProductOrderService
+    -productOrderServices : List<ProductOrderService>
+    -rechargeActivityService : RechargeActivityService
+    -productInfoService : ProductInfoServiceImpl
+    -redissonLockUtil : RedissonLockUtil
+    +getProductOrderServiceByPayType() : ProductOrderService
+    +createOrderByPayType() : ProductOrderVo
+    +getNoPayOrderByDuration() : List<ProductOrder>
+    +doOrderNotify() : String
+  }
+  class DailyCheckInServiceImpl <<Service>> {
+  }
+  class ProductInfoServiceImpl <<Service>> {
+    +validProductInfo() : void
+  }
+  class RechargeActivityServiceImpl <<Service>> {
+    +getRechargeActivityByOrderNo() : List<RechargeActivity>
+  }
+  class PaymentInfoServiceImpl <<Service>> {
+    +createPaymentInfo() : boolean
+  }
+  class WxOrderServiceImpl <<Service>> {
+    -productInfoService : ProductInfoServiceImpl
+    -redissonClient : RedissonClient
+    -wxPayService : WxPayService
+    -emailConfig : EmailConfig
+    -mailSender : JavaMailSender
+    -userService : UserService
+    -paymentInfoService : PaymentInfoService
+    -rechargeActivityService : RechargeActivityService
+    +getProductOrder() : ProductOrderVo
+    +saveProductOrder() : ProductOrderVo
+    +updateProductOrder() : boolean
+    +updateOrderStatusByOrderNo() : boolean
+    +closedOrderByOrderNo() : void
+    +getProductOrderByOutTradeNo() : ProductOrder
+    +processingTimedOutOrders() : void
+    +doPaymentNotify() : String
+  }
+  class UserServiceImpl <<Service>> {
+    -userMapper : UserMapper
+    -redissonLockUtil : RedissonLockUtil
+    +userRegister() : long
+    +userEmailRegister() : long
+    +userLogin() : UserVO
+    +userEmailLogin() : UserVO
+    +userBindEmail() : UserVO
+    +userUnBindEmail() : UserVO
+    +getLoginUser() : UserVO
+    +isAdmin() : boolean
+  }
+  class InterfaceInfoServiceImpl <<Service>> {
+    +validInterfaceInfo() : void
+    +updateTotalInvokes() : boolean
+  }
+  class AlipayOrderServiceImpl <<Service>> {
+    -emailConfig : EmailConfig
+    -mailSender : JavaMailSender
+    -aliPayAccountConfig : AliPayAccountConfig
+    -userService : UserService
+    -productInfoService : ProductInfoServiceImpl
+    -paymentInfoService : PaymentInfoService
+    -redissonLockUtil : RedissonLockUtil
+    -rechargeActivityService : RechargeActivityService
+    +getProductOrder() : ProductOrderVo
+    +saveProductOrder() : ProductOrderVo
+    +updateProductOrder() : boolean
+    +updateOrderStatusByOrderNo() : boolean
+    +closedOrderByOrderNo() : void
+    +getProductOrderByOutTradeNo() : ProductOrder
+    +processingTimedOutOrders() : void
+    +doPaymentNotify() : String
+  }
+}
+
+package com.qimu.qiapibackend.service.inner.impl {
+  class UserInterfaceInvokeServiceImpl {
+    -interfaceInfoService : InterfaceInfoService
+    -userService : UserService
+    +invoke() : boolean
+  }
+  class InnerInterfaceInfoServiceImpl {
+    -interfaceInfoService : InterfaceInfoService
+    +getInterfaceInfo() : InterfaceInfo
+  }
+  class InnerUserServiceImpl {
+    -userService : UserService
+    +getInvokeUserByAccessKey() : UserVO
+  }
+}
+
+package com.qimu.qiapibackend.utils {
+  class WxPayUtil {
+    +getRequestHeader() : SignatureHeader
+  }
+  class RedissonLockUtil {
+    -redissonClient : RedissonClient
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+  }
+  class EmailUtil {
+    +buildEmailContent() : String
+    +buildPaySuccessEmailContent() : String
+    +sendPaySuccessEmail() : void
+  }
+}
+
+package com.qimu.qiapicommon {
+  class QiApiCommonApplicationTests {
+  }
+  class QiApiCommonApplication {
+    +main() : void
+  }
+}
+
+package com.qimu.qiapicommon.common {
+  enum ErrorCode {
+    -code : int
+    -message : String
+    +getCode() : int
+    +getMessage() : String
+  }
+  class ResultUtils {
+  }
+  class BaseResponse {
+    -serialVersionUID : long
+    -code : int
+    -data : T
+    -message : String
+  }
+}
+
+package com.qimu.qiapicommon.model.dto {
+  class RequestParamsField {
+    -id : String
+    -fieldName : String
+    -type : String
+    -desc : String
+    -required : String
+  }
+}
+
+package com.qimu.qiapicommon.model.emums {
+  enum UserAccountStatusEnum {
+    -text : String
+    -value : int
+    +getValues() : List<Integer>
+    +getValue() : int
+    +getText() : String
+  }
+  enum InterfaceStatusEnum {
+    -text : String
+    -value : int
+    +getValues() : List<Integer>
+    +getValue() : int
+    +getText() : String
+  }
+}
+
+package com.qimu.qiapicommon.model.entity {
+  class User {
+    -serialVersionUID : long
+    -id : Long
+    -userName : String
+    -email : String
+    -userAccount : String
+    -status : Integer
+    -invitationCode : String
+    -accessKey : String
+    -balance : Integer
+    -secretKey : String
+  }
+  class InterfaceInfo {
+    -serialVersionUID : long
+    -id : Long
+    -returnFormat : String
+    -name : String
+    -url : String
+    -userId : Long
+    -method : String
+    -totalInvokes : Long
+    -requestParams : String
+    -responseParams : String
+  }
+  class UserInterfaceInvoke {
+    -serialVersionUID : long
+    -id : Long
+    -userId : Long
+    -interfaceId : Long
+    -totalInvokes : Long
+    -status : Integer
+    -createTime : Date
+    -updateTime : Date
+    -isDelete : Integer
+  }
+}
+
+package com.qimu.qiapicommon.model.vo {
+  class UserVO {
+    -serialVersionUID : long
+    -id : Long
+    -userName : String
+    -email : String
+    -invitationCode : String
+    -status : Integer
+    -balance : Integer
+    -userAccount : String
+    -userAvatar : String
+    -accessKey : String
+  }
+}
+
+package com.qimu.qiapicommon.service.inner {
+  interface InnerUserInterfaceInvokeService {
+  }
+  interface InnerInterfaceInfoService {
+  }
+  interface InnerUserService {
+  }
+}
+
+package com.qimu.qiapigateway {
+  class QiApiGatewayApplicationTests {
+  }
+  class QiApiGatewayApplication <<Service>> {
+    +main() : void
+  }
+  class GatewayGlobalFilter {
+    -WHITE_HOST_LIST : List<String>
+    -FIVE_MINUTES : long
+    -redissonLockUtil : RedissonLockUtil
+    -innerUserService : InnerUserService
+    -interfaceInvokeService : InnerUserInterfaceInvokeService
+    -interfaceInfoService : InnerInterfaceInfoService
+    +filter() : Mono<Void>
+    +handleResponse() : Mono<Void>
+    +writeWith() : Mono<Void>
+    +getOrder() : int
+  }
+  class CacheBodyGatewayFilter {
+    -CACHE_REQUEST_BODY_OBJECT_KEY : String
+    +filter() : Mono<Void>
+    +getBody() : Flux<DataBuffer>
+    +getOrder() : int
+  }
+}
+
+package com.qimu.qiapigateway.config {
+  class RedissonConfig {
+    -host : String
+    -port : String
+    +redissonClient() : RedissonClient
+  }
+}
+
+package com.qimu.qiapigateway.exception {
+  class GlobalExceptionHandler {
+    -objectMapper : ObjectMapper
+    +handle() : Mono<Void>
+  }
+  class BusinessException {
+    -serialVersionUID : long
+    -code : int
+    +getCode() : int
+  }
+}
+
+package com.qimu.qiapigateway.utils {
+  class NetUtils {
+    -IP_UNKNOWN : String
+    -IP_LOCAL : String
+    -IP_LEN : int
+    +getIp() : String
+  }
+  class RedissonLockUtil {
+    -redissonClient : RedissonClient
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+    +redissonDistributedLocks() : void
+  }
+}
+
+package com.qimu.qiapiinterface {
+  class QiApiInterfaceApplicationTests {
+    -qiApiClient : QiApiClient
+    -mailSender : JavaMailSender
+    +buildContent() : String
+  }
+  class QiApiInterfaceApplication {
+    +main() : void
+  }
+}
+
+package com.qimu.qiapiinterface.controller {
+  class ServiceController <<Controller>> {
+    +getName() : NameResponse
+    +randomLoveTalk() : String
+    +getPoisonousChickenSoup() : String
+    +randomWallpaper() : RandomWallpaperResponse
+    +postAndomWallpaper() : RandomWallpaperResponse
+    +getHoroscope() : ResultResponse
+    +getIpInfo() : ResultResponse
+    +getWeatherInfo() : ResultResponse
+  }
+}
+
+package com.qimu.qiapiinterface.utils {
+  class ResponseUtils {
+  }
+  class RequestUtils {
+  }
+}
+
+' --- Relatii ---
+GatewayGlobalFilter --> ErrorCode
+GatewayGlobalFilter --> RequestParamsField
+GatewayGlobalFilter --> InterfaceStatusEnum
+GatewayGlobalFilter --> InterfaceInfo
+GatewayGlobalFilter --> UserVO
+GatewayGlobalFilter --> InnerInterfaceInfoService
+GatewayGlobalFilter --> InnerUserInterfaceInvokeService
+GatewayGlobalFilter --> InnerUserService
+GatewayGlobalFilter --> BusinessException
+GatewayGlobalFilter --> RedissonLockUtil
+RedissonLockUtil --> ErrorCode
+RedissonLockUtil --> BusinessException
+GlobalExceptionHandler --> BaseResponse
+GlobalExceptionHandler --> ResultUtils
+BusinessException --> ErrorCode
+InnerUserInterfaceInvokeService --> InterfaceInfo
+InnerUserInterfaceInvokeService --> UserVO
+InnerInterfaceInfoService --> InterfaceInfo
+InnerUserService --> UserVO
+ResponseUtils --> ErrorCode
+ResponseUtils --> BusinessException
+RequestUtils --> ErrorCode
+UserServiceTest --> ErrorCode
+UserServiceTest --> BusinessException
+UserServiceTest --> User
+UserServiceTest --> InterfaceInfo
+UserServiceTest --> UserVO
+UserServiceTest --> InnerUserInterfaceInvokeService
+AliPayTest --> AliPayAccountConfig
+AliPayTest --> AlipayTradeStatusEnum
+AliPayTest --> PaymentStatusEnum
+AliPayTest --> ProductOrderService
+ProductInfoMapper --> ProductInfo
+RechargeActivityMapper --> RechargeActivity
+UserInterfaceInvokeMapper --> UserInterfaceInvoke
+UserMapper --> User
+InterfaceInfoMapper --> InterfaceInfo
+ProductOrderMapper --> ProductOrder
+DailyCheckInMapper --> DailyCheckIn
+PaymentInfoMapper --> PaymentInfo
+RedissonLockUtil --> ErrorCode
+RedissonLockUtil --> BusinessException
+EmailUtil --> EmailConfig
+AuthInterceptor --> AuthCheck
+AuthInterceptor --> ErrorCode
+AuthInterceptor --> BusinessException
+AuthInterceptor --> UserVO
+AuthInterceptor --> UserService
+OrderController --> BaseResponse
+OrderController --> ErrorCode
+OrderController --> ResultUtils
+OrderController --> BusinessException
+OrderController --> PayCreateRequest
+OrderController --> ProductOrderQueryRequest
+OrderController --> ProductInfo
+OrderController --> ProductOrder
+OrderController --> PaymentStatusEnum
+OrderController --> OrderVo
+OrderController --> ProductOrderVo
+OrderController --> UserVO
+OrderController --> OrderService
+OrderController --> ProductOrderService
+OrderController --> UserService
+DailyCheckInController --> BaseResponse
+DailyCheckInController --> ErrorCode
+DailyCheckInController --> ResultUtils
+DailyCheckInController --> BusinessException
+DailyCheckInController --> DailyCheckIn
+DailyCheckInController --> UserVO
+DailyCheckInController --> DailyCheckInService
+DailyCheckInController --> UserService
+DailyCheckInController --> RedissonLockUtil
+FileController --> BaseResponse
+FileController --> ErrorCode
+FileController --> ResultUtils
+FileController --> CosClientConfig
+FileController --> CosManager
+FileController --> FileUploadBizEnum
+FileController --> ImageStatusEnum
+FileController --> UploadFileRequest
+FileController --> ImageVo
+FileController --> UserVO
+FileController --> UserService
+ProductInfoController --> AuthCheck
+ProductInfoController --> CommonConstant
+ProductInfoController --> BusinessException
+ProductInfoController --> ProductInfoAddRequest
+ProductInfoController --> ProductInfoQueryRequest
+ProductInfoController --> ProductInfoSearchTextRequest
+ProductInfoController --> ProductInfoUpdateRequest
+ProductInfoController --> ProductInfo
+ProductInfoController --> ProductInfoStatusEnum
+ProductInfoController --> UserVO
+ProductInfoController --> ProductInfoService
+ProductInfoController --> UserService
+InterfaceInfoController --> AuthCheck
+InterfaceInfoController --> CommonConstant
+InterfaceInfoController --> BusinessException
+InterfaceInfoController --> User
+InterfaceInfoController --> InterfaceStatusEnum
+InterfaceInfoController --> UserVO
+InterfaceInfoController --> InterfaceInfoService
+InterfaceInfoController --> UserService
+InterfaceInfoController --> InterfaceInfo
+UserController --> AuthCheck
+UserController --> EmailConfig
+UserController --> BusinessException
+UserController --> User
+UserController --> UserAccountStatusEnum
+UserController --> UserVO
+UserController --> UserService
+CosManager --> CosClientConfig
+PageRequest --> CommonConstant
+ProductOrderQueryRequest --|> PageRequest
+ProductOrderQueryRequest --> PageRequest
+UserQueryRequest --|> PageRequest
+UserQueryRequest --> PageRequest
+InterfaceInfoSearchTextRequest --|> PageRequest
+InterfaceInfoSearchTextRequest --> PageRequest
+InterfaceInfoQueryRequest --|> PageRequest
+InterfaceInfoQueryRequest --> PageRequest
+ProductInfoQueryRequest --|> PageRequest
+ProductInfoQueryRequest --> PageRequest
+ProductInfoSearchTextRequest --|> PageRequest
+ProductInfoSearchTextRequest --> PageRequest
+ProductOrderVo --> ProductInfo
+InterfaceInfoVo --> InterfaceInfo
+DailyCheckInJob --> DailyCheckIn
+DailyCheckInJob --> DailyCheckInService
+DailyCheckInJob --> RedissonLockUtil
+PayJob --> ProductOrder
+PayJob --> OrderService
+PayJob --> ProductOrderService
+PayJob --> RedissonLockUtil
+DailyCheckInService --> DailyCheckIn
+UserService --> User
+UserService --> UserVO
+InterfaceInfoService --> InterfaceInfo
+OrderService --> ProductOrder
+OrderService --> ProductOrderVo
+OrderService --> UserVO
+ProductOrderService --> ProductOrder
+ProductOrderService --> ProductOrderVo
+ProductOrderService --> UserVO
+ProductInfoService --> ProductInfo
+RechargeActivityService --> RechargeActivity
+PaymentInfoService --> PaymentInfo
+PaymentInfoService --> PaymentInfoVo
+OrderServiceImpl ..|> OrderService
+OrderServiceImpl --> ErrorCode
+OrderServiceImpl --> BusinessException
+OrderServiceImpl --> ProductInfo
+OrderServiceImpl --> ProductOrder
+OrderServiceImpl --> RechargeActivity
+OrderServiceImpl --> PaymentStatusEnum
+OrderServiceImpl --> ProductTypeStatusEnum
+OrderServiceImpl --> ProductOrderVo
+OrderServiceImpl --> UserVO
+OrderServiceImpl --> OrderService
+OrderServiceImpl --> ProductOrderService
+OrderServiceImpl --> RechargeActivityService
+OrderServiceImpl --> RedissonLockUtil
+DailyCheckInServiceImpl --> DailyCheckInMapper
+DailyCheckInServiceImpl --> DailyCheckIn
+DailyCheckInServiceImpl --> DailyCheckInService
+ProductInfoServiceImpl --> ErrorCode
+ProductInfoServiceImpl --> BusinessException
+ProductInfoServiceImpl --> ProductInfoMapper
+ProductInfoServiceImpl --> ProductInfo
+ProductInfoServiceImpl --> ProductInfoService
+RechargeActivityServiceImpl --> RechargeActivityMapper
+RechargeActivityServiceImpl --> RechargeActivity
+RechargeActivityServiceImpl --> RechargeActivityService
+PaymentInfoServiceImpl --> PaymentInfoMapper
+PaymentInfoServiceImpl --> PaymentInfo
+PaymentInfoServiceImpl --> PaymentInfoVo
+PaymentInfoServiceImpl --> PaymentInfoService
+WxOrderServiceImpl --> ErrorCode
+WxOrderServiceImpl --> EmailConfig
+WxOrderServiceImpl --> BusinessException
+WxOrderServiceImpl --> ProductOrderMapper
+WxOrderServiceImpl --> ProductInfo
+WxOrderServiceImpl --> ProductOrder
+WxOrderServiceImpl --> RechargeActivity
+WxOrderServiceImpl --> User
+WxOrderServiceImpl --> PaymentInfoVo
+WxOrderServiceImpl --> ProductOrderVo
+WxOrderServiceImpl --> UserVO
+WxOrderServiceImpl --> PaymentInfoService
+WxOrderServiceImpl --> ProductOrderService
+WxOrderServiceImpl --> RechargeActivityService
+WxOrderServiceImpl --> UserService
+WxOrderServiceImpl --> EmailUtil
+UserServiceImpl --> ErrorCode
+UserServiceImpl --> BusinessException
+UserServiceImpl --> UserMapper
+UserServiceImpl --> User
+UserServiceImpl --> UserAccountStatusEnum
+UserServiceImpl --> UserVO
+UserServiceImpl --> UserService
+UserServiceImpl --> RedissonLockUtil
+InterfaceInfoServiceImpl --> ErrorCode
+InterfaceInfoServiceImpl --> BusinessException
+InterfaceInfoServiceImpl --> InterfaceInfoMapper
+InterfaceInfoServiceImpl --> InterfaceInfoService
+InterfaceInfoServiceImpl --> InterfaceInfo
+AlipayOrderServiceImpl --> ErrorCode
+AlipayOrderServiceImpl --> AliPayAccountConfig
+AlipayOrderServiceImpl --> EmailConfig
+AlipayOrderServiceImpl --> BusinessException
+AlipayOrderServiceImpl --> ProductOrderMapper
+AlipayOrderServiceImpl --> AliPayAsyncResponse
+AlipayOrderServiceImpl --> ProductInfo
+AlipayOrderServiceImpl --> ProductOrder
+AlipayOrderServiceImpl --> RechargeActivity
+AlipayOrderServiceImpl --> User
+AlipayOrderServiceImpl --> AlipayTradeStatusEnum
+AlipayOrderServiceImpl --> PaymentStatusEnum
+AlipayOrderServiceImpl --> PaymentInfoVo
+AlipayOrderServiceImpl --> ProductOrderVo
+AlipayOrderServiceImpl --> UserVO
+AlipayOrderServiceImpl --> PaymentInfoService
+AlipayOrderServiceImpl --> ProductOrderService
+AlipayOrderServiceImpl --> RechargeActivityService
+AlipayOrderServiceImpl --> UserService
+AlipayOrderServiceImpl --> EmailUtil
+AlipayOrderServiceImpl --> RedissonLockUtil
+UserInterfaceInvokeServiceImpl --> ErrorCode
+UserInterfaceInvokeServiceImpl --> BusinessException
+UserInterfaceInvokeServiceImpl --> UserInterfaceInvokeMapper
+UserInterfaceInvokeServiceImpl --> InterfaceInfoService
+UserInterfaceInvokeServiceImpl --> UserService
+UserInterfaceInvokeServiceImpl --> UserInterfaceInvoke
+UserInterfaceInvokeServiceImpl --> InnerUserInterfaceInvokeService
+InnerInterfaceInfoServiceImpl ..|> InnerInterfaceInfoService
+InnerInterfaceInfoServiceImpl --> InterfaceInfoService
+InnerInterfaceInfoServiceImpl --> InterfaceInfo
+InnerInterfaceInfoServiceImpl --> InnerInterfaceInfoService
+InnerUserServiceImpl ..|> InnerUserService
+InnerUserServiceImpl --> ErrorCode
+InnerUserServiceImpl --> BusinessException
+InnerUserServiceImpl --> User
+InnerUserServiceImpl --> UserService
+InnerUserServiceImpl --> UserVO
+InnerUserServiceImpl --> InnerUserService
+GlobalExceptionHandler --> BaseResponse
+GlobalExceptionHandler --> ErrorCode
+GlobalExceptionHandler --> ResultUtils
+BusinessException --> ErrorCode
+
+@enduml

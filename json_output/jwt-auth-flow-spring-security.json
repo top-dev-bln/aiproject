@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, banking domain. It serves API Consumer, User as its primary actors. The main business capabilities include authentication, deposit account, identity verification. Core business data revolves around DepositAccount, ResidentialAddress, Transaction, User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [
+          "AuthenticationService"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "DepositAccountService"
+        ],
+        "controllers": [
+          "DepositAccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "AuthenticationService"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage deposit account operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "DepositAccountService"
+        ],
+        "controllers": [
+          "DepositAccountController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    DepositAccountController[\"DepositAccountController\"]\n    IdentityVerificationController[\"IdentityVerificationController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AuthenticationService[\"AuthenticationService\"]\n    DepositAccountService[\"DepositAccountService\"]\n    IdentityVerificationService[\"IdentityVerificationService\"]\n    TokenRevocationService[\"TokenRevocationService\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    DepositAccount[\"DepositAccount\"]\n    DepositAccountRepository[\"DepositAccountRepository\"]\n    ResidentialAddress[\"ResidentialAddress\"]\n    ResidentialAddressRepository[\"ResidentialAddressRepository\"]\n    Transaction[\"Transaction\"]\n    TransactionRepository[\"TransactionRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    OpenApiConfiguration[\"OpenApiConfiguration\"]\n    PublicEndpoint[\"PublicEndpoint\"]\n    RedisConfiguration[\"RedisConfiguration\"]\n    SecurityConfiguration[\"SecurityConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, scheduling domain. It serves API Consumer, Admin, System, User as its primary actors. The main business capabilities include admin, admin_role_relation, comments. Core business data revolves around MemberReadHistory, Role_resource_relation, TermRelationships, User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to comment on posts, so that I can participate in discussions and provide feedback.",
+        "services": [
+          "CommentsServiceImpl",
+          "ICommentsService"
+        ],
+        "controllers": [
+          "CommentsController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to create and browse posts, so that I can share content and discover what others have published.",
+        "services": [
+          "EsPostServiceImpl",
+          "IEsPostService"
+        ],
+        "controllers": [
+          "EsPostController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to browse and apply for job postings, so that I can find employment opportunities matching my skills.",
+        "services": [
+          "IQrtz_job_detailsService",
+          "Qrtz_job_detailsServiceImpl"
+        ],
+        "controllers": [
+          "Qrtz_job_detailsController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to schedule automated jobs, so that recurring operations run on time without manual intervention.",
+        "services": [
+          "IQrtz_scheduler_stateService",
+          "Qrtz_scheduler_stateServiceImpl"
+        ],
+        "controllers": [
+          "Qrtz_scheduler_stateController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to organize items into categories, so that users can easily navigate and filter available items.",
+        "services": [
+          "IResource_categoryService",
+          "Resource_categoryServiceImpl"
+        ],
+        "controllers": [
+          "Resource_categoryController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminResource[\"AdminResource\"]\n    Admin_role_relationController[\"Admin_role_relationController\"]\n    CommentsController[\"CommentsController\"]\n    DockerController[\"DockerController\"]\n    EsPostController[\"EsPostController\"]\n    HelloController[\"HelloController\"]\n    Knife4jController[\"Knife4jController\"]\n    LinksController[\"LinksController\"]\n    MemberReadHistoryController[\"MemberReadHistoryController\"]\n    MenuController[\"MenuController\"]\n    MyFilterController[\"MyFilterController\"]\n    MyInterceptorController[\"MyInterceptorController\"]\n    PostTagController[\"PostTagController\"]\n    PostTagRelationController[\"PostTagRelationController\"]\n    Post_tagController[\"Post_tagController\"]\n    Post_tag_relationController[\"Post_tag_relationController\"]\n    PostsController[\"PostsController\"]\n    Qrtz_blob_triggersController[\"Qrtz_blob_triggersController\"]\n    Qrtz_calendarsController[\"Qrtz_calendarsController\"]\n    Qrtz_cron_triggersController[\"Qrtz_cron_triggersController\"]\n    Qrtz_fired_triggersController[\"Qrtz_fired_triggersController\"]\n    Qrtz_job_detailsController[\"Qrtz_job_detailsController\"]\n    Qrtz_locksController[\"Qrtz_locksController\"]\n    Qrtz_paused_trigger_grpsController[\"Qrtz_paused_trigger_grpsController\"]\n    Qrtz_scheduler_stateController[\"Qrtz_scheduler_stateController\"]\n    Qrtz_simple_triggersController[\"Qrtz_simple_triggersController\"]\n    Qrtz_simprop_triggersController[\"Qrtz_simprop_triggersController\"]\n    Qrtz_triggersController[\"Qrtz_triggersController\"]\n    QuartzController[\"QuartzController\"]\n    RabbitMQController[\"RabbitMQController\"]\n    Resource[\"Resource\"]\n    ResourceController[\"ResourceController\"]\n    Resource_categoryController[\"Resource_categoryController\"]\n    RoleController[\"RoleController\"]\n    Role_menu_relationController[\"Role_menu_relationController\"]\n    Role_resource_relationController[\"Role_resource_relationController\"]\n    SiteController[\"SiteController\"]\n    SwaggerController[\"SwaggerController\"]\n    TermRelationshipsController[\"TermRelationshipsController\"]\n    TermTaxonomyController[\"TermTaxonomyController\"]\n    Term_relationshipsController[\"Term_relationshipsController\"]\n    Term_taxonomyController[\"Term_taxonomyController\"]\n    UserController[\"UserController\"]\n    UsersController[\"UsersController\"]\n  end\n  subgraph Services\n    Admin_role_relationServiceImpl[\"Admin_role_relationServiceImpl\"]\n    CommentsServiceImpl[\"CommentsServiceImpl\"]\n    DynamicSecurityService[\"DynamicSecurityService\"]\n    EsPostServiceImpl[\"EsPostServiceImpl\"]\n    IAdmin_role_relationService[\"IAdmin_role_relationService\"]\n    ICommentsService[\"ICommentsService\"]\n    IEsPostService[\"IEsPostService\"]\n    ILinksService[\"ILinksService\"]\n    IMemberReadHistoryService[\"IMemberReadHistoryService\"]\n    IMenuService[\"IMenuService\"]\n    IPostTagRelationService[\"IPostTagRelationService\"]\n    IPostTagService[\"IPostTagService\"]\n    IPost_tagService[\"IPost_tagService\"]\n    IPost_tag_relationService[\"IPost_tag_relationService\"]\n    IPostsService[\"IPostsService\"]\n    IQrtz_blob_triggersService[\"IQrtz_blob_triggersService\"]\n    IQrtz_calendarsService[\"IQrtz_calendarsService\"]\n    IQrtz_cron_triggersService[\"IQrtz_cron_triggersService\"]\n    IQrtz_fired_triggersService[\"IQrtz_fired_triggersService\"]\n    IQrtz_job_detailsService[\"IQrtz_job_detailsService\"]\n    IQrtz_locksService[\"IQrtz_locksService\"]\n    IQrtz_paused_trigger_grpsService[\"IQrtz_paused_trigger_grpsService\"]\n    IQrtz_scheduler_stateService[\"IQrtz_scheduler_stateService\"]\n    IQrtz_simple_triggersService[\"IQrtz_simple_triggersService\"]\n    IQrtz_simprop_triggersService[\"IQrtz_simprop_triggersService\"]\n    IQrtz_triggersService[\"IQrtz_triggersService\"]\n    IResourceService[\"IResourceService\"]\n    IResource_categoryService[\"IResource_categoryService\"]\n    IRoleService[\"IRoleService\"]\n    IRole_menu_relationService[\"IRole_menu_relationService\"]\n    IRole_resource_relationService[\"IRole_resource_relationService\"]\n    IScheduleService[\"IScheduleService\"]\n    ISiteService[\"ISiteService\"]\n    ITermRelationshipsService[\"ITermRelationshipsService\"]\n    ITermTaxonomyService[\"ITermTaxonomyService\"]\n    ITerm_relationshipsService[\"ITerm_relationshipsService\"]\n    ITerm_taxonomyService[\"ITerm_taxonomyService\"]\n    IUserService[\"IUserService\"]\n    IUsersService[\"IUsersService\"]\n    LinksServiceImpl[\"LinksServiceImpl\"]\n    MemberReadHistoryServiceImpl[\"MemberReadHistoryServiceImpl\"]\n    MenuServiceImpl[\"MenuServiceImpl\"]\n    PostTagRelationServiceImpl[\"PostTagRelationServiceImpl\"]\n    PostTagServiceImpl[\"PostTagServiceImpl\"]\n    Post_tagServiceImpl[\"Post_tagServiceImpl\"]\n    Post_tag_relationServiceImpl[\"Post_tag_relationServiceImpl\"]\n    PostsServiceImpl[\"PostsServiceImpl\"]\n    Qrtz_blob_triggersServiceImpl[\"Qrtz_blob_triggersServiceImpl\"]\n    Qrtz_calendarsServiceImpl[\"Qrtz_calendarsServiceImpl\"]\n    Qrtz_cron_triggersServiceImpl[\"Qrtz_cron_triggersServiceImpl\"]\n    Qrtz_fired_triggersServiceImpl[\"Qrtz_fired_triggersServiceImpl\"]\n    Qrtz_job_detailsServiceImpl[\"Qrtz_job_detailsServiceImpl\"]\n    Qrtz_locksServiceImpl[\"Qrtz_locksServiceImpl\"]\n    Qrtz_paused_trigger_grpsServiceImpl[\"Qrtz_paused_trigger_grpsServiceImpl\"]\n    Qrtz_scheduler_stateServiceImpl[\"Qrtz_scheduler_stateServiceImpl\"]\n    Qrtz_simple_triggersServiceImpl[\"Qrtz_simple_triggersServiceImpl\"]\n    Qrtz_simprop_triggersServiceImpl[\"Qrtz_simprop_triggersServiceImpl\"]\n    Qrtz_triggersServiceImpl[\"Qrtz_triggersServiceImpl\"]\n    ResourceServiceImpl[\"ResourceServiceImpl\"]\n    Resource_categoryServiceImpl[\"Resource_categoryServiceImpl\"]\n    RoleServiceImpl[\"RoleServiceImpl\"]\n    Role_menu_relationServiceImpl[\"Role_menu_relationServiceImpl\"]\n    Role_resource_relationServiceImpl[\"Role_resource_relationServiceImpl\"]\n    ScheduleServiceImpl[\"ScheduleServiceImpl\"]\n    SiteServiceImpl[\"SiteServiceImpl\"]\n    TermRelationshipsServiceImpl[\"TermRelationshipsServiceImpl\"]\n    TermTaxonomyServiceImpl[\"TermTaxonomyServiceImpl\"]\n    Term_relationshipsServiceImpl[\"Term_relationshipsServiceImpl\"]\n    Term_taxonomyServiceImpl[\"Term_taxonomyServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n    UsersServiceImpl[\"UsersServiceImpl\"]\n  end\n  subgraph Data_Access\n    EsPostRepository[\"EsPostRepository\"]\n    MemberReadHistory[\"MemberReadHistory\"]\n    MemberReadHistoryRepository[\"MemberReadHistoryRepository\"]\n    Role_resource_relation[\"Role_resource_relation\"]\n    TermRelationships[\"TermRelationships\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    DynamicSecurityFilter[\"DynamicSecurityFilter\"]\n    JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n    LoggerInterceptor[\"LoggerInterceptor\"]\n    MyFilter[\"MyFilter\"]\n  end\n  subgraph Infrastructure\n    CodingmoreSecurityConfig[\"CodingmoreSecurityConfig\"]\n    ESConfig[\"ESConfig\"]\n    GlobalCorsConfig[\"GlobalCorsConfig\"]\n    IgnoreUrlsConfig[\"IgnoreUrlsConfig\"]\n    InterceptorConfig[\"InterceptorConfig\"]\n    MyBatisConfig[\"MyBatisConfig\"]\n    MybatisPlusConfig[\"MybatisPlusConfig\"]\n    RabbitConfig[\"RabbitConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SecurityConfig[\"SecurityConfig\"]\n    SpringTaskConfig[\"SpringTaskConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n    WebConfigBeans[\"WebConfigBeans\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

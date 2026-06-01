@@ -1,0 +1,36 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the messaging, microservices infrastructure domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include async exception handler, example, health. Core business data revolves around BaseEntity, ExampleEntity.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage async exception handler operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AsyncExceptionHandler"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage example operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": [
+          "ExampleController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage health operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HealthController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AsyncExceptionHandler[\"AsyncExceptionHandler\"]\n    ExampleController[\"ExampleController\"]\n    HealthController[\"HealthController\"]\n  end\n  subgraph Services\n    ExampleService[\"ExampleService\"]\n  end\n  subgraph Data_Access\n    BaseEntity[\"BaseEntity\"]\n    ExampleEntity[\"ExampleEntity\"]\n    ExampleRepository[\"ExampleRepository\"]\n  end\n  subgraph Infrastructure\n    AsyncConfig[\"AsyncConfig\"]\n    CoreDataSourceConfig[\"CoreDataSourceConfig\"]\n    CoreJpaConfig[\"CoreJpaConfig\"]\n    ExampleConfig[\"ExampleConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

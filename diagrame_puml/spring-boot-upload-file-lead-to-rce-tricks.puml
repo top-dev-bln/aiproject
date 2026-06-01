@@ -1,0 +1,80 @@
+@startuml
+
+package code.landgrey {
+  class Application {
+    +main() : void
+  }
+}
+
+package code.landgrey.bean {
+  class User {
+    -name : String
+    -age : Integer
+    -car : Car
+    -secret : Object
+    +setName() : void
+    +getName() : String
+    +setAge() : void
+    +getAge() : Integer
+    +setCar() : void
+    +getCar() : Car
+    +getSecret() : Object
+    +setSecret() : void
+  }
+  class Car {
+    -brand : String
+    -price : long
+    +getPrice() : long
+    +getBrand() : String
+    +setBrand() : void
+    +setPrice() : void
+  }
+}
+
+package code.landgrey.controller {
+  class HelloController <<Controller>> {
+    +hello() : String
+  }
+  class IndexController <<Controller>> {
+    +index() : String
+  }
+  class ListFileController <<Controller>> {
+    +listFile() : String
+  }
+  class FastJsonController <<Controller>> {
+    +testFastJson() : String
+  }
+  class JdbcController <<Controller>> {
+    +JdbcTest() : String
+  }
+  class ClassForNameController <<Controller>> {
+    +classForName() : String
+  }
+  class UploadController <<Controller>> {
+    +uploadPage() : String
+    +uploadStatus() : String
+    +singleFileUpload() : String
+  }
+  class JackSonController <<Controller>> {
+    -objectMapper : ObjectMapper
+    +testJackSon() : String
+  }
+  class ClassLoaderController <<Controller>> {
+    +classForName() : String
+  }
+}
+
+package sun.nio.cs.ext {
+  class IBM33722 {
+  }
+  class ExtendedCharsets {
+    -initialized : boolean
+    +init() : void
+    +aliasesFor() : String[]
+  }
+}
+
+' --- Relatii ---
+JackSonController --> User
+
+@enduml

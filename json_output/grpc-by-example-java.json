@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include guestbook ui, hello impl, my business. Core business data revolves around GuestbookEntryDomain. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "services": [
+          "MyMessageService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage guestbook ui operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "GuestbookUiController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to interact with hello impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "HelloServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to interact with my business functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyBusinessService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to interact with my message functionality, so that the system fulfills my needs.",
+        "services": [
+          "MyMessageService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GuestbookUiController[\"GuestbookUiController\"]\n  end\n  subgraph Services\n    HelloServiceImpl[\"HelloServiceImpl\"]\n    MyBusinessService[\"MyBusinessService\"]\n    MyMessageService[\"MyMessageService\"]\n  end\n  subgraph Data_Access\n    GuestbookEntryDomain[\"GuestbookEntryDomain\"]\n    GuestbookRepository[\"GuestbookRepository\"]\n    MyDataRepository[\"MyDataRepository\"]\n  end\n  subgraph Security\n    JwtClientInterceptor[\"JwtClientInterceptor\"]\n    JwtServerInterceptor[\"JwtServerInterceptor\"]\n    TraceIdClientInterceptor[\"TraceIdClientInterceptor\"]\n    TraceIdServerInterceptor[\"TraceIdServerInterceptor\"]\n    UnknownStatusDescriptionInterceptor[\"UnknownStatusDescriptionInterceptor\"]\n  end\n  subgraph Infrastructure\n    ApplicationConfig[\"ApplicationConfig\"]\n    EurekaServer[\"EurekaServer\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

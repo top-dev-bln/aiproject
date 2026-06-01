@@ -1,0 +1,208 @@
+@startuml
+
+package org.mvnsearch {
+  class SpringBootDubboServerApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringBootDubboClientApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringBootDubboClientApplication {
+    +main() : void
+  }
+  class PortalController <<Controller>> {
+    -uicTemplate : UicTemplate
+    -accountManager : AccountManager
+    +index() : String
+  }
+}
+
+package org.mvnsearch.spring.boot.dubbo {
+  class DubboBasedAutoConfiguration {
+  }
+  class DubboEndpoint {
+    -dubboProperties : DubboProperties
+    -applicationContext : ApplicationContext
+    +setApplicationContext() : void
+    +setDubboProperties() : void
+    +invoke() : Object
+  }
+  class DubboHealthIndicator {
+    -applicationContext : ApplicationContext
+    +setApplicationContext() : void
+    +doHealthCheck() : void
+  }
+  interface EnableDubboConfiguration {
+  }
+  class DubboProperties {
+    -app : String
+    -registry : String
+    -monitor : String
+    -httpCheckUrl : String
+    -protocol : String
+    -transporter : String
+    -port : Integer
+    -exportHost : String
+    -exportPort : Integer
+    -threads : Integer
+    +getApp() : String
+    +setApp() : void
+    +getRegistry() : String
+    +setRegistry() : void
+    +getMonitor() : String
+    +setMonitor() : void
+    +getHttpCheckUrl() : String
+    +setHttpCheckUrl() : void
+  }
+  class DubboMetrics {
+  }
+  class DubboConsumerAutoConfiguration {
+    -applicationContext : ApplicationContext
+    -applicationConfig : ApplicationConfig
+    -registryConfig : RegistryConfig
+    +setApplicationContext() : void
+    +beanPostProcessor() : BeanPostProcessor
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+  }
+  class DubboProviderAutoConfiguration {
+    -applicationContext : ApplicationContext
+    -applicationConfig : ApplicationConfig
+    -protocolConfig : ProtocolConfig
+    -registryConfig : RegistryConfig
+    -dubboProperties : DubboProperties
+    -managementServerProperties : ManagementServerProperties
+    -serverProperties : ServerProperties
+    +setApplicationContext() : void
+    +init() : void
+    +publishDubboService() : void
+  }
+  class DubboAutoConfiguration {
+    -properties : DubboProperties
+    -env : Environment
+    +dubboApplicationConfig() : ApplicationConfig
+    +dubboProtocolConfig() : ProtocolConfig
+    +dubboRegistryConfig() : RegistryConfig
+    +dubboMonitorConfig() : MonitorConfig
+    +dubboOperationEndpoint() : DubboOperationEndpoint
+    +dubboHealthIndicator() : DubboHealthIndicator
+    +dubboEndpoint() : DubboEndpoint
+    +dubboConsumerMetrics() : DubboMetrics
+  }
+  class DubboOperationEndpoint <<Controller>> {
+    -properties : DubboProperties
+    -registry : Registry
+    -OFFLINE : Boolean
+    +init() : void
+    +offline() : String
+    +getPath() : String
+    +isSensitive() : boolean
+  }
+  class DubboConsumerBuilder {
+    -interfaceClazz : Class
+    -version : String
+    -timeout : Integer
+    +create() : DubboConsumerBuilder
+    +service() : DubboConsumerBuilder
+    +version() : DubboConsumerBuilder
+    +timeout() : DubboConsumerBuilder
+    +build() : ReferenceBean
+  }
+}
+
+package org.mvnsearch.spring.boot.dubbo.listener {
+  class ConsumerInvokeStaticsFilter {
+    +invoke() : Result
+  }
+  class ConsumerSubscribeListener {
+    -subscribedInterfaces : Set<Class>
+    +referred() : void
+    +destroyed() : void
+  }
+  class ProviderExportListener {
+    -exportedInterfaces : Set<Class>
+    -exportedUrl : Set<URL>
+    +exported() : void
+    +unexported() : void
+  }
+  class ProviderInvokeStaticsFilter {
+    +invoke() : Result
+  }
+  class StaticsFilter {
+    +increase() : void
+    +getValue() : long
+  }
+}
+
+package org.mvnsearch.uic {
+  class UicTemplateImpl {
+    +findById() : User
+    +isEmailUnique() : Optional<Long>
+  }
+  class SpringBootDubboServerApplication {
+    +main() : void
+  }
+  class AccountManagerImpl {
+    +findById() : User
+    +create() : void
+  }
+  class User {
+    -id : Long
+    -nick : String
+    -createdAt : Date
+    +getId() : Long
+    +setId() : void
+    +getNick() : String
+    +setNick() : void
+    +getCreatedAt() : Date
+    +setCreatedAt() : void
+  }
+  interface UicTemplate {
+    +findById() : User
+  }
+  interface AccountManager {
+    +findById() : User
+    +create() : void
+  }
+}
+
+package org.mvnsearch.uic.boot {
+  class UicProperties {
+    -version : String
+    -timeout : Integer
+    +getVersion() : String
+    +setVersion() : void
+    +getTimeout() : Integer
+    +setTimeout() : void
+  }
+  class UicDemoAutoconfiguration {
+    -properties : UicProperties
+    +uicTemplate() : ReferenceBean<UicTemplate>
+    +accountManager() : ReferenceBean<AccountManager>
+  }
+}
+
+' --- Relatii ---
+UicDemoAutoconfiguration --|> DubboBasedAutoConfiguration
+UicDemoAutoconfiguration --> DubboAutoConfiguration
+UicDemoAutoconfiguration --> DubboBasedAutoConfiguration
+UicDemoAutoconfiguration --> AccountManager
+UicDemoAutoconfiguration --> UicTemplate
+UicTemplateImpl ..|> UicTemplate
+SpringBootDubboServerApplication --> EnableDubboConfiguration
+AccountManagerImpl ..|> AccountManager
+DubboEndpoint --> ConsumerInvokeStaticsFilter
+DubboEndpoint --> ConsumerSubscribeListener
+DubboEndpoint --> ProviderExportListener
+DubboEndpoint --> ProviderInvokeStaticsFilter
+DubboHealthIndicator --> ConsumerSubscribeListener
+DubboMetrics --> ConsumerInvokeStaticsFilter
+DubboMetrics --> ProviderInvokeStaticsFilter
+DubboConsumerAutoConfiguration --|> DubboBasedAutoConfiguration
+DubboOperationEndpoint --> ProviderExportListener
+ConsumerInvokeStaticsFilter --|> StaticsFilter
+ProviderInvokeStaticsFilter --|> StaticsFilter
+PortalController --> AccountManager
+PortalController --> UicTemplate
+
+@enduml

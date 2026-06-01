@@ -1,0 +1,228 @@
+@startuml
+
+package com.alibaba.codeless.framework.autoconfigure {
+  class CodelessPageResult {
+    -page : int
+    -size : int
+    -totalNumber : long
+    -totalPage : int
+    -result : List<T>
+    +getPage() : int
+    +setPage() : void
+    +getSize() : int
+    +setSize() : void
+    +getTotalNumber() : long
+    +setTotalNumber() : void
+    +getTotalPage() : int
+    +setTotalPage() : void
+  }
+  class CodelessAutoGenerateHandlerMapping {
+    -useSuffixPatternMatch : boolean
+    -useRegisteredSuffixPatternMatch : boolean
+    -useTrailingSlashMatch : boolean
+    +setUseSuffixPatternMatch() : void
+    +setUseRegisteredSuffixPatternMatch() : void
+    +setUseTrailingSlashMatch() : void
+    +setCodelessEntityMetadataMap() : void
+    +afterPropertiesSet() : void
+    +getOrder() : int
+    +initHandlerMethods() : void
+  }
+  class CodelessControllerMethodFactory {
+    -ADD_METHOD : Method
+    -MODIFY_METHOD : Method
+    -DELETE_METHOD : Method
+    -GET_METHOD : Method
+    -LIST_METHOD : Method
+    -LIST_BY_ID_METHOD : Method
+    -LIST_BY_PAGE_METHOD : Method
+    +getAddMethod() : Method
+    +getModifyMethod() : Method
+    +getDeleteMethod() : Method
+    +getGetMethod() : Method
+    +getListMethod() : Method
+    +getListByIdMethod() : Method
+    +getListByPageMethod() : Method
+  }
+  class CodelessControllerProxy {
+    -serviceProxy : CodelessServiceProxy
+    +setCodelessEntityMetadataMap() : void
+    +setApplicationContext() : void
+  }
+  class CodelessDaoProxy {
+    -ID_MUST_NOT_BE_NULL : String
+    -entityManager : EntityManager
+    -clazz : Class<T>
+    -serialVersionUID : long
+    +toPredicate() : Predicate
+  }
+  class CodelessDaoFactoryBean {
+    -classLoader : ClassLoader
+    -codelessDaoProxy : CodelessDaoProxy
+    +getObject() : CodelessDao
+    +setResourceLoader() : void
+  }
+  class CodelessEntityMetadata {
+    -getIdMethod : Method
+    -idField : Field
+    +getGetIdMethod() : Method
+    +getIdField() : Field
+    +getIdValue() : Object
+  }
+  class CodelessServiceProxy {
+    -codelessDao : CodelessDao
+    +setApplicationContext() : void
+  }
+  interface CodelessDao {
+  }
+}
+
+package com.alibaba.codeless.framework.autoconfigure.annotation {
+  interface EnableCodeless {
+  }
+  class CodelessScannerRegistrar {
+    -resourcePatternResolver : ResourcePatternResolver
+    -metadataReaderFactory : MetadataReaderFactory
+    -classLoader : ClassLoader
+    -environment : Environment
+    +registerBeanDefinitions() : void
+    +setEnvironment() : void
+    +setResourceLoader() : void
+  }
+  interface CodelessScan {
+  }
+}
+
+package com.alibaba.codeless.framework.core.utils {
+  interface StringUtils {
+    -cs : CharSequence
+    -sz : int
+    -cs : CharSequence
+  }
+  interface JsonUtils {
+  }
+}
+
+package com.alibaba.codeless.framework.web {
+  class JsonHandlerExceptionResolver {
+    -log : Logger
+    -KEY : String
+    -errorView : View
+    -messageSource : MessageSource
+    -errorId : String
+    -methodName : String
+    -classMapping : String
+    -methodMapping : String
+    -isHandlerMethod : boolean
+    -CONTENT_TYPE : String
+    +resolveException() : ModelAndView
+    +getOrder() : int
+    +setMethodName() : void
+    +setClassMapping() : void
+    +setMethodMapping() : void
+    +setBeanType() : void
+    +setParameterMap() : void
+    +isHandlerMethod() : boolean
+  }
+  class DefaultMessagesProperties {
+    -properties : Properties
+    +contains() : boolean
+    +getMessage() : String
+    +getMessage() : String
+  }
+  class JsonHandlerMethodReturnValueHandler {
+    -CONTENT_TYPE : String
+    -DEFAULT_SUCCESS_CODE : String
+    -messageSource : MessageSource
+    +supportsReturnType() : boolean
+    +handleReturnValue() : void
+  }
+  class JsonResponse {
+    -code : String
+    -message : String
+    -data : Object
+    +getCode() : String
+    +getMessage() : String
+    +getData() : Object
+  }
+  class BusinessException {
+    -code : String
+    -args : Object[]
+    +getCode() : String
+    +getArgs() : Object[]
+  }
+  class CodelessWebAutoConfiguration {
+    -requestMappingHandlerAdapter : RequestMappingHandlerAdapter
+    -messageSource : MessageSource
+    +jsonHandlerExceptionResolver() : JsonHandlerExceptionResolver
+    +jsonHandlerMethodReturnValueHandler() : JsonHandlerMethodReturnValueHandler
+    +afterPropertiesSet() : void
+  }
+}
+
+package com.alibaba.sca.bp.gateway {
+  class GatewayApplication {
+    +main() : void
+  }
+}
+
+package com.alibaba.sca.bp.order {
+  class OrderApplication {
+    +main() : void
+  }
+}
+
+package com.alibaba.sca.bp.order.controller {
+  class ExampleController <<Controller>> {
+    -userService : UserService
+    +testService() : String
+  }
+}
+
+package com.alibaba.sca.bp.order.rest {
+  interface UserService {
+  }
+}
+
+package com.alibaba.sca.bp.usercenter {
+  class UserCenterApplication {
+    +main() : void
+  }
+}
+
+package com.alibaba.sca.bp.usercenter.controller {
+  class ExampleController <<Controller>> {
+    -userId : String
+    -output : MessageChannel
+    -redisTemplate : StringRedisTemplate
+    +testConfig() : String
+    +testMq() : String
+    +testRedis() : String
+  }
+}
+
+package com.alibaba.sca.bp.usercenter.entity {
+  class User <<Entity>> {
+    -userId : Integer
+    -userName : String
+    -password : String
+    -phone : String
+  }
+}
+
+' --- Relatii ---
+ExampleController --> UserService
+UserCenterApplication --> CodelessScan
+User --> EnableCodeless
+JsonHandlerExceptionResolver --> JsonUtils
+JsonHandlerExceptionResolver --> StringUtils
+JsonHandlerMethodReturnValueHandler --> JsonUtils
+JsonHandlerMethodReturnValueHandler --> StringUtils
+CodelessControllerProxy --> JsonUtils
+CodelessControllerProxy --> StringUtils
+CodelessControllerProxy --> BusinessException
+CodelessDaoProxy ..|> CodelessDao
+CodelessEntityMetadata --> StringUtils
+CodelessScannerRegistrar --> StringUtils
+
+@enduml

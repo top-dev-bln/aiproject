@@ -1,0 +1,2416 @@
+@startuml
+
+package com.example.copsboot {
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+  class CopsbootApplicationTests {
+  }
+  class CopsbootApplication {
+    +main() : void
+  }
+  class CopsbootApplicationConfiguration {
+    +uniqueIdGenerator() : UniqueIdGenerator<UUID>
+  }
+}
+
+package com.example.copsboot.infrastructure {
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+  class SpringProfiles {
+    -DEV : String
+    -LOCAL : String
+    -TEST : String
+    -STAGING : String
+    -PROD : String
+    -REPOSITORY_TEST : String
+    -INTEGRATION_TEST : String
+  }
+}
+
+package com.example.copsboot.infrastructure.mvc {
+  class RestControllerExceptionHandler {
+  }
+  class RestControllerExceptionHandler {
+  }
+  class RestControllerExceptionHandler {
+  }
+  class RestControllerExceptionHandler {
+  }
+  class RestControllerExceptionHandler {
+  }
+  class RestControllerExceptionHandler {
+  }
+  class RestControllerExceptionHandler {
+  }
+}
+
+package com.example.copsboot.infrastructure.security {
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+  class WebSecurityConfiguration {
+  }
+}
+
+package com.example.copsboot.infrastructure.test {
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+  class CopsbootControllerDocumentationTestConfiguration {
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  interface CopsbootControllerDocumentationTest {
+  }
+  interface CopsbootControllerTest {
+  }
+}
+
+package com.example.copsboot.report {
+  class ReportService <<Service>> {
+    -repository : ReportRepository
+    +createReport() : Report
+  }
+  class ReportId {
+  }
+  class Report <<Entity>> {
+    -reporterId : UserId
+    -dateTime : Instant
+    -description : String
+    +getReporterId() : UserId
+    +getDateTime() : Instant
+    +getDescription() : String
+  }
+  class ReportRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : ReportId
+  }
+  interface ReportRepository {
+  }
+  interface ReportRepositoryCustom {
+  }
+  class ReportService <<Service>> {
+    -repository : ReportRepository
+    +createReport() : Report
+  }
+  class ReportId {
+  }
+  class Report <<Entity>> {
+    -reporterId : UserId
+    -dateTime : Instant
+    -description : String
+    +getReporterId() : UserId
+    +getDateTime() : Instant
+    +getDescription() : String
+  }
+  class ReportRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : ReportId
+  }
+  interface ReportRepository {
+  }
+  interface ReportRepositoryCustom {
+  }
+  class ReportService <<Service>> {
+    -repository : ReportRepository
+    +createReport() : Report
+  }
+  class ReportId {
+  }
+  class Report <<Entity>> {
+    -reporterId : UserId
+    -dateTime : Instant
+    -description : String
+    +getReporterId() : UserId
+    +getDateTime() : Instant
+    +getDescription() : String
+  }
+  class ReportRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : ReportId
+  }
+  interface ReportRepository {
+  }
+  interface ReportRepositoryCustom {
+  }
+  class ReportService <<Service>> {
+    -repository : ReportRepository
+    +createReport() : Report
+  }
+  class ReportId {
+  }
+  class Report <<Entity>> {
+    -reporterId : UserId
+    -dateTime : Instant
+    -description : String
+    +getReporterId() : UserId
+    +getDateTime() : Instant
+    +getDescription() : String
+  }
+  class ReportRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : ReportId
+  }
+  interface ReportRepository {
+  }
+  interface ReportRepositoryCustom {
+  }
+  class ReportService <<Service>> {
+    -repository : ReportRepository
+    +createReport() : Report
+  }
+  class ReportId {
+  }
+  class Report <<Entity>> {
+    -reporterId : UserId
+    -dateTime : Instant
+    -description : String
+    +getReporterId() : UserId
+    +getDateTime() : Instant
+    +getDescription() : String
+  }
+  class ReportRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : ReportId
+  }
+  interface ReportRepository {
+  }
+  interface ReportRepositoryCustom {
+  }
+  class ReportService <<Service>> {
+    -repository : ReportRepository
+    +createReport() : Report
+  }
+  class ReportId {
+  }
+  class Report <<Entity>> {
+    -reporterId : UserId
+    -dateTime : Instant
+    -description : String
+    +getReporterId() : UserId
+    +getDateTime() : Instant
+    +getDescription() : String
+  }
+  class ReportRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : ReportId
+  }
+  interface ReportRepository {
+  }
+  interface ReportRepositoryCustom {
+  }
+}
+
+package com.example.copsboot.report.web {
+  class ReportRestControllerTest {
+    -mockMvc : MockMvc
+    -service : ReportService
+    -userService : UserService
+    +officerIsAbleToPostAReport() : void
+  }
+  class CreateReportRequestValidatorTest {
+    +givenTrafficIndicentButInvolvedCarsZero_invalid() : void
+    +givenTrafficIndicent_involvedCarsMustBePositive() : void
+    +givenNoTrafficIndicent_involvedCarsDoesNotMatter() : void
+  }
+  class ReportDescriptionValidatorTest {
+    +givenEmptyString_notValid() : void
+    +givenSuspectWordPresent_valid() : void
+  }
+  class ReportRestController <<Controller>> {
+    -service : ReportService
+    -userService : UserService
+    +createReport() : ReportDto
+  }
+  interface ValidReportDescription {
+  }
+  class ReportDescriptionValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class CreateReportRequestValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  interface ValidCreateReportRequest {
+  }
+  class ReportRestControllerTest {
+    -mockMvc : MockMvc
+    -service : ReportService
+    -userService : UserService
+    +officerIsAbleToPostAReport() : void
+  }
+  class ReportDescriptionValidatorTest {
+    +givenEmptyString_notValid() : void
+    +givenSuspectWordPresent_valid() : void
+  }
+  class ReportRestController <<Controller>> {
+    -service : ReportService
+    -userService : UserService
+    +createReport() : ReportDto
+  }
+  interface ValidReportDescription {
+  }
+  class ReportDescriptionValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class ReportRestControllerTest {
+    -mockMvc : MockMvc
+    -service : ReportService
+    -userService : UserService
+    +officerIsAbleToPostAReport() : void
+  }
+  class ReportRestController <<Controller>> {
+    -service : ReportService
+    -userService : UserService
+    +createReport() : ReportDto
+  }
+  class ReportRestControllerTest {
+    -mockMvc : MockMvc
+    -service : ReportService
+    -userService : UserService
+    +officerIsAbleToPostAReport() : void
+  }
+  class CreateReportRequestValidatorTest {
+    +givenTrafficIndicentButInvolvedCarsZero_invalid() : void
+    +givenTrafficIndicent_involvedCarsMustBePositive() : void
+    +givenNoTrafficIndicent_involvedCarsDoesNotMatter() : void
+  }
+  class ReportDescriptionValidatorTest {
+    +givenEmptyString_notValid() : void
+    +givenSuspectWordPresent_valid() : void
+  }
+  class ReportRestController <<Controller>> {
+    -service : ReportService
+    -userService : UserService
+    +createReport() : ReportDto
+  }
+  interface ValidReportDescription {
+  }
+  class ReportDescriptionValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class CreateReportRequestValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  interface ValidCreateReportRequest {
+  }
+  class ReportRestControllerTest {
+    -mockMvc : MockMvc
+    -service : ReportService
+    -userService : UserService
+    +officerIsAbleToPostAReport() : void
+  }
+  class CreateReportRequestValidatorTest {
+    +givenTrafficIndicentButInvolvedCarsZero_invalid() : void
+    +givenTrafficIndicent_involvedCarsMustBePositive() : void
+    +givenNoTrafficIndicent_involvedCarsDoesNotMatter() : void
+  }
+  class ReportDescriptionValidatorTest {
+    +givenEmptyString_notValid() : void
+    +givenSuspectWordPresent_valid() : void
+  }
+  class ReportRestControllerIntegrationTest {
+    -REALM_NAME : String
+    -ROLE_NAME : String
+    -INTEGRATION_TEST_CLIENT_ID : String
+    -TEST_USER_NAME : String
+    -TEST_USER_PASSWORD : String
+    -serverport : int
+    -keycloak : KeycloakContainer
+    -clientSecret : String
+    +setup() : void
+    +officerIsUnableToPostAReportIfFileSizeIsTooBig() : void
+  }
+  class KeycloakAdminClientFacade {
+    -keycloak : Keycloak
+    +createRealm() : void
+    +createRealmRole() : void
+    +createUser() : void
+    +createClient() : String
+  }
+  class ReportRestController <<Controller>> {
+    -service : ReportService
+    -userService : UserService
+    +createReport() : ReportDto
+  }
+  interface ValidReportDescription {
+  }
+  class ReportDescriptionValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class CreateReportRequestValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  interface ValidCreateReportRequest {
+  }
+  class ReportRestControllerTest {
+    -mockMvc : MockMvc
+    -service : ReportService
+    -userService : UserService
+    +officerIsAbleToPostAReport() : void
+  }
+  class CreateReportRequestValidatorTest {
+    +givenTrafficIndicentButInvolvedCarsZero_invalid() : void
+    +givenTrafficIndicent_involvedCarsMustBePositive() : void
+    +givenNoTrafficIndicent_involvedCarsDoesNotMatter() : void
+  }
+  class ReportDescriptionValidatorTest {
+    +givenEmptyString_notValid() : void
+    +givenSuspectWordPresent_valid() : void
+  }
+  class ReportRestController <<Controller>> {
+    -service : ReportService
+    -userService : UserService
+    +createReport() : ReportDto
+  }
+  interface ValidReportDescription {
+  }
+  class ReportDescriptionValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class CreateReportRequestValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  interface ValidCreateReportRequest {
+  }
+}
+
+package com.example.copsboot.user {
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  enum UserRole {
+  }
+  class User <<Entity>> {
+    -email : String
+    -password : String
+    -roles : Set<UserRole>
+    +createOfficer() : User
+    +createCaptain() : User
+    +getEmail() : String
+    +getPassword() : String
+    +getRoles() : Set<UserRole>
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+  }
+  enum UserRole {
+  }
+  class User <<Entity>> {
+    -id : UUID
+    -email : String
+    -password : String
+    -roles : Set<UserRole>
+    +getId() : UUID
+    +getEmail() : String
+    +getPassword() : String
+    +getRoles() : Set<UserRole>
+  }
+  interface UserRepository {
+  }
+  enum UserRole {
+  }
+  class User {
+    -id : UUID
+    -email : String
+    -password : String
+    -roles : Set<UserRole>
+    +getId() : UUID
+    +getEmail() : String
+    +getPassword() : String
+    +getRoles() : Set<UserRole>
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  enum UserRole {
+  }
+  class User <<Entity>> {
+    -email : String
+    -password : String
+    -roles : Set<UserRole>
+    +getEmail() : String
+    +getPassword() : String
+    +getRoles() : Set<UserRole>
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+    +getUserById() : User
+    +findUserByMobileToken() : Optional<User>
+  }
+  class UserNotFoundException {
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  class UserIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+    +getUserById() : User
+  }
+  class UserNotFoundException {
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  class UserIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+    +getUserById() : User
+  }
+  class UserNotFoundException {
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  class UserIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+    +getUserById() : User
+  }
+  class UserNotFoundException {
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  class UserIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+    +getUserById() : User
+    +findUserByMobileToken() : Optional<User>
+  }
+  class UserNotFoundException {
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  class UserIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : UserId
+  }
+  interface UserRepository {
+  }
+  class UserRepositoryTest {
+    -repository : UserRepository
+    -entityManager : EntityManager
+    -jdbcTemplate : JdbcTemplate
+    +testStoreUser() : void
+    +generator() : UniqueIdGenerator<UUID>
+  }
+  class AuthServerIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : AuthServerId
+  }
+  enum UserRole {
+  }
+  class UserService <<Service>> {
+    -repository : UserRepository
+    +findUserByAuthServerId() : Optional<User>
+    +createUser() : User
+    +getUserById() : User
+    +findUserByMobileToken() : Optional<User>
+  }
+  class UserNotFoundException {
+  }
+  class User <<Entity>> {
+    -email : String
+    -authServerId : AuthServerId
+    -mobileToken : String
+    +getEmail() : String
+    +getAuthServerId() : AuthServerId
+    +getMobileToken() : String
+  }
+  class UserId {
+  }
+  interface UserRepositoryCustom {
+  }
+  class UserRepositoryImpl {
+    -generator : UniqueIdGenerator<UUID>
+    +nextId() : UserId
+  }
+  class UserIdAttributeConverter {
+    +convertToDatabaseColumn() : UUID
+    +convertToEntityAttribute() : UserId
+  }
+  interface UserRepository {
+  }
+}
+
+package com.example.copsboot.user.web {
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+  }
+  class UserRestController <<Controller>> {
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class CreateUserRequestValidatorTest {
+    -userService : UserService
+    -factory : ValidatorFactory
+    +invalidIfAlreadyUserWithGivenMobileToken() : void
+    +validIfNoUserWithGivenMobileToken() : void
+  }
+  class CreateUserRequestValidator {
+    -userService : UserService
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  interface ValidCreateUserRequest {
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+    +restDocsMockMvcConfigurationCustomizer() : RestDocsMockMvcConfigurationCustomizer
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class CreateUserRequestValidatorTest {
+    -userService : UserService
+    -factory : ValidatorFactory
+    +invalidIfAlreadyUserWithGivenMobileToken() : void
+    +validIfNoUserWithGivenMobileToken() : void
+  }
+  class CreateUserRequestValidator {
+    -userService : UserService
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  interface ValidCreateUserRequest {
+  }
+  class UserRestControllerDocumentation {
+    -mockMvc : MockMvc
+    -service : UserService
+    +ownUserDetailsWhenNotLoggedInExample() : void
+    +authenticatedOfficerDetailsExample() : void
+    +createOfficerExample() : void
+  }
+  class UserRestControllerTest {
+    -mockMvc : MockMvc
+    -userService : UserService
+  }
+  class CreateUserRequestValidatorTest {
+    -userService : UserService
+    -factory : ValidatorFactory
+    +invalidIfAlreadyUserWithGivenMobileToken() : void
+    +validIfNoUserWithGivenMobileToken() : void
+  }
+  class CreateUserRequestValidator {
+    -userService : UserService
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class UserRestController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserDto
+  }
+  interface ValidCreateUserRequest {
+  }
+}
+
+package com.example.copsboot.util.test {
+  class ConstraintViolationSetAssert {
+    +assertThat() : ConstraintViolationSetAssert
+    +hasViolationOnPath() : ConstraintViolationSetAssert
+    +hasViolationSize() : ConstraintViolationSetAssert
+    +hasNoViolations() : ConstraintViolationSetAssert
+  }
+  class ConstraintViolationSetAssert {
+    +assertThat() : ConstraintViolationSetAssert
+    +hasViolationOnPath() : ConstraintViolationSetAssert
+    +hasViolationSize() : ConstraintViolationSetAssert
+    +hasNoViolations() : ConstraintViolationSetAssert
+  }
+  class ConstraintViolationSetAssert {
+    +assertThat() : ConstraintViolationSetAssert
+    +hasViolationOnPath() : ConstraintViolationSetAssert
+    +hasViolationSize() : ConstraintViolationSetAssert
+    +hasNoViolations() : ConstraintViolationSetAssert
+  }
+  class ConstraintViolationSetAssert {
+    +assertThat() : ConstraintViolationSetAssert
+    +hasViolationOnPath() : ConstraintViolationSetAssert
+    +hasViolationSize() : ConstraintViolationSetAssert
+    +hasNoViolations() : ConstraintViolationSetAssert
+  }
+  class ConstraintViolationSetAssert {
+    +assertThat() : ConstraintViolationSetAssert
+    +hasViolationOnPath() : ConstraintViolationSetAssert
+    +hasViolationSize() : ConstraintViolationSetAssert
+    +hasNoViolations() : ConstraintViolationSetAssert
+  }
+}
+
+package com.example.orm.jpa {
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+  interface EntityId {
+  }
+  class InMemoryUniqueIdGenerator {
+    +getNextUniqueId() : UUID
+  }
+  class AbstractEntityId {
+    -id : T
+    +getId() : T
+    +asString() : String
+  }
+  class AbstractEntity {
+    -id : T
+    +getId() : T
+  }
+  interface UniqueIdGenerator {
+  }
+  interface Entity {
+  }
+}
+
+package com.example.util {
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+  interface ArtifactForFramework {
+  }
+}
+
+package com.springbook.application {
+  class ApplicationTests {
+  }
+  class Application {
+    +main() : void
+  }
+  class ApplicationTests {
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+' --- Relatii ---
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+User --> Entity
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+CreateUserRequestValidatorTest --> SpringProfiles
+CreateUserRequestValidatorTest --> User
+CreateUserRequestValidatorTest --> UserId
+CreateUserRequestValidatorTest --> UserService
+ReportRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> Report
+ReportRestControllerTest --> ReportId
+ReportRestControllerTest --> ReportService
+ReportRestControllerTest --> User
+ReportRestControllerTest --> UserId
+ReportRestControllerTest --> UserService
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+CreateUserRequestValidator --> UserService
+UserRestController --> User
+UserRestController --> UserService
+ReportId --|> AbstractEntityId
+ReportId --> AbstractEntityId
+ReportId --> ArtifactForFramework
+Report --|> AbstractEntity
+Report --> UserId
+Report --> AbstractEntity
+Report --> ArtifactForFramework
+Report --> Entity
+ReportRepositoryImpl ..|> ReportRepositoryCustom
+ReportRepositoryImpl --> UniqueIdGenerator
+ReportRepository --> UserRepositoryCustom
+ReportRestController --> Report
+ReportRestController --> ReportService
+ReportRestController --> User
+ReportRestController --> UserNotFoundException
+ReportRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> Report
+ReportRestControllerTest --> ReportId
+ReportRestControllerTest --> ReportService
+ReportRestControllerTest --> User
+ReportRestControllerTest --> UserId
+ReportRestControllerTest --> UserService
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+ReportId --|> AbstractEntityId
+ReportId --> AbstractEntityId
+ReportId --> ArtifactForFramework
+Report --|> AbstractEntity
+Report --> UserId
+Report --> AbstractEntity
+Report --> ArtifactForFramework
+Report --> Entity
+ReportRepositoryImpl ..|> ReportRepositoryCustom
+ReportRepositoryImpl --> UniqueIdGenerator
+ReportRepository --> UserRepositoryCustom
+ReportRestController --> Report
+ReportRestController --> ReportService
+ReportRestController --> User
+ReportRestController --> UserNotFoundException
+ReportRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> Report
+ReportRestControllerTest --> ReportId
+ReportRestControllerTest --> ReportService
+ReportRestControllerTest --> User
+ReportRestControllerTest --> UserId
+ReportRestControllerTest --> UserService
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+ReportId --|> AbstractEntityId
+ReportId --> AbstractEntityId
+ReportId --> ArtifactForFramework
+Report --|> AbstractEntity
+Report --> UserId
+Report --> AbstractEntity
+Report --> ArtifactForFramework
+Report --> Entity
+ReportRepositoryImpl ..|> ReportRepositoryCustom
+ReportRepositoryImpl --> UniqueIdGenerator
+ReportRepository --> UserRepositoryCustom
+ReportRestController --> Report
+ReportRestController --> ReportService
+ReportRestController --> User
+ReportRestController --> UserNotFoundException
+ReportRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> Report
+ReportRestControllerTest --> ReportId
+ReportRestControllerTest --> ReportService
+ReportRestControllerTest --> User
+ReportRestControllerTest --> UserId
+ReportRestControllerTest --> UserService
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+ReportId --|> AbstractEntityId
+ReportId --> AbstractEntityId
+ReportId --> ArtifactForFramework
+Report --|> AbstractEntity
+Report --> UserId
+Report --> AbstractEntity
+Report --> ArtifactForFramework
+Report --> Entity
+ReportRepositoryImpl ..|> ReportRepositoryCustom
+ReportRepositoryImpl --> UniqueIdGenerator
+ReportRepository --> UserRepositoryCustom
+ReportRestController --> Report
+ReportRestController --> ReportService
+ReportRestController --> User
+ReportRestController --> UserNotFoundException
+ReportRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerTest --> UserService
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> WebSecurityConfiguration
+UserRestControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> WebSecurityConfiguration
+UserRestControllerDocumentation --> CopsbootControllerTest
+UserRestControllerTest --> CopsbootControllerTest
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+UserRestController --> User
+UserRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+CreateUserRequestValidatorTest --> SpringProfiles
+CreateUserRequestValidatorTest --> User
+CreateUserRequestValidatorTest --> UserId
+CreateUserRequestValidatorTest --> UserService
+ReportRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> Report
+ReportRestControllerTest --> ReportId
+ReportRestControllerTest --> ReportService
+ReportRestControllerTest --> User
+ReportRestControllerTest --> UserId
+ReportRestControllerTest --> UserService
+ReportRestControllerIntegrationTest --> SpringProfiles
+ReportRestControllerIntegrationTest --> UserRepository
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+CreateUserRequestValidator --> UserService
+UserRestController --> User
+UserRestController --> UserService
+ReportId --|> AbstractEntityId
+ReportId --> AbstractEntityId
+ReportId --> ArtifactForFramework
+Report --|> AbstractEntity
+Report --> UserId
+Report --> AbstractEntity
+Report --> ArtifactForFramework
+Report --> Entity
+ReportRepositoryImpl ..|> ReportRepositoryCustom
+ReportRepositoryImpl --> UniqueIdGenerator
+ReportRepository --> UserRepositoryCustom
+ReportRestController --> Report
+ReportRestController --> ReportService
+ReportRestController --> User
+ReportRestController --> UserNotFoundException
+ReportRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+CopsbootApplicationTests --> SpringProfiles
+UserRepositoryTest --> SpringProfiles
+UserRepositoryTest --> InMemoryUniqueIdGenerator
+UserRepositoryTest --> UniqueIdGenerator
+UserRestControllerDocumentation --> CopsbootControllerDocumentationTest
+UserRestControllerTest --> CopsbootControllerTest
+CreateUserRequestValidatorTest --> SpringProfiles
+CreateUserRequestValidatorTest --> User
+CreateUserRequestValidatorTest --> UserId
+CreateUserRequestValidatorTest --> UserService
+ReportRestControllerTest --> CopsbootControllerTest
+ReportRestControllerTest --> Report
+ReportRestControllerTest --> ReportId
+ReportRestControllerTest --> ReportService
+ReportRestControllerTest --> User
+ReportRestControllerTest --> UserId
+ReportRestControllerTest --> UserService
+CopsbootControllerDocumentationTest --> WebSecurityConfiguration
+CopsbootControllerTest --> WebSecurityConfiguration
+CopsbootApplicationConfiguration --> InMemoryUniqueIdGenerator
+CopsbootApplicationConfiguration --> UniqueIdGenerator
+User --|> AbstractEntity
+User --> AbstractEntity
+User --> Entity
+UserId --|> AbstractEntityId
+UserId --> AbstractEntityId
+UserRepositoryImpl ..|> UserRepositoryCustom
+UserRepositoryImpl --> UniqueIdGenerator
+CreateUserRequestValidator --> UserService
+UserRestController --> User
+UserRestController --> UserService
+ReportId --|> AbstractEntityId
+ReportId --> AbstractEntityId
+ReportId --> ArtifactForFramework
+Report --|> AbstractEntity
+Report --> UserId
+Report --> AbstractEntity
+Report --> ArtifactForFramework
+Report --> Entity
+ReportRepositoryImpl ..|> ReportRepositoryCustom
+ReportRepositoryImpl --> UniqueIdGenerator
+ReportRepository --> UserRepositoryCustom
+ReportRestController --> Report
+ReportRestController --> ReportService
+ReportRestController --> User
+ReportRestController --> UserNotFoundException
+ReportRestController --> UserService
+InMemoryUniqueIdGenerator ..|> UniqueIdGenerator
+AbstractEntityId --> ArtifactForFramework
+AbstractEntity --> ArtifactForFramework
+
+@enduml

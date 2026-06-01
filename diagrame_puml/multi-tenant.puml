@@ -1,0 +1,130 @@
+@startuml
+
+package cloud {
+  class CloudApplicationTests {
+    -studentDao : StudentDao
+    +contextLoads() : void
+  }
+  class CloudApplication {
+    +main() : void
+  }
+}
+
+package cloud.config {
+  class ConstId {
+    -Id : String
+  }
+}
+
+package cloud.controller {
+  class HelloController <<Controller>> {
+    -studentService : StudentService
+    -tenantInfoDao : TenantInfoDao
+    +hello() : Result
+    +login() : Result
+    +getStudent() : Result
+  }
+}
+
+package cloud.dao {
+  interface TenantInfoDao {
+  }
+  interface StudentDao {
+  }
+}
+
+package cloud.entity {
+  class TenantInfo <<Entity>> {
+    -id : Integer
+    -tenantId : String
+    -tenantType : String
+    -url : String
+    -username : String
+    -password : String
+    +getId() : Integer
+    +setId() : void
+    +getTenantId() : String
+    +setTenantId() : void
+    +getTenantType() : String
+    +setTenantType() : void
+    +getUrl() : String
+    +setUrl() : void
+  }
+  class Student <<Entity>> {
+    -sid : Integer
+    -sname : String
+    +getSid() : Integer
+    +setSid() : void
+    +getSname() : String
+    +setSname() : void
+  }
+}
+
+package cloud.service {
+  class StudentService <<Service>> {
+    -studentDao : StudentDao
+    +findAll() : List<Student>
+  }
+}
+
+package cloud.tenant {
+  class MultiTenantConnectionProviderImpl {
+    +selectAnyDataSource() : DataSource
+    +selectDataSource() : DataSource
+  }
+  class TenantDataSourceProvider {
+    +getTenantDataSource() : DataSource
+    +addDataSource() : void
+  }
+  class MultiTenantIdentifierResolver {
+    +resolveCurrentTenantIdentifier() : String
+    +validateExistingCurrentSessions() : boolean
+  }
+}
+
+package cloud.util {
+  class JsonUtil {
+    -gson : Gson
+    +getGson() : Gson
+  }
+  enum ResultCode {
+    -code : int
+  }
+  class Result {
+    -code : int
+    -message : String
+    -data : Object
+    +setCode() : Result
+    +getCode() : int
+    +setCode() : Result
+    +getMessage() : String
+    +setMessage() : Result
+    +getData() : Object
+    +setData() : Result
+  }
+  class ResultGenerator {
+    -DEFAULT_SUCCESS_MESSAGE : String
+    +genSuccessResult() : Result
+    +genSuccessResult() : Result
+    +genFailResult() : Result
+  }
+}
+
+' --- Relatii ---
+CloudApplicationTests --> StudentDao
+CloudApplicationTests --> Student
+TenantDataSourceProvider --> TenantInfo
+MultiTenantIdentifierResolver --> ConstId
+TenantInfoDao --> TenantInfo
+StudentDao --> Student
+HelloController --> ConstId
+HelloController --> TenantInfoDao
+HelloController --> TenantInfo
+HelloController --> StudentService
+HelloController --> TenantDataSourceProvider
+HelloController --> Result
+HelloController --> ResultGenerator
+StudentService --> StudentDao
+StudentService --> Student
+
+@enduml

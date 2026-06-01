@@ -1,0 +1,52 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, messaging domain. It serves User as its primary actors. The main business capabilities include authentication, running state, user. Core business data revolves around Authority, Role, User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserResource"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage running state operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "RunningState"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with email functionality, so that the system fulfills my needs.",
+        "services": [
+          "EmailService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    RunningState[\"RunningState\"]\n    UserResource[\"UserResource\"]\n  end\n  subgraph Services\n    EmailService[\"EmailService\"]\n    OtpGenerator[\"OtpGenerator\"]\n    OtpService[\"OtpService\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    Authority[\"Authority\"]\n    Role[\"Role\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    JWTConfigurer[\"JWTConfigurer\"]\n    JWTFilter[\"JWTFilter\"]\n  end\n  subgraph Infrastructure\n    EmailConfiguration[\"EmailConfiguration\"]\n    Http401UnauthorizedEntryPoint[\"Http401UnauthorizedEntryPoint\"]\n    ProviderConfiguration[\"ProviderConfiguration\"]\n    SecurityConfiguration[\"SecurityConfiguration\"]\n    TestUtil[\"TestUtil\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

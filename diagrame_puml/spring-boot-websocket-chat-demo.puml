@@ -1,0 +1,50 @@
+@startuml
+
+package com.example.websocketdemo {
+  class WebsocketDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class WebsocketDemoApplication {
+    +main() : void
+  }
+}
+
+package com.example.websocketdemo.config {
+  class WebSocketConfig {
+    +registerStompEndpoints() : void
+    +configureMessageBroker() : void
+  }
+}
+
+package com.example.websocketdemo.controller {
+  class WebSocketEventListener {
+    -logger : Logger
+    -messagingTemplate : SimpMessageSendingOperations
+    +handleWebSocketConnectListener() : void
+    +handleWebSocketDisconnectListener() : void
+  }
+  class ChatController <<Controller>> {
+    +sendMessage() : ChatMessage
+    +addUser() : ChatMessage
+  }
+}
+
+package com.example.websocketdemo.model {
+  class ChatMessage {
+    -type : MessageType
+    -content : String
+    -sender : String
+    +getType() : MessageType
+    +setType() : void
+    +getContent() : String
+    +setContent() : void
+    +getSender() : String
+    +setSender() : void
+  }
+}
+
+' --- Relatii ---
+WebSocketEventListener --> ChatMessage
+ChatController --> ChatMessage
+
+@enduml

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, User as its primary actors. The main business capabilities include hello, login, registration. Core business data revolves around User, UserRole.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to log into the system, so that I can access my personalized dashboard and features.",
+        "services": [],
+        "controllers": [
+          "LoginController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to send and receive messages, so that I can communicate with other users in real time.",
+        "services": [
+          "ExceptionMessageAccessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [
+          "JwtAuthenticationFilter"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage hello operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    HelloController[\"HelloController\"]\n    LoginController[\"LoginController\"]\n    RegistrationController[\"RegistrationController\"]\n  end\n  subgraph Services\n    ExceptionMessageAccessor[\"ExceptionMessageAccessor\"]\n    GeneralMessageAccessor[\"GeneralMessageAccessor\"]\n    JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n    JwtTokenService[\"JwtTokenService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n    UserValidationService[\"UserValidationService\"]\n  end\n  subgraph Data_Access\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n    UserRole[\"UserRole\"]\n  end\n  subgraph Infrastructure\n    MessageConfiguration[\"MessageConfiguration\"]\n    PasswordEncoderConfiguration[\"PasswordEncoderConfiguration\"]\n    SecurityConfiguration[\"SecurityConfiguration\"]\n    SwaggerConfiguration[\"SwaggerConfiguration\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

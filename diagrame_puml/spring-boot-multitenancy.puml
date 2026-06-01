@@ -1,0 +1,301 @@
+@startuml
+
+package com.thomasvitale.chatservice {
+  class ChatServiceApplicationTests {
+  }
+  class TestChatServiceApplication {
+    +main() : void
+  }
+  class ChatServiceApplication {
+    +main() : void
+  }
+}
+
+package com.thomasvitale.chatservice.chat {
+  class DocumentChatController <<Controller>> {
+    -documentChatService : DocumentChatService
+  }
+  class SimpleChatController <<Controller>> {
+    -chatClient : ChatClient
+  }
+  class DocumentChatService <<Service>> {
+    -chatClient : ChatClient
+    -vectorStore : VectorStore
+  }
+}
+
+package com.thomasvitale.chatservice.documents {
+  class DocumentInitializer {
+    -log : Logger
+    -vectorStore : VectorStore
+    +run() : void
+  }
+}
+
+package com.thomasvitale.chatservice.multitenancy.context {
+  class TenantContextHolder {
+    -log : Logger
+    -tenantIdentifier : ThreadLocal<String>
+    +setTenantIdentifier() : void
+    +getTenantIdentifier() : String
+    +getRequiredTenantIdentifier() : String
+    +clear() : void
+  }
+}
+
+package com.thomasvitale.chatservice.multitenancy.context.resolvers {
+  class HttpHeaderTenantResolver {
+    -TENANT_HEADER : String
+    +resolveTenantIdentifier() : String
+  }
+  interface TenantResolver {
+  }
+}
+
+package com.thomasvitale.chatservice.multitenancy.exceptions {
+  class TenantNotFoundException {
+  }
+  class TenantResolutionException {
+  }
+}
+
+package com.thomasvitale.chatservice.multitenancy.tenantdetails {
+  interface TenantDetailsService {
+  }
+  class PropertiesTenantDetailsService <<Service>> {
+    -tenantDetailsProperties : TenantDetailsProperties
+    +loadAllTenants() : List<TenantDetails>
+    +loadTenantByIdentifier() : TenantDetails
+  }
+}
+
+package com.thomasvitale.chatservice.multitenancy.web {
+  class TenantContextFilter {
+    -httpRequestTenantResolver : HttpHeaderTenantResolver
+    -tenantDetailsService : TenantDetailsService
+    +doFilterInternal() : void
+    +shouldNotFilter() : boolean
+  }
+}
+
+package com.thomasvitale.edgeservice {
+  class EdgeServiceApplicationTests {
+  }
+  class EdgeServiceApplication {
+    +main() : void
+  }
+}
+
+package com.thomasvitale.edgeservice.config {
+  class SecurityConfig {
+  }
+}
+
+package com.thomasvitale.edgeservice.multitenancy.exceptions {
+  class TenantNotFoundException {
+  }
+  class TenantResolutionException {
+  }
+}
+
+package com.thomasvitale.edgeservice.multitenancy.gateway {
+  class TenantGatewayFilterFactory {
+    +apply() : GatewayFilter
+    +filter() : Mono<Void>
+  }
+}
+
+package com.thomasvitale.edgeservice.multitenancy.security {
+  class TenantAuthenticationEntryPoint {
+    -redirectStrategy : ServerRedirectStrategy
+    -requestCache : ServerRequestCache
+    +commence() : Mono<Void>
+    +setRequestCache() : void
+    +setRedirectStrategy() : void
+  }
+  class TenantClientRegistrationRepository {
+    -tenantDetailsService : TenantDetailsService
+    +findByRegistrationId() : Mono<ClientRegistration>
+  }
+}
+
+package com.thomasvitale.edgeservice.multitenancy.tenantdetails {
+  interface TenantDetailsService {
+  }
+  class PropertiesTenantDetailsService <<Service>> {
+    -tenantDetailsProperties : TenantDetailsProperties
+    +loadAllTenants() : List<TenantDetails>
+    +loadTenantByIdentifier() : TenantDetails
+  }
+}
+
+package com.thomasvitale.instrumentservice {
+  class InstrumentServiceApplicationTests {
+  }
+  class TestInstrumentServiceApplication {
+    +main() : void
+  }
+  class InstrumentServiceApplication {
+    +main() : void
+  }
+}
+
+package com.thomasvitale.instrumentservice.config {
+  class SecurityConfig {
+  }
+}
+
+package com.thomasvitale.instrumentservice.demo {
+  class DataConfig {
+    -instrumentRepository : InstrumentRepository
+    +loadTestData() : void
+  }
+  class PathConfig {
+    +configurePathMatch() : void
+  }
+}
+
+package com.thomasvitale.instrumentservice.instrument {
+  interface InstrumentRepository {
+  }
+  class InstrumentController <<Controller>> {
+    -log : Logger
+    -instrumentRepository : InstrumentRepository
+  }
+  class Instrument <<Entity>> {
+    -id : UUID
+    -name : String
+    -type : String
+    +getId() : UUID
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getType() : String
+    +setType() : void
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.context {
+  class TenantContextHolder {
+    -log : Logger
+    -tenantIdentifier : ThreadLocal<String>
+    +setTenantIdentifier() : void
+    +getTenantIdentifier() : String
+    +getRequiredTenantIdentifier() : String
+    +clear() : void
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.context.resolvers {
+  class HttpHeaderTenantResolver {
+    -TENANT_HEADER : String
+    +resolveTenantIdentifier() : String
+  }
+  interface TenantResolver {
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.data.cache {
+  class TenantKeyGenerator {
+    +generate() : Object
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.data.flyway {
+  class TenantFlywayMigrationInitializer {
+    -TENANT_MIGRATION_LOCATION : String
+    -dataSource : DataSource
+    -defaultFlyway : Flyway
+    -tenantDetailsService : TenantDetailsService
+    +afterPropertiesSet() : void
+    +getOrder() : int
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.data.hibernate {
+  class ConnectionProvider {
+    -dataSource : DataSource
+    -tenantDetailsService : TenantDetailsService
+    +getAnyConnection() : Connection
+    +releaseAnyConnection() : void
+    +getConnection() : Connection
+    +releaseConnection() : void
+    +supportsAggressiveRelease() : boolean
+    +isUnwrappableAs() : boolean
+    +customize() : void
+  }
+  class TenantIdentifierResolver {
+    -DEFAULT_TENANT : String
+    +resolveCurrentTenantIdentifier() : String
+    +validateExistingCurrentSessions() : boolean
+    +customize() : void
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.exceptions {
+  class TenantNotFoundException {
+  }
+  class TenantResolutionException {
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.security {
+  class TenantAuthenticationManagerResolver {
+    -tenantDetailsService : TenantDetailsService
+    +resolve() : AuthenticationManager
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.tenantdetails {
+  interface TenantDetailsService {
+  }
+  class PropertiesTenantDetailsService <<Service>> {
+    -tenantDetailsProperties : TenantDetailsProperties
+    +loadAllTenants() : List<TenantDetails>
+    +loadTenantByIdentifier() : TenantDetails
+  }
+}
+
+package com.thomasvitale.instrumentservice.multitenancy.web {
+  class TenantContextFilter {
+    -httpRequestTenantResolver : HttpHeaderTenantResolver
+    -tenantDetailsService : TenantDetailsService
+    +doFilterInternal() : void
+    +shouldNotFilter() : boolean
+  }
+}
+
+' --- Relatii ---
+DocumentChatService --> TenantContextHolder
+TenantContextHolder --> TenantNotFoundException
+HttpHeaderTenantResolver ..|> TenantResolver
+TenantContextFilter --> TenantContextHolder
+TenantContextFilter --> HttpHeaderTenantResolver
+TenantContextFilter --> TenantNotFoundException
+TenantContextFilter --> TenantResolutionException
+TenantContextFilter --> TenantDetailsService
+PropertiesTenantDetailsService ..|> TenantDetailsService
+SecurityConfig --> TenantAuthenticationEntryPoint
+SecurityConfig --> TenantClientRegistrationRepository
+TenantClientRegistrationRepository --> TenantResolutionException
+TenantClientRegistrationRepository --> TenantDetailsService
+PropertiesTenantDetailsService ..|> TenantDetailsService
+DataConfig --> Instrument
+DataConfig --> InstrumentRepository
+DataConfig --> TenantContextHolder
+SecurityConfig --> TenantContextFilter
+TenantContextHolder --> TenantNotFoundException
+HttpHeaderTenantResolver ..|> TenantResolver
+TenantAuthenticationManagerResolver --> TenantContextHolder
+TenantAuthenticationManagerResolver --> TenantDetailsService
+TenantContextFilter --> TenantContextHolder
+TenantContextFilter --> HttpHeaderTenantResolver
+TenantContextFilter --> TenantResolutionException
+TenantContextFilter --> TenantDetailsService
+PropertiesTenantDetailsService ..|> TenantDetailsService
+TenantKeyGenerator --> TenantContextHolder
+ConnectionProvider --> TenantDetailsService
+TenantIdentifierResolver --> TenantContextHolder
+TenantFlywayMigrationInitializer --> TenantDetailsService
+
+@enduml

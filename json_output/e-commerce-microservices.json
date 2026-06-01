@@ -1,0 +1,56 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the e-commerce, microservices infrastructure domain. It serves API Consumer, Admin, Customer, User as its primary actors. The main business capabilities include admin product, cart, order. Core business data revolves around CartRedisRepositoryImpl, Item, Order, Product.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [],
+        "controllers": [
+          "AdminProductController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to add items to a shopping cart and check out, so that I can conveniently collect items before purchasing.",
+        "services": [
+          "CartService",
+          "CartServiceImpl"
+        ],
+        "controllers": [
+          "CartController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to place and track orders, so that I can purchase items and monitor their delivery status.",
+        "services": [
+          "OrderService",
+          "OrderServiceImpl"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [],
+        "controllers": [
+          "RedisConfig"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "UserClient"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AdminProductController[\"AdminProductController\"]\n    CartController[\"CartController\"]\n    OrderController[\"OrderController\"]\n    OrderUtilities[\"OrderUtilities\"]\n    ProductController[\"ProductController\"]\n    RecommendationController[\"RecommendationController\"]\n    RedisConfig[\"RedisConfig\"]\n    RegisterController[\"RegisterController\"]\n    SessionFilter[\"SessionFilter\"]\n    UserClient[\"UserClient\"]\n    UserController[\"UserController\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Services\n    CartService[\"CartService\"]\n    CartServiceImpl[\"CartServiceImpl\"]\n    HeaderGenerator[\"HeaderGenerator\"]\n    OrderService[\"OrderService\"]\n    OrderServiceImpl[\"OrderServiceImpl\"]\n    ProductService[\"ProductService\"]\n    ProductServiceImpl[\"ProductServiceImpl\"]\n    RecommendationService[\"RecommendationService\"]\n    RecommendationServiceImpl[\"RecommendationServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    CartRedisRepository[\"CartRedisRepository\"]\n    CartRedisRepositoryImpl[\"CartRedisRepositoryImpl\"]\n    Item[\"Item\"]\n    ItemRepository[\"ItemRepository\"]\n    Order[\"Order\"]\n    OrderRepository[\"OrderRepository\"]\n    Product[\"Product\"]\n    ProductRepository[\"ProductRepository\"]\n    Recommendation[\"Recommendation\"]\n    RecommendationRepository[\"RecommendationRepository\"]\n    User[\"User\"]\n    UserDetails[\"UserDetails\"]\n    UserDetailsRepository[\"UserDetailsRepository\"]\n    UserRepository[\"UserRepository\"]\n    UserRole[\"UserRole\"]\n    UserRoleRepository[\"UserRoleRepository\"]\n  end\n  subgraph Infrastructure\n    ApiConfig[\"ApiConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

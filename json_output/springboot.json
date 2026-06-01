@@ -1,0 +1,58 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves Customer, User as its primary actors. The main business capabilities include book, hello, https. Core business data revolves around Person, Product. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to manage book operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "BookService",
+          "BookServiceImpl"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to manage hello operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "HelloService"
+        ],
+        "controllers": [
+          "HelloController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to manage https operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HttpsController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    BookController[\"BookController\"]\n    HelloController[\"HelloController\"]\n    HttpsController[\"HttpsController\"]\n    JdbcController[\"JdbcController\"]\n    PersonController[\"PersonController\"]\n    ProductController[\"ProductController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    BookService[\"BookService\"]\n    BookServiceImpl[\"BookServiceImpl\"]\n    HelloService[\"HelloService\"]\n    MailService[\"MailService\"]\n    PersonService[\"PersonService\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    Person[\"Person\"]\n    Product[\"Product\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    LogHandlerInterceptor[\"LogHandlerInterceptor\"]\n    MyFilter[\"MyFilter\"]\n  end\n  subgraph Infrastructure\n    CustomNotifier[\"CustomNotifier\"]\n    DruidConfig[\"DruidConfig\"]\n    HelloServiceAutoConfiguration[\"HelloServiceAutoConfiguration\"]\n    Http2Https[\"Http2Https\"]\n    PrimaryDataSourceConfig[\"PrimaryDataSourceConfig\"]\n    SecondDataSourceConfig[\"SecondDataSourceConfig\"]\n    SecuritySecureConfig[\"SecuritySecureConfig\"]\n    ServiceConfig[\"ServiceConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n    WebCoreConfig[\"WebCoreConfig\"]\n    WebMvcConfig[\"WebMvcConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

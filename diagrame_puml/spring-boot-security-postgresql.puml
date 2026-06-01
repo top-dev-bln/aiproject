@@ -1,0 +1,198 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -WRAPPER_VERSION : String
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+    +getPasswordAuthentication() : PasswordAuthentication
+  }
+
+package com.bezkoder.spring.security.postgresql {
+  class SpringBootSecurityPostgresqlApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringBootSecurityPostgresqlApplication {
+    +main() : void
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.controllers {
+  class AuthController <<Controller>> {
+  }
+  class TestController <<Controller>> {
+    +allAccess() : String
+    +userAccess() : String
+    +moderatorAccess() : String
+    +adminAccess() : String
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.models {
+  class User <<Entity>> {
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    -roles : Set<Role>
+    +getId() : Long
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+  enum ERole {
+  }
+  class Role <<Entity>> {
+    -id : Integer
+    -name : ERole
+    +getId() : Integer
+    +setId() : void
+    +getName() : ERole
+    +setName() : void
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.payload.request {
+  class SignupRequest {
+    -username : String
+    -email : String
+    -role : Set<String>
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getRole() : Set<String>
+    +setRole() : void
+  }
+  class LoginRequest {
+    -username : String
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.payload.response {
+  class MessageResponse {
+    -message : String
+    +getMessage() : String
+    +setMessage() : void
+  }
+  class JwtResponse {
+    -token : String
+    -type : String
+    -id : Long
+    -username : String
+    -email : String
+    -roles : List<String>
+    +getAccessToken() : String
+    +setAccessToken() : void
+    +getTokenType() : String
+    +setTokenType() : void
+    +getId() : Long
+    +setId() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.repository {
+  interface RoleRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.security {
+  class WebSecurityConfig {
+    -unauthorizedHandler : AuthEntryPointJwt
+    +authenticationJwtTokenFilter() : AuthTokenFilter
+    +configure() : void
+    +authenticationProvider() : DaoAuthenticationProvider
+    +authenticationManagerBean() : AuthenticationManager
+    +authenticationManager() : AuthenticationManager
+    +passwordEncoder() : PasswordEncoder
+    +configure() : void
+    +filterChain() : SecurityFilterChain
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.security.jwt {
+  class JwtUtils {
+    -logger : Logger
+    -jwtSecret : String
+    -jwtExpirationMs : int
+    +generateJwtToken() : String
+    +getUserNameFromJwtToken() : String
+    +validateJwtToken() : boolean
+  }
+  class AuthEntryPointJwt {
+    -logger : Logger
+    -mapper : ObjectMapper
+    +commence() : void
+  }
+  class AuthTokenFilter {
+    -jwtUtils : JwtUtils
+    -userDetailsService : UserDetailsServiceImpl
+    -logger : Logger
+    +doFilterInternal() : void
+  }
+}
+
+package com.bezkoder.spring.security.postgresql.security.services {
+  class UserDetailsServiceImpl <<Service>> {
+    +loadUserByUsername() : UserDetails
+  }
+  class UserDetailsImpl {
+    -serialVersionUID : long
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    +build() : UserDetailsImpl
+    +getId() : Long
+    +getEmail() : String
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+  }
+}
+
+' --- Relatii ---
+RoleRepository --> ERole
+RoleRepository --> Role
+UserRepository --> User
+WebSecurityConfig --> AuthEntryPointJwt
+WebSecurityConfig --> AuthTokenFilter
+WebSecurityConfig --> UserDetailsServiceImpl
+JwtUtils --> UserDetailsImpl
+AuthTokenFilter --> UserDetailsServiceImpl
+UserDetailsServiceImpl --> User
+UserDetailsServiceImpl --> UserRepository
+UserDetailsImpl --> User
+AuthController --> ERole
+AuthController --> Role
+AuthController --> User
+AuthController --> LoginRequest
+AuthController --> SignupRequest
+AuthController --> JwtResponse
+AuthController --> MessageResponse
+AuthController --> RoleRepository
+AuthController --> UserRepository
+AuthController --> JwtUtils
+AuthController --> UserDetailsImpl
+
+@enduml

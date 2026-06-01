@@ -1,0 +1,26 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the user management, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include graph ql, graph ql impl. Core business data revolves around User.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage graph ql operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "GraphQlController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage graph ql impl operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "GraphQlControllerImpl"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GraphQlController[\"GraphQlController\"]\n    GraphQlControllerImpl[\"GraphQlControllerImpl\"]\n  end\n  subgraph Data_Access\n    User[\"User\"]\n  end\n  subgraph Infrastructure\n    GraphQlAutoConfiguration[\"GraphQlAutoConfiguration\"]\n    GraphQlControllerTestConfiguration[\"GraphQlControllerTestConfiguration\"]\n    GraphQlExecutorImplTestConfiguration[\"GraphQlExecutorImplTestConfiguration\"]\n    GraphQlExecutorPropertiesTestConfiguration[\"GraphQlExecutorPropertiesTestConfiguration\"]\n    GraphQlPropertiesTestConfiguration[\"GraphQlPropertiesTestConfiguration\"]\n    RoleFieldsTestConfiguration[\"RoleFieldsTestConfiguration\"]\n    UserFieldsTestConfiguration[\"UserFieldsTestConfiguration\"]\n  end"
+  }
+}

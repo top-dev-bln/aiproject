@@ -1,0 +1,445 @@
+@startuml
+
+package com.wang {
+  class Application {
+    +main() : void
+  }
+}
+
+package com.wang.config {
+  class OriginFilter {
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+  }
+  class ExceptionAdvice {
+    +handle401() : ResponseBean
+    +handle401() : ResponseBean
+    +handle401() : ResponseBean
+    +handle401() : ResponseBean
+    +validException() : ResponseBean
+    +validException() : ResponseBean
+    +handle() : ResponseBean
+    +handle() : ResponseBean
+  }
+}
+
+package com.wang.config.redis {
+  class JedisConfig {
+    -logger : Logger
+    -host : String
+    -port : int
+    -password : String
+    -timeout : int
+    -maxActive : int
+    -maxWait : int
+    -maxIdle : int
+    -minIdle : int
+    +redisPoolFactory() : JedisPool
+    +getHost() : String
+    +setHost() : void
+    +getPort() : int
+    +setPort() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getTimeout() : int
+  }
+}
+
+package com.wang.config.shiro {
+  class UserRealm <<Service>> {
+    -userMapper : UserMapper
+    -roleMapper : RoleMapper
+    -permissionMapper : PermissionMapper
+    +supports() : boolean
+    +doGetAuthorizationInfo() : AuthorizationInfo
+    +doGetAuthenticationInfo() : AuthenticationInfo
+  }
+  class ShiroConfig {
+    +defaultWebSecurityManager() : DefaultWebSecurityManager
+    +shiroFilterFactoryBean() : ShiroFilterFactoryBean
+    +defaultAdvisorAutoProxyCreator() : DefaultAdvisorAutoProxyCreator
+    +lifecycleBeanPostProcessor() : LifecycleBeanPostProcessor
+    +authorizationAttributeSourceAdvisor() : AuthorizationAttributeSourceAdvisor
+  }
+}
+
+package com.wang.config.shiro.cache {
+  class CustomCacheManager {
+  }
+  class CustomCache {
+    +put() : Object
+    +remove() : Object
+    +clear() : void
+    +size() : int
+    +keys() : Set
+    +values() : Collection
+  }
+}
+
+package com.wang.config.shiro.jwt {
+  class JwtFilter {
+    -logger : Logger
+    -mustLoginFlag : Boolean
+    +isAccessAllowed() : boolean
+    +onAccessDenied() : boolean
+    +isLoginAttempt() : boolean
+    +executeLogin() : boolean
+    +preHandle() : boolean
+  }
+  class JwtToken {
+    -token : String
+    +getPrincipal() : Object
+    +getCredentials() : Object
+  }
+}
+
+package com.wang.controller {
+  class UserController <<Controller>> {
+    -refreshTokenExpireTime : String
+    -userUtil : UserUtil
+    -userService : IUserService
+    +user() : ResponseBean
+    +online() : ResponseBean
+    +login() : ResponseBean
+    +article() : ResponseBean
+    +requireAuth() : ResponseBean
+    +info() : ResponseBean
+    +findById() : ResponseBean
+    +add() : ResponseBean
+  }
+}
+
+package com.wang.exception {
+  class CustomUnauthorizedException {
+  }
+  class CustomException {
+  }
+}
+
+package com.wang.mapper {
+  interface PermissionMapper {
+  }
+  interface RolePermissionMapper {
+  }
+  interface UserMapper {
+  }
+  interface UserRoleMapper {
+  }
+  interface RoleMapper {
+  }
+}
+
+package com.wang.model {
+  class PermissionDto {
+  }
+  class UserRoleDto {
+  }
+  class RolePermissionDto {
+  }
+  class RoleDto {
+  }
+  class UserDto {
+    -loginTime : Date
+    +getLoginTime() : Date
+    +setLoginTime() : void
+  }
+}
+
+package com.wang.model.common {
+  class Constant {
+    -OK : String
+    -EXRP_MINUTE : int
+    -EXRP_HOUR : int
+    -EXRP_DAY : int
+    -PREFIX_SHIRO_CACHE : String
+    -PREFIX_SHIRO_ACCESS_TOKEN : String
+    -PREFIX_SHIRO_REFRESH_TOKEN : String
+    -ACCOUNT : String
+    -CURRENT_TIME_MILLIS : String
+    -PASSWORD_MAX_LEN : Integer
+  }
+  class ResponseBean {
+    -code : Integer
+    -msg : String
+    -data : Object
+    +getCode() : Integer
+    +setCode() : void
+    +getMsg() : String
+    +setMsg() : void
+    +getData() : Object
+    +setData() : void
+  }
+  class BaseDto {
+    -serialVersionUID : long
+    -page : Integer
+    -rows : Integer
+    -sidx : String
+    -sord : String
+    +getPage() : Integer
+    +setPage() : void
+    +getRows() : Integer
+    +setRows() : void
+    +getSidx() : String
+    +setSidx() : void
+    +getSord() : String
+    +setSord() : void
+  }
+}
+
+package com.wang.model.entity {
+  class UserRole {
+    -serialVersionUID : long
+    -id : Integer
+    -userId : Integer
+    -roleId : Integer
+    +getId() : Integer
+    +setId() : void
+    +getUserId() : Integer
+    +setUserId() : void
+    +getRoleId() : Integer
+    +setRoleId() : void
+  }
+  class User {
+    -serialVersionUID : long
+    -id : Integer
+    -account : String
+    -password : String
+    -username : String
+    -regTime : Date
+    +getId() : Integer
+    +setId() : void
+    +getAccount() : String
+    +setAccount() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getUsername() : String
+    +setUsername() : void
+  }
+  class RolePermission {
+    -serialVersionUID : long
+    -id : Integer
+    -roleId : Integer
+    -permissionId : Integer
+    +getId() : Integer
+    +setId() : void
+    +getRoleId() : Integer
+    +setRoleId() : void
+    +getPermissionId() : Integer
+    +setPermissionId() : void
+  }
+  class Permission {
+    -serialVersionUID : long
+    -id : Integer
+    -name : String
+    -perCode : String
+    +getId() : Integer
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getPerCode() : String
+    +setPerCode() : void
+  }
+  class Role {
+    -serialVersionUID : long
+    -id : Integer
+    -name : String
+    +getId() : Integer
+    +setId() : void
+    +getName() : String
+    +setName() : void
+  }
+}
+
+package com.wang.model.valid.group {
+  interface UserLoginValidGroup {
+  }
+  interface UserEditValidGroup {
+  }
+}
+
+package com.wang.service {
+  interface IUserService {
+  }
+  interface IBaseService {
+  }
+}
+
+package com.wang.service.impl {
+  class BaseServiceImpl {
+    -mapper : Mapper<T>
+    +getMapper() : Mapper<T>
+    +select() : List<T>
+    +selectByPrimaryKey() : T
+    +selectAll() : List<T>
+    +selectOne() : T
+    +selectCount() : int
+    +insert() : int
+    +insertSelective() : int
+  }
+  class UserServiceImpl <<Service>> {
+  }
+}
+
+package com.wang.util {
+  class JwtUtil {
+    -logger : Logger
+    -accessTokenExpireTime : String
+    -encryptJWTKey : String
+    +setAccessTokenExpireTime() : void
+    +setEncryptJWTKey() : void
+    +verify() : boolean
+    +getClaim() : String
+    +sign() : String
+  }
+  class AesCipherUtil {
+    -encryptAESKey : String
+    -KEY : byte[]
+    -logger : Logger
+    +setEncryptAESKey() : void
+    +enCrypto() : String
+    +deCrypto() : String
+  }
+  class JedisUtil {
+    -jedisPool : JedisPool
+    +setJedisPool() : void
+    +closePool() : void
+    +getObject() : Object
+    +setObject() : String
+    +setObject() : String
+    +getJson() : String
+    +setJson() : String
+    +setJson() : String
+  }
+  class UserUtil {
+    -userMapper : UserMapper
+    +getUser() : UserDto
+    +getUserId() : Integer
+    +getToken() : String
+    +getAccount() : String
+  }
+}
+
+package com.wang.util.common {
+  class HexConvertUtil {
+    -INTEGER_1 : Integer
+    -INTEGER_2 : Integer
+    +parseByte2HexStr() : String
+    +parseHexStr2Byte() : byte[]
+  }
+  class Base64ConvertUtil {
+    +encode() : String
+    +decode() : String
+  }
+  class StringUtil {
+    -UNDERLINE : char
+    +isBlank() : boolean
+    +isNotBlank() : boolean
+    +isNull() : boolean
+    +isNotNull() : boolean
+    +camelToUnderline() : String
+    +underlineToCamel() : String
+    +addSingleQuotes() : String
+  }
+  class PropertiesUtil {
+    -logger : Logger
+    -PROP : Properties
+    +readProperties() : void
+    +getProperty() : String
+  }
+  class SerializableUtil {
+    -logger : Logger
+    +serializable() : byte[]
+    +unserializable() : Object
+  }
+  class JsonConvertUtil {
+  }
+}
+
+' --- Relatii ---
+JwtUtil --> CustomException
+JwtUtil --> Constant
+JwtUtil --> Base64ConvertUtil
+AesCipherUtil --> CustomUnauthorizedException
+AesCipherUtil --> Base64ConvertUtil
+AesCipherUtil --> HexConvertUtil
+JedisUtil --> CustomException
+JedisUtil --> Constant
+JedisUtil --> StringUtil
+JedisUtil --> SerializableUtil
+UserUtil --> CustomException
+UserUtil --> UserMapper
+UserUtil --> UserDto
+UserUtil --> Constant
+PropertiesUtil --> CustomException
+SerializableUtil --> CustomException
+ExceptionAdvice --> CustomException
+ExceptionAdvice --> CustomUnauthorizedException
+ExceptionAdvice --> ResponseBean
+JedisConfig --> StringUtil
+UserRealm --> JwtToken
+UserRealm --> JedisUtil
+UserRealm --> PermissionMapper
+UserRealm --> RoleMapper
+UserRealm --> UserMapper
+UserRealm --> PermissionDto
+UserRealm --> RoleDto
+UserRealm --> UserDto
+UserRealm --> Constant
+UserRealm --> JwtUtil
+UserRealm --> StringUtil
+ShiroConfig --> JwtFilter
+ShiroConfig --> CustomCacheManager
+JwtFilter --> CustomException
+JwtFilter --> Constant
+JwtFilter --> ResponseBean
+JwtFilter --> JedisUtil
+JwtFilter --> JwtUtil
+JwtFilter --> JsonConvertUtil
+JwtFilter --> PropertiesUtil
+CustomCache --> JwtUtil
+CustomCache --> JedisUtil
+CustomCache --> Constant
+CustomCache --> PropertiesUtil
+CustomCache --> SerializableUtil
+PermissionMapper --> PermissionDto
+PermissionMapper --> RoleDto
+RolePermissionMapper --> RolePermissionDto
+UserMapper --> UserDto
+UserRoleMapper --> UserRoleDto
+RoleMapper --> RoleDto
+RoleMapper --> UserDto
+UserController --> BaseDto
+UserController --> UserEditValidGroup
+UserController --> UserLoginValidGroup
+UserController --> JedisUtil
+UserController --> CustomException
+UserController --> CustomUnauthorizedException
+UserController --> UserDto
+UserController --> Constant
+UserController --> ResponseBean
+UserController --> IUserService
+UserController --> AesCipherUtil
+UserController --> JwtUtil
+UserController --> UserUtil
+UserController --> StringUtil
+PermissionDto --|> Permission
+PermissionDto --> Permission
+UserRoleDto --|> UserRole
+UserRoleDto --> UserRole
+RolePermissionDto --|> RolePermission
+RolePermissionDto --> RolePermission
+RoleDto --|> Role
+RoleDto --> Role
+UserDto --|> User
+UserDto --> User
+User --> UserEditValidGroup
+User --> UserLoginValidGroup
+IUserService --|> IBaseService
+IUserService --> UserDto
+BaseServiceImpl --> IBaseService
+UserServiceImpl --|> BaseServiceImpl
+UserServiceImpl --> UserDto
+UserServiceImpl --> IUserService
+
+@enduml

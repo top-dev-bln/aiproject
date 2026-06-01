@@ -1,0 +1,26 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the social media, user management domain. It serves User as its primary actors. The main business capabilities include comment, post. Core business data revolves around Comment, Employee, Post, Tag.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to comment on posts, so that I can participate in discussions and provide feedback.",
+        "services": [],
+        "controllers": [
+          "CommentController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and browse posts, so that I can share content and discover what others have published.",
+        "services": [],
+        "controllers": [
+          "PostController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CommentController[\"CommentController\"]\n    PostController[\"PostController\"]\n  end\n  subgraph Data_Access\n    Comment[\"Comment\"]\n    CommentRepository[\"CommentRepository\"]\n    Employee[\"Employee\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    Post[\"Post\"]\n    PostRepository[\"PostRepository\"]\n    Tag[\"Tag\"]\n    TagRepository[\"TagRepository\"]\n    User[\"User\"]\n    UserProfile[\"UserProfile\"]\n    UserProfileRepository[\"UserProfileRepository\"]\n    UserRepository[\"UserRepository\"]\n  end"
+  }
+}

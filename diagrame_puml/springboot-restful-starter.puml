@@ -1,0 +1,225 @@
+@startuml
+
+  class CodeGenerator {
+    -AUTHOR : String
+    -DATABASE : String
+    -DATABASE_USERNAME : String
+    -DATABASE_PASSWORD : String
+    -PROJECT : String
+    +scanner() : String
+    +main() : void
+    +initMap() : void
+    +outputFile() : String
+  }
+
+package com.neko.seed {
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package com.neko.seed.auth.annotation {
+  interface Auth {
+  }
+}
+
+package com.neko.seed.auth.annotation.resolver {
+  class AuthMethodArgumentResolver {
+    -tokenService : TokenService
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+}
+
+package com.neko.seed.auth.config {
+  class WebMvcConfigFromAuth {
+    +addArgumentResolvers() : void
+    +authMethodArgumentResolver() : AuthMethodArgumentResolver
+  }
+}
+
+package com.neko.seed.auth.enums {
+  enum TokenSubject {
+    -type : String
+    +type() : String
+  }
+}
+
+package com.neko.seed.auth.exception {
+  class UnauthorizedException {
+  }
+  class AuthException {
+  }
+  class TokenException {
+  }
+}
+
+package com.neko.seed.auth.service {
+  interface TokenService {
+  }
+}
+
+package com.neko.seed.auth.service.impl {
+  class TokenServiceImpl <<Service>> {
+    -SECRECT : String
+    +generate() : String
+    +generate() : String
+    +generate() : String
+    +generate() : String
+    +parse() : Jws<Claims>
+  }
+}
+
+package com.neko.seed.base.config {
+  class WebMvcConfig {
+    +addCorsMappings() : void
+  }
+}
+
+package com.neko.seed.base.entity {
+  class Result {
+    -code : int
+    -message : String
+    -data : Object
+    +success() : Result
+    +success() : Result
+    +fail() : Result
+    +fail() : Result
+    +fail() : Result
+  }
+}
+
+package com.neko.seed.base.exception {
+  class ServiceException {
+    -code : int
+    -message : String
+    -data : Object
+  }
+}
+
+package com.neko.seed.base.handler {
+  class ExceptionsHandler {
+    -logger : Logger
+    +exception() : Result
+    +notFoundException() : Result
+    +httpRequestMethodNotSupportedException() : Result
+    +parameterException() : Result
+    +maxUploadSizeExceededException() : Result
+    +serviceException() : Result
+  }
+  class MyMetaObjectHandler {
+    +insertFill() : void
+    +updateFill() : void
+  }
+}
+
+package com.neko.seed.user.controller {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +signIn() : Result
+    +signUp() : Result
+    +list() : Result
+  }
+}
+
+package com.neko.seed.user.data {
+  class SignInData {
+    -name : String
+    -password : String
+  }
+  class SignUpData {
+    -name : String
+    -password : String
+    -email : String
+  }
+}
+
+package com.neko.seed.user.entity {
+  class User {
+    -id : Long
+    -name : String
+    -password : String
+    -email : String
+  }
+}
+
+package com.neko.seed.user.exception {
+  class PasswordErrorException {
+  }
+  class UserNotFoundException {
+  }
+}
+
+package com.neko.seed.user.mapper {
+  interface UserMapper {
+  }
+}
+
+package com.neko.seed.user.service {
+  interface UserService {
+  }
+}
+
+package com.neko.seed.user.service.impl {
+  class UserServiceImpl <<Service>> {
+    -userMapper : UserMapper
+    -tokenService : TokenService
+    +signIn() : SignInView
+    +signUp() : void
+  }
+}
+
+package com.neko.seed.user.view {
+  class SignInView {
+    -accessToken : String
+    -refreshToken : String
+  }
+}
+
+' --- Relatii ---
+WebMvcConfigFromAuth --> AuthMethodArgumentResolver
+AuthMethodArgumentResolver --> Auth
+AuthMethodArgumentResolver --> TokenSubject
+AuthMethodArgumentResolver --> AuthException
+AuthMethodArgumentResolver --> TokenException
+AuthMethodArgumentResolver --> UnauthorizedException
+AuthMethodArgumentResolver --> TokenService
+TokenServiceImpl ..|> TokenService
+TokenServiceImpl --> TokenService
+TokenServiceImpl --> TokenException
+UnauthorizedException --|> ServiceException
+UnauthorizedException --> ServiceException
+AuthException --|> ServiceException
+AuthException --> ServiceException
+UserMapper --> User
+UserController --> Auth
+UserController --> Result
+UserController --> SignInData
+UserController --> SignUpData
+UserController --> UserService
+UserService --> SignInData
+UserService --> SignUpData
+UserService --> User
+UserService --> SignInView
+UserServiceImpl --> TokenSubject
+UserServiceImpl --> TokenService
+UserServiceImpl --> ServiceException
+UserServiceImpl --> SignInData
+UserServiceImpl --> SignUpData
+UserServiceImpl --> User
+UserServiceImpl --> PasswordErrorException
+UserServiceImpl --> UserNotFoundException
+UserServiceImpl --> UserMapper
+UserServiceImpl --> UserService
+UserServiceImpl --> SignInView
+PasswordErrorException --|> ServiceException
+PasswordErrorException --> ServiceException
+UserNotFoundException --|> ServiceException
+UserNotFoundException --> ServiceException
+ExceptionsHandler --> Result
+ExceptionsHandler --> ServiceException
+
+@enduml

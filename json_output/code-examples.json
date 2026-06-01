@@ -1,0 +1,54 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, messaging domain. It serves Customer, System, User as its primary actors. The main business capabilities include app, cookie, file. Core business data revolves around Account, Address, Book, Course.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [
+          "FileSystemStorageService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to make payments securely, so that transactions are processed reliably.",
+        "services": [],
+        "controllers": [
+          "PaymentController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to create and browse posts, so that I can share content and discover what others have published.",
+        "services": [],
+        "controllers": [
+          "Post"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to manage app operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AppController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AppController[\"AppController\"]\n    CookieController[\"CookieController\"]\n    FileController[\"FileController\"]\n    IndexController[\"IndexController\"]\n    PaymentController[\"PaymentController\"]\n    Post[\"Post\"]\n    ProjectController[\"ProjectController\"]\n    UploadController[\"UploadController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    FileSystemStorageService[\"FileSystemStorageService\"]\n    HelloService[\"HelloService\"]\n    RestService[\"RestService\"]\n    StorageService[\"StorageService\"]\n    StripeService[\"StripeService\"]\n    UserService[\"UserService\"]\n    XMLService[\"XMLService\"]\n  end\n  subgraph Data_Access\n    Account[\"Account\"]\n    AccountRepository[\"AccountRepository\"]\n    Address[\"Address\"]\n    AddressRepository[\"AddressRepository\"]\n    Book[\"Book\"]\n    BookRepository[\"BookRepository\"]\n    Course[\"Course\"]\n    CourseRepository[\"CourseRepository\"]\n    Employee[\"Employee\"]\n    EmployeeId[\"EmployeeId\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    Movie[\"Movie\"]\n    MovieRepository[\"MovieRepository\"]\n    Note[\"Note\"]\n    NoteRepository[\"NoteRepository\"]\n    Page[\"Page\"]\n    PageRepository[\"PageRepository\"]\n    Person[\"Person\"]\n    PersonRepository[\"PersonRepository\"]\n    Project[\"Project\"]\n    SearchCriteria[\"SearchCriteria\"]\n    StudentRepository[\"StudentRepository\"]\n    Todo[\"Todo\"]\n    TodoRepository[\"TodoRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Infrastructure\n    AuditConfiguration[\"AuditConfiguration\"]\n    SchedulerConfig[\"SchedulerConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

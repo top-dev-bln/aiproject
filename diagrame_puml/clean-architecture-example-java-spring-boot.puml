@@ -1,0 +1,660 @@
+@startuml
+
+package com.grantburgess.application {
+  class EndpointTests {
+    -NAME : String
+    -DESCRIPTION : String
+    -AMOUNT : BigDecimal
+    -PRICE : String
+    -CURRENCY : String
+    -START_DATE : String
+    -END_DATE : String
+    -STATUS : String
+    -mockMvc : MockMvc
+    -addOfferInputBoundary : AddOfferInputBoundary
+    +setUp() : void
+    +can_create_offer() : void
+    +can_get_offer_by_id() : void
+    +cannot_get_offer_by_id_when_offer_does_not_exist() : void
+    +can_get_offers() : void
+    +can_cancel_offer() : void
+    +getName() : String
+    +getDescription() : String
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package com.grantburgess.application.configuration {
+  class SwaggerConfiguration {
+    +productApi() : Docket
+    +addResourceHandlers() : void
+  }
+  class ApplicationConfiguration {
+    +database() : Database
+    +clock() : Clock
+    +now() : LocalDate
+    +getOfferInputBoundary() : GetOfferInputBoundary
+    +offersOutputBoundary() : OffersOutputBoundary
+    +getOfferByIdInputBoundary() : GetOfferByIdInputBoundary
+    +offerOutputBoundary() : OfferOutputBoundary
+    +addOfferInputBoundary() : AddOfferInputBoundary
+  }
+}
+
+package com.grantburgess.application.endpoints {
+  interface BaseEndpoint {
+  }
+}
+
+package com.grantburgess.application.endpoints.addoffer {
+  class NewOfferRequest {
+    -name : String
+    -description : String
+    -currency : String
+    -price : BigDecimal
+    -duration : Duration
+    -startDate : LocalDate
+    -endDate : LocalDate
+  }
+  class AddOfferEndpoint <<Controller>> {
+    -useCase : AddOfferInputBoundary
+    -presenter : OfferCreatedOutputBoundary
+    +execute() : ResponseEntity
+  }
+}
+
+package com.grantburgess.application.endpoints.canceloffer {
+  class CancelOfferEndpoint <<Controller>> {
+    -useCase : CancelOfferInputBoundary
+    +execute() : ResponseEntity
+  }
+}
+
+package com.grantburgess.application.endpoints.getofferbyid {
+  class GetOfferByIdEndpoint <<Controller>> {
+    -useCase : GetOfferByIdInputBoundary
+    -presenter : OfferOutputBoundary
+    +execute() : ResponseEntity
+  }
+}
+
+package com.grantburgess.application.endpoints.getoffers {
+  class GetOffersEndpoint <<Controller>> {
+    -useCase : GetOfferInputBoundary
+    -presenter : OffersOutputBoundary
+    +execute() : ResponseEntity
+  }
+}
+
+package com.grantburgess.application.exception {
+  class ApplicationExceptionHandler {
+    -MESSAGE_NOT_READABLE_ERROR_MESSAGE_PATTERN : String
+    -DEFAULT_CLIENT_ERROR_MESSAGE : String
+    -DEFAULT_NOT_FOUND_MESSAGE : String
+    -request : HttpServletRequest
+    -throwable : Throwable
+    -throwable : Throwable
+    -ex : HttpMessageNotReadableException
+    -headers : HttpHeaders
+    -status : HttpStatus
+    -request : WebRequest
+    +handleControllerException() : ResponseEntity<ErrorResponse>
+    +handleHttpMessageNotReadable() : ResponseEntity<Object>
+  }
+  class ErrorMessageMap {
+  }
+  class ErrorResponse {
+    -errors : List<String>
+  }
+}
+
+package com.grantburgess.database.inmemory {
+  class InMemoryDatabase {
+    -offerGateway : OfferGateway
+    +offerGateway() : OfferGateway
+  }
+  class InMemoryOfferGateway {
+    +getAllExcludingCancelled() : Collection<Offer>
+    +add() : UUID
+    +getByIdExcludingCancelled() : Offer
+    +update() : void
+    +existsByName() : boolean
+  }
+}
+
+package com.grantburgess.database.jpa {
+  class TestConfiguration {
+  }
+  class JpaOfferGateway {
+    -offerRepository : OfferRepository
+    -offerRepository : OfferRepository
+    +getAllExcludingCancelled() : Collection<Offer>
+    +add() : UUID
+    +getByIdExcludingCancelled() : Offer
+    +update() : void
+    +existsByName() : boolean
+  }
+  class JpaDatabase {
+    -offerGateway : OfferGateway
+    +offerGateway() : OfferGateway
+  }
+}
+
+package com.grantburgess.database.jpa.data {
+  class OfferData <<Entity>> {
+    -id : UUID
+    -name : String
+    -description : String
+    -startDate : LocalDate
+    -endDate : LocalDate
+    -currency : String
+    -amount : BigDecimal
+    -cancelledDate : LocalDate
+  }
+}
+
+package com.grantburgess.database.jpa.repositories {
+  class OfferRepositoryTest {
+    -CANCELLED_OFFER_01 : OfferData
+    -CANCELLED_OFFER_ID : UUID
+    -CANCELLED_OFFER_NAME : String
+    -CANCELLED_OFFER_DESCRIPTION : String
+    -CANCELLED_OFFER_CURRENCY : String
+    -CANCELLED_OFFER_AMOUNT : BigDecimal
+    -CANCELLED_OFFER_START_DATE : LocalDate
+    -CANCELLED_OFFER_END_DATE : LocalDate
+    -CANCELLED_OFFER_CANCELLED_DATE : LocalDate
+    -OFFER_01 : OfferData
+    +setUp() : void
+    +tearDown() : void
+    +should_exclude_cancelled_offers() : void
+    +should_not_find_cancelled_offer_by_id() : void
+    +can_still_find_cancelled_offer() : void
+    +can_find_offer_by_name() : void
+    +cannot_find_cancelled_offer_by_name() : void
+  }
+  interface OfferRepository {
+  }
+}
+
+package com.grantburgess.entities {
+  class Offer {
+    -id : UUID
+    -name : String
+    -description : String
+    -startDate : LocalDate
+    -endDate : LocalDate
+    -price : Money
+    -cancelDate : LocalDate
+    -currency : String
+    -amount : BigDecimal
+    +cancel() : void
+  }
+}
+
+package com.grantburgess.ports.database {
+  interface OfferGateway {
+  }
+  interface Database {
+  }
+}
+
+package com.grantburgess.ports.presenters {
+  class OfferViewModel {
+    -id : String
+    -name : String
+    -description : String
+    -duration : Duration
+    -currency : String
+    -price : String
+    -status : String
+    -startDate : String
+    -endDate : String
+  }
+  class OffersViewModel {
+    -offers : List<OfferViewModel>
+  }
+  interface OfferOutputBoundary {
+  }
+  interface OffersOutputBoundary {
+  }
+  class OfferCreatedViewModel {
+    -id : String
+    +getId() : String
+  }
+  interface OfferCreatedOutputBoundary {
+  }
+}
+
+package com.grantburgess.ports.usescases {
+  interface Clock {
+  }
+}
+
+package com.grantburgess.ports.usescases.addoffer {
+  class NewOfferResponse {
+    -id : UUID
+  }
+  interface AddOfferInputBoundary {
+  }
+  class AddOfferRequest {
+    -name : String
+    -description : String
+    -startDate : LocalDate
+    -endDate : LocalDate
+    -price : BigDecimal
+    -currency : String
+  }
+  class AddOfferTest {
+    -OFFER_REQUEST_NAME : String
+    -OFFER_REQUEST_DESCRIPTION : String
+    -OFFER_REQUEST_START_DATE : LocalDate
+    -OFFER_REQUEST_END_DATE : LocalDate
+    -OFFER_REQUEST_CURRENCY : String
+    -OFFER_REQUEST_AMOUNT : BigDecimal
+    -CURRENT_DATE : LocalDate
+    -database : Database
+    -useCase : AddOfferInputBoundary
+    -request : AddOfferRequest
+    +setUp() : void
+    +cannot_add_offer_with_same_name() : void
+    +offer_start_date_cannot_be_later_than_end_date() : void
+    +cannot_add_offer_with_an_end_date_that_is_before_the_current_date() : void
+    +can_add_offer() : void
+  }
+}
+
+package com.grantburgess.ports.usescases.canceloffer {
+  interface CancelOfferInputBoundary {
+  }
+  class CancelOfferRequest {
+    -offerId : UUID
+  }
+  class CancelOfferTest {
+    -OFFER_START_DATE : LocalDate
+    -OFFER_END_DATE : LocalDate
+    -CURRENT_DATE : LocalDate
+    -offer : Offer
+    -database : Database
+    -useCase : CancelOffer
+    +setUp() : void
+    +cannot_cancel_offer_that_does_not_exist() : void
+    +cannot_cancel_offer_that_is_already_cancelled() : void
+    +cannot_cancel_offer_after_it_has_expired() : void
+    +can_cancel_offer() : void
+  }
+}
+
+package com.grantburgess.ports.usescases.get {
+  class OfferResponse {
+    -id : UUID
+    -name : String
+    -description : String
+    -startDate : LocalDate
+    -endDate : LocalDate
+    -currency : String
+    -amount : BigDecimal
+    -status : Status
+  }
+}
+
+package com.grantburgess.ports.usescases.get.offerbyid {
+  interface GetOfferByIdInputBoundary {
+  }
+  class GetOfferRequest {
+    -id : UUID
+  }
+  class GetOfferByIdTest {
+    -OFFER_NAME : String
+    -OFFER_DESCRIPTION : String
+    -OFFER_START_DATE : LocalDate
+    -OFFER_END_DATE : LocalDate
+    -OFFER_PRICE_AMOUNT : BigDecimal
+    -OFFER_PRICE_CURRENCY : String
+    -CURRENT_DATE : LocalDate
+    -database : Database
+    -useCase : GetOfferById
+    -presenterSpy : OfferPresenterSpy
+    +setUp() : void
+    +cannot_get_offer_that_does_not_exist() : void
+    +can_get_expired_offer_by_id() : void
+    +cannot_get_cancelled_offer() : void
+    +can_get_offer_by_id() : void
+  }
+}
+
+package com.grantburgess.ports.usescases.get.offers {
+  class OffersResponse {
+    -offers : List<OfferResponse>
+  }
+  class GetOffersRequest {
+  }
+  interface GetOfferInputBoundary {
+  }
+  class GetOffersTest {
+    -OFFER_DESCRIPTION : String
+    -OFFER_START_DATE : LocalDate
+    -OFFER_END_DATE : LocalDate
+    -OFFER_PRICE_AMOUNT : BigDecimal
+    -OFFER_PRICE_CURRENCY : String
+    -CURRENT_DATE : LocalDate
+    -database : Database
+    -useCase : GetOffers
+    -presenterSpy : OffersPresenterSpy
+    +setUp() : void
+    +no_offers_returns_empty_response_list() : void
+    +can_get_offers() : void
+    +expired_offers_have_the_status_expired() : void
+    +cancelled_offers_do_not_appear_in_list() : void
+  }
+}
+
+package com.grantburgess.presenters {
+  class OffersPresenterTest {
+    -DESCRIPTION : String
+    -START_DATE : LocalDate
+    -END_DATE : LocalDate
+    -CURRENCY : String
+    -AMOUNT : BigDecimal
+    +can_present_offers() : void
+  }
+  class OfferPresenterTest {
+    -ID : UUID
+    -NAME : String
+    -DESCRIPTION : String
+    -START_DATE : LocalDate
+    -END_DATE : LocalDate
+    -CURRENCY : String
+    -AMOUNT : BigDecimal
+    +can_present_offer() : void
+  }
+  class OfferCreatedPresenterTest {
+    +can_present_created_offer() : void
+  }
+  class OfferCreatedPresenter {
+    -viewModel : OfferCreatedViewModel
+    +getViewModel() : OfferCreatedViewModel
+    +present() : void
+  }
+  class OfferPresenter {
+    -viewModel : OfferViewModel
+    +getViewModel() : OfferViewModel
+    +present() : void
+  }
+  class OffersPresenter {
+    -viewModel : OffersViewModel
+    +getViewModel() : OffersViewModel
+    +present() : void
+  }
+  class BaseOfferPresenter {
+    -DATE_TIME_FORMATTER : DateTimeFormatter
+    +mapToOfferViewModel() : OfferViewModel
+  }
+}
+
+package com.grantburgess.usecases.addoffer {
+  class AddOffer {
+    -presenter : OfferCreatedOutputBoundary
+    -offerGateway : OfferGateway
+    -clock : Clock
+    -request : AddOfferRequest
+    -request : AddOfferRequest
+    +execute() : void
+  }
+}
+
+package com.grantburgess.usecases.canceloffer {
+  class CancelOffer {
+    -offerGateway : OfferGateway
+    -clock : Clock
+    +execute() : void
+  }
+}
+
+package com.grantburgess.usecases.get {
+  class GetOfferBase {
+    +makeOfferResponse() : OfferResponse
+  }
+}
+
+package com.grantburgess.usecases.get.offerbyid {
+  class GetOfferById {
+    -presenter : OfferOutputBoundary
+    -offerGateway : OfferGateway
+    -clock : Clock
+    +execute() : void
+  }
+}
+
+package com.grantburgess.usecases.get.offers {
+  class GetOffers {
+    -presenter : OffersOutputBoundary
+    -offerGateway : OfferGateway
+    -clock : Clock
+    +execute() : void
+  }
+}
+
+package com.grantburgess.usecases.testdoubles {
+  class OfferPresenterSpy {
+    -isOfferPresented : boolean
+    -responseModel : OfferResponse
+    +getViewModel() : OfferViewModel
+    +present() : void
+    +isOfferPresented() : boolean
+    +getResponseModel() : OfferResponse
+  }
+  class ClockStub {
+    -currentDate : LocalDate
+    +now() : LocalDate
+  }
+  class OfferCreatedPresenterSpy {
+    -isOfferPresented : boolean
+    -responseModel : NewOfferResponse
+    +getViewModel() : OfferCreatedViewModel
+    +present() : void
+    +isOfferPresented() : boolean
+    +getResponseModel() : NewOfferResponse
+  }
+  class OffersPresenterSpy {
+    -isOffersPresented : boolean
+    -responseModel : OffersResponse
+    +getViewModel() : OffersViewModel
+    +present() : void
+    +isOffersPresented() : boolean
+    +getResponseModel() : OffersResponse
+  }
+}
+
+' --- Relatii ---
+OfferRepositoryTest --> TestConfiguration
+OfferRepositoryTest --> OfferData
+JpaOfferGateway ..|> OfferGateway
+JpaOfferGateway --> OfferData
+JpaOfferGateway --> OfferRepository
+JpaOfferGateway --> Offer
+JpaOfferGateway --> OfferGateway
+JpaDatabase ..|> Database
+JpaDatabase --> OfferRepository
+JpaDatabase --> Database
+JpaDatabase --> OfferGateway
+OfferRepository --> OfferData
+OffersPresenterTest --> OffersViewModel
+OffersPresenterTest --> OfferResponse
+OffersPresenterTest --> OffersResponse
+OfferPresenterTest --> OfferViewModel
+OfferPresenterTest --> OfferResponse
+OfferCreatedPresenterTest --> OfferCreatedViewModel
+OfferCreatedPresenterTest --> NewOfferResponse
+OfferCreatedPresenter ..|> OfferCreatedOutputBoundary
+OfferCreatedPresenter --> OfferCreatedOutputBoundary
+OfferCreatedPresenter --> OfferCreatedViewModel
+OfferCreatedPresenter --> NewOfferResponse
+OfferPresenter --|> BaseOfferPresenter
+OfferPresenter ..|> OfferOutputBoundary
+OfferPresenter --> OfferOutputBoundary
+OfferPresenter --> OfferViewModel
+OfferPresenter --> OfferResponse
+OffersPresenter --|> BaseOfferPresenter
+OffersPresenter ..|> OffersOutputBoundary
+OffersPresenter --> OffersOutputBoundary
+OffersPresenter --> OffersViewModel
+OffersPresenter --> OffersResponse
+BaseOfferPresenter --> OfferViewModel
+BaseOfferPresenter --> OfferResponse
+EndpointTests --> AddOfferEndpoint
+EndpointTests --> CancelOfferEndpoint
+EndpointTests --> GetOfferByIdEndpoint
+EndpointTests --> GetOffersEndpoint
+EndpointTests --> ErrorMessageMap
+EndpointTests --> OfferRepository
+EndpointTests --> OfferGateway
+EndpointTests --> OfferCreatedOutputBoundary
+EndpointTests --> OfferCreatedViewModel
+EndpointTests --> OfferOutputBoundary
+EndpointTests --> OfferViewModel
+EndpointTests --> OffersOutputBoundary
+EndpointTests --> OffersViewModel
+EndpointTests --> Clock
+EndpointTests --> AddOfferInputBoundary
+EndpointTests --> CancelOfferInputBoundary
+EndpointTests --> GetOfferByIdInputBoundary
+EndpointTests --> GetOfferInputBoundary
+BaseEndpoint --> ErrorResponse
+CancelOfferEndpoint ..|> BaseEndpoint
+CancelOfferEndpoint --> BaseEndpoint
+CancelOfferEndpoint --> CancelOfferInputBoundary
+CancelOfferEndpoint --> CancelOfferRequest
+GetOfferByIdEndpoint ..|> BaseEndpoint
+GetOfferByIdEndpoint --> BaseEndpoint
+GetOfferByIdEndpoint --> OfferOutputBoundary
+GetOfferByIdEndpoint --> OfferViewModel
+GetOfferByIdEndpoint --> GetOfferByIdInputBoundary
+GetOfferByIdEndpoint --> GetOfferRequest
+AddOfferEndpoint ..|> BaseEndpoint
+AddOfferEndpoint --> BaseEndpoint
+AddOfferEndpoint --> OfferCreatedOutputBoundary
+AddOfferEndpoint --> OfferCreatedViewModel
+AddOfferEndpoint --> AddOfferInputBoundary
+AddOfferEndpoint --> AddOfferRequest
+GetOffersEndpoint ..|> BaseEndpoint
+GetOffersEndpoint --> BaseEndpoint
+GetOffersEndpoint --> OffersOutputBoundary
+GetOffersEndpoint --> OffersViewModel
+GetOffersEndpoint --> GetOfferInputBoundary
+GetOffersEndpoint --> GetOffersRequest
+ApplicationExceptionHandler --> OfferGateway
+ErrorMessageMap --> OfferGateway
+OfferGateway --> Offer
+OffersResponse --> OfferResponse
+OfferOutputBoundary --> OfferResponse
+OffersOutputBoundary --> OffersResponse
+OfferCreatedOutputBoundary --> NewOfferResponse
+InMemoryDatabase ..|> Database
+InMemoryDatabase --> Database
+InMemoryDatabase --> OfferGateway
+InMemoryOfferGateway ..|> OfferGateway
+InMemoryOfferGateway --> Offer
+InMemoryOfferGateway --> OfferGateway
+CancelOfferTest --> InMemoryDatabase
+CancelOfferTest --> Offer
+CancelOfferTest --> Database
+CancelOfferTest --> OfferGateway
+CancelOfferTest --> CancelOffer
+CancelOfferTest --> ClockStub
+AddOfferTest --> InMemoryDatabase
+AddOfferTest --> Offer
+AddOfferTest --> Database
+AddOfferTest --> OfferGateway
+AddOfferTest --> OfferCreatedOutputBoundary
+AddOfferTest --> AddOffer
+AddOfferTest --> ClockStub
+AddOfferTest --> OfferCreatedPresenterSpy
+GetOffersTest --> InMemoryDatabase
+GetOffersTest --> Offer
+GetOffersTest --> Database
+GetOffersTest --> Clock
+GetOffersTest --> OfferResponse
+GetOffersTest --> GetOffers
+GetOffersTest --> ClockStub
+GetOffersTest --> OffersPresenterSpy
+GetOfferByIdTest --> InMemoryDatabase
+GetOfferByIdTest --> Offer
+GetOfferByIdTest --> Database
+GetOfferByIdTest --> OfferGateway
+GetOfferByIdTest --> Clock
+GetOfferByIdTest --> OfferResponse
+GetOfferByIdTest --> GetOfferById
+GetOfferByIdTest --> ClockStub
+GetOfferByIdTest --> OfferPresenterSpy
+OfferPresenterSpy ..|> OfferOutputBoundary
+OfferPresenterSpy --> OfferOutputBoundary
+OfferPresenterSpy --> OfferViewModel
+OfferPresenterSpy --> OfferResponse
+ClockStub ..|> Clock
+ClockStub --> Clock
+OfferCreatedPresenterSpy ..|> OfferCreatedOutputBoundary
+OfferCreatedPresenterSpy --> OfferCreatedOutputBoundary
+OfferCreatedPresenterSpy --> OfferCreatedViewModel
+OfferCreatedPresenterSpy --> NewOfferResponse
+OffersPresenterSpy ..|> OffersOutputBoundary
+OffersPresenterSpy --> OffersOutputBoundary
+OffersPresenterSpy --> OffersViewModel
+OffersPresenterSpy --> OffersResponse
+CancelOffer ..|> CancelOfferInputBoundary
+CancelOffer --> Offer
+CancelOffer --> OfferGateway
+CancelOffer --> Clock
+CancelOffer --> CancelOfferInputBoundary
+CancelOffer --> CancelOfferRequest
+AddOffer ..|> AddOfferInputBoundary
+AddOffer --> Offer
+AddOffer --> OfferGateway
+AddOffer --> OfferCreatedOutputBoundary
+AddOffer --> Clock
+AddOffer --> AddOfferInputBoundary
+AddOffer --> AddOfferRequest
+AddOffer --> NewOfferResponse
+GetOfferBase --> Offer
+GetOfferBase --> Clock
+GetOfferBase --> OfferResponse
+GetOffers --|> GetOfferBase
+GetOffers ..|> GetOfferInputBoundary
+GetOffers --> OfferGateway
+GetOffers --> OffersOutputBoundary
+GetOffers --> Clock
+GetOffers --> GetOfferInputBoundary
+GetOffers --> GetOffersRequest
+GetOffers --> OffersResponse
+GetOffers --> GetOfferBase
+GetOfferById --|> GetOfferBase
+GetOfferById ..|> GetOfferByIdInputBoundary
+GetOfferById --> Offer
+GetOfferById --> OfferGateway
+GetOfferById --> OfferOutputBoundary
+GetOfferById --> Clock
+GetOfferById --> GetOfferBase
+GetOfferById --> GetOfferByIdInputBoundary
+GetOfferById --> GetOfferRequest
+ApplicationConfiguration --> JpaDatabase
+ApplicationConfiguration --> OfferRepository
+ApplicationConfiguration --> Database
+ApplicationConfiguration --> OfferCreatedOutputBoundary
+ApplicationConfiguration --> OfferOutputBoundary
+ApplicationConfiguration --> OffersOutputBoundary
+ApplicationConfiguration --> Clock
+ApplicationConfiguration --> AddOfferInputBoundary
+ApplicationConfiguration --> CancelOfferInputBoundary
+ApplicationConfiguration --> GetOfferByIdInputBoundary
+ApplicationConfiguration --> GetOfferInputBoundary
+ApplicationConfiguration --> OfferCreatedPresenter
+ApplicationConfiguration --> OfferPresenter
+ApplicationConfiguration --> OffersPresenter
+ApplicationConfiguration --> AddOffer
+ApplicationConfiguration --> CancelOffer
+ApplicationConfiguration --> GetOfferById
+ApplicationConfiguration --> GetOffers
+
+@enduml

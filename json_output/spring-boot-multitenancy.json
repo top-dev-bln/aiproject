@@ -1,0 +1,54 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include document chat, instrument, simple chat. Core business data revolves around Instrument.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [
+          "DataConfig"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [
+          "TenantAuthenticationEntryPoint"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to access services through a unified entry point, so that routing and load balancing are handled transparently.",
+        "services": [
+          "TenantGatewayFilterFactory"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage document chat operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "DocumentChatService"
+        ],
+        "controllers": [
+          "DocumentChatController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage instrument operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "InstrumentRepository"
+        ],
+        "controllers": [
+          "InstrumentController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DocumentChatController[\"DocumentChatController\"]\n    InstrumentController[\"InstrumentController\"]\n    SimpleChatController[\"SimpleChatController\"]\n  end\n  subgraph Services\n    ConnectionProvider[\"ConnectionProvider\"]\n    DataConfig[\"DataConfig\"]\n    DocumentChatService[\"DocumentChatService\"]\n    HttpHeaderTenantResolver[\"HttpHeaderTenantResolver\"]\n    InstrumentRepository[\"InstrumentRepository\"]\n    PropertiesTenantDetailsService[\"PropertiesTenantDetailsService\"]\n    SecurityConfig[\"SecurityConfig\"]\n    TenantAuthenticationEntryPoint[\"TenantAuthenticationEntryPoint\"]\n    TenantAuthenticationManagerResolver[\"TenantAuthenticationManagerResolver\"]\n    TenantContextFilter[\"TenantContextFilter\"]\n    TenantContextHolder[\"TenantContextHolder\"]\n    TenantDetailsService[\"TenantDetailsService\"]\n    TenantGatewayFilterFactory[\"TenantGatewayFilterFactory\"]\n    TenantKeyGenerator[\"TenantKeyGenerator\"]\n  end\n  subgraph Data_Access\n    Instrument[\"Instrument\"]\n    TenantClientRegistrationRepository[\"TenantClientRegistrationRepository\"]\n  end\n  subgraph Infrastructure\n    PathConfig[\"PathConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the banking, e-commerce domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include account, customer, product.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "Account",
+          "AccountContainersConfiguration"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [
+          "Product",
+          "ProductRepository"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [
+          "AccountContainersConfiguration"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage customer operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "Customer",
+          "CustomerRepository"
+        ],
+        "controllers": [
+          "CustomerController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage transfer operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "Transfer",
+          "TransferRepository"
+        ],
+        "controllers": [
+          "TransferController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountController[\"AccountController\"]\n    CustomerController[\"CustomerController\"]\n    ProductController[\"ProductController\"]\n    TransferController[\"TransferController\"]\n  end\n  subgraph Services\n    Account[\"Account\"]\n    AccountContainersConfiguration[\"AccountContainersConfiguration\"]\n    Customer[\"Customer\"]\n    CustomerRepository[\"CustomerRepository\"]\n    Product[\"Product\"]\n    ProductRepository[\"ProductRepository\"]\n    Transfer[\"Transfer\"]\n    TransferRepository[\"TransferRepository\"]\n  end\n  subgraph Data_Access\n    AccountRepository[\"AccountRepository\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+  }
+}

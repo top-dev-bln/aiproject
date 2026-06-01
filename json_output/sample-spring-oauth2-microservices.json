@@ -1,0 +1,53 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include account, auth server, discovery server.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "Account",
+          "AccountService"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthServer"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [
+          "WebMvcConfig"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage auth server operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AuthServer"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with discovery server functionality, so that the system fulfills my needs.",
+        "services": [
+          "DiscoveryServer"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountController[\"AccountController\"]\n    AuthServer[\"AuthServer\"]\n  end\n  subgraph Services\n    Account[\"Account\"]\n    AccountService[\"AccountService\"]\n    DiscoveryServer[\"DiscoveryServer\"]\n    WebMvcConfig[\"WebMvcConfig\"]\n  end\n  subgraph Infrastructure\n    OAuth2Config[\"OAuth2Config\"]\n    SecurityConfig[\"SecurityConfig\"]\n  end\n  Controllers --> Services\n  Infrastructure --> Services"
+  }
+}

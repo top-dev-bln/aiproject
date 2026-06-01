@@ -1,0 +1,327 @@
+@startuml
+
+package com.example.jobrec.config {
+  class ApplicationConfig {
+    -properties : Properties
+    -instance : ApplicationConfig
+    -DEFAULT_CONFIG : String
+    -DEV_CONFIG : String
+    -PROD_CONFIG : String
+    -ENVIRONMENT : String
+    +getInstance() : ApplicationConfig
+    +getDatabaseHost() : String
+    +getDatabasePort() : String
+    +getDatabaseName() : String
+    +getDatabaseUsername() : String
+    +getDatabasePassword() : String
+    +getDatabaseUrl() : String
+    +getRedisHost() : String
+  }
+}
+
+package com.example.jobrec.db {
+  class MySQLConnection {
+    -conn : Connection
+    +close() : void
+    +saveItem() : void
+    +setFavoriteItems() : void
+    +unsetFavoriteItems() : void
+    +getFavoriteItemIds() : Set<String>
+    +getFavoriteItems() : Set<Item>
+    +getKeywords() : Set<String>
+    +getFullname() : String
+  }
+  class MySQLTableCreation {
+    +main() : void
+  }
+  class RedisConnection {
+    -SEARCH_KEY_TEMPLATE : String
+    -FAVORITE_KEY_TEMPLATE : String
+    -jedis : Jedis
+    -config : ApplicationConfig
+    +close() : void
+    +getSearchResult() : String
+    +setSearchResult() : void
+    +getFavoriteResult() : String
+    +setFavoriteResult() : void
+    +deleteFavoriteResult() : void
+    +main() : void
+  }
+  class MySQLDBUtil {
+    -INSTANCE : String
+    -PORT_NUM : String
+    -DB_NAME : String
+    -USERNAME : String
+    -PASSWORD : String
+    -URL : String
+  }
+}
+
+package com.example.jobrec.entity {
+  class Extraction {
+    -tagName : String
+    -parsedValue : String
+    -count : int
+    -relevance : String
+  }
+  class ExampleCoordinates {
+    -latitude : double
+    -longitude : double
+  }
+  class ExtractResponseItem {
+    -extractions : List<Extraction>
+  }
+  class ExampleBook {
+    -title : String
+    -author : String
+    -date : String
+    -price : double
+    -currency : String
+    -pages : int
+    -series : String
+    -language : String
+    -isbn : String
+  }
+  class ExtractRequestBody {
+    -text : String
+    -maxKeywords : int
+    -language : String
+    -providers : String
+    -responseAsDict : boolean
+  }
+  class RegisterRequestBody {
+    -userId : String
+    -password : String
+    -firstName : String
+    -lastName : String
+  }
+  class ResultResponse {
+    -result : String
+  }
+  class LoginRequestBody {
+    -userId : String
+    -password : String
+  }
+  class HistoryRequestBody {
+    -userId : String
+    -favorite : Item
+  }
+  class LoginResponseBody {
+    -status : String
+    -userId : String
+    -name : String
+  }
+  class ExampleJob {
+    -title : String
+    -salary : int
+    -starting : String
+    -remote : boolean
+    -coordinates : ExampleCoordinates
+  }
+  class Item {
+    -id : String
+    -title : String
+    -company_name : String
+    -location : String
+    -via : String
+    -description : String
+    -job_highlights : List<String>
+    -url : String
+    -keywords : Set<String>
+    -favorite : boolean
+    +getId() : String
+    +getTitle() : String
+    +getCompanyName() : String
+    +getLocation() : String
+    +getVia() : String
+    +getDescription() : String
+    +getJobHighlights() : List<String>
+    +getUrl() : String
+  }
+}
+
+package com.example.jobrec.exception {
+  class JobRecException {
+    -code : String
+    -description : String
+    -errorType : ErrorType
+    -errorCode : String
+    -userMessage : String
+    -technicalMessage : String
+    +getCode() : String
+    +getDescription() : String
+    +getErrorType() : ErrorType
+    +getErrorCode() : String
+    +getUserMessage() : String
+    +getTechnicalMessage() : String
+    +database() : JobRecException
+    +database() : JobRecException
+  }
+}
+
+package com.example.jobrec.external {
+  class GeoConverterClient {
+    -URL_TEMPLATE : String
+    -API_KEY : String
+    +main() : void
+    +convert() : String
+  }
+  class SerpAPIClient {
+    -URL_TEMPLATE : String
+    -API_KEY : String
+    -DEFAULT_KEYWORD : String
+    +main() : void
+    +search() : List<Item>
+  }
+  class EdenAI {
+    -EDENAI_TOKEN : String
+    -EXTRACT_URL : String
+    +main() : void
+    +extract() : Set<String>
+  }
+}
+
+package com.example.jobrec.recommendation {
+  class Recommendation {
+    +recommendItems() : List<Item>
+  }
+}
+
+package com.example.jobrec.servlet {
+  class HistoryServlet {
+    +doPost() : void
+    +doGet() : void
+    +doDelete() : void
+  }
+  class ExampleBookServlet {
+    -books : List<ExampleBook>
+    +doGet() : void
+    +doPost() : void
+    +doPut() : void
+    +doDelete() : void
+  }
+  class RegisterServlet {
+    +doGet() : void
+    +doPost() : void
+  }
+  class LogoutServlet {
+    +doGet() : void
+    +doPost() : void
+  }
+  class TestServlet {
+    +doPost() : void
+    +doGet() : void
+  }
+  class RecommendationServlet {
+    +doPost() : void
+    +doGet() : void
+  }
+  class LoginServlet {
+    +doGet() : void
+    +doPost() : void
+  }
+  class ExampleJobServlet {
+    +doPost() : void
+    +doGet() : void
+  }
+  class SearchServlet {
+    -CONTENT_TYPE_JSON : String
+    -CHARSET_UTF8 : String
+    +doPost() : void
+    +doGet() : void
+  }
+}
+
+package com.example.jobrec.test {
+  class ValidationUtilTest {
+    +testIsNotEmpty() : void
+    +testIsValidEmail() : void
+    +testIsValidUsername() : void
+    +testIsValidPassword() : void
+    +testIsValidName() : void
+    +testIsValidKeyword() : void
+    +testIsValidLatitude() : void
+    +testIsValidLongitude() : void
+  }
+}
+
+package com.example.jobrec.util {
+  class Logger {
+    -value : int
+    -TIMESTAMP_FORMAT : DateTimeFormatter
+    -LOG_FILE : String
+    -currentLevel : Level
+    -fileLoggingEnabled : boolean
+    -consoleLoggingEnabled : boolean
+    +getValue() : int
+    +setLogLevel() : void
+    +setFileLogging() : void
+    +setConsoleLogging() : void
+    +debug() : void
+    +info() : void
+    +warn() : void
+    +warn() : void
+  }
+  class ValidationUtil {
+    -EMAIL_PATTERN : Pattern
+    -USERNAME_PATTERN : Pattern
+    -NAME_PATTERN : Pattern
+    -KEYWORD_PATTERN : Pattern
+    -MIN_LATITUDE : double
+    -MAX_LATITUDE : double
+    -MIN_LONGITUDE : double
+    -MAX_LONGITUDE : double
+    -valid : boolean
+    -errors : StringBuilder
+    +isNotEmpty() : boolean
+    +isValidEmail() : boolean
+    +isValidUsername() : boolean
+    +isValidPassword() : boolean
+    +isValidName() : boolean
+    +isValidKeyword() : boolean
+    +isValidLatitude() : boolean
+    +isValidLongitude() : boolean
+  }
+}
+
+' --- Relatii ---
+Recommendation --> SerpAPIClient
+Recommendation --> MySQLConnection
+Recommendation --> Item
+HistoryServlet --> RedisConnection
+HistoryServlet --> MySQLConnection
+HistoryServlet --> HistoryRequestBody
+HistoryServlet --> Item
+HistoryServlet --> ResultResponse
+ExampleBookServlet --> ExampleBook
+RegisterServlet --> MySQLConnection
+RegisterServlet --> RegisterRequestBody
+RegisterServlet --> ResultResponse
+LogoutServlet --> ResultResponse
+RecommendationServlet --> Item
+RecommendationServlet --> ResultResponse
+RecommendationServlet --> Recommendation
+LoginServlet --> MySQLConnection
+LoginServlet --> LoginRequestBody
+LoginServlet --> LoginResponseBody
+ExampleJobServlet --> ExampleCoordinates
+ExampleJobServlet --> ExampleJob
+SearchServlet --> SerpAPIClient
+SearchServlet --> MySQLConnection
+SearchServlet --> RedisConnection
+SearchServlet --> Item
+SearchServlet --> ResultResponse
+SearchServlet --> Logger
+SearchServlet --> ValidationUtil
+SearchServlet --> JobRecException
+ValidationUtilTest --> ValidationUtil
+MySQLConnection --> Item
+MySQLConnection --> ApplicationConfig
+MySQLConnection --> Logger
+RedisConnection --> ApplicationConfig
+RedisConnection --> Logger
+SerpAPIClient --> Item
+SerpAPIClient --> ApplicationConfig
+EdenAI --> ExtractRequestBody
+
+@enduml

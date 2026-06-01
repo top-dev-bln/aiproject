@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, user management domain. It serves API Consumer, User as its primary actors. The main business capabilities include api base, api, error. Core business data revolves around IUserDao, User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "UserBaseController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage api base operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ApiBaseController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage api operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ApiController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage error operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ErrorController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage user base operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "UserBaseController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ApiBaseController[\"ApiBaseController\"]\n    ApiController[\"ApiController\"]\n    ErrorController[\"ErrorController\"]\n    UserBaseController[\"UserBaseController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    IUserService[\"IUserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    IUserDao[\"IUserDao\"]\n    User[\"User\"]\n  end\n  subgraph Security\n    CsrfInterceptor[\"CsrfInterceptor\"]\n    ErrorInterceptor[\"ErrorInterceptor\"]\n    XSSFilter[\"XSSFilter\"]\n  end\n  subgraph Infrastructure\n    DataSourceConfig[\"DataSourceConfig\"]\n    FilterConfig[\"FilterConfig\"]\n    InterceptorConfig[\"InterceptorConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

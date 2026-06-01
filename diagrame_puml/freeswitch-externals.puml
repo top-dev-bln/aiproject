@@ -1,0 +1,641 @@
+@startuml
+
+package link.thingscloud.freeswitch.esl {
+  interface InboundClientService {
+  }
+  class InboundClientBootstrap {
+    -inboundClient : InboundClient
+  }
+  interface ServerConnectionListener {
+  }
+  interface IEslEventListener {
+  }
+  interface InboundClient {
+  }
+  class InboundClientFactory {
+    -inboundClient : InboundClient
+    -INSTANCE : InboundClientFactory
+  }
+}
+
+package link.thingscloud.freeswitch.esl.constant {
+  class EventNames {
+    -CUSTOM : String
+    -CLONE : String
+    -CHANNEL_CREATE : String
+    -CHANNEL_DESTROY : String
+    -CHANNEL_STATE : String
+    -CHANNEL_CALLSTATE : String
+    -CHANNEL_ANSWER : String
+    -CHANNEL_HANGUP : String
+    -CHANNEL_HANGUP_COMPLETE : String
+    -CHANNEL_EXECUTE : String
+  }
+  class VariableConstant {
+    -PREFIX : String
+  }
+  class Constants {
+    -BACKGROUND_JOB : String
+    -PLAIN : String
+    -SMF_ALEG : String
+    -SMF_BLEG : String
+    -SMF_HOLDB : String
+    -SMF_BOTH : String
+    -UUID_ANSWER : String
+    -UUID_BRIDGE : String
+    -UUID_BROADCAST : String
+    -UUID_BREAK : String
+  }
+}
+
+package link.thingscloud.freeswitch.esl.example {
+  class EslInboundClientExample {
+    +main() : void
+    +eventReceived() : void
+    +backgroundJobResultReceived() : void
+    +onOpened() : void
+    +onClosed() : void
+  }
+}
+
+package link.thingscloud.freeswitch.esl.exception {
+  class EslDecoderException {
+  }
+  class InboundClientException {
+  }
+  class InboundTimeoutExcetion {
+  }
+}
+
+package link.thingscloud.freeswitch.esl.helper {
+  class CommandHelperTest {
+  }
+  class CommandHelper {
+    -builder : StringBuilder
+    +cmd() : CommandHelper
+    +arg() : CommandHelper
+    +arg() : CommandHelper
+    +arg() : CommandHelper
+    +arg() : CommandHelper
+  }
+  class EslHelper {
+    +formatEslEvent() : String
+    +formatEslMessage() : String
+  }
+}
+
+package link.thingscloud.freeswitch.esl.inbound {
+  class NettyInboundClient {
+    +subscribeBackgroundJob() : boolean
+    +sendSyncApiCommand() : EslMessage
+    +sendSyncApiCommand() : EslMessage
+    +sendSyncApiCommand() : void
+    +sendAsyncApiCommand() : String
+    +sendAsyncApiCommand() : void
+    +setEventSubscriptions() : CommandResponse
+    +cancelEventSubscriptions() : CommandResponse
+  }
+  class AbstractInboundClient {
+    -scheduledPoolExecutor : ScheduledThreadPoolExecutor
+    -serverOption : ServerOption
+    +option() : InboundClientOption
+    +start() : void
+    +shutdown() : void
+    +onChannelActive() : void
+    +onChannelClosed() : void
+    +handleAuthRequest() : void
+    +handleEslEvent() : void
+    +handleDisconnectNotice() : void
+  }
+  class AbstractNettyInboundClient {
+    -bootstrap : Bootstrap
+    -workerGroup : EventLoopGroup
+    -publicExecutor : ExecutorService
+    -privateExecutor : ExecutorService
+    -option : InboundClientOption
+    -log : Logger
+    +initChannel() : void
+  }
+}
+
+package link.thingscloud.freeswitch.esl.inbound.handler {
+  class InboundChannelHandler {
+    -MESSAGE_TERMINATOR : String
+    -LINE_TERMINATOR : String
+    -syncLock : Lock
+    -syncCallbacks : Queue<SyncCallback>
+    -listener : ChannelEventListener
+    -publicExecutor : ExecutorService
+    -privateExecutor : ExecutorService
+    -disablePublicExecutor : boolean
+    -channel : Channel
+    -remoteAddr : String
+    +channelActive() : void
+    +channelInactive() : void
+    +userEventTriggered() : void
+    +exceptionCaught() : void
+    +channelRead0() : void
+    +sendSyncSingleLineCommand() : EslMessage
+    +sendSyncMultiLineCommand() : EslMessage
+    +sendAsyncCommand() : String
+  }
+}
+
+package link.thingscloud.freeswitch.esl.inbound.listener {
+  interface ChannelEventListener {
+  }
+  interface ServerOptionListener {
+  }
+  interface EventListener {
+  }
+}
+
+package link.thingscloud.freeswitch.esl.inbound.option {
+  class ServerOption {
+    -host : String
+    -port : int
+    -timeoutSeconds : int
+    -password : String
+    -state : ConnectState
+    -connectTimes : int
+    +addr() : String
+    +addConnectTimes() : void
+  }
+  class ServerAddrOption {
+    -serverOptions : List<ServerOption>
+    -VALIDATE_MESSAGE_1 : String
+    +first() : String
+    +last() : String
+    +random() : String
+  }
+  enum ConnectState {
+  }
+  class InboundClientOption {
+    -sndBufSize : int
+    -rcvBufSize : int
+    -workerGroupThread : int
+    -publicExecutorThread : int
+    -privateExecutorThread : int
+    -callbackExecutorThread : int
+    -defaultTimeoutSeconds : int
+    -defaultPassword : String
+    -readTimeoutSeconds : int
+    -readerIdleTimeSeconds : int
+    +sndBufSize() : int
+    +sndBufSize() : InboundClientOption
+    +rcvBufSize() : int
+    +rcvBufSize() : InboundClientOption
+    +workerGroupThread() : int
+    +workerGroupThread() : InboundClientOption
+    +publicExecutorThread() : int
+    +publicExecutorThread() : InboundClientOption
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter {
+  interface EnableFreeswitchEslAutoConfiguration {
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.annotation {
+  interface EslEventName {
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.config {
+  class FreeswitchEslAutoConfiguration {
+    +inboundClientOptionHandler() : InboundClientOptionHandler
+    +listener() : IEslEventListener
+    +serverConnectionListener() : ServerConnectionListener
+    +inboundClient() : InboundClient
+    +inboundClientBootstrap() : InboundClientBootstrap
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.example {
+  class ExampleApplicationTests {
+    +contextLoads() : void
+  }
+  class ServerConnectionListenerImpl <<Service>> {
+    +onOpened() : void
+    +onClosed() : void
+  }
+  class HeartbeatEslEventHandler {
+    +handle() : void
+  }
+  class ExampleApplication {
+    +main() : void
+  }
+  class ReScheduleEslEventHandler {
+    -inboundClient : InboundClient
+    +handle() : void
+  }
+  class ExampleInboundClientOptionHandler {
+    +intercept() : void
+  }
+  class ExampleInboundClient {
+    -inboundClient : InboundClient
+    -inboundClientBootstrap : InboundClientBootstrap
+    +afterPropertiesSet() : void
+    +hold() : void
+    +record() : void
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.example.controller {
+  class DemoController <<Controller>> {
+    -inboundClient : InboundClient
+    +demo() : String
+    +addServer1() : void
+    +addServer2() : void
+    +removeServer1() : void
+    +serverOptions() : String
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.handler {
+  interface InboundClientOptionHandler {
+  }
+  class AbstractEslEventHandler {
+    -inboundClient : InboundClient
+    -log : Logger
+  }
+  interface EslEventHandler {
+  }
+  class AbstractInboundClientOptionHandler {
+    -properties : InboundClientProperties
+    +intercept() : void
+    +getOption() : InboundClientOption
+    +newInboundClientOption() : InboundClientOption
+  }
+  class DefaultEslEventHandler {
+    +handle() : void
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.properties {
+  class InboundClientProperties {
+    -sndBufSize : int
+    -rcvBufSize : int
+    -workerGroupThread : int
+    -publicExecutorThread : int
+    -privateExecutorThread : int
+    -callbackExecutorThread : int
+    -defaultTimeoutSeconds : int
+    -readTimeoutSeconds : int
+    -readerIdleTimeSeconds : int
+    -defaultPassword : String
+  }
+  class ServerProperties {
+    -host : String
+    -port : int
+    -timeoutSeconds : int
+    -password : String
+  }
+}
+
+package link.thingscloud.freeswitch.esl.spring.boot.starter.template {
+  class ServerConnectionListenerTemplate {
+    +onOpened() : void
+    +onClosed() : void
+  }
+  class DefaultInboundClientOptionHandlerTemplate {
+    +intercept() : void
+  }
+  class IEslEventListenerTemplate {
+    -inboundClient : InboundClient
+    -eslEventHandlers : List<EslEventHandler>
+    -defaultEventHandler : EslEventHandler
+    +eventReceived() : void
+    +backgroundJobResultReceived() : void
+    +afterPropertiesSet() : void
+  }
+}
+
+package link.thingscloud.freeswitch.esl.transport {
+  class SendMsg {
+    -msgLines : List<String>
+    -hasUuid : boolean
+    +addCallCommand() : SendMsg
+    +addExecuteAppName() : SendMsg
+    +addExecuteAppArg() : SendMsg
+    +addLoops() : SendMsg
+    +addHangupCause() : SendMsg
+    +addNomediaUuid() : SendMsg
+    +addEventLock() : SendMsg
+    +addGenericLine() : SendMsg
+  }
+  class CommandResponse {
+    -command : String
+    -replyText : String
+    -response : EslMessage
+    -success : boolean
+    +getCommand() : String
+    +isOk() : boolean
+    +getReplyText() : String
+    +getResponse() : EslMessage
+  }
+  class SendEvent {
+    -msgLines : List<String>
+    +addLine() : SendEvent
+    +addBody() : void
+    +getMsgLines() : List<String>
+  }
+}
+
+package link.thingscloud.freeswitch.esl.transport.event {
+  class EslEventHeaderNames {
+    -EVENT_NAME : String
+    -EVENT_DATE_LOCAL : String
+    -EVENT_DATE_GMT : String
+    -EVENT_DATE_TIMESTAMP : String
+    -EVENT_CALLING_FILE : String
+    -EVENT_CALLING_FUNCTION : String
+    -EVENT_CALLING_LINE_NUMBER : String
+    -FREESWITCH_HOSTNAME : String
+    -FREESWITCH_IPV4 : String
+    -FREESWITCH_IPV6 : String
+  }
+  class EslEvent {
+    -eventBody : List<String>
+    -decodeEventHeaders : boolean
+    -rawBodyLines : List<String>
+    +getEventBodyLines() : List<String>
+    +getEventName() : String
+    +getEventDateTimestamp() : long
+    +getEventDateLocal() : String
+    +getEventDateGmt() : String
+    +hasEventBody() : boolean
+  }
+}
+
+package link.thingscloud.freeswitch.esl.transport.message {
+  class EslFrameDecoder {
+    -LF : byte
+    -maxHeaderSize : int
+    -currentMessage : EslMessage
+    -treatUnknownHeadersAsBody : boolean
+    +decode() : void
+  }
+  class EslMessage {
+    -body : List<String>
+    -contentLength : Integer
+    +hasHeader() : boolean
+    +getHeaderValue() : String
+    +hasContentLength() : boolean
+    +getContentLength() : Integer
+    +getContentType() : String
+    +getBodyLines() : List<String>
+  }
+  class EslHeaders {
+    -literal : String
+    -OK : String
+    -AUTH_REQUEST : String
+    -API_RESPONSE : String
+    -COMMAND_REPLY : String
+    -TEXT_EVENT_PLAIN : String
+    -TEXT_EVENT_XML : String
+    -TEXT_DISCONNECT_NOTICE : String
+    -TEXT_RUDE_REJECTION : String
+    -ERR_INVALID : String
+    +fromLiteral() : Name
+    +literal() : String
+  }
+}
+
+package link.thingscloud.freeswitch.esl.transport.util {
+  class ByteBuilderTest {
+  }
+  class ByteBuilder {
+    -b : byte[]
+    -index : int
+    +newBuilder() : ByteBuilder
+    +append() : ByteBuilder
+    +length() : int
+    +build() : byte[]
+    +string() : String
+  }
+  class HeaderParser {
+    -length : int
+    +splitHeader() : String[]
+  }
+}
+
+package link.thingscloud.freeswitch.esl.util {
+  class StringUtils {
+    -EMPTY : String
+    -BLANK : String
+    -cs : CharSequence
+    -cs : CharSequence
+    -str : String
+    -cs : CharSequence
+    -strLen : int
+    -cs1 : CharSequence
+    -cs2 : CharSequence
+    -length : int
+    +length() : int
+    +isNotBlank() : boolean
+    +contains() : boolean
+    +isBlank() : boolean
+    +inEquals() : boolean
+  }
+  class RemotingUtil {
+    -addr : SocketAddress
+    +socketAddress2String() : String
+  }
+  class VariableUtil {
+    -VARIABLE_PREFIX : String
+    +getLongVar() : long
+    +getIntVar() : int
+    +getVar() : String
+    +getVar() : String
+  }
+  class ArrayUtils {
+    -array : Object[]
+    -array : Object
+    +isEmpty() : boolean
+    +getLength() : int
+  }
+  class Validate {
+    -expression : boolean
+    -message : String
+    -collection : T
+    -message : String
+    +isTrue() : void
+  }
+  class RandomUtils {
+    -RANDOM : Random
+    -startInclusive : int
+    -endExclusive : int
+    +nextInt() : int
+  }
+  class EslEventUtil {
+    -CORE_UUID : String
+    -UNIQUE_ID : String
+    -EVENT_NAME : String
+    -EVENT_SEQUENCE : String
+    -EVENT_DATE_LOCAL : String
+    -EVENT_DATE_GMT : String
+    -EVENT_DATE_TIMESTAMP : String
+    -EVENT_CALLING_FILE : String
+    -EVENT_CALLING_FUNCTION : String
+    -EVENT_CALLING_LINE_NUMBER : String
+    +getCoreUuid() : String
+    +getUniqueId() : String
+    +getCallerUniqueId() : String
+    +getEventName() : String
+    +getEventSequence() : String
+    +getEventDateLocal() : String
+    +getEventDateGmt() : String
+    +getEventCallingFile() : String
+  }
+}
+
+' --- Relatii ---
+EnableFreeswitchEslAutoConfiguration --> FreeswitchEslAutoConfiguration
+InboundClientOptionHandler --> InboundClientOption
+AbstractEslEventHandler ..|> EslEventHandler
+AbstractEslEventHandler --> InboundClient
+EslEventHandler --> EslEvent
+AbstractInboundClientOptionHandler ..|> InboundClientOptionHandler
+AbstractInboundClientOptionHandler --> InboundClientOption
+AbstractInboundClientOptionHandler --> ServerOption
+AbstractInboundClientOptionHandler --> InboundClientProperties
+AbstractInboundClientOptionHandler --> StringUtils
+DefaultEslEventHandler --|> AbstractEslEventHandler
+DefaultEslEventHandler --> EslHelper
+DefaultEslEventHandler --> EslEvent
+FreeswitchEslAutoConfiguration --> IEslEventListener
+FreeswitchEslAutoConfiguration --> InboundClient
+FreeswitchEslAutoConfiguration --> InboundClientBootstrap
+FreeswitchEslAutoConfiguration --> ServerConnectionListener
+FreeswitchEslAutoConfiguration --> InboundClientOption
+FreeswitchEslAutoConfiguration --> InboundClientOptionHandler
+FreeswitchEslAutoConfiguration --> InboundClientProperties
+FreeswitchEslAutoConfiguration --> DefaultInboundClientOptionHandlerTemplate
+FreeswitchEslAutoConfiguration --> IEslEventListenerTemplate
+FreeswitchEslAutoConfiguration --> ServerConnectionListenerTemplate
+ServerConnectionListenerTemplate ..|> ServerConnectionListener
+ServerConnectionListenerTemplate --> ServerConnectionListener
+ServerConnectionListenerTemplate --> ServerOption
+DefaultInboundClientOptionHandlerTemplate --|> AbstractInboundClientOptionHandler
+DefaultInboundClientOptionHandlerTemplate --> InboundClientOption
+DefaultInboundClientOptionHandlerTemplate --> AbstractInboundClientOptionHandler
+IEslEventListenerTemplate ..|> IEslEventListener
+IEslEventListenerTemplate --> IEslEventListener
+IEslEventListenerTemplate --> InboundClient
+IEslEventListenerTemplate --> EslEventName
+IEslEventListenerTemplate --> DefaultEslEventHandler
+IEslEventListenerTemplate --> EslEventHandler
+IEslEventListenerTemplate --> EslEvent
+IEslEventListenerTemplate --> ArrayUtils
+IEslEventListenerTemplate --> StringUtils
+ServerConnectionListener --> ServerOption
+IEslEventListener --> EslEvent
+InboundClient --|> InboundClientService
+InboundClient --> InboundTimeoutExcetion
+InboundClient --> InboundClientOption
+InboundClient --> CommandResponse
+InboundClient --> SendEvent
+InboundClient --> SendMsg
+InboundClient --> EslMessage
+InboundClientFactory --> InboundClientException
+InboundClientFactory --> NettyInboundClient
+InboundClientFactory --> InboundClientOption
+CommandResponse --> EslHeaders
+CommandResponse --> EslMessage
+EslFrameDecoder --> EslDecoderException
+EslFrameDecoder --> ByteBuilder
+EslFrameDecoder --> HeaderParser
+EslEvent --> EslHeaders
+EslEvent --> EslMessage
+EslEvent --> HeaderParser
+VariableUtil --> EslEvent
+EslEventUtil --> EslEvent
+NettyInboundClient --|> AbstractInboundClient
+NettyInboundClient --> InboundClient
+NettyInboundClient --> Constants
+NettyInboundClient --> EventNames
+NettyInboundClient --> InboundTimeoutExcetion
+NettyInboundClient --> InboundChannelHandler
+NettyInboundClient --> InboundClientOption
+NettyInboundClient --> CommandResponse
+NettyInboundClient --> SendEvent
+NettyInboundClient --> SendMsg
+NettyInboundClient --> EslMessage
+NettyInboundClient --> StringUtils
+AbstractInboundClient --|> AbstractNettyInboundClient
+AbstractInboundClient ..|> InboundClient
+AbstractInboundClient --> InboundClient
+AbstractInboundClient --> Constants
+AbstractInboundClient --> InboundClientException
+AbstractInboundClient --> InboundChannelHandler
+AbstractInboundClient --> EventListener
+AbstractInboundClient --> ServerOptionListener
+AbstractInboundClient --> ConnectState
+AbstractInboundClient --> InboundClientOption
+AbstractInboundClient --> ServerOption
+AbstractInboundClient --> CommandResponse
+AbstractInboundClient --> EslEvent
+AbstractInboundClient --> EslHeaders
+AbstractInboundClient --> EslMessage
+AbstractInboundClient --> StringUtils
+AbstractNettyInboundClient ..|> ChannelEventListener
+AbstractNettyInboundClient ..|> InboundClientService
+AbstractNettyInboundClient --> InboundClientService
+AbstractNettyInboundClient --> InboundChannelHandler
+AbstractNettyInboundClient --> ChannelEventListener
+AbstractNettyInboundClient --> InboundClientOption
+AbstractNettyInboundClient --> EslFrameDecoder
+InboundChannelHandler --> EslHelper
+InboundChannelHandler --> ChannelEventListener
+InboundChannelHandler --> EslEvent
+InboundChannelHandler --> EslHeaders
+InboundChannelHandler --> EslMessage
+InboundChannelHandler --> RemotingUtil
+ChannelEventListener --> InboundChannelHandler
+ChannelEventListener --> EslEvent
+ServerOptionListener --> ServerOption
+ServerAddrOption --> RandomUtils
+ServerAddrOption --> Validate
+InboundClientOption --> IEslEventListener
+InboundClientOption --> ServerConnectionListener
+InboundClientOption --> EventListener
+InboundClientOption --> ServerOptionListener
+InboundClientOption --> StringUtils
+EslHelper --> EslEvent
+EslHelper --> EslHeaders
+EslHelper --> EslMessage
+InboundTimeoutExcetion --|> InboundClientException
+EslInboundClientExample --> IEslEventListener
+EslInboundClientExample --> InboundClient
+EslInboundClientExample --> ServerConnectionListener
+EslInboundClientExample --> InboundClientOption
+EslInboundClientExample --> ServerOption
+EslInboundClientExample --> EslEvent
+ServerConnectionListenerImpl ..|> ServerConnectionListener
+ServerConnectionListenerImpl --> ServerConnectionListener
+ServerConnectionListenerImpl --> ServerOption
+HeartbeatEslEventHandler ..|> EslEventHandler
+HeartbeatEslEventHandler --> EventNames
+HeartbeatEslEventHandler --> EslEventName
+HeartbeatEslEventHandler --> EslEventHandler
+HeartbeatEslEventHandler --> EslEvent
+ReScheduleEslEventHandler --|> AbstractEslEventHandler
+ReScheduleEslEventHandler --> InboundClient
+ReScheduleEslEventHandler --> EventNames
+ReScheduleEslEventHandler --> EslHelper
+ReScheduleEslEventHandler --> EslEventName
+ReScheduleEslEventHandler --> AbstractEslEventHandler
+ReScheduleEslEventHandler --> EslEvent
+ReScheduleEslEventHandler --> EslMessage
+ExampleInboundClientOptionHandler --|> AbstractInboundClientOptionHandler
+ExampleInboundClientOptionHandler --> InboundClientOption
+ExampleInboundClientOptionHandler --> ServerOption
+ExampleInboundClientOptionHandler --> AbstractInboundClientOptionHandler
+ExampleInboundClient --> InboundClient
+ExampleInboundClient --> InboundClientBootstrap
+DemoController --> InboundClient
+DemoController --> ServerOption
+
+@enduml

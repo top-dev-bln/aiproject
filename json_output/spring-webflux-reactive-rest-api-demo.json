@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the recruitment domain. It serves User as its primary actors. The main business capabilities include tweet. Core business data revolves around Tweet.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage tweet operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TweetController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    TweetController[\"TweetController\"]\n  end\n  subgraph Data_Access\n    Tweet[\"Tweet\"]\n    TweetRepository[\"TweetRepository\"]\n  end"
+  }
+}

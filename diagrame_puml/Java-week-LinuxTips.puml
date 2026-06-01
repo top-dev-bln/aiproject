@@ -1,0 +1,140 @@
+@startuml
+
+  class Pagamento {
+    +pagamento() : Double
+    +pagamento() : Integer
+    +pagamento() : Long
+  }
+  class Pessoa {
+    +main() : void
+  }
+  class PessoaDesenvolvedoraFrontEnd {
+    +codar() : void
+  }
+  class PessoaDesenvolvedora {
+    -nome : String
+    -stack : String
+    -salario : Double
+    +getNome() : String
+    +setNome() : void
+    +getStack() : String
+    +setStack() : void
+    +getSalario() : Double
+    +setSalario() : void
+    +codar() : void
+  }
+  class PessoaDesenvolvedoraBackend {
+    +codar() : void
+  }
+  class Profissional {
+    -salario : Double
+    -id : Integer
+    -salariopublic : Double
+    -idPublic : Integer
+    -salarioProtected : Double
+    -idProtected : Integer
+    +trabalharPublic() : String
+    +trabalharProtected() : String
+  }
+  class ProfissionalMain {
+    +main() : void
+  }
+  class LinuxTipsBankMain {
+    +main() : void
+  }
+  class ContaPoupanca {
+    +consultarSaldo() : void
+    +fazerPix() : void
+  }
+  interface Conta {
+    +consultarSaldo() : void
+    +fazerPix() : void
+  }
+  class ContaCorrente {
+    +consultarSaldo() : void
+    +fazerPix() : void
+  }
+
+package com.linuxtips.javaweekapi {
+  class JavaWeekApiApplicationTests {
+  }
+  class JavaWeekApiApplication {
+    +main() : void
+  }
+}
+
+package com.linuxtips.javaweekapi.controller {
+  class CursoController <<Controller>> {
+    +criarCurso() : Curso
+    +listarCursos() : List<Curso>
+    +buscarCursoPeloId() : ResponseEntity<Curso>
+    +atualizarCursoPeloId() : ResponseEntity<Curso>
+    +excluirCursoPeloId() : ResponseEntity<Object>
+  }
+}
+
+package com.linuxtips.javaweekapi.model {
+  class Curso <<Entity>> {
+    -id : Long
+    -nome : String
+    -preco : Double
+    -pessoaInstrutora : String
+    +getId() : Long
+    +setId() : void
+    +getNome() : String
+    +setNome() : void
+    +getPreco() : Double
+    +setPreco() : void
+    +getPessoaInstrutora() : String
+    +setPessoaInstrutora() : void
+  }
+}
+
+package com.linuxtips.javaweekapi.repository {
+  interface CursoRepository <<Repository>> {
+  }
+}
+
+package com.linuxtips.javaweekapi.service {
+  class CursoService <<Service>> {
+    -cursoRepository : CursoRepository
+    +criarCurso() : Curso
+    +listarCursos() : List<Curso>
+    +buscarCursoPeloId() : ResponseEntity<Curso>
+    +atualizarCursoPeloId() : ResponseEntity<Curso>
+    +excluirCursoPeloId() : ResponseEntity<Object>
+  }
+}
+
+package sobrescrita {
+  class BotaoTV {
+    +ligar() : void
+    +desligar() : void
+  }
+  class Botao {
+    +ligar() : void
+    +desligar() : void
+  }
+  class Main {
+    +main() : void
+  }
+  class BotaoFogao {
+    +ligar() : void
+    +desligar() : void
+  }
+}
+
+' --- Relatii ---
+BotaoTV --|> BotaoFogao
+BotaoFogao --|> Botao
+PessoaDesenvolvedoraFrontEnd --|> PessoaDesenvolvedora
+PessoaDesenvolvedoraBackend --|> PessoaDesenvolvedora
+ContaPoupanca ..|> Conta
+ContaCorrente ..|> Conta
+CursoRepository --> Curso
+CursoController --> Curso
+CursoController --> CursoService
+CursoService --> Curso
+CursoService --> CursoRepository
+
+@enduml

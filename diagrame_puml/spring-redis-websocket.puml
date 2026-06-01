@@ -1,0 +1,122 @@
+@startuml
+
+package com.github.rawsanj {
+  class SpringRedisWebSocketApplication {
+    +main() : void
+  }
+}
+
+package com.github.rawsanj.config {
+  class RuntimeHintsConfigTest {
+  }
+  class HerokuRedisConfig {
+  }
+  class RedisConfig {
+  }
+  class RuntimeHintsConfig {
+    +registerHints() : void
+  }
+  class ChatConstants {
+    -MESSAGE_TOPIC : String
+    -MESSAGE_COUNTER_KEY : String
+    -ACTIVE_USER_KEY : String
+    -WEBSOCKET_MESSAGE_MAPPING : String
+  }
+  class ReactiveWebSocketConfig {
+    +webSocketHandler() : ChatWebSocketHandler
+    +webSocketHandlerMapping() : HandlerMapping
+    +handlerAdapter() : WebSocketHandlerAdapter
+  }
+}
+
+package com.github.rawsanj.handler {
+  class ChatWebSocketHandler {
+    -chatMessageFluxSink : Flux<ChatMessage>
+    -redisChatMessagePublisher : RedisChatMessagePublisher
+    -activeUserCounter : RedisAtomicLong
+    -objectStringConverter : ObjectStringConverter
+    +handle() : Mono<Void>
+  }
+  class WebHttpHandler {
+    +htmlRouter() : RouterFunction<ServerResponse>
+  }
+}
+
+package com.github.rawsanj.messaging {
+  class RedisChatMessageListener {
+    -reactiveStringRedisTemplate : ReactiveStringRedisTemplate
+    -chatWebSocketHandler : ChatWebSocketHandler
+    -objectStringConverter : ObjectStringConverter
+    +subscribeMessageChannelAndPublishOnWebSocket() : Mono<Void>
+  }
+  class RedisChatMessagePublisher {
+    -reactiveStringRedisTemplate : ReactiveStringRedisTemplate
+    -chatMessageCounter : RedisAtomicInteger
+    -activeUserCounter : RedisAtomicLong
+    -objectMapper : ObjectMapper
+    +publishChatMessage() : Mono<Long>
+  }
+}
+
+package com.github.rawsanj.model {
+  class Message {
+    -message : String
+  }
+  class ChatMessage {
+    -id : Integer
+    -message : String
+    -hostname : String
+    -usersOnline : Long
+  }
+}
+
+package com.github.rawsanj.test {
+  class SpringRedisWebSocketApplicationIT {
+    -applicationContext : ApplicationContext
+    -objectMapper : ObjectMapper
+    -testClient : WebTestClient
+    -port : int
+    -message : String
+    -messageResponse : String
+  }
+  class AbstractRedisContainerBaseTest {
+    -REDIS_IMAGE : String
+    -REDIS_PASSWORD : String
+    -REDIS_PORT : Integer
+    +initialize() : void
+    +destroy() : void
+  }
+}
+
+package com.github.rawsanj.util {
+  class ObjectStringConverter {
+    -objectMapper : ObjectMapper
+  }
+}
+
+' --- Relatii ---
+SpringRedisWebSocketApplicationIT --|> AbstractRedisContainerBaseTest
+SpringRedisWebSocketApplicationIT --> ChatMessage
+SpringRedisWebSocketApplicationIT --> Message
+AbstractRedisContainerBaseTest --> SpringRedisWebSocketApplication
+RuntimeHintsConfigTest --> ChatMessage
+RuntimeHintsConfigTest --> Message
+ChatWebSocketHandler --> RedisChatMessagePublisher
+ChatWebSocketHandler --> ChatMessage
+ChatWebSocketHandler --> ObjectStringConverter
+WebHttpHandler --> RedisChatMessagePublisher
+WebHttpHandler --> Message
+HerokuRedisConfig --> RedisChatMessageListener
+RedisConfig --> RedisChatMessageListener
+RuntimeHintsConfig --> ChatMessage
+RuntimeHintsConfig --> Message
+ReactiveWebSocketConfig --> ChatWebSocketHandler
+ReactiveWebSocketConfig --> RedisChatMessagePublisher
+ReactiveWebSocketConfig --> ChatMessage
+ReactiveWebSocketConfig --> ObjectStringConverter
+RedisChatMessageListener --> ChatWebSocketHandler
+RedisChatMessageListener --> ChatMessage
+RedisChatMessageListener --> ObjectStringConverter
+RedisChatMessagePublisher --> ChatMessage
+
+@enduml

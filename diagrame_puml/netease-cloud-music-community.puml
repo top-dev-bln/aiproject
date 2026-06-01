@@ -1,0 +1,1830 @@
+@startuml
+
+package me.fanchaoo.admin.response {
+  class UpdateIndexSwiperRequest {
+    -list : List<IndexSwiperDTO>
+  }
+}
+
+package me.fanchaoo.constant {
+  class RedisKey {
+    -LOGIN_USER : String
+    -INDEX_SWIPER : String
+  }
+  class JwtConstant {
+    -SIGNATURE : String
+    -EXPIRE_SECOND : int
+    -SECRET : String
+  }
+  class WeixinConstant {
+  }
+  class HtmlTemplateConstant {
+    -AT_TEMPLATE : String
+    -AT_PATTERN : Pattern
+    -TOPIC_TEMPLATE : String
+    -TOPIC_PATTERN : Pattern
+  }
+}
+
+package me.fanchaoo.dbo {
+  class VenueDBO {
+    -id : Long
+    -name : String
+    -address : String
+    -createTime : DateTime
+    -updateTime : DateTime
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getAddress() : String
+    +setAddress() : void
+    +getCreateTime() : DateTime
+    +setCreateTime() : void
+  }
+  class ActivityDBO {
+    -id : Long
+    -name : String
+    -showStartTime : DateTime
+    -showEndTime : DateTime
+    -venueCity : String
+    -venueName : String
+    -venueAddress : String
+    -posterImage : String
+    -sourceChannel : String
+    -sourceId : String
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getShowStartTime() : DateTime
+    +setShowStartTime() : void
+    +getShowEndTime() : DateTime
+    +setShowEndTime() : void
+  }
+  class TopicRelationDBO {
+    -id : Long
+    -topicId : Long
+    -momentId : Long
+    -userId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class LikeRelationDBO {
+    -id : Long
+    -userId : Long
+    -targetType : String
+    -targetId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class MomentVideoDBO {
+    -id : Long
+    -momentId : Long
+    -title : String
+    -url : String
+    -width : Integer
+    -height : Integer
+    -size : Integer
+    -coverUrl : String
+    -coverWidth : Integer
+    -coverHeight : Integer
+  }
+  class RegionCityDBO {
+    -id : String
+    -name : String
+    -provinceId : String
+    +getId() : String
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getProvinceId() : String
+    +setProvinceId() : void
+  }
+  class PrivateLetterDBO {
+    -id : Long
+    -senderUserId : Long
+    -receiverUserId : Long
+    -type : Integer
+    -textContent : String
+    -imageUrl : String
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+    +getId() : Long
+    +setId() : void
+    +getSenderUserId() : Long
+    +setSenderUserId() : void
+    +getReceiverUserId() : Long
+    +setReceiverUserId() : void
+    +getType() : Integer
+    +setType() : void
+  }
+  class FeedbackDBO {
+    -id : Long
+    -type : String
+    -content : String
+    -contactInfo : String
+    -userId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+    +getId() : Long
+    +setId() : void
+    +getType() : String
+    +setType() : void
+    +getContent() : String
+    +setContent() : void
+    +getContactInfo() : String
+    +setContactInfo() : void
+  }
+  class FollowRelationDBO {
+    -id : Long
+    -userId : Long
+    -targetType : String
+    -targetId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class CommentDBO {
+    -id : Long
+    -userId : Long
+    -momentId : Long
+    -content : String
+    -parentId : Long
+    -replyToId : Long
+    -likeCount : Integer
+    -status : Integer
+    -artistId : Long
+    -createTime : DateTime
+  }
+  class UserDBO {
+    -id : Long
+    -name : String
+    -gender : Integer
+    -avatarUrl : String
+    -description : String
+    -miniWeixinUnionId : String
+    -miniWeixinOpenId : String
+    -miniQqUnionId : String
+    -miniQqOpenId : String
+    -country : String
+  }
+  class NotificationDBO {
+    -id : Long
+    -category : String
+    -type : String
+    -receiveUserId : Long
+    -sendUserId : Long
+    -momentId : Long
+    -parentCommentId : Long
+    -commentId : Long
+    -artistId : Long
+    -createTime : DateTime
+  }
+  class RepostDBO {
+    -id : Long
+    -userId : Long
+    -momentId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+    +getId() : Long
+    +setId() : void
+    +getUserId() : Long
+    +setUserId() : void
+    +getMomentId() : Long
+    +setMomentId() : void
+    +getArtistId() : Long
+    +setArtistId() : void
+  }
+  class TopicDBO {
+    -id : Long
+    -name : String
+    -coverUrl : String
+    -createUserId : Long
+    -lastUpdateUserId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getCoverUrl() : String
+    +setCoverUrl() : void
+    +getCreateUserId() : Long
+    +setCreateUserId() : void
+  }
+  class RegionProvinceDBO {
+    -id : String
+    -name : String
+    +getId() : String
+    +setId() : void
+    +getName() : String
+    +setName() : void
+  }
+  class MomentImageDBO {
+    -id : Long
+    -momentId : Long
+    -url : String
+    -width : Integer
+    -height : Integer
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class MomentDBO {
+    -id : Long
+    -userId : Long
+    -type : String
+    -textContent : String
+    -activityId : Long
+    -likeCount : Integer
+    -commentCount : Integer
+    -repostCount : Integer
+    -shareCount : Integer
+    -viewCount : Integer
+  }
+  class ShareDBO {
+    -id : Long
+    -userId : Long
+    -pageType : String
+    -momentId : Long
+    -profileUserId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class TagDBO {
+    -id : Long
+    -name : String
+    -createUserId : Long
+    -fansCount : Integer
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class TagRelationDBO {
+    -id : Long
+    -tagId : Long
+    -entityType : String
+    -entityId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class CollectRelationDBO {
+    -id : Long
+    -userId : Long
+    -targetType : String
+    -targetId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class JoinedActivityDBO {
+    -id : Long
+    -userId : Long
+    -activityId : Long
+    -artistId : Long
+    -createTime : DateTime
+    -updateTime : DateTime
+  }
+  class ArtistDBO {
+    -id : Long
+    -name : String
+    -mpWeixinAppId : String
+    -mpWeixinAppSecret : String
+    -mpQqAppId : String
+    -mpQqAppSecret : String
+    -randomKey : String
+    -createTime : DateTime
+    -updateTime : DateTime
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getMpWeixinAppId() : String
+    +setMpWeixinAppId() : void
+    +getMpWeixinAppSecret() : String
+    +setMpWeixinAppSecret() : void
+  }
+}
+
+package me.fanchaoo.enums {
+  enum EnumNotificationCategory {
+    -value : String
+    -desc : String
+  }
+  enum EnumCollectTargetType {
+    -value : String
+    -desc : String
+  }
+  enum EnumStatus {
+    -value : Integer
+    -desc : String
+  }
+  enum EnumEntityType {
+    -value : String
+    -desc : String
+  }
+  enum EnumSharePageType {
+    -value : String
+    -desc : String
+  }
+  enum EnumGender {
+    -value : Integer
+    -desc : String
+  }
+  enum EnumFollowTargetType {
+    -value : String
+    -desc : String
+  }
+  enum EnumFeedbackType {
+    -value : String
+    -desc : String
+  }
+  enum EnumResponseCode {
+    -value : Integer
+    -desc : String
+  }
+  enum EnumFileType {
+    -value : String
+  }
+  enum EnumTagRelationEntityType {
+    -value : String
+    -desc : String
+  }
+  enum EnumBoolean {
+    -value : Integer
+    -desc : String
+  }
+  enum EnumFriendType {
+    -value : String
+    -desc : String
+  }
+  enum EnumNotificationType {
+    -value : String
+    -category : String
+    -desc : String
+  }
+  enum EnumProvider {
+    -value : String
+    -desc : String
+  }
+  enum EnumLikeTargetType {
+    -value : String
+    -desc : String
+  }
+  enum EnumMomentType {
+    -value : String
+    -desc : String
+  }
+}
+
+package me.fanchaoo.exception {
+  class BusinessException {
+    -code : int
+  }
+}
+
+package me.fanchaoo.util {
+  class UUIDUtils {
+    +getUUID() : String
+  }
+  class CookieUtils {
+    +getCookieToken() : String
+  }
+  class FileTypeUtils {
+    +checkFileType() : boolean
+    +getSuffix() : String
+  }
+  class MD5Utils {
+    +md5Hex() : String
+    +md5Hex() : String
+  }
+  class BeanCopyUtils {
+  }
+  class PageUtils {
+    +getStart() : int
+  }
+  class AssertUtils {
+    +notNull() : void
+    +notBlank() : void
+    +isTrue() : void
+    +isFalse() : void
+    +notEmpty() : void
+  }
+  class WeixinUtils {
+    -KEY_ALGORITHM : String
+    -ALGORITHM_STR : String
+    -key : Key
+    -cipher : Cipher
+    +main() : void
+    +decryptData() : String
+  }
+  class ReplaceUtils {
+    +translate() : String
+  }
+  class DateUtils {
+    +main() : void
+  }
+  class ImageGenerateUtils {
+    -imageNameList : List<String>
+    -BACK_GROUND_COLOR : Color
+    -IMG_WIDTH : int
+    -IMG_HEIGHT : int
+    -PADDING : int
+    -RADIO : double
+    -BLOCK_NUM : int
+    -COLOR_DIFF_EVALUATION : int
+    -COLOR_LIMIT : int
+    -DIR : String
+    +main() : void
+    +getImageName() : String
+  }
+  class UserContext {
+    -THREAD_LOCAL : ThreadLocal<LoginUserDTO>
+    +setLoginUser() : void
+    +getLoginUser() : LoginUserDTO
+    +getArtistId() : Long
+    +getRedisKeyPrefix() : String
+    +clear() : void
+  }
+  class HttpUtils {
+    +getBytes() : byte[]
+    +getJSON() : String
+    +postQuery() : String
+  }
+}
+
+package me.fanchaoo.web {
+  class Application {
+    +main() : void
+  }
+}
+
+package me.fanchaoo.web.aspect {
+  class GlobalExceptionHandleAdvice {
+    +handleBusinessException() : BaseResponse
+    +handleMethodArgumentNotValidException() : BaseResponse
+    +handleMissingServletRequestParameterException() : BaseResponse
+    +handleOtherException() : BaseResponse
+  }
+  class ApiLogAspect {
+    -mongoTemplate : MongoTemplate
+    +apiLogPointcut() : void
+    +around() : Object
+  }
+}
+
+package me.fanchaoo.web.config {
+  class MySQLConfig {
+    +dataSource() : DataSource
+    +statViewServlet() : ServletRegistrationBean
+    +webStatFilter() : FilterRegistrationBean
+  }
+  class RedisConfig {
+  }
+  class SwaggerConfig {
+    +api() : Docket
+  }
+  class CorsConfig {
+    -urlBasedCorsConfigurationSource : UrlBasedCorsConfigurationSource
+    -corsConfiguration : CorsConfiguration
+    +corsFilter() : CorsFilter
+  }
+}
+
+package me.fanchaoo.web.config.mybatis {
+  class DateTimeTypeHandler {
+    +setNonNullParameter() : void
+    +getNullableResult() : DateTime
+    +getNullableResult() : DateTime
+    +getNullableResult() : DateTime
+  }
+}
+
+package me.fanchaoo.web.config.springmvc {
+  class LoginInterceptorConfig {
+    +addInterceptors() : void
+  }
+  class DateTimeMessageConverter {
+    +supports() : boolean
+    +readInternal() : DateTime
+    +writeInternal() : void
+    +read() : DateTime
+  }
+}
+
+package me.fanchaoo.web.controller {
+  class LikeController <<Controller>> {
+    -likeService : LikeService
+    +like() : BaseResponse
+    +cancelLike() : BaseResponse
+    +queryLikeUser() : BaseResponse<List<UserDTO>>
+  }
+  class CollectController <<Controller>> {
+    -collectService : CollectService
+    +collect() : BaseResponse
+    +cancelCollect() : BaseResponse
+    +queryCollectVideo() : BaseResponse<List<MomentDTO>>
+  }
+  class NotificationController <<Controller>> {
+    -notificationService : NotificationService
+    +queryCommentInfo() : BaseResponse<List<CommentNotificationDTO>>
+    +queryAtInfo() : BaseResponse<List<AtNotificationDTO>>
+    +queryNotificationInfo() : BaseResponse<List<AtNotificationDTO>>
+    +clearNotificationCount() : BaseResponse
+  }
+  class TagController <<Controller>> {
+    -tagService : TagService
+    +addTag() : BaseResponse
+  }
+  class SquareController <<Controller>> {
+    -momentService : MomentService
+    -videoService : VideoService
+    -activityService : ActivityService
+    -userService : UserService
+    +querySquareMoment() : BaseResponse<List<MomentDTO>>
+  }
+  class CommentController <<Controller>> {
+    -commentService : CommentService
+    +publishComment() : BaseResponse<Long>
+    +deleteComment() : BaseResponse
+    +queryMomentComment() : BaseResponse<List<CommentDTO>>
+    +getCommentDetail() : BaseResponse<CommentDTO>
+  }
+  class MomentController <<Controller>> {
+    -momentService : MomentService
+    +getMomentDetail() : BaseResponse<MomentDetailDTO>
+    +publishMoment() : BaseResponse
+    +deleteMoment() : BaseResponse
+  }
+  class IndexController <<Controller>> {
+    -momentService : MomentService
+    -indexService : IndexService
+    -activityService : ActivityService
+    -userService : UserService
+    +queryIndexSwiper() : BaseResponse<List<IndexSwiperDTO>>
+    +queryIndexBlock() : BaseResponse<List<QueryIndexBlockDTO>>
+    +queryGuessYouLike() : BaseResponse<List<QueryGuessYouLikeDTO>>
+  }
+  class DiscoverController <<Controller>> {
+    -momentService : MomentService
+    -videoService : VideoService
+    -activityService : ActivityService
+    -userService : UserService
+    +queryFriendMoment() : BaseResponse<List<MomentDTO>>
+  }
+  class ShareController <<Controller>> {
+    -shareService : ShareService
+    +share() : BaseResponse
+  }
+  class SettingController <<Controller>> {
+    -settingService : SettingService
+    +addFeedback() : BaseResponse
+    +queryCity() : BaseResponse<List<RegionCityDTO>>
+  }
+  class TopicController <<Controller>> {
+    -topicService : TopicService
+    -momentService : MomentService
+    +queryTopic() : BaseResponse<List<TopicDTO>>
+    +queryTopicMoment() : BaseResponse<List<MomentDTO>>
+    +getTopicDetail() : BaseResponse<TopicDTO>
+    +updateTopicCoverUrl() : BaseResponse
+  }
+  class ActivityController <<Controller>> {
+    -activityService : ActivityService
+    +queryActivity() : BaseResponse<List<ActivityDTO>>
+    +queryJoinedActivity() : BaseResponse<List<ActivityDTO>>
+    +joinedActivity() : BaseResponse
+  }
+  class RepostController <<Controller>> {
+    -repostService : RepostService
+    +repost() : BaseResponse
+    +queryRepostUser() : BaseResponse<List<RepostUserDTO>>
+  }
+  class FollowController <<Controller>> {
+    -followService : FollowService
+    +follow() : BaseResponse
+    +cancelFollow() : BaseResponse
+    +queryFriend() : BaseResponse<List<UserDTO>>
+    +countFriend() : BaseResponse<FriendCountDTO>
+  }
+  class VideoController <<Controller>> {
+    -videoService : VideoService
+    +queryVideoCover() : BaseResponse<List<MomentImageDTO>>
+  }
+  class TestController <<Controller>> {
+    -stringRedisTemplate : StringRedisTemplate
+    +test1() : Object
+  }
+  class OssController <<Controller>> {
+    -ossService : OssService
+    +uploadImageOrVideo() : BaseResponse<String>
+  }
+  class LoginController <<Controller>> {
+    -loginService : LoginService
+    +login() : BaseResponse<LoginUserDTO>
+    +checkToken() : BaseResponse
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +getUserInfo() : BaseResponse<UserDTO>
+    +updateUserInfo() : BaseResponse
+  }
+}
+
+package me.fanchaoo.web.dao.mapper {
+  interface TagQueryMapper {
+  }
+  interface TopicRelationQueryMapper {
+  }
+  interface MomentVideoQueryMapper {
+  }
+  interface FeedbackQueryMapper {
+  }
+  interface TopicRelationMapper {
+  }
+  interface MomentImageMapper {
+  }
+  interface RegionProvinceMapper {
+  }
+  interface ActivityQueryMapper {
+  }
+  interface PrivateLetterQueryMapper {
+  }
+  interface CommentMapper {
+  }
+  interface TagRelationMapper {
+  }
+  interface MomentQueryMapper {
+  }
+  interface UserQueryMapper {
+  }
+  interface TopicMapper {
+  }
+  interface RepostMapper {
+  }
+  interface NotificationMapper {
+  }
+  interface CommentQueryMapper {
+  }
+  interface TagMapper {
+  }
+  interface LikeRelationMapper {
+  }
+  interface JoinedActivityMapper {
+  }
+  interface LikeRelationQueryMapper {
+  }
+  interface RegionCityMapper {
+  }
+  interface FeedbackMapper {
+  }
+  interface RepostQueryMapper {
+  }
+  interface NotificationQueryMapper {
+  }
+  interface JoinedActivityQueryMapper {
+  }
+  interface VenueMapper {
+  }
+  interface TagRelationQueryMapper {
+  }
+  interface FollowRelationQueryMapper {
+  }
+  interface MomentMapper {
+  }
+  interface RegionProvinceQueryMapper {
+  }
+  interface PrivateLetterMapper {
+  }
+  interface UserMapper {
+  }
+  interface ShareQueryMapper {
+  }
+  interface MomentImageQueryMapper {
+  }
+  interface MomentVideoMapper {
+  }
+  interface CollectRelationMapper {
+  }
+  interface TopicQueryMapper {
+  }
+  interface FollowRelationMapper {
+  }
+  interface ShareMapper {
+  }
+  interface RegionCityQueryMapper {
+  }
+  interface ArtistMapper {
+  }
+  interface ActivityMapper {
+  }
+  interface VenueQueryMapper {
+  }
+  interface ArtistQueryMapper {
+  }
+  interface CollectRelationQueryMapper {
+  }
+}
+
+package me.fanchaoo.web.dto {
+  class TopicDTO {
+    -createUserName : String
+    -lastUpdateUserName : String
+    -momentCount : Integer
+    -userCount : Integer
+  }
+  class QueryGuessYouLikeDTO {
+  }
+  class IndexSwiperDTO {
+    -coverUrl : String
+    -momentId : String
+    -momentVideoId : String
+  }
+  class RepostUserDTO {
+    -userId : Long
+    -userName : String
+    -userAvatarUrl : String
+    -repostTime : DateTime
+    -textContent : String
+  }
+  class FriendCountDTO {
+    -followCount : Integer
+    -fansCount : Integer
+  }
+  class MomentImageDTO {
+  }
+  class MomentDTO {
+    -userName : String
+    -userAvatarUrl : String
+    -hasLiked : Boolean
+    -hasFollowed : Boolean
+    -imageList : List<MomentImageDTO>
+    -video : MomentVideoDTO
+    -repostedMoment : MomentDTO
+  }
+  class LoginUserDTO {
+    -artistId : Long
+    -artistName : String
+    -userId : Long
+    -userName : String
+    -userAvatarUrl : String
+    -unionId : String
+    -token : String
+  }
+  class ActivityDTO {
+    -hasJoined : Boolean
+  }
+  class GroupCountDTO {
+    -id : Long
+    -count : Integer
+  }
+  class LoginDTO {
+    -id : String
+    -uri : String
+    -operation : String
+    -request : Object
+    -response : Object
+    -artistId : Long
+    -userId : Long
+    -userName : String
+  }
+  class QueryIndexBlockDTO {
+  }
+  class ApiLogDTO {
+    -id : String
+    -uri : String
+    -operation : String
+    -request : Object
+    -response : Object
+    -artistId : Long
+    -userId : Long
+    -userName : String
+  }
+  class UserDTO {
+    -hasFollowed : Boolean
+  }
+  class AtNotificationDTO {
+    -moment : MomentDTO
+  }
+  class GetProfileDTO {
+  }
+  class MomentDetailDTO {
+  }
+  class MomentVideoDTO {
+    -hasCollected : Boolean
+  }
+  class CommentDTO {
+    -userName : String
+    -userAvatarUrl : String
+    -hasLiked : Boolean
+    -hasFollowed : Boolean
+    -replyCount : Integer
+    -replyToComment : CommentDTO
+  }
+  class CommentNotificationDTO {
+    -moment : MomentDTO
+    -commentContent : String
+    -parentCommentContent : String
+    -sendUserName : String
+    -sendUserAvatarUrl : String
+  }
+  class RegionCityDTO {
+  }
+}
+
+package me.fanchaoo.web.interceptor {
+  class LoginInterceptor {
+    -TOKEN : String
+    -redisUtils : RedisUtils
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+}
+
+package me.fanchaoo.web.request {
+  class JoinedActivityRequest {
+    -activityId : Long
+    -hasJoined : Boolean
+  }
+  class QueryTopicRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+    -name : String
+  }
+  class QuerySquareMomentRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+    -momentType : EnumMomentType
+    -repostMomentId : Long
+    -userIdList : List<Long>
+    -activityId : Long
+  }
+  class CollectRequest {
+    -targetType : EnumCollectTargetType
+    -targetId : Long
+  }
+  class QuerySquareImageRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class AddTagRequest {
+    -entityType : EnumTagRelationEntityType
+    -name : String
+  }
+  class QueryRepostUserRequest {
+    -repostMomentId : Long
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class QueryFriendRequest {
+    -friendType : EnumFriendType
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class GetMomentDetailRequest {
+    -momentId : Long
+  }
+  class CancelCollectRequest {
+    -targetType : EnumCollectTargetType
+    -targetId : Long
+  }
+  class ClearNotificationCountRequest {
+    -category : EnumNotificationCategory
+  }
+  class CancelLikeRequest {
+    -targetType : EnumLikeTargetType
+    -targetId : Long
+  }
+  class QueryMomentCommentRequest {
+    -momentId : Long
+    -parentId : Long
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class QueryLikeUserRequest {
+    -targetType : EnumLikeTargetType
+    -targetId : Long
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class PublishCommentRequest {
+    -momentId : Long
+    -content : String
+    -parentId : Long
+    -replyToId : Long
+  }
+  class DeleteCommentRequest {
+    -commentId : Long
+  }
+  class GetCommentDetailRequest {
+    -commentId : Long
+  }
+  class PageRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class GetTopicDetailRequest {
+    -name : String
+  }
+  class RepostRequest {
+    -repostMomentId : Long
+    -textContent : String
+  }
+  class LikeRequest {
+    -targetType : EnumLikeTargetType
+    -targetId : Long
+  }
+  class PublishMomentRequest {
+    -momentType : EnumMomentType
+    -textContent : String
+    -imageList : List<Image>
+    -video : Video
+    -tagIdList : List<Long>
+    -activityId : Long
+    -title : String
+    -url : String
+    -width : Integer
+    -height : Integer
+  }
+  class ShareRequest {
+    -pageType : EnumSharePageType
+    -momentId : Long
+  }
+  class UpdateUserInfoRequest {
+    -name : String
+    -gender : EnumGender
+    -avatarUrl : String
+    -description : String
+    -cityId : String
+    -university : String
+  }
+  class QueryNotificationRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class QueryVideoCoverRequest {
+    -videoPath : String
+  }
+  class UpdateTopicCoverUrlRequest {
+    -topicId : Long
+    -coverUrl : String
+  }
+  class GetUserInfoRequest {
+    -userId : Long
+  }
+  class LoginRequest {
+    -code : String
+    -randomKey : String
+    -provider : EnumProvider
+    -userInfo : UserInfo
+    -encryptedData : String
+    -iv : String
+    -nickName : String
+    -gender : int
+    -city : String
+    -province : String
+  }
+  class CancelFollowRequest {
+    -targetType : EnumFollowTargetType
+    -targetId : Long
+  }
+  class QuerySquareVideoRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+    -tagId : Long
+  }
+  class QueryActivityRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+  }
+  class DeleteMomentRequest {
+    -momentId : Long
+  }
+  class AddFeedbackRequest {
+    -type : EnumFeedbackType
+    -content : String
+    -contactInfo : String
+  }
+  class QueryTopicMomentRequest {
+    -pageNo : Integer
+    -pageSize : Integer
+    -topicId : Long
+  }
+  class FollowRequest {
+    -targetType : EnumFollowTargetType
+    -targetId : Long
+  }
+}
+
+package me.fanchaoo.web.response {
+  class BaseResponse {
+    -body : T
+    -retcode : int
+    -retdesc : String
+    -serverTicks : long
+    +getBody() : T
+    +setBody() : BaseResponse<T>
+    +getRetcode() : int
+    +setRetcode() : BaseResponse<T>
+    +getRetdesc() : String
+    +setRetdesc() : BaseResponse<T>
+    +getServerTicks() : long
+    +setServerTicks() : BaseResponse<T>
+  }
+}
+
+package me.fanchaoo.web.service {
+  interface VideoService {
+  }
+  interface LikeService {
+  }
+  interface TagService {
+  }
+  interface UserService {
+  }
+  interface RepostService {
+  }
+  interface SettingService {
+  }
+  interface CollectService {
+  }
+  interface IndexService {
+  }
+  interface CommentService {
+  }
+  interface TopicService {
+  }
+  interface NotificationService {
+  }
+  interface ActivityService {
+  }
+  interface MomentService {
+  }
+  interface FollowService {
+  }
+  interface ShareService {
+  }
+  interface OssService {
+  }
+  interface LoginService {
+  }
+}
+
+package me.fanchaoo.web.service.impl {
+  class TopicServiceImpl <<Service>> {
+    -topicMapper : TopicMapper
+    -topicQueryMapper : TopicQueryMapper
+    -topicRelationMapper : TopicRelationMapper
+    -topicRelationQueryMapper : TopicRelationQueryMapper
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    +queryTopic() : BaseResponse<List<TopicDTO>>
+    +getTopicDetail() : BaseResponse<TopicDTO>
+    +updateTopicCoverUrl() : BaseResponse
+  }
+  class OssServiceImpl <<Service>> {
+    -ossConfig : OssConfig
+    +uploadImageOrVideo() : String
+  }
+  class ShareServiceImpl <<Service>> {
+    -momentMapper : MomentMapper
+    -momentQueryMapper : MomentQueryMapper
+    -shareMapper : ShareMapper
+    -shareQueryMapper : ShareQueryMapper
+    -notificationService : NotificationService
+    +share() : void
+  }
+  class LoginServiceImpl <<Service>> {
+    -userQueryMapper : UserQueryMapper
+    -userMapper : UserMapper
+    -artistQueryMapper : ArtistQueryMapper
+    -redisUtils : RedisUtils
+    +login() : LoginUserDTO
+    +createToken() : LoginUserDTO
+  }
+  class RepostServiceImpl <<Service>> {
+    -momentMapper : MomentMapper
+    -momentQueryMapper : MomentQueryMapper
+    -momentImageMapper : MomentImageMapper
+    -momentImageQueryMapper : MomentImageQueryMapper
+    -momentVideoMapper : MomentVideoMapper
+    -momentVideoQueryMapper : MomentVideoQueryMapper
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    -notificationService : NotificationService
+    +repost() : BaseResponse
+    +queryRepostUser() : BaseResponse<List<RepostUserDTO>>
+  }
+  class LikeServiceImpl <<Service>> {
+    -likeRelationMapper : LikeRelationMapper
+    -likeRelationQueryMapper : LikeRelationQueryMapper
+    -momentMapper : MomentMapper
+    -momentQueryMapper : MomentQueryMapper
+    -commentMapper : CommentMapper
+    -commentQueryMapper : CommentQueryMapper
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    -notificationService : NotificationService
+    +like() : void
+    +cancelLike() : void
+    +queryLikeUser() : BaseResponse<List<UserDTO>>
+  }
+  class NotificationServiceImpl <<Service>> {
+    -notificationMapper : NotificationMapper
+    -notificationQueryMapper : NotificationQueryMapper
+    -commentMapper : CommentMapper
+    -commentQueryMapper : CommentQueryMapper
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    -momentService : MomentService
+    +sendNotification() : void
+    +queryAtInfo() : BaseResponse<List<AtNotificationDTO>>
+    +clearNotificationCount() : BaseResponse
+    +queryCommentInfo() : BaseResponse<List<CommentNotificationDTO>>
+  }
+  class FollowServiceImpl <<Service>> {
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    -followRelationMapper : FollowRelationMapper
+    -followRelationQueryMapper : FollowRelationQueryMapper
+    -tagMapper : TagMapper
+    -tagQueryMapper : TagQueryMapper
+    -notificationService : NotificationService
+    +follow() : void
+    +cancelFollow() : void
+    +queryFriend() : BaseResponse<List<UserDTO>>
+    +countFriend() : BaseResponse<FriendCountDTO>
+  }
+  class IndexServiceImpl <<Service>> {
+    -redisUtils : RedisUtils
+    +queryIndexSwiper() : BaseResponse<List<IndexSwiperDTO>>
+    +queryIndexBlock() : BaseResponse<List<QueryIndexBlockDTO>>
+    +queryGuessYouLike() : BaseResponse<List<QueryGuessYouLikeDTO>>
+  }
+  class CommentServiceImpl <<Service>> {
+    -commentMapper : CommentMapper
+    -commentQueryMapper : CommentQueryMapper
+    -momentMapper : MomentMapper
+    -momentQueryMapper : MomentQueryMapper
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    -likeRelationMapper : LikeRelationMapper
+    -likeRelationQueryMapper : LikeRelationQueryMapper
+    -followRelationMapper : FollowRelationMapper
+    -followRelationQueryMapper : FollowRelationQueryMapper
+    +publishComment() : BaseResponse<Long>
+    +deleteComment() : BaseResponse
+    +queryMomentComment() : BaseResponse<List<CommentDTO>>
+    +getCommentDetail() : BaseResponse<CommentDTO>
+  }
+  class VideoServiceImpl <<Service>> {
+    +queryVideoCover() : BaseResponse<List<MomentImageDTO>>
+  }
+  class UserServiceImpl <<Service>> {
+    -userMapper : UserMapper
+    -userQueryMapper : UserQueryMapper
+    -regionCityQueryMapper : RegionCityQueryMapper
+    -regionProvinceQueryMapper : RegionProvinceQueryMapper
+    +getUserInfo() : BaseResponse<UserDTO>
+    +updateUserInfo() : BaseResponse
+  }
+  class MomentServiceImpl <<Service>> {
+    -ossConfig : OssConfig
+    -momentMapper : MomentMapper
+    -momentQueryMapper : MomentQueryMapper
+    -momentImageMapper : MomentImageMapper
+    -momentImageQueryMapper : MomentImageQueryMapper
+    -momentVideoMapper : MomentVideoMapper
+    -momentVideoQueryMapper : MomentVideoQueryMapper
+    -tagRelationMapper : TagRelationMapper
+    -tagRelationQueryMapper : TagRelationQueryMapper
+    -userMapper : UserMapper
+    +querySquareMoment() : BaseResponse<List<MomentDTO>>
+    +queryMoment() : List<MomentDTO>
+    +queryFriendMoment() : BaseResponse<List<MomentDTO>>
+    +queryTopicMoment() : BaseResponse<List<MomentDTO>>
+    +getMomentDetail() : BaseResponse<MomentDetailDTO>
+    +publishMoment() : void
+    +deleteMoment() : void
+  }
+  class SettingServiceImpl <<Service>> {
+    -feedbackMapper : FeedbackMapper
+    -regionCityQueryMapper : RegionCityQueryMapper
+    +addFeedback() : BaseResponse
+    +queryCity() : BaseResponse<List<RegionCityDTO>>
+  }
+  class CollectServiceImpl <<Service>> {
+    -collectRelationMapper : CollectRelationMapper
+    -collectRelationQueryMapper : CollectRelationQueryMapper
+    -momentVideoMapper : MomentVideoMapper
+    -momentVideoQueryMapper : MomentVideoQueryMapper
+    -momentMapper : MomentMapper
+    -momentQueryMapper : MomentQueryMapper
+    -momentService : MomentService
+    -notificationService : NotificationService
+    +collect() : void
+    +cancelCollect() : void
+    +queryCollectVideo() : BaseResponse<List<MomentDTO>>
+  }
+  class ActivityServiceImpl <<Service>> {
+    -activityMapper : ActivityMapper
+    -activityQueryMapper : ActivityQueryMapper
+    -joinedActivityMapper : JoinedActivityMapper
+    -joinedActivityQueryMapper : JoinedActivityQueryMapper
+    +queryActivity() : BaseResponse<List<ActivityDTO>>
+    +joinedActivity() : BaseResponse
+    +queryJoinedActivity() : BaseResponse<List<ActivityDTO>>
+  }
+  class TagServiceImpl <<Service>> {
+    +addTag() : void
+  }
+}
+
+package me.fanchaoo.web.util {
+  class RedisUtils {
+  }
+  class BeanUtils {
+    -applicationContext : ApplicationContext
+    +setApplicationContext() : void
+    +setApplication() : void
+    +getApplicationContext() : ApplicationContext
+    +getBean() : Object
+    +getBeanNamesForType() : String[]
+    +getBeanFactory() : DefaultListableBeanFactory
+    +destroy() : boolean
+    +regist() : Object
+  }
+}
+
+package me.fanchaoo.web.util.oss {
+  class OssUtils {
+    -DOT : String
+    -ossConfig : OssConfig
+    -ossClient : OSSClient
+    -EXPIRE_TIME : int
+    -DF : DateFormat
+    -OSS_DF : DateFormat
+    +uploadFile() : void
+    +getSuffix() : String
+    +uploadFile() : void
+    +getTemporaryUrl() : String
+    +genarateKey() : String
+    +downloadFile() : byte[]
+    +shutdown() : void
+  }
+  class OssConfig {
+    -domainUrl : String
+    -accessKeyId : String
+    -accessKeySecret : String
+    -bucketName : String
+    -endPoint : String
+    -endPointInner : String
+    -rolearn : String
+    -roleSessionName : String
+    -regionId : String
+    -baseDownloadUrl : String
+  }
+}
+
+' --- Relatii ---
+FileTypeUtils --> EnumFileType
+BeanCopyUtils --> BeanUtils
+PageUtils --> BusinessException
+AssertUtils --> BusinessException
+UserContext --> LoginUserDTO
+TopicDTO --|> TopicDBO
+TopicDTO --> CommentDBO
+TopicDTO --> TopicDBO
+RepostUserDTO --> MomentDBO
+FriendCountDTO --> UserDBO
+MomentImageDTO --|> MomentImageDBO
+MomentImageDTO --> MomentImageDBO
+MomentDTO --|> MomentDBO
+MomentDTO --> MomentDBO
+ActivityDTO --|> ActivityDBO
+ActivityDTO --> ActivityDBO
+GroupCountDTO --> CommentDBO
+UserDTO --|> UserDBO
+UserDTO --> UserDBO
+AtNotificationDTO --|> NotificationDBO
+AtNotificationDTO --> ActivityDBO
+AtNotificationDTO --> NotificationDBO
+MomentDetailDTO --|> MomentDTO
+MomentVideoDTO --|> MomentVideoDBO
+MomentVideoDTO --> MomentVideoDBO
+CommentDTO --|> CommentDBO
+CommentDTO --> CommentDBO
+CommentNotificationDTO --|> NotificationDBO
+CommentNotificationDTO --> NotificationDBO
+RegionCityDTO --|> RegionCityDBO
+RegionCityDTO --> RegionCityDBO
+QuerySquareMomentRequest --> EnumMomentType
+CollectRequest --> EnumCollectTargetType
+QuerySquareImageRequest --> EnumMomentType
+AddTagRequest --> EnumTagRelationEntityType
+QueryFriendRequest --> EnumFollowTargetType
+QueryFriendRequest --> EnumFriendType
+CancelCollectRequest --> EnumCollectTargetType
+ClearNotificationCountRequest --> EnumNotificationCategory
+CancelLikeRequest --> EnumLikeTargetType
+QueryLikeUserRequest --> EnumLikeTargetType
+PageRequest --> EnumMomentType
+LikeRequest --> EnumLikeTargetType
+PublishMomentRequest --> EnumMomentType
+ShareRequest --> EnumSharePageType
+UpdateUserInfoRequest --> EnumGender
+QueryNotificationRequest --> EnumNotificationCategory
+GetUserInfoRequest --> EnumFeedbackType
+LoginRequest --> EnumProvider
+CancelFollowRequest --> EnumFollowTargetType
+AddFeedbackRequest --> EnumFeedbackType
+FollowRequest --> EnumFollowTargetType
+UpdateIndexSwiperRequest --> IndexSwiperDTO
+OssUtils --> BeanUtils
+LoginInterceptorConfig --> LoginInterceptor
+TagQueryMapper --> TagDBO
+TopicRelationQueryMapper --> TopicRelationDBO
+TopicRelationQueryMapper --> GroupCountDTO
+MomentVideoQueryMapper --> MomentVideoDBO
+FeedbackQueryMapper --> FeedbackDBO
+TopicRelationMapper --> TopicRelationDBO
+MomentImageMapper --> MomentImageDBO
+RegionProvinceMapper --> RegionProvinceDBO
+ActivityQueryMapper --> ActivityDBO
+PrivateLetterQueryMapper --> PrivateLetterDBO
+CommentMapper --> CommentDBO
+TagRelationMapper --> TagRelationDBO
+MomentQueryMapper --> MomentDBO
+UserQueryMapper --> UserDBO
+TopicMapper --> TopicDBO
+RepostMapper --> RepostDBO
+NotificationMapper --> NotificationDBO
+CommentQueryMapper --> CommentDBO
+CommentQueryMapper --> GroupCountDTO
+TagMapper --> TagDBO
+LikeRelationMapper --> LikeRelationDBO
+JoinedActivityMapper --> JoinedActivityDBO
+LikeRelationQueryMapper --> LikeRelationDBO
+RegionCityMapper --> RegionCityDBO
+FeedbackMapper --> FeedbackDBO
+RepostQueryMapper --> RepostDBO
+NotificationQueryMapper --> NotificationDBO
+NotificationQueryMapper --> EnumNotificationCategory
+JoinedActivityQueryMapper --> JoinedActivityDBO
+VenueMapper --> VenueDBO
+TagRelationQueryMapper --> TagRelationDBO
+FollowRelationQueryMapper --> FollowRelationDBO
+MomentMapper --> MomentDBO
+RegionProvinceQueryMapper --> RegionProvinceDBO
+PrivateLetterMapper --> PrivateLetterDBO
+UserMapper --> UserDBO
+ShareQueryMapper --> ShareDBO
+MomentImageQueryMapper --> MomentImageDBO
+MomentVideoMapper --> MomentVideoDBO
+CollectRelationMapper --> CollectRelationDBO
+TopicQueryMapper --> TopicDBO
+FollowRelationMapper --> FollowRelationDBO
+ShareMapper --> ShareDBO
+RegionCityQueryMapper --> RegionCityDBO
+ArtistMapper --> ArtistDBO
+ActivityMapper --> ActivityDBO
+VenueQueryMapper --> VenueDBO
+ArtistQueryMapper --> ArtistDBO
+CollectRelationQueryMapper --> CollectRelationDBO
+LikeController --> RepostUserDTO
+LikeController --> UserDTO
+LikeController --> CancelLikeRequest
+LikeController --> LikeRequest
+LikeController --> QueryLikeUserRequest
+LikeController --> QueryRepostUserRequest
+LikeController --> BaseResponse
+LikeController --> LikeService
+CollectController --> MomentDTO
+CollectController --> CancelCollectRequest
+CollectController --> CollectRequest
+CollectController --> PageRequest
+CollectController --> QuerySquareMomentRequest
+CollectController --> BaseResponse
+CollectController --> CollectService
+NotificationController --> AtNotificationDTO
+NotificationController --> CommentNotificationDTO
+NotificationController --> ClearNotificationCountRequest
+NotificationController --> PageRequest
+NotificationController --> BaseResponse
+NotificationController --> NotificationService
+TagController --> AddTagRequest
+TagController --> BaseResponse
+TagController --> TagService
+SquareController --> MomentDTO
+SquareController --> MomentImageDTO
+SquareController --> QuerySquareImageRequest
+SquareController --> QuerySquareMomentRequest
+SquareController --> BaseResponse
+SquareController --> ActivityService
+SquareController --> MomentService
+SquareController --> UserService
+SquareController --> VideoService
+CommentController --> CommentDTO
+CommentController --> GetCommentDetailRequest
+CommentController --> PublishCommentRequest
+CommentController --> DeleteCommentRequest
+CommentController --> QueryMomentCommentRequest
+CommentController --> BaseResponse
+CommentController --> CommentService
+MomentController --> MomentDetailDTO
+MomentController --> DeleteMomentRequest
+MomentController --> GetMomentDetailRequest
+MomentController --> PublishMomentRequest
+MomentController --> BaseResponse
+MomentController --> MomentService
+IndexController --> IndexSwiperDTO
+IndexController --> QueryGuessYouLikeDTO
+IndexController --> QueryIndexBlockDTO
+IndexController --> BaseResponse
+IndexController --> ActivityService
+IndexController --> IndexService
+IndexController --> MomentService
+IndexController --> UserService
+DiscoverController --> MomentDTO
+DiscoverController --> PageRequest
+DiscoverController --> QuerySquareMomentRequest
+DiscoverController --> BaseResponse
+DiscoverController --> ActivityService
+DiscoverController --> MomentService
+DiscoverController --> UserService
+DiscoverController --> VideoService
+ShareController --> ShareRequest
+ShareController --> BaseResponse
+ShareController --> ShareService
+SettingController --> RegionCityDTO
+SettingController --> RepostUserDTO
+SettingController --> AddFeedbackRequest
+SettingController --> QueryRepostUserRequest
+SettingController --> RepostRequest
+SettingController --> BaseResponse
+SettingController --> RepostService
+SettingController --> SettingService
+TopicController --> GetProfileDTO
+TopicController --> MomentDTO
+TopicController --> TopicDTO
+TopicController --> BaseResponse
+ActivityController --> ActivityDTO
+ActivityController --> JoinedActivityRequest
+ActivityController --> PageRequest
+ActivityController --> QueryActivityRequest
+ActivityController --> BaseResponse
+ActivityController --> ActivityService
+RepostController --> RepostUserDTO
+RepostController --> QueryRepostUserRequest
+RepostController --> RepostRequest
+RepostController --> BaseResponse
+RepostController --> RepostService
+FollowController --> FriendCountDTO
+FollowController --> UserDTO
+FollowController --> CancelFollowRequest
+FollowController --> FollowRequest
+FollowController --> QueryFriendRequest
+FollowController --> BaseResponse
+FollowController --> FollowService
+VideoController --> MomentImageDTO
+VideoController --> QueryVideoCoverRequest
+VideoController --> BaseResponse
+VideoController --> VideoService
+TestController --> UserContext
+OssController --> BaseResponse
+OssController --> OssService
+LoginController --> LoginUserDTO
+LoginController --> LoginRequest
+LoginController --> BaseResponse
+LoginController --> LoginService
+UserController --> UserDTO
+UserController --> AddFeedbackRequest
+UserController --> GetUserInfoRequest
+UserController --> UpdateUserInfoRequest
+UserController --> BaseResponse
+UserController --> SettingService
+UserController --> UserService
+GlobalExceptionHandleAdvice --> BusinessException
+GlobalExceptionHandleAdvice --> BaseResponse
+ApiLogAspect --> ApiLogDTO
+VideoService --> MomentImageDTO
+VideoService --> QueryVideoCoverRequest
+VideoService --> BaseResponse
+LikeService --> UserDTO
+LikeService --> CancelLikeRequest
+LikeService --> LikeRequest
+LikeService --> QueryLikeUserRequest
+LikeService --> BaseResponse
+TagService --> AddTagRequest
+UserService --> GetProfileDTO
+UserService --> UserDTO
+UserService --> GetUserInfoRequest
+UserService --> UpdateUserInfoRequest
+UserService --> BaseResponse
+RepostService --> RepostUserDTO
+RepostService --> QueryRepostUserRequest
+RepostService --> RepostRequest
+RepostService --> BaseResponse
+SettingService --> RegionCityDTO
+SettingService --> RepostUserDTO
+SettingService --> AddFeedbackRequest
+SettingService --> QueryRepostUserRequest
+SettingService --> RepostRequest
+SettingService --> BaseResponse
+CollectService --> MomentDTO
+CollectService --> CancelCollectRequest
+CollectService --> CollectRequest
+CollectService --> PageRequest
+CollectService --> BaseResponse
+IndexService --> IndexSwiperDTO
+IndexService --> QueryGuessYouLikeDTO
+IndexService --> QueryIndexBlockDTO
+IndexService --> BaseResponse
+CommentService --> CommentDTO
+CommentService --> GetCommentDetailRequest
+CommentService --> PublishCommentRequest
+CommentService --> DeleteCommentRequest
+CommentService --> QueryMomentCommentRequest
+CommentService --> BaseResponse
+TopicService --> RegionCityDTO
+TopicService --> TopicDTO
+TopicService --> AddFeedbackRequest
+TopicService --> GetTopicDetailRequest
+TopicService --> QueryTopicRequest
+TopicService --> UpdateTopicCoverUrlRequest
+TopicService --> BaseResponse
+NotificationService --> NotificationDBO
+NotificationService --> AtNotificationDTO
+NotificationService --> CommentNotificationDTO
+NotificationService --> ClearNotificationCountRequest
+NotificationService --> PageRequest
+NotificationService --> BaseResponse
+ActivityService --> ActivityDTO
+ActivityService --> JoinedActivityRequest
+ActivityService --> PageRequest
+ActivityService --> QueryActivityRequest
+ActivityService --> BaseResponse
+MomentService --> MomentDetailDTO
+MomentService --> MomentDTO
+MomentService --> MomentImageDTO
+MomentService --> BaseResponse
+FollowService --> FriendCountDTO
+FollowService --> UserDTO
+FollowService --> CancelFollowRequest
+FollowService --> FollowRequest
+FollowService --> QueryFriendRequest
+FollowService --> BaseResponse
+ShareService --> ShareRequest
+LoginService --> LoginUserDTO
+LoginService --> LoginRequest
+TopicServiceImpl ..|> TopicService
+TopicServiceImpl --> FeedbackDBO
+TopicServiceImpl --> RegionCityDBO
+TopicServiceImpl --> TopicDBO
+TopicServiceImpl --> UserDBO
+TopicServiceImpl --> BeanCopyUtils
+TopicServiceImpl --> PageUtils
+TopicServiceImpl --> UserContext
+TopicServiceImpl --> AddFeedbackRequest
+TopicServiceImpl --> GetTopicDetailRequest
+TopicServiceImpl --> QueryTopicRequest
+TopicServiceImpl --> UpdateTopicCoverUrlRequest
+TopicServiceImpl --> BaseResponse
+TopicServiceImpl --> SettingService
+TopicServiceImpl --> TopicService
+OssServiceImpl ..|> OssService
+OssServiceImpl --> EnumFileType
+OssServiceImpl --> BusinessException
+OssServiceImpl --> FileTypeUtils
+OssServiceImpl --> UUIDUtils
+OssServiceImpl --> UserContext
+OssServiceImpl --> OssService
+OssServiceImpl --> OssConfig
+OssServiceImpl --> OssUtils
+ShareServiceImpl ..|> ShareService
+ShareServiceImpl --> LikeRelationDBO
+ShareServiceImpl --> MomentDBO
+ShareServiceImpl --> NotificationDBO
+ShareServiceImpl --> ShareDBO
+ShareServiceImpl --> AssertUtils
+ShareServiceImpl --> UserContext
+ShareServiceImpl --> MomentMapper
+ShareServiceImpl --> MomentQueryMapper
+ShareServiceImpl --> ShareMapper
+ShareServiceImpl --> ShareQueryMapper
+ShareServiceImpl --> LoginUserDTO
+ShareServiceImpl --> ShareRequest
+ShareServiceImpl --> NotificationService
+ShareServiceImpl --> ShareService
+LoginServiceImpl ..|> LoginService
+LoginServiceImpl --> JwtConstant
+LoginServiceImpl --> RedisKey
+LoginServiceImpl --> ArtistDBO
+LoginServiceImpl --> UserDBO
+LoginServiceImpl --> EnumProvider
+LoginServiceImpl --> BusinessException
+LoginServiceImpl --> AssertUtils
+LoginServiceImpl --> HttpUtils
+LoginServiceImpl --> MD5Utils
+LoginServiceImpl --> WeixinUtils
+LoginServiceImpl --> ArtistQueryMapper
+LoginServiceImpl --> UserMapper
+LoginServiceImpl --> UserQueryMapper
+LoginServiceImpl --> LoginUserDTO
+LoginServiceImpl --> LoginRequest
+LoginServiceImpl --> LoginService
+LoginServiceImpl --> RedisUtils
+RepostServiceImpl ..|> RepostService
+RepostServiceImpl --> MomentDBO
+RepostServiceImpl --> NotificationDBO
+RepostServiceImpl --> UserDBO
+RepostServiceImpl --> EnumNotificationType
+RepostServiceImpl --> EnumStatus
+RepostServiceImpl --> AssertUtils
+RepostServiceImpl --> PageUtils
+RepostServiceImpl --> UserContext
+RepostServiceImpl --> LoginUserDTO
+RepostServiceImpl --> RepostUserDTO
+RepostServiceImpl --> QueryRepostUserRequest
+RepostServiceImpl --> RepostRequest
+RepostServiceImpl --> BaseResponse
+RepostServiceImpl --> NotificationService
+RepostServiceImpl --> RepostService
+LikeServiceImpl ..|> LikeService
+LikeServiceImpl --> EnumMomentType
+LikeServiceImpl --> EnumNotificationType
+LikeServiceImpl --> EnumStatus
+LikeServiceImpl --> AssertUtils
+LikeServiceImpl --> BeanCopyUtils
+LikeServiceImpl --> PageUtils
+LikeServiceImpl --> LoginUserDTO
+LikeServiceImpl --> EnumLikeTargetType
+LikeServiceImpl --> UserDTO
+LikeServiceImpl --> CancelLikeRequest
+LikeServiceImpl --> LikeRequest
+LikeServiceImpl --> QueryLikeUserRequest
+LikeServiceImpl --> BaseResponse
+LikeServiceImpl --> LikeService
+LikeServiceImpl --> UserContext
+LikeServiceImpl --> NotificationService
+NotificationServiceImpl ..|> NotificationService
+NotificationServiceImpl --> CommentDBO
+NotificationServiceImpl --> NotificationDBO
+NotificationServiceImpl --> UserDBO
+NotificationServiceImpl --> EnumBoolean
+NotificationServiceImpl --> EnumNotificationCategory
+NotificationServiceImpl --> EnumNotificationType
+NotificationServiceImpl --> BeanCopyUtils
+NotificationServiceImpl --> PageUtils
+NotificationServiceImpl --> UserContext
+NotificationServiceImpl --> CommentNotificationDTO
+NotificationServiceImpl --> LoginUserDTO
+NotificationServiceImpl --> MomentDTO
+NotificationServiceImpl --> AtNotificationDTO
+NotificationServiceImpl --> ClearNotificationCountRequest
+NotificationServiceImpl --> PageRequest
+NotificationServiceImpl --> BaseResponse
+NotificationServiceImpl --> MomentService
+NotificationServiceImpl --> NotificationService
+FollowServiceImpl ..|> FollowService
+FollowServiceImpl --> NotificationDBO
+FollowServiceImpl --> UserDBO
+FollowServiceImpl --> EnumFriendType
+FollowServiceImpl --> EnumNotificationType
+FollowServiceImpl --> AssertUtils
+FollowServiceImpl --> BeanCopyUtils
+FollowServiceImpl --> PageUtils
+FollowServiceImpl --> FollowRelationDBO
+FollowServiceImpl --> FriendCountDTO
+FollowServiceImpl --> LoginUserDTO
+FollowServiceImpl --> EnumFollowTargetType
+FollowServiceImpl --> UserDTO
+FollowServiceImpl --> CancelFollowRequest
+FollowServiceImpl --> FollowRequest
+FollowServiceImpl --> QueryFriendRequest
+FollowServiceImpl --> BaseResponse
+FollowServiceImpl --> FollowService
+FollowServiceImpl --> UserContext
+FollowServiceImpl --> NotificationService
+IndexServiceImpl ..|> IndexService
+IndexServiceImpl --> RedisKey
+IndexServiceImpl --> IndexSwiperDTO
+IndexServiceImpl --> BaseResponse
+IndexServiceImpl --> IndexService
+IndexServiceImpl --> RedisUtils
+IndexServiceImpl --> UserContext
+IndexServiceImpl --> QueryGuessYouLikeDTO
+IndexServiceImpl --> QueryIndexBlockDTO
+CommentServiceImpl ..|> CommentService
+CommentServiceImpl --> HtmlTemplateConstant
+CommentServiceImpl --> BusinessException
+CommentServiceImpl --> CommentDTO
+CommentServiceImpl --> GroupCountDTO
+CommentServiceImpl --> LoginUserDTO
+CommentServiceImpl --> MomentDTO
+CommentServiceImpl --> GetCommentDetailRequest
+CommentServiceImpl --> PublishCommentRequest
+CommentServiceImpl --> DeleteCommentRequest
+CommentServiceImpl --> QueryMomentCommentRequest
+CommentServiceImpl --> BaseResponse
+CommentServiceImpl --> CommentService
+CommentServiceImpl --> NotificationService
+VideoServiceImpl ..|> VideoService
+VideoServiceImpl --> MomentImageDTO
+VideoServiceImpl --> QueryVideoCoverRequest
+VideoServiceImpl --> BaseResponse
+VideoServiceImpl --> VideoService
+UserServiceImpl ..|> UserService
+UserServiceImpl --> RegionCityDBO
+UserServiceImpl --> RegionProvinceDBO
+UserServiceImpl --> UserDBO
+UserServiceImpl --> EnumGender
+UserServiceImpl --> BeanCopyUtils
+UserServiceImpl --> UserContext
+UserServiceImpl --> LoginUserDTO
+UserServiceImpl --> UserDTO
+UserServiceImpl --> GetUserInfoRequest
+UserServiceImpl --> UpdateUserInfoRequest
+UserServiceImpl --> BaseResponse
+UserServiceImpl --> UserService
+MomentServiceImpl ..|> MomentService
+MomentServiceImpl --> HtmlTemplateConstant
+MomentServiceImpl --> BusinessException
+MomentServiceImpl --> BaseResponse
+MomentServiceImpl --> MomentService
+MomentServiceImpl --> NotificationService
+MomentServiceImpl --> OssConfig
+SettingServiceImpl ..|> SettingService
+SettingServiceImpl --> FeedbackDBO
+SettingServiceImpl --> RegionCityDBO
+SettingServiceImpl --> BeanCopyUtils
+SettingServiceImpl --> UserContext
+SettingServiceImpl --> FeedbackMapper
+SettingServiceImpl --> RegionCityMapper
+SettingServiceImpl --> RegionCityQueryMapper
+SettingServiceImpl --> LoginUserDTO
+SettingServiceImpl --> RegionCityDTO
+SettingServiceImpl --> AddFeedbackRequest
+SettingServiceImpl --> BaseResponse
+SettingServiceImpl --> SettingService
+CollectServiceImpl ..|> CollectService
+CollectServiceImpl --> MomentVideoDBO
+CollectServiceImpl --> NotificationDBO
+CollectServiceImpl --> EnumMomentType
+CollectServiceImpl --> EnumNotificationType
+CollectServiceImpl --> AssertUtils
+CollectServiceImpl --> PageUtils
+CollectServiceImpl --> CollectRelationDBO
+CollectServiceImpl --> LoginUserDTO
+CollectServiceImpl --> EnumCollectTargetType
+CollectServiceImpl --> MomentDTO
+CollectServiceImpl --> CancelCollectRequest
+CollectServiceImpl --> CollectRequest
+CollectServiceImpl --> PageRequest
+CollectServiceImpl --> QuerySquareMomentRequest
+CollectServiceImpl --> BaseResponse
+CollectServiceImpl --> CollectService
+CollectServiceImpl --> UserContext
+CollectServiceImpl --> MomentService
+CollectServiceImpl --> NotificationService
+ActivityServiceImpl ..|> ActivityService
+ActivityServiceImpl --> ActivityDBO
+ActivityServiceImpl --> JoinedActivityDBO
+ActivityServiceImpl --> BeanCopyUtils
+ActivityServiceImpl --> PageUtils
+ActivityServiceImpl --> UserContext
+ActivityServiceImpl --> ActivityMapper
+ActivityServiceImpl --> ActivityQueryMapper
+ActivityServiceImpl --> JoinedActivityMapper
+ActivityServiceImpl --> JoinedActivityQueryMapper
+ActivityServiceImpl --> ActivityDTO
+ActivityServiceImpl --> LoginUserDTO
+ActivityServiceImpl --> JoinedActivityRequest
+ActivityServiceImpl --> PageRequest
+ActivityServiceImpl --> QueryActivityRequest
+ActivityServiceImpl --> BaseResponse
+ActivityServiceImpl --> ActivityService
+TagServiceImpl ..|> TagService
+TagServiceImpl --> AddTagRequest
+TagServiceImpl --> TagService
+LoginInterceptor --> JwtConstant
+LoginInterceptor --> RedisKey
+LoginInterceptor --> EnumResponseCode
+LoginInterceptor --> BusinessException
+LoginInterceptor --> CookieUtils
+LoginInterceptor --> MD5Utils
+LoginInterceptor --> UserContext
+LoginInterceptor --> LoginUserDTO
+LoginInterceptor --> RedisUtils
+
+@enduml

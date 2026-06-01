@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include big file upload, file upload, quick upload. Core business data revolves around File, FileDao.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [],
+        "controllers": [
+          "BigFileUploadController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage big file upload operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "BigFileUploadController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage file upload operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "FileUploadController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage quick upload operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "QuickUploadController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to manage test exception operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestExceptionController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    BigFileUploadController[\"BigFileUploadController\"]\n    FileUploadController[\"FileUploadController\"]\n    QuickUploadController[\"QuickUploadController\"]\n    TestExceptionController[\"TestExceptionController\"]\n  end\n  subgraph Services\n    FileService[\"FileService\"]\n  end\n  subgraph Data_Access\n    File[\"File\"]\n    FileDao[\"FileDao\"]\n  end\n  subgraph Infrastructure\n    UploadConfig[\"UploadConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

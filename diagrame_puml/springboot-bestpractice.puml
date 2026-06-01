@@ -1,0 +1,626 @@
+@startuml
+
+package com.bestpractice.api {
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package com.bestpractice.api.app {
+  class InterceptorController {
+    -logger : Logger
+    -SPRING_ERROR_PATH : String
+    -DISABLE_AUTH_ENDPOINTS : List<String>
+    -authComponent : AuthComponent
+    -requestInfo : RequestInfoComponent
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+  class AdviceController {
+    +badRequest() : ErrorResponse
+    +unAuthorized() : ErrorResponse
+    +forbidden() : ErrorResponse
+    +notFound01() : ErrorResponse
+    +notFound02() : ErrorResponse
+    +conflict() : ErrorResponse
+    +serverError() : ErrorResponse
+  }
+  class AppBean {
+    -requestInfo : RequestInfoComponent
+    -authComponent : AuthComponent
+    +interceptorController() : InterceptorController
+    +addInterceptors() : void
+    +swaggerSpringMvcPlugin() : Docket
+  }
+}
+
+package com.bestpractice.api.app.v1 {
+  class HelloController <<Controller>> {
+  }
+  class AuthController <<Controller>> {
+    -authService : AuthService
+    +optionsAuth() : ResponseEntity<Object>
+    +login() : AuthResponse
+    +login() : AuthResponse
+  }
+  class RdbmsController <<Controller>> {
+    -infoService : InfoServiceImpl
+    +getInfos() : List<InfoResponse>
+    +getInfo() : InfoResponse
+    +postInfo() : ResponseEntity<InfoResponse>
+    +putInfo() : InfoResponse
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +createUser() : UserResponse
+  }
+}
+
+package com.bestpractice.api.app.v2 {
+  class AuthorizationController <<Controller>> {
+  }
+}
+
+package com.bestpractice.api.common.exception {
+  class ServiceUnavailable {
+  }
+  class BadRequest {
+  }
+  class Conflict {
+  }
+  class NotFound {
+  }
+  class RequestTimeout {
+  }
+  class Forbidden {
+  }
+  class InternalServerError {
+  }
+  class UnAuthorized {
+  }
+}
+
+package com.bestpractice.api.common.property {
+  class CredentialProperty {
+    -key : String
+    -provider : String
+    -subject : String
+    -alg : String
+    -hmacSecret : String
+    -expiresHourStr : String
+    +getKey() : String
+    +setKey() : void
+    +getProvider() : String
+    +setProvider() : void
+    +getSubject() : String
+    +setSubject() : void
+    +getAlg() : String
+    +setAlg() : void
+  }
+}
+
+package com.bestpractice.api.common.util {
+  class Util {
+    +calculateDate() : Date
+    +getSpringProfileActive() : String
+  }
+}
+
+package com.bestpractice.api.domain {
+  class DomainBean {
+    +passwordEncoder() : PasswordEncoder
+  }
+}
+
+package com.bestpractice.api.domain.component {
+  class AuthComponent {
+    -credentialProperty : CredentialProperty
+    -algorithm : Algorithm
+    -ClaimUserIdKey : String
+    -ClaimUserEmailKey : String
+    -ClaimRefreshKey : String
+    +decodeJwt() : DecodedJWT
+    +generateJwt() : Credential
+  }
+  class BCryptPasswordEncryptionComponent {
+    -passwordEncoder : PasswordEncoder
+    +encodePassword() : String
+    +matchedPassword() : boolean
+  }
+  class RequestInfoComponent {
+    -userId : String
+    -userEmail : String
+    -isRefreshToken : boolean
+    -path : String
+    -httpMethod : String
+    -requestId : String
+    +getUserId() : String
+    +setUserId() : void
+    +getUserEmail() : String
+    +setUserEmail() : void
+    +isRefreshToken() : boolean
+    +setRefreshToken() : void
+    +getPath() : String
+    +setPath() : void
+  }
+}
+
+package com.bestpractice.api.domain.model {
+  class InfoRequest {
+    -title : String
+    -description : String
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+    +convert() : Info
+  }
+  class UserResponse {
+    -id : String
+    -username : String
+    -email : String
+    +getId() : String
+    +getUsername() : String
+    +getEmail() : String
+  }
+  class UserRequest {
+    -username : String
+    -email : String
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+    +convert() : User
+  }
+  class InfoResponse {
+    -id : String
+    -title : String
+    -description : String
+    +getId() : String
+    +getTitle() : String
+    +getDescription() : String
+  }
+  class AuthResponse {
+    -tokenType : String
+    -token : String
+    -refreshToken : String
+    -expiresAt : Date
+    +getTokenType() : String
+    +getToken() : String
+    +getRefreshToken() : String
+    +getExpiresAt() : Date
+  }
+  class AuthByEmailRequest {
+    -email : String
+    -password : String
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+  class Credential {
+    -token : String
+    -tokenType : String
+    -exp : Date
+    -isRefresh : boolean
+    +getToken() : String
+    +getTokenType() : String
+    +getExp() : Date
+    +isRefresh() : boolean
+  }
+  class AuthByRefreshTokenRequest {
+    -refreshToken : String
+    +getRefreshToken() : String
+    +setRefreshToken() : void
+  }
+  class ErrorResponse {
+    -status : int
+    -error : String
+    -message : String
+    +getStatus() : int
+    +setStatus() : void
+    +getError() : String
+    +setError() : void
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+package com.bestpractice.api.domain.service {
+  class InfoServiceImpl <<Service>> {
+    -infoRepository : InfoPersistentRepository
+    +getInfos() : List<InfoResponse>
+    +getInfo() : InfoResponse
+    +updateInfo() : InfoResponse
+    +generateInfo() : InfoResponse
+    +deleteInfo() : void
+  }
+  interface UserService {
+  }
+  interface InfoService {
+  }
+  interface AuthService {
+  }
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserPersistentRepository
+    -encryptionComponent : BCryptPasswordEncryptionComponent
+    +getUserById() : User
+    +getAuthenticatedUser() : User
+    +generateUser() : UserResponse
+  }
+  class AuthServiceImpl <<Service>> {
+    -encryptionComponent : BCryptPasswordEncryptionComponent
+    -authComponent : AuthComponent
+    -userPersistentRepository : UserPersistentRepository
+    +login() : AuthResponse
+    +login() : AuthResponse
+  }
+}
+
+package com.bestpractice.api.infrastrucuture {
+  class InfrastructureBean {
+    -redisProperty : RedisProperty
+    -url : String
+    -username : String
+    -password : String
+    -driverClassName : String
+    -cassandraProperty : CassandraProperty
+    -mongoProperty : MongoProperty
+    +userRepository() : UserPersistentRepository
+    +infoRepository() : InfoPersistentRepository
+    +dataSource() : DriverManagerDataSource
+    +transactionManager() : DataSourceTransactionManager
+    +jdbcTemplate() : JdbcTemplate
+    +userRepository() : UserPersistentRepository
+    +infoRepository() : InfoPersistentRepository
+    +cqlSession() : CqlSession
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.cache {
+  class CacheRepository {
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.cache.local {
+  class LocalCacheRepository {
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.cache.redis {
+  class RedisCacheRepository {
+  }
+  class RedisProperty {
+    -host : String
+    -port : int
+    -password : String
+    +getHost() : String
+    +setHost() : void
+    +getPort() : int
+    +setPort() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.entity {
+  class SharedData {
+    -createdAt : Date
+    +onPrePersist() : void
+    +getCreatedAt() : Date
+    +setCreatedAt() : void
+  }
+  class Info {
+    -id : String
+    -title : String
+    -description : String
+    +getId() : String
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+  }
+  class User {
+    -id : String
+    -username : String
+    -email : String
+    -password : String
+    +getId() : String
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent {
+  interface UserPersistentRepository {
+  }
+  interface InfoPersistentRepository {
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.cassandra {
+  class CassandraInfoPersistentRepository {
+    -session : CqlSession
+    -selectInfo : Select
+    -selectInfoWithWhere : Select
+    -insertInfo : RegularInsert
+    -updateInfo : Update
+    -deleteInfo : Delete
+    +newId() : String
+    +findAll() : List<Info>
+    +findById() : Info
+    +insert() : Info
+    +replace() : Info
+    +removeById() : boolean
+  }
+  class CassandraUserPersistentRepository {
+    +newId() : String
+    +findByEmail() : User
+    +findById() : User
+    +insert() : User
+    +replace() : User
+    +removeById() : boolean
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.cassandra.property {
+  class CassandraProperty {
+    -hosts : String[]
+    -keyspace : String
+    -user : String
+    -password : String
+    +getHosts() : String[]
+    +setHosts() : void
+    +getKeyspace() : String
+    +setKeyspace() : void
+    +getUser() : String
+    +setUser() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.local {
+  class LocalInfoPersistentRepository {
+    -infos : List<Info>
+    +newId() : String
+    +findAll() : List<Info>
+    +findById() : Info
+    +insert() : Info
+    +replace() : Info
+    +removeById() : boolean
+  }
+  class LocalUserPersistentRepository {
+    -users : List<User>
+    +newId() : String
+    +findByEmail() : User
+    +findById() : User
+    +insert() : User
+    +replace() : User
+    +removeById() : boolean
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.mongo {
+  class MongoUserPersistentRepository {
+    -COLLECTION_NAME : String
+    -mongoClient : MongoClient
+    -mongoDatabase : MongoDatabase
+    -collection : MongoCollection<MongoUserEntity>
+    +newId() : String
+    +findByEmail() : User
+    +findById() : User
+    +insert() : User
+    +replace() : User
+    +removeById() : boolean
+  }
+  class MongoInfoPersistentRepository {
+    -COLLECTION_NAME : String
+    -mongoClient : MongoClient
+    -mongoDatabase : MongoDatabase
+    -collection : MongoCollection<MongoInfoEntity>
+    +newId() : String
+    +findAll() : List<Info>
+    +findById() : Info
+    +insert() : Info
+    +replace() : Info
+    +removeById() : boolean
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.mongo.entity {
+  class MongoInfoEntity {
+    -id : ObjectId
+    -title : String
+    -description : String
+    +setId() : void
+    +setTitle() : void
+    +setDescription() : void
+    +getId() : ObjectId
+    +getTitle() : String
+    +getDescription() : String
+    +convertFrom() : MongoInfoEntity
+    +convertTo() : Info
+  }
+  class MongoUserEntity {
+    -id : ObjectId
+    -username : String
+    -email : String
+    -password : String
+    +setId() : void
+    +setUsername() : void
+    +setEmail() : void
+    +setPassword() : void
+    +getId() : ObjectId
+    +getUsername() : String
+    +getEmail() : String
+    +getPassword() : String
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.mongo.property {
+  class MongoProperty {
+    -host : String
+    -port : int
+    -authDatabase : String
+    -platformDatabase : String
+    -user : String
+    -password : String
+    +getHost() : String
+    +setHost() : void
+    +getPort() : int
+    +setPort() : void
+    +getAuthDatabase() : String
+    +setAuthDatabase() : void
+    +getPlatformDatabase() : String
+    +setPlatformDatabase() : void
+  }
+}
+
+package com.bestpractice.api.infrastrucuture.persistent.rdbms {
+  class RdbmsInfoPersistentRepository {
+    -jdbcTemplate : JdbcTemplate
+    +newId() : String
+    +findAll() : List<Info>
+    +findById() : Info
+    +insert() : Info
+    +replace() : Info
+    +removeById() : boolean
+  }
+  class RdbmsUserPersistentRepository {
+    -jdbcTemplate : JdbcTemplate
+    +newId() : String
+    +findByEmail() : User
+    +findById() : User
+    +insert() : User
+    +replace() : User
+    +removeById() : boolean
+  }
+}
+
+' --- Relatii ---
+InterceptorController --> UnAuthorized
+InterceptorController --> Util
+InterceptorController --> AuthComponent
+InterceptorController --> RequestInfoComponent
+AdviceController --> BadRequest
+AdviceController --> Conflict
+AdviceController --> Forbidden
+AdviceController --> NotFound
+AdviceController --> UnAuthorized
+AdviceController --> ErrorResponse
+AppBean --> AuthComponent
+AppBean --> RequestInfoComponent
+AuthController --> BadRequest
+AuthController --> AuthByEmailRequest
+AuthController --> AuthByRefreshTokenRequest
+AuthController --> AuthResponse
+AuthController --> AuthService
+RdbmsController --> InfoRequest
+RdbmsController --> InfoResponse
+RdbmsController --> InfoServiceImpl
+UserController --> BadRequest
+UserController --> UserRequest
+UserController --> UserResponse
+UserController --> UserService
+AuthComponent --> InternalServerError
+AuthComponent --> UnAuthorized
+AuthComponent --> CredentialProperty
+AuthComponent --> Credential
+InfoRequest --> Info
+UserRequest --> User
+InfoServiceImpl ..|> InfoService
+InfoServiceImpl --> BadRequest
+InfoServiceImpl --> Conflict
+InfoServiceImpl --> InternalServerError
+InfoServiceImpl --> InfoRequest
+InfoServiceImpl --> InfoResponse
+InfoServiceImpl --> Info
+InfoServiceImpl --> InfoPersistentRepository
+UserService --> UserRequest
+UserService --> UserResponse
+UserService --> User
+InfoService --> InfoRequest
+InfoService --> InfoResponse
+AuthService --> AuthResponse
+UserServiceImpl ..|> UserService
+UserServiceImpl --> Conflict
+UserServiceImpl --> InternalServerError
+UserServiceImpl --> UnAuthorized
+UserServiceImpl --> BCryptPasswordEncryptionComponent
+UserServiceImpl --> UserRequest
+UserServiceImpl --> UserResponse
+UserServiceImpl --> User
+UserServiceImpl --> UserPersistentRepository
+AuthServiceImpl ..|> AuthService
+AuthServiceImpl --> UnAuthorized
+AuthServiceImpl --> AuthComponent
+AuthServiceImpl --> BCryptPasswordEncryptionComponent
+AuthServiceImpl --> AuthResponse
+AuthServiceImpl --> Credential
+AuthServiceImpl --> User
+AuthServiceImpl --> UserPersistentRepository
+InfrastructureBean --> RedisProperty
+InfrastructureBean --> InfoPersistentRepository
+InfrastructureBean --> UserPersistentRepository
+InfrastructureBean --> CassandraInfoPersistentRepository
+InfrastructureBean --> CassandraProperty
+InfrastructureBean --> LocalInfoPersistentRepository
+InfrastructureBean --> LocalUserPersistentRepository
+InfrastructureBean --> MongoInfoPersistentRepository
+InfrastructureBean --> MongoUserPersistentRepository
+InfrastructureBean --> MongoProperty
+InfrastructureBean --> RdbmsInfoPersistentRepository
+InfrastructureBean --> RdbmsUserPersistentRepository
+UserPersistentRepository --> User
+InfoPersistentRepository --> Info
+LocalInfoPersistentRepository ..|> InfoPersistentRepository
+LocalInfoPersistentRepository --> Info
+LocalInfoPersistentRepository --> InfoPersistentRepository
+LocalUserPersistentRepository ..|> UserPersistentRepository
+LocalUserPersistentRepository --> User
+LocalUserPersistentRepository --> UserPersistentRepository
+CassandraInfoPersistentRepository ..|> InfoPersistentRepository
+CassandraInfoPersistentRepository --> Info
+CassandraInfoPersistentRepository --> InfoPersistentRepository
+CassandraUserPersistentRepository ..|> UserPersistentRepository
+CassandraUserPersistentRepository --> User
+CassandraUserPersistentRepository --> UserPersistentRepository
+MongoUserPersistentRepository ..|> UserPersistentRepository
+MongoUserPersistentRepository --> InternalServerError
+MongoUserPersistentRepository --> User
+MongoUserPersistentRepository --> UserPersistentRepository
+MongoUserPersistentRepository --> MongoUserEntity
+MongoInfoPersistentRepository ..|> InfoPersistentRepository
+MongoInfoPersistentRepository --> InternalServerError
+MongoInfoPersistentRepository --> Info
+MongoInfoPersistentRepository --> InfoPersistentRepository
+MongoInfoPersistentRepository --> MongoInfoEntity
+MongoInfoEntity --> Info
+MongoUserEntity --> User
+RdbmsInfoPersistentRepository ..|> InfoPersistentRepository
+RdbmsInfoPersistentRepository --> Conflict
+RdbmsInfoPersistentRepository --> InternalServerError
+RdbmsInfoPersistentRepository --> Info
+RdbmsInfoPersistentRepository --> InfoPersistentRepository
+RdbmsUserPersistentRepository ..|> UserPersistentRepository
+RdbmsUserPersistentRepository --> Conflict
+RdbmsUserPersistentRepository --> User
+RdbmsUserPersistentRepository --> UserPersistentRepository
+Info --|> SharedData
+User --|> SharedData
+
+@enduml

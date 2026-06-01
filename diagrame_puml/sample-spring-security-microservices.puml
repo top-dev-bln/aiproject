@@ -1,0 +1,157 @@
+@startuml
+
+package pl.piomin.samples.security.caller {
+  class CallerApplication {
+    +main() : void
+    +webClient() : WebClient
+  }
+}
+
+package pl.piomin.samples.security.caller.config {
+  class SecurityConfig {
+    +filterChain() : SecurityFilterChain
+  }
+}
+
+package pl.piomin.samples.security.caller.controller {
+  class CallerController <<Controller>> {
+    -webClient : WebClient
+    +ping() : String
+  }
+}
+
+package pl.piomin.samples.security.callme {
+  class CallMeControllerTests {
+    -mockMvc : MockMvc
+  }
+  class CallmeApplication {
+    +main() : void
+  }
+}
+
+package pl.piomin.samples.security.callme.config {
+  class SecurityConfig {
+    +filterChain() : SecurityFilterChain
+  }
+}
+
+package pl.piomin.samples.security.callme.controller {
+  class CallmeController <<Controller>> {
+    +ping() : String
+  }
+}
+
+package pl.piomin.samples.security.callme.saml {
+  class SecurityConfig {
+    -LOG : Logger
+    +filterChain() : SecurityFilterChain
+  }
+  class CustomSamlValidationException {
+  }
+  class MainController <<Controller>> {
+    +getPrincipal() : String
+  }
+  class CallmeSamlApplication {
+    +main() : void
+  }
+  class GreetingController <<Controller>> {
+    +greeting() : String
+    +admin() : String
+  }
+}
+
+package pl.piomin.samples.security.gateway {
+  class CallmeController <<Controller>> {
+    +ping() : String
+  }
+  class GatewayApplicationTests {
+    -accessToken : String
+    -webTestClient : WebTestClient
+    -keycloak : KeycloakContainer
+  }
+  class GatewayApplication <<Controller>> {
+    -LOGGER : Logger
+    +main() : void
+    +getHome() : Mono<String>
+    +index() : Mono<String>
+  }
+}
+
+package pl.piomin.samples.security.gateway.config {
+  class SecurityConfig {
+    +springSecurityFilterChain() : SecurityWebFilterChain
+    +reactiveJwtDecoder() : ReactiveJwtDecoder
+  }
+}
+
+package pl.piomin.services {
+  class SecureCallme {
+    +main() : void
+  }
+  class SecureCaller {
+    -sslContext : SSLContext
+    -sslSocketFactory : SSLConnectionSocketFactory
+    -cm : HttpClientConnectionManager
+    -httpClient : HttpClient
+    +main() : void
+  }
+}
+
+package pl.piomin.services.caller {
+  class SecureCallerBundle {
+    -LOG : Logger
+    +main() : void
+  }
+}
+
+package pl.piomin.services.caller.controller {
+  class SecureCallerBundleController <<Controller>> {
+    +call() : String
+    +call2() : String
+  }
+}
+
+package pl.piomin.services.callme {
+  class SecureCallmeBundleTest {
+  }
+  class SecureCallmeBundle {
+    +main() : void
+  }
+}
+
+package pl.piomin.services.callme.controller {
+  class SecureCallmeBundleController <<Controller>> {
+    +call() : String
+  }
+}
+
+package pl.piomin.services.configuration {
+  class ClientSSLProperties {
+    -keyStore : String
+    -keyStorePassword : String
+    -trustStore : String
+    -trustStorePassword : String
+    +getKeyStore() : String
+    +setKeyStore() : void
+    +getKeyStorePassword() : String
+    +setKeyStorePassword() : void
+    +getTrustStore() : String
+    +setTrustStore() : void
+    +getTrustStorePassword() : String
+    +setTrustStorePassword() : void
+  }
+}
+
+package pl.piomin.services.controller {
+  class SecureCallmeController <<Controller>> {
+    +call() : String
+  }
+  class SecureCallerController <<Controller>> {
+    +call() : String
+  }
+}
+
+' --- Relatii ---
+SecureCaller --> ClientSSLProperties
+
+@enduml

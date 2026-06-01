@@ -1,0 +1,53 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the e-commerce, user management domain. It serves Customer, User as its primary actors. The main business capabilities include custom error, home, login. Core business data revolves around Product, Role, User.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to log into the system, so that I can access my personalized dashboard and features.",
+        "services": [],
+        "controllers": [
+          "LoginController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to add items to a shopping cart and check out, so that I can conveniently collect items before purchasing.",
+        "services": [
+          "ShoppingCartService",
+          "ShoppingCartServiceImpl"
+        ],
+        "controllers": [
+          "ShoppingCartController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to manage custom error operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "CustomErrorController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CustomErrorController[\"CustomErrorController\"]\n    HomeController[\"HomeController\"]\n    LoginController[\"LoginController\"]\n    RegistrationController[\"RegistrationController\"]\n    ShoppingCartController[\"ShoppingCartController\"]\n  end\n  subgraph Services\n    ProductService[\"ProductService\"]\n    ProductServiceImpl[\"ProductServiceImpl\"]\n    ShoppingCartService[\"ShoppingCartService\"]\n    ShoppingCartServiceImpl[\"ShoppingCartServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImp[\"UserServiceImp\"]\n  end\n  subgraph Data_Access\n    Product[\"Product\"]\n    ProductRepository[\"ProductRepository\"]\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Infrastructure\n    GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n    SpringSecurityConfig[\"SpringSecurityConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

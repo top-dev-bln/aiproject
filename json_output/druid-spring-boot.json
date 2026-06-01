@@ -1,0 +1,34 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, recruitment domain. It serves User as its primary actors. The main business capabilities include city, druid data source, druid data source mvc. Core business data revolves around City.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage city operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "CityController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage druid data source operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "DruidDataSourceEndpoint"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage druid data source mvc operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "DruidDataSourceMvcEndpoint"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CityController[\"CityController\"]\n    DruidDataSourceEndpoint[\"DruidDataSourceEndpoint\"]\n    DruidDataSourceMvcEndpoint[\"DruidDataSourceMvcEndpoint\"]\n  end\n  subgraph Data_Access\n    City[\"City\"]\n    CityRepository[\"CityRepository\"]\n  end\n  subgraph Infrastructure\n    CharMatcher[\"CharMatcher\"]\n    DruidAutoConfiguration[\"DruidAutoConfiguration\"]\n    DruidDataSource2[\"DruidDataSource2\"]\n    DruidDataSourceActuatorAutoConfiguration[\"DruidDataSourceActuatorAutoConfiguration\"]\n    DruidDataSourceConfiguration[\"DruidDataSourceConfiguration\"]\n    DruidDataSourceEndpointConfiguration[\"DruidDataSourceEndpointConfiguration\"]\n    DruidDataSourceInitializerAutoConfiguration[\"DruidDataSourceInitializerAutoConfiguration\"]\n    DruidDataSourceMetadataProviderConfiguration[\"DruidDataSourceMetadataProviderConfiguration\"]\n    DruidDataSourceProperties[\"DruidDataSourceProperties\"]\n    DruidServletConfiguration[\"DruidServletConfiguration\"]\n    DruidStatConfiguration[\"DruidStatConfiguration\"]\n    SpringDataSourceConfig[\"SpringDataSourceConfig\"]\n  end"
+  }
+}

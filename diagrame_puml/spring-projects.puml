@@ -1,0 +1,448 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+
+package com.frandorado.asyncresttemplateapache {
+  class AsyncRestTemplateApacheConfig {
+    +apacheAsyncRestTemplate() : AsyncRestTemplate
+    +simpleClientAsyncRestTemplate() : AsyncRestTemplate
+  }
+  class AsyncRestTemplateApacheApplication {
+    +main() : void
+  }
+  class AsyncRestTemplateApacheApplicationRunner <<Service>> {
+    -apacheAsyncRestTemplate : AsyncRestTemplate
+    -simpleClientAsyncRestTemplate : AsyncRestTemplate
+    +run() : void
+  }
+}
+
+package com.frandorado.loggingrequestresponsewithbody {
+  class ApplicationTests {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package com.frandorado.loggingrequestresponsewithbody.bootstrap {
+  class WebConfig {
+    +addInterceptors() : void
+  }
+}
+
+package com.frandorado.loggingrequestresponsewithbody.controller {
+  class GreetingController <<Controller>> {
+    -count : AtomicLong
+    +getGreeting() : GreetingResponse
+    +createGreeting() : GreetingResponse
+  }
+}
+
+package com.frandorado.loggingrequestresponsewithbody.interceptor {
+  class CustomRequestBodyAdviceAdapter {
+    +supports() : boolean
+    +afterBodyRead() : Object
+  }
+  class LogInterceptor {
+    +preHandle() : boolean
+    +postHandle() : void
+    +afterCompletion() : void
+  }
+  class CustomResponseBodyAdviceAdapter {
+    +supports() : boolean
+    +beforeBodyWrite() : Object
+  }
+}
+
+package com.frandorado.loggingrequestresponsewithbody.model {
+  class GreetingResponse {
+    -id : Long
+    -message : String
+  }
+  class GreetingRequest {
+    -message : String
+  }
+}
+
+package com.frandorado.loggingrequestresponsewithbody.service {
+  class LoggingServiceImpl <<Service>> {
+    +logRequest() : void
+    +logResponse() : void
+  }
+  interface LoggingService {
+  }
+}
+
+package com.frandorado.logrequestresponseundertow {
+  class LoggingRequestAndResponseWithUndertowApplicationTests {
+    +contextLoads() : void
+  }
+  class SongController <<Controller>> {
+    +createSong() : Song
+    +getSongs() : List<Song>
+  }
+  class Song {
+    -id : Long
+    -name : String
+    -author : String
+  }
+  class Application {
+    +main() : void
+    +undertowServletWebServerFactory() : UndertowServletWebServerFactory
+    +undertowEmbeddedServletContainerFactory() : UndertowEmbeddedServletContainerFactory
+  }
+}
+
+package com.frandorado.resilience4jspring {
+  class Resilience4jSpringApplicationTests {
+    +contextLoads() : void
+  }
+  class Resilience4jSpringApplication {
+    -consumer : Consumer<Runnable>
+    +main() : void
+    +timeout() : void
+    +timeoutWithCircuitBreaker() : void
+  }
+}
+
+package com.frandorado.springbatchawsintegrationmaster {
+  class SpringBatchAwsIntegrationMasterApplication {
+    +main() : void
+  }
+}
+
+package com.frandorado.springbatchawsintegrationmaster.bootstrap {
+  class AwsConfiguration {
+    +amazonSQSAsync() : AmazonSQSAsync
+  }
+  class DatasourceConfiguration {
+    -DRIVER_CLASS_NAME : String
+    +dataSource() : DataSource
+  }
+}
+
+package com.frandorado.springbatchawsintegrationmaster.job {
+  class MainJobConfiguration {
+    +job() : Job
+  }
+  class MainJobExecutionListener {
+    +beforeJob() : void
+    +afterJob() : void
+  }
+}
+
+package com.frandorado.springbatchawsintegrationmaster.step.step1 {
+  class Step1ItemReader {
+  }
+  class Step1Configuration {
+    -REQUEST_QUEUE_NAME : String
+    -RESPONSE_QUEUE_NAME : String
+    +step1() : Step
+    +step1RequestMesssageChannel() : MessageChannel
+    +step1RequestIntegrationFlow() : IntegrationFlow
+    +step1ResponseMessageChannel() : PollableChannel
+    +step1ResponseIntegrationFlow() : IntegrationFlow
+  }
+}
+
+package com.frandorado.springbatchawsintegrationmaster.step.step2 {
+  class Step2Partitioner {
+    -NUMBER_KEY : String
+  }
+  class Step2Configuration {
+    -REQUEST_QUEUE_NAME : String
+    -STEP_NAME : String
+    +step2() : Step
+    +buildPartitionHandler() : PartitionHandler
+    +step2RequestMessageChannel() : MessageChannel
+    +step2RequestIntegrationFlow() : IntegrationFlow
+  }
+}
+
+package com.frandorado.springbatchawsintegrationmaster.transformer {
+  class StepExecutionRequestToJsonTransformer {
+    -MESSAGE_GROUP_ID_HEADER : String
+    +doTransform() : Object
+  }
+  class JsonToChunkResponseTransformer {
+    +doTransform() : Object
+  }
+  class ChunkRequestToJsonTransformer {
+    -MESSAGE_GROUP_ID_HEADER : String
+    +doTransform() : Object
+  }
+}
+
+package com.frandorado.springbatchawsintegrationslave {
+  class SpringBatchAwsIntegrationSlaveApplication {
+    +main() : void
+  }
+}
+
+package com.frandorado.springbatchawsintegrationslave.bootstrap {
+  class AwsConfiguration {
+    +amazonSQSAsync() : AmazonSQSAsync
+  }
+  class BatchConfiguration {
+    +beanFactoryStepLocator() : BeanFactoryStepLocator
+  }
+  class DatasourceConfiguration {
+    -DRIVER_CLASS_NAME : String
+    +dataSource() : DataSource
+  }
+}
+
+package com.frandorado.springbatchawsintegrationslave.step.step1 {
+  class Step1Configuration {
+    -REQUEST_QUEUE_NAME : String
+    -RESPONSE_QUEUE_NAME : String
+    +step1ChunkProcessorChunkHandler() : ChunkProcessorChunkHandler
+    +step1RequestIntegrationFlow() : IntegrationFlow
+    +step1RequestMessageChannel() : MessageChannel
+    +step1ResponseIntegrationFlow() : IntegrationFlow
+    +step1ResponseMessageChannel() : MessageChannel
+  }
+  class Step1ItemWriter {
+    +write() : void
+  }
+}
+
+package com.frandorado.springbatchawsintegrationslave.step.step2 {
+  class Step2Tasklet {
+    -log : Log
+    -NUMBER_KEY : String
+    +execute() : RepeatStatus
+  }
+  class Step2Configuration {
+    -REQUEST_QUEUE_NAME : String
+    -STEP_NAME : String
+    +step2() : Step
+    +step2RequestMessageChannel() : MessageChannel
+    +step2RequestIntegrationFlow() : IntegrationFlow
+  }
+}
+
+package com.frandorado.springbatchawsintegrationslave.transformer {
+  class JsonToStepExecutionRequestTransformer {
+    +doTransform() : Object
+  }
+  class ChunkResponseToJsonTransformer {
+    -MESSAGE_GROUP_ID_HEADER : String
+    +doTransform() : Object
+  }
+  class JsonToChunkRequestTransformer {
+    -MESSAGE_GROUP_ID_HEADER : String
+    +doTransform() : Object
+  }
+}
+
+package com.frandorado.springcustomserializerdeserializer {
+  class SpringCustomSerializerDeserializerApplicationTests {
+  }
+  class SpringCustomSerializerDeserializerApplication {
+    -CUSTOM_API : String
+    +main() : void
+  }
+}
+
+package com.frandorado.springcustomserializerdeserializer.bootstrap {
+  class RequestsHandlerInterceptorAdapterConfig {
+    +preHandle() : boolean
+  }
+  class MvcConfig {
+    +addInterceptors() : void
+    +extendMessageConverters() : void
+  }
+}
+
+package com.frandorado.springcustomserializerdeserializer.controller {
+  class PersonController <<Controller>> {
+    +registerPerson() : ResponseEntity<String>
+  }
+}
+
+package com.frandorado.springcustomserializerdeserializer.controller.model {
+  class PersonRequest {
+    -fullName : String
+  }
+}
+
+package com.frandorado.springcustomserializerdeserializer.deserialization {
+  class PersonRequestCustomDeserializer {
+    +deserialize() : PersonRequest
+  }
+  class PersonRequestBeanDeserializerModifier {
+  }
+  class PersonDelegatingDeserializer {
+    -personRequestCustomDeserializer : PersonRequestCustomDeserializer
+    +deserialize() : Object
+  }
+}
+
+package com.frandorado.springdatamongowithcluster {
+  class SpringDataMongoWithClusterApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringDataMongoWithClusterApplication {
+    +main() : void
+    +run() : void
+  }
+  class Car {
+    -id : String
+    -name : String
+  }
+}
+
+package com.frandorado.springmicrometerundertow {
+  class UndertowMetricsHandlerWrapper {
+    -metricsHandler : MetricsHandler
+    +wrap() : HttpHandler
+    +getMetricsHandler() : MetricsHandler
+  }
+  class UndertowMeterBinder {
+    -undertowMetricsHandlerWrapper : UndertowMetricsHandlerWrapper
+    +onApplicationEvent() : void
+    +bindTo() : void
+    +bind() : void
+  }
+  class SpringMicrometerUndertowApplication <<Controller>> {
+    +main() : void
+    +hello() : String
+  }
+}
+
+package com.frandorado.springreactivenonreactive {
+  class SpringMvcVsWebfluxApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringMvcVsWebfluxApplication {
+    +main() : void
+  }
+}
+
+package com.frandorado.springreactivenonreactive.controller {
+  class MVCAsyncController <<Controller>> {
+    +findById() : CompletableFuture<Message>
+    +post() : CompletableFuture<Message>
+  }
+  class MVCSyncController <<Controller>> {
+    +findById() : Message
+    +post() : Message
+  }
+  class WebFluxController <<Controller>> {
+    +findByIdReactive() : Mono<Message>
+    +postReactive() : Mono<Message>
+    +deleteAllReactive() : Mono<Void>
+  }
+}
+
+package com.frandorado.springreactivenonreactive.model {
+  class Message {
+    -id : String
+    -content : String
+    -createdAt : Date
+  }
+}
+
+package com.frandorado.springreactivenonreactive.repository {
+  interface ReactiveRepository <<Repository>> {
+  }
+  interface NonReactiveRepository <<Repository>> {
+  }
+}
+
+package io.github.frandorado.springuploads3 {
+  class SpringUploadS3ApplicationTests {
+  }
+  class SpringUploadS3Application {
+    +main() : void
+  }
+}
+
+package io.github.frandorado.springuploads3.configuration {
+  class S3ClientConfiguration {
+    -endpointUrl : String
+  }
+}
+
+package io.github.frandorado.springuploads3.controller {
+  class FileUploadController <<Controller>> {
+    -storageService : StorageService
+    +upload() : ResponseEntity<String>
+  }
+  class FileDownloadController <<Controller>> {
+    -storageService : StorageService
+    +download() : ResponseEntity<Resource>
+  }
+}
+
+package io.github.frandorado.springuploads3.service {
+  class S3StorageService <<Service>> {
+    -FILE_EXTENSION : String
+    -amazonS3 : AmazonS3
+    -bucketName : String
+    +upload() : String
+    +download() : DownloadedResource
+  }
+  interface StorageService {
+  }
+}
+
+package io.github.frandorado.springuploads3.service.model {
+  class DownloadedResource {
+    -id : String
+    -fileName : String
+    -contentLength : Long
+    -inputStream : InputStream
+  }
+}
+
+' --- Relatii ---
+StepExecutionRequestToJsonTransformer --> Message
+JsonToChunkResponseTransformer --> Message
+ChunkRequestToJsonTransformer --> Message
+Step2Configuration --> StepExecutionRequestToJsonTransformer
+Step1Configuration --> ChunkRequestToJsonTransformer
+Step1Configuration --> JsonToChunkResponseTransformer
+JsonToStepExecutionRequestTransformer --> Message
+ChunkResponseToJsonTransformer --> Message
+JsonToChunkRequestTransformer --> Message
+Step2Tasklet --> Step1ItemWriter
+Step2Configuration --> JsonToStepExecutionRequestTransformer
+Step1Configuration --> ChunkResponseToJsonTransformer
+Step1Configuration --> JsonToChunkRequestTransformer
+FileUploadController --> StorageService
+FileDownloadController --> DownloadedResource
+FileDownloadController --> StorageService
+S3StorageService ..|> StorageService
+S3StorageService --> DownloadedResource
+StorageService --> DownloadedResource
+WebConfig --> LogInterceptor
+GreetingController --> GreetingRequest
+GreetingController --> GreetingResponse
+LoggingServiceImpl ..|> LoggingService
+CustomRequestBodyAdviceAdapter --> LoggingService
+LogInterceptor --> LoggingService
+CustomResponseBodyAdviceAdapter --> LoggingService
+MvcConfig --> PersonRequestBeanDeserializerModifier
+PersonController --> PersonRequest
+PersonRequestCustomDeserializer --> PersonRequest
+PersonRequestBeanDeserializerModifier --> PersonRequest
+ReactiveRepository --> Message
+NonReactiveRepository --> Message
+MVCAsyncController --> Message
+MVCAsyncController --> NonReactiveRepository
+MVCSyncController --> Message
+MVCSyncController --> NonReactiveRepository
+WebFluxController --> Message
+WebFluxController --> ReactiveRepository
+
+@enduml

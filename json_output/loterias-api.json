@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, file management domain. It serves API Consumer as its primary actors. The main business capabilities include api rest, exceptions handler, root rest.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [],
+        "controllers": [
+          "SwaggerConfig"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage api rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ApiRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage exceptions handler operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ExceptionsHandler"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage root rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "RootRestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage s s l helper operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "SSLHelper"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ApiRestController[\"ApiRestController\"]\n    ExceptionsHandler[\"ExceptionsHandler\"]\n    RootRestController[\"RootRestController\"]\n    SSLHelper[\"SSLHelper\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n  end\n  subgraph Services\n    HttpConnectionService[\"HttpConnectionService\"]\n    ResultadoService[\"ResultadoService\"]\n    SSLHttpConnectionService[\"SSLHttpConnectionService\"]\n  end\n  subgraph Data_Access\n    ResultadoRepository[\"ResultadoRepository\"]\n  end\n  subgraph Infrastructure\n    WebConfiguration[\"WebConfiguration\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

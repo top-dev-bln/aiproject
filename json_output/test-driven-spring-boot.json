@@ -1,0 +1,53 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the recruitment, authentication domain. It serves API Consumer as its primary actors. The main business capabilities include book, book rest, expert rest. Core business data revolves around Book, BookDao, ExpertDao, ExpertEntity.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage book operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "BookService",
+          "BookServiceImpl"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage book rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "BookRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage expert rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ExpertRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage new expert operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "NewExpert"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage open api operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "OpenApi"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    BookController[\"BookController\"]\n    BookRestController[\"BookRestController\"]\n    ExpertRestController[\"ExpertRestController\"]\n    NewExpert[\"NewExpert\"]\n    OpenApi[\"OpenApi\"]\n  end\n  subgraph Services\n    BookService[\"BookService\"]\n    BookServiceImpl[\"BookServiceImpl\"]\n    ExpertService[\"ExpertService\"]\n    ExpertServiceImpl[\"ExpertServiceImpl\"]\n  end\n  subgraph Data_Access\n    Book[\"Book\"]\n    BookDao[\"BookDao\"]\n    ExpertDao[\"ExpertDao\"]\n    ExpertEntity[\"ExpertEntity\"]\n  end\n  subgraph Infrastructure\n    ActuatorBasicSecurityConfig[\"ActuatorBasicSecurityConfig\"]\n    ApiConfig[\"ApiConfig\"]\n    DemoRunner[\"DemoRunner\"]\n    LogstashLogbookConfig[\"LogstashLogbookConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, recruitment domain. It serves System as its primary actors. The main business capabilities include employee, hello world, student. Core business data revolves around Employee, Student.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a System, I want to manage employee operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "EmployeeService",
+          "EmployeeServiceImpl"
+        ],
+        "controllers": [
+          "EmployeeController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a System, I want to manage hello world operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloWorldController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a System, I want to manage student operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "StudentService",
+          "StudentServiceImpl"
+        ],
+        "controllers": [
+          "StudentController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a System, I want to interact with employee impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "EmployeeServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a System, I want to interact with student impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "StudentServiceImpl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    EmployeeController[\"EmployeeController\"]\n    HelloWorldController[\"HelloWorldController\"]\n    StudentController[\"StudentController\"]\n  end\n  subgraph Services\n    EmployeeService[\"EmployeeService\"]\n    EmployeeServiceImpl[\"EmployeeServiceImpl\"]\n    StudentService[\"StudentService\"]\n    StudentServiceImpl[\"StudentServiceImpl\"]\n  end\n  subgraph Data_Access\n    Employee[\"Employee\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    Student[\"Student\"]\n    StudentRepository[\"StudentRepository\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+  }
+}

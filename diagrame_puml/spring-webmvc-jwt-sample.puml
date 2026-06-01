@@ -1,0 +1,168 @@
+@startuml
+
+package com.example.demo {
+  class VehicleControllerTest {
+    +setUp() : void
+    +testFindByBrandIn() : void
+    +testGetById() : void
+    +testGetByIdNotFound() : void
+    +testSave() : void
+    +testUpdate() : void
+    +testDelete() : void
+  }
+  class VehicleTest {
+    +testVehicle() : void
+  }
+  class IntegrationTests {
+    -port : int
+    -token : String
+    +setup() : void
+    +getAllVehicles() : void
+    +testSave() : void
+    +testSaveWithAuth() : void
+    +testSaveWithInvalidAuth() : void
+  }
+  class ApplicationTests {
+    -mockMvc : MockMvc
+    +setup() : void
+    +getAllVehicles() : void
+    +testSave() : void
+    +testSaveWithMock() : void
+  }
+  class VehicleJpaTest {
+    -tem : TestEntityManager
+    +mapping() : void
+  }
+  class VehicleRepositoryTest {
+    -vehicles : VehicleRepository
+    +mapping() : void
+  }
+  class DataInitializer {
+    -vehicles : VehicleRepository
+    -users : UserRepository
+    -passwordEncoder : PasswordEncoder
+    +run() : void
+  }
+  class DemoApplication {
+    +main() : void
+  }
+}
+
+package com.example.demo.config {
+  class SecurityConfig {
+  }
+  class DataJpaConfig {
+    +auditor() : AuditorAware<Username>
+  }
+  class AppConfig {
+    +passwordEncoder() : PasswordEncoder
+  }
+}
+
+package com.example.demo.domain {
+  class AbstractAuditableEntity {
+  }
+  class User <<Entity>> {
+    -username : String
+    -password : String
+    -roles : List<String>
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+    +isEnabled() : boolean
+  }
+  class AbstractPersistableEntity {
+    -id : ID
+    -version : Long
+  }
+  class Vehicle <<Entity>> {
+    -name : String
+    -brand : Brand
+  }
+  enum Brand {
+  }
+}
+
+package com.example.demo.repository {
+  interface VehicleRepository {
+  }
+  interface UserRepository {
+  }
+}
+
+package com.example.demo.security.jwt {
+  class JwtProperties {
+    -secretKey : String
+    -validityInMs : long
+  }
+  class JwtTokenAuthenticationFilter {
+    -HEADER_PREFIX : String
+    -jwtTokenProvider : JwtTokenProvider
+    +doFilter() : void
+  }
+  class JwtTokenProvider {
+    -AUTHORITIES_KEY : String
+    -jwtProperties : JwtProperties
+    -secretKey : SecretKey
+    +init() : void
+    +createToken() : String
+    +getAuthentication() : Authentication
+    +validateToken() : boolean
+  }
+}
+
+package com.example.demo.web {
+  class AuthenticationController <<Controller>> {
+    -authenticationManager : AuthenticationManager
+    -jwtTokenProvider : JwtTokenProvider
+    -users : UserRepository
+    +signin() : ResponseEntity
+  }
+  class RestExceptionHandler {
+    +vehicleNotFound() : ResponseEntity
+  }
+  class VehicleController <<Controller>> {
+    -vehicles : VehicleRepository
+    +all() : ResponseEntity<List<Vehicle>>
+    +save() : ResponseEntity
+    +update() : ResponseEntity
+    +delete() : ResponseEntity
+  }
+  class UserinfoController <<Controller>> {
+    +currentUser() : ResponseEntity
+  }
+  class VehicleNotFoundException {
+  }
+}
+
+' --- Relatii ---
+VehicleControllerTest --> Brand
+VehicleControllerTest --> Vehicle
+VehicleControllerTest --> VehicleRepository
+VehicleControllerTest --> VehicleController
+VehicleTest --> Vehicle
+VehicleJpaTest --> Vehicle
+VehicleRepositoryTest --> Vehicle
+VehicleRepositoryTest --> VehicleRepository
+DataInitializer --> User
+DataInitializer --> Vehicle
+DataInitializer --> UserRepository
+DataInitializer --> VehicleRepository
+VehicleRepository --> Brand
+VehicleRepository --> Vehicle
+UserRepository --> User
+SecurityConfig --> UserRepository
+SecurityConfig --> JwtTokenAuthenticationFilter
+SecurityConfig --> JwtTokenProvider
+JwtTokenProvider --> User
+AuthenticationController --> UserRepository
+AuthenticationController --> JwtTokenProvider
+RestExceptionHandler --> DemoApplication
+VehicleController --> Brand
+VehicleController --> Vehicle
+VehicleController --> VehicleRepository
+Vehicle --|> AbstractAuditableEntity
+
+@enduml

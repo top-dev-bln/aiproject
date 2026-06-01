@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the search, authentication domain. It serves Customer, User as its primary actors. The main business capabilities include bulk processor, bulk processor impl, elastic search. Core business data revolves around Order.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to search across available content, so that I can quickly find what I am looking for.",
+        "services": [
+          "ElasticSearchService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to interact with bulk processor functionality, so that the system fulfills my needs.",
+        "services": [
+          "BulkProcessorService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to interact with bulk processor impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "BulkProcessorServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to interact with elastic search functionality, so that the system fulfills my needs.",
+        "services": [
+          "ElasticSearchService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to interact with elastic search impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "ElasticSearchServiceImpl"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Services\n    BulkProcessorService[\"BulkProcessorService\"]\n    BulkProcessorServiceImpl[\"BulkProcessorServiceImpl\"]\n    ElasticSearchService[\"ElasticSearchService\"]\n    ElasticSearchServiceImpl[\"ElasticSearchServiceImpl\"]\n    QueryService[\"QueryService\"]\n    QueryServiceImpl[\"QueryServiceImpl\"]\n  end\n  subgraph Data_Access\n    Order[\"Order\"]\n  end\n  subgraph Infrastructure\n    ElasticSearchConfig[\"ElasticSearchConfig\"]\n  end\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

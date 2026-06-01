@@ -1,0 +1,650 @@
+@startuml
+
+package com.demo {
+  class ProductServiceApplication {
+    +main() : void
+  }
+  class AccountServiceApplication {
+    +main() : void
+  }
+}
+
+package com.demo.aop {
+  class ProductAop {
+    +beforeAdvice() : void
+    +afterAdvice() : void
+  }
+}
+
+package com.demo.config {
+  class OpenApiConfig {
+    +productServiceOpenAPI() : OpenAPI
+  }
+  class OpenApiConfig {
+    +accountServiceOpenAPI() : OpenAPI
+  }
+  class DataInitializer {
+    +seedRoles() : ApplicationRunner
+  }
+}
+
+package com.demo.config.openfeign {
+  class CommonOpenFeignErrorDecoder {
+    -mapper : ObjectMapper
+    +decode() : Exception
+  }
+  class CommonOpenFeignConfig {
+    +feignDecoder() : Decoder
+    +customObjectMapper() : ObjectMapper
+    +client() : OkHttpClient
+    +errorDecoder() : ErrorDecoder
+  }
+}
+
+package com.demo.config.thread {
+  class CommonContextTaskDecorator {
+    +decorate() : Runnable
+  }
+  class DefaultCommonContext {
+    -correlationId : String
+    -userId : String
+    -username : String
+  }
+  interface CommonContext {
+  }
+  class ThreadAsyncConfig {
+    -corePoolSize : int
+    -maxPoolSize : int
+    -queueCapacity : int
+    -threadNamePrefix : String
+    -keepAliveSeconds : int
+    -awaitTerminationSeconds : int
+    +asyncTaskExecutor() : TaskExecutor
+    +getAsyncExecutor() : Executor
+  }
+}
+
+package com.demo.constants {
+  enum CorrelationConstants {
+    -value : String
+  }
+}
+
+package com.demo.context {
+  class CommonContextHolder {
+    -COMMON_CONTEXT_HOLDER : ThreadLocal<CommonContext>
+    -INHERITABLE_COMMON_CONTEXT_HOLDER : ThreadLocal<CommonContext>
+    +resetContext() : void
+    +setContext() : void
+    +setContext() : void
+    +getContext() : CommonContext
+    +getCorrelationId() : String
+    +getUserId() : String
+    +getUsername() : String
+    +createFromSecurityContext() : CommonContext
+  }
+}
+
+package com.demo.controller {
+  class ProductController <<Controller>> {
+    -productService : ProductService
+    +getProductsByUserId() : List<Product>
+    +getMyProducts() : List<Product>
+    +searchProducts() : ResponseEntity<Page<Product>>
+    +createProduct() : ResponseEntity<Product>
+    +updateProduct() : ResponseEntity<Product>
+  }
+  class AsyncTestController <<Controller>> {
+    -asyncExampleService : AsyncExampleService
+    +testAsyncAnnotation() : CompletableFuture<ResponseEntity<String>>
+    +testAsyncUtils() : CompletableFuture<ResponseEntity<String>>
+    +testAsyncChaining() : CompletableFuture<ResponseEntity<String>>
+    +testAsyncErrorHandling() : CompletableFuture<ResponseEntity<String>>
+    +getConfigStatus() : ResponseEntity<String>
+  }
+  class HomeController <<Controller>> {
+    +home() : String
+  }
+  class UserController <<Controller>> {
+    +generateUser() : boolean
+  }
+  class ProductEventController <<Controller>> {
+    -userService : UserService
+    +testProductEvent() : String
+  }
+  class AuthController <<Controller>> {
+  }
+  class HomeController <<Controller>> {
+    +home() : String
+  }
+  class TestController <<Controller>> {
+    +allAccess() : String
+    +userAccess() : String
+    +adminAccess() : String
+    +testKafkaInterceptor() : String
+  }
+  class UserController <<Controller>> {
+    +getUserBy() : UserProfile
+    +getMe() : UserProfile
+  }
+}
+
+package com.demo.dto {
+  class ProductRequest {
+    -name : String
+    -description : String
+    -price : BigDecimal
+  }
+  class ProductUpdateRequest {
+    -name : String
+    -description : String
+    -price : BigDecimal
+  }
+  class User {
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    -enabled : Boolean
+  }
+  class ProductSearchRequest {
+    -id : Long
+    -name : String
+    -description : String
+    -creatorId : Long
+    -minPrice : BigDecimal
+    -maxPrice : BigDecimal
+    -page : Integer
+    -size : Integer
+    -sortBy : String
+    -sortDirection : String
+  }
+  class ProductEvent {
+    -eventType : EventType
+    -productId : Long
+    -productName : String
+    -description : String
+    -price : BigDecimal
+    -creatorId : Long
+    -timestamp : LocalDateTime
+    -username : String
+    +created() : ProductEvent
+    +updated() : ProductEvent
+  }
+  class User {
+    -username : String
+    -email : String
+    -password : String
+  }
+  class ProductEvent {
+    -eventType : EventType
+    -productId : Long
+    -productName : String
+    -description : String
+    -price : BigDecimal
+    -creatorId : Long
+    -timestamp : LocalDateTime
+    -username : String
+  }
+}
+
+package com.demo.enums {
+  enum EventType {
+  }
+  enum ERole {
+  }
+  enum EventType {
+  }
+}
+
+package com.demo.exception {
+  class ForbiddenException {
+    +getHttpStatus() : HttpStatus
+  }
+  class FeignResponseException {
+    -status : HttpStatus
+    +getHttpStatus() : HttpStatus
+  }
+  class UnauthorizedException {
+    +getHttpStatus() : HttpStatus
+  }
+  class FormValidateException {
+    +getHttpStatus() : HttpStatus
+  }
+  class ApplicationException {
+    -messages : List<String>
+    +getHttpStatus() : HttpStatus
+  }
+  class UnprocessableEntityException {
+    +getHttpStatus() : HttpStatus
+  }
+  class HttpException {
+    -httpStatus : HttpStatus
+    +getHttpStatus() : HttpStatus
+  }
+  class NotFoundException {
+    +getHttpStatus() : HttpStatus
+  }
+}
+
+package com.demo.exception.handler {
+  class CommonExceptionHandler {
+    +handleException() : ResponseEntity<ApiError>
+    +handleBaseException() : ResponseEntity<ApiError>
+    +handleFeignException() : ResponseEntity<Object>
+    +handleAccessDenied() : ResponseEntity<Object>
+    +handleAuthentication() : ResponseEntity<Object>
+    +handleMaxUploadSizeException() : ResponseEntity<Object>
+    +handleHttpMessageNotReadableException() : ResponseEntity<Object>
+  }
+}
+
+package com.demo.exception.model {
+  interface ErrorCode {
+  }
+  class ApiError {
+    -statusCode : int
+    -messages : List<String>
+  }
+}
+
+package com.demo.feign {
+  interface UserFeignClient {
+  }
+}
+
+package com.demo.kafka {
+  class ProductEventConsumer {
+    -userService : UserService
+    -objectMapper : ObjectMapper
+    +handleProductEvent() : void
+  }
+  class KafkaConfig {
+    -bootstrapAddress : String
+    -group : String
+  }
+  class KafkaUserConsumer {
+    -userService : UserService
+    -topic : String
+    -replicationFactor : int
+    -partitionNumber : int
+    -objectMapper : ObjectMapper
+    +kafkaListener() : void
+  }
+}
+
+package com.demo.kafka.config {
+  class ProductKafkaProducer {
+    -productTopic : String
+    -replicationFactor : int
+    -partitionNumber : int
+    +sendProductEvent() : void
+    +createProductTopic() : NewTopic
+  }
+  class KafkaConfig {
+    -bootstrapAddress : String
+    -group : String
+  }
+  class UserKafkaProducer {
+    -topic : String
+    -replicationFactor : int
+    -partitionNumber : int
+    +writeToKafka() : void
+    +createNewTopic() : NewTopic
+  }
+}
+
+package com.demo.kafka.interceptor {
+  class KafkaProducerInterceptor {
+    +onAcknowledgement() : void
+    +close() : void
+    +configure() : void
+  }
+  class KafkaRecordInterceptor {
+  }
+}
+
+package com.demo.logging {
+  class OpenFeignRequestInterceptor {
+    +apply() : void
+  }
+  class CorrelationLoggingFilter {
+    -actuatorBasePath : String
+    +doFilter() : void
+    +init() : void
+    +destroy() : void
+  }
+  class CommonResponseBodyLogger {
+    -actuatorBasePath : String
+    +supports() : boolean
+    +beforeBodyWrite() : Object
+  }
+  class CommonRequestBodyLogger {
+    -actuatorBasePath : String
+    +supports() : boolean
+    +afterBodyRead() : Object
+    +handleEmptyBody() : Object
+  }
+}
+
+package com.demo.model {
+  class Product <<Entity>> {
+    -id : Long
+    -name : String
+    -description : String
+    -price : BigDecimal
+    -creatorId : Long
+    -createdAt : LocalDateTime
+    -updatedAt : LocalDateTime
+  }
+  class User <<Entity>> {
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    -roles : Set<Role>
+  }
+  class Role <<Entity>> {
+    -id : Integer
+    -name : ERole
+  }
+}
+
+package com.demo.payload.request {
+  class SignupRequest {
+    -username : String
+    -email : String
+    -roles : Set<String>
+    -password : String
+  }
+  class LoginRequest {
+    -username : String
+    -password : String
+  }
+  class UpdateRequest {
+    -email : String
+  }
+}
+
+package com.demo.payload.response {
+  class UserProfile {
+    -id : Long
+    -username : String
+    -email : String
+    -roles : List<String>
+  }
+  class MessageResponse {
+    -message : String
+  }
+  class JwtResponse {
+    -token : String
+    -type : String
+    -id : Long
+    -username : String
+    -email : String
+    -roles : List<String>
+  }
+}
+
+package com.demo.repo {
+  interface ProductRepo <<Repository>> {
+  }
+  interface RoleRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package com.demo.security {
+  class WebSecurityConfig {
+    -authTokenFilter : AuthTokenFilter
+    +customAccessDeniedHandler() : CustomAccessDeniedHandler
+    +customAuthenticationEntryPoint() : CustomAuthenticationEntryPoint
+    +authenticationManager() : AuthenticationManager
+    +passwordEncoder() : PasswordEncoder
+    +filterChain() : SecurityFilterChain
+  }
+  class CustomAuthenticationEntryPoint {
+    -objectMapper : ObjectMapper
+    +commence() : void
+  }
+  class CustomAccessDeniedHandler {
+    -objectMapper : ObjectMapper
+    +handle() : void
+  }
+  class WebSecurityConfig {
+    -unauthorizedHandler : AuthEntryPointJwt
+    -authenticationJwtTokenFilter : AuthTokenFilter
+    +authenticationProvider() : DaoAuthenticationProvider
+    +authenticationManager() : AuthenticationManager
+    +passwordEncoder() : PasswordEncoder
+    +filterChain() : SecurityFilterChain
+  }
+  class CORSFilter {
+    -response : HttpServletResponse
+    +doFilter() : void
+    +destroy() : void
+    +init() : void
+  }
+  class WebConfiguration {
+    -allowedOrigins : String[]
+    +addCorsMappings() : void
+  }
+}
+
+package com.demo.security.jwt {
+  class JwtUtils {
+    -logger : Logger
+    -jwtSecret : String
+    -jwtExpirationMs : int
+    +generateJwtToken() : String
+    +getUserNameFromJwtToken() : String
+    +getUserIdFromJwtToken() : Long
+    +getRolesFromJwtToken() : List<String>
+    +validateJwtToken() : boolean
+  }
+  class AuthEntryPointJwt {
+    -objectMapper : ObjectMapper
+    +commence() : void
+  }
+  class AuthTokenFilter {
+    -jwtUtils : JwtUtils
+    -logger : Logger
+    +doFilterInternal() : void
+  }
+}
+
+package com.demo.security.services {
+  class UserDetailsServiceImpl <<Service>> {
+    +loadUserByUsername() : UserDetails
+  }
+  class UserDetailsImpl {
+    -serialVersionUID : long
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    +build() : UserDetailsImpl
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+    +isEnabled() : boolean
+  }
+}
+
+package com.demo.service {
+  class ProductService <<Service>> {
+    -productRepo : ProductRepo
+    -userFeignClient : UserFeignClient
+    -productKafkaProducer : ProductKafkaProducer
+    +getProductsByUserId() : List<Product>
+    +getMyProducts() : List<Product>
+    +searchProducts() : Page<Product>
+    +createProduct() : Product
+    +updateProduct() : Product
+  }
+  class UserService <<Service>> {
+    -userRepository : UserRepository
+    +getUserById() : UserProfile
+    +getCurrentUserProfile() : UserProfile
+    +addUser() : User
+    +updateUserProductStats() : void
+  }
+  class AuthService <<Service>> {
+    -jwtSecret : String
+    -jwtExpirationMs : int
+    +authenticateUser() : JwtResponse
+  }
+  class AsyncExampleService <<Service>> {
+    +processWithAsyncAnnotation() : CompletableFuture<String>
+    +processWithAsyncUtils() : CompletableFuture<String>
+    +processWithChaining() : CompletableFuture<String>
+    +processWithErrorHandling() : CompletableFuture<String>
+  }
+}
+
+package com.demo.util {
+  class StringToDateConverter {
+    -datePatterns : List<String>
+    +convert() : Date
+  }
+  class AsyncUtils {
+    -taskExecutor : TaskExecutor
+    +setTaskExecutor() : void
+    +runAsync() : CompletableFuture<Void>
+    +runAsync() : CompletableFuture<Void>
+  }
+  class CorrelationUtils {
+    +generateCorrelationId() : String
+    +currentCorrelationId() : String
+  }
+  class AuthUtils {
+    +getCurrentUserId() : Long
+    +getCurrentUsername() : String
+    +isCurrentUserAdmin() : boolean
+    +isAuthenticated() : boolean
+    +getCurrentAuthentication() : Authentication
+  }
+}
+
+' --- Relatii ---
+ProductServiceApplication --> OpenFeignRequestInterceptor
+ProductServiceApplication --> CommonRequestBodyLogger
+ProductServiceApplication --> CommonResponseBodyLogger
+ProductServiceApplication --> CommonExceptionHandler
+ProductServiceApplication --> StringToDateConverter
+ProductEvent --> EventType
+UserFeignClient --> User
+UserFeignClient --> CommonOpenFeignConfig
+WebSecurityConfig --> AuthTokenFilter
+CustomAuthenticationEntryPoint --> ApiError
+CustomAccessDeniedHandler --> ApiError
+ProductController --> ProductRequest
+ProductController --> ProductSearchRequest
+ProductController --> ProductUpdateRequest
+ProductController --> Product
+ProductController --> ProductService
+AsyncTestController --> AsyncExampleService
+UserController --> User
+UserController --> UserKafkaProducer
+ProductKafkaProducer --> ProductEvent
+KafkaConfig --> KafkaRecordInterceptor
+UserKafkaProducer --> User
+ProductService --> ProductEvent
+ProductService --> ProductRequest
+ProductService --> ProductSearchRequest
+ProductService --> ProductUpdateRequest
+ProductService --> ForbiddenException
+ProductService --> NotFoundException
+ProductService --> UserFeignClient
+ProductService --> ProductKafkaProducer
+ProductService --> Product
+ProductService --> ProductRepo
+ProductService --> AuthUtils
+ProductRepo --> Product
+AccountServiceApplication --> OpenFeignRequestInterceptor
+AccountServiceApplication --> CommonRequestBodyLogger
+AccountServiceApplication --> CommonResponseBodyLogger
+AccountServiceApplication --> StringToDateConverter
+ProductEvent --> EventType
+DataInitializer --> ERole
+DataInitializer --> Role
+DataInitializer --> RoleRepository
+WebSecurityConfig --> AuthEntryPointJwt
+WebSecurityConfig --> AuthTokenFilter
+WebSecurityConfig --> UserDetailsServiceImpl
+UserDetailsServiceImpl --> User
+UserDetailsServiceImpl --> UserRepository
+UserDetailsImpl --> User
+ProductEventController --> UserService
+AuthController --> LoginRequest
+AuthController --> SignupRequest
+AuthController --> AuthService
+UserController --> UserProfile
+UserController --> UserService
+ProductEventConsumer --> ProductEvent
+ProductEventConsumer --> EventType
+ProductEventConsumer --> UserService
+KafkaConfig --> KafkaRecordInterceptor
+KafkaUserConsumer --> User
+KafkaUserConsumer --> UserService
+Role --> ERole
+UserService --> User
+UserService --> UserProfile
+UserService --> UserRepository
+UserService --> NotFoundException
+UserService --> AuthUtils
+AuthService --> ERole
+AuthService --> UnprocessableEntityException
+AuthService --> Role
+AuthService --> User
+AuthService --> LoginRequest
+AuthService --> SignupRequest
+AuthService --> JwtResponse
+AuthService --> MessageResponse
+AuthService --> RoleRepository
+AuthService --> UserRepository
+AuthService --> JwtUtils
+AuthService --> UserDetailsImpl
+RoleRepository --> ERole
+RoleRepository --> Role
+UserRepository --> User
+CommonContextHolder --> CommonContext
+CommonContextHolder --> DefaultCommonContext
+CommonContextHolder --> CorrelationConstants
+CommonContextHolder --> CorrelationUtils
+AsyncUtils --> CommonContextHolder
+CorrelationUtils --> CorrelationConstants
+AuthUtils --> UnauthorizedException
+CommonOpenFeignErrorDecoder --> FeignResponseException
+CommonOpenFeignErrorDecoder --> HttpException
+CommonOpenFeignErrorDecoder --> ApiError
+CommonContextTaskDecorator --> CorrelationConstants
+CommonContextTaskDecorator --> CommonContextHolder
+CommonContextTaskDecorator --> CorrelationUtils
+DefaultCommonContext ..|> CommonContext
+AuthEntryPointJwt --> UnauthorizedException
+AuthEntryPointJwt --> ApiError
+KafkaProducerInterceptor --> CorrelationConstants
+KafkaRecordInterceptor --> CorrelationConstants
+KafkaRecordInterceptor --> CorrelationUtils
+AsyncExampleService --> CommonContextHolder
+AsyncExampleService --> AsyncUtils
+AsyncExampleService --> HttpException
+ForbiddenException --|> ApplicationException
+FeignResponseException --|> ApplicationException
+FeignResponseException --> ApiError
+UnauthorizedException --|> ApplicationException
+FormValidateException --|> ApplicationException
+UnprocessableEntityException --|> ApplicationException
+HttpException --|> ApplicationException
+NotFoundException --|> ApplicationException
+CommonExceptionHandler --> ApplicationException
+CommonExceptionHandler --> FeignResponseException
+CommonExceptionHandler --> ApiError
+OpenFeignRequestInterceptor --> CorrelationConstants
+OpenFeignRequestInterceptor --> CorrelationUtils
+CorrelationLoggingFilter --> CorrelationConstants
+CorrelationLoggingFilter --> CorrelationUtils
+
+@enduml

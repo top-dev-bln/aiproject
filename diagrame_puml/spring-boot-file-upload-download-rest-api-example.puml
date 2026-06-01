@@ -1,0 +1,70 @@
+@startuml
+
+package com.example.filedemo {
+  class FileDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class FileDemoApplication {
+    +main() : void
+  }
+}
+
+package com.example.filedemo.controller {
+  class FileController <<Controller>> {
+    -logger : Logger
+    -fileStorageService : FileStorageService
+    +uploadFile() : UploadFileResponse
+    +uploadMultipleFiles() : List<UploadFileResponse>
+    +downloadFile() : ResponseEntity<Resource>
+  }
+}
+
+package com.example.filedemo.exception {
+  class FileStorageException {
+  }
+  class MyFileNotFoundException {
+  }
+}
+
+package com.example.filedemo.payload {
+  class UploadFileResponse {
+    -fileName : String
+    -fileDownloadUri : String
+    -fileType : String
+    -size : long
+    +getFileName() : String
+    +setFileName() : void
+    +getFileDownloadUri() : String
+    +setFileDownloadUri() : void
+    +getFileType() : String
+    +setFileType() : void
+    +getSize() : long
+    +setSize() : void
+  }
+}
+
+package com.example.filedemo.property {
+  class FileStorageProperties {
+    -uploadDir : String
+    +getUploadDir() : String
+    +setUploadDir() : void
+  }
+}
+
+package com.example.filedemo.service {
+  class FileStorageService <<Service>> {
+    -fileStorageLocation : Path
+    +storeFile() : String
+    +loadFileAsResource() : Resource
+  }
+}
+
+' --- Relatii ---
+FileDemoApplication --> FileStorageProperties
+FileController --> UploadFileResponse
+FileController --> FileStorageService
+FileStorageService --> FileStorageException
+FileStorageService --> MyFileNotFoundException
+FileStorageService --> FileStorageProperties
+
+@enduml

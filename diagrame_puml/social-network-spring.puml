@@ -1,0 +1,459 @@
+@startuml
+
+package org.asaunin.socialnetwork {
+  class AbstractApplicationTest {
+    -DEFAULT_MESSAGE_TEXT : String
+    -APPLICATION_JSON_UTF8 : MediaType
+    -person : Person
+    -msg : Message
+    -mapper : ObjectMapper
+    +getDefaultPerson() : Person
+    +getDefaultMessage() : Message
+    +getDefaultMessagePost() : MessagePost
+    +getDefaultPageRequest() : Pageable
+    +convertObjectToJsonBytes() : byte[]
+  }
+  class SocialNetworkApplication {
+    +main() : void
+  }
+}
+
+package org.asaunin.socialnetwork.config {
+  class SwaggerConfiguration {
+    -version : String
+    -title : String
+    -description : String
+    +api() : Docket
+  }
+  class SocialConfiguration {
+    -log : Logger
+    -connectionSignUp : SocialConnectionSignUp
+    -facebook : SocialConnection
+    -google : SocialConnection
+    -clientId : String
+    -clientSecret : String
+    -fieldsToMap : String[]
+    -field : Field
+    -modifiers : Field
+    -facebookClientId : String
+    +addConnectionFactories() : void
+    +getUserIdSource() : UserIdSource
+    +getUsersConnectionRepository() : UsersConnectionRepository
+  }
+  class WebConfiguration {
+    +addResourceHandlers() : void
+  }
+  class SecurityConfiguration {
+    -userDetailsService : UserDetailsServiceImpl
+    -swagger : String[]
+    -services : TokenBasedRememberMeServices
+    -source : UrlBasedCorsConfigurationSource
+    -config : CorsConfiguration
+    +configure() : void
+    +configure() : void
+    +configure() : void
+    +bCryptPasswordEncoder() : BCryptPasswordEncoder
+    +rememberMeService() : TokenBasedRememberMeServices
+    +corsFilter() : CorsFilter
+  }
+  class Constants {
+    -log : Logger
+    -URI_API_PREFIX : String
+    -URI_MESSAGES : String
+    -URI_SOCIAL : String
+    -ERROR_UPDATE_PROFILE : String
+    -ERROR_UPDATE_EMAIL : String
+    -ERROR_SIGN_UP_EMAIL : String
+    -ERROR_PASSWORD_CONFIRMATION : String
+    -API_URL : String
+    -WEB_URL : String
+    +setApiUrl() : void
+    +setWebUrl() : void
+    +setImageFolder() : void
+    +setRememberMeToken() : void
+    +setRememberMeCookie() : void
+  }
+}
+
+package org.asaunin.socialnetwork.domain {
+  class Message <<Entity>> {
+    -id : Long
+    -sender : Person
+    -recipient : Person
+    -body : String
+    -posted : Date
+  }
+  class Person <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -fullName : String
+    -shortName : String
+    -email : String
+    -password : String
+    -phone : String
+    -birthDate : Date
+    -gender : Gender
+    +hasFriend() : boolean
+    +addFriend() : void
+    +removeFriend() : void
+    +isFriendOf() : boolean
+    +setFirstName() : void
+    +setLastName() : void
+    +builder() : PersonBuilder
+    +getUsername() : String
+  }
+  enum Gender {
+    -id : int
+    +getId() : int
+    +getGender() : Gender
+  }
+  class Role <<Entity>> {
+    -ADMIN : Role
+    -USER : Role
+    -id : Long
+    -name : String
+    -description : String
+    -users : Set<Person>
+  }
+}
+
+package org.asaunin.socialnetwork.domain.jpa {
+  class GenderConverter {
+    +convertToDatabaseColumn() : Integer
+    +convertToEntityAttribute() : Gender
+  }
+}
+
+package org.asaunin.socialnetwork.model {
+  class PersonView {
+    -log : Logger
+    -id : Long
+    -avatar : String
+    -pageAvatar : String
+    -firstName : String
+    -lastName : String
+    -fullName : String
+    -shortName : String
+    -email : String
+    -phone : String
+  }
+  class MessageView {
+    -senderId : Long
+    -senderName : String
+    -recipientId : Long
+    -recipientName : String
+    -body : String
+    -interlocutor : Long
+    -avatar : String
+    -posted : Date
+    -profile : Person
+    -sender : Person
+  }
+  class ChangePassword {
+    -currentPassword : String
+    -password : String
+  }
+  class ContactInformation {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -email : String
+    -phone : String
+    -birthDate : Date
+    -gender : Gender
+  }
+  class SignUp {
+    -firstName : String
+    -lastName : String
+    -userName : String
+    -password : String
+  }
+  class MessagePost {
+    -sender : Long
+    -recipient : Long
+    -body : String
+  }
+}
+
+package org.asaunin.socialnetwork.repository {
+  interface MessageRepository {
+  }
+  interface RoleRepository {
+  }
+  interface PersonRepository {
+  }
+}
+
+package org.asaunin.socialnetwork.security {
+  class SecurityUtils {
+    -securityContext : SecurityContext
+    -authentication : Authentication
+    -springSecurityUser : UserDetails
+    -securityContext : SecurityContext
+    -authentication : Authentication
+    +currentLogin() : String
+    +currentProfile() : Person
+  }
+  class SocialSignInAdapter <<Service>> {
+    -log : Logger
+    -userDetailsService : UserDetailsService
+    -user : UserDetails
+    -newAuth : Authentication
+    +signIn() : String
+  }
+  class UserDetailsServiceImpl {
+    -log : Logger
+    -personRepository : PersonRepository
+    -profile : Person
+    +loadUserByUsername() : UserDetails
+  }
+  interface CurrentProfile {
+  }
+}
+
+package org.asaunin.socialnetwork.service {
+  class MessageServiceTest {
+    -messageService : MessageService
+    -person : Person
+    -interlocutor : Person
+    -messages : Collection<Message>
+    -messages : Collection<Message>
+    -before : Collection<Message>
+    -after : Collection<Message>
+    +shouldFindAllDialogMessagesWithPerson() : void
+    +shouldFindAllLastMessagesByPerson() : void
+    +shouldSaveMessage() : void
+  }
+  class PersonServiceTest {
+    -personService : PersonService
+    -person : Person
+    -person : Person
+    -people : Page<Person>
+    -person : Person
+    -friends : Page<Person>
+    -person : Person
+    -friendOf : Page<Person>
+    -person : Person
+    -person : Person
+    +shouldFindPersonWithCorrectIdAndFields() : void
+    +shouldFindPersonWithCorrectEmail() : void
+    +shouldFindAllPeople() : void
+    +shouldFindAllFriends() : void
+    +shouldFindAllFriendOf() : void
+    +shouldFindAPerson() : void
+    +shouldAddAndRemoveAFriend() : void
+    +shouldUpdatePersonInformation() : void
+  }
+  class AvatarService <<Service>> {
+    -log : Logger
+    -loader : ClassLoader
+    -folder : File
+    -path : String
+    -path : String
+    +getPageAvatar() : String
+    +getAvatar() : String
+  }
+  class SocialConnectionSignUp <<Service>> {
+    -log : Logger
+    -personService : PersonService
+    -profile : UserProfile
+    -email : String
+    +execute() : String
+  }
+  class PersonService <<Service>> {
+    -passwordEncoder : PasswordEncoder
+    -personRepository : PersonRepository
+    -person : Person
+    +findById() : Person
+    +findByEmail() : Person
+    +getPeople() : Page<Person>
+    +getFriends() : Page<Person>
+    +getFriendOf() : Page<Person>
+    +addFriend() : void
+    +removeFriend() : void
+    +update() : void
+  }
+  class MessageService <<Service>> {
+    -messageRepository : MessageRepository
+    +getDialog() : List<Message>
+    +getLastMessages() : List<Message>
+    +send() : Message
+  }
+}
+
+package org.asaunin.socialnetwork.web {
+  class PersonControllerTest {
+    -mvc : MockMvc
+    -context : WebApplicationContext
+    -personService : PersonService
+    -person : Person
+    -pageRequest : Pageable
+    -people : List<Person>
+    -pageRequest : Pageable
+    -value : Page<Person>
+    +setup() : void
+    +getPeopleShouldReturnPageableListOfPersons() : void
+    +getFriendsShouldReturnPageableListOfProfileFriends() : void
+    +getFriendOfShouldReturnPageableListOfProfileFriendOf() : void
+    +getByExistingIdShouldReturnPerson() : void
+    +getByMissingIdShouldReturnNotFoundStatus() : void
+    +addOrRemoveMissingFriendShouldReturnNotFoundStatus() : void
+    +addExistingFriendShouldReturnOkStatus() : void
+  }
+  class MessageControllerTest {
+    -URI : String
+    -mvc : MockMvc
+    -context : WebApplicationContext
+    -messageService : MessageService
+    -personService : PersonService
+    -person : Person
+    -message : Message
+    -messagePost : MessagePost
+    +setup() : void
+    +getDialogWithExistingPersonShouldReturnListOfMessages() : void
+    +getDialogWithMissingPersonShouldReturnNotFoundStatus() : void
+    +getLastMessagesShouldReturnListOfMessages() : void
+    +sendMessageShouldReturnCreatedStatus() : void
+  }
+  class ProfileControllerTest {
+    -mvc : MockMvc
+    -context : WebApplicationContext
+    -personService : PersonService
+    -person : Person
+    -wrongPerson : Person
+    -wrongContact : ContactInformation
+    -contact : ContactInformation
+    -signedUpPerson : Person
+    -contact : ContactInformation
+    -contact : ContactInformation
+    +setup() : void
+    +validLoginAndPasswordAuthenticationShouldReturnUnauthorizedStatus() : void
+    +validLoginAndPasswordAuthenticationShouldReturnCurrentProfile() : void
+    +updateContactInformationWithInvalidIdShouldReturnBadRequestStatus() : void
+    +updateContactInformationWithInvalidDataShouldReturnBadRequestStatus() : void
+    +updateProfileWithNonUniqueEmailShouldReturnBadRequestStatus() : void
+    +updateContactInformationWithValidDataShouldReturnOkStatus() : void
+    +signUpWithInvalidDataShouldReturnBadRequestStatus() : void
+  }
+  class ProfileController <<Controller>> {
+    -log : Logger
+    -personService : PersonService
+    -result : Person
+    -profile : Person
+    -oldEmail : String
+    -newEmail : String
+    -result : Person
+    -currentPwd : String
+    -newPwd : String
+    +login() : ResponseEntity<PersonView>
+    +signUp() : ResponseEntity<String>
+    +updatePerson() : ResponseEntity<String>
+  }
+  class MessageController <<Controller>> {
+    -log : Logger
+    -messageService : MessageService
+    -personService : PersonService
+    -interlocutor : Person
+    -message : Message
+    +getDialog() : ResponseEntity<List<MessageView>>
+    +getLastMessages() : List<MessageView>
+    +send() : void
+  }
+  class PersonController <<Controller>> {
+    -log : Logger
+    -personService : PersonService
+    -person : Person
+    -people : Page<Person>
+    -friends : Page<Person>
+    -friendOf : Page<Person>
+    -person : Person
+    -person : Person
+    +getPerson() : ResponseEntity<PersonView>
+    +getPeople() : Page<PersonView>
+    +getFriends() : Page<PersonView>
+    +getFriendOf() : Page<PersonView>
+    +addFriend() : ResponseEntity<Void>
+    +removeFriend() : ResponseEntity<Void>
+  }
+}
+
+' --- Relatii ---
+AbstractApplicationTest --> Message
+AbstractApplicationTest --> Person
+AbstractApplicationTest --> MessagePost
+PersonControllerTest --|> AbstractApplicationTest
+PersonControllerTest --> AbstractApplicationTest
+PersonControllerTest --> Constants
+PersonControllerTest --> Person
+PersonControllerTest --> PersonService
+MessageControllerTest --|> AbstractApplicationTest
+MessageControllerTest --> AbstractApplicationTest
+MessageControllerTest --> Constants
+MessageControllerTest --> Message
+MessageControllerTest --> Person
+MessageControllerTest --> MessagePost
+MessageControllerTest --> MessageService
+MessageControllerTest --> PersonService
+ProfileControllerTest --|> AbstractApplicationTest
+ProfileControllerTest --> AbstractApplicationTest
+ProfileControllerTest --> Constants
+ProfileControllerTest --> Person
+ProfileControllerTest --> ChangePassword
+ProfileControllerTest --> ContactInformation
+ProfileControllerTest --> SignUp
+ProfileControllerTest --> PersonService
+MessageServiceTest --|> AbstractApplicationTest
+MessageServiceTest --> AbstractApplicationTest
+MessageServiceTest --> Message
+MessageServiceTest --> Person
+PersonServiceTest --|> AbstractApplicationTest
+PersonServiceTest --> AbstractApplicationTest
+PersonServiceTest --> Gender
+PersonServiceTest --> Person
+MessageRepository --> Message
+MessageRepository --> Person
+RoleRepository --> Role
+PersonRepository --> Person
+SocialConfiguration --> SocialConnectionSignUp
+SecurityConfiguration --> UserDetailsServiceImpl
+SecurityUtils --> Person
+SocialSignInAdapter --> Constants
+UserDetailsServiceImpl --> Person
+UserDetailsServiceImpl --> PersonRepository
+ProfileController --> Person
+ProfileController --> ChangePassword
+ProfileController --> ContactInformation
+ProfileController --> PersonView
+ProfileController --> SignUp
+ProfileController --> CurrentProfile
+ProfileController --> PersonService
+MessageController --> Message
+MessageController --> Person
+MessageController --> MessagePost
+MessageController --> MessageView
+MessageController --> CurrentProfile
+MessageController --> MessageService
+MessageController --> PersonService
+PersonController --> Person
+PersonController --> PersonView
+PersonController --> CurrentProfile
+PersonController --> PersonService
+PersonView --> Person
+PersonView --> SecurityUtils
+PersonView --> AvatarService
+MessageView --> Message
+MessageView --> Person
+MessageView --> SecurityUtils
+MessageView --> AvatarService
+ContactInformation --> Gender
+SocialConnectionSignUp --> Person
+PersonService --> Person
+PersonService --> PersonRepository
+MessageService --> Message
+MessageService --> Person
+MessageService --> MessageRepository
+Person --> GenderConverter
+GenderConverter --> Gender
+
+@enduml

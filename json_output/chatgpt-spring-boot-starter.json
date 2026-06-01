@@ -1,0 +1,26 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the messaging, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include chatgpt, default chatgpt.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with chatgpt functionality, so that the system fulfills my needs.",
+        "services": [
+          "ChatgptService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with default chatgpt functionality, so that the system fulfills my needs.",
+        "services": [
+          "DefaultChatgptService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Services\n    ChatgptService[\"ChatgptService\"]\n    DefaultChatgptService[\"DefaultChatgptService\"]\n  end\n  subgraph Infrastructure\n    ChatgptAutoConfiguration[\"ChatgptAutoConfiguration\"]\n  end\n  Infrastructure --> Services"
+  }
+}

@@ -1,0 +1,155 @@
+@startuml
+
+package burp {
+  class Issue {
+    -httpService : IHttpService
+    -url : URL
+    -httpMessages : IHttpRequestResponse[]
+    -name : String
+    -detail : String
+    -severity : String
+    -isCertain : boolean
+    +getUrl() : URL
+    +getIssueName() : String
+    +getIssueType() : int
+    +getSeverity() : String
+    +getConfidence() : String
+    +getIssueBackground() : String
+    +getRemediationBackground() : String
+    +getIssueDetail() : String
+  }
+  class BurpExtender {
+    -helpers : IExtensionHelpers
+    -callbacks : IBurpExtenderCallbacks
+    -stdout : PrintWriter
+    -stderr : PrintWriter
+    -version : String
+    -uiHandler : UIHandler
+    -scanner : SpringScanner
+    +registerExtenderCallbacks() : void
+    +extensionUnloaded() : void
+  }
+}
+
+package burp.scanner {
+  class Payload {
+    -resources : List<String[]>
+    -responseChecker : IResponseChecker
+  }
+  class SpringScanner {
+    -STATIC_FILE_EXT : String[]
+    +doPassiveScan() : List<IScanIssue>
+    +cleanURL() : URL
+    +isChecked() : boolean
+    +doActiveScan() : List<IScanIssue>
+    +consolidateDuplicateIssues() : int
+  }
+  interface ISubScanner {
+  }
+  interface IResponseChecker {
+  }
+}
+
+package burp.scanner.sub {
+  class APIDoc {
+    -payloads : List<Payload>
+    +getName() : String
+    +check() : List<Issue>
+  }
+  class SpringActuator {
+    -scanner : SpringScanner
+    -payloads : List<Payload>
+    +getName() : String
+    +check() : List<Issue>
+  }
+}
+
+package burp.ui {
+  class UIHandler {
+    -mainPanel : JPanel
+    -parent : BurpExtender
+    -dirScanDeeper : JTextField
+    -DefaultBypass : List<String>
+    -DefaultScanPoint : List<String>
+    +startTimerHide() : void
+    +run() : void
+    +getTabCaption() : String
+    +getUiComponent() : Component
+  }
+}
+
+package burp.utils {
+  class ConfigUtils {
+    -DIR_SCAN_DEEPER : String
+    -DIR_BYPASS : String
+    -SCAN_POINT : String
+    -ENABLE : String
+    +getInt() : int
+    +getBoolean() : boolean
+    +getStrInDict() : boolean
+    +setStrToDict() : void
+    +getDict() : String[]
+  }
+  class HttpHeader {
+    -Name : String
+    -Value : String
+  }
+  class Utils {
+    -Callback : IBurpExtenderCallbacks
+    -Helpers : IExtensionHelpers
+    -md : MessageDigest
+    -rand : SecureRandom
+    -SplitDeep : int
+    +getRandomLong() : long
+    +GetRandomNumber() : int
+    +GetRandomBoolean() : Boolean
+    +GetRandomString() : String
+    +getRandomIndex() : int[]
+    +confusionChars() : String
+    +confusionChars() : String
+    +confusionChar() : String
+  }
+  class UIUtil {
+    +GetXJPanel() : JPanel
+    +GetYJPanel() : JPanel
+  }
+  class BypassPayloadUtils {
+    -URL_BYPASS : String[]
+    -HEADER_BYPASS : String[]
+    -GET_SKIPED_HEADERS : String[]
+    +getBypassPayloads() : URL[]
+    +makeNewGETRequest() : byte[]
+    +hasFound() : boolean
+  }
+}
+
+' --- Relatii ---
+BurpExtender --> SpringScanner
+BurpExtender --> UIHandler
+BurpExtender --> Utils
+UIHandler --> BurpExtender
+UIHandler --> ConfigUtils
+UIHandler --> UIUtil
+UIHandler --> Utils
+SpringScanner --> SpringActuator
+SpringScanner --> BypassPayloadUtils
+SpringScanner --> ConfigUtils
+SpringScanner --> Utils
+ISubScanner --> Issue
+APIDoc ..|> ISubScanner
+APIDoc --> IResponseChecker
+APIDoc --> ISubScanner
+APIDoc --> Payload
+APIDoc --> BypassPayloadUtils
+APIDoc --> ConfigUtils
+APIDoc --> Utils
+SpringActuator ..|> ISubScanner
+SpringActuator --> IResponseChecker
+SpringActuator --> ISubScanner
+SpringActuator --> Payload
+SpringActuator --> SpringScanner
+SpringActuator --> BypassPayloadUtils
+SpringActuator --> ConfigUtils
+SpringActuator --> Utils
+
+@enduml

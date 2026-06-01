@@ -1,0 +1,523 @@
+@startuml
+
+package org.wiremock.spring {
+  interface EnableWireMock {
+  }
+  interface WireMockConfigurationCustomizer {
+  }
+  interface ConfigureWireMocks {
+  }
+  interface ConfigureWireMock {
+    -DEFAULT_FILES_UNDER_DIRECTORY : List<String>
+    -will : port
+  }
+  interface InjectWireMock {
+  }
+  interface EnableWireMocks {
+  }
+}
+
+package org.wiremock.spring.internal {
+  class WireMockContextCustomizer {
+    -LOGGER : Logger
+    -configuration : List<ConfigureWireMock>
+    -configurations : List<ConfigureWireMock>
+    -context : ConfigurableApplicationContext
+    -mergedConfig : MergedContextConfiguration
+    -context : ConfigurableApplicationContext
+    -options : ConfigureWireMock
+    -wireMockServer : WireMockServer
+    -o : Object
+    -that : WireMockContextCustomizer
+    +customizeContext() : void
+  }
+  class WireMockServerCreator {
+    -PORT_DISABLED : int
+    -logger : Logger
+    -name : String
+    -context : ConfigurableApplicationContext
+    -options : ConfigureWireMock
+    -serverOptions : WireMockConfiguration
+    -serverHttpsPort : int
+    -httpsEnabled : boolean
+    -serverHttpPort : int
+    -httpEnabled : boolean
+    +createWireMockServer() : WireMockServer
+  }
+  class WireMockPortResolver {
+    -environment : ConfigurableEnvironment
+    -logger : Logger
+    -predefinedPropertyValue : int
+    -predefinedPropertyValue : int
+    +anyStaticPortWithDirtySpringContext() : boolean
+  }
+  class WireMockSpringJunitExtension {
+    -LOGGER : Logger
+    -extensionContext : ExtensionContext
+    -extensionContext : ExtensionContext
+    -instances : List<Object>
+    -wireMockServers : ConfigureWireMock[]
+    -extensionContext : ExtensionContext
+    -instances : List<Object>
+    -wireMockServers : ConfigureWireMock[]
+    -standaloneAnnotations : List<ConfigureWireMock>
+    -isHttps : boolean
+    +beforeEach() : void
+    +afterEach() : void
+    +supportsParameter() : boolean
+    +resolveParameter() : Object
+  }
+  class Slf4jNotifier {
+    -log : Logger
+    -name : String
+    -message : String
+    -message : String
+    -message : String
+    -t : Throwable
+    +info() : void
+    +error() : void
+    +error() : void
+  }
+  enum Store {
+    -LOGGER : Logger
+  }
+  class WireMockContextCustomizerFactory {
+    -DEFAULT_CONFIGURE_WIREMOCK : ConfigureWireMock
+    -configAttributes : List<ContextConfigurationAttributes>
+    -holder : ConfigureWiremockHolder
+    -parser : ConfigureWiremockHolder
+    -annotations : List<ConfigureWireMock>
+    -annotations : List<EnableWireMock>
+    -annotations : List<ConfigureWireMock>
+    -annotation : ConfigureWireMock
+    -nameAlreadyExists : boolean
+    -check : List<ConfigureWireMock>
+    +createContextCustomizer() : ContextCustomizer
+  }
+  class WireMockTestExecutionListener {
+    -isDirty : boolean
+    +markContextAsDirty() : void
+    +afterTestClass() : void
+  }
+}
+
+package test {
+  class DefaultInstanceTest {
+    -wiremockUrl : String
+  }
+  class App {
+    -args : String[]
+    +main() : void
+  }
+  class MultiplePropertiesBindingTest {
+    -userServiceWireMockServer : WireMockServer
+    -mojoServiceWireMockServer : WireMockServer
+    -todoWireMockServer : WireMockServer
+    -environment : Environment
+  }
+  class SinglePropertyBindingTest {
+    -todoWireMockServer : WireMockServer
+    -environment : Environment
+    -wireMockServer : WireMockServer
+    -wireMockServer : WireMockServer
+    -wireMockServer : WireMockServer
+    -baseUrlProperty : String
+    -portProperty : String
+  }
+  class NestedClassSingleWireMockTest {
+    -environment : Environment
+    -topLevelClassTodoService : WireMockServer
+    -nestedClassTodoService : WireMockServer
+    -wireMockServer : WireMockServer
+    -property : String
+    -portProperty : String
+    -mockedPath : String
+  }
+  class ConfigurationValidationTest {
+    -thrown : IllegalStateException
+    -thrown : IllegalStateException
+    -thrown : IllegalStateException
+    -thrown : IllegalStateException
+    -thrown : IllegalStateException
+    -thrown : IllegalStateException
+  }
+  class LoggingTest {
+    -USER_SERVICE_PORT : int
+    -TODO_SERVICE_PORT : int
+    -configuration : WireMockConfiguration
+    -options : ConfigureWireMock
+    -userService : WireMockServer
+    -todoService : WireMockServer
+    -capturedOutput : CapturedOutput
+    -httpClient : HttpClient
+    -response : HttpResponse<String>
+    +customize() : void
+  }
+  class WireMockSpringExtensionTest {
+    -todoWireMockServer : WireMockServer
+    -environment : Environment
+    -wireMockServer : WireMockServer
+    -wireMockServer : WireMockServer
+    -wireMockServer : WireMockServer
+    -property : String
+    -portProperty : String
+    -portPropertyValue : String
+  }
+  class ExtensionsTest {
+    -wm : WireMockServer
+    +transform() : ResponseDefinition
+    +applyGlobally() : boolean
+    +getName() : String
+  }
+  class NestedClassWireMockSpringExtensionTest {
+    -environment : Environment
+    -topLevelClassTodoService : WireMockServer
+    -nestedClassTodoService : WireMockServer
+    -wireMockServer : WireMockServer
+    -wireMockServer : WireMockServer
+    -wireMockServer : WireMockServer
+    -property : String
+    -portProperty : String
+  }
+  class ExtensionFactoriesTest {
+    -wm : WireMockServer
+    +create() : List<Extension>
+    +transform() : ResponseDefinition
+    +applyGlobally() : boolean
+    +getName() : String
+  }
+}
+
+package usecases {
+  class StandaloneConfigureNamedSuperAndDirectWireMockTest {
+    -userService3 : WireMockServer
+    -userServiceUrl3 : String
+  }
+  class StandaloneConfigureNamedSuperWireMockTest {
+  }
+  class SingleNamedWireMockTest {
+    -wiremock : WireMockServer
+    -actual : String
+    -actual : String
+  }
+  class AutowireNamedWireMockServerTest {
+    -wireMockServer : WireMockServer
+    -wiremockUrl : String
+  }
+  class EnableWireMockOnSuperClassTestSuperClass {
+  }
+  class UsePortFromPropertyTest {
+    -wm1 : WireMockServer
+    -wm1Port : int
+    -wm1Url : String
+    -wm1Client : WireMock
+    -wm2Port : int
+    +before() : void
+  }
+  class JavaStubbingTest {
+    -todoUrl : String
+  }
+  class NotEnabledTest {
+    -env : Environment
+  }
+  class StaticPortNoDirtyContextTest {
+    -wiremockHttpPort : int
+  }
+  class HttpsOnlyTest {
+    -wiremock : WireMockServer
+    -wiremockHttpsPort : int
+    -wiremockHttpsUrl : String
+    +before() : void
+  }
+  class MetaAnnotationTest {
+    -customUrl : String
+    -sameCustomUrl : String
+    -customPort : String
+    +before() : void
+  }
+  class StandaloneConfigureNamedWireMockTest {
+    -userService : WireMockServer
+    -userServiceUrl : String
+  }
+  class StandaloneConfigureMultipleWireMockTest {
+    -userService1 : WireMockServer
+    -userServiceUrl1 : String
+    -userService2 : WireMockServer
+    -userServiceUrl2 : String
+  }
+  class InjectDefaultWireMockTest {
+    -wireMockServer : WireMockServer
+    -wiremockUrl : String
+  }
+  class DefaultInstanceTest {
+    -wiremockUrl : String
+  }
+  class EnableWireMockOnSuperClassOnlyTest {
+    -superService1 : WireMockServer
+    -superService1Url : String
+    -superService2 : WireMockServer
+    -superService2Url : String
+  }
+  class StandaloneConfigureDefaultWireMockTest {
+    -service : WireMockServer
+    -serviceUrl : String
+  }
+  class DefaultPropertiesTest {
+    -wiremockUrl : String
+    -wiremockPort : String
+    +before() : void
+  }
+  class InjectNamedWireMockTest {
+    -wireMockServer : WireMockServer
+    -wiremockUrl : String
+  }
+  class HttpsAndHttpTest {
+    -wiremock : WireMockServer
+    -wiremockHttpsPort : int
+    -wiremockHttpPort : int
+    -wiremockHttpsUrl : String
+    -wiremockHttpUrl : String
+    +before() : void
+  }
+  class FilesUnderClasspathTest {
+    -wireMockServerUrl : String
+    -actual : String
+  }
+  class App {
+    -args : String[]
+    +main() : void
+  }
+  class MultipleWireMocksTest {
+    -todoService : WireMockServer
+    -userService : WireMockServer
+  }
+  class CustomPropertiesTest {
+    -customUrl : String
+    -sameCustomUrl : String
+    -customPort : String
+    +before() : void
+  }
+  class ResponseTemplatingLocalTest {
+    -wireMockServerUrl : String
+    -actual : String
+    -actual : String
+  }
+  class FilesUnderDirectoryOverDefaultDirectoryTest {
+    -wiremock : WireMockServer
+    -actual : String
+  }
+  class ResetWireMockDisabledBetweenTest {
+    -wm1 : WireMockServer
+    -wm1Port : int
+    -wm1Url : String
+    -wm2 : WireMockServer
+    -wm2Port : int
+    -wm2Url : String
+    -wm1Client : WireMock
+    -wm2Client : WireMock
+    +before() : void
+  }
+  class MetaAnnotationRepeatableTest {
+    -directWireMock : WireMockServer
+    -metaWireMockServer : WireMockServer
+  }
+  class StandaloneConfigureNamedSuperClass {
+  }
+  class DefaultDirectoryTest {
+    -DEFAULT_DIRECTORY_WM_NAME : String
+    -wiremock : WireMockServer
+    -actual : String
+  }
+  class FilesUnderDirectoryTests {
+    -wireMockServerUrl : String
+    -actual : String
+  }
+  class FilesUnderClasspathOverDefaultDirectoryTest {
+    -wiremock : WireMockServer
+    -actual : String
+  }
+  class ResponseTemplatingGlobalTest {
+    -wireMockServerUrl : String
+    -actual : String
+    -actual : String
+  }
+  class EnableWireMockOnSuperClassAndSubClassTest {
+    -superService1 : WireMockServer
+    -superService1Url : String
+    -superService2 : WireMockServer
+    -superService2Url : String
+    -baseService1 : WireMockServer
+    -baseService1Url : String
+    -baseService2 : WireMockServer
+    -baseService2Url : String
+  }
+  class ResetWireMockBetweenTest {
+    -wm1 : WireMockServer
+    -wm1Port : int
+    -wm1Url : String
+    -wm2 : WireMockServer
+    -wm2Port : int
+    -wm2Url : String
+    -wm1Client : WireMock
+    -wm2Client : WireMock
+    +before() : void
+  }
+}
+
+package usecases.cucumber {
+  class CucumberConstants {
+    -WIREMOCK_SERVER_NAME : String
+  }
+  class Steps {
+    -wireMockServer : WireMockServer
+    -actualResponse : ExtractableResponse<Response>
+    +beforeEach() : void
+    +wireMockHasEndpoint() : void
+    +wireMockIsInvokedWith() : void
+    +isShouldResponsWith() : void
+  }
+  class RunCucumberTest {
+  }
+  class CucumberSpringConfiguration {
+  }
+}
+
+package usecases.staticport {
+  class ExampleService <<Service>> {
+  }
+  class StaticPorts2Test {
+    -wiremockHttpPort : int
+    -serviceA : ExampleService
+  }
+  class StaticPorts1Test {
+    -STATIC_HTTP_PORT : int
+    -wiremockHttpPort : int
+  }
+}
+
+' --- Relatii ---
+DefaultInstanceTest --> EnableWireMock
+MultiplePropertiesBindingTest --> ConfigureWireMock
+MultiplePropertiesBindingTest --> EnableWireMock
+MultiplePropertiesBindingTest --> InjectWireMock
+SinglePropertyBindingTest --> ConfigureWireMock
+SinglePropertyBindingTest --> EnableWireMock
+SinglePropertyBindingTest --> InjectWireMock
+NestedClassSingleWireMockTest --> ConfigureWireMock
+NestedClassSingleWireMockTest --> EnableWireMock
+NestedClassSingleWireMockTest --> InjectWireMock
+ConfigurationValidationTest --> ConfigureWireMock
+ConfigurationValidationTest --> EnableWireMock
+ConfigurationValidationTest --> WireMockContextCustomizerFactory
+LoggingTest --> ConfigureWireMock
+LoggingTest --> EnableWireMock
+LoggingTest --> InjectWireMock
+LoggingTest --> WireMockConfigurationCustomizer
+WireMockSpringExtensionTest --> ConfigureWireMock
+WireMockSpringExtensionTest --> EnableWireMock
+WireMockSpringExtensionTest --> InjectWireMock
+ExtensionsTest --> ConfigureWireMock
+ExtensionsTest --> EnableWireMock
+ExtensionsTest --> InjectWireMock
+NestedClassWireMockSpringExtensionTest --> ConfigureWireMock
+NestedClassWireMockSpringExtensionTest --> EnableWireMock
+NestedClassWireMockSpringExtensionTest --> InjectWireMock
+ExtensionFactoriesTest --> ConfigureWireMock
+ExtensionFactoriesTest --> EnableWireMock
+ExtensionFactoriesTest --> InjectWireMock
+StandaloneConfigureNamedSuperAndDirectWireMockTest --|> StandaloneConfigureNamedSuperClass
+StandaloneConfigureNamedSuperAndDirectWireMockTest --> ConfigureWireMock
+StandaloneConfigureNamedSuperAndDirectWireMockTest --> InjectWireMock
+StandaloneConfigureNamedSuperWireMockTest --|> StandaloneConfigureNamedSuperClass
+SingleNamedWireMockTest --> ConfigureWireMock
+SingleNamedWireMockTest --> EnableWireMock
+SingleNamedWireMockTest --> InjectWireMock
+AutowireNamedWireMockServerTest --> ConfigureWireMock
+AutowireNamedWireMockServerTest --> EnableWireMock
+EnableWireMockOnSuperClassTestSuperClass --> ConfigureWireMock
+EnableWireMockOnSuperClassTestSuperClass --> EnableWireMock
+UsePortFromPropertyTest --> ConfigureWireMock
+UsePortFromPropertyTest --> EnableWireMock
+UsePortFromPropertyTest --> InjectWireMock
+JavaStubbingTest --> ConfigureWireMock
+JavaStubbingTest --> EnableWireMock
+StaticPortNoDirtyContextTest --> ConfigureWireMock
+StaticPortNoDirtyContextTest --> EnableWireMock
+HttpsOnlyTest --> ConfigureWireMock
+HttpsOnlyTest --> EnableWireMock
+HttpsOnlyTest --> InjectWireMock
+MetaAnnotationTest --> ConfigureWireMock
+MetaAnnotationTest --> EnableWireMock
+StandaloneConfigureNamedWireMockTest --> ConfigureWireMock
+StandaloneConfigureNamedWireMockTest --> InjectWireMock
+StandaloneConfigureMultipleWireMockTest --> ConfigureWireMock
+StandaloneConfigureMultipleWireMockTest --> InjectWireMock
+InjectDefaultWireMockTest --> EnableWireMock
+InjectDefaultWireMockTest --> InjectWireMock
+DefaultInstanceTest --> EnableWireMock
+EnableWireMockOnSuperClassOnlyTest --|> EnableWireMockOnSuperClassTestSuperClass
+EnableWireMockOnSuperClassOnlyTest --> InjectWireMock
+StandaloneConfigureDefaultWireMockTest --> ConfigureWireMock
+StandaloneConfigureDefaultWireMockTest --> InjectWireMock
+DefaultPropertiesTest --> EnableWireMock
+DefaultPropertiesTest --> InjectWireMock
+InjectNamedWireMockTest --> ConfigureWireMock
+InjectNamedWireMockTest --> EnableWireMock
+InjectNamedWireMockTest --> InjectWireMock
+HttpsAndHttpTest --> ConfigureWireMock
+HttpsAndHttpTest --> EnableWireMock
+HttpsAndHttpTest --> InjectWireMock
+FilesUnderClasspathTest --> ConfigureWireMock
+FilesUnderClasspathTest --> EnableWireMock
+MultipleWireMocksTest --> ConfigureWireMock
+MultipleWireMocksTest --> EnableWireMock
+MultipleWireMocksTest --> InjectWireMock
+CustomPropertiesTest --> ConfigureWireMock
+CustomPropertiesTest --> EnableWireMock
+ResponseTemplatingLocalTest --> ConfigureWireMock
+ResponseTemplatingLocalTest --> EnableWireMock
+FilesUnderDirectoryOverDefaultDirectoryTest --> ConfigureWireMock
+FilesUnderDirectoryOverDefaultDirectoryTest --> EnableWireMock
+FilesUnderDirectoryOverDefaultDirectoryTest --> InjectWireMock
+ResetWireMockDisabledBetweenTest --> ConfigureWireMock
+ResetWireMockDisabledBetweenTest --> EnableWireMock
+ResetWireMockDisabledBetweenTest --> InjectWireMock
+MetaAnnotationRepeatableTest --> ConfigureWireMock
+MetaAnnotationRepeatableTest --> EnableWireMock
+MetaAnnotationRepeatableTest --> InjectWireMock
+StandaloneConfigureNamedSuperClass --> ConfigureWireMock
+StandaloneConfigureNamedSuperClass --> InjectWireMock
+DefaultDirectoryTest --> ConfigureWireMock
+DefaultDirectoryTest --> EnableWireMock
+DefaultDirectoryTest --> InjectWireMock
+FilesUnderDirectoryTests --> ConfigureWireMock
+FilesUnderDirectoryTests --> EnableWireMock
+FilesUnderClasspathOverDefaultDirectoryTest --> ConfigureWireMock
+FilesUnderClasspathOverDefaultDirectoryTest --> EnableWireMock
+FilesUnderClasspathOverDefaultDirectoryTest --> InjectWireMock
+ResponseTemplatingGlobalTest --> ConfigureWireMock
+ResponseTemplatingGlobalTest --> EnableWireMock
+EnableWireMockOnSuperClassAndSubClassTest --|> EnableWireMockOnSuperClassTestSuperClass
+EnableWireMockOnSuperClassAndSubClassTest --> ConfigureWireMock
+EnableWireMockOnSuperClassAndSubClassTest --> EnableWireMock
+EnableWireMockOnSuperClassAndSubClassTest --> InjectWireMock
+ResetWireMockBetweenTest --> ConfigureWireMock
+ResetWireMockBetweenTest --> EnableWireMock
+ResetWireMockBetweenTest --> InjectWireMock
+CucumberSpringConfiguration --> ConfigureWireMock
+CucumberSpringConfiguration --> EnableWireMock
+StaticPorts2Test --> ConfigureWireMock
+StaticPorts2Test --> EnableWireMock
+StaticPorts1Test --> ConfigureWireMock
+StaticPorts1Test --> EnableWireMock
+WireMockContextCustomizer --> ConfigureWireMock
+WireMockServerCreator --> ConfigureWireMock
+WireMockServerCreator --> WireMockConfigurationCustomizer
+WireMockPortResolver --> ConfigureWireMock
+WireMockSpringJunitExtension --> ConfigureWireMock
+WireMockSpringJunitExtension --> EnableWireMock
+WireMockSpringJunitExtension --> InjectWireMock
+WireMockContextCustomizerFactory --> ConfigureWireMock
+WireMockContextCustomizerFactory --> EnableWireMock
+
+@enduml

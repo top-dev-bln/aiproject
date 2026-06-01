@@ -1,0 +1,308 @@
+@startuml
+
+package com.maihaoche.starter.mq {
+  class MQException {
+  }
+}
+
+package com.maihaoche.starter.mq.annotation {
+  interface MQProducer {
+  }
+  interface MQKey {
+  }
+  interface MQConsumer {
+  }
+  interface MQTransactionProducer {
+  }
+  interface EnableMQConfiguration {
+  }
+}
+
+package com.maihaoche.starter.mq.base {
+  class MessageExtConst {
+    -MESSAGE_MODE_CLUSTERING : String
+    -MESSAGE_MODE_BROADCASTING : String
+    -CONSUME_MODE_CONCURRENTLY : String
+    -CONSUME_MODE_ORDERLY : String
+    -PROPERTY_TOPIC : String
+    -PROPERTY_EXT_QUEUE_ID : String
+    -PROPERTY_EXT_STORE_SIZE : String
+    -PROPERTY_EXT_QUEUE_OFFSET : String
+    -PROPERTY_EXT_SYS_FLAG : String
+    -PROPERTY_EXT_BORN_TIMESTAMP : String
+  }
+  class MessageBuilder {
+    -gson : Gson
+    -DELAY_ARRAY : String[]
+    -topic : String
+    -tag : String
+    -key : String
+    -message : Object
+    -delayTimeLevel : Integer
+    +of() : MessageBuilder
+    +of() : MessageBuilder
+    +topic() : MessageBuilder
+    +tag() : MessageBuilder
+    +key() : MessageBuilder
+    +delayTimeLevel() : MessageBuilder
+    +build() : Message
+  }
+  class AbstractMQConsumer {
+    -gson : Gson
+    -type : Type
+    +parseMessage() : T
+    +getMessageType() : Type
+  }
+  class AbstractMQTransactionProducer {
+    -transactionProducer : TransactionMQProducer
+    +setProducer() : void
+    +sendMessageInTransaction() : SendResult
+  }
+  class AbstractMQProducer {
+    -messageQueueSelector : MessageQueueSelector
+    -producer : DefaultMQProducer
+    +syncSend() : void
+    +syncSendOrderly() : void
+    +doAfterSyncSend() : void
+    +asyncSend() : void
+  }
+  class AbstractMQPushConsumer {
+    -consumer : DefaultMQPushConsumer
+    +process() : boolean
+    +dealMessage() : ConsumeConcurrentlyStatus
+    +dealMessage() : ConsumeOrderlyStatus
+  }
+}
+
+package com.maihaoche.starter.mq.config {
+  class MQProducerAutoConfigurationTest {
+    -context : AnnotationConfigApplicationContext
+    +close() : void
+    +testEmpty() : void
+    +testMissingConfigure() : void
+    +testMissingPGConfigure() : void
+    +testMissingParent() : void
+    +testProducerConfiguration() : void
+  }
+  class MQConsumerAutoConfigurationTest {
+    -context : AnnotationConfigApplicationContext
+    +close() : void
+    +testConsumerConfiguration() : void
+    +testConsumerMissingNS() : void
+    +testConsumerMissingParent() : void
+    +testConsumerModeOrderly() : void
+    +testConsumerModeERROR() : void
+    +process() : boolean
+    +process() : boolean
+  }
+  class MQProducerAutoConfiguration {
+    -producer : DefaultMQProducer
+    +exposeProducer() : DefaultMQProducer
+    +configTransactionProducer() : void
+    +newThread() : Thread
+  }
+  class MQConsumerAutoConfiguration {
+    -asyncTraceDispatcher : AsyncTraceDispatcher
+    +init() : void
+  }
+  class MQBaseAutoConfiguration {
+    -mqProperties : MQProperties
+    -applicationContext : ConfigurableApplicationContext
+    +setMqProperties() : void
+    +setApplicationContext() : void
+  }
+  class MQProperties {
+    -nameServerAddress : String
+    -producerGroup : String
+    -sendMsgTimeout : Integer
+    -traceEnabled : Boolean
+    -vipChannelEnabled : Boolean
+  }
+}
+
+package com.maihaoche.starter.mq.enums {
+  enum ConsumeMode {
+    -mode : String
+    +getMode() : String
+  }
+  enum DelayTimeLevel {
+    -level : int
+    +getLevel() : int
+  }
+}
+
+package com.maihaoche.starter.mq.trace.common {
+  class OnsTraceDataEncoder {
+    +decoderFromTraceDataString() : List<OnsTraceContext>
+    +encoderFromContextBean() : OnsTraceTransferBean
+  }
+  class OnsTraceBean {
+    -LOCAL_ADDRESS : String
+    -topic : String
+    -msgId : String
+    -offsetMsgId : String
+    -tags : String
+    -keys : String
+    -storeHost : String
+    -clientHost : String
+    -storeTime : long
+    -retryTimes : int
+    +getMsgType() : MessageType
+    +setMsgType() : void
+    +getOffsetMsgId() : String
+    +setOffsetMsgId() : void
+    +getTopic() : String
+    +setTopic() : void
+    +getMsgId() : String
+    +setMsgId() : void
+  }
+  class OnsTraceContext {
+    -traceType : OnsTraceType
+    -timeStamp : long
+    -regionId : String
+    -groupName : String
+    -costTime : int
+    -isSuccess : boolean
+    -requestId : String
+    -traceBeans : List<OnsTraceBean>
+    +getTraceBeans() : List<OnsTraceBean>
+    +setTraceBeans() : void
+    +getRegionId() : String
+    +setRegionId() : void
+    +getTraceType() : OnsTraceType
+    +setTraceType() : void
+    +getTimeStamp() : long
+    +setTimeStamp() : void
+  }
+  class OnsTraceConstants {
+    -NAMESRV_ADDR : String
+    -ADDRSRV_URL : String
+    -InstanceName : String
+    -AsyncBufferSize : String
+    -MaxBatchNum : String
+    -WakeUpNum : String
+    -MaxMsgSize : String
+    -groupName : String
+    -traceTopic : String
+    -CONTENT_SPLITOR : char
+  }
+  class OnsTraceTransferBean {
+    -transData : String
+    -transKey : Set<String>
+    +getTransData() : String
+    +setTransData() : void
+    +getTransKey() : Set<String>
+    +setTransKey() : void
+  }
+  enum OnsTraceType {
+  }
+}
+
+package com.maihaoche.starter.mq.trace.dispatch {
+  class AsyncAppender {
+    +append() : void
+    +flush() : void
+  }
+  class AsyncDispatcher {
+    +start() : void
+    +append() : boolean
+    +flush() : void
+  }
+}
+
+package com.maihaoche.starter.mq.trace.dispatch.impl {
+  class AsyncTraceDispatcher {
+    -clientlog : InternalLogger
+    -entries : Object[]
+    -queueSize : int
+    -indexMask : int
+    -notifyThreshold : int
+    -maxDelayTime : int
+    -lock : ReentrantLock
+    -notEmpty : Condition
+    -putIndex : AtomicLong
+    -discardCount : AtomicLong
+    +start() : void
+    +size() : int
+    +append() : boolean
+    +flush() : void
+    +run() : void
+  }
+  class AsyncTraceAppender {
+    -clientlog : InternalLogger
+    -batchSize : int
+    -transDataList : List<OnsTraceTransferBean>
+    -traceProducer : DefaultMQProducer
+    -message : Message
+    +append() : void
+    +flush() : void
+    +sendTraceDataByMQ() : void
+    +onSuccess() : void
+    +onException() : void
+  }
+}
+
+package com.maihaoche.starter.mq.trace.tracehook {
+  class OnsConsumeMessageHookImpl {
+    -localDispatcher : AsyncDispatcher
+    +hookName() : String
+    +consumeMessageBefore() : void
+    +consumeMessageAfter() : void
+  }
+}
+
+package com.maihaoche.starter.mq.trace.utils {
+  class MixUtils {
+    -networkInterface : NetworkInterface
+    -en : Enumeration<InetAddress>
+    -address : InetAddress
+    -localHost : InetAddress
+    -localHost : InetAddress
+    +getLocalAddress() : String
+    +normalizeHostAddress() : String
+  }
+}
+
+' --- Relatii ---
+MQProducerAutoConfigurationTest --> MQProducer
+MQProducerAutoConfigurationTest --> AbstractMQProducer
+MQConsumerAutoConfigurationTest --> MQConsumer
+MQConsumerAutoConfigurationTest --> AbstractMQPushConsumer
+MQConsumerAutoConfigurationTest --> MessageExtConst
+OnsConsumeMessageHookImpl --> OnsTraceBean
+OnsConsumeMessageHookImpl --> OnsTraceContext
+OnsConsumeMessageHookImpl --> OnsTraceType
+OnsConsumeMessageHookImpl --> AsyncDispatcher
+AsyncTraceDispatcher --|> AsyncDispatcher
+AsyncTraceDispatcher --> OnsTraceConstants
+AsyncTraceDispatcher --> AsyncAppender
+AsyncTraceDispatcher --> AsyncDispatcher
+AsyncTraceAppender --|> AsyncAppender
+AsyncTraceAppender --> OnsTraceConstants
+AsyncTraceAppender --> OnsTraceContext
+AsyncTraceAppender --> OnsTraceDataEncoder
+AsyncTraceAppender --> OnsTraceTransferBean
+AsyncTraceAppender --> AsyncAppender
+OnsTraceBean --> MixUtils
+MQProducerAutoConfiguration --|> MQBaseAutoConfiguration
+MQProducerAutoConfiguration --> MQProducer
+MQProducerAutoConfiguration --> MQTransactionProducer
+MQProducerAutoConfiguration --> AbstractMQTransactionProducer
+MQConsumerAutoConfiguration --|> MQBaseAutoConfiguration
+MQConsumerAutoConfiguration --> MQConsumer
+MQConsumerAutoConfiguration --> AbstractMQPushConsumer
+MQConsumerAutoConfiguration --> MessageExtConst
+MQConsumerAutoConfiguration --> OnsTraceConstants
+MQConsumerAutoConfiguration --> AsyncTraceAppender
+MQConsumerAutoConfiguration --> AsyncTraceDispatcher
+MQConsumerAutoConfiguration --> OnsConsumeMessageHookImpl
+MQBaseAutoConfiguration --> EnableMQConfiguration
+MQBaseAutoConfiguration --> AbstractMQProducer
+MQBaseAutoConfiguration --> AbstractMQPushConsumer
+MQConsumer --> MessageExtConst
+MessageBuilder --> MQKey
+MessageBuilder --> DelayTimeLevel
+AbstractMQTransactionProducer --> MQException
+AbstractMQProducer --> MQException
+
+@enduml

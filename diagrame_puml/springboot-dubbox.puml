@@ -1,0 +1,1092 @@
+@startuml
+
+package cn.zhangxd.platform.admin.web {
+  class WebAdminApplication <<Controller>> {
+    -LOGGER : Logger
+    +hello() : String
+    +main() : void
+  }
+}
+
+package cn.zhangxd.platform.admin.web.common.config {
+  class WebSecurityConfig {
+    +configure() : void
+  }
+}
+
+package cn.zhangxd.platform.admin.web.common.controller {
+  class BaseController {
+    +initBinder() : void
+  }
+}
+
+package cn.zhangxd.platform.admin.web.controller {
+  class AuthenticationController <<Controller>> {
+    -authenticationManager : AuthenticationManager
+    -userDetailsService : UserDetailsService
+    -jwtTokenUtil : TokenUtil
+    -authentication : Authentication
+    -userDetails : UserDetails
+    -token : String
+    -userDetails : UserDetails
+    -refreshedToken : String
+    +deleteAuthenticationToken() : ResponseEntity
+  }
+  class DashboardController <<Controller>> {
+  }
+  class TripUserController <<Controller>> {
+    -tripUserService : ITripUserService
+    -fileManager : FileManager
+    +list() : PageInfo<TripUser>
+  }
+  class SysUserController <<Controller>> {
+    -systemService : ISystemService
+    -passwordEncoder : PasswordEncoder
+    +getCurrentUserInfo() : Object
+    +saveCurrentUserInfo() : ResponseEntity
+    +resetPassword() : ResponseEntity<String>
+    +list() : PageInfo<SysUser>
+    +getUser() : SysUser
+    +saveUser() : SysUser
+    +delete() : ResponseEntity
+  }
+  class SysMenuController <<Controller>> {
+    -systemService : ISystemService
+    +getMenuNav() : List<SysMenu>
+    +getMenuTree() : List<SysMenu>
+    +getMenuList() : List<SysMenu>
+    +deleteMenu() : ResponseEntity
+    +getMenu() : SysMenu
+    +saveMenu() : SysMenu
+  }
+  class SysRoleController <<Controller>> {
+    -systemService : ISystemService
+    +list() : PageInfo<SysRole>
+    +all() : List<SysRole>
+    +getRole() : SysRole
+    +saveRole() : SysRole
+    +delete() : ResponseEntity
+  }
+}
+
+package cn.zhangxd.platform.admin.web.security {
+  class UserDetailsServiceImpl <<Service>> {
+    -systemService : ISystemService
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+package cn.zhangxd.platform.admin.web.security.model {
+  class AuthUserFactory {
+    +create() : AuthUser
+  }
+  class AuthUser {
+    -id : String
+    -loginName : String
+    -name : String
+    -password : String
+    -email : String
+    -phone : String
+    -mobile : String
+    -authorities : Collection<SimpleGrantedAuthority>
+    -enabled : boolean
+    +getId() : String
+    +setId() : void
+    +getUsername() : String
+    +getLoginName() : String
+    +setLoginName() : void
+    +setName() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package cn.zhangxd.platform.admin.web.security.utils {
+  class TokenUtil {
+    +getUserDetails() : UserDetails
+  }
+}
+
+package cn.zhangxd.platform.common.api {
+  class BaseEntity {
+    -id : String
+    -isNewRecord : boolean
+    +getId() : String
+    +setId() : void
+    +preInsert() : void
+    +preUpdate() : void
+    +getIsNewRecord() : boolean
+    +setIsNewRecord() : void
+  }
+  class Paging {
+    -pageNum : int
+    -pageSize : int
+    -orderBy : String
+    +getPageNum() : int
+    +setPageNum() : void
+    +getPageSize() : int
+    +setPageSize() : void
+    +getOrderBy() : String
+    +setOrderBy() : void
+  }
+  class DataEntity {
+    -DEL_FLAG_NORMAL : String
+    -DEL_FLAG_DELETE : String
+    -createDate : Date
+    -updateDate : Date
+    -delFlag : String
+    +preInsert() : void
+    +preUpdate() : void
+    +getCreateDate() : Date
+    +setCreateDate() : void
+    +getUpdateDate() : Date
+    +setUpdateDate() : void
+    +getDelFlag() : String
+    +setDelFlag() : void
+  }
+}
+
+package cn.zhangxd.platform.common.redis {
+  class RedisConfig {
+    +redisRepository() : RedisRepository
+  }
+  class RedisRepository {
+    -LOGGER : Logger
+    -DEFAULT_CHARSET : Charset
+    -key : byte[]
+    -value : byte[]
+    -time : long
+    -key : String
+    -value : String
+    -time : long
+    -keys : String[]
+    -values : String[]
+    +setExpire() : void
+    +setExpire() : void
+    +setExpire() : void
+    +willExpire() : List<String>
+    +keys() : Set<String>
+  }
+}
+
+package cn.zhangxd.platform.common.service.dao {
+  interface BaseDao {
+  }
+  interface CrudDao {
+  }
+}
+
+package cn.zhangxd.platform.common.service.datasource {
+  class DynamicDataSourceTransactionManager {
+    +doBegin() : void
+    +doCleanupAfterCompletion() : void
+  }
+  class DynamicDataSourceHolder {
+    -DYNAMIC_DATA_SOURCE_GLOBAL_THREAD_LOCAL : ThreadLocal<DynamicDataSourceGlobal>
+    +putDataSource() : void
+    +getDataSource() : DynamicDataSourceGlobal
+    +clearDataSource() : void
+  }
+  enum DynamicDataSourceGlobal {
+  }
+  class DynamicDataSource {
+    -writeDataSource : Object
+    -readDataSource : Object
+    +afterPropertiesSet() : void
+    +determineCurrentLookupKey() : Object
+    +setWriteDataSource() : void
+    +getWriteDataSource() : Object
+    +getReadDataSource() : Object
+    +setReadDataSource() : void
+  }
+  class DynamicPlugin {
+    -LOGGER : Logger
+    -REGEX : String
+    +intercept() : Object
+    +plugin() : Object
+    +setProperties() : void
+  }
+}
+
+package cn.zhangxd.platform.common.service.service {
+  class CrudService {
+    -dao : D
+    +getDao() : D
+    +findList() : List<T>
+    +queryList() : List<T>
+    +findPage() : PageInfo<T>
+    +queryPage() : PageInfo<T>
+    +save() : T
+  }
+}
+
+package cn.zhangxd.platform.common.upload {
+  class DiskFileOperator {
+    -LOGGER : Logger
+    -workFolderName : String
+    +deleteFile() : void
+    +getWorkFolderName() : String
+    +saveFile() : void
+    +setWorkFolderName() : void
+  }
+  interface FileOperator {
+  }
+  class AbstractFileOperator {
+    -accessUrl : String
+    +getFileUrl() : String
+    +getAccessUrl() : String
+    +setAccessUrl() : void
+  }
+  class OssFileOperator {
+    -endpoint : String
+    -key : String
+    -secret : String
+    -bucket : String
+    +deleteFile() : void
+    +saveFile() : void
+    +getEndpoint() : String
+    +setEndpoint() : void
+    +getKey() : String
+    +setKey() : void
+    +getSecret() : String
+    +setSecret() : void
+  }
+}
+
+package cn.zhangxd.platform.common.upload.util {
+  class FileIndex {
+    -upFile : File
+    -fileId : String
+    -trueName : String
+    -module : String
+    -path : String
+    +getFileId() : String
+    +setFileId() : void
+    +getUpFile() : File
+    +setUpFile() : void
+    +getModule() : String
+    +setModule() : void
+    +getTrueName() : String
+    +setTrueName() : void
+  }
+  class FileManager {
+    -LOGGER : Logger
+    -fileOperator : FileOperator
+    -filePathList : List<String>
+    +delete() : void
+    +deleteList() : void
+    +save() : FileIndex
+    +saves() : FileIndex[]
+    +getFileOperator() : FileOperator
+    +getFileUrlByRealPath() : String
+    +setFileOperator() : void
+  }
+}
+
+package cn.zhangxd.platform.common.utils {
+  class WebHelper {
+    +getRemoteAddr() : String
+    +getRequestMap() : Dto
+    +getBaseURL() : String
+  }
+  class FileHelper {
+    -LOGGER : Logger
+    -FILE_NOT_FIND : String
+    -BUF_SIZE : int
+    -DEFAULT_ENCODING : String
+    +copy() : boolean
+    +copyFile() : boolean
+    +copyFileCover() : boolean
+    +copyDirectory() : boolean
+    +copyDirectoryCover() : boolean
+    +copyFolder() : boolean
+    +copy() : void
+    +copy() : void
+  }
+  class Reflections {
+    -SETTER_PREFIX : String
+    -GETTER_PREFIX : String
+    -LOGGER : Logger
+    -obj : Object
+    -fieldName : String
+    -obj : Object
+    -fieldName : String
+    -value : Object
+    -obj : Object
+    -methodName : String
+    +invokeGetter() : Object
+    +invokeSetter() : void
+    +getFieldValue() : Object
+    +setFieldValue() : void
+    +invokeMethod() : Object
+    +invokeMethodByName() : Object
+    +getAccessibleField() : Field
+    +getAccessibleMethod() : Method
+  }
+  interface Dto {
+  }
+  class Collections3 {
+    -collection : Collection
+    -keyPropertyName : String
+    -valuePropertyName : String
+    -collection : Collection
+    -propertyName : String
+    -collection : Collection
+    -propertyName : String
+    -separator : String
+    -collection : Collection
+    -separator : String
+    +extractToMap() : Map
+    +extractToList() : List
+    +extractToString() : String
+    +convertToString() : String
+    +convertToString() : String
+    +isEmpty() : boolean
+  }
+  class DateHelper {
+    -PARSE_PATTERNS : String[]
+    -DEFAULT_DATE_FORMAT : String
+    -DEFAULT_DATETIME_FORMAT : String
+    +getDate() : String
+    +getDate() : String
+    +formatDate() : String
+    +formatDateTime() : String
+    +getTime() : String
+    +getDateTime() : String
+    +getYear() : String
+    +getMonth() : String
+  }
+  class RandomHelper {
+    -SECURE_RANDOM : SecureRandom
+    +uuid() : String
+    +randomString() : String
+    +randomStringUpper() : String
+    +randomLong() : long
+    +getRandNum() : String
+    +randomInt() : int
+  }
+  class ZxingHelper {
+    -LOGGER : Logger
+    +encode() : void
+    +decode() : String
+    +encode2() : void
+    +decode2() : String
+  }
+  class BeanValidators {
+    +validateWithException() : void
+    +extractMessage() : List<String>
+    +extractMessage() : List<String>
+    +extractPropertyAndMessageAsList() : List<String>
+    +extractPropertyAndMessageAsList() : List<String>
+    +extractPropertyAndMessageAsList() : List<String>
+    +extractPropertyAndMessageAsList() : List<String>
+  }
+  class StringHelper {
+    -SEPARATOR : char
+    -DEFAULT_CHARSET : Charset
+    -str : String
+    -ts : String
+    +getBytes() : byte[]
+    +inString() : boolean
+    +replaceHtml() : String
+    +toCamelCase() : String
+    +toCapitalizeCamelCase() : String
+    +toUnderScoreCase() : String
+    +trimToDefault() : String
+  }
+  class BaseDto {
+    -serialVersionUID : long
+    +getString() : String
+    +getInt() : int
+    +getLong() : long
+    +getDouble() : double
+    +getDecimal() : BigDecimal
+    +getDate() : Date
+  }
+  class PinyinUtil {
+    -LOGGER : Logger
+    +getPinYin() : String
+    +getCamelPinYin() : String
+    +getPinYinHeadChar() : String
+    +getPinYinHeadUpperChar() : String
+  }
+  class NumberHelper {
+    -LOGGER : Logger
+    -DEF_DIV_SCALE : int
+    +format() : String
+    +format() : String
+    +format() : String
+    +toInt() : int
+    +getInt() : int
+    +toFloat() : float
+    +toDouble() : double
+    +toLong() : long
+  }
+}
+
+package cn.zhangxd.platform.common.web.config {
+  class UploadConfig {
+    +diskFileOperator() : DiskFileOperator
+    +fileManager() : FileManager
+  }
+  class WebConfig {
+    -configurer : DefaultServletHandlerConfigurer
+    +remoteIpFilter() : RemoteIpFilter
+    +teeFilter() : TeeFilter
+    +objectMapper() : ObjectMapper
+    +httpMessageConverter() : HttpMessageConverter
+    +configurePathMatch() : void
+    +configureDefaultServletHandling() : void
+    +validator() : LocalValidatorFactoryBean
+    +getMethodValidationPostProcessor() : MethodValidationPostProcessor
+  }
+  class ContainerAccessLogCustomizer {
+    -logbackAccessFile : String
+    +customize() : void
+  }
+  class AbstractWebSecurityConfig {
+    -userDetailsService : UserDetailsService
+    +passwordEncoder() : PasswordEncoder
+    +configure() : void
+    +authenticationManagerBean() : AuthenticationManager
+    +authenticationTokenFilterBean() : AuthenticationTokenFilter
+    +configure() : void
+  }
+}
+
+package cn.zhangxd.platform.common.web.editor {
+  class StringEditor {
+    +setAsText() : void
+    +getAsText() : String
+  }
+  class DateEditor {
+    +setAsText() : void
+  }
+}
+
+package cn.zhangxd.platform.common.web.mapper {
+  class JsonMapper {
+    +serialize() : void
+    +serialize() : void
+    +enableSimple() : JsonMapper
+  }
+}
+
+package cn.zhangxd.platform.common.web.security {
+  class MyAuthenticationEntryPoint {
+    +commence() : void
+  }
+  class AbstractTokenUtil {
+    -LOGGER : Logger
+    -TOKEN_TYPE_BEARER : String
+    -REDIS_PREFIX_AUTH : String
+    -REDIS_PREFIX_USER : String
+    -redisRepository : RedisRepository
+    -secret : String
+    -expiration : Long
+    -username : String
+    -username : String
+    -username : String
+    +getUsernameFromToken() : String
+    +getExpiredFromToken() : Date
+    +generateToken() : String
+    +validateToken() : Boolean
+    +removeToken() : void
+    +getUserDetailsString() : String
+    +getUserDetails() : UserDetails
+    +getSecret() : String
+  }
+  class AuthenticationTokenFilter {
+    -TOKEN_HEADER : String
+    -jwtTokenUtil : AbstractTokenUtil
+    -authToken : String
+    +doFilter() : void
+  }
+}
+
+package cn.zhangxd.platform.common.web.security.model {
+  class AbstractAuthUser {
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+  }
+}
+
+package cn.zhangxd.platform.common.web.util {
+  class WebUtils {
+    -TEMP_FILE_PATH : String
+    +transfer() : File
+    +buildFileIndex() : FileIndex
+  }
+}
+
+package cn.zhangxd.platform.mobile.client {
+  class ClientMobileApplication <<Controller>> {
+    -LOGGER : Logger
+    +hello() : String
+    +main() : void
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.common.annotation {
+  class RequestLimitContract {
+    -LOGGER : Logger
+    -PREFIX : String
+    -joinPoint : JoinPoint
+    +requestLimit() : void
+  }
+  class RequestLimitException {
+    -serialVersionUID : long
+  }
+  interface RequestLimit {
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.common.config {
+  class WebSecurityConfig {
+    +configure() : void
+    +configure() : void
+  }
+  class SwaggerConfig {
+    +api() : Docket
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.common.controller {
+  class CustomErrorController <<Controller>> {
+  }
+  class BaseController {
+    +initBinder() : void
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.constant {
+  class Message {
+    -RETURN_FIELD_CODE : String
+    -RETURN_FIELD_ERROR : String
+    -RETURN_FIELD_ERROR_DESC : String
+    -RETURN_FIELD_DATA : String
+  }
+  class ReturnCode {
+    -SUCCESS : String
+    -BAD_REQUEST : String
+    -NOT_FOUND : String
+    -METHOD_NOT_ALLOWED : String
+    -NOT_ACCEPTABLE : String
+    -UNSUPPORTED_MEDIA_TYPE : String
+    -INTERNAL_SERVER_ERROR : String
+    -UNAUTHORIZED : String
+    -FORBIDDEN : String
+    -INVALID_FIELD : String
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.controller {
+  class AuthenticationController <<Controller>> {
+    -authenticationManager : AuthenticationManager
+    -userDetailsService : UserDetailsService
+    -jwtTokenUtil : TokenUtil
+    -authentication : Authentication
+    -userDetails : UserDetails
+    -token : String
+    -userDetails : UserDetails
+    -refreshedToken : String
+  }
+  class ShortMsgController <<Controller>> {
+    -TYPE_REGISTRY : String
+    -TYPE_FORGET : String
+    -captchaService : ICaptchaService
+  }
+  class UserController <<Controller>> {
+    -tripUserService : ITripUserService
+    -captchaService : ICaptchaService
+    -passwordEncoder : PasswordEncoder
+    -fileManager : FileManager
+  }
+  class CurrencyRateController <<Controller>> {
+    -currencyRateService : ICurrencyRateService
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.security {
+  class UserDetailsServiceImpl <<Service>> {
+    -tripUserService : ITripUserService
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.security.model {
+  class AuthUserFactory {
+    +create() : AuthUser
+  }
+  class AuthUser {
+    -TRIP_USER_ROLE : String
+    -id : String
+    -mobile : String
+    -password : String
+    -enabled : boolean
+    +getId() : String
+    +setId() : void
+    +getMobile() : String
+    +setMobile() : void
+    +getPassword() : String
+    +setPassword() : void
+    +isEnabled() : boolean
+    +setEnabled() : void
+  }
+}
+
+package cn.zhangxd.platform.mobile.client.security.utils {
+  class TokenUtil {
+    +getUserDetails() : UserDetails
+  }
+}
+
+package cn.zhangxd.platform.system.api.entity {
+  class SysRole {
+    -name : String
+    -enabled : Boolean
+    -remarks : String
+    -menus : List<SysMenu>
+    +getName() : String
+    +setName() : void
+    +getEnabled() : Boolean
+    +setEnabled() : void
+    +getRemarks() : String
+    +setRemarks() : void
+    +getMenus() : List<SysMenu>
+    +setMenus() : void
+  }
+  class TripUser {
+    -IMAGE_FOLDER : String
+    -GENDER_UNKNOWN : String
+    -mobile : String
+    -password : String
+    -nickname : String
+    -gender : String
+    -age : String
+    -photo : String
+    -enabled : Boolean
+    -remarks : String
+    +preInsert() : void
+    +getMobile() : String
+    +setMobile() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getNickname() : String
+    +setNickname() : void
+    +getGender() : String
+  }
+  class SysUser {
+    -ADMIN_USER_ID : String
+    -loginName : String
+    -password : String
+    -name : String
+    -email : String
+    -phone : String
+    -mobile : String
+    -enabled : Boolean
+    -remarks : String
+    -roles : List<SysRole>
+    +getLoginName() : String
+    +setLoginName() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+  class SysMenu {
+    -serialVersionUID : long
+    -parentId : String
+    -parentIds : String
+    -name : String
+    -href : String
+    -icon : String
+    -sort : Integer
+    -isShow : Boolean
+    -permission : String
+    -remarks : String
+    +preInsert() : void
+    +getParentId() : String
+    +setParentId() : void
+    +getParentIds() : String
+    +setParentIds() : void
+    +getName() : String
+    +setName() : void
+    +getHref() : String
+  }
+}
+
+package cn.zhangxd.platform.system.api.exception {
+  class IllegalMobileException {
+  }
+  class UserNotExistException {
+  }
+  class SmsTooMuchException {
+  }
+  class InvalidCaptchaException {
+  }
+  class UserExistException {
+  }
+}
+
+package cn.zhangxd.platform.system.api.exception.base {
+  class SystemException {
+  }
+  class BusinessException {
+  }
+}
+
+package cn.zhangxd.platform.system.api.service {
+  interface ICaptchaService {
+  }
+  interface ICurrencyRateService {
+  }
+  interface ISystemService {
+  }
+  interface ITripUserService {
+  }
+}
+
+package cn.zhangxd.platform.system.provider {
+  class SysProviderApplication <<Controller>> {
+    -LOGGER : Logger
+    +hello() : String
+    +main() : void
+  }
+}
+
+package cn.zhangxd.platform.system.provider.amqp {
+  class SampleAmqpSimpleApplication {
+    -mailSender : JavaMailSender
+    +mySender() : Sender
+    +fooQueue() : Queue
+    +process() : void
+  }
+  class Sender {
+    -rabbitTemplate : RabbitTemplate
+    +send() : void
+  }
+}
+
+package cn.zhangxd.platform.system.provider.config {
+  class CacheConfig {
+    +methodKeyGenerator() : KeyGenerator
+    +cacheManager() : CacheManager
+  }
+  class DruidStatViewServlet {
+  }
+  class DatasourceConfig {
+    -sessionFactory : SqlSessionFactoryBean
+    +writeDataSource() : DruidDataSource
+    +readDataSource() : DruidDataSource
+    +dynamicDataSource() : DataSource
+    +dynamicTransactionManager() : DataSourceTransactionManager
+    +dynamicSqlSessionFactory() : SqlSessionFactory
+  }
+}
+
+package cn.zhangxd.platform.system.provider.crawler {
+  class YoupuPipeline <<Repository>> {
+    +process() : void
+  }
+  class YoupuProcessor {
+    -COUNTRY_PAGE : String
+    -COUNTRY_EFFECT_PAGE : String
+    -site : Site
+    +process() : void
+    +getSite() : Site
+  }
+  class YoupuScheduled {
+    -ratePipeline : YoupuPipeline
+    +BankOfChinaScheduled() : void
+  }
+}
+
+package cn.zhangxd.platform.system.provider.mapper {
+  interface TripUserMapper {
+  }
+  interface SysMenuMapper {
+  }
+  interface SysRoleMapper {
+  }
+  interface SysUserMapper {
+  }
+}
+
+package cn.zhangxd.platform.system.provider.serviceimpl {
+  class CaptchaService <<Service>> {
+    -tripUserService : ITripUserService
+    -redisRepository : RedisRepository
+    -REDIS_PREFIX : String
+    +sendCaptcha4Registry() : void
+    +sendCaptcha4Forget() : void
+    +validCaptcha() : void
+  }
+  class TripUserService <<Service>> {
+    +getByMobile() : TripUser
+    +updateInfo() : void
+    +registryUser() : void
+    +updatePasswordByMobile() : void
+    +updatePhotoByUserId() : void
+  }
+  class CurrencyRateService <<Service>> {
+    -yahooRateService : YahooRateService
+  }
+  class SystemService <<Service>> {
+    -sysUserMapper : SysUserMapper
+    -sysRoleMapper : SysRoleMapper
+    -sysMenuMapper : SysMenuMapper
+    +getUserByLoginName() : SysUser
+    +findUserPage() : PageInfo<SysUser>
+    +getUserById() : SysUser
+    +saveUser() : SysUser
+    +updateUserInfo() : void
+    +deleteUserById() : void
+    +updateUserPasswordById() : void
+    +getMenuNav() : List<SysMenu>
+  }
+}
+
+package cn.zhangxd.platform.system.provider.thirdapi {
+  class YahooRateBean {
+    -list : ListBean
+    -meta : MetaBean
+    -resources : List<ResourcesBean>
+    -type : String
+    -start : int
+    -count : int
+    -resource : ResourceBean
+    -classname : String
+    -fields : FieldsBean
+    -name : String
+    +getList() : ListBean
+    +setList() : void
+    +getMeta() : MetaBean
+    +setMeta() : void
+    +getResources() : List<ResourcesBean>
+    +setResources() : void
+    +getType() : String
+    +setType() : void
+  }
+  class YahooRateService <<Service>> {
+    -LOGGER : Logger
+    -redisRepository : RedisRepository
+    -YAHOO_RATE_URL : String
+    -REDIS_PREFIX : String
+    -READ_TIMEOUT : int
+    +request() : void
+  }
+}
+
+' --- Relatii ---
+UserDetailsServiceImpl --> AuthUserFactory
+UserDetailsServiceImpl --> SysUser
+UserDetailsServiceImpl --> ISystemService
+TokenUtil --|> AbstractTokenUtil
+TokenUtil --> AuthUser
+TokenUtil --> AbstractTokenUtil
+AuthUserFactory --> StringHelper
+AuthUserFactory --> SysMenu
+AuthUserFactory --> SysRole
+AuthUserFactory --> SysUser
+AuthUser --|> AbstractAuthUser
+AuthUser --> AbstractAuthUser
+AuthenticationController --|> BaseController
+AuthenticationController --> BaseController
+AuthenticationController --> TokenUtil
+AuthenticationController --> AuthenticationTokenFilter
+AuthenticationController --> SysUser
+DashboardController --|> BaseController
+DashboardController --> BaseController
+TripUserController --|> BaseController
+TripUserController --> BaseController
+TripUserController --> Paging
+TripUserController --> FileManager
+TripUserController --> TripUser
+TripUserController --> ITripUserService
+SysUserController --|> BaseController
+SysUserController --> AuthUser
+SysUserController --> BaseController
+SysUserController --> Paging
+SysUserController --> BaseDto
+SysUserController --> StringHelper
+SysUserController --> WebUtils
+SysUserController --> SysUser
+SysUserController --> BusinessException
+SysUserController --> ISystemService
+SysMenuController --|> BaseController
+SysMenuController --> BaseController
+SysMenuController --> AuthUser
+SysMenuController --> WebUtils
+SysMenuController --> SysMenu
+SysMenuController --> ISystemService
+SysRoleController --|> BaseController
+SysRoleController --> BaseController
+SysRoleController --> Paging
+SysRoleController --> SysRole
+SysRoleController --> ISystemService
+WebSecurityConfig --|> AbstractWebSecurityConfig
+WebSecurityConfig --> AbstractWebSecurityConfig
+BaseController --> DateEditor
+BaseController --> StringEditor
+UserDetailsServiceImpl --> AuthUserFactory
+UserDetailsServiceImpl --> TripUser
+UserDetailsServiceImpl --> ITripUserService
+TokenUtil --|> AbstractTokenUtil
+TokenUtil --> AuthUser
+TokenUtil --> AbstractTokenUtil
+AuthUserFactory --> TripUser
+AuthUser --|> AbstractAuthUser
+AuthUser --> AbstractAuthUser
+AuthenticationController --|> BaseController
+AuthenticationController --> AuthenticationTokenFilter
+AuthenticationController --> BaseController
+AuthenticationController --> TokenUtil
+AuthenticationController --> Message
+AuthenticationController --> ReturnCode
+ShortMsgController --|> BaseController
+ShortMsgController --> RequestLimit
+ShortMsgController --> BaseController
+ShortMsgController --> Message
+ShortMsgController --> ReturnCode
+ShortMsgController --> IllegalMobileException
+ShortMsgController --> SmsTooMuchException
+ShortMsgController --> UserExistException
+ShortMsgController --> UserNotExistException
+ShortMsgController --> BusinessException
+ShortMsgController --> ICaptchaService
+UserController --|> BaseController
+UserController --> FileIndex
+UserController --> FileManager
+UserController --> WebUtils
+UserController --> BaseController
+UserController --> Message
+UserController --> ReturnCode
+UserController --> AuthUser
+UserController --> TripUser
+UserController --> InvalidCaptchaException
+UserController --> ICaptchaService
+UserController --> ITripUserService
+CurrencyRateController --|> BaseController
+CurrencyRateController --> BaseController
+CurrencyRateController --> Message
+CurrencyRateController --> ReturnCode
+CurrencyRateController --> ICurrencyRateService
+WebSecurityConfig --|> AbstractWebSecurityConfig
+WebSecurityConfig --> AbstractWebSecurityConfig
+RequestLimitContract --> WebHelper
+RequestLimitException --|> BusinessException
+RequestLimitException --> BusinessException
+CustomErrorController --> Message
+BaseController --> BeanValidators
+BaseController --> Collections3
+BaseController --> DateEditor
+BaseController --> StringEditor
+BaseController --> Message
+BaseController --> ReturnCode
+BaseController --> BusinessException
+SysRole --|> DataEntity
+SysRole --> DataEntity
+TripUser --|> DataEntity
+TripUser --> DataEntity
+SysUser --|> DataEntity
+SysUser --> DataEntity
+SysMenu --|> DataEntity
+SysMenu --> DataEntity
+ICaptchaService --> InvalidCaptchaException
+ICaptchaService --> BusinessException
+ISystemService --> SysMenu
+ISystemService --> Paging
+ISystemService --> SysRole
+ISystemService --> SysUser
+ITripUserService --> Paging
+ITripUserService --> TripUser
+IllegalMobileException --|> BusinessException
+IllegalMobileException --> BusinessException
+UserNotExistException --|> BusinessException
+UserNotExistException --> BusinessException
+SmsTooMuchException --|> BusinessException
+SmsTooMuchException --> BusinessException
+InvalidCaptchaException --|> BusinessException
+InvalidCaptchaException --> BusinessException
+UserExistException --|> BusinessException
+UserExistException --> BusinessException
+YahooRateService --> RedisRepository
+YahooRateService --> StringHelper
+CaptchaService ..|> ICaptchaService
+CaptchaService --> RedisRepository
+CaptchaService --> RandomHelper
+CaptchaService --> TripUser
+CaptchaService --> InvalidCaptchaException
+CaptchaService --> UserExistException
+CaptchaService --> UserNotExistException
+CaptchaService --> BusinessException
+CaptchaService --> ICaptchaService
+CaptchaService --> ITripUserService
+TripUserService --|> CrudService
+TripUserService --> CrudService
+TripUserService --> TripUser
+TripUserService --> ITripUserService
+TripUserService --> TripUserMapper
+CurrencyRateService ..|> ICurrencyRateService
+CurrencyRateService --> ICurrencyRateService
+CurrencyRateService --> YahooRateService
+SystemService ..|> ISystemService
+SystemService --> SysMenuMapper
+SystemService --> Paging
+SystemService --> StringHelper
+SystemService --> SysMenu
+SystemService --> SysRole
+SystemService --> SysUser
+SystemService --> ISystemService
+SystemService --> SysRoleMapper
+SystemService --> SysUserMapper
+DatasourceConfig --> DynamicDataSource
+DatasourceConfig --> DynamicDataSourceTransactionManager
+DatasourceConfig --> SystemException
+TripUserMapper --|> CrudDao
+TripUserMapper --> CrudDao
+TripUserMapper --> TripUser
+SysMenuMapper --|> CrudDao
+SysMenuMapper --> CrudDao
+SysMenuMapper --> SysMenu
+SysRoleMapper --|> CrudDao
+SysRoleMapper --> CrudDao
+SysRoleMapper --> SysRole
+SysUserMapper --|> CrudDao
+SysUserMapper --> CrudDao
+SysUserMapper --> SysUser
+CrudService --> DataEntity
+CrudService --> Paging
+CrudService --> CrudDao
+DiskFileOperator --|> AbstractFileOperator
+DiskFileOperator ..|> FileOperator
+DiskFileOperator --> FileHelper
+AbstractFileOperator ..|> FileOperator
+AbstractFileOperator --> FileHelper
+AbstractFileOperator --> StringHelper
+OssFileOperator --|> AbstractFileOperator
+OssFileOperator ..|> FileOperator
+FileManager --> FileOperator
+FileManager --> RandomHelper
+FileManager --> StringHelper
+WebUtils --> FileIndex
+WebUtils --> SystemException
+UploadConfig --> DiskFileOperator
+UploadConfig --> FileOperator
+UploadConfig --> FileManager
+WebConfig --> JsonMapper
+AbstractWebSecurityConfig --> AuthenticationTokenFilter
+AbstractWebSecurityConfig --> MyAuthenticationEntryPoint
+AbstractTokenUtil --> RedisRepository
+AbstractTokenUtil --> StringHelper
+AuthenticationTokenFilter --> StringHelper
+DateEditor --> DateHelper
+BaseEntity --> StringHelper
+DataEntity --|> BaseEntity
+DataEntity --> RandomHelper
+
+@enduml

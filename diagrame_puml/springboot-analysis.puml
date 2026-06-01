@@ -1,0 +1,516 @@
+@startuml
+
+package me.format.springboot.log.annotation {
+  interface Log {
+  }
+}
+
+package me.format.springboot.log.aop {
+  class LogMethodInterceptor {
+    -logger : Logger
+    -exclude : List<String>
+    +invoke() : Object
+  }
+}
+
+package me.format.springboot.log.autoconfigure {
+  class LogAutoConfiguration {
+    -logger : Logger
+    -pointcut : Pointcut
+    -advice : Advice
+    -logProperties : LogProperties
+    +init() : void
+    +getPointcut() : Pointcut
+    +getAdvice() : Advice
+  }
+  class LogProperties {
+    -exclude : String
+    -excludeArr : String[]
+    +init() : void
+    +getExclude() : String
+    +setExclude() : void
+    +getExcludeArr() : String[]
+  }
+}
+
+package other.pkg {
+  class OtherBean {
+  }
+}
+
+package spring.study.beanpostproessor {
+  class BeanPostProcessorApplication {
+    +main() : void
+    +beanValidationPostProcessor() : BeanPostProcessor
+    +methodValidationPostProcessor() : BeanPostProcessor
+  }
+}
+
+package spring.study.beanpostproessor.aop {
+  class MyAspect {
+    +declareJointPointExpression() : Object
+  }
+}
+
+package spring.study.beanpostproessor.bean {
+  class EmbeddedService {
+    -id : String
+  }
+  class SimpleServiceForDestroy {
+  }
+  class ReferenceB {
+    -referenceA : ReferenceA
+  }
+  class SimpleServiceImpl {
+    -embeddedService : EmbeddedService
+    +doSomething() : void
+  }
+  class ReferenceA {
+    -referenceB : ReferenceB
+  }
+  class SimpleServiceForSmart {
+    -embeddedService : EmbeddedService
+  }
+  interface ISimpleService {
+  }
+  class SimpleServiceForMerged {
+  }
+}
+
+package spring.study.beanpostproessor.embedded {
+  class BeanForBeanValidation {
+    -id : String
+    -age : int
+  }
+  class BeanForAsync {
+    +async() : void
+  }
+  class BeanForAop {
+    +test() : void
+  }
+  class BeanForAutowired {
+    -nestedBean : AutowiredNestedBean
+    -test : String
+  }
+  class BeanForMethodValidation {
+    +validate() : void
+  }
+  class BeanForSchedule {
+    +test() : void
+  }
+  class BeanForRequired {
+    -nestedBean : RequiredNestedBean
+    +setNestedBean() : void
+  }
+  class BeanForCommon {
+    -nestedBean : CommonNestedBean
+    +init() : void
+    +destroy() : void
+  }
+}
+
+package spring.study.beanpostproessor.processor {
+  class SimpleMergedBeanDefinitionPostProcessor {
+    -name : String
+    +postProcessMergedBeanDefinition() : void
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+  }
+  class SimpleInstantiationAwareBeanPostProcessor {
+    -name : String
+    +postProcessBeforeInstantiation() : Object
+    +postProcessAfterInstantiation() : boolean
+    +postProcessPropertyValues() : PropertyValues
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+    +invoke() : Object
+  }
+  class SimpleBeanPostProcessor {
+    -name : String
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+  }
+  class SimpleDestructionAwareBeanPostProcessor {
+    -name : String
+    +postProcessBeforeDestruction() : void
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+  }
+  class SimpleSmartInstantiationAwareBeanPostProcessor {
+    -name : String
+    +getEarlyBeanReference() : Object
+    +postProcessBeforeInstantiation() : Object
+    +postProcessAfterInstantiation() : boolean
+    +postProcessPropertyValues() : PropertyValues
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+  }
+}
+
+package spring.study.beanpostproessor.registrar {
+  class SimpleRegistrar {
+    +registerBeanDefinitions() : void
+  }
+}
+
+package spring.study.beanpostproessor.runner {
+  class SimpleCommandLineRunner {
+    -beanForAop : BeanForAop
+    -beanForMethodValidation : BeanForMethodValidation
+    -beanForAsync : BeanForAsync
+    -applicationContext : ApplicationContext
+    +run() : void
+  }
+}
+
+package spring.study.componentprovider {
+  class CustomComponentProviderApplication {
+    +main() : void
+  }
+}
+
+package spring.study.componentprovider.annotation {
+  interface Consumer {
+  }
+  interface EnableConsumer {
+  }
+}
+
+package spring.study.componentprovider.bean {
+  class ProducerWithInterface {
+  }
+  class ConsumerWithComponentAnnotation {
+  }
+  class ConsumerWithInterface {
+  }
+  class ConsumerWithConsumerAnnotation {
+  }
+  class ConsumerWithNothing {
+  }
+}
+
+package spring.study.componentprovider.interfaze {
+  interface IProducer {
+  }
+  interface IConsumer {
+  }
+}
+
+package spring.study.componentprovider.spring {
+  class ConsumerRegistrar {
+    -applicationContext : ApplicationContext
+    -beanNameGenerator : BeanNameGenerator
+    +registerBeanDefinitions() : void
+    +setApplicationContext() : void
+  }
+}
+
+package spring.study.componentprovider.test {
+  class SpringEmbeddedProviderTest {
+    -beanDefinitionRegistry : BeanDefinitionRegistry
+    +setUp() : void
+    +testAnnotatedBeanDefinitionReader() : void
+    +testXmlBeanDefinitionReader() : void
+    +testClassPathBeanDefinitionScanner() : void
+  }
+}
+
+package spring.study.conditional {
+  class ConditionalApplication {
+    +main() : void
+  }
+}
+
+package spring.study.conditional.bean {
+  class ConditionClassBean {
+  }
+  class ConditionNoneBean {
+  }
+  class ConditionResourceBean {
+  }
+  class ConditionExpressionBean {
+  }
+  class MyConditionalBean {
+    +matches() : boolean
+  }
+  class ConditionBeanBean {
+  }
+}
+
+package spring.study.conditional.condition {
+  class ConditionBeanInXml {
+  }
+  class ConditionBeanInImport {
+    +simpleBean() : SimpleBean
+  }
+  class ConditionBeanWithComponent {
+  }
+}
+
+package spring.study.conditional.test {
+  class TestConditionReport {
+    -beanFactory : ConfigurableListableBeanFactory
+    +test01() : void
+    +test02() : void
+  }
+}
+
+package spring.study.embedded.servlet {
+  class EmbeddedServletApplication {
+    +main() : void
+  }
+}
+
+package spring.study.embedded.servlet.bean {
+  class ConfigurationBean {
+    +test() : Object
+    +myDispatcherServlet() : DispatcherServlet
+  }
+}
+
+package spring.study.embedded.servlet.controller {
+  class SimpleController <<Controller>> {
+    +custom() : String
+    +simple() : String
+    +error() : String
+  }
+  class TestController <<Controller>> {
+    -beanFactory : BeanFactory
+    +custom() : String
+    +simple() : String
+    +test() : String
+    +conditonal() : String
+  }
+}
+
+package spring.study.embedded.servlet.custom {
+  class MyEmbeddedServletContainerCustomizer {
+    +customize() : void
+  }
+}
+
+package spring.study.embedded.servlet.exception {
+  class ExceptionControllerAdvice {
+  }
+}
+
+package spring.study.embedded.servlet.initializer {
+  class MyServletContextInitializer {
+    +onStartup() : void
+  }
+}
+
+package spring.study.embedded.servlet.listener {
+  class CustomWebListener {
+    +onApplicationEvent() : void
+  }
+}
+
+package spring.study.embedded.servlet.servlet {
+  class CustomServletRegistrationBean {
+    +customServlet() : ServletRegistrationBean
+    +service() : void
+  }
+  class SimpleServlet {
+    +service() : void
+  }
+}
+
+package spring.study.executablejar {
+  class ExecutableJarApplication {
+    +main() : void
+  }
+}
+
+package spring.study.executablejar.classloader.test {
+  class LaunchedURLClassLoaderTest {
+    +test() : void
+  }
+}
+
+package spring.study.factories.loader {
+  class SpringFactoriesApplication {
+    +main() : void
+  }
+}
+
+package spring.study.factories.loader.test {
+  class LoadTest {
+    +test01() : void
+    +test02() : void
+  }
+}
+
+package spring.study.logging {
+  class LoggingApplication {
+    +main() : void
+    +runner() : CommandLineRunner
+    +run() : void
+  }
+}
+
+package spring.study.mytest {
+  class MyTestApplication {
+    +main() : void
+  }
+}
+
+package spring.study.mytest.controller {
+  class TestController <<Controller>> {
+    +test() : String
+  }
+}
+
+package spring.study.property.loader {
+  class SpringEnvironmentPropertySourceApplication {
+    +main() : void
+  }
+}
+
+package spring.study.property.loader.processor {
+  class CustomBeanFactoryPostProcessor {
+    -applicationContext : ApplicationContext
+    +postProcessBeanFactory() : void
+    +setApplicationContext() : void
+  }
+}
+
+package spring.study.refresh.context {
+  class RefreshContextApplication {
+    +main() : void
+  }
+}
+
+package spring.study.refresh.context.bean {
+  class ImportService {
+    +simpleServiceInImportService() : SimpleServiceInImportService
+  }
+  class SimpleServiceInXml {
+  }
+  class SimpleBeanWithDefinitionInBeanDefinitionRegistryPostProcessor {
+  }
+  class SimpleBeanInBeanFactoryPostProcessor {
+  }
+  class SimpleServiceInImportService {
+    -name : String
+  }
+  class SimpleBeanInBeanDefinitionRegistryPostProcessor {
+  }
+  class SimpleBeanInListener {
+  }
+  class SimpleService {
+    -name : String
+    +test() : void
+  }
+  class NotHandleService {
+    -name : String
+  }
+  class SimpleBeanWithDefinitionInBeanFactoryPostProcessor {
+  }
+}
+
+package spring.study.refresh.context.beanprocessor {
+  class MyBeanPostProcessor {
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+  }
+  class MyBeanDefinitionRegistryPostProcessor {
+    +postProcessBeanDefinitionRegistry() : void
+    +postProcessBeanFactory() : void
+    +getOrder() : int
+  }
+  class MyBeanFactoryPostProcessor {
+    +postProcessBeanFactory() : void
+  }
+}
+
+package spring.study.refresh.context.lifecycle {
+  class MyLifecycleBean {
+    -running : boolean
+    +isAutoStartup() : boolean
+    +stop() : void
+    +start() : void
+    +stop() : void
+    +isRunning() : boolean
+    +getPhase() : int
+  }
+}
+
+package spring.study.refresh.context.listener {
+  class MyApplicationListener {
+    +onApplicationEvent() : void
+  }
+}
+
+package spring.study.startup {
+  class MySpringApplication {
+    +main() : void
+  }
+}
+
+package spring.study.startup.bean {
+  class SimpleBean {
+    -id : String
+    -name : String
+  }
+}
+
+package spring.study.startup.initializers {
+  class SimpleApplicationContextInitializer {
+    +initialize() : void
+  }
+}
+
+package spring.study.startup.listeners {
+  class SimpleApplicationListener {
+    +onApplicationEvent() : void
+  }
+}
+
+package spring.study.startup.runner {
+  class SimpleApplicationRunner {
+    +run() : void
+  }
+  class SimpleCommandLineRunner {
+    +run() : void
+  }
+}
+
+' --- Relatii ---
+RefreshContextApplication --> ImportService
+RefreshContextApplication --> MyApplicationListener
+MyBeanDefinitionRegistryPostProcessor --> SimpleBeanInBeanDefinitionRegistryPostProcessor
+MyBeanDefinitionRegistryPostProcessor --> SimpleBeanWithDefinitionInBeanDefinitionRegistryPostProcessor
+MyBeanFactoryPostProcessor --> SimpleBeanInBeanFactoryPostProcessor
+MyBeanFactoryPostProcessor --> SimpleBeanWithDefinitionInBeanFactoryPostProcessor
+MyApplicationListener --> SimpleBeanInListener
+LogAutoConfiguration --> Log
+LogAutoConfiguration --> LogMethodInterceptor
+TestController --> Log
+BeanPostProcessorApplication --> SimpleRegistrar
+SimpleServiceImpl ..|> ISimpleService
+SimpleCommandLineRunner --> BeanForAop
+SimpleCommandLineRunner --> BeanForAsync
+SimpleCommandLineRunner --> BeanForMethodValidation
+SimpleRegistrar --> EmbeddedService
+SimpleSmartInstantiationAwareBeanPostProcessor --> EmbeddedService
+LoadTest --> SpringFactoriesApplication
+TestConditionReport --> ConditionalApplication
+TestConditionReport --> ConditionExpressionBean
+ConditionalApplication --> ConditionBeanInImport
+SpringEmbeddedProviderTest --> CustomComponentProviderApplication
+CustomComponentProviderApplication --> OtherBean
+CustomComponentProviderApplication --> EnableConsumer
+ProducerWithInterface ..|> IProducer
+ProducerWithInterface --> IProducer
+ConsumerWithComponentAnnotation --> Consumer
+ConsumerWithInterface ..|> IConsumer
+ConsumerWithInterface --> IConsumer
+ConsumerWithConsumerAnnotation --> Consumer
+EnableConsumer --> ConsumerRegistrar
+ConsumerRegistrar --> Consumer
+ConsumerRegistrar --> IConsumer
+MySpringApplication --> SimpleBean
+SimpleApplicationContextInitializer --> SimpleBean
+
+@enduml

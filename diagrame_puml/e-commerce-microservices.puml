@@ -1,0 +1,750 @@
+@startuml
+
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+  class MavenWrapperDownloader {
+    -DEFAULT_DOWNLOAD_URL : String
+    -MAVEN_WRAPPER_PROPERTIES_PATH : String
+    -MAVEN_WRAPPER_JAR_PATH : String
+    -PROPERTY_NAME_WRAPPER_URL : String
+    +main() : void
+  }
+
+package com.rainbowforest.apigateway {
+  class ApiGatewayApplicationTests {
+    +contextLoads() : void
+  }
+  class ApiGatewayApplication {
+    +main() : void
+  }
+}
+
+package com.rainbowforest.apigateway.config {
+  class WebSecurityConfig {
+    +configure() : void
+  }
+  class RedisConfig {
+  }
+  class ApiConfig {
+    +sessionFilter() : SessionFilter
+  }
+}
+
+package com.rainbowforest.apigateway.filter {
+  class SessionFilter {
+    -logger : Logger
+    -sessionRepository : SessionRepository
+    +filterType() : String
+    +filterOrder() : int
+    +shouldFilter() : boolean
+    +run() : Object
+  }
+}
+
+package com.rainbowforest.eurekaserver {
+  class EurekaServerApplicationTests {
+    +contextLoads() : void
+  }
+  class EurekaServerApplication {
+    +main() : void
+  }
+}
+
+package com.rainbowforest.orderservice {
+  class OrderServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class OrderServiceApplication {
+    +main() : void
+  }
+}
+
+package com.rainbowforest.orderservice.config {
+  class RedisConfig {
+  }
+}
+
+package com.rainbowforest.orderservice.controller {
+  class OrderControllerTest {
+    -PRODUCT_NAME : String
+    -PRODUCT_ID : Long
+    -USER_ID : Long
+    -USER_NAME : String
+    -CART_ID : String
+    -mockMvc : MockMvc
+    -userClient : UserClient
+    -orderService : OrderService
+    -cartService : CartService
+    -webApplicationContext : WebApplicationContext
+    +setup() : void
+    +save_order_controller_should_return201_when_valid_request() : void
+  }
+  class OrderController <<Controller>> {
+    -userClient : UserClient
+    -orderService : OrderService
+    -cartService : CartService
+    -headerGenerator : HeaderGenerator
+    +saveOrder() : ResponseEntity<Order>
+  }
+  class CartController <<Controller>> {
+    -headerGenerator : HeaderGenerator
+    +getCart() : ResponseEntity<List<Object>>
+    +addItemToCart() : ResponseEntity<List<Object>>
+    +removeItemFromCart() : ResponseEntity<Void>
+  }
+}
+
+package com.rainbowforest.orderservice.domain {
+  class Order <<Entity>> {
+    -id : Long
+    -orderedDate : LocalDate
+    -status : String
+    -total : BigDecimal
+    -items : List<Item>
+    -user : User
+    +getId() : Long
+    +setId() : void
+    +getOrderedDate() : LocalDate
+    +setOrderedDate() : void
+    +getStatus() : String
+    +setStatus() : void
+    +getTotal() : BigDecimal
+    +setTotal() : void
+  }
+  class Product <<Entity>> {
+    -productId : Long
+    -id : Long
+    -productName : String
+    -price : BigDecimal
+    -items : List<Item>
+    +getId() : Long
+    +setId() : void
+    +getProductName() : String
+    +setProductName() : void
+    +getPrice() : BigDecimal
+    +setPrice() : void
+    +getItems() : List<Item>
+    +setItems() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -userName : String
+    -orders : List<Order>
+    +getUserName() : String
+    +setUserName() : void
+    +getOrders() : List<Order>
+    +setOrders() : void
+  }
+  class Item <<Entity>> {
+    -id : Long
+    -quantity : int
+    -subTotal : BigDecimal
+    -product : Product
+    -orders : List<Order>
+    +getId() : Long
+    +setId() : void
+    +getQuantity() : int
+    +setQuantity() : void
+    +getSubTotal() : BigDecimal
+    +setSubTotal() : void
+    +getProduct() : Product
+    +setProduct() : void
+  }
+}
+
+package com.rainbowforest.orderservice.feignclient {
+  interface UserClient {
+    +getUserById() : User
+  }
+  interface ProductClient {
+    +getProductById() : Product
+  }
+}
+
+package com.rainbowforest.orderservice.http.header {
+  class HeaderGenerator <<Service>> {
+    +getHeadersForSuccessGetMethod() : HttpHeaders
+    +getHeadersForError() : HttpHeaders
+    +getHeadersForSuccessPostMethod() : HttpHeaders
+  }
+}
+
+package com.rainbowforest.orderservice.redis {
+  class CartRedisRepositoryImpl <<Repository>> {
+    -objectMapper : ObjectMapper
+    -jedis : Jedis
+    +addItemToCart() : void
+    +getCart() : Collection<Object>
+    +deleteItemFromCart() : void
+    +deleteCart() : void
+  }
+  interface CartRedisRepository {
+    +addItemToCart() : void
+    +getCart() : Collection<Object>
+    +deleteItemFromCart() : void
+    +deleteCart() : void
+  }
+}
+
+package com.rainbowforest.orderservice.repository {
+  interface OrderRepository <<Repository>> {
+  }
+  interface ItemRepository <<Repository>> {
+  }
+}
+
+package com.rainbowforest.orderservice.service {
+  class OrderServiceTests {
+    -ORDER_ID : Long
+    -ORDER_STATUS : String
+    -order : Order
+    -orderRepository : OrderRepository
+    -orderService : OrderServiceImpl
+    +setUp() : void
+    +save_order_test() : void
+  }
+  class OrderServiceImpl <<Service>> {
+    -orderRepository : OrderRepository
+    +saveOrder() : Order
+  }
+  class CartServiceImpl <<Service>> {
+    -productClient : ProductClient
+    -cartRedisRepository : CartRedisRepository
+    +addItemToCart() : void
+    +getCart() : List<Object>
+    +changeItemQuantity() : void
+    +deleteItemFromCart() : void
+    +checkIfItemIsExist() : boolean
+    +getAllItemsFromCart() : List<Item>
+    +deleteCart() : void
+  }
+  interface CartService {
+    +addItemToCart() : void
+    +getCart() : List<Object>
+    +changeItemQuantity() : void
+    +deleteItemFromCart() : void
+    +checkIfItemIsExist() : boolean
+    +getAllItemsFromCart() : List<Item>
+    +deleteCart() : void
+  }
+  interface OrderService {
+    +saveOrder() : Order
+  }
+}
+
+package com.rainbowforest.orderservice.utilities {
+  class OrderUtilities {
+    +countTotalPrice() : BigDecimal
+  }
+  class CartUtilities {
+    +getSubTotalForItem() : BigDecimal
+  }
+}
+
+package com.rainbowforest.productcatalogservice {
+  class ProductCatalogServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class ProductCatalogServiceApplication {
+    +main() : void
+  }
+}
+
+package com.rainbowforest.productcatalogservice.controller {
+  class ProductControllerTests {
+    -PRODUCT_NAME : String
+    -PRODUCT_ID : Long
+    -PRODUCT_CATEGORY : String
+    -products : List<Product>
+    -product : Product
+    -mockMvc : MockMvc
+    -productService : ProductService
+    +setUp() : void
+    +get_all_products_controller_should_return200_when_validRequest() : void
+    +get_all_products_controller_should_return404_when_productList_isEmpty() : void
+    +get_all_product_by_category_controller_should_return200_when_validRequest() : void
+    +get_all_product_by_category_controller_should_return404_when_productList_isEmpty() : void
+    +get_one_product_by_id_controller_should_return200_when_validRequest() : void
+    +get_one_product_by_id_controller_should_return404_when_product_isNotExist() : void
+  }
+  class AdminProductControllerTest {
+    -PRODUCT_NAME : String
+    -PRODUCT_CATEGORY : String
+    -mockMvc : MockMvc
+    -productService : ProductService
+    +add_product_controller_should_return201_when_product_isSaved() : void
+    +add_product_controller_should_return400_when_product_isNull() : void
+  }
+  class ProductController <<Controller>> {
+    -productService : ProductService
+    -headerGenerator : HeaderGenerator
+    +getAllProducts() : ResponseEntity<List<Product>>
+    +getAllProductByCategory() : ResponseEntity<List<Product>>
+    +getOneProductById() : ResponseEntity<Product>
+    +getAllProductsByName() : ResponseEntity<List<Product>>
+  }
+  class AdminProductController <<Controller>> {
+    -productService : ProductService
+    -headerGenerator : HeaderGenerator
+  }
+}
+
+package com.rainbowforest.productcatalogservice.entity {
+  class Product <<Entity>> {
+    -id : Long
+    -productName : String
+    -price : BigDecimal
+    -discription : String
+    -category : String
+    -availability : int
+    +getId() : Long
+    +setId() : void
+    +getProductName() : String
+    +setProductName() : void
+    +getPrice() : BigDecimal
+    +setPrice() : void
+    +getDiscription() : String
+    +setDiscription() : void
+  }
+}
+
+package com.rainbowforest.productcatalogservice.http.header {
+  class HeaderGenerator <<Service>> {
+    +getHeadersForSuccessGetMethod() : HttpHeaders
+    +getHeadersForError() : HttpHeaders
+    +getHeadersForSuccessPostMethod() : HttpHeaders
+  }
+}
+
+package com.rainbowforest.productcatalogservice.repository {
+  interface ProductRepository <<Repository>> {
+    +findAllByCategory() : List<Product>
+    +findAllByProductName() : List<Product>
+  }
+}
+
+package com.rainbowforest.productcatalogservice.service {
+  class ProductServiceTests {
+    -PRODUCT_NAME : String
+    -PRODUCT_ID : Long
+    -PRODUCT_CATEGORY : String
+    -products : List<Product>
+    -product : Product
+    -productRepository : ProductRepository
+    -productService : ProductServiceImpl
+    +setUp() : void
+    +get_all_product_test() : void
+    +get_one_by_id_test() : void
+    +get_all_product_by_category_test() : void
+    +get_all_products_by_name_test() : void
+  }
+  interface ProductService {
+    +getAllProduct() : List<Product>
+    +getAllProductByCategory() : List<Product>
+    +getProductById() : Product
+    +getAllProductsByName() : List<Product>
+    +addProduct() : Product
+    +deleteProduct() : void
+  }
+  class ProductServiceImpl <<Service>> {
+    -productRepository : ProductRepository
+    +getAllProduct() : List<Product>
+    +getAllProductByCategory() : List<Product>
+    +getProductById() : Product
+    +getAllProductsByName() : List<Product>
+    +addProduct() : Product
+    +deleteProduct() : void
+  }
+}
+
+package com.rainbowforest.recommendationservice {
+  class ProductRecommendationServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class ProductRecommendationServiceApplication {
+    +main() : void
+  }
+}
+
+package com.rainbowforest.recommendationservice.controller {
+  class RecommendationControllerTests {
+    -PRODUCT_ID : Long
+    -USER_ID : Long
+    -RECOMMENDATION_ID : Long
+    -RATING : Integer
+    -PRODUCT_NAME : String
+    -USER_NAME : String
+    -user : User
+    -product : Product
+    -recommendation : Recommendation
+    -recommendations : List<Recommendation>
+    +setUp() : void
+    +get_all_rating_controller_should_return200_when_validRequest() : void
+    +get_all_rating_controller_should_return404_when_recommendationList_isEmpty() : void
+    +save_recommendations_controller_should_return201_when_user_is_saved() : void
+  }
+  class RecommendationController <<Controller>> {
+    -recommendationService : RecommendationService
+    -productClient : ProductClient
+    -userClient : UserClient
+    -headerGenerator : HeaderGenerator
+  }
+}
+
+package com.rainbowforest.recommendationservice.feignClient {
+  interface UserClient {
+    +getUserById() : User
+  }
+  interface ProductClient {
+    +getProductById() : Product
+  }
+}
+
+package com.rainbowforest.recommendationservice.http.header {
+  class HeaderGenerator <<Service>> {
+    +getHeadersForSuccessGetMethod() : HttpHeaders
+    +getHeadersForError() : HttpHeaders
+    +getHeadersForSuccessPostMethod() : HttpHeaders
+  }
+}
+
+package com.rainbowforest.recommendationservice.model {
+  class Product <<Entity>> {
+    -id : Long
+    -productName : String
+    -recomendations : List<Recommendation>
+    +getProductName() : String
+    +setProductName() : void
+    +getRecomendations() : List<Recommendation>
+    +setRecomendations() : void
+  }
+  class Recommendation <<Entity>> {
+    -id : Long
+    -rating : int
+    -product : Product
+    -user : User
+    +setId() : void
+    +getId() : Long
+    +getRating() : int
+    +setRating() : void
+    +getProduct() : Product
+    +setProduct() : void
+    +getUser() : User
+    +setUser() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -userName : String
+    -recomendations : List<Recommendation>
+    +getUserName() : String
+    +setUserName() : void
+    +getRecomendations() : List<Recommendation>
+    +setRecomendations() : void
+  }
+}
+
+package com.rainbowforest.recommendationservice.repository {
+  interface ProductRepository <<Repository>> {
+  }
+  interface RecommendationRepository <<Repository>> {
+    +findAllRatingByProductName() : List<Recommendation>
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package com.rainbowforest.recommendationservice.service {
+  class RecommendationServiceTests {
+    -RECOMMENDATION_ID : Long
+    -RATING : Integer
+    -PRODUCT_NAME : String
+    -USER_NAME : String
+    -user : User
+    -product : Product
+    -recommendation : Recommendation
+    -recommendations : List<Recommendation>
+    -repository : RecommendationRepository
+    -recommendationService : RecommendationServiceImpl
+    +setUp() : void
+    +get_all_recommendation_by_product_name_test() : void
+    +save_recommendation_test() : void
+  }
+  class RecommendationServiceImpl <<Service>> {
+    -recommendationRepository : RecommendationRepository
+    +saveRecommendation() : Recommendation
+    +getAllRecommendationByProductName() : List<Recommendation>
+    +deleteRecommendation() : void
+    +getRecommendationById() : Recommendation
+  }
+  interface RecommendationService {
+  }
+}
+
+package com.rainbowforest.userservice {
+  class UserServiceApplicationTests {
+    +contextLoads() : void
+  }
+  class UserServiceApplication {
+    +main() : void
+  }
+}
+
+package com.rainbowforest.userservice.controller {
+  class UserControllerTests {
+    -USER_ID : Long
+    -USER_NAME : String
+    -user : User
+    -users : List<User>
+    -mockMvc : MockMvc
+    +get_all_users_controller_should_return200_when_validRequest() : void
+    +get_all_users_controller_should_return404_when_userList_isEmpty() : void
+    +get_user_by_name_controller_should_return200_when_users_isExist() : void
+    +get_user_by_name_controller_should_return404_when_users_is_notExist() : void
+    +get_user_by_id_controller_should_return200_when_users_isExist() : void
+    +get_user_by_id_controller_should_return404_when_users_is_notExist() : void
+    +add_user_controller_should_return201_when_user_is_saved() : void
+    +add_user_controller_should_return400_when_user_isNull() : void
+  }
+  class RegisterController <<Controller>> {
+    -userService : UserService
+    -headerGenerator : HeaderGenerator
+    +addUser() : ResponseEntity<User>
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    -headerGenerator : HeaderGenerator
+    +getAllUsers() : ResponseEntity<List<User>>
+    +getUserByName() : ResponseEntity<User>
+    +getUserById() : ResponseEntity<User>
+    +addUser() : ResponseEntity<User>
+  }
+}
+
+package com.rainbowforest.userservice.entity {
+  class UserRole <<Entity>> {
+    -id : Long
+    -roleName : String
+    -users : List<User>
+    +getId() : Long
+    +setId() : void
+    +getRoleName() : String
+    +setRoleName() : void
+    +getUsers() : List<User>
+    +setUsers() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -userName : String
+    -userPassword : String
+    -active : int
+    -userDetails : UserDetails
+    -role : UserRole
+    +getId() : Long
+    +setId() : void
+    +getUserName() : String
+    +setUserName() : void
+    +getUserPassword() : String
+    +setUserPassword() : void
+    +getActive() : int
+    +setActive() : void
+  }
+  class UserDetails <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -email : String
+    -phoneNumber : String
+    -street : String
+    -streetNumber : String
+    -zipCode : String
+    -locality : String
+    -country : String
+    +getId() : Long
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+}
+
+package com.rainbowforest.userservice.http.header {
+  class HeaderGenerator <<Service>> {
+    +getHeadersForSuccessGetMethod() : HttpHeaders
+    +getHeadersForError() : HttpHeaders
+    +getHeadersForSuccessPostMethod() : HttpHeaders
+  }
+}
+
+package com.rainbowforest.userservice.repository {
+  interface UserRoleRepository <<Repository>> {
+  }
+  interface UserDetailsRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+}
+
+package com.rainbowforest.userservice.service {
+  class UserServiceTests {
+    -USER_ID : Long
+    -USER_NAME : String
+    -user : User
+    -userList : List<User>
+    -userRepository : UserRepository
+    -userService : UserServiceImpl
+    +setUp() : void
+    +get_all_users_test() : void
+    +get_user_by_id_test() : void
+    +get_user_by_name_test() : void
+  }
+  interface UserService {
+  }
+  class UserServiceImpl <<Service>> {
+    -userRepository : UserRepository
+    -userRoleRepository : UserRoleRepository
+    +getAllUsers() : List<User>
+    +getUserById() : User
+    +getUserByName() : User
+    +saveUser() : User
+  }
+}
+
+' --- Relatii ---
+ProductControllerTests --> Product
+ProductControllerTests --> ProductService
+AdminProductControllerTest --> Product
+AdminProductControllerTest --> ProductService
+ProductServiceTests --> Product
+ProductServiceTests --> ProductRepository
+ProductRepository --> Product
+ProductController --> Product
+ProductController --> HeaderGenerator
+ProductController --> ProductService
+AdminProductController --> Product
+AdminProductController --> HeaderGenerator
+AdminProductController --> ProductService
+ProductService --> Product
+ProductServiceImpl ..|> ProductService
+ProductServiceImpl --> Product
+ProductServiceImpl --> ProductRepository
+ApiConfig --> SessionFilter
+RecommendationControllerTests --> ProductClient
+RecommendationControllerTests --> UserClient
+RecommendationControllerTests --> Product
+RecommendationControllerTests --> Recommendation
+RecommendationControllerTests --> User
+RecommendationControllerTests --> RecommendationService
+RecommendationServiceTests --> Product
+RecommendationServiceTests --> Recommendation
+RecommendationServiceTests --> User
+RecommendationServiceTests --> RecommendationRepository
+ProductRepository --> Product
+RecommendationRepository --> Recommendation
+UserRepository --> User
+UserClient --> User
+ProductClient --> Product
+RecommendationController --> ProductClient
+RecommendationController --> UserClient
+RecommendationController --> HeaderGenerator
+RecommendationController --> Product
+RecommendationController --> Recommendation
+RecommendationController --> User
+RecommendationController --> RecommendationService
+RecommendationServiceImpl ..|> RecommendationService
+RecommendationServiceImpl --> Recommendation
+RecommendationServiceImpl --> RecommendationRepository
+RecommendationService --> Recommendation
+OrderControllerTest --> Item
+OrderControllerTest --> Order
+OrderControllerTest --> Product
+OrderControllerTest --> User
+OrderControllerTest --> UserClient
+OrderControllerTest --> CartService
+OrderControllerTest --> OrderService
+OrderServiceTests --> Order
+OrderServiceTests --> OrderRepository
+OrderRepository --> Order
+ItemRepository --> Item
+CartRedisRepositoryImpl ..|> CartRedisRepository
+UserClient --> User
+ProductClient --> Product
+OrderController --> Item
+OrderController --> Order
+OrderController --> User
+OrderController --> UserClient
+OrderController --> HeaderGenerator
+OrderController --> CartService
+OrderController --> OrderService
+OrderController --> OrderUtilities
+CartController --> HeaderGenerator
+CartController --> CartService
+OrderUtilities --> Item
+CartUtilities --> Product
+OrderServiceImpl ..|> OrderService
+OrderServiceImpl --> Order
+OrderServiceImpl --> OrderRepository
+CartServiceImpl ..|> CartService
+CartServiceImpl --> Item
+CartServiceImpl --> Product
+CartServiceImpl --> ProductClient
+CartServiceImpl --> CartRedisRepository
+CartServiceImpl --> CartUtilities
+CartService --> Item
+OrderService --> Order
+UserControllerTests --> User
+UserControllerTests --> UserService
+UserServiceTests --> User
+UserServiceTests --> UserRepository
+UserRoleRepository --> UserRole
+UserDetailsRepository --> UserDetails
+UserRepository --> User
+RegisterController --> User
+RegisterController --> HeaderGenerator
+RegisterController --> UserService
+UserController --> User
+UserController --> HeaderGenerator
+UserController --> UserService
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRole
+UserServiceImpl --> UserRepository
+UserServiceImpl --> UserRoleRepository
+
+@enduml

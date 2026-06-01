@@ -1,0 +1,67 @@
+@startuml
+
+package com.techprimers.springbatchexample1 {
+  class SpringBatchExample1ApplicationTests {
+    +contextLoads() : void
+  }
+  class SpringBatchExample1Application {
+    +main() : void
+  }
+}
+
+package com.techprimers.springbatchexample1.batch {
+  class Processor {
+    +process() : User
+  }
+  class DBWriter {
+    -userRepository : UserRepository
+    +write() : void
+  }
+}
+
+package com.techprimers.springbatchexample1.config {
+  class SpringBatchConfig {
+    +job() : Job
+    +itemReader() : FlatFileItemReader<User>
+    +lineMapper() : LineMapper<User>
+  }
+}
+
+package com.techprimers.springbatchexample1.controller {
+  class LoadController <<Controller>> {
+    +load() : BatchStatus
+  }
+}
+
+package com.techprimers.springbatchexample1.model {
+  class User <<Entity>> {
+    -id : Integer
+    -name : String
+    -dept : String
+    -salary : Integer
+    -time : Date
+    -sb : StringBuffer
+    +getId() : Integer
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getDept() : String
+    +setDept() : void
+    +getSalary() : Integer
+    +setSalary() : void
+  }
+}
+
+package com.techprimers.springbatchexample1.repository {
+  interface UserRepository {
+  }
+}
+
+' --- Relatii ---
+UserRepository --> User
+SpringBatchConfig --> User
+Processor --> User
+DBWriter --> User
+DBWriter --> UserRepository
+
+@enduml

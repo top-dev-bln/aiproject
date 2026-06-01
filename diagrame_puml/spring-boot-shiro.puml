@@ -1,0 +1,189 @@
+@startuml
+
+package com.millinch.spring.boot.autoconfigure.shiro {
+  class ShiroJdbcRealmProperties {
+    -enabled : boolean
+    -authenticationQuery : String
+    -userRolesQuery : String
+    -permissionsQuery : String
+    -permissionsLookupEnabled : boolean
+    +isEnabled() : boolean
+    +setEnabled() : void
+    +getAuthenticationQuery() : String
+    +setAuthenticationQuery() : void
+    +getUserRolesQuery() : String
+    +setUserRolesQuery() : void
+    +getPermissionsQuery() : String
+    +setPermissionsQuery() : void
+  }
+  class ShiroSessionProperties {
+    -globalSessionTimeout : long
+    -deleteInvalidSessions : boolean
+    -validationInterval : long
+    -validationSchedulerEnabled : boolean
+    -activeSessionsCacheName : String
+    +getGlobalSessionTimeout() : long
+    +setGlobalSessionTimeout() : void
+    +isDeleteInvalidSessions() : boolean
+    +setDeleteInvalidSessions() : void
+    +getValidationInterval() : long
+    +setValidationInterval() : void
+    +isValidationSchedulerEnabled() : boolean
+    +setValidationSchedulerEnabled() : void
+  }
+  class JdbcPermissionDefinitionsLoader {
+    -LOGGER : Logger
+    -PERMISSION_STRING : String
+    -dataSource : DataSource
+    -sql : String
+    +setDataSource() : void
+    +setSql() : void
+    +isSingleton() : boolean
+  }
+  class FormSignInFilter {
+    +setFailureAttribute() : void
+    +redirectToLogin() : void
+  }
+  class ShiroCookieProperties {
+    -name : String
+    -value : String
+    -maxAge : int
+    -version : int
+    -secure : boolean
+    -httpOnly : boolean
+    -cipherKey : String
+    -encryptionCipherKey : String
+    -decryptionCipherKey : String
+    +getName() : String
+    +setName() : void
+    +getValue() : String
+    +setValue() : void
+    +getMaxAge() : int
+    +setMaxAge() : void
+    +getVersion() : int
+    +setVersion() : void
+  }
+  class ShiroWebMvcConfigurerAdapter {
+    +addArgumentResolvers() : void
+  }
+  class ShiroAutoConfiguration {
+    -properties : ShiroProperties
+    -signInProperties : ShiroSignInProperties
+    -shiroCookieProperties : ShiroCookieProperties
+    -shiroSessionProperties : ShiroSessionProperties
+    -shiroJdbcRealmProperties : ShiroJdbcRealmProperties
+    -cipherService : CipherService
+    -serializer : Serializer<PrincipalCollection>
+    -listeners : Collection<SessionListener>
+    -jdbcPermissionDefinitionsLoader : JdbcPermissionDefinitionsLoader
+    -shiroFilterCustomizer : ShiroFilterCustomizer
+    +jdbcRealm() : Realm
+    +realm() : Realm
+    +ehcacheManager() : CacheManager
+    +rememberMeCookie() : Cookie
+    +rememberMeManager() : RememberMeManager
+    +sessionDAO() : SessionDAO
+    +quartzSessionValidationScheduler() : SessionValidationScheduler
+    +sessionValidationScheduler() : SessionValidationScheduler
+  }
+  class ShiroSignInProperties {
+    -userParam : String
+    -passwordParam : String
+    -rememberMeParam : String
+    +getUserParam() : String
+    +setUserParam() : void
+    +getPasswordParam() : String
+    +setPasswordParam() : void
+    +getRememberMeParam() : String
+    +setRememberMeParam() : void
+  }
+  interface ShiroFilterCustomizer {
+  }
+  class ShiroConfiguration {
+    +lifecycleBeanPostProcessor() : LifecycleBeanPostProcessor
+    +defaultAdvisorAutoProxyCreator() : DefaultAdvisorAutoProxyCreator
+    +cacheManager() : CacheManager
+    +securityManager() : DefaultSecurityManager
+    +getAuthorizationAttributeSourceAdvisor() : AuthorizationAttributeSourceAdvisor
+  }
+  class ShiroProperties {
+    -loginUrl : String
+    -successUrl : String
+    -unauthorizedUrl : String
+    -hashAlgorithmName : String
+    -hashIterations : int
+    -retryMax : int
+    -storedCredentialsHexEncoded : boolean
+    -filterChainSql : String
+    -ehcache : Ehcache
+    -cacheManagerConfigFile : String
+    +setRealmClass() : void
+    +getLoginUrl() : String
+    +setLoginUrl() : void
+    +getSuccessUrl() : String
+    +setSuccessUrl() : void
+    +getUnauthorizedUrl() : String
+    +setUnauthorizedUrl() : void
+    +getHashAlgorithmName() : String
+  }
+  class RetryLimitHashedCredentialsMatcher {
+    -LOGGER : Logger
+    -retryMax : int
+    +doCredentialsMatch() : boolean
+    +getRetryMax() : int
+    +setRetryMax() : void
+  }
+}
+
+package com.millinch.spring.boot.autoconfigure.shiro.annotation {
+  class SessionUserArgumentResolver {
+    +supportsParameter() : boolean
+    +resolveArgument() : Object
+  }
+  interface EnableShiroWebSupport {
+    +selectImports() : String[]
+  }
+  interface SessionUser {
+  }
+}
+
+package com.millinch.springboot.shiro.sample {
+  class SampleApplication {
+    +main() : void
+  }
+}
+
+package com.millinch.springboot.shiro.sample.domain {
+  class User {
+    -username : String
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+}
+
+package com.millinch.springboot.shiro.sample.realm {
+  class FirstRealm {
+  }
+}
+
+package com.millinch.springboot.shiro.sample.web {
+  class MyFilter {
+    +init() : void
+    +doFilter() : void
+    +destroy() : void
+  }
+  class SampleApi <<Controller>> {
+    +roleConfig() : ResponseEntity
+    +userAddition() : ResponseEntity
+  }
+}
+
+' --- Relatii ---
+ShiroWebMvcConfigurerAdapter --> SessionUserArgumentResolver
+ShiroAutoConfiguration --> EnableShiroWebSupport
+EnableShiroWebSupport --> ShiroWebMvcConfigurerAdapter
+
+@enduml

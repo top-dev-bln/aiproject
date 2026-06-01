@@ -1,0 +1,187 @@
+@startuml
+
+package com.dearbinge.data.api {
+  interface SecurityService {
+    +getSecurityByKey() : Security
+  }
+}
+
+package com.dearbinge.data.dao {
+  interface SecurityMapper {
+  }
+}
+
+package com.dearbinge.data.domain {
+  class ParkingBasicDataSyncResponse {
+    -park_id : String
+    -message : String
+    -code : int
+    -successful : Boolean
+    +getPark_id() : String
+    +setPark_id() : void
+    +getMessage() : String
+    +setMessage() : void
+    +getCode() : int
+    +setCode() : void
+    +getSuccessful() : Boolean
+    +setSuccessful() : void
+  }
+  class ErrorResponse {
+    -code : String
+    -msg : String
+    -sub_code : String
+    -sub_msg : String
+    +getCode() : String
+    +setCode() : void
+    +getMsg() : String
+    +setMsg() : void
+    +getSub_code() : String
+    +setSub_code() : void
+    +getSub_msg() : String
+    +setSub_msg() : void
+  }
+}
+
+package com.dearbinge.data.pojo {
+  class Security {
+    -serialVersionUID : long
+    -fSecuritykey : String
+    -fSecurityvalue : String
+    -fMerchantid : String
+    -fTag : String
+    -fIsdelete : Integer
+    -fCreateuser : String
+    -fCreatetime : Date
+    -fUpdateuser : String
+    -fUpdatetime : Date
+    +getfSecuritykey() : String
+    +setfSecuritykey() : void
+    +getfSecurityvalue() : String
+    +setfSecurityvalue() : void
+    +getfMerchantid() : String
+    +setfMerchantid() : void
+    +getfTag() : String
+    +setfTag() : void
+  }
+}
+
+package com.dearbinge.data.register {
+  class mainloader {
+    +main() : void
+  }
+}
+
+package com.dearbinge.data.service.impl {
+  class SecurityServiceImpl <<Service>> {
+    -securityMapper : SecurityMapper
+    +getSecurityByKey() : Security
+  }
+}
+
+package com.dearbinge.openapi {
+  class ParkingSpotDataTrans <<Controller>> {
+    -securityService : SecurityService
+    +getSession() : void
+    +getUserName() : void
+    +create() : void
+    +addInterceptors() : void
+  }
+  class HttpSessionConfig {
+  }
+}
+
+package com.dearbinge.security.interceptor {
+  class UserSecurityInterceptor {
+    -context : ClassPathXmlApplicationContext
+    +afterCompletion() : void
+    +postHandle() : void
+    +preHandle() : boolean
+  }
+}
+
+package com.dearbinge.service {
+  interface InfrastructDeal {
+    +accept() : String
+  }
+}
+
+package com.dearbinge.service.impl {
+  class ParkingBasicDataSync {
+    +accept() : String
+  }
+}
+
+package com.dearbinge.utils {
+  class JsonUtil {
+    -mapper : ObjectMapper
+    -singleInstance : Boolean
+    +convertObject2String() : String
+    +getJsonNodeByKey() : JsonNode
+  }
+  enum ReturnCode {
+    -code : int
+    -propertyDescription : String
+    +getCode() : int
+  }
+  class RandomUtil {
+    -ALLCHAR : String
+    -LETTERCHAR : String
+    -NUMBERCHAR : String
+    +generateString() : String
+    +generateMixString() : String
+    +generateLowerString() : String
+    +generateUpperString() : String
+    +generateZeroString() : String
+    +toFixdLengthString() : String
+    +getNotSimple() : int
+  }
+  class Constants {
+    -SIGN_METHOD_MD5 : String
+    -SIGN_METHOD_HMAC : String
+    -CHARSET_UTF8 : String
+    -CONTENT_ENCODING_GZIP : String
+    -DIFF_TIME_OVER : long
+    -ERROR_RESPONSE : String
+    -PARKING_BASIC_DATA_SYNC_RESPONSE : String
+  }
+}
+
+package org.dearbinge.client.test {
+  class App {
+    +main() : void
+  }
+}
+
+package org.dearbinge.openapi {
+  class App {
+    +main() : void
+  }
+}
+
+' --- Relatii ---
+App --> Constants
+App --> JsonUtil
+UserSecurityInterceptor --> SecurityService
+UserSecurityInterceptor --> ErrorResponse
+UserSecurityInterceptor --> Security
+UserSecurityInterceptor --> JsonUtil
+UserSecurityInterceptor --> ReturnCode
+SecurityMapper --> Security
+SecurityServiceImpl ..|> SecurityService
+SecurityServiceImpl --> SecurityService
+SecurityServiceImpl --> SecurityMapper
+SecurityServiceImpl --> Security
+App --> ParkingSpotDataTrans
+ParkingSpotDataTrans --> SecurityService
+ParkingSpotDataTrans --> UserSecurityInterceptor
+ParkingSpotDataTrans --> InfrastructDeal
+ParkingBasicDataSync ..|> InfrastructDeal
+ParkingBasicDataSync --> ParkingBasicDataSyncResponse
+ParkingBasicDataSync --> InfrastructDeal
+ParkingBasicDataSync --> JsonUtil
+ParkingBasicDataSync --> ReturnCode
+ParkingBasicDataSyncResponse --> Constants
+ErrorResponse --> Constants
+SecurityService --> Security
+
+@enduml

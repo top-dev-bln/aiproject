@@ -1,0 +1,57 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, content management domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include base, category, dashboard. Core business data revolves around AuthenticationBean, Tag. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to organize items into categories, so that users can easily navigate and filter available items.",
+        "services": [
+          "CategoryService"
+        ],
+        "controllers": [
+          "CategoryController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [
+          "JwtAuthService"
+        ],
+        "controllers": [
+          "JwtAuthController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "DefaultUserDetailsService",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [
+          "AccountInfoStrategyGithub"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to create and manage tasks, so that I can organize and track my work effectively.",
+        "services": [
+          "TagTask"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    BaseController[\"BaseController\"]\n    CategoryController[\"CategoryController\"]\n    DashboardController[\"DashboardController\"]\n    JwtAuthController[\"JwtAuthController\"]\n    NotesController[\"NotesController\"]\n    OAuth2Controller[\"OAuth2Controller\"]\n    RegisterBO[\"RegisterBO\"]\n    TagController[\"TagController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AccountInfoStrategyGithub[\"AccountInfoStrategyGithub\"]\n    AccountInfoStrategyQQ[\"AccountInfoStrategyQQ\"]\n    AccountInfoStrategyWeibo[\"AccountInfoStrategyWeibo\"]\n    CategoryService[\"CategoryService\"]\n    DashboardService[\"DashboardService\"]\n    DefaultUserDetailsService[\"DefaultUserDetailsService\"]\n    InitNotesDataService[\"InitNotesDataService\"]\n    JwtAuthService[\"JwtAuthService\"]\n    NotesService[\"NotesService\"]\n    OAuth2ClientService[\"OAuth2ClientService\"]\n    OAuth2Service[\"OAuth2Service\"]\n    TagService[\"TagService\"]\n    TagTask[\"TagTask\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    AuthenticationBean[\"AuthenticationBean\"]\n    CategoryRepository[\"CategoryRepository\"]\n    NotesRepository[\"NotesRepository\"]\n    Tag[\"Tag\"]\n    TagRepository[\"TagRepository\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    CustomAuthenticationFilter[\"CustomAuthenticationFilter\"]\n    JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n    JwtTokenUtil[\"JwtTokenUtil\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  subgraph Infrastructure\n    AuthenticationEntryPointConfig[\"AuthenticationEntryPointConfig\"]\n    RestTemplateConfig[\"RestTemplateConfig\"]\n    ThreadPoolConfig[\"ThreadPoolConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

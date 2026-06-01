@@ -1,0 +1,72 @@
+@startuml
+
+package com.example.webfluxdemo {
+  class WebfluxDemoApplicationTests {
+    -webTestClient : WebTestClient
+    +testCreateTweet() : void
+    +testGetAllTweets() : void
+    +testGetSingleTweet() : void
+    +testUpdateTweet() : void
+    +testDeleteTweet() : void
+  }
+  class WebfluxDemoApplication {
+    +main() : void
+  }
+}
+
+package com.example.webfluxdemo.controller {
+  class TweetController <<Controller>> {
+    -tweetRepository : TweetRepository
+    +getAllTweets() : Flux<Tweet>
+    +createTweets() : Mono<Tweet>
+    +getTweetById() : Mono<ResponseEntity<Tweet>>
+    +updateTweet() : Mono<ResponseEntity<Tweet>>
+    +deleteTweet() : Mono<ResponseEntity<Void>>
+    +streamAllTweets() : Flux<Tweet>
+    +handleDuplicateKeyException() : ResponseEntity
+    +handleTweetNotFoundException() : ResponseEntity
+  }
+}
+
+package com.example.webfluxdemo.exception {
+  class TweetNotFoundException {
+  }
+}
+
+package com.example.webfluxdemo.model {
+  class Tweet {
+    -id : String
+    -text : String
+    -createdAt : Date
+    +getId() : String
+    +setId() : void
+    +getText() : String
+    +setText() : void
+    +getCreatedAt() : Date
+    +setCreatedAt() : void
+  }
+}
+
+package com.example.webfluxdemo.payload {
+  class ErrorResponse {
+    -message : String
+    +getMessage() : String
+    +setMessage() : void
+  }
+}
+
+package com.example.webfluxdemo.repository {
+  interface TweetRepository <<Repository>> {
+  }
+}
+
+' --- Relatii ---
+WebfluxDemoApplicationTests --> Tweet
+WebfluxDemoApplicationTests --> TweetRepository
+TweetRepository --> Tweet
+TweetController --> TweetNotFoundException
+TweetController --> Tweet
+TweetController --> ErrorResponse
+TweetController --> TweetRepository
+
+@enduml

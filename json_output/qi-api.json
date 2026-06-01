@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, e-commerce domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include auth check, cos manager, daily check in. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthCheck"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to browse and apply for job postings, so that I can find employment opportunities matching my skills.",
+        "services": [],
+        "controllers": [
+          "DailyCheckInJob"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "InnerUserInterfaceInvokeService"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [],
+        "controllers": [
+          "Knife4jConfig"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthCheck[\"AuthCheck\"]\n    CosManager[\"CosManager\"]\n    DailyCheckIn[\"DailyCheckIn\"]\n    DailyCheckInController[\"DailyCheckInController\"]\n    DailyCheckInJob[\"DailyCheckInJob\"]\n    ErrorCode[\"ErrorCode\"]\n    FileController[\"FileController\"]\n    GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n    InnerUserInterfaceInvokeService[\"InnerUserInterfaceInvokeService\"]\n    InterfaceInfoController[\"InterfaceInfoController\"]\n    Knife4jConfig[\"Knife4jConfig\"]\n    LogInterceptor[\"LogInterceptor\"]\n    NetUtils[\"NetUtils\"]\n    OrderController[\"OrderController\"]\n    ProductInfoController[\"ProductInfoController\"]\n    RedissonConfig[\"RedissonConfig\"]\n    RequestParamsField[\"RequestParamsField\"]\n    ResponseUtils[\"ResponseUtils\"]\n    ServiceController[\"ServiceController\"]\n    User[\"User\"]\n    UserController[\"UserController\"]\n    UserInterfaceInvokeServiceImpl[\"UserInterfaceInvokeServiceImpl\"]\n    WxPayUtil[\"WxPayUtil\"]\n  end\n  subgraph Services\n    AlipayOrderServiceImpl[\"AlipayOrderServiceImpl\"]\n    DailyCheckInService[\"DailyCheckInService\"]\n    DailyCheckInServiceImpl[\"DailyCheckInServiceImpl\"]\n    InnerInterfaceInfoService[\"InnerInterfaceInfoService\"]\n    InnerInterfaceInfoServiceImpl[\"InnerInterfaceInfoServiceImpl\"]\n    InnerUserService[\"InnerUserService\"]\n    InnerUserServiceImpl[\"InnerUserServiceImpl\"]\n    InterfaceInfoService[\"InterfaceInfoService\"]\n    InterfaceInfoServiceImpl[\"InterfaceInfoServiceImpl\"]\n    OrderService[\"OrderService\"]\n    OrderServiceImpl[\"OrderServiceImpl\"]\n    PaymentInfoService[\"PaymentInfoService\"]\n    PaymentInfoServiceImpl[\"PaymentInfoServiceImpl\"]\n    ProductInfoService[\"ProductInfoService\"]\n    ProductInfoServiceImpl[\"ProductInfoServiceImpl\"]\n    ProductOrderService[\"ProductOrderService\"]\n    RechargeActivityService[\"RechargeActivityService\"]\n    RechargeActivityServiceImpl[\"RechargeActivityServiceImpl\"]\n    UserService[\"UserService\"]\n    UserServiceImpl[\"UserServiceImpl\"]\n    WxOrderServiceImpl[\"WxOrderServiceImpl\"]\n  end\n  subgraph Security\n    AuthInterceptor[\"AuthInterceptor\"]\n    CacheBodyGatewayFilter[\"CacheBodyGatewayFilter\"]\n    GatewayGlobalFilter[\"GatewayGlobalFilter\"]\n  end\n  subgraph Infrastructure\n    AliPayAccountConfig[\"AliPayAccountConfig\"]\n    CorsConfig[\"CorsConfig\"]\n    CosClientConfig[\"CosClientConfig\"]\n    EmailConfig[\"EmailConfig\"]\n    JsonConfig[\"JsonConfig\"]\n    MyBatisPlusConfig[\"MyBatisPlusConfig\"]\n    PayConfiguration[\"PayConfiguration\"]\n    RedisTemplateConfig[\"RedisTemplateConfig\"]\n    WxPayAccountConfig[\"WxPayAccountConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

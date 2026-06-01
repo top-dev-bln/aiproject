@@ -1,0 +1,46 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the blockchain, banking domain. It serves User as its primary actors. The main business capabilities include dog, dogs, db dog. Core business data revolves around DogDao, HibernateDogDao, InMemoryDogDao, JdbcDogDao.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage dog operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "DbDogService",
+          "DogService",
+          "TransactionalDogService"
+        ],
+        "controllers": [
+          "DogEndpoint"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage dogs operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "DogEndpoints"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with db dog functionality, so that the system fulfills my needs.",
+        "services": [
+          "DbDogService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with transactional dog functionality, so that the system fulfills my needs.",
+        "services": [
+          "TransactionalDogService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    DogEndpoint[\"DogEndpoint\"]\n    DogEndpoints[\"DogEndpoints\"]\n  end\n  subgraph Services\n    DbDogService[\"DbDogService\"]\n    DogService[\"DogService\"]\n    TransactionalDogService[\"TransactionalDogService\"]\n  end\n  subgraph Data_Access\n    DogDao[\"DogDao\"]\n    HibernateDogDao[\"HibernateDogDao\"]\n    InMemoryDogDao[\"InMemoryDogDao\"]\n    JdbcDogDao[\"JdbcDogDao\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+  }
+}

@@ -1,0 +1,255 @@
+@startuml
+
+package com.bfwg {
+  class ApplicationTest {
+    +contextLoads() : void
+  }
+  class Application {
+    +main() : void
+  }
+}
+
+package com.bfwg.common {
+  class TimeProvider {
+    -serialVersionUID : long
+    +now() : Date
+  }
+}
+
+package com.bfwg.config {
+  class WebSecurityConfig {
+    -passwordEncoder : PasswordEncoder
+    -jwtUserDetailsService : CustomUserDetailsService
+    -restAuthenticationEntryPoint : RestAuthenticationEntryPoint
+    +configureGlobal() : void
+    +authenticationManager() : AuthenticationManager
+    +filterChain() : SecurityFilterChain
+    +webSecurityCustomizer() : WebSecurityCustomizer
+  }
+  class CryptoConfig {
+    +passwordEncoder() : PasswordEncoder
+  }
+}
+
+package com.bfwg.model {
+  class UserTokenState {
+    -access_token : String
+    -expires_in : Long
+    +getAccess_token() : String
+    +setAccess_token() : void
+    +getExpires_in() : Long
+    +setExpires_in() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -username : String
+    -password : String
+    -firstName : String
+    -lastName : String
+    -email : String
+    -phoneNumber : String
+    -enabled : boolean
+    -lastPasswordResetDate : Timestamp
+    -authorities : List<Authority>
+    +getId() : Long
+    +setId() : void
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+    +getFirstName() : String
+    +setFirstName() : void
+  }
+  class Authority <<Entity>> {
+    +getAuthority() : String
+    +setName() : void
+    +getName() : UserRoleName
+    +getId() : Long
+    +setId() : void
+  }
+  enum UserRoleName {
+  }
+}
+
+package com.bfwg.repository {
+  interface UserRepository {
+  }
+}
+
+package com.bfwg.rest {
+  class UserControllerTest {
+    -mvc : MockMvc
+    -context : WebApplicationContext
+    +setup() : void
+    +shouldGetUnauthorizedWithoutRole() : void
+    +getPersonsSuccessfullyWithUserRole() : void
+    +getPersonsFailWithAnonymousUser() : void
+    +getAllUserSuccessWithAdminRole() : void
+    +getAllUserFailWithUserRole() : void
+  }
+  class AuthenticationControllerTest {
+    -mvc : MockMvc
+    -timeProviderMock : TimeProvider
+    -TEST_USERNAME : String
+    -tokenHelper : TokenHelper
+    -userDetailsService : CustomUserDetailsService
+    -authenticationController : AuthenticationController
+    -context : WebApplicationContext
+    +setup() : void
+    +shouldGetEmptyTokenStateWhenGivenValidOldToken() : void
+    +shouldRefreshNotExpiredWebToken() : void
+    +shouldNotRefreshExpiredWebToken() : void
+  }
+  class AuthenticationController <<Controller>> {
+    -authenticationManager : AuthenticationManager
+    -userService : UserService
+    -authentication : Authentication
+    -oldPassword : String
+    -newPassword : String
+  }
+  class UserController <<Controller>> {
+    -userService : UserService
+    +loadById() : User
+    +loadAll() : List<User>
+    +user() : User
+  }
+}
+
+package com.bfwg.security {
+  class TokenHelperTest {
+    -TEST_USERNAME : String
+    -tokenHelper : TokenHelper
+    -timeProviderMock : TimeProvider
+    -token : String
+    -laterToken : String
+    -mobileToken : String
+    -token : String
+    -now : Date
+    -token : String
+    +init() : void
+    +testGenerateTokenGeneratesDifferentTokensForDifferentCreationDates() : void
+    +tokenShouldExpire() : void
+    +getUsernameFromToken() : void
+    +getCreatedDateFromToken() : void
+    +expiredTokenCannotBeRefreshed() : void
+    +changedPasswordCannotBeRefreshed() : void
+    +canRefreshToken() : void
+  }
+  class UserDetailsDummy {
+    -username : String
+    +getPassword() : String
+    +getUsername() : String
+    +isAccountNonExpired() : boolean
+    +isAccountNonLocked() : boolean
+    +isCredentialsNonExpired() : boolean
+    +isEnabled() : boolean
+  }
+  class TokenHelper {
+    -APP_NAME : String
+    -SECRET : String
+    -EXPIRES_IN : int
+    -AUTH_HEADER : String
+    -SIGNATURE_ALGORITHM : MacAlgorithm
+    -claims : Claims
+    -claims : Claims
+    -claims : Claims
+    -username : String
+    -created : Date
+    +getUsernameFromToken() : String
+    +getIssuedAtDateFromToken() : Date
+    +refreshToken() : String
+    +generateToken() : String
+    +getExpiredIn() : int
+    +validateToken() : Boolean
+    +getToken() : String
+    +getAuthHeaderFromHeader() : String
+  }
+}
+
+package com.bfwg.security.auth {
+  class TokenBasedAuthentication {
+    -serialVersionUID : long
+    -token : String
+    -principle : UserDetails
+    +getToken() : String
+    +setToken() : void
+    +isAuthenticated() : boolean
+    +getCredentials() : Object
+    +getPrincipal() : UserDetails
+  }
+  class JwtAuthenticationRequest {
+    -username : String
+    -password : String
+    +getUsername() : String
+    +setUsername() : void
+    +getPassword() : String
+    +setPassword() : void
+  }
+  class TokenAuthenticationFilter {
+    -logger : Log
+    -tokenHelper : TokenHelper
+    -userDetailsService : UserDetailsService
+    +doFilterInternal() : void
+  }
+  class RestAuthenticationEntryPoint {
+    +commence() : void
+  }
+}
+
+package com.bfwg.service {
+  interface UserService {
+  }
+}
+
+package com.bfwg.service.impl {
+  class UserServiceImpl <<Service>> {
+    -LOGGER : Log
+    -userRepository : UserRepository
+    -passwordEncoder : PasswordEncoder
+    -authenticationManager : AuthenticationManager
+    -userDetailsService : UserDetailsService
+    +findByUsername() : User
+    +findById() : User
+    +findAll() : List<User>
+    +changePassword() : void
+  }
+  class CustomUserDetailsService <<Service>> {
+    -LOGGER : Log
+    -userRepository : UserRepository
+    +loadUserByUsername() : UserDetails
+  }
+}
+
+' --- Relatii ---
+TokenHelperTest --> TimeProvider
+TokenHelperTest --> User
+AuthenticationControllerTest --> TimeProvider
+AuthenticationControllerTest --> Authority
+AuthenticationControllerTest --> User
+AuthenticationControllerTest --> UserRoleName
+AuthenticationControllerTest --> TokenHelper
+AuthenticationControllerTest --> CustomUserDetailsService
+UserRepository --> User
+WebSecurityConfig --> TokenHelper
+WebSecurityConfig --> RestAuthenticationEntryPoint
+WebSecurityConfig --> TokenAuthenticationFilter
+WebSecurityConfig --> CustomUserDetailsService
+TokenHelper --> TimeProvider
+TokenHelper --> User
+TokenAuthenticationFilter --> TokenHelper
+UserService --> User
+UserServiceImpl ..|> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserRepository
+UserServiceImpl --> UserService
+CustomUserDetailsService --> User
+CustomUserDetailsService --> UserRepository
+AuthenticationController --> User
+AuthenticationController --> UserTokenState
+AuthenticationController --> TokenHelper
+AuthenticationController --> JwtAuthenticationRequest
+AuthenticationController --> UserService
+UserController --> User
+UserController --> UserService
+
+@enduml

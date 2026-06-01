@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure domain. It serves API Consumer as its primary actors. The main business capabilities include gateway management, department management, department repository. Core business data revolves around Department, Employee, Organization.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to access services through a unified entry point, so that routing and load balancing are handled transparently.",
+        "services": [],
+        "controllers": [
+          "GatewayManagement"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage gateway management operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "GatewayManagement"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to interact with department management functionality, so that the system fulfills my needs.",
+        "services": [
+          "DepartmentManagement"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to interact with department repository functionality, so that the system fulfills my needs.",
+        "services": [
+          "DepartmentRepository"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to interact with employee management functionality, so that the system fulfills my needs.",
+        "services": [
+          "EmployeeManagement"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    GatewayManagement[\"GatewayManagement\"]\n  end\n  subgraph Services\n    DepartmentManagement[\"DepartmentManagement\"]\n    DepartmentRepository[\"DepartmentRepository\"]\n    EmployeeManagement[\"EmployeeManagement\"]\n    EmployeeRepository[\"EmployeeRepository\"]\n    OrganizationExternalAPI[\"OrganizationExternalAPI\"]\n    OrganizationManagement[\"OrganizationManagement\"]\n    OrganizationRepository[\"OrganizationRepository\"]\n  end\n  subgraph Data_Access\n    Department[\"Department\"]\n    Employee[\"Employee\"]\n    Organization[\"Organization\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access"
+  }
+}

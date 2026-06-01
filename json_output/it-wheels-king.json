@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include test complex report, test csv and excel export, test ftp server. Core business data revolves around ComplexExcelReportUtil, FtpDownloadParam.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to generate and view reports, so that I can make data-driven decisions based on current metrics.",
+        "services": [],
+        "controllers": [
+          "TestComplexReportController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage test complex report operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestComplexReportController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage test csv and excel export operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestCsvAndExcelExportController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to manage test ftp server operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestFtpServerController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    TestComplexReportController[\"TestComplexReportController\"]\n    TestCsvAndExcelExportController[\"TestCsvAndExcelExportController\"]\n    TestFtpServerController[\"TestFtpServerController\"]\n    TestSeaweedFsController[\"TestSeaweedFsController\"]\n  end\n  subgraph Services\n    UserServiceImpl[\"UserServiceImpl\"]\n  end\n  subgraph Data_Access\n    ComplexExcelReportUtil[\"ComplexExcelReportUtil\"]\n    FtpDownloadParam[\"FtpDownloadParam\"]\n  end\n  subgraph Infrastructure\n    FtpConfig[\"FtpConfig\"]\n    SeaweedFsConfig[\"SeaweedFsConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

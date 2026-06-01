@@ -1,0 +1,58 @@
+@startuml
+
+package dev.farhan.movieist {
+  class MovieistApplicationTests {
+  }
+  class MovieistApplication {
+    +main() : void
+    +corsConfigurer() : WebMvcConfigurer
+    +addCorsMappings() : void
+  }
+}
+
+package dev.farhan.movieist.movies {
+  interface MovieRepository <<Repository>> {
+  }
+  class ReviewService <<Service>> {
+    -repository : ReviewRepository
+    -mongoTemplate : MongoTemplate
+    +createReview() : Review
+  }
+  class Review {
+    -id : ObjectId
+    -body : String
+    -created : LocalDateTime
+    -updated : LocalDateTime
+  }
+  class MovieController <<Controller>> {
+    -service : MovieService
+    +getMovies() : ResponseEntity<List<Movie>>
+    +getSingleMovie() : ResponseEntity<Optional<Movie>>
+  }
+  class MovieService <<Service>> {
+    -repository : MovieRepository
+    +findAllMovies() : List<Movie>
+    +findMovieByImdbId() : Optional<Movie>
+  }
+  interface ReviewRepository <<Repository>> {
+  }
+  class ReviewController <<Controller>> {
+    -service : ReviewService
+    +createReview() : ResponseEntity<Review>
+  }
+  class Movie {
+    -id : ObjectId
+    -imdbId : String
+    -title : String
+    -releaseDate : String
+    -trailerLink : String
+    -poster : String
+    -backdrops : List<String>
+    -genres : List<String>
+    -reviews : List<Review>
+  }
+}
+
+' --- Relatii ---
+
+@enduml

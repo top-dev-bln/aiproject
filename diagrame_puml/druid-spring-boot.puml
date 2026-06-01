@@ -1,0 +1,324 @@
+@startuml
+
+package com.github.trang.druid.actuate {
+  class DruidDataSourcePoolMetadata {
+    +getActive() : Integer
+    +getMax() : Integer
+    +getMin() : Integer
+    +getValidationQuery() : String
+  }
+  class DruidDataSourceMvcEndpoint {
+    -statService : DruidStatService
+    -timeout : long
+    -lock : Lock
+    +handle() : String
+  }
+  class DruidDataSourceEndpoint {
+    -STAT_MANAGER : DruidStatManagerFacade
+  }
+}
+
+package com.github.trang.druid.actuate.autoconfigure {
+  class DruidDataSourceEndpointConfiguration {
+    +druidDataSourceEndpoint() : DruidDataSourceEndpoint
+    +druidDataSourceMvcEndpoint() : DruidDataSourceMvcEndpoint
+  }
+  class DruidDataSourceMetadataProviderConfiguration {
+    +dataSourcePoolMetadataProvider() : DataSourcePoolMetadataProvider
+  }
+  class DruidDataSourceActuatorAutoConfiguration {
+  }
+}
+
+package com.github.trang.druid.autoconfigure {
+  class DruidDataSourceConfiguration {
+    -BEAN_NAME : String
+    -BEAN_SUFFIX : String
+    -EMPTY : String
+    -POINT : String
+    -PREFIX : String
+    -resolver : RelaxedPropertyResolver
+    -environment : ConfigurableEnvironment
+    -resolver : RelaxedPropertyResolver
+    -customizers : List<DruidDataSourceCustomizer>
+    -resolver : RelaxedPropertyResolver
+    +registerBeanDefinitions() : void
+    +setEnvironment() : void
+    +registerBeanDefinitions() : void
+    +setEnvironment() : void
+    +setCustomizers() : void
+    +postProcessBeforeInitialization() : Object
+    +postProcessAfterInitialization() : Object
+    +setEnvironment() : void
+  }
+  class DruidAutoConfiguration {
+    +statFilter() : StatFilter
+    +wallConfig() : WallConfig
+    +wallFilter() : WallFilter
+    +configFilter() : ConfigFilter
+    +slf4jLogFilter() : Slf4jLogFilter
+    +log4jFilter() : Log4jFilter
+    +log4j2Filter() : Log4j2Filter
+    +commonsLogFilter() : CommonsLogFilter
+  }
+  class DruidStatConfiguration {
+    -proxyTargetClass : boolean
+    +druidStatInterceptor() : DruidStatInterceptor
+    +druidStatAdvisor() : RegexpMethodPointcutAdvisor
+    +druidStatProxy() : DefaultAdvisorAutoProxyCreator
+    +druidWebStatFilter() : FilterRegistrationBean
+  }
+  class DruidDataSourceInitializerAutoConfiguration {
+    +dataSourceInitializer() : DruidDataSourceInitializer
+  }
+  class DruidServletConfiguration {
+    +druidStatViewServlet() : ServletRegistrationBean
+  }
+  interface DruidDataSourceCustomizer {
+  }
+}
+
+package com.github.trang.druid.autoconfigure.datasource {
+  class DruidDataSource2 {
+    -serialVersionUID : long
+  }
+  class AbstractDruidDataSource2 {
+    -serialVersionUID : long
+    -dataSourceProperties : DataSourceProperties
+    -druidProperties : DruidDataSourceProperties
+    -druidFilters : ObjectProvider<List<FilterAdapter>>
+    +initDruidParentProperties() : void
+  }
+}
+
+package com.github.trang.druid.autoconfigure.datasource.init {
+  class DruidDataSourceInitializer {
+    -properties : DataSourceProperties
+    -applicationContext : ApplicationContext
+    -dataSources : List<DruidDataSource>
+    +init() : void
+  }
+}
+
+package com.github.trang.druid.autoconfigure.properties {
+  class DruidDataSourceProperties {
+    -DRUID_DATA_SOURCE_PREFIX : String
+    -DRUID_STAT_FILTER_PREFIX : String
+    -DRUID_WALL_FILTER_PREFIX : String
+    -DRUID_WALL_CONFIG_PREFIX : String
+    -DRUID_SLF4J_FILTER_PREFIX : String
+    -DRUID_LOG4J_FILTER_PREFIX : String
+    -DRUID_LOG4J2_FILTER_PREFIX : String
+    -DRUID_COMMONS_LOG_FILTER_PREFIX : String
+    -DRUID_CONFIG_FILTER_PREFIX : String
+    -DRUID_STAT_VIEW_SERVLET_PREFIX : String
+  }
+}
+
+package com.github.trang.druid.autoconfigure.util {
+  class CharMatcher {
+    -CAMEL_CASE_PATTERN : Pattern
+    -SEPARATED_TO_CAMEL_CASE_PATTERN : Pattern
+    -SUFFIXES : char[]
+    +none() : Manipulation
+    +separatedToCamel() : Manipulation
+    +camelToHyphen() : Manipulation
+    +apply() : String
+    +apply() : String
+    +apply() : String
+    +apply() : String
+    +apply() : String
+  }
+}
+
+package com.github.trang.druid.example.jpa {
+  class DruidJpaApplication {
+    -cityRepository : CityRepository
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.github.trang.druid.example.jpa.config {
+  class SpringDataSourceConfig {
+    +druidDataSourceCustomizer() : DruidDataSourceCustomizer
+    +dataSource() : DynamicDataSource
+  }
+  class DynamicDataSource {
+    -count : AtomicInteger
+    +determineCurrentLookupKey() : Object
+    +afterPropertiesSet() : void
+  }
+}
+
+package com.github.trang.druid.example.jpa.controller {
+  class CityController <<Controller>> {
+    -cityRepository : CityRepository
+  }
+}
+
+package com.github.trang.druid.example.jpa.model {
+  class City <<Entity>> {
+    -serialVersionUID : long
+    -id : Long
+    -name : String
+    -state : String
+    -country : String
+  }
+}
+
+package com.github.trang.druid.example.jpa.repository {
+  interface CityRepository {
+  }
+}
+
+package com.github.trang.druid.example.jpa.test.coveralls {
+  class BaseTest {
+    -log : Logger
+    -gson : Gson
+    -cityRepository : CityRepository
+  }
+  class DynamicDataSourceTests {
+    -masterDataSource : DruidDataSource
+    -slaveDataSource : DruidDataSource
+    -dataSource : DynamicDataSource
+    -dataSourceList : List<DruidDataSource>
+    -dataSources : List<DruidDataSource>
+    -druidDataSourceList : List<DruidDataSource>
+    -druidDataSources : List<DruidDataSource>
+    -foolDataSources : List<DruidDataSource>
+    -druidDataSourceCollection : Collection<DruidDataSource>
+    -druidDataSourceSet : Set<DruidDataSource>
+    +testMasterDataSource() : void
+    +testSlaveDataSource() : void
+    +testDynamicDataSource() : void
+    +autowire() : void
+  }
+  class JpaTests {
+    +testOne() : void
+    +testAll() : void
+  }
+  class SingleDataSourceTests {
+    -dataSource : DruidDataSource
+    +testSingleDataSource() : void
+  }
+}
+
+package com.github.trang.druid.example.mybatis {
+  class DruidMybatisApplication {
+    -cityRepository : CityMapper
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.github.trang.druid.example.mybatis.config {
+  class SpringDataSourceConfig {
+    +druidDataSourceCustomizer() : DruidDataSourceCustomizer
+    +dataSource() : DynamicDataSource
+  }
+  class DynamicDataSource {
+    -count : AtomicInteger
+    +determineCurrentLookupKey() : Object
+    +afterPropertiesSet() : void
+  }
+}
+
+package com.github.trang.druid.example.mybatis.controller {
+  class CityController <<Controller>> {
+    -cityMapper : CityMapper
+  }
+}
+
+package com.github.trang.druid.example.mybatis.mapper {
+  interface CityMapper {
+  }
+}
+
+package com.github.trang.druid.example.mybatis.model {
+  class City {
+    -serialVersionUID : long
+    -id : Long
+    -name : String
+    -state : String
+    -country : String
+  }
+}
+
+package com.github.trang.druid.example.mybatis.test.coveralls {
+  class BaseTest {
+    -log : Logger
+    -gson : Gson
+    -cityMapper : CityMapper
+  }
+  class DynamicDataSourceTests {
+    -masterDataSource : DruidDataSource
+    -slaveDataSource : DruidDataSource
+    -dataSource : DynamicDataSource
+    -dataSourceList : List<DruidDataSource>
+    -dataSources : List<DruidDataSource>
+    -druidDataSourceList : List<DruidDataSource>
+    -druidDataSources : List<DruidDataSource>
+    -foolDataSources : List<DruidDataSource>
+    -druidDataSourceCollection : Collection<DruidDataSource>
+    -druidDataSourceSet : Set<DruidDataSource>
+    +testMasterDataSource() : void
+    +testSlaveDataSource() : void
+    +testDynamicDataSource() : void
+    +autowire() : void
+  }
+  class DruidTest {
+    +encrypt() : void
+    +format() : void
+  }
+  class MyBatisTests {
+    +testOne() : void
+    +testAll() : void
+  }
+  class SingleDataSourceTests {
+    -dataSource : DruidDataSource
+    +testSingleDataSource() : void
+  }
+}
+
+' --- Relatii ---
+DruidDataSourceEndpointConfiguration --> DruidDataSourceEndpoint
+DruidDataSourceEndpointConfiguration --> DruidDataSourceMvcEndpoint
+DruidDataSourceMetadataProviderConfiguration --> DruidDataSourcePoolMetadata
+DruidDataSourceConfiguration --> DruidDataSource2
+DruidDataSourceConfiguration --> CharMatcher
+DruidAutoConfiguration --> DruidDataSourceProperties
+DruidStatConfiguration --> DruidDataSourceProperties
+DruidDataSourceInitializerAutoConfiguration --> DruidDataSourceInitializer
+DruidServletConfiguration --> DruidDataSourceProperties
+DruidDataSource2 --|> AbstractDruidDataSource2
+AbstractDruidDataSource2 --> DruidDataSourceProperties
+DruidDataSourceInitializer --> DruidDataSourceInitializerAutoConfiguration
+BaseTest --> DruidMybatisApplication
+BaseTest --> CityMapper
+DynamicDataSourceTests --|> BaseTest
+DynamicDataSourceTests --> DruidDataSource2
+DynamicDataSourceTests --> DynamicDataSource
+MyBatisTests --|> BaseTest
+MyBatisTests --> City
+SingleDataSourceTests --|> BaseTest
+DruidMybatisApplication --> CityMapper
+SpringDataSourceConfig --> DruidDataSourceCustomizer
+CityMapper --> City
+CityController --> CityMapper
+CityController --> City
+BaseTest --> DruidJpaApplication
+BaseTest --> CityRepository
+DynamicDataSourceTests --|> BaseTest
+DynamicDataSourceTests --> DruidDataSource2
+DynamicDataSourceTests --> DynamicDataSource
+JpaTests --|> BaseTest
+JpaTests --> City
+SingleDataSourceTests --|> BaseTest
+DruidJpaApplication --> CityRepository
+CityRepository --> City
+SpringDataSourceConfig --> DruidDataSourceCustomizer
+CityController --> City
+CityController --> CityRepository
+
+@enduml

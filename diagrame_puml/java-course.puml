@@ -1,0 +1,240 @@
+@startuml
+
+package io.qala.javatraining {
+  class TestUtils {
+    +assertReflectionEquals() : void
+  }
+  interface MockMvcTest {
+  }
+  interface JdbcDaoTest {
+  }
+  interface HibernateDaoTest {
+  }
+}
+
+package io.qala.javatraining.controller {
+  class DogEndpoints {
+  }
+  class MockMvcFactoryBean {
+    -applicationContext : WebApplicationContext
+    +getObject() : MockMvc
+    +isSingleton() : boolean
+  }
+  class Error404Exception {
+  }
+  class ValidationRestErrorTest {
+    +convertsFieldError_intoRestError() : void
+    +convertsAllErrors_intoRestError() : void
+    +resultsInEmptyErrorList_ifValidationIsNotFailed() : void
+    +convertsObjectErrors_intoRestError() : void
+  }
+  class DogEndpointTest {
+    -dogs : DogEndpoints
+    +createdDog_isReturnedInPostRequest() : void
+    +getsTheSameDogAsWasSaved() : void
+    +returnsEmptyList_ifNoDogsExist() : void
+    +invokesValidationBeforeSaving() : void
+    +gettingReturns404_ifDogIsRemoved() : void
+    +deleteDoesNothing_ifDogDoesNotExist() : void
+  }
+  class DogEndpoint <<Controller>> {
+    -logger : Logger
+    -dogService : DogService
+    +processValidationError() : ResponseEntity<List<ValidationRestError>>
+    +processValidationError() : ResponseEntity<String>
+  }
+  class ValidationRestError {
+    -objectName : String
+    -field : String
+    -errorCode : String
+    -errorMessage : String
+    +getObjectName() : String
+    +getField() : String
+    +getErrorCode() : String
+    +getErrorMessage() : String
+    +fromSpringErrors() : List<ValidationRestError>
+  }
+}
+
+package io.qala.javatraining.dao {
+  class JdbcDogDaoTest {
+    -dao : DogDao
+    -connections : JdbcConnectionHolder
+    +getsTheSameDogAsWasSaved() : void
+    +createdDogsAppearIn_listOfAllDogs() : void
+    +findingDogThrows_ifDogWasRemoved() : void
+    +deletingDogConfirms_ifDogIsRemoved() : void
+    +deletingDogConfirms_ifDogDidNotExist() : void
+    +dbCanHoldMaxValues_thatJavaCanHold() : void
+    +dbOperationsAreProtectedFromSqlInjections() : void
+  }
+  class HibernateDogDaoTest {
+    -dao : HibernateDogDao
+    +getsTheSameDogAsWasSaved() : void
+    +createdDogsAppearIn_listOfAllDogs() : void
+    +findingDogThrows_ifDogWasRemoved() : void
+    +deletingDogConfirms_ifDogIsRemoved() : void
+    +deletingDogConfirms_ifDogDidNotExist() : void
+    +dbCanHoldMaxValues_thatJavaCanHold() : void
+    +dbOperationsAreProtectedFromSqlInjections() : void
+  }
+  class JdbcDogDao {
+    -connections : JdbcConnectionHolder
+    +getAllDogs() : Collection<Dog>
+    +getDog() : Dog
+    +createDog() : Dog
+    +deleteDog() : boolean
+  }
+  class JdbcConnectionHolder {
+    -dataSource : DataSource
+    -connections : ThreadLocal<Connection>
+    +getCurrentConnection() : Connection
+    +closeCurrentConnection() : void
+    +beginTransaction() : Connection
+    +rollback() : void
+    +commit() : void
+  }
+  interface DogDao {
+  }
+  class InMemoryDogDao {
+    +getAllDogs() : Collection<Dog>
+    +getDog() : Dog
+    +createDog() : Dog
+    +deleteDog() : boolean
+  }
+  class HibernateDogDao {
+    -sessionFactory : SessionFactory
+    +getAllDogs() : Collection<Dog>
+    +getDog() : Dog
+    +createDog() : Dog
+    +deleteDog() : boolean
+  }
+}
+
+package io.qala.javatraining.domain {
+  class DogTest {
+    -VALIDATOR : Validator
+    +validName_passesValidation() : void
+    +invalidName_failsValidation() : void
+    +futureBirthDate_failsValidation() : void
+    +nullBirthDate_passesValidation() : void
+    +birthDateInPast_passesValidation() : void
+    +positiveHeightOrWeight_passesValidation() : void
+    +zeroHeightOrWeight_failsValidation() : void
+    +negativeHeightOrWeight_failsValidation() : void
+  }
+  class ObjectNotFoundException {
+  }
+  class Dog {
+    -id : String
+    -name : String
+    -timeOfBirth : OffsetDateTime
+    -weight : double
+    -height : double
+    +random() : Dog
+    +getId() : String
+    +setId() : Dog
+    +getName() : String
+    +setName() : Dog
+    +getTimeOfBirth() : OffsetDateTime
+    +setTimeOfBirth() : Dog
+    +getWeight() : double
+  }
+}
+
+package io.qala.javatraining.service {
+  interface DogService {
+  }
+  class TransactionalDogService {
+    -connections : JdbcConnectionHolder
+    -toWrapWithTransactions : DogService
+    +getAllDogs() : Collection<Dog>
+    +getDog() : Dog
+    +createDog() : Dog
+    +deleteDog() : boolean
+  }
+  class DbDogService {
+    -dogDao : DogDao
+    +getAllDogs() : Collection<Dog>
+    +getDog() : Dog
+    +createDog() : Dog
+    +deleteDog() : boolean
+  }
+}
+
+package io.qala.javatraining.utils {
+  class NotBlankSizedValidatorTest {
+    -min : int
+    +validValuesPassValidation() : void
+    +nullFailsValidation() : void
+    +greaterThanMax_failsValidation() : void
+    +shorterThanMin_failsValidation() : void
+    +minValue_passesValidation() : void
+    +maxValue_passesValidation() : void
+    +min() : int
+    +max() : int
+  }
+  class PastValidatorTest {
+    +futureDatesFailValidation() : void
+    +pastDatesPassValidation() : void
+    +nullDatesPassValidation_becauseTheyAreIgnored() : void
+  }
+  interface Past {
+  }
+  class PastValidator {
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class NotBlankSizedValidator {
+    -min : int
+    -max : int
+    +initialize() : void
+    +isValid() : boolean
+  }
+  class DateUtil {
+    +beginningOfTime() : long
+  }
+  interface NotBlankSized {
+  }
+}
+
+' --- Relatii ---
+TestUtils --> Dog
+JdbcDogDaoTest --> JdbcDaoTest
+JdbcDogDaoTest --> Dog
+JdbcDogDaoTest --> ObjectNotFoundException
+HibernateDogDaoTest --> HibernateDaoTest
+HibernateDogDaoTest --> Dog
+HibernateDogDaoTest --> ObjectNotFoundException
+NotBlankSizedValidatorTest --> NotBlankSized
+NotBlankSizedValidatorTest --> NotBlankSizedValidator
+PastValidatorTest --> PastValidator
+DogEndpoints --> Dog
+ValidationRestErrorTest --> Dog
+DogEndpointTest --> MockMvcTest
+DogEndpointTest --> Dog
+JdbcDogDao ..|> DogDao
+JdbcDogDao --> Dog
+JdbcDogDao --> ObjectNotFoundException
+DogDao --> Dog
+InMemoryDogDao ..|> DogDao
+InMemoryDogDao --> Dog
+InMemoryDogDao --> ObjectNotFoundException
+HibernateDogDao ..|> DogDao
+HibernateDogDao --> Dog
+HibernateDogDao --> ObjectNotFoundException
+DogEndpoint --> Dog
+DogEndpoint --> ObjectNotFoundException
+DogEndpoint --> DogService
+DogService --> Dog
+TransactionalDogService ..|> DogService
+TransactionalDogService --> JdbcConnectionHolder
+TransactionalDogService --> Dog
+DbDogService ..|> DogService
+DbDogService --> DogDao
+DbDogService --> Dog
+Dog --> DateUtil
+Dog --> Past
+Dog --> NotBlankSized
+
+@enduml

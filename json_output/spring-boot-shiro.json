@@ -1,0 +1,18 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, User as its primary actors. The main business capabilities include sample api. Core business data revolves around User. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage sample api operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "SampleApi"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SampleApi[\"SampleApi\"]\n  end\n  subgraph Data_Access\n    User[\"User\"]\n  end\n  subgraph Security\n    FormSignInFilter[\"FormSignInFilter\"]\n    MyFilter[\"MyFilter\"]\n  end\n  subgraph Infrastructure\n    SessionUserArgumentResolver[\"SessionUserArgumentResolver\"]\n    ShiroAutoConfiguration[\"ShiroAutoConfiguration\"]\n    ShiroConfiguration[\"ShiroConfiguration\"]\n    ShiroJdbcRealmProperties[\"ShiroJdbcRealmProperties\"]\n  end\n  Controllers --> Security\n  Security --> Data_Access\n  Infrastructure --> Security"
+  }
+}

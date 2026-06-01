@@ -1,0 +1,42 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves User as its primary actors. The main business capabilities include authentication r e s t, r e s t, user. Core business data revolves around Message. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthenticationREST"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage authentication r e s t operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AuthenticationREST"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to manage r e s t operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ResourceREST"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationREST[\"AuthenticationREST\"]\n    ResourceREST[\"ResourceREST\"]\n  end\n  subgraph Services\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    Message[\"Message\"]\n    SecurityContextRepository[\"SecurityContextRepository\"]\n  end\n  subgraph Security\n    CORSFilter[\"CORSFilter\"]\n    JWTUtil[\"JWTUtil\"]\n  end\n  subgraph Infrastructure\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

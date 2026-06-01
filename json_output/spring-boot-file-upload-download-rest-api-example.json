@@ -1,0 +1,28 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the file management, recruitment domain. It serves User as its primary actors. The main business capabilities include file, file storage.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents as needed.",
+        "services": [
+          "FileStorageService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with file storage functionality, so that the system fulfills my needs.",
+        "services": [
+          "FileStorageService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    FileController[\"FileController\"]\n  end\n  subgraph Services\n    FileStorageService[\"FileStorageService\"]\n  end\n  Controllers --> Services"
+  }
+}

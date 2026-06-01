@@ -1,0 +1,333 @@
+@startuml
+
+package com.example.jpa {
+  class JpaElementCollectionDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class JpaElementCollectionDemoApplication {
+    -userRepository : UserRepository
+    +main() : void
+    +run() : void
+  }
+  class JpaCompositePrimaryKeyDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class JpaCompositePrimaryKeyDemoApplication {
+    -employeeRepository : EmployeeRepository
+    +main() : void
+    +run() : void
+  }
+  class JpaEmbeddableDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class JpaEmbeddableDemoApplication {
+    -userRepository : UserRepository
+    +main() : void
+    +run() : void
+  }
+  class JpaOneToManyDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class JpaOneToManyDemoApplication {
+    +main() : void
+  }
+  class JpaOneToOneDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class JpaOneToOneDemoApplication {
+    -userRepository : UserRepository
+    -userProfileRepository : UserProfileRepository
+    +main() : void
+    +run() : void
+  }
+  class JpaManyToManyDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class JpaManyToManyDemoApplication {
+    -tagRepository : TagRepository
+    -postRepository : PostRepository
+    +main() : void
+    +run() : void
+  }
+}
+
+package com.example.jpa.controller {
+  class CommentController <<Controller>> {
+    -commentRepository : CommentRepository
+    -postRepository : PostRepository
+    +getAllCommentsByPostId() : Page<Comment>
+    +createComment() : Comment
+    +updateComment() : Comment
+  }
+  class PostController <<Controller>> {
+    -postRepository : PostRepository
+    +getAllPosts() : Page<Post>
+    +createPost() : Post
+    +updatePost() : Post
+  }
+}
+
+package com.example.jpa.exception {
+  class ResourceNotFoundException {
+  }
+}
+
+package com.example.jpa.model {
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -email : String
+    -phoneNumbers : Set<String>
+    -addresses : Set<Address>
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPhoneNumbers() : Set<String>
+    +setPhoneNumbers() : void
+  }
+  class Address {
+    -addressLine1 : String
+    -addressLine2 : String
+    -city : String
+    -state : String
+    -country : String
+    -zipCode : String
+    +getAddressLine1() : String
+    +setAddressLine1() : void
+    +getAddressLine2() : String
+    +setAddressLine2() : void
+    +getCity() : String
+    +setCity() : void
+    +getState() : String
+    +setState() : void
+  }
+  class EmployeeIdentity {
+    -employeeId : String
+    -companyId : String
+    +getEmployeeId() : String
+    +setEmployeeId() : void
+    +getCompanyId() : String
+    +setCompanyId() : void
+  }
+  class Employee <<Entity>> {
+    -employeeIdentity : EmployeeIdentity
+    -name : String
+    -email : String
+    -phoneNumber : String
+    +getEmployeeIdentity() : EmployeeIdentity
+    +setEmployeeIdentity() : void
+    +getName() : String
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getPhoneNumber() : String
+    +setPhoneNumber() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -name : Name
+    -email : String
+    -address : Address
+    +getId() : Long
+    +setId() : void
+    +getName() : Name
+    +setName() : void
+    +getEmail() : String
+    +setEmail() : void
+    +getAddress() : Address
+    +setAddress() : void
+  }
+  class Address {
+    -addressLine1 : String
+    -addressLine2 : String
+    -city : String
+    -state : String
+    -country : String
+    -zipCode : String
+    +getAddressLine1() : String
+    +setAddressLine1() : void
+    +getAddressLine2() : String
+    +setAddressLine2() : void
+    +getCity() : String
+    +setCity() : void
+    +getState() : String
+    +setState() : void
+  }
+  class Name {
+    -firstName : String
+    -middleName : String
+    -lastName : String
+    +getFirstName() : String
+    +setFirstName() : void
+    +getMiddleName() : String
+    +setMiddleName() : void
+    +getLastName() : String
+    +setLastName() : void
+  }
+  class Post <<Entity>> {
+    -id : Long
+    -title : String
+    -description : String
+    -content : String
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getContent() : String
+    +setContent() : void
+  }
+  class Comment <<Entity>> {
+    -id : Long
+    -text : String
+    -post : Post
+    +getId() : Long
+    +setId() : void
+    +getText() : String
+    +setText() : void
+    +getPost() : Post
+    +setPost() : void
+  }
+  class AuditModel {
+    -createdAt : Date
+    -updatedAt : Date
+    +getCreatedAt() : Date
+    +setCreatedAt() : void
+    +getUpdatedAt() : Date
+    +setUpdatedAt() : void
+  }
+  class User <<Entity>> {
+    -id : Long
+    -firstName : String
+    -lastName : String
+    -email : String
+    -password : String
+    -userProfile : UserProfile
+    +getId() : Long
+    +setId() : void
+    +getFirstName() : String
+    +setFirstName() : void
+    +getLastName() : String
+    +setLastName() : void
+    +getEmail() : String
+    +setEmail() : void
+  }
+  class UserProfile <<Entity>> {
+    -id : Long
+    -phoneNumber : String
+    -gender : Gender
+    -dateOfBirth : Date
+    -address1 : String
+    -address2 : String
+    -street : String
+    -city : String
+    -state : String
+    -country : String
+    +getId() : Long
+    +setId() : void
+    +getPhoneNumber() : String
+    +setPhoneNumber() : void
+    +getGender() : Gender
+    +setGender() : void
+    +getDateOfBirth() : Date
+    +setDateOfBirth() : void
+  }
+  enum Gender {
+  }
+  class Post <<Entity>> {
+    -id : Long
+    -title : String
+    -description : String
+    -content : String
+    -postedAt : Date
+    -lastUpdatedAt : Date
+    -tags : Set<Tag>
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+    +getContent() : String
+    +setContent() : void
+  }
+  class Tag <<Entity>> {
+    -id : Long
+    -name : String
+    -posts : Set<Post>
+    +getId() : Long
+    +setId() : void
+    +getName() : String
+    +setName() : void
+    +getPosts() : Set<Post>
+    +setPosts() : void
+  }
+}
+
+package com.example.jpa.repository {
+  interface UserRepository <<Repository>> {
+  }
+  interface EmployeeRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+  interface CommentRepository <<Repository>> {
+  }
+  interface PostRepository <<Repository>> {
+  }
+  interface UserProfileRepository <<Repository>> {
+  }
+  interface UserRepository <<Repository>> {
+  }
+  interface TagRepository <<Repository>> {
+  }
+  interface PostRepository <<Repository>> {
+  }
+}
+
+' --- Relatii ---
+JpaElementCollectionDemoApplication --> Address
+JpaElementCollectionDemoApplication --> User
+JpaElementCollectionDemoApplication --> UserRepository
+UserRepository --> User
+JpaCompositePrimaryKeyDemoApplication --> Employee
+JpaCompositePrimaryKeyDemoApplication --> EmployeeIdentity
+JpaCompositePrimaryKeyDemoApplication --> EmployeeRepository
+EmployeeRepository --> Employee
+EmployeeRepository --> EmployeeIdentity
+JpaEmbeddableDemoApplication --> Address
+JpaEmbeddableDemoApplication --> Name
+JpaEmbeddableDemoApplication --> User
+JpaEmbeddableDemoApplication --> UserRepository
+UserRepository --> Name
+UserRepository --> User
+CommentRepository --> Comment
+PostRepository --> Post
+CommentController --> ResourceNotFoundException
+CommentController --> Comment
+CommentController --> CommentRepository
+CommentController --> PostRepository
+PostController --> ResourceNotFoundException
+PostController --> Post
+PostController --> PostRepository
+Post --|> AuditModel
+Comment --|> AuditModel
+JpaOneToOneDemoApplication --> Gender
+JpaOneToOneDemoApplication --> User
+JpaOneToOneDemoApplication --> UserProfile
+JpaOneToOneDemoApplication --> UserRepository
+JpaOneToOneDemoApplication --> UserProfileRepository
+UserProfileRepository --> UserProfile
+UserRepository --> User
+JpaManyToManyDemoApplication --> Post
+JpaManyToManyDemoApplication --> Tag
+JpaManyToManyDemoApplication --> PostRepository
+JpaManyToManyDemoApplication --> TagRepository
+TagRepository --> Tag
+PostRepository --> Post
+
+@enduml

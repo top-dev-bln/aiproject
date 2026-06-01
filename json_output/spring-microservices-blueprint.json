@@ -1,0 +1,57 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, user management domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include async test, auth, home. Core business data revolves around ErrorCode, Product, ProductRepo, Role. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [
+          "AuthService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to browse and manage products, so that I can find and interact with the product catalog.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage async test operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AsyncTestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage home operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HomeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AsyncTestController[\"AsyncTestController\"]\n    AuthController[\"AuthController\"]\n    HomeController[\"HomeController\"]\n    ProductController[\"ProductController\"]\n    ProductEventController[\"ProductEventController\"]\n    TestController[\"TestController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AsyncExampleService[\"AsyncExampleService\"]\n    AuthService[\"AuthService\"]\n    ProductService[\"ProductService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    ErrorCode[\"ErrorCode\"]\n    Product[\"Product\"]\n    ProductRepo[\"ProductRepo\"]\n    Role[\"Role\"]\n    RoleRepository[\"RoleRepository\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n  end\n  subgraph Security\n    AuthTokenFilter[\"AuthTokenFilter\"]\n    CORSFilter[\"CORSFilter\"]\n    CorrelationLoggingFilter[\"CorrelationLoggingFilter\"]\n    JwtUtils[\"JwtUtils\"]\n    KafkaProducerInterceptor[\"KafkaProducerInterceptor\"]\n    KafkaRecordInterceptor[\"KafkaRecordInterceptor\"]\n    OpenFeignRequestInterceptor[\"OpenFeignRequestInterceptor\"]\n  end\n  subgraph Infrastructure\n    CommonContextTaskDecorator[\"CommonContextTaskDecorator\"]\n    CommonOpenFeignConfig[\"CommonOpenFeignConfig\"]\n    CommonOpenFeignErrorDecoder[\"CommonOpenFeignErrorDecoder\"]\n    KafkaConfig[\"KafkaConfig\"]\n    OpenApiConfig[\"OpenApiConfig\"]\n    ProductKafkaProducer[\"ProductKafkaProducer\"]\n    ThreadAsyncConfig[\"ThreadAsyncConfig\"]\n    WebConfiguration[\"WebConfiguration\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the data processing, e-commerce domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include test pay rule, mobile payment info, mobile payment info impl. Core business data revolves around PhoneNoBlackObject.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to make payments securely, so that transactions are processed reliably.",
+        "services": [
+          "MobilePaymentInfoService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage test pay rule operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestPayRule"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to interact with mobile payment info functionality, so that the system fulfills my needs.",
+        "services": [
+          "MobilePaymentInfoService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to interact with mobile payment info impl functionality, so that the system fulfills my needs.",
+        "services": [
+          "MobilePaymentInfoServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to interact with mobile payment rule functionality, so that the system fulfills my needs.",
+        "services": [
+          "MobilePaymentRuleService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    TestPayRule[\"TestPayRule\"]\n  end\n  subgraph Services\n    MobilePaymentInfoService[\"MobilePaymentInfoService\"]\n    MobilePaymentInfoServiceImpl[\"MobilePaymentInfoServiceImpl\"]\n    MobilePaymentRuleService[\"MobilePaymentRuleService\"]\n    PhoneNoBlacklistService[\"PhoneNoBlacklistService\"]\n    TestRuleService[\"TestRuleService\"]\n  end\n  subgraph Data_Access\n    PhoneNoBlackObject[\"PhoneNoBlackObject\"]\n  end\n  subgraph Infrastructure\n    MobilePaymentInfoConfig[\"MobilePaymentInfoConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SpringMongoConfig[\"SpringMongoConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

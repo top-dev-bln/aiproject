@@ -1,0 +1,42 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the user management, authentication domain. It serves API Consumer, Admin, Customer, User as its primary actors. The main business capabilities include report rest, user rest, report. Core business data revolves around AbstractEntity, Entity, Report, ReportRepositoryCustom.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to generate and view reports, so that I can make data-driven decisions based on current metrics.",
+        "services": [],
+        "controllers": [
+          "ReportRestController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "UserRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage report rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ReportRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage user rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "UserRestController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    ReportRestController[\"ReportRestController\"]\n    UserRestController[\"UserRestController\"]\n  end\n  subgraph Services\n    ReportService[\"ReportService\"]\n    UserService[\"UserService\"]\n  end\n  subgraph Data_Access\n    AbstractEntity[\"AbstractEntity\"]\n    Entity[\"Entity\"]\n    Report[\"Report\"]\n    ReportRepository[\"ReportRepository\"]\n    ReportRepositoryCustom[\"ReportRepositoryCustom\"]\n    User[\"User\"]\n    UserRepository[\"UserRepository\"]\n    UserRepositoryCustom[\"UserRepositoryCustom\"]\n    ValidReportDescription[\"ValidReportDescription\"]\n  end\n  subgraph Infrastructure\n    CopsbootApplicationConfiguration[\"CopsbootApplicationConfiguration\"]\n    CopsbootControllerDocumentationTestConfiguration[\"CopsbootControllerDocumentationTestConfiguration\"]\n    WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

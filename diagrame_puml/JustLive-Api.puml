@@ -1,0 +1,697 @@
+@startuml
+
+package work.yj1211.live {
+  class LiveApplication {
+    +main() : void
+  }
+}
+
+package work.yj1211.live.aspect {
+  class CostTimeAspect {
+    +costTime() : void
+    +costTimePlatform() : void
+    +costTimeAround() : Object
+    +costTimeAroundPlatform() : Object
+    +doBefore() : void
+  }
+}
+
+package work.yj1211.live.config {
+  class ExecutorConfig {
+    +asyncServiceExecutor() : Executor
+  }
+  class RedisConfig {
+  }
+  class WebConfig {
+    -interceptor : FangshuaInterceptor
+    +addInterceptors() : void
+  }
+  class TomcatConfig {
+    +servletContainer() : ServletWebServerFactory
+  }
+  class AfterServiceStarted {
+    -liveRoomService : LiveRoomService
+    -userService : UserService
+    -areaService : AreaService
+    +run() : void
+  }
+  class CORSConfig {
+    +corsConfigurer() : WebMvcConfigurer
+    +addCorsMappings() : void
+  }
+}
+
+package work.yj1211.live.controller {
+  class LiveRoomCrl <<Controller>> {
+    -liveRoomService : LiveRoomService
+    +getRecommend() : Result
+    +getRecommendByPlatform() : Result
+    +getRecommendByPlatformArea() : Result
+    +getRecommendByAreaAll() : Result
+    +getRealUrl() : Result
+    +getRealUrlMultiSource() : Result
+    +getRoomInfo() : Result
+    +getRoomsOn() : Result
+  }
+  class UserInfoCrl <<Controller>> {
+    -userService : UserService
+    -mailMapper : UserMailMapper
+    +login() : Result
+    +register() : Result
+    +bindMail() : Result
+    +followArea() : Result
+    +unFollowArea() : Result
+    +getFollowedAreas() : Result
+    +follow() : Result
+    +unFollow() : Result
+  }
+}
+
+package work.yj1211.live.enums {
+  enum Platform {
+    -code : String
+    -name : String
+    -logoImage : String
+    -androidDanmuSupport : Boolean
+    +getCode() : String
+    +getName() : String
+    +getLogoImage() : String
+    +getAndroidDanmuSupport() : Boolean
+  }
+  enum PlayUrlType {
+    -typeName : String
+    +getTypeName() : String
+  }
+  enum ResultCode {
+    -code : int
+  }
+}
+
+package work.yj1211.live.factory {
+  class ResultFactory {
+    +buildSuccessResult() : Result
+    +buildFailResult() : Result
+    +buildResult() : Result
+    +buildResult() : Result
+  }
+}
+
+package work.yj1211.live.mapper {
+  interface RoomMapper <<Repository>> {
+  }
+  interface AreaInfoIndexMapper <<Repository>> {
+  }
+  interface UserMapper <<Repository>> {
+  }
+  interface AreaTypeIndexMapper <<Repository>> {
+  }
+  interface AreaInfoMapper <<Repository>> {
+  }
+  interface UserMailMapper {
+  }
+}
+
+package work.yj1211.live.model.app {
+  class UpdateInfo {
+    -versionNum : int
+    -latestVersion : String
+    -updateUrl : String
+    -apkSize : String
+    -apkMD5 : String
+    -importance : int
+    -description : ArrayList<String>
+  }
+  class BannerInfo {
+    -imageUrl : String
+    -title : String
+    -clickUrl : String
+  }
+}
+
+package work.yj1211.live.model.platform {
+  class UrlQuality {
+    -qualityName : String
+    -priority : int
+    -playUrl : String
+    -urlType : String
+    -sourceName : String
+    +compareTo() : int
+  }
+  class LiveRoomInfo {
+    -platForm : String
+    -roomId : String
+    -categoryId : String
+    -categoryName : String
+    -roomName : String
+    -ownerName : String
+    -roomPic : String
+    -ownerHeadPic : String
+    -realUrl : String
+    -online : int
+    +compareTo() : int
+  }
+  class SimpleRoomInfo {
+    -platform : String
+    -roomId : String
+    -isLive : int
+  }
+  class BanInfo {
+    -type : String
+    -content : String
+    -platform : String
+  }
+  class Owner {
+    -platform : String
+    -nickName : String
+    -roomId : String
+    -headPic : String
+    -cateName : String
+    -isLive : String
+    -followers : int
+    -isFollowed : int
+    +compareTo() : int
+  }
+}
+
+package work.yj1211.live.model.platformArea {
+  class AreaTypeIndexService <<Service>> {
+  }
+  class AreaSimple {
+    -uid : String
+    -areaType : String
+    -area : String
+  }
+  class AreaInfo {
+    -id : Integer
+    -platform : String
+    -areaType : String
+    -typeName : String
+    -areaId : String
+    -areaName : String
+    -areaPic : String
+    -shortName : String
+    -indexArea : Integer
+    -indexType : String
+  }
+  class AreaTypeIndex {
+    -id : Integer
+    -areaType : String
+    -platform : String
+    -areaTypePlatform : String
+  }
+  class AreaInfoIndex {
+    -id : Integer
+    -typeName : String
+    -areaName : String
+    -priority : Long
+    -areaPic : String
+  }
+}
+
+package work.yj1211.live.model.response {
+  class Result {
+    -code : int
+    -message : String
+    -data : Object
+  }
+  class GetAllSupportPlatformsResponse {
+    -platformList : List<PlatformInfo>
+    -name : String
+    -code : String
+    -logoImage : String
+    -androidDanmuSupport : Boolean
+  }
+}
+
+package work.yj1211.live.model.user {
+  class ActiveUsers {
+    -uid : int
+    -date : Date
+    -loginUserNum : int
+  }
+  class UserInfo {
+    -uid : String
+    -userName : String
+    -nickName : String
+    -password : String
+    -head : String
+    -isActived : String
+    -allContent : String
+    -selectedContent : String
+    -douyuLevel : String
+    -bilibiliLevel : String
+  }
+  class UserMail {
+    -uid : String
+    -mail : String
+  }
+}
+
+package work.yj1211.live.service {
+  class AreaServiceTest {
+    -areaService : AreaService
+    -douyu : Douyu
+    -huya : Huya
+  }
+  class AreaService <<Service>> {
+    -areaInfoIndexService : AreaInfoIndexService
+    -areaTypeIndexService : AreaTypeIndexService
+    -areaInfoService : AreaInfoService
+    -platformList : List<BasePlatform>
+    -batchNum : int
+    +refreshAreasAll() : void
+    +refreshAreaByPlatform() : void
+    +saveOrUpdateBatchByPlatform() : void
+    +getAllAreas() : List<List<AreaInfoIndex>>
+    +getAllAreasByPlatform() : List<List<AreaInfo>>
+    +saveAreaInfoLocal() : void
+  }
+  class UserService <<Service>> {
+    -PATTERN : Pattern
+    -PATTERN2 : Pattern
+    -accessKeyId : String
+    -accessKeySecret : String
+    -userMapper : UserMapper
+    -douyu : Douyu
+    -mailMapper : UserMailMapper
+    +login() : UserInfo
+    +updateLastLogin() : void
+    +insertActiveUserNum() : void
+    +findUserByName() : UserInfo
+    +register() : void
+    +followRoom() : void
+    +followArea() : void
+    +getAreasByUid() : List<AreaSimple>
+  }
+  class AsyncServiceImpl <<Service>> {
+    +addRoomInfo() : void
+  }
+  class LiveRoomService <<Service>> {
+    -roomMapper : RoomMapper
+    -userMapper : UserMapper
+    -asyncService : AsyncService
+    -areaService : AreaService
+    +getRecommend() : List<LiveRoomInfo>
+    +getRecommendByPlatform() : List<LiveRoomInfo>
+    +getRecommendByPlatformArea() : List<LiveRoomInfo>
+    +getRoomsByUid() : List<LiveRoomInfo>
+    +getRoomInfo() : LiveRoomInfo
+    +refreshArea() : void
+    +refreshAreaByPlatform() : void
+    +refreshUpdate() : String
+  }
+  class RedisService <<Service>> {
+    -redisUtils : RedisUtils
+    +saveRoom() : void
+    +getRoom() : LiveRoomInfo
+  }
+}
+
+package work.yj1211.live.service.mysql {
+  class AreaInfoServiceTest {
+    -areaInfoService : AreaInfoService
+  }
+  class AreaInfoIndexService <<Service>> {
+  }
+  class AreaInfoService <<Service>> {
+    +removeAreasByPlatform() : void
+  }
+}
+
+package work.yj1211.live.service.platforms {
+  interface BasePlatform {
+  }
+}
+
+package work.yj1211.live.service.platforms.impl {
+  class Douyin <<Service>> {
+    -COOKIE : String
+    +getPlatformCode() : String
+    +getRealUrl() : void
+    +getRoomInfo() : LiveRoomInfo
+    +getRecommend() : List<LiveRoomInfo>
+    +getAreaList() : List<AreaInfo>
+    +getAreaRoom() : List<LiveRoomInfo>
+    +search() : List<Owner>
+  }
+  class Huya {
+    -OwnerName : Pattern
+    -RoomName : Pattern
+    -RoomPic : Pattern
+    -OwnerPic : Pattern
+    -AREA : Pattern
+    -Num : Pattern
+    -ISLIVE : Pattern
+    -qnList : List<String>
+    +getPlatformCode() : String
+    +search() : List<Owner>
+    +getRealUrl() : void
+    +getRoomInfo() : LiveRoomInfo
+    +getRecommend() : List<LiveRoomInfo>
+    +getAreaList() : List<AreaInfo>
+    +getAreaRoom() : List<LiveRoomInfo>
+    +getUUid() : String
+  }
+  class CC {
+    +search() : List<Owner>
+    +getPlatformCode() : String
+    +getRealUrl() : void
+    +getRoomInfo() : LiveRoomInfo
+    +getRecommend() : List<LiveRoomInfo>
+    +getAreaList() : List<AreaInfo>
+    +getAreaRoom() : List<LiveRoomInfo>
+  }
+  class Douyu {
+    -qnList : List<String>
+    +getPlatformCode() : String
+    +getRealUrl() : void
+    +getRealRoomId() : String
+    +getRoomInfo() : LiveRoomInfo
+    +getRecommend() : List<LiveRoomInfo>
+    +getAreaList() : List<AreaInfo>
+    +DouyuNumStringToInt() : Integer
+    +getAreaRoom() : List<LiveRoomInfo>
+  }
+  class Bilibili {
+    -bilibiliFD : String
+    -bilibiliLD : String
+    -bilibiliSD : String
+    -bilibiliHD : String
+    -bilibiliOD : String
+    -suffix : String
+    +get_real_rid() : JSONObject
+    +getPlatformCode() : String
+    +getRealUrl() : void
+    +getRoomInfo() : LiveRoomInfo
+    +getOwnerInfo() : JSONObject
+    +getRecommend() : List<LiveRoomInfo>
+    +getAreaList() : List<AreaInfo>
+    +getAreaRoom() : List<LiveRoomInfo>
+  }
+}
+
+package work.yj1211.live.task {
+  class StatisticsTask {
+    -userService : UserService
+    -areaService : AreaService
+    +insertActiveUserNum() : void
+    +refreshAllAreas() : void
+  }
+}
+
+package work.yj1211.live.utils {
+  class UrlUtil {
+    +appendQueryParameter() : String
+    +encode() : String
+    +encode() : String
+  }
+  enum DouYuOpenApi {
+    -url : String
+    +getValue() : String
+  }
+  class Global {
+    -AreaIndexList : List<List<AreaInfoIndex>>
+    -updateFilePath : String
+    -bannerInfoFilePath : String
+    -updateInfo : UpdateInfo
+    -updateInfoList : List<BannerInfo>
+    +setUpdateFilePath() : void
+    +setBannerInfoFilePath() : void
+    +getUpdateFilePath() : String
+    +getBannerInfoFilePath() : String
+    +readTxtFile() : String
+    +getAreaInfo() : AreaInfo
+  }
+  class HttpUtil {
+    +doGet() : String
+    +doGetWithHeaders() : String
+  }
+  class RedisUtils {
+    -key : String
+    -key : String
+  }
+  class FixHuya {
+    -URL_FORMAT_TEMPLATE : String
+    -QN_LIST : List<String>
+    -FLV_URL_PATTERN : Pattern
+    -ANTI_CODE_PATTERN : Pattern
+    -STREAM_NAME_PATTERN : Pattern
+    -LUID_PATTERN : Pattern
+    -RATE_INFO_PATTERN : Pattern
+    -UID : Long
+    -flvUrl : String
+    -streamName : String
+    +getRealUrl() : void
+    +getLiveStreamInfo() : LiveStreamInfo
+  }
+}
+
+package work.yj1211.live.utils.annotation {
+  interface AccessLimit {
+  }
+}
+
+package work.yj1211.live.utils.http {
+  enum HttpMethod {
+  }
+  enum HttpContentType {
+    -contentType : String
+    +getValue() : String
+  }
+  class HttpRequest {
+    -LOG : Logger
+    -sConnectionManager : PoolingHttpClientConnectionManager
+    -USER_AGENT : String
+    -url : String
+    -contentType : HttpContentType
+    -encoding : String
+    -body : String
+    -isForBytes : boolean
+    -retryCount : int
+    -retryDelay : long
+    +create() : HttpRequest
+    +setBody() : HttpRequest
+    +appendParameter() : HttpRequest
+    +appendParameters() : HttpRequest
+    +setContentType() : HttpRequest
+    +setTimeout() : HttpRequest
+    +setConnectTimeout() : HttpRequest
+    +setSocketTimeout() : HttpRequest
+  }
+  class HttpResponse {
+    -LOG : Logger
+    -CODE_ERROR : int
+    -spend : long
+    -code : int
+    -error : Exception
+    -message : String
+    -request : HttpRequest
+    -body : String
+    -bodyBytes : byte[]
+    -encoding : String
+    +create() : HttpResponse
+    +body() : HttpResponse
+    +getBody() : String
+    +getBodyJson() : JSONObject
+    +getContentType() : String
+    +success() : boolean
+    +isCacheEntity() : boolean
+    +log() : void
+  }
+}
+
+package work.yj1211.live.utils.interceptor {
+  class FangshuaInterceptor {
+    +preHandle() : boolean
+    +isLimit() : boolean
+  }
+}
+
+package work.yj1211.live.utils.platForms {
+  class PlatformTest {
+    -bilibili : Bilibili
+    -douyu : Douyu
+    -huya : Huya
+    -cc : CC
+    -douyin : Douyin
+  }
+}
+
+package work.yj1211.live.utils.thread {
+  interface AsyncService {
+  }
+}
+
+' --- Relatii ---
+PlatformTest --> LiveApplication
+PlatformTest --> UrlQuality
+AreaServiceTest --> LiveApplication
+AreaServiceTest --> AreaInfoIndex
+AreaServiceTest --> Douyu
+AreaServiceTest --> Huya
+AreaInfoServiceTest --> LiveApplication
+AreaInfoServiceTest --> AreaInfo
+AreaInfoServiceTest --> AreaService
+WebConfig --> FangshuaInterceptor
+AfterServiceStarted --> AreaService
+AfterServiceStarted --> LiveRoomService
+AfterServiceStarted --> UserService
+AfterServiceStarted --> Douyu
+RoomMapper --> SimpleRoomInfo
+AreaInfoIndexMapper --> AreaInfoIndex
+UserMapper --> SimpleRoomInfo
+UserMapper --> AreaSimple
+UserMapper --> ActiveUsers
+UserMapper --> UserInfo
+AreaTypeIndexMapper --> AreaTypeIndex
+AreaInfoMapper --> AreaInfo
+UserMailMapper --> UserMail
+Global --> BannerInfo
+Global --> UpdateInfo
+Global --> AreaInfo
+Global --> AreaInfoIndex
+HttpUtil --> HttpResponse
+HttpUtil --> HttpRequest
+FixHuya --> HttpContentType
+FixHuya --> HttpRequest
+HttpRequest --> UrlUtil
+AsyncService --> LiveRoomInfo
+FangshuaInterceptor --> AccessLimit
+LiveRoomCrl --> ResultFactory
+LiveRoomCrl --> LiveRoomInfo
+LiveRoomCrl --> Owner
+LiveRoomCrl --> UrlQuality
+LiveRoomCrl --> AreaInfo
+LiveRoomCrl --> AreaInfoIndex
+LiveRoomCrl --> Result
+LiveRoomCrl --> LiveRoomService
+LiveRoomCrl --> FixHuya
+LiveRoomCrl --> AccessLimit
+UserInfoCrl --> ResultFactory
+UserInfoCrl --> UserMailMapper
+UserInfoCrl --> UpdateInfo
+UserInfoCrl --> AreaSimple
+UserInfoCrl --> Result
+UserInfoCrl --> UserInfo
+UserInfoCrl --> UserMail
+UserInfoCrl --> UserService
+StatisticsTask --> AreaService
+StatisticsTask --> UserService
+AreaTypeIndexService --> AreaTypeIndexMapper
+AreaService --> Platform
+AreaService --> AreaInfo
+AreaService --> AreaInfoIndex
+AreaService --> AreaTypeIndex
+AreaService --> AreaTypeIndexService
+AreaService --> AreaInfoIndexService
+AreaService --> AreaInfoService
+AreaService --> BasePlatform
+AreaService --> Global
+UserService --> Platform
+UserService --> UserMailMapper
+UserService --> UserMapper
+UserService --> BannerInfo
+UserService --> UpdateInfo
+UserService --> AreaSimple
+UserService --> ActiveUsers
+UserService --> UserInfo
+UserService --> UserMail
+UserService --> Douyu
+UserService --> Global
+UserService --> HttpContentType
+UserService --> HttpRequest
+AsyncServiceImpl ..|> AsyncService
+AsyncServiceImpl --> Platform
+AsyncServiceImpl --> LiveRoomInfo
+AsyncServiceImpl --> BasePlatform
+AsyncServiceImpl --> Bilibili
+AsyncServiceImpl --> CC
+AsyncServiceImpl --> Douyu
+AsyncServiceImpl --> Huya
+AsyncServiceImpl --> AsyncService
+LiveRoomService --> Platform
+LiveRoomService --> RoomMapper
+LiveRoomService --> UserMapper
+LiveRoomService --> UpdateInfo
+LiveRoomService --> LiveRoomInfo
+LiveRoomService --> Owner
+LiveRoomService --> SimpleRoomInfo
+LiveRoomService --> UrlQuality
+LiveRoomService --> AreaInfo
+LiveRoomService --> AreaInfoIndex
+LiveRoomService --> GetAllSupportPlatformsResponse
+LiveRoomService --> BasePlatform
+LiveRoomService --> Global
+LiveRoomService --> AsyncService
+RedisService --> LiveRoomInfo
+RedisService --> RedisUtils
+BasePlatform --> LiveRoomInfo
+BasePlatform --> Owner
+BasePlatform --> UrlQuality
+BasePlatform --> AreaInfo
+Douyin ..|> BasePlatform
+Douyin --> HttpRequest
+Douyin --> HttpResponse
+Douyin --> Platform
+Douyin --> PlayUrlType
+Douyin --> LiveRoomInfo
+Douyin --> Owner
+Douyin --> UrlQuality
+Douyin --> AreaInfo
+Douyin --> BasePlatform
+Douyin --> Global
+Huya ..|> BasePlatform
+Huya --> HttpRequest
+Huya --> Platform
+Huya --> PlayUrlType
+Huya --> LiveRoomInfo
+Huya --> Owner
+Huya --> UrlQuality
+Huya --> AreaInfo
+Huya --> BasePlatform
+Huya --> FixHuya
+Huya --> Global
+Huya --> HttpUtil
+CC ..|> BasePlatform
+CC --> Platform
+CC --> LiveRoomInfo
+CC --> Owner
+CC --> UrlQuality
+CC --> AreaInfo
+CC --> BasePlatform
+CC --> Global
+CC --> HttpUtil
+CC --> HttpContentType
+CC --> HttpRequest
+Douyu ..|> BasePlatform
+Douyu --> Platform
+Douyu --> PlayUrlType
+Douyu --> LiveRoomInfo
+Douyu --> Owner
+Douyu --> UrlQuality
+Douyu --> AreaInfo
+Douyu --> BasePlatform
+Douyu --> DouYuOpenApi
+Douyu --> Global
+Douyu --> HttpUtil
+Douyu --> HttpContentType
+Douyu --> HttpRequest
+Douyu --> HttpResponse
+Bilibili ..|> BasePlatform
+Bilibili --> Platform
+Bilibili --> LiveRoomInfo
+Bilibili --> Owner
+Bilibili --> UrlQuality
+Bilibili --> AreaInfo
+Bilibili --> BasePlatform
+Bilibili --> Global
+Bilibili --> HttpUtil
+Bilibili --> HttpRequest
+AreaInfoIndexService --> AreaInfoIndexMapper
+AreaInfoIndexService --> AreaInfoIndex
+AreaInfoService --> AreaInfoMapper
+AreaInfoService --> AreaInfo
+ResultFactory --> ResultCode
+ResultFactory --> Result
+
+@enduml

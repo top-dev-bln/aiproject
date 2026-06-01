@@ -1,0 +1,276 @@
+@startuml
+
+package com.haydikodlayalim {
+  class EurekaServerApplication {
+    +main() : void
+  }
+  class HystrixController <<Controller>> {
+    +accountFallback() : String
+    +ticketFallback() : String
+  }
+  class GatewayApplication {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.accountservice {
+  class AccountServiceApplication {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.accountservice.api {
+  class AccountApi <<Controller>> {
+    -accountService : AccountService
+    +save() : ResponseEntity<AccountDto>
+    +update() : ResponseEntity<AccountDto>
+    +delete() : void
+    +getAll() : ResponseEntity<Slice<AccountDto>>
+  }
+}
+
+package com.haydikodlayalim.accountservice.configuration {
+  class CustomBeanFactory {
+    +getModelMapper() : ModelMapper
+  }
+  class CassandraConfiguration {
+    -contactPoint : String
+    -port : int
+    -keyspaceName : String
+    -username : String
+    -password : String
+    +getKeyspaceName() : String
+    +getPort() : int
+    +getContactPoints() : String
+    +getSchemaAction() : SchemaAction
+    +getEntityBasePackages() : String[]
+    +cluster() : CassandraClusterFactoryBean
+  }
+}
+
+package com.haydikodlayalim.accountservice.entity {
+  class Account {
+    -id : String
+    -username : String
+    -name : String
+    -surname : String
+    -email : String
+    -birthDate : Date
+    -password : String
+    -createdAt : Date
+    -active : Boolean
+  }
+}
+
+package com.haydikodlayalim.accountservice.repo {
+  interface AccountRepository <<Repository>> {
+  }
+}
+
+package com.haydikodlayalim.accountservice.service {
+  class AccountService <<Service>> {
+    -accountRepository : AccountRepository
+    -modelMapper : ModelMapper
+    +save() : AccountDto
+    +update() : AccountDto
+    +delete() : void
+    +findAll() : Slice<AccountDto>
+  }
+}
+
+package com.haydikodlayalim.adminserver {
+  class AdminServerApplication {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.client {
+  interface AccountServiceClient {
+  }
+  class FeignConfig {
+  }
+}
+
+package com.haydikodlayalim.client.contract {
+  class AccountDto {
+    -id : String
+    -username : String
+    -name : String
+    -surname : String
+    -email : String
+    -birthDate : Date
+    +getNameSurname() : String
+  }
+}
+
+package com.haydikodlayalim.configserver {
+  class ConfigServerApplication {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.hystrix {
+  class HystrixDashboardApplication {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.messaging {
+  class TicketNotification {
+    -ticketId : String
+    -accountId : String
+    -ticketDescription : String
+  }
+}
+
+package com.haydikodlayalim.notification {
+  class NotificationDistributionService {
+    +onNotification() : void
+  }
+  class NotificationService {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.ticketservice {
+  class TicketApplication {
+    +main() : void
+  }
+}
+
+package com.haydikodlayalim.ticketservice.api {
+  class TicketApi <<Controller>> {
+    -ticketService : TicketService
+    +getById() : ResponseEntity<TicketDto>
+    +createTicket() : ResponseEntity<TicketDto>
+    +updateTicket() : ResponseEntity<TicketDto>
+    +getAll() : ResponseEntity<Page<TicketDto>>
+  }
+}
+
+package com.haydikodlayalim.ticketservice.config {
+  class TicketConfiguration {
+    +modelMapper() : ModelMapper
+  }
+}
+
+package com.haydikodlayalim.ticketservice.dto {
+  class TicketDto {
+    -id : String
+    -description : String
+    -notes : String
+    -assignee : String
+    -ticketDate : Date
+    -priorityType : String
+    -ticketStatus : String
+  }
+}
+
+package com.haydikodlayalim.ticketservice.model {
+  enum TicketStatus {
+    -label : String
+  }
+  class BaseEntityModel {
+    -cretedAt : Date
+    -updatedAt : Date
+  }
+  class Ticket <<Entity>> {
+    -id : String
+    -description : String
+    -notes : String
+    -assignee : String
+    -ticketDate : Date
+    -priorityType : PriorityType
+    -ticketStatus : TicketStatus
+  }
+  enum PriorityType {
+    -label : String
+  }
+}
+
+package com.haydikodlayalim.ticketservice.model.es {
+  class TicketModel {
+    -id : String
+    -description : String
+    -notes : String
+    -assignee : String
+    -ticketDate : Date
+    -priorityType : String
+    -ticketStatus : String
+  }
+}
+
+package com.haydikodlayalim.ticketservice.repository {
+  interface TicketRepository {
+  }
+}
+
+package com.haydikodlayalim.ticketservice.repository.es {
+  interface TicketElasticRepository {
+  }
+}
+
+package com.haydikodlayalim.ticketservice.service {
+  interface TicketService {
+  }
+  interface TicketNotificationService {
+  }
+}
+
+package com.haydikodlayalim.ticketservice.service.impl {
+  class TicketNotificationServiceImpl <<Service>> {
+    -source : Source
+    +sendToQueue() : void
+  }
+  class TicketServiceImpl <<Service>> {
+    -ticketElasticRepository : TicketElasticRepository
+    -ticketRepository : TicketRepository
+    -ticketNotificationService : TicketNotificationService
+    -accountServiceClient : AccountServiceClient
+    +save() : TicketDto
+    +update() : TicketDto
+    +getById() : TicketDto
+    +getPagination() : Page<TicketDto>
+  }
+}
+
+package com.haydikodlayalim.zipkinserver {
+  class ZipkinServerApplication {
+    +main() : void
+  }
+}
+
+' --- Relatii ---
+AccountApi --> AccountService
+AccountApi --> AccountDto
+AccountService --> Account
+AccountService --> AccountRepository
+AccountService --> AccountDto
+AccountRepository --> Account
+TicketRepository --> Ticket
+TicketElasticRepository --> TicketModel
+Ticket --|> BaseEntityModel
+TicketApi --> TicketDto
+TicketApi --> TicketService
+TicketService --> TicketDto
+TicketNotificationService --> Ticket
+TicketNotificationServiceImpl ..|> TicketNotificationService
+TicketNotificationServiceImpl --> TicketNotification
+TicketNotificationServiceImpl --> Ticket
+TicketNotificationServiceImpl --> TicketNotificationService
+TicketServiceImpl ..|> TicketService
+TicketServiceImpl --> AccountServiceClient
+TicketServiceImpl --> AccountDto
+TicketServiceImpl --> TicketDto
+TicketServiceImpl --> PriorityType
+TicketServiceImpl --> Ticket
+TicketServiceImpl --> TicketStatus
+TicketServiceImpl --> TicketModel
+TicketServiceImpl --> TicketRepository
+TicketServiceImpl --> TicketElasticRepository
+TicketServiceImpl --> TicketNotificationService
+TicketServiceImpl --> TicketService
+NotificationDistributionService --> TicketNotification
+AccountServiceClient --> AccountDto
+
+@enduml

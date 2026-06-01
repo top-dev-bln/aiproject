@@ -1,0 +1,26 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, user management domain. It serves User as its primary actors. The main business capabilities include test, timeout. Core business data revolves around ReleaseTimeoutStrategy.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with test functionality, so that the system fulfills my needs.",
+        "services": [
+          "TestService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with timeout functionality, so that the system fulfills my needs.",
+        "services": [
+          "TimeoutService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Services\n    TestService[\"TestService\"]\n    TimeoutService[\"TimeoutService\"]\n  end\n  subgraph Data_Access\n    ReleaseTimeoutStrategy[\"ReleaseTimeoutStrategy\"]\n  end\n  subgraph Infrastructure\n    KlockAspectHandler[\"KlockAspectHandler\"]\n    KlockAutoConfiguration[\"KlockAutoConfiguration\"]\n    KlockConfig[\"KlockConfig\"]\n    KlockConfiguration[\"KlockConfiguration\"]\n    KlockKey[\"KlockKey\"]\n    LockTimeoutHandler[\"LockTimeoutHandler\"]\n    ReleaseTimeoutHandler[\"ReleaseTimeoutHandler\"]\n    WriteLock[\"WriteLock\"]\n  end\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, microservices infrastructure domain. It serves User as its primary actors. The main business capabilities include security, testing, validation. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage security operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "SecurityController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage testing operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestingController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to manage validation operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "ValidationController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SecurityController[\"SecurityController\"]\n    TestingController[\"TestingController\"]\n    ValidationController[\"ValidationController\"]\n  end\n  subgraph Security\n    AccessConfiguration[\"AccessConfiguration\"]\n    LoginFailuresClearingHandler[\"LoginFailuresClearingHandler\"]\n    RecaptchaAuthenticationFilter[\"RecaptchaAuthenticationFilter\"]\n  end\n  subgraph Infrastructure\n    SecurityConfiguration[\"SecurityConfiguration\"]\n    TestingConfiguration[\"TestingConfiguration\"]\n    ValidationConfiguration[\"ValidationConfiguration\"]\n  end\n  Controllers --> Security\n  Infrastructure --> Security"
+  }
+}

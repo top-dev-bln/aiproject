@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, messaging domain. It serves API Consumer, Admin, Customer as its primary actors. The main business capabilities include account api, hystrix, ticket api. Core business data revolves around Ticket.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [],
+        "controllers": [
+          "AccountApi"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to receive notifications about relevant activity, so that I stay informed about updates that matter to me.",
+        "services": [
+          "NotificationDistributionService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to manage application configuration centrally, so that all services pick up the latest settings without redeployment.",
+        "services": [
+          "TicketConfiguration"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage account api operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AccountApi"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage hystrix operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HystrixController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountApi[\"AccountApi\"]\n    HystrixController[\"HystrixController\"]\n    TicketApi[\"TicketApi\"]\n  end\n  subgraph Services\n    Account[\"Account\"]\n    AccountService[\"AccountService\"]\n    CustomBeanFactory[\"CustomBeanFactory\"]\n    NotificationDistributionService[\"NotificationDistributionService\"]\n    NotificationService[\"NotificationService\"]\n    TicketConfiguration[\"TicketConfiguration\"]\n    TicketElasticRepository[\"TicketElasticRepository\"]\n    TicketModel[\"TicketModel\"]\n    TicketNotificationService[\"TicketNotificationService\"]\n    TicketNotificationServiceImpl[\"TicketNotificationServiceImpl\"]\n    TicketRepository[\"TicketRepository\"]\n    TicketService[\"TicketService\"]\n    TicketServiceImpl[\"TicketServiceImpl\"]\n    TicketStatus[\"TicketStatus\"]\n  end\n  subgraph Data_Access\n    AccountRepository[\"AccountRepository\"]\n    Ticket[\"Ticket\"]\n  end\n  subgraph Infrastructure\n    CassandraConfiguration[\"CassandraConfiguration\"]\n    FeignConfig[\"FeignConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the microservices infrastructure, authentication domain. It serves User as its primary actors. The main business capabilities include simple, test, embedded. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to manage simple operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "ISimpleService",
+          "SimpleService",
+          "SimpleServiceImpl",
+          "SimpleServiceInImportService"
+        ],
+        "controllers": [
+          "SimpleController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to manage test operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "TestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with embedded functionality, so that the system fulfills my needs.",
+        "services": [
+          "EmbeddedService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with i simple functionality, so that the system fulfills my needs.",
+        "services": [
+          "ISimpleService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with import functionality, so that the system fulfills my needs.",
+        "services": [
+          "ImportService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    SimpleController[\"SimpleController\"]\n    TestController[\"TestController\"]\n  end\n  subgraph Services\n    EmbeddedService[\"EmbeddedService\"]\n    ISimpleService[\"ISimpleService\"]\n    ImportService[\"ImportService\"]\n    NotHandleService[\"NotHandleService\"]\n    SimpleService[\"SimpleService\"]\n    SimpleServiceImpl[\"SimpleServiceImpl\"]\n    SimpleServiceInImportService[\"SimpleServiceInImportService\"]\n  end\n  subgraph Security\n    LogMethodInterceptor[\"LogMethodInterceptor\"]\n  end\n  subgraph Infrastructure\n    LogAutoConfiguration[\"LogAutoConfiguration\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Security\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

@@ -1,0 +1,86 @@
+@startuml
+
+package com.example.postgresdemo {
+  class PostgresDemoApplicationTests {
+    +contextLoads() : void
+  }
+  class PostgresDemoApplication {
+    +main() : void
+  }
+}
+
+package com.example.postgresdemo.controller {
+  class QuestionController <<Controller>> {
+    -questionRepository : QuestionRepository
+    +getQuestions() : Page<Question>
+    +createQuestion() : Question
+    +updateQuestion() : Question
+  }
+  class AnswerController <<Controller>> {
+    -answerRepository : AnswerRepository
+    -questionRepository : QuestionRepository
+    +getAnswersByQuestionId() : List<Answer>
+    +addAnswer() : Answer
+    +updateAnswer() : Answer
+  }
+}
+
+package com.example.postgresdemo.exception {
+  class ResourceNotFoundException {
+  }
+}
+
+package com.example.postgresdemo.model {
+  class Answer <<Entity>> {
+    -id : Long
+    -text : String
+    -question : Question
+    +getId() : Long
+    +setId() : void
+    +getText() : String
+    +setText() : void
+    +getQuestion() : Question
+    +setQuestion() : void
+  }
+  class Question <<Entity>> {
+    -id : Long
+    -title : String
+    -description : String
+    +getId() : Long
+    +setId() : void
+    +getTitle() : String
+    +setTitle() : void
+    +getDescription() : String
+    +setDescription() : void
+  }
+  class AuditModel {
+    -createdAt : Date
+    -updatedAt : Date
+    +getCreatedAt() : Date
+    +setCreatedAt() : void
+    +getUpdatedAt() : Date
+    +setUpdatedAt() : void
+  }
+}
+
+package com.example.postgresdemo.repository {
+  interface QuestionRepository <<Repository>> {
+  }
+  interface AnswerRepository <<Repository>> {
+  }
+}
+
+' --- Relatii ---
+QuestionRepository --> Question
+AnswerRepository --> Answer
+QuestionController --> ResourceNotFoundException
+QuestionController --> Question
+QuestionController --> QuestionRepository
+AnswerController --> ResourceNotFoundException
+AnswerController --> Answer
+AnswerController --> AnswerRepository
+AnswerController --> QuestionRepository
+Answer --|> AuditModel
+Question --|> AuditModel
+
+@enduml

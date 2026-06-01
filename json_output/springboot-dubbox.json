@@ -1,0 +1,52 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, file management domain. It serves API Consumer, Admin, Customer, System, User as its primary actors. The main business capabilities include authentication, base, base entity. Core business data revolves around AbstractAuthUser, AuthUserFactory, CrudDao, DataEntity. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [],
+        "controllers": [
+          "SysUserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage authentication operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage base operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "BaseDao"
+        ],
+        "controllers": [
+          "BaseController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage base entity operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "BaseEntity"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AuthenticationController[\"AuthenticationController\"]\n    BaseController[\"BaseController\"]\n    BaseEntity[\"BaseEntity\"]\n    CurrencyRateController[\"CurrencyRateController\"]\n    CustomErrorController[\"CustomErrorController\"]\n    DashboardController[\"DashboardController\"]\n    ICaptchaService[\"ICaptchaService\"]\n    ShortMsgController[\"ShortMsgController\"]\n    SysMenuController[\"SysMenuController\"]\n    SysRole[\"SysRole\"]\n    SysRoleController[\"SysRoleController\"]\n    SysUserController[\"SysUserController\"]\n    TripUserController[\"TripUserController\"]\n    UserController[\"UserController\"]\n    YahooRateBean[\"YahooRateBean\"]\n  end\n  subgraph Services\n    BaseDao[\"BaseDao\"]\n    CaptchaService[\"CaptchaService\"]\n    CrudService[\"CrudService\"]\n    CurrencyRateService[\"CurrencyRateService\"]\n    DynamicDataSourceTransactionManager[\"DynamicDataSourceTransactionManager\"]\n    ICurrencyRateService[\"ICurrencyRateService\"]\n    ISystemService[\"ISystemService\"]\n    ITripUserService[\"ITripUserService\"]\n    SystemService[\"SystemService\"]\n    TripUserService[\"TripUserService\"]\n    UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n    YahooRateService[\"YahooRateService\"]\n  end\n  subgraph Data_Access\n    AbstractAuthUser[\"AbstractAuthUser\"]\n    AuthUserFactory[\"AuthUserFactory\"]\n    CrudDao[\"CrudDao\"]\n    DataEntity[\"DataEntity\"]\n    RedisRepository[\"RedisRepository\"]\n    YoupuPipeline[\"YoupuPipeline\"]\n  end\n  subgraph Security\n    AuthenticationTokenFilter[\"AuthenticationTokenFilter\"]\n    MyAuthenticationEntryPoint[\"MyAuthenticationEntryPoint\"]\n    TokenUtil[\"TokenUtil\"]\n  end\n  subgraph Infrastructure\n    AbstractWebSecurityConfig[\"AbstractWebSecurityConfig\"]\n    CacheConfig[\"CacheConfig\"]\n    DatasourceConfig[\"DatasourceConfig\"]\n    RedisConfig[\"RedisConfig\"]\n    SwaggerConfig[\"SwaggerConfig\"]\n    UploadConfig[\"UploadConfig\"]\n    WebConfig[\"WebConfig\"]\n    WebSecurityConfig[\"WebSecurityConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

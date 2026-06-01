@@ -1,0 +1,286 @@
+@startuml
+
+package com.iot.app.kafka.producer {
+  class IoTDataProducer {
+    -logger : Logger
+    +main() : void
+  }
+}
+
+package com.iot.app.kafka.util {
+  class IoTDataEncoder {
+    -logger : Logger
+    -objectMapper : ObjectMapper
+    +toBytes() : byte[]
+  }
+  class PropertyFileReader {
+    -logger : Logger
+    -prop : Properties
+    +readPropertyFile() : Properties
+  }
+}
+
+package com.iot.app.kafka.vo {
+  class IoTData {
+    -vehicleId : String
+    -vehicleType : String
+    -routeId : String
+    -longitude : String
+    -latitude : String
+    -timestamp : Date
+    -speed : double
+    -fuelLevel : double
+    +getVehicleId() : String
+    +getVehicleType() : String
+    +getRouteId() : String
+    +getLongitude() : String
+    +getLatitude() : String
+    +getTimestamp() : Date
+    +getSpeed() : double
+    +getFuelLevel() : double
+  }
+}
+
+package com.iot.app.spark.entity {
+  class WindowTrafficData {
+    -routeId : String
+    -vehicleType : String
+    -totalCount : long
+    -timeStamp : Date
+    -recordDate : String
+    +getRouteId() : String
+    +setRouteId() : void
+    +getVehicleType() : String
+    +setVehicleType() : void
+    +getTotalCount() : long
+    +setTotalCount() : void
+    +getTimeStamp() : Date
+    +setTimeStamp() : void
+  }
+  class POITrafficData {
+    -vehicleId : String
+    -distance : double
+    -vehicleType : String
+    -timeStamp : Date
+    +getVehicleId() : String
+    +setVehicleId() : void
+    +getDistance() : double
+    +setDistance() : void
+    +getVehicleType() : String
+    +setVehicleType() : void
+    +getTimeStamp() : Date
+    +setTimeStamp() : void
+  }
+  class TotalTrafficData {
+    -routeId : String
+    -vehicleType : String
+    -totalCount : long
+    -timeStamp : Date
+    -recordDate : String
+    +getRouteId() : String
+    +setRouteId() : void
+    +getVehicleType() : String
+    +setVehicleType() : void
+    +getTotalCount() : long
+    +setTotalCount() : void
+    +getTimeStamp() : Date
+    +setTimeStamp() : void
+  }
+}
+
+package com.iot.app.spark.processor {
+  class IoTDataProcessor {
+    -logger : Logger
+    +main() : void
+  }
+  class IoTTrafficDataProcessor {
+    -logger : Logger
+    +processTotalTrafficData() : void
+    +processWindowTrafficData() : void
+    +processPOIData() : void
+  }
+}
+
+package com.iot.app.spark.util {
+  class IoTDataDecoder {
+    -objectMapper : ObjectMapper
+    +fromBytes() : IoTData
+  }
+  class GeoDistanceCalculator {
+    -r : int
+    +getDistance() : double
+    +isInPOIRadius() : boolean
+  }
+  class PropertyFileReader {
+    -logger : Logger
+    -prop : Properties
+    +readPropertyFile() : Properties
+  }
+}
+
+package com.iot.app.spark.vo {
+  class POIData {
+    -latitude : double
+    -longitude : double
+    -radius : double
+    +getLatitude() : double
+    +setLatitude() : void
+    +getLongitude() : double
+    +setLongitude() : void
+    +getRadius() : double
+    +setRadius() : void
+  }
+  class AggregateKey {
+    -routeId : String
+    -vehicleType : String
+    -prime : int
+    +getRouteId() : String
+    +getVehicleType() : String
+  }
+  class IoTData {
+    -vehicleId : String
+    -vehicleType : String
+    -routeId : String
+    -latitude : String
+    -longitude : String
+    -timestamp : Date
+    -speed : double
+    -fuelLevel : double
+    +getVehicleId() : String
+    +getVehicleType() : String
+    +getRouteId() : String
+    +getLongitude() : String
+    +getLatitude() : String
+    +getTimestamp() : Date
+    +getSpeed() : double
+    +getFuelLevel() : double
+  }
+}
+
+package com.iot.app.springboot.dao {
+  interface TotalTrafficDataRepository <<Repository>> {
+  }
+  class CassandraConfig {
+    -environment : Environment
+    +cluster() : CassandraClusterFactoryBean
+    +cassandraMapping() : CassandraMappingContext
+    +getKeyspaceName() : String
+  }
+  interface WindowTrafficDataRepository <<Repository>> {
+  }
+  interface POITrafficDataRepository <<Repository>> {
+  }
+}
+
+package com.iot.app.springboot.dao.entity {
+  class WindowTrafficData {
+    -routeId : String
+    -recordDate : String
+    -vehicleType : String
+    -totalCount : long
+    -timeStamp : Date
+    +getRouteId() : String
+    +setRouteId() : void
+    +getRecordDate() : String
+    +setRecordDate() : void
+    +getVehicleType() : String
+    +setVehicleType() : void
+    +getTotalCount() : long
+    +setTotalCount() : void
+  }
+  class POITrafficData {
+    -timeStamp : Date
+    -recordDate : String
+    -vehicleId : String
+    -distance : double
+    -vehicleType : String
+    +getTimeStamp() : Date
+    +setTimeStamp() : void
+    +getRecordDate() : String
+    +setRecordDate() : void
+    +getVehicleId() : String
+    +setVehicleId() : void
+    +getDistance() : double
+    +setDistance() : void
+  }
+  class TotalTrafficData {
+    -routeId : String
+    -recordDate : String
+    -vehicleType : String
+    -totalCount : long
+    -timeStamp : Date
+    +getRouteId() : String
+    +setRouteId() : void
+    +getRecordDate() : String
+    +setRecordDate() : void
+    +getVehicleType() : String
+    +setVehicleType() : void
+    +getTotalCount() : long
+    +setTotalCount() : void
+  }
+}
+
+package com.iot.app.springboot.dashboard {
+  class TrafficDataService <<Service>> {
+    -logger : Logger
+    -template : SimpMessagingTemplate
+    -totalRepository : TotalTrafficDataRepository
+    -windowRepository : WindowTrafficDataRepository
+    -poiRepository : POITrafficDataRepository
+    -sdf : DateFormat
+    +trigger() : void
+  }
+  class WebSocketConfig {
+    +registerStompEndpoints() : void
+    +configureMessageBroker() : void
+  }
+  class IoTDataDashboard {
+    +main() : void
+  }
+}
+
+package com.iot.app.springboot.vo {
+  class Response {
+    -totalTraffic : List<TotalTrafficData>
+    -windowTraffic : List<WindowTrafficData>
+    -poiTraffic : List<POITrafficData>
+    +getTotalTraffic() : List<TotalTrafficData>
+    +setTotalTraffic() : void
+    +getWindowTraffic() : List<WindowTrafficData>
+    +setWindowTraffic() : void
+    +getPoiTraffic() : List<POITrafficData>
+    +setPoiTraffic() : void
+  }
+}
+
+' --- Relatii ---
+IoTDataProducer --> PropertyFileReader
+IoTDataProducer --> IoTData
+IoTDataEncoder --> IoTData
+Response --> POITrafficData
+Response --> TotalTrafficData
+Response --> WindowTrafficData
+TotalTrafficDataRepository --> TotalTrafficData
+WindowTrafficDataRepository --> WindowTrafficData
+POITrafficDataRepository --> POITrafficData
+TrafficDataService --> POITrafficDataRepository
+TrafficDataService --> TotalTrafficDataRepository
+TrafficDataService --> WindowTrafficDataRepository
+TrafficDataService --> POITrafficData
+TrafficDataService --> TotalTrafficData
+TrafficDataService --> WindowTrafficData
+TrafficDataService --> Response
+IoTDataDecoder --> IoTData
+IoTDataProcessor --> IoTDataDecoder
+IoTDataProcessor --> PropertyFileReader
+IoTDataProcessor --> IoTData
+IoTDataProcessor --> POIData
+IoTTrafficDataProcessor --> POITrafficData
+IoTTrafficDataProcessor --> TotalTrafficData
+IoTTrafficDataProcessor --> WindowTrafficData
+IoTTrafficDataProcessor --> GeoDistanceCalculator
+IoTTrafficDataProcessor --> AggregateKey
+IoTTrafficDataProcessor --> IoTData
+IoTTrafficDataProcessor --> POIData
+
+@enduml

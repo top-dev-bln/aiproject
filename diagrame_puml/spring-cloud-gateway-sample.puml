@@ -1,0 +1,24 @@
+@startuml
+
+package com.example.demogateway {
+  class DemogatewayApplicationTests {
+    -client : WebTestClient
+    +setup() : void
+    +pathRouteWorks() : void
+    +hostRouteWorks() : void
+    +rewriteRouteWorks() : void
+    +circuitBreakerRouteWorks() : void
+    +circuitBreakerFallbackRouteWorks() : void
+    +rateLimiterWorks() : void
+  }
+  class DemogatewayApplication <<Controller>> {
+    +circuitbreakerfallback() : String
+    +customRouteLocator() : RouteLocator
+    +reactiveUserDetailsService() : MapReactiveUserDetailsService
+    +main() : void
+  }
+}
+
+' --- Relatii ---
+
+@enduml

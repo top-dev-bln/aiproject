@@ -1,0 +1,230 @@
+@startuml
+
+package com.tasly {
+  class ApiGatewayApplication {
+    +main() : void
+  }
+  class EurekaApplication {
+    +main() : void
+  }
+  class ZipkinServerApplication {
+    +main() : void
+  }
+  class ScoreServiceApplication {
+    +main() : void
+  }
+  class OrderServiceApplication {
+    +main() : void
+  }
+  class UserServiceApplication {
+    +main() : void
+  }
+  class ConfigServerApplication {
+    +main() : void
+  }
+}
+
+package com.tasly.aggregation {
+  class UserController <<Controller>> {
+    -userService : UserService
+    +getCurrentInfo() : UserDTO
+  }
+}
+
+package com.tasly.commons.h2 {
+  class H2ServerConfiguration {
+    -h2TcpPort : String
+    -h2WebPort : String
+    +h2TcpServer() : Server
+    +h2WebServer() : Server
+  }
+}
+
+package com.tasly.commons.utils {
+  class Beans {
+    -clazz : Class<T>
+    -src : BeanWrapper
+    -COPY_IGNORED_PROPERTIES : String[]
+    +getProperty() : Object
+    +setProperty() : void
+    +copyProperties() : void
+    +copyEntityProperties() : void
+  }
+}
+
+package com.tasly.order.core {
+  class OrderServiceImpl <<Controller>> {
+    -tccScoreService : TCCScoreService
+    -orderReposity : OrderReposity
+    +placeOrder() : String
+  }
+}
+
+package com.tasly.order.core.api {
+  interface OrderService {
+  }
+}
+
+package com.tasly.order.db.domain {
+  class Order <<Entity>> {
+    -id : Long
+    -sku : String
+    -name : String
+    -price : BigDecimal
+    -orderStatus : OrderStatus
+  }
+}
+
+package com.tasly.order.db.reposity {
+  interface OrderReposity {
+  }
+}
+
+package com.tasly.order.db.status {
+  enum OrderStatus {
+  }
+}
+
+package com.tasly.product.core {
+  class ProductServiceImpl <<Controller>> {
+  }
+}
+
+package com.tasly.product.core.api {
+  interface ProductService {
+  }
+}
+
+package com.tasly.product.db.domain {
+  class Product <<Entity>> {
+    -id : Long
+    -sku : String
+    -name : String
+    -price : BigDecimal
+  }
+}
+
+package com.tasly.product.db.reposity {
+  interface ProductReposity {
+  }
+}
+
+package com.tasly.score.core {
+  class ScoreServiceImpl <<Controller>> {
+    -userService : UserService
+    +getScore() : String
+  }
+  class TCCScoreServiceImpl <<Controller>> {
+    +reduceScore() : String
+    +reduceScoreConfirm() : String
+    +reduceScoreCancle() : String
+  }
+}
+
+package com.tasly.score.core.api {
+  interface TCCScoreService {
+  }
+  interface ScoreService {
+  }
+}
+
+package com.tasly.score.db.domain {
+  class Score <<Entity>> {
+    -id : Long
+    -uid : Long
+    -totalScore : Integer
+  }
+}
+
+package com.tasly.score.db.reposity {
+  interface ScoreReposity {
+  }
+}
+
+package com.tasly.security {
+  class WebSecurityConfig {
+    +configureGlobal() : void
+  }
+}
+
+package com.tasly.user.api {
+  interface UserService {
+  }
+}
+
+package com.tasly.user.core {
+  class UserServiceImpl <<Controller>> {
+    -userReposity : UserReposity
+    +getByUsernameAndPasswordDTO() : UserDTO
+  }
+}
+
+package com.tasly.user.db.domain {
+  class User <<Entity>> {
+    -id : Long
+    -name : String
+    -age : Integer
+    -username : String
+    -password : String
+  }
+}
+
+package com.tasly.user.db.reposity {
+  interface UserReposity {
+  }
+}
+
+package com.tasly.user.dto {
+  class UsernameAndPasswordDTO {
+    -username : String
+    -password : String
+  }
+  class UserDTO {
+    -id : Long
+    -name : String
+    -age : Integer
+    -username : String
+    -password : String
+  }
+}
+
+package com.tasly.user.health {
+  class MyHealthCheckHandler {
+    -myHealthIndicator : MyHealthIndicator
+  }
+  class MyHealthIndicator {
+    +health() : Health
+  }
+}
+
+' --- Relatii ---
+ProductServiceImpl ..|> ProductService
+ProductServiceImpl --> ProductService
+ProductReposity --> Product
+UserController --> UserService
+UserController --> UserDTO
+ScoreServiceImpl ..|> ScoreService
+ScoreServiceImpl --> ScoreService
+ScoreServiceImpl --> UserService
+TCCScoreServiceImpl ..|> TCCScoreService
+TCCScoreServiceImpl --> TCCScoreService
+ScoreReposity --> Score
+OrderServiceImpl ..|> OrderService
+OrderServiceImpl --> OrderService
+OrderServiceImpl --> Order
+OrderServiceImpl --> OrderReposity
+OrderServiceImpl --> OrderStatus
+OrderServiceImpl --> TCCScoreService
+OrderReposity --> Order
+Order --> OrderStatus
+UserService --> UserDTO
+UserService --> UsernameAndPasswordDTO
+UserServiceImpl ..|> UserService
+UserServiceImpl --> UserService
+UserServiceImpl --> User
+UserServiceImpl --> UserReposity
+UserServiceImpl --> UserDTO
+UserServiceImpl --> UsernameAndPasswordDTO
+UserReposity --> User
+
+@enduml

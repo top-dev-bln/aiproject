@@ -1,0 +1,54 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the authentication, messaging domain. It serves API Consumer, Customer, User as its primary actors. The main business capabilities include cache example, demo, http. Core business data revolves around AuthUser, DynamicTableNameUtils, HistoryPo, MybatisPlusConfig. The system enforces access control and identity verification for protected operations.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage user accounts and profiles, so that user information stays current and accurate.",
+        "services": [
+          "UserHelperImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to register and authenticate, so that I can securely access my account and protected resources.",
+        "services": [
+          "AuthService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage cache example operations, so that the relevant business process is handled efficiently.",
+        "services": [
+          "CacheExampleService"
+        ],
+        "controllers": [
+          "CacheExampleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage demo operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "DemoController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage http operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "HttpController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    CacheExampleController[\"CacheExampleController\"]\n    DemoController[\"DemoController\"]\n    HttpController[\"HttpController\"]\n    ServerHealthController[\"ServerHealthController\"]\n    SqlExampleController[\"SqlExampleController\"]\n    UserController[\"UserController\"]\n  end\n  subgraph Services\n    AopExampleService[\"AopExampleService\"]\n    AuthService[\"AuthService\"]\n    CacheExampleService[\"CacheExampleService\"]\n    SqlExampleService[\"SqlExampleService\"]\n    UserHelperImpl[\"UserHelperImpl\"]\n  end\n  subgraph Data_Access\n    AuthUser[\"AuthUser\"]\n    DynamicTableNameUtils[\"DynamicTableNameUtils\"]\n    HistoryPo[\"HistoryPo\"]\n    MybatisPlusConfig[\"MybatisPlusConfig\"]\n    PageParam[\"PageParam\"]\n    UserHelper[\"UserHelper\"]\n    UserQueryParam[\"UserQueryParam\"]\n  end\n  subgraph Security\n    AuthenticationInterceptor[\"AuthenticationInterceptor\"]\n    BaseAuthHeaderHttpRequestInterceptor[\"BaseAuthHeaderHttpRequestInterceptor\"]\n    CacheHandlerInterceptor[\"CacheHandlerInterceptor\"]\n    RestTemplateAuthInterceptor[\"RestTemplateAuthInterceptor\"]\n  end\n  subgraph Infrastructure\n    AppInitConfig[\"AppInitConfig\"]\n    AsyncThreadPoolConfig[\"AsyncThreadPoolConfig\"]\n    AuthWebConfig[\"AuthWebConfig\"]\n    CachingConfig[\"CachingConfig\"]\n    DemoInit[\"DemoInit\"]\n    InitConfig[\"InitConfig\"]\n    RestTemplateAuthConfig[\"RestTemplateAuthConfig\"]\n    ServerInitConfig[\"ServerInitConfig\"]\n    WebConfig[\"WebConfig\"]\n  end\n  Controllers --> Services\n  Controllers --> Security\n  Services --> Data_Access\n  Services --> Security\n  Security --> Data_Access\n  Infrastructure --> Services\n  Infrastructure --> Security"
+  }
+}

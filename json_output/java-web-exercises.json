@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "The system operates in the messaging, content management domain. It serves API Consumer, Customer as its primary actors. The main business capabilities include account rest, note, note rest. Core business data revolves around Account, AccountDao, FakeAccountDao, InMemoryAccountDao.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a API Consumer, I want to manage my account settings, so that my preferences and personal data stay under my control.",
+        "services": [],
+        "controllers": [
+          "AccountRestController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a API Consumer, I want to manage account rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "AccountRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a API Consumer, I want to manage note operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "NoteController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a API Consumer, I want to manage note rest operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "NoteRestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a API Consumer, I want to manage welcome operations, so that the relevant business process is handled efficiently.",
+        "services": [],
+        "controllers": [
+          "WelcomeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n  subgraph Controllers\n    AccountRestController[\"AccountRestController\"]\n    NoteController[\"NoteController\"]\n    NoteRestController[\"NoteRestController\"]\n    WelcomeController[\"WelcomeController\"]\n  end\n  subgraph Services\n    AccountService[\"AccountService\"]\n    TrimmedService[\"TrimmedService\"]\n  end\n  subgraph Data_Access\n    Account[\"Account\"]\n    AccountDao[\"AccountDao\"]\n    FakeAccountDao[\"FakeAccountDao\"]\n    InMemoryAccountDao[\"InMemoryAccountDao\"]\n    Note[\"Note\"]\n  end\n  subgraph Infrastructure\n    ApplicationConfig[\"ApplicationConfig\"]\n    RootConfig[\"RootConfig\"]\n    TrimmingEnabledConfig[\"TrimmingEnabledConfig\"]\n    TrimmingNotEnabledConfig[\"TrimmingNotEnabledConfig\"]\n    WebConfig[\"WebConfig\"]\n  end\n  Controllers --> Services\n  Services --> Data_Access\n  Infrastructure --> Services"
+  }
+}
