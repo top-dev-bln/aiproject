@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin, Content Creator roles. It manages core business objects including chat message. The platform provides capabilities for chat web socket handler, web http handler. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to create and manage chat message records, so that I can track and organize chat message data effectively.",
+        "services": [
+          "ChatWebSocketHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use web http handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "WebHttpHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ChatWebSocketHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ChatWebSocketHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ChatWebSocketHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        HerokuRedisConfig[\"HerokuRedisConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        RuntimeHintsConfig[\"RuntimeHintsConfig\"]\n        ChatConstants[\"ChatConstants\"]\n        ReactiveWebSocketConfig[\"ReactiveWebSocketConfig\"]\n        ObjectStringConverter[\"ObjectStringConverter\"]\n    end\n    subgraph Services\n        ChatWebSocketHandler[\"ChatWebSocketHandler\"]\n        WebHttpHandler[\"WebHttpHandler\"]\n    end\n    subgraph Data_Access\n        ChatMessage[\"ChatMessage\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

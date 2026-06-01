@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including residential address, user, deposit account, transaction. The platform provides capabilities for exception response handler, user, token revocation. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "TokenRevocationService",
+          "AuthenticationService"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage residential address records, so that I can track and organize residential address data effectively.",
+        "services": [
+          "ExceptionResponseHandler"
+        ],
+        "controllers": [
+          "IdentityVerificationController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage deposit account records, so that I can track and organize deposit account data effectively.",
+        "services": [
+          "DepositAccountService"
+        ],
+        "controllers": [
+          "DepositAccountController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage transaction records, so that I can track and organize transaction data effectively.",
+        "services": [
+          "ExceptionResponseHandler"
+        ],
+        "controllers": [
+          "IdentityVerificationController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        PublicEndpoint[\"PublicEndpoint\"]\n        RedisConfiguration[\"RedisConfiguration\"]\n        OpenApiConfigurationProperties[\"OpenApiConfigurationProperties\"]\n        OpenApiConfiguration[\"OpenApiConfiguration\"]\n    end\n    subgraph Security\n        CustomAuthenticationEntryPoint[\"CustomAuthenticationEntryPoint\"]\n        TokenConfigurationProperties[\"TokenConfigurationProperties\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n        RefreshTokenHeaderProvider[\"RefreshTokenHeaderProvider\"]\n        ApiEndpointSecurityInspector[\"ApiEndpointSecurityInspector\"]\n        AuthenticatedUserIdProvider[\"AuthenticatedUserIdProvider\"]\n        JwtUtility[\"JwtUtility\"]\n        RefreshTokenGenerator[\"RefreshTokenGenerator\"]\n    end\n    subgraph Controllers\n        IdentityVerificationController[\"IdentityVerificationController\"]\n        AuthenticationController[\"AuthenticationController\"]\n        DepositAccountController[\"DepositAccountController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        ResidentialAddress[\"ResidentialAddress\"]\n        User[\"User\"]\n        DepositAccount[\"DepositAccount\"]\n        Transaction[\"Transaction\"]\n        DepositAccountRepository[\"DepositAccountRepository\"]\n        TransactionRepository[\"TransactionRepository\"]\n        UserRepository[\"UserRepository\"]\n        ResidentialAddressRepository[\"ResidentialAddressRepository\"]\n    end\n    subgraph Services\n        ExceptionResponseHandler[\"ExceptionResponseHandler\"]\n        UserService[\"UserService\"]\n        TokenRevocationService[\"TokenRevocationService\"]\n        AuthenticationService[\"AuthenticationService\"]\n        DepositAccountService[\"DepositAccountService\"]\n        IdentityVerificationService[\"IdentityVerificationService\"]\n        CacheManager[\"CacheManager\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

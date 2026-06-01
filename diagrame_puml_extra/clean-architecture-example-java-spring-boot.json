@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Developer, Admin roles. It manages core business objects including offer data. The platform provides capabilities for application exception handler. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Developer, I want to create and manage offer data records, so that I can track and organize offer data data effectively.",
+        "services": [
+          "ApplicationExceptionHandler"
+        ],
+        "controllers": [
+          "AddOfferEndpoint",
+          "CancelOfferEndpoint"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Developer, I want to interact with get offer by id endpoint functionality, so that I can accomplish my get offer by id endpoint-related tasks.",
+        "services": [
+          "ApplicationExceptionHandler"
+        ],
+        "controllers": [
+          "GetOfferByIdEndpoint"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Developer, I want to interact with get offers endpoint functionality, so that I can accomplish my get offers endpoint-related tasks.",
+        "services": [
+          "ApplicationExceptionHandler"
+        ],
+        "controllers": [
+          "GetOffersEndpoint"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Developer, I want to use application exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ApplicationExceptionHandler"
+        ],
+        "controllers": [
+          "AddOfferEndpoint"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ApplicationExceptionHandler"
+        ],
+        "controllers": [
+          "AddOfferEndpoint"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n        ApplicationConfiguration[\"ApplicationConfiguration\"]\n    end\n    subgraph Controllers\n        AddOfferEndpoint[\"AddOfferEndpoint\"]\n        CancelOfferEndpoint[\"CancelOfferEndpoint\"]\n        GetOfferByIdEndpoint[\"GetOfferByIdEndpoint\"]\n        GetOffersEndpoint[\"GetOffersEndpoint\"]\n    end\n    subgraph Services\n        ApplicationExceptionHandler[\"ApplicationExceptionHandler\"]\n    end\n    subgraph Data_Access\n        OfferData[\"OfferData\"]\n        OfferRepository[\"OfferRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

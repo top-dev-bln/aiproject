@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a task management platform that serves User, Candidate roles. The platform provides capabilities for account application, custom bean factory, cassandra configuration. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "NotificationDistributionService",
+          "NotificationService"
+        ],
+        "controllers": [
+          "HystrixController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "CassandraConfiguration",
+          "TicketConfiguration"
+        ],
+        "controllers": [
+          "HystrixController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with hystrix functionality, so that I can accomplish my hystrix-related tasks.",
+        "services": [
+          "AccountServiceApplication"
+        ],
+        "controllers": [
+          "HystrixController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with account api functionality, so that I can accomplish my account api-related tasks.",
+        "services": [
+          "AccountServiceApplication",
+          "Account"
+        ],
+        "controllers": [
+          "AccountApi"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with ticket api functionality, so that I can accomplish my ticket api-related tasks.",
+        "services": [
+          "TicketConfiguration",
+          "TicketStatus"
+        ],
+        "controllers": [
+          "TicketApi"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        HystrixController[\"HystrixController\"]\n        AccountApi[\"AccountApi\"]\n        TicketApi[\"TicketApi\"]\n    end\n    subgraph Services\n        AccountServiceApplication[\"AccountServiceApplication\"]\n        CustomBeanFactory[\"CustomBeanFactory\"]\n        CassandraConfiguration[\"CassandraConfiguration\"]\n        Account[\"Account\"]\n        AccountRepository[\"AccountRepository\"]\n        AccountService[\"AccountService\"]\n        NotificationDistributionService[\"NotificationDistributionService\"]\n        NotificationService[\"NotificationService\"]\n        TicketConfiguration[\"TicketConfiguration\"]\n        TicketStatus[\"TicketStatus\"]\n        BaseEntityModel[\"BaseEntityModel\"]\n        Ticket[\"Ticket\"]\n        PriorityType[\"PriorityType\"]\n        TicketModel[\"TicketModel\"]\n        TicketRepository[\"TicketRepository\"]\n        TicketElasticRepository[\"TicketElasticRepository\"]\n        TicketService[\"TicketService\"]\n        TicketNotificationService[\"TicketNotificationService\"]\n        TicketNotificationServiceImpl[\"TicketNotificationServiceImpl\"]\n        TicketServiceImpl[\"TicketServiceImpl\"]\n    end\n    subgraph Infrastructure\n        FeignConfig[\"FeignConfig\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

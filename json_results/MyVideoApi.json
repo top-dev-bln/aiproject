@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Employer, Admin roles. The platform provides capabilities for my exception handler, base video, video cartoon. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Employer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "VideoCartoonServiceImpl"
+        ],
+        "controllers": [
+          "VideoController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Employer, I want to interact with video functionality, so that I can accomplish my video-related tasks.",
+        "services": [
+          "BaseVideoService",
+          "VideoCartoonServiceImpl"
+        ],
+        "controllers": [
+          "VideoController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Employer, I want to use my exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyExceptionHandler"
+        ],
+        "controllers": [
+          "VideoController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Employer, I want to use base video capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BaseVideoService"
+        ],
+        "controllers": [
+          "VideoController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Employer, I want to use video dili capabilities, so that I can perform essential business operations.",
+        "services": [
+          "VideoDiliServiceImpl"
+        ],
+        "controllers": [
+          "VideoController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        InterceptorConfig[\"InterceptorConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        ScheduleConfig[\"ScheduleConfig\"]\n        WebAppConfig[\"WebAppConfig\"]\n        BizErrorCodeConstants[\"BizErrorCodeConstants\"]\n        JsoupUtils[\"JsoupUtils\"]\n        SuplayerUtil[\"SuplayerUtil\"]\n    end\n    subgraph Services\n        MyExceptionHandler[\"MyExceptionHandler\"]\n        BaseVideoService[\"BaseVideoService\"]\n        VideoCartoonServiceImpl[\"VideoCartoonServiceImpl\"]\n        VideoDiliServiceImpl[\"VideoDiliServiceImpl\"]\n        VideoHJServiceImpl[\"VideoHJServiceImpl\"]\n        VideoLZServiceImpl[\"VideoLZServiceImpl\"]\n        VideoMjwServiceImpl[\"VideoMjwServiceImpl\"]\n        VideoService[\"VideoService\"]\n    end\n    subgraph Controllers\n        VideoController[\"VideoController\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

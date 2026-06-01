@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves User, Admin roles. The platform provides capabilities for security user details, custom exception handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "SecurityUserDetailsService"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with model1controller functionality, so that I can accomplish my model1controller-related tasks.",
+        "services": [
+          "SecurityUserDetailsService"
+        ],
+        "controllers": [
+          "Model1Controller"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use custom exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CustomExceptionHandler"
+        ],
+        "controllers": [
+          "Model1Controller"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SecurityUserDetailsService"
+        ],
+        "controllers": [
+          "Model1Controller"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "SecurityUserDetailsService"
+        ],
+        "controllers": [
+          "Model1Controller"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CorsConfig[\"CorsConfig\"]\n    end\n    subgraph Security\n        InvalidAuthenticationEntryPoint[\"InvalidAuthenticationEntryPoint\"]\n        SecurityConfig[\"SecurityConfig\"]\n        SecurityUserDetails[\"SecurityUserDetails\"]\n        JwtTokenOncePerRequestFilter[\"JwtTokenOncePerRequestFilter\"]\n        JwtTokenProvider[\"JwtTokenProvider\"]\n    end\n    subgraph Services\n        SecurityUserDetailsService[\"SecurityUserDetailsService\"]\n        CustomExceptionHandler[\"CustomExceptionHandler\"]\n    end\n    subgraph Controllers\n        Model1Controller[\"Model1Controller\"]\n        AuthenticationController[\"AuthenticationController\"]\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

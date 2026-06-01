@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. The platform provides capabilities for user details, jwt authentication failure handler, jwt authentication success handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "JwtAuthenticationFailureHandler",
+          "JwtAuthenticationSuccessHandler"
+        ],
+        "controllers": [
+          "AuthController",
+          "OAuth2Controller",
+          "SmsCredentialController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "NotificationService"
+        ],
+        "controllers": [
+          "NotificationController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with captcha functionality, so that I can accomplish my captcha-related tasks.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "CaptchaController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with social connect functionality, so that I can accomplish my social connect-related tasks.",
+        "services": [
+          "SocialUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "SocialConnectController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to interact with social sign up functionality, so that I can accomplish my social sign up-related tasks.",
+        "services": [
+          "SocialUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "SocialSignUpController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AcAuthenticationConfiguration[\"AcAuthenticationConfiguration\"]\n        AcAuthenticationFilter[\"AcAuthenticationFilter\"]\n        AcAuthenticationToken[\"AcAuthenticationToken\"]\n        AcProperties[\"AcProperties\"]\n        AcChannelSecurityConfigurer[\"AcChannelSecurityConfigurer\"]\n        AcLoginConfigurer[\"AcLoginConfigurer\"]\n        AcAuthenticationProvider[\"AcAuthenticationProvider\"]\n        BaseSecurityConfiguration[\"BaseSecurityConfiguration\"]\n        AuthenticationFailureEventListener[\"AuthenticationFailureEventListener\"]\n        AuthenticationSuccessEventListener[\"AuthenticationSuccessEventListener\"]\n        Utils[\"Utils\"]\n        CaptchaAuthenticationFilter[\"CaptchaAuthenticationFilter\"]\n        AbstractChannelSecurityConfigurer[\"AbstractChannelSecurityConfigurer\"]\n        ChannelSecurityConfigurer[\"ChannelSecurityConfigurer\"]\n        SsoAuthClient[\"SsoAuthClient\"]\n        SsoClientAutoConfiguration[\"SsoClientAutoConfiguration\"]\n        SsoClientProperties[\"SsoClientProperties\"]\n        AcAccessTokenProvider[\"AcAccessTokenProvider\"]\n        AcResourceDetails[\"AcResourceDetails\"]\n        OpenIdAccessTokenProvider[\"OpenIdAccessTokenProvider\"]\n        OpenIdResourceDetails[\"OpenIdResourceDetails\"]\n        SmsAccessTokenProvider[\"SmsAccessTokenProvider\"]\n        SmsResourceDetails[\"SmsResourceDetails\"]\n        SsoUserExtractor[\"SsoUserExtractor\"]\n        AuthenticatedUser[\"AuthenticatedUser\"]\n        AuthorizationCodeJwtConfiguration[\"AuthorizationCodeJwtConfiguration\"]\n        JwtSecurityConfiguration[\"JwtSecurityConfiguration\"]\n        DefaultJwtTokenStore[\"DefaultJwtTokenStore\"]\n        JwtProperties[\"JwtProperties\"]\n        JwtTokenProvider[\"JwtTokenProvider\"]\n        JwtTokenStore[\"JwtTokenStore\"]\n        JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthenticationSuccessEventListener[\"JwtAuthenticationSuccessEventListener\"]\n        OpenIdJwtConfiguration[\"OpenIdJwtConfiguration\"]\n        SmsJwtConfiguration[\"SmsJwtConfiguration\"]\n        AcOAuth2Configuration[\"AcOAuth2Configuration\"]\n        AcTokenGranter[\"AcTokenGranter\"]\n        AuthorizationServerConfiguration[\"AuthorizationServerConfiguration\"]\n        OpenIdOAuth2Configuration[\"OpenIdOAuth2Configuration\"]\n        OpenIdTokenGranter[\"OpenIdTokenGranter\"]\n        SmsOAuth2Configuration[\"SmsOAuth2Configuration\"]\n        SmsTokenGranter[\"SmsTokenGranter\"]\n        OpenIdChannelSecurityConfigurer[\"OpenIdChannelSecurityConfigurer\"]\n        OpenIdLoginConfigurer[\"OpenIdLoginConfigurer\"]\n        OpenIdAuthenticationConfiguration[\"OpenIdAuthenticationConfiguration\"]\n        OpenIdAuthenticationFilter[\"OpenIdAuthenticationFilter\"]\n        OpenIdAuthenticationToken[\"OpenIdAuthenticationToken\"]\n        OpenIdProperties[\"OpenIdProperties\"]\n        OpenIdAuthenticationProvider[\"OpenIdAuthenticationProvider\"]\n        SmsAuthenticationFilter[\"SmsAuthenticationFilter\"]\n        SmsAuthenticationProvider[\"SmsAuthenticationProvider\"]\n        SmsAuthenticationToken[\"SmsAuthenticationToken\"]\n        SmsChannelSecurityConfigurer[\"SmsChannelSecurityConfigurer\"]\n        SmsLoginConfigurer[\"SmsLoginConfigurer\"]\n        SmsAuthenticationConfiguration[\"SmsAuthenticationConfiguration\"]\n        SmsCredentialProperties[\"SmsCredentialProperties\"]\n        AlipayProperties[\"AlipayProperties\"]\n        Alipay[\"Alipay\"]\n        AlipayUserInfo[\"AlipayUserInfo\"]\n        AlipayImpl[\"AlipayImpl\"]\n        AlipayConnectConfiguration[\"AlipayConnectConfiguration\"]\n        AlipayAdapater[\"AlipayAdapater\"]\n        AlipayConnectionFactory[\"AlipayConnectionFactory\"]\n        AlipayOAuth2Template[\"AlipayOAuth2Template\"]\n        AlipayServiceProvider[\"AlipayServiceProvider\"]\n        UserConnection[\"UserConnection\"]\n        SocialAuthenticatedUser[\"SocialAuthenticatedUser\"]\n        SocialAutoConfiguration[\"SocialAutoConfiguration\"]\n        SocialProperties[\"SocialProperties\"]\n        QQImpl[\"QQImpl\"]\n        QQ[\"QQ\"]\n        QQUserInfo[\"QQUserInfo\"]\n        QQConnectConfiguration[\"QQConnectConfiguration\"]\n        QQAdapter[\"QQAdapter\"]\n        QQConnectionFactory[\"QQConnectionFactory\"]\n        QQOAuth2Template[\"QQOAuth2Template\"]\n        QQServiceProvider[\"QQServiceProvider\"]\n        QQProperties[\"QQProperties\"]\n        SocialChannelSecurityConfigurer[\"SocialChannelSecurityConfigurer\"]\n        SocialConnectionSignUp[\"SocialConnectionSignUp\"]\n        SocialSecurityConfigurer[\"SocialSecurityConfigurer\"]\n        SocialUserInfo[\"SocialUserInfo\"]\n        SocialWebAutoConfiguration[\"SocialWebAutoConfiguration\"]\n        SocialConnectStatusView[\"SocialConnectStatusView\"]\n        SocialConnectView[\"SocialConnectView\"]\n        WechatImpl[\"WechatImpl\"]\n        Wechat[\"Wechat\"]\n        WechatUserInfo[\"WechatUserInfo\"]\n        WechatConnectionConfiguration[\"WechatConnectionConfiguration\"]\n        WechatAccessGrant[\"WechatAccessGrant\"]\n        WechatAdapter[\"WechatAdapter\"]\n        WechatConnectionFactory[\"WechatConnectionFactory\"]\n        WechatOAuth2Template[\"WechatOAuth2Template\"]\n        WechatServiceProvider[\"WechatServiceProvider\"]\n        WechatProperties[\"WechatProperties\"]\n        WechatMpImpl[\"WechatMpImpl\"]\n        WechatMp[\"WechatMp\"]\n        WechatMpUserInfo[\"WechatMpUserInfo\"]\n        WechatMpConnectionConfiguration[\"WechatMpConnectionConfiguration\"]\n        WechatMpAccessGrant[\"WechatMpAccessGrant\"]\n        WechatMpAdapter[\"WechatMpAdapter\"]\n        WechatMpConnectionFactory[\"WechatMpConnectionFactory\"]\n        WechatMpOAuth2Template[\"WechatMpOAuth2Template\"]\n        WechatMpServiceProvider[\"WechatMpServiceProvider\"]\n        WechatMpProperties[\"WechatMpProperties\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        WebSessionConfiguration[\"WebSessionConfiguration\"]\n        WebAuthenticationConstant[\"WebAuthenticationConstant\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        SecurityErrorEnum[\"SecurityErrorEnum\"]\n        CredentialConfig[\"CredentialConfig\"]\n        CredentialNotify[\"CredentialNotify\"]\n        CredentialType[\"CredentialType\"]\n        CredentialValidation[\"CredentialValidation\"]\n        CredentialProperties[\"CredentialProperties\"]\n        SecurityCenterAutoConfiguration[\"SecurityCenterAutoConfiguration\"]\n    end\n    subgraph Services\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        JwtAuthenticationFailureHandler[\"JwtAuthenticationFailureHandler\"]\n        JwtAuthenticationSuccessHandler[\"JwtAuthenticationSuccessHandler\"]\n        JwtLogoutSuccessHandler[\"JwtLogoutSuccessHandler\"]\n        SmsUserDetailsService[\"SmsUserDetailsService\"]\n        SmsUserDetailsServiceImpl[\"SmsUserDetailsServiceImpl\"]\n        AlipayOAuth2AuthenticationService[\"AlipayOAuth2AuthenticationService\"]\n        SocialUserDetailsServiceImpl[\"SocialUserDetailsServiceImpl\"]\n        WebAuthenticationFailureHandler[\"WebAuthenticationFailureHandler\"]\n        WebAuthenticationSuccessHandler[\"WebAuthenticationSuccessHandler\"]\n        NotificationService[\"NotificationService\"]\n        CredentialService[\"CredentialService\"]\n        CredentialServiceImpl[\"CredentialServiceImpl\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        CaptchaController[\"CaptchaController\"]\n        OAuth2Controller[\"OAuth2Controller\"]\n        SmsCredentialController[\"SmsCredentialController\"]\n        SocialConnectController[\"SocialConnectController\"]\n        SocialSignUpController[\"SocialSignUpController\"]\n        SocialConnectStatusController[\"SocialConnectStatusController\"]\n        LoginController[\"LoginController\"]\n        SessionController[\"SessionController\"]\n        SessionInvalidController[\"SessionInvalidController\"]\n        GlobalControllerAdvise[\"GlobalControllerAdvise\"]\n        NotificationController[\"NotificationController\"]\n        JwtAuthController[\"JwtAuthController\"]\n        IndexController[\"IndexController\"]\n        UserController[\"UserController\"]\n        SignUpController[\"SignUpController\"]\n    end\n    subgraph Infrastructure\n        ResourceServerConfiguration[\"ResourceServerConfiguration\"]\n        ErrorConstants[\"ErrorConstants\"]\n        ImageUtils[\"ImageUtils\"]\n        PatternUtils[\"PatternUtils\"]\n        RandomUtils[\"RandomUtils\"]\n        AliyunSmsProperties[\"AliyunSmsProperties\"]\n        AliyunSmsSenderConfiguration[\"AliyunSmsSenderConfiguration\"]\n        SmsNotificationAutoConfiguration[\"SmsNotificationAutoConfiguration\"]\n        PasswordProperties[\"PasswordProperties\"]\n        WebConfiguration[\"WebConfiguration\"]\n    end\n    subgraph Data_Access\n        JpaConnectionRepository[\"JpaConnectionRepository\"]\n        JpaUsersConnectRepository[\"JpaUsersConnectRepository\"]\n        UserConnectionRepository[\"UserConnectionRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

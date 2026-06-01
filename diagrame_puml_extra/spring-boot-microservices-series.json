@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Candidate, Admin roles. The platform provides capabilities for catalog application, product, product repository. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderServiceApplication",
+          "Order",
+          "OrderItem"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with product functionality, so that I can accomplish my product-related tasks.",
+        "services": [
+          "Product",
+          "ProductRepository"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with inventory functionality, so that I can accomplish my inventory-related tasks.",
+        "services": [
+          "InventoryServiceFeignClient",
+          "InventoryServiceClient"
+        ],
+        "controllers": [
+          "InventoryController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use catalog application capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CatalogServiceApplication"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use product capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Product"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        CatalogServiceApplication[\"CatalogServiceApplication\"]\n        Product[\"Product\"]\n        ProductRepository[\"ProductRepository\"]\n        InventoryServiceFeignClient[\"InventoryServiceFeignClient\"]\n        ProductService[\"ProductService\"]\n        InventoryServiceClient[\"InventoryServiceClient\"]\n        ContextCopyHystrixConcurrencyStrategy[\"ContextCopyHystrixConcurrencyStrategy\"]\n        MyThreadLocalsHolder[\"MyThreadLocalsHolder\"]\n        ProductInventoryResponse[\"ProductInventoryResponse\"]\n        InventoryServiceApplication[\"InventoryServiceApplication\"]\n        InventoryItem[\"InventoryItem\"]\n        InventoryItemRepository[\"InventoryItemRepository\"]\n        OrderServiceApplication[\"OrderServiceApplication\"]\n        Order[\"Order\"]\n        OrderItem[\"OrderItem\"]\n        OrderRepository[\"OrderRepository\"]\n        ServiceRegistryApplication[\"ServiceRegistryApplication\"]\n    end\n    subgraph Controllers\n        ProductController[\"ProductController\"]\n        InventoryController[\"InventoryController\"]\n        OrderController[\"OrderController\"]\n    end\n    subgraph Security\n        WebMvcConfig[\"WebMvcConfig\"]\n        WebSecurityConfigurer[\"WebSecurityConfigurer\"]\n        OAuth2Config[\"OAuth2Config\"]\n        AuthHeaderFilter[\"AuthHeaderFilter\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Controllers"
+  }
+}

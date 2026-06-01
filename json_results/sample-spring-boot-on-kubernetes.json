@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a general application platform that serves User roles. The platform provides capabilities for person. Data is persisted through a structured data access layer.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with person functionality, so that I can accomplish my person-related tasks.",
+        "services": [
+          "PersonService"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to use person capabilities, so that I can perform essential business operations.",
+        "services": [
+          "PersonService"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "PersonService"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "PersonService"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "PersonService"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        PersonController[\"PersonController\"]\n    end\n    subgraph Data_Access\n        PersonRepository[\"PersonRepository\"]\n    end\n    subgraph Services\n        PersonService[\"PersonService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access"
+  }
+}

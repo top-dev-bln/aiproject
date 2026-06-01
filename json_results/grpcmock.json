@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a data analytics platform that serves Admin, Candidate roles. The platform provides capabilities for stream request proxy response builder step, next stream request proxy response builder step, downstream. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "StreamRequestProxyResponseBuilderStep"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use stream request proxy response builder step capabilities, so that I can perform essential business operations.",
+        "services": [
+          "StreamRequestProxyResponseBuilderStep"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use next stream request proxy response builder step capabilities, so that I can perform essential business operations.",
+        "services": [
+          "NextStreamRequestProxyResponseBuilderStep"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use downstream capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DownstreamService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use downstream news capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DownstreamNewsService"
+        ],
+        "controllers": [
+          "MessageController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        StreamRequestProxyResponseBuilderStep[\"StreamRequestProxyResponseBuilderStep\"]\n        NextStreamRequestProxyResponseBuilderStep[\"NextStreamRequestProxyResponseBuilderStep\"]\n        DownstreamService[\"DownstreamService\"]\n        DownstreamNewsService[\"DownstreamNewsService\"]\n        NewsAggregatorService[\"NewsAggregatorService\"]\n    end\n    subgraph Infrastructure\n        NewsServicesProperties[\"NewsServicesProperties\"]\n        NewsServicesConfig[\"NewsServicesConfig\"]\n        DownstreamServiceConfig[\"DownstreamServiceConfig\"]\n        DownstreamServiceProperties[\"DownstreamServiceProperties\"]\n        FunctionalHelpers[\"FunctionalHelpers\"]\n        FunctionalResponseObserver[\"FunctionalResponseObserver\"]\n    end\n    subgraph Controllers\n        MessageController[\"MessageController\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

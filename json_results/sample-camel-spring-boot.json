@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves User, Customer roles. The platform provides capabilities for account route, camel account, account. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to use account route capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AccountRoute"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to use camel account capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CamelAccountService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use account capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AccountService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use customer capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Customer"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use register capabilities, so that I can perform essential business operations.",
+        "services": [
+          "Register"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AccountRoute[\"AccountRoute\"]\n        CamelAccountService[\"CamelAccountService\"]\n        AccountService[\"AccountService\"]\n        Account[\"Account\"]\n        Customer[\"Customer\"]\n        Register[\"Register\"]\n        CamelCustomerService[\"CamelCustomerService\"]\n        CustomerRoute[\"CustomerRoute\"]\n        AggregationStrategyImpl[\"AggregationStrategyImpl\"]\n        CustomerService[\"CustomerService\"]\n        CamelGateway[\"CamelGateway\"]\n        RouteGateway[\"RouteGateway\"]\n    end"
+  }
+}

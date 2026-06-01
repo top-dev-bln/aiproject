@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Developer, Admin roles. The platform provides capabilities for docket bean factory post processor. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Developer, I want to use docket bean factory post processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DocketBeanFactoryPostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Developer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "DocketBeanFactoryPostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "DocketBeanFactoryPostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "DocketBeanFactoryPostProcessor"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [
+          "DocketBeanFactoryPostProcessor"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        DocketBeanFactoryPostProcessor[\"DocketBeanFactoryPostProcessor\"]\n    end\n    subgraph Security\n        SwaggerAuthorizationConfiguration[\"SwaggerAuthorizationConfiguration\"]\n        SwaggerAuthorizationProperties[\"SwaggerAuthorizationProperties\"]\n    end\n    subgraph Infrastructure\n        SwaggerUiConfiguration[\"SwaggerUiConfiguration\"]\n        SwaggerProperties[\"SwaggerProperties\"]\n        SwaggerAutoConfiguration[\"SwaggerAutoConfiguration\"]\n        SwaggerUiProperties[\"SwaggerUiProperties\"]\n        DocketConfiguration[\"DocketConfiguration\"]\n    end\n    Services --> Security\n    Security --> Infrastructure"
+  }
+}

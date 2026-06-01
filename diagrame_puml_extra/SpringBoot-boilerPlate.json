@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves User, Admin roles. The platform provides capabilities for jwt token manager, jwt token, user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtTokenManager",
+          "JwtTokenService",
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "LoginController",
+          "LoginControllerAdvice"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "JwtTokenManager"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with book functionality, so that I can accomplish my book-related tasks.",
+        "services": [
+          "BookService",
+          "BookServiceImpl"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with health functionality, so that I can accomplish my health-related tasks.",
+        "services": [
+          "JwtTokenManager"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with registration functionality, so that I can accomplish my registration-related tasks.",
+        "services": [
+          "JwtTokenManager"
+        ],
+        "controllers": [
+          "RegistrationController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        MessageConfiguration[\"MessageConfiguration\"]\n        PasswordEncoderConfiguration[\"PasswordEncoderConfiguration\"]\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n        ExceptionMessageAccessor[\"ExceptionMessageAccessor\"]\n        GeneralMessageAccessor[\"GeneralMessageAccessor\"]\n        ProjectConstants[\"ProjectConstants\"]\n    end\n    subgraph Security\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        LoginRequest[\"LoginRequest\"]\n        LoginResponse[\"LoginResponse\"]\n        RegistrationRequest[\"RegistrationRequest\"]\n        RegistrationResponse[\"RegistrationResponse\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n        JwtProperties[\"JwtProperties\"]\n        SecurityConstants[\"SecurityConstants\"]\n    end\n    subgraph Controllers\n        BookController[\"BookController\"]\n        HealthController[\"HealthController\"]\n        LoginController[\"LoginController\"]\n        RegistrationController[\"RegistrationController\"]\n        LoginControllerAdvice[\"LoginControllerAdvice\"]\n        RegistrationControllerAdvice[\"RegistrationControllerAdvice\"]\n    end\n    subgraph Data_Access\n        BookRepository[\"BookRepository\"]\n        UserRepository[\"UserRepository\"]\n        UserMapper[\"UserMapper\"]\n    end\n    subgraph Services\n        JwtTokenManager[\"JwtTokenManager\"]\n        JwtTokenService[\"JwtTokenService\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        BookService[\"BookService\"]\n        UserValidationService[\"UserValidationService\"]\n        BookServiceImpl[\"BookServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

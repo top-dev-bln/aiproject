@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Developer, Admin roles. It manages core business objects including example entity. The platform provides capabilities for async exception handler, example. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Developer, I want to create and manage example entity records, so that I can track and organize example entity data effectively.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": [
+          "ExampleController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Developer, I want to interact with health functionality, so that I can accomplish my health-related tasks.",
+        "services": [
+          "AsyncExceptionHandler"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Developer, I want to interact with api advice functionality, so that I can accomplish my api advice-related tasks.",
+        "services": [
+          "AsyncExceptionHandler"
+        ],
+        "controllers": [
+          "ApiControllerAdvice"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Developer, I want to use async exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AsyncExceptionHandler"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AsyncExceptionHandler"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ExampleConfig[\"ExampleConfig\"]\n        AsyncConfig[\"AsyncConfig\"]\n        CoreDataSourceConfig[\"CoreDataSourceConfig\"]\n        CoreJpaConfig[\"CoreJpaConfig\"]\n    end\n    subgraph Services\n        AsyncExceptionHandler[\"AsyncExceptionHandler\"]\n        ExampleService[\"ExampleService\"]\n    end\n    subgraph Controllers\n        HealthController[\"HealthController\"]\n        ApiControllerAdvice[\"ApiControllerAdvice\"]\n        ExampleController[\"ExampleController\"]\n    end\n    subgraph Data_Access\n        ExampleEntity[\"ExampleEntity\"]\n        ExampleRepository[\"ExampleRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

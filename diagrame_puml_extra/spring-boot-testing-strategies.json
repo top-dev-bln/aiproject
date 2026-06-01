@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate roles. The platform provides capabilities for super hero exception handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include search functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with super hero functionality, so that I can accomplish my super hero-related tasks.",
+        "services": [
+          "SuperHeroExceptionHandler"
+        ],
+        "controllers": [
+          "SuperHeroController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use super hero exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "SuperHeroExceptionHandler"
+        ],
+        "controllers": [
+          "SuperHeroController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SuperHeroExceptionHandler"
+        ],
+        "controllers": [
+          "SuperHeroController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SuperHeroExceptionHandler"
+        ],
+        "controllers": [
+          "SuperHeroController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SuperHeroExceptionHandler"
+        ],
+        "controllers": [
+          "SuperHeroController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        SuperHeroController[\"SuperHeroController\"]\n    end\n    subgraph Security\n        SuperHeroFilter[\"SuperHeroFilter\"]\n    end\n    subgraph Services\n        SuperHeroExceptionHandler[\"SuperHeroExceptionHandler\"]\n    end\n    subgraph Data_Access\n        SuperHeroRepository[\"SuperHeroRepository\"]\n        SuperHeroRepositoryImpl[\"SuperHeroRepositoryImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

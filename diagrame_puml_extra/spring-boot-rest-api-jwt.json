@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves User, Content Creator roles. The platform provides capabilities for jwt user details, role, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtUserDetailsService",
+          "UserService",
+          "AuthorService"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController",
+          "AuthorController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with book functionality, so that I can accomplish my book-related tasks.",
+        "services": [
+          "BookService"
+        ],
+        "controllers": [
+          "BookController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with topic functionality, so that I can accomplish my topic-related tasks.",
+        "services": [
+          "TopicService"
+        ],
+        "controllers": [
+          "TopicController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with global exception handler functionality, so that I can accomplish my global exception handler-related tasks.",
+        "services": [
+          "JwtUserDetailsService"
+        ],
+        "controllers": [
+          "GlobalControllerExceptionHandler"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with test author functionality, so that I can accomplish my test author-related tasks.",
+        "services": [
+          "JwtUserDetailsService"
+        ],
+        "controllers": [
+          "TestAuthorController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        TopicsAuthorsBooksLoader[\"TopicsAuthorsBooksLoader\"]\n        AuthenticationRequest[\"AuthenticationRequest\"]\n        AuthenticationResponse[\"AuthenticationResponse\"]\n        JWTTokenFilter[\"JWTTokenFilter\"]\n        JwtUser[\"JwtUser\"]\n        JwtUserFactory[\"JwtUserFactory\"]\n        JWTUtil[\"JWTUtil\"]\n        WebSecurityConfiguration[\"WebSecurityConfiguration\"]\n        Role[\"Role\"]\n        RoleName[\"RoleName\"]\n        User[\"User\"]\n        Author[\"Author\"]\n    end\n    subgraph Infrastructure\n        UsersLoader[\"UsersLoader\"]\n    end\n    subgraph Services\n        JwtUserDetailsService[\"JwtUserDetailsService\"]\n        RoleService[\"RoleService\"]\n        UserService[\"UserService\"]\n        AuthorService[\"AuthorService\"]\n        BookService[\"BookService\"]\n        TopicService[\"TopicService\"]\n    end\n    subgraph Controllers\n        AuthenticationController[\"AuthenticationController\"]\n        UserController[\"UserController\"]\n        AuthorController[\"AuthorController\"]\n        BookController[\"BookController\"]\n        TopicController[\"TopicController\"]\n        GlobalControllerExceptionHandler[\"GlobalControllerExceptionHandler\"]\n        TestAuthorController[\"TestAuthorController\"]\n    end\n    subgraph Data_Access\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n        AuthorRepository[\"AuthorRepository\"]\n        BookRepository[\"BookRepository\"]\n        TopicRepository[\"TopicRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

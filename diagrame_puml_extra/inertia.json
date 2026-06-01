@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Candidate, Admin roles. The platform provides capabilities for product. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with show product functionality, so that I can accomplish my show product-related tasks.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": [
+          "ShowProductController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to use product capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ProductService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        HomeController[\"HomeController\"]\n        ShowProductController[\"ShowProductController\"]\n    end\n    subgraph Services\n        ProductService[\"ProductService\"]\n    end\n    Controllers --> Services"
+  }
+}

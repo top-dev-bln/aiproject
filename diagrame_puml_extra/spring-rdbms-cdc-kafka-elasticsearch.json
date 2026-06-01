@@ -1,0 +1,54 @@
+{
+  "input": {
+    "free_text_description": "This system is a search platform that serves User, Employer roles. The platform provides capabilities for address mapper, job mapper, user mapper. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserMapper",
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "QueryOperator",
+          "QueryParameter"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to browse job listings and receive personalized recommendations, so that I can find relevant career opportunities.",
+        "services": [
+          "JobMapper",
+          "JobEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use address mapper capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AddressMapper"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use event handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EventHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        LocalizationConfiguration[\"LocalizationConfiguration\"]\n        RestErrorConstants[\"RestErrorConstants\"]\n        ElasticsearchConfiguration[\"ElasticsearchConfiguration\"]\n        KafkaConfiguration[\"KafkaConfiguration\"]\n        QueryUtils[\"QueryUtils\"]\n        SearchQueryBuilder[\"SearchQueryBuilder\"]\n    end\n    subgraph Data_Access\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        AddressMapper[\"AddressMapper\"]\n        JobMapper[\"JobMapper\"]\n        UserMapper[\"UserMapper\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        EventHandler[\"EventHandler\"]\n        AbstractSimpleEventHandler[\"AbstractSimpleEventHandler\"]\n        AddressEventHandler[\"AddressEventHandler\"]\n        JobEventHandler[\"JobEventHandler\"]\n        UserEventHandler[\"UserEventHandler\"]\n        QueryOperator[\"QueryOperator\"]\n        QueryParameter[\"QueryParameter\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

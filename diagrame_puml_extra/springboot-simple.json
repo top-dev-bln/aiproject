@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Customer roles. The platform provides capabilities for account, base, city. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include file management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserRoleService",
+          "UserService"
+        ],
+        "controllers": [
+          "LoginController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "SendInfoService"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderService"
+        ],
+        "controllers": [
+          "OrderController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "UploadResultService"
+        ],
+        "controllers": [
+          "UploadResultController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As an Admin, I want to view reports and analytics, so that I can make informed business decisions.",
+        "services": [
+          "FundsStatisticsInfoService"
+        ],
+        "controllers": [
+          "FundsStatisticsController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        GeneralConfig[\"GeneralConfig\"]\n        WebMvcConfig[\"WebMvcConfig\"]\n        CacheUtil[\"CacheUtil\"]\n        Consts[\"Consts\"]\n        UploadExcelRules[\"UploadExcelRules\"]\n        CsvUtil[\"CsvUtil\"]\n        DownUploadUtil[\"DownUploadUtil\"]\n        ExcelUtil[\"ExcelUtil\"]\n        MailUtil[\"MailUtil\"]\n        MD5Util[\"MD5Util\"]\n    end\n    subgraph Controllers\n        AccountController[\"AccountController\"]\n        CostController[\"CostController\"]\n        DeliveryManInfoController[\"DeliveryManInfoController\"]\n        FundsAppController[\"FundsAppController\"]\n        FundsStatisticsController[\"FundsStatisticsController\"]\n        GlobalController[\"GlobalController\"]\n        LoginController[\"LoginController\"]\n        OrderController[\"OrderController\"]\n        PermissionController[\"PermissionController\"]\n        PersonalInfoController[\"PersonalInfoController\"]\n        RoleController[\"RoleController\"]\n        SendInfoController[\"SendInfoController\"]\n        UploadResultController[\"UploadResultController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        AccountMapper[\"AccountMapper\"]\n        CityMapper[\"CityMapper\"]\n        CostInfoMapper[\"CostInfoMapper\"]\n        CountryMapper[\"CountryMapper\"]\n        DeliveryManInfoMapper[\"DeliveryManInfoMapper\"]\n        FundsStatisticsInfoMapper[\"FundsStatisticsInfoMapper\"]\n        OrderMapper[\"OrderMapper\"]\n        PermissionMapper[\"PermissionMapper\"]\n        PersonalInfoMapper[\"PersonalInfoMapper\"]\n        RoleMapper[\"RoleMapper\"]\n        RolePermissionMapper[\"RolePermissionMapper\"]\n        SendInfoMapper[\"SendInfoMapper\"]\n        UploadResultMapper[\"UploadResultMapper\"]\n        UserMapper[\"UserMapper\"]\n        UserRoleMapper[\"UserRoleMapper\"]\n        MyBatis331Mapper[\"MyBatis331Mapper\"]\n        MyMapper[\"MyMapper\"]\n    end\n    subgraph Services\n        AccountService[\"AccountService\"]\n        BaseService[\"BaseService\"]\n        CityService[\"CityService\"]\n        CostInfoService[\"CostInfoService\"]\n        DeliveryManInfoService[\"DeliveryManInfoService\"]\n        FundsStatisticsInfoService[\"FundsStatisticsInfoService\"]\n        OrderService[\"OrderService\"]\n        PermissionService[\"PermissionService\"]\n        PersonalInfoService[\"PersonalInfoService\"]\n        RolePermissionService[\"RolePermissionService\"]\n        RoleService[\"RoleService\"]\n        SendInfoService[\"SendInfoService\"]\n        UploadResultService[\"UploadResultService\"]\n        UserRoleService[\"UserRoleService\"]\n        UserService[\"UserService\"]\n    end\n    subgraph Security\n        MailAuthentication[\"MailAuthentication\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Admin, Developer roles. The platform provides capabilities for api key auth manager. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "ApiKeyAuthManager"
+        ],
+        "controllers": [
+          "NonSecureController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "ApiKeyAuthManager"
+        ],
+        "controllers": [
+          "NonSecureController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with non secure functionality, so that I can accomplish my non secure-related tasks.",
+        "services": [
+          "ApiKeyAuthManager"
+        ],
+        "controllers": [
+          "NonSecureController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with secure functionality, so that I can accomplish my secure-related tasks.",
+        "services": [
+          "ApiKeyAuthManager"
+        ],
+        "controllers": [
+          "SecureController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ApiKeyAuthManager"
+        ],
+        "controllers": [
+          "NonSecureController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        ApiKeyAuthFilter[\"ApiKeyAuthFilter\"]\n        AuthConfiguration[\"AuthConfiguration\"]\n    end\n    subgraph Services\n        ApiKeyAuthManager[\"ApiKeyAuthManager\"]\n    end\n    subgraph Controllers\n        NonSecureController[\"NonSecureController\"]\n        SecureController[\"SecureController\"]\n    end\n    subgraph Infrastructure\n        UUIDUtil[\"UUIDUtil\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Admin roles. It manages core business objects including user detail, user info. The platform provides capabilities for common, common. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to create and manage user detail records, so that I can track and organize user detail data effectively.",
+        "services": [
+          "CommonService"
+        ],
+        "controllers": [
+          "TestDataSourceController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage user info records, so that I can track and organize user info data effectively.",
+        "services": [
+          "CommonService"
+        ],
+        "controllers": [
+          "TestDataSourceController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with test data source functionality, so that I can accomplish my test data source-related tasks.",
+        "services": [
+          "CommonService"
+        ],
+        "controllers": [
+          "TestDataSourceController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with welcome functionality, so that I can accomplish my welcome-related tasks.",
+        "services": [
+          "CommonService"
+        ],
+        "controllers": [
+          "WelcomeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use common capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CommonService"
+        ],
+        "controllers": [
+          "TestDataSourceController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DataSourceAspect[\"DataSourceAspect\"]\n        MyBatisConfig[\"MyBatisConfig\"]\n        DatabaseContextHolder[\"DatabaseContextHolder\"]\n        DynamicDataSource[\"DynamicDataSource\"]\n        DatabaseType[\"DatabaseType\"]\n        Constants[\"Constants\"]\n    end\n    subgraph Controllers\n        TestDataSourceController[\"TestDataSourceController\"]\n        WelcomeController[\"WelcomeController\"]\n    end\n    subgraph Data_Access\n        UserDetailMapper[\"UserDetailMapper\"]\n        UserInfoMapper[\"UserInfoMapper\"]\n        UserDetail[\"UserDetail\"]\n        UserInfo[\"UserInfo\"]\n    end\n    subgraph Services\n        CommonService[\"CommonService\"]\n        CommonServiceImpl[\"CommonServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

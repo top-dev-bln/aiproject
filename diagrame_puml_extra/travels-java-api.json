@@ -1,0 +1,68 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Developer roles. It manages core business objects including account, jwt user, statistic, travel. The platform provides capabilities for travels java a p i exception handler, account, account. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtUserDetailsServiceImpl",
+          "UserService",
+          "UserAccountService"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserAccountController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage account records, so that I can track and organize account data effectively.",
+        "services": [
+          "AccountService",
+          "AccountServiceImpl"
+        ],
+        "controllers": [
+          "AccountController",
+          "UserAccountController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage jwt user records, so that I can track and organize jwt user data effectively.",
+        "services": [
+          "JwtUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "AccountController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage statistic records, so that I can track and organize statistic data effectively.",
+        "services": [
+          "StatisticService",
+          "StatisticServiceImpl"
+        ],
+        "controllers": [
+          "StatisticController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage travel records, so that I can track and organize travel data effectively.",
+        "services": [
+          "TravelsJavaAPIExceptionHandler",
+          "TravelService"
+        ],
+        "controllers": [
+          "TravelController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AccountController[\"AccountController\"]\n        AuthenticationController[\"AuthenticationController\"]\n        StatisticController[\"StatisticController\"]\n        TravelController[\"TravelController\"]\n        UserAccountController[\"UserAccountController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Services\n        TravelsJavaAPIExceptionHandler[\"TravelsJavaAPIExceptionHandler\"]\n        AccountService[\"AccountService\"]\n        AccountServiceImpl[\"AccountServiceImpl\"]\n        APIUsagePlansService[\"APIUsagePlansService\"]\n        APIUsagePlansServiceImpl[\"APIUsagePlansServiceImpl\"]\n        JwtUserDetailsServiceImpl[\"JwtUserDetailsServiceImpl\"]\n        StatisticService[\"StatisticService\"]\n        StatisticServiceImpl[\"StatisticServiceImpl\"]\n        TravelService[\"TravelService\"]\n        TravelServiceImpl[\"TravelServiceImpl\"]\n        UserService[\"UserService\"]\n        UserAccountService[\"UserAccountService\"]\n        UserAccountServiceImpl[\"UserAccountServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    subgraph Security\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        JwtAuthenticationEntryPointFilter[\"JwtAuthenticationEntryPointFilter\"]\n        JwtUserFactory[\"JwtUserFactory\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n        BcryptUtil[\"BcryptUtil\"]\n    end\n    subgraph Data_Access\n        Account[\"Account\"]\n        JwtUser[\"JwtUser\"]\n        Statistic[\"Statistic\"]\n        Travel[\"Travel\"]\n        User[\"User\"]\n        UserAccount[\"UserAccount\"]\n        AccountRepository[\"AccountRepository\"]\n        StatisticRepository[\"StatisticRepository\"]\n        TravelRepository[\"TravelRepository\"]\n        UserAccountRepository[\"UserAccountRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Infrastructure\n        TravelsApiUtil[\"TravelsApiUtil\"]\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n        CacheConfiguration[\"CacheConfiguration\"]\n        PageableConfiguration[\"PageableConfiguration\"]\n        RateLimitingConfiguration[\"RateLimitingConfiguration\"]\n        TravelsApiConfiguration[\"TravelsApiConfiguration\"]\n        BigDecimalConverter[\"BigDecimalConverter\"]\n        LocalDateTimeConverter[\"LocalDateTimeConverter\"]\n        RateLimitInterceptor[\"RateLimitInterceptor\"]\n        CacheEventLogger[\"CacheEventLogger\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

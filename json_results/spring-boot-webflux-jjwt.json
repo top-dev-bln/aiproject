@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It manages core business objects including user. The platform provides capabilities for authentication manager, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "AuthenticationManager",
+          "UserService"
+        ],
+        "controllers": [
+          "AuthenticationREST"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "AuthenticationREST"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "AuthenticationManager"
+        ],
+        "controllers": [
+          "AuthenticationREST"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with resource functionality, so that I can accomplish my resource-related tasks.",
+        "services": [
+          "AuthenticationManager"
+        ],
+        "controllers": [
+          "ResourceREST"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AuthenticationManager"
+        ],
+        "controllers": [
+          "AuthenticationREST"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        User[\"User\"]\n        SecurityContextRepository[\"SecurityContextRepository\"]\n    end\n    subgraph Security\n        AuthResponse[\"AuthResponse\"]\n        Role[\"Role\"]\n        AuthRequest[\"AuthRequest\"]\n        JWTUtil[\"JWTUtil\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        PBKDF2Encoder[\"PBKDF2Encoder\"]\n        CORSFilter[\"CORSFilter\"]\n    end\n    subgraph Controllers\n        AuthenticationREST[\"AuthenticationREST\"]\n        ResourceREST[\"ResourceREST\"]\n    end\n    subgraph Services\n        AuthenticationManager[\"AuthenticationManager\"]\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

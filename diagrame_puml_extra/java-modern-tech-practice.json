@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate roles. The platform provides capabilities for hello. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to use hello capabilities, so that I can perform essential business operations.",
+        "services": [
+          "HelloService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "HelloService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "HelloService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "HelloService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "HelloService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        HelloService[\"HelloService\"]\n    end"
+  }
+}

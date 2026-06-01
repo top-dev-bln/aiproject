@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Admin roles. The platform provides capabilities for general exception handler, product, shelf. Secondary concerns include search functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with product functionality, so that I can accomplish my product-related tasks.",
+        "services": [
+          "ProductServiceImpl",
+          "ProductService"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with shelf functionality, so that I can accomplish my shelf-related tasks.",
+        "services": [
+          "ShelfServiceImpl",
+          "ShelfService"
+        ],
+        "controllers": [
+          "ShelfController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with stock clerk functionality, so that I can accomplish my stock clerk-related tasks.",
+        "services": [
+          "StockClerkServiceImpl",
+          "StockServiceImpl"
+        ],
+        "controllers": [
+          "StockClerkController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with stock functionality, so that I can accomplish my stock-related tasks.",
+        "services": [
+          "StockClerkServiceImpl",
+          "StockServiceImpl"
+        ],
+        "controllers": [
+          "StockController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with warehouse functionality, so that I can accomplish my warehouse-related tasks.",
+        "services": [
+          "WarehouseServiceImpl",
+          "WareTransactionDetailServiceImpl"
+        ],
+        "controllers": [
+          "WarehouseController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        BaseSearchCriteria[\"BaseSearchCriteria\"]\n        PageSearchResult[\"PageSearchResult\"]\n        QueryExecutor[\"QueryExecutor\"]\n        SearchRequest[\"SearchRequest\"]\n        DateUtils[\"DateUtils\"]\n        JsonUtils[\"JsonUtils\"]\n        SearchUtils[\"SearchUtils\"]\n        BaseValidator[\"BaseValidator\"]\n        CommonValidatorUtils[\"CommonValidatorUtils\"]\n        SwaggerConfiguration[\"SwaggerConfiguration\"]\n    end\n    subgraph Controllers\n        ProductController[\"ProductController\"]\n        ShelfController[\"ShelfController\"]\n        StockClerkController[\"StockClerkController\"]\n        StockController[\"StockController\"]\n        WarehouseController[\"WarehouseController\"]\n        WareTransactionController[\"WareTransactionController\"]\n        WareTransactionDetailController[\"WareTransactionDetailController\"]\n    end\n    subgraph Services\n        GeneralExceptionHandler[\"GeneralExceptionHandler\"]\n        ProductServiceImpl[\"ProductServiceImpl\"]\n        ShelfServiceImpl[\"ShelfServiceImpl\"]\n        StockClerkServiceImpl[\"StockClerkServiceImpl\"]\n        StockServiceImpl[\"StockServiceImpl\"]\n        WarehouseServiceImpl[\"WarehouseServiceImpl\"]\n        WareTransactionDetailServiceImpl[\"WareTransactionDetailServiceImpl\"]\n        WareTransactionServiceImpl[\"WareTransactionServiceImpl\"]\n        ProductService[\"ProductService\"]\n        ShelfService[\"ShelfService\"]\n        StockClerkService[\"StockClerkService\"]\n        StockService[\"StockService\"]\n        WarehouseService[\"WarehouseService\"]\n        WareTransactionDetailService[\"WareTransactionDetailService\"]\n        WareTransactionService[\"WareTransactionService\"]\n    end\n    subgraph Data_Access\n        ProductRepositoryImpl[\"ProductRepositoryImpl\"]\n        StockRepositoryImpl[\"StockRepositoryImpl\"]\n        ProductRepository[\"ProductRepository\"]\n        ProductRepositoryCustom[\"ProductRepositoryCustom\"]\n        ShelfRepository[\"ShelfRepository\"]\n        StockClerkRepository[\"StockClerkRepository\"]\n        StockRepository[\"StockRepository\"]\n        StockRepositoryCustom[\"StockRepositoryCustom\"]\n        WarehouseRepository[\"WarehouseRepository\"]\n        WareTransactionDetailRepository[\"WareTransactionDetailRepository\"]\n        WareTransactionRepository[\"WareTransactionRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Content Creator roles. The platform provides capabilities for person rest, jwt authentication response, jwt user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "JwtAuthenticationResponse",
+          "JwtUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "AuthenticationRestController",
+          "UserRestController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with method protected functionality, so that I can accomplish my method protected-related tasks.",
+        "services": [
+          "PersonRestService"
+        ],
+        "controllers": [
+          "MethodProtectedRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use person rest capabilities, so that I can perform essential business operations.",
+        "services": [
+          "PersonRestService"
+        ],
+        "controllers": [
+          "AuthenticationRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "PersonRestService"
+        ],
+        "controllers": [
+          "AuthenticationRestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "PersonRestService"
+        ],
+        "controllers": [
+          "AuthenticationRestController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        Authority[\"Authority\"]\n        AuthorityName[\"AuthorityName\"]\n        User[\"User\"]\n        Person[\"Person\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthenticationRequest[\"JwtAuthenticationRequest\"]\n        JwtAuthenticationTokenFilter[\"JwtAuthenticationTokenFilter\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n        JwtUser[\"JwtUser\"]\n        JwtUserFactory[\"JwtUserFactory\"]\n    end\n    subgraph Services\n        PersonRestService[\"PersonRestService\"]\n        JwtAuthenticationResponse[\"JwtAuthenticationResponse\"]\n        JwtUserDetailsServiceImpl[\"JwtUserDetailsServiceImpl\"]\n    end\n    subgraph Controllers\n        AuthenticationRestController[\"AuthenticationRestController\"]\n        MethodProtectedRestController[\"MethodProtectedRestController\"]\n        UserRestController[\"UserRestController\"]\n    end\n    subgraph Data_Access\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

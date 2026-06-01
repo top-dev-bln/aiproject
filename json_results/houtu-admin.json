@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Content Creator roles. The platform provides capabilities for biz method security expression handler, mfa authorization manager, mfa processor. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "MFAAuthorizationManager",
+          "LoginLogServiceImpl",
+          "MenuServiceImpl"
+        ],
+        "controllers": [
+          "UserController",
+          "SysLoginLogController",
+          "SysUserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "EmailVerifyProcessor"
+        ],
+        "controllers": [
+          "KaptchaController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "MFAAuthorizationManager"
+        ],
+        "controllers": [
+          "KaptchaController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with kaptcha functionality, so that I can accomplish my kaptcha-related tasks.",
+        "services": [
+          "BizMethodSecurityExpressionHandler"
+        ],
+        "controllers": [
+          "KaptchaController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to interact with menu functionality, so that I can accomplish my menu-related tasks.",
+        "services": [
+          "MenuServiceImpl",
+          "MenuService"
+        ],
+        "controllers": [
+          "MenuController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        KaptchaConfig[\"KaptchaConfig\"]\n        MybatisConfig[\"MybatisConfig\"]\n        OTPUtils[\"OTPUtils\"]\n        ResponseUtils[\"ResponseUtils\"]\n    end\n    subgraph Security\n        SecurityProperties[\"SecurityProperties\"]\n        SpringSecurityConfig[\"SpringSecurityConfig\"]\n        BizCaptchaAuthenticationFilter[\"BizCaptchaAuthenticationFilter\"]\n        SecuritySupport[\"SecuritySupport\"]\n        SimpleUser[\"SimpleUser\"]\n        SysOrgAuthorizeRequest[\"SysOrgAuthorizeRequest\"]\n        SysPostAuthorizeRequest[\"SysPostAuthorizeRequest\"]\n        SysUserAuthorizeRequest[\"SysUserAuthorizeRequest\"]\n    end\n    subgraph Services\n        BizMethodSecurityExpressionHandler[\"BizMethodSecurityExpressionHandler\"]\n        MFAAuthorizationManager[\"MFAAuthorizationManager\"]\n        MFAProcessor[\"MFAProcessor\"]\n        EmailVerifyProcessor[\"EmailVerifyProcessor\"]\n        GoogleOTPVerifyProcessor[\"GoogleOTPVerifyProcessor\"]\n        WorkWeiXinVerifyProcessor[\"WorkWeiXinVerifyProcessor\"]\n        LoginLogServiceImpl[\"LoginLogServiceImpl\"]\n        MenuServiceImpl[\"MenuServiceImpl\"]\n        UserDetailServiceImpl[\"UserDetailServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        LoginLogService[\"LoginLogService\"]\n        MenuService[\"MenuService\"]\n        UserService[\"UserService\"]\n        SysDictDataServiceImpl[\"SysDictDataServiceImpl\"]\n        SysDictServiceImpl[\"SysDictServiceImpl\"]\n        SysLoginLogServiceImpl[\"SysLoginLogServiceImpl\"]\n        SysMenuServiceImpl[\"SysMenuServiceImpl\"]\n        SysOperateLogServiceImpl[\"SysOperateLogServiceImpl\"]\n        SysOrgRoleServiceImpl[\"SysOrgRoleServiceImpl\"]\n        SysOrgServiceImpl[\"SysOrgServiceImpl\"]\n        SysParamsServiceImpl[\"SysParamsServiceImpl\"]\n        SysPostRoleServiceImpl[\"SysPostRoleServiceImpl\"]\n        SysPostServiceImpl[\"SysPostServiceImpl\"]\n        SysRoleMenuServiceImpl[\"SysRoleMenuServiceImpl\"]\n        SysRoleServiceImpl[\"SysRoleServiceImpl\"]\n        SysUserOrgServiceImpl[\"SysUserOrgServiceImpl\"]\n        SysUserPostServiceImpl[\"SysUserPostServiceImpl\"]\n        SysUserRoleServiceImpl[\"SysUserRoleServiceImpl\"]\n        SysUserServiceImpl[\"SysUserServiceImpl\"]\n        SysDictDataService[\"SysDictDataService\"]\n        SysDictService[\"SysDictService\"]\n        SysLoginLogService[\"SysLoginLogService\"]\n        SysMenuService[\"SysMenuService\"]\n        SysOperateLogService[\"SysOperateLogService\"]\n        SysOrgRoleService[\"SysOrgRoleService\"]\n        SysOrgService[\"SysOrgService\"]\n        SysParamsService[\"SysParamsService\"]\n        SysPostRoleService[\"SysPostRoleService\"]\n        SysPostService[\"SysPostService\"]\n        SysRoleMenuService[\"SysRoleMenuService\"]\n        SysRoleService[\"SysRoleService\"]\n        SysUserOrgService[\"SysUserOrgService\"]\n        SysUserPostService[\"SysUserPostService\"]\n        SysUserRoleService[\"SysUserRoleService\"]\n        SysUserService[\"SysUserService\"]\n    end\n    subgraph Data_Access\n        BizSecurityContextRepository[\"BizSecurityContextRepository\"]\n        SysDictDao[\"SysDictDao\"]\n        SysDictDataDao[\"SysDictDataDao\"]\n        SysLoginLogDao[\"SysLoginLogDao\"]\n        SysMenuDao[\"SysMenuDao\"]\n        SysOperateLogDao[\"SysOperateLogDao\"]\n        SysOrgDao[\"SysOrgDao\"]\n        SysOrgRoleDao[\"SysOrgRoleDao\"]\n        SysParamsDao[\"SysParamsDao\"]\n        SysPostDao[\"SysPostDao\"]\n        SysPostRoleDao[\"SysPostRoleDao\"]\n        SysRoleDao[\"SysRoleDao\"]\n        SysRoleMenuDao[\"SysRoleMenuDao\"]\n        SysUserDao[\"SysUserDao\"]\n        SysUserOrgDao[\"SysUserOrgDao\"]\n        SysUserPostDao[\"SysUserPostDao\"]\n        SysUserRoleDao[\"SysUserRoleDao\"]\n    end\n    subgraph Controllers\n        KaptchaController[\"KaptchaController\"]\n        MenuController[\"MenuController\"]\n        MFAController[\"MFAController\"]\n        UserController[\"UserController\"]\n        SysDicDatatController[\"SysDicDatatController\"]\n        SysDictController[\"SysDictController\"]\n        SysLoginLogController[\"SysLoginLogController\"]\n        SysMenuController[\"SysMenuController\"]\n        SysOperateLogController[\"SysOperateLogController\"]\n        SysOrgController[\"SysOrgController\"]\n        SysParamsController[\"SysParamsController\"]\n        SysPostController[\"SysPostController\"]\n        SysRoleController[\"SysRoleController\"]\n        SysUserController[\"SysUserController\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

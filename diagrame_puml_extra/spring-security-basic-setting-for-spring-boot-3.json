@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves User, Content Creator roles. The platform provides capabilities for my user detail, member, register member. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "MyUserDetailService"
+        ],
+        "controllers": [
+          "AuthorizationController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with status check functionality, so that I can accomplish my status check-related tasks.",
+        "services": [
+          "MyUserDetailService"
+        ],
+        "controllers": [
+          "StatusCheckController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with view functionality, so that I can accomplish my view-related tasks.",
+        "services": [
+          "MyUserDetailService"
+        ],
+        "controllers": [
+          "ViewController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use member capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MemberService"
+        ],
+        "controllers": [
+          "AuthorizationController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use register member capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RegisterMemberService"
+        ],
+        "controllers": [
+          "AuthorizationController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AdminAuthorize[\"AdminAuthorize\"]\n        SpringSecurityConfig[\"SpringSecurityConfig\"]\n        UserAuthorize[\"UserAuthorize\"]\n        Member[\"Member\"]\n    end\n    subgraph Services\n        MyUserDetailService[\"MyUserDetailService\"]\n        MemberService[\"MemberService\"]\n        RegisterMemberService[\"RegisterMemberService\"]\n    end\n    subgraph Controllers\n        AuthorizationController[\"AuthorizationController\"]\n        StatusCheckController[\"StatusCheckController\"]\n        ViewController[\"ViewController\"]\n    end\n    subgraph Data_Access\n        MemberRepository[\"MemberRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

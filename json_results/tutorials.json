@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Admin roles. The platform provides capabilities for library application. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with person functionality, so that I can accomplish my person-related tasks.",
+        "services": [
+          "LibraryServiceApplication"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to use library application capabilities, so that I can perform essential business operations.",
+        "services": [
+          "LibraryServiceApplication"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "LibraryServiceApplication"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "LibraryServiceApplication"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "LibraryServiceApplication"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        CityRepository[\"CityRepository\"]\n        CountryRepository[\"CountryRepository\"]\n        StudentRepository[\"StudentRepository\"]\n        UniversityRepository[\"UniversityRepository\"]\n    end\n    subgraph Infrastructure\n        HibernateJacksonConfig[\"HibernateJacksonConfig\"]\n        RoutesConfiguration[\"RoutesConfiguration\"]\n    end\n    subgraph Services\n        LibraryServiceApplication[\"LibraryServiceApplication\"]\n    end\n    subgraph Controllers\n        PersonController[\"PersonController\"]\n    end\n    subgraph Security\n        SecurityConfiguration[\"SecurityConfiguration\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Customer, User roles. The platform provides capabilities for auth application, context data, context holder. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "AuthServiceApplication",
+          "UserHeader",
+          "AuthService"
+        ],
+        "controllers": [
+          "AuthController",
+          "AuthControllerErrorHandling",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "PerRequestFilter"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "NotificationServiceApplication"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "OpenApiConfig",
+          "OpenTelemetryConfig"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "OrderConsumer",
+          "IOrderMapper",
+          "IOrderEventProducer"
+        ],
+        "controllers": [
+          "OrderController",
+          "OrderControllerErrorHandling"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        WebClientConfig[\"WebClientConfig\"]\n    end\n    subgraph Security\n        AuthenticationPrefilter[\"AuthenticationPrefilter\"]\n        CorrelationIdFilter[\"CorrelationIdFilter\"]\n        SwaggerFilter[\"SwaggerFilter\"]\n    end\n    subgraph Services\n        AuthServiceApplication[\"AuthServiceApplication\"]\n        ContextData[\"ContextData\"]\n        ContextHolder[\"ContextHolder\"]\n        OpenApiConfig[\"OpenApiConfig\"]\n        OpenTelemetryConfig[\"OpenTelemetryConfig\"]\n        OtelMetricsConfiguration[\"OtelMetricsConfiguration\"]\n        PerRequestFilter[\"PerRequestFilter\"]\n        RestTemplateConfig[\"RestTemplateConfig\"]\n        RestTemplateInterceptor[\"RestTemplateInterceptor\"]\n        UserHeader[\"UserHeader\"]\n        JWTHelper[\"JWTHelper\"]\n        AuthService[\"AuthService\"]\n        IAuthService[\"IAuthService\"]\n        IUserServiceClient[\"IUserServiceClient\"]\n        UserServiceClient[\"UserServiceClient\"]\n        EurekaServiceApplication[\"EurekaServiceApplication\"]\n        AuthenticationAspect[\"AuthenticationAspect\"]\n        RequiresAuthentication[\"RequiresAuthentication\"]\n        IProductMapper[\"IProductMapper\"]\n        InventoryServiceApplication[\"InventoryServiceApplication\"]\n        Product[\"Product\"]\n        IProductRepository[\"IProductRepository\"]\n        IProductService[\"IProductService\"]\n        ProductService[\"ProductService\"]\n        OrderConsumer[\"OrderConsumer\"]\n        NotificationServiceApplication[\"NotificationServiceApplication\"]\n        IOrderMapper[\"IOrderMapper\"]\n        IOrderEventProducer[\"IOrderEventProducer\"]\n        OrderEventProducer[\"OrderEventProducer\"]\n        Order[\"Order\"]\n        OrderProduct[\"OrderProduct\"]\n        OrderServiceApplication[\"OrderServiceApplication\"]\n        IOrderRepository[\"IOrderRepository\"]\n        IOrderService[\"IOrderService\"]\n        IProductServiceClient[\"IProductServiceClient\"]\n        OrderService[\"OrderService\"]\n        ProductServiceClient[\"ProductServiceClient\"]\n        IReviewMapper[\"IReviewMapper\"]\n        Review[\"Review\"]\n        IReviewRepository[\"IReviewRepository\"]\n        ReviewsServiceApplication[\"ReviewsServiceApplication\"]\n        IOrderServiceClient[\"IOrderServiceClient\"]\n        IReviewService[\"IReviewService\"]\n        OrderServiceClient[\"OrderServiceClient\"]\n        ReviewService[\"ReviewService\"]\n        IUserMapper[\"IUserMapper\"]\n        User[\"User\"]\n        IUserRepository[\"IUserRepository\"]\n        IUserService[\"IUserService\"]\n        UserService[\"UserService\"]\n        UserServiceApplication[\"UserServiceApplication\"]\n        HashUtils[\"HashUtils\"]\n    end\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        AuthControllerErrorHandling[\"AuthControllerErrorHandling\"]\n        ProductController[\"ProductController\"]\n        ProductControllerErrorHandling[\"ProductControllerErrorHandling\"]\n        OrderController[\"OrderController\"]\n        OrderControllerErrorHandling[\"OrderControllerErrorHandling\"]\n        ReviewController[\"ReviewController\"]\n        ReviewControllerErrorHandler[\"ReviewControllerErrorHandler\"]\n        UserController[\"UserController\"]\n        UserControllerErrorHandling[\"UserControllerErrorHandling\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

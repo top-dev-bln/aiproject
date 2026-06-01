@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Candidate, Admin roles. The platform provides capabilities for secure callme, secure caller, secure caller bundle. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with caller functionality, so that I can accomplish my caller-related tasks.",
+        "services": [
+          "SecureCallme",
+          "SecureCaller"
+        ],
+        "controllers": [
+          "CallerController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with callme functionality, so that I can accomplish my callme-related tasks.",
+        "services": [
+          "SecureCallme",
+          "SecureCaller"
+        ],
+        "controllers": [
+          "CallmeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with main functionality, so that I can accomplish my main-related tasks.",
+        "services": [
+          "SecureCallme"
+        ],
+        "controllers": [
+          "MainController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with greeting functionality, so that I can accomplish my greeting-related tasks.",
+        "services": [
+          "SecureCallme"
+        ],
+        "controllers": [
+          "GreetingController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with secure caller bundle functionality, so that I can accomplish my secure caller bundle-related tasks.",
+        "services": [
+          "SecureCallme",
+          "SecureCaller"
+        ],
+        "controllers": [
+          "SecureCallerBundleController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n    end\n    subgraph Controllers\n        CallerController[\"CallerController\"]\n        CallmeController[\"CallmeController\"]\n        MainController[\"MainController\"]\n        GreetingController[\"GreetingController\"]\n        SecureCallerBundleController[\"SecureCallerBundleController\"]\n        SecureCallmeBundleController[\"SecureCallmeBundleController\"]\n        SecureCallmeController[\"SecureCallmeController\"]\n        SecureCallerController[\"SecureCallerController\"]\n    end\n    subgraph Services\n        SecureCallme[\"SecureCallme\"]\n        SecureCaller[\"SecureCaller\"]\n        SecureCallerBundle[\"SecureCallerBundle\"]\n        SecureCallmeBundle[\"SecureCallmeBundle\"]\n        ClientSSLProperties[\"ClientSSLProperties\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Controllers"
+  }
+}

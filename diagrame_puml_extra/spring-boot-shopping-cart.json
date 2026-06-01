@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Customer, User roles. It manages core business objects including product, user, role. The platform provides capabilities for global exception handler, my access denied handler, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImp"
+        ],
+        "controllers": [
+          "LoginController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to create and manage product records, so that I can track and organize product data effectively.",
+        "services": [
+          "ProductService",
+          "ProductServiceImpl"
+        ],
+        "controllers": [
+          "CustomErrorController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "UserService",
+          "UserServiceImp"
+        ],
+        "controllers": [
+          "CustomErrorController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to create and manage role records, so that I can track and organize role data effectively.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "CustomErrorController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "ShoppingCartService",
+          "ShoppingCartServiceImpl"
+        ],
+        "controllers": [
+          "ShoppingCartController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        MyAccessDeniedHandler[\"MyAccessDeniedHandler\"]\n        UserService[\"UserService\"]\n        ShoppingCartService[\"ShoppingCartService\"]\n        ProductService[\"ProductService\"]\n        UserServiceImp[\"UserServiceImp\"]\n        ProductServiceImpl[\"ProductServiceImpl\"]\n        ShoppingCartServiceImpl[\"ShoppingCartServiceImpl\"]\n    end\n    subgraph Security\n        SpringSecurityConfig[\"SpringSecurityConfig\"]\n    end\n    subgraph Controllers\n        CustomErrorController[\"CustomErrorController\"]\n        ShoppingCartController[\"ShoppingCartController\"]\n        RegistrationController[\"RegistrationController\"]\n        HomeController[\"HomeController\"]\n        LoginController[\"LoginController\"]\n    end\n    subgraph Data_Access\n        Product[\"Product\"]\n        User[\"User\"]\n        Role[\"Role\"]\n        ProductRepository[\"ProductRepository\"]\n        RoleRepository[\"RoleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Infrastructure\n        Pager[\"Pager\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. The platform provides capabilities for edgeservice application, sleuth response filter. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "SleuthResponseFilter"
+        ],
+        "controllers": [
+          "CalculationRestController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with calculation functionality, so that I can accomplish my calculation-related tasks.",
+        "services": [
+          "EdgeserviceApplication"
+        ],
+        "controllers": [
+          "CalculationRestController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with frontend functionality, so that I can accomplish my frontend-related tasks.",
+        "services": [
+          "EdgeserviceApplication"
+        ],
+        "controllers": [
+          "FrontendRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use edgeservice application capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EdgeserviceApplication"
+        ],
+        "controllers": [
+          "CalculationRestController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "EdgeserviceApplication"
+        ],
+        "controllers": [
+          "CalculationRestController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        CalculationRestController[\"CalculationRestController\"]\n        FrontendRestController[\"FrontendRestController\"]\n    end\n    subgraph Services\n        EdgeserviceApplication[\"EdgeserviceApplication\"]\n        SleuthResponseFilter[\"SleuthResponseFilter\"]\n    end\n    Controllers --> Services"
+  }
+}

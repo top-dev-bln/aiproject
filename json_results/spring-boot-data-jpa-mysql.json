@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate roles. It manages core business objects including tutorial. It exposes interfaces for managing tutorial. Secondary concerns include file management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to create and manage tutorial records, so that I can track and organize tutorial data effectively.",
+        "services": [],
+        "controllers": [
+          "TutorialController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "TutorialController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "TutorialController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "TutorialController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [],
+        "controllers": [
+          "TutorialController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        TutorialController[\"TutorialController\"]\n    end\n    subgraph Data_Access\n        Tutorial[\"Tutorial\"]\n        TutorialRepository[\"TutorialRepository\"]\n    end\n    Controllers --> Data_Access"
+  }
+}

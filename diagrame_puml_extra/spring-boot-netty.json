@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Candidate, Admin roles. The platform provides capabilities for wrong handler, client handler, exception handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "WrongHandler"
+        ],
+        "controllers": [
+          "OnMessageController",
+          "TransactionalOnMessageController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with custom resolvers functionality, so that I can accomplish my custom resolvers-related tasks.",
+        "services": [
+          "WrongHandler"
+        ],
+        "controllers": [
+          "CustomResolversController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with wrong functionality, so that I can accomplish my wrong-related tasks.",
+        "services": [
+          "WrongHandler"
+        ],
+        "controllers": [
+          "WrongController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with transactional on connect functionality, so that I can accomplish my transactional on connect-related tasks.",
+        "services": [
+          "WrongHandler"
+        ],
+        "controllers": [
+          "TransactionalOnConnectController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with on connect functionality, so that I can accomplish my on connect-related tasks.",
+        "services": [
+          "WrongHandler"
+        ],
+        "controllers": [
+          "OnConnectController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        CustomResolversController[\"CustomResolversController\"]\n        WrongController[\"WrongController\"]\n        TransactionalOnConnectController[\"TransactionalOnConnectController\"]\n        OnConnectController[\"OnConnectController\"]\n        OnDisconnectController[\"OnDisconnectController\"]\n        TransactionalOnDisconnectController[\"TransactionalOnDisconnectController\"]\n        OnMessageController[\"OnMessageController\"]\n        TransactionalOnMessageController[\"TransactionalOnMessageController\"]\n        OnMessageNoHandlerController[\"OnMessageNoHandlerController\"]\n        NettyController[\"NettyController\"]\n    end\n    subgraph Security\n        ExceptionHandlerFilter[\"ExceptionHandlerFilter\"]\n        ExceptionHandlerFilter1[\"ExceptionHandlerFilter1\"]\n        ExceptionHandlerFilter2[\"ExceptionHandlerFilter2\"]\n        AroundResponderFilter[\"AroundResponderFilter\"]\n        NettyFilter[\"NettyFilter\"]\n    end\n    subgraph Services\n        WrongHandler[\"WrongHandler\"]\n        ClientHandler[\"ClientHandler\"]\n        ExceptionHandler[\"ExceptionHandler\"]\n        Server1Handler[\"Server1Handler\"]\n        Server2Handler[\"Server2Handler\"]\n        FlashPolicyHandler[\"FlashPolicyHandler\"]\n        SpringChannelHandler[\"SpringChannelHandler\"]\n    end\n    subgraph Infrastructure\n        EnableNettyServers[\"EnableNettyServers\"]\n        NettyServers[\"NettyServers\"]\n        SpringNettyConfiguration[\"SpringNettyConfiguration\"]\n        SpringNettyConfigurationProperties[\"SpringNettyConfigurationProperties\"]\n        TcpServerProperties[\"TcpServerProperties\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

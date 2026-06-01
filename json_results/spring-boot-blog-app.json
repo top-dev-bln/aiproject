@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, User roles. The platform provides capabilities for blog user, blog user, comment. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "BlogUserService",
+          "BlogUserServiceImpl"
+        ],
+        "controllers": [
+          "CommentController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to interact with comment functionality, so that I can accomplish my comment-related tasks.",
+        "services": [
+          "CommentService",
+          "CommentServiceImpl"
+        ],
+        "controllers": [
+          "CommentController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "BlogUserService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to interact with post functionality, so that I can accomplish my post-related tasks.",
+        "services": [
+          "PostService",
+          "PostServiceImpl"
+        ],
+        "controllers": [
+          "PostController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to interact with signup functionality, so that I can accomplish my signup-related tasks.",
+        "services": [
+          "BlogUserService"
+        ],
+        "controllers": [
+          "SignupController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        CommentController[\"CommentController\"]\n        HomeController[\"HomeController\"]\n        PostController[\"PostController\"]\n        SignupController[\"SignupController\"]\n    end\n    subgraph Security\n        Authority[\"Authority\"]\n        MethodSecurityConfig[\"MethodSecurityConfig\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    subgraph Data_Access\n        AuthorityRepository[\"AuthorityRepository\"]\n        BlogUserRepository[\"BlogUserRepository\"]\n        CommentRepository[\"CommentRepository\"]\n        PostRepository[\"PostRepository\"]\n    end\n    subgraph Services\n        BlogUserService[\"BlogUserService\"]\n        BlogUserServiceImpl[\"BlogUserServiceImpl\"]\n        CommentService[\"CommentService\"]\n        CommentServiceImpl[\"CommentServiceImpl\"]\n        PostService[\"PostService\"]\n        PostServiceImpl[\"PostServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

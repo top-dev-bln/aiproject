@@ -1,0 +1,51 @@
+{
+  "input": {
+    "free_text_description": "This system is a search platform that serves User, Admin roles. The platform provides capabilities for domain, ebean query channel, query channel. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDomainService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "EbeanQueryChannelService",
+          "QueryChannelService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use domain capabilities, so that I can perform essential business operations.",
+        "services": [
+          "DomainService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use ebean repository name space handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "EbeanRepositoryNameSpaceHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "DomainService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        package[\"package\"]\n        Converters[\"Converters\"]\n        ExampleExpressionBuilder[\"ExampleExpressionBuilder\"]\n        SampleConfig[\"SampleConfig\"]\n    end\n    subgraph Services\n        DomainService[\"DomainService\"]\n        EbeanQueryChannelService[\"EbeanQueryChannelService\"]\n        QueryChannelService[\"QueryChannelService\"]\n        EbeanRepositoryNameSpaceHandler[\"EbeanRepositoryNameSpaceHandler\"]\n        UserDomainService[\"UserDomainService\"]\n    end\n    subgraph Data_Access\n        EbeanRepositoriesRegistrar[\"EbeanRepositoriesRegistrar\"]\n        EbeanRepositoryConfigExtension[\"EbeanRepositoryConfigExtension\"]\n        EnableEbeanRepositories[\"EnableEbeanRepositories\"]\n        EbeanRepository[\"EbeanRepository\"]\n        AbstractEbeanQuery[\"AbstractEbeanQuery\"]\n        AbstractEbeanQueryExecution[\"AbstractEbeanQueryExecution\"]\n        AbstractStringBasedEbeanQuery[\"AbstractStringBasedEbeanQuery\"]\n        EbeanQueryCreator[\"EbeanQueryCreator\"]\n        EbeanQueryFactory[\"EbeanQueryFactory\"]\n        EbeanQueryLookupStrategy[\"EbeanQueryLookupStrategy\"]\n        EbeanQueryMethod[\"EbeanQueryMethod\"]\n        EbeanQueryWrapper[\"EbeanQueryWrapper\"]\n        ExpressionBasedStringQuery[\"ExpressionBasedStringQuery\"]\n        NamedEbeanQuery[\"NamedEbeanQuery\"]\n        NativeEbeanQuery[\"NativeEbeanQuery\"]\n        NativeEbeanUpdate[\"NativeEbeanUpdate\"]\n        OrmEbeanQuery[\"OrmEbeanQuery\"]\n        OrmEbeanUpdate[\"OrmEbeanUpdate\"]\n        ParameterBinder[\"ParameterBinder\"]\n        ParameterMetadataProvider[\"ParameterMetadataProvider\"]\n        PartTreeEbeanQuery[\"PartTreeEbeanQuery\"]\n        SpelExpressionStringQueryParameterBinder[\"SpelExpressionStringQueryParameterBinder\"]\n        StringQuery[\"StringQuery\"]\n        StringQueryParameterBinder[\"StringQueryParameterBinder\"]\n        EbeanEntityInformation[\"EbeanEntityInformation\"]\n        EbeanRepositoryFactory[\"EbeanRepositoryFactory\"]\n        EbeanRepositoryFactoryBean[\"EbeanRepositoryFactoryBean\"]\n        SimpleEbeanRepository[\"SimpleEbeanRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

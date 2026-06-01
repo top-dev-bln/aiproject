@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Customer, Admin roles. The platform provides capabilities for ids, position. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Customer, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "IdsService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "IdsService"
+        ],
+        "controllers": [
+          "AdminController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "IdsService"
+        ],
+        "controllers": [
+          "CartController",
+          "OrderController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "IdsService"
+        ],
+        "controllers": [
+          "FileController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to interact with activity functionality, so that I can accomplish my activity-related tasks.",
+        "services": [
+          "IdsService"
+        ],
+        "controllers": [
+          "ActivityController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CORSConfiguration[\"CORSConfiguration\"]\n        Swagger2Configuration[\"Swagger2Configuration\"]\n        AppConfiguration[\"AppConfiguration\"]\n        Beans[\"Beans\"]\n        CaptchaCode[\"CaptchaCode\"]\n        HttpClients[\"HttpClients\"]\n        Maps[\"Maps\"]\n        MD5[\"MD5\"]\n        Constants[\"Constants\"]\n    end\n    subgraph Controllers\n        ActivityController[\"ActivityController\"]\n        AddressController[\"AddressController\"]\n        AdminController[\"AdminController\"]\n        BaseController[\"BaseController\"]\n        BaseErrorController[\"BaseErrorController\"]\n        CaptchaController[\"CaptchaController\"]\n        CartController[\"CartController\"]\n        DeliveryController[\"DeliveryController\"]\n        EntryController[\"EntryController\"]\n        FileController[\"FileController\"]\n        FoodController[\"FoodController\"]\n        IndexController[\"IndexController\"]\n        OrderController[\"OrderController\"]\n        PositionController[\"PositionController\"]\n        RatingController[\"RatingController\"]\n        RestaurantController[\"RestaurantController\"]\n        ShopController[\"ShopController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        BaseDao[\"BaseDao\"]\n    end\n    subgraph Services\n        IdsService[\"IdsService\"]\n        PositionService[\"PositionService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

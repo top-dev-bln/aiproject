@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. The platform provides capabilities for reactor netty bean post processor, tracer rest template bean post processor, tracer web client bean post processor. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to interact with demo service functionality, so that I can accomplish my demo service-related tasks.",
+        "services": [
+          "DemoService",
+          "DemoServiceImpl"
+        ],
+        "controllers": [
+          "DemoServiceController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with feign sample functionality, so that I can accomplish my feign sample-related tasks.",
+        "services": [
+          "ReactorNettyBeanPostProcessor"
+        ],
+        "controllers": [
+          "FeignSampleController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with rest template sample functionality, so that I can accomplish my rest template sample-related tasks.",
+        "services": [
+          "TracerRestTemplateBeanPostProcessor"
+        ],
+        "controllers": [
+          "RestTemplateSampleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with http client sample functionality, so that I can accomplish my http client sample-related tasks.",
+        "services": [
+          "ReactorNettyBeanPostProcessor"
+        ],
+        "controllers": [
+          "HttpClientSampleController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to interact with ok http sample functionality, so that I can accomplish my ok http sample-related tasks.",
+        "services": [
+          "ReactorNettyBeanPostProcessor"
+        ],
+        "controllers": [
+          "OkHttpSampleController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        TracerDubboFilter[\"TracerDubboFilter\"]\n        TracerScgGlobalFilter[\"TracerScgGlobalFilter\"]\n        TracerWebfluxFilter[\"TracerWebfluxFilter\"]\n    end\n    subgraph Infrastructure\n        TracerFeignAutoConfiguration[\"TracerFeignAutoConfiguration\"]\n        TracerHttpClientAuoConfiguration[\"TracerHttpClientAuoConfiguration\"]\n        TracerOkHttpAuoConfiguration[\"TracerOkHttpAuoConfiguration\"]\n        ReactorNettyAutoConfiguration[\"ReactorNettyAutoConfiguration\"]\n        TracerRestTemplateAuoConfiguration[\"TracerRestTemplateAuoConfiguration\"]\n        TracerScgAutoConfiguration[\"TracerScgAutoConfiguration\"]\n        TracerWebClientAuoConfiguration[\"TracerWebClientAuoConfiguration\"]\n        TracerAutoConfiguration[\"TracerAutoConfiguration\"]\n        TracerConstants[\"TracerConstants\"]\n        TracerProperties[\"TracerProperties\"]\n        TracerServletAutoConfiguration[\"TracerServletAutoConfiguration\"]\n        TracerUtils[\"TracerUtils\"]\n        TracerWebfluxAutoConfiguration[\"TracerWebfluxAutoConfiguration\"]\n    end\n    subgraph Services\n        ReactorNettyBeanPostProcessor[\"ReactorNettyBeanPostProcessor\"]\n        TracerRestTemplateBeanPostProcessor[\"TracerRestTemplateBeanPostProcessor\"]\n        TracerWebClientBeanPostProcessor[\"TracerWebClientBeanPostProcessor\"]\n        TracerEnvPostProcessor[\"TracerEnvPostProcessor\"]\n        ThreadPoolTaskExecutorBeanPostProcessor[\"ThreadPoolTaskExecutorBeanPostProcessor\"]\n        DemoService[\"DemoService\"]\n        DemoServiceImpl[\"DemoServiceImpl\"]\n        ServiceSampleApplication[\"ServiceSampleApplication\"]\n    end\n    subgraph Controllers\n        DemoServiceController[\"DemoServiceController\"]\n        FeignSampleController[\"FeignSampleController\"]\n        RestTemplateSampleController[\"RestTemplateSampleController\"]\n        HttpClientSampleController[\"HttpClientSampleController\"]\n        OkHttpSampleController[\"OkHttpSampleController\"]\n        ReactorNettySampleController[\"ReactorNettySampleController\"]\n        ServiceSampleController[\"ServiceSampleController\"]\n        WebClientSampleController[\"WebClientSampleController\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

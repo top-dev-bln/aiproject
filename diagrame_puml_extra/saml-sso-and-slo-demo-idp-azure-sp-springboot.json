@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves User, Admin roles. The platform provides capabilities for s a m l user details. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "SAMLUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "LandingController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with landing functionality, so that I can accomplish my landing-related tasks.",
+        "services": [
+          "SAMLUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "LandingController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with s s o functionality, so that I can accomplish my s s o-related tasks.",
+        "services": [
+          "SAMLUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "SSOController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SAMLUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "LandingController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "SAMLUserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "LandingController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        CommonTestSupport[\"CommonTestSupport\"]\n        MvcConfig[\"MvcConfig\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        CurrentUserHandlerMethodArgumentResolver[\"CurrentUserHandlerMethodArgumentResolver\"]\n        CurrentUser[\"CurrentUser\"]\n    end\n    subgraph Controllers\n        LandingController[\"LandingController\"]\n        SSOController[\"SSOController\"]\n    end\n    subgraph Services\n        SAMLUserDetailsServiceImpl[\"SAMLUserDetailsServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Controllers"
+  }
+}

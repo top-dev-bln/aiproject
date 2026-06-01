@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves User, Admin roles. The platform provides capabilities for my exception handler, dept manager, general manager. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "SysUserServiceImpl",
+          "ISysUserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "DeptManager",
+          "GeneralManager"
+        ],
+        "controllers": [
+          "AdminController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with flow functionality, so that I can accomplish my flow-related tasks.",
+        "services": [
+          "IFlowApiService",
+          "IFlowBaseService"
+        ],
+        "controllers": [
+          "FlowController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with leave functionality, so that I can accomplish my leave-related tasks.",
+        "services": [
+          "AnnualLeaveHandler",
+          "ILeaveTypeHandler"
+        ],
+        "controllers": [
+          "LeaveController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use my exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MyExceptionHandler"
+        ],
+        "controllers": [
+          "AdminController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CacheConfig[\"CacheConfig\"]\n        MybatisPlusConfig[\"MybatisPlusConfig\"]\n        ScriptEngineConfig[\"ScriptEngineConfig\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        WebConfig[\"WebConfig\"]\n        Contains[\"Contains\"]\n        ContainsValidator[\"ContainsValidator\"]\n        BaseEntity[\"BaseEntity\"]\n        Constants[\"Constants\"]\n        NetworkUtils[\"NetworkUtils\"]\n        RequestHolder[\"RequestHolder\"]\n        SpringContextHolder[\"SpringContextHolder\"]\n        CommonResult[\"CommonResult\"]\n        InterceptorConfig[\"InterceptorConfig\"]\n    end\n    subgraph Services\n        MyExceptionHandler[\"MyExceptionHandler\"]\n        DeptManager[\"DeptManager\"]\n        GeneralManager[\"GeneralManager\"]\n        HrManager[\"HrManager\"]\n        IFlowApiService[\"IFlowApiService\"]\n        IFlowBaseService[\"IFlowBaseService\"]\n        IFlowDefinitionNodeService[\"IFlowDefinitionNodeService\"]\n        IFlowDefinitionService[\"IFlowDefinitionService\"]\n        IFlowInstanceNodeService[\"IFlowInstanceNodeService\"]\n        IFlowInstanceService[\"IFlowInstanceService\"]\n        IFlowService[\"IFlowService\"]\n        IFlowVariableService[\"IFlowVariableService\"]\n        FlowApiServiceImpl[\"FlowApiServiceImpl\"]\n        FlowDefinitionNodeServiceImpl[\"FlowDefinitionNodeServiceImpl\"]\n        FlowDefinitionServiceImpl[\"FlowDefinitionServiceImpl\"]\n        FlowInstanceNodeServiceImpl[\"FlowInstanceNodeServiceImpl\"]\n        FlowInstanceServiceImpl[\"FlowInstanceServiceImpl\"]\n        FlowServiceImpl[\"FlowServiceImpl\"]\n        FlowVariableServiceImpl[\"FlowVariableServiceImpl\"]\n        AnnualLeaveHandler[\"AnnualLeaveHandler\"]\n        ILeaveTypeHandler[\"ILeaveTypeHandler\"]\n        MaternityLeaveHandler[\"MaternityLeaveHandler\"]\n        ILeaveApplyService[\"ILeaveApplyService\"]\n        ILeaveEmployeeService[\"ILeaveEmployeeService\"]\n        ILeaveService[\"ILeaveService\"]\n        LeaveApplyServiceImpl[\"LeaveApplyServiceImpl\"]\n        LeaveEmployeeServiceImpl[\"LeaveEmployeeServiceImpl\"]\n        LeaveServiceImpl[\"LeaveServiceImpl\"]\n        SysUserServiceImpl[\"SysUserServiceImpl\"]\n        ISysUserService[\"ISysUserService\"]\n    end\n    subgraph Controllers\n        AdminController[\"AdminController\"]\n        FlowController[\"FlowController\"]\n        LeaveController[\"LeaveController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        FlowDefinitionMapper[\"FlowDefinitionMapper\"]\n        FlowDefinitionNodeMapper[\"FlowDefinitionNodeMapper\"]\n        FlowInstanceMapper[\"FlowInstanceMapper\"]\n        FlowInstanceNodeMapper[\"FlowInstanceNodeMapper\"]\n        FlowVariableMapper[\"FlowVariableMapper\"]\n        LeaveApplyMapper[\"LeaveApplyMapper\"]\n        LeaveEmployeeMapper[\"LeaveEmployeeMapper\"]\n        SysUserMapper[\"SysUserMapper\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

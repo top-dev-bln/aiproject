@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, Candidate roles. It manages core business objects including answer, question, audit model. It exposes interfaces for managing question, answer. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Content Creator, I want to create and manage answer records, so that I can track and organize answer data effectively.",
+        "services": [],
+        "controllers": [
+          "AnswerController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to create and manage question records, so that I can track and organize question data effectively.",
+        "services": [],
+        "controllers": [
+          "QuestionController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to create and manage audit model records, so that I can track and organize audit model data effectively.",
+        "services": [],
+        "controllers": [
+          "QuestionController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "QuestionController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "QuestionController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        QuestionController[\"QuestionController\"]\n        AnswerController[\"AnswerController\"]\n    end\n    subgraph Data_Access\n        Answer[\"Answer\"]\n        Question[\"Question\"]\n        AuditModel[\"AuditModel\"]\n        QuestionRepository[\"QuestionRepository\"]\n        AnswerRepository[\"AnswerRepository\"]\n    end\n    Controllers --> Data_Access"
+  }
+}

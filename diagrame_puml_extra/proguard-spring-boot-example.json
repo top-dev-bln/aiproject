@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Admin roles. The platform provides capabilities for example. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to use example capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ExampleService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        BeanConfig[\"BeanConfig\"]\n    end\n    subgraph Services\n        ExampleService[\"ExampleService\"]\n    end\n    Services --> Infrastructure"
+  }
+}

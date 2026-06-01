@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a authentication platform that serves Candidate, User roles. The platform provides capabilities for contact application, contact, i contact. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "UserPrinciple"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "Configuration"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "ContactServiceApplication"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with location functionality, so that I can accomplish my location-related tasks.",
+        "services": [
+          "IpLocation",
+          "Location"
+        ],
+        "controllers": [
+          "LocationController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with sms functionality, so that I can accomplish my sms-related tasks.",
+        "services": [
+          "Sms",
+          "ISmsRepository"
+        ],
+        "controllers": [
+          "SmsController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        ContactServiceApplication[\"ContactServiceApplication\"]\n        Contact[\"Contact\"]\n        IContact[\"IContact\"]\n        Configuration[\"Configuration\"]\n        IpLocation[\"IpLocation\"]\n        Location[\"Location\"]\n        LocationServiceApplication[\"LocationServiceApplication\"]\n        IContactServiceProxy[\"IContactServiceProxy\"]\n        Sms[\"Sms\"]\n        ISmsRepository[\"ISmsRepository\"]\n        SmsServiceApplication[\"SmsServiceApplication\"]\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        UserPrinciple[\"UserPrinciple\"]\n    end\n    subgraph Controllers\n        HomeController[\"HomeController\"]\n        LocationController[\"LocationController\"]\n        SmsController[\"SmsController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Security\n        User[\"User\"]\n        AuthRestAPIs[\"AuthRestAPIs\"]\n        LoginForm[\"LoginForm\"]\n        SignUpForm[\"SignUpForm\"]\n        JwtResponse[\"JwtResponse\"]\n        ResponseMessage[\"ResponseMessage\"]\n        Role[\"Role\"]\n        RoleName[\"RoleName\"]\n        JwtAuthEntryPoint[\"JwtAuthEntryPoint\"]\n        JwtAuthTokenFilter[\"JwtAuthTokenFilter\"]\n        JwtProvider[\"JwtProvider\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n    end\n    subgraph Data_Access\n        UserRepository[\"UserRepository\"]\n        RoleRepository[\"RoleRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

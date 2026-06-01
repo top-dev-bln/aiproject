@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves User, Developer roles. The platform provides capabilities for change user endpoint adapter, find user endpoint adapter, user dto mapper. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "ChangeUserEndpointAdapter",
+          "FindUserEndpointAdapter",
+          "UserDtoMapper"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "FindUserEndpointAdapter",
+          "FindUserEndpointPort"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use user data capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UserData"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use read user adapter capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ReadUserAdapter"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use user jpa mapper capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UserJpaMapper"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        ChangeUserEndpointAdapter[\"ChangeUserEndpointAdapter\"]\n        FindUserEndpointAdapter[\"FindUserEndpointAdapter\"]\n        UserDtoMapper[\"UserDtoMapper\"]\n        UserData[\"UserData\"]\n        ReadUserAdapter[\"ReadUserAdapter\"]\n        UserJpaMapper[\"UserJpaMapper\"]\n        UserRepository[\"UserRepository\"]\n        WriteUserAdapter[\"WriteUserAdapter\"]\n        ChangeUserEndpointPort[\"ChangeUserEndpointPort\"]\n        FindUserEndpointPort[\"FindUserEndpointPort\"]\n        ReadUserPort[\"ReadUserPort\"]\n        WriteUserPort[\"WriteUserPort\"]\n        ChangeExistingUserService[\"ChangeExistingUserService\"]\n        DeleteUsersByIdService[\"DeleteUsersByIdService\"]\n        FindUserService[\"FindUserService\"]\n        SubmitNewUserService[\"SubmitNewUserService\"]\n        ChangeExistingUserUseCase[\"ChangeExistingUserUseCase\"]\n        DeleteUsersByIdUseCase[\"DeleteUsersByIdUseCase\"]\n        FindAllUsersUseCase[\"FindAllUsersUseCase\"]\n        FindUserByIdUseCase[\"FindUserByIdUseCase\"]\n        SubmitNewUserUseCase[\"SubmitNewUserUseCase\"]\n        FullName[\"FullName\"]\n        Phone[\"Phone\"]\n        User[\"User\"]\n        UserFunctions[\"UserFunctions\"]\n        UserId[\"UserId\"]\n        Adapter[\"Adapter\"]\n        Mapper[\"Mapper\"]\n        ObjectValidator[\"ObjectValidator\"]\n        DataFaker[\"DataFaker\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n    end\n    Controllers --> Services"
+  }
+}

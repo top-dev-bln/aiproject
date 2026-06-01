@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Candidate roles. The platform provides capabilities for image processing. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include file management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "ImageProcessingService"
+        ],
+        "controllers": [
+          "TensorBootController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with tensor boot functionality, so that I can accomplish my tensor boot-related tasks.",
+        "services": [
+          "ImageProcessingService"
+        ],
+        "controllers": [
+          "TensorBootController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with tensor boot functionality, so that I can accomplish my tensor boot-related tasks.",
+        "services": [
+          "ImageProcessingService"
+        ],
+        "controllers": [
+          "TensorBootRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ImageProcessingService"
+        ],
+        "controllers": [
+          "TensorBootController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "ImageProcessingService"
+        ],
+        "controllers": [
+          "TensorBootController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ModelConfig[\"ModelConfig\"]\n        MvcConfiguration[\"MvcConfiguration\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        ImageUtil[\"ImageUtil\"]\n    end\n    subgraph Services\n        ImageProcessingService[\"ImageProcessingService\"]\n    end\n    subgraph Controllers\n        TensorBootController[\"TensorBootController\"]\n        TensorBootRestController[\"TensorBootRestController\"]\n    end\n    subgraph Security\n        MDCFilter[\"MDCFilter\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

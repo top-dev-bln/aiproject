@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, User roles. The platform provides capabilities for query history, like, post. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "QueryHistoryService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to use like capabilities, so that I can perform essential business operations.",
+        "services": [
+          "LikeService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to use post capabilities, so that I can perform essential business operations.",
+        "services": [
+          "PostService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "QueryHistoryService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CacheConfig[\"CacheConfig\"]\n    end\n    subgraph Services\n        QueryHistoryService[\"QueryHistoryService\"]\n        LikeService[\"LikeService\"]\n        PostService[\"PostService\"]\n        UserService[\"UserService\"]\n    end\n    Services --> Infrastructure"
+  }
+}

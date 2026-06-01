@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. The platform provides capabilities for granted authorities from assertion attributes with default roles user details, request aware cas logout success handler, cas logout success handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use request aware cas logout success handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RequestAwareCasLogoutSuccessHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use cas logout success handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CasLogoutSuccessHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        CasAssertionUserDetailsServiceConfiguration[\"CasAssertionUserDetailsServiceConfiguration\"]\n        CasAuthenticationFilterConfigurer[\"CasAuthenticationFilterConfigurer\"]\n        CasSecurityConfigurerAdapter[\"CasSecurityConfigurerAdapter\"]\n        CasSecurityCondition[\"CasSecurityCondition\"]\n        CasAuthenticationProviderSecurityBuilder[\"CasAuthenticationProviderSecurityBuilder\"]\n        CasTicketValidatorBuilder[\"CasTicketValidatorBuilder\"]\n        CasSecurityProperties[\"CasSecurityProperties\"]\n        CasSingleSignOutFilterConfigurer[\"CasSingleSignOutFilterConfigurer\"]\n        CasSecurityAutoConfiguration[\"CasSecurityAutoConfiguration\"]\n        CasSecurityConfigurer[\"CasSecurityConfigurer\"]\n        CasTicketValidatorConfiguration[\"CasTicketValidatorConfiguration\"]\n        SpringBoot1CasHttpSecurityConfigurerAdapter[\"SpringBoot1CasHttpSecurityConfigurerAdapter\"]\n        CasHttpSecurityConfigurer[\"CasHttpSecurityConfigurer\"]\n        LaxServiceProperties[\"LaxServiceProperties\"]\n        DynamicProxyCallbackUrlCasAuthenticationProvider[\"DynamicProxyCallbackUrlCasAuthenticationProvider\"]\n        CasAuthorizationInterceptor[\"CasAuthorizationInterceptor\"]\n        AttributePrincipalProxyTicketProvider[\"AttributePrincipalProxyTicketProvider\"]\n        ProxyTicketProvider[\"ProxyTicketProvider\"]\n        SecurityContextHolderAssertionProvider[\"SecurityContextHolderAssertionProvider\"]\n        AssertionProvider[\"AssertionProvider\"]\n        ProxyCallbackUrlAwareTicketValidator[\"ProxyCallbackUrlAwareTicketValidator\"]\n        RequestAwareCasAuthenticationEntryPoint[\"RequestAwareCasAuthenticationEntryPoint\"]\n        ProxyCallbackAndServiceAuthenticationDetailsSource[\"ProxyCallbackAndServiceAuthenticationDetailsSource\"]\n        DefaultProxyCallbackAndServiceAuthenticationDetails[\"DefaultProxyCallbackAndServiceAuthenticationDetails\"]\n        ProxyCallbackAndServiceAuthenticationDetails[\"ProxyCallbackAndServiceAuthenticationDetails\"]\n    end\n    subgraph Services\n        GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService[\"GrantedAuthoritiesFromAssertionAttributesWithDefaultRolesUserDetailsService\"]\n        RequestAwareCasLogoutSuccessHandler[\"RequestAwareCasLogoutSuccessHandler\"]\n        CasLogoutSuccessHandler[\"CasLogoutSuccessHandler\"]\n    end\n    Services --> Security"
+  }
+}

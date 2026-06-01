@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. The platform provides capabilities for exception manager, grupo, jogador. Data is persisted through a structured data access layer.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "ExceptionManager"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with home functionality, so that I can accomplish my home-related tasks.",
+        "services": [
+          "ExceptionManager"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with jogador functionality, so that I can accomplish my jogador-related tasks.",
+        "services": [
+          "JogadorService"
+        ],
+        "controllers": [
+          "JogadorController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to use grupo capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GrupoService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to use jogador capabilities, so that I can perform essential business operations.",
+        "services": [
+          "JogadorService"
+        ],
+        "controllers": [
+          "HomeController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        ExceptionManager[\"ExceptionManager\"]\n        GrupoService[\"GrupoService\"]\n        JogadorService[\"JogadorService\"]\n    end\n    subgraph Controllers\n        HomeController[\"HomeController\"]\n        JogadorController[\"JogadorController\"]\n    end\n    subgraph Data_Access\n        JogadorRepository[\"JogadorRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access"
+  }
+}

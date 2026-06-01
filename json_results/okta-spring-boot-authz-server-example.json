@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Candidate, Admin roles. It exposes interfaces for managing user, web. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with web functionality, so that I can accomplish my web-related tasks.",
+        "services": [],
+        "controllers": [
+          "WebController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AuthServerConfig[\"AuthServerConfig\"]\n        SecurityConfiguration[\"SecurityConfiguration\"]\n    end\n    subgraph Controllers\n        UserController[\"UserController\"]\n        WebController[\"WebController\"]\n    end\n    Controllers --> Security\n    Security --> Controllers"
+  }
+}

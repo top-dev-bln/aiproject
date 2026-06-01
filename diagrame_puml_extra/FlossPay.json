@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a social platform that serves Admin, Developer roles. The platform provides capabilities for global exception handler, hmac auth, idempotency. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "HmacAuthService"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with health functionality, so that I can accomplish my health-related tasks.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with status functionality, so that I can accomplish my status-related tasks.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "StatusController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with transaction functionality, so that I can accomplish my transaction-related tasks.",
+        "services": [
+          "TransactionApiProducer"
+        ],
+        "controllers": [
+          "TransactionController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use global exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "HealthController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        LoggingFilter[\"LoggingFilter\"]\n        RateLimiterFilter[\"RateLimiterFilter\"]\n    end\n    subgraph Infrastructure\n        RedisApiConfig[\"RedisApiConfig\"]\n        StreamBootstrapConfig[\"StreamBootstrapConfig\"]\n        WebConfig[\"WebConfig\"]\n        RedisWorkerConfig[\"RedisWorkerConfig\"]\n    end\n    subgraph Controllers\n        HealthController[\"HealthController\"]\n        StatusController[\"StatusController\"]\n        TransactionController[\"TransactionController\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        HmacAuthService[\"HmacAuthService\"]\n        IdempotencyService[\"IdempotencyService\"]\n        IdempotencyServiceImpl[\"IdempotencyServiceImpl\"]\n        TransactionApiProducer[\"TransactionApiProducer\"]\n    end\n    subgraph Data_Access\n        IdempotencyKeyRepository[\"IdempotencyKeyRepository\"]\n        TransactionHistoryRepository[\"TransactionHistoryRepository\"]\n        TransactionRepository[\"TransactionRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

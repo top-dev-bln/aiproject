@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Content Creator, Candidate roles. The platform provides capabilities for bank, scraper factory, bank information publisher. Secondary concerns include content management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Content Creator, I want to interact with bank functionality, so that I can accomplish my bank-related tasks.",
+        "services": [
+          "BankService",
+          "BankInformationPublisherService"
+        ],
+        "controllers": [
+          "BankController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to use bank capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BankService"
+        ],
+        "controllers": [
+          "BankController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to use scraper factory capabilities, so that I can perform essential business operations.",
+        "services": [
+          "ScraperFactoryService"
+        ],
+        "controllers": [
+          "BankController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to use bank information publisher capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BankInformationPublisherService"
+        ],
+        "controllers": [
+          "BankController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to use bank information received capabilities, so that I can perform essential business operations.",
+        "services": [
+          "BankInformationReceived"
+        ],
+        "controllers": [
+          "BankController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        BankController[\"BankController\"]\n    end\n    subgraph Services\n        BankService[\"BankService\"]\n        ScraperFactoryService[\"ScraperFactoryService\"]\n        BankInformationPublisherService[\"BankInformationPublisherService\"]\n        BankInformationReceived[\"BankInformationReceived\"]\n        PrinterService[\"PrinterService\"]\n        SaverService[\"SaverService\"]\n        BankScraperStrategy[\"BankScraperStrategy\"]\n        HttpFetchService[\"HttpFetchService\"]\n        SebScraper[\"SebScraper\"]\n        SwedbankScraper[\"SwedbankScraper\"]\n    end\n    Controllers --> Services"
+  }
+}

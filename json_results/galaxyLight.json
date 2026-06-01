@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. The platform provides capabilities for hredo, sendservice. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "Sendservice"
+        ],
+        "controllers": [
+          "ComputeControllera"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to interact with computea functionality, so that I can accomplish my computea-related tasks.",
+        "services": [
+          "HredoService"
+        ],
+        "controllers": [
+          "ComputeControllera"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with compute coma p functionality, so that I can accomplish my compute coma p-related tasks.",
+        "services": [
+          "HredoService"
+        ],
+        "controllers": [
+          "ComputeControllerComaP"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with computes functionality, so that I can accomplish my computes-related tasks.",
+        "services": [
+          "HredoService"
+        ],
+        "controllers": [
+          "ComputeControllers"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with computes beh functionality, so that I can accomplish my computes beh-related tasks.",
+        "services": [
+          "HredoService"
+        ],
+        "controllers": [
+          "ComputeControllersBEH"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Data_Access\n        EventProcessMapper[\"EventProcessMapper\"]\n        HredoDao[\"HredoDao\"]\n        HredoMapper[\"HredoMapper\"]\n    end\n    subgraph Services\n        HredoService[\"HredoService\"]\n        Sendservice[\"Sendservice\"]\n    end\n    subgraph Infrastructure\n        AmqpConfig[\"AmqpConfig\"]\n        RedisConfig[\"RedisConfig\"]\n    end\n    subgraph Controllers\n        ComputeControllera[\"ComputeControllera\"]\n        ComputeControllerComaP[\"ComputeControllerComaP\"]\n        ComputeControllers[\"ComputeControllers\"]\n        ComputeControllersBEH[\"ComputeControllersBEH\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

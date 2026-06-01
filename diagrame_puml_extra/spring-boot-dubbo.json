@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a search platform that serves Admin, User roles. The platform provides capabilities for uic template, account manager. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "AccountManager"
+        ],
+        "controllers": [
+          "PortalController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with portal functionality, so that I can accomplish my portal-related tasks.",
+        "services": [
+          "UicTemplate"
+        ],
+        "controllers": [
+          "PortalController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with dubbo operation endpoint functionality, so that I can accomplish my dubbo operation endpoint-related tasks.",
+        "services": [
+          "UicTemplate"
+        ],
+        "controllers": [
+          "DubboOperationEndpoint"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use uic template capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UicTemplate"
+        ],
+        "controllers": [
+          "PortalController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "UicTemplate"
+        ],
+        "controllers": [
+          "PortalController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        PortalController[\"PortalController\"]\n        DubboOperationEndpoint[\"DubboOperationEndpoint\"]\n    end\n    subgraph Infrastructure\n        DubboBasedAutoConfiguration[\"DubboBasedAutoConfiguration\"]\n        EnableDubboConfiguration[\"EnableDubboConfiguration\"]\n        DubboProperties[\"DubboProperties\"]\n        DubboConsumerAutoConfiguration[\"DubboConsumerAutoConfiguration\"]\n        DubboProviderAutoConfiguration[\"DubboProviderAutoConfiguration\"]\n        DubboAutoConfiguration[\"DubboAutoConfiguration\"]\n        UicProperties[\"UicProperties\"]\n    end\n    subgraph Security\n        ConsumerInvokeStaticsFilter[\"ConsumerInvokeStaticsFilter\"]\n        ProviderInvokeStaticsFilter[\"ProviderInvokeStaticsFilter\"]\n        StaticsFilter[\"StaticsFilter\"]\n    end\n    subgraph Services\n        UicTemplate[\"UicTemplate\"]\n        AccountManager[\"AccountManager\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Admin, User roles. It manages core business objects including user, vehicle. The platform provides capabilities for rest exception handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserinfoController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": [
+          "UserinfoController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to create and manage vehicle records, so that I can track and organize vehicle data effectively.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": [
+          "VehicleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As an Admin, I want to view real-time device data and monitor system health, so that I can detect and respond to anomalies quickly.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": [
+          "VehicleController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to use rest exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "RestExceptionHandler"
+        ],
+        "controllers": [
+          "AuthenticationController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n        JwtProperties[\"JwtProperties\"]\n        JwtTokenAuthenticationFilter[\"JwtTokenAuthenticationFilter\"]\n        JwtTokenProvider[\"JwtTokenProvider\"]\n    end\n    subgraph Infrastructure\n        DataJpaConfig[\"DataJpaConfig\"]\n        AppConfig[\"AppConfig\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n        Vehicle[\"Vehicle\"]\n        VehicleRepository[\"VehicleRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Controllers\n        AuthenticationController[\"AuthenticationController\"]\n        VehicleController[\"VehicleController\"]\n        UserinfoController[\"UserinfoController\"]\n    end\n    subgraph Services\n        RestExceptionHandler[\"RestExceptionHandler\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

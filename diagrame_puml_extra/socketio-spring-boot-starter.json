@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin, Content Creator roles. The platform provides capabilities for abstract socket event handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to use abstract socket event handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AbstractSocketEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AbstractSocketEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AbstractSocketEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AbstractSocketEventHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AbstractSocketEventHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AbstractSocketEventHandler[\"AbstractSocketEventHandler\"]\n    end\n    subgraph Security\n        JWTAuthorizationListener[\"JWTAuthorizationListener\"]\n    end\n    subgraph Infrastructure\n        SocketioHazelcastProperties[\"SocketioHazelcastProperties\"]\n        SocketioRedissonConfiguration[\"SocketioRedissonConfiguration\"]\n        SocketioRedissonProperties[\"SocketioRedissonProperties\"]\n        SocketioRedisTemplateConfiguration[\"SocketioRedisTemplateConfiguration\"]\n        SocketioRedisTemplateProperties[\"SocketioRedisTemplateProperties\"]\n        SocketioServerAutoConfiguration[\"SocketioServerAutoConfiguration\"]\n        SocketioServerProperties[\"SocketioServerProperties\"]\n        RedissonConfig[\"RedissonConfig\"]\n    end\n    Services --> Security\n    Security --> Infrastructure"
+  }
+}

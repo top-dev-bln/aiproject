@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Admin, Candidate roles. It manages core business objects including chat message. It exposes interfaces for managing chat. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to create and manage chat message records, so that I can track and organize chat message data effectively.",
+        "services": [],
+        "controllers": [
+          "ChatController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "ChatController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "ChatController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "ChatController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [],
+        "controllers": [
+          "ChatController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        WebSocketConfig[\"WebSocketConfig\"]\n    end\n    subgraph Controllers\n        ChatController[\"ChatController\"]\n    end\n    subgraph Data_Access\n        ChatMessage[\"ChatMessage\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

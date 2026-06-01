@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves Admin, User roles. It manages core business objects including user. It exposes interfaces for managing graph ql test configuration, graph ql impl, graph ql. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to create and manage user records, so that I can track and organize user data effectively.",
+        "services": [],
+        "controllers": [
+          "GraphQlControllerTestConfiguration"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [],
+        "controllers": [
+          "GraphQlControllerTestConfiguration"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with graph ql impl functionality, so that I can accomplish my graph ql impl-related tasks.",
+        "services": [],
+        "controllers": [
+          "GraphQlControllerImpl"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with graph ql functionality, so that I can accomplish my graph ql-related tasks.",
+        "services": [],
+        "controllers": [
+          "GraphQlController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "GraphQlControllerTestConfiguration"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        GraphQlPropertiesTestConfiguration[\"GraphQlPropertiesTestConfiguration\"]\n        GraphQlAutoConfiguration[\"GraphQlAutoConfiguration\"]\n        GraphQlProperties[\"GraphQlProperties\"]\n        GraphQlExecutorImplTestConfiguration[\"GraphQlExecutorImplTestConfiguration\"]\n        GraphQlExecutorPropertiesTestConfiguration[\"GraphQlExecutorPropertiesTestConfiguration\"]\n        GraphQlExecutorProperties[\"GraphQlExecutorProperties\"]\n        UserFieldsTestConfiguration[\"UserFieldsTestConfiguration\"]\n        RoleFieldsTestConfiguration[\"RoleFieldsTestConfiguration\"]\n    end\n    subgraph Controllers\n        GraphQlControllerTestConfiguration[\"GraphQlControllerTestConfiguration\"]\n        GraphQlControllerImpl[\"GraphQlControllerImpl\"]\n        GraphQlController[\"GraphQlController\"]\n    end\n    subgraph Data_Access\n        User[\"User\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

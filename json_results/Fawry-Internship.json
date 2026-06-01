@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves User, Admin roles. The platform provides capabilities for account manager. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "AccountManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "AccountManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "AccountManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "AccountManager"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [
+          "AccountManager"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        Shop[\"Shop\"]\n    end\n    subgraph Services\n        AccountManager[\"AccountManager\"]\n    end\n    subgraph Data_Access\n        ProductRepository[\"ProductRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Security\n        AuthFilter[\"AuthFilter\"]\n    end\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure"
+  }
+}

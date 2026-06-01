@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is a content management platform that serves Content Creator, User roles. The platform provides capabilities for user details, hashtag, post. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserDetailsServiceImpl",
+          "RefreshTokenService",
+          "UserService"
+        ],
+        "controllers": [
+          "AuthenticationController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Content Creator, I want to interact with application error functionality, so that I can accomplish my application error-related tasks.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "ApplicationErrorController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Content Creator, I want to interact with faulty functionality, so that I can accomplish my faulty-related tasks.",
+        "services": [
+          "UserDetailsServiceImpl"
+        ],
+        "controllers": [
+          "FaultyRestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Content Creator, I want to interact with hashtag functionality, so that I can accomplish my hashtag-related tasks.",
+        "services": [
+          "HashtagService",
+          "HashtagServiceImpl"
+        ],
+        "controllers": [
+          "HashtagController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Content Creator, I want to interact with post functionality, so that I can accomplish my post-related tasks.",
+        "services": [
+          "PostService",
+          "PostServiceImpl"
+        ],
+        "controllers": [
+          "PostController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        ApplicationErrorAttributes[\"ApplicationErrorAttributes\"]\n        JpaConfig[\"JpaConfig\"]\n        MicrometerConfig[\"MicrometerConfig\"]\n        HashtagV1Constants[\"HashtagV1Constants\"]\n        PostV1Constants[\"PostV1Constants\"]\n        UserV1Constants[\"UserV1Constants\"]\n        Utility[\"Utility\"]\n    end\n    subgraph Controllers\n        ApplicationErrorController[\"ApplicationErrorController\"]\n        AuthenticationController[\"AuthenticationController\"]\n        FaultyRestController[\"FaultyRestController\"]\n        HashtagController[\"HashtagController\"]\n        PostController[\"PostController\"]\n        UserController[\"UserController\"]\n        ControllerExceptionHandler[\"ControllerExceptionHandler\"]\n    end\n    subgraph Security\n        AuthV1Constants[\"AuthV1Constants\"]\n        RefreshToken[\"RefreshToken\"]\n        AuthenticationRequest[\"AuthenticationRequest\"]\n        AuthenticationResponse[\"AuthenticationResponse\"]\n        TokenRefreshRequest[\"TokenRefreshRequest\"]\n        JwtRequestFilter[\"JwtRequestFilter\"]\n        JwtUtil[\"JwtUtil\"]\n        SecurityConfig[\"SecurityConfig\"]\n    end\n    subgraph Data_Access\n        FollowRepository[\"FollowRepository\"]\n        HashtagPostsRepository[\"HashtagPostsRepository\"]\n        HashtagsRepository[\"HashtagsRepository\"]\n        LikesRepository[\"LikesRepository\"]\n        PostsRepository[\"PostsRepository\"]\n        RefreshTokenRepository[\"RefreshTokenRepository\"]\n        UsersRepository[\"UsersRepository\"]\n        HashtagMapper[\"HashtagMapper\"]\n        PostMapper[\"PostMapper\"]\n        UserMapper[\"UserMapper\"]\n    end\n    subgraph Services\n        UserDetailsServiceImpl[\"UserDetailsServiceImpl\"]\n        HashtagService[\"HashtagService\"]\n        PostService[\"PostService\"]\n        RefreshTokenService[\"RefreshTokenService\"]\n        UserService[\"UserService\"]\n        HashtagServiceImpl[\"HashtagServiceImpl\"]\n        PostServiceImpl[\"PostServiceImpl\"]\n        RefreshTokenServiceImpl[\"RefreshTokenServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

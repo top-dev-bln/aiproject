@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an user management platform that serves Developer, Admin roles. It exposes interfaces for managing ignore shop, shop, user. Secondary concerns include e-commerce functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Developer, I want to interact with ignore shop functionality, so that I can accomplish my ignore shop-related tasks.",
+        "services": [],
+        "controllers": [
+          "IgnoreShopController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Developer, I want to interact with shop functionality, so that I can accomplish my shop-related tasks.",
+        "services": [],
+        "controllers": [
+          "ShopController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Developer, I want to interact with goods functionality, so that I can accomplish my goods-related tasks.",
+        "services": [],
+        "controllers": [
+          "GoodsController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Developer, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "IgnoreShopController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        GenConfig[\"GenConfig\"]\n        CollectionUtils[\"CollectionUtils\"]\n        FileUtils[\"FileUtils\"]\n        IOUtils[\"IOUtils\"]\n        StringUtils[\"StringUtils\"]\n        GenWebConfig[\"GenWebConfig\"]\n    end\n    subgraph Controllers\n        IgnoreShopController[\"IgnoreShopController\"]\n        ShopController[\"ShopController\"]\n        UserController[\"UserController\"]\n        GoodsController[\"GoodsController\"]\n    end\n    Controllers --> Infrastructure"
+  }
+}

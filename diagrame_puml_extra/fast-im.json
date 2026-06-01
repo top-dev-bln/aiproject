@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. The platform provides capabilities for group, user. Secondary concerns include messaging functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with group functionality, so that I can accomplish my group-related tasks.",
+        "services": [
+          "GroupService"
+        ],
+        "controllers": [
+          "GroupController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with test functionality, so that I can accomplish my test-related tasks.",
+        "services": [
+          "GroupService"
+        ],
+        "controllers": [
+          "TestController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to use group capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GroupService"
+        ],
+        "controllers": [
+          "GroupController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "GroupService"
+        ],
+        "controllers": [
+          "GroupController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        IMConfig[\"IMConfig\"]\n        InterceptorConfig[\"InterceptorConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        WebSocketConfig[\"WebSocketConfig\"]\n        LoginUtil[\"LoginUtil\"]\n        RedisUtil[\"RedisUtil\"]\n        ResultUtil[\"ResultUtil\"]\n    end\n    subgraph Controllers\n        GroupController[\"GroupController\"]\n        TestController[\"TestController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        GroupObject[\"GroupObject\"]\n        MessageList[\"MessageList\"]\n        MessageObject[\"MessageObject\"]\n    end\n    subgraph Services\n        GroupService[\"GroupService\"]\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

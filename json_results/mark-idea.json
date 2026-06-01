@@ -1,0 +1,64 @@
+{
+  "input": {
+    "free_text_description": "This system is a file management platform that serves User, Content Creator roles. It manages core business objects including del note do, article do, user do, user note key. The platform provides capabilities for global exception handler, i user, i admin. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include content management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "IUserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage del note do records, so that I can track and organize del note do data effectively.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "DelNoteController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage article do records, so that I can track and organize article do data effectively.",
+        "services": [
+          "IArticleService",
+          "ArticleService"
+        ],
+        "controllers": [
+          "ArticleController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage user do records, so that I can track and organize user do data effectively.",
+        "services": [
+          "IUserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage user note key records, so that I can track and organize user note key data effectively.",
+        "services": [
+          "IUserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        UserConstant[\"UserConstant\"]\n        RegisterConstant[\"RegisterConstant\"]\n        InterceptorConfig[\"InterceptorConfig\"]\n        CacheConfig[\"CacheConfig\"]\n        ContextPropertyLoader[\"ContextPropertyLoader\"]\n        JsonUtil[\"JsonUtil\"]\n        GitUtil[\"GitUtil\"]\n        SshUtil[\"SshUtil\"]\n        FileUtil[\"FileUtil\"]\n        MD5Util[\"MD5Util\"]\n        DateTimeUtil[\"DateTimeUtil\"]\n        ThreadLocalUtil[\"ThreadLocalUtil\"]\n    end\n    subgraph Security\n        CorsFilter[\"CorsFilter\"]\n        AuthorityInterceptor[\"AuthorityInterceptor\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        IUserService[\"IUserService\"]\n        IAdminService[\"IAdminService\"]\n        IFileService[\"IFileService\"]\n        IArticleService[\"IArticleService\"]\n        INoteService[\"INoteService\"]\n        LocalFileServiceImpl[\"LocalFileServiceImpl\"]\n        ArticleService[\"ArticleService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        NoteServiceImpl[\"NoteServiceImpl\"]\n        AdminServiceImpl[\"AdminServiceImpl\"]\n    end\n    subgraph Controllers\n        AdminController[\"AdminController\"]\n        NoteController[\"NoteController\"]\n        ArticleController[\"ArticleController\"]\n        DelNoteController[\"DelNoteController\"]\n        FileController[\"FileController\"]\n        HistoryController[\"HistoryController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        ArticleRepository[\"ArticleRepository\"]\n        DelNoteRepository[\"DelNoteRepository\"]\n        UserRepository[\"UserRepository\"]\n        RemoteRepoRequest[\"RemoteRepoRequest\"]\n        DelNoteDo[\"DelNoteDo\"]\n        ArticleDo[\"ArticleDo\"]\n        UserDo[\"UserDo\"]\n        UserNoteKey[\"UserNoteKey\"]\n        QueryHistoryContentReq[\"QueryHistoryContentReq\"]\n        UserRequest[\"UserRequest\"]\n        NoteRequest[\"NoteRequest\"]\n        ServerResponse[\"ServerResponse\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

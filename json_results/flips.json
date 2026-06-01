@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves User, Admin roles. The platform provides capabilities for flip annotation processor. Secondary concerns include authentication functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to interact with flip description functionality, so that I can accomplish my flip description-related tasks.",
+        "services": [
+          "FlipAnnotationProcessor"
+        ],
+        "controllers": [
+          "FlipDescriptionController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with flip advice functionality, so that I can accomplish my flip advice-related tasks.",
+        "services": [
+          "FlipAnnotationProcessor"
+        ],
+        "controllers": [
+          "FlipControllerAdvice"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with test client functionality, so that I can accomplish my test client-related tasks.",
+        "services": [
+          "FlipAnnotationProcessor"
+        ],
+        "controllers": [
+          "TestClientController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with test client other functionality, so that I can accomplish my test client other-related tasks.",
+        "services": [
+          "FlipAnnotationProcessor"
+        ],
+        "controllers": [
+          "TestClientControllerOther"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use flip annotation processor capabilities, so that I can perform essential business operations.",
+        "services": [
+          "FlipAnnotationProcessor"
+        ],
+        "controllers": [
+          "FlipDescriptionController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        FlipContextConfiguration[\"FlipContextConfiguration\"]\n        AnnotationUtils[\"AnnotationUtils\"]\n        DateTimeUtils[\"DateTimeUtils\"]\n        Utils[\"Utils\"]\n        ValidationUtils[\"ValidationUtils\"]\n        FlipWebContextConfiguration[\"FlipWebContextConfiguration\"]\n    end\n    subgraph Services\n        FlipAnnotationProcessor[\"FlipAnnotationProcessor\"]\n    end\n    subgraph Controllers\n        FlipDescriptionController[\"FlipDescriptionController\"]\n        FlipControllerAdvice[\"FlipControllerAdvice\"]\n        TestClientController[\"TestClientController\"]\n        TestClientControllerOther[\"TestClientControllerOther\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

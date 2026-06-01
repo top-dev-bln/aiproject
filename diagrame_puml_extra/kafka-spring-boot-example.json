@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a messaging platform that serves Candidate roles. It exposes interfaces for managing hello kafka. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to interact with hello kafka functionality, so that I can accomplish my hello kafka-related tasks.",
+        "services": [],
+        "controllers": [
+          "HelloKafkaController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloKafkaController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloKafkaController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloKafkaController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "HelloKafkaController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        HelloKafkaController[\"HelloKafkaController\"]\n    end"
+  }
+}

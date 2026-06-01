@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a e-commerce platform that serves Customer, Candidate roles. It manages core business objects including sms model, base entity, data entity, status. The platform provides capabilities for refactor cart, refactor user, cart application. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "RefactorUserService",
+          "UserServiceApplication",
+          "UserService"
+        ],
+        "controllers": [
+          "UserServiceImpl"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to create and manage sms model records, so that I can track and organize sms model data effectively.",
+        "services": [
+          "RefactorCartService"
+        ],
+        "controllers": [
+          "Controller"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to create and manage base entity records, so that I can track and organize base entity data effectively.",
+        "services": [
+          "RefactorCartService"
+        ],
+        "controllers": [
+          "Controller"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to create and manage data entity records, so that I can track and organize data entity data effectively.",
+        "services": [
+          "RefactorCartService"
+        ],
+        "controllers": [
+          "Controller"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to create and manage status records, so that I can track and organize status data effectively.",
+        "services": [
+          "FlowStatus",
+          "ReturnStatus"
+        ],
+        "controllers": [
+          "Controller"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        RefactorCartService[\"RefactorCartService\"]\n        RefactorUserService[\"RefactorUserService\"]\n        CartServiceApplication[\"CartServiceApplication\"]\n        ShoppingCart[\"ShoppingCart\"]\n        CartInfo[\"CartInfo\"]\n        ProductModel[\"ProductModel\"]\n        CartService[\"CartService\"]\n        CommentServiceApplication[\"CommentServiceApplication\"]\n        Comment[\"Comment\"]\n        CommentService[\"CommentService\"]\n        CommentDaoMapper[\"CommentDaoMapper\"]\n        HttpClientService[\"HttpClientService\"]\n        IdleClientEvictExpiredConnections[\"IdleClientEvictExpiredConnections\"]\n        HttpClient[\"HttpClient\"]\n        MessageServiceApplication[\"MessageServiceApplication\"]\n        SmsTemplate[\"SmsTemplate\"]\n        SmsHistory[\"SmsHistory\"]\n        EmailTemplate[\"EmailTemplate\"]\n        SmsService[\"SmsService\"]\n        SmsHistoryDaoMapper[\"SmsHistoryDaoMapper\"]\n        SmsTemplateDaoMapper[\"SmsTemplateDaoMapper\"]\n        EmailTemplateDaoMapper[\"EmailTemplateDaoMapper\"]\n        SmsServiceImpl[\"SmsServiceImpl\"]\n        RabbitSmsService[\"RabbitSmsService\"]\n        OrderServiceApplication[\"OrderServiceApplication\"]\n        Country[\"Country\"]\n        Village[\"Village\"]\n        OrderReturnDetail[\"OrderReturnDetail\"]\n        Town[\"Town\"]\n        FlowStatus[\"FlowStatus\"]\n        RefundType[\"RefundType\"]\n        OrderProductDetail[\"OrderProductDetail\"]\n        ReturnReason[\"ReturnReason\"]\n        ArayacakAddress[\"ArayacakAddress\"]\n        Pay[\"Pay\"]\n        OrderReturn[\"OrderReturn\"]\n        Province[\"Province\"]\n        OrderInfo[\"OrderInfo\"]\n        City[\"City\"]\n        DeliveryType[\"DeliveryType\"]\n        ArayacakDeliveryTime[\"ArayacakDeliveryTime\"]\n        ReturnStatus[\"ReturnStatus\"]\n        DeliveryTime[\"DeliveryTime\"]\n        OrderStatus[\"OrderStatus\"]\n        PayWay[\"PayWay\"]\n        PayStatus[\"PayStatus\"]\n        OrderType[\"OrderType\"]\n        OrderService[\"OrderService\"]\n        PayDaoMapper[\"PayDaoMapper\"]\n        VillageDaoMapper[\"VillageDaoMapper\"]\n        CountryDaoMapper[\"CountryDaoMapper\"]\n        OrderReturnDaoMapper[\"OrderReturnDaoMapper\"]\n        ArayacakDeliveryTimeDaoMapper[\"ArayacakDeliveryTimeDaoMapper\"]\n        CityDaoMapper[\"CityDaoMapper\"]\n        TownDaoMapper[\"TownDaoMapper\"]\n        ProvinceDaoMapper[\"ProvinceDaoMapper\"]\n        DeliveryTypeDaoMapper[\"DeliveryTypeDaoMapper\"]\n        ArayacakAddressDaoMapper[\"ArayacakAddressDaoMapper\"]\n        OrderReturnDetailDaoMapper[\"OrderReturnDetailDaoMapper\"]\n        FlowStatusDaoMapper[\"FlowStatusDaoMapper\"]\n        ReturnStatusDaoMapper[\"ReturnStatusDaoMapper\"]\n        ReturnReasonDaoMapper[\"ReturnReasonDaoMapper\"]\n        RefundTypeDaoMapper[\"RefundTypeDaoMapper\"]\n        DeliveryTimeDaoMapper[\"DeliveryTimeDaoMapper\"]\n        OrderProductDetailDaoMapper[\"OrderProductDetailDaoMapper\"]\n        OrderInfoDaoMapper[\"OrderInfoDaoMapper\"]\n        ProductServiceApplication[\"ProductServiceApplication\"]\n        Product[\"Product\"]\n        Picture[\"Picture\"]\n        ProductType[\"ProductType\"]\n        ProductService[\"ProductService\"]\n        ProductDaoMapper[\"ProductDaoMapper\"]\n        PictureDaoMapper[\"PictureDaoMapper\"]\n        ProductTypeDaoMapper[\"ProductTypeDaoMapper\"]\n        SystemServiceApplication[\"SystemServiceApplication\"]\n        CouponHistory[\"CouponHistory\"]\n        Coupon[\"Coupon\"]\n        CouponCode[\"CouponCode\"]\n        CouponType[\"CouponType\"]\n        CouponService[\"CouponService\"]\n        CouponCodeDaoMapper[\"CouponCodeDaoMapper\"]\n        CouponHistoryDaoMapper[\"CouponHistoryDaoMapper\"]\n        CouponDaoMapper[\"CouponDaoMapper\"]\n        Receiver[\"Receiver\"]\n        RedisService[\"RedisService\"]\n        RedisConfig[\"RedisConfig\"]\n        PictureResource[\"PictureResource\"]\n        Notice[\"Notice\"]\n        SystemParam[\"SystemParam\"]\n        AdJoinPosition[\"AdJoinPosition\"]\n        NoticeType[\"NoticeType\"]\n        Ad[\"Ad\"]\n        PictureResourceType[\"PictureResourceType\"]\n        AdPosition[\"AdPosition\"]\n        SystemService[\"SystemService\"]\n        AdDaoMapper[\"AdDaoMapper\"]\n        NoticeDaoMapper[\"NoticeDaoMapper\"]\n        AdJoinPositionDaoMapper[\"AdJoinPositionDaoMapper\"]\n        SystemParamDaoMapper[\"SystemParamDaoMapper\"]\n        AdPositionDaoMapper[\"AdPositionDaoMapper\"]\n        NoticeTypeDaoMapper[\"NoticeTypeDaoMapper\"]\n        UserServiceApplication[\"UserServiceApplication\"]\n        DeliveryAddress[\"DeliveryAddress\"]\n        CouponRecord[\"CouponRecord\"]\n        AccountLevel[\"AccountLevel\"]\n        AccountUpgradeHistory[\"AccountUpgradeHistory\"]\n        Account[\"Account\"]\n        BonusPointRecord[\"BonusPointRecord\"]\n        CashRecord[\"CashRecord\"]\n        Member[\"Member\"]\n        ProductFocus[\"ProductFocus\"]\n        Behavior[\"Behavior\"]\n        TXType[\"TXType\"]\n        SourceFrom[\"SourceFrom\"]\n        Credit[\"Credit\"]\n        BehaviorType[\"BehaviorType\"]\n        UserService[\"UserService\"]\n        BehaviorDaoMapper[\"BehaviorDaoMapper\"]\n        ProductFocusDaoMapper[\"ProductFocusDaoMapper\"]\n        CouponRecordDaoMapper[\"CouponRecordDaoMapper\"]\n        AccountDaoMapper[\"AccountDaoMapper\"]\n        CashRecordDaoMapper[\"CashRecordDaoMapper\"]\n        DeliveryAddressDaoMapper[\"DeliveryAddressDaoMapper\"]\n        AccountLevelDaoMapper[\"AccountLevelDaoMapper\"]\n        AccountUpgradeHistoryDaoMapper[\"AccountUpgradeHistoryDaoMapper\"]\n        BonusPointRecordDaoMapper[\"BonusPointRecordDaoMapper\"]\n        MemberDaoMapper[\"MemberDaoMapper\"]\n        RefactorSystemService[\"RefactorSystemService\"]\n        SysIndexService[\"SysIndexService\"]\n    end\n    subgraph Controllers\n        Controller[\"Controller\"]\n        CartServiceImpl[\"CartServiceImpl\"]\n        CommentServiceImpl[\"CommentServiceImpl\"]\n        OrderServiceImpl[\"OrderServiceImpl\"]\n        ProductServiceImpl[\"ProductServiceImpl\"]\n        CouponServiceImpl[\"CouponServiceImpl\"]\n        RabbitSmsServiceImpl[\"RabbitSmsServiceImpl\"]\n        SystemServiceImpl[\"SystemServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        IndexController[\"IndexController\"]\n    end\n    subgraph Infrastructure\n        RabbitConfig[\"RabbitConfig\"]\n        Constant[\"Constant\"]\n        WeixinFinalValue[\"WeixinFinalValue\"]\n        WeixinUrl[\"WeixinUrl\"]\n        IdGen[\"IdGen\"]\n        ErrorEntity[\"ErrorEntity\"]\n        Exceptions[\"Exceptions\"]\n    end\n    subgraph Data_Access\n        SmsModel[\"SmsModel\"]\n        BaseEntity[\"BaseEntity\"]\n        DataEntity[\"DataEntity\"]\n        Status[\"Status\"]\n        Sex[\"Sex\"]\n        IdGenerator[\"IdGenerator\"]\n        BaseDaoMapper[\"BaseDaoMapper\"]\n    end\n    subgraph Security\n        CodecUtil[\"CodecUtil\"]\n        Digests[\"Digests\"]\n        SecretUtils[\"SecretUtils\"]\n        Encodes[\"Encodes\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

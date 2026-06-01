@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, Developer roles. It manages core business objects including city. It exposes interfaces for managing city. Secondary concerns include distributed transactions functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to create and manage city records, so that I can track and organize city data effectively.",
+        "services": [],
+        "controllers": [
+          "CityController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "CityController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Developer, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "CityController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "CityController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [],
+        "controllers": [
+          "CityController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DruidDataSourceEndpointConfiguration[\"DruidDataSourceEndpointConfiguration\"]\n        DruidDataSourceMetadataProviderConfiguration[\"DruidDataSourceMetadataProviderConfiguration\"]\n        DruidDataSourceActuatorAutoConfiguration[\"DruidDataSourceActuatorAutoConfiguration\"]\n        DruidDataSourceConfiguration[\"DruidDataSourceConfiguration\"]\n        DruidAutoConfiguration[\"DruidAutoConfiguration\"]\n        DruidStatConfiguration[\"DruidStatConfiguration\"]\n        DruidDataSourceInitializerAutoConfiguration[\"DruidDataSourceInitializerAutoConfiguration\"]\n        DruidServletConfiguration[\"DruidServletConfiguration\"]\n        DruidDataSourceCustomizer[\"DruidDataSourceCustomizer\"]\n        DruidDataSource2[\"DruidDataSource2\"]\n        AbstractDruidDataSource2[\"AbstractDruidDataSource2\"]\n        DruidDataSourceProperties[\"DruidDataSourceProperties\"]\n        CharMatcher[\"CharMatcher\"]\n        SpringDataSourceConfig[\"SpringDataSourceConfig\"]\n        DynamicDataSource[\"DynamicDataSource\"]\n    end\n    subgraph Controllers\n        CityController[\"CityController\"]\n    end\n    subgraph Data_Access\n        City[\"City\"]\n        CityRepository[\"CityRepository\"]\n        CityMapper[\"CityMapper\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

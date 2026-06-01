@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Admin roles. The platform provides capabilities for global exception handler, address, user. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl",
+          "UserServiceTestSupport"
+        ],
+        "controllers": [
+          "UserController",
+          "UserControllerIntegrationTestSupport"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with address functionality, so that I can accomplish my address-related tasks.",
+        "services": [
+          "AddressService",
+          "AddressServiceImpl"
+        ],
+        "controllers": [
+          "AddressController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to interact with address integration test support functionality, so that I can accomplish my address integration test support-related tasks.",
+        "services": [
+          "AddressService",
+          "AddressServiceImpl"
+        ],
+        "controllers": [
+          "AddressControllerIntegrationTestSupport"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use global exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "GlobalExceptionHandler"
+        ],
+        "controllers": [
+          "AddressController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use address capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AddressService"
+        ],
+        "controllers": [
+          "AddressController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CacheCustomizer[\"CacheCustomizer\"]\n        CachingConfigurationProperties[\"CachingConfigurationProperties\"]\n        InitialDataCreator[\"InitialDataCreator\"]\n        Constants[\"Constants\"]\n    end\n    subgraph Controllers\n        AddressController[\"AddressController\"]\n        UserController[\"UserController\"]\n        AddressControllerIntegrationTestSupport[\"AddressControllerIntegrationTestSupport\"]\n        UserControllerIntegrationTestSupport[\"UserControllerIntegrationTestSupport\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        AddressService[\"AddressService\"]\n        UserService[\"UserService\"]\n        AddressServiceImpl[\"AddressServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        AddressServiceTestSupport[\"AddressServiceTestSupport\"]\n        UserServiceTestSupport[\"UserServiceTestSupport\"]\n    end\n    subgraph Data_Access\n        AddressRepository[\"AddressRepository\"]\n        UserCustomRepository[\"UserCustomRepository\"]\n        UserCustomRepositoryImpl[\"UserCustomRepositoryImpl\"]\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

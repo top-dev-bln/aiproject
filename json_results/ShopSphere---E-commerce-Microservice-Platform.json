@@ -1,0 +1,69 @@
+{
+  "input": {
+    "free_text_description": "This system is an e-commerce platform that serves Customer, User roles. The platform provides capabilities for cart, cart, global exception handler. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserServiceImpl",
+          "UserService"
+        ],
+        "controllers": [
+          "AuthController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Customer, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "NotificationServiceImpl",
+          "NotificationService"
+        ],
+        "controllers": [
+          "NotificationController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "CartService",
+          "CartServiceImpl",
+          "OrderServiceImpl"
+        ],
+        "controllers": [
+          "CartController",
+          "OrderController",
+          "PaymentController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to interact with base functionality, so that I can accomplish my base-related tasks.",
+        "services": [
+          "BaseService",
+          "BaseServiceImpl"
+        ],
+        "controllers": [
+          "BaseController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Customer, I want to interact with product functionality, so that I can accomplish my product-related tasks.",
+        "services": [
+          "ProductServiceImpl",
+          "ProductService"
+        ],
+        "controllers": [
+          "ProductController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        CorsConfig[\"CorsConfig\"]\n        GatewayConfig[\"GatewayConfig\"]\n        ValidationErrorResponse[\"ValidationErrorResponse\"]\n        BaseEntity[\"BaseEntity\"]\n        ApiResponse[\"ApiResponse\"]\n        OrderServiceConfig[\"OrderServiceConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        ProductServiceConfig[\"ProductServiceConfig\"]\n        PasswordEncoderConfig[\"PasswordEncoderConfig\"]\n    end\n    subgraph Security\n        JwtAuthenticationFilter[\"JwtAuthenticationFilter\"]\n        JwtUtil[\"JwtUtil\"]\n        JwtAuthFilter[\"JwtAuthFilter\"]\n        SecurityConfig[\"SecurityConfig\"]\n        AuthResponse[\"AuthResponse\"]\n    end\n    subgraph Controllers\n        CartController[\"CartController\"]\n        BaseController[\"BaseController\"]\n        NotificationController[\"NotificationController\"]\n        OrderController[\"OrderController\"]\n        PaymentController[\"PaymentController\"]\n        ProductController[\"ProductController\"]\n        ReviewController[\"ReviewController\"]\n        ShipmentController[\"ShipmentController\"]\n        AuthController[\"AuthController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        CartMapper[\"CartMapper\"]\n        CartRepository[\"CartRepository\"]\n        BaseRepository[\"BaseRepository\"]\n        NotificationMapper[\"NotificationMapper\"]\n        NotificationRepository[\"NotificationRepository\"]\n        OrderMapper[\"OrderMapper\"]\n        OrderRepository[\"OrderRepository\"]\n        PaymentMapper[\"PaymentMapper\"]\n        PaymentRepository[\"PaymentRepository\"]\n        ProductMapper[\"ProductMapper\"]\n        ProductElasticsearchRepository[\"ProductElasticsearchRepository\"]\n        ProductRepository[\"ProductRepository\"]\n        ReviewMapper[\"ReviewMapper\"]\n        ReviewRepository[\"ReviewRepository\"]\n        ShipmentMapper[\"ShipmentMapper\"]\n        ShipmentRepository[\"ShipmentRepository\"]\n        UserMapper[\"UserMapper\"]\n        UserRepository[\"UserRepository\"]\n    end\n    subgraph Services\n        CartService[\"CartService\"]\n        CartServiceImpl[\"CartServiceImpl\"]\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        BaseService[\"BaseService\"]\n        BaseServiceImpl[\"BaseServiceImpl\"]\n        NotificationServiceImpl[\"NotificationServiceImpl\"]\n        NotificationService[\"NotificationService\"]\n        OrderServiceImpl[\"OrderServiceImpl\"]\n        OrderService[\"OrderService\"]\n        PaymentServiceImpl[\"PaymentServiceImpl\"]\n        PaymentService[\"PaymentService\"]\n        ProductServiceImpl[\"ProductServiceImpl\"]\n        ProductService[\"ProductService\"]\n        ReviewServiceImpl[\"ReviewServiceImpl\"]\n        ReviewService[\"ReviewService\"]\n        ShipmentServiceImpl[\"ShipmentServiceImpl\"]\n        ShipmentService[\"ShipmentService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserService[\"UserService\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

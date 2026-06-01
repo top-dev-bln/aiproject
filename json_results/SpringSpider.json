@@ -1,0 +1,50 @@
+{
+  "input": {
+    "free_text_description": "This system is an IoT platform that serves Admin, User roles. The platform provides capabilities for ui handler. Secondary concerns include content management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to use ui handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UIHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "UIHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [
+          "UIHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 4,
+        "story": "As a Developer, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [
+          "UIHandler"
+        ],
+        "controllers": []
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to export data in a standard format, so that I can use it in external tools.",
+        "services": [
+          "UIHandler"
+        ],
+        "controllers": []
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        UIHandler[\"UIHandler\"]\n    end\n    subgraph Infrastructure\n        ConfigUtils[\"ConfigUtils\"]\n        HttpHeader[\"HttpHeader\"]\n        Utils[\"Utils\"]\n        UIUtil[\"UIUtil\"]\n        BypassPayloadUtils[\"BypassPayloadUtils\"]\n    end\n    Services --> Infrastructure"
+  }
+}

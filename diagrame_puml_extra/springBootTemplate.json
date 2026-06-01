@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is a microservices platform that serves Admin, User roles. The platform provides capabilities for i user, i user cache, user cache. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "IUserService",
+          "IUserCacheService",
+          "UserCacheServiceImpl"
+        ],
+        "controllers": [
+          "UserCacheController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to use user capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "IUserService"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "IUserService"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "IUserService"
+        ],
+        "controllers": [
+          "UserCacheController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        DruidConfig[\"DruidConfig\"]\n        TimeTaskConfig[\"TimeTaskConfig\"]\n        PackageConfig[\"PackageConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        TransactionConfig[\"TransactionConfig\"]\n        MyBatisScannerConfig[\"MyBatisScannerConfig\"]\n        MyBatisConfig[\"MyBatisConfig\"]\n        DemoConfig[\"DemoConfig\"]\n        ProtostuffSerializer[\"ProtostuffSerializer\"]\n        FileHandleUtil[\"FileHandleUtil\"]\n        CacheUserDb[\"CacheUserDb\"]\n        LogUtil[\"LogUtil\"]\n        RedisUtil[\"RedisUtil\"]\n        KryoRedisSerializer[\"KryoRedisSerializer\"]\n    end\n    subgraph Controllers\n        UserCacheController[\"UserCacheController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        UserDao[\"UserDao\"]\n    end\n    subgraph Services\n        IUserService[\"IUserService\"]\n        IUserCacheService[\"IUserCacheService\"]\n        UserCacheServiceImpl[\"UserCacheServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}

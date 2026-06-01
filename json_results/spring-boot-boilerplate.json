@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. The platform provides capabilities for password reset token, password reset token, hibernate search. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "PasswordResetTokenService",
+          "PasswordResetTokenServiceImpl",
+          "UserSearchService"
+        ],
+        "controllers": [
+          "AuthController",
+          "PasswordResetTokenController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to search and filter records, so that I can quickly find relevant information.",
+        "services": [
+          "HibernateSearchService",
+          "UserSearchService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to use user capabilities, so that I can perform essential business operations.",
+        "services": [
+          "UserService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to use centralized exception handler capabilities, so that I can perform essential business operations.",
+        "services": [
+          "CentralizedExceptionHandler"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use mail capabilities, so that I can perform essential business operations.",
+        "services": [
+          "MailService"
+        ],
+        "controllers": [
+          "AuthController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AccountCredentials[\"AccountCredentials\"]\n        JwtAuthenticationResponse[\"JwtAuthenticationResponse\"]\n        PasswordResetToken[\"PasswordResetToken\"]\n        MethodSecurityConfig[\"MethodSecurityConfig\"]\n        WebSecurityConfig[\"WebSecurityConfig\"]\n        InvalidPasswordResetToken[\"InvalidPasswordResetToken\"]\n        SecurityHelper[\"SecurityHelper\"]\n        JwtAuthenticationEntryPoint[\"JwtAuthenticationEntryPoint\"]\n        JwtAuthorizationTokenFilter[\"JwtAuthorizationTokenFilter\"]\n        JwtTokenUtil[\"JwtTokenUtil\"]\n        SecurityHelperMocks[\"SecurityHelperMocks\"]\n        UserDetailsStub[\"UserDetailsStub\"]\n        SecurityUtils[\"SecurityUtils\"]\n        PasswordResetTokenMocks[\"PasswordResetTokenMocks\"]\n        PasswordResetTokenStubs[\"PasswordResetTokenStubs\"]\n    end\n    subgraph Controllers\n        AuthController[\"AuthController\"]\n        PasswordResetTokenController[\"PasswordResetTokenController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        PasswordResetTokenRepository[\"PasswordResetTokenRepository\"]\n        RoleRepository[\"RoleRepository\"]\n        UserDtoMapper[\"UserDtoMapper\"]\n        UserRepository[\"UserRepository\"]\n        UserRoleRepository[\"UserRoleRepository\"]\n        ModelMapperConfig[\"ModelMapperConfig\"]\n        ObjectMapperConfig[\"ObjectMapperConfig\"]\n        MapperMocks[\"MapperMocks\"]\n    end\n    subgraph Services\n        PasswordResetTokenService[\"PasswordResetTokenService\"]\n        PasswordResetTokenServiceImpl[\"PasswordResetTokenServiceImpl\"]\n        HibernateSearchService[\"HibernateSearchService\"]\n        UserSearchService[\"UserSearchService\"]\n        UserService[\"UserService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        CentralizedExceptionHandler[\"CentralizedExceptionHandler\"]\n        MailService[\"MailService\"]\n        MailServiceImpl[\"MailServiceImpl\"]\n        CustomUserService[\"CustomUserService\"]\n        JwtUserDetailsService[\"JwtUserDetailsService\"]\n    end\n    subgraph Infrastructure\n        HibernateSearchConfig[\"HibernateSearchConfig\"]\n        MailConfig[\"MailConfig\"]\n        SwaggerConfig[\"SwaggerConfig\"]\n        WebMvcConfig[\"WebMvcConfig\"]\n        DbSeed[\"DbSeed\"]\n        JsonUtils[\"JsonUtils\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "input": {
+    "free_text_description": "This system is a distributed transactions platform that serves Candidate, Admin roles. The platform provides capabilities for topic config, order, s3. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include job/recommendation functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserService",
+          "UserServiceImpl"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to receive notifications about important events, so that I can stay informed and respond promptly.",
+        "services": [
+          "ExceptionMessage",
+          "MessageErrorDecoder"
+        ],
+        "controllers": [
+          "GreetingController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "TopicConfig",
+          "SpanAspectConfig"
+        ],
+        "controllers": [
+          "GreetingController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Customer, I want to add items to my cart and complete a purchase, so that I can buy products conveniently.",
+        "services": [
+          "Order",
+          "OrderServiceApplication",
+          "OrderCreatedEventProducer"
+        ],
+        "controllers": [
+          "PublishOrderController",
+          "OrderController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with greeting functionality, so that I can accomplish my greeting-related tasks.",
+        "services": [
+          "TopicConfig"
+        ],
+        "controllers": [
+          "GreetingController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        GreetingController[\"GreetingController\"]\n        HelloController[\"HelloController\"]\n        PublishOrderController[\"PublishOrderController\"]\n        TodoController[\"TodoController\"]\n        S3Controller[\"S3Controller\"]\n        CacheController[\"CacheController\"]\n        Controller[\"Controller\"]\n        UserController[\"UserController\"]\n        OrderController[\"OrderController\"]\n        CommentController[\"CommentController\"]\n        PostController[\"PostController\"]\n        BalanceController[\"BalanceController\"]\n        LockController[\"LockController\"]\n        ThreadController[\"ThreadController\"]\n    end\n    subgraph Services\n        TopicConfig[\"TopicConfig\"]\n        Order[\"Order\"]\n        S3Service[\"S3Service\"]\n        CacheService[\"CacheService\"]\n        TodoService[\"TodoService\"]\n        SpanAspectConfig[\"SpanAspectConfig\"]\n        UserService[\"UserService\"]\n        OrderServiceApplication[\"OrderServiceApplication\"]\n        OrderCreatedEventProducer[\"OrderCreatedEventProducer\"]\n        OrderCreatedEventConsumer[\"OrderCreatedEventConsumer\"]\n        PaymentServiceApplication[\"PaymentServiceApplication\"]\n        StockServiceApplication[\"StockServiceApplication\"]\n        CommentService[\"CommentService\"]\n        ErrorDecoderBean[\"ErrorDecoderBean\"]\n        RestTemplateBean[\"RestTemplateBean\"]\n        CommentFeignClient[\"CommentFeignClient\"]\n        ExceptionMessage[\"ExceptionMessage\"]\n        MessageErrorDecoder[\"MessageErrorDecoder\"]\n        CommentResponseModel[\"CommentResponseModel\"]\n        PostServiceApplication[\"PostServiceApplication\"]\n        PostService[\"PostService\"]\n        BalanceService[\"BalanceService\"]\n        CronService[\"CronService\"]\n        LockService[\"LockService\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        ThreadExecutorConfig[\"ThreadExecutorConfig\"]\n        VThreadServiceApplication[\"VThreadServiceApplication\"]\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        TodoServiceImpl[\"TodoServiceImpl\"]\n    end\n    subgraph Infrastructure\n        KafkaConsumerConfig[\"KafkaConsumerConfig\"]\n        DynamoDbConfig[\"DynamoDbConfig\"]\n        S3Config[\"S3Config\"]\n        SqsConfig[\"SqsConfig\"]\n        RedisClusterConfig[\"RedisClusterConfig\"]\n        ReactiveRedisConfig[\"ReactiveRedisConfig\"]\n        RedisConfig[\"RedisConfig\"]\n        MyKeyspaceConfiguration[\"MyKeyspaceConfiguration\"]\n    end\n    subgraph Data_Access\n        UserRepository[\"UserRepository\"]\n        BalanceRepository[\"BalanceRepository\"]\n        PostRepository[\"PostRepository\"]\n        TodoRepository[\"TodoRepository\"]\n    end\n    subgraph Security\n        Author[\"Author\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

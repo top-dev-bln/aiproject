@@ -1,0 +1,60 @@
+{
+  "input": {
+    "free_text_description": "This system is a data analytics platform that serves Admin, Candidate roles. The platform provides capabilities for vote. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Admin, I want to interact with index page functionality, so that I can accomplish my index page-related tasks.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "IndexPageController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Admin, I want to interact with poll functionality, so that I can accomplish my poll-related tasks.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "PollController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to use vote capabilities, so that I can perform essential business operations.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "IndexPageController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "IndexPageController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [
+          "VoteService"
+        ],
+        "controllers": [
+          "IndexPageController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        PollProperties[\"PollProperties\"]\n        RedisConfiguration[\"RedisConfiguration\"]\n    end\n    subgraph Services\n        VoteService[\"VoteService\"]\n    end\n    subgraph Controllers\n        IndexPageController[\"IndexPageController\"]\n        PollController[\"PollController\"]\n    end\n    Controllers --> Services\n    Services --> Infrastructure"
+  }
+}

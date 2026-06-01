@@ -1,0 +1,65 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Candidate roles. The platform provides capabilities for advertisement application, rabbit config, spring fox config. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UserRequest",
+          "User",
+          "UserRepository"
+        ],
+        "controllers": [
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "RabbitConfig",
+          "SpringFoxConfig"
+        ],
+        "controllers": [
+          "AdvertisementController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As an Admin, I want to view reports and analytics, so that I can make informed business decisions.",
+        "services": [
+          "Reports",
+          "ReportsServiceApplication"
+        ],
+        "controllers": [
+          "AdvertisementController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to interact with advertisement functionality, so that I can accomplish my advertisement-related tasks.",
+        "services": [
+          "AdvertisementServiceApplication",
+          "Advertisement"
+        ],
+        "controllers": [
+          "AdvertisementController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to use advertisement application capabilities, so that I can perform essential business operations.",
+        "services": [
+          "AdvertisementServiceApplication"
+        ],
+        "controllers": [
+          "AdvertisementController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Services\n        AdvertisementServiceApplication[\"AdvertisementServiceApplication\"]\n        RabbitConfig[\"RabbitConfig\"]\n        SpringFoxConfig[\"SpringFoxConfig\"]\n        UserRequest[\"UserRequest\"]\n        Advertisement[\"Advertisement\"]\n        AdvertisementStatus[\"AdvertisementStatus\"]\n        BaseEntityModel[\"BaseEntityModel\"]\n        PriorityType[\"PriorityType\"]\n        AdvertisementRepository[\"AdvertisementRepository\"]\n        AdvertisementService[\"AdvertisementService\"]\n        AdvertisementServiceImpl[\"AdvertisementServiceImpl\"]\n        Reports[\"Reports\"]\n        ReportsServiceApplication[\"ReportsServiceApplication\"]\n        ReportsRepository[\"ReportsRepository\"]\n        ReportsService[\"ReportsService\"]\n        ModelMapperConfig[\"ModelMapperConfig\"]\n        User[\"User\"]\n        UserRepository[\"UserRepository\"]\n        UserService[\"UserService\"]\n        UserServiceApplication[\"UserServiceApplication\"]\n    end\n    subgraph Controllers\n        AdvertisementController[\"AdvertisementController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Security\n        SecurityConfig[\"SecurityConfig\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Controllers"
+  }
+}

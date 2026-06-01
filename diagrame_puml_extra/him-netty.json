@@ -1,0 +1,72 @@
+{
+  "input": {
+    "free_text_description": "This system is a user management platform that serves User, Admin roles. It manages core business objects including group, group user, group msg, user qq. The platform provides capabilities for global exception handler, group user, group. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include social functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "GroupUserService",
+          "GroupUserServiceImpl",
+          "QqWebAuthService"
+        ],
+        "controllers": [
+          "GroupUserController",
+          "UserLoginController",
+          "UserFriendMsgController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to create and manage group records, so that I can track and organize group data effectively.",
+        "services": [
+          "GroupUserService",
+          "GroupService"
+        ],
+        "controllers": [
+          "GroupMsgController",
+          "GroupUserController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to create and manage group user records, so that I can track and organize group user data effectively.",
+        "services": [
+          "GroupUserService",
+          "GroupService"
+        ],
+        "controllers": [
+          "GroupMsgController",
+          "GroupUserController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a User, I want to create and manage group msg records, so that I can track and organize group msg data effectively.",
+        "services": [
+          "GroupUserService",
+          "GroupService"
+        ],
+        "controllers": [
+          "GroupMsgController",
+          "GroupUserController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a User, I want to create and manage user qq records, so that I can track and organize user qq data effectively.",
+        "services": [
+          "GroupUserService",
+          "GroupUserServiceImpl"
+        ],
+        "controllers": [
+          "GroupUserController",
+          "UserLoginController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        DruidStatFilter[\"DruidStatFilter\"]\n        CorsFilter[\"CorsFilter\"]\n        JwtUtils[\"JwtUtils\"]\n    end\n    subgraph Infrastructure\n        OkHttpConfig[\"OkHttpConfig\"]\n        DruidStatViewServlet[\"DruidStatViewServlet\"]\n        PublicFileUrlConfig[\"PublicFileUrlConfig\"]\n        CorsConfig[\"CorsConfig\"]\n        WSMsgTypeConstant[\"WSMsgTypeConstant\"]\n        WSReqTypeConstant[\"WSReqTypeConstant\"]\n        WSResTypeConstant[\"WSResTypeConstant\"]\n        CacheUtils[\"CacheUtils\"]\n        UserLoginUtils[\"UserLoginUtils\"]\n        PublicFileUtils[\"PublicFileUtils\"]\n        GroupUserUtils[\"GroupUserUtils\"]\n        WSBaseReqUtils[\"WSBaseReqUtils\"]\n        SpringBeanFactoryUtils[\"SpringBeanFactoryUtils\"]\n        PageUtils[\"PageUtils\"]\n        UserFriendUtils[\"UserFriendUtils\"]\n        OkHttpUtil[\"OkHttpUtil\"]\n        PasswordUtils[\"PasswordUtils\"]\n        CookieConstant[\"CookieConstant\"]\n        RedisConstant[\"RedisConstant\"]\n        OrderForm2OrderDTOConverter[\"OrderForm2OrderDTOConverter\"]\n        ResultEnum[\"ResultEnum\"]\n        WSBaseReqProtoOuterClass[\"WSBaseReqProtoOuterClass\"]\n        WSBaseResProtoOuterClass[\"WSBaseResProtoOuterClass\"]\n        WSMessageResProtoOuterClass[\"WSMessageResProtoOuterClass\"]\n        WSUserResProtoOuterClass[\"WSUserResProtoOuterClass\"]\n        ResultVOUtils[\"ResultVOUtils\"]\n    end\n    subgraph Controllers\n        HelloController[\"HelloController\"]\n        GroupMsgController[\"GroupMsgController\"]\n        GroupUserController[\"GroupUserController\"]\n        GroupIndexController[\"GroupIndexController\"]\n        UserLoginController[\"UserLoginController\"]\n        UserFriendMsgController[\"UserFriendMsgController\"]\n        UserIndexController[\"UserIndexController\"]\n        UserFriendAskController[\"UserFriendAskController\"]\n        UserFriendController[\"UserFriendController\"]\n    end\n    subgraph Data_Access\n        GroupDao[\"GroupDao\"]\n        GroupMsgDao[\"GroupMsgDao\"]\n        GroupUserDao[\"GroupUserDao\"]\n        UserDao[\"UserDao\"]\n        UserFriendAskDao[\"UserFriendAskDao\"]\n        UserProfileDao[\"UserProfileDao\"]\n        UserFriendDao[\"UserFriendDao\"]\n        UserQqDao[\"UserQqDao\"]\n        UserFriendMsgDao[\"UserFriendMsgDao\"]\n        Group[\"Group\"]\n        GroupUser[\"GroupUser\"]\n        GroupMsg[\"GroupMsg\"]\n        UserQq[\"UserQq\"]\n        User[\"User\"]\n        UserFriendAsk[\"UserFriendAsk\"]\n        UserProfile[\"UserProfile\"]\n        UserFriendMsg[\"UserFriendMsg\"]\n        UserFriend[\"UserFriend\"]\n    end\n    subgraph Services\n        GlobalExceptionHandler[\"GlobalExceptionHandler\"]\n        GroupUserService[\"GroupUserService\"]\n        GroupService[\"GroupService\"]\n        GroupMsgService[\"GroupMsgService\"]\n        GroupServiceImpl[\"GroupServiceImpl\"]\n        GroupUserServiceImpl[\"GroupUserServiceImpl\"]\n        GroupMsgServiceImpl[\"GroupMsgServiceImpl\"]\n        QqWebAuthService[\"QqWebAuthService\"]\n        QqWebAuthServiceImpl[\"QqWebAuthServiceImpl\"]\n        UserService[\"UserService\"]\n        UserFriendAskService[\"UserFriendAskService\"]\n        UserFriendMsgService[\"UserFriendMsgService\"]\n        UserFriendService[\"UserFriendService\"]\n        UserQqService[\"UserQqService\"]\n        UserProfileService[\"UserProfileService\"]\n        UserQqServiceImpl[\"UserQqServiceImpl\"]\n        UserFriendServiceImpl[\"UserFriendServiceImpl\"]\n        UserProfileServiceImpl[\"UserProfileServiceImpl\"]\n        UserFriendMsgServiceImpl[\"UserFriendMsgServiceImpl\"]\n        UserServiceImpl[\"UserServiceImpl\"]\n        UserFriendAskServiceImpl[\"UserFriendAskServiceImpl\"]\n        WSServerHandler[\"WSServerHandler\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

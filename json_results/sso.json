@@ -1,0 +1,63 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves Admin, User roles. The platform provides capabilities for username password system authentication handler, trigger logout, i user id obtain. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include microservices functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [
+          "UsernamePasswordSystemAuthenticationHandler",
+          "IUserIdObtainService",
+          "UserIdObtainServiceImpl"
+        ],
+        "controllers": [
+          "AccessTokenController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As an Admin, I want to manage system configuration and monitor operations, so that I can ensure the platform runs smoothly.",
+        "services": [
+          "UsernamePasswordSystemAuthenticationHandler"
+        ],
+        "controllers": [
+          "AccessTokenController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Admin, I want to interact with not bind exception functionality, so that I can accomplish my not bind exception-related tasks.",
+        "services": [
+          "UsernamePasswordSystemAuthenticationHandler"
+        ],
+        "controllers": [
+          "NotBindExceptionController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to interact with bind functionality, so that I can accomplish my bind-related tasks.",
+        "services": [
+          "UsernamePasswordSystemAuthenticationHandler"
+        ],
+        "controllers": [
+          "BindController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Admin, I want to interact with index functionality, so that I can accomplish my index-related tasks.",
+        "services": [
+          "UsernamePasswordSystemAuthenticationHandler"
+        ],
+        "controllers": [
+          "IndexController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Controllers\n        AccessTokenController[\"AccessTokenController\"]\n        UserController[\"UserController\"]\n        NotBindExceptionController[\"NotBindExceptionController\"]\n        BindController[\"BindController\"]\n        IndexController[\"IndexController\"]\n        CaptchaController[\"CaptchaController\"]\n        CageCaptchaController[\"CageCaptchaController\"]\n    end\n    subgraph Security\n        ThirdPartyLoginAspect[\"ThirdPartyLoginAspect\"]\n        RealmConfiguration[\"RealmConfiguration\"]\n        ClientConfiguration[\"ClientConfiguration\"]\n        ShiroConfiguration[\"ShiroConfiguration\"]\n        GithubProperties[\"GithubProperties\"]\n        PrincipalBindResolver[\"PrincipalBindResolver\"]\n        ClientStrategyFactory[\"ClientStrategyFactory\"]\n        ClientStrategy[\"ClientStrategy\"]\n        GitHubMemoryPrincipalBindResolver[\"GitHubMemoryPrincipalBindResolver\"]\n        GitHubClientStrategy[\"GitHubClientStrategy\"]\n        SimpleUrlPatternMatcherStrategy[\"SimpleUrlPatternMatcherStrategy\"]\n        UsernamePasswordSysCredential[\"UsernamePasswordSysCredential\"]\n        CustomWebflowConfigurer[\"CustomWebflowConfigurer\"]\n        CustomerAuthWebflowConfiguration[\"CustomerAuthWebflowConfiguration\"]\n        CustomAuthenticationEventExecutionPlanConfiguration[\"CustomAuthenticationEventExecutionPlanConfiguration\"]\n        ITokenGenerator[\"ITokenGenerator\"]\n        CageStringTokenGenerator[\"CageStringTokenGenerator\"]\n        StringTokenGenerator[\"StringTokenGenerator\"]\n        Credential[\"Credential\"]\n        ValidateCredential[\"ValidateCredential\"]\n        MailValidateCredential[\"MailValidateCredential\"]\n        MailCredential[\"MailCredential\"]\n    end\n    subgraph Services\n        UsernamePasswordSystemAuthenticationHandler[\"UsernamePasswordSystemAuthenticationHandler\"]\n        TriggerLogoutService[\"TriggerLogoutService\"]\n        IUserIdObtainService[\"IUserIdObtainService\"]\n        UserIdObtainServiceImpl[\"UserIdObtainServiceImpl\"]\n        IValidateService[\"IValidateService\"]\n        DefaultValidateService[\"DefaultValidateService\"]\n    end\n    subgraph Infrastructure\n        CaptchaConstants[\"CaptchaConstants\"]\n        CaptchaConfiguration[\"CaptchaConfiguration\"]\n        ValidateWebflowConfigurer[\"ValidateWebflowConfigurer\"]\n        ValidateWebflowConfiguation[\"ValidateWebflowConfiguation\"]\n        SingleLogoutTriggerConfiguration[\"SingleLogoutTriggerConfiguration\"]\n        SSOMailValidateConfiguration[\"SSOMailValidateConfiguration\"]\n        SSOValidateConfiguration[\"SSOValidateConfiguration\"]\n        MailProperties[\"MailProperties\"]\n        SSOValidateConfigurationProperties[\"SSOValidateConfigurationProperties\"]\n    end\n    Controllers --> Services\n    Services --> Security\n    Security --> Infrastructure\n    Security --> Controllers"
+  }
+}

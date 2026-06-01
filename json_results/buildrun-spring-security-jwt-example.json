@@ -1,0 +1,51 @@
+{
+  "input": {
+    "free_text_description": "This system is an authentication platform that serves User, Admin roles. It exposes interfaces for managing token, tweet, user. The system includes access control and identity verification to protect resources and manage sessions. Secondary concerns include user management functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a User, I want to securely sign in to the system, so that I can access my personalized resources.",
+        "services": [],
+        "controllers": [
+          "TokenController",
+          "UserController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a User, I want to interact with tweet functionality, so that I can accomplish my tweet-related tasks.",
+        "services": [],
+        "controllers": [
+          "TweetController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a User, I want to access the system through a well-defined interface, so that I can perform my tasks efficiently.",
+        "services": [],
+        "controllers": [
+          "TokenController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Admin, I want to view a summary of my recent activity, so that I can track my progress.",
+        "services": [],
+        "controllers": [
+          "TokenController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to update my preferences and settings, so that the system adapts to my needs.",
+        "services": [],
+        "controllers": [
+          "TokenController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Security\n        AdminUserConfig[\"AdminUserConfig\"]\n        SecurityConfig[\"SecurityConfig\"]\n        LoginRequest[\"LoginRequest\"]\n        LoginResponse[\"LoginResponse\"]\n        Role[\"Role\"]\n        Tweet[\"Tweet\"]\n        User[\"User\"]\n    end\n    subgraph Controllers\n        TokenController[\"TokenController\"]\n        TweetController[\"TweetController\"]\n        UserController[\"UserController\"]\n    end\n    subgraph Data_Access\n        RoleRepository[\"RoleRepository\"]\n        TweetRepository[\"TweetRepository\"]\n        UserRepository[\"UserRepository\"]\n    end\n    Controllers --> Data_Access\n    Data_Access --> Security\n    Security --> Controllers"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "input": {
+    "free_text_description": "This system is a job/recommendation platform that serves Candidate, Admin roles. It manages core business objects including message. The platform provides capabilities for async rest template apache application runner, logging, logging. Secondary concerns include data analytics functionality.",
+    "user_stories": [
+      {
+        "id": 1,
+        "story": "As a Candidate, I want to create and manage message records, so that I can track and organize message data effectively.",
+        "services": [
+          "AsyncRestTemplateApacheApplicationRunner"
+        ],
+        "controllers": [
+          "GreetingController"
+        ]
+      },
+      {
+        "id": 2,
+        "story": "As a Candidate, I want to upload and manage files, so that I can store and retrieve documents when needed.",
+        "services": [
+          "S3StorageService",
+          "StorageService"
+        ],
+        "controllers": [
+          "FileUploadController",
+          "FileDownloadController"
+        ]
+      },
+      {
+        "id": 3,
+        "story": "As a Candidate, I want to interact with greeting functionality, so that I can accomplish my greeting-related tasks.",
+        "services": [
+          "AsyncRestTemplateApacheApplicationRunner"
+        ],
+        "controllers": [
+          "GreetingController"
+        ]
+      },
+      {
+        "id": 4,
+        "story": "As a Candidate, I want to interact with song functionality, so that I can accomplish my song-related tasks.",
+        "services": [
+          "AsyncRestTemplateApacheApplicationRunner"
+        ],
+        "controllers": [
+          "SongController"
+        ]
+      },
+      {
+        "id": 5,
+        "story": "As a Candidate, I want to interact with person functionality, so that I can accomplish my person-related tasks.",
+        "services": [
+          "AsyncRestTemplateApacheApplicationRunner"
+        ],
+        "controllers": [
+          "PersonController"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "mermaid_diagram": "graph TB\n    subgraph Infrastructure\n        AsyncRestTemplateApacheConfig[\"AsyncRestTemplateApacheConfig\"]\n        WebConfig[\"WebConfig\"]\n        AwsConfiguration[\"AwsConfiguration\"]\n        DatasourceConfiguration[\"DatasourceConfiguration\"]\n        MainJobConfiguration[\"MainJobConfiguration\"]\n        Step1Configuration[\"Step1Configuration\"]\n        Step2Configuration[\"Step2Configuration\"]\n        BatchConfiguration[\"BatchConfiguration\"]\n        RequestsHandlerInterceptorAdapterConfig[\"RequestsHandlerInterceptorAdapterConfig\"]\n        MvcConfig[\"MvcConfig\"]\n        S3ClientConfiguration[\"S3ClientConfiguration\"]\n    end\n    subgraph Services\n        AsyncRestTemplateApacheApplicationRunner[\"AsyncRestTemplateApacheApplicationRunner\"]\n        LoggingServiceImpl[\"LoggingServiceImpl\"]\n        LoggingService[\"LoggingService\"]\n        S3StorageService[\"S3StorageService\"]\n        StorageService[\"StorageService\"]\n        DownloadedResource[\"DownloadedResource\"]\n    end\n    subgraph Controllers\n        GreetingController[\"GreetingController\"]\n        SongController[\"SongController\"]\n        PersonController[\"PersonController\"]\n        MVCAsyncController[\"MVCAsyncController\"]\n        MVCSyncController[\"MVCSyncController\"]\n        WebFluxController[\"WebFluxController\"]\n        FileUploadController[\"FileUploadController\"]\n        FileDownloadController[\"FileDownloadController\"]\n    end\n    subgraph Data_Access\n        Message[\"Message\"]\n        ReactiveRepository[\"ReactiveRepository\"]\n        NonReactiveRepository[\"NonReactiveRepository\"]\n    end\n    Controllers --> Services\n    Services --> Data_Access\n    Data_Access --> Infrastructure"
+  }
+}
