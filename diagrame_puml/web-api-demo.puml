@@ -1,0 +1,41 @@
+@startuml
+package com.growithus.demo.aop; {
+class AuthorizationAspect {
+}
+
+class RateLimiterAspect {
+}
+
+class WebLogAspect {
+}
+
+class WhitelistAspect {
+}
+
+}
+
+package com.growithus.demo.config; {
+class MyExceptionHandler {
+}
+
+class Swagger2Config {
+}
+
+}
+
+package com.growithus.demo.controller; {
+class APITestController {
+}
+
+}
+
+package com.growithus.demo; {
+class WebAPIStartup {
+}
+
+class ApplicationTest {
+}
+
+}
+
+@enduml

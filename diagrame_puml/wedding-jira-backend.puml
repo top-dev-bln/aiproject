@@ -1,0 +1,871 @@
+@startuml
+package org.wedding.adapter.in.web; {
+class AuthController {
+}
+
+class CardBoardController {
+}
+
+class CardController {
+}
+
+class TodoController {
+}
+
+class AuthControllerTest {
+}
+
+class CreateCardBoardAfterSignUpAPITest {
+}
+
+class DeleteCardIntegTest {
+}
+
+class ModifyCardIntegTest {
+}
+
+class ReadCardBoardIntegTest {
+}
+
+}
+
+package org.wedding.adapter.in.web.dto; {
+class CreateCardRequest {
+}
+
+class DeleteCardRequest {
+}
+
+class LoginDTO {
+}
+
+class ModifyCardRequest {
+}
+
+class SendMailRequest {
+}
+
+class SignUpDTO {
+}
+
+class UserDto {
+}
+
+class VerifyMailRequest {
+}
+
+}
+
+package org.wedding.adapter.in.web.dto.todo; {
+class CreateTodoRequest {
+}
+
+class DeleteTodoRequest {
+}
+
+class TodoResponse {
+}
+
+class UpdateTodoRequset {
+}
+
+}
+
+package org.wedding.adapter.in.web.event; {
+class CardCreatedEventListener {
+}
+
+class CreateCardBoardAfterCreatedUserEventListener {
+}
+
+}
+
+package org.wedding.adapter.in.web.security; {
+class JwtAuthenticationFilter {
+}
+
+}
+
+package org.wedding.adapter.out.dto; {
+class CardsResponse {
+}
+
+class TokenResponse {
+}
+
+}
+
+package org.wedding.adapter.out.persistence.mybatis; {
+class JsonTypeHandler {
+}
+
+class MybatisCardBoardRepositoryImpl {
+}
+
+class MybatisCardRepositoryImpl {
+}
+
+class MybatisTodoRepositoryImpl {
+}
+
+class MybatisUserRepositoryImpl {
+}
+
+}
+
+package org.wedding.application.port.in.command.card; {
+class CreateCardCommand {
+}
+
+class DeleteCardCommand {
+}
+
+class HasCardId {
+}
+
+class ModifyCardCommand {
+}
+
+}
+
+package org.wedding.application.port.in.command.cardboard; {
+class CreateCardBoardCommand {
+}
+
+class ReadCardCommand {
+}
+
+}
+
+package org.wedding.application.port.in.command.todo; {
+class CreateTodoCommand {
+}
+
+class DeleteTodoCommand {
+}
+
+class ReadTodoCommand {
+}
+
+class UpdateTodoCommand {
+}
+
+}
+
+package org.wedding.application.port.in; {
+class TodoUseCase {
+}
+
+}
+
+package org.wedding.application.port.in.usecase.auth; {
+class AuthUseCase {
+}
+
+class CheckExistMail {
+}
+
+class CreateVerificationCode {
+}
+
+class SendVerifyMail {
+}
+
+class VerifyCode {
+}
+
+}
+
+package org.wedding.application.port.in.usecase.card; {
+class CreateCardUseCase {
+}
+
+class DeleteCardUseCase {
+}
+
+class ModifyCardUseCase {
+}
+
+class ReadCardUseCase {
+}
+
+}
+
+package org.wedding.application.port.in.usecase.cardboard; {
+class CardBoardUseCase {
+}
+
+class CardOwnerShipValidator {
+}
+
+class RequestCardUseCase {
+}
+
+}
+
+package org.wedding.application.port.out.repository; {
+class CardBoardRepository {
+}
+
+class CardRepository {
+}
+
+class TodoRepository {
+}
+
+class UserRepository {
+}
+
+}
+
+package org.wedding.application.service; {
+class AuthService {
+}
+
+class CardBoardService {
+}
+
+class CardService {
+}
+
+class EmailService {
+}
+
+class TodoService {
+}
+
+class AuthServiceTest {
+}
+
+class CardBoardServiceTest {
+}
+
+class CardServiceTest {
+}
+
+class CreaetCardBoardAfterSignUpServiceTest {
+}
+
+class MailSenderTestConfig {
+}
+
+class TodoServiceTest {
+}
+
+}
+
+package org.wedding.application.service.response.card; {
+class ReadCardResponse {
+}
+
+}
+
+package org.wedding.application.service.response.cardboard; {
+class CardInfo {
+}
+
+}
+
+package org.wedding.application.service.response; {
+class LoginResponse {
+}
+
+}
+
+package org.wedding.application.service.response.todo; {
+class TodoDto {
+}
+
+}
+
+package org.wedding.common.annotation; {
+class ValidPassword {
+}
+
+}
+
+package org.wedding.common.exception; {
+class CommonError {
+}
+
+class DomainError {
+}
+
+class WeddingProjectError {
+}
+
+class WeddingProjectErrorHandlerMap {
+}
+
+class WeddingProjectException {
+}
+
+class WeddingProjectExceptionHandler {
+}
+
+class WeddingProjectExceptionHandlerTest {
+}
+
+}
+
+package org.wedding.common.logging; {
+class MDCInterceptor {
+}
+
+class MDCInterceptorTest {
+}
+
+}
+
+package org.wedding.common.response; {
+class ApiResponse {
+}
+
+}
+
+package org.wedding.common.security; {
+class JwtUtils {
+}
+
+}
+
+package org.wedding.common.validator; {
+class PasswordConstraintValidator {
+}
+
+}
+
+package org.wedding.config.anotation; {
+class CheckCardExistence {
+}
+
+}
+
+package org.wedding.config.aspect; {
+class CardCheckAspect {
+}
+
+class CardCheckAspectTest {
+}
+
+}
+
+package org.wedding.config; {
+class CacheConfig {
+}
+
+class CorsConfig {
+}
+
+class ErrorHandlerMapConfig {
+}
+
+class SecurityConfig {
+}
+
+class SwaggerConfig {
+}
+
+class WebMvcConfig {
+}
+
+}
+
+package org.wedding.domain.card; {
+class Card {
+}
+
+}
+
+package org.wedding.domain.card.event; {
+class CardCreatedEvent {
+}
+
+}
+
+package org.wedding.domain.card.exception; {
+class CardError {
+}
+
+class CardException {
+}
+
+}
+
+package org.wedding.domain.cardboard; {
+class CardBoard {
+}
+
+}
+
+package org.wedding.domain.cardboard.exception; {
+class CardBoardError {
+}
+
+class CardBoardException {
+}
+
+}
+
+package org.wedding.domain; {
+class CardIdMamager {
+}
+
+class CardStatus {
+}
+
+class Couple {
+}
+
+}
+
+package org.wedding.domain.todo.exception; {
+class TodoError {
+}
+
+class TodoException {
+}
+
+}
+
+package org.wedding.domain.todo; {
+class Todo {
+}
+
+class TodoCheckStatus {
+}
+
+}
+
+package org.wedding.domain.user.event; {
+class CreateCardBoardAfterCreatedUserEvent {
+}
+
+}
+
+package org.wedding.domain.user.exception; {
+class UserError {
+}
+
+class UserException {
+}
+
+}
+
+package org.wedding.domain.user; {
+class User {
+}
+
+}
+
+package org.wedding; {
+class WeddingApplication {
+}
+
+class WeddingApplicationTests {
+}
+
+}
+
+AuthController -- LoginDTO
+AuthController -- SendMailRequest
+AuthController -- SignUpDTO
+AuthController -- VerifyMailRequest
+AuthController -- TokenResponse
+AuthController -- AuthUseCase
+AuthController -- SendVerifyMail
+AuthController -- VerifyCode
+AuthController -- LoginResponse
+AuthController -- ApiResponse
+AuthController -- JwtUtils
+AuthController -- User
+CardBoardController -- DeleteCardRequest
+CardBoardController -- ModifyCardRequest
+CardBoardController -- CardsResponse
+CardBoardController -- DeleteCardCommand
+CardBoardController -- ModifyCardCommand
+CardBoardController -- ReadCardCommand
+CardBoardController -- CardBoardUseCase
+CardBoardController -- RequestCardUseCase
+CardBoardController -- CardInfo
+CardBoardController -- ApiResponse
+CardBoardController -- Card
+CardBoardController -- CardBoard
+CardBoardController -- CardStatus
+CardController -- CreateCardRequest
+CardController -- CreateCardCommand
+CardController -- CreateCardUseCase
+CardController -- DeleteCardUseCase
+CardController -- ReadCardUseCase
+CardController -- ReadCardResponse
+CardController -- ApiResponse
+CardController -- Card
+CreateCardRequest -- Card
+CreateCardRequest -- CardError
+DeleteCardRequest -- Card
+LoginDTO -- ValidPassword
+LoginDTO -- UserError
+LoginDTO -- User
+ModifyCardRequest -- Card
+ModifyCardRequest -- CardStatus
+SendMailRequest -- UserError
+SendMailRequest -- User
+SignUpDTO -- ValidPassword
+SignUpDTO -- UserError
+SignUpDTO -- User
+CreateTodoRequest -- Card
+CreateTodoRequest -- CardError
+CreateTodoRequest -- TodoError
+CreateTodoRequest -- Todo
+DeleteTodoRequest -- Card
+DeleteTodoRequest -- CardError
+DeleteTodoRequest -- TodoError
+DeleteTodoRequest -- Todo
+TodoResponse -- TodoDto
+TodoResponse -- Todo
+TodoResponse -- TodoCheckStatus
+UpdateTodoRequset -- Card
+UpdateTodoRequset -- CardError
+UpdateTodoRequset -- TodoError
+UpdateTodoRequset -- Todo
+UpdateTodoRequset -- TodoCheckStatus
+UserDto -- User
+VerifyMailRequest -- UserError
+VerifyMailRequest -- User
+CardCreatedEventListener -- CardBoardUseCase
+CardCreatedEventListener -- Card
+CardCreatedEventListener -- CardCreatedEvent
+CardCreatedEventListener -- CardBoard
+CardCreatedEventListener -- User
+CreateCardBoardAfterCreatedUserEventListener -- CreateCardBoardCommand
+CreateCardBoardAfterCreatedUserEventListener -- CardBoardUseCase
+CreateCardBoardAfterCreatedUserEventListener -- Card
+CreateCardBoardAfterCreatedUserEventListener -- CardBoard
+CreateCardBoardAfterCreatedUserEventListener -- CreateCardBoardAfterCreatedUserEvent
+CreateCardBoardAfterCreatedUserEventListener -- User
+JwtAuthenticationFilter -- JwtUtils
+JwtAuthenticationFilter -- User
+TodoController -- CreateTodoRequest
+TodoController -- DeleteTodoRequest
+TodoController -- TodoResponse
+TodoController -- UpdateTodoRequset
+TodoController -- CreateTodoCommand
+TodoController -- DeleteTodoCommand
+TodoController -- ReadTodoCommand
+TodoController -- UpdateTodoCommand
+TodoController -- TodoUseCase
+TodoController -- ApiResponse
+TodoController -- Card
+TodoController -- Todo
+CardsResponse -- Card
+CardsResponse -- CardStatus
+MybatisCardBoardRepositoryImpl -- CardBoardRepository
+MybatisCardBoardRepositoryImpl -- Card
+MybatisCardBoardRepositoryImpl -- CardBoard
+MybatisCardBoardRepositoryImpl -- User
+MybatisCardRepositoryImpl -- CardRepository
+MybatisCardRepositoryImpl -- Card
+MybatisCardRepositoryImpl -- CardStatus
+MybatisTodoRepositoryImpl -- TodoRepository
+MybatisTodoRepositoryImpl -- Card
+MybatisTodoRepositoryImpl -- Todo
+MybatisUserRepositoryImpl -- UserRepository
+MybatisUserRepositoryImpl -- User
+CreateCardCommand -- Card
+CreateCardCommand -- CardStatus
+DeleteCardCommand -- Card
+HasCardId -- Card
+ModifyCardCommand -- Card
+ModifyCardCommand -- CardStatus
+CreateCardBoardCommand -- Card
+CreateCardBoardCommand -- CardBoard
+ReadCardCommand -- Card
+ReadCardCommand -- CardStatus
+CreateTodoCommand -- HasCardId
+CreateTodoCommand -- Card
+CreateTodoCommand -- Todo
+CreateTodoCommand -- TodoCheckStatus
+DeleteTodoCommand -- HasCardId
+DeleteTodoCommand -- Card
+DeleteTodoCommand -- Todo
+ReadTodoCommand -- HasCardId
+ReadTodoCommand -- Card
+ReadTodoCommand -- Todo
+UpdateTodoCommand -- HasCardId
+UpdateTodoCommand -- Card
+UpdateTodoCommand -- Todo
+UpdateTodoCommand -- TodoCheckStatus
+TodoUseCase -- CreateTodoCommand
+TodoUseCase -- DeleteTodoCommand
+TodoUseCase -- ReadTodoCommand
+TodoUseCase -- UpdateTodoCommand
+TodoUseCase -- TodoDto
+TodoUseCase -- Todo
+AuthUseCase -- LoginDTO
+AuthUseCase -- SignUpDTO
+AuthUseCase -- LoginResponse
+VerifyCode -- User
+CreateCardUseCase -- CreateCardCommand
+CreateCardUseCase -- Card
+DeleteCardUseCase -- Card
+ModifyCardUseCase -- ModifyCardCommand
+ModifyCardUseCase -- Card
+ReadCardUseCase -- ReadCardResponse
+ReadCardUseCase -- Card
+ReadCardUseCase -- CardBoard
+ReadCardUseCase -- CardStatus
+ReadCardUseCase -- User
+CardBoardUseCase -- CreateCardBoardCommand
+CardBoardUseCase -- ReadCardCommand
+CardBoardUseCase -- CardInfo
+CardBoardUseCase -- Card
+CardBoardUseCase -- CardBoard
+CardOwnerShipValidator -- Card
+RequestCardUseCase -- DeleteCardCommand
+RequestCardUseCase -- ModifyCardCommand
+RequestCardUseCase -- Card
+CardBoardRepository -- Card
+CardBoardRepository -- CardBoard
+CardBoardRepository -- User
+CardRepository -- Card
+CardRepository -- CardStatus
+CardRepository -- Todo
+TodoRepository -- Card
+TodoRepository -- Todo
+UserRepository -- User
+AuthService -- LoginDTO
+AuthService -- SignUpDTO
+AuthService -- AuthUseCase
+AuthService -- CheckExistMail
+AuthService -- UserRepository
+AuthService -- LoginResponse
+AuthService -- Card
+AuthService -- CardBoard
+AuthService -- CreateCardBoardAfterCreatedUserEvent
+AuthService -- UserError
+AuthService -- UserException
+AuthService -- User
+CardBoardService -- DeleteCardCommand
+CardBoardService -- ModifyCardCommand
+CardBoardService -- CreateCardBoardCommand
+CardBoardService -- ReadCardCommand
+CardBoardService -- DeleteCardUseCase
+CardBoardService -- ModifyCardUseCase
+CardBoardService -- ReadCardUseCase
+CardBoardService -- CardBoardUseCase
+CardBoardService -- CardOwnerShipValidator
+CardBoardService -- RequestCardUseCase
+CardBoardService -- CardBoardRepository
+CardBoardService -- ReadCardResponse
+CardBoardService -- CardInfo
+CardBoardService -- Card
+CardBoardService -- CardBoard
+CardBoardService -- CardBoardError
+CardBoardService -- CardBoardException
+CardBoardService -- User
+CardService -- CreateCardCommand
+CardService -- ModifyCardCommand
+CardService -- CreateCardUseCase
+CardService -- DeleteCardUseCase
+CardService -- ModifyCardUseCase
+CardService -- ReadCardUseCase
+CardService -- CardRepository
+CardService -- ReadCardResponse
+CardService -- Card
+CardService -- CardCreatedEvent
+CardService -- CardError
+CardService -- CardException
+CardService -- CardBoard
+CardService -- CardStatus
+EmailService -- CheckExistMail
+EmailService -- CreateVerificationCode
+EmailService -- SendVerifyMail
+EmailService -- VerifyCode
+EmailService -- UserError
+EmailService -- UserException
+EmailService -- User
+ReadCardResponse -- Card
+ReadCardResponse -- CardStatus
+CardInfo -- Card
+CardInfo -- CardStatus
+TodoDto -- Card
+TodoDto -- Todo
+TodoDto -- TodoCheckStatus
+TodoService -- CreateTodoCommand
+TodoService -- DeleteTodoCommand
+TodoService -- ReadTodoCommand
+TodoService -- UpdateTodoCommand
+TodoService -- TodoUseCase
+TodoService -- TodoRepository
+TodoService -- TodoDto
+TodoService -- CheckCardExistence
+TodoService -- Card
+TodoService -- TodoError
+TodoService -- TodoException
+TodoService -- Todo
+TodoService -- TodoCheckStatus
+ValidPassword -- PasswordConstraintValidator
+DomainError -- CommonError
+DomainError -- Card
+DomainError -- CardError
+DomainError -- TodoError
+DomainError -- Todo
+DomainError -- UserError
+DomainError -- User
+WeddingProjectError -- CommonError
+WeddingProjectErrorHandlerMap -- DomainError
+WeddingProjectErrorHandlerMap -- WeddingProjectError
+WeddingProjectException -- CommonError
+WeddingProjectExceptionHandler -- CommonError
+WeddingProjectExceptionHandler -- WeddingProjectError
+WeddingProjectExceptionHandler -- WeddingProjectErrorHandlerMap
+WeddingProjectExceptionHandler -- WeddingProjectException
+WeddingProjectExceptionHandler -- ApiResponse
+ApiResponse -- CommonError
+JwtUtils -- User
+CheckCardExistence -- Card
+CardCheckAspect -- HasCardId
+CardCheckAspect -- CardService
+CardCheckAspect -- CheckCardExistence
+CardCheckAspect -- Card
+CorsConfig -- WebMvcConfig
+ErrorHandlerMapConfig -- DomainError
+ErrorHandlerMapConfig -- WeddingProjectError
+ErrorHandlerMapConfig -- WeddingProjectErrorHandlerMap
+ErrorHandlerMapConfig -- Card
+ErrorHandlerMapConfig -- CardError
+ErrorHandlerMapConfig -- TodoError
+ErrorHandlerMapConfig -- Todo
+ErrorHandlerMapConfig -- UserError
+ErrorHandlerMapConfig -- User
+SecurityConfig -- JwtAuthenticationFilter
+SecurityConfig -- User
+WebMvcConfig -- MDCInterceptor
+Card -- CardStatus
+CardCreatedEvent -- Card
+CardError -- CommonError
+CardError -- Card
+CardException -- CommonError
+CardException -- WeddingProjectException
+CardException -- Card
+CardException -- CardError
+CardBoard -- Card
+CardBoardError -- CommonError
+CardBoardError -- Card
+CardBoardError -- CardBoard
+CardBoardException -- CommonError
+CardBoardException -- WeddingProjectException
+CardBoardException -- Card
+CardBoardException -- CardBoard
+CardBoardException -- CardBoardError
+CardIdMamager -- Card
+Couple -- User
+TodoError -- CommonError
+TodoError -- Todo
+TodoException -- CommonError
+TodoException -- WeddingProjectException
+TodoException -- Todo
+Todo -- TodoCheckStatus
+CreateCardBoardAfterCreatedUserEvent -- Card
+CreateCardBoardAfterCreatedUserEvent -- CardBoard
+CreateCardBoardAfterCreatedUserEvent -- User
+UserError -- CommonError
+UserError -- User
+UserException -- CommonError
+UserException -- WeddingProjectException
+UserException -- User
+AuthControllerTest -- AuthController
+AuthControllerTest -- SendMailRequest
+AuthControllerTest -- SignUpDTO
+AuthControllerTest -- VerifyMailRequest
+AuthControllerTest -- AuthUseCase
+AuthControllerTest -- SendVerifyMail
+AuthControllerTest -- VerifyCode
+AuthControllerTest -- UserError
+AuthControllerTest -- UserException
+AuthControllerTest -- User
+CreateCardBoardAfterSignUpAPITest -- SignUpDTO
+CreateCardBoardAfterSignUpAPITest -- CardBoardRepository
+CreateCardBoardAfterSignUpAPITest -- UserRepository
+CreateCardBoardAfterSignUpAPITest -- Card
+CreateCardBoardAfterSignUpAPITest -- CardBoard
+CreateCardBoardAfterSignUpAPITest -- User
+DeleteCardIntegTest -- DeleteCardRequest
+DeleteCardIntegTest -- JwtUtils
+DeleteCardIntegTest -- Card
+DeleteCardIntegTest -- User
+ModifyCardIntegTest -- ModifyCardRequest
+ModifyCardIntegTest -- JwtUtils
+ModifyCardIntegTest -- Card
+ModifyCardIntegTest -- CardStatus
+ModifyCardIntegTest -- User
+ReadCardBoardIntegTest -- JwtUtils
+ReadCardBoardIntegTest -- Card
+ReadCardBoardIntegTest -- CardBoard
+ReadCardBoardIntegTest -- CardStatus
+ReadCardBoardIntegTest -- User
+AuthServiceTest -- LoginDTO
+AuthServiceTest -- SignUpDTO
+AuthServiceTest -- UserRepository
+AuthServiceTest -- AuthService
+AuthServiceTest -- LoginResponse
+AuthServiceTest -- Card
+AuthServiceTest -- CardBoard
+AuthServiceTest -- CreateCardBoardAfterCreatedUserEvent
+AuthServiceTest -- UserException
+AuthServiceTest -- User
+CardBoardServiceTest -- CardBoardRepository
+CardBoardServiceTest -- CardBoardService
+CardBoardServiceTest -- Card
+CardBoardServiceTest -- CardBoard
+CardBoardServiceTest -- CardBoardError
+CardBoardServiceTest -- CardBoardException
+CardBoardServiceTest -- User
+CardServiceTest -- CreateCardCommand
+CardServiceTest -- ModifyCardCommand
+CardServiceTest -- CardRepository
+CardServiceTest -- CardService
+CardServiceTest -- ReadCardResponse
+CardServiceTest -- Card
+CardServiceTest -- CardCreatedEvent
+CardServiceTest -- CardError
+CardServiceTest -- CardException
+CardServiceTest -- CardStatus
+CreaetCardBoardAfterSignUpServiceTest -- SignUpDTO
+CreaetCardBoardAfterSignUpServiceTest -- CardBoardRepository
+CreaetCardBoardAfterSignUpServiceTest -- AuthService
+CreaetCardBoardAfterSignUpServiceTest -- Card
+CreaetCardBoardAfterSignUpServiceTest -- CardBoard
+CreaetCardBoardAfterSignUpServiceTest -- User
+TodoServiceTest -- CreateTodoCommand
+TodoServiceTest -- DeleteTodoCommand
+TodoServiceTest -- ReadTodoCommand
+TodoServiceTest -- UpdateTodoCommand
+TodoServiceTest -- TodoRepository
+TodoServiceTest -- TodoDto
+TodoServiceTest -- TodoService
+TodoServiceTest -- CardCheckAspect
+TodoServiceTest -- Card
+TodoServiceTest -- TodoException
+TodoServiceTest -- Todo
+TodoServiceTest -- TodoCheckStatus
+TodoServiceTest -- CardCheckAspectTest
+WeddingProjectExceptionHandlerTest -- DomainError
+WeddingProjectExceptionHandlerTest -- WeddingProjectError
+WeddingProjectExceptionHandlerTest -- WeddingProjectErrorHandlerMap
+WeddingProjectExceptionHandlerTest -- WeddingProjectException
+WeddingProjectExceptionHandlerTest -- WeddingProjectExceptionHandler
+WeddingProjectExceptionHandlerTest -- ApiResponse
+WeddingProjectExceptionHandlerTest -- UserError
+WeddingProjectExceptionHandlerTest -- User
+MDCInterceptorTest -- MDCInterceptor
+CardCheckAspectTest -- CreateTodoCommand
+CardCheckAspectTest -- CardService
+CardCheckAspectTest -- TodoService
+CardCheckAspectTest -- CardCheckAspect
+CardCheckAspectTest -- Card
+CardCheckAspectTest -- CardError
+CardCheckAspectTest -- CardException
+CardCheckAspectTest -- Todo
+WeddingApplicationTests -- WeddingApplication
+@enduml

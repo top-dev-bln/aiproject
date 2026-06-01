@@ -1,0 +1,544 @@
+@startuml
+package info.rolandkrueger.userservice.api.enums; {
+class AuthoritiesSort {
+}
+
+class SortDirection {
+}
+
+class UserProjections {
+}
+
+class UsersSort {
+}
+
+}
+
+package info.rolandkrueger.userservice.api.model; {
+class AuthorityApiData {
+}
+
+class EmptyApiData {
+}
+
+class UserApiData {
+}
+
+class UserRegistrationApiData {
+}
+
+}
+
+package info.rolandkrueger.userservice.api.resources; {
+class AuthoritiesResource {
+}
+
+class AuthoritiesSearchResource {
+}
+
+class AuthorityResource {
+}
+
+class CanCreate {
+}
+
+class CanDelete {
+}
+
+class CanDeleteResource {
+}
+
+class CanUpdate {
+}
+
+class CanUpdateResource {
+}
+
+class ConfirmRegistrationResource {
+}
+
+class EmptyResource {
+}
+
+class UpdateUserResource {
+}
+
+class UserRegistrationsResource {
+}
+
+class UserResource {
+}
+
+class UserService {
+}
+
+class UsersResource {
+}
+
+class UsersSearchResource {
+}
+
+}
+
+package info.rolandkrueger.userservice.api.service; {
+class AuthenticationListener {
+}
+
+class StaticEndpointProvider {
+}
+
+class UserDetailServiceImpl {
+}
+
+class UserMicroserviceEndpointProvider {
+}
+
+class UserServiceAuthenticationProvider {
+}
+
+}
+
+package info.rolandkrueger.userservice.api; {
+class UserServiceAPI {
+}
+
+}
+
+package info.rolandkrueger.userservice.api._internal; {
+class AbstractPagedResource {
+}
+
+class AbstractResource {
+}
+
+class AbstractRestClient {
+}
+
+class RestApiConstants {
+}
+
+}
+
+package info.rolandkrueger.userservice.api._internal.model; {
+class AbstractBaseApiData {
+}
+
+}
+
+package info.rolandkrueger.userservice.application; {
+class DevelopmentProfileConfiguration {
+}
+
+class GlobalControllerExceptionHandler {
+}
+
+class SecurityConfiguration {
+}
+
+}
+
+package info.rolandkrueger.userservice.controller; {
+class UpdateUserRestController {
+}
+
+class UserExcerptProjectionResourceProcessor {
+}
+
+class UserFullDataProjectionResourceProcessor {
+}
+
+class UserLoginRestController {
+}
+
+class UserRegistrationRestController {
+}
+
+class UserResourceProcessor {
+}
+
+class AuthorityRestControllerTest {
+}
+
+class AuthorityRestController_IncorrectUsageTest {
+}
+
+class AuthorityRestController_ReadSearchTest {
+}
+
+class UpdateUserRestControllerTest {
+}
+
+class UserLoginRestControllerTest {
+}
+
+class UserRegistrationRestControllerTest {
+}
+
+class UserRestControllerTest {
+}
+
+}
+
+package info.rolandkrueger.userservice.model; {
+class Authority {
+}
+
+class ServiceError {
+}
+
+class User {
+}
+
+class UserExcerptProjection {
+}
+
+class UserFullDataProjection {
+}
+
+class UserRegistrationResource {
+}
+
+class AuthorityTest {
+}
+
+class UserTest {
+}
+
+}
+
+package info.rolandkrueger.userservice.repository; {
+class AuthorityRepository {
+}
+
+class UserRepository {
+}
+
+class AuthorityRepositoryTest {
+}
+
+class UserRepositoryTest {
+}
+
+}
+
+package info.rolandkrueger.userservice.service; {
+class AuthorityService {
+}
+
+class AuthorityServiceImpl {
+}
+
+class UserService {
+}
+
+class UserServiceImpl {
+}
+
+class AuthenticationListenerTest {
+}
+
+class AuthorityServiceTest {
+}
+
+class UserDetailServiceImplTest {
+}
+
+class UserServiceTest {
+}
+
+}
+
+package info.rolandkrueger.userservice.service.exception; {
+class UsernameAlreadyInUseException {
+}
+
+class UserNotFoundException {
+}
+
+}
+
+package info.rolandkrueger.userservice; {
+class UserMicroserviceApplication {
+}
+
+}
+
+package info.rolandkrueger.userservice.testsupport; {
+class AbstractRestControllerTest {
+}
+
+class AbstractServiceTest {
+}
+
+class Asserts {
+}
+
+}
+
+UserProjections -- UserResource
+UserProjections -- User
+UsersSort -- UserApiData
+UsersSort -- User
+AuthorityApiData -- AuthorityResource
+AuthorityApiData -- AbstractBaseApiData
+AuthorityApiData -- Authority
+AuthorityApiData -- User
+EmptyApiData -- EmptyResource
+EmptyApiData -- AbstractBaseApiData
+UserApiData -- AuthorityApiData
+UserApiData -- UserResource
+UserApiData -- AbstractBaseApiData
+UserApiData -- Authority
+UserApiData -- User
+UserRegistrationApiData -- UserRegistrationsResource
+UserRegistrationApiData -- AbstractBaseApiData
+UserRegistrationApiData -- User
+AuthoritiesResource -- AuthoritiesSort
+AuthoritiesResource -- SortDirection
+AuthoritiesResource -- AuthorityApiData
+AuthoritiesResource -- AuthoritiesSearchResource
+AuthoritiesResource -- CanCreate
+AuthoritiesResource -- CanDelete
+AuthoritiesResource -- CanUpdate
+AuthoritiesResource -- AbstractPagedResource
+AuthoritiesResource -- RestApiConstants
+AuthoritiesResource -- Authority
+AuthoritiesSearchResource -- AuthorityApiData
+AuthoritiesSearchResource -- EmptyApiData
+AuthoritiesSearchResource -- AbstractPagedResource
+AuthoritiesSearchResource -- AbstractResource
+AuthoritiesSearchResource -- Authority
+AuthorityResource -- CanDelete
+AuthorityResource -- CanDeleteResource
+AuthorityResource -- CanUpdate
+AuthorityResource -- CanUpdateResource
+AuthorityResource -- AbstractResource
+AuthorityResource -- Authority
+CanCreate -- AbstractBaseApiData
+CanDelete -- AbstractPagedResource
+CanDelete -- AbstractBaseApiData
+CanDeleteResource -- CanDelete
+CanUpdate -- AbstractPagedResource
+CanUpdate -- AbstractBaseApiData
+CanUpdateResource -- CanUpdate
+ConfirmRegistrationResource -- EmptyApiData
+ConfirmRegistrationResource -- AbstractResource
+EmptyResource -- AbstractResource
+UpdateUserResource -- AuthorityApiData
+UpdateUserResource -- UserApiData
+UpdateUserResource -- CanUpdate
+UpdateUserResource -- CanUpdateResource
+UpdateUserResource -- UserResource
+UpdateUserResource -- AbstractResource
+UpdateUserResource -- Authority
+UpdateUserResource -- User
+UserRegistrationsResource -- CanCreate
+UserRegistrationsResource -- AbstractResource
+UserRegistrationsResource -- RestApiConstants
+UserRegistrationsResource -- User
+UserResource -- CanDelete
+UserResource -- CanDeleteResource
+UserResource -- AbstractResource
+UserResource -- RestApiConstants
+UserResource -- User
+UserService -- User
+UsersResource -- SortDirection
+UsersResource -- UserProjections
+UsersResource -- UsersSort
+UsersResource -- UserApiData
+UsersResource -- CanDelete
+UsersResource -- CanUpdate
+UsersResource -- UsersSearchResource
+UsersResource -- AbstractPagedResource
+UsersResource -- RestApiConstants
+UsersResource -- User
+UsersSearchResource -- EmptyApiData
+UsersSearchResource -- UserApiData
+UsersSearchResource -- AbstractPagedResource
+UsersSearchResource -- AbstractResource
+UsersSearchResource -- User
+AuthenticationListener -- UserApiData
+AuthenticationListener -- UserService
+AuthenticationListener -- UserMicroserviceEndpointProvider
+AuthenticationListener -- UserServiceAPI
+AuthenticationListener -- User
+StaticEndpointProvider -- UserMicroserviceEndpointProvider
+StaticEndpointProvider -- User
+UserDetailServiceImpl -- UserProjections
+UserDetailServiceImpl -- UserApiData
+UserDetailServiceImpl -- UserService
+UserDetailServiceImpl -- UserMicroserviceEndpointProvider
+UserDetailServiceImpl -- UserServiceAPI
+UserDetailServiceImpl -- User
+UserMicroserviceEndpointProvider -- User
+UserServiceAuthenticationProvider -- UserService
+UserServiceAuthenticationProvider -- UserDetailServiceImpl
+UserServiceAuthenticationProvider -- UserMicroserviceEndpointProvider
+UserServiceAuthenticationProvider -- User
+UserServiceAPI -- UserService
+UserServiceAPI -- UserMicroserviceEndpointProvider
+UserServiceAPI -- User
+AbstractPagedResource -- SortDirection
+AbstractPagedResource -- AbstractResource
+AbstractPagedResource -- AbstractBaseApiData
+AbstractResource -- CanUpdate
+AbstractResource -- CanUpdateResource
+AbstractResource -- AbstractRestClient
+AbstractResource -- AbstractBaseApiData
+AbstractResource -- RestApiConstants
+DevelopmentProfileConfiguration -- Authority
+DevelopmentProfileConfiguration -- User
+DevelopmentProfileConfiguration -- AuthorityRepository
+DevelopmentProfileConfiguration -- UserRepository
+GlobalControllerExceptionHandler -- ServiceError
+UpdateUserRestController -- UserApiData
+UpdateUserRestController -- UserService
+UpdateUserRestController -- RestApiConstants
+UpdateUserRestController -- Authority
+UpdateUserRestController -- User
+UpdateUserRestController -- AuthorityService
+UpdateUserRestController -- UsernameAlreadyInUseException
+UpdateUserRestController -- UserNotFoundException
+UserExcerptProjectionResourceProcessor -- RestApiConstants
+UserExcerptProjectionResourceProcessor -- UpdateUserRestController
+UserExcerptProjectionResourceProcessor -- User
+UserExcerptProjectionResourceProcessor -- UserExcerptProjection
+UserFullDataProjectionResourceProcessor -- RestApiConstants
+UserFullDataProjectionResourceProcessor -- UpdateUserRestController
+UserFullDataProjectionResourceProcessor -- UserLoginRestController
+UserFullDataProjectionResourceProcessor -- User
+UserFullDataProjectionResourceProcessor -- UserFullDataProjection
+UserLoginRestController -- UserService
+UserLoginRestController -- RestApiConstants
+UserLoginRestController -- User
+UserRegistrationRestController -- UserRegistrationApiData
+UserRegistrationRestController -- UserService
+UserRegistrationRestController -- RestApiConstants
+UserRegistrationRestController -- User
+UserRegistrationRestController -- UserRegistrationResource
+UserResourceProcessor -- UserResource
+UserResourceProcessor -- RestApiConstants
+UserResourceProcessor -- UpdateUserRestController
+UserResourceProcessor -- User
+User -- Authority
+UserExcerptProjection -- UserProjections
+UserExcerptProjection -- User
+UserFullDataProjection -- UserProjections
+UserFullDataProjection -- Authority
+UserFullDataProjection -- User
+UserRegistrationResource -- UserRegistrationApiData
+UserRegistrationResource -- RestApiConstants
+UserRegistrationResource -- User
+AuthorityRepository -- RestApiConstants
+AuthorityRepository -- Authority
+UserRepository -- RestApiConstants
+UserRepository -- User
+AuthorityService -- Authority
+AuthorityServiceImpl -- Authority
+AuthorityServiceImpl -- AuthorityRepository
+AuthorityServiceImpl -- AuthorityService
+UsernameAlreadyInUseException -- User
+UserNotFoundException -- User
+UserServiceImpl -- UserService
+UserServiceImpl -- User
+UserServiceImpl -- UserRepository
+UserMicroserviceApplication -- DevelopmentProfileConfiguration
+UserMicroserviceApplication -- User
+AuthorityRestControllerTest -- AuthorityApiData
+AuthorityRestControllerTest -- AuthoritiesResource
+AuthorityRestControllerTest -- AuthoritiesSearchResource
+AuthorityRestControllerTest -- Authority
+AuthorityRestControllerTest -- User
+AuthorityRestControllerTest -- UserMicroserviceApplication
+AuthorityRestControllerTest -- AbstractRestControllerTest
+AuthorityRestControllerTest -- Asserts
+AuthorityRestController_IncorrectUsageTest -- AuthorityApiData
+AuthorityRestController_IncorrectUsageTest -- AuthoritiesResource
+AuthorityRestController_IncorrectUsageTest -- Authority
+AuthorityRestController_IncorrectUsageTest -- User
+AuthorityRestController_IncorrectUsageTest -- UserMicroserviceApplication
+AuthorityRestController_IncorrectUsageTest -- AbstractRestControllerTest
+AuthorityRestController_ReadSearchTest -- AuthorityApiData
+AuthorityRestController_ReadSearchTest -- AuthoritiesResource
+AuthorityRestController_ReadSearchTest -- AuthoritiesSearchResource
+AuthorityRestController_ReadSearchTest -- Authority
+AuthorityRestController_ReadSearchTest -- User
+AuthorityRestController_ReadSearchTest -- UserMicroserviceApplication
+AuthorityRestController_ReadSearchTest -- AbstractRestControllerTest
+AuthorityRestController_ReadSearchTest -- Asserts
+UpdateUserRestControllerTest -- UserProjections
+UpdateUserRestControllerTest -- AuthorityApiData
+UpdateUserRestControllerTest -- UserApiData
+UpdateUserRestControllerTest -- UpdateUserRestController
+UpdateUserRestControllerTest -- Authority
+UpdateUserRestControllerTest -- User
+UpdateUserRestControllerTest -- UserMicroserviceApplication
+UpdateUserRestControllerTest -- UserRestControllerTest
+UpdateUserRestControllerTest -- AbstractRestControllerTest
+UserLoginRestControllerTest -- UserApiData
+UserLoginRestControllerTest -- UserLoginRestController
+UserLoginRestControllerTest -- User
+UserLoginRestControllerTest -- UserMicroserviceApplication
+UserLoginRestControllerTest -- AbstractRestControllerTest
+UserRegistrationRestControllerTest -- UserApiData
+UserRegistrationRestControllerTest -- UserRegistrationApiData
+UserRegistrationRestControllerTest -- UserRegistrationsResource
+UserRegistrationRestControllerTest -- UserRegistrationRestController
+UserRegistrationRestControllerTest -- User
+UserRegistrationRestControllerTest -- UserMicroserviceApplication
+UserRegistrationRestControllerTest -- AbstractRestControllerTest
+UserRestControllerTest -- UserApiData
+UserRestControllerTest -- User
+UserRestControllerTest -- UserMicroserviceApplication
+UserRestControllerTest -- AbstractRestControllerTest
+AuthorityTest -- Authority
+UserTest -- Authority
+UserTest -- User
+AuthorityRepositoryTest -- Authority
+AuthorityRepositoryTest -- User
+AuthorityRepositoryTest -- AuthorityRepository
+AuthorityRepositoryTest -- UserMicroserviceApplication
+UserRepositoryTest -- User
+UserRepositoryTest -- UserRepository
+UserRepositoryTest -- UserMicroserviceApplication
+AuthenticationListenerTest -- UserApiData
+AuthenticationListenerTest -- AuthenticationListener
+AuthenticationListenerTest -- StaticEndpointProvider
+AuthenticationListenerTest -- User
+AuthenticationListenerTest -- UserMicroserviceApplication
+AuthenticationListenerTest -- AbstractRestControllerTest
+AuthorityServiceTest -- UserService
+AuthorityServiceTest -- Authority
+AuthorityServiceTest -- User
+AuthorityServiceTest -- AuthorityService
+AuthorityServiceTest -- UserMicroserviceApplication
+AuthorityServiceTest -- AbstractServiceTest
+UserDetailServiceImplTest -- StaticEndpointProvider
+UserDetailServiceImplTest -- UserDetailServiceImpl
+UserDetailServiceImplTest -- User
+UserDetailServiceImplTest -- UserMicroserviceApplication
+UserDetailServiceImplTest -- AbstractRestControllerTest
+UserServiceTest -- UserService
+UserServiceTest -- Authority
+UserServiceTest -- User
+UserServiceTest -- AuthorityService
+UserServiceTest -- UserMicroserviceApplication
+UserServiceTest -- AbstractServiceTest
+UserServiceTest -- Asserts
+AbstractRestControllerTest -- AuthorityApiData
+AbstractRestControllerTest -- UserApiData
+AbstractRestControllerTest -- UserRegistrationApiData
+AbstractRestControllerTest -- AuthoritiesResource
+AbstractRestControllerTest -- UserService
+AbstractRestControllerTest -- UsersResource
+AbstractRestControllerTest -- UserServiceAPI
+AbstractRestControllerTest -- Authority
+AbstractRestControllerTest -- User
+AbstractServiceTest -- UserService
+AbstractServiceTest -- Authority
+AbstractServiceTest -- User
+AbstractServiceTest -- AuthorityService
+Asserts -- AuthorityApiData
+Asserts -- Authority
+Asserts -- User
+@enduml
