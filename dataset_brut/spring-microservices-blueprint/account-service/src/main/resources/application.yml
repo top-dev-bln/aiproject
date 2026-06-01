@@ -1,0 +1,115 @@
+# Account Service Configuration
+spring:
+  application:
+    name: account-service
+  
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/account_service}
+    username: postgres
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 20
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    topic:
+      name: account-service
+    replication:
+      factor: 1
+    partition:
+      number: 2
+    consumer:
+      group-id: kafka-user-listener
+      auto-offset-reset: earliest
+      level:
+        concurrency: 5
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        interceptor.classes: com.demo.kafka.interceptor.KafkaProducerInterceptor
+
+# Application Kafka Configuration
+application:
+  kafka:
+    payment-request-log:
+      auto-startup: true
+
+# JWT Configuration
+auth:
+  app:
+    jwtSecret: ======================Auth=Spring===========================
+    jwtExpirationMs: 86400000
+
+# Server Configuration
+server:
+  port: 8088
+
+# Management/Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+# Application Info
+info:
+  app:
+    name: Account Service
+    description: User account management service
+    version: 1.0.0
+
+# Application Configuration
+app:
+  async:
+    core-pool-size: 3
+    max-pool-size: 10
+    queue-capacity: 50
+    thread-name-prefix: account-async-
+    keep-alive-seconds: 60
+    await-termination-seconds: 30
+  logging:
+    request: true
+    response: true
+    trace: true
+
+# Logging Configuration
+logging:
+  level:
+    com.demo: DEBUG
+    org.springframework.kafka: INFO
+    org.springframework.kafka.listener: ERROR
+    org.springframework.kafka.listener.KafkaMessageListenerContainer: ERROR
+    org.springframework.kafka.listener.ConcurrentMessageListenerContainer: ERROR
+    org.apache.kafka: WARN
+    org.apache.kafka.clients.consumer.KafkaConsumer: WARN
+    org.springframework.scheduling: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+

@@ -1,0 +1,10 @@
+pluginManagement {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
+rootProject.name = 'wiremock-spring-boot-base'
+include "wiremock-spring-boot", "wiremock-spring-boot-standalone"

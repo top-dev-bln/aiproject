@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>aliyun-spring-boot</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>Aliyun Spring Boot</name>
+    <description>Spring Boot for Aliyun Services</description>
+    <url>https://github.com/alibaba/aliyun-spring-boot</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/alibaba/aliyun-spring-boot</url>
+        <connection>scm:git:git:////github.com/alibaba/aliyun-spring-boot.git</connection>
+        <developerConnection>scm:git:ssh://git@//github.com/alibaba/aliyun-spring-boot.git
+        </developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/alibaba/aliyun-spring-boot/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <name>xiaojing</name>
+            <email>flystar32@163.com</email>
+        </developer>
+        <developer>
+            <name>Jim Fang</name>
+            <email>fangjian0423@gmail.com</email>
+            <organization>Alibaba</organization>
+            <url>https://github.com/fangjian0423</url>
+        </developer>
+        <developer>
+            <name>xiaolongzuo</name>
+            <email>150349407@qq.com</email>
+        </developer>
+        <developer>
+            <name>hengyunabc</name>
+            <email>hengyunabc@gmail.com</email>
+        </developer>
+        <developer>
+            <id>mercyblitz</id>
+            <name>Mercy Ma</name>
+            <email>mercyblitz@gmail.com</email>
+            <organization>Alibaba</organization>
+            <url>https://github.com/mercyblitz</url>
+        </developer>
+        <developer>
+            <name>yunzheng</name>
+            <email>yunzheng1228@gmail.com</email>
+        </developer>
+        <developer>
+            <id>theonefx</id>
+            <name>theonefx</name>
+            <email>chenxilzx1@gmail.com</email>
+            <organization>Alibaba</organization>
+            <url>https://github.com/theonefx</url>
+        </developer>
+        <developer>
+            <name>余苏</name>
+            <id>yusu1210</id>
+            <email>yusu1210(AT)126.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+            <url>https://github.com/yusu1210</url>
+            <organization>Alibaba</organization>
+            <organizationUrl>http://www.alibaba.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>aliyun-spring-boot-dependencies</module>
+        <module>aliyun-spring-boot-parent</module>
+        <module>aliyun-spring-boot-starters</module>
+        <module>aliyun-spring-boot-docs</module>
+        <module>aliyun-spring-boot-samples</module>
+    </modules>
+
+    <properties>
+        <revision>1.0.1-SNAPSHOT</revision>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>flatten-maven-plugin</artifactId>
+                        <version>${flatten-maven-plugin.version}</version>
+                        <configuration>
+                            <updatePomFile>true</updatePomFile>
+                            <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>flatten</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>flatten</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>flatten.clean</id>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

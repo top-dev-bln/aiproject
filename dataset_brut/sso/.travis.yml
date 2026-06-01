@@ -1,0 +1,16 @@
+language: java
+sudo: required
+#branches:
+#  only:
+#  - master
+jdk:
+- oraclejdk8
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+before_script:
+ - export JAVA_OPTS="-Xmx2048m"
+
+script:
+ - mvn package -B

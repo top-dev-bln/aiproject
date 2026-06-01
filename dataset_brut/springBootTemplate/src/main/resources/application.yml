@@ -1,0 +1,26 @@
+spring:
+  # 选择加载不同环境的配置文件
+  profiles:
+    active: dev
+    include: mvc, data, config
+  
+  # 静态资源路径
+  resources:
+    static-locations: classpath:static/,file:static/
+
+  # 配置热部署
+#  devtools:
+#    restart:
+#      # 如果改为true则当修改java目录下的文件时会自动进行重启
+#      enabled: true
+#      additional-paths: src/main/java
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.linkinstars.springBootTemplate.bean
+
+pagehelper:
+  helperDialect: mysql
+
+package:
+  type: war

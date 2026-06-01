@@ -1,0 +1,6 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/datasets/database.dtd">
+
+<dataset>
+    <recommendations/>
+    <book id="13" name="Existing book" author="Unknown"/>
+</dataset>

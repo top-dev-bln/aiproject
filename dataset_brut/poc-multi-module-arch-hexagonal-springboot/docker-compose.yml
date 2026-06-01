@@ -1,0 +1,228 @@
+version: "3.9"
+services:
+  ms-launcher:
+    container_name: ms-launcher
+    restart: always
+    build:
+      context: ./ms-launcher/
+    environment:
+      - JAEGER_HOST=${JAEGER_HOST}
+      - JAEGER_PORT=${JAEGER_PORT}
+      - FLYWAY_DATABASE_HOST=${FLYWAY_DATABASE_HOST}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8.0.29
+    container_name: mysqldb
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dev
+
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9000" ]
+
+  db:
+    image: postgres:12
+    container_name: postgres_sonarqube
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.2
+    container_name: elasticsearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'false'
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    healthcheck:
+      test: "curl -f http://localhost:9200 || exit 1"
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.2
+    container_name: logstash
+    restart: unless-stopped
+    ports:
+      - "5044:5044"
+    volumes:
+      - ./config/logstash/:/usr/share/logstash/pipeline/
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: "curl -f http://localhost:9600 || exit 1"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.2
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: "curl -f http://localhost:5601 || exit 1"
+
+  filebeat:
+    build: config/filebeat
+    container_name: filebeat
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
+    depends_on:
+      - elasticsearch
+      - logstash
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.33
+    container_name: jaeger
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "14250:14250"
+    depends_on:
+      - ms-launcher
+
+  prometheus:
+    image: prom/prometheus:v2.35.0
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/alert.yml:/etc/prometheus/alert.yml
+    ports:
+      - "9090:9090"
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9090" ]
+
+  grafana:
+    image: grafana/grafana:8.4.6
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./config/grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+      - elasticsearch
+      - jaeger
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "3000" ]
+
+  alertmanager:
+    image: prom/alertmanager:v0.24.0
+    container_name: alertmanager
+    volumes:
+      - ./config/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./config/alertmanager/email.tmpl:/etc/alertmanager/template/email.tmpl
+    ports:
+      - "9093:9093"
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+    depends_on:
+      - prometheus
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.1.2
+    restart: always
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: "2181"
+      ZOOKEEPER_TICK_TIME: "2000"
+      ZOOKEEPER_SERVERS: "zookeeper:22888:23888"
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-enterprise-kafka:5.1.2
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_BROKER_ID: 1
+      KAFKA_BROKER_RACK: "r1"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_SCHEMA_REGISTRY_URL: "schemaregistry:8085"
+      KAFKA_JMX_PORT: 9991
+
+  schemaregistry:
+    image: confluentinc/cp-schema-registry:5.1.2
+    restart: always
+    depends_on:
+      - zookeeper
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
+      SCHEMA_REGISTRY_HOST_NAME: schemaregistry
+      SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8085"
+    ports:
+      - "8085:8085"
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    restart: "no"
+    ports:
+      - "9900:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "kafka:9092"
+    depends_on:
+      - kafka
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  postgresql:
+  postgresql_data:
+  mysql:

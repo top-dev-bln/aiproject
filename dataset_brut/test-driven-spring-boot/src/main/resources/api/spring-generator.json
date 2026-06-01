@@ -1,0 +1,18 @@
+{
+  "groupId": "com.xpinjection.library",
+  "artifactId":	"api-spring-server",
+  "artifactDescription": "Library API server implementation with Spring MVC",
+  "artifactVersion": "0.1.0",
+  "basePackage": "com.xpinjection.library",
+  "apiPackage":	"com.xpinjection.library.adaptors.api",
+  "modelPackage": "com.xpinjection.library.adaptors.api.dto",
+  "configPackage":	"com.xpinjection.library.config",
+  "invokerPackage":	"com.xpinjection.library",
+  "library": "spring-boot",
+  "documentationProvider": "springdoc",
+  "singleContentTypes": true,
+  "legacyDiscriminatorBehavior": false,
+  "performBeanValidation": true,
+  "interfaceOnly": true,
+  "skipDefaultInterface": true
+}

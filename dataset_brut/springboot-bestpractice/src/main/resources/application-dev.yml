@@ -1,0 +1,10 @@
+# Application development setting
+# Independents datasource
+
+credentials:
+    provider: best-practice
+    subject: localhost
+    alg: HS512
+    key: apikey
+    hmac-secret: test-secret
+    expires-hour-str: 1

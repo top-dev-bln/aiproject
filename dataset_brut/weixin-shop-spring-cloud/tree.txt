@@ -1,0 +1,29 @@
+卷 文档 的文件夹 PATH 列表
+卷序列号为 0000-05BF
+E:.
+├─shop-common
+├─shop-common-config
+├─shop-common-redis
+├─shop-common-service
+├─shop-consumer-test
+├─shop-service-api
+│  ├─shop-common-entity
+│  ├─shop-mq-model
+│  ├─shop-service-cart-api
+│  ├─shop-service-comment-api
+│  ├─shop-service-message-api
+│  ├─shop-service-order-api
+│  ├─shop-service-product-api
+│  ├─shop-service-promotion-api
+│  ├─shop-service-system-api
+│  └─shop-service-user-api
+├─shop-service-base
+│  └─shop-eureka-server
+├─shop-service-cart
+├─shop-service-comment
+├─shop-service-message
+├─shop-service-order
+├─shop-service-product
+├─shop-service-promotion
+├─shop-service-system
+├─shop-service-user

@@ -1,0 +1,34 @@
+logging:
+  file: "logs/config/sso-config.log"
+info:
+  name : "配置中心"
+
+server:
+  port: 8888
+  context-path: /config
+spring:
+  profiles:
+    active:
+      - native
+      - dev
+  application:
+    name: sso-config
+
+
+---
+spring:
+  profiles: dev
+  boot:
+    admin:
+      url: http://localhost:8444/
+      client:
+        management-base-url: http://localhost:8888/config
+        management-url: ${spring.boot.admin.client.management-base-url}
+        service-url: ${spring.boot.admin.client.management-base-url}
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false

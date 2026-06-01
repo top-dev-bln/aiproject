@@ -1,0 +1,48 @@
+spring:
+    devtools:
+        restart:
+            enabled: true
+    datasource:
+        url: jdbc:mysql://localhost/otp?useUnicode=true&characterEncoding=utf8&useSSL=false # URL for MySQL 5.7
+        # url: jdbc:mysql://localhost/otp9?useSSL=false&serverTimezone=CET&allowPublicKeyRetrieval=true&useUnicode=true # URL for MySQL 8.X
+        name: MySQL Local Connection
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver # MySQL 5.7.X / 6.X.X
+        # driver-class-name: com.mysql.cj.jdbc.Driver # MySQL 8
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQLInnoDBDialect
+        database: MYSQL
+        show_sql: false
+        open-in-view: false
+        factory-class: org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+
+liquibase:
+    contexts: dev
+
+jwt:
+    header: Authorization
+    secret: SpringBootSecretKey
+    expiration: 300
+
+server:
+    port: 8080
+
+debug: true
+
+email:
+  host: smtp.gmail.com
+  port: 587
+  username: your_username
+  password: your_password
+  debug: true

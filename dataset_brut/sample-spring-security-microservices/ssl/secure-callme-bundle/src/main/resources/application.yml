@@ -1,0 +1,37 @@
+server.port: 8443
+server.ssl.client-auth: NEED
+server.ssl.bundle: server
+spring.profiles.active: dev
+management.endpoints.web.exposure.include: health, info
+management.info.ssl.enabled: true
+management.info.os.enabled: false
+management.info.java.enabled: false
+management.endpoint.health.show-details: always
+
+---
+spring.config.activate.on-profile: dev
+server.ssl.client-auth: NONE
+spring.ssl.bundle.jks:
+  server:
+    reload-on-update: true
+    keystore:
+      location: classpath:keystore.jks
+      password: 123456
+      type: JKS
+    truststore:
+      location: classpath:truststore.jks
+      password: 123456
+      type: JKS
+---
+spring.config.activate.on-profile: prod
+spring.ssl.bundle.jks:
+  server:
+    reload-on-update: true
+    keystore:
+      location: ${CERT_PATH}/keystore.jks
+      password: ${PASSWORD}
+      type: JKS
+    truststore:
+      location: ${CERT_PATH}/truststore.jks
+      password: ${PASSWORD}
+      type: JKS

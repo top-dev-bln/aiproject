@@ -1,0 +1,6 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/datasets/database.dtd">
+
+<dataset>
+    <expert id="1" name="Mikalai" contact="a@b.com"/>
+    <recommendations expert_id="1" book_id="13"/>
+</dataset>

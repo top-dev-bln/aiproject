@@ -1,0 +1,12 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/files-under-directory"
+  },
+  "response": {
+    "jsonBody": {
+      "wiremockmappingsmock": "yes"
+    },
+    "status": 200
+  }
+}

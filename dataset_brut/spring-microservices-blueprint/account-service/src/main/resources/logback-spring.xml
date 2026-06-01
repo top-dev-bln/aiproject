@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <!-- ISO8601 timestamp -->
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                    <pattern>yyyy-MM-dd'T'HH:mm:ss.SSSZ</pattern>
+                </timestamp>
+
+                <logLevel />
+                <loggerName />
+                <threadName />
+                <mdc />
+                <arguments />
+                <message />
+
+                <!-- Stack trace -->
+                <stackTrace>
+                    <fieldName>stackTrace</fieldName>
+                    <throwableConverter
+                            class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <maxDepthPerThrowable>30</maxDepthPerThrowable>
+                        <rootCauseFirst>true</rootCauseFirst>
+                    </throwableConverter>
+                </stackTrace>
+
+                <!-- Custom fixed fields -->
+                <globalCustomFields>{"service":"${spring.application.name}"}</globalCustomFields>
+            </providers>
+
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Tinh chỉnh noise log -->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.hibernate.SQL" level="WARN" />
+    <!-- Reduce Kafka listener noise -->
+    <logger name="org.springframework.kafka" level="ERROR" />
+    <logger name="org.springframework.kafka.listener" level="ERROR" />
+    <logger name="org.springframework.kafka.listener.KafkaMessageListenerContainer" level="ERROR" />
+    <logger name="org.springframework.kafka.listener.ConcurrentMessageListenerContainer" level="ERROR" />
+    <logger name="org.apache.kafka" level="WARN" />
+    <logger name="org.apache.kafka.clients.consumer.KafkaConsumer" level="WARN" />
+</configuration>
