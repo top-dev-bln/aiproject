@@ -1,0 +1,126 @@
+name: Architecture Diagram Generator
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+  # Permite rulare manuala cu alegerea modului
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Modul de generare'
+        required: true
+        default: 'static'
+        type: choice
+        options: [static, llm, compare]
+      pr_number:
+        description: 'Numarul PR pe care se posteaza comentariul'
+        required: true
+        type: string
+
+jobs:
+  generate-diagrams:
+    name: Generate Architecture Diagrams
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Resolve PR number and mode
+        id: ctx
+        run: |
+          # PR number: din event (PR trigger) sau din input (manual)
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "pr_number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+            echo "mode=${{ vars.DIAGRAM_MODE || 'static' }}" >> $GITHUB_OUTPUT
+          else
+            echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
+            echo "mode=${{ inputs.mode }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get changed Java files
+        id: changed
+        run: |
+          BASE=${{ github.base_ref || 'main' }}
+          git diff --name-only origin/${BASE}...HEAD \
+            | grep '\.java$' > changed_files.txt || true
+          COUNT=$(wc -l < changed_files.txt | tr -d ' ')
+          echo "Java files changed: $COUNT"
+          cat changed_files.txt
+          echo "has_java=$([ "$COUNT" -gt 0 ] && echo true || echo false)" >> $GITHUB_OUTPUT
+
+      - name: Generate architecture diagrams
+        if: steps.changed.outputs.has_java == 'true'
+        env:
+          # Seteaza DIAGRAM_BACKEND_URL ca secret in repo daca ai un self-hosted runner
+          # cu diagram_generator pornit. Daca nu e setat, foloseste modul static.
+          DIAGRAM_BACKEND_URL: ${{ secrets.DIAGRAM_BACKEND_URL }}
+        run: |
+          if [ -n "$DIAGRAM_BACKEND_URL" ]; then
+            python generate_diagrams_pr.py \
+              --changed-files changed_files.txt \
+              --output pr_comment.md \
+              --mode ${{ steps.ctx.outputs.mode }} \
+              --backend-url "$DIAGRAM_BACKEND_URL"
+          else
+            python generate_diagrams_pr.py \
+              --changed-files changed_files.txt \
+              --output pr_comment.md \
+              --mode ${{ steps.ctx.outputs.mode }} \
+              --no-llm
+          fi
+
+      - name: Post or update PR comment
+        if: steps.changed.outputs.has_java == 'true'
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ steps.ctx.outputs.pr_number }}
+        with:
+          script: |
+            const fs   = require('fs');
+            const body = fs.readFileSync('pr_comment.md', 'utf8');
+
+            if (body.startsWith('<!-- no-java-changes -->')) {
+              console.log('Nu exista diagrame de postat.');
+              return;
+            }
+
+            const MARKER   = '<!-- architecture-diagram-bot -->';
+            const prNumber = parseInt(process.env.PR_NUMBER);
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: prNumber,
+            });
+
+            const existing = comments.find(c => c.body && c.body.includes(MARKER));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner:      context.repo.owner,
+                repo:       context.repo.repo,
+                comment_id: existing.id,
+                body:       body,
+              });
+              console.log(`Comentariu actualizat (ID: ${existing.id})`);
+            } else {
+              await github.rest.issues.createComment({
+                owner:        context.repo.owner,
+                repo:         context.repo.repo,
+                issue_number: prNumber,
+                body:         body,
+              });
+              console.log('Comentariu nou creat.');
+            }
