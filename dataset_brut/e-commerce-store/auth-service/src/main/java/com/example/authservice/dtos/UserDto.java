@@ -8,7 +8,8 @@ public record UserDto(
         String name,
         String lastName,
         String email,
-        String username
+        String username,
+        String adresa
 )
         implements Serializable {
 }
