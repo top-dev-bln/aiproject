@@ -24,7 +24,7 @@ import subprocess
 import tempfile
 
 API_URL      = "http://localhost:8000/diagrams/generate"
-DEFAULT_MODEL = "qwen2.5-coder:14b"
+DEFAULT_MODEL = "fabcric-final:latest"
 GROUND_TRUTH_DIR = "json_output"
 
 

@@ -1,0 +1,14 @@
+graph TB
+    subgraph Services
+        UserService["UserService"]
+        EmailService["EmailService"]
+    end
+    subgraph Controllers
+        UserController["UserController"]
+    end
+    subgraph Data_Access
+        User["User"]
+        UserRepository["UserRepository"]
+    end
+    Controllers --> Services
+    Services --> Data_Access

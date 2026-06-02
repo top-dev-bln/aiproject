@@ -1,0 +1,32 @@
+classDiagram
+    class User <<Entity>> {
+        -id Long
+        -username String
+        -email String
+        -passwordHash String
+        -active boolean
+        +getId() Long
+        +getUsername() String
+        +getEmail() String
+        +isActive() boolean
+    }
+    class UserRepository <<Repository>> {
+    }
+    class UserService <<Service>> {
+        -userRepository UserRepository
+        -emailService EmailService
+        +findById() User
+        +findAll() List<User>
+        +save() User
+        +delete() void
+    }
+    class EmailService <<Service>> {
+        +sendWelcome() void
+        +sendPasswordReset() void
+    }
+    class UserController <<Controller>> {
+        -userService UserService
+        +getUser() User
+        +createUser() User
+        +deleteUser() void
+    }
