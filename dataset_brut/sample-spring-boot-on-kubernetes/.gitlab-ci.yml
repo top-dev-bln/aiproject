@@ -23,7 +23,7 @@ image-build:
     - mvn -s .m2/settings.xml -P jib compile jib:build
 
 deploy-tb:
-  image: bitnami/kubectl:latest
+  image: soldevelo/kubectl:latest
   stage: deploy
   only:
     - master
@@ -31,7 +31,7 @@ deploy-tb:
     - kubectl apply -f k8s/deployment.yaml -n test
 
 deploy-prod:
-  image: bitnami/kubectl:latest
+  image: soldevelo/kubectl:latest
   stage: deploy
   only:
     - master
